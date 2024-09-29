@@ -28,7 +28,7 @@ const LABEL_FINGER_PRINT = "fingerprint";
 const LABEL_USB = "usb";
 const LABEL_WIFI = "wifi";
 const LABEL_FINGERPRINT_FOR_ACCOUNT = "fingerprintForAccount";
-const LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT = "snapshot_skip";
+const LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT = "snapshotSkip";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -944,6 +944,31 @@ function testRemoveDisallowedListForAccountPolicy() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_LIST_FOR_ACCOUNT_JS_0700
+   * @tc.name      : test_remove_disallowed_list_for_account_0700
+   * @tc.desc      : test restrictions removeDisallowedListForAccount remove success
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_list_for_account_0700", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.addDisallowedListForAccount(SELFWANT, LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT, APP_IDS_1, DEFAULT_USER_ID);
+      let result: Array<string> = restrictions.getDisallowedListForAccount(SELFWANT, LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT, DEFAULT_USER_ID);
+      expect(result.length === APP_IDS_1.length).assertTrue();
+      restrictions.removeDisallowedListForAccount(SELFWANT, LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT, APP_IDS_1, DEFAULT_USER_ID);
+      let resultAfterRemove: Array<string> = restrictions.getDisallowedListForAccount(SELFWANT, LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT, DEFAULT_USER_ID);
+      expect(resultAfterRemove === 0).assertTrue();
+    } catch (error) {
+      expect(false).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
