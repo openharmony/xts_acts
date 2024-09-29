@@ -15,7 +15,7 @@
 import hilog from '@ohos.hilog';
 import testNapi from 'libpredicates.so'
 import featureAbility from '@ohos.ability.featureAbility';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 const TAG = "[RdbNdkStoreTest]";
 
