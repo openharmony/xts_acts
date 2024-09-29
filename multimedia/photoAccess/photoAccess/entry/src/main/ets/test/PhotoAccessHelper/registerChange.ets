@@ -23,7 +23,6 @@ import {
   photoFetchOption,
   fetchAllOption,
   sleep,
-  albumFetchOption,
   getPermission
 } from '../../../../../../../common'
 
