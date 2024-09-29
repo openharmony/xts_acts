@@ -418,9 +418,9 @@ export default function AudioRoutingManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_MICBLOCKSTATUSCHANGE_0100', 2, (done) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_MICBLOCKSTATUSCHANGE_0100', 2, (done: Function) => {
       try {
-        audioRoutingManager.on('micBlockStatusChanged', callback1, (data) => {
+        audioRoutingManager.on('micBlockStatusChanged', callback1, (data: ESObject) => {
           console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
         });
         expect(true).assertTrue();
@@ -439,12 +439,12 @@ export default function AudioRoutingManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_OFF_MICBLOCKSTATUSCHANGE_0100', 2, (done) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_OFF_MICBLOCKSTATUSCHANGE_0100', 2, (done: Function) => {
       try {
-        audioRoutingManager.on('micBlockStatusChanged', callback1, (data) => {
+        audioRoutingManager.on('micBlockStatusChanged', callback1, (data: ESObject) => {
           console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
         });
-        audioRoutingManager.off('micBlockStatusChanged', callback1, (data) => {
+        audioRoutingManager.off('micBlockStatusChanged', callback1, (data: ESObject) => {
           console.info(`${Tag}: off_micBlockStatusChanged 'micBlockStatusChanged': SUCCESS`);
         });
         expect(true).assertTrue();
@@ -463,15 +463,15 @@ export default function AudioRoutingManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_OFF_MICBLOCKSTATUSCHANGE_0200', 2, (done) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_OFF_MICBLOCKSTATUSCHANGE_0200', 2, (done: Function) => {
       try {
-        audioRoutingManager.on('micBlockStatusChanged', callback1, (data) => {
+        audioRoutingManager.on('micBlockStatusChanged', callback1, (data: ESObject) => {
           console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
         });
-        audioRoutingManager.on('micBlockStatusChanged', callback2, (data) => {
+        audioRoutingManager.on('micBlockStatusChanged', callback2, (data: ESObject) => {
           console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
         });
-        audioRoutingManager.off('micBlockStatusChanged', (data) => {
+        audioRoutingManager.off('micBlockStatusChanged', (data: ESObject) => {
           console.info(`${Tag}: off_micBlockStatusChanged 'micBlockStatusChanged': SUCCESS`);
         });
         expect(true).assertTrue();
