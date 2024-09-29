@@ -57,7 +57,8 @@ void drawCircle(OH_Drawing_Canvas *canvas, int position)
     OH_Drawing_PointDestroy(point);
 }
 OH_Drawing_RecordCmd *threadFunctionTest1()
-{   int32_t width = 2;
+{
+    int32_t width = 2;
     int32_t height = 5;
     OH_Drawing_RecordCmd *recordCmd = nullptr;
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
