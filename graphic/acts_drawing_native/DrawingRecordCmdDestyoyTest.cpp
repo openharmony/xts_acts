@@ -55,11 +55,12 @@ void drawCircle(OH_Drawing_Canvas *canvas, int position) {
     OH_Drawing_CanvasDrawCircle(canvas, point, radius);
     OH_Drawing_PointDestroy(point);
 }
-OH_Drawing_RecordCmd *threadFunctionTest1() {
+OH_Drawing_RecordCmd *threadFunctionTest1() 
+{
     OH_Drawing_RecordCmd *recordCmd = nullptr;
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_RecordCmdUtils *recordCmdUtils = OH_Drawing_RecordCmdUtilsCreate();
-    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, 500, 500, &canvas);
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, 1, 1, &canvas);
     float penWidth = 1.0f; // pen width 1
     // 创建一个画笔Pen对象，Pen对象用于形状的边框线绘制
     OH_Drawing_Pen *cPen = OH_Drawing_PenCreate();
@@ -74,7 +75,7 @@ OH_Drawing_RecordCmd *threadFunctionTest1() {
     OH_Drawing_BrushSetColor(cBrush, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF, 0x00));
     // 将Brush画刷设置到canvas中
     OH_Drawing_CanvasAttachBrush(canvas, cBrush);
-    drawCircle(canvas,10);
+    drawCircle(canvas, 1);
     OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils, &recordCmd);
     OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils);
     OH_Drawing_BrushDestroy(cBrush);
@@ -93,7 +94,8 @@ OH_Drawing_RecordCmd *threadFunctionTest1() {
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, TestSize.Level0) {
+HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, TestSize.Level0) 
+{
     // 1. The OH-Drawing-RecordCmdDestroy parameter is not empty
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     OH_Drawing_RecordCmd *picture = nullptr;
