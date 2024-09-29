@@ -1,32 +1,25 @@
 {
-    "description": "Configuration for drm ndk Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-        "bundle-name": "com.example.nativecc",
-        "module-name": "entry_test",
-        "shell-timeout": "120000",
-        "coverage": true
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
+        "bundle-name": "com.example.myapplication",
+        "module-name": "entry_test"
     },
     "kits": [
-	{
-        "test-file-name": [
-            "ActsDrmNDKTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    },
-	{
-		"type": "ShellKit",
-		"run-command":[
-		    "power-shell wakeup",
-			"uinput -T -m 300 2700 280 200",
-			"power-shell setmode 602"
-		],
-		"teardown-command":[
-		    "power-shell setmode 600"
-		],
-		"cleanup-apps": true
-	}
-	]
+        {
+            "test-file-name": [
+                "ActsDrmNDKTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }
