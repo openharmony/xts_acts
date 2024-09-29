@@ -48,14 +48,15 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 class DrawingRecordCmdDestroyTest : public testing::Test {};
-void drawCircle(OH_Drawing_Canvas *canvas, int position) {
+void drawCircle(OH_Drawing_Canvas *canvas, int position)
+{
     int x = 10;
     int radius = 200;
     OH_Drawing_Point *point = OH_Drawing_PointCreate(x * position + radius, x + radius);
     OH_Drawing_CanvasDrawCircle(canvas, point, radius);
     OH_Drawing_PointDestroy(point);
 }
-OH_Drawing_RecordCmd *threadFunctionTest1() 
+OH_Drawing_RecordCmd *threadFunctionTest1()
 {   int32_t width = 2;
     int32_t height = 5;
     OH_Drawing_RecordCmd *recordCmd = nullptr;
@@ -95,8 +96,7 @@ OH_Drawing_RecordCmd *threadFunctionTest1()
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, TestSize.Level0) 
-{
+HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, TestSize.Level0) {
     // 1. The OH-Drawing-RecordCmdDestroy parameter is not empty
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     OH_Drawing_RecordCmd *picture = nullptr;
