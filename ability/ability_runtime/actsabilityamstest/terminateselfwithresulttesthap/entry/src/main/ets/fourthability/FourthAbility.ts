@@ -22,8 +22,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class FourthAbility extends UIAbility {
   onCreate(want, launchParam) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'FourthAbility onCreate:' + JSON.stringify(want));
-    globalThis.secondContext = this.context;
+    hilog.info(0x0000, 'testTag', '%{public}s', 'FourthAbility onCreate');
   }
 
   onDestroy() {
@@ -66,22 +65,30 @@ export default class FourthAbility extends UIAbility {
     let want: Want = {
       bundleName: 'com.example.terminateselfwithresulttesthap2',
       abilityName: 'EntryAbility'
-    };
+    }
     let options: StartOptions = {
       windowMode: 100
-    };
+    }
     try {
       this.context.startAbility(want, options).then(async () => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility successful');
+        let commonEventData: commonEventManger.CommonEventPublishData = {
+          parameters: {
+            data: {}
+          }
+        };
+        commonEventManger.publish('onForegroundCallback', commonEventData, (result) => {
+          hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
+          setTimeout(() => {
+            this.context.terminateSelf();
+          }, 1500);
+        });
       }).catch((err: BusinessError) => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility error');
       });
     } catch (error) {
       hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility error');
     }
-    setTimeout(() => {
-      this.context.terminateSelf();
-    }, 1500);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 

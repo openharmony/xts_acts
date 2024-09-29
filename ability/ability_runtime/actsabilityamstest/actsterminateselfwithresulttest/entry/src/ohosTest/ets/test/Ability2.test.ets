@@ -19,8 +19,12 @@ import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { common, StartOptions, UIAbility } from '@kit.AbilityKit';
-import { Driver } from '@kit.TestKit';
+import { Driver, MatchPattern, ON } from '@kit.TestKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, time));
+}
 
 export default function abilityTest2() {
   describe('TerminateselfWithResultTest2', () => {
@@ -34,18 +38,20 @@ export default function abilityTest2() {
     const TEST_SUITE_NAME: string = 'TerminateselfWithResultTest';
     let context: common.UIAbilityContext;
     let driver = Driver.create();
+    let cmdBeforeEach = 'aa start -d 0 -a TestAbility' + ' -b ' + 'com.example.actsterminateselfwithresulttest';
     beforeAll(async (done: Function) => {
-      await driver.delayMs(1000);
+      await sleep(1000);
       context = getContext() as common.UIAbilityContext;
       hilog.info(0x0000, 'testTag', '%{public}s',
         `Succeeded in starting SpecifiedAbility11ww11` + JSON.stringify(context));
       done();
     });
     beforeEach(async () => {
-      await driver.delayMs(1000);
-      let cmdBeforeEach = 'aa start -d 0 -a TestAbility' + ' -b ' + 'com.example.actsterminateselfwithresulttest';
+      await sleep(1000);
       await delegator.executeShellCommand(cmdBeforeEach);
-      await driver.delayMs(1000);
+      let cmd1 = `hilog -r`;
+      await delegator.executeShellCommand(cmd1);
+      await sleep(1000);
     });
 
     /**
@@ -67,11 +73,13 @@ export default function abilityTest2() {
         events: [event, event2]
       };
 
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           try {
             expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -95,16 +103,11 @@ export default function abilityTest2() {
           action: event
         };
 
-        let want2: Want = {
-          bundleName: bundleName2,
-          abilityName: 'EntryAbility2',
-          action: event2
-        };
-
         try {
           context.startAbilityForResult(want).then((result: common.AbilityResult) => {
             // 执行正常业务
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
             try {
               expect(result.resultCode).assertEqual(100);
               expect(result.want?.bundleName).assertEqual(bundleName);
@@ -117,9 +120,30 @@ export default function abilityTest2() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          let times = 0;
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            times = 1000;
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(times);
+          await delegator.executeShellCommand(cmdBeforeEach);
+          await sleep(1000);
+          let want2: Want = {
+            bundleName: bundleName2,
+            abilityName: 'EntryAbility2',
+            action: event2
+          };
           context.startAbilityForResult(want2).then((result: common.AbilityResult) => {
             // 执行正常业务
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability2 successful,result: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability2 successful,result: ${JSON.stringify(result)}`);
             try {
               expect(result.resultCode).assertEqual(100);
               expect(result.want?.bundleName).assertEqual(bundleName2);
@@ -132,6 +156,16 @@ export default function abilityTest2() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
+          if (allowed1) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -163,8 +197,10 @@ export default function abilityTest2() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           try {
             if (commonEventData.event == event) {
               expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -209,22 +245,59 @@ export default function abilityTest2() {
         try {
           context.startAbilityForResult(want2).then((result: common.AbilityResult) => {
             // 执行正常业务
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability2 successful,result: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability2 successful,result: ${JSON.stringify(result)}`);
           }).catch((err: BusinessError) => {
             // 处理业务逻辑错误
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility2 err : ${err}`);
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          let times = 0;
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            times = 1000;
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(times);
+          await delegator.executeShellCommand(cmdBeforeEach);
+          await sleep(1000);
           context.startAbilityForResult(want).then((result: common.AbilityResult) => {
             // 执行正常业务
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
           }).catch((err: BusinessError) => {
             // 处理业务逻辑错误
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
+          if (allowed1) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(3000);
+          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed2} `);
+          if (allowed2) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -250,11 +323,13 @@ export default function abilityTest2() {
         events: [event]
       };
 
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           try {
             expect(commonEventData.parameters?.data.onBackground).assertTrue();
             expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -278,7 +353,8 @@ export default function abilityTest2() {
         try {
           context.startAbilityForResult(want).then((result: common.AbilityResult) => {
             // 执行正常业务
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
             try {
               expect(result.resultCode).assertEqual(100);
               expect(result.want?.bundleName).assertEqual(bundleName);
@@ -291,6 +367,16 @@ export default function abilityTest2() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -318,11 +404,13 @@ export default function abilityTest2() {
         events: [event, event2]
       };
 
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           try {
             expect(commonEventData.parameters?.data.onBackground).assertTrue();
             expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -354,7 +442,8 @@ export default function abilityTest2() {
         try {
           context.startAbilityForResult(want).then((result: common.AbilityResult) => {
             // 执行正常业务
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
             try {
               expect(result.resultCode).assertEqual(100);
               expect(result.want?.bundleName).assertEqual(bundleName2);
@@ -367,6 +456,26 @@ export default function abilityTest2() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(3000);
+          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
+          if (allowed1) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -410,11 +519,13 @@ export default function abilityTest2() {
         events: [event, event2]
       };
 
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           try {
             if (commonEventData.event == event) {
               expect(commonEventData.parameters?.data.onBackground).assertTrue();
@@ -447,7 +558,8 @@ export default function abilityTest2() {
         try {
           context.startAbilityForResult(want).then((result: common.AbilityResult) => {
             // 执行正常业务
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
             try {
               expect(result).assertDeepEquals(resultDate);
             } catch {
@@ -466,6 +578,26 @@ export default function abilityTest2() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(3000);
+          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
+          if (allowed1) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -485,10 +617,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5100', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -498,6 +626,25 @@ export default function abilityTest2() {
       };
       try {
         context.startAbility(want, options).then(async () => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
+        }).catch((err: BusinessError) => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
+          expect().assertFail();
+          done();
+        });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -506,12 +653,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          expect().assertFail();
-          done();
-        });
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -530,10 +672,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5200', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5200';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -543,6 +681,25 @@ export default function abilityTest2() {
       };
       try {
         context.startAbility(want, options).then(async () => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
+        }).catch((err: BusinessError) => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
+          expect().assertFail();
+          done();
+        });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -551,12 +708,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          expect().assertFail();
-          done();
-        });
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -575,10 +727,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5300', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -588,6 +736,25 @@ export default function abilityTest2() {
       };
       try {
         context.startAbility(want, options).then(async () => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
+        }).catch((err: BusinessError) => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
+          expect().assertFail();
+          done();
+        });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -596,12 +763,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          expect().assertFail();
-          done();
-        });
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -620,10 +782,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5400', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -633,6 +791,25 @@ export default function abilityTest2() {
       };
       try {
         context.startAbility(want, options).then(async () => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
+        }).catch((err: BusinessError) => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
+          expect().assertFail();
+          done();
+        });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -641,12 +818,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          expect().assertFail();
-          done();
-        });
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -665,10 +837,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5500', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -678,6 +846,25 @@ export default function abilityTest2() {
       };
       try {
         context.startAbility(want, options).then(async () => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
+        }).catch((err: BusinessError) => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
+          expect().assertFail();
+          done();
+        });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
@@ -686,12 +873,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          expect().assertFail();
-          done();
-        });
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -710,10 +892,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5600', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -729,6 +907,18 @@ export default function abilityTest2() {
           expect().assertFail();
           done();
         });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
         setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
@@ -738,7 +928,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-        }, 1000);
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -757,10 +947,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5700', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -776,6 +962,18 @@ export default function abilityTest2() {
           expect().assertFail();
           done();
         });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
         setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
@@ -785,7 +983,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-        }, 1000);
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -805,10 +1003,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5900', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5900';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -824,6 +1018,18 @@ export default function abilityTest2() {
           expect().assertFail();
           done();
         });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
         setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
@@ -833,7 +1039,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-        }, 1000);
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -852,10 +1058,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6000', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -871,6 +1073,18 @@ export default function abilityTest2() {
           expect().assertFail();
           done();
         });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
         setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
@@ -880,7 +1094,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-        }, 1000);
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -899,10 +1113,6 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6100', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_6100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ThirdAbility'
@@ -918,6 +1128,18 @@ export default function abilityTest2() {
           expect().assertFail();
           done();
         });
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
         setTimeout(async () => {
           let cmd = `hilog -x | grep 'Window mode'`;
           let d = await delegator.executeShellCommand(cmd);
@@ -927,7 +1149,7 @@ export default function abilityTest2() {
           } catch {
           }
           done();
-        }, 1000);
+        }, times);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
         expect().assertFail();
@@ -955,11 +1177,13 @@ export default function abilityTest2() {
         events: [event, event2, event3]
       };
 
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           try {
             if (commonEventData.event == event2 || commonEventData.event == event3) {
               expect(commonEventData.parameters?.data.onBackground).assertTrue();
@@ -1004,6 +1228,16 @@ export default function abilityTest2() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -1031,11 +1265,13 @@ export default function abilityTest2() {
         events: [event, event2]
       };
 
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           try {
             if (commonEventData.event == event2) {
               expect(commonEventData.parameters?.data.onBackground).assertTrue();
@@ -1076,6 +1312,16 @@ export default function abilityTest2() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -1101,11 +1347,13 @@ export default function abilityTest2() {
         events: [event]
       };
 
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           try {
             expect(commonEventData.parameters?.data.onBackground).assertTrue();
             expect(commonEventData.parameters?.data.onCreate).assertTrue();
@@ -1129,7 +1377,8 @@ export default function abilityTest2() {
         try {
           context.startAbilityForResult(want).then((result: common.AbilityResult) => {
             // 执行正常业务
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful,result: ${JSON.stringify(result)}`);
             try {
               expect(result.resultCode).assertEqual(100);
               expect(result.want?.bundleName).assertEqual(bundleName3);
@@ -1142,6 +1391,16 @@ export default function abilityTest2() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -1161,25 +1420,34 @@ export default function abilityTest2() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2300', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_2300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
-      let cmd1 = `hilog -r`;
-      await delegator.executeShellCommand(cmd1);
-      let cmd2 = `hilog -b D`;
-      await delegator.executeShellCommand(cmd2);
+      let reburnNumber = 0;
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['onDestroyCallback2']
+        events: ['onDestroyCallback2', 'onForegroundCallback']
       };
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, async (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           try {
-            expect(commonEventData.parameters?.data.onBackground).assertTrue();
-            expect(commonEventData.parameters?.data.onDestroy).assertTrue();
+            if (commonEventData.event == 'onDestroyCallback2') {
+              expect(commonEventData.parameters?.data.onBackground).assertTrue();
+              expect(commonEventData.parameters?.data.onDestroy).assertTrue();
+            }
+            if (commonEventData.event == 'onForegroundCallback') {
+              let cmd = `hilog -x | grep 'Window mode'`;
+              let d = await delegator.executeShellCommand(cmd);
+              hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
+              expect(d.stdResult).assertContain('Window mode is 100');
+            }
           } catch {
           }
-          commonEventManager.unsubscribe(subscriber, (err, data) => {
-            done();
-          });
+          reburnNumber += 1;
+          if (reburnNumber == 2) {
+            commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
+            });
+          }
         });
         let want: Want = {
           bundleName: bundleName,
@@ -1193,15 +1461,26 @@ export default function abilityTest2() {
             done();
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startablility err : ${err}`);
           });
-          setTimeout(async () => {
-            let cmd = `hilog -x | grep 'Window mode'`;
-            let d = await delegator.executeShellCommand(cmd);
-            hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
-            try {
-              expect(d.stdResult).assertContain('Window mode is 100');
-            } catch {
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
             }
-          }, 1000);
+          }
+          await sleep(3000);
+          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
+          if (allowed1) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           expect().assertFail();
           done();
