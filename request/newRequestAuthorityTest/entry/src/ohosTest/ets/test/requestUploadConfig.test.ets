@@ -54,7 +54,8 @@ export default function requestUploadConfigTest() {
           baseContext.cacheDir + '/Include spaces.txt',
           baseContext.filesDir + '/filesNormal.txt',
           baseContext.tempDir + '/tempNormal.txt',
-          'data/storage/el1/base/el1BaseNormal.txt'
+          'data/storage/el1/base/el1BaseNormal.txt',
+          'data/storage/el5/base/el5BaseNormal.txt'
         ]
         let index = 0
         let t = setInterval(()=>{
@@ -714,5 +715,43 @@ export default function requestUploadConfigTest() {
         done();
       }
     });
+
+    /*
+     * @tc.number: SUB_REQUEST_Agent_UploadConfig_1900
+     * @tc.name: SUB_REQUEST_Agent_UploadConfig_1900
+     * @tc.desc: different upload path or upload file name of config
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_REQUEST_Agent_UploadConfig_1900', 0, async (done: Function) => {
+      console.info("====>-----------------------SUB_REQUEST_Agent_UploadConfig_1900 is starting-----------------------");
+      let config = uploadConfig;
+      config.data = [{
+        name: 'uploadTest',
+        value: {
+          path: '/data/storage/el5/base/el5BaseNormal.txt',
+          filename: 'el5BaseNormal.txt'
+        }
+      }]
+      console.info("====>SUB_REQUEST_Agent_UploadConfig_1900 config: " + JSON.stringify(config));
+      try {
+        let on_completedCallback =(pro: request.agent.Progress) => {
+          task.off('completed', on_completedCallback);
+          console.info("====>SUB_REQUEST_Agent_UploadConfig_1900 pro: " + JSON.stringify(pro));
+          expect(pro.state).assertEqual(64);
+          done();
+        }
+        console.info("====>SUB_REQUEST_Agent_UploadConfig_1900 baseContext: " + JSON.stringify(baseContext));
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        task.on('completed', on_completedCallback);
+        await task.start();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Agent_UploadConfig_1900 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
   });
 };

@@ -38,7 +38,6 @@ export default class TestAbility extends UIAbility {
 
     onWindowStageCreate(windowStage: window.WindowStage) {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
-        globalThis.abilityContext = this.context;
         let context = this.context;
         AppStorage.setOrCreate('context',context);
         windowStage.loadContent('testability/pages/Index', (err, data) => {

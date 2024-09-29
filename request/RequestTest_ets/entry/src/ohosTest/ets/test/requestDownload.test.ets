@@ -56,7 +56,7 @@ export default function requestDownloadJSUnit() {
     let setDownLoadConfig = async () => {
       let downloadFilePath = await featureAbility.getContext().getFilesDir()
       downloadConfig = {
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         header: {
           headers: 'http'
         },

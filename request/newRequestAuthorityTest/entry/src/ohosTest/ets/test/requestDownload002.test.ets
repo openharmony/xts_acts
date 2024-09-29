@@ -15,12 +15,13 @@
 
 import request from "@ohos.request";
 import commonEvent from '@ohos.commonEventManager';
+import common from '@ohos.app.ability.common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestDownloadTwoUnitTest() {
   describe('requestDownloadTwoJSUnit', () => {
-
+    console.info('====>################################request download Test start');
     let sleep = (timeout: number): Promise<null> => {
       return new Promise(resolve => {
         const st = setTimeout(() => {
@@ -29,8 +30,28 @@ export default function requestDownloadTwoUnitTest() {
         }, timeout);
       });
     };
-
-    console.info('====>################################request download Test start');
+    
+    let baseContext: common.Context;
+    /**
+     * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
+     */
+    beforeAll((done: Function) => {
+      try {
+        let context: common.Context | undefined = AppStorage.get('context');
+        if (context !== undefined){
+          baseContext = context;
+          console.info('====>beforeAll requestDownloadTwoJSUnit baseContext:'+JSON.stringify(baseContext))
+          done();
+        } else {
+          console.info('====>beforeAll requestDownloadTwoJSUnit baseContext is undefined')
+          done();
+        }
+      } catch (err) {
+        console.info('====>beforeAll requestDownloadTwoJSUnit catch err:'+JSON.stringify(err))
+        done();
+      }
+    });
+    
     /**
      * @tc.number    SUB_Misc_REQUEST_On_Download_Progress_0030
      * @tc.name    SUB_Misc_REQUEST_On_Download_Progress_0030
@@ -43,7 +64,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Download_Progress_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_On_Download_Progress_0030.txt',
@@ -52,7 +73,7 @@ export default function requestDownloadTwoUnitTest() {
         mode:request.agent.Mode.FOREGROUND
       };
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let flag = true
           let flag1 = true
           let on_progressCallback = async (pro: request.agent.Progress) => {
@@ -103,7 +124,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Progress_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_Off_Download_Progress_0030.txt',
@@ -114,7 +135,7 @@ export default function requestDownloadTwoUnitTest() {
       try {
         let flag = true;
         let flag1 = true;
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0030 on_progressCallback flag: " + flag);
@@ -168,7 +189,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Progress_0020 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_Off_Download_Progress_0020.txt',
@@ -179,7 +200,7 @@ export default function requestDownloadTwoUnitTest() {
       try {
         let flag = true;
         let flag1 = true;
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0020 on_progressCallback flag: " + flag);
@@ -234,7 +255,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_On_Download_Completed_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_On_Download_Completed_0030.txt',
@@ -244,7 +265,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let flag = true
           let flag1 = true
           let on_progressCallback = async (pro: request.agent.Progress) => {
@@ -295,7 +316,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Completed_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_Off_Download_Completed_0030.txt',
@@ -306,7 +327,7 @@ export default function requestDownloadTwoUnitTest() {
       try {
         let flag = true;
         let flag1 = true;
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Completed_0030 on_progressCallback flag: " + flag);
@@ -360,7 +381,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Completed_0020 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_Off_Download_Completed_0020.txt',
@@ -371,7 +392,7 @@ export default function requestDownloadTwoUnitTest() {
       try {
         let flag = true;
         let flag1 = true;
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Completed_0020 on_progressCallback flag: " + flag);
@@ -436,7 +457,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let flag = true
           let flag1 = true
           let on_progressCallback = async (pro: request.agent.Progress) => {
@@ -487,7 +508,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Failed_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_Off_Download_Failed_0030.txt',
@@ -498,7 +519,7 @@ export default function requestDownloadTwoUnitTest() {
       try {
         let flag = true;
         let flag1 = true;
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Failed_0030 on_progressCallback flag: " + flag);
@@ -552,7 +573,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Off_Download_Failed_0020 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_Off_Download_Failed_0020.txt',
@@ -563,7 +584,7 @@ export default function requestDownloadTwoUnitTest() {
       try {
         let flag = true;
         let flag1 = true;
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Failed_0020 on_progressCallback flag: " + flag);
@@ -618,7 +639,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0070 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Promise_0070.txt',
         network: request.agent.Network.WIFI,
@@ -645,7 +666,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -667,7 +688,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0080 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Callback_0080.txt',
         network: request.agent.Network.WIFI,
@@ -699,7 +720,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -721,7 +742,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0080 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Promise_0080.txt',
         network: request.agent.Network.WIFI,
@@ -747,7 +768,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -802,7 +823,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('failed', onFailedCallback);
         await task.start();
       }catch(err){
@@ -824,7 +845,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0090 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Promise_0090.txt',
         network: request.agent.Network.WIFI,
@@ -851,7 +872,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -873,7 +894,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Show_Callback_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Show_Callback_0010.txt',
         network: request.agent.Network.WIFI,
@@ -926,7 +947,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -948,7 +969,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Show_Promise_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Show_Promise_0010.txt',
         network: request.agent.Network.WIFI,
@@ -988,7 +1009,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -1011,7 +1032,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Callback_0010.txt',
         network: request.agent.Network.WIFI,
@@ -1041,7 +1062,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -1063,7 +1084,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0020 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Promise_0020.txt',
         network: request.agent.Network.WIFI,
@@ -1093,7 +1114,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -1115,7 +1136,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0030 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Callback_0030.txt',
         network: request.agent.Network.WIFI,
@@ -1147,7 +1168,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -1169,7 +1190,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0060 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Callback_0060.txt',
         network: request.agent.Network.WIFI,
@@ -1202,7 +1223,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -1224,7 +1245,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0060 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Promise_0060.txt',
         network: request.agent.Network.WIFI,
@@ -1257,7 +1278,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         await sleep(5000);
         task.on('completed', onCompletedCallback);
         await task.start()
@@ -1280,7 +1301,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0070 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Callback_0070.txt',
         network: request.agent.Network.WIFI,
@@ -1312,7 +1333,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('progress', onProgressCallback);
         await task.start();
       }catch(err){
@@ -1334,7 +1355,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0100 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Callback_0100.txt',
         network: request.agent.Network.WIFI,
@@ -1369,7 +1390,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         await sleep(1000);
         task.on('completed', onCompletedCallback);
         await task.start();
@@ -1392,7 +1413,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Promise_0110 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Promise_0110.txt',
         network: request.agent.Network.WIFI,
@@ -1402,7 +1423,7 @@ export default function requestDownloadTwoUnitTest() {
       let task:request.agent.Task;
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         await task.start()
         task.pause(() => {
           let filter: request.agent.Filter = {
@@ -1444,14 +1465,14 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Search_Callback_0110 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Search_Promise_0090.txt',
         network: request.agent.Network.WIFI,
         overwrite: true,
         mode:request.agent.Mode.BACKGROUND,
       };
-      let task = await request.agent.create(globalThis.abilityContext, config);
+      let task = await request.agent.create(baseContext, config);
       try {
         let filter: request.agent.Filter = {
           state:request.agent.State.INITIALIZED,
@@ -1500,7 +1521,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Touch_Callback_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Touch_Callback_0010.txt',
         network: request.agent.Network.WIFI,
@@ -1532,7 +1553,7 @@ export default function requestDownloadTwoUnitTest() {
       }
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -1555,7 +1576,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Touch_Promise_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Touch_Promise_0010.txt',
         network: request.agent.Network.WIFI,
@@ -1564,7 +1585,7 @@ export default function requestDownloadTwoUnitTest() {
         token: '1234567890'
       };
       let task:request.agent.Task
-      task = await request.agent.create(globalThis.abilityContext, config);
+      task = await request.agent.create(baseContext, config);
       let id: string = task.tid;
       let token: string;
       let tk: string | undefined = config.token;
@@ -1610,7 +1631,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Touch_Callback_0040 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         saveas: './SUB_Misc_REQUEST_Touch_Callback_0040.txt',
         network: request.agent.Network.WIFI,
@@ -1636,7 +1657,7 @@ export default function requestDownloadTwoUnitTest() {
       }
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
@@ -1658,7 +1679,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_On_Download_Progress_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_On_Download_Progress_0500.txt',
@@ -1668,7 +1689,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = async (pro: request.agent.Progress) => {
             task.off('progress', on_progressCallback);
             console.info(`====>SUB_REQUEST_On_Download_Progress_0500 size: ${pro.processed}/${pro.sizes}`);
@@ -1713,7 +1734,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_Off_Download_Progress_0600 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_Off_Download_Progress_0600.txt',
@@ -1725,7 +1746,7 @@ export default function requestDownloadTwoUnitTest() {
       let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Download_Progress_0600 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -1785,7 +1806,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_Off_Download_Progress_0700 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_Off_Download_Progress_0700.txt',
@@ -1796,7 +1817,7 @@ export default function requestDownloadTwoUnitTest() {
 
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Download_Progress_0700 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -1855,7 +1876,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_On_Download_Completed_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_On_Download_Completed_0500.txt',
@@ -1865,7 +1886,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_completedCallback = async (pro: request.agent.Progress) => {
             task.off('completed', on_completedCallback);
             try {
@@ -1909,7 +1930,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_Off_Download_Completed_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_Off_Download_Completed_0500.txt',
@@ -1921,7 +1942,7 @@ export default function requestDownloadTwoUnitTest() {
       let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Download_Completed_0500 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -1980,7 +2001,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_Download_backgroundOnCompleted_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_Off_Download_Completed_0600.txt',
@@ -1991,7 +2012,7 @@ export default function requestDownloadTwoUnitTest() {
 
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Download_Completed_0600 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -2044,7 +2065,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_On_Download_Resume_0100 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_On_Download_Resume_0100.txt',
@@ -2054,7 +2075,7 @@ export default function requestDownloadTwoUnitTest() {
       };
 
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_resumeCallback = async (pro: request.agent.Progress) => {
             task.off('resume', on_resumeCallback);
             try {
@@ -2110,7 +2131,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_Off_Download_Resume_0100 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_Off_Download_Resume_0100.txt',
@@ -2122,7 +2143,7 @@ export default function requestDownloadTwoUnitTest() {
       let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Download_Resume_0100 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -2193,7 +2214,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_Download_backgroundOnPause_0500 is starting-----------------------');
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_Off_Download_Resume_0200.txt',
@@ -2204,7 +2225,7 @@ export default function requestDownloadTwoUnitTest() {
 
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Download_Resume_0200 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -2274,7 +2295,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info("====>-----------------------SUB_REQUEST_Download_broadcastEvent_0100 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -2318,7 +2339,7 @@ export default function requestDownloadTwoUnitTest() {
       })
 
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           try {
             if(err){
               console.info("====>SUB_REQUEST_Download_broadcastEvent_0100 create err: " + JSON.stringify(err));
@@ -2392,7 +2413,7 @@ export default function requestDownloadTwoUnitTest() {
       })
 
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           try {
             if(err){
               console.info("====>SUB_REQUEST_Download_broadcastEvent_0200 create err: " + JSON.stringify(err));
