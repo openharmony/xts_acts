@@ -101,11 +101,11 @@ export default function abilityTest() {
           }
         }
         setTimeout(async () => {
-          let cmd = `hilog -x | grep 'Window mode'`;
+          let cmd = `hilog -x | grep 'window mode'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
           try {
-            expect(d.stdResult).assertContain('Window mode is 0');
+            expect(d.stdResult).assertContain('window mode:0');
           } catch {
           }
           done();
@@ -208,11 +208,11 @@ export default function abilityTest() {
           }
         }
         setTimeout(async () => {
-          let cmd = `hilog -x | grep 'Window mode'`;
+          let cmd = `hilog -x | grep 'window mode'`;
           let d = await delegator.executeShellCommand(cmd);
           hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
           try {
-            expect(d.stdResult).assertContain('Window mode is 100');
+            expect(d.stdResult).assertContain('window mode:100');
           } catch {
           }
           done();
@@ -375,10 +375,10 @@ export default function abilityTest() {
         try {
           context.startAbility(want, options).then(async () => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-            let cmd = `hilog -x | grep 'Window mode'`;
+            let cmd = `hilog -x | grep 'window mode'`;
             let d = await delegator.executeShellCommand(cmd);
             try {
-              expect(d.stdResult).assertContain('Window mode is 100');
+              expect(d.stdResult).assertContain('window mode:100');
             } catch {
             }
           }).catch((err: BusinessError) => {
