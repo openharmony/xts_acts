@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import { describe, beforeAll, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('svgPropsJsTest', function () {
@@ -268,7 +268,7 @@ describe('svgPropsJsTest', function () {
         expect(obj.$attrs.fill).assertEqual('red')
         console.info("[svgProps] get inspector fill value is: " + JSON.stringify(obj.$attrs.fill));
         expect(obj.$attrs.opacity).assertEqual('0.5')
-         console.info("[lineProps] get inspector opacity value is: " + JSON.stringify(obj.$attrs.opacity));
+        console.info("[lineProps] get inspector opacity value is: " + JSON.stringify(obj.$attrs.opacity));
         done();
     });
 

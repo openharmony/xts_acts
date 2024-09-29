@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('textAreaPropsJsTest', function () {
@@ -681,25 +681,25 @@ describe('textAreaPropsJsTest', function () {
         done();
     });
 
-/**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testtextAreaShowPropNone
-     * @tc.desc      ACE
-     */
-it('testtextAreaHeadericonPropNull', 0, async function (done) {
-    console.info('testtextAreaXsPropObject START');
-    console.info("[textAreaProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+    /**
+         * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+         * @tc.name      testtextAreaShowPropNone
+         * @tc.desc      ACE
+         */
+    it('testtextAreaHeadericonPropNull', 0, async function (done) {
+        console.info('testtextAreaXsPropObject START');
+        console.info("[textAreaProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
-    let obj = JSON.parse(globalThis.value.headericonNone);
-    console.info("[textAreaProps] get inspector value is: " + JSON.stringify(obj));
-    console.info("[textAreaProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+        let obj = JSON.parse(globalThis.value.headericonNone);
+        console.info("[textAreaProps] get inspector value is: " + JSON.stringify(obj));
+        console.info("[textAreaProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-    expect(obj.$type).assertEqual('textarea')
-    expect(obj.$attrs.id).assertEqual('headericonNone')
-    expect(obj.$attrs.headericon).assertEqual(undefined)
-    console.info("[textAreaProps] get headericon value is: " + JSON.stringify(obj.$attrs.headericon));
-    done();
-});
+        expect(obj.$type).assertEqual('textarea')
+        expect(obj.$attrs.id).assertEqual('headericonNone')
+        expect(obj.$attrs.headericon).assertEqual(undefined)
+        console.info("[textAreaProps] get headericon value is: " + JSON.stringify(obj.$attrs.headericon));
+        done();
+    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

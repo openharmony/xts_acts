@@ -16,7 +16,7 @@
 import configuration from '@system.configuration';
 import prompt from '@system.prompt';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 describe('basicabilityapi', function () {
     let testResult;
@@ -34,7 +34,7 @@ describe('basicabilityapi', function () {
     afterAll(function () {
     });
 
-    async function backToIndex(){
+    async function backToIndex() {
         let backToIndexPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 router.back({
@@ -59,7 +59,7 @@ describe('basicabilityapi', function () {
      * @tc.name      testClearInterval
      * @tc.desc      Cancel the repetitive timing tasks previously set by setInterval.
      */
-    it('testClearInterval', 0, async function(done) {
+    it('testClearInterval', 0, async function (done) {
         console.info('testClearInterval START');
         let res = 0;
         let intervalID = -1;
@@ -111,7 +111,7 @@ describe('basicabilityapi', function () {
     it('testRouterPush', 0, async function (done) {
         console.info('testRouterPush START');
         let options = {
-            uri : 'pages/routerPush/index'
+            uri: 'pages/routerPush/index'
         }
         let promise1 = new Promise((resolve, reject) => {
             router.push(options);
@@ -176,14 +176,14 @@ describe('basicabilityapi', function () {
         //测试框架不允许index页面直接替换，需要先跳转到其他页面再替换
         console.info('testRouterReplace START');
         let options = {
-            uri : 'pages/routerPush/index'
+            uri: 'pages/routerPush/index'
         }
         let promise1 = new Promise((resolve, reject) => {
             router.push(options);
             resolve();
         });
         let repleasePage = {
-            uri : 'pages/routerReplace/index'
+            uri: 'pages/routerReplace/index'
         }
         let promise2 = new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -301,7 +301,7 @@ describe('basicabilityapi', function () {
         console.info('[router.getLength] pages stack size = ' + size);
         expect(size).assertEqual('1');
         let options = {
-            uri : 'pages/routerPush/index'
+            uri: 'pages/routerPush/index'
         }
         let promise1 = new Promise((resolve, reject) => {
             router.push(options);

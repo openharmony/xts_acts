@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('marqueePropsJsTest', function () {
@@ -686,20 +686,20 @@ describe('marqueePropsJsTest', function () {
      * @tc.name      testmarqueeShowPropNone
      * @tc.desc      ACE
      */
-it('testmarqueeLoopPropNull', 0, async function (done) {
-    console.info('testmarqueeXsPropObject START');
-    console.info("[marqueeProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
+    it('testmarqueeLoopPropNull', 0, async function (done) {
+        console.info('testmarqueeXsPropObject START');
+        console.info("[marqueeProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
-    let obj = JSON.parse(globalThis.value.typeLoopNull);
-    console.info("[marqueeProps] get inspector value is: " + JSON.stringify(obj));
-    console.info("[marqueeProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
+        let obj = JSON.parse(globalThis.value.typeLoopNull);
+        console.info("[marqueeProps] get inspector value is: " + JSON.stringify(obj));
+        console.info("[marqueeProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-    expect(obj.$type).assertEqual('marquee')
-    expect(obj.$attrs.id).assertEqual('typeLoopNull')
-    expect(obj.$attrs.loop).assertEqual('-1')
-    console.info("[marqueeProps] get loop value is: " + JSON.stringify(obj.$attrs.loop));
-    done();
-});
+        expect(obj.$type).assertEqual('marquee')
+        expect(obj.$attrs.id).assertEqual('typeLoopNull')
+        expect(obj.$attrs.loop).assertEqual('-1')
+        console.info("[marqueeProps] get loop value is: " + JSON.stringify(obj.$attrs.loop));
+        done();
+    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

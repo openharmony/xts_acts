@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('labelPropsJsTest', function () {
@@ -83,7 +83,7 @@ describe('labelPropsJsTest', function () {
      * @tc.name      testLabelIdProp
      * @tc.desc      ACE
      */
-     it('testLabelIdProp', 0, async function (done) {
+    it('testLabelIdProp', 0, async function (done) {
         console.info('testLabelIdProp START');
         console.info("[labelProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 

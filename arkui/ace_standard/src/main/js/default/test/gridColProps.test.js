@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('gridColPropsJsTest', function () {

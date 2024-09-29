@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('buttonPropsJsTest', function () {
@@ -561,7 +561,7 @@ describe('buttonPropsJsTest', function () {
         console.info("[buttonProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testButtonShowPropTrue

@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
 describe('optionPropsJsTest', function () {
@@ -83,7 +83,7 @@ describe('optionPropsJsTest', function () {
      * @tc.name      testOptionIdProp
      * @tc.desc      ACE
      */
-     it('testOptionIdProp', 0, async function (done) {
+    it('testOptionIdProp', 0, async function (done) {
         console.info('testOptionIdProp START');
         console.info("[optionProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
