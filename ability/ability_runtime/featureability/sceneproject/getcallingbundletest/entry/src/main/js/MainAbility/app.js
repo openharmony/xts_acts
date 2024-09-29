@@ -19,13 +19,13 @@ const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 function PublishCallBackOne() {
-    console.debug("====>Publish CallBack ACTS_GetCallingBundle_0100_CommonEvent====>");
+    console.debug('====>Publish CallBack ACTS_GetCallingBundle_0100_CommonEvent====>');
 }
 function PublishCallBackTwo() {
-    console.debug("====>Publish CallBack ACTS_GetCallingBundle_0100_Promise====>");
+    console.debug('====>Publish CallBack ACTS_GetCallingBundle_0100_Promise====>');
 }
 function PublishCallBackThree() {
-    console.debug("====>Publish CallBack ACTS_GetCallingBundle_0100_Callback====>");
+    console.debug('====>Publish CallBack ACTS_GetCallingBundle_0100_Callback====>');
 }
 export default {
     data: {
@@ -41,8 +41,8 @@ export default {
         commonEvent.publish(info + ".promise", PublishCallBackTwo);
         context.getCallingBundle(
             (err, data) => {
-                console.debug("getCallingBundle : " + data)
-                commonEvent.publish(data + ".callback", PublishCallBackThree);
+                console.debug("getCallingBundle : " + data);
+                commonEvent.publish(data + '.callback', PublishCallBackThree);
             }
         );
     },

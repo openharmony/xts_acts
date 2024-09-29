@@ -20,8 +20,8 @@ group("actssupportfunction") {
       "actsonandoffscreentest:ActsOnAndOffScreenTest",
       "actssupportfunctiontest:ActsSupportFunctionTest",
       "faonandoffscreen:FaOnAndOffScreen",
-      "fasupportfunction:fasupportfunction",
-      "fasupportfunctionthree:fasupportfunctionthree",
+      "fasupportfunction:FaSupportFunction",
+      "fasupportfunctionthree:FaSupportFunctionThree",
       "stageonandoffscreen:StageOnAndOffScreen",
       "stagesupportfunction:StageSupportFunction",
     ]

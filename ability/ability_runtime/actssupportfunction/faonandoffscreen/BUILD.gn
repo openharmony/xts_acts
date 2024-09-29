@@ -24,4 +24,3 @@ ohos_app_assist_suite("FaOnAndOffScreen") {
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "ability"
 }
-
