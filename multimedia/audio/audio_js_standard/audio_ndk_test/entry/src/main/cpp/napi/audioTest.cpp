@@ -490,6 +490,23 @@ static napi_value AudioSetRendererOutputDeviceChangeCallback(napi_env env, napi_
     return res;
 }
 
+static void MicBlockedCallback(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray,
+    OH_AudioDevice_BlockStatus status, void *userData)
+{
+    printf("MicBlockedCallback blocked status: %d\n", status);
+    int size = audioDeviceDescriptorArray->size;
+    for (int index = 0; index < size; index++) {
+        OH_AudioDeviceDescriptor *audioDeviceDescriptor = audioDeviceDescriptorArray->descriptors[index];
+        if (audioDeviceDescriptor) {
+            OH_AudioDevice_Role deviceRole = AUDIO_DEVICE_ROLE_OUTPUT;
+            OH_AudioDeviceDescriptor_GetDeviceRole(audioDeviceDescriptor, &deviceRole);
+            OH_AudioDevice_Type deviceType = AUDIO_DEVICE_TYPE_INVALID;
+            OH_AudioDeviceDescriptor_GetDeviceType(audioDeviceDescriptor, &deviceType);
+            printf("Receive new block device: DeviceRole: %d, DeviceType: %d\n", deviceRole, deviceType);
+        }
+    }
+}
+
 static napi_value AudioRenderGetFramesWritten(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
@@ -2341,6 +2358,70 @@ static napi_value AudioRoutingManagerGetPreferredInputDevice001(napi_env env, na
         return res;
     }
     napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioRoutingManagerSetMicBlockStatusCallback_001(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioRoutingManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    void *userData = nullptr;
+    OH_AudioRoutingManager_OnDeviceBlockStatusCallback callback = MicBlockedCallback;
+    result = OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, callback, userData);
+    LOG("AudioRoutingManagerSetMicBlockStatusCallback_001, result is: %d", result);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+    } else {
+        napi_create_int32(env, TEST_PASS, &res);
+    }
+    return res;
+}
+
+static napi_value AudioRoutingManagerSetMicBlockStatusCallback_002(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioRoutingManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    void *userData = nullptr;
+    OH_AudioRoutingManager_OnDeviceBlockStatusCallback callback = nullptr;
+    result = OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, callback, userData);
+    LOG("AudioRoutingManagerSetMicBlockStatusCallback_002, result is: %d", result);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+    } else {
+        napi_create_int32(env, TEST_PASS, &res);
+    }
+    return res;
+}
+
+static napi_value AudioRoutingManagerSetMicBlockStatusCallback_003(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioRoutingManager *audioRoutingManager = nullptr;
+    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioRoutingManager == nullptr) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+    void *userData = nullptr;
+    OH_AudioRoutingManager_OnDeviceBlockStatusCallback callback = MicBlockedCallback;
+    OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, callback, userData);
+    result = OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, nullptr, userData);
+    LOG("AudioRoutingManagerSetMicBlockStatusCallback_003, result is: %d", result);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        napi_create_int32(env, TEST_FAIL, &res);
+    } else {
+        napi_create_int32(env, TEST_PASS, &res);
+    }
     return res;
 }
 
@@ -4739,6 +4820,12 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRoutingManagerGetPreferredInputDevice001", nullptr, AudioRoutingManagerGetPreferredInputDevice001,
             nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerSetMicBlockStatusCallback_001", nullptr,
+            AudioRoutingManagerSetMicBlockStatusCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerSetMicBlockStatusCallback_002", nullptr,
+            AudioRoutingManagerSetMicBlockStatusCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRoutingManagerSetMicBlockStatusCallback_003", nullptr,
+            AudioRoutingManagerSetMicBlockStatusCallback_003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRoutingManagerRegisterDeviceChangeCallback_001", nullptr,
             AudioRoutingManagerRegisterDeviceChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRoutingManagerRegisterDeviceChangeCallback_002", nullptr,
