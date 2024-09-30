@@ -35,19 +35,22 @@ async function exclusiveMultiWorkerJob(lockName: string, timeout: number,
     }, utils.locks.AsyncLockMode.EXCLUSIVE);
 }
 
-async function sharedMultiWorkerJob(lockName: string, timeout: number, idBuf: Uint32Array, id: number) {
-    let lock = utils.locks.AsyncLock.request(lockName);
-    return lock.lockAsync<void>(async () => {
-        let old = Atomics.compareExchange(idBuf, 0, 0, id);
-        if (old != 0) {
-            throw new Error('Expected 0, but was: ' + old);
-        }
-        await new Promise<void>(resolve => setTimeout(resolve, timeout));
-        old = Atomics.compareExchange(idBuf, 0, id, 0);
-        if (old != id) {
-            throw new Error('Expected old=' + id + ', but was: ' + old);
-        }
-    }, utils.locks.AsyncLockMode.SHARED);
+async function sharedMultiWorkerJob(lockName: string, timeout: number, flagBuf: Uint32Array, idx: number) {
+  let lock = utils.locks.AsyncLock.request(lockName);
+  await lock.lockAsync<void>(async () => {
+    flagBuf[idx] = 1;
+    await new Promise<void>(resolve => setTimeout(resolve, timeout));
+    let prevSet = true;
+    for (let i = 0; i < idx; ++i) {
+      if (!flagBuf[i]) {
+        prevSet = false;
+      }
+    }
+    if (!prevSet) {
+      throw new Error('Expected callback overlap');
+    }
+    flagBuf[idx] = 0;
+  }, utils.locks.AsyncLockMode.SHARED);
 }
 
 async function twoThreadedDeadlockT2(lockNameL1: string, lockNameL2: string, flagBuf: Uint32Array) {
