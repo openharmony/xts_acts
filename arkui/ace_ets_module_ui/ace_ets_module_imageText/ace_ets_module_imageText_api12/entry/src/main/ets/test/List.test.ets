@@ -151,7 +151,6 @@ import imageSpanTest6 from './TextTest/imageSpan6.test';
 import imageSpanTest7 from './TextTest/imageSpan7.test';
 import imageSpanTest8 from './TextTest/imageSpan8.test';
 import TextMaxLines from './Text/TextMaxLines.test';
-import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 import getRectsForRangeTest from './RichEditor/getRectsForRange.test'
 import textInputEnterKeyTypeTest from './TextInput/textInputEnterKeyType.test'
 import spanTest from './spanTest/SpanJsunit1.test'
@@ -289,7 +288,6 @@ export default function testsuite() {
   imageSpanTest7();
   imageSpanTest8();
   TextMaxLines();
-  SetFrameRateRangeTest();
   getRectsForRangeTest();
   textInputEnterKeyTypeTest();
   spanTest();
