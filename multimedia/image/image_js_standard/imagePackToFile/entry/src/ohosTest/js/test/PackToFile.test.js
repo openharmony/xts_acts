@@ -30,7 +30,7 @@ export default function imagePackToFile() {
             pixelWidth: 6,
             pixelHeight: 4
         }
-        const ERROR_CODE = 62980115;
+        const ERROR_CODE = 401;
         let pixelMapList;
         let packingOptions;
         let testFile;
