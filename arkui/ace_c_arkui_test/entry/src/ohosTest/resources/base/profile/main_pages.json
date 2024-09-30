@@ -125,7 +125,13 @@
     "MainAbility/pages/drag/DragActionSetPointerIdTest",
     "MainAbility/pages/drag/DragActionSetDragPreviewOptionTest",
     "MainAbility/pages/drag/DragActionSetTouchPointXYTest",
-    "MainAbility/pages/drag/DragActionRegisterStatusListenerTest"
+    "MainAbility/pages/drag/DragActionRegisterStatusListenerTest",
+    "MainAbility/pages/animation/TestKeyframeRegisterOnFinish",
+    "MainAbility/pages/animation/TestKeyframeRegisterOnEvent",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnFrame",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnFinish",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnCancel",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnRepeat"
     
 
   ]
