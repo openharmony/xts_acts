@@ -27,6 +27,7 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "ImagePixelMapTest.cpp",
     "NativeDisplaySoloistTest.cpp",
     "NativeEffectTest.cpp",
+    "NativeColorSpace.cpp",
   ]
 
   cflags = [
@@ -48,6 +49,9 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "$comPath/rosen/modules/effect/effectChain/include",
     "$comPath/rosen/modules/effect/effect_ndk/include",
     "$comPath/rosen/modules/effect/egl/include",
+    "$comPath/interfaces/inner_api/color_manager",
+    "$comPath/interfaces/kits/napi/graphic/color_manager/color_space_object_convertor",
+    "$comPath/rosen/modules/render_service_base/include",
   ]
 
   external_deps = [
@@ -84,5 +88,7 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "../../../../../foundation/multimedia/image_framework/interfaces/kits/js/common:image",
     "//third_party/googletest:gmock_main",
     "//third_party/googletest:gtest_main",
+    "$comPath/interfaces/kits/napi/graphic/color_manager:color_space_object_convertor",
+    "$comPath/utils/color_manager/ndk:libnative_color_space_manager",
   ]
 }
