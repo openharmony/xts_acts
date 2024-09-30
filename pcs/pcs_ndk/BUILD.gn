@@ -15,6 +15,8 @@ import("//test/xts/tools/build/suite.gni")
 
 ohos_app_assist_suite("ActsPCSNdk") {
   testonly = true
+  subsystem_name = "xts"
+  part_name = "acts"
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPCSNdk"
 }
@@ -22,6 +24,8 @@ ohos_app_assist_suite("ActsPCSNdk") {
 ohos_js_app_suite("ActsPCSNdkTest") {
   test_hap = true
   testonly = true
+  subsystem_name = "xts"
+  part_name = "acts"
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPCSNdkTest"
   deps = [ ":ActsPCSNdk" ]

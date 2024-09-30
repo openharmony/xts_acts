@@ -19,8 +19,8 @@ group("ActsPCSPyTest") {
 }
 
 ohos_copy("PyTestCase") {
-  subsystem_name = "pcs"
-  part_name = "pcs"
+  subsystem_name = "xts"
+  part_name = "acts"
   sources = [
     "./PCSPyTest.json",
     "./PCSPyTest.py",
