@@ -14,25 +14,25 @@
  */
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
-import {testAVPlayerDataSrcNoSeek, testAVPlayerFun, AV_PLAYER_STATE} from '../../../../../../AVPlayerTestBase.js';
+import { testAVPlayerDataSrcNoSeek, testAVPlayerFun, AV_PLAYER_STATE } from '../../../../../../AVPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../../MediaTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function AVPlayerDataSrcNoSeekReliabilityTest() {
     describe('AVPlayerDataSrcNoSeekReliabilityTest', function () {
         let avPlayer = null;
         let pathDir = globalThis.abilityContext.filesDir;
-        let filePath =  pathDir + "/01_15s.mp3";
+        let filePath = pathDir + "/01_15s.mp3";
         let src = null;
         let stream = null;
         let fd = null;
         let readAtCnt = 0;
         let expectErr = 0;
-        beforeAll(async function() {
+        beforeAll(async function () {
             console.info('beforeAll case');
         })
 
-        beforeEach(async function() {
+        beforeEach(async function () {
             console.info('beforeEach case');
             stream = null;
             fd = null;
@@ -40,11 +40,11 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             expectErr = 0;
         })
 
-        afterEach(async function() {
+        afterEach(async function () {
             console.info('afterEach case');
         })
 
-        afterAll(async function() {
+        afterAll(async function () {
             console.info('afterAll case');
             if (avPlayer != null) {
                 avPlayer.release().then(() => {
@@ -53,7 +53,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
         })
         async function testDataSrcNoSeek(done) {
             await media.createAVPlayer().then((video) => {
-                if (typeof(video) != 'undefined') {
+                if (typeof (video) != 'undefined') {
                     console.info('case createAVPlayer success');
                     avPlayer = video;
                     setCallback(done);
@@ -91,7 +91,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
                         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                         break;
                     default:
-                        break; 
+                        break;
                 }
             })
             avPlayer.on('seekDone', async (seekDoneTime) => {
@@ -103,7 +103,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             });
         }
         function readErr(buf, length) {
-            let num = fileio.readSync(fd, buf, {offset: 0, length: 1000});
+            let num = fileio.readSync(fd, buf, { offset: 0, length: 1000 });
             return num;
         }
         function readAt(buf, length, pos) {
@@ -111,7 +111,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             readAtCnt++;
             let num = 0;
             if (buf == undefined || length == undefined) {
-                console.info(' buf == undefined || length == undefined' );
+                console.info(' buf == undefined || length == undefined');
                 expect().assertFail();
                 return -1;
             }
@@ -120,7 +120,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
                 console.info('case  readAt num:' + num);
                 return num;
             } else if (pos == undefined) {
-                num = fileio.readSync(fd, buf, {offset: 0, length: length});
+                num = fileio.readSync(fd, buf, { offset: 0, length: length });
                 if (num == 0) {
                     fileio.closeSync(fd);
                     fd = fileio.openSync(filePath, 0o0);
@@ -128,7 +128,7 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
                     return -1;
                 }
             } else {
-                num = stream.readSync(buf, {offset: 0, length: length, position: pos});
+                num = stream.readSync(buf, { offset: 0, length: length, position: pos });
             }
             console.info('case  readAt num:' + num);
             if (num >= 0) {
@@ -146,14 +146,14 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.level     : Level3
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0100', 0, async function (done) {
-            filePath =  pathDir + "/01_15s.mp3";
-            console.info('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0100 filePath is '+JSON.stringify(filePath));
+            filePath = pathDir + "/01_15s.mp3";
+            console.info('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0100 filePath is ' + JSON.stringify(filePath));
             let size = fileio.statSync(filePath).size;
             console.info('case file size:' + size);
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {
                 if (readAtCnt >= 2 && readAtCnt <= 10) {
-                    let num = fileio.readSync(fd, buf, {offset: 0, length: (readAtCnt ) * 1000});
+                    let num = fileio.readSync(fd, buf, { offset: 0, length: (readAtCnt) * 1000 });
                     return num;
                 } else {
                     return -1;
@@ -175,12 +175,12 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.level     : Level3
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0200', 0, async function (done) {
-            filePath =  pathDir + "/01_15s.mp3";
+            filePath = pathDir + "/01_15s.mp3";
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {
                 if (readAtCnt >= 2 && readAtCnt <= 10) {
                     console.info('case buf length:' + length + 'readAtCnt:' + readAtCnt);
-                    let num = fileio.readSync(fd, buf, {offset: 1000, length: readAtCnt * 1000});
+                    let num = fileio.readSync(fd, buf, { offset: 1000, length: readAtCnt * 1000 });
                     return num;
                 } else {
                     return -1;
@@ -202,11 +202,11 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.level     : Level3
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0300', 0, async function (done) {
-            filePath =  pathDir + "/01_15s.mp3";
+            filePath = pathDir + "/01_15s.mp3";
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {
                 if (readAtCnt >= 2 && readAtCnt <= 10) {
-                    let num = fileio.readSync(fd, buf, {offset: 0, length: 1000, position: readAtCnt});
+                    let num = fileio.readSync(fd, buf, { offset: 0, length: 1000, position: readAtCnt });
                     return num;
                 } else {
                     return -1;
@@ -228,11 +228,11 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.level     : Level3
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0400', 0, async function (done) {
-            filePath =  pathDir + "/01_15s.mp3";
+            filePath = pathDir + "/01_15s.mp3";
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {
                 if (readAtCnt >= 2 && readAtCnt <= 10) {
-                    let num = fileio.readSync(fd, buf, {offset: 0, length: (readAtCnt ) * 1000});
+                    let num = fileio.readSync(fd, buf, { offset: 0, length: (readAtCnt) * 1000 });
                     return num + readAtCnt;
                 } else {
                     return -1;
@@ -254,11 +254,11 @@ export default function AVPlayerDataSrcNoSeekReliabilityTest() {
             * @tc.level     : Level3
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_RELI_MP3_0500', 0, async function (done) {
-            filePath =  pathDir + "/01_15s.mp3";
+            filePath = pathDir + "/01_15s.mp3";
             fd = fileio.openSync(filePath, 0o0);
             readErr = (buf, length) => {
                 if (readAtCnt >= 2 && readAtCnt <= 10) {
-                    let num = fileio.readSync(fd, buf, {offset: 0, length: (readAtCnt ) * 1000});
+                    let num = fileio.readSync(fd, buf, { offset: 0, length: (readAtCnt) * 1000 });
                     return num - readAtCnt;
                 } else {
                     return -1;
