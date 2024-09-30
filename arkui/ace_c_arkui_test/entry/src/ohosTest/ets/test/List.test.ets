@@ -590,6 +590,7 @@ import DragActionSetPointerIdTest from "./drag/DragActionSetPointerId.test"
 import DragActionSetDragPreviewOptionTest from "./drag/DragActionSetDragPreviewOption.test"
 import DragActionSetTouchPointXYTest from "./drag/DragActionSetTouchPointXY.test"
 import DragActionRegisterStatusListenerTest from "./drag/DragActionRegisterStatusListener.test"
+import animatorEventTest from "./animation/AnimatorEventTest.test"
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1169,4 +1170,5 @@ export default function testsuite() {
   DragActionSetDragPreviewOptionTest()
   DragActionSetTouchPointXYTest()
   DragActionRegisterStatusListenerTest()
+  animatorEventTest()
 }
