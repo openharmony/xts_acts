@@ -1472,7 +1472,7 @@ static napi_value CreateAllSystemHotkeys(napi_env env, napi_callback_info info)
 {
     napi_value result;
     int32_t count = 1;
-	OH_Input_GetAllSystemHotkeys(nullptr, &count);
+    OH_Input_GetAllSystemHotkeys(nullptr, &count);
     Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
     napi_create_int32(env, hotkey !=  nullptr ? 1 : 0, &result);
     OH_Input_DestroyAllSystemHotkeys(hotkey, count);
@@ -1618,7 +1618,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"GetAllSystemHotkeys2", nullptr, GetAllSystemHotkeys2, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetAllSystemHotkeys3", nullptr, GetAllSystemHotkeys3, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreateAllSystemHotkeys2", nullptr, CreateAllSystemHotkeys2, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetIntervalSinceLastInput", nullptr, GetIntervalSinceLastInput, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetIntervalSinceLastInput", nullptr,
+         GetIntervalSinceLastInput, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
