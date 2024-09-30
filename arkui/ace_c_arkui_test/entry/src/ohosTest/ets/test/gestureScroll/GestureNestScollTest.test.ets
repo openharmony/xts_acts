@@ -64,7 +64,8 @@ export default function gestureNestScrollTest() {
       // inner list scroll
       let rect = Utils.getComponentRect("inner");
       let x = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
-      let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
+      // the visual list height is vp2px(200)
+      let y = Math.round(globalThis.winTop + rect.top + vp2px(100));
       console.info("gestureNestScrollTest  x= " +  x  + ", y = " + y);
       await driver.swipe(x, y, x, Math.round(y - vp2px(200)));
       await Utils.sleep(3000);
