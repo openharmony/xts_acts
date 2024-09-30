@@ -23,7 +23,7 @@ struct FatherControlChildTest1 {
   private currentRecognizer: GestureRecognizer = new GestureRecognizer()
   private lastOffset: number = 0
   @State isShow: boolean = true
-  @State vis: Visibility = Visibility.None
+  @State vis: Visibility = Visibility.Visible
   @State text: string = 'start'
 
 
