@@ -13,11 +13,12 @@
  * limitations under the License.
  */
 
-import taskpool from '@ohos.taskpool';
+import { taskpool, collections} from '@kit.ArkTS'
 import { BusinessError } from '@ohos.base'
 import { StrCat, A, B, printStrArgs, printArgs } from './exportFunclist'
 import HashMap from '@ohos.util.HashMap';
 import { errorManager } from '@kit.AbilityKit';
+import { SendableClass, SimpleSendable } from './sendable';
 
 export async function currentFun(): Promise<void> {
   "use concurrent"
@@ -359,4 +360,46 @@ export function dealHashMapTest(hashMap:HashMap<string, number>) {
 
 export function noUseConcurrentTest(arg:string) {
   return arg;
+}
+
+export function sendDataTest(args:number) {
+  "use concurrent"
+  let res: number = args * 10;
+  taskpool.Task.sendData(res);
+}
+
+export function sendableClassTestFunc(class1: SendableClass, class2: SendableClass) {
+  "use concurrent"
+  let num1 = class1.GetNum();
+  let num2 = class2.GetNum();
+  return num1 + num2;
+}
+
+export function Int8ArrayTestFunc(array: collections.Int8Array) {
+  "use concurrent"
+  array.set([0,1,2]);
+  return array;
+}
+
+export function SetTestFunc(set: collections.Set<number>) {
+  "use concurrent"
+  set.add(4);
+  return set;
+}
+
+export function MapTestFunc(map: collections.Map<number, number>) {
+  "use concurrent"
+  map.set(5,6);
+  return map;
+}
+
+export function simpleSendableClassTestFunc(class1: SimpleSendable, class2: SimpleSendable) {
+  "use concurrent"
+  return class1.digit + class2.digit;
+}
+
+export function Uint8ClampedArrayTestFunc(array: collections.Uint8ClampedArray) {
+  "use concurrent"
+  array.set([0,1,2]);
+  return array;
 }

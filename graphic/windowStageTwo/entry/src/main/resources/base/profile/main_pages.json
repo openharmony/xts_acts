@@ -1,10 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/second/second",
-        "MainAbility/pages/second/pageOne",
-        "MainAbility/pages/second/pageTwo",
-        "MainAbility/pages/index/index2",
-        "MainAbility/pages/index/index3"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }

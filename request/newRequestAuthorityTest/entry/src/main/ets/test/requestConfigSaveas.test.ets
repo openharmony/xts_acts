@@ -827,7 +827,7 @@ export default function requestConfigSavesTest() {
       console.info("====>-----------------------SUB_Request_Agent_onResponse_0200 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-wallpaper.md#wallpapergetpixelmapdeprecated',
+        url: 'https://gitee.com/murphy1984572/test-files/releases/downloads/1.1/test.hap',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Request_Agent_onResponse_0200',
@@ -1075,7 +1075,7 @@ export default function requestConfigSavesTest() {
       console.info("====>-----------------------SUB_Request_Agent_onResponse_0700 is starting-----------------------");
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Request_Agent_onResponse_0700',
@@ -1286,7 +1286,7 @@ export default function requestConfigSavesTest() {
       console.info('====>-----------------------SUB_Request_Agent_TrafficStatistics_0200 is starting-----------------------');
       let config:request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        url: 'https://cidownload.openharmony.cn/version/Master_Version/OpenHarmony_5.0.2.45/20240924_092847/version-Master_Version-OpenHarmony_5.0.2.45-20240924_092847-hispark_taurus_Linux_weekly.tar.gz',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_Request_Agent_TrafficStatistics_0200',

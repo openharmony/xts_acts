@@ -12,6 +12,7 @@
     "package": "com.test.window",
     "name": ".entry_test",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",

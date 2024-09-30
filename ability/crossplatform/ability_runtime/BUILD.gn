@@ -18,16 +18,21 @@ group("ability_crossplatform_runtime") {
   if (is_standard_system) {
     deps = [
       "ActsCrossplatformAbilityTest:ActsCrossplatformAbilityTest",
+      "ActsCrossplatformCallBackTest:ActsCrossplatformCallBackTest",
       "ActsCrossplatformFeatureATest:ActsCrossplatformFeatureATest",
       "ActsCrossplatformFeatureBTest:ActsCrossplatformFeatureBTest",
       "ActsCrossplatformFeatureCTest:ActsCrossplatformFeatureCTest",
       "ActsCrossplatformFeatureDTest:ActsCrossplatformFeatureDTest",
       "ActsCrossplatformFeatureTest:ActsCrossplatformFeatureTest",
+      "ActsCrossplatformMonitorTest:ActsCrossplatformMonitorTest",
+      "ActsCrossplatformPromiseTest:ActsCrossplatformPromiseTest",
+      "ActsCrossplatformStartAbilityTest:ActsCrossplatformStartAbilityTest",
       "ActsLifeCycleEtsFeatureTest:ActsLifeCycleEtsFeatureTest",
       "ActsLifeCycleEtsTest:ActsLifeCycleEtsTest",
       "ActsUiAbilityEtsTest:ActsUiAbilityEtsTest",
       "actscontexttest:ActsCrossplatformAbilityContextTest",
       "actscontexttestentry:ActsCrossplatformAbilityContextEntryTest",
+      "actsuiabilitycontexttest:ActsCrossplatformAbilityUIAbilityContextTest",
       "commonTestAbilityApp:commonTestAbilityApp",
     ]
   }

@@ -139,6 +139,158 @@ static napi_value TestMediaAssetGetOrientation(napi_env env, napi_callback_info 
     return result;
 }
 
+static napi_value TestMediaAssetGetMediaType(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetGetMediaType(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMediaAssetGetMediaSubType(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetGetMediaSubType(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMediaAssetGetDateAdded(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetGetDateAdded(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMediaAssetGetDateModified(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetGetDateModified(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMediaAssetGetDateTaken(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetGetDateTaken(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMediaAssetGetDateAddedMs(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetGetDateAddedMs(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMediaAssetGetDuration(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetGetDuration(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMediaAssetIsFavorite(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetIsFavorite(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMediaAssetGetTitle(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetGetTitle(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
 
 static napi_value TestMediaAssetRelease(napi_env env, napi_callback_info info)
 {
@@ -152,6 +304,40 @@ static napi_value TestMediaAssetRelease(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &index);
 
     MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAssetRelease(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestChangeRequestAddResourceWithUri(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->ChangeRequestAddResourceWithUri(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestChangeRequestGetWriteCacheHandler(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->ChangeRequestGetWriteCacheHandler(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -242,6 +428,23 @@ static napi_value TestManagerRequestImage(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value TestManagerRequestMovingPhoto(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->ManagerRequestMovingPhoto(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
 static napi_value TestMediaAccessHelperApplyChanges(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -254,6 +457,108 @@ static napi_value TestMediaAccessHelperApplyChanges(napi_env env, napi_callback_
     napi_get_value_int32(env, args[0], &index);
 
     MediaLibrary_ErrorCode code = ndkMediaLibrary->MediaAccessHelperApplyChanges(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestManagerRelease(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->ManagerRelease(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMovingPhotoGetUri(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MovingPhotoGetUri(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMovingPhotoRequestContentWithUris(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MovingPhotoRequestContentWithUris(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMovingPhotoRequestContentWithUri(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MovingPhotoRequestContentWithUri(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMovingPhotoRequestContentWithBuffer(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MovingPhotoRequestContentWithBuffer(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value TestMovingPhotoRelease(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    MediaLibrary_ErrorCode code = ndkMediaLibrary->MovingPhotoRelease(index);
 
     napi_create_int32(env, code, &result);
     return result;
@@ -273,7 +578,28 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testMediaAssetGetHeight", nullptr, TestMediaAssetGetHeight, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testMediaAssetGetOrientation", nullptr, TestMediaAssetGetOrientation, nullptr, nullptr, nullptr,
             napi_default, nullptr},
+        {"testMediaAssetGetMediaType", nullptr, TestMediaAssetGetMediaType, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"testMediaAssetGetMediaSubType", nullptr, TestMediaAssetGetMediaSubType, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testMediaAssetGetDateAdded", nullptr, TestMediaAssetGetDateAdded, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"testMediaAssetGetDateModified", nullptr, TestMediaAssetGetDateModified, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testMediaAssetGetDateTaken", nullptr, TestMediaAssetGetDateTaken, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"testMediaAssetGetDateAddedMs", nullptr, TestMediaAssetGetDateAddedMs, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testMediaAssetGetDuration", nullptr, TestMediaAssetGetDuration, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"testMediaAssetIsFavorite", nullptr, TestMediaAssetIsFavorite, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"testMediaAssetGetTitle", nullptr, TestMediaAssetGetTitle, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testMediaAssetRelease", nullptr, TestMediaAssetRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testChangeRequestAddResourceWithUri", nullptr, TestChangeRequestAddResourceWithUri, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testChangeRequestGetWriteCacheHandler", nullptr, TestChangeRequestGetWriteCacheHandler, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
         {"testChangeRequestAddResourceWithBuffer", nullptr, TestChangeRequestAddResourceWithBuffer, nullptr, nullptr,
             nullptr, napi_default, nullptr},
         {"testChangeRequestSaveCameraPhoto", nullptr, TestChangeRequestSaveCameraPhoto, nullptr, nullptr, nullptr,
@@ -285,6 +611,17 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testManagerRequestImage", nullptr, TestManagerRequestImage, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testMediaAccessHelperApplyChanges", nullptr, TestMediaAccessHelperApplyChanges, nullptr, nullptr, nullptr,
             napi_default, nullptr},
+        {"testManagerRequestMovingPhoto", nullptr, TestManagerRequestMovingPhoto, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testManagerRelease", nullptr, TestManagerRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testMovingPhotoGetUri", nullptr, TestMovingPhotoGetUri, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testMovingPhotoRequestContentWithUris", nullptr, TestMovingPhotoRequestContentWithUris, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testMovingPhotoRequestContentWithUri", nullptr, TestMovingPhotoRequestContentWithUri, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testMovingPhotoRequestContentWithBuffer", nullptr, TestMovingPhotoRequestContentWithBuffer, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testMovingPhotoRelease", nullptr, TestMovingPhotoRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
 
     ndkMediaLibrary = new NDKMediaLibrary();
