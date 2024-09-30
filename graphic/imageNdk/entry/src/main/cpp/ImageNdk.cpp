@@ -227,7 +227,6 @@ static napi_value TestNativeSetMemoryName(napi_env env, napi_callback_info info)
     char name[] = "testName";
     size_t len = strlen(name);
     Image_ErrorCode errCode = OH_PixelmapNative_SetMemoryName(pixelmap, name, &len);
-
     if (errCode != IMAGE_BAD_PARAMETER) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_SetMemoryName failed, errCode: %{public}d.", errCode);
         return getJsResult(env, errCode);
@@ -264,7 +263,6 @@ static napi_value TestNativeGetColorSpaceNative(napi_env env, napi_callback_info
     OH_PixelmapNative *pixelmap = nullptr;
     OH_NativeColorSpaceManager *getColorSpaceNative = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_GetColorSpaceNative(pixelmap, &getColorSpaceNative);
-
     if (errCode != IMAGE_BAD_PARAMETER) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetColorSpaceNative failed, errCode: %{public}d.", errCode);
         return getJsResult(env, errCode);
@@ -278,7 +276,6 @@ static napi_value TestNativeSetColorSpaceNative(napi_env env, napi_callback_info
     OH_PixelmapNative *pixelmap = nullptr;
     OH_NativeColorSpaceManager *setColorSpaceNative = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_SetColorSpaceNative(pixelmap, setColorSpaceNative);
-
     if (errCode != IMAGE_BAD_PARAMETER) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_SetColorSpaceNative failed, errCode: %{public}d.", errCode);
         return getJsResult(env, errCode);
