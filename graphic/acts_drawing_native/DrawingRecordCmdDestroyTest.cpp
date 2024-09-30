@@ -38,7 +38,9 @@
 #include "drawing_record_cmd.h"
 #include "utils/scalar.h"
 #include <random>
-
+#include <thread>
+#include <iomanip>
+#include <sstream>
 using namespace testing;
 using namespace testing::ext;
 
@@ -46,6 +48,46 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 class DrawingRecordCmdDestroyTest : public testing::Test {};
+void drawCircle(OH_Drawing_Canvas *canvas, int position)
+{
+    int x = 10;
+    int radius = 200;
+    OH_Drawing_Point *point = OH_Drawing_PointCreate(x * position + radius, x + radius);
+    OH_Drawing_CanvasDrawCircle(canvas, point, radius);
+    OH_Drawing_PointDestroy(point);
+}
+OH_Drawing_RecordCmd *threadFunctionTest1()
+{
+    int32_t width = 2;
+    int32_t height = 5;
+    OH_Drawing_RecordCmd *recordCmd = nullptr;
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, width, height, &canvas);
+    float penWidth = 1.0f; // pen width 1
+    // 创建一个画笔Pen对象，Pen对象用于形状的边框线绘制
+    OH_Drawing_Pen *cPen = OH_Drawing_PenCreate();
+    OH_Drawing_PenSetAntiAlias(cPen, true);
+    OH_Drawing_PenSetColor(cPen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+    OH_Drawing_PenSetWidth(cPen, penWidth);
+    OH_Drawing_PenSetJoin(cPen, LINE_ROUND_JOIN);
+    // 将Pen画笔设置到canvas中
+    OH_Drawing_CanvasAttachPen(canvas, cPen);
+    // 创建一个画刷Brush对象，Brush对象用于形状的填充
+    OH_Drawing_Brush *cBrush = OH_Drawing_BrushCreate();
+    OH_Drawing_BrushSetColor(cBrush, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF, 0x00));
+    // 将Brush画刷设置到canvas中
+    OH_Drawing_CanvasAttachBrush(canvas, cBrush);
+    drawCircle(canvas, width);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils, &recordCmd);
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils);
+    OH_Drawing_BrushDestroy(cBrush);
+    OH_Drawing_PenDestroy(cPen);
+    cBrush = nullptr;
+    cPen = nullptr;
+    return recordCmd;
+}
+
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0400
@@ -57,9 +99,28 @@ class DrawingRecordCmdDestroyTest : public testing::Test {};
  */
 HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNormal, TestSize.Level0) {
     // 1. The OH-Drawing-RecordCmdDestroy parameter is not empty
-    OH_Drawing_RecordCmd* recordCmd = nullptr;
-    OH_Drawing_RecordCmdDestroy (recordCmd);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    OH_Drawing_RecordCmd *picture = nullptr;
+    std::thread thread([&picture, this]() { picture = threadFunctionTest1(); });
+    thread.join();
+    drawingErrorCode = OH_Drawing_RecordCmdDestroy (picture);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0400
+ * @tc.name: testRecordCmdDestroyNULL
+ * @tc.desc: test for testRecordCmdDestroyNULL.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingRecordCmdDestroyTest, testRecordCmdDestroyNULL, TestSize.Level0) {
+    // 1. The OH-Drawing-RecordCmdDestroy parameter is not empty
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    OH_Drawing_RecordCmd *picture = nullptr;
+    drawingErrorCode = OH_Drawing_RecordCmdDestroy (picture);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 
 } // namespace Drawing
