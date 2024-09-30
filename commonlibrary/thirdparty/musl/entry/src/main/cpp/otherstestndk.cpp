@@ -46,6 +46,7 @@
 #include <unistd.h>
 #include <utmp.h>
 #include <atomic>
+#include <securec.h>
 
 #define NAMELEN 16
 #define NSEC_PER_SEC 1000000000
@@ -804,11 +805,12 @@ static napi_value Accept(napi_env env, napi_callback_info info)
     if (sockfd < PARAM_0) {
         ret = PARAM_2;
     } else {
-        struct sockaddr_in local = {PARAM_0};
+        struct sockaddr_in local;
+        memset_s(&local, sizeof(local), 0, sizeof(local));
         local.sin_family = AF_INET;
         local.sin_port = htons(PORT);
         local.sin_addr.s_addr = inet_addr("127.0.0.1");
-        rets = bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+        rets = bind(sockfd, reinterpret_cast<sockaddr *>(&local), sizeof(local));
         if (rets != PARAM_0) {
             ret = PARAM_3;
         } else {
