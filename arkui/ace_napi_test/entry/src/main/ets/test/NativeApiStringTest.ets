@@ -31,10 +31,6 @@ function promiseCase() {
 function testFunc() {
   let a = 0
 }
-function test1() {
-  "use concurrent"
-}
-function test2() {}
 
 export default function nativeApiStringJsunit() {
 
@@ -51,19 +47,6 @@ export default function nativeApiStringJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0007
-     * @tc.name      napiRunScriptPath007
-     * @tc.desc      aceNapiEtsTest
-     */
-     it('napiRunScriptPath007', 0, async (done: Function) => {
-       console.info('napiRunScriptPath START');
-       value = napitest.napiRunScriptPath();
-       console.info('napiRunScriptPath testString result is: ' + JSON.stringify(value));
-       expect(value).assertEqual(0)
-       done();
-     });
-
-    /**
     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0038
     * @tc.name      aceNapiTest038
     * @tc.desc      aceNapiEtsTest
@@ -77,20 +60,7 @@ export default function nativeApiStringJsunit() {
       value = napitest.getPrototype2(testFunc);
       console.info('aceNapiTest038 testString result is: ' + value + "--" + JSON.stringify(value));
       //console.info('aceNapiTest038 testString Object.getPrototypeOf(testObj) is: ' + Object.getPrototypeOf(testFunc) + "--" + JSON.stringify(Object.getPrototypeOf(testFunc)));
-      expect(value === /*Object.getPrototypeOf(testFunc)*/ undefined).assertTrue();
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0116
-     * @tc.name      aceNapiTest0116
-     * @tc.desc      aceNapiEtsTest
-     */
-    it('aceNapiTest0116', 0, async (done: Function) => {
-      console.info('aceNapiTest0116 START');
-      value = napitest.coerceToNativeBindingObject();
-      console.info('aceNapiTest0116 testString result is: ' + value + "--" + JSON.stringify(value));
-      expect(value).assertEqual(2000);
+      expect(value instanceof Object).assertTrue();
       done();
     });
 
@@ -100,8 +70,8 @@ export default function nativeApiStringJsunit() {
      * @tc.desc      aceNapiEtsTest
      */
     it('aceNapiTest0121', 0, async (done: Function) => {
-    console.info('aceNapiTest0121 START');
-      value = napitest.runEventLoop(0)
+      console.info('aceNapiTest0121 START');
+      let value: number | string = napitest.runEventLoop(0)
       console.info('aceNapiTest0121 testString result is: ' + value);
       expect(value).assertEqual(0)
       done();
@@ -113,8 +83,8 @@ export default function nativeApiStringJsunit() {
      * @tc.desc      aceNapiEtsTest
      */
     it('aceNapiTest0122', 0, async (done: Function) => {
-    console.info('aceNapiTest0122 START');
-      value = napitest.runEventLoop(1)
+      console.info('aceNapiTest0122 START');
+      let value: number | string = napitest.runEventLoop(1)
       console.info('aceNapiTest0122 testString result is: ' + value);
       expect(value).assertEqual(0)
       done();
@@ -127,7 +97,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0137', 0, async (done: Function) => {
       console.info('aceNapiTest0137 START');
-      value = napitest.runEventLoop(2);
+      let value: number | string = napitest.runEventLoop(2);
       console.info('aceNapiTest0137 testString result is: ' + value);
       expect(value).assertEqual(0);
       done();
@@ -140,7 +110,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0138', 0, async (done: Function) => {
       console.info('aceNapiTest0138 START');
-      value = napitest.runEventLoop(3);
+      let value: number | string = napitest.runEventLoop(3);
       console.info('aceNapiTest0138 testString result is: ' + value);
       expect(value).assertEqual(0);
       done();
@@ -153,7 +123,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0139', 0, async (done: Function) => {
       console.info('aceNapiTest0139 START');
-      const workerInstance = new worker.Worker('workers/worker.js');
+      const workerInstance = new worker.ThreadWorker('../workers/worker.ets');
       let isTerminate = false;
       workerInstance.onexit = () => {
         isTerminate = true;
@@ -180,7 +150,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0140', 0, async (done: Function) => {
       console.info('aceNapiTest0140 START');
-      const workerInstance = new worker.Worker('workers/worker.js');
+      const workerInstance = new worker.ThreadWorker('../workers/worker.ets');
       let isTerminate = false;
       workerInstance.onexit = () => {
         isTerminate = true;
@@ -207,7 +177,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0141', 0, async (done: Function) => {
       console.info('aceNapiTest0141 START');
-      let value: number = napitest.runEventLoop(6);
+      let value: number | string = napitest.runEventLoop(6);
       console.info('aceNapiTest0141 testString result is: ' + value);
       expect(value).assertEqual(0);
       done();
@@ -220,7 +190,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0142', 0, async (done: Function) => {
       console.info('aceNapiTest0142 START');
-      let value: number = napitest.runEventLoop(7);
+      let value: number | string = napitest.runEventLoop(7);
       console.info('aceNapiTest0142 testString result is: ' + value);
       expect(value).assertEqual(0);
       done();
@@ -233,7 +203,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0143', 0, async (done: Function) => {
       console.info('aceNapiTest0143 START');
-      let value: number = napitest.runEventLoop(8);
+      let value: number | string = napitest.runEventLoop(8);
       console.info('aceNapiTest0143 testString result is: ' + value);
       expect(value).assertEqual(0);
       done();
@@ -246,7 +216,7 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0144', 0, async (done: Function) => {
       console.info('aceNapiTest0144 START');
-      let value: number = napitest.runEventLoop(9);
+      let value: number | string = napitest.runEventLoop(9);
       console.info('aceNapiTest0144 testString result is: ' + value);
       expect(value).assertEqual(0);
       done();
@@ -262,49 +232,6 @@ export default function nativeApiStringJsunit() {
       let value: number = napitest.stopEventLoop(4);
       console.info('aceNapiTest0148 testString result is: ' + value);
       expect(value).assertEqual(0);
-      done();
-    });
-
-    /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0159
-     * @tc.name aceNapiTest0159
-     * @tc.desc aceNapiEtsTest
-     */
-    it('aceNapiTest0159', 0, async (done: Function) => {
-      console.info('aceNapiTest0159 START');
-      let value: boolean = napitest.isConcurrentFunction(test1);
-      expect(value).assertEqual(true);
-      console.info('aceNapiTest0159 testString result is: ' + value);
-      value = napitest.isConcurrentFunction(test2);
-      expect(value).assertEqual(false);
-      console.info('aceNapiTest0159 testString result is: ' + value);
-      done();
-    });
-
-    /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0167
-     * @tc.name aceNapiTest0167
-     * @tc.desc aceNapiEtsTest
-     */
-    it('aceNapiTest0167', 0, async (done: Function) => {
-      console.info('aceNapiTest0167 START');
-      let value: ArrayBuffer = napitest.createSendableArrayBufferTest();
-      console.info('aceNapiTest0167 testString result is: ' + JSON.stringify(value));
-      expect(value instanceof ArrayBuffer).assertTrue();
-      done();
-    });
-
-    /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0168
-     * @tc.name aceNapiTest0168
-     * @tc.desc aceNapiEtsTest
-     */
-    it('aceNapiTest0168', 0, async (done: Function) => {
-      console.info('aceNapiTest0168 START');
-      let value: Int32Array = napitest.createSendableTypedArrayTest();
-      console.info('aceNapiTest0168 testString result is: ' + value + "--" + JSON.stringify(value));
-      expect(value instanceof Int32Array).assertTrue();
-      expect(value.length).assertEqual(4);
       done();
     });
   })

@@ -20,5 +20,8 @@
   "description": "Please describe the basic information.",
   "main": "",
   "version": "1.0.0",
+  "devDependencies": {
+    "@types/libnapitest.so": "file:./src/main/cpp/types/libnapitest"
+  },
   "dependencies": {}
 }

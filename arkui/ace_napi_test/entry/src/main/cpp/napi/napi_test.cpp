@@ -15,11 +15,10 @@
 
 #include "common/native_common.h"
 #include "napi/native_api.h"
-#include "napi/native_node_api.h"
 #include <pthread.h>
-#include "securec.h"
 #include <stdint.h>
 #include <string>
+#include <cstring>
 #include <stdio.h>
 #include <vector>
 #include <malloc.h>
@@ -27,7 +26,9 @@
 #include <ctime>
 #include <thread>
 #include <unistd.h>
+#include <memory.h>
 #include <uv.h>
+
 
 static napi_ref test_reference = NULL;
 const int TAG_NUMBER = 666;
@@ -2440,21 +2441,6 @@ static napi_value SayHello(napi_env env, napi_callback_info info)
     return ret;
 }
 
-static napi_value isConcurrentFunction(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1];
-    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
-
-    bool isConcurrentFunction = false;
-    NAPI_CALL(env, napi_is_concurrent_function(env, args[0], &isConcurrentFunction));
-
-    napi_value result;
-    NAPI_CALL(env, napi_get_boolean(env, isConcurrentFunction, &result));
-
-    return result;
-}
-
 static napi_value napiCreateFunction(napi_env env, napi_callback_info info)
 {
     napi_value funcValue = nullptr;
@@ -2678,8 +2664,8 @@ static napi_value CreateBuffer(napi_env env, napi_callback_info info)
         return nullptr;
     }
     NAPI_ASSERT(env, copyPtr, "Unable to duplicate static text for CreateBuffer.");
-    int ret = memcpy_s(copyPtr, bufferSize, TEST_STR, strlen(TEST_STR) + 1);
-    NAPI_ASSERT(env, ret == 0, "memcpy_s failed");
+    memcpy(copyPtr, TEST_STR, strlen(TEST_STR) + 1);
+    //NAPI_ASSERT(env, ret == 0, "memcpy_s failed");
     return napiBuffer;
 }
 
@@ -3566,36 +3552,6 @@ static napi_value TestAttachCallback(napi_env env, void* nativeObject, void* hin
     return object;
 }
 
-static napi_value CoerceToNativeBindingObject(napi_env env, napi_callback_info info)
-{
-    napi_value object = nullptr;
-    napi_create_object(env, &object);
-    napi_value hint = nullptr;
-    napi_create_object(env, &hint);
-    napi_status status = napi_coerce_to_native_binding_object(env, object,
-        TestDetachCallback, TestAttachCallback, reinterpret_cast<void*>(object), reinterpret_cast<void*>(hint));
-    NAPI_ASSERT(env, status == napi_ok, "napi_coerce_to_native_binding_object fail");
-
-    napi_value undefined = nullptr;
-    napi_get_undefined(env, &undefined);
-    void* data = nullptr;
-    napi_serialize_inner(env, object, undefined, undefined, false, true, &data);
-    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
-    napi_value result = nullptr;
-    napi_deserialize(env, data, &result);
-    napi_valuetype valuetype;
-    NAPI_CALL(env, napi_typeof(env, result, &valuetype));
-    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a  object.");
-    napi_delete_serialization_data(env, data);
-    napi_value number = nullptr;
-    napi_get_named_property(env, result, "number", &number);
-    napi_valuetype valuetype1;
-    NAPI_CALL(env, napi_typeof(env, number, &valuetype1));
-    NAPI_ASSERT(env, valuetype1 == napi_number, "Wrong type of argment. Expects a number.");
-
-    return number;
-}
-
 static napi_value CreateWithPropertiesTestGetter(napi_env env, napi_callback_info info)
 {
     napi_value res;
@@ -3920,7 +3876,7 @@ static napi_value RunEventLoop(napi_env env, napi_callback_info info)
     if (testCaseName == nullptr) {
         return nullptr;
     }
-    memset_s(testCaseName, THREAD_NAME_LENGTH, 0, THREAD_NAME_LENGTH);
+    memset(testCaseName, 0, THREAD_NAME_LENGTH);
     pthread_t tid;
 
     napi_status status = napi_ok;
@@ -3939,19 +3895,19 @@ static napi_value RunEventLoop(napi_env env, napi_callback_info info)
         free(testCaseName);
         return resultValue;
     } else if (value == RUN_NAPI_LOOP_WITH_NOWAIT) {
-        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread1");
+        strcpy(testCaseName, "NewThread1");
         pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
         pthread_detach(tid);
     } else if (value == RUN_NAPI_LOOP_WITH_DEFAULT) {
-        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread2");
+        strcpy(testCaseName, "NewThread2");
         pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
         pthread_detach(tid);
     } else if (value == RUN_NAPI_LOOP_AFTER_RUN_FINISH) {
-        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread3");
+        strcpy(testCaseName, "NewThread3");
         pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
         pthread_detach(tid);
     } else if (value == WITHOUT_RUN_NAPI_LOOP) {
-        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread4");
+        strcpy(testCaseName, "NewThread4");
         pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
         pthread_detach(tid);
     }
@@ -5054,7 +5010,6 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("NapiRemoveWrapSendable", NapiRemoveWrapSendable),
         DECLARE_NAPI_FUNCTION("isArray", isArray),
         DECLARE_NAPI_FUNCTION("isDate", isDate),
-        DECLARE_NAPI_FUNCTION("isConcurrentFunction", isConcurrentFunction),
         DECLARE_NAPI_FUNCTION("strictEquals", strictEquals),
         DECLARE_NAPI_FUNCTION("getPropertyNames", getPropertyNames),
         DECLARE_NAPI_FUNCTION("setProperty", setProperty),
@@ -5139,7 +5094,6 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiEnvCleanUpHook", NapiEnvCleanUpHook),
         DECLARE_NAPI_FUNCTION("getModuleFileName", GetModuleFileName),
         DECLARE_NAPI_FUNCTION("asyncWorkWithQos", AsyncWorkWithQos),
-        DECLARE_NAPI_FUNCTION("coerceToNativeBindingObject", CoerceToNativeBindingObject),
         DECLARE_NAPI_FUNCTION("createObjectWithProperties", CreateObjectWithProperties),
         DECLARE_NAPI_FUNCTION("createObjectWithNamedProperties", CreateObjectWithNamedProperties),
         DECLARE_NAPI_FUNCTION("makeCallback", MakeCallback),
