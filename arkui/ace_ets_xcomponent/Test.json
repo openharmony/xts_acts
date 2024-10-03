@@ -5,7 +5,6 @@
         "test-timeout": "600000",
 	    "bundle-name": "com.acts.ace.xcomponentetstest",
         "module-name": "entry_test",
-        "package-name": "com.acts.ace.xcomponentetstest",
         "shell-timeout": "600000"
     },
     "kits": [
@@ -16,6 +15,14 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "uinput -T -m 300 2700 280 200",
+                "power-shell setmode 602",
+                "power-shell timeout -o 864000000"
+            ]
         }
     ]
 }

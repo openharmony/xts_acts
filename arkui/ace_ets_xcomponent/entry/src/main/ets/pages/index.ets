@@ -12,28 +12,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { Hypium } from '@ohos/hypium';
+import testsuite from '../test/List.test';
 
 @Entry
 @Component
 struct XComponentTest {
-  private xcomponentContext1: ESObject | undefined = undefined;
-  private xcomponentContext2: ESObject | undefined = undefined;
-  private xcomponentId1 = 'xcomponentId1';
-  private xcomponentId2 = 'xcomponentId2';
-  @State private isHidden:boolean = false;
-  @State private changeSize:boolean = true;
-  @State private flag:boolean = true;
-  @State private xcomponentHeight:number = 300;
-  @State private xcomponentWidth:number = 720;
+  private xcomponentContext1: Record<string, () => object> = {};
+  private xcomponentContext2: Record<string, () => object> = {};
+  private xcomponentId1: string = 'xcomponentId1';
+  private xcomponentId2: string = 'xcomponentId2';
+  @State private isHidden: boolean = false;
+  @State private changeSize: boolean = true;
+  @State private flag: boolean = true;
+  @State private xcomponentHeight: number = 300;
+  @State private xcomponentWidth: number = 720;
   private offset_x: number = 0.000;
   private offset_y: number = 610.000;
-  private index:number = 0;
-  private callback_:number = 0;
-  private type_:number = 5;
-  private touchTypeDown:number = 0;
-  private touchTypeUp:number = 1;
-  private touchTypeMove:number = 2;
-  private touchTypeCancel:number = 3;
+  private index: number = 0;
+  private callback_: number = 0;
+  private type_: number = 5;
+  private touchTypeDown: number = 0;
+  private touchTypeUp: number = 1;
+  private touchTypeMove: number = 2;
+  private touchTypeCancel: number = 3;
+
+  aboutToAppear() {
+    setTimeout(() => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+      let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+      console.info('start run testcase!!!')
+      Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    }, 2000)
+  }
 
   onPageShow() {
       console.info("xclog start run testcase!!!!");
@@ -61,7 +73,7 @@ struct XComponentTest {
         .height('60px')
 
       XComponent({ id: this.xcomponentId1, type: 'texture', libraryname: 'nativerender'})
-        .onLoad((context) => {
+        .onLoad((context: Record<string, () => object>) => {
           console.info("xclog xcomponent1 build");
           this.xcomponentContext1 = context;
           globalThis.xcomponentContext1 = this.xcomponentContext1;
@@ -120,7 +132,7 @@ struct XComponentTest {
         .height('60px')
 
       XComponent({ id: this.xcomponentId2, type: 'texture', libraryname: 'nativerender'})
-        .onLoad((context) => {
+        .onLoad((context: Record<string, () => object>) => {
           console.info("xclog xcomponent_2 build");
           this.xcomponentContext2 = context;
           globalThis.xcomponentContext2 = this.xcomponentContext2;

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import XComponentTest from './XComponentTest.ets';
+import XComponentTest from './XComponentTest';
 
 export default function testsuite() {
   XComponentTest()
