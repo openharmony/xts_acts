@@ -15,10 +15,10 @@
 
 #include "common/native_common.h"
 #include "napi/native_api.h"
-#include <string.h>
 #include <pthread.h>
 #include <stdint.h>
 #include <string>
+#include <cstring>
 #include <stdio.h>
 #include <vector>
 #include <malloc.h>
@@ -28,7 +28,6 @@
 #include <unistd.h>
 #include <memory.h>
 #include <uv.h>
-
 
 static napi_ref test_reference = NULL;
 const int TAG_NUMBER = 666;
