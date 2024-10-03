@@ -18,40 +18,40 @@ import napitest from 'libnapitest.so'
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
-  console.info("worker:: worker thread worker data is " + e.data)
-  if (e.data === "call napi_run_event_loop with nowait") {
+  console.info('worker:: worker thread worker data is ' + e.data)
+  if (e.data === 'call napi_run_event_loop with nowait') {
     let result: string | number = napitest.runEventLoop(4);
-    console.info("worker:: worker thread runEventLoop result is " + result)
-    if (result === "napi_generic_failure") {
-      workerPort.postMessage("success");
+    console.info('worker:: worker thread runEventLoop result is ' + result)
+    if (result === 'napi_generic_failure') {
+      workerPort.postMessage('success');
     } else {
-      workerPort.postMessage("failure");
+      workerPort.postMessage('failure');
     }
   }
-  if (e.data === "call napi_run_event_loop with default") {
+  if (e.data === 'call napi_run_event_loop with default') {
     let result: string | number = napitest.runEventLoop(5);
-    console.info("worker:: worker thread runEventLoop result is " + result)
-    if (result === "napi_generic_failure") {
-      workerPort.postMessage("success");
+    console.info('worker:: worker thread runEventLoop result is ' + result)
+    if (result === 'napi_generic_failure') {
+      workerPort.postMessage('success');
     } else {
-      workerPort.postMessage("failure");
+      workerPort.postMessage('failure');
     }
   }
-  if (e.data === "call napi_stop_event_loop") {
+  if (e.data === 'call napi_stop_event_loop') {
     let result: number = napitest.stopEventLoop(2);
-    console.info("worker:: worker thread stopEventLoop result is " + result)
+    console.info('worker:: worker thread stopEventLoop result is ' + result)
     if (result === 0) {
-      workerPort.postMessage("success");
+      workerPort.postMessage('success');
     } else {
-      workerPort.postMessage("failure");
+      workerPort.postMessage('failure');
     }
   }
-  if (e.data === "call napi_define_sendable_class") {
+  if (e.data === 'call napi_define_sendable_class') {
     let result = napitest.NapiDefineSendableClass();
     if (napitest.NapiIsSendable(result)) {
-      workerPort.postMessage("success");
+      workerPort.postMessage('success');
     } else {
-      workerPort.postMessage("failure");
+      workerPort.postMessage('failure');
     }
   }
 }

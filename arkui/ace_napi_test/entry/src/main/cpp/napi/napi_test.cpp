@@ -15,10 +15,10 @@
 
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include <string.h>
 #include <pthread.h>
 #include <stdint.h>
 #include <string>
-#include <cstring>
 #include <stdio.h>
 #include <vector>
 #include <malloc.h>
@@ -2664,8 +2664,8 @@ static napi_value CreateBuffer(napi_env env, napi_callback_info info)
         return nullptr;
     }
     NAPI_ASSERT(env, copyPtr, "Unable to duplicate static text for CreateBuffer.");
-    memcpy(copyPtr, TEST_STR, strlen(TEST_STR) + 1);
-    //NAPI_ASSERT(env, ret == 0, "memcpy_s failed");
+    int ret = memcpy_s(copyPtr, bufferSize, TEST_STR, strlen(TEST_STR) + 1);
+    NAPI_ASSERT(env, ret == 0, "memcpy_s failed");
     return napiBuffer;
 }
 
@@ -3876,7 +3876,7 @@ static napi_value RunEventLoop(napi_env env, napi_callback_info info)
     if (testCaseName == nullptr) {
         return nullptr;
     }
-    memset(testCaseName, 0, THREAD_NAME_LENGTH);
+    memset_s(testCaseName, THREAD_NAME_LENGTH, 0, THREAD_NAME_LENGTH);
     pthread_t tid;
 
     napi_status status = napi_ok;
@@ -3895,19 +3895,19 @@ static napi_value RunEventLoop(napi_env env, napi_callback_info info)
         free(testCaseName);
         return resultValue;
     } else if (value == RUN_NAPI_LOOP_WITH_NOWAIT) {
-        strcpy(testCaseName, "NewThread1");
+        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread1");
         pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
         pthread_detach(tid);
     } else if (value == RUN_NAPI_LOOP_WITH_DEFAULT) {
-        strcpy(testCaseName, "NewThread2");
+        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread2");
         pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
         pthread_detach(tid);
     } else if (value == RUN_NAPI_LOOP_AFTER_RUN_FINISH) {
-        strcpy(testCaseName, "NewThread3");
+        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread3");
         pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
         pthread_detach(tid);
     } else if (value == WITHOUT_RUN_NAPI_LOOP) {
-        strcpy(testCaseName, "NewThread4");
+        strcpy_s(testCaseName, THREAD_NAME_LENGTH, "NewThread4");
         pthread_create(&tid, nullptr, NewThreadFunc, testCaseName);
         pthread_detach(tid);
     }
