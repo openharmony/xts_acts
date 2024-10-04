@@ -2417,6 +2417,228 @@ export default function sliderTest() {
         }
       }, 500)
     })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_sliderInteractionMode_1000
+      * @tc.name   Test the sliderInteractionMode property of the Slider component
+      * @tc.desc   Check the sliderInteractionMode property default value
+      */
+    it('ArkUX_Stage_Slider_sliderInteractionMode_1000', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_sliderInteractionMode_1000] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_sliderInteractionMode_1000');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_sliderInteractionMode_1000 is " + JSON.stringify(obj.$attrs.sliderInteractionMode));
+          expect(obj.$attrs.sliderInteractionMode).assertEqual("SliderInteraction.SLIDE_AND_CLICK");
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_sliderInteractionMode_1000  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_sliderInteractionMode_1102
+      * @tc.name   Test the sliderInteractionMode property of the Slider component
+      * @tc.desc   Set the sliderInteractionMode property attribute to SliderInteraction.SLIDE_ONLY
+      */
+    it('ArkUX_Stage_Slider_sliderInteractionMode_1102', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_sliderInteractionMode_1102] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_sliderInteractionMode_1102');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_sliderInteractionMode_1102 is " + JSON.stringify(obj.$attrs.sliderInteractionMode));
+          expect(obj.$attrs.sliderInteractionMode).assertEqual("SliderInteraction.SLIDE_ONLY");
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_sliderInteractionMode_1102  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_sliderInteractionMode_1103
+      * @tc.name   Test the sliderInteractionMode property of the Slider component
+      * @tc.desc   Set the sliderInteractionMode property attribute to incorrect number value
+      */
+        it('ArkUX_Stage_Slider_sliderInteractionMode_1103', 0, async (done: Function) => {
+          console.info('[ArkUX_Stage_Slider_sliderInteractionMode_1103] START');
+          setTimeout(() => {
+            try {
+              let strJson = getInspectorByKey('ArkUX_Stage_Slider_sliderInteractionMode_1103');
+              let obj: Record<string, ESObject> = JSON.parse(strJson);
+              console.info("----ArkUX_Stage_Slider_sliderInteractionMode_1103 is " + JSON.stringify(obj.$attrs.sliderInteractionMode));
+              expect(obj.$attrs.sliderInteractionMode).assertEqual("SliderInteraction.SLIDE_AND_CLICK");
+              done();
+            } catch (err) {
+              expect().assertFail();
+              console.info('ArkUX_Stage_Slider_sliderInteractionMode_1103  ERROR: ' + JSON.stringify(err));
+              done();
+            }
+          }, 500)
+        })
+
+   
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_sliderInteractionMode_1300
+      * @tc.name   Test the sliderInteractionMode property of the Slider component
+      * @tc.desc   Set the sliderInteractionMode property attribute to some incorrect value
+      */
+    it('ArkUX_Stage_Slider_sliderInteractionMode_1300', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_sliderInteractionMode_1300] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_sliderInteractionMode_1300');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_sliderInteractionMode_1300 is " + JSON.stringify(obj.$attrs.sliderInteractionMode));
+          expect(obj.$attrs.sliderInteractionMode).assertEqual("SliderInteraction.SLIDE_AND_CLICK");
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_sliderInteractionMode_1300  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_sliderInteractionMode_1400
+      * @tc.name   Test the sliderInteractionMode property of the Slider component
+      * @tc.desc   Set the sliderInteractionMode property attribute to some incorrect value
+      */
+    it('ArkUX_Stage_Slider_sliderInteractionMode_1400', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_sliderInteractionMode_1400] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_sliderInteractionMode_1400');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_sliderInteractionMode_1400 is " + JSON.stringify(obj.$attrs.sliderInteractionMode));
+          expect(obj.$attrs.sliderInteractionMode).assertEqual("SliderInteraction.SLIDE_AND_CLICK");
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_sliderInteractionMode_1400  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_minResponsiveDistance_def_1100
+      * @tc.name   Test the minResponsiveDistance property of the Slider component
+      * @tc.desc   Check the minResponsiveDistance property attribute default value
+      */
+    it('ArkUX_Stage_Slider_minResponsiveDistance_def_1100', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_minResponsiveDistance_def_1100] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_sliderInteractionMode_1000');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_minResponsiveDistance_def_1100 is " + JSON.stringify(obj.$attrs.minResponsiveDistance));
+          expect(Number(obj.$attrs.minResponsiveDistance)).assertEqual(0);
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_minResponsiveDistance_def_1100  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_minResponsiveDistance_1100
+      * @tc.name   Test the minResponsiveDistance property of the Slider component
+      * @tc.desc   Set the minResponsiveDistance property attribute to number value
+      */
+    it('ArkUX_Stage_Slider_minResponsiveDistance_1100', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_minResponsiveDistance_1100] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_minResponsiveDistance_1100');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_minResponsiveDistance_1100 is " + JSON.stringify(obj.$attrs.minResponsiveDistance));
+          expect(Number(obj.$attrs.minResponsiveDistance)).assertEqual(10);
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_minResponsiveDistance_1100  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_minResponsiveDistance_1101
+      * @tc.name   Test the minResponsiveDistance property of the Slider component
+      * @tc.desc   Set the minResponsiveDistance property attribute to number value more then (min,max) distance
+      */
+    it('ArkUX_Stage_Slider_minResponsiveDistance_1101', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_minResponsiveDistance_1101] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_minResponsiveDistance_1101');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_minResponsiveDistance_1101 is " + JSON.stringify(obj.$attrs.minResponsiveDistance));
+          expect(Number(obj.$attrs.minResponsiveDistance)).assertEqual(0);
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_minResponsiveDistance_1101  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_minResponsiveDistance_1200
+      * @tc.name   Test the minResponsiveDistance property of the Slider component
+      * @tc.desc   Set the minResponsiveDistance property attribute to negative value
+      */
+    it('ArkUX_Stage_Slider_minResponsiveDistance_1200', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_minResponsiveDistance_1200] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_minResponsiveDistance_1200');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_minResponsiveDistance_1200 is " + JSON.stringify(obj.$attrs.minResponsiveDistance));
+          expect(Number(obj.$attrs.minResponsiveDistance)).assertEqual(0);
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_minResponsiveDistance_1200  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
+
+    /** 
+      * @tc.number ArkUX_Stage_Slider_minResponsiveDistance_1300
+      * @tc.name   Test the minResponsiveDistance property of the Slider component
+      * @tc.desc   Set the minResponsiveDistance property attribute to some incorrect value
+      */
+    it('ArkUX_Stage_Slider_minResponsiveDistance_1300', 0, async (done: Function) => {
+      console.info('[ArkUX_Stage_Slider_minResponsiveDistance_1300] START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Slider_minResponsiveDistance_1300');
+          let obj: Record<string, ESObject> = JSON.parse(strJson);
+          console.info("----ArkUX_Stage_Slider_minResponsiveDistance_1300 is " + JSON.stringify(obj.$attrs.minResponsiveDistance));
+          expect(Number(obj.$attrs.minResponsiveDistance)).assertEqual(0);
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Slider_minResponsiveDistance_1300  ERROR: ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    })
     
   })
 }
