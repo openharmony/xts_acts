@@ -15,10 +15,10 @@
 
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include <securec.h>
 #include <pthread.h>
 #include <stdint.h>
 #include <string>
-#include <cstring>
 #include <stdio.h>
 #include <vector>
 #include <malloc.h>
