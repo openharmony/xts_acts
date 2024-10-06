@@ -14,6 +14,9 @@
  */
 
 import Ability from '@ohos.app.ability.UIAbility';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@ohos.base';
 
 const TAG: string = '[createWindow]'
 
@@ -36,6 +39,25 @@ export default class MainAbility extends Ability {
     globalThis.windowStage = windowStage;
     globalThis.context = this.context;
     windowStage.setUIContent(this.context, 'MainAbility/pages/XTSIndex', null);
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      let errCode: number = err.code;
+      if (errCode) {
+        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        return;
+      }
+      windowClass = data;
+      hilog.info(0x0000, 'testTag', 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      try {
+        let properties : window.WindowProperties = windowClass.getWindowProperties();
+        let wRect : window.Rect =  properties.windowRect;
+        globalThis.winLeft = wRect.left;
+        globalThis.winTop = wRect.top;
+        hilog.info(0x0000, 'testTag', 'Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
+      } catch (exception) {
+        hilog.error(0x0000, 'testTag', 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+      }
+    })
   }
 
   onWindowStageDestroy() {
