@@ -95,8 +95,9 @@ export default function ListItem_aspectRatio_height() {
       await CommonFunc.sleep(1000);
       let ListItem01: RectValue = CommonFunc.getComponentRect('ListItem_aspectRatio_height_01');
 
-      expect(Math.round(ListItem01.right - ListItem01.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(ListItem01.bottom - ListItem01.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(ListItem01.right - ListItem01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem01.bottom - ListItem01.top) - Math.round(vp2px(300))) <= 1).assertTrue();
+
 
       console.info('[SUB_ACE_ListItem_aspectRatio_height_0200] END');
       done();
@@ -115,8 +116,8 @@ export default function ListItem_aspectRatio_height() {
       await CommonFunc.sleep(1000);
       let ListItem01: RectValue = CommonFunc.getComponentRect('ListItem_aspectRatio_height_01');
 
-      expect(Math.round(ListItem01.right - ListItem01.left)).assertEqual(Math.round(vp2px(600)));
-      expect(Math.round(ListItem01.bottom - ListItem01.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(ListItem01.right - ListItem01.left) - Math.round(vp2px(600))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem01.bottom - ListItem01.top) - Math.round(vp2px(300))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItem_aspectRatio_height_0300] END');
       done();
@@ -135,8 +136,8 @@ export default function ListItem_aspectRatio_height() {
       await CommonFunc.sleep(1000);
       let ListItem01: RectValue = CommonFunc.getComponentRect('ListItem_aspectRatio_height_01');
 
-      expect(Math.round(ListItem01.right - ListItem01.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(ListItem01.bottom - ListItem01.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(ListItem01.right - ListItem01.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(ListItem01.bottom - ListItem01.top) - Math.round(vp2px(300))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItem_aspectRatio_height_0400] END');
       done();

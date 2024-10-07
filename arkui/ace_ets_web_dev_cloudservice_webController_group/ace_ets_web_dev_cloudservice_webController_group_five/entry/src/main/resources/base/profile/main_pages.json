@@ -1,12 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/Index",
-        "MainAbility/pages/Index2",
-        "MainAbility/pages/webSetResponse",
-        "MainAbility/pages/webviewEnableBackForwardCache",
-        "MainAbility/pages/webviewSetBackForwardCacheOptions",
-        "MainAbility/pages/webviewBFCacheResumeAndSuspendPlayer",
-        "MainAbility/pages/webviewBFCacheSuspendPlayer"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
-

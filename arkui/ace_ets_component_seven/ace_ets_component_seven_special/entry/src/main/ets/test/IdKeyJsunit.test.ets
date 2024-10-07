@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function idKeyJsunit() {
-  describe('idKeyJsunit', function () {
-    beforeEach(async function (done) {
+  describe('idKeyJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("idKey beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/idKey',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/idKey',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -41,7 +41,7 @@ export default function idKeyJsunit() {
       done();
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       await Utils.sleep(100);
       console.info("idkey before each called");
     })
@@ -54,11 +54,11 @@ export default function idKeyJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('idkey0001', 0, async function (done) {
+    it('idkey0001', 0, async (done: Function) => {
       console.info('[idkey0001] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('testid');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[idkey0001] component idkey0001 is: " + JSON.stringify(objNew.$attrs));
       expect(strJsonNew).assertNotNull;
       done();
@@ -72,11 +72,11 @@ export default function idKeyJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('idkey0002', 0, async function (done) {
+    it('idkey0002', 0, async (done: Function) => {
       console.info('[idkey0002] START');
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('testkey');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[idkey0002] component idkey0002 is: " + JSON.stringify(objNew.$attrs));
       expect(strJsonNew).assertNotNull;
       done();

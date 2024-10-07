@@ -14,16 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 export default function sliderTest() {
-    describe('sliderJsunit', function () {
-      beforeEach(async function (done) {
+    describe('sliderJsunit', () => {
+      beforeEach(async (done: Function) => {
         console.info("sliderJsunit beforeEach start");
-        let options = {
-          uri: 'MainAbility/pages/slider',
+        let options: router.RouterOptions = {
+          url: 'MainAbility/pages/slider',
         }
-        let result;
+        let result: ESObject;
         try {
           router.clear();
           let pages = router.getState();
@@ -48,12 +48,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_blockBorderColor_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_blockBorderColor_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_blockBorderColor_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_blockBorderColor_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_blockBorderColor_0100 is" + JSON.stringify(obj.$attrs.blockBorderColor));
           expect(obj.$attrs.blockBorderColor).assertEqual("#FFFFA500");
           done();
@@ -73,12 +73,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_blockBorderWidth_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_blockBorderWidth_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_blockBorderWidth_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_blockBorderWidth_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_blockBorderWidth_0100 is" + JSON.stringify(obj.$attrs.blockBorderWidth));
           expect(obj.$attrs.blockBorderWidth).assertEqual("5.00vp");
           done();
@@ -98,12 +98,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_stepColor_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_stepColor_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_stepColor_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_stepColor_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_stepColor_0100 is" + JSON.stringify(obj.$attrs.stepColor));
           expect(obj.$attrs.stepColor).assertEqual("#FFFFA500");
           done();
@@ -123,12 +123,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_trackBorderRadius_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_trackBorderRadius_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_trackBorderRadius_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_trackBorderRadius_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_trackBorderRadius_0100 is" + JSON.stringify(obj.$attrs.trackBorderRadius));
           expect(obj.$attrs.trackBorderRadius).assertEqual("0.00vp");
           done();
@@ -148,15 +148,15 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_blockSize_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_blockSize_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_blockSize_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_blockSize_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_blockSize_0100  is " + JSON.stringify(obj.$attrs.blockSize));
-          let width = obj.$attrs.blockSize.width ;
-          let height = obj.$attrs.blockSize.height ;
+          let width: string = obj.$attrs.blockSize.width ;
+          let height: string = obj.$attrs.blockSize.height ;
           expect(parseFloat(width)).assertEqual(12);
           expect(parseFloat(height)).assertEqual(12);
           expect(width.substr(width.length-2, 2)).assertEqual("vp");
@@ -178,12 +178,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_stepSize_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_stepSize_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_stepSize_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_stepSize_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_stepSize_0100 is" + JSON.stringify(obj.$attrs.stepSize));
           expect(obj.$attrs.stepSize).assertEqual("0.00vp");
           done();
@@ -202,12 +202,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_blockStyle_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_blockStyle_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_blockStyle_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_blockStyle_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_blockStyle_0100 is" + JSON.stringify(obj.$attrs.blockType));
           expect(obj.$attrs.blockType).assertEqual("BlockStyleType.DEFAULT");
           done();
@@ -227,12 +227,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_blockColor_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_blockColor_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_blockColor_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_blockColor_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_blockColor_0100 is" + JSON.stringify(obj.$attrs.blockColor));
           expect(obj.$attrs.blockColor).assertEqual("#FF0000FF");
           done();
@@ -252,12 +252,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_trackColor_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_trackColor_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_trackColor_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_trackColor_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_trackColor_0100 is" + JSON.stringify(obj.$attrs.trackColor));
           expect(obj.$attrs.trackColor).assertEqual("#FF808080");
           done();
@@ -277,12 +277,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_selectedColor_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_selectedColor_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_selectedColor_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_selectedColor_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_selectedColor_0100 is" + JSON.stringify(obj.$attrs.selectedColor));
           expect(obj.$attrs.selectedColor).assertEqual("#FF0000FF");
           done();
@@ -302,12 +302,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_showSteps_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_showSteps_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_showSteps_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_showSteps_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_showSteps_0100 is" + JSON.stringify(obj.$attrs.showSteps));
           expect(obj.$attrs.showSteps).assertEqual("true");
           done();
@@ -327,12 +327,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_showTips_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_showTips_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_showTips_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_showTips_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_showTips_0100 is" + JSON.stringify(obj.$attrs.showTips));
           expect(obj.$attrs.showTips).assertEqual("true");
           done();
@@ -352,12 +352,12 @@ export default function sliderTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Slider_trackThickness_0100', 0, async function (done) {
+    it('ArkUX_Stage_Slider_trackThickness_0100', 0, async (done: Function) => {
       console.info('[ArkUX_Stage_Slider_trackThickness_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_trackThickness_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_trackThickness_0100 is" + JSON.stringify(obj.$attrs.trackThickness));
           expect(obj.$attrs.trackThickness).assertEqual("1.00vp");
           done();

@@ -1,0 +1,11 @@
+{
+  "src": [
+    "testability/pages/Index",
+    "testability/pages/Index2",
+    "testability/pages/webSetResponse",
+    "testability/pages/webviewEnableBackForwardCache",
+    "testability/pages/webviewSetBackForwardCacheOptions",
+    "testability/pages/webviewBFCacheResumeAndSuspendPlayer",
+    "testability/pages/webviewBFCacheSuspendPlayer"
+  ]
+}

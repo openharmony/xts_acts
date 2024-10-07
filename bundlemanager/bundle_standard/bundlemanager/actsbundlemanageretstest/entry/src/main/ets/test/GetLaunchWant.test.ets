@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import bundleMgr from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 const BUNDLENAME = "com.open.harmony.packagemag";
 const ABILITYNAME = "com.open.harmony.packagemag.MainAbility";

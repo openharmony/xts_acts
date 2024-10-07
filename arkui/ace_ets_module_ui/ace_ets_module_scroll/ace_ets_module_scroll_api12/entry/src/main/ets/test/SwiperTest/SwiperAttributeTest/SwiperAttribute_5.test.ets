@@ -83,7 +83,7 @@ export default function SwiperAttribute_5() {
             1000);
           await CommonFunc.sleep(1000);
         }
-        let columnRect = CommonFunc.getComponentRect('swiperAttribute_50' + i);
+        let columnRect = CommonFunc.getComponentRectOnScreen('swiperAttribute_50' + i);
         console.info("SwiperAttribute_0050 column rect is " + columnRect.left + " --" + columnRect.right + "--" +
         columnRect.top + "--" + columnRect.bottom);
 

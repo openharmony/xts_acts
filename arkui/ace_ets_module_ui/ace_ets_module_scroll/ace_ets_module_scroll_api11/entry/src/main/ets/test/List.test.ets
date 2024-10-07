@@ -140,6 +140,7 @@ import swiperCurveJsunit from './SwiperTest/swiper1.test';
 import tabsBarPositionJsunit from './TabsTest/tabs.test';
 import scrollBarJsunitt from './ScrollBar/ScrollBarJsunitt.test.ets';
 import listItemJsunit2 from './ListTest/ListItemJsunit2.test';
+import gridColTest from './component/GridColJsunit.test';
 
 
 export default function testsuite() {
@@ -270,4 +271,5 @@ export default function testsuite() {
   
   scrollBarJsunitt()
   listItemJsunit2()
+  gridColTest();
 }

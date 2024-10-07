@@ -16,7 +16,6 @@
         "MainAbility/pages/bindSheet/SheetTransition",
         "MainAbility/pages/menuControl/symbolIcon",
         "MainAbility/pages/Common/Menu/Menu_API/HoverScale",
-        "MainAbility/pages/Common/BindSheet/BindSheet_API/ScrollSizeMode",
-        "MainAbility/pages/bindContextMenuTest/bindContextMenuMargin"
+        "MainAbility/pages/Common/BindSheet/BindSheet_API/ScrollSizeMode"
     ]
 }

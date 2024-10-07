@@ -13,27 +13,12 @@
  * limitations under the License.
  */
 import file from '@system.file';
-import { Core, ExpectExtend, InstrumentLog, ReportExtend } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 @Entry
 @Component
 struct Index {
   aboutToAppear() {
     console.info("start run testcase!!!!")
-    const core = Core.getInstance()
-    const expectExtend = new ExpectExtend({
-      'id': 'extend'
-    })
-    core.addService('expect', expectExtend)
-    const reportExtend = new ReportExtend(file)
-
-    core.addService('report', reportExtend)
-    core.init()
-    core.subscribeEvent('task', reportExtend)
-    console.info("subscribeEvent run !!!!")
-    const configService = core.getDefaultService('config')
-    console.info('parameters---->' + JSON.stringify(globalThis.abilityWant.parameters))
-    configService.setConfig(globalThis.abilityWant.parameters)
-    core.execute()
   }
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {

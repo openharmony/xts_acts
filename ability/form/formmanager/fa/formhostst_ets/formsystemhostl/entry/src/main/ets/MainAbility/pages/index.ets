@@ -16,6 +16,12 @@
 import commonEvent from '@ohos.commonEvent';
 import featureAbility from '@ohos.ability.featureAbility';
 import formHost from '@ohos.application.formHost';
+import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.application.Want';
+
+interface InfoType {id:number}
+interface ErroType {errcode: number, msg: string}
 
 @Entry
 @Component
@@ -32,8 +38,8 @@ struct Index {
   @State temporary: boolean = false;
   private requestForm = false;
   private requestId = `-1`;
-  private subscriberDel;
-  private subscriberFormDeleteEvent = {
+  private subscriberDel:CommonEventManager.CommonEventSubscriber|null = null;
+  private subscriberFormDeleteEvent:CommonEventManager.CommonEventSubscribeInfo = {
     events: ["FMS_FormDelete_commonEvent"]
   };
   private TAG = `[FormComponent.host.l]`;
@@ -57,8 +63,8 @@ struct Index {
     const onDeleteEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormDeleteEvent);
     commonEvent.subscribe(onDeleteEventSubscriber, async (err, data) => {
       console.info(`${this.TAG} deleteCallBack start:====> ${JSON.stringify(data)}`);
-
-      data.parameters.formIds.forEach(async (formId) => {
+      
+      data.parameters?.formIds.forEach(async (formId:string) => {
         await formHost.deleteForm(formId)
           .then((res) => {
             console.info(`${this.TAG} deleteForm result: ${JSON.stringify(res)}`);
@@ -70,33 +76,33 @@ struct Index {
     });
 
     featureAbility.getWant()
-      .then((want: any) => {
-        console.info(`${this.TAG} getWant: ${JSON.stringify(want)}`);
-        this.formId = want.parameters.formId;
-        this.name = want.parameters.name;
-        this.bundle = want.parameters.bundle;
-        this.ability = want.parameters.ability;
-        if (want.parameters.moduleName) {
+      .then((want: Want) => {
+        console.info(`${this.TAG} getWant data: ${JSON.stringify(want)}`);
+        this.formId = parseInt(want.parameters?.formId ?? 0);
+        this.name = want.parameters?.name ?? "";
+        this.bundle = want.parameters?.bundle ?? "";
+        this.ability = want.parameters?.ability ?? "";
+        if (want.parameters) {
           this.moduleName = want.parameters.moduleName;
         }
-        if (want.parameters.temporary) {
+        if (want.parameters) {
           this.temporary = want.parameters.temporary;
         }
-        if (want.parameters.dimension) {
+        if (want.parameters) {
           this.dimension = want.parameters.dimension;
         }
-        if (want.parameters.requestForm) {
+        if (want.parameters) {
           this.requestForm = want.parameters.requestForm;
         }
-        if (want.parameters.requestId) {
+        if (want.parameters) {
           this.requestId = want.parameters.requestId;
         }
-        if (want.parameters.isCreate) {
+        if (want.parameters) {
           this.canCreateForm = want.parameters.isCreate;
         }
 
         if (!this.canCreateForm && this.requestForm) {
-          let commonEventPublishData;
+          let commonEventPublishData:CommonEventManager.CommonEventPublishData | null = null;
           formHost.requestForm(this.requestId)
             .then((data) => {
               console.info(`${this.TAG} requestForm result: ${JSON.stringify(data)}`);
@@ -108,7 +114,7 @@ struct Index {
               };
               commonEvent.publish(this.formOnRequestEvent, commonEventPublishData, this.onRequestCallback);
             })
-            .catch((error) => {
+            .catch((error:BusinessError) => {
               console.info(`${this.TAG} requestForm error: ${JSON.stringify(error)}`);
               commonEventPublishData = {
                 parameters: {
@@ -119,7 +125,7 @@ struct Index {
             });
         }
       })
-      .catch((error: any) => {
+      .catch((error:BusinessError) => {
         console.error(`${this.TAG} Operation failed. Cause: ${JSON.stringify(error)}`);
       })
   }
@@ -140,18 +146,18 @@ struct Index {
           })
             .allowUpdate(this.allowUpdate)
             .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
-            .onAcquired((form) => {
+            .onAcquired((form:InfoType) => {
               console.info(`${this.TAG} onAcquired, form id: ${form.id}`);
               this.formId = form.id;
-              const commonEventPublishData = {
+              const commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                 data: this.formId.toString()
               };
               commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.onAcquiredCallback);
             })
-            .onUninstall((info) => {
+            .onUninstall((info:InfoType) => {
               console.info(`${this.TAG} onUninstall: ${JSON.stringify(info)}`);
             })
-            .onError((error) => {
+            .onError((error:ErroType) => {
               console.error(`${this.TAG} onError: ${JSON.stringify(error)}`);
             });
         }

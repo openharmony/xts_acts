@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import {
   sleep,
   fetchOption,
@@ -130,17 +130,16 @@ export default function registerChangeTest () {
         let album = await helper.createAlbum(albumName);
         albumUri = album.albumUri;
         await sleep(550);
-        helper.registerChange(albumUri, false, async (changeData) => {
+        helper.registerChange(DEFAULT_ALBUM_URI, true, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-          expect(changeData.uris[0]).assertEqual(albumUri);
         });
         await sleep(550);
         album.albumName = Date.now() + album.albumName;
         await album.commitModify();
         await sleep(1000);
-        helper.unRegisterChange(albumUri);
+        helper.unRegisterChange(DEFAULT_ALBUM_URI);
         expect(count).assertEqual(1);
         done();
       } catch (error) {

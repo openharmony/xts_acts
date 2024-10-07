@@ -566,7 +566,7 @@ export default function listLevel1Test() {
       let width = right - left;
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(right),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
+      await driver.swipe(Math.round(right - vp2px(10)),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
       await CommonFunc.sleep(3000);
       try {
         let eventData: events_emitter.EventData = {
@@ -611,7 +611,7 @@ export default function listLevel1Test() {
       let width = right - left;
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(left),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
+      await driver.swipe(Math.round(left + vp2px(10)),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
       await CommonFunc.sleep(3000);
       try {
         let eventData: events_emitter.EventData = {
@@ -656,7 +656,7 @@ export default function listLevel1Test() {
       let width = right - left;
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(right),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
+      await driver.swipe(Math.round(right - vp2px(10)),Math.round(bottom - height/2),Math.round(left + width/2),Math.round(bottom - height/2));
       await CommonFunc.sleep(3000);
       try {
         let eventData: events_emitter.EventData = {

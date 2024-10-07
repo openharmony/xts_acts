@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 export default function gaugeJsunit() {
-  describe('gaugeTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/gauge',
+  describe('gaugeTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gauge',
       }
       try {
         router.clear();
@@ -47,10 +47,10 @@ export default function gaugeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGauge0121', 0, async function (done) {
+    it('testGauge0121', 0, async (done: Function) => {
       console.info('[testGauge0121] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info("[testGauge0121] obj testGauge0121obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.strokeWidth).assertEqual('5.00vp');
 
@@ -66,10 +66,10 @@ export default function gaugeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGauge0122', 0, async function (done) {
+    it('testGauge0122', 0, async (done: Function) => {
       console.info('[testGauge0122] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info("[testGauge0122] obj testGauge0122obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.endAngle).assertEqual('360.00');
 
@@ -85,10 +85,10 @@ export default function gaugeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGauge0123', 0, async function (done) {
+    it('testGauge0123', 0, async (done: Function) => {
       console.info('[testGauge0123] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info("[testGauge0123] obj testGauge0123obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.startAngle).assertEqual('0.00');
 
@@ -104,10 +104,10 @@ export default function gaugeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGauge0124', 0, async function (done) {
+    it('testGauge0124', 0, async (done: Function) => {
       console.info('[testGauge0124] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info("[testGauge0124] obj testGauge0124obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.value).assertEqual('1.00');
 
@@ -123,12 +123,12 @@ export default function gaugeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGauge0125', 0, async function (done) {
+    it('testGauge0125', 0, async (done: Function) => {
       console.info('[testGauge0125] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info("[testGauge0125] obj testGauge0125obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.colors).assertEqual('[["#FF000001",1],["#FF000002",2]]');
+      expect(obj.$attrs.colors).assertEqual('[[[["#FF123456","0.000000"]],1],[[["#FF654321","0.000000"]],2]]');
 
       console.info('[testGauge0125] END');
       done();
@@ -142,10 +142,10 @@ export default function gaugeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGauge0126', 0, async function (done) {
+    it('testGauge0126', 0, async (done: Function) => {
       console.info('[testGauge0126] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info("[testGauge0126] obj testGauge0126obj is: " + JSON.stringify(obj.$attrs));
       //expect(obj.$attrs.indicator).assertEqual('');
       expect(true).assertEqual(true);
@@ -162,10 +162,10 @@ export default function gaugeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGauge0127', 0, async function (done) {
+    it('testGauge0127', 0, async (done: Function) => {
       console.info('[testGauge0127] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info("[testGauge0127] obj testGauge0127obj is: " + JSON.stringify(obj.$attrs));
       //expect(obj.$attrs.shadow).assertEqual('');
       expect(true).assertEqual(true);
@@ -182,10 +182,10 @@ export default function gaugeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGauge0128', 0, async function (done) {
+    it('testGauge0128', 0, async (done: Function) => {
       console.info('[testGauge0128] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info("[testGauge0128] obj testGauge0128obj is: " + JSON.stringify(obj.$attrs));
       //expect(obj.$attrs.description).assertEqual('');
       expect(true).assertEqual(true);

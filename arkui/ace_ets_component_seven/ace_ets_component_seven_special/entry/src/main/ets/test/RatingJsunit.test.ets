@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import {UiDriver, BY} from '@ohos.UiTest';
 
 export default function RatingJsunit() {
-  describe('RatingJsunit', function () {
-    beforeEach(async function (done) {
+  describe('RatingJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RatingJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/rating',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/rating',
       }
       try {
         router.clear();
@@ -47,11 +47,11 @@ export default function RatingJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('RatingJsunit_0100', 0, async function (done) {
+    it('RatingJsunit_0100', 0, async (done: Function) => {
       
       console.info('[RatingJsunit_0100] START');
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.stars).assertEqual('5');
       console.info('[RatingJsunit_0100] END');
@@ -66,11 +66,11 @@ export default function RatingJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('RatingJsunit_0200', 0, async function (done) {
+    it('RatingJsunit_0200', 0, async (done: Function) => {
       
       console.info('[RatingJsunit_0200] START');
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0200] component obj is: " + JSON.stringify(obj));
 
       expect(obj.$attrs.stepSize).assertEqual('0.500000');
@@ -87,11 +87,11 @@ export default function RatingJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('RatingJsunit_0300', 0, async function (done) {
+    it('RatingJsunit_0300', 0, async (done: Function) => {
       
       console.info('[RatingJsunit_0300] START');
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0300] component obj is: " + JSON.stringify(obj));
 
       expect(JSON.parse(obj.$attrs.starStyle).backgroundUri).assertEqual("resources/base/media/star_1.png");

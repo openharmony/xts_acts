@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function stepperItem() {
-    describe('stepperItemJsunit', function () {
-      beforeEach(async function (done) {
+    describe('stepperItemJsunit', () => {
+      beforeEach(async (done: Function) => {
         console.info("stepperItemJsunit beforeEach start");
-        let options = {
-          uri: 'MainAbility/pages/stepperItem',
+        let options: router.RouterOptions = {
+          url: 'MainAbility/pages/stepperItem',
         }
-        let result;
+        let result: ESObject;
         try {
           router.clear();
           let pages = router.getState();
@@ -49,12 +49,12 @@ export default function stepperItem() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('sArkUX_Stage_StepperItem_0100', 0, async function (done) {
+    it('sArkUX_Stage_StepperItem_0100', 0, async (done: Function) => {
       console.info('[sArkUX_Stage_StepperItem_0100] START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('nextLabel1');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("----sArkUX_Stage_StepperItem_0100 is" + JSON.stringify(obj.$attrs.nextLabel));
           expect(obj.$attrs.nextLabel).assertEqual("textLabel");
           done();

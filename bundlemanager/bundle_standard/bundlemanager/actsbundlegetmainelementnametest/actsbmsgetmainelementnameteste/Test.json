@@ -11,6 +11,7 @@
   "kits": [
     {
       "test-file-name": [
+        "ActsBmsGetMainElementNameTestEmain.hap",
         "ActsBmsGetMainElementNameTestE.hap"
       ],
       "type": "AppInstallKit",

@@ -496,6 +496,9 @@ export default function lifecycleTest() {
                   ",data: " + JSON.stringify(data));
                 console.log("------------Singlehap_LifeCycleTest_0500 END-------------");
               })
+            if (globalThis.ability3) {
+              globalThis.ability3.terminateSelf();
+            }
             globalThis.applicationContext3
               .unregisterAbilityLifecycleCallback(globalThis.callbackid3, (error: base.BusinessError, data: ESObject) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback3 success, err: " + JSON.stringify(error) +
@@ -923,6 +926,9 @@ export default function lifecycleTest() {
               id2 = globalThis.callbackid6;
               console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
               expect(id1 + 1).assertEqual(id2);
+              if (globalThis.ability6) {
+                globalThis.ability6.terminateSelf();
+              }
               globalThis.applicationContext6
                 .unregisterAbilityLifecycleCallback(globalThis.callbackid6, (error: base.BusinessError, data: ESObject) => {
                   console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
@@ -1051,27 +1057,7 @@ export default function lifecycleTest() {
             id2 = globalThis.callbackid8;
             console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
             expect(id1 + 1).assertEqual(id2);
-            globalThis.applicationContext8
-              .unregisterAbilityLifecycleCallback(globalThis.callbackid8, (error: base.BusinessError, data: ESObject) => {
-                console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                  ",data: " + JSON.stringify(data));
-              });
-            let para: ability.AbilityResult = {
-              resultCode: 1,
-              want: {
-                "abilityName": "MainAbility8",
-                "bundleName": "com.example.lifecycle_xts"
-              }
-            }
-            console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
-            globalThis.ability8.terminateSelfWithResult(para, (error: base.BusinessError, data: ESObject) => {
-              console.log(TAG + " terminateSelfwithresult success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
-              commonEvent.unsubscribe(subscriber, () => {
-                console.log(`${TAG} UnSubscribeCallback end`);
-                done();
-              })
-            });
+            done();
           }
         })
       })

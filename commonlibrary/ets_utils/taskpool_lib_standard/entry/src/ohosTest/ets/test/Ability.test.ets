@@ -22,9 +22,10 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
   isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
   errorManageTest, dealHashMapTest, noUseConcurrentTest, sendDataTest, sendableClassTestFunc, Int8ArrayTestFunc,
-  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray } from './testFunclist'
+  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray,
+  sendableFuncTest, sendableClassTest } from './testFunclist'
 import { A, B, StrCat, printArgs, printStrArgs } from './exportFunclist'
-import { SendableClass, SimpleSendable } from './sendable';
+import { SendableClass, SimpleSendable, sendableFunc, SendableClassTest } from './sendable';
 import HashMap from '@ohos.util.HashMap';
 
 export default function TaskPoolTest() {
@@ -4582,6 +4583,57 @@ export default function TaskPoolTest() {
       }
       expect(res).assertEqual(2000);
       taskpool.cancel(periodicTask)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0201
+     * @tc.name      : TaskPoolTestClass201
+     * @tc.desc      : taskpool taskGroup
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass201', 0, async (done: Function) => {
+      let task:taskpool.Task = new taskpool.Task(errorTest);
+      let task2:taskpool.Task = new taskpool.Task(printArgs, 100);
+      let taskGroup:taskpool.TaskGroup = new taskpool.TaskGroup();
+      taskGroup.addTask(task);
+      taskGroup.addTask(task2);
+      await taskpool.execute(taskGroup).catch((e: BusinessError) => {
+        console.log(e.message)
+        expect(e.message).assertContain("this is an error");
+      })
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0202
+     * @tc.name      : TaskPoolTestClass202
+     * @tc.desc      : taskpool sendableFunc add sendableClass test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass202', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let isTerminate2: boolean = true;
+      let task1 = new taskpool.Task(sendableFuncTest, sendableFunc);
+      taskpool.execute(task1).then((res) => {
+        isTerminate1 = true;
+        expect(res).assertEqual(500);
+      })
+
+      let classTest: SendableClassTest = new SendableClassTest(sendableFunc);
+      let task2 = new taskpool.Task(sendableClassTest, classTest);
+      taskpool.execute(task2).then((res) => {
+        isTerminate2 = true;
+        expect(res).assertEqual(600);
+      })
+
+      while (!isTerminate1 && !isTerminate2) {
+        await promiseCase();
+      }
       done();
     })
   })

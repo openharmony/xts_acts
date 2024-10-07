@@ -73,11 +73,11 @@ struct WebComponent {
             console.info("loadUrl headerV9 to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("loadUrl headerV9 emit action state err: " + JSON.stringify(err.message))
+            console.info("loadUrl headerV9 emit action state err: " + JSON.stringify((err as BusinessError).message))
           }
 
         } catch (error) {
-          console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          console.error(`ErrorCode: ${error.code},  Message: ${(error as BusinessError).message}`);
         }
       }).key('btloadurl')
       Button('getHitTest').onClick(() => {
@@ -97,11 +97,11 @@ struct WebComponent {
             console.info("loadUrl hitTestType to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("loadUrl hitTestType emit action state err: " + JSON.stringify(err.message))
+            console.info("loadUrl hitTestType emit action state err: " + JSON.stringify((err as BusinessError).message))
           }
 
         } catch (error) {
-          console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          console.error(`ErrorCode: ${error.code},  Message: ${(error as BusinessError).message}`);
         }
       }).key('btngetHitTest')
 
@@ -121,12 +121,12 @@ struct WebComponent {
             console.info("loadUrl getHitTestValue to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("loadUrl getHitTestValue emit action state err: " + JSON.stringify(err.message))
+            console.info("loadUrl getHitTestValue emit action state err: " + JSON.stringify((err as BusinessError).message))
           }
           console.info("hitType: " + hitValue.type);
           console.info("extra: " + hitValue.extra);
         } catch (error) {
-          console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          console.error(`ErrorCode: ${error.code},  Message: ${(error as BusinessError).message}`);
         }
       })
 
@@ -144,7 +144,7 @@ struct WebComponent {
               console.log('error: ' + e);
             })
         } catch (error) {
-          console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+          console.error(`ErrorCode: ${error.code}, Message: ${(error as BusinessError).message}`);
         }
       })
       Button('getOriginsPromise').onClick(() => {
@@ -169,14 +169,14 @@ struct WebComponent {
                 console.info("loadUrl getHitTestValue to emit action state")
                 events_emitter.emit(backEvent, backData)
               } catch (err) {
-                console.info("loadUrl getHitTestValue emit action state err: " + JSON.stringify(err.message))
+                console.info("loadUrl getHitTestValue emit action state err: " + JSON.stringify((err as BusinessError).message))
               }
             })
             .catch((e: BusinessError) => {
               console.log('error: ' + e);
             })
         } catch (error) {
-          console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+          console.error(`ErrorCode: ${error.code}, Message: ${(error as BusinessError).message}`);
         }
 
       })
@@ -191,7 +191,7 @@ struct WebComponent {
                 console.info('error: ' + e);
               })
           } catch (error) {
-            console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+            console.error(`ErrorCode: ${error.code}, Message: ${(error as BusinessError).message}`);
           }
 
         }).key('getOriginQuotakey')
@@ -215,14 +215,14 @@ struct WebComponent {
                   console.info("getOriginUsage to emit action state")
                   events_emitter.emit(backEvent, backData)
                 } catch (err) {
-                  console.info("getOriginUsage emit action state err: " + JSON.stringify(err.message))
+                  console.info("getOriginUsage emit action state err: " + JSON.stringify((err as BusinessError).message))
                 }
               })
               .catch((e: BusinessError) => {
                 console.info('error: ' + e);
               })
           } catch (error) {
-            console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+            console.error(`ErrorCode: ${error.code}, Message: ${(error as BusinessError).message}`);
           }
         })
 
@@ -249,11 +249,11 @@ struct WebComponent {
               console.info("saveCookieAsync to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("saveCookieAsync emit action state err: " + JSON.stringify(err.message))
+              console.info("saveCookieAsync emit action state err: " + JSON.stringify((err as BusinessError).message))
             }
 
           } catch (error) {
-            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            console.error(`ErrorCode: ${error.code},  Message: ${(error as BusinessError).message}`);
           }
         })
 
@@ -278,7 +278,7 @@ struct WebComponent {
                   console.info("saveCookieAsync to emit action state")
                   events_emitter.emit(backEvent, backData)
                 } catch (err) {
-                  console.info("saveCookieAsync emit action state err: " + JSON.stringify(err.message))
+                  console.info("saveCookieAsync emit action state err: " + JSON.stringify((err as BusinessError).message))
                 }
 
 
@@ -287,7 +287,7 @@ struct WebComponent {
                 console.log('error: ' + JSON.stringify(error));
               })
           } catch (error) {
-            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+            console.error(`ErrorCode: ${error.code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.baidu.com', controller: this.controller })
@@ -310,7 +310,7 @@ struct WebComponent {
                   console.info("runJavaScript to emit action state")
                   events_emitter.emit(backEvent, backData)
                 } catch (err) {
-                  console.info("runJavaScript emit action state err: " + JSON.stringify(err.message))
+                  console.info("runJavaScript emit action state err: " + JSON.stringify((err as BusinessError).message))
                 }
               })
               .catch((error: BusinessError) => {
@@ -318,7 +318,7 @@ struct WebComponent {
               })
             console.info('url: ', e.url);
           } catch (error) {
-            console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
+            console.error(`Errorcode: ${error.code}, Message: ${(error as BusinessError).message}`);
           }
         })
 

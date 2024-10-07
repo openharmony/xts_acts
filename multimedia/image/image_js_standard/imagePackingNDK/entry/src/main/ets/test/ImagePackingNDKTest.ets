@@ -15,7 +15,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import featureAbility from "@ohos.ability.featureAbility";
 import fileio from "@ohos.fileio";
 import ndkTest from 'libImagePackingNDKTest.so';

@@ -16,6 +16,12 @@
 import featureAbility from "@ohos.ability.featureAbility";
 import formHost from '@ohos.application.formHost';
 import commonEvent from '@ohos.commonEvent';
+import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.application.Want';
+
+interface InfoType {id:number}
+interface ErroType {errcode: number, msg: string}
 
 @Entry
 @Component
@@ -35,14 +41,14 @@ struct Index {
   private temporary = 0;
   private normaldel = 0;
   private temporarydel = 0;
-  private normalFormIds = [];
-  private tempFormIds = [];
+  private normalFormIds: string[] = [];
+  private tempFormIds: string[] = [];
 
-  private deleteIds = [];
+  private deleteIds: string[] = [];
   private delCount = 0;
 
-  private normalFormCounts = [];
-  private tempFormCounts = [];
+  private normalFormCounts: number[] = [];
+  private tempFormCounts: number[] = [];
 
   private castFormId = "-1";
 
@@ -50,13 +56,13 @@ struct Index {
   private formOnErrorEvent = "FMS_FormOnError_commonEvent";
   private formCastEvent = "FMS_FormCast_commonEvent";
 
-  private subscriberDel;
-  private subscriberFormDeleteEvent = {
+  private subscriberDel:CommonEventManager.CommonEventSubscriber|null = null;
+  private subscriberFormDeleteEvent:CommonEventManager.CommonEventSubscribeInfo = {
     events: ["FMS_FormDelete_commonEvent"],
   };
 
-  private subscriberSendCastForm;
-  private subscriberSendCastFormEvent = {
+  private subscriberSendCastForm:CommonEventManager.CommonEventSubscriber|null = null;
+  private subscriberSendCastFormEvent:CommonEventManager.CommonEventSubscribeInfo = {
     events: ["FMS_SendCastForm_commonEvent"],
   };
 
@@ -72,7 +78,7 @@ struct Index {
   private publishCastCallBack() {
     console.debug(`====>${this.TAG} formCastEvent Publish CallBack ====>`);
   }
-  private startAbility(bundleName, abilityName, sendMsg) {
+  private startAbility(bundleName:string, abilityName:string, sendMsg:string) {
     featureAbility.startAbility({
       want: {
         bundleName: bundleName,
@@ -89,26 +95,26 @@ struct Index {
           "isCreate": false
         }
       }
-    }).then((res: any) => {
+    }).then((res: number) => {
       console.info(`${this.TAG} formsystemhostp featureAbility.startAbility res: ${JSON.stringify(res)}`);
-    }).catch((err: any) => {
+    }).catch((err: BusinessError) => {
       console.info(`${this.TAG} formsystemhostp featureAbility.startAbility error: ${JSON.stringify(err)}`);
     });
   }
-  private publishOnSendCastForm(err, data) {
+  private publishOnSendCastForm(err:BusinessError, data:CommonEventManager.CommonEventData) {
     console.info(`!!!====>${this.TAG} formsystemhostp OnSendCastForm start:====>` + JSON.stringify(data));
     if (data.bundleName && data.bundleName != "com.ohos.st.formsystemhostp") {
       return;
     }
-    let formId = data.parameters.castFormId;
-    setTimeout(function () {
+    let formId: string = data.parameters?.castFormId ?? '';
+    setTimeout(() => {
       console.info(`${this.TAG} castTempForm start, formId: ` + formId);
       formHost.castTempForm(formId)
-        .then((data) => {
-          console.info(`${this.TAG} castTempForm result:` + data);
-          this.startAbility("com.ohos.st.formsystemhostc", "com.ohos.st.formsystemhostc.MainAbility", data);
+        .then(() => {
+          console.info(`${this.TAG} castTempForm result:`);
+          this.startAbility("com.ohos.st.formsystemhostc", "com.ohos.st.formsystemhostc.MainAbility", '');
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.info(`${this.TAG} castTempForm error:` + JSON.stringify(error));
           this.startAbility("com.ohos.st.formsystemhostc", "com.ohos.st.formsystemhostc.MainAbility", error.code.toString());
         });
@@ -117,9 +123,9 @@ struct Index {
     console.info(`!!!====>${this.TAG} formsystemhostp OnSendCastForm end`);
   }
 
-  private deleteCallBack(err, data) {
+  private deleteCallBack(err:BusinessError, data:CommonEventManager.CommonEventData) {
     console.info(`!!!====>${this.TAG} formsystemhostp deleteCallBack start:====>` + JSON.stringify(data));
-    const delFormIds = data.parameters.formIds;
+    const delFormIds: string[] = data.parameters?.formIds ?? [];
     console.info(`${this.TAG} data size ${delFormIds.length}`);
 
     console.info(`${this.TAG} data.subscriber ${JSON.stringify(this.subscriberDel)}`);
@@ -134,7 +140,7 @@ struct Index {
     if ("com.ohos.st.formsystemhostp" != data.bundleName) {
       return;
     }
-    delFormIds.forEach(async (formId, index) => {
+    delFormIds.forEach(async (formId:string, index:number) => {
       console.info(`${this.TAG} formsystemhostp deleteForm ${index}`);
       try {
         const res = await formHost.deleteForm(formId);
@@ -150,12 +156,12 @@ struct Index {
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
       console.info(`====>${this.TAG} formsystemhostp Subscriber FormDelete data:====>`, JSON.stringify(data));
       this.subscriberDel = data;
-      commonEvent.subscribe(this.subscriberDel, (err, data) => {
+      commonEvent.subscribe(this.subscriberDel, (err:BusinessError, data:CommonEventManager.CommonEventData) => {
         if ("com.ohos.st.formsystemhostp" != data.bundleName) {
           return;
         } else {
           console.info(`!!!====>${this.TAG} formsystemhostp deleteCallBack start:====>` + JSON.stringify(data));
-          const delFormIds = data.parameters.formIds;
+          const delFormIds: string[] = data.parameters?.formIds ?? [];
           console.info(`${this.TAG} data size ${delFormIds.length}`);
           commonEvent.unsubscribe(this.subscriberDel, () => {
             console.info(`====> ${this.TAG} formsystemhostp optType unSubscribeDeleteCallback CallBack====>`);
@@ -164,7 +170,7 @@ struct Index {
             console.info(`====> ${this.TAG} formsystemhostp optType unSubscribeCastFormCallback CallBack====>`);
           });
           let delCounter = 0;
-          delFormIds.forEach((formId) => {
+          delFormIds.forEach((formId:string) => {
             formHost.deleteForm(formId, (error, data) => {
               console.info(`${this.TAG} formsystemhostp deleteForm ${++delCounter} ${formId} data: ${JSON.stringify(data)} err: ${JSON.stringify(error)}`);
             });
@@ -180,50 +186,50 @@ struct Index {
     });
 
     featureAbility.getWant()
-      .then((want: any) => {
+      .then((want: Want) => {
         console.info(` ${this.TAG} formsystemhostp getWant:` + JSON.stringify(want));
 
-        this.name = want.parameters.name;
-        this.bundle = want.parameters.bundle;
-        this.ability = want.parameters.ability;
-        if (want.parameters.moduleName) {
+        this.name = want.parameters?.name ?? "";
+        this.bundle = want.parameters?.bundle ?? "";
+        this.ability = want.parameters?.ability ?? "";
+        if (want.parameters) {
           this.moduleName = want.parameters.moduleName;
         }
 
-        if (want.parameters.dimension) {
+        if (want.parameters) {
           this.dimension = want.parameters.dimension;
         }
 
-        if (want.parameters.normal) {
+        if (want.parameters) {
           this.normal = want.parameters.normal;
         }
 
-        if (want.parameters.temporary) {
+        if (want.parameters) {
           this.temporary = want.parameters.temporary;
         }
-        if (want.parameters.normaldel) {
+        if (want.parameters) {
           this.normaldel = want.parameters.normaldel;
         }
 
-        if (want.parameters.temporarydel) {
+        if (want.parameters) {
           this.temporarydel = want.parameters.temporarydel;
         }
 
-        if (want.parameters.deleteIds) {
+        if (want.parameters) {
           this.deleteIds = want.parameters.deleteIds;
         }
-        if (want.parameters.castFormId) {
+        if (want.parameters) {
           this.castFormId = want.parameters.castFormId;
         }
 
         this.makeCount();
 
         setTimeout(() => {
-          this.optType = want.parameters.optType;
+          this.optType = want.parameters?.optType ?? 0;
           console.info(` ${this.TAG} formsystemhostp getWant optType:` + this.optType);
         }, 10);
 
-        if (this.castFormId != "-1" && want.parameters.optType == 3) {
+        if (this.castFormId != "-1" && (want.parameters?.optType ?? 0) == 3) {
           console.info(`${this.TAG} castTempForm start`);
           commonEvent.unsubscribe(this.subscriberDel, () => {
             console.info(`====> ${this.TAG} formsystemhostp optType unSubscribeDeleteCallback CallBack====>`);
@@ -235,7 +241,7 @@ struct Index {
           formHost.castTempForm(this.castFormId)
             .then((data) => {
               console.info(`${this.TAG} castTempForm result:` + data);
-              let commonEventPublishData = {
+              let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                 data: (data + "") || `0`,
                 bundleName: "com.ohos.st.formsystemhostp",
                 parameters: {
@@ -244,9 +250,9 @@ struct Index {
               };
               commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
             })
-            .catch((error) => {
+            .catch((error:BusinessError) => {
               console.info(`${this.TAG} castTempForm error:` + JSON.stringify(error));
-              let commonEventPublishData = {
+              let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                 data: error.code.toString(),
                 bundleName: "com.ohos.st.formsystemhostp",
                 parameters: {
@@ -259,7 +265,7 @@ struct Index {
           console.info(`${this.TAG} castTempForm end`);
         }
 
-        if (want.parameters.optType == 2 && this.deleteIds.length > 0) {
+        if ((want.parameters?.optType ?? 0) == 2 && this.deleteIds.length > 0) {
           for (let iIndex = 0; iIndex < this.deleteIds.length; ++iIndex) {
             console.info(`${this.TAG} formsystemhostp deleteForm start`);
             formHost.deleteForm(this.deleteIds[iIndex])
@@ -268,7 +274,7 @@ struct Index {
                 this.delCount++;
 
                 if (this.delCount == this.deleteIds.length) {
-                  let commonEventPublishData = {
+                  let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                     data: data + "",
                     bundleName: "com.ohos.st.formsystemhostp",
                     parameters: {
@@ -278,9 +284,9 @@ struct Index {
                   commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishDeleteCallBack);
                 }
               })
-              .catch((error) => {
+              .catch((error:BusinessError) => {
                 console.info(` ${this.TAG} formsystemhostp deleteForm error:` + error);
-                let commonEventPublishData = {
+                let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                   data: error.code.toString(),
                   bundleName: "com.ohos.st.formsystemhostp",
                   parameters: {
@@ -293,7 +299,7 @@ struct Index {
           }
         }
       })
-      .catch((error: any) => {
+      .catch((error:BusinessError) => {
         console.error(` ${this.TAG} formsystemhostp Operation failed. Cause: ` + JSON.stringify(error));
       })
     console.info(`${this.TAG} aboutToAppear end`);
@@ -318,7 +324,7 @@ struct Index {
         if (this.optType == 1) {
           Text(' [FormComponent] formsystemhostp normal form component test begin')
           Grid() {
-            ForEach(this.normalFormCounts, (item) => {
+            ForEach(this.normalFormCounts, (item:number) => {
               GridItem() {
                 FormComponent({
                   id: 0,
@@ -331,12 +337,12 @@ struct Index {
                 })
                   .allowUpdate(this.allowUpate)
                   .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
-                  .onAcquired((form) => {
+                  .onAcquired((form:InfoType) => {
                     console.info(` ${this.TAG} formsystemhostp get normal form, form id:` + form.id);
 
                     this.normalFormIds.push(form.id.toString());
                     if (this.normalFormIds.length == this.normal - this.normaldel) {
-                      let commonEventPublishData = {
+                      let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                         data: "normalForm",
                         bundleName: "com.ohos.st.formsystemhostp",
                         parameters: {
@@ -346,10 +352,10 @@ struct Index {
                       commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
                     }
                   })
-                  .onError((error) => {
+                  .onError((error:ErroType) => {
                     console.info(` ${this.TAG} formsystemhostp normal form error code:` + error.errcode);
                     console.info(` ${this.TAG} formsystemhostp normal form error msg:` + error.msg);
-                    let commonEventPublishData = {
+                    let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                       data: error.msg,
                       bundleName: "com.ohos.st.formsystemhostp"
                     };
@@ -357,7 +363,7 @@ struct Index {
                   })
                   .size({ width: 40, height: 40 })
               }
-            }, (item) => JSON.stringify(item))
+            }, (item:number) => JSON.stringify(item))
           }
           .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ')
             .columnsGap(2)
@@ -367,7 +373,7 @@ struct Index {
 
           Text(' [FormComponent] formsystemhostp temp form component test start')
           Grid() {
-            ForEach(this.tempFormCounts, (item) => {
+            ForEach(this.tempFormCounts, (item:number) => {
               GridItem() {
                 FormComponent({
                   id: 0,
@@ -380,11 +386,11 @@ struct Index {
                 })
                   .allowUpdate(this.allowUpate)
                   .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
-                  .onAcquired((form) => {
+                  .onAcquired((form:InfoType) => {
                     console.info(` ${this.TAG} formsystemhostp get temp form, form id:` + form.id);
                     this.tempFormIds.push(form.id.toString());
                     if (this.tempFormIds.length == this.temporary - this.temporarydel) {
-                      let commonEventPublishData = {
+                      let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                         data: "tempForm",
                         bundleName: "com.ohos.st.formsystemhostp",
                         parameters: {
@@ -394,10 +400,10 @@ struct Index {
                       commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
                     }
                   })
-                  .onError((error) => {
+                  .onError((error:ErroType) => {
                     console.info(` ${this.TAG} formsystemhostp temp form error code:` + error.errcode);
                     console.info(` ${this.TAG} formsystemhostp temp form error msg:` + error.msg);
-                    let commonEventPublishData = {
+                    let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                       data: error.msg,
                       bundleName: "com.ohos.st.formsystemhostp"
                     };
@@ -405,7 +411,7 @@ struct Index {
                   })
                   .size({ width: 40, height: 40 })
               }
-            }, (item) => JSON.stringify(item))
+            }, (item:number) => JSON.stringify(item))
           }
           .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ')
             .columnsGap(2)

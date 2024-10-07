@@ -56,14 +56,14 @@ struct GridCallbackPage {
   scroller: Scroller = new Scroller()
   messageManager: MessageManager<MessageData> = new MessageManager()
 
-  onPageShow() {
+  onPageShow(){
     console.info('GridPage onPageShow')
     let value: Value<MessageData> = {
       name: 'messageManager', message: this.messageManager
     }
     GlobalContext.getContext().setObject('value', value);
     let callback: Callback<MessageData> = message => {
-      console.error('message = ' + message.name + "--" + message.value)
+      console.error('message = ' + message.name + '--' + message.value)
       if (message.name == 'columnsTemplate') {
         this.columnsTemplate = message.value as string
       }
@@ -113,12 +113,12 @@ struct GridCallbackPage {
     this.messageManager.registerCallback(callback)
   }
 
-  build() {
-    Column({ space: 5 }) {
+  build(){
+    Column({ space: 2 }) {
       Text('default').fontColor(0xCCCCCC).fontSize(9).width('90%')
       Grid() {
         GridItem() {
-          Text("abc").fontSize(16).backgroundColor(0xF9CF93).width('100%')
+          Text('abc').fontSize(16).backgroundColor(0xF9CF93).width('100%')
             .height(40).textAlign(TextAlign.Center)
         }.width('90%')
       }.columnsTemplate('1fr')
@@ -186,7 +186,7 @@ struct GridCallbackPage {
         ForEach(this.Number, (row: string) => {
           ForEach(this.Number, (column: string) => {
             GridItem() {
-              Text(row +"-"+ column)
+              Text(row + '-' + column)
                 .fontSize(16)
                 .backgroundColor(0xF9CF93)
                 .width('100%')
@@ -215,8 +215,8 @@ struct GridCallbackPage {
         console.info('onScroll scrollOffset:' + scrollOffset.toString() + ' ScrollState:' + ScrollState.toString())
       })
       .onScrollIndex((first: number,last: number) => {
-        this.onScrollIndexText = "onScrollIndex:succ"
-        console.info("onScrollIndex first:" + first.toString() + " last:" + last.toString())
+        this.onScrollIndexText = 'onScrollIndex:succ'
+        console.info('onScrollIndex first:' + first.toString() + ' last:' + last.toString())
       })
       .onReachStart(() => {
         this.onReachStartText = 'onReachStart:succ'
@@ -236,15 +236,15 @@ struct GridCallbackPage {
       })
       .onScrollFrameBegin((offset: number, state: ScrollState) => {
         this.onScrollFrameBeginText = 'onScrollFrameBegin:succ'
-        console.info('onScrollFrameBegin offset:' + offset +' state:' + state)
+        console.info('onScrollFrameBegin offset:' + offset + ' state:' + state)
         return { offsetRemain: offset }
       })
 
-       Row(){
-        Button("scoll to bottom")
-          .key("bottom")
+       Row() {
+        Button('scoll to bottom')
+          .key('bottom')
           .onClick(() => { // 滑动到底部
-            console.log("滑动到底部")
+            console.log('滑动到底部')
             this.scroller.scrollTo({xOffset:0,yOffset:2000})
           })
         Button(this.buttonName)
@@ -260,24 +260,21 @@ struct GridCallbackPage {
       Text(this.onItemDragMove).key('onItemDragMove')
       Text(this.onItemDragLeave).key('onItemDragLeave')
       Text(this.onItemDrop).key('onItemDrop')
-      Row()
-      {
+      Row() {
         Text(this.onScrollText).margin({right:10}).key('onScrollText')
         Text(this.onReachStartText).key('onReachStartText')
       }
-      Row()
-      {
+      Row() {
         Text(this.onReachEndText).margin({right:10}).key('onReachEndText')
         Text(this.onScrollStartText).key('onScrollStartText')
       }
-      Row()
-      {
+      Row() {
         Text(this.onScrollIndexText).margin({right:10}).key('onScrollIndexText')
         Text(this.onScrollStopText).key('onScrollStopText')
       }
 
       Text(this.onScrollFrameBeginText).key('onScrollFrameBeginText')
       Text(this.onScrollBarUpdateText).key('onScrollBarUpdateText')
-    }.width('100%').margin({ top: 5 })
+    }.width('100%').margin({ top: 2 })
   }
 }

@@ -15,7 +15,7 @@
  */
 
 import cameraObj from 'libImageReceiverNativeTest.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import cameraObject from '@ohos.multimedia.camera';
 
 const TAG = "ImageReceiverModuleTest: ";

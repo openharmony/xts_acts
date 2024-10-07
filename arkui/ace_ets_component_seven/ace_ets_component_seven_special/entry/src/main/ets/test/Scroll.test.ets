@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
 export default function scrollOnScrollBeginJsunit() {
-  describe('scrollTest', function () {
-    beforeAll(async function (done) {
+  describe('scrollTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/scroll',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/scroll',
       }
       try {
         router.clear();
@@ -49,10 +49,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testScroll0001', 0, async function (done) {
+    it('testScroll0001', 0, async (done: Function) => {
       console.info('testScroll0001 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0001] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE");
@@ -68,10 +68,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testScroll0002', 0, async function (done) {
+    it('testScroll0002', 0, async (done: Function) => {
       console.info('testScroll0002 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0002] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(Math.abs(obj.$attrs.friction - 0.6) < 0.000001).assertTrue();
@@ -87,10 +87,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testScroll0003', 0, async function (done) {
+    it('testScroll0003', 0, async (done: Function) => {
       console.info('testScroll0003 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0003] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.enableScrollInteraction).assertEqual(true);
@@ -107,10 +107,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testStestScroll0004croll0001', 0, async function (done) {
+    it('testStestScroll0004croll0001', 0, async (done: Function) => {
       console.info('testScroll0004 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0004] obj is: " + JSON.stringify(obj.$attrs));
 
       // expect(obj.$attrs.nestedScroll).assertEqual("{scrollForward:SELF_ONLY,scrollBackward:SELF_FIRST}");
@@ -127,10 +127,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testScroll0005', 0, async function (done) {
+    it('testScroll0005', 0, async (done: Function) => {
       console.info('testScroll0005 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0005] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollable).assertEqual("ScrollDirection.Vertical");
@@ -146,10 +146,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testScroll0006', 0, async function (done) {
+    it('testScroll0006', 0, async (done: Function) => {
       console.info('testScroll0006 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0006] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollBar).assertEqual("BarState.Auto");
@@ -165,10 +165,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testScroll0007', 0, async function (done) {
+    it('testScroll0007', 0, async (done: Function) => {
       console.info('testScroll0007 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0007] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollBarWidth).assertEqual("5.00vp");
@@ -184,10 +184,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testScroll0008', 0, async function (done) {
+    it('testScroll0008', 0, async (done: Function) => {
       console.info('testScroll0008 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0008] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.edgeEffect).assertEqual("EdgeEffect.None");
@@ -203,10 +203,10 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testScroll0009', 0, async function (done) {
+    it('testScroll0009', 0, async (done: Function) => {
       console.info('testScroll0009 START');
       let strJson = getInspectorByKey('ScrollKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testScroll0009] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollBarColor).assertEqual("#FF123456");

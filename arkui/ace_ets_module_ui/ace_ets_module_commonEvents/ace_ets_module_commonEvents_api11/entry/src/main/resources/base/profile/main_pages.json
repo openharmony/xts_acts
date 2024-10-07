@@ -55,6 +55,7 @@
         "MainAbility/pages/lazyForeach/lazyForEach",
         "MainAbility/pages/onAppear/uiAppearance",
         "MainAbility/pages/GestureGroup/gesture",
+        "MainAbility/pages/gestureSetting",
         "MainAbility/pages/lazyForeach/lazyForEach2",
         "MainAbility/pages/PanGesture/gesture",
         "MainAbility/pages/onGestureJudgeBegin/gestureMode",

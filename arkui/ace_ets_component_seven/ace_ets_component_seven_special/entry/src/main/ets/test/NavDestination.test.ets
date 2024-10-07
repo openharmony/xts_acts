@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils';
 
 export default function navDestinationJsunit() {
-  describe('ActsAceNavDestinationTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAceNavDestinationTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("NavDestination beforeAll start");
-      let options = {
-        uri: 'MainAbility/pages/navDestination',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/navDestination',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,11 +49,11 @@ export default function navDestinationJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testNavDestination', 0, async function (done) {
+    it('testNavDestination', 0, async (done: Function) => {
       console.info('[testNavDestination] START');
       let strJson = getInspectorByKey('NavDestination1');
       console.info("[testNavDestination] strJson is : " + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testNavDestination] obj is : " + JSON.stringify(obj.$attrs));
       // expect(obj.$attrs.hideTitleBar).assertEqual(false);
       expect(true).assertEqual(true);

@@ -13,13 +13,21 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("ActsBmsGetMainElementNameTestH") {
+ohos_app_assist_suite("ActsBmsGetMainElementNameTestH_ndk_main") {
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "actsbmsgetmainelementnamerely:ActsBmsGetMainElementNameEnrtyRelyH",
-      "actsbmsgetmainelementnamerely:ActsBmsGetMainElementNameFeatureRelyH",
-      "actsbmsgetmainelementnametest:ActsBmsGetMainElementNameTestH",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsBmsGetMainElementNameTestHmain"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
+}
+
+ohos_js_app_suite("ActsBmsGetMainElementNameTestH") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsBmsGetMainElementNameTestH"
+
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
+  deps = [ ":ActsBmsGetMainElementNameTestH_ndk_main" ]
 }

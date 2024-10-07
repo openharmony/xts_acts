@@ -16,7 +16,7 @@
 import featureAbility from '@ohos.ability.featureAbility';
 import { UiDriver, BY } from '@ohos.UiTest'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import myaudioNdk from "libaudioNdkTest.so"
 
 const Tag = 'audio_ndk_test:'
@@ -1608,6 +1608,51 @@ export default function audioNDK() {
     it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDINPUTDEVICE_0001', 0, async function (done) {
         let a = myaudioNdk.audioRoutingManagerGetPreferredInputDevice001();
         console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDINPUTDEVICE_0001 audioRoutingManagerGetPreferredInputDevice001: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0100
+        * @tc.name      : setMicBlockStatusCallback with callback
+        * @tc.desc      : test OH_AudioRoutingManager_SetMicBlockStatusCallback
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0100', 0, async function (done) {
+        let a = myaudioNdk.audioRoutingManagerSetMicBlockStatusCallback_001();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0100 audioRoutingManagerSetMicBlockStatusCallback: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0200
+        * @tc.name      : setMicBlockStatusCallback with none callback
+        * @tc.desc      : test OH_AudioRoutingManager_SetMicBlockStatusCallback
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0200', 0, async function (done) {
+        let a = myaudioNdk.audioRoutingManagerSetMicBlockStatusCallback_002();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0200 audioRoutingManagerSetMicBlockStatusCallback: ${a}`);
+        expect(a).assertEqual(TEST_PASS)
+        done()
+    })
+
+    /**
+        * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0300
+        * @tc.name      : setMicBlockStatusCallback with callback and none callback
+        * @tc.desc      : test OH_AudioRoutingManager_SetMicBlockStatusCallback
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0300', 0, async function (done) {
+        let a = myaudioNdk.audioRoutingManagerSetMicBlockStatusCallback_003();
+        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0300 audioRoutingManagerSetMicBlockStatusCallback: ${a}`);
         expect(a).assertEqual(TEST_PASS)
         done()
     })
