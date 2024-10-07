@@ -24,7 +24,7 @@ export class RectValue {
 }
 
 export default class Utils {
-  public static instance: ESObject;
+  public static instance: Utils;
 
   static sleep(time: number) {
     return new Promise<string>((resolve, reject) => {
@@ -41,9 +41,13 @@ export default class Utils {
       .resourceManager
       .getRawFileContent(fileName)
       .then((data: ESObject) => {
-        return new Promise<ESObject>((resolve: ESObject, reject: ESObject) => {
+        return new Promise<ESObject>((resolve, reject) => {
           if (data) {
-            resolve(String.fromCharCode.apply(null, data))
+            let result = '';
+            for (let i = 0; i < data.length; i++) {
+              result += String.fromCharCode(data[i]);
+            }
+            resolve(result);
           } else {
             reject('')
           }
