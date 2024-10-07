@@ -125,9 +125,9 @@ HWTEST_F(NativeColorSpaceManagerTest, ColorSpace_GetGamma, TestSize.Level1)
 
 /*
  * @tc.name: ColorSpace_Destroy
- * @tc.desc: ColorSpace_Destroy.
+ * @tc.desc: Test ColorSpace_Destroy, test nativeColorSpaceManager destroy
  * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.require: issueIALHL4
  */
 HWTEST_F(NativeColorSpaceManagerTest, ColorSpace_Destroy, TestSize.Level1)
 {
