@@ -42,6 +42,7 @@ struct RefreshingContent {
         .alignListItem(ListItemAlign.Center)
         .scrollBar(BarState.Off)
       }
+      .id('refresh_content')
       .backgroundColor(0x89CFF0)
       .pullToRefresh(true)
       .onStateChange((refreshStatus: RefreshStatus) => {

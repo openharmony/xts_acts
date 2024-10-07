@@ -187,6 +187,20 @@ export default function sliderJsunit() {
       // Verify the swipe function of slider component
       console.info('sliderJsunit_0800 START');
       await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'vInSetValueOne',value:30})
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'style',value:SliderStyle.OutSet})
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'directionT',value:Axis.Horizontal})
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'reverse',value:false})
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'min',value:20})
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'max',value:80})
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'step',value:0.9})
+      await CommonFunc.sleep(2000);
       let sliderT = CommonFunc.getComponentRectOnScreen('sliderConstructor');
       let top = sliderT.top
       let bottom = sliderT.bottom
@@ -195,7 +209,7 @@ export default function sliderJsunit() {
       let x = Math.round(left + (right - left) / 2)
       let driver = await Driver.create();
       await driver.delayMs(waitUiReadyMs);
-      await driver.swipe(x, Math.round(bottom - 20), x, Math.round(top + 50));
+      await driver.swipe(x, Math.round(bottom - vp2px(14)), x, Math.round(top + vp2px(34)));
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('tex');
       let obj: ESObject = JSON.parse(strJson);
