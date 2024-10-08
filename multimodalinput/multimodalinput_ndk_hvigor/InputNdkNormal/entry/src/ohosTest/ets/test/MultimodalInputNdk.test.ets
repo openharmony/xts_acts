@@ -2793,5 +2793,191 @@ export default function MultimodalInputNdkTest() {
       }
       console.info(`${caseName} end to test OH_Input_DestroyDeviceInfo`);
     });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetAllSystemHotkeys_0100
+     * @tc.name: SUB_MMI_Api_Input_GetAllSystemHotkeys_0100
+     * @tc.desc: OH_Input_GetAllSystemHotkeys Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetAllSystemHotkeys_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetAllSystemHotkeys_0100';
+      console.info(`${caseName} start to test OH_Input_GetAllSystemHotkeys`);
+      try {
+        let data = input.GetAllSystemHotkeys();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetAllSystemHotkeys`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_CreateAllSystemHotkeys_0100
+     * @tc.name: SUB_MMI_Api_Input_CreateAllSystemHotkeys_0100
+     * @tc.desc: OH_Input_CreateAllSystemHotkeys Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_CreateAllSystemHotkeys_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_CreateAllSystemHotkeys_0100';
+      console.info(`${caseName} start to test OH_Input_CreateAllSystemHotkeys`);
+      try {
+        let data = input.CreateAllSystemHotkeys();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_CreateAllSystemHotkeys`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetAllSystemHotkeys_0200
+     * @tc.name: SUB_MMI_Api_Input_GetAllSystemHotkeys_0200
+     * @tc.desc: OH_Input_GetAllSystemHotkeys Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetAllSystemHotkeys_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetAllSystemHotkeys_0200';
+      console.info(`${caseName} start to test OH_Input_GetAllSystemHotkeys`);
+      try {
+        let data = input.GetAllSystemHotkeys2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetAllSystemHotkeys`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetAllSystemHotkeys_0300
+     * @tc.name: SUB_MMI_Api_Input_GetAllSystemHotkeys_0300
+     * @tc.desc: OH_Input_GetAllSystemHotkeys Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetAllSystemHotkeys_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetAllSystemHotkeys_0300';
+      console.info(`${caseName} start to test OH_Input_GetAllSystemHotkeys`);
+      try {
+        let data = input.GetAllSystemHotkeys3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetAllSystemHotkeys`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_CreateAllSystemHotkeys_0200
+     * @tc.name: SUB_MMI_Api_Input_CreateAllSystemHotkeys_0200
+     * @tc.desc: OH_Input_CreateAllSystemHotkeys Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_CreateAllSystemHotkeys_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_CreateAllSystemHotkeys_0200';
+      console.info(`${caseName} start to test OH_Input_CreateAllSystemHotkeys`);
+      try {
+        let data = input.CreateAllSystemHotkeys2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_CreateAllSystemHotkeys`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_GetIntervalSinceLastInput_0100
+     * @tc.name: SUB_MMI_Api_Input_GetIntervalSinceLastInput_0100
+     * @tc.desc: OH_Input_GetIntervalSinceLastInput Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_GetIntervalSinceLastInput_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_GetIntervalSinceLastInput_0100';
+      console.info(`${caseName} start to test OH_Input_GetIntervalSinceLastInput`);
+      try {
+        let data = input.GetIntervalSinceLastInput();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetIntervalSinceLastInput`);
+    });
   });
 }
