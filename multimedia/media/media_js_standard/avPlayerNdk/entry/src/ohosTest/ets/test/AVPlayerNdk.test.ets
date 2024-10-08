@@ -779,6 +779,34 @@ export default function AVPlayerNdkTest() {
       done();
     });
 
+    /* *
+        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_GETPLAYBACKSPEED_0300
+        * @tc.name      : testOhAvPlayerGetPlaybackSpeed003
+        * @tc.desc      : test AvPlayerGetPlaybackSpeedNormalThree
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+    it('testOhAvPlayerGetPlaybackSpeed003', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerGetPlaybackSpeedNormalThree();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /* *
+        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_GETPLAYBACKSPEED_0400
+        * @tc.name      : testOhAvPlayerGetPlaybackSpeed004
+        * @tc.desc      : test AvPlayerGetPlaybackSpeedAbnormalThree
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+    it('testOhAvPlayerGetPlaybackSpeed004', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerGetPlaybackSpeedAbnormalThree();
+      expect(result).assertEqual(0);
+      done();
+    });
+
     /**
      * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SELECTBITRATE_0100
      * @tc.name       : testOhAvPlayerSelectBitRate001
