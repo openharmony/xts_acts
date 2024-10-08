@@ -118,11 +118,14 @@ struct WebComponent {
         .key('004')
         .onClick(async () => {
           try {
-            this.controller1.startDownload('https://npmmirror.com/mirrors/node/v20.17.0/node-v20.17.0-x64.msi');
+            this.controller1.startDownload('https:' +
+              '//npmmirror.com/mirrors/node/v20.17.0/node-v20.17.0-x64.msi');
             await Utils.sleep(100)
-            this.controller2.startDownload('https://npmmirror.com/mirrors/node/v20.17.0/node-v20.17.0-x64.msi');
+            this.controller2.startDownload('https:' +
+              '//npmmirror.com/mirrors/node/v20.17.0/node-v20.17.0-x64.msi');
             await Utils.sleep(100)
-            this.controller3.startDownload('https://npmmirror.com/mirrors/node/v20.17.0/node-v20.17.0-x64.msi');
+            this.controller3.startDownload('https:' +
+              '//npmmirror.com/mirrors/node/v20.17.0/node-v20.17.0-x64.msi');
           } catch (error) {
             console.error(`ErrorCode1: ${(error as BusinessError).code},  Message1: ${(error as BusinessError).message}`);
           }

@@ -15,7 +15,6 @@
 
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { URL } from '../../test/Config';
 import { LocalContext } from '../../test/GloablConfig';
 import Utils from '../../test/Util';
 
@@ -24,32 +23,34 @@ import Utils from '../../test/Util';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
-  webDownloadItem: webview.WebDownloadItem = new webview.WebDownloadItem()
+  webDownloadItem: webview.WebDownloadItem = new webview.WebDownloadItem();
 
-  build(){
+  build() {
     Column() {
-      Button('GetPercentComplete')
+      Button('setConnectionTimeOut')
         .key('001')
-        .onClick(() => {
+        .onClick(()=>{
           try {
-            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.log('will start a download.');
-              webDownloadItem.start(LocalContext.context.cacheDir + '/311/' + webDownloadItem.getSuggestedFileName());
+            this.delegate.onBeforeDownload((webDownloadItem:webview.WebDownloadItem)=>{
+              console.log( 'will start a download.');
+              webDownloadItem.start(LocalContext.context.cacheDir +'/8111/'+ webDownloadItem.getSuggestedFileName());
               this.webDownloadItem = webDownloadItem
             })
-            this.delegate.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download update guid1: ' + webDownloadItem.getPercentComplete());
-              if (webDownloadItem.getPercentComplete() > 20) {
-                webDownloadItem.cancel()
-                console.log('download update guid2: ' + webDownloadItem.getPercentComplete());
-                LocalContext.context.eventHub.emit('DownloadGetPercentComplete3', this.webDownloadItem.getPercentComplete())
-              }
+            this.delegate.onDownloadUpdated(async (webDownloadItem:webview.WebDownloadItem) =>{
+              console.log('download update guid1: '+webDownloadItem.getCurrentSpeed());
+              webDownloadItem.resume()
+              await Utils.sleep(1000)
+
+              LocalContext.context.eventHub.emit('setConnectionTimeOut4',
+                webDownloadItem.getState())
             })
-            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download failed guid: ' + webDownloadItem.getGuid());
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) =>{
+              console.log('download failed guid: '+webDownloadItem.getGuid());
+              LocalContext.context.eventHub.emit('setConnectionTimeOut4',
+                webDownloadItem.getState())
             })
-            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download finish guid: ' + webDownloadItem.getGuid());
+            this.delegate.onDownloadFinish((webDownloadItem:webview.WebDownloadItem) =>{
+              console.log('download finish guid: '+webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -59,15 +60,15 @@ struct WebComponent {
 
       Button('startDownload')
         .key('002')
-        .onClick(() => {
+        .onClick(()=>{
           try {
-            this.controller.startDownload('https:' +
-              '//cd001.v78q.com/cs/104sem/Beyond Compare 文件对比工具_sm60000068e.exe');
-          } catch (error) {
+            this.controller.startDownload('https:'+
+              '//cos.kkfw.net/cxb/b1kkfw/Notepad%2B%2B%20%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F.exe');
+          } catch(error){
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({src: 'www.example.com', controller: this.controller })
     }
   }
 }

@@ -14,7 +14,15 @@
 */
 
 import abilityTest from './Ability.test';
+import GetCurrentSpeed from './GetCurrentSpeed.test';
+import GetPercentComplete from './GetPercentComplete.test';
+import SetConnectionTimeOut from './SetConnectionTimeOut.test';
+import SetDownloadDelegate from './SetDownloadDelegate.test';
 
 export default function testsuite() {
   abilityTest();
+  GetCurrentSpeed();
+  GetPercentComplete();
+  SetConnectionTimeOut();
+  SetDownloadDelegate()
 }

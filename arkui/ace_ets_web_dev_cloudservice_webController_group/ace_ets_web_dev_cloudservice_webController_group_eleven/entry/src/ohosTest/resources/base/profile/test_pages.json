@@ -19,6 +19,17 @@
     "testability/pages/GetPercentComplete7",
     "testability/pages/GetPercentComplete8",
     "testability/pages/GetPercentComplete10",
+    "testability/pages/GetPercentComplete11",
+    "testability/pages/SetConnectionTimeOut1",
+    "testability/pages/SetConnectionTimeOut2",
+    "testability/pages/SetConnectionTimeOut3",
+    "testability/pages/SetConnectionTimeOut4",
+    "testability/pages/SetDownloadDelegate1",
+    "testability/pages/SetDownloadDelegate2",
+    "testability/pages/SetDownloadDelegate3",
+    "testability/pages/SetDownloadDelegate4",
+    "testability/pages/SetDownloadDelegate5",
+    "testability/pages/SetDownloadDelegate6",
     "testability/pages/RenderProcess"
   ]
 }

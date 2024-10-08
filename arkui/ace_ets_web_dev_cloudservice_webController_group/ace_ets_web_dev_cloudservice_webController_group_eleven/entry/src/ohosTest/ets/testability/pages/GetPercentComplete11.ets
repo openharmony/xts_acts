@@ -24,7 +24,15 @@ import Utils from '../../test/Util';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
-  webDownloadItem: webview.WebDownloadItem = new webview.WebDownloadItem()
+  webDownloadItem: webview.WebDownloadItem = new webview.WebDownloadItem();
+
+  aboutToDisappear(): void{
+    webview.WebviewController.setConnectionTimeout(60)
+  }
+
+  aboutToAppear(): void{
+    webview.WebviewController.setConnectionTimeout(2)
+  }
 
   build(){
     Column() {
@@ -34,28 +42,18 @@ struct WebComponent {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
               console.log('will start a download.');
-              webDownloadItem.start(LocalContext.context.cacheDir + '/611/' + webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start(LocalContext.context.cacheDir + '/1101/' + webDownloadItem.getSuggestedFileName())
               this.webDownloadItem = webDownloadItem
             })
-            this.delegate.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download update guid1: ' + webDownloadItem.getPercentComplete());
-              if (webDownloadItem.getPercentComplete() >= 90) {
-                console.log('download update guid3: ' + webDownloadItem.getPercentComplete());
-                LocalContext.context.eventHub.emit('DownloadGetPercentComplete6', webDownloadItem.getPercentComplete())
-              }
-              if (webDownloadItem.getPercentComplete() >= 80) {
-                webDownloadItem.pause()
-                console.log('download update guid2: ' + this.webDownloadItem.getPercentComplete());
-                await Utils.sleep(100)
-                this.webDownloadItem.resume()
-              }
-
-            })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download failed guid: ' + webDownloadItem.getGuid());
+              console.log('download failed guid: ' + webDownloadItem.getPercentComplete());
+              LocalContext.context.eventHub.emit('DownloadGetPercentComplete11',
+                this.webDownloadItem.getPercentComplete())
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download finish guid: ' + webDownloadItem.getGuid());
+              console.log('download finish guid: ' + webDownloadItem.getPercentComplete());
+              LocalContext.context.eventHub.emit('DownloadGetPercentComplete11',
+                this.webDownloadItem.getPercentComplete())
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -73,7 +71,15 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: 'https:' + '//www.baidu.com', controller: this.controller })
+        .onErrorReceive((event) => {
+          if (event) {
+            console.log('getErrorInfo:' + event.error.getErrorInfo());
+            console.log('getErrorCode:' + event.error.getErrorCode());
+            LocalContext.context.eventHub.emit('DownloadGetPercentComplete11',
+              this.webDownloadItem.getPercentComplete())
+          }
+        })
     }
   }
 }

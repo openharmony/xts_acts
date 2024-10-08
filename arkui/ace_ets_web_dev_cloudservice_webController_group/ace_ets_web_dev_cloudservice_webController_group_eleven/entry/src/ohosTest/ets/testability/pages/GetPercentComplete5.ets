@@ -67,8 +67,8 @@ struct WebComponent {
         .key('002')
         .onClick(() => {
           try {
-            this.controller.startDownload('https://' +
-              'cos.kkfw.net/cxb/b1kkfw/Notepad%2B%2B%20%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F.exe');
+            this.controller.startDownload('https:' +
+              '//cd001.v78q.com/cs/104sem/Beyond Compare 文件对比工具_sm60000068e.exe');
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
