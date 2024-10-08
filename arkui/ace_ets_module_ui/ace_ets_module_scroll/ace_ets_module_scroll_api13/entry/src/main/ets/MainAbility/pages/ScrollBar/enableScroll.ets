@@ -18,7 +18,7 @@ struct StickyNestedScroll {
   listScroller: Scroller = new Scroller();
   @State array: number[] = []
 
-  @Styles listCard() {
+  @Styles listCard(){
     .backgroundColor(Color.White)
     .height(50)
     .width('100%')
