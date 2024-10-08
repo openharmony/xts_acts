@@ -33,6 +33,7 @@ export default function AVPlayerAudioEffectModeTest() {
         let fileDescriptor2 = null;
         let fileDescriptor3 = null;
         let avPlayer = null;
+        let amplitude = -1;
         
 
         beforeAll(async function() {
@@ -511,6 +512,7 @@ export default function AVPlayerAudioEffectModeTest() {
                         break;
                     case AV_PLAYER_STATE.PLAYING:
                         await mediaTestBase.msleepAsync(PLAY_TIME);
+                        expect(amplitude != -1).assertEqual(true);
                         avPlayer.release();
                         break;
                     case AV_PLAYER_STATE.RELEASED:
@@ -524,7 +526,7 @@ export default function AVPlayerAudioEffectModeTest() {
 
             avPlayer.on('amplitudeUpdate', (value) => {
                 console.info(`get max amplitude ${value}`);
-                expect(value.length).assertEqual(5);
+                amplitude = value[0];
             })
 
             avPlayer.on('error', (err) => {
