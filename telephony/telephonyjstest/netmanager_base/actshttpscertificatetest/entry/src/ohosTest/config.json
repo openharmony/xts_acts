@@ -13,7 +13,6 @@
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
     "deviceType": [
-      "wearable",
       "default",
       "tablet",
       "2in1"

@@ -28,6 +28,7 @@ const ExpectTrue: (n: boolean) => void = (n: boolean) => {
     console.info("expectInfo", `test failed`);
   }
 }
+let callNumber: string = '15595310612';
 
 async function runTestCaseWithJudgeHasSimCard(testCaseName: string, done: Function, runTest: Function) {
   try {
@@ -100,7 +101,7 @@ export default function observerManagerTest() {
       console.info(`${caseName} test start `);
       try {
         observer.on('networkStateChange', {
-          slotId: 3
+          slotId: 2
         }, (data: observer.NetworkState) => {
           console.info(`${caseName} data ${JSON.stringify(data)}`);
           ExpectTrue(false);
@@ -305,6 +306,7 @@ export default function observerManagerTest() {
           ExpectTrue(false);
           done();
         });
+        await call.dialCall(callNumber);
       } catch (error) {
         console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
         ExpectTrue(error.code == 401);
@@ -336,6 +338,7 @@ export default function observerManagerTest() {
           ExpectTrue(false);
           done();
         });
+        await call.dialCall(callNumber);
       } catch (error) {
         console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
         ExpectTrue(error.code == 401);
@@ -367,6 +370,7 @@ export default function observerManagerTest() {
           ExpectTrue(false);
           done();
         });
+        await call.dialCall(callNumber);
       } catch (error) {
         console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
         ExpectTrue(error.code == 401);
@@ -392,12 +396,13 @@ export default function observerManagerTest() {
           number: string = ""
         };
         observer.on('callStateChange', {
-          slotId: 3
+          slotId: 2
         }, (value: Value) => {
           console.info(`${caseName} data ${JSON.stringify(value)}}`);
           ExpectTrue(false);
           done();
         });
+        await call.dialCall(callNumber);
       } catch (error) {
         console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
         ExpectTrue(error.code == 8300001);
@@ -486,7 +491,7 @@ export default function observerManagerTest() {
           network: radio.RadioTechnology = radio.RadioTechnology.RADIO_TECHNOLOGY_UNKNOWN
         };
         observer.on('cellularDataConnectionStateChange', {
-          slotId: 3
+          slotId: 2
         }, (data: Value) => {
           console.info(`${caseName} data ${JSON.stringify(data)}`);
           ExpectTrue(false);
@@ -771,7 +776,7 @@ export default function observerManagerTest() {
       console.info(`${caseName} test start `);
       try {
         observer.on('cellularDataFlowChange', {
-          slotId: 3
+          slotId: 2
         }, (data: observer.DataFlowType) => {
           console.info(`${caseName} data ${JSON.stringify(data)}`);
           ExpectTrue(false);
@@ -1102,7 +1107,7 @@ export default function observerManagerTest() {
       console.info(`${caseName} test start `);
       try {
         observer.on('signalInfoChange', {
-          slotId: 3
+          slotId: 2
         }, (data: Array<radio.SignalInformation>) => {
           console.info(`${caseName} data ${JSON.stringify(data)}`);
           ExpectTrue(false);
