@@ -236,8 +236,13 @@ export const textInputOnCutTest: (a: string) => void;
 export const textInputOnPasteTest: (a: string) => void;
 
 export const gestureTest: (a: string) => void;
-
+export const longPressGestureTest: (a: string) => void;
 export const gestureNestScrollTest: (a: string) => void;
+export const swipeGestureTest: (a: string) => void;
+export const panGestureTest: (a: string) => void;
+export const rotateGestureTest: (a: string) => void;
+export const pinchGestureTest: (a: string) => void;
+export const interruptGestureTest: (a: string) => void;
 
 export const dragTest: (a: string) => void;
 
