@@ -13,12 +13,12 @@
 * limitations under the License.
 */
 
-const URL1 = "http://"
-const URL2 = "9aoh4j.cn/iBOd74/"
-const URL3 = "www.0001cp.vip/home"
-const URL4 = "378937.net/"
-const URL5 = "www.baidu.com"
-const URL6 = "www.zubo662.com:30473"
+const URL1 = 'http://'
+const URL2 = '9aoh4j.cn/iBOd74/'
+const URL3 = 'www.0001cp.vip/home'
+const URL4 = '378937.net/'
+const URL5 = 'www.baidu.com'
+const URL6 = 'www.zubo662.com:30473'
 
 export let url1 = URL1 + URL2
 export let url2 = URL1 + URL3

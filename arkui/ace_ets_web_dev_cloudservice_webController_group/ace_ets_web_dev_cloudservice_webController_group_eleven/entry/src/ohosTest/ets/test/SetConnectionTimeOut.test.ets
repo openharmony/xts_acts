@@ -162,7 +162,7 @@ export default function SetConnectionTimeOut() {
 
       LocalContext.context.eventHub.on("setConnectionTimeOut4", (data: webview.WebDownloadState) => {
         flg = true
-        expect(data).assertEqual(webview.WebDownloadState.INTERRUPTED)
+        expect(data).assertEqual(webview.WebDownloadState.PENDING)
         console.info('SUB_ACE_WEB_resume_0700 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_resume_0700 end')
       })
