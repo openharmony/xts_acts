@@ -56,6 +56,9 @@
       },
       {
         "name": "ohos.permission.READ_MEDIA"
+      },
+      {
+        "name": "ohos.permission.PROTECT_SCREEN_LOCK_DATA"
       }
     ]
   }

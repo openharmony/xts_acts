@@ -15,17 +15,32 @@
 
 import request from "@ohos.request";
 import fileio from '@ohos.fileio';
+import common from '@ohos.app.ability.common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function requestDownloadNormalJSUnit() {
   describe('requestDownloadNormalJSUnit', () => {
     console.info('====>################################request download Test start');
 
+    let baseContext: common.Context;
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(() => {
-      console.info('====>beforeAll: Prerequisites are executed.');
+    beforeAll((done: Function) => {
+      try {
+        let context: common.Context | undefined = AppStorage.get('context');
+        if (context !== undefined){
+          baseContext = context;
+          console.info('====>beforeAll requestDownloadNormalJSUnit baseContext:'+JSON.stringify(baseContext))
+          done();
+        } else {
+          console.info('====>beforeAll requestDownloadNormalJSUnit baseContext is undefined')
+          done();
+        }
+      } catch (err) {
+        console.info('====>beforeAll requestDownloadNormalJSUnit catch err:'+JSON.stringify(err))
+        done();
+      }
     });
 
     /**
@@ -60,7 +75,7 @@ export default function requestDownloadNormalJSUnit() {
     it('SUB_Misc_Request_DownloadManagement_0001', 0, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_0001 is starting---------------------");
       let downloadFileConfig: request.DownloadConfig = {
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         header: {
           headers: 'http'
         },
@@ -71,7 +86,7 @@ export default function requestDownloadNormalJSUnit() {
         title: 'XTS download test!',
       }
       try {
-        await request.downloadFile(globalThis.abilityContext, downloadFileConfig);
+        await request.downloadFile(baseContext, downloadFileConfig);
         expect().assertFail();
         console.info("====>SUB_Misc_Request_DownloadManagement_0001 downloadFile success");
         done();
@@ -94,7 +109,7 @@ export default function requestDownloadNormalJSUnit() {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_Callback_0001 is starting---------------------");
       try {
         let downloadConfig: request.DownloadConfig = {
-          url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+          url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
           header: {
             headers: 'http'
           },
@@ -104,7 +119,7 @@ export default function requestDownloadNormalJSUnit() {
           filePath: "SUB_Misc_Request_DownloadManagement_Callback_0001",
           title: 'XTS download test!',
         }
-        request.downloadFile(globalThis.abilityContext, downloadConfig, (err, downloadTask) => {
+        request.downloadFile(baseContext, downloadConfig, (err, downloadTask) => {
           if (err) {
             console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create err: " + JSON.stringify(err));
             expect(err.code).assertEqual(201);
@@ -135,14 +150,14 @@ export default function requestDownloadNormalJSUnit() {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'reeateTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010.txt',
         mode: request.agent.Mode.BACKGROUND
       };
 
-      request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+      request.agent.create(baseContext, config, async (err, task) => {
         console.info("====>SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010 downloadTask: " + task);
         try {
           if (err) {
@@ -173,7 +188,7 @@ export default function requestDownloadNormalJSUnit() {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
         title: 'reeateTest',
         description: 'XTS download test!',
         saveas: './SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010.txt',
@@ -181,7 +196,7 @@ export default function requestDownloadNormalJSUnit() {
       };
 
       try {
-        let task = await request.agent.create(globalThis.abilityContext, config);
+        let task = await request.agent.create(baseContext, config);
         expect().assertFail();
         console.info("====>SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010 create success: " + task);
       } catch (err) {
