@@ -501,6 +501,10 @@
         "MainAbility/pages/Flex/direction",
         "MainAbility/pages/Flex/placement",
         "MainAbility/pages/Row/row2",
-        "MainAbility/pages/waterflow/WaterflowDemo"
+        "MainAbility/pages/waterflow/WaterflowDemo",
+		"MainAbility/pages/Stack/stackAlignContentPage",
+        "MainAbility/pages/Divider/dividerPage",
+        "MainAbility/pages/Column/columnSplitPage"
+
     ]
 }
