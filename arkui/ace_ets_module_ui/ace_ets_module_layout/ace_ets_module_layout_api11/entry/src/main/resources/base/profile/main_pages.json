@@ -505,6 +505,5 @@
 		"MainAbility/pages/Stack/stackAlignContentPage",
         "MainAbility/pages/Divider/dividerPage",
         "MainAbility/pages/Column/columnSplitPage"
-
     ]
 }
