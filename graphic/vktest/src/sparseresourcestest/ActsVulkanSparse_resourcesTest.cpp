@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanSparse_resourcesTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -40,9 +41,13 @@ namespace OHOS {
 
     HWTEST_F(ActsVulkanSparse_resourcesTest, TestVulkanSparse_resourcesTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanSparse_resourcesTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/sparse-resources.txt --deqp-log-filename=ActsVulkanSparse_resourcesTest.qpa");
+        printf("------start ActsVulkanSparseresourcesTest------\n");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/sparse-resources.txt "
+                "--deqp-log-filename=ActsVulkanSparseresourcesTest.qpa");
+        }
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanSparse_resourcesTest------\n");
+        printf("------end ActsVulkanSparseresourcesTest------\n");
     }
 }

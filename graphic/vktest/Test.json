@@ -59,7 +59,7 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanBinding_modelTest.qpa->ActsVulkanBinding_modelTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanBindingmodelTest.qpa->ActsVulkanBindingmodelTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -71,7 +71,7 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanConditional_renderingTest.qpa->ActsVulkanConditional_renderingTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanConditionalrenderingTest.qpa->ActsVulkanConditionalrenderingTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -99,7 +99,7 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFraction_mandatory_testsTest.qpa->ActsVulkanFraction_mandatory_testsTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanFractionmandatorytestsTest.qpa->ActsVulkanFractionmandatorytestsTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -162,11 +162,11 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanProtected_memoryTest.qpa->ActsVulkanProtected_memoryTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanProtectedmemoryTest.qpa->ActsVulkanProtectedmemoryTest.qpa"
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanQuery_poolTest.qpa->ActsVulkanQuery_poolTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanQuerypoolTest.qpa->ActsVulkanQuerypoolTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -174,7 +174,7 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanRay_tracing_pipelineTest.qpa->ActsVulkanRay_tracing_pipelineTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanRaytracingpipelineTest.qpa->ActsVulkanRaytracingpipelineTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -194,7 +194,7 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanSparse_resourcesTest.qpa->ActsVulkanSparse_resourcesTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanSparseresourcesTest.qpa->ActsVulkanSparseresourcesTest.qpa"
                 },
                 {
                     "name": "pull",
@@ -222,7 +222,7 @@
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanTest_issuesTest.qpa->ActsVulkanTest_issuesTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanTestissuesTest.qpa->ActsVulkanTestissuesTest.qpa"
                 },
                 {
                     "name": "pull",

@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanSpirv_assemblyTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanSpirvassemblyTest, TestVulkanSpirv_assemblyTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanSpirvassemblyTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/spirv-assembly.txt --deqp-log-filename=ActsVulkanSpirvassemblyTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/spirv-assembly.txt "
+                "--deqp-log-filename=ActsVulkanSpirvassemblyTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanSpirvassemblyTest------\n");
     }

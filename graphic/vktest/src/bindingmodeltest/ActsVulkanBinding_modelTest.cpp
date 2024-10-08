@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanBinding_modelTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -40,9 +41,13 @@ namespace OHOS {
 
     HWTEST_F(ActsVulkanBinding_modelTest, TestVulkanBing_modelTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanBinding_modelTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/binding-model.txt --deqp-log-filename=ActsVulkanBinding_modelTest.qpa");
+        printf("------start ActsVulkanBindingmodelTest------\n");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/binding-model.txt "
+                "--deqp-log-filename=ActsVulkanBindingmodelTest.qpa");
+        }
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanBinding_modelTest------\n");
+        printf("------end ActsVulkanBindingmodelTest------\n");
     }
 }

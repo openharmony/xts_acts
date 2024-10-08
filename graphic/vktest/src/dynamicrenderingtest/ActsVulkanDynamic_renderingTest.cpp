@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanDynamic_renderingTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanDynamicrenderingTest, TestVulkanDynamic_renderingTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanDynamicrenderingTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/dynamic-rendering.txt --deqp-log-filename=ActsVulkanDynamicrenderingTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/dynamic-rendering.txt "
+                "--deqp-log-filename=ActsVulkanDynamicrenderingTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanDynamicrenderingTest------\n");
     }
