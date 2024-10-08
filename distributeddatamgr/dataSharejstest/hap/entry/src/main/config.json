@@ -12,6 +12,7 @@
     "package": "ohos.acts.dataSharejstest",
     "name": ".entry",
     "deviceType": [
+      "wearable",
       "default",
       "tablet",
       "phone",
