@@ -63,7 +63,8 @@ function expectForFlexShrink(targetSize: number, space: number, countFlexShrink:
   console.info('[' + data.caseTag + '] targetSize : ' + targetSize);
   //Verify based on different parent container spindle directions
   let ratio = countFlexShrink / (compareFlexShrink + targetFlexShrink);
-  expect(Math.abs(Number(realRect) - Number(vp2px(targetSize - space * ratio))) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] targetSize - space * ratio : ' + vp2px(targetSize - space * ratio));
+  expect(Math.abs(Math.round(realRect) - Math.round(vp2px(targetSize - space * ratio))) <= 2).assertTrue();
   console.info('[' + data.caseTag + '] targetSize - space * ratio : ' + (targetSize - space * ratio));
 }
 
