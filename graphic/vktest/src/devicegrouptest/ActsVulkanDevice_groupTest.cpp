@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanDevice_groupTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanDevicegroupTest, TestVulkanDevice_groupTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanDevicegroupTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/device-group.txt --deqp-log-filename=ActsVulkanDevicegroupTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/device-group.txt "
+                "--deqp-log-filename=ActsVulkanDevicegroupTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanDevicegroupTest------\n");
     }

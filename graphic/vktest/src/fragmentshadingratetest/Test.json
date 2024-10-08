@@ -43,8 +43,8 @@
             "type": "CommandKit",
             "teardown": [
                 {
-                    "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanFragmentshadingrateTest.qpa->ActsVulkanFragmentshadingrateTest.qpa"
+                "name": "pull",
+                "value": "/data/local/tmp/ActsVulkanFragmentshadingrateTest.qpa->ActsVulkanFragmentshadingrateTest.qpa"
                 }
             ]
         },

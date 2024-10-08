@@ -56,7 +56,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanFastlinkedLibraryTest pipeline/fast-linked-library.txt"
+             "python testcases/vulkandata/genlocal.py ActsVulkanFastlinkedLibraryTest pipeline/fast-linked-library.txt"
             ]
         }
 

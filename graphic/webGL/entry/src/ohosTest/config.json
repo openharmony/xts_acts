@@ -12,6 +12,7 @@
     "package": "com.test.webGL",
     "name": ".MyApplication_test",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",

@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanDescriptor_indexingTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanDescriptorindexingTest, TestVulkanDescriptor_indexingTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanDescriptorindexingTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/descriptor-indexing.txt --deqp-log-filename=ActsVulkanDescriptorindexingTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/descriptor-indexing.txt "
+                "--deqp-log-filename=ActsVulkanDescriptorindexingTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanDescriptorindexingTest------\n");
     }

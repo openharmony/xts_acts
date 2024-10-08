@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanGeometryTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanGeometryTest, TestVulkanGeometryTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanGeometryTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/geometry.txt --deqp-log-filename=ActsVulkanGeometryTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/geometry.txt "
+                "--deqp-log-filename=ActsVulkanGeometryTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanGeometryTest------\n");
     }
