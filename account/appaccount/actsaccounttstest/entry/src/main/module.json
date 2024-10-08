@@ -19,7 +19,7 @@
         "abilities": [
             {
                 "name": "com.example.accounttstest.MainAbility",
-                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ets",
                 "description": "$string:phone_entry_main",
                 "icon": "$media:icon",
                 "label": "$string:entry_label",
