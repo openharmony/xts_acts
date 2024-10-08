@@ -481,5 +481,114 @@ export default function AVPlayerAudioEffectModeTest() {
             })
             setSource(avPlayer, fileDescriptor);
         })
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_APITIME_0100
+            * @tc.name      : 005.test audioEffectMode api time
+            * @tc.desc      : test audioEffectMode api time
+            * @tc.size      : MediumTest
+            * @tc.type      : performance test
+            * @tc.level     : Level3
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_APITIME_0100', 0, async function (done) {
+            let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
+            await media.createAVPlayer().then((video) => {
+                if (typeof(video) != 'undefined') {
+                    avPlayer = video;
+                } else {
+                    expect().assertFail();
+                    done();
+                }
+            }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+            avPlayer.on('stateChange', async (state, reason) => {
+                switch (state) {
+                    case AV_PLAYER_STATE.INITIALIZED:
+                        avPlayer.surfaceId = globalThis.value;
+                        avPlayer.prepare();
+                        break;
+                    case AV_PLAYER_STATE.PREPARED:
+                        let startTime = new Date().getTime();
+                        console.info('case audioEffectMode startTime is : ' + startTime);
+                        for (let i = 0; i < 1000; i++) {
+                            avPlayer.audioEffectMode = audioEffectMode[Math.floor((Math.random()*audioEffectMode.length))];
+                        }
+                        let endTime = new Date().getTime();
+                        console.info('case audioEffectMode endTime is : ' + endTime);
+                        let audioEffectMode_averageTime = ((endTime - startTime) * 1000) / 1000;
+                        console.info('case audioEffectMode_averageTime is : ' + audioEffectMode_averageTime + 'us');
+                        expect(audioEffectMode_averageTime < APIBASELINE).assertTrue();
+                        avPlayer.play();
+                        break;
+                    case AV_PLAYER_STATE.PLAYING:
+                        await mediaTestBase.msleepAsync(PLAY_TIME);
+                        avPlayer.release();
+                        break;
+                    case AV_PLAYER_STATE.RELEASED:
+                        avPlayer = null;
+                        done();
+                        break;
+                    default:
+                        break;
+                }
+            })
+            avPlayer.on('error', (err) => {
+                console.error(`error occurred, message is ${err.message}`);
+                expect().assertFail();
+                avPlayer.release();
+            })
+            setSource(avPlayer, fileDescriptor);
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_GET_MAX_AMPLITUDE_0100
+            * @tc.name      : 001.test get max amplitude
+            * @tc.desc      : test get max amplitude
+            * @tc.size      : MediumTest
+            * @tc.type      : performance test
+            * @tc.level     : Level3
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_GET_MAX_AMPLITUDE_0100', 0, async function (done) {
+            let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
+            await media.createAVPlayer().then((video) => {
+                if (typeof(video) != 'undefined') {
+                    avPlayer = video;
+                } else {
+                    expect().assertFail();
+                    done();
+                }
+            }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+            avPlayer.on('stateChange', async (state, reason) => {
+                switch (state) {
+                    case AV_PLAYER_STATE.INITIALIZED:
+                        avPlayer.surfaceId = globalThis.value;
+                        avPlayer.prepare();
+                        break;
+                    case AV_PLAYER_STATE.PREPARED:
+                        avPlayer.play();
+                        break;
+                    case AV_PLAYER_STATE.PLAYING:
+                        await mediaTestBase.msleepAsync(PLAY_TIME);
+                        avPlayer.release();
+                        break;
+                    case AV_PLAYER_STATE.RELEASED:
+                        avPlayer = null;
+                        done();
+                        break;
+                    default:
+                        break;
+                }
+            })
+
+            avPlayer.on('amplitudeUpdate', (value) => {
+                console.info(`get max amplitude ${value}`);
+                expect(value.length).assertEqual(5);
+            })
+
+            avPlayer.on('error', (err) => {
+                console.error(`error occurred, message is ${err.message}`);
+                expect().assertFail();
+                avPlayer.release();
+            })
+            setSource(avPlayer, fileDescriptor);
+        })
     })
 }
