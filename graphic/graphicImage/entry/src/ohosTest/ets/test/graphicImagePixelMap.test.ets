@@ -702,6 +702,295 @@ export default function graphicImagePixelMapTest() {
       })
     });
 
-    
+     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_039
+     * @tc.name      : testSetMemoryNameSync_1
+     * @tc.desc      :  1.create PixelMap
+                        2.create name
+                        3.use setMemoryNameSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetMemoryNameSync_1", 0, async (done:Function)=>  {
+      let msg = '=====testSetMemoryNameSync_1====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+
+      image.createPixelMap(color, opts).then(async(pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        try{
+          let context1 = getContext()
+          console.info( msg + ' 0 ');
+          const resourceMgr = context1.resourceManager
+          const fileData = await resourceMgr.getMediaContent($r('app.media.icon'))
+          const buffer = fileData.buffer
+          const imageSource = image.createImageSource(buffer)
+          let decodingOptions: image.DecodingOptions = {
+            desiredSize: { width: 512, height:512 },
+            desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+            desiredDynamicRange: image.DecodingDynamicRange.HDR
+          }
+          pixelMap = imageSource.createPixelMapSync(decodingOptions)
+
+          console.info( msg + ' 2 ');
+          let nullName = ''
+          try{
+            pixelMap.setMemoryNameSync(nullName)
+            console.info( msg + ' 7 ');
+            expect().assertFail();
+            done();
+          }catch(error){
+            if(error.code == 62980286){
+              console.info( msg + ' The DMA memory does not exist. ');
+              console.log(msg + ' Example end !')
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info( msg + ' 7 ' + error.code );
+              if(error.code == 401){
+                console.info( msg + ' The longth of Name is mistake ');
+                console.log(msg + ' Example end !')
+                expect(true).assertTrue();
+                done();
+              }else{
+                console.info( msg + ' Faild in .' + error);
+                console.info( msg + ' Faild in .' + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }
+        }catch(error){
+          console.info( msg + ' Faild in .' + error);
+          console.info( msg + ' Faild in .' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.info( msg + ' Faild in .' + error);
+        console.info( msg + ' Faild in .' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_040
+     * @tc.name      : testSetMemoryNameSync_2
+     * @tc.desc      :  1.create PixelMap
+                        2.create name
+                        3.use setMemoryNameSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetMemoryNameSync_2", 0, async (done:Function)=>  {
+      let msg = '=====testSetMemoryNameSync_2====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+
+      image.createPixelMap(color, opts).then(async(pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        try{
+          let context1 = getContext()
+          console.info( msg + ' 0 ');
+          const resourceMgr = context1.resourceManager
+          const fileData = await resourceMgr.getMediaContent($r('app.media.icon'))
+          const buffer = fileData.buffer
+          const imageSource = image.createImageSource(buffer)
+          let decodingOptions: image.DecodingOptions = {
+            desiredSize: { width: 512, height:512 },
+            desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+            desiredDynamicRange: image.DecodingDynamicRange.HDR
+          }
+          pixelMap = imageSource.createPixelMapSync(decodingOptions)
+
+          console.info( msg + ' 2 ');
+          let rightName = '123456789'
+          try{
+            pixelMap.setMemoryNameSync(rightName)
+            console.info( msg + ' 7 ');
+            expect(true).assertTrue();
+            done();
+          }catch(error){
+            if(error.code == 62980286){
+              console.info( msg + ' The memory does not exist. ');
+              console.log( msg + ' Example end !')
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info( msg + ' Faild in .' + error);
+              console.info( msg + ' Faild in .' + JSON.stringify(error));
+              expect().assertFail();
+              done();
+            }
+          }
+        }catch(error){
+          console.info( msg + ' Faild in .' + error);
+          console.info( msg + ' Faild in .' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.info( msg + ' Faild in .' + error);
+        console.info( msg + ' Faild in .' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_041
+     * @tc.name      : testSetMemoryNameSync_3
+     * @tc.desc      :  1.create PixelMap
+                        2.create name
+                        3.use setMemoryNameSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetMemoryNameSync_3", 0, async (done:Function)=>  {
+      let msg = '=====testSetMemoryNameSync_3====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+
+      image.createPixelMap(color, opts).then(async(pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        try{
+          let context1 = getContext()
+          console.info( msg + ' 0 ');
+          const resourceMgr = context1.resourceManager
+          const fileData = await resourceMgr.getMediaContent($r('app.media.icon'))
+          const buffer = fileData.buffer
+          const imageSource = image.createImageSource(buffer)
+          let decodingOptions: image.DecodingOptions = {
+            desiredSize: { width: 512, height:512 },
+            desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+            desiredDynamicRange: image.DecodingDynamicRange.HDR
+          }
+          pixelMap = imageSource.createPixelMapSync(decodingOptions)
+
+          console.info( msg + ' 2 ');
+          let moreThan32Name = '1111111111111111111111111111111111111111'
+          try{
+            pixelMap.setMemoryNameSync(moreThan32Name)
+            console.info( msg + ' 7 ');
+            expect().assertFail();
+            done();
+          }catch(error){
+            if(error.code == 62980286){
+              console.info( msg + ' The DMA memory does not exist. ');
+              console.log(msg + ' Example end !')
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info( msg + ' 7 ' + error.code );
+              if(error.code == 401){
+                console.info( msg + ' The longth of Name is mistake ');
+                console.log(msg + ' Example end !')
+                expect(true).assertTrue();
+                done();
+              }else{
+                console.info( msg + ' Faild in .' + error);
+                console.info( msg + ' Faild in .' + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }
+        }catch(error){
+          console.info( msg + ' Faild in .' + error);
+          console.info( msg + ' Faild in .' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.info( msg + ' Faild in .' + error);
+        console.info( msg + ' Faild in .' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_042
+     * @tc.name      : testSetMemoryNameSync_4
+     * @tc.desc      :  1.create PixelMap
+                        2.create name
+                        3.use setMemoryNameSync
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testSetMemoryNameSync_4", 0, async (done:Function)=>  {
+      let msg = '=====testSetMemoryNameSync_4====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+
+      image.createPixelMap(color, opts).then(async(pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+        try{
+          let context1 = getContext()
+          console.info( msg + ' 0 ');
+          const resourceMgr = context1.resourceManager
+          const fileData = await resourceMgr.getMediaContent($r('app.media.icon'))
+          const buffer = fileData.buffer
+          const imageSource = image.createImageSource(buffer)
+          let decodingOptions: image.DecodingOptions = {
+            desiredSize: { width: 512, height:512 },
+            desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+            desiredDynamicRange: image.DecodingDynamicRange.HDR
+          }
+          pixelMap = imageSource.createPixelMapSync(decodingOptions)
+
+          console.info( msg + ' 2 ');
+          let average32Name = '11111111111111111111111111111111'
+          try{
+            pixelMap.setMemoryNameSync(average32Name)
+            console.info( msg + ' 7 ');
+            expect().assertFail();
+            done();
+          }catch(error){
+            if(error.code == 62980286){
+              console.info( msg + ' The DMA memory does not exist. ');
+              console.log(msg + ' Example end !')
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info( msg + ' 7 ' + error.code );
+              if(error.code == 401){
+                console.info( msg + ' The longth of Name is mistake ');
+                console.log(msg + ' Example end !')
+                expect(true).assertTrue();
+                done();
+              }else{
+                console.info( msg + ' Faild in .' + error);
+                console.info( msg + ' Faild in .' + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }
+        }catch(error){
+          console.info( msg + ' Faild in .' + error);
+          console.info( msg + ' Faild in .' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }).catch((error: BusinessError) => {
+        console.info( msg + ' Faild in .' + error);
+        console.info( msg + ' Faild in .' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    });
+
+
   })
 }
