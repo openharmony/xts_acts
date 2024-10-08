@@ -25,32 +25,34 @@ struct WebComponent {
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
   webDownloadItem: webview.WebDownloadItem = new webview.WebDownloadItem();
 
-  build() {
+  build(){
     Column() {
       Button('setConnectionTimeOut')
         .key('001')
-        .onClick(()=>{
+        .onClick(() => {
           try {
-            this.delegate.onBeforeDownload((webDownloadItem:webview.WebDownloadItem)=>{
-              console.log( 'will start a download.');
-              webDownloadItem.start(LocalContext.context.cacheDir +'/8111/'+ webDownloadItem.getSuggestedFileName());
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.log('will start a download.');
+              webDownloadItem.start(LocalContext.context.cacheDir + '/8111/' + webDownloadItem.getSuggestedFileName());
+              try {
+                webDownloadItem.resume()
+              } catch (e) {
+                LocalContext.context.eventHub.emit('setConnectionTimeOut4',
+                  webDownloadItem.getState())
+              }
               this.webDownloadItem = webDownloadItem
             })
-            this.delegate.onDownloadUpdated(async (webDownloadItem:webview.WebDownloadItem) =>{
-              console.log('download update guid1: '+webDownloadItem.getCurrentSpeed());
+            this.delegate.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem) => {
+              console.log('download update guid1: ' + webDownloadItem.getCurrentSpeed());
               webDownloadItem.resume()
-              await Utils.sleep(1000)
-
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.log('download failed guid: ' + webDownloadItem.getGuid());
               LocalContext.context.eventHub.emit('setConnectionTimeOut4',
                 webDownloadItem.getState())
             })
-            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) =>{
-              console.log('download failed guid: '+webDownloadItem.getGuid());
-              LocalContext.context.eventHub.emit('setConnectionTimeOut4',
-                webDownloadItem.getState())
-            })
-            this.delegate.onDownloadFinish((webDownloadItem:webview.WebDownloadItem) =>{
-              console.log('download finish guid: '+webDownloadItem.getGuid());
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.log('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -60,15 +62,15 @@ struct WebComponent {
 
       Button('startDownload')
         .key('002')
-        .onClick(()=>{
+        .onClick(() => {
           try {
-            this.controller.startDownload('https:'+
-              '//cos.kkfw.net/cxb/b1kkfw/Notepad%2B%2B%20%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F.exe');
-          } catch(error){
+            this.controller.startDownload('https:' +
+              '//releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso');
+          } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({src: 'www.example.com', controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }

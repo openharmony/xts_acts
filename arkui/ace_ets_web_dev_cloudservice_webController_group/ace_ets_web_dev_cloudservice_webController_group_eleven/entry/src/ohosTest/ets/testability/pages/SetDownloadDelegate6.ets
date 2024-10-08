@@ -27,42 +27,42 @@ struct WebComponent {
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
   url: string = ''
 
-  build() {
+  build(){
     Column() {
       Button('getCurrentSpeed')
         .key('001')
-        .onClick(()=>{
+        .onClick(() => {
           try {
-            this.delegate.onBeforeDownload((webDownloadItem:webview.WebDownloadItem)=>{
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
               console.log('will start a download.');
               this.url = webDownloadItem.getUrl()
               LocalContext.context.eventHub.emit('SetDownloadDelegate6', webDownloadItem.getState())
             })
-            this.delegate.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem)=>{
-              console.log('download update Complete: '+webDownloadItem.getPercentComplete());
+            this.delegate.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem) => {
+              console.log('download update Complete: ' + webDownloadItem.getPercentComplete());
             })
-            this.delegate.onDownloadFailed((webDownloadItem:webview.WebDownloadItem) => {
-              console.log('download failed Complete: ' +webDownloadItem.getGuid());
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.log('download failed Complete: ' + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download finish Complete: ' +webDownloadItem.getGuid());
+              console.log('download finish Complete: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
-          } catch(error){
+          } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
         .key('002')
-        .onClick(()=>{
+        .onClick(() => {
           try {
             this.controller.startDownload('https:' +
               '//releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso');
-          } catch (error){
+          } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({src: 'www.example.com', controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }

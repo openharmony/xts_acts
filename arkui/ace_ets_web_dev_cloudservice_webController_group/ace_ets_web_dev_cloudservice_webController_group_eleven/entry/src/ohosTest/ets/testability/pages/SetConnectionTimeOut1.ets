@@ -25,33 +25,33 @@ struct WebComponent {
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
   isPaused: boolean = false;
 
-  build() {
+  build(){
     Column() {
       Button('setConnectionTimeOut')
         .key('001')
         .onClick(() => {
           try {
-            this.delegate.onBeforeDownload((webDownloadItem:webview.WebDownloadItem) => {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
               console.log('will start a download.');
-              webDownloadItem.start(LocalContext.context.cacheDir +'/7111/'+ webDownloadItem.getSuggestedFileName());
+              webDownloadItem.start(LocalContext.context.cacheDir + '/7111/' + webDownloadItem.getSuggestedFileName());
             })
-            this.delegate.onDownloadUpdated(async (webDownloadItem:webview.WebDownloadItem) => {
+            this.delegate.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem) => {
               console.log('download update guid: ' + webDownloadItem.getState());
               if (this.isPaused) {
-                LocalContext.context.eventHub.emit( 'setConnectionTimeOut1',
+                LocalContext.context.eventHub.emit('setConnectionTimeOut1',
                   webDownloadItem.getState())
               }
-              if (!(webDownloadItem.getCurrentSpeed()>0)) {
+              if (!(webDownloadItem.getCurrentSpeed() > 0)) {
                 return
               }
               webDownloadItem.pause()
-              this.isPaused =true
+              this.isPaused = true
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download failed guid: '+webDownloadItem.getGuid());
+              console.log('download failed guid: ' + webDownloadItem.getGuid());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.log('download finish guid: '+webDownloadItem.getGuid());
+              console.log('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -61,11 +61,11 @@ struct WebComponent {
 
       Button('startDownload')
         .key('002')
-        .onClick(()=>{
+        .onClick(() => {
           try {
-            this.controller.startDownload('https:'+
+            this.controller.startDownload('https:' +
               '//cd001.v78q.com/cs/104sem/Beyond Compare 文件对比工具_sm60000068e.exe');
-          } catch (error){
+          } catch (error) {
             console.error(`ErrorCode:${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
