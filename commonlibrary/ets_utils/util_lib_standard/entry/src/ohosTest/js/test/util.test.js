@@ -2229,6 +2229,190 @@ describe('TextEncoderTest', function () {
       expect(encodeIntoUint8ArrayInfo.read).assertEqual(0)
       expect(encodeIntoUint8ArrayInfo.written).assertEqual(0)
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_003
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_003', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(4)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('abcd', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(4)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(4)
+      expect(dest[1]).assertEqual(98)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_004
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_004', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(3)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('*', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(1)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(1)
+      expect(dest[0]).assertEqual(42)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_005
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_005', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(10)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('@1h-+=&^', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(8)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(8)
+      expect(dest[1]).assertEqual(49)
+      expect(dest[6]).assertEqual(38)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_006
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_006', 0, function () {
+      let that = new util.TextEncoder('utf-16le')
+      let buffer = new ArrayBuffer(10)
+      let dest = new Uint8Array(buffer)
+      that.encodeIntoUint8Array('abcdefg', dest)
+      expect(dest[0]).assertEqual(97)
+      expect(dest[2]).assertEqual(98)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_007
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_007', 0, function () {
+      let that = new util.TextEncoder('utf-16be')
+      let buffer = new ArrayBuffer(10)
+      let dest = new Uint8Array(buffer)
+      that.encodeIntoUint8Array('abcdefg', dest)
+      expect(dest[1]).assertEqual(97)
+      expect(dest[3]).assertEqual(98)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_008
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_008', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(4)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('😃', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(2)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(4)
+      expect(dest[0]).assertEqual(240)
+      expect(dest[3]).assertEqual(131)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_009
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_009', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(10)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('aé中😃', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(5)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(10)
+      expect(dest[0]).assertEqual(97)
+      expect(dest[3]).assertEqual(228)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_0010
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_0010', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(7)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('😃🤞', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(2)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(4)
+      expect(dest[1]).assertEqual(159)
+      expect(dest[3]).assertEqual(131)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_0011
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_0011', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(10)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('😃🤞', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(4)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(8)
+      expect(dest[1]).assertEqual(159)
+      expect(dest[3]).assertEqual(131)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_0012
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_0012', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(15)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('a😃🤞b', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(6)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(10)
+      expect(dest[0]).assertEqual(97)
+      expect(dest[3]).assertEqual(152)
+    })
   })
 
   describe('ScopeTest', function () {
