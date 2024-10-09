@@ -17,18 +17,19 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import pasteboard from '@ohos.pasteboard';
 import { BusinessError } from '@ohos.base';
 let tag = "PASTEBOARDSYNC--------------------"
+let systemPasteboard = pasteboard.getSystemPasteboard();
 
 export default function pasteboardDetectPatternsTest() {
   describe('pasteboardDetectPatternsTest', () => {
     beforeAll(async () => {
       console.log(tag+'beforeAll');
-
     });
     afterAll(async () => {
       console.info(tag+'afterAll');
     });
     beforeEach(async () => {
       console.info(tag+'beforeEach');
+      await systemPasteboard.clearDataSync();
 
     });
     afterEach(async () => {
@@ -46,8 +47,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0100', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0100 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       let textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -55,10 +54,12 @@ export default function pasteboardDetectPatternsTest() {
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN,textData);
       await systemPasteboard.setData(pasteData);
       let res = await systemPasteboard.hasData();
+      console.log(tag+'res'+res)
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
+          console.log(tag+'data.sort:'+data.sort().join('')+'patterns.sort:'+patterns.sort().join(''));
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -84,8 +85,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0200', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0200 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -96,7 +95,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -121,8 +120,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0300', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0300 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -133,7 +130,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -159,8 +156,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0400', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0400 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -171,7 +166,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -197,8 +192,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0500', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0500 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -209,7 +202,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -234,8 +227,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0600', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0600 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -246,7 +237,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -271,8 +262,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0700', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0700 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -283,7 +272,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           expect(data.sort().join('')).assertEqual(patterns.sort().join(''));
           done()
         }).catch((err: BusinessError)=>{
@@ -309,8 +298,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0800', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0800 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -321,7 +308,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -348,8 +335,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0900', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_0900 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -360,7 +345,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [null,null,undefined];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -388,8 +373,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1000', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1000 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -399,7 +382,7 @@ export default function pasteboardDetectPatternsTest() {
       let res = await systemPasteboard.hasData();
       expect(res).assertEqual(true);
       try{
-        systemPasteboard.detectPatterns(null).then((data) => {
+        await systemPasteboard.detectPatterns(null).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -426,8 +409,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1100', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1100 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -437,7 +418,7 @@ export default function pasteboardDetectPatternsTest() {
       let res = await systemPasteboard.hasData();
       expect(res).assertEqual(true);
       try{
-        systemPasteboard.detectPatterns(undefined).then((data) => {
+        await systemPasteboard.detectPatterns(undefined).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -464,8 +445,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1200', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1200 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -476,7 +455,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [123,456];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -502,8 +481,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1300', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1300 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -514,7 +491,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL,521];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -541,8 +518,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1400', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1400 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -553,7 +528,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL,pasteboard.Pattern.NUMBER];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(data.sort().join('')).assertEqual('012')
           done()
@@ -579,8 +554,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1500', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1500 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -591,7 +564,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,null];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -617,8 +590,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1600', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1600 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -629,7 +600,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.URL,undefined];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -655,8 +626,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1700', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1700 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -667,7 +636,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL,null];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -693,8 +662,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1800', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1800 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "<!DOCTYPE html><html><head><title>" +
         "的厚爱hi哦</title></head><body><h2>恶风无关痛痒和</h2>" +
         "<p>Greg任何人https://exampsaole.com问我的<a href=\"https://exaeqdwerfmple.com\">" +
@@ -705,7 +672,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.NUMBER,pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL,undefined];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           console.log(tag+data.sort().join(''))
           expect(null).assertFail()
           done()
@@ -731,8 +698,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1900', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_1900 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "123";
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN,textData);
       await systemPasteboard.setData(pasteData);
@@ -740,7 +705,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           const patterns1 = [];
           console.log(tag+data.sort().join(''))
           expect(data.sort().join('')).assertEqual(patterns1.sort().join(''));
@@ -767,8 +732,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2000', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2000 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "https://www.baidu.com/";
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN,textData);
       await systemPasteboard.setData(pasteData);
@@ -776,7 +739,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.EMAIL_ADDRESS,pasteboard.Pattern.NUMBER];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           const patterns1 = [];
           console.log(tag+data.sort().join(''))
           expect(data.sort().join('')).assertEqual(patterns1.sort().join(''));
@@ -803,8 +766,6 @@ export default function pasteboardDetectPatternsTest() {
      */
     it('SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2100', 0, async (done: Function) => {
       console.info(tag + "SUB_Pasteboard_Local_SDk_SystemPasteboard_patterns_2100 ---------start")
-      let systemPasteboard = pasteboard.getSystemPasteboard();
-      await systemPasteboard.clearData();
       const textData = "qqq@163.com";
       let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN,textData);
       await systemPasteboard.setData(pasteData);
@@ -812,7 +773,7 @@ export default function pasteboardDetectPatternsTest() {
       expect(res).assertEqual(true);
       let patterns = [pasteboard.Pattern.URL];
       try{
-        systemPasteboard.detectPatterns(patterns).then((data) => {
+        await systemPasteboard.detectPatterns(patterns).then((data) => {
           const patterns1 = [];
           console.log(tag+data.sort().join(''))
           expect(data.sort().join('')).assertEqual(patterns1.sort().join(''));
