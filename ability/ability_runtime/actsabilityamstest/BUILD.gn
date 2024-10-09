@@ -20,8 +20,8 @@ group("ActsAbilityAmsTest") {
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsstartappcloneapptest:ActsStartAppCloneAppTest",
-      "appclonedemo:AppCloneDemo",
-      "actsstartchildprocesstest:ActsStartChildProcessTest",
+	  "actsstartchildprocesstest:ActsStartChildProcessTest",
+      "appclonedemo:AppCloneDemo", 
     ]
   }
 }
