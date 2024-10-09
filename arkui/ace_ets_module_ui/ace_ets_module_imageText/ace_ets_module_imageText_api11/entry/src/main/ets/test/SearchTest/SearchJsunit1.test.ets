@@ -244,7 +244,7 @@ export default function searchTest() {
       let strJsonNew = getInspectorByKey('search');
       let objNew:ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
-	  expect(JSON.stringify(objNew.$attrs.searchIcon)).assertEqual("{\"size\":\"45.00px\",\"color\":\"#FFFF0000\",\"src\":\"resource:///ohos_search.svg\"}");
+	  expect(JSON.stringify(objNew.$attrs.searchIcon)).assertEqual(`{\"size\":\"${vp2px(30).toFixed(2)}px\",\"color\":\"#FFFF0000\",\"src\":\"resource:///ohos_search.svg\"}`);
       expect(objNew.$type).assertEqual('Search');
 
       console.info('[' + tagName + '] END ===========================');
@@ -481,7 +481,7 @@ export default function searchTest() {
       let strJsonNew = getInspectorByKey('search');
       let objNew:ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] component objNew is: ' + strJsonNew);// JSON.stringify(objNew));
-      expect(JSON.stringify(objNew.$attrs.cancelButton)).assertEqual("{\"style\":\"CancelButtonStyle.CONSTANT\",\"icon\":{\"size\":\"15.00px\",\"color\":\"#FF000000\",\"src\":\"resource:///ohos_close.svg\"}}");
+      expect(JSON.stringify(objNew.$attrs.cancelButton)).assertEqual(`{\"style\":\"CancelButtonStyle.CONSTANT\",\"icon\":{\"size\":\"${vp2px(10).toFixed(2)}px\",\"color\":\"#FF000000\",\"src\":\"resource:///ohos_close.svg\"}}`);
       expect(objNew.$type).assertEqual('Search');
 
       console.info('[' + tagName + '] END ===========================');
