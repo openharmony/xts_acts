@@ -20,7 +20,7 @@ struct Second {
   private content: string = "Second Page"
 
   build() {
-    Flex({ direction: FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text(`${this.content}`)
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
