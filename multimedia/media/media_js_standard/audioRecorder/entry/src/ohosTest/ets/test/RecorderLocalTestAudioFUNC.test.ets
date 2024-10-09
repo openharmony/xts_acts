@@ -39,7 +39,7 @@ const ENCORDER_AACLC = media.AudioEncoder.AAC_LC;
 const ONLYAUDIO_TYPE = 'only_audio';
 let mediaTestBase: MediaTestBase = new MediaTestBase()
 let videoRecorderBase: VideoRecorderBase = new VideoRecorderBase()
-let trackArray: Array<string>;
+let trackArray: Array<Array<string>>;
 let recorderTime: number;
 let fdPath: string;
 let fdObject: FdObject | undefined;
@@ -62,7 +62,7 @@ function initAudioRecorder() {
   audioRecorder = media.createAudioRecorder();
 }
 
-async function nextStep(mySteps: Array<number | Array<string>>, done: Function) {
+async function nextStep(mySteps: Array<number | Array<Array<string>>>, done: Function) {
   if (mySteps[0] == END_STATE) {
     console.info('case to done');
     done();
@@ -123,7 +123,7 @@ async function nextStep(mySteps: Array<number | Array<string>>, done: Function) 
   }
 }
 
-async function setCallback(mySteps: Array<number | Array<string>>, done: Function) {
+async function setCallback(mySteps: Array<number | Array<Array<string>>>, done: Function) {
   audioRecorder?.on('prepare', () => {
     console.info('setCallback prepare() case callback is called');
     mySteps.shift();
@@ -219,7 +219,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.uri = fdPath;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -240,7 +240,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.numberOfChannels = CHANNEL_ONE;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -261,7 +261,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.numberOfChannels = CHANNEL_TWO;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps =  new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps =  new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -283,7 +283,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.numberOfChannels = CHANNEL_TWO;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -306,7 +306,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_MP4;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -329,7 +329,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_MP4;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -352,7 +352,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -375,7 +375,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -399,7 +399,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_MP4;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -423,7 +423,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_MP4;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -447,7 +447,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -471,7 +471,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -495,7 +495,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -519,7 +519,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.numberOfChannels = CHANNEL_TWO;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -543,7 +543,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.numberOfChannels = CHANNEL_TWO;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -564,7 +564,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -585,7 +585,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
         RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -606,7 +606,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE,
         STOP_STATE, RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME * 2, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -627,7 +627,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, RESET_STATE, RELEASE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, RESET_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -648,7 +648,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, PAUSE_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, PAUSE_STATE,
         STOP_STATE, RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME * 2, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -669,7 +669,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
         RESET_STATE, RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -690,7 +690,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, STOP_STATE,
+      let mySteps = new Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, STOP_STATE,
         RESET_STATE, RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME * 2, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -711,7 +711,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
+      let mySteps = Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
         PAUSE_STATE, RESUME_STATE, STOP_STATE, RESET_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME * 2, END_STATE);
       setCallback(mySteps, done);
@@ -733,7 +733,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_M4A;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
+      let mySteps = Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
         PAUSE_STATE, STOP_STATE, RESET_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
@@ -755,7 +755,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_MP4;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE,
+      let mySteps = Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE,
         START_STATE, STOP_STATE, RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -776,7 +776,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_MP4;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, PAUSE_STATE, START_STATE, ERROR_STATE,
+      let mySteps = Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, PAUSE_STATE, START_STATE, ERROR_STATE,
         STOP_STATE, RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -797,7 +797,7 @@ export default function RecorderLocalTestAudioFUNC() {
       audioConfig.format = FORMAT_MP4;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE,
+      let mySteps = Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE,
         RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(audioConfig);
@@ -829,7 +829,7 @@ export default function RecorderLocalTestAudioFUNC() {
       newAudioConfig.uri = fdPath;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, newAudioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(newAudioConfig);
@@ -861,7 +861,7 @@ export default function RecorderLocalTestAudioFUNC() {
       newAudioConfig.uri = fdPath;
       trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, newAudioConfig, undefined);
       initAudioRecorder();
-      let mySteps = new Array<number | Array<string>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+      let mySteps = Array<number | Array<Array<string>>>(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
         CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
       setCallback(mySteps, done);
       audioRecorder?.prepare(newAudioConfig);
