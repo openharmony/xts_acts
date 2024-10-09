@@ -16,7 +16,7 @@
 @Component
 export struct WaterFlowView {
   @Link _position: Position;
-  private componentKey: string;
+  private componentKey: string = '';
   @State minSize: number = 50;
   @State maxSize: number = 100;
   @State fontSize: number = 24;

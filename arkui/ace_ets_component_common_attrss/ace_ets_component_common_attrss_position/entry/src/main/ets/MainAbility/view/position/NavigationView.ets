@@ -19,7 +19,7 @@ export struct NavigationView {
   @State isActive: boolean = false;
   @State indexDev: number = 0;
   @Link _position: Position;
-  private componentKey: string;
+  private componentKey: string = '';
 
   build() {
     Navigation() {
