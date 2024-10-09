@@ -14,6 +14,7 @@
  */
 
 import bluetooth from '@ohos.bluetooth';
+import a2dp from '@ohos.bluetooth.a2dp';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
@@ -38,16 +39,24 @@ describe('btA2dpConnTest', function () {
     }
 
     async function clickTheWindow() {
+        console.info('[bluetooth_js] clickRequestPermission start');
+        let driver = Driver.create();
+        await driver.delayMs(3000);
         try {
-            console.info('[bluetooth_js] clickRequestPermission start');
-            let driver = Driver.create();
-            await driver.delayMs(3000);
             let button = await driver.findComponent(ON.text("开启"));
             await button.click();
             await driver.delayMs(3000);
-            console.info('[bluetooth_js] clickRequestPermission end');
+            console.info('[bluetooth_js] click 开启 end');
         } catch (err) {
-            console.info('[bluetooth_js] clickRequestPermission failed');
+            console.info('[bluetooth_js] clickRequestPermission failed. ' + err);
+        }
+        try {
+            let button1 = await driver.findComponent(ON.text("允许"));
+            await button1.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] click 允许 end');
+        } catch (err) {
+            console.info('[bluetooth_js] click 允许 failed. ' + err);
         }
     }
 
@@ -98,9 +107,10 @@ describe('btA2dpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0100
-     * @tc.name test bluetooth Profile ConnectionState
+     * @tc.name testGetBtConnectionState
      * @tc.desc Test getBtConnectionState api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0100', 0, async function (done) {
@@ -115,9 +125,10 @@ describe('btA2dpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0200
-     * @tc.name test A2DP Connect
+     * @tc.name testConnect
      * @tc.desc Test connect api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0200', 0, async function (done) {
@@ -139,9 +150,10 @@ describe('btA2dpConnTest', function () {
    
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0300
-     * @tc.name test A2DP disconnect
+     * @tc.name testDisconnect
      * @tc.desc Test disconnect api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0300', 0, async function (done) {
@@ -163,9 +175,10 @@ describe('btA2dpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0400
-     * @tc.name test a invaild A2DP disconnect
+     * @tc.name testDisconnect
      * @tc.desc Test disconnect api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0400', 0, async function (done) {
@@ -179,9 +192,10 @@ describe('btA2dpConnTest', function () {
 
      /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0500
-     * @tc.name test Get A2DP ConnectionState
+     * @tc.name testGetProfileConnState
      * @tc.desc Test getProfileConnState api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
       it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0500', 0, async function (done) {
@@ -193,9 +207,10 @@ describe('btA2dpConnTest', function () {
     
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0600
-     * @tc.name test a invaild A2DP Connect
+     * @tc.name testConnect
      * @tc.desc Test connect api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0600', 0, async function (done) {
@@ -208,9 +223,10 @@ describe('btA2dpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0700
-     * @tc.name test getDevice A2DP State.
+     * @tc.name testGetDeviceState
      * @tc.desc Test getDeviceState api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0700', 0, async function (done) {
@@ -223,9 +239,10 @@ describe('btA2dpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0800
-     * @tc.name test getDevice A2DP State.
+     * @tc.name testGetDeviceState
      * @tc.desc Test getDeviceState api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0800', 0, async function (done) {
@@ -238,9 +255,10 @@ describe('btA2dpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0900
-     * @tc.name test  get A2DP Playing State
+     * @tc.name testGetPlayingState
      * @tc.desc Test getPlayingState api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_0900', 0, async function (done) {
@@ -255,9 +273,10 @@ describe('btA2dpConnTest', function () {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_1000
-     * @tc.name test getDevice A2DP State.
+     * @tc.name testGetConnectionDevices
      * @tc.desc Test getDeviceState api.
      * @tc.type Function
+     * @tc.size MediumTest
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_1000', 0, async function (done) {
@@ -268,7 +287,29 @@ describe('btA2dpConnTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_1100
+     * @tc.name testCodecType
+     * @tc.desc Test CodecType api.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_A2DPCONN_1100', 0, async function (done) {
+        try {
+            let CODEC_TYPE_L2HCST = a2dp.CodecType.CODEC_TYPE_L2HCST;
+            console.info("[bluetooth_js]CODEC_TYPE_L2HCST: " + CODEC_TYPE_L2HCST);
+            expect(CODEC_TYPE_L2HCST).assertEqual(3);
 
+            let CODEC_TYPE_LDAC = a2dp.CodecType.CODEC_TYPE_LDAC;
+            console.info("[bluetooth_js]CODEC_TYPE_LDAC: " + CODEC_TYPE_LDAC);
+            expect(CODEC_TYPE_LDAC).assertEqual(4);
+        } catch (err) {
+            console.info("bluetooth a2dp CodecType errCode:" + err.code + ",bluetooth a2dp CodecType errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
 })
 
 }
