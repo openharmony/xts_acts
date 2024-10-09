@@ -785,6 +785,221 @@ describe('UsbApiTransferCompatJsunitTest', function () {
     })
 
     /**
+     * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_2600
+     * @tc.name     : testBulkTransferCompat017
+     * @tc.desc     : Negative test: send data, endpoint direction +10
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testBulkTransferCompat017', 0, async function () {
+        console.info(TAG, 'usb testBulkTransferCompat017 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+
+        if (testParam.interface == null || testParam.outEndpoint == null) {
+            expect(testParam.interface == null).assertFalse();
+            expect(testParam.outEndpoint == null).assertFalse();
+            return
+        }
+
+        toClaimInterface('testBulkTransferCompat017', testParam.pip, testParam.interface);
+        testParam.sendData = 'send time 13213213 wzy 03';
+        let tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+        testParam.outEndpoint.direction = testParam.outEndpoint.direction + 10;
+        try {
+            await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+                console.info(TAG, 'usb [', testParam.outEndpoint.direction, '] bulkTransfer send ret: ' + data);
+                expect(data !== null).assertFalse();
+            })
+        } catch (err) {
+            console.info(TAG, 'usb testBulkTransferCompat017 send error : ', err.code, ', message: ', err.message);
+            expect(err.code).assertEqual(PARAM_ERRCODE);
+        }
+        toReleaseInterface('testBulkTransferCompat017');
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_2700
+     * @tc.name     : testBulkTransferCompat018
+     * @tc.desc     : Negative test: send data, endpoint direction -1
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testBulkTransferCompat018', 0, async function () {
+        console.info(TAG, 'usb testBulkTransferCompat018 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+
+        if (testParam.interface == null || testParam.outEndpoint == null) {
+            expect(testParam.interface == null).assertFalse();
+            expect(testParam.outEndpoint == null).assertFalse();
+            return
+        }
+
+        toClaimInterface('testBulkTransferCompat018', testParam.pip, testParam.interface);
+        testParam.sendData = 'send time 13213213 wzy 03';
+        let tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+        testParam.outEndpoint.direction = -1;
+        try {
+            await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+                console.info(TAG, 'usb [', testParam.outEndpoint.direction, '] bulkTransfer send ret: ' + data);
+                expect(data !== null).assertFalse();
+            })
+        } catch (err) {
+            console.info(TAG, 'usb testBulkTransferCompat018 send error : ', err.code, ', message: ', err.message);
+            expect(err.code).assertEqual(PARAM_ERRCODE);
+        }
+        toReleaseInterface('testBulkTransferCompat018');
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_2800
+     * @tc.name     : testBulkTransferCompat019
+     * @tc.desc     : Negative test: send data, endpoint interfaceId +10
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testBulkTransferCompat019', 0, async function () {
+        console.info(TAG, 'usb testBulkTransferCompat019 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+
+        if (testParam.interface == null || testParam.outEndpoint == null) {
+            expect(testParam.interface == null).assertFalse();
+            expect(testParam.outEndpoint == null).assertFalse();
+            return
+        }
+
+        toClaimInterface('testBulkTransferCompat019', testParam.pip, testParam.interface);
+        testParam.sendData = 'send time 13213213 wzy 03';
+        let tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+        testParam.outEndpoint.interfaceId = testParam.outEndpoint.interfaceId + 10;
+        await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+            console.info(TAG, 'usb [', testParam.outEndpoint.interfaceId, '] bulkTransfer send ret: ' + data);
+            expect(data).assertEqual(-1);
+        }).catch (error => {
+            console.info(TAG, 'usb testBulkTransferCompat019 send error : ' + JSON.stringify(error));
+            expect(error !== null).assertFalse();
+        });
+        toReleaseInterface('testBulkTransferCompat019');
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_2900
+     * @tc.name     : testBulkTransferCompat020
+     * @tc.desc     : Negative test: send data, endpoint interfaceId -1
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testBulkTransferCompat020', 0, async function () {
+        console.info(TAG, 'usb testBulkTransferCompat020 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+
+        if (testParam.interface == null || testParam.outEndpoint == null) {
+            expect(testParam.interface == null).assertFalse();
+            expect(testParam.outEndpoint == null).assertFalse();
+            return
+        }
+
+        toClaimInterface('testBulkTransferCompat020', testParam.pip, testParam.interface);
+        testParam.sendData = 'send time 13213213 wzy 03';
+        let tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+        testParam.outEndpoint.interfaceId = -1;
+        await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, 5000).then(data => {
+            console.info(TAG, 'usb [', testParam.outEndpoint.interfaceId, '] bulkTransfer send ret: ' + data);
+            expect(data).assertEqual(-1);
+        }).catch (error => {
+            console.info(TAG, 'usb testBulkTransferCompat020 send error : ' + JSON.stringify(error));
+            expect(error !== null).assertFalse();
+        });
+        toReleaseInterface('testBulkTransferCompat020');
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_3000
+     * @tc.name     : testBulkTransferCompat021
+     * @tc.desc     : Negative test: send data, timeout is ""
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testBulkTransferCompat021', 0, async function () {
+        console.info(TAG, 'usb testBulkTransferCompat021 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+
+        if (testParam.interface == null || testParam.outEndpoint == null) {
+            expect(testParam.interface == null).assertFalse();
+            expect(testParam.outEndpoint == null).assertFalse();
+            return
+        }
+
+        toClaimInterface('testBulkTransferCompat021', testParam.pip, testParam.interface);
+        testParam.sendData = 'send time 13213213 wzy 03';
+        let tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+        let timeout = PARAM_NULLSTRING;
+        await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, timeout).then(data => {
+            console.info(TAG, 'usb [timeout:""] bulkTransfer send ret: ' + data);
+            expect(data >= 0).assertTrue();
+        }).catch (error => {
+            console.info(TAG, 'usb testBulkTransferCompat021 send error : ' + JSON.stringify(error));
+            expect(error !== null).assertFalse();
+        });
+        toReleaseInterface('testBulkTransferCompat021');
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_3100
+     * @tc.name     : testBulkTransferCompat022
+     * @tc.desc     : Negative test: Enter five parameters
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testBulkTransferCompat022', 0, async function () {
+        console.info(TAG, 'usb testBulkTransferCompat022 begin');
+        if (!isDeviceConnected) {
+            expect(isDeviceConnected).assertFalse();
+            return
+        }
+
+        if (testParam.interface == null || testParam.outEndpoint == null) {
+            expect(testParam.interface == null).assertFalse();
+            expect(testParam.outEndpoint == null).assertFalse();
+            return
+        }
+
+        toClaimInterface('testBulkTransferCompat022', testParam.pip, testParam.interface);
+        testParam.sendData = 'send time 13213213 wzy 03';
+        let tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+        let timeout = 5000;
+        await usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, timeout,
+                testParam.pip).then(data => {
+            console.info(TAG, 'usb [timeout:""] bulkTransfer send ret: ' + data);
+            expect(data >= 0).assertTrue();
+        }).catch (error => {
+            console.info(TAG, 'usb testBulkTransferCompat022 send error : ' + JSON.stringify(error));
+            expect(error !== null).assertFalse();
+        });
+        toReleaseInterface('testBulkTransferCompat022');
+    })
+
+    /**
      * @tc.number   : SUB_USB_HostManager_JS_TranCompatibility_3200
      * @tc.name     : testUsbControlTransferCompat001
      * @tc.desc     : Negative test: Enter four parameters
