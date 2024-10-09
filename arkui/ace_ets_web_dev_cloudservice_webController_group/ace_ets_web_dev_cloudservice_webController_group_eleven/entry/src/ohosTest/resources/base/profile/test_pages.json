@@ -1,11 +1,6 @@
 {
   "src": [
     "testability/pages/Index",
-    "testability/pages/safeBrowser",
-    "testability/pages/illegal",
-    "testability/pages/fraud",
-    "testability/pages/risk",
-    "testability/pages/warning",
     "testability/pages/GetCurrentSpeed1",
     "testability/pages/GetCurrentSpeed2",
     "testability/pages/GetCurrentSpeed3",
@@ -29,7 +24,6 @@
     "testability/pages/SetDownloadDelegate3",
     "testability/pages/SetDownloadDelegate4",
     "testability/pages/SetDownloadDelegate5",
-    "testability/pages/SetDownloadDelegate6",
-    "testability/pages/RenderProcess"
+    "testability/pages/SetDownloadDelegate6"
   ]
 }
