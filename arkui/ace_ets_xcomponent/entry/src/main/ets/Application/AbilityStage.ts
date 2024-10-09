@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,8 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import XComponentTest from './XComponentTest';
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-export default function testsuite() {
-  XComponentTest()
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("[Demo] MyAbilityStage onCreate")
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }
