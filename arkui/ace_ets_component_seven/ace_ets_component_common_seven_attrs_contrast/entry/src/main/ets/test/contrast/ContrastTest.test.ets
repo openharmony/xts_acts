@@ -30,7 +30,7 @@ export default function ContrastTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig: ESObject = {
     testName: 'testContrast',
     pageName: 'contrastPage',
     pageUrl: 'MainAbility/pages/contrast/ContrastPage',
@@ -42,24 +42,24 @@ export default function ContrastTest() {
     parentComponentKey: 'parentComponentKey',
     gutter: gutter,
     columns: columns
-  }
+  } as ESObject
 
-  let testValues = [{
+  let testValues: ESObject[] = [{
     describe: 'SetContrast',
     setValue: {
       contrast: 0.1
-    },
+    } as ESObject,
     expectValue: {
       contrast: 0.1
-    }
-  }]
+    } as ESObject
+  } as ESObject]
 
   /**
    * Create test suite.
    */
   describe('contrastTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       //Modify the target component properties.
       console.error('[' + data.caseTag + '] contrastTest');
       console.error('[' + data.caseTag + '] check contrast.' + ` ${data.testValue.setValue.contrast}`);
