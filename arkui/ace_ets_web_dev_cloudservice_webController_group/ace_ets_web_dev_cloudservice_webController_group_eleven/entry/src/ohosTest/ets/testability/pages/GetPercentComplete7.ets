@@ -47,6 +47,7 @@ struct WebComponent {
               console.log('download update guid1: ', webDownloadItem.getPercentComplete());
               if (webDownloadItem.getPercentComplete() >= 40) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete71', webDownloadItem.getPercentComplete())
+                webDownloadItem.pause()
               }
               if (webDownloadItem.getPercentComplete() >= 10) {
                 await Utils.sleep(500)

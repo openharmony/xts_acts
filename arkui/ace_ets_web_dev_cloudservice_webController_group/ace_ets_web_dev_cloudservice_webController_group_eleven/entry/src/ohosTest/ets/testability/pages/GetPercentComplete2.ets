@@ -43,6 +43,7 @@ struct WebComponent {
               console.log('download update guid1: ', webDownloadItem.getPercentComplete());
               if (webDownloadItem.getPercentComplete() > 10) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete21', webDownloadItem.getPercentComplete())
+                webDownloadItem.pause()
               }
             })
             this.delegate1.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
@@ -65,6 +66,7 @@ struct WebComponent {
               console.log('download update guid2: ' + webDownloadItem.getPercentComplete());
               if (webDownloadItem.getPercentComplete() > 10) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete22', webDownloadItem.getPercentComplete())
+                webDownloadItem.pause()
               }
             })
             this.delegate2.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
@@ -87,6 +89,7 @@ struct WebComponent {
               console.log('download update guid3: ' + webDownloadItem.getPercentComplete());
               if (webDownloadItem.getPercentComplete() > 10) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete23', webDownloadItem.getPercentComplete())
+                webDownloadItem.pause()
               }
             })
             this.delegate3.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
