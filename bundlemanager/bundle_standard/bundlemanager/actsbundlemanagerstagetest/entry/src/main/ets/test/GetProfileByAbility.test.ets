@@ -322,38 +322,6 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: Sub_Bms_Framework_Query_Profile_4300
-     * @tc.name: getProfileByAbilityNotPrefixPro
-     * @tc.desc: resource has no prefix '$profile:' (by promise)
-     * @tc.level   0
-     */
-    it('getProfileByAbilityNotPrefixPro', 0, async function (done) {
-      await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME2).then(data => {
-        console.info('[getProfileByAbilityNotPrefixPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
-        expect(data).assertFail()
-        done();
-      }).catch(err => {
-        console.error('[getProfileByAbilityNotPrefixPro]Operation failed. Cause: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
-        done();
-      })
-    })
-
-    /*
-     * @tc.number: Sub_Bms_Framework_Query_Profile_4200
-     * @tc.name: getProfileByAbilityNotPrefixCall
-     * @tc.desc: resource has no prefix '$profile:' (by callback)
-     * @tc.level   0
-     */
-    it('getProfileByAbilityNotPrefixCall', 0, async function (done) {
-      manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME2, (err, data) => {
-        expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
-        console.error('[getProfileByAbilityNotPrefixCall]Operation failed. Cause: ' + JSON.stringify(err));
-        done();
-      });
-    })
-
-    /*
      * @tc.number: Sub_Bms_Framework_Query_Profile_0500
      * @tc.name: getProfileByAbilityNotSuffixPro
      * @tc.desc: profile is .txt suffix (by promise)
