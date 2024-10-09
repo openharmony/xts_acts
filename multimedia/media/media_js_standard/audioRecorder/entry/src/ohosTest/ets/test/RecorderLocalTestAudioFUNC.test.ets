@@ -111,7 +111,7 @@ async function nextStep(mySteps: Array<number | Array<Array<string>>>, done: Fun
         recorderTime = mySteps[1];
         mySteps.shift();
         mySteps.shift();
-        await videoRecorderBase.checkVideos(fdPath, (recorderTime as number), (trackArray as Array<Array<string>>), null);
+        await videoRecorderBase.checkVideos(fdPath, ((recorderTime as ESObject) as number), ((trackArray as ESObject ) as Array<Array<string>>), null);
         nextStep(mySteps, done);
         break;
       break;
