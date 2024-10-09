@@ -39,8 +39,8 @@ const ENCORDER_AACLC = media.AudioEncoder.AAC_LC;
 const ONLYAUDIO_TYPE = 'only_audio';
 let mediaTestBase: MediaTestBase = new MediaTestBase()
 let videoRecorderBase: VideoRecorderBase = new VideoRecorderBase()
-let trackArray: Array<Array<string>>;
-let recorderTime: number;
+let trackArray: number | Array<Array<string>>;
+let recorderTime: number | Array<Array<string>>;
 let fdPath: string;
 let fdObject: FdObject | undefined;
 let audioConfig: RecorderConfigFile = {

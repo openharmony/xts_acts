@@ -166,7 +166,7 @@ export default class VideoRecorderTestBase {
     }
   }
 
-  async checkVideos(playFdPath: string, duration: number, trackArray: Array<Array<string>>,
+  async checkVideos(playFdPath: string, duration: number, trackArray: number | Array<Array<string>>,
     playerSurfaceId: string | null) {
     let videoPlayer: media.VideoPlayer = await media.createVideoPlayer();
     console.info('[checkVideos] case checkVideos fdPath is :' + playFdPath);
