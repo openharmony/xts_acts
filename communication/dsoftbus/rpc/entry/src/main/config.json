@@ -25,6 +25,7 @@
     "mainAbility": ".MainAbility",
     "srcPath": "",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",
