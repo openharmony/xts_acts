@@ -30,7 +30,7 @@ function createInt(): Uint32Array {
 
 function exchange(buf: Uint32Array, oldVal: number, newVal: number) {
   if (buf[0] != oldVal) {
-    throw new Error("Test failed");
+    throw new Error("Test failed: expected " + oldVal + ", but got " + buf[0]);
   }
   buf[0] = newVal;
 }
@@ -120,39 +120,47 @@ export function sharedSingleTest() {
 
 // Code of this function must be the same as in Worker.ets
 @Concurrent
-function sharedMultiJob(lockName: string, timeout: number, idBuf: Uint32Array, id: number) {
+async function sharedMultiJob(lockName: string, timeout: number, flagBuf: Uint32Array, idx: number) {
   let lock = utils.locks.AsyncLock.request(lockName);
-  lock.lockAsync<void>(async () => {
-    let old = Atomics.compareExchange(idBuf, 0, 0, id);
-    if (old != 0) {
-      throw new Error("Expected 0, but was: " + old);
-    }
+  await lock.lockAsync<void>(async () => {
+    flagBuf[idx] = 1;
     await new Promise<void>(resolve => setTimeout(resolve, timeout));
-    old = Atomics.compareExchange(idBuf, 0, id, 0);
-    if (old != id) {
-      throw new Error("Expected old=" + id + ", but was: " + old);
+    let prevSet = true;
+    for (let i = 0; i < idx; ++i) {
+      if (!flagBuf[i]) {
+        prevSet = false;
+      }
     }
+    if (!prevSet) {
+      throw new Error("Expected callback overlap");
+    }
+    flagBuf[idx] = 0;
   }, utils.locks.AsyncLockMode.SHARED);
 }
 
 // test entry point
 export function sharedMultiTest() {
   let lockName = "sharedMultiLock";
-  let idBuf = createInt();
-  idBuf[0] = 0;
-  let p1: Promise<Object> = taskpool.execute(sharedMultiJob, lockName, 100, idBuf, 1) as Promise<Object>;
-  let p2 = sharedMultiJob(lockName, 100, idBuf, 2);
+  let sab = new SharedArrayBuffer(2 * 4);
+  let flagBuf = new Uint32Array(sab);
+  flagBuf[0] = 0;
+  flagBuf[1] = 0;
+  let p1 = sharedMultiJob(lockName, 200, flagBuf, 0);
+  let p2: Promise<Object> = taskpool.execute(sharedMultiJob, lockName, 100, flagBuf, 1) as Promise<Object>;
   return check("sharedMultiTest", Promise.all([p1, p2]));
 }
 
 // test entry point
 export function sharedMultiWorkerTest() {
   let lockName = "sharedMultiWorkerLock";
-  let idBuf = createInt();
-  idBuf[0] = 0;
+  let sab = new SharedArrayBuffer(2 * 4);
+  let flagBuf = new Uint32Array(sab);
+  flagBuf[0] = 0;
+  flagBuf[1] = 0;
 
-  let p1 = new Promise<void>((resolve, reject) => {
-    globalWorker.postMessage({test: "sharedMultiWorkerTest", lockName: lockName, timeout: 100, tidBuf: idBuf, tid: 1});
+  let p1 = sharedMultiJob(lockName, 200, flagBuf, 0);
+  let p2 = new Promise<void>((resolve, reject) => {
+    globalWorker.postMessage({test: "sharedMultiWorkerTest", lockName: lockName, timeout: 100, tidBuf: flagBuf, tid: 1});
     globalWorker.onmessage = (e: MessageEvents) => {
       if (e.data === "PASSED") {
         resolve();
@@ -161,7 +169,6 @@ export function sharedMultiWorkerTest() {
       }
     }
   });
-  let p2 = sharedMultiJob(lockName, 100, idBuf, 2);
   return check("sharedMultiWorkerTest", Promise.all([p1, p2]));
 }
 
@@ -878,4 +885,89 @@ export function pressureTest() {
     promises[i] = p;
   }
   return check("pressureTest", Promise.all(promises));
+}
+
+// test entry point
+export async function setDelayRequestAndCloseWorkerInstantlyTest() {
+  let workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
+  let lockName = 'setDelayRequestAndCloseWorkerInstantlyTest';
+  let lock = utils.locks.AsyncLock.request(lockName);
+  let p = new Promise<void>((resolve, reject) => {
+    workerInstance.postMessage({ test: lockName, lockName: lockName, timeout: 3000 });
+    workerInstance.onmessage = (e: MessageEvents) => {
+      if (e.data === 'PASSED') {
+        workerInstance.terminate();
+        resolve();
+      } else {
+        reject(e.data);
+      }
+    };
+  });
+  // p0 use the same lock with worker thread, if p0 resolved, means lock request created in worker thread is skipped as expected
+  let p0 = lock.lockAsync(async () => {
+    await new Promise<void>((resolve) => setTimeout(resolve, 3000));
+  });
+  return check('setDelayRequestAndCloseWorkerInstantlyTest', Promise.all([p, p0]));
+}
+
+function promiseLockAsync() {
+  let lock = new utils.locks.AsyncLock;
+  return lock.lockAsync(async () => {
+    await new Promise<void>(resolve => setTimeout(resolve, 1000));
+  })
+}
+
+declare class ArkTools {
+  static forceFullGC(): void
+}
+
+// test entry point
+export async function gcAfterLockAsyncTest() {
+  let p = promiseLockAsync();
+  ArkTools.forceFullGC();
+  return check('gcAfterLockAsyncTest', p);
+}
+
+async function mainExecutor(index: number, flagBuf: Uint32Array, timeout: number): Promise<void> {
+  let lockName = 'doubleExitSharedLockTest';
+  let lock = utils.locks.AsyncLock.request(lockName);
+  await lock.lockAsync(async () => {
+    flagBuf[index] = 1;
+    if (flagBuf[2] != 0) {
+      throw new Error('Unexpected set flag at index 2');
+    }
+    await new Promise<void>(resolve => setTimeout(resolve, timeout));
+    flagBuf[index] = 0;
+  }, utils.locks.AsyncLockMode.SHARED);
+}
+
+@Concurrent
+async function taskExecutor(flagBuf: Uint32Array, timeout: number) {
+  let lockName = 'doubleExitSharedLockTest';
+  let lock = utils.locks.AsyncLock.request(lockName);
+  await lock.lockAsync(async () => {
+    flagBuf[2] = 1;
+    if (flagBuf[0] != 0) {
+      throw new Error('Unexpected set flag at index 0');
+    }
+    if (flagBuf[1] != 0) {
+      throw new Error('Unexpected set flag at index 1');
+    }
+    await new Promise<void>(resolve => setTimeout(resolve, timeout));
+    flagBuf[2] = 0;
+  }, utils.locks.AsyncLockMode.EXCLUSIVE);
+}
+
+// test entry point
+export function doubleExitSharedLockTest() {
+  let sab = new SharedArrayBuffer(3 * 4);
+  let flagBuf = new Uint32Array(sab);
+  for (let i = 0; i < flagBuf.length; ++i) {
+    flagBuf[i] = 0;
+  }
+  return check('doubleExitSharedLockTest', Promise.all([
+    mainExecutor(0, flagBuf, 500),
+    mainExecutor(1, flagBuf, 300),
+    taskpool.execute(taskExecutor, flagBuf, 100),
+  ]));
 }

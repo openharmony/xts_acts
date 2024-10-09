@@ -43,7 +43,7 @@
                 "description": "service",
                 "type": "service",
                 "exported": true,
-                "srcEntry": "./ets/ServiceExtAbility/ServiceExtAbility.ets",
+                "srcEntry": "./ets/ServiceExtAbility/ServiceExtAbility.ts",
                 "skills": [
                     {
                         "actions": [

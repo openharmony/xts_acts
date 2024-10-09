@@ -26,6 +26,7 @@ group("bundlemanager") {
       "actsbmsjsunpermissiontest:ActsBmsJsUnPermissionTest",
       "actsbmskilltest:ActsBmsSkillTest",
       "actsbmsmetadatatest:ActsBmsMetaDataTest",
+      "actsbmsorientationetstest:ActsBmsOrientationTest",
       "actsbundlegetmainelementnametest:ActsBundleGetMainElementNameTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",

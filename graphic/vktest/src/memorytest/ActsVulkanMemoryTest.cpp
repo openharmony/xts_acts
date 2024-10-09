@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanMemoryTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanMemoryTest, TestVulkanMemoryTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanMemoryTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/memory.txt --deqp-log-filename=ActsVulkanMemoryTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+            "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/memory.txt "
+            "--deqp-log-filename=ActsVulkanMemoryTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanMemoryTest------\n");
     }

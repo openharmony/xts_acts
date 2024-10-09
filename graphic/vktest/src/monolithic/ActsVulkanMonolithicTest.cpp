@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <cstdlib>
 #include "ActsVulkanMonolithicTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,9 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanMonolithicTest, TestVulkanMonolithicTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanMonolithicTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
-            "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/pipeline/monolithic.txt "
-            "--deqp-log-filename=ActsVulkanMonolithicTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/pipeline/monolithic.txt "
+                "--deqp-log-filename=ActsVulkanMonolithicTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanMonolithicTest------\n");
     }

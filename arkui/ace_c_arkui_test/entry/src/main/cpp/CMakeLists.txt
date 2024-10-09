@@ -109,6 +109,7 @@ add_library(nativerender SHARED
     drag/dragAction_setTouchPointXY.cpp
     drag/dragAction_setDragPreviewOption.cpp
     drag/dragAction_registerStatusListener.cpp
+    animation/animator_event_test.cpp
 )
 
 add_library(nativefunc SHARED

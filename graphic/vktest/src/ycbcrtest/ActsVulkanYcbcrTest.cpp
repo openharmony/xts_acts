@@ -16,6 +16,7 @@
 #include <gtest/gtest.h>
 #include <stdlib.h>
 #include "ActsVulkanYcbcrTest.h"
+#include "syscap_ndk.h"
 
 namespace OHOS {
     using namespace std;
@@ -41,7 +42,11 @@ namespace OHOS {
     HWTEST_F(ActsVulkanYcbcrTest, TestVulkanYcbcrTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanYcbcrTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/ycbcr.txt --deqp-log-filename=ActsVulkanYcbcrTest.qpa");
+        if (canIUse("SystemCapability.Graphic.Vulkan")) {
+            system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+                "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/ycbcr.txt "
+                "--deqp-log-filename=ActsVulkanYcbcrTest.qpa");
+        }
         EXPECT_TRUE(true);
         printf("------end ActsVulkanYcbcrTest------\n");
     }

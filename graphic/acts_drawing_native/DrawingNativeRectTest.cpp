@@ -769,6 +769,35 @@ HWTEST_F(DrawingNativeRectTest, testRectGetWidthNull, TestSize.Level3) {
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECT_1302
+ * @tc.name: testRectGetWidthBoundary
+ * @tc.desc: Test for setting coordinates and getting the width of a rectangle with normal parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeRectTest, testRectGetWidthBoundary, TestSize.Level0) {
+    // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
+    uint32_t width = 4096;
+    uint32_t height = 2160;
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+    // 2. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner
+    OH_Drawing_RectSetLeft(rect, 0);
+    // 3. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner
+    OH_Drawing_RectSetTop(rect, 0);
+    // 4. Call OH_Drawing_RectSetRight to set the x-coordinate of the bottom-right corner
+    OH_Drawing_RectSetRight(rect, width);
+    // 5. Call OH_Drawing_RectSetBottom to set the y-coordinate of the bottom-right corner
+    OH_Drawing_RectSetBottom(rect, height);
+    // 6. Call OH_Drawing_RectGetWidth to get the width of the rectangle, which is the difference between the
+    // x-coordinate of the bottom-right corner and the x-coordinate of the top-left corner
+    float getWidth = OH_Drawing_RectGetWidth(rect);
+    EXPECT_TRUE(IsScalarAlmostEqual(getWidth, width - 0));
+    // 7. Free memory
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECT_1400
  * @tc.name: testRectCopyNormal
  * @tc.desc: Test for copying a rectangle with normal parameters and checking the copied values.

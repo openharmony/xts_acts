@@ -355,7 +355,15 @@ export default function DisplayNdkTest() {
       try{
         let displayIsFoldable  = testNapi.checkIsFoldDevice();
         console.log(caseName + ' :'+ displayIsFoldable );
-        done();
+        if(displayIsFoldable == true){
+          done();
+        }else if(displayIsFoldable == false){
+          done();
+        }else{
+          expect(false).assertTrue();
+          done();
+        }
+        
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();

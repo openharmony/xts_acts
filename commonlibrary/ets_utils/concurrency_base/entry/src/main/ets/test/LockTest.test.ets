@@ -23,7 +23,8 @@ import { exclusiveSingleTest, exclusiveMultiTest, exclusiveMultiWorkerTest, shar
   acquireLockTwiceSharedSharedNotAvailable, acquireLockTwiceSharedExclusiveAvailable,
   acquireLockTwiceSharedExclusiveNotAvailable, acquireLockTwiceExclusiveSharedAvailable,
   acquireLockTwiceExclusiveSharedNotAvailable, acquireLockTwiceExclusiveExclusiveAvailable,
-  acquireLockTwiceExclusiveExclusiveNotAvailable } from './LockTest';
+  acquireLockTwiceExclusiveExclusiveNotAvailable, pressureTest, disarmTimeoutTest, disarmTimeoutLongAwaitTest,
+  doubleExitSharedLockTest} from './LockTest';
 
 
 export default function LockTest() {
@@ -373,6 +374,66 @@ export default function LockTest() {
      */
     it('acquireLockTwiceExclusiveExclusiveNotAvailable', 0, async (done: Function) => {
       let result: Object = await acquireLockTwiceExclusiveExclusiveNotAvailable();
+      expect(result).assertEqual("PASSED");
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_032
+     * @tc.name: pressureTest
+     * @tc.desc: checks many threads using async lock simultaneously 
+     * @tc.author: konstantin-grebenschikov
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('pressureTest', 0, async (done: Function) => {
+      let result: Object = await pressureTest();
+      expect(result).assertEqual("PASSED");
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_033
+     * @tc.name: disarmTimeoutTest
+     * @tc.desc: checks that callback function is executed without errors after timeout
+     * @tc.author: konstantin-grebenschikov
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('disarmTimeoutTest', 0, async (done: Function) => {
+      let result: Object = await disarmTimeoutTest();
+      expect(result).assertEqual("PASSED");
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_034
+     * @tc.name: disarmTimeoutLongAwaitTest
+     * @tc.desc: checks that callback function can be properly executed and ends after 3 sec not rejected after 1 sec
+     * @tc.author: konstantin-grebenschikov
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('disarmTimeoutLongAwaitTest', 0, async (done: Function) => {
+      let result: Object = await disarmTimeoutLongAwaitTest();
+      expect(result).assertEqual("PASSED");
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_035
+     * @tc.name: doubleExitSharedLock
+     * @tc.desc: checks that shared lock cannot be acquired in a worker after it is acquired twice in the main thread
+     * @tc.author: udav
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('doubleExitSharedLockTest', 0, async (done: Function) => {
+      let result: Object = await doubleExitSharedLockTest();
       expect(result).assertEqual("PASSED");
       done();
     })

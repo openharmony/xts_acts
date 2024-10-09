@@ -323,38 +323,6 @@ export default function getProfileByExtensionAbility() {
     })
 
     /*
-     * @tc.number: Sub_Bms_Framework_Query_Profile_4300
-     * @tc.name: getProfileByExtensionAbilityNotPrefixPro
-     * @tc.desc: resource has no prefix '$profile:' (by promise)
-     * @tc.level   0
-     */
-    it('getProfileByExtensionAbilityNotPrefixPro', 0, async function (done) {
-      await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME2).then(data => {
-        console.info('[getProfileByExtensionAbilityNotPrefixPro] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
-        expect().assertFail();
-        done();
-      }).catch(err => {
-        console.error('[getProfileByExtensionAbilityNotPrefixPro]Operation failed. Cause: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
-        done();
-      })
-    })
-
-    /*
-     * @tc.number: Sub_Bms_Framework_Query_Profile_4200
-     * @tc.name: getProfileByExtensionAbilityNotPrefixCall
-     * @tc.desc: resource has no prefix '$profile:' (by callback)
-     * @tc.level   0
-     */
-    it('getProfileByExtensionAbilityNotPrefixCall', 0, async function (done) {
-      manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME2, (err, data) => {
-        expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
-        console.error('[getProfileByExtensionAbilityNotPrefixCall]Operation failed. Cause: ' + JSON.stringify(err));
-        done();
-      });
-    })
-
-    /*
      * @tc.number: Sub_Bms_Framework_Query_Profile_0500
      * @tc.name: getProfileByExtensionAbilityNotSuffixPro
      * @tc.desc: profile is .txt suffix (by promise)

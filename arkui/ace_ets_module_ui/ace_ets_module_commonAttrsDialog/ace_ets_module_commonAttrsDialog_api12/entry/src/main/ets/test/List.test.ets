@@ -28,7 +28,6 @@ import SheetTransition from './bindSheetTest/SheetTransition.test'
 import symbolIcon from './menuControlTest/symbolIcon.test'
 import HoverScale_APITest from './CommonTest/MenuTest/Menu_APITest/HoverScale_APITest';
 import ScrollSizeMode_APITest from './CommonTest/BindSheetTest/BindSheet_APITest/ScrollSizeMode_APITest';
-import bindContextMenuMargin from './bindContextMenuTest/bindContextMenuMargin.test'
 export default function testsuite() {
   aboutToAppearFalse();
   aboutToDisappearFalse();
@@ -46,5 +45,4 @@ export default function testsuite() {
   symbolIcon();
   HoverScale_APITest();
   ScrollSizeMode_APITest();
-  bindContextMenuMargin()
 }

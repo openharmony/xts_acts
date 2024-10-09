@@ -18,13 +18,13 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import subtype from '@ohos.InputMethodSubtype';
 import inputMethod from '@ohos.inputMethod';
 import display from '@ohos.display';
-import {Driver, ON, MatchPattern, Component } from '@ohos.UiTest'
+import { Driver, ON, MatchPattern, Component } from '@ohos.UiTest'
 import deviceinfo from '@ohos.deviceInfo';
-import { BusinessError} from '@ohos.base'
+import { BusinessError } from '@ohos.base'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function inputMethodEngineKeyJSUnit() {
-  describe('inputMethodEngineKeyEvent', function () {
+  describe('inputMethodEngineKeyEvent', () => {
     var inputSever = {
       packageName: '',
       methodId: '',
@@ -32,7 +32,7 @@ export default function inputMethodEngineKeyJSUnit() {
       id: '',
       extra: {}
     }
-    beforeAll(async (done)=>{
+    beforeAll(async (done: Function) => {
       let inputM = inputMethod.getCurrentInputMethod();
       console.info("====>beforeAll: getCurrentInputMethod inputMethodEngineJSUnit to: " + JSON.stringify(inputM));
       inputSever.packageName = inputM.packageName;
@@ -65,7 +65,7 @@ export default function inputMethodEngineKeyJSUnit() {
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterAll(async (done) => {
+    afterAll(async (done: Function) => {
       done();
     })
 
@@ -81,10 +81,11 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0010', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0010', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 unSubscriberCallback start");
-        if (err){
+        if (err) {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 unSubscriberCallback failed:" +
           JSON.stringify(err));
         } else {
@@ -92,17 +93,17 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      function subscriberCallback (err, data){
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriberCallback data:"
           + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
-          try{
+          try {
             expect(data.data).assertEqual("SUCCESS");
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 end");
             clearTimeout(t);
             done();
-          }catch(err){
+          } catch (err) {
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 err:" + JSON.stringify(err));
             clearTimeout(t);
             done();
@@ -110,40 +111,42 @@ export default function inputMethodEngineKeyJSUnit() {
         }, 1000)
       }
 
-      async function publishCallback(err){
+      let publishCallback = async (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 publishCallback start");
-        if (err){
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 publishCallback failed:" + JSON.stringify(err));
+        if (err) {
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 publishCallback failed:" +
+          JSON.stringify(err));
         } else {
-          let t = setTimeout(async ()=>{
+          let t = setTimeout(async () => {
             await driver.triggerKey(2045)
             clearTimeout(t);
           }, 200)
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
         events: ["SUB_Misc_InputMethod_Manage_Physical_Buttons_0010"]
       }
-      var subscriber;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        try{
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
           subscriber = data;
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriber data:" + JSON.stringify(data));
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriber data:" +
+          JSON.stringify(data));
           commoneventmanager.subscribe(subscriber, subscriberCallback);
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 subscriber finish");
-        }catch(err){
+        } catch (err) {
           console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
           code: 10
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
           commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
@@ -156,10 +159,11 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0020', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0020', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 unSubscriberCallback start");
-        if (err){
+        if (err) {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 unSubscriberCallback failed:" +
           JSON.stringify(err));
         } else {
@@ -167,17 +171,17 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      function subscriberCallback (err, data){
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriberCallback data:"
           + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
-          try{
+          try {
             expect(data.data).assertEqual("SUCCESS");
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 end");
             clearTimeout(t);
             done();
-          }catch(err){
+          } catch (err) {
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 err:" + JSON.stringify(err));
             clearTimeout(t);
             done();
@@ -185,40 +189,42 @@ export default function inputMethodEngineKeyJSUnit() {
         }, 1000);
       }
 
-      async function publishCallback(err){
+      let publishCallback = async (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 publishCallback start");
-        if (err){
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 publishCallback failed:" + JSON.stringify(err));
+        if (err) {
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 publishCallback failed:" +
+          JSON.stringify(err));
         } else {
-          let t = setTimeout(async ()=>{
+          let t = setTimeout(async () => {
             await driver.triggerKey(2017)
             clearTimeout(t);
           }, 200)
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
         events: ["SUB_Misc_InputMethod_Manage_Physical_Buttons_0020"]
       }
-      var subscriber;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        try{
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
           subscriber = data;
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriber data:" + JSON.stringify(data));
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriber data:" +
+          JSON.stringify(data));
           commoneventmanager.subscribe(subscriber, subscriberCallback);
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 subscriber finish");
-        }catch(err){
+        } catch (err) {
           console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
           code: 20
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
           commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
@@ -231,10 +237,11 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0030', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0030', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 unSubscriberCallback start");
-        if (err){
+        if (err) {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 unSubscriberCallback failed:" +
           JSON.stringify(err));
         } else {
@@ -242,17 +249,17 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      function subscriberCallback (err, data){
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriberCallback data:"
           + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
-          try{
+          try {
             expect(data.data).assertEqual("SUCCESS");
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 end");
             clearTimeout(t);
             done();
-          }catch(err){
+          } catch (err) {
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 err:" + JSON.stringify(err));
             clearTimeout(t);
             done();
@@ -260,12 +267,13 @@ export default function inputMethodEngineKeyJSUnit() {
         }, 1000);
       }
 
-      async function publishCallback(err){
+      let publishCallback = async (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 publishCallback start");
-        if (err){
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 publishCallback failed:" + JSON.stringify(err));
+        if (err) {
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 publishCallback failed:" +
+          JSON.stringify(err));
         } else {
-          let t = setTimeout(async ()=>{
+          let t = setTimeout(async () => {
             await delegator.executeShellCommand(`uinput -K -d 2072 -d 2017 -u 2017 -u 2072`);
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
@@ -273,28 +281,29 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
         events: ["SUB_Misc_InputMethod_Manage_Physical_Buttons_0030"]
       }
-      var subscriber;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        try{
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
           subscriber = data;
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriber data:" + JSON.stringify(data));
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriber data:" +
+          JSON.stringify(data));
           commoneventmanager.subscribe(subscriber, subscriberCallback);
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 subscriber finish");
-        }catch(err){
+        } catch (err) {
           console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
           code: 30
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
           commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
@@ -307,10 +316,11 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0040', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0040', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 unSubscriberCallback start");
-        if (err){
+        if (err) {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 unSubscriberCallback failed:" +
           JSON.stringify(err));
         } else {
@@ -318,17 +328,17 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      function subscriberCallback (err, data){
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriberCallback data:"
           + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
-          try{
+          try {
             expect(data.data).assertEqual("SUCCESS");
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 end");
             clearTimeout(t);
             done();
-          }catch(err){
+          } catch (err) {
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 err:" + JSON.stringify(err));
             clearTimeout(t);
             done();
@@ -336,12 +346,13 @@ export default function inputMethodEngineKeyJSUnit() {
         }, 1000)
       }
 
-      async function publishCallback(err){
+      let publishCallback = async (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 publishCallback start");
-        if (err){
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 publishCallback failed:" + JSON.stringify(err));
+        if (err) {
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 publishCallback failed:" +
+          JSON.stringify(err));
         } else {
-          let t = setTimeout(async ()=>{
+          let t = setTimeout(async () => {
             await delegator.executeShellCommand(`uinput -K -d 2017 -d 2047 -u 2047 -u 2017`);
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
@@ -349,28 +360,29 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
         events: ["SUB_Misc_InputMethod_Manage_Physical_Buttons_0040"]
       }
-      var subscriber;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        try{
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
           subscriber = data;
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriber data:" + JSON.stringify(data));
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriber data:" +
+          JSON.stringify(data));
           commoneventmanager.subscribe(subscriber, subscriberCallback);
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0040 subscriber finish");
-        }catch(err){
+        } catch (err) {
           console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
           code: 40
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
           commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
@@ -383,10 +395,11 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0050', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0050', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 unSubscriberCallback start");
-        if (err){
+        if (err) {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 unSubscriberCallback failed:" +
           JSON.stringify(err));
         } else {
@@ -394,17 +407,17 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      function subscriberCallback (err, data){
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriberCallback data:"
           + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
-          try{
+          try {
             expect(data.data).assertEqual("SUCCESS");
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 end");
             clearTimeout(t);
             done();
-          }catch(err){
+          } catch (err) {
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 err:" + JSON.stringify(err));
             clearTimeout(t);
             done();
@@ -412,12 +425,13 @@ export default function inputMethodEngineKeyJSUnit() {
         }, 1000)
       }
 
-      async function publishCallback(err){
+      let publishCallback = async (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 publishCallback start");
-        if (err){
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 publishCallback failed:" + JSON.stringify(err));
+        if (err) {
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 publishCallback failed:" +
+          JSON.stringify(err));
         } else {
-          let t = setTimeout(async ()=>{
+          let t = setTimeout(async () => {
             await delegator.executeShellCommand(`uinput -K -d 2047 -d 2017 -u 2017 -u 2047`);
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
@@ -426,28 +440,29 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
         events: ["SUB_Misc_InputMethod_Manage_Physical_Buttons_0050"]
       }
-      var subscriber;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        try{
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
           subscriber = data;
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriber data:" + JSON.stringify(data));
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriber data:" +
+          JSON.stringify(data));
           commoneventmanager.subscribe(subscriber, subscriberCallback);
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0050 subscriber finish");
-        }catch(err){
+        } catch (err) {
           console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
           code: 50
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
           commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
@@ -460,10 +475,11 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0060', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0060', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 unSubscriberCallback start");
-        if (err){
+        if (err) {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 unSubscriberCallback failed:" +
           JSON.stringify(err));
         } else {
@@ -471,17 +487,17 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      function subscriberCallback (err, data){
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriberCallback data:"
           + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
-          try{
+          try {
             expect(data.data).assertEqual("SUCCESS");
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 end");
             clearTimeout(t);
             done();
-          }catch(err){
+          } catch (err) {
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 err:" + JSON.stringify(err));
             clearTimeout(t);
             done();
@@ -489,12 +505,13 @@ export default function inputMethodEngineKeyJSUnit() {
         }, 1000)
       }
 
-      async function publishCallback(err){
+      let publishCallback = async (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 publishCallback start");
-        if (err){
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 publishCallback failed:" + JSON.stringify(err));
+        if (err) {
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 publishCallback failed:" +
+          JSON.stringify(err));
         } else {
-          let t = setTimeout(async ()=>{
+          let t = setTimeout(async () => {
             await delegator.executeShellCommand(`uinput -K -d 2047 -d 2001 -u 2001 -u 2047`);
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
@@ -502,28 +519,29 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
         events: ["SUB_Misc_InputMethod_Manage_Physical_Buttons_0060"]
       }
-      var subscriber;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        try{
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
           subscriber = data;
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriber data:" + JSON.stringify(data));
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriber data:" +
+          JSON.stringify(data));
           commoneventmanager.subscribe(subscriber, subscriberCallback);
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 subscriber finish");
-        }catch(err){
+        } catch (err) {
           console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
           code: 60
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
           commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
@@ -536,10 +554,11 @@ export default function inputMethodEngineKeyJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0070', 0, async function (done) {
-      function unSubscriberCallback (err){
+    it('SUB_Misc_InputMethod_Manage_Physical_Buttons_0070', 0, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 unSubscriberCallback start");
-        if (err){
+        if (err) {
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 unSubscriberCallback failed:" +
           JSON.stringify(err));
         } else {
@@ -547,17 +566,17 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      function subscriberCallback (err, data){
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriberCallback data:"
           + JSON.stringify(data));
         commoneventmanager.unsubscribe(subscriber, unSubscriberCallback);
         let t = setTimeout(() => {
-          try{
+          try {
             expect(data.data).assertEqual("SUCCESS");
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 end");
             clearTimeout(t);
             done();
-          }catch(err){
+          } catch (err) {
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 err:" + JSON.stringify(err));
             clearTimeout(t);
             done();
@@ -565,12 +584,13 @@ export default function inputMethodEngineKeyJSUnit() {
         }, 1000)
       }
 
-      async function publishCallback(err){
+      let publishCallback = async (err: BusinessError) => {
         console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 publishCallback start");
-        if (err){
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 publishCallback failed:" + JSON.stringify(err));
+        if (err) {
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 publishCallback failed:" +
+          JSON.stringify(err));
         } else {
-          let t = setTimeout(async ()=>{
+          let t = setTimeout(async () => {
             await delegator.executeShellCommand(`uinput -K -d 2047 -d 2062 -u 2062 -u 2047`);
             console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t)
@@ -578,28 +598,29 @@ export default function inputMethodEngineKeyJSUnit() {
         }
       }
 
-      var commonEventSubscribeInfo = {
+      let commonEventSubscribeInfo: commoneventmanager.CommonEventSubscribeInfo = {
         events: ["SUB_Misc_InputMethod_Manage_Physical_Buttons_0070"]
       }
-      var subscriber;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        try{
+      let subscriber: ESObject;
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
           subscriber = data;
-          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriber data:" + JSON.stringify(data));
+          console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriber data:" +
+          JSON.stringify(data));
           commoneventmanager.subscribe(subscriber, subscriberCallback);
           console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 subscriber finish");
-        }catch(err){
+        } catch (err) {
           console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
 
-        var commonEventPublishData = {
+        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
           code: 70
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
           commoneventmanager.publish('inputMethodEngineKeyTest', commonEventPublishData, publishCallback);
         }, 500)
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });

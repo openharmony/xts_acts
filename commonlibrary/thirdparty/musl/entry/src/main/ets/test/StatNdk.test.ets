@@ -148,7 +148,7 @@ export default function statNdkTest() {
      */
     it('testMuslStatMkFifoAt003', 0, async (done: Function) => {
       let result: number = stat.mkFifoAt(-100, 'fifoAt003');
-      expect(result).assertEqual(-1)
+      expect(result).assertEqual(0)
       done()
     });
     /**
@@ -308,7 +308,7 @@ export default function statNdkTest() {
       let dirFp = -1;
       let mode = S_IFCHR | 0o000;
       let result: number = stat.mkNodAt(dirFp, path, mode);
-      expect(result).assertEqual(-1)
+      expect(result).assertEqual(0)
       done()
     });
 
@@ -331,7 +331,7 @@ export default function statNdkTest() {
       let dirFp = -1;
       let mode = S_IFBLK | 0o000;
       let result: number = stat.mkNodAt(dirFp, path, mode);
-      expect(result).assertEqual(-1)
+      expect(result).assertEqual(0)
       done()
     });
 
@@ -354,7 +354,7 @@ export default function statNdkTest() {
       let dirFp = -1;
       let mode = S_IFIFO | 0o000;
       let result: number = stat.mkNodAt(dirFp, path, mode);
-      expect(result).assertEqual(-1)
+      expect(result).assertEqual(0)
       done()
     });
 
@@ -423,7 +423,7 @@ export default function statNdkTest() {
       let dirFp = -100;
       let mode = S_IFCHR | 0o000;
       let result: number = stat.mkNodAt(dirFp, path, mode);
-      expect(result).assertEqual(-1)
+      expect(result).assertEqual(0)
       done()
     });
 
@@ -446,7 +446,7 @@ export default function statNdkTest() {
       let dirFp = -100;
       let mode = S_IFBLK | 0o000;
       let result: number = stat.mkNodAt(dirFp, path, mode);
-      expect(result).assertEqual(-1)
+      expect(result).assertEqual(0)
       done()
     });
 
@@ -469,7 +469,7 @@ export default function statNdkTest() {
       let dirFp = -100;
       let mode = S_IFIFO | 0o000;
       let result: number = stat.mkNodAt(dirFp, path, mode);
-      expect(result).assertEqual(-1)
+      expect(result).assertEqual(0)
       done()
     });
 

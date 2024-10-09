@@ -2351,4 +2351,70 @@ describe('XmlSerializerXmlPullParserTest', function () {
         }
         expect(view).assertEqual(result);
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_09900
+     * @tc.name: testNodeName001
+     * @tc.desc: Writes a wrong node name.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testNodeName001', 0, function () {
+        try {
+            let strXml =
+              '<?xml version="1.0" encoding="UTF-8"?>' +
+              '<note importance="high" logged="true">' +
+              '<company>John &amp; Hans</company>' +
+              '<tod<xml version="1.0" encoding="UTF-8"?><note importance="high" logged="true"></note>' +
+              '</note>';
+            let textec = new util.TextEncoder()
+            let uint8 = textec.encodeInto(strXml);
+            let that = new xml.XmlPullParser(uint8.buffer, 'UTF-8');
+            let str = '';
+            function func(name, value) {
+              str += name + value;
+              return true;
+            }
+            let options = { supportDoctype: true, ignoreNameSpace: true, tagValueCallbackFunction: func }
+            that.parse(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The node name contains invalid characters: <");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_10000
+     * @tc.name: testNodeName002
+     * @tc.desc: Writes a wrong node name.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testNodeName002', 0, function () {
+        try {
+            let strXml =
+              '<?xml version="1.0" encoding="UTF-8"?>' +
+              '<note importance="high" logged="true">' +
+              '<company>John &amp; Hans</company>' +
+              '<2todo>work</2todo>' +
+              '</note>';
+            let textec = new util.TextEncoder()
+            let uint8 = textec.encodeInto(strXml);
+            let that = new xml.XmlPullParser(uint8.buffer, 'UTF-8');
+            let str = '';
+            function func(name, value) {
+              str += name + value;
+              return true;
+            }
+            let options = { supportDoctype: true, ignoreNameSpace: true, tagValueCallbackFunction: func }
+            that.parse(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The node name contains invalid characters: 2");
+            expect(e.code).assertEqual(401);
+        }
+    })
 })}

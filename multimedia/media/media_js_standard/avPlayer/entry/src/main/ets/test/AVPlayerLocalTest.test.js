@@ -413,6 +413,47 @@ export default function AVPlayerLocalTest() {
                 expect().assertFail();
             })
         }
+        async function setPlaybackStrategyDASH(avPlayer, done) {
+            let surfaceID = globalThis.value;
+            let playbackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD,preferredAudioLanguage:"und", preferredSubtitleLanguage:"eng" }
+            let pauseCount = 0
+            let stateChangeCallback = async (state, reason) => {
+                switch (state) {
+                    case AV_PLAYER_STATE.INITIALIZED:
+                        avPlayer.surfaceId = surfaceID;
+                        setPlayerPlaybackStrategy(avPlayer, playbackStrategy)
+                        avPlayer.prepare()
+                        break;
+                    case AV_PLAYER_STATE.PREPARED:
+                        avPlayer.play()
+                        break;
+                    case AV_PLAYER_STATE.PLAYING:
+                        if (pauseCount++ == 0) {
+                            avPlayer.pause()
+                        }
+                        break;
+                    case AV_PLAYER_STATE.PAUSED:
+                        avPlayer.play()
+                        break;
+                    case AV_PLAYER_STATE.COMPLETED:
+                        avPlayer.release()
+                        break;
+                    case AV_PLAYER_STATE.RELEASED:
+                        avPlayer = null;
+                        done();
+                        break;
+                    case AV_PLAYER_STATE.ERROR:
+                        avPlayer.release().then(() => {},
+                            mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                        avPlayer = null;
+                        expect().assertFail();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            avPlayer.on('stateChange', stateChangeCallback)
+        }
 
         async function setPlaybackStrategy(avPlayer, done) {
             let surfaceID = globalThis.value;
@@ -537,6 +578,23 @@ export default function AVPlayerLocalTest() {
                     setOnCallback(avPlayer, done)
                     setSource(avPlayer, src);
                     setSubtitle(avPlayer, subtitleSrc)
+                }
+                if (err != null) {
+                    console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                }
+            });
+        }
+        async function testSetPlaybackStrategyDASH(src, avPlayer, done) {
+            console.info(`case media source: ${src}`)
+            media.createAVPlayer((err, video) => {
+                console.info(`case media err: ${err}`)
+                if (typeof (video) !== 'undefined') {
+                    console.info('case createAVPlayer success');
+                    avPlayer = video;
+                    setPlaybackStrategyDASH(avPlayer, done)
+                    setSource(avPlayer, src);
                 }
                 if (err != null) {
                     console.error(`case createAVPlayer error, errMessage is ${err.message}`);
@@ -734,6 +792,18 @@ export default function AVPlayerLocalTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_MUTE_0100', 0, async function (done) {
             testSetMediaMuted(fileDescriptor, avPlayer, done);
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_DASH_0100
+            * @tc.name      : 001.test setPlaybackStrategy Function
+            * @tc.desc      : Local Video preferred audio language control test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_DASH_0100', 0, async function (done) {
+            testSetPlaybackStrategyDASH(fileDescriptor, avPlayer, done);
         })
     })
 }
