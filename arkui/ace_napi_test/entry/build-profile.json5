@@ -13,16 +13,28 @@
  * limitations under the License.
  */
 
-import napitest from 'libnapitest.so'
-
-export function SetTimeout() : Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000)
-  })
-}
-
-export function AsyncCallTest(a: number, b: number) : void {
-  napitest.asyncCallTest(a, b)
+{
+  "apiType": 'stageMode',
+  "buildOption": {
+    "externalNativeOptions": {
+      "path": "./src/main/cpp/CMakeLists.txt",
+      "arguments": "",
+      "cppFlags": "",
+      "abiFilters": ["arm64-v8a", "armeabi-v7a", "x86_64"],
+    },
+    "sourceOption": {
+      "workers": [
+        "./src/main/ets/workers/worker.ets"
+      ]
+    }
+  },
+  "targets": [
+    {
+      "name": "default",
+      "runtimeOS": "OpenHarmony"
+    },
+    {
+      "name": "ohosTest",
+    }
+  ]
 }

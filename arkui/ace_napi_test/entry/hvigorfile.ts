@@ -13,16 +13,5 @@
  * limitations under the License.
  */
 
-import napitest from 'libnapitest.so'
-
-export function SetTimeout() : Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000)
-  })
-}
-
-export function AsyncCallTest(a: number, b: number) : void {
-  napitest.asyncCallTest(a, b)
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';

@@ -13,16 +13,12 @@
  * limitations under the License.
  */
 
-import napitest from 'libnapitest.so'
+import AbilityStage from '@ohos.app.ability.AbilityStage';
 
-export function SetTimeout() : Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000)
-  })
-}
-
-export function AsyncCallTest(a: number, b: number) : void {
-  napitest.asyncCallTest(a, b)
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    console.log('[Demo] MyAbilityStage onCreate');
+    globalThis.stageOnCreateRun = 1;
+    globalThis.stageContext = this.context;
+  }
 }

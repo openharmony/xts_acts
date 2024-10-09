@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,16 +13,15 @@
  * limitations under the License.
  */
 
-import napitest from 'libnapitest.so'
-
-export function SetTimeout() : Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000)
-  })
-}
-
-export function AsyncCallTest(a: number, b: number) : void {
-  napitest.asyncCallTest(a, b)
+{
+  "license": "",
+  "author": "",
+  "name": "entry",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@types/libnapitest.so": "file:./src/main/cpp/types/libnapitest"
+  },
+  "dependencies": {}
 }

@@ -13,16 +13,9 @@
  * limitations under the License.
  */
 
-import napitest from 'libnapitest.so'
-
-export function SetTimeout() : Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000)
-  })
-}
-
-export function AsyncCallTest(a: number, b: number) : void {
-  napitest.asyncCallTest(a, b)
+{
+  "hvigorVersion": "4.0.5",
+  "dependencies": {
+    "@ohos/hvigor-ohos-plugin": "4.0.5"
+  }
 }

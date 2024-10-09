@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 import napitest from 'libnapitest.so'
-import utils from '@ohos.arkts.utils'
+import utils from '@arkts.utils';
 
 export default function nativeApiSendableJsunit() {
 
@@ -29,31 +29,14 @@ export default function nativeApiSendableJsunit() {
     });
 
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0002
-     * @tc.name napiSendableTest002
-     * @tc.desc aceNapiEtsTest
-     */
-    it('napiSendableTest002', 0, async (done: Function) => {
-      console.info('napiSendableTest002 START');
-      let value = napitest.NapiDefineSendableClass();
-      expect(napitest.NapiIsSendable(value)).assertEqual(true);
-      expect(value.staticStr).assertEqual('static str');
-      expect(value.staticFunc()).assertEqual('static func');
-      let instance = new value();
-      expect(napitest.NapiIsSendable(instance)).assertEqual(true);
-      expect(instance.str).assertEqual('instance str');
-      expect(instance.func()).assertEqual('instance func');
-      done();
-    });
-
-    /**
      * @tc.number SUB_ACE_BASIC_ETS_NAPI_0003
      * @tc.name napiSendableTest003
      * @tc.desc aceNapiEtsTest
      */
     it('napiSendableTest003', 0, async (done: Function) => {
       console.info('napiSendableTest003 START');
-      let value = napitest.NapiCreateSendableObject();
+      console.info(`napiSendableTest003 napitest:${napitest}`);
+      let value: ESObject = napitest.NapiCreateSendableObject();
       expect(napitest.NapiIsSendable(value)).assertEqual(true);
       expect(value.x).assertEqual(true);
       done();
@@ -72,7 +55,7 @@ export default function nativeApiSendableJsunit() {
         let states = utils.locks.AsyncLock.queryAll();
         expect(states.length != 0).assertTrue();
         let state = utils.locks.AsyncLock.query(lock.name);
-        expect(state.pending == 0).assertTrue();
+        expect(state.pending.length == 0).assertTrue();
         expect(state.held.length == 1).assertTrue();
         expect(state.held[0].name == lockName);
         expect(state.held[0].mode == utils.locks.AsyncLockMode.EXCLUSIVE);

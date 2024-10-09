@@ -15,17 +15,16 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 
-// @ts-ignore
 import napitest from 'libnapitest.so'
 
 export default function napiBufferTest() {
 
-  describe('napiBufferTest', function () {
+  describe('napiBufferTest', () => {
 
     /**
     * run after testcase
     */
-    afterEach(async function () {
+    afterEach(async () => {
       console.info('[napiBufferTest] after each called')
     });
 
@@ -34,7 +33,7 @@ export default function napiBufferTest() {
     * @tc.name      napiBufferTest001
     * @tc.desc      aceNapiEtsTest
     */
-    it('napiBufferTest001', 0, function () {
+    it('napiBufferTest001', 0, () => {
       expect(napitest.CreateBuffer().toString()).assertDeepEquals(napitest.testStr);
       expect(napitest.CreateExternalBuffer().toString()).assertDeepEquals(napitest.testStr);
     })
@@ -44,8 +43,8 @@ export default function napiBufferTest() {
     * @tc.name      napiBufferTest001
     * @tc.desc      aceNapiEtsTest
     */
-    it('napiBufferTest002', 0, function () {
-      let buffer = napitest.CreateBuffer();
+    it('napiBufferTest002', 0, () => {
+      let buffer: Object = napitest.CreateBuffer();
       expect(napitest.IsBuffer(buffer)).assertTrue();
       expect(napitest.GetBufferInfo(buffer)).assertTrue();
     })
