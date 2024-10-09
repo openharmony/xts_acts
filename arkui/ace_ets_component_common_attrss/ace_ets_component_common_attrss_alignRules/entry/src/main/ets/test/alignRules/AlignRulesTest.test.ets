@@ -17,21 +17,21 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
 class TestValue {
-  describe: string;
-  setValue: AlignRuleOption;
+  describe: string = '';
+  setValue: AlignRuleOption = {};
 }
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  parentWidth: number;
-  parentHeight: number;
-  subassemblyWidth: number;
-  subassemblyHeight: number;
-  subassemblyCenter: AlignRuleOption;
-  parentComponentKey: string;
-  referenceComponentKey: string;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+  subassemblyWidth: number = 0;
+  subassemblyHeight: number = 0;
+  subassemblyCenter: AlignRuleOption = {};
+  parentComponentKey: string = '';
+  referenceComponentKey: string = '';
 }
 
 export default function AlignRulesTest() {

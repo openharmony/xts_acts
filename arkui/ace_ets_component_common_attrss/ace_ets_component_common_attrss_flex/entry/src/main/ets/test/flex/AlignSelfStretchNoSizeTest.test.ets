@@ -18,34 +18,27 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  parentWidth: number;
-  parentHeight: number;
-  compareWidth: number;
-  compareHeight: number;
-  parentComponentKey: string;
-  referenceComponentKey: string;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+  compareWidth: number = 0;
+  compareHeight: number = 0;
+  parentComponentKey: string = '';
+  referenceComponentKey: string = '';
 }
 
 class TestValue {
-  describe: string;
-  setValue: SetValue;
+  describe: string = '';
+  setValue: SetValue = new SetValue();
   expectValue: ESObject;
 }
 
-class AlignItems {
-  Row: VerticalAlign;
-  Column: HorizontalAlign;
-  Flex: ItemAlign;
-  GridRow: ItemAlign;
-}
-
 class SetValue {
-  direction: FlexDirection;
-  alignSelf: ItemAlign
-  wrap: FlexWrap
+  direction: FlexDirection = FlexDirection.Row;
+  alignSelf: ItemAlign = ItemAlign.Auto;
+  wrap: FlexWrap = FlexWrap.NoWrap;
 }
 
 export default function alignSelfStretchNoSizeTest() {

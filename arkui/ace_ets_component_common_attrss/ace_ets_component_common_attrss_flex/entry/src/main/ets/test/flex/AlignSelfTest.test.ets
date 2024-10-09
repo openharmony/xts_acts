@@ -18,30 +18,30 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  parentWidth: number;
-  parentHeight: number;
-  parentComponentKey: string;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+  parentComponentKey: string = '';  
 }
 
 class TestValue {
-  describe: string;
-  setValue: SetValue;
+  describe: string = '';
+  setValue: SetValue = new SetValue();
   expectValue: ESObject;
 }
 
 class AlignItems {
-  Row: VerticalAlign;
-  Column: HorizontalAlign;
-  Flex: ItemAlign;
-  GridRow: ItemAlign;
+  Row: VerticalAlign = VerticalAlign.Center;
+  Column: HorizontalAlign = HorizontalAlign.Center;
+  Flex: ItemAlign = ItemAlign.Auto;
+  GridRow: ItemAlign = ItemAlign.Auto;
 }
 
 class SetValue {
-  defaultAlignItems: AlignItems;
-  alignSelf: ItemAlign
+  defaultAlignItems: AlignItems = new AlignItems();
+  alignSelf: ItemAlign = ItemAlign.Auto;
 }
 
 export default function alignSelfTest() {

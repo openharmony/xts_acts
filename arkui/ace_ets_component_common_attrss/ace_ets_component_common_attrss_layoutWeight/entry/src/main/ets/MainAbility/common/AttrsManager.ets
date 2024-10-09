@@ -16,15 +16,17 @@
 import { Constants } from '../../constants/Constants';
 import events_emitter from '@ohos.events.emitter';
 
+export type Callback = (message: ESObject) => void;
+
 export class AttrsManager {
-  callBack: (value: ESObject) => void;
+  callBack?: Callback = undefined;
 
   static change(caseName: string, setValue: ESObject) {
     let eventData: events_emitter.EventData = { data: { src: JSON.stringify({ value: setValue }) } }
     AttrsManager.emitEvent(caseName, Constants.EVENT_ID_CHANGE_DATA, eventData);
   }
 
-  registerDataChange(callBack: (value: ESObject) => void) {
+  registerDataChange(callBack: Callback) {
     this.callBack = callBack
     this.onEvent(Constants.EVENT_ID_CHANGE_DATA);
   }
@@ -53,9 +55,9 @@ export class AttrsManager {
 
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info('[stateChangCallBack] stateChangCallBack ');
-    if (eventData != null) {
+    if (eventData != null && eventData.data != null) {
       console.info('[stateChangCallBack] state change called: ' + JSON.stringify(eventData));
-      if (eventData.data.src != null) {
+      if (eventData.data.src != null && this.callBack != undefined) {
         this.callBack(JSON.parse(eventData.data.src).value);
       }
     }
