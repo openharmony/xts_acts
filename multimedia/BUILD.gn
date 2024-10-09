@@ -35,7 +35,6 @@ group("multimedia") {
       "audio/ohaudioNdktest:ActsOhaudioNdkTest",
       "avsession/avsession_js_standard/avsessionManager:avsession_framework_js_hap",
       "avsession/avsession_js_standard/avsessionVoiceCall:avsession_voicecall_js_hap",
-      "avsession/avsession_ndk_standard/avsession_ndk_stage:avsession_ndk_ohosTest",
       "camera/camera_js_standard:camera_framework_ets_hap",
       "camera/camera_picker_test:camera_picker_ets_hap",
       "drm/drm_js_standard/avPlayer:drm_avplayer_js_hap",
