@@ -203,25 +203,25 @@ export default function RecorderLocalTestAudioFUNC() {
       console.info('afterAll case');
     })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0100
-    //     * @tc.name      : 01.AAC
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0100', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_01.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0100
+        * @tc.name      : 01.AAC
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0100', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_01.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0200
@@ -244,626 +244,626 @@ export default function RecorderLocalTestAudioFUNC() {
       audioRecorder?.prepare(audioConfig);
     })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0300
-    //     * @tc.name      : 02.AAC_Different Channels 2
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0300', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_03.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0300
+        * @tc.name      : 02.AAC_Different Channels 2
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0300', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_03.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0400
-    //     * @tc.name      : 03.AAC_DifferentSampleRate 8000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0400', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_04.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 8000; // samplerate 8000
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0400
+        * @tc.name      : 03.AAC_DifferentSampleRate 8000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0400', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_04.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 8000; // samplerate 8000
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0500
-    //     * @tc.name      : 03.AAC_DifferentSampleRate 32000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0500', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_05.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 32000; // samplerate 32000
-    //   audioConfig.numberOfChannels = CHANNEL_ONE;
-    //   audioConfig.format = FORMAT_MP4;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0500
+        * @tc.name      : 03.AAC_DifferentSampleRate 32000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0500', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_05.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 32000; // samplerate 32000
+      audioConfig.numberOfChannels = CHANNEL_ONE;
+      audioConfig.format = FORMAT_MP4;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0600
-    //     * @tc.name      : 03.AAC_DifferentSampleRate 44100
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0600', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_06.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 44100; // samplerate 44100
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   audioConfig.format = FORMAT_MP4;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0600
+        * @tc.name      : 03.AAC_DifferentSampleRate 44100
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0600', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_06.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 44100; // samplerate 44100
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      audioConfig.format = FORMAT_MP4;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0700
-    //     * @tc.name      : 03.AAC_DifferentSampleRate 64000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0700', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_07.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 64000; // samplerate 64000
-    //   audioConfig.numberOfChannels = CHANNEL_ONE;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0700
+        * @tc.name      : 03.AAC_DifferentSampleRate 64000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0700', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_07.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 64000; // samplerate 64000
+      audioConfig.numberOfChannels = CHANNEL_ONE;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0800
-    //     * @tc.name      : 03.AAC_DifferentSampleRate 96000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0800', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_08.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 96000; // samplerate 96000
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0800
+        * @tc.name      : 03.AAC_DifferentSampleRate 96000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0800', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_08.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 96000; // samplerate 96000
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0900
-    //     * @tc.name      : 04.AAC_DifferentBitrate 8000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0900', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_09.mp4');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 22050; // samplerate 22050
-    //   audioConfig.audioEncodeBitRate = 8000; // encodeBitrate 8000
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   audioConfig.format = FORMAT_MP4;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0900
+        * @tc.name      : 04.AAC_DifferentBitrate 8000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0900', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_09.mp4');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 22050; // samplerate 22050
+      audioConfig.audioEncodeBitRate = 8000; // encodeBitrate 8000
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      audioConfig.format = FORMAT_MP4;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1000
-    //     * @tc.name      : 04.AAC_DifferentBitrate 16000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1000', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_10.mp4');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 44100; // samplerate 44100
-    //   audioConfig.audioEncodeBitRate = 16000; // encodeBitrate 16000
-    //   audioConfig.numberOfChannels = CHANNEL_ONE;
-    //   audioConfig.format = FORMAT_MP4;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1000
+        * @tc.name      : 04.AAC_DifferentBitrate 16000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1000', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_10.mp4');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 44100; // samplerate 44100
+      audioConfig.audioEncodeBitRate = 16000; // encodeBitrate 16000
+      audioConfig.numberOfChannels = CHANNEL_ONE;
+      audioConfig.format = FORMAT_MP4;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1100
-    //     * @tc.name      : 04.AAC_DifferentBitrate 32000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1100', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_11.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 44100; // samplerate 44100
-    //   audioConfig.audioEncodeBitRate = 32000; // encodeBitrate 32000
-    //   audioConfig.numberOfChannels = CHANNEL_ONE;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1100
+        * @tc.name      : 04.AAC_DifferentBitrate 32000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1100', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_11.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 44100; // samplerate 44100
+      audioConfig.audioEncodeBitRate = 32000; // encodeBitrate 32000
+      audioConfig.numberOfChannels = CHANNEL_ONE;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1200
-    //     * @tc.name      : 04.AAC_DifferentBitrate 64000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1200', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_12.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 44100; // samplerate 44100
-    //   audioConfig.audioEncodeBitRate = 64000; // encodeBitrate 64000
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1200
+        * @tc.name      : 04.AAC_DifferentBitrate 64000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1200', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_12.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 44100; // samplerate 44100
+      audioConfig.audioEncodeBitRate = 64000; // encodeBitrate 64000
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1300
-    //     * @tc.name      : 04.AAC_DifferentBitrate 112000
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1300', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_13.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioSampleRate = 44100; // samplerate 44100
-    //   audioConfig.audioEncodeBitRate = 112000; // encodeBitrate 112000
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1300
+        * @tc.name      : 04.AAC_DifferentBitrate 112000
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1300', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_13.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioSampleRate = 44100; // samplerate 44100
+      audioConfig.audioEncodeBitRate = 112000; // encodeBitrate 112000
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_MP4_0100
-    //     * @tc.name      : 02.AAC,mp4
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_MP4_0100', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_14.mp4');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
-    //   audioConfig.audioSampleRate = 22050; // encodeBitrate 22050
-    //   audioConfig.format = FORMAT_MP4;
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_MP4_0100
+        * @tc.name      : 02.AAC,mp4
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_MP4_0100', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_14.mp4');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
+      audioConfig.audioSampleRate = 22050; // encodeBitrate 22050
+      audioConfig.format = FORMAT_MP4;
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_M4A_0100
-    //     * @tc.name      : 02.AAC,mp4
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_M4A_0100', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_15.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
-    //   audioConfig.audioSampleRate = 22050; // encodeBitrate 22050
-    //   audioConfig.format = FORMAT_M4A;
-    //   audioConfig.numberOfChannels = CHANNEL_TWO;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_M4A_0100
+        * @tc.name      : 02.AAC,mp4
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_M4A_0100', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_15.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
+      audioConfig.audioSampleRate = 22050; // encodeBitrate 22050
+      audioConfig.format = FORMAT_M4A;
+      audioConfig.numberOfChannels = CHANNEL_TWO;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0100
-    //     * @tc.name      : 001.start
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0100', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_16.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0100
+        * @tc.name      : 001.start
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0100', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_16.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0200
-    //     * @tc.name      : 002.pause
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0200', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_17.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
-    //     RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0200
+        * @tc.name      : 002.pause
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0200', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_17.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
+        RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0300
-    //     * @tc.name      : 003.pause->resume
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0300', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_18.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE,
-    //     STOP_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME * 2, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0300
+        * @tc.name      : 003.pause->resume
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0300', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_18.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE,
+        STOP_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME * 2, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0400
-    //     * @tc.name      : 005.reset
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0400', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_19.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0400
+        * @tc.name      : 005.reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0400', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_19.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0500
-    //     * @tc.name      : 006.pause->resume->pause
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0500', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_20.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, PAUSE_STATE,
-    //     STOP_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME * 2, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0500
+        * @tc.name      : 006.pause->resume->pause
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0500', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_20.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, PAUSE_STATE,
+        STOP_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME * 2, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0600
-    //     * @tc.name      : 007.pause->stop->reset
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0600', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_21.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
-    //     RESET_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0600
+        * @tc.name      : 007.pause->stop->reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0600', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_21.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, STOP_STATE,
+        RESET_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0700
-    //     * @tc.name      : 008.pause->resume->stop->reset
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0700', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_22.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, STOP_STATE,
-    //     RESET_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME * 2, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0700
+        * @tc.name      : 008.pause->resume->stop->reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0700', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_22.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, STOP_STATE,
+        RESET_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME * 2, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0800
-    //     * @tc.name      : 009.stop->reset->pause->resume->stop->reset
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0800', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_23.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
-    //     PAUSE_STATE, RESUME_STATE, STOP_STATE, RESET_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME * 2, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0800
+        * @tc.name      : 009.stop->reset->pause->resume->stop->reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0800', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_23.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
+        PAUSE_STATE, RESUME_STATE, STOP_STATE, RESET_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME * 2, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0900
-    //     * @tc.name      : 010.stop->reset->pause->stop->reset
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0900', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_24.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_M4A;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
-    //     PAUSE_STATE, STOP_STATE, RESET_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0900
+        * @tc.name      : 010.stop->reset->pause->stop->reset
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0900', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_24.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_M4A;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE, START_STATE,
+        PAUSE_STATE, STOP_STATE, RESET_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1000
-    //     * @tc.name      : 011.start->reset->start->stop
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1000', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_25.mp4');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_MP4;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE,
-    //     START_STATE, STOP_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1000
+        * @tc.name      : 011.start->reset->start->stop
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1000', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_25.mp4');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_MP4;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PRE_STATE,
+        START_STATE, STOP_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1100
-    //     * @tc.name      : 012.start->pause->start(error)
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1100', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_26.mp4');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_MP4;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, START_STATE, ERROR_STATE,
-    //     STOP_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1100
+        * @tc.name      : 012.start->pause->start(error)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1100', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_26.mp4');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_MP4;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, START_STATE, ERROR_STATE,
+        STOP_STATE, RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1200
-    //     * @tc.name      : 013.start->stop->pause(error)
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1200', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_27.mp4');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   audioConfig.uri = fdPath;
-    //   audioConfig.format = FORMAT_MP4;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE,
-    //     RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(audioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1200
+        * @tc.name      : 013.start->stop->pause(error)
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1200', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_27.mp4');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      audioConfig.uri = fdPath;
+      audioConfig.format = FORMAT_MP4;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE,
+        RELEASE_STATE, CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(audioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1300
-    //     * @tc.name      : 014. API8 audioEncoderMime: audio/mp4a-latm,
-    //     *                           fileFormat:mp4
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1300', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_28.mp4');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   let newAudioConfig: RecorderConfigFile = {
-    //     audioEncodeBitRate: 22050,
-    //     audioSampleRate: 22050,
-    //     numberOfChannels: CHANNEL_TWO,
-    //     uri: 'fd://',
-    //     location: {
-    //       latitude: 1, longitude: 1
-    //     },
-    //     audioEncoderMime: media.CodecMimeType.AUDIO_AAC,
-    //     fileFormat: media.ContainerFormatType.CFT_MPEG_4,
-    //   }
-    //   newAudioConfig.uri = fdPath;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, newAudioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(newAudioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1300
+        * @tc.name      : 014. API8 audioEncoderMime: audio/mp4a-latm,
+        *                           fileFormat:mp4
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1300', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_28.mp4');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      let newAudioConfig: RecorderConfigFile = {
+        audioEncodeBitRate: 22050,
+        audioSampleRate: 22050,
+        numberOfChannels: CHANNEL_TWO,
+        uri: 'fd://',
+        location: {
+          latitude: 1, longitude: 1
+        },
+        audioEncoderMime: media.CodecMimeType.AUDIO_AAC,
+        fileFormat: media.ContainerFormatType.CFT_MPEG_4,
+      }
+      newAudioConfig.uri = fdPath;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, newAudioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(newAudioConfig);
+    })
 
-    // /* *
-    //     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1400
-    //     * @tc.name      : 014. API8 audioEncoderMime: audio/mp4a-latm,
-    //     *                           fileFormat:m4a
-    //     * @tc.desc      : Audio recordr control test
-    //     * @tc.size      : MediumTest
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level0
-    // */
-    // it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1400', 0, async (done: Function) => {
-    //   fdObject = await mediaTestBase.getFd('audio_29.m4a');
-    //   fdPath = "fd://" + fdObject.fdNumber?.toString();
-    //   let newAudioConfig: RecorderConfigFile = {
-    //     audioEncodeBitRate: 22050,
-    //     audioSampleRate: 22050,
-    //     numberOfChannels: CHANNEL_TWO,
-    //     uri: 'fd://',
-    //     location: {
-    //       latitude: 1, longitude: 1
-    //     },
-    //     audioEncoderMime: media.CodecMimeType.AUDIO_AAC,
-    //     fileFormat: media.ContainerFormatType.CFT_MPEG_4A,
-    //   }
-    //   newAudioConfig.uri = fdPath;
-    //   videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, newAudioConfig, undefined);
-    //   initAudioRecorder();
-    //   let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
-    //     CHECK_STATE, RECORDER_TIME, END_STATE);
-    //   setCallback(mySteps, done);
-    //   audioRecorder?.prepare(newAudioConfig);
-    // })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1400
+        * @tc.name      : 014. API8 audioEncoderMime: audio/mp4a-latm,
+        *                           fileFormat:m4a
+        * @tc.desc      : Audio recordr control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1400', 0, async (done: Function) => {
+      fdObject = await mediaTestBase.getFd('audio_29.m4a');
+      fdPath = "fd://" + fdObject.fdNumber?.toString();
+      let newAudioConfig: RecorderConfigFile = {
+        audioEncodeBitRate: 22050,
+        audioSampleRate: 22050,
+        numberOfChannels: CHANNEL_TWO,
+        uri: 'fd://',
+        location: {
+          latitude: 1, longitude: 1
+        },
+        audioEncoderMime: media.CodecMimeType.AUDIO_AAC,
+        fileFormat: media.ContainerFormatType.CFT_MPEG_4A,
+      }
+      newAudioConfig.uri = fdPath;
+      videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, newAudioConfig, undefined);
+      initAudioRecorder();
+      let mySteps = new Array(PRE_STATE, START_STATE, STOP_STATE, RELEASE_STATE,
+        CHECK_STATE, RECORDER_TIME, END_STATE);
+      setCallback(mySteps, done);
+      audioRecorder?.prepare(newAudioConfig);
+    })
   })
 
 }
