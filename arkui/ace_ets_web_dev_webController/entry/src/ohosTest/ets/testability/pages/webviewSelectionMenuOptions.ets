@@ -81,9 +81,6 @@ struct webviewSelectionMenuOptions {
                 let buttonOne = await driver.findComponent(ON.text('Please'));
                 await buttonOne.longClick()
                 await Utils.sleep(4000);
-                let button = await driver.findComponent(ON.type('SelectMoreOrBackButton'));
-                await button.click();
-                await Utils.sleep(1000);
                 let buttontwo = await driver.findComponent(ON.text('Apple'));
                 await buttontwo.click();
                 await Utils.sleep(1000);

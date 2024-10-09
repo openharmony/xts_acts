@@ -17,14 +17,15 @@ import Server from '../common/Server'
 import fileio from '@ohos.fileio'
 import request from "@ohos.request";
 import commonEvent from '@ohos.commonEventManager';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import common from '@ohos.app.ability.common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function requestUploadJSUnit() {
   describe('requestUploadJSUnit', () => {
     console.info('====>################################request upload Test start');
-
+    
+    let baseContext: common.Context;
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
@@ -33,7 +34,14 @@ export default function requestUploadJSUnit() {
         console.info('====>beforeAll: startServer');
         new Server().startServer();
         console.info('====>beforeAll: startServer success!');
-        let pathDir: string = globalThis.abilityContext.cacheDir;
+        let context: common.Context | undefined = AppStorage.get('context');
+        if (context !== undefined){
+          baseContext = context;
+          console.info('====>beforeAll requestUploadJSUnit baseContext:'+JSON.stringify(baseContext))
+        } else {
+          console.info('====>beforeAll requestUploadJSUnit baseContext is undefined')
+        }
+        let pathDir: string = baseContext.cacheDir;
         let filePath = pathDir + `/test.txt`;
         let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
         let content = ''.padEnd(1 * 1024, 'Hello world');
@@ -42,7 +50,7 @@ export default function requestUploadJSUnit() {
         console.info('====>beforeAll: text.txt file generate');
         done();
       } catch (err) {
-        console.info('====>beforeAll: text.txt file generate failed' + err);
+        console.info('====>beforeAll: text.txt file generate failed: ' + err);
         done();
       }
     })
@@ -118,7 +126,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Create_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
+      request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0010 uploadTask: " + task);
         try{
           if(err){
@@ -150,7 +158,7 @@ export default function requestUploadJSUnit() {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Promise_0010 is starting-----------------------");
       let task: request.agent.Task | undefined;
       try {
-        task = await request.agent.create(globalThis.abilityContext, config);
+        task = await request.agent.create(baseContext, config);
         expect(task !== undefined).assertEqual(true);
         await request.agent.remove(task.tid);
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0010 create success: " + task);
@@ -177,7 +185,7 @@ export default function requestUploadJSUnit() {
     it('SUB_Misc_REQUEST_Remove_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0010 is starting-----------------------");
       try {
-        let task = await request.agent.create(globalThis.abilityContext, config);
+        let task = await request.agent.create(baseContext, config);
         request.agent.remove(task.tid, err => {
           try {
             if(err){
@@ -211,7 +219,7 @@ export default function requestUploadJSUnit() {
     it('SUB_Misc_REQUEST_Remove_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0010 is starting-----------------------");
       try {
-        let task = await request.agent.create(globalThis.abilityContext, config);
+        let task = await request.agent.create(baseContext, config);
         await request.agent.remove(task.tid);
         expect(true).assertEqual(true);
         console.info("====>SUB_Misc_REQUEST_Remove_Upload_Promise_0010 remove success: " + task);
@@ -233,7 +241,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Start_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
+      request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
         task.start(async err => {
           try{
@@ -264,7 +272,7 @@ export default function requestUploadJSUnit() {
     it('SUB_Misc_REQUEST_Start_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Upload_Promise_0010 is starting-----------------------");
       try {
-        let task = await request.agent.create(globalThis.abilityContext, config);
+        let task = await request.agent.create(baseContext, config);
         await task.start();
         expect(true).assertEqual(true);
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Promise_0010 upload start success: " + JSON.stringify(task));
@@ -287,7 +295,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Pause_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
+      request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Pause_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
         task.start(err => {
           console.info("====>SUB_Misc_REQUEST_Pause_Upload_Callback_0010 upload start: " + JSON.stringify(err));
@@ -320,7 +328,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Pause_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Upload_Promise_0010 is starting-----------------------");
-      let task = await request.agent.create(globalThis.abilityContext, config);
+      let task = await request.agent.create(baseContext, config);
       console.info("====>SUB_Misc_REQUEST_Pause_Upload_Promise_0010 create task: " + JSON.stringify(task));
       task.start(async err => {
         try {
@@ -347,7 +355,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Resume_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
+      request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
         task.start(err => {
           console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 start: " + JSON.stringify(err));
@@ -383,7 +391,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Resume_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Upload_Promise_0010 is starting-----------------------");
-      let task = await request.agent.create(globalThis.abilityContext, config);
+      let task = await request.agent.create(baseContext, config);
       console.info("====>SUB_Misc_REQUEST_Resume_Upload_Promise_0010 create task: " + JSON.stringify(task));
       task.start(err => {
         console.info("====>SUB_Misc_REQUEST_Resume_Upload_Promise_0010 start: " + JSON.stringify(err));
@@ -413,7 +421,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Stop_Upload_Callback_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
+      request.agent.create(baseContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Stop_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
         task.start(err => {
           console.info("====>SUB_Misc_REQUEST_Stop_Upload_Callback_0010 start: " + JSON.stringify(err));
@@ -446,7 +454,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Stop_Upload_Promise_0010', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Upload_Promise_0010 is starting-----------------------");
-      let task = await request.agent.create(globalThis.abilityContext, config);
+      let task = await request.agent.create(baseContext, config);
       console.info("====>SUB_Misc_REQUEST_Stop_Upload_Promise_0010 create task: " + JSON.stringify(task));
       task.start(async err => {
         console.info("====>SUB_Misc_REQUEST_Stop_Upload_Promise_0010 start: " + JSON.stringify(err));
@@ -494,7 +502,7 @@ export default function requestUploadJSUnit() {
           done();
         }
 
-        let task: request.agent.Task = await request.agent.create(globalThis.abilityContext, config_);
+        let task: request.agent.Task = await request.agent.create(baseContext, config_);
         task.on('completed', on_completedCallback);
         await task.start();
       } catch (err) {
@@ -570,7 +578,7 @@ export default function requestUploadJSUnit() {
       })
 
       try {
-        request.agent.create(globalThis.abilityContext, config, async (err, t) => {
+        request.agent.create(baseContext, config, async (err, t) => {
           try {
             if(err){
               console.info("====>SUB_REQUEST_Upload_broadcastEvent_0100 create err: " + JSON.stringify(err));

@@ -2,6 +2,8 @@
   "src": [
     "MainAbility/pages/index/index",
     "MainAbility/pages/Text/TextMenuType",
-    "MainAbility/pages/RichEditor/RichEditorMenuType"
+    "MainAbility/pages/RichEditor/RichEditorMenuType",
+    "MainAbility/pages/Marquee/marqueeFrame",
+    "MainAbility/pages/Text/editMenuIdAIWriter"
   ]
 }

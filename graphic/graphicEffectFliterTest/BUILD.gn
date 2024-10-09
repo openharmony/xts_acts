@@ -25,6 +25,7 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
 
   sources = [
     "ImagePixelMapTest.cpp",
+    "NativeColorSpace.cpp",
     "NativeDisplaySoloistTest.cpp",
     "NativeEffectTest.cpp",
   ]
@@ -48,6 +49,9 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "$comPath/rosen/modules/effect/effectChain/include",
     "$comPath/rosen/modules/effect/effect_ndk/include",
     "$comPath/rosen/modules/effect/egl/include",
+    "$comPath/interfaces/inner_api/color_manager",
+    "$comPath/interfaces/kits/napi/graphic/color_manager/color_space_object_convertor",
+    "$comPath/rosen/modules/render_service_base/include",
   ]
 
   external_deps = [
@@ -69,6 +73,7 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "$comPath:libnative_image",
     "$comPath/frameworks/opengl_wrapper:EGL",
     "$comPath/frameworks/opengl_wrapper:GLESv3",
+    "$comPath/interfaces/kits/napi/graphic/color_manager:color_space_object_convertor",
     "$comPath/rosen/modules/composer/native_vsync:libnative_vsync",
     "$comPath/rosen/modules/composer/vsync:libvsync",
     "$comPath/rosen/modules/effect/color_picker:color_picker",
@@ -79,6 +84,7 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "$comPath/rosen/modules/hyper_graphic_manager/core/native_display_soloist:libnative_display_soloist",
     "$comPath/rosen/modules/render_service_base:librender_service_base",
     "$comPath/rosen/modules/render_service_base:render_service_base_src",
+    "$comPath/utils/color_manager/ndk:libnative_color_space_manager",
     "$comPath/utils/test_header:test_header",
     "../../../../../foundation/multimedia/image_framework/interfaces/innerkits:image_native",
     "../../../../../foundation/multimedia/image_framework/interfaces/kits/js/common:image",

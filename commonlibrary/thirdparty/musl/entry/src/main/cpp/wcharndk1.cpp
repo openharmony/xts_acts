@@ -28,6 +28,7 @@
 #include <fcntl.h>
 #include <memory.h>
 #include <unistd.h>
+#include <securec.h>
 
 #define PARAM_0 0
 #define PARAM_1 1
@@ -312,11 +313,13 @@ static napi_value Mbsinit_One(napi_env env, napi_callback_info info)
 {
     char buffer[PARAM_80];
     mbstate_t mbst;
+    memset_s(&mbst, sizeof(mbst), 0, sizeof(mbst));
     const wchar_t wcs[] = L"mbsinit";
     const wchar_t *p = nullptr;
     p = wcs;
     int ret = mbsinit(&mbst);
-    memset(&mbst, PARAM_0, sizeof(mbst));
+    memset_s(&mbst, sizeof(mbst), 0, sizeof(mbst));
+    memset_s(&buffer, sizeof(buffer), 0, sizeof(buffer));
     wcsrtombs(buffer, &p, PARAM_80, &mbst);
     napi_value result = nullptr;
     napi_create_int32(env, ret == SUCCESS, &result);

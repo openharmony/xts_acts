@@ -57,9 +57,11 @@ class DrawingRecordCmdUtilsDestroyTest : public testing::Test {};
  */
 HWTEST_F(DrawingRecordCmdUtilsDestroyTest, testRecordCmdUtilsDestroyNormal, TestSize.Level0) {
     // 1. OH_Drawing_RecordCmdUtilsCreate
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
     // 2. OH_Drawing_RecordCmdUtilsDestroy
-    OH_Drawing_RecordCmdUtilsDestroy (recordcmd1);
+    drawingErrorCode = OH_Drawing_RecordCmdUtilsDestroy (recordcmd1);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
 }
 
 } // namespace Drawing

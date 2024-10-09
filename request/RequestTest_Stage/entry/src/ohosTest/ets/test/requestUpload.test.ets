@@ -153,7 +153,6 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_FileUpload_UploadTaskCreation_0300', 0, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_UploadTaskCreation_0300 is starting-----------------------');
-      // let uploadConfig1: request.UploadConfig = Object.assign({}, uploadConfig);
       let uploadConfig1: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       uploadConfig1.files = [{
         filename: 'test',
@@ -1455,7 +1454,7 @@ export default function requestUploadJSUnit() {
       try {
         let uploadConfig_: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
         uploadConfig_.url = 'http://127.1.1.1'
-        request.uploadFile(globalThis.abilityContext, uploadConfig_, (err, uploadTask)=>{
+        request.uploadFile(baseContext, uploadConfig_, (err, uploadTask)=>{
           console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
@@ -1501,7 +1500,7 @@ export default function requestUploadJSUnit() {
     it('SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001', 0, async (done: Function) => {
       console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
       try{
-        request.uploadFile(globalThis.abilityContext, uploadConfig).then(uploadTask => {
+        request.uploadFile(baseContext, uploadConfig).then(uploadTask => {
           console.info("====>SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
@@ -1532,7 +1531,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_UPLOAD_API_DELETE_0001', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 is starting-----------------------");
-      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask) => {
+      request.uploadFile(baseContext, uploadConfig, (err, uploadTask) => {
         try{
           console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask: " + uploadTask);
           expect(uploadTask != undefined).assertEqual(true);
@@ -1569,7 +1568,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_UPLOAD_API_DELETE_0002', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 is starting-----------------------");
-      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask) => {
+      request.uploadFile(baseContext, uploadConfig, (err, uploadTask) => {
         console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask: " + uploadTask);
         try{
           expect(uploadTask != undefined).assertEqual(true);

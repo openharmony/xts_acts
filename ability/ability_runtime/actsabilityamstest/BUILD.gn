@@ -21,6 +21,7 @@ group("ActsAbilityAmsTest") {
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsstartappcloneapptest:ActsStartAppCloneAppTest",
       "appclonedemo:AppCloneDemo",
+      "actsstartchildprocesstest:ActsStartChildProcessTest",
     ]
   }
 }

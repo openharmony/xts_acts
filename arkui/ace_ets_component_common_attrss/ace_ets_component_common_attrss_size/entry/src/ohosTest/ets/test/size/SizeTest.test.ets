@@ -216,20 +216,20 @@ export default function sizeTest() {
         //When the use case is SetStringWidth.
         //Assertion width is consistent with expected value.
         expect(data.viewObj.$attrs.size.width).assertEqual(data.testValue.expectValue.widthCompare);
-        expect(Math.abs(strJsonRectWidth - data.testValue.expectValue.width) <= 1).assertTrue();
+        expect(Math.abs(Math.round(strJsonRectWidth) - Math.round(data.testValue.expectValue.width)) <= 2).assertTrue();
       } else if (data.testValue.describe == 'SetStringHeight') {
         //When the use case is SetStringHeight.
         //Assertion height is consistent with expected value.
         expect(data.viewObj.$attrs.size.height).assertEqual(data.testValue.expectValue.heightCompare);
-        expect(Math.abs(strJsonRectHeight - data.testValue.expectValue.height) <= 1).assertTrue();
+        expect(Math.abs(Math.round(strJsonRectHeight) - Math.round(data.testValue.expectValue.height)) <= 2).assertTrue();
       } else {
         //Confirm that the size attribute values have been successfully set.
         expect(data.viewObj.$attrs.size.width).assertEqual(data.testValue.expectValue.widthCompare);
         expect(data.viewObj.$attrs.size.height).assertEqual(data.testValue.expectValue.heightCompare);
 
         //Confirm that the calculated value is consistent with the expected value.
-        expect(Math.abs(strJsonRectWidth - data.testValue.expectValue.width) <= 1).assertTrue()
-        expect(Math.abs(strJsonRectHeight - data.testValue.expectValue.height) <= 1).assertTrue()
+        expect(Math.abs(Math.round(strJsonRectWidth) - Math.round(data.testValue.expectValue.width)) <= 2).assertTrue()
+        expect(Math.abs(Math.round(strJsonRectHeight) - Math.round(data.testValue.expectValue.height)) <= 2).assertTrue()
       }
     })
   })

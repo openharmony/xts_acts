@@ -14,10 +14,13 @@
  */
 
 import Ability from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import hilog from '@ohos.hilog';
+import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
 
 export default class AbilityOne extends Ability {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // Ability is creating, initialize resources for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'onCreate');
     globalThis.abilityWant = want;
@@ -28,7 +31,7 @@ export default class AbilityOne extends Ability {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onDestroy');
   }
 
-  onWindowStageCreate(windowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'onWindowStageCreate');
     globalThis.abilityContext = this.context;

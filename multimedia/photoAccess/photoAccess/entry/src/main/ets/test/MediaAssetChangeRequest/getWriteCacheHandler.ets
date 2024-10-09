@@ -15,7 +15,7 @@
 
 import fs from '@ohos.file.fs';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { fetchOption, photoKeys } from '../../../../../../../common'
 
 export default function getWriteCacheHandlerTest() {

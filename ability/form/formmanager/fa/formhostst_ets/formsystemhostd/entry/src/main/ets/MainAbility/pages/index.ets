@@ -16,6 +16,12 @@
 import commonEvent from '@ohos.commonEvent';
 import featureAbility from "@ohos.ability.featureAbility";
 import formHost from '@ohos.application.formHost';
+import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.application.Want';
+
+interface InfoType {id:number}
+interface ErroType {errcode: number, msg: string}
 
 @Entry
 @Component
@@ -47,8 +53,8 @@ struct Index {
   private formOnDeletedEvent = "FMS_FormOnDeleted_commonEvent";
   private formOnReleasedEvent = "FMS_FormOnReleased_commonEvent";
 
-  private subscriberDel;
-  private subscriberFormDeleteEvent = {
+  private subscriberDel:CommonEventManager.CommonEventSubscriber|null = null;
+  private subscriberFormDeleteEvent:CommonEventManager.CommonEventSubscribeInfo = {
     events: ["FMS_FormDelete_commonEvent"],
   };
 
@@ -71,7 +77,7 @@ struct Index {
     console.debug(`====>${this.TAG} formsystemhostc formCastEventCallBack ====>`);
   }
 
-  private deleteCallBack = (err, data) => {
+  private deleteCallBack = (err:BusinessError, data:CommonEventManager.CommonEventData) => {
     console.info(`!!!====>${this.TAG} formsystemhost deleteCallBack start:====>` + JSON.stringify(data));
     if(data.bundleName && data.bundleName != "com.ohos.st.formsystemhostd") {
       return;
@@ -94,53 +100,53 @@ struct Index {
 
     console.error(`${this.TAG} getWant`);
     featureAbility.getWant()
-    .then((want: any) => {
-      this.formId = parseInt(want.parameters.formId);
-      this.name = want.parameters.name;
-      this.bundle =  want.parameters.bundle;
-      this.ability = want.parameters.ability;
-      if(want.parameters.moduleName) {
+    .then((want: Want) => {
+      this.formId = parseInt(want.parameters?.formId??0);
+      this.name = want.parameters?.name ?? '';
+      this.bundle =  want.parameters?.bundle ?? '';
+      this.ability = want.parameters?.ability ?? '';
+      if(want.parameters) {
         this.moduleName = want.parameters.moduleName;
       }
-      if(want.parameters.temporary) {
+      if(want.parameters) {
         this.temporary = want.parameters.temporary;
       }
-      if(want.parameters.dimension) {
+      if(want.parameters) {
         this.dimension = want.parameters.dimension;
       }
       if(!this.dimension) {
         this.dimension = FormDimension.Dimension_1_2;
       }
-      if(want.parameters.castForm) {
+      if(want.parameters) {
         this.castForm = want.parameters.castForm;
       }
-      if(want.parameters.temporaryId) {
+      if(want.parameters) {
         this.temporaryId = want.parameters.temporaryId;
       }
-      if(want.parameters.deleteForm) {
+      if(want.parameters) {
         this.deleteForm = want.parameters.deleteForm;
       }
-      if(want.parameters.deleteId) {
+      if(want.parameters) {
         this.deleteId = want.parameters.deleteId;
       }
-      if(want.parameters.releaseForm) {
+      if(want.parameters) {
         this.releaseForm = want.parameters.releaseForm;
       }
-      if(want.parameters.releaseId) {
+      if(want.parameters) {
         this.releaseId = want.parameters.releaseId;
       }
       setTimeout(() => {
-        this.canCreateForm = want.parameters.isCreate ? true : false;
+        this.canCreateForm = want.parameters?.isCreate ?? false;
         console.error(`${this.TAG} getWant canCreateForm:`+ this.canCreateForm); 
       }, 10); 
       console.error(`${this.TAG} getWant end`+ JSON.stringify(want));
 
-      if(!want.parameters.isCreate && this.deleteForm) {
+      if(!(want.parameters?.isCreate??false) && this.deleteForm) {
         console.log(`${this.TAG} formsystemhost deleteForm start`);
         formHost.deleteForm(this.deleteId)
           .then((data) => {
           console.info(`${this.TAG} formsystemhost deleteForm result:` + data);
-          let commonEventPublishData = {
+          let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
             data: data + "",
             parameters: {
               "formId" : this.deleteId.toString()
@@ -148,9 +154,9 @@ struct Index {
           };
           commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.info(`${this.TAG} formsystemhost deleteForm error:` + error);
-          let commonEventPublishData = {
+          let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
             data: error.code.toString(),
             parameters: {
               "formId" : this.deleteId.toString()
@@ -162,12 +168,12 @@ struct Index {
         console.log(`${this.TAG} formsystemhost deleteForm end`);
       }
 
-      if(!want.parameters.isCreate && this.releaseForm) {
+      if(!(want.parameters?.isCreate??false) && this.releaseForm) {
         console.log(`${this.TAG} formsystemhost releaseForm start`);
         formHost.releaseForm(this.releaseId)
           .then((data) => {
           console.info(`${this.TAG} formsystemhost releaseForm result:` + data);
-          let commonEventPublishData = {
+          let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
             data: data + "",
             parameters: {
               "formId" : this.releaseId.toString()
@@ -175,9 +181,9 @@ struct Index {
           };
           commonEvent.publish(this.formOnReleasedEvent, commonEventPublishData, this.publishOnReleasedCallBack);
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.info(`${this.TAG} formsystemhost releaseForm error:` + error);
-          let commonEventPublishData = {
+          let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
             data: error.code.toString(),
             parameters: {
               "formId" : this.releaseId.toString()
@@ -190,7 +196,7 @@ struct Index {
       }
 
     })
-    .catch((error: any) => {
+    .catch((error:BusinessError) => {
       console.error(`${this.TAG} Operation failed. Cause: ` + JSON.stringify(error));
     })
     console.log(`${this.TAG} aboutToAppear end`);
@@ -212,7 +218,7 @@ struct Index {
           })
             .allowUpdate(this.allowUpate)
             .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
-            .onAcquired((form) => {
+            .onAcquired((form:InfoType) => {
               console.log(`${this.TAG} get form, form id:` + form.id);
               this.formId = form.id;
               if(this.castForm) {
@@ -221,7 +227,7 @@ struct Index {
                     .then((data) => {
                     console.info(`${this.TAG} castTempForm result:` + data);
                      setTimeout(() => {
-                      let commonEventPublishData = {
+                      let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                         data: data + "",
                         parameters: {
                           "formId" : this.formId.toString()
@@ -230,10 +236,10 @@ struct Index {
                       commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
                     }, 5);
                   })
-                  .catch((error) => {
+                  .catch((error:BusinessError) => {
                     console.info(`${this.TAG} castTempForm error:` + error);
                      setTimeout(() => {
-                      let commonEventPublishData = {
+                      let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                         data: error.code.toString(),
                         parameters: {
                           "formId" : this.formId.toString()
@@ -252,7 +258,7 @@ struct Index {
                   formHost.deleteForm(this.deleteId)
                     .then((data) => {
                     console.info(`${this.TAG} deleteForm result:` + data);
-                    var commonEventPublishData = {
+                    let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                       data: data + "",
                       parameters: {
                         "formId" : this.deleteId.toString()
@@ -260,9 +266,9 @@ struct Index {
                     };
                     commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
                   })
-                  .catch((error) => {
+                  .catch((error:BusinessError) => {
                     console.info(`${this.TAG} formsystemhost deleteForm error:` + error);
-                    let commonEventPublishData = {
+                    let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                       data: error.code.toString(),
                       parameters: {
                         "formId" : this.deleteId.toString()
@@ -286,7 +292,7 @@ struct Index {
                     if((data + "")  == "0") {
                       retData = data + "";
                     }
-                    var commonEventPublishData = {
+                    let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                       data: retData,
                       parameters: {
                         "formId" : this.releaseId.toString()
@@ -298,7 +304,7 @@ struct Index {
                   console.log(`${this.TAG} releaseForm end`);
                 }, 1000);                
               } else {                
-                var commonEventPublishData = {
+                let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                     data: this.formId.toString()
                 };
                 commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
@@ -311,7 +317,7 @@ struct Index {
               console.log(`${this.TAG} error code:` + error.errcode);
               console.log(`${this.TAG} error msg:` + error.msg);
               if(this.deleteForm && this.deleteId) {
-                let commonEventPublishData = {
+                let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                     data: error.msg,
                     parameters: {
                       "formId" : this.formId.toString()
@@ -319,7 +325,7 @@ struct Index {
                 };
                 commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
               } else {
-                let commonEventPublishData = {
+                let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                     data: error.msg
                 };
                 commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishOnErrorCallBack);

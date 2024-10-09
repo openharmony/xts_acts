@@ -19,7 +19,6 @@
     "description": "$string:module_test_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "wearable",
       "phone",
       "tablet",
       "2in1"
