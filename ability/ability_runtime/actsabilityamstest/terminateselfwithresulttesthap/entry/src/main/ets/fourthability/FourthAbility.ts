@@ -72,19 +72,19 @@ export default class FourthAbility extends UIAbility {
     try {
       this.context.startAbility(want, options).then(async () => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility successful');
-        let commonEventData: commonEventManger.CommonEventPublishData = {
-          parameters: {
-            data: {}
-          }
-        };
-        commonEventManger.publish('onForegroundCallback', commonEventData, (result) => {
-          hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
-          setTimeout(() => {
-            this.context.terminateSelf();
-          }, 1500);
-        });
       }).catch((err: BusinessError) => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility error');
+      });
+      let commonEventData: commonEventManger.CommonEventPublishData = {
+        parameters: {
+          data: {}
+        }
+      };
+      commonEventManger.publish('onForegroundCallback', commonEventData, (result) => {
+        hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
+        setTimeout(() => {
+          this.context.terminateSelf();
+        }, 5000);
       });
     } catch (error) {
       hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility error');

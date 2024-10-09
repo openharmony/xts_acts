@@ -88,7 +88,14 @@ export default function abilityTest() {
           // 执行正常业务
           hilog.info(0x0000, TAG, '%{public}s', 'startAbilityForResult succeed');
         });
-        await sleep(1000);
+        await sleep(500);
+        let cmd = `hilog -x | grep 'window mode'`;
+        let d = await delegator.executeShellCommand(cmd);
+        hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
+        try {
+          expect(d.stdResult).assertContain('window mode:0');
+        } catch {
+        }
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, TAG, '%{public}s',
           `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
@@ -101,13 +108,6 @@ export default function abilityTest() {
           }
         }
         setTimeout(async () => {
-          let cmd = `hilog -x | grep 'window mode'`;
-          let d = await delegator.executeShellCommand(cmd);
-          hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
-          try {
-            expect(d.stdResult).assertContain('window mode:0');
-          } catch {
-          }
           done();
         }, times);
       } catch (err) {
@@ -195,7 +195,14 @@ export default function abilityTest() {
           // 执行正常业务
           hilog.info(0x0000, TAG, '%{public}s', 'startAbilityForResult succeed');
         });
-        await sleep(1000);
+        await sleep(500);
+        let cmd = `hilog -x | grep 'window mode'`;
+        let d = await delegator.executeShellCommand(cmd);
+        hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
+        try {
+          expect(d.stdResult).assertContain('window mode:100');
+        } catch {
+        }
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, TAG, '%{public}s',
           `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
@@ -208,13 +215,6 @@ export default function abilityTest() {
           }
         }
         setTimeout(async () => {
-          let cmd = `hilog -x | grep 'window mode'`;
-          let d = await delegator.executeShellCommand(cmd);
-          hilog.info(0x0000, TAG, '%{public}s', `executeShellCommand result: ${JSON.stringify(d)}`);
-          try {
-            expect(d.stdResult).assertContain('window mode:100');
-          } catch {
-          }
           done();
         }, times);
       } catch (err) {
@@ -375,18 +375,18 @@ export default function abilityTest() {
         try {
           context.startAbility(want, options).then(async () => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-            let cmd = `hilog -x | grep 'window mode'`;
-            let d = await delegator.executeShellCommand(cmd);
-            try {
-              expect(d.stdResult).assertContain('window mode:100');
-            } catch {
-            }
           }).catch((err: BusinessError) => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
             expect().assertFail();
             done();
           });
-          await sleep(1000);
+          await sleep(500);
+          let cmd = `hilog -x | grep 'window mode'`;
+          let d = await delegator.executeShellCommand(cmd);
+          try {
+            expect(d.stdResult).assertContain('window mode:100');
+          } catch {
+          }
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, TAG, '%{public}s',
             `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
