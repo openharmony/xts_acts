@@ -83,6 +83,16 @@
         "MainAbility/pages/WaterFlow/WaterFlowSectionDemo/WaterFlowSectionDemo37",
         "MainAbility/pages/WaterFlow/WaterFlowSectionDemo/WaterFlowSectionDemo42",
         "MainAbility/pages/WaterFlow/WaterFlowSectionDemo/WaterFlowSectionDemo43",
-        "MainAbility/pages/WaterFlow/WaterFlowSectionDemo/WaterFlowSectionDemo45"
+        "MainAbility/pages/WaterFlow/WaterFlowSectionDemo/WaterFlowSectionDemo45",
+        "MainAbility/pages/List/listDid",
+        "MainAbility/pages/Scroll/scrollDid",
+        "MainAbility/pages/Scroll/scrollReach",
+        "MainAbility/pages/WaterFlow/onScrollIndexFlow1",
+        "MainAbility/pages/WaterFlow/onScrollIndexFlow2",
+        "MainAbility/pages/WaterFlow/onScrollIndexFlow3",
+        "MainAbility/pages/WaterFlow/repeatWaterFlow",
+        "MainAbility/pages/WaterFlow/waterFlowScroll",
+        "MainAbility/pages/WaterFlow/waterFlowStart1",
+        "MainAbility/pages/WaterFlow/waterFlowStart2"
     ]
 }
