@@ -42,7 +42,6 @@ struct WebComponent {
               console.log('download update Complete: ' + webDownloadItem.getPercentComplete());
               let state: webview.WebDownloadState = webDownloadItem.getState()
               LocalContext.context.eventHub.emit('SetDownloadDelegate5', this.url + state.toString())
-              webDownloadItem.pause()
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
               console.log('download failed Complete: ' + webDownloadItem.getGuid());

@@ -43,7 +43,6 @@ struct WebComponent {
                 await Utils.sleep(1000)
                 webDownloadItem.resume()
                 LocalContext.context.eventHub.emit('SetDownloadDelegate3', webDownloadItem.getState())
-                webDownloadItem.pause()
               }
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {

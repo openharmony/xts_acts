@@ -48,6 +48,7 @@ struct WebComponent {
               if (webDownloadItem.getPercentComplete() >= 40) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete71', webDownloadItem.getPercentComplete())
                 webDownloadItem.pause()
+                return
               }
               if (webDownloadItem.getPercentComplete() >= 10) {
                 await Utils.sleep(500)
@@ -78,6 +79,7 @@ struct WebComponent {
               if (webDownloadItem.getPercentComplete() >= 60) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete72', webDownloadItem.getPercentComplete())
                 webDownloadItem.pause()
+                return
               }
               if (webDownloadItem.getPercentComplete() >= 20) {
                 await Utils.sleep(500)
@@ -108,6 +110,7 @@ struct WebComponent {
               if (webDownloadItem.getPercentComplete() >= 70) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete73', webDownloadItem.getPercentComplete())
                 webDownloadItem.pause()
+                return
               }
               if (webDownloadItem.getPercentComplete() >= 30) {
                 await Utils.sleep(500)
