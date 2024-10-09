@@ -33,7 +33,6 @@ export default function AVPlayerAudioEffectModeTest() {
         let fileDescriptor2 = null;
         let fileDescriptor3 = null;
         let avPlayer = null;
-        let amplitude = -1;
         
 
         beforeAll(async function() {
@@ -436,6 +435,7 @@ export default function AVPlayerAudioEffectModeTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_APITIME_0100', 0, async function (done) {
             let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
+            let amplitude = -1;
             await media.createAVPlayer().then((video) => {
                 if (typeof(video) != 'undefined') {
                     avPlayer = video;
