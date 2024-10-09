@@ -111,7 +111,9 @@ static napi_value BeginReadOne(napi_env env, napi_callback_info)
     OH_PurgeableMemory *res = OH_PurgeableMemory_Create(DATASIZE, FactorialFunc, &g_pData);
     NAPI_ASSERT(env, res != nullptr, "OH_PurgeAbleMemory_Create failed");
     bool ret = OH_PurgeableMemory_BeginRead(res);
-    OH_PurgeableMemory_EndRead(res);
+    if (ret) {
+        OH_PurgeableMemory_EndRead(res);
+    }
     OH_PurgeableMemory_Destroy(res);
     res = nullptr;
     napi_value result = nullptr;
@@ -123,7 +125,8 @@ static napi_value BeginReadTwo(napi_env env, napi_callback_info)
 {
     OH_PurgeableMemory *res = OH_PurgeableMemory_Create(DATASIZE, FactorialFunc, &g_pData);
     NAPI_ASSERT(env, res != nullptr, "OH_PurgeAbleMemory_Create failed");
-    OH_PurgeableMemory_Destroy(res);
+    bool destoryValue = OH_PurgeableMemory_Destroy(res);
+    NAPI_ASSERT(env, destoryValue == true, "OH_PurgeableMemory_Destroy failed");
     res = nullptr;
     bool ret = OH_PurgeableMemory_BeginRead(res);
     napi_value result = nullptr;
@@ -150,9 +153,11 @@ static napi_value BeginWriteOne(napi_env env, napi_callback_info)
     OH_PurgeableMemory *res = OH_PurgeableMemory_Create(DATASIZE, FactorialFunc, &g_pData);
     NAPI_ASSERT(env, res != nullptr, "OH_PurgeAbleMemory_Create failed");
     bool ret = OH_PurgeableMemory_BeginWrite(res);
+    if (ret) {
+        OH_PurgeableMemory_EndWrite(res);
+    }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
-    OH_PurgeableMemory_EndRead(res);
     OH_PurgeableMemory_Destroy(res);
     res = nullptr;
     return result;
@@ -162,7 +167,8 @@ static napi_value BeginWriteTwo(napi_env env, napi_callback_info)
 {
     OH_PurgeableMemory *res = OH_PurgeableMemory_Create(DATASIZE, FactorialFunc, &g_pData);
     NAPI_ASSERT(env, res != nullptr, "OH_PurgeAbleMemory_Create failed");
-    OH_PurgeableMemory_Destroy(res);
+    bool destoryValue = OH_PurgeableMemory_Destroy(res);
+    NAPI_ASSERT(env, destoryValue == true, "OH_PurgeableMemory_Destroy failed");
     res = nullptr;
     bool ret = OH_PurgeableMemory_BeginWrite(res);
     napi_value result = nullptr;
@@ -206,7 +212,8 @@ static napi_value GetContentTwo(napi_env env, napi_callback_info)
 {
     OH_PurgeableMemory *res = OH_PurgeableMemory_Create(DATASIZE, FactorialFunc, &g_pData);
     NAPI_ASSERT(env, res != nullptr, "OH_PurgeAbleMemory_Create failed");
-    OH_PurgeableMemory_Destroy(res);
+    bool desotoryValue = OH_PurgeableMemory_Destroy(res);
+    NAPI_ASSERT(env, desotoryValue == true, "OH_PurgeableMemory_Destroy failed");
     res = nullptr;
     class ReqObj;
     ReqObj *pReqObj = (ReqObj *)OH_PurgeableMemory_GetContent(res);

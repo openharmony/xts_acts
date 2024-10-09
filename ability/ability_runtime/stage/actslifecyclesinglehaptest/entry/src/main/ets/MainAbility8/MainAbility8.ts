@@ -15,6 +15,8 @@
 import Ability from '@ohos.app.ability.UIAbility';
 import commonEvent from '@ohos.commonEvent';
 
+let context8;
+
 export default class MainAbility8 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility8 onCreate")
@@ -29,6 +31,7 @@ export default class MainAbility8 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility8 onWindowStageCreate")
         globalThis.ability8 = this.context;
+        context8 = this.context;
         windowStage.setUIContent(this.context, "MainAbility/pages/index8", null)
     }
 
@@ -123,16 +126,21 @@ export default class MainAbility8 extends Ability {
         }
         globalThis.applicationContext8 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext8.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
+        globalThis.callbackid8 = lifecycleid;
         console.log("[Demo] AbilityLifecycleCallback8 number: " + JSON.stringify(lifecycleid));
         setTimeout(function () {
             console.log("[Demo] AbilityLifecycleCallback8 listKey: " + JSON.stringify(listKey8));
             globalThis.list8 = listKey8;
-            globalThis.callbackid8 = lifecycleid;
+            globalThis.applicationContext8.unregisterAbilityLifecycleCallback(lifecycleid);
         }, 300);
         setTimeout(function () {
           commonEvent.publish('MainAbility8_onForground', (err, data) => {
             console.log('MainAbility8 onForeground publish succeed' + JSON.stringify(err) + JSON.stringify(data));
           })
+          if (context8) {
+            console.log("[Demo] MainAbility8_onForground terminateSelf");
+            context8.terminateSelf();
+          }
         }, 500);
     }
 

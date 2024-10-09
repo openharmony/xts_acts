@@ -104,6 +104,7 @@ import RichEditorChangeValueTest1 from './RichEditor/RichEditorChangeValueTest1.
 import RichEditorGetLayoutManagerTest1 from './RichEditor/RichEditorGetLayoutManagerTest1.test'
 import RichEditorStyledStringTest1 from './RichEditor/RichEditorStyledStringTest1.test'
 import RichEditorStyledStringTest2 from './RichEditor/RichEditorStyledStringTest2.test'
+import RichEditorStyledStringTest3 from './RichEditor/RichEditorStyledStringTest3.test'
 import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
 import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
@@ -150,8 +151,10 @@ import imageSpanTest6 from './TextTest/imageSpan6.test';
 import imageSpanTest7 from './TextTest/imageSpan7.test';
 import imageSpanTest8 from './TextTest/imageSpan8.test';
 import TextMaxLines from './Text/TextMaxLines.test';
-import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 import getRectsForRangeTest from './RichEditor/getRectsForRange.test'
+import textInputEnterKeyTypeTest from './TextInput/textInputEnterKeyType.test'
+import spanTest from './spanTest/SpanJsunit1.test'
+import textAreaAutoFillTest from './TextArea/TextAreaAutoFillJsUnit.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -243,6 +246,7 @@ export default function testsuite() {
   RichEditorGetLayoutManagerTest1();
   RichEditorStyledStringTest1();
   RichEditorStyledStringTest2();
+  RichEditorStyledStringTest3();
   RichEditorApi2();
   RichEditorApi6();
   RichEditorApi7();
@@ -284,6 +288,8 @@ export default function testsuite() {
   imageSpanTest7();
   imageSpanTest8();
   TextMaxLines();
-  SetFrameRateRangeTest();
   getRectsForRangeTest();
+  textInputEnterKeyTypeTest();
+  spanTest();
+  textAreaAutoFillTest()
 }

@@ -79,6 +79,7 @@ static napi_value Semctl(napi_env env, napi_callback_info info)
             return result;
         }
     }
+    return nullptr;
 }
 
 static napi_value Semget(napi_env env, napi_callback_info info)

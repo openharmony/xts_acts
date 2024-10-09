@@ -19,7 +19,7 @@ struct RelativeBarrier5 {
 
   @State RelativeHeight: number = 100
   build() {
-    Row() {
+    Column() {
       RelativeContainer() {
         Button('A')
           .height(100)

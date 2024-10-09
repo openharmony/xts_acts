@@ -262,8 +262,8 @@ struct PinchGestureBasic01 {
         Span(`${this.time}`).fontColor(Color.Red).key('PinchGestureBasic01_time')
       }
       Text(){
-        Span(`target_area_width:${this.target_area_width}`).fontColor(Color.Green).key('PinchGestureBasic01_target_area_width')
-        Span(`target_area_height:${this.target_area_height}`).fontColor(Color.Red).key('PinchGestureBasic01_target_area_height')
+        Span(`${this.target_area_width}`).fontColor(Color.Green).key('PinchGestureBasic01_target_area_width')
+        Span(`${this.target_area_height}`).fontColor(Color.Red).key('PinchGestureBasic01_target_area_height')
         Span(`${this.target_area_position_x}`).fontColor(Color.Green).key('PinchGestureBasic01_target_area_position_x')
         Span(`${this.target_area_position_y}`).fontColor(Color.Red).key('PinchGestureBasic01_target_area_position_y')
         Span(`${this.target_area_globalPosition_x}`).fontColor(Color.Green).key('PinchGestureBasic01_target_area_globalPosition_x')

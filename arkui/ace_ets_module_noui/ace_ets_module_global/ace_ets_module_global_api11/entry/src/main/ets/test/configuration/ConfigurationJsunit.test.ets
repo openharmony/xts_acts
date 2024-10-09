@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/utils/Common';
 import emitter from '@ohos.events.emitter';
@@ -22,8 +22,8 @@ export default function configurationJsunit() {
   describe('configurationJsunit', () => {
     beforeEach(async (done: Function) => {
       console.info("prompt beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/configuration/configuration',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/configuration/configuration',
       }
       try {
         router.clear();
@@ -45,13 +45,13 @@ export default function configurationJsunit() {
       await CommonFunc.sleep(1000);
       console.info("prompt each called");
     });
-    it('configurationTest_0100', 0, async(done: Function) {
+    it('configurationTest_0100', 0, async(done: Function) => {
       console.info('configurationTest_0100 is start');
       try {
-        let callBackConfiguration = (backData) => {
+        let callBackConfiguration = (backData: events_emitter.EventData) => {
           console.info("configurationTest_0100 get configurationEvent result is: " + JSON.stringify(backData));
-          expect(backData.data.COUNTRY).assertEqual('CN');
-          expect(backData.data.DIR).assertEqual('ltr');
+          expect(backData.data?.COUNTRY).assertEqual('CN');
+          expect(backData.data?.DIR).assertEqual('ltr');
           done();
         }
         let configurationEvent: emitter.InnerEvent = {

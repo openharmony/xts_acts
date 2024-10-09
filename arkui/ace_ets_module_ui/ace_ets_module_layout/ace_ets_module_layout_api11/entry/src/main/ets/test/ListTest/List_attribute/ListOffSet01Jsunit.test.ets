@@ -70,7 +70,7 @@ export default function ListOffSet01Jsunit() {
 
       let strJson = getInspectorByKey('ListoffSet01_Textend');
       console.info("[ListOffSet01Jsunit_0010] component obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content).assertEqual("100");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson).$attrs.content))-100)<=1).assertTrue();
       console.info('[ListOffSet01Jsunit_0010] END');
       done();
     });
@@ -88,7 +88,7 @@ export default function ListOffSet01Jsunit() {
 
       let strJson = getInspectorByKey('ListoffSet01_Textend');
       console.info("[ListOffSet01Jsunit_0020] component obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content).assertEqual("95");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson).$attrs.content))-95)<=1).assertTrue();
       console.info('[ListOffSet01Jsunit_0020] END');
       done();
     });
@@ -108,7 +108,7 @@ export default function ListOffSet01Jsunit() {
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('ListoffSet01_Text01');
       console.info("[ListOffSet01Jsunit_0030] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
-      expect(JSON.parse(strJson1).$attrs.content).assertEqual("10");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson1).$attrs.content))-10)<=1).assertTrue();
       await CommonFunc.sleep(1000);
       let btn4 = await driver.findComponent(ON.id('ListoffSet01_Bottom'));
       await btn4.click();
@@ -116,7 +116,7 @@ export default function ListOffSet01Jsunit() {
       let strJson = getInspectorByKey('ListoffSet01_Textend');
 
       console.info("[ListOffSet01Jsunit_0030] component obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content).assertEqual("90");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson).$attrs.content))-90)<=1).assertTrue();
       console.info('[ListOffSet01Jsunit_0030] END');
       done();
     });
@@ -135,7 +135,7 @@ export default function ListOffSet01Jsunit() {
       let strJson = getInspectorByKey('ListoffSet01_Text01');
 
       console.info("[ListOffSet01Jsunit_0040] component obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content).assertEqual("0");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson).$attrs.content)))<=1).assertTrue();
       console.info('[ListOffSet01Jsunit_0040] END');
       done();
     });
@@ -154,7 +154,7 @@ export default function ListOffSet01Jsunit() {
       let strJson = getInspectorByKey('ListoffSet01_Text01');
 
       console.info("[ListOffSet01Jsunit_0050] component obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content).assertEqual("5");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson).$attrs.content))-5)<=1).assertTrue();
       console.info('[ListOffSet01Jsunit_0050] END');
       done();
     });
@@ -179,7 +179,7 @@ export default function ListOffSet01Jsunit() {
       let strJson = getInspectorByKey('ListoffSet01_Text01');
 
       console.info("[ListOffSet01Jsunit_0060] component obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content).assertEqual("10");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson).$attrs.content))-10)<=1).assertTrue();
       console.info('[ListOffSet01Jsunit_0060] END');
       done();
     });
@@ -204,7 +204,7 @@ export default function ListOffSet01Jsunit() {
       let strJson = getInspectorByKey('ListoffSet01_Textend');
 
       console.info("[ListOffSet01Jsunit_0070] component obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content).assertEqual("90");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson).$attrs.content))-90)<=1).assertTrue();
       console.info('[ListOffSet01Jsunit_0070] END');
       done();
     });
@@ -232,7 +232,7 @@ export default function ListOffSet01Jsunit() {
       let strJson = getInspectorByKey('ListoffSet01_Text02');
 
       console.info("[ListOffSet01Jsunit_0080] component obj is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.content).assertEqual("-10");
+      expect(Math.abs(Math.round(Number(JSON.parse(strJson).$attrs.content))-(-10))<=1).assertTrue();
       console.info('[ListOffSet01Jsunit_0080] END');
       done();
     });

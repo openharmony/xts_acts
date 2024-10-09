@@ -5,8 +5,8 @@
         "test-timeout": "1500000",
         "shell-timeout": "600000",
         "bundle-name": "com.example.avsessionvoicecall",
-        "package-name": "com.example.avsessionvoicecall",
-        "testcase-timeout": "1100000"
+        "testcase-timeout": "1100000",
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -24,7 +24,7 @@
                 "uinput -T -m 300 2700 280 200",
                 "power-shell setmode 602"
             ],
-            "teardown-command":[
+            "teardown-command": [
                 "power-shell setmode 600"
             ]
         }

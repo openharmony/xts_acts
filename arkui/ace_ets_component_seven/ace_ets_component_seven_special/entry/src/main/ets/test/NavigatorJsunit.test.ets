@@ -14,17 +14,17 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function navigatorJsunit() {
-  describe('NavigatorClickTest', function () {
-    beforeEach(async function (done) {
+  describe('NavigatorClickTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigatorClick beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/navigator',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/navigator',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,11 +49,11 @@ export default function navigatorJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_Navigator_0021', 0, async function (done) {
+    it('test_Navigator_0021', 0, async (done: Function) => {
       console.info('[test_Navigator_0021] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigator1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_Navigator_0021] component obj is: " + JSON.stringify(obj));
       expect(JSON.parse(obj.$attrs.params).params).assertEqual('modifier');
       console.info('[test_Navigator_0021] END');
@@ -68,11 +68,11 @@ export default function navigatorJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_Navigator_0022', 0, async function (done) {
+    it('test_Navigator_0022', 0, async (done: Function) => {
       console.info('[test_Navigator_0022] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigator1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_Navigator_0022] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.active).assertEqual('true');
       console.info('[test_Navigator_0022] END');
@@ -87,11 +87,11 @@ export default function navigatorJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_Navigator_0023', 0, async function (done) {
+    it('test_Navigator_0023', 0, async (done: Function) => {
       console.info('[test_Navigator_0023] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigator1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_Navigator_0023] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.target).assertEqual('');
       console.info('[test_Navigator_0023] END');
@@ -106,11 +106,11 @@ export default function navigatorJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_Navigator_0024', 0, async function (done) {
+    it('test_Navigator_0024', 0, async (done: Function) => {
       console.info('[test_Navigator_0024] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigator1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_Navigator_0024] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.type).assertEqual('NavigationType.Push');
       console.info('[test_Navigator_0024] END');

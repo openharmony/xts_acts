@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 
 // @ts-ignore
 import napitest from 'libnapitest.so'
@@ -255,6 +255,19 @@ export default function nativeApiStringJsunit() {
       console.info('aceNapiTest0144 START');
       value = napitest.runEventLoop(9);
       console.info('aceNapiTest0144 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0148
+     * @tc.name aceNapiTest0148
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0148', 0, async (done: Function) => {
+      console.info('aceNapiTest0148 START');
+      let value = napitest.stopEventLoop(4);
+      console.info('aceNapiTest0148 testString result is: ' + value);
       expect(value).assertEqual(0);
       done();
     });

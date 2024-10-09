@@ -5,7 +5,7 @@
         "test-timeout": "300000",
         "shell-timeout": "120000",
         "bundle-name": "ohos.acts.multimedia.audio.audiorendererchangeInfo",
-        "package-name": "ohos.acts.multimedia.audio.audiorendererchangeInfo"
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -15,11 +15,9 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         },
-		{
+        {
             "type": "ShellKit",
-            "run-command": [
-
-            ]
+            "run-command": []
         }
     ]
 }

@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function marqueeJsunit() {
-  describe('marqueeTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/marquee',
+  describe('marqueeTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/marquee',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,10 +49,10 @@ export default function marqueeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testMarquee_04001', 0, async function (done) {
+    it('testMarquee_04001', 0, async (done: Function) => {
       console.info('testMarquee_04001 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       expect(obj.$attrs.fontColor).assertEqual('#FF00FFFF');
       console.info('testMarquee_04001 END');
       done();
@@ -66,10 +66,10 @@ export default function marqueeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testMarquee_04002', 0, async function (done) {
+    it('testMarquee_04002', 0, async (done: Function) => {
       console.info('testMarquee_04002 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       expect(obj.$attrs.fontSize).assertEqual('35.00fp');
       console.info('testMarquee_04002 END');
       done();
@@ -83,10 +83,10 @@ export default function marqueeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testMarquee_04003', 0, async function (done) {
+    it('testMarquee_04003', 0, async (done: Function) => {
       console.info('testMarquee_04003 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       expect(obj.$attrs.allowScale).assertEqual('true');
       console.info('testMarquee_04003 END');
       done();
@@ -100,10 +100,10 @@ export default function marqueeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testMarquee_04004', 0, async function (done) {
+    it('testMarquee_04004', 0, async (done: Function) => {
       console.info('testMarquee_04004 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       expect(obj.$attrs.fontWeight).assertEqual('500');
       console.info('testMarquee_04004 END');
       done();
@@ -117,10 +117,10 @@ export default function marqueeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testMarquee_04005', 0, async function (done) {
+    it('testMarquee_04005', 0, async (done: Function) => {
       console.info('testMarquee_04005 START');
       let strJsonNew = getInspectorByKey('MarqueeKey1');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       expect(obj.$attrs.fontFamily).assertEqual('medium');
       console.info('testMarquee_04005 END');
       done();

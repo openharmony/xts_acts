@@ -1,8 +1,0 @@
-{
-  "src": [
-    "testability/pages/Index",
-    "testability/pages/Main2",
-    "testability/pages/Main3",
-    "testability/pages/Main4"
-  ]
-}

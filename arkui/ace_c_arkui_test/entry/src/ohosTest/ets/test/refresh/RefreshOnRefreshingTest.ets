@@ -32,9 +32,13 @@ export default function refreshOnRefreshingTest() {
     it('testRefreshOnRefreshing001', 0, async (done: Function) => {
       let PAGE_TAG = 'RefreshOnRefreshingTest';
       await Utils.pushPage(`refresh/${PAGE_TAG}`);
-      await Utils.sleep(2000)
+      await Utils.sleep(1000)
       let driver = Driver.create();
-      await driver.swipe(Math.round(globalThis.winLeft + vp2px(133.33)), Math.round(globalThis.winTop + vp2px(233.33)), Math.round(globalThis.winLeft + vp2px(133.33)), Math.round(globalThis.winTop + vp2px(400)));
+      let rect = Utils.getComponentRect("RefreshOnRefreshing");
+      let x = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
+      let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
+      console.info("RefreshOnRefreshingTest  x= " +  x  + ", y = " + y);
+      await driver.swipe(Math.round(x - vp2px(50)), Math.round(y - vp2px(100)), Math.round(x + vp2px(50)), Math.round(y + vp2px(100)));
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('RefreshOnRefreshing').$attrs.backgroundColor).assertEqual('#FF0000FF');
       done();

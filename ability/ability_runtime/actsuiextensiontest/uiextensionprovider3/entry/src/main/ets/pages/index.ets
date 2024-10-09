@@ -17,6 +17,11 @@ import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSessi
 import IdlServiceExtProxy from '../IdlServiceExt/idl_service_ext_proxy';
 import commonEventManager from '@ohos.commonEventManager'
 import Logger from '../model/Logger'
+import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+import { bundleManager } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
 
 const TAG: string = '[UIExtAbility]'
 const sleepTimeOne = 1000;
@@ -27,13 +32,13 @@ let storage = LocalStorage.GetShared();
 @Component
 struct Index {
   @State message: string = 'UIExtension'
-  private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session');
+  private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session')!;
   
   aboutToAppear() {
     let appearEvent = 'ACTS_UIExtension_AboutToAppear';
     let differentAppEvent011 = 'ACTS_UIExtension_DifferentApp011';
-    var subscriber;
-    var subscribeInfo = {
+    let subscriber:commonEventManager.CommonEventSubscriber;
+    let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
       events: [differentAppEvent011]
     }
     commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
@@ -50,7 +55,7 @@ struct Index {
           this.doDifferentAppEvent011();
         }
       });
-    }).catch((error) => {
+    }).catch((error:BusinessError) => {
       console.log(TAG + "createSubscriber error : " + JSON.stringify(error));
     })
     setTimeout(async () => {
@@ -67,32 +72,32 @@ struct Index {
   async doDifferentAppEvent011(){
     let successDifferentAppEvent011_visible = 'ACTS_UIExtension_DifferentApp011_visibleSuccess';
     let successDifferentAppEvent011_unvisible = 'ACTS_UIExtension_DifferentApp011_unvisibleSuccess';
-    let wantUnvisible = {
+    let wantUnvisible:Want = {
       "bundleName": "com.acts.uiextensionservice",
       "abilityName": "TestServiceExtAbilityUnvisible"
     };
-    let optionsUnvisible = {
-      onConnect(elementName, remote) {
+    let optionsUnvisible:common.ConnectOptions = {
+      onConnect(elementName:bundleManager.ElementName, remote: rpc.IRemoteObject) {
         commonEventManager.publish(successDifferentAppEvent011_unvisible, (err) => { }); 
         console.info('successDifferentAppEvent006_unvisible___')
       },
-      onDisconnect(elementName) {
+      onDisconnect(elementName:bundleManager.ElementName) {
       },
-      onFailed(code) {
+      onFailed(code:number) {
       }
     }
-    let want = {
+    let want:Want = {
       "bundleName": "com.acts.uiextensionservice",
       "abilityName": "TestServiceExtAbility"
     };
-    let options = {
-      onConnect(elementName, remote) {
+    let options:common.ConnectOptions = {
+      onConnect(elementName:bundleManager.ElementName, remote: rpc.IRemoteObject) {
         commonEventManager.publish(successDifferentAppEvent011_visible, (err) => { }); 
         console.info('successDifferentAppEvent006_visible___' + elementName);
       },
-      onDisconnect(elementName) {
+      onDisconnect(elementName:bundleManager.ElementName) {
       },
-      onFailed(code) {
+      onFailed(code:number) {
       }
     }
 
@@ -103,7 +108,7 @@ struct Index {
         abilityName: 'MainAbility'
       })
     await this.sleep(1000);
-    let connectid = globalThis.context2.connectServiceExtensionAbility(want, options);
+    let connectid:number = globalThis.context2.connectServiceExtensionAbility(want, options);
     connectid = globalThis.context2.connectServiceExtensionAbility(wantUnvisible, optionsUnvisible);
     await this.sleep(400);
   }

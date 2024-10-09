@@ -16,12 +16,14 @@ group("location") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "geolocation_capi:ActslocationCApiTest",
       "geolocation_errorCode:ActslocationErrorCodeTest",
       "geolocation_nop:ActslocationNopTest",
       "geolocation_standard:ActslocationJsTest",
     ]
   } else {
     deps = [
+      "geolocation_capi:ActslocationCApiTest",
       "geolocation_errorCode:ActslocationErrorCodeTest",
       "geolocation_nop:ActslocationNopTest",
       "geolocation_standard:ActslocationJsTest",

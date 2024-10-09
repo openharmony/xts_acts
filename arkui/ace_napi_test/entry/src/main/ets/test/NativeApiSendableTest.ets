@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 import napitest from 'libnapitest.so'
 import utils from '@ohos.arkts.utils'
@@ -43,6 +43,19 @@ export default function nativeApiSendableJsunit() {
       expect(napitest.NapiIsSendable(instance)).assertEqual(true);
       expect(instance.str).assertEqual('instance str');
       expect(instance.func()).assertEqual('instance func');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0003
+     * @tc.name napiSendableTest003
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiSendableTest003', 0, async (done: Function) => {
+      console.info('napiSendableTest003 START');
+      let value = napitest.NapiCreateSendableObject();
+      expect(napitest.NapiIsSendable(value)).assertEqual(true);
+      expect(value.x).assertEqual(true);
       done();
     });
 

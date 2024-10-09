@@ -27,6 +27,10 @@
     {
       "name": "Caretcolor",
       "value": "#FFFF0000"
+    },
+    {
+      "name": "color_D90013_red",
+      "value": "#D90013"
     }
   ]
 }

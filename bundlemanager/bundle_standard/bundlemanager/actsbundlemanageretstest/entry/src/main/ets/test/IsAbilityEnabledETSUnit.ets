@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from 'hypium/index';
+import { describe, it, expect } from '@ohos/hypium';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 

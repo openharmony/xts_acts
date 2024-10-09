@@ -26,7 +26,7 @@ struct TouchStrategyExample {
         Text(this.testTextStr).key('listText_TouchStrategy')
           .fontSize(20)
       }
-      .height(50)
+      .height(30)
       .margin(10)
       .backgroundColor(Color.White)
 
@@ -34,8 +34,8 @@ struct TouchStrategyExample {
         Column() {
           Text("Test Text Visible Change")
             .fontSize(20)
-            .height(80)
-            .margin(20)
+            .height(40)
+            .margin(5)
             .backgroundColor(Color.Green)
               // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调
             .onVisibleAreaChange([0.0, 1.0], (isVisible: boolean, currentRatio: number) => {
@@ -67,12 +67,12 @@ struct TouchStrategyExample {
       .scrollable(ScrollDirection.Vertical)
       .scrollBar(BarState.Auto)
       .width('100%')
-      .height('60%')
+      .height('50%')
       .key('list_TouchStrategy')
       .backgroundColor(Color.Gray)
 
       Text().key('border_TouchStrategy')
-        .width(300).height(200)
+        .width(300).height(300)
         .borderWidth(1).margin(10)
 
     }

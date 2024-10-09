@@ -15,6 +15,7 @@
 
 import fileio from '@ohos.fileio';
 import request from "@ohos.request";
+import common from '@ohos.app.ability.common';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
@@ -22,6 +23,7 @@ export default function requestUploadNormalJSUnit() {
   describe('requestUploadNormalJSUnit', () => {
     console.info('====>################################request upload Test start');
 
+    let baseContext: common.Context;
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
@@ -29,7 +31,14 @@ export default function requestUploadNormalJSUnit() {
       console.info('====>beforeAll: Prerequisites are executed.');
       try {
         console.info('beforeAll====>------------text.txt file generate start----------------');
-        let pathDir: string = globalThis.abilityContext.cacheDir;
+        let context: common.Context | undefined = AppStorage.get('context');
+        if (context !== undefined){
+          baseContext = context;
+          console.info('====>beforeAll requestUploadNormalJSUnit baseContext:'+JSON.stringify(baseContext))
+        } else {
+          console.info('====>beforeAll requestUploadNormalJSUnit baseContext is undefined')
+        }
+        let pathDir: string = baseContext.cacheDir;
         let filePath = pathDir + `/test.txt`;
         let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
         let content = ''.padEnd(1 * 1024 *1024, 'h');
@@ -114,7 +123,7 @@ export default function requestUploadNormalJSUnit() {
         data: attachments,
       };
 
-      request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+      request.agent.create(baseContext, config, async (err, task) => {
         console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 downloadTask: " + task);
         try {
           if (err) {
@@ -164,7 +173,7 @@ export default function requestUploadNormalJSUnit() {
       };
 
       try {
-        let task = await request.agent.create(globalThis.abilityContext, config);
+        let task = await request.agent.create(baseContext, config);
         expect().assertFail();
         console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010 create success: " + task);
       } catch (err) {
@@ -185,7 +194,7 @@ export default function requestUploadNormalJSUnit() {
     it('SUB_Misc_Request_UploadManagement_0001', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_0001 is starting-----------------------");
       try {
-        await request.uploadFile(globalThis.abilityContext, uploadConfig);
+        await request.uploadFile(baseContext, uploadConfig);
         expect().assertFail();
         console.info("====>SUB_Misc_Request_UploadManagement_0001 uploadFile success");
         done();
@@ -207,7 +216,7 @@ export default function requestUploadNormalJSUnit() {
     it('SUB_Misc_Request_UploadManagement_Callback_0001', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_Callback_0001 is starting-----------------------");
       try {
-        request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask)=>{
+        request.uploadFile(baseContext, uploadConfig, (err, uploadTask)=>{
           if (err) {
             console.info("====>SUB_Misc_Request_UploadManagement_Callback_0001 create err: " + JSON.stringify(err));
             expect(err.code).assertEqual(201);

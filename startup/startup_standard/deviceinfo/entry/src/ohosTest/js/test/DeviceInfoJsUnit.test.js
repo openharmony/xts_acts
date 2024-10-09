@@ -1833,5 +1833,24 @@ export default function DeviceInfoTest() {
             
             console.info('device_info_test_071 : end');
         })
+
+         /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_072
+         * @tc.name      testGetOsApiName
+         * @tc.desc      Independent Software Vendor (ISV) may distribute OHOS with their own OS api name.
+         *               will return the ISV OS api name
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_072', 0, function () {
+            console.info('device_info_test_072 start');
+            let distributionOSApiName = deviceinfo.distributionOSApiName;
+            if (distributionOSApiName != "" && distributionOSApiName != null && distributionOSApiName != undefined) {
+                console.info('the value of the deviceinfo distributionOSApiName is :' + distributionOSApiName);
+                expect(distributionOSApiName).assertInstanceOf('String');
+            }
+            console.info('device_info_test_071 : end');
+        })
     })
 }

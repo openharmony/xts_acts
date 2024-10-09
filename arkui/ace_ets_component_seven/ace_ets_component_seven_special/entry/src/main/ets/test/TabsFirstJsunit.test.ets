@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import Utils from './Utils';
 export default function tabsFirstJsunit() {
-  describe('tabsFirstTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsFirstTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsFirst beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/tabsFirst',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/tabsFirst',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -48,12 +48,12 @@ export default function tabsFirstJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_Divider_0300', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0300 start");
       let strJson = getInspectorByKey('tabsTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0300] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual('#FFFF0000');
       expect(dividerObject.startMargin).assertEqual("5.00vp");
@@ -69,10 +69,10 @@ export default function tabsFirstJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_FadingEdge_0100', 0, async function (done) {
+    it('ArkUI_Tabs_FadingEdge_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0100 start");      
       let strJson = getInspectorByKey('tabsTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_FadingEdge_0100] fadingEdge:" + obj.$attrs.fadingEdge);
       expect(obj.$attrs.fadingEdge).assertEqual('true');
       done();

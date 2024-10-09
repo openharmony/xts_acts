@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function rectJsunit() {
-  describe('ActsAcerectTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAcerectTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/rect',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/rect',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,13 +49,13 @@ export default function rectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testrect_radiusHeight', 0, async function (done) {
+    it('testrect_radiusHeight', 0, async (done: Function) => {
       console.info('[testrect_radiusHeight] START');
       let strJson = getInspectorByKey('Rect1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testrect_radiusHeight] obj is : " + JSON.stringify(obj.$attrs));
       let strJson1 = getInspectorByKey('Rect11');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[testrect_radiusHeight] obj1 is : " + JSON.stringify(obj1.$attrs));
       //json返回值与设置值不统一，所以使用与原生返回做对比验证
       expect(obj.$attrs.radiusHeight).assertEqual(obj1.$attrs.radiusHeight);
@@ -72,13 +72,13 @@ export default function rectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testrect_radius', 0, async function (done) {
+    it('testrect_radius', 0, async (done: Function) => {
       console.info('[testrect_radius] START');
       let strJson = getInspectorByKey('Rect2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testrect_radius] obj2 is : " + JSON.stringify(obj.$attrs));
       let strJson1 = getInspectorByKey('Rect22');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[testrect_radius] obj22 is : " + JSON.stringify(obj1.$attrs));
       //json返回值与设置值不统一，所以使用与原生返回做对比验证
       expect(obj.$attrs.radius).assertEqual(obj1.$attrs.radius);
@@ -94,13 +94,13 @@ export default function rectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testrect_radiusWidth', 0, async function (done) {
+    it('testrect_radiusWidth', 0, async (done: Function) => {
       console.info('[testrect_radiusWidth] START');
       let strJson = getInspectorByKey('Rect3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testrect_radiusWidth] obj is : " + JSON.stringify(obj.$attrs));
       let strJson1 = getInspectorByKey('Rect33');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[testrect_radiusWidth] obj1 is : " + JSON.stringify(obj1.$attrs));
 
       //json返回值与设置值不统一，所以使用与原生返回做对比验证

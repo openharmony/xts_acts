@@ -14,16 +14,16 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function listItemGroupJsunit() {
-  describe('listItemGroupJsunit', function () {
-    beforeAll(async function (done) {
+  describe('listItemGroupJsunit', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/listItemGroup',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/listItemGroup',
       }
       try {
         router.clear();
@@ -49,12 +49,12 @@ export default function listItemGroupJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testList_item_group0007', 0, async function (done) {
+    it('testList_item_group0007', 0, async (done: Function) => {
       console.info('testList_item_group0007 START');
       let strJson = getInspectorByKey('ListItemGroupKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testList_item_group0007] obj value :" + JSON.stringify(obj.$attrs));
-      let divider = obj.$attrs.divider;
+      let divider: ESObject = obj.$attrs.divider;
       console.info("[testList_item_group0007] obj divider value :" + JSON.stringify(divider));
       expect(divider.strokeWidth).assertEqual("12.00vp");
       expect(divider.startMargin).assertEqual("2.00vp");

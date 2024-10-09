@@ -91,7 +91,8 @@ export default function lifecycleTest() {
       console.info("LifeCycleTest after each called");
       if ("Crossplatform_Singlehap_LifeCycleTest_0200" === TAG || "Crossplatform_Singlehap_LifeCycleTest_0300" === TAG
         || "Crossplatform_Singlehap_LifeCycleTest_0500" === TAG || "Crossplatform_Singlehap_LifeCycleTest_0600" === TAG
-        || "Crossplatform_Singlehap_LifeCycleTest_0800" === TAG || "Crossplatform_Singlehap_LifeCycleTest_0900" === TAG) {
+        || "Crossplatform_Singlehap_LifeCycleTest_0800" === TAG || "Crossplatform_Singlehap_LifeCycleTest_0900" === TAG
+        || "Crossplatform_Singlehap_LifeCycleTest_1400" === TAG || "Crossplatform_LifeCycleTest_on_0400" === TAG) {
         console.log("LifeCycleTest terminateSelfwithresult para: " + JSON.stringify(para));
 
         await globalThis.ability1context
@@ -450,7 +451,7 @@ export default function lifecycleTest() {
         abilityName: "MainAbility4",
         moduleName: moduleName,
       };
-
+      let ability1HasForeground = false;
       handlerMessage((event: string) => {
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'StartMainAbility1') {
@@ -463,14 +464,17 @@ export default function lifecycleTest() {
               console.info(TAG + " start1 failed. Cause: " + JSON.stringify(error));
             });
         } else if (event === 'MainAbility1onForeground') {
-          globalThis.abilityContext
-            .startAbility(str1)
-            .then((data: ESObject) => {
-              console.info(TAG + " start3 successful. Data: " + data);
-            })
-            .catch((error: BusinessError) => {
-              console.info(TAG + " start3 failed. Cause: " + JSON.stringify(error));
-            });
+          if (!ability1HasForeground) {
+            globalThis.abilityContext
+              .startAbility(str1)
+              .then((data: ESObject) => {
+                console.info(TAG + " start3 successful. Data: " + data);
+              })
+              .catch((error: BusinessError) => {
+                console.info(TAG + " start3 failed. Cause: " + JSON.stringify(error));
+              });
+          }
+          ability1HasForeground = true;
         } else if (event === 'MainAbility3onForeground') {
           globalThis.abilityContext
             .startAbility(str2).then((data: ESObject) => {
@@ -478,6 +482,7 @@ export default function lifecycleTest() {
           }).catch((error: BusinessError) => {
             console.info(TAG + " start4 failed. Cause: " + JSON.stringify(error));
           });
+          globalThis.ability3.terminateSelf();
         } else if (event === 'MainAbility4onForeground') {
           clearInterval(intervalId);
           intervalId = -1;
@@ -502,7 +507,7 @@ export default function lifecycleTest() {
           });
         }
       });
-      handlerMessageDelayed('StartMainAbility1', 0);
+      handlerMessageDelayed('StartMainAbility1', 2000);
     });
 
     /*
@@ -533,17 +538,19 @@ export default function lifecycleTest() {
       };
       let oneStartMainAbility1 = false;
       let oneStartMainAbility5 = false;
+      let isStartWith600 = false;
 
       handlerMessage((event: string) => {
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'StartMainAbility1') {
+          isStartWith600 = true;
           globalThis.abilityContext
             .startAbility(str).then((data: ESObject) => {
             console.info(TAG + " start1 successful. Data: " + data);
           }).catch((error: BusinessError) => {
             console.info(TAG + " start1 failed. Cause: " + JSON.stringify(error));
           });
-        } else if (event === 'MainAbility1onForeground') {
+        } else if (event === 'MainAbility1onForeground' && isStartWith600) {
           if (!oneStartMainAbility1) {
             globalThis.abilityContext
               .startAbility(str1).then((data: ESObject) => {
@@ -588,7 +595,7 @@ export default function lifecycleTest() {
           });
         }
       });
-      handlerMessageDelayed('StartMainAbility1', 0);
+      handlerMessageDelayed('StartMainAbility1', 1000);
     });
 
     /*
@@ -960,6 +967,7 @@ export default function lifecycleTest() {
         } else if (event === 'MainAbility9onForeground') {
           if (!mainAbility9StartedHap1MainAbility2onDestroy) {
             handlerMessageDelayed('StartHap1MainAbility2', 0);
+            globalThis.ability9.terminateSelf();
           }
           mainAbility9StartedHap1MainAbility2onDestroy = true;
         } else if (event === 'StartHap1MainAbility2') {
@@ -1194,6 +1202,8 @@ export default function lifecycleTest() {
       console.info(TAG + "list:" + listtemp);
       expect(listtemp.indexOf("MultiMainability1 onWindowStageCreate") !== -1).assertTrue();
       expect(listtemp.indexOf("MultiMainability1 onAbilityForeground") !== -1).assertTrue();
+      globalThis.multiability1context.terminateSelf();
+      await sleep(1000);
 
       // 第二次起MultiMainability1
       globalThis.abilityContext
@@ -1210,6 +1220,8 @@ export default function lifecycleTest() {
       console.info(TAG + "list:" + listtemp);
       expect(listtemp.indexOf("MultiMainability1 onAbilityCreate") !== -1).assertTrue();
       expect(listtemp.indexOf("MultiMainability1 onWindowStageCreate") !== -1).assertTrue();
+      globalThis.multiability1context.terminateSelf();
+      await sleep(1000);
       done();
     });
 
@@ -1330,7 +1342,7 @@ export default function lifecycleTest() {
         moduleName: moduleName,
       };
 
-      // 第一次起MultiMainability1
+      // 第一次起Mainability14
       globalThis.abilityContext
         .startAbility(str)
         .then((data: ESObject) => {
@@ -1446,7 +1458,7 @@ export default function lifecycleTest() {
         moduleName: otherModuleName,
       };
 
-      // 第一次起MultiMainability1
+      // 第一次起MainAbility
       globalThis.abilityContext
         .startAbility(str)
         .then((data: ESObject) => {

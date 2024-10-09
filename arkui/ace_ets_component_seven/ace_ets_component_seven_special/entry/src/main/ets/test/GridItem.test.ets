@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 
 export default function gridItemOnSelectJsunit() {
-  describe('gridItemOnSelectTest', function () {
-    beforeAll(async function (done) {
+  describe('gridItemOnSelectTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("gridItem beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/gridItem',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gridItem',
       }
       try {
         router.clear();
@@ -50,10 +50,10 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0100',0,async function (done) {
+    it('testGridItem_0100',0,async (done: Function) => {
       console.info('[testGridItem_0100] START');
       let strJson = getInspectorByKey('GridItemKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testGridItem_0100] obj selected is: " + JSON.stringify(obj.$attrs));
       
       // expect(obj.$attrs.selected).assertEqual("true");
@@ -70,10 +70,10 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0101',0,async function (done) {
+    it('testGridItem_0101',0,async (done: Function) => {
       console.info('[testGridItem_0101] START');
       let strJson = getInspectorByKey('GridItemKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testGridItem_0101] obj selected is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.rowStart).assertEqual("1");
@@ -89,10 +89,10 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0102',0,async function (done) {
+    it('testGridItem_0102',0,async (done: Function) => {
       console.info('[testGridItem_0102] START');
       let strJson = getInspectorByKey('GridItemKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testGridItem_0102] obj selected is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.rowEnd).assertEqual("12");
@@ -108,10 +108,10 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0103',0,async function (done) {
+    it('testGridItem_0103',0,async (done: Function) => {
       console.info('[testGridItem_0103] START');
       let strJson = getInspectorByKey('GridItemKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testGridItem_0103] obj selected is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.columnStart).assertEqual("1");
@@ -127,10 +127,10 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0104',0,async function (done) {
+    it('testGridItem_0104',0,async (done: Function) => {
       console.info('[testGridItem_0104] START');
       let strJson = getInspectorByKey('GridItemKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testGridItem_0104] obj selected is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.columnEnd).assertEqual("12");
@@ -146,10 +146,10 @@ export default function gridItemOnSelectJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testGridItem_0105',0,async function (done) {
+    it('testGridItem_0105',0,async (done: Function) => {
       console.info('[testGridItem_0105] START');
       let strJson = getInspectorByKey('GridItemKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testGridItem_0105] obj selected is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.selectable).assertEqual("true");

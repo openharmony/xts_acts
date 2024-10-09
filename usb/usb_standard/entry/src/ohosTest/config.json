@@ -35,10 +35,6 @@
       {
         "name": "ohos.permission.DISTRIBUTED_DATASYNC",
         "reason": "ceshi"
-      },
-      {
-        "name": "ohos.permission.MANAGE_USB_CONFIG",
-        "reason": "manage_usb_config"
       }
     ],
     "abilities": [

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function menuItemJsunit() {
-  describe('menuItemJsunit', function () {
-    beforeEach(async function (done) {
+  describe('menuItemJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("menuItemJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/menuItem',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/menuItem',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -49,10 +49,10 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit01', 0, async function (done) {
+    it('menuItemJsunit01', 0, async (done: Function) => {
       console.info('[menuItemJsunit01] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit01] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.contentFont.size).assertEqual("10.00fp");
@@ -68,10 +68,10 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit02', 0, async function (done) {
+    it('menuItemJsunit02', 0, async (done: Function) => {
       console.info('[menuItemJsunit02] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit02] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.contentFontColor).assertEqual("#FF0000FF");
@@ -87,10 +87,10 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit03', 0, async function (done) {
+    it('menuItemJsunit03', 0, async (done: Function) => {
       console.info('[menuItemJsunit03] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit03] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.labelFont.size).assertEqual("15.00fp");
@@ -106,10 +106,10 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit04', 0, async function (done) {
+    it('menuItemJsunit04', 0, async (done: Function) => {
       console.info('[menuItemJsunit04] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit04] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.labelFontColor).assertEqual("#FFFF0000");
@@ -125,10 +125,10 @@ export default function menuItemJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('menuItemJsunit05', 0, async function (done) {
+    it('menuItemJsunit05', 0, async (done: Function) => {
       console.info('[menuItemJsunit05] START');
       let strJson = getInspectorByKey('menuItem_options1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[menuItemJsunit05] obj is: " + JSON.stringify(obj.$attrs));
 
       //expect(obj.$attrs.selected).assertEqual(false);

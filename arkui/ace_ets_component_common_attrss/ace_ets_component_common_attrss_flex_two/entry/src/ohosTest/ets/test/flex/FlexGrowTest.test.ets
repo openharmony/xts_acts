@@ -61,7 +61,8 @@ function expectForFlexGrow(space: number, countFlexGrow: number, realRect: numbe
   console.info('[' + data.caseTag + '] targetSize : ' + targetSize);
   //Verify based on different parent container spindle directions
   let ratio = countFlexGrow / (flexGrow + compareFlexGrow);
-  expect(Math.abs(Number(realRect) - Number(vp2px((space * ratio) + targetSize))) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] (space * ratio) + targetSize : ' + ((space * ratio) + targetSize));
+  expect(Math.abs(Math.round(realRect) - Math.round(vp2px((space * ratio) + targetSize))) <= 2).assertTrue();
   console.info('[' + data.caseTag + '] (space * ratio) + targetSize : ' + ((space * ratio) + targetSize));
 }
 

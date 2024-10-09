@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "10800000",
-        "bundle-name": "com.acts.arkui.component.common.attrs.test",
+        "bundle-name": "com.acts.arkui.component.common.attrs.two.test",
         "module-name": "phone",
         "shell-timeout": "10800000",
         "testcase-timeout": 300000

@@ -3,23 +3,24 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.thirdparty.musl32.napitest",
-        "module-name": "com.thirdparty.musl32.napitest",
         "shell-timeout": "600000",
-        "testcase-timeout": 60000
+        "bundle-name": "com.thirdparty.musl32.napitest",
+        "module-name": "entry_test"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsThirdPartyMusl32Test.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    }, {
-        "type": "ShellKit",
-        "run-command": [
-            "power-shell wakeup",
-            "power-shell setmode 602"
-        ]
-
-    }]
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsThirdPartyMusl32Test.hap",
+                "ActsThirdPartyMusl32MainTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }

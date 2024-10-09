@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {
   UiComponent,
   Driver,
@@ -35,8 +35,8 @@ export default function ResourceStrarray() {
   describe('ResourceStrarray', () => {
     beforeEach(async (done: Function) => {
       console.info("ResourceStrarray beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Resource/ResourceStrarray',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Resource/ResourceStrarray',
       }
       try {
         router.clear();
@@ -64,7 +64,7 @@ export default function ResourceStrarray() {
         console.error("push ResourceStrarray_0100 error: " + err);
       }
       let strJson = getInspectorByKey('strarray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceStrarray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ResourceStrarray_0100] title: " + JSON.stringify(obj.$attrs.range));
       expect(obj.$attrs.range).assertEqual('[\"icon:,text:11\",\"icon:,text:22\"]');
@@ -80,7 +80,7 @@ export default function ResourceStrarray() {
       await button.click();
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('strarray');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceStrarray_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ResourceStrarray_0200] title: " + JSON.stringify(obj.$attrs.range));
       expect(obj.$attrs.range).assertEqual('[\"icon:,text:111\",\"icon:,text:222\"]');
