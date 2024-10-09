@@ -14,26 +14,25 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 
 export default function subHeaderIconGroup() {
-  describe('subHeaderIconGroup', function () {
-    beforeEach(async function (done) {
+  describe('subHeaderIconGroup', () => {
+    beforeEach(async (done: Function) => {
       console.info('subHeaderIconGroup beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/subHeader/subHeaderIconGroup',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/subHeader/subHeaderIconGroup',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get subHeaderIconGroup state pages: ' + JSON.stringify(pages));
         if (!('subHeaderIconGroup' == pages.name)) {
           console.info('get subHeaderIconGroup pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push subHeaderIconGroup page result: ' + JSON.stringify(result));
+          console.info('push subHeaderIconGroup page result successful');
         }
       } catch (err) {
         console.error('push subHeaderIconGroup page error: ' + err);
@@ -44,7 +43,7 @@ export default function subHeaderIconGroup() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('subHeaderIconGroup after each called');
     })
@@ -57,7 +56,7 @@ export default function subHeaderIconGroup() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('subHeaderIconGroup_0100', 0, async function (done) {
+    it('subHeaderIconGroup_0100', 0, async (done: Function) => {
       console.info('[subHeaderIconGroup_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

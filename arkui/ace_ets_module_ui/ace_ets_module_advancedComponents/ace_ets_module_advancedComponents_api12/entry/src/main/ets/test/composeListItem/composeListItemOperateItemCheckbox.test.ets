@@ -15,26 +15,25 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 
 export default function composeListItemOperateItemCheckbox() {
-  describe('composeListItemOperateItemCheckbox', function () {
-    beforeEach(async function (done) {
+  describe('composeListItemOperateItemCheckbox', () => {
+    beforeEach(async (done: Function) => {
       console.info('composeListItemOperateItemCheckbox beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/composeListItem/composeListItemOperateItemCheckbox',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/composeListItem/composeListItemOperateItemCheckbox',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get composeListItemOperateItemCheckbox state pages: ' + JSON.stringify(pages));
         if (!('composeListItemOperateItemCheckbox' == pages.name)) {
           console.info('get composeListItemOperateItemCheckbox pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push composeListItemOperateItemCheckbox page result: ' + JSON.stringify(result));
+          console.info('push composeListItemOperateItemCheckbox page result successful');
         }
       } catch (err) {
         console.error('push composeListItemOperateItemCheckbox page error: ' + err);
@@ -45,7 +44,7 @@ export default function composeListItemOperateItemCheckbox() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('composeListItemOperateItemCheckbox after each called');
     })
@@ -58,7 +57,7 @@ export default function composeListItemOperateItemCheckbox() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('composeListItemOperateItemCheckbox_0100', 0, async function (done) {
+    it('composeListItemOperateItemCheckbox_0100', 0, async (done: Function) => {
       console.info('[composeListItemOperateItemCheckbox_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

@@ -14,27 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function ExceptionPromptTestTwo() {
-  describe('ExceptionPromptTestTwo', function () {
-    beforeEach(async function (done) {
+  describe('ExceptionPromptTestTwo', () => {
+    beforeEach(async (done: Function) => {
       console.info('ExceptionPromptTestTwo beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/exceptionPrompt/exceptionPromptPageTwo',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/exceptionPrompt/exceptionPromptPageTwo',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get ExceptionPromptTestTwo state pages: ' + JSON.stringify(pages));
         if (!('exceptionPromptPageTwo' == pages.name)) {
           console.info('get ExceptionPromptTestTwo pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push ExceptionPromptTestTwo page result: ' + JSON.stringify(result));
+          console.info('push ExceptionPromptTestTwo page result successful');
         }
       } catch (err) {
         console.error('push ExceptionPromptTestTwo page error: ' + err);
@@ -45,7 +44,7 @@ export default function ExceptionPromptTestTwo() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('ExceptionPromptTestTwo after each called');
     })
@@ -58,7 +57,7 @@ export default function ExceptionPromptTestTwo() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('exceptionPromptTestTwo_0100', 0, async function (done) {
+    it('exceptionPromptTestTwo_0100', 0, async (done: Function) => {
       console.info('[exceptionPromptTestTwo_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

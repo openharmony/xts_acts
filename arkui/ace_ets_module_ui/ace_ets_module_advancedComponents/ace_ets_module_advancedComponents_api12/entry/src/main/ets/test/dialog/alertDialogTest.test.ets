@@ -14,26 +14,25 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 
 export default function alertDialogTest() {
-  describe('alertDialogTest', function () {
-    beforeEach(async function (done) {
+  describe('alertDialogTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('alertDialogTest beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/dialog/alertDialogTest',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/dialog/alertDialogTest',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get alertDialogTest state pages: ' + JSON.stringify(pages));
         if (!('alertDialogTest' == pages.name)) {
           console.info('get alertDialogTest pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push alertDialogTest page result: ' + JSON.stringify(result));
+          console.info('push alertDialogTest page result successful');
         }
       } catch (err) {
         console.error('push alertDialogTest page error: ' + err);
@@ -44,7 +43,7 @@ export default function alertDialogTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('alertDialogTest after each called');
     })
@@ -57,7 +56,7 @@ export default function alertDialogTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('alertDialogTest_0100', 0, async function (done) {
+    it('alertDialogTest_0100', 0, async (done: Function) => {
       console.info('[alertDialogTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

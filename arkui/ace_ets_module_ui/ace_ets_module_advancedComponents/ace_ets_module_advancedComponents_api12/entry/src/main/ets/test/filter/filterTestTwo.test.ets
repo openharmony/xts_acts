@@ -14,27 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function FilterTestTwo() {
-  describe('FilterTestTwo', function () {
-    beforeEach(async function (done) {
+  describe('FilterTestTwo', () => {
+    beforeEach(async (done: Function) => {
       console.info('FilterTestTwo beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/filter/filterPageTwo',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/filter/filterPageTwo',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get FilterTestTwo state pages: ' + JSON.stringify(pages));
         if (!('filterPageTwo' == pages.name)) {
           console.info('get FilterTestTwo pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push FilterTestTwo page result: ' + JSON.stringify(result));
+          console.info('push FilterTestTwo page result successful');
         }
       } catch (err) {
         console.error('push FilterTestTwo page error: ' + err);
@@ -45,7 +44,7 @@ export default function FilterTestTwo() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('FilterTestTwo after each called');
     })
@@ -58,7 +57,7 @@ export default function FilterTestTwo() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('filterTestTwo_0100', 0, async function (done) {
+    it('filterTestTwo_0100', 0, async (done: Function) => {
       console.info('[filterTestTwo_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

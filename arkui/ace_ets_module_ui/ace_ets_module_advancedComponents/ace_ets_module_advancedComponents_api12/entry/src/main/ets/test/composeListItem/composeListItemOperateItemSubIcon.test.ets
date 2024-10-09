@@ -14,27 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function composeListItemOperateItemSubIcon() {
-  describe('composeListItemOperateItemSubIcon', function () {
-    beforeEach(async function (done) {
+  describe('composeListItemOperateItemSubIcon', () => {
+    beforeEach(async (done: Function) => {
       console.info('composeListItemOperateItemSubIcon beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/composeListItem/composeListItemOperateItemSubIcon',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/composeListItem/composeListItemOperateItemSubIcon',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get composeListItemOperateItemSubIcon state pages: ' + JSON.stringify(pages));
         if (!('composeListItemOperateItemSubIcon' == pages.name)) {
           console.info('get composeListItemOperateItemSubIcon pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push composeListItemOperateItemSubIcon page result: ' + JSON.stringify(result));
+          console.info('push composeListItemOperateItemSubIcon page result successful');
         }
       } catch (err) {
         console.error('push composeListItemOperateItemSubIcon page error: ' + err);
@@ -45,7 +44,7 @@ export default function composeListItemOperateItemSubIcon() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('composeListItemOperateItemSubIcon after each called');
     })
@@ -58,7 +57,7 @@ export default function composeListItemOperateItemSubIcon() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('composeListItemOperateItemSubIcon_0100', 0, async function (done) {
+    it('composeListItemOperateItemSubIcon_0100', 0, async (done: Function) => {
       console.info('[composeListItemOperateItemSubIcon_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

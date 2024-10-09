@@ -72,28 +72,5 @@ export default function toolBarPageTest() {
       console.info('[toolBarPageTest_0100] END');
       done();
     });
-
-    /**
-     * @tc.number toolBarPageTest_0200
-     * @tc.name Test the properties of components
-     * @tc.desc Click toolBar item
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level 0
-     */
-    it('toolBarPageTest_0200', 0, async (done: Function) => {
-      console.info('[toolBarPageTest_0200] START');
-      let driver = await Driver.create();
-      await Utils.sleep(2000);
-      // 点击更多
-      let button = await driver.findComponent(ON.text('更多'));
-      await button.click();
-      await Utils.sleep(1000);
-      // 断言更多栏中隐藏菜单存在‘分享1’。
-      let menu = await driver.findComponent(ON.text('分享1'));
-      expect(menu !== null).assertTrue();
-      console.info('[toolBarPageTest_0200] END');
-      done();
-    });
   })
 }

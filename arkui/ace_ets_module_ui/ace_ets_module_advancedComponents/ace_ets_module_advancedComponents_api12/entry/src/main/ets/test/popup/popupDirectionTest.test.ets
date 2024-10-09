@@ -35,7 +35,7 @@ export default function popupDirectionTest() {
           console.info("get popupDirectionTest pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push popupDirectionTest page result: " + JSON.stringify(result));
+          console.info("push popupDirectionTest page result successful");
         }
       }
       catch (err) {
