@@ -965,7 +965,7 @@ function testRemoveDisallowedListForAccountPolicy() {
       expect(result.length === APP_IDS_1.length).assertTrue();
       restrictions.removeDisallowedListForAccount(SELFWANT, LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT, APP_IDS_1, DEFAULT_USER_ID);
       let resultAfterRemove: Array<string> = restrictions.getDisallowedListForAccount(SELFWANT, LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT, DEFAULT_USER_ID);
-      expect(resultAfterRemove === 0).assertTrue();
+      expect(resultAfterRemove.length === 0).assertTrue();
     } catch (error) {
       expect(false).assertTrue();
     } finally {
