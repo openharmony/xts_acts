@@ -5439,126 +5439,12 @@ describe('BufferTest', function () {
   /**
    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31600
    * @tc.name: testfrom0792
-   * @tc.desc: Copies data from a region of buf to a region in target,
-   *           even if the target memory region overlaps with buf.
-   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
-   *           and the extra part will not be overwritten.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it("testfrom0792", 0, function () {
-    let bufObj = buffer.from([-1000000, -500, -256 ,-255, -1, 0, 1, 255, 256, 1000000]);
-    expect(bufObj.length).assertEqual(10);
-    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[192,12,0,1,255,0,1,255,0,64]}');
-  });
-
-  /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31700
-   * @tc.name: testfrom0793
-   * @tc.desc: Copies data from a region of buf to a region in target,
-   *           even if the target memory region overlaps with buf.
-   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
-   *           and the extra part will not be overwritten.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it("testfrom0793", 0, function () {
-    let bufObj = buffer.from([269, -1, -9, -9999999, 9999999, -8, 555, 3, -256]);
-    expect(bufObj.length).assertEqual(9);
-    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[13,255,247,129,127,248,43,3,0]}');
-  });
-
-  /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31800
-   * @tc.name: testfrom0794
-   * @tc.desc: Copies data from a region of buf to a region in target,
-   *           even if the target memory region overlaps with buf.
-   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
-   *           and the extra part will not be overwritten.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it("testfrom0794", 0, function () {
-    let bufObj = buffer.from([1, 2, 3, 4, 5, 6, 7, -1, -2, -3, -256, -255]);
-    expect(bufObj.length).assertEqual(12);
-    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[1,2,3,4,5,6,7,255,254,253,0,1]}');
-  });
-
-  /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31900
-   * @tc.name: testfrom0795
-   * @tc.desc: Copies data from a region of buf to a region in target,
-   *           even if the target memory region overlaps with buf.
-   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
-   *           and the extra part will not be overwritten.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it("testfrom0795", 0, function () {
-    let bufObj = buffer.from([-0x11, -0x22, -0x33, -0x44, -0x55, -0x66, 0x62]);
-    expect(JSON.stringify(bufObj)).assertEqual('{"type":"Buffer","data":[239,222,205,188,171,154,98]}');
-    expect(bufObj.toString('hex')).assertEqual('efdecdbcab9a62');
-  });
-
-  /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32000
-   * @tc.name: testfrom0796
-   * @tc.desc: Copies data from a region of buf to a region in target,
-   *           even if the target memory region overlaps with buf.
-   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
-   *           and the extra part will not be overwritten.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it("testfrom0796", 0, function () {
-    let bufObj = buffer.from([1, 3, 255, 256, 257, -1, -2, -255]);
-    expect(bufObj.readInt8(0)).assertEqual(1);
-    expect(bufObj.readInt8(1)).assertEqual(3);
-    expect(bufObj.readInt8(2)).assertEqual(-1);
-    expect(bufObj.readInt8(3)).assertEqual(0);
-    expect(bufObj.readInt8(4)).assertEqual(1);
-    expect(bufObj.readInt8(5)).assertEqual(-1);
-    expect(bufObj.readInt8(6)).assertEqual(-2);
-    expect(bufObj.readInt8(7)).assertEqual(1);
-  });
-
-  /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32100
-   * @tc.name: testfrom0797
-   * @tc.desc: Copies data from a region of buf to a region in target,
-   *           even if the target memory region overlaps with buf.
-   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
-   *           and the extra part will not be overwritten.
-   * @tc.size: MediumTest
-   * @tc.type: Function
-   * @tc.level: Level 2
-   */
-  it("testfrom0797", 0, function () {
-    let bufObj = buffer.from([1, 3, -99999999, 256, 9999999, -1, -2, -255]);
-    expect(bufObj.readUInt8(0)).assertEqual(1);
-    expect(bufObj.readUInt8(1)).assertEqual(3);
-    expect(bufObj.readUInt8(2)).assertEqual(1);
-    expect(bufObj.readUInt8(3)).assertEqual(0);
-    expect(bufObj.readUInt8(4)).assertEqual(127);
-    expect(bufObj.readUInt8(5)).assertEqual(255);
-    expect(bufObj.readUInt8(6)).assertEqual(254);
-    expect(bufObj.readUInt8(7)).assertEqual(1);
-  });
-
-  /**
-   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32200
-   * @tc.name: testfrom0270
    * @tc.desc: Create a new buffer containing parameter is non integer
    * @tc.size: MediumTest
    * @tc.type: Function
    * @tc.level: Level 2
    */
-       it("testfrom0270", 0, function () {
+       it("testfrom0792", 0, function () {
         let ab = new ArrayBuffer(100);
         let buf = buffer.from(ab, 1.2, 1.2);
         let res = buf.toString('hex');
@@ -5566,14 +5452,14 @@ describe('BufferTest', function () {
     });
   
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32300
-     * @tc.name: testfrom0271
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31700
+     * @tc.name: testfrom0793
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it("testfrom0271", 0, function () {
+    it("testfrom0793", 0, function () {
         let ab = new ArrayBuffer(100);
         let buf = buffer.from(ab, 1, 1.2);
         let res = buf.toString('hex');
@@ -5581,14 +5467,14 @@ describe('BufferTest', function () {
     });
   
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32400
-     * @tc.name: testfrom0272
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31800
+     * @tc.name: testfrom0794
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 2
      */
-       it("testfrom0272", 0, function () {
+       it("testfrom0794", 0, function () {
         let ab = new ArrayBuffer(100);
         let buf = buffer.from(ab, 1.2, 1);
         let res = buf.toString('hex');
@@ -5596,14 +5482,14 @@ describe('BufferTest', function () {
     });
   
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32500
-     * @tc.name: testfrom0273
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_31900
+     * @tc.name: testfrom0795
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it("testfrom0273", 0, function () {
+    it("testfrom0795", 0, function () {
         let ab = new ArrayBuffer(100);
         let buf = buffer.from(ab, 9.9, 9.9);
         let res = buf.toString('hex');
@@ -5611,14 +5497,14 @@ describe('BufferTest', function () {
     });
   
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32600
-     * @tc.name: testfrom0274
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_32000
+     * @tc.name: testfrom0796
      * @tc.desc: Create a new buffer containing parameter is non integer
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 2
      */
-     it("testfrom0274", 0, function () {
+     it("testfrom0796", 0, function () {
       let ab = new ArrayBuffer(100);
       let buf = buffer.from(ab, 2.9, 2.9);
       let res = buf.toString('hex');
