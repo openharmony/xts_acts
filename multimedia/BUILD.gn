@@ -58,6 +58,7 @@ group("multimedia") {
       "drm/drm_js_standard/avPlayer:drm_avplayer_js_hap",
       "drm/drm_ndk_test:Drm_Framework_NDK_test",
       "image/image_ets_standard/image:image_hap",
+      "image/image_ets_standard/image10bitPixelmap:image_10bit_pixelmap_hap",
       "image/image_ets_standard/imageDecodeOptionsYuvRaw:image_decode_options_yuv_raw_hap",
       "image/image_ets_standard/imageExifGetModify:image_exif_get_modify_hap",
       "image/image_ets_standard/imageFormatTranscoding:image_formattranscoding_hap",
