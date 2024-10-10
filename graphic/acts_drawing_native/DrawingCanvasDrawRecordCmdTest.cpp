@@ -38,6 +38,9 @@
 #include "drawing_record_cmd.h"
 #include "utils/scalar.h"
 #include <random>
+#include <thread>
+#include <iomanip>
+#include <sstream>
 
 using namespace testing;
 using namespace testing::ext;
@@ -46,42 +49,88 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 class DrawingCanvasDrawRecordCmdTest : public testing::Test {};
+void drawCircle1(OH_Drawing_Canvas *canvas, int position)
+{
+    int x = 10;
+    int radius = 200;
+    OH_Drawing_Point *point = OH_Drawing_PointCreate(x * position + radius, x + radius);
+    OH_Drawing_CanvasDrawCircle(canvas, point, radius);
+    OH_Drawing_PointDestroy(point);
+}
+OH_Drawing_RecordCmd *threadFunctionTest6()
+{
+    int32_t width = 2;
+    int32_t height = 5;
+    OH_Drawing_RecordCmd *recordCmd = nullptr;
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, width, height, &canvas);
+    float penWidth = 1.0f; // pen width 1
+    // 创建一个画笔Pen对象，Pen对象用于形状的边框线绘制
+    OH_Drawing_Pen *cPen = OH_Drawing_PenCreate();
+    OH_Drawing_PenSetAntiAlias(cPen, true);
+    OH_Drawing_PenSetColor(cPen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+    OH_Drawing_PenSetWidth(cPen, penWidth);
+    OH_Drawing_PenSetJoin(cPen, LINE_ROUND_JOIN);
+    // 将Pen画笔设置到canvas中
+    OH_Drawing_CanvasAttachPen(canvas, cPen);
+    // 创建一个画刷Brush对象，Brush对象用于形状的填充
+    OH_Drawing_Brush *cBrush = OH_Drawing_BrushCreate();
+    OH_Drawing_BrushSetColor(cBrush, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF, 0x00));
+    // 将Brush画刷设置到canvas中
+    OH_Drawing_CanvasAttachBrush(canvas, cBrush);
+    drawCircle1(canvas, width);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils, &recordCmd);
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils);
+    OH_Drawing_BrushDestroy(cBrush);
+    OH_Drawing_PenDestroy(cPen);
+    cBrush = nullptr;
+    cPen = nullptr;
+    return recordCmd;
+}
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0500
- * @tc.name: testCanvasDrawRecordCmdAbNormal
- * @tc.desc: test for testCanvasDrawRecordCmdAbNormal.
+ * @tc.name: testCanvasDrawRecordCmdNormal
+ * @tc.desc: test for testCanvasDrawRecordCmdNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdAbNormal, TestSize.Level0) {
-    // 1. The OH_Drawing_CanvasDrawRecordCmd parameter is not empty, and
-    //the width and height of the canvas are smaller than the recorded canvas
+HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNormal, TestSize.Level0) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    OH_Drawing_RecordCmdUtils *recordcmdutil = OH_Drawing_RecordCmdUtilsCreate ();
-    OH_Drawing_Canvas **canvass = &canvas;
-    OH_Drawing_RecordCmd *recordCmd = nullptr;
-    OH_Drawing_RecordCmd **recordCmds = &recordCmd;
-    int a= OH_Drawing_CanvasGetWidth (canvas);
-    int b= OH_Drawing_CanvasGetHeight (canvas);
-    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil, a-1, b-1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil, recordCmds);
-    // 2. The OH_Drawing_CanvasDrawRecordCmd parameter is not empty, and the width and height
-    //of the canvas are bigger than the recorded canvas
-    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil, a+1, b+1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil, recordCmds);
-    // 3. OH_Drawing_CanvasDrawRecordCmd parameters are not empty, and recordCmd
-    //has a start recording-end recording
-    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil, 1, 1, canvass);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil, recordCmds);
-    // 4. OH_Drawing_CanvasDrawRecordCmd parameters are not empty, and recordCmd
-    //has Start Recording-Draw Operation-End Recording
-    OH_Drawing_RecordCmdUtilsBeginRecording (recordcmdutil, 1, 1, canvass);
-    OH_Drawing_CanvasDrawRecordCmd (canvas, recordCmd);
-    OH_Drawing_RecordCmdUtilsFinishRecording (recordcmdutil, recordCmds);
+    OH_Drawing_RecordCmd *picture = nullptr;
+    std::thread thread([&picture]() { picture = threadFunctionTest6(); });
+    thread.join();
+    if (picture != nullptr) {
+        OH_Drawing_ErrorCode result = OH_Drawing_CanvasDrawRecordCmd(canvas, picture);
+        EXPECT_EQ(result, OH_DRAWING_SUCCESS);
+    }
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0500
+ * @tc.name: testCanvasDrawRecordCmdABNormal
+ * @tc.desc: test for testCanvasDrawRecordCmdABNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdABNormal, TestSize.Level0) {
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmd *picture = nullptr;
+    std::thread thread([&picture]() { picture = threadFunctionTest6(); });
+    thread.join();
+    OH_Drawing_ErrorCode result1 = OH_Drawing_CanvasDrawRecordCmd(canvas, nullptr);
+    EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    std::thread thread1([&picture]() { picture = threadFunctionTest6(); });
+    thread1.join();
+    if (picture != nullptr) {
+        OH_Drawing_ErrorCode result = OH_Drawing_CanvasDrawRecordCmd(nullptr, picture);
+        EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    }
+    
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
