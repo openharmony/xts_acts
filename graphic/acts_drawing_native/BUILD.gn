@@ -24,6 +24,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
   comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
+    "DrawingCanvasDrawRecordCmdTest.cpp",
     "DrawingNativeBitmapTest.cpp",
     "DrawingNativeBrushTest.cpp",
     "DrawingNativeCanvasCommon.cpp",
@@ -60,6 +61,10 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "DrawingNativeSurFaceTest.cpp",
     "DrawingNativeTextBlobTest.cpp",
     "DrawingNativeTypeFaceTest.cpp",
+    "DrawingRecordCmdDestroyTest.cpp",
+    "DrawingRecordCmdUtilsBeginTest.cpp",
+    "DrawingRecordCmdUtilsDestroyTest.cpp",
+    "DrawingRecordCmdUtilsFinishTest.cpp",
   ]
 
   cflags = [
