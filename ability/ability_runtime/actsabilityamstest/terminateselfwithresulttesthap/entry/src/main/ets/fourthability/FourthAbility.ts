@@ -79,7 +79,7 @@ export default class FourthAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', `onConnect, 50 == ${JSON.stringify(result)}`);
         setTimeout(() => {
           this.context.terminateSelf();
-        }, 1500);
+        }, 5000);
       });
       this.context.startAbility(want, options).then(async () => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility successful');
