@@ -115,11 +115,8 @@ export default function tabs_WidHeiTest() {
 
       console.info(`[testTabsWidHei01] Tabs_WidHei_01.right -
        Tabs_WidHei_01.left = ${Tabs_WidHei_01.right - Tabs_WidHei_01.left}`);
-      // expect(Math.abs() <=1 ).assertTrue();
       expect(Math.abs(Math.round(Tabs_WidHei_01.right - Tabs_WidHei_01.left) - Math.round(vp2px(330))) <=1 ).assertTrue();
       expect(Math.abs(Math.round(Tabs_WidHei_01.bottom - Tabs_WidHei_01.top) - Math.round(vp2px(350))) <=1 ).assertTrue();
-     // expect(Math.round(Tabs_WidHei_01.right - Tabs_WidHei_01.left)).assertEqual(Math.round(vp2px(330)));
-     // expect(Math.round(Tabs_WidHei_01.bottom - Tabs_WidHei_01.top)).assertEqual(Math.round(vp2px(350)));
 
       console.info(`[testTabsWidHei01] Tabs_WidHei_01.left = ${Tabs_WidHei_01.left}`);
       expect(Tabs_WidHei_01.left).assertEqual(Tabs_WidHei_011.left);

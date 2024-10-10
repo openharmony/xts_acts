@@ -358,12 +358,6 @@ export default function Tabs_itemPadMar() {
       expect(Math.abs(Tabs_itemPadMar_003.top - Tabs_itemPadMar_013.top) <=1 ).assertTrue();
 
 
-      //expect(Math.round(Tabs_itemPadMar_001.left - Tabs_itemPadMar_011.left)).assertEqual(Math.round(vp2px(20)));
-      //expect(Math.round(Tabs_itemPadMar_001.top - Tabs_itemPadMar_011.top)).assertEqual(Math.round(vp2px(20)));
-      //expect(Tabs_itemPadMar_002.left).assertEqual(Tabs_itemPadMar_012.left);
-      //expect(Tabs_itemPadMar_002.top).assertEqual(Tabs_itemPadMar_012.top);
-      //expect(Tabs_itemPadMar_003.left).assertEqual(Tabs_itemPadMar_013.left);
-      //expect(Tabs_itemPadMar_003.top).assertEqual(Tabs_itemPadMar_013.top);
 
       console.info(`[testTabsItemPadMar] Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top=
         ${Math.round(Tabs_itemPadMar_011.bottom - Tabs_itemPadMar_011.top)}`);
