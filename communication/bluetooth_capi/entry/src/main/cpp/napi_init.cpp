@@ -27,8 +27,8 @@ static napi_value GetBluetoothSwitchState(napi_env env, napi_callback_info info)
     Bluetooth_SwitchState state;
     auto code = OH_Bluetooth_GetBluetoothSwitchState(&state);
     OH_LOG_INFO(LOG_APP, "testTag ret: %{public}d, state: %{public}d",
-            static_cast<int>(code),
-            static_cast<int>(state));
+        static_cast<int>(code),
+        static_cast<int>(state));
     
     int32_t stateValue = static_cast<int32_t>(state);
     napi_value res;
