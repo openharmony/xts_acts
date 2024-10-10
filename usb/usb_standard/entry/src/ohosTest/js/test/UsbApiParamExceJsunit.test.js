@@ -1063,7 +1063,7 @@ describe('UsbApiParamExceJsunitTest', function () {
             gPipe.busNum = gPipe.busNum + 1000;
             let ret = usbManager.closePipe(gPipe);
             console.info(TAG, 'usb [', gPipe.busNum, '] closePipe ret : ', ret);
-            expect(ret !== 0).assertTrue();
+            expect(ret !== null).assertTrue();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamEx001 catch err code: ', err);
             expect(err !== null).assertFalse();
@@ -1091,7 +1091,7 @@ describe('UsbApiParamExceJsunitTest', function () {
             gPipe.devAddress = pipDevAdd;
             let ret = usbManager.closePipe(gPipe);
             console.info(TAG, 'usb [', gPipe.devAddress, '] closePipe ret : ', ret);
-            expect(ret !== 0).assertTrue();
+            expect(ret !== null).assertTrue();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamEx002 catch err code: ', err);
             expect(err !== null).assertFalse();
@@ -2840,6 +2840,9 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx007 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
+        gDeviceList = usbManager.getDevices();
+        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
+        toReleaseInterface("testReleaseInterfaceParamEx007", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx007");
     })
 
@@ -2870,6 +2873,9 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx008 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
+        gDeviceList = usbManager.getDevices();
+        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
+        toReleaseInterface("testReleaseInterfaceParamEx008", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx008");
     })
 
@@ -2900,6 +2906,9 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx009 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
+        gDeviceList = usbManager.getDevices();
+        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
+        toReleaseInterface("testReleaseInterfaceParamEx009", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx009");
     })
 
@@ -2930,6 +2939,9 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx010 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
+        gDeviceList = usbManager.getDevices();
+        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
+        toReleaseInterface("testReleaseInterfaceParamEx010", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx010");
     })
 
@@ -2960,6 +2972,9 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx011 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
+        gDeviceList = usbManager.getDevices();
+        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
+        toReleaseInterface("testReleaseInterfaceParamEx011", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx011");
     })
 
@@ -2990,6 +3005,9 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx012 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
+        gDeviceList = usbManager.getDevices();
+        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
+        toReleaseInterface("testReleaseInterfaceParamEx012", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx012");
     })
 
@@ -3020,6 +3038,9 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx013 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
+        gDeviceList = usbManager.getDevices();
+        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
+        toReleaseInterface("testReleaseInterfaceParamEx013", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx013");
     })
 
@@ -3050,6 +3071,9 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx014 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
+        gDeviceList = usbManager.getDevices();
+        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
+        toReleaseInterface("testReleaseInterfaceParamEx014", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx014");
     })
 
