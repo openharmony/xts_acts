@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.bytrace.test",
+    "bundleName": "ohos.acts.hiviewdfx.hisysevent.box.function",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -9,16 +9,14 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.bytrace.test",
+    "package": "ohos.acts.hiviewdfx.hisysevent.box.function",
     "name": ".entry",
-    "mainAbility": ".MainAbility",
-    "srcPath": "",
     "deviceType": [
-      "wearable",
       "tablet",
       "default",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -26,6 +24,11 @@
       "moduleType": "entry",
       "installationFree": false
     },
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.READ_DFX_SYSEVENT"
+      }
+    ],
     "abilities": [
       {
         "skills": [
@@ -62,6 +65,8 @@
           "autoDesignWidth": false
         }
       }
-    ]
+    ],
+    "mainAbility": ".MainAbility",
+    "srcPath": ""
   }
 }

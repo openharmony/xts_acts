@@ -12,6 +12,7 @@
     "package": "ohos.hichecker.test",
     "name": ".entry",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",

@@ -12,6 +12,7 @@
     "package": "ohos.acts.hiviewdfx.hisysevent.function",
     "name": ".entry_test",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",
