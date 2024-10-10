@@ -7,5 +7,5 @@ set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(AudioNDK SHARED AudioPlayerNDK.cpp)
-target_link_libraries(AudioNDK PUBLIC libace_napi.z.so libavplayer.so)
+add_library(entry SHARED AudioPlayerNDK.cpp)
+target_link_libraries(entry PUBLIC libace_napi.z.so libavplayer.so)
