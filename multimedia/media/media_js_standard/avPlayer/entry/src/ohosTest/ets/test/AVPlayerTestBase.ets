@@ -263,8 +263,8 @@ export function setAVPlayerFunCb(src: string | media.AVFileDescriptor, avPlayer:
         if (avPlayer) {
           avPlayer.surfaceId = surfaceID;
           avPlayer.audioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_MOVIE,
-            usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
           }
           // step 1, 13: initialized -> prepared

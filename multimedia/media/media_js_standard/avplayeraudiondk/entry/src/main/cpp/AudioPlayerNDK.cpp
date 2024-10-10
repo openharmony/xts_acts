@@ -14,15 +14,15 @@
  */
 
 #include "napi/native_api.h"
-#include "avplayer.h"
-#include "avplayer_base.h"
+#include "multimedia/player_framework/avplayer.h"
+#include "multimedia/player_framework/avplayer_base.h"
 #include <bits/alltypes.h>
 #include <iostream>
-#include <native_averrors.h>
+#include "multimedia/player_framework/native_averrors.h"
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "hilog/log.h"
+#include <hilog/log.h>
 #include <cstdio>
 
 static int32_t g_playTime = 1;
