@@ -13,6 +13,7 @@
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
     "deviceType": [
+      "wearable",
       "default",
       "tablet",
       "2in1"
@@ -23,8 +24,7 @@
       "moduleType": "feature",
       "installationFree": false
     },
-    "defPermissions": [
-    ],
+    "defPermissions": [],
     "reqPermissions": [
       {
         "name": "ohos.permission.DISTRIBUTED_DATASYNC"
