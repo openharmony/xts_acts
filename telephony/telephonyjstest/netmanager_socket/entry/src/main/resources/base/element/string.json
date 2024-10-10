@@ -1,16 +1,12 @@
 {
   "string": [
     {
-      "name": "entry_MainAbility",
-      "value": "entry_MainAbility"
-    },
-    {
-      "name": "description_mainability",
-      "value": "ETS_Empty Ability"
+      "name": "module_test_desc",
+      "value": "test ability description"
     },
     {
       "name": "TestAbility_desc",
-      "value": "description"
+      "value": "the test ability"
     },
     {
       "name": "TestAbility_label",

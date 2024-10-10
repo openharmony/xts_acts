@@ -23,6 +23,7 @@ group("networkmanager") {
     "networksecurity:networksecurity",
     "noNet:noNet",
     "noPermission:noPermission",
+    "policy:policy",
     "socket:socket",
     "statistics:statistics",
     "websocket:websocket",

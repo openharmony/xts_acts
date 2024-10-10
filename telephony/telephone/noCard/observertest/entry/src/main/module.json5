@@ -19,7 +19,7 @@
 		"type": "feature",
 		"description": "$string:module_test_desc",
 		"mainElement": "EntryAbility",
-		"deviceTypes": ["default", "tablet"],
+		"deviceTypes": ["default", "tablet", "wearable"],
 		"deliveryWithInstall": true,
 		"installationFree": false,
 		"pages": "$profile:test_pages",

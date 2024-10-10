@@ -4,8 +4,10 @@
         "type": "OHJSUnitTest",
         "test-timeout": "1800000",
         "bundle-name": "com.ohos.netmanagersocket",
-        "package-name": "com.ohos.netmanagersocket",
-        "shell-timeout": "1800000"
+        "module-name": "entry_test",
+        "shell-timeout": "1800000",
+        "testcase-timeout": "70000"
+
     },
     "kits": [
         {

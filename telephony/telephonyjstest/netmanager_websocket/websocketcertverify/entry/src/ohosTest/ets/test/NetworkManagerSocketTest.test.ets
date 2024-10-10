@@ -32,8 +32,8 @@ function expectFalse() {
   }
 }
 
-export default function NetworkManagerWebsocketTest() {
-  describe("NetworkManagerWebsocketTest", ()=> {
+export default function NetworkManagerSocketTest() {
+  describe("NetworkManagerSocketTest", ()=> {
 
     /**
      * @tc.number: SUB_Telephony_Netstack_UNIX_Socket_Xts_0100
