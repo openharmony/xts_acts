@@ -1459,6 +1459,67 @@ static napi_value DestroyDeviceInfo(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value GetAllSystemHotkeys(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t count = 1;
+    Input_Result ret = OH_Input_GetAllSystemHotkeys(nullptr, &count);
+    napi_create_int32(env, ret ==  INPUT_SUCCESS ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value CreateAllSystemHotkeys(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t count = 1;
+    OH_Input_GetAllSystemHotkeys(nullptr, &count);
+    Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
+    napi_create_int32(env, hotkey !=  nullptr ? 1 : 0, &result);
+    OH_Input_DestroyAllSystemHotkeys(hotkey, count);
+    return result;
+}
+
+static napi_value GetAllSystemHotkeys2(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t count = 1;
+    Input_Result ret = OH_Input_GetAllSystemHotkeys(nullptr, &count);
+    Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
+    ret = OH_Input_GetAllSystemHotkeys(hotkey, &count);
+    napi_create_int32(env, ret == INPUT_SUCCESS ? 1 : 0, &result);
+    OH_Input_DestroyAllSystemHotkeys(hotkey, count);
+    return result;
+}
+
+static napi_value GetAllSystemHotkeys3(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_Hotkey *hotkey{nullptr};
+    Input_Result ret = OH_Input_GetAllSystemHotkeys(&hotkey, nullptr);
+    napi_create_int32(env, ret ==  INPUT_PARAMETER_ERROR ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value CreateAllSystemHotkeys2(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t count = 100;
+    Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
+    napi_create_int32(env, hotkey ==  nullptr ? 1 : 0, &result);
+    OH_Input_DestroyAllSystemHotkeys(hotkey, count);
+    return result;
+}
+
+static napi_value GetIntervalSinceLastInput(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int64_t *intervalSinceLastInput = static_cast<int64_t *>(malloc(sizeof(int64_t)));
+    int64_t retResult = OH_Input_GetIntervalSinceLastInput(intervalSinceLastInput);
+    free(intervalSinceLastInput);
+    napi_create_int32(env, retResult ==  INPUT_SUCCESS ? 1 : 0, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1552,6 +1613,13 @@ static napi_value Init(napi_env env, napi_value exports)
         {"GetDeviceVendor3", nullptr, GetDeviceVendor3, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetDeviceVendor4", nullptr, GetDeviceVendor4, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"DestroyDeviceInfo", nullptr, DestroyDeviceInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetAllSystemHotkeys", nullptr, GetAllSystemHotkeys, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"CreateAllSystemHotkeys", nullptr, CreateAllSystemHotkeys, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetAllSystemHotkeys2", nullptr, GetAllSystemHotkeys2, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetAllSystemHotkeys3", nullptr, GetAllSystemHotkeys3, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"CreateAllSystemHotkeys2", nullptr, CreateAllSystemHotkeys2, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetIntervalSinceLastInput", nullptr,
+         GetIntervalSinceLastInput, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -17,7 +17,7 @@ import * as mediaTestBase from '../../../../../../MediaTestBase.js';
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import { testAVPlayerFun, AV_PLAYER_STATE, setSource } from '../../../../../../AVPlayerTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function AVPlayerDataSrcNoSeekAPITest() {
     describe('AVPlayerDataSrcNoSeekAPITest', function () {
@@ -74,7 +74,7 @@ export default function AVPlayerDataSrcNoSeekAPITest() {
         let halfDurationTag = -50;
         let speedValue = -1;
         let videoInfor = new Array({
-            type : 'video_audio',
+            type: 'video_audio',
             width: 720,
             height: 640,
             duration: 10034,
@@ -82,7 +82,7 @@ export default function AVPlayerDataSrcNoSeekAPITest() {
             PREV_FRAME: 4166,
             NEXT_FRAME: 8333,
         }, {
-            type : 'audio',
+            type: 'audio',
             width: 0,
             height: 0,
             duration: 219600,
@@ -90,7 +90,7 @@ export default function AVPlayerDataSrcNoSeekAPITest() {
             PREV_FRAME: 0,
             NEXT_FRAME: 0,
         }, {
-            type : 'video',
+            type: 'video',
             width: 720,
             height: 640,
             duration: 10034,
@@ -117,7 +117,7 @@ export default function AVPlayerDataSrcNoSeekAPITest() {
             for (let i = 0; i < pathList.length; i++) {
                 fdList.push(fileio.openSync(pathList[i], 0o0));
                 readAtList.push(setReadAt(fdList[i], pathList[i]));
-                srcList.push( {fileSize: -1, callback: readAtList[i]} );
+                srcList.push({ fileSize: -1, callback: readAtList[i] });
                 console.info('fdList:' + fdList[i]);
             }
         })
@@ -147,13 +147,13 @@ export default function AVPlayerDataSrcNoSeekAPITest() {
                     return -1;
                 }
                 if (pos == undefined) {
-                    num = fileio.readSync(fd, buf, {offset: 0, length: length});
+                    num = fileio.readSync(fd, buf, { offset: 0, length: length });
                     if (num == 0) {
                         fileio.closeSync(fd);
                         fd = fileio.openSync(filePath, 0o0);
                     }
                 } else {
-                    num = stream.readSync(buf, {offset: 0, length: length, position: pos});
+                    num = stream.readSync(buf, { offset: 0, length: length, position: pos });
                 }
                 console.info(' readAt num:' + num);
                 if (num > 0) {
@@ -171,7 +171,7 @@ export default function AVPlayerDataSrcNoSeekAPITest() {
                     expect().assertFail();
                     return -1;
                 }
-                num = fileio.readSync(fd, buf, {offset: 1000, length: 2000});
+                num = fileio.readSync(fd, buf, { offset: 1000, length: 2000 });
                 if (num == 0) {
                     fileio.closeSync(fd);
                     fd = fileio.openSync(filePath, 0o0);
@@ -816,7 +816,7 @@ export default function AVPlayerDataSrcNoSeekAPITest() {
             myStepsList.push(new Array(CREATE_EVENT, SETDATASRC_NOSEEK_EVENT, SETSURFACE_EVENT, surfaceID, PREPARE_EVENT, PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT));
 
             eventEmitter.on('test_prepared', () => {
-                console.info(TAG + '**************************test video or audio name is :'+ pathList[srcCount] +'*****************');
+                console.info(TAG + '**************************test video or audio name is :' + pathList[srcCount] + '*****************');
                 console.info(TAG + '**************************this is state playing test: ' + (testCount + 1) + ' testcase start****************');
                 console.info(TAG + '**************************this is state playing test: ' + myStepsNameList[testCount] + ' ****************');
                 let avPlayer = null;

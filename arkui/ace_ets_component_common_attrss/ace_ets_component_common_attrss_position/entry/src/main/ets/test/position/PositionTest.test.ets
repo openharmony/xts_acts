@@ -14,22 +14,22 @@
  */
 
 import { AttrsManager } from '../../MainAbility/common/AttrsManager';
-import Utils from '../../MainAbility/common/Utils';
+import Utils, { RectValue } from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  parentWidth: number;
-  parentHeight: number;
-  parentComponentKey: string;
-  referenceComponentKey: string;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+  parentComponentKey: string = '';
+  referenceComponentKey: string = '';
 }
 
 class TestValues {
-  describe: string;
+  describe: string = '';
   setValue: ESObject;
   expectValue: ESObject;
 }
@@ -170,11 +170,11 @@ export default function positionTest() {
     CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Obtain the region information of the reference component.
       console.info('[' + data.caseTag + '] get referenceComponent rect before position changed.');
-      let referenceRectBefore = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
+      let referenceRectBefore: RectValue = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
 
       //Obtain the region information of the parent component.
       console.info('[' + data.caseTag + '] get parentComponent rect before position changed.');
-      let parentRectBefore = Utils.getComponentRect(data.pageConfig.parentComponentKey);
+      let parentRectBefore: RectValue = Utils.getComponentRect(data.pageConfig.parentComponentKey);
 
       //Modify the target component properties.
       console.info('[' + data.caseTag + '] setValue : ' + JSON.stringify(data.testValue.setValue));
@@ -183,15 +183,15 @@ export default function positionTest() {
 
       //Obtain the region information of the reference component.
       console.info('[' + data.caseTag + '] get referenceComponent rect after position changed.');
-      let referenceRectAfter = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
+      let referenceRectAfter: RectValue = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
 
       //Obtain the region information of the parent component.
       console.info('[' + data.caseTag + '] get parentComponent rect after position changed.');
-      let parentRectAfter = Utils.getComponentRect(data.pageConfig.parentComponentKey);
+      let parentRectAfter: RectValue = Utils.getComponentRect(data.pageConfig.parentComponentKey);
 
       //Obtain the region information of the target component.
       console.info('[' + data.caseTag + '] check actual position.');
-      let rect = Utils.getComponentRect(data.pageConfig.componentKey);
+      let rect: RectValue = Utils.getComponentRect(data.pageConfig.componentKey);
 
       //When the target component is TabContent or StepperItem,
       //the parent component is the Swiper on the outer layer of Tabs or Stepper.

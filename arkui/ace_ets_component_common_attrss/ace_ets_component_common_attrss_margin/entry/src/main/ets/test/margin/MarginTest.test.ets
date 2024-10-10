@@ -19,9 +19,9 @@ import Utils, { RectValue } from '../../MainAbility/common/Utils';
 import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 
 class TestValue {
-  describe: string;
-  setValue: Margin;
-  expectValue: Margin;
+  describe: string = '';
+  setValue: Margin = {} as Margin;
+  expectValue: Margin = {} as Margin;
 }
 
 class Margin {
@@ -33,16 +33,16 @@ class Margin {
 }
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  targetGroupView: string;
-  parentComponentKey: string;
-  buttonComponentKey: string;
-  childWidth: number;
-  childHeight: number;
-  parentWidth: number;
-  parentHeight: number;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  targetGroupView: string = '';
+  parentComponentKey: string = '';
+  buttonComponentKey: string = '';
+  childWidth: number = 0;
+  childHeight: number = 0;
+  parentWidth: number = 0;
+  parentHeight: number = 0;
 }
 
 export default function marginTest() {

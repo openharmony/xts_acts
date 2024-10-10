@@ -1,21 +1,16 @@
 {
   "app": {
     "bundleName": "com.ohos.st.formsystemhostnoperm",
-    "vendor": "ohos",
+    "vendor": "example",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
-    },
-    "apiVersion": {
-      "compatible": 7,
-      "releaseType": "Release",
-      "target": 7
     }
   },
   "deviceConfig": {},
   "module": {
     "package": "com.ohos.st.formsystemhostnoperm",
-    "name": ".FormStHostAppNoPerm",
+    "name": ".entry",
     "mainAbility": ".MainAbility",
     "deviceType": [
       "default",
@@ -41,14 +36,16 @@
             ]
           }
         ],
-        "visible": true,
+        "orientation": "unspecified",
+        "formsEnabled": false,
         "name": ".MainAbility",
-        "srcPath": "MainAbility",
         "srcLanguage": "ets",
+        "srcPath": "MainAbility",
         "icon": "$media:icon",
-        "description": "$string:description_mainability",
-        "label": "$string:entry_MainAbility",
+        "description": "$string:MainAbility_desc",
+        "label": "$string:MainAbility_label",
         "type": "page",
+        "visible": true,
         "launchType": "standard"
       }
     ],

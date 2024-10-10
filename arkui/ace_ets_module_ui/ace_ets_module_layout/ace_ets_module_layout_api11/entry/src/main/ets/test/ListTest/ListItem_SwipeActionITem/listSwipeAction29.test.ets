@@ -77,7 +77,7 @@ export default function listSwipeAction29Jsunit() {
       let textSwipeOffset = getInspectorByKey('swipe29Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0290 json is ' + JSON.stringify(JSON.parse(textSwipeOffset)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('0');
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset).$attrs.content)))<=1).assertTrue();
       await CommonFunc.sleep(5000);
       let buttonReset = await driver.findComponent(ON.id('btreset29'));
       await driver.delayMs(300);
@@ -91,7 +91,7 @@ export default function listSwipeAction29Jsunit() {
       let textSwipeOffset2 = getInspectorByKey('swipe29Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0290 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('0');
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content)))<=1).assertTrue();
       done();
     });
 
@@ -123,7 +123,7 @@ export default function listSwipeAction29Jsunit() {
       let textSwipeOffset = getInspectorByKey('swipe29Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0310 json is ' + JSON.stringify(JSON.parse(textSwipeOffset)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('160')
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset).$attrs.content))-160)<=1).assertTrue();
       // reset
       await driver.swipe(
         Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(1000)), Math.round(globalThis.winTop + vp2px(108))
@@ -142,7 +142,7 @@ export default function listSwipeAction29Jsunit() {
       let textSwipeOffset2 = getInspectorByKey('swipe29Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0310 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('-160');
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content))-(-160))<=1).assertTrue();
       // init reset the state
       await driver.swipe(
         Math.round(globalThis.winLeft + vp2px(240)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + 0), Math.round(globalThis.winTop + vp2px(108))

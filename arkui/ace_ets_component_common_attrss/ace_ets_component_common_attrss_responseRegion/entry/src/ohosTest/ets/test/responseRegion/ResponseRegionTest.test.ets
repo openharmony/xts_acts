@@ -374,7 +374,13 @@ export default function responseRegionTest() {
       } else {
         //Click on the center point of the hotspot area
         let xPoint = Number(Number(rect.left + offsetX + offsetWidth / 2).toFixed(0));
-        let yPoint = Number(Number(rect.top + offsetY + offsetHeight / 2).toFixed(0));
+        let yPoint = 0;
+        if ('Panel' == data.pageConfig.componentKey) {
+             // dragbar has height and do not reponse click event when click the dragbar  drgabar height = vp2px(24)
+             yPoint = Number(Number(rect.top + offsetY + 20 ).toFixed(0));
+        } else {
+             yPoint = Number(Number(rect.top + offsetY + offsetHeight / 2).toFixed(0));
+        }
         console.info('[' + data.caseTag + ']' + 'xPoint is:' + xPoint);
         console.info('[' + data.caseTag + ']' + 'yPoint is:' + yPoint);
         await clickPoint(data, xPoint, yPoint);

@@ -96,8 +96,14 @@ static napi_value GetRUsage(napi_env env, napi_callback_info info)
 static napi_value PrLimit(napi_env env, napi_callback_info info)
 {
     static const unsigned long long lim = PARAM_4;
-    struct rlimit newLimit = {.rlim_cur = lim, .rlim_max = lim};
-    int ret = prlimit(getpid(), RLIMIT_STACK, &newLimit, nullptr);
+    struct rlimit newLimit = {0};
+    struct rlimit oldLimit = {0};
+    id_t pid = getpid();
+    int ret = prlimit(pid, RLIMIT_STACK, nullptr, &newLimit);
+    newLimit.rlim_cur = lim;
+    ret += prlimit(pid, RLIMIT_STACK, &newLimit, &oldLimit);
+    ret += prlimit(pid, RLIMIT_STACK, &oldLimit, nullptr);
+
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -105,8 +111,15 @@ static napi_value PrLimit(napi_env env, napi_callback_info info)
 static napi_value PrLimit64(napi_env env, napi_callback_info info)
 {
     static const unsigned long long lim = PARAM_4;
-    struct rlimit newLimit = {.rlim_cur = lim, .rlim_max = lim};
-    int ret = prlimit64(getpid(), RLIMIT_STACK, &newLimit, nullptr);
+
+    struct rlimit newLimit = {0};
+    struct rlimit oldLimit = {0};
+    id_t pid = getpid();
+    int ret = prlimit64(pid, RLIMIT_STACK, nullptr, &newLimit);
+    newLimit.rlim_cur = lim;
+    ret += prlimit64(pid, RLIMIT_STACK, &newLimit, &oldLimit);
+    ret += prlimit64(pid, RLIMIT_STACK, &oldLimit, nullptr);
+
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;

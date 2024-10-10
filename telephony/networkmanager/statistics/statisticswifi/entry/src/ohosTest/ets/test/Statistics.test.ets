@@ -13,1540 +13,2377 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect, afterAll } from '@ohos/hypium';
-import { BusinessError } from '@ohos.base';
+import { describe, it, expect } from '@ohos/hypium';
 import statistics from '@ohos.net.statistics';
 import connection from '@ohos.net.connection';
-import bundleManager from '@ohos.bundle.bundleManager';
-import account from '@ohos.account.osAccount';
-import socket from '@ohos.net.socket';
-import { Context } from '@ohos.abilityAccessCtrl';
-import request from '@ohos.request';
+import { BusinessError } from '@ohos.base';
 
-let ExpectTrue:(n: boolean, caseName?: string)=>void = (n: boolean, caseName?: string) => {
+let ERR_CODE:string = '';
+let ERR_NETWORK:string = '2100001';
+
+function sleep(ms:ESObject = 66):Promise<string>{
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('')
+    },ms)
+  })
+}
+
+const ExpectFail: () => void = () => {
+  try {
+    expect().assertFail();
+  } catch (err) {
+    console.info(` exportFail failed err: ${JSON.stringify(err)}`);
+  }
+};
+
+const ExpectTrue: (n: boolean) => void = (n: boolean) => {
   try {
     expect(n).assertTrue();
   } catch (err) {
-    console.info(`${caseName} expect error ${JSON.stringify(err)}`);
+    console.info(` exportTrue failed err: ${JSON.stringify(err)}`);
   }
-}
+};
 
-async function getApplicationUid(): Promise<number> {
-  try {
-    let userId: number = await account.getAccountManager().getOsAccountLocalId();
-    let applicationFlags: number = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
-    let applicationInfo: bundleManager.ApplicationInfo = await bundleManager.getApplicationInfoSync('com.example.m', applicationFlags, userId);
-    console.info(`getApplicationUid applicationInfo ${JSON.stringify(applicationInfo)}`);
-    return applicationInfo.uid;
-  } catch (err) {
-    console.info(`getApplicationUid catch error ${JSON.stringify(err)}`);
-    return 0;
-  }
-}
-
-const testUrl: string = "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk";
-
-let networkStatisticsSocketFd: number = 0;
-let networkStatisticsSocketTcp: socket.TCPSocket;
-
-async function sendSocketMessage() {
-  console.info("sendSocketMessage");
-  networkStatisticsSocketTcp = socket.constructTCPSocketInstance();
-  let tcpconnectoptions: socket.TCPConnectOptions = {
-    address: {
-      address: '127.0.0.1',
-      port: 3060
-    },
-    timeout: 6000
-  }
-
-  networkStatisticsSocketTcp.connect(tcpconnectoptions).then(async () => {
-    console.info('socket connect success');
-    let tcpSendOptions: socket.TCPSendOptions = {
-      data: 'Hello, server!'
+let getTrafficStatsByNetwork =
+  (done: Function, caseName: string, type: statistics.NetBearType, endTime: number, startTime: number,
+    simId: number) => {
+    let networkInfo: statistics.NetworkInfo = {
+      type: type,
+      endTime: endTime,
+      startTime: startTime,
+      simId: simId,
     }
-    await networkStatisticsSocketTcp.send(tcpSendOptions).then(() => {
-      console.info("socket send success");
-    });
-  });
-  networkStatisticsSocketFd = await networkStatisticsSocketTcp.getSocketFd();
-  console.info("socket getSocketFd v:" + networkStatisticsSocketFd);
-}
+    console.info(`${caseName} test start`);
+    try {
+      statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.UidNetStatsInfo) => {
+        console.info('====statsInfo:', statsInfo)
+        console.info(`${caseName}  success statsInfo:${JSON.stringify(statsInfo)}`);
+        let rank: Map<string, object> = new Map<string, object>(Object.entries(statsInfo));
+        rank.forEach((value: object, key: string) => {
+          console.info("getTrafficStatsByNetwork key=" + key + ", value=" + JSON.stringify(value));
+        })
+        ExpectTrue(true)
+      }).catch((err: BusinessError) => {
+        console.info(`${caseName}  err ${JSON.stringify(err)}`);
+      })
+    } catch (err) {
+      console.info(`${caseName}  catch failed ${JSON.stringify(err)}`);
+      ERR_CODE = err.code;
+      // ExpectFail();
+      console.info(`${caseName} test end`);
+      done()
+    }
+  }
 
-export default function NetStatisticsTest() {
-
-  describe('NetStatisticsTest', () => {
-
-    beforeAll(async (done: Function) => {
-      try {
-        let netHandle: Array<connection.NetHandle> = connection.getAllNetsSync();
-        console.info(`beforeAll ${JSON.stringify(netHandle)}`);
-        if (netHandle.length === 0) {
-          ExpectTrue = (n: boolean, caseName?: string) => {
-            try {
-              console.info(`${caseName} no internet}`);
-              expect(false).assertTrue();
-            } catch (err) {
-              console.info(`${caseName} expect error ${JSON.stringify(err)}`);
-            }
-          }
+let getTrafficStatsByUidNetwork =
+  (done: Function, caseName: string, uid: number, type: statistics.NetBearType, endTime: number, startTime: number,
+    simId: number) => {
+    let networkInfo: statistics.NetworkInfo = {
+      type: type,
+      endTime: endTime,
+      startTime: startTime,
+      simId: simId,
+    }
+    console.info(`${caseName} test start`);
+    try {
+      statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence: statistics.NetStatsInfoSequence) => {
+        console.info('====statsInfo:', statsInfoSequence)
+        for (let i = 0; i < statsInfoSequence.length; i--) {
+          console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
         }
-        await sendSocketMessage();
-        done();
-      } catch (err) {
-        console.info(`beforeAll catch error ${JSON.stringify(err)}`);
-      }
-    });
+        ExpectTrue(true)
+      })
+        .catch((error: BusinessError) => {
+          console.info(`${caseName} error ${JSON.stringify(error)}`)
+        })
+    } catch (err) {
+      console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
+      ERR_CODE = err.code;
+      // ExpectFail();
+      console.info(`${caseName} test end`);
+      done()
+    }
+  }
 
-    afterAll(() => {
-      networkStatisticsSocketTcp.close((err) => {
-        if (err) {
-          console.error("socket close failed. err: " + JSON.stringify(err));
-        } else {
-          console.info("socket close success");
-        }
-      });
-    });
+export default function statisticsTest() {
+  describe('getStatisticsTest', () => {
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceRxBytes_0100
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceRxBytes0100
-     * @tc.desc  : Obtain the real-time downstream traffic of a specified NIC;callback.
+     * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0100
+     * @tc.name  : GetTrafficStatsTestPromise0100
+     * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetIfaceRxBytes0100', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceRxBytes0100';
-      console.info(`${caseName} test start`);
-      try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
-        console.info(`${caseName}  ${JSON.stringify(netHandle)}`);
-        let connectionproperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
-        let context :Context = globalThis.abilityContext.getApplicationContext();
-        await request.downloadFile(context, {
-          url: testUrl
-        });
-        statistics.getIfaceRxBytes(connectionproperties.interfaceName, (error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            ExpectTrue(stats > 0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    it('GetTrafficStatsTestPromise0100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0100';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 0)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceRxBytes_0200
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceRxBytes0200
-     * @tc.desc  : Error type parameter;callback.
+     * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0200
+     * @tc.name  : GetTrafficStatsTestPromise0200
+     * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetIfaceRxBytes0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceRxBytes0200';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getIfaceRxBytes(null, (error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(error.code == 401, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (error) {
-        ExpectTrue(error.code == 401, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        console.info(`${caseName} test end`);
-      }
+    it('GetTrafficStatsTestPromise0200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0200';
+      getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        await Math.floor(Date.now() / 1000) + 5, 0)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceRxBytes_0300
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceRxBytes0300
-     * @tc.desc  : Invalid parameter;callback.
+     * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0300
+     * @tc.name  : GetTrafficStatsTestPromise0300
+     * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetIfaceRxBytes0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceRxBytes0300';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getIfaceRxBytes('wangaaa', (error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(error.code === 2103012, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${stats}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (error) {
-        ExpectTrue(error.code === 2103012, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        console.info(`${caseName} test end`);
-      }
+    it('GetTrafficStatsTestPromise0300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0300';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 0)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceRxBytes_0400
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceRxBytes0400
-     * @tc.desc  : Obtain the real-time downstream traffic of a specified NIC;promise.
+     * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0400
+     * @tc.name  : GetTrafficStatsTestPromise0400
+     * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetIfaceRxBytes0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceRxBytes0400';
-      console.info(`${caseName} test start`);
-      try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
-        let connectionproperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
-        statistics.getIfaceRxBytes(connectionproperties.interfaceName).then((stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          ExpectTrue(stats > 0, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    it('GetTrafficStatsTestPromise0400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0400';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 0)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceRxBytes_0500
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceRxBytes0500
-     * @tc.desc  : Error type parameter;callback.
+     * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0500
+     * @tc.name  : GetTrafficStatsTestPromise0500
+     * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetIfaceRxBytes0500', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceRxBytes0500';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getIfaceRxBytes(null).then((stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
-          ExpectTrue(err.code == 401, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (error) {
-        ExpectTrue(error.code == 401, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        console.info(`${caseName} test end`);
-      }
+    it('GetTrafficStatsTestPromise0500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0500';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceRxBytes_0600
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceRxBytes0600
-     * @tc.desc  : Invalid parameter;callback.
+     * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0600
+     * @tc.name  : GetTrafficStatsTestPromise0600
+     * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetIfaceRxBytes0600', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceRxBytes0600';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getIfaceRxBytes('wangaaa').then((stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
-          ExpectTrue(err.code === 2103012, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-
-      } catch (error) {
-        ExpectTrue(error.code === 2103012, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        console.info(`${caseName} test end`);
-      }
+    it('GetTrafficStatsTestPromise0600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0600';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceTxBytes_0100
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceTxBytes0100
-     * @tc.desc  : Obtain the real-time upstream traffic of a specified NIC.callback.
+     * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0700
+     * @tc.name  : GetTrafficStatsTestPromise0700
+     * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetIfaceTxBytes0100', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceTxBytes0100';
-      console.info(`${caseName} test start`);
-      try {
-        let netHandle = connection.getDefaultNetSync();
-        let connectionproperties = connection.getConnectionPropertiesSync(netHandle);
-        statistics.getIfaceTxBytes(connectionproperties.interfaceName, (error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            ExpectTrue(stats > 0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    it('GetTrafficStatsTestPromise0700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0700';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceTxBytes_0200
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceTxBytes0200
-     * @tc.desc  : Error type parameter;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetIfaceTxBytes0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceTxBytes0200';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getIfaceTxBytes(null, (error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(error.code == 401, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (error) {
-        ExpectTrue(error.code == 401, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0800
+    * @tc.name  : GetTrafficStatsTestPromise0800
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise0800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0800';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceTxBytes_0300
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceTxBytes0300
-     * @tc.desc  : Invalid parameter;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetIfaceTxBytes0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceTxBytes0300';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getIfaceTxBytes('wangaaa', (error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(error.code === 2103012, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (error) {
-        ExpectTrue(error.code === 2103012, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_0900
+    * @tc.name  : GetTrafficStatsTestPromise0900
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise0900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise0900';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceRxByTes_0400
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceRxByTes0400
-     * @tc.desc  : Obtain the real-time upstream traffic of a specified NIC.;promise.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetIfaceRxByTes0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceRxByTes0400';
-      console.info(`${caseName} test start`);
-      try {
-        let netHandle = connection.getDefaultNetSync();
-        let connectionproperties = connection.getConnectionPropertiesSync(netHandle);
-        statistics.getIfaceTxBytes(connectionproperties.interfaceName).then((stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          ExpectTrue(stats > 0, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1000
+    * @tc.name  : GetTrafficStatsTestPromise1000
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1000';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceTxBytes_0500
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceTxBytes0500
-     * @tc.desc  : Error type parameter;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetIfaceTxBytes0500', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceTxBytes0500';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getIfaceTxBytes(null).then((stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
-          ExpectTrue(err.code == 401, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (error) {
-        ExpectTrue(error.code == 401, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1100
+    * @tc.name  : GetTrafficStatsTestPromise1100
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1100';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetIfaceTxBytes_0600
-     * @tc.name  : testNetworkMgrStatisticsGetIfaceRxTytes0600
-     * @tc.desc  : Invalid parameter;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetIfaceRxTytes0600', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetIfaceRxTytes0600';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getIfaceTxBytes('wangaaa').then((stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
-          ExpectTrue(err.code === 2103012, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (error) {
-        ExpectTrue(error.code === 2103012, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1200
+    * @tc.name  : GetTrafficStatsTestPromise1200
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1200';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetAllRxBytes_0100
-     * @tc.name  : testNetworkMgrStatisticsGetAllRxBytes0100
-     * @tc.desc  : Obtain real-time downlink traffic of all network cards;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetAllRxBytes0100', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetAllRxBytes0100';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getAllRxBytes((error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            ExpectTrue(stats > 0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1300
+    * @tc.name  : GetTrafficStatsTestPromise1300
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1300';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetAllRxBytes_0200
-     * @tc.name  : testNetworkMgrStatisticsGetAllRxBytes0200
-     * @tc.desc  : Obtain real-time downlink traffic of all network cards;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetAllRxBytes0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetAllRxBytes0200';
-      console.info(`${caseName} test start`);
-      let netHandles: Array<connection.NetHandle> = connection.getAllNetsSync();
-      let connectionproperties0 = connection.getConnectionPropertiesSync(netHandles[0]);
-      try {
-        statistics.getAllRxBytes(async (error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            let data0 = await statistics.getIfaceRxBytes(connectionproperties0.interfaceName);
-            console.info(`${caseName} data0 ${JSON.stringify(data0)}`);
-            ExpectTrue(stats >= data0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1400
+    * @tc.name  : GetTrafficStatsTestPromise1400
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1400';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetAllRxBytes_0300
-     * @tc.name  : testNetworkMgrStatisticsGetAllRxBytes0300
-     * @tc.desc  : Obtain real-time downlink traffic of all network cards;promise.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetAllRxBytes0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetAllRxBytes0300';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getAllRxBytes().then((stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          ExpectTrue(stats > 0, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1500
+    * @tc.name  : GetTrafficStatsTestPromise1500
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1500';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetAllRxBytes_0400
-     * @tc.name  : testNetworkMgrStatisticsGetAllRxBytes0400
-     * @tc.desc  : Obtain real-time downlink traffic of all network cards;promise.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetAllRxBytes0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetAllRxBytes0400';
-      console.info(`${caseName} test start`);
-      let netHandle = connection.getDefaultNetSync();
-      let connectionproperties = connection.getConnectionPropertiesSync(netHandle);
-      try {
-        statistics.getAllRxBytes().then(async (stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          let data = await statistics.getIfaceRxBytes(connectionproperties.interfaceName);
-          console.info(`${caseName} stats ${JSON.stringify(data)}`);
-          ExpectTrue(stats >= data, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1600
+    * @tc.name  : GetTrafficStatsTestPromise1600
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1600';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetAllTxBytes_0100
-     * @tc.name  : testNetworkMgrStatisticsGetAllTxBytes0100
-     * @tc.desc  : Obtain real-time upstream traffic of all nics;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetAllTxBytes0100', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetAllTxBytes0100';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getAllTxBytes((error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            ExpectTrue(stats > 0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1700
+    * @tc.name  : GetTrafficStatsTestPromise1700
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1700';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetAllTxBytes_0200
-     * @tc.name  : testNetworkMgrStatisticsGetAllTxBytes0200
-     * @tc.desc  : Obtain real-time upstream traffic of all nics;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetAllTxBytes0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetAllTxBytes0200';
-      console.info(`${caseName} test start`);
-      let netHandle = connection.getDefaultNetSync();
-      let connectionproperties = connection.getConnectionPropertiesSync(netHandle);
-      try {
-        statistics.getAllTxBytes(async (error: BusinessError, stats: number) => {
-          if (error) {
-            console.info(`${caseName} err ${JSON.stringify(error)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-            let data = await statistics.getIfaceTxBytes(connectionproperties.interfaceName);
-            console.info(`${caseName} stats ${JSON.stringify(data)}`);
-            ExpectTrue(stats >= data, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1800
+    * @tc.name  : GetTrafficStatsTestPromise1800
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1800';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetAllTxBytes_0300
-     * @tc.name  : testNetworkMgrStatisticsGetAllTxBytes0300
-     * @tc.desc  : Obtain real-time upstream traffic of all nics;promise.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetAllTxBytes0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetAllTxBytes0300';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getAllTxBytes().then((stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          ExpectTrue(stats > 0, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1900
+    * @tc.name  : GetTrafficStatsTestPromise1900
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise1900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise1900';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetAllTxBytes_0400
-     * @tc.name  : testNetworkMgrStatisticsGetAllTxBytes0400
-     * @tc.desc  : Obtain real-time upstream traffic of all nics;promise.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetAllTxBytes0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetAllTxBytes0400';
-      console.info(`${caseName} test start`);
-      let netHandle = connection.getDefaultNetSync();
-      let connectionproperties = connection.getConnectionPropertiesSync(netHandle);
-      try {
-        statistics.getAllTxBytes().then(async (stats: number) => {
-          console.info(`${caseName} stats ${JSON.stringify(stats)}`);
-          let data = await statistics.getIfaceTxBytes(connectionproperties.interfaceName);
-          console.info(`${caseName} stats ${JSON.stringify(data)}`);
-          ExpectTrue(stats >= data, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2000
+    * @tc.name  : GetTrafficStatsTestPromise2000
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2000';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdRxBytes_0100
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdRxBytes0100
-     * @tc.desc  : Gets downstream traffic information about the specified socket;callback
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdRxBytes0100', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdRxBytes0100';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdRxBytes(networkStatisticsSocketFd, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${stats}`);
-            ExpectTrue(stats > 0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2100
+    * @tc.name  : GetTrafficStatsTestPromise2100
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2100';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdRxBytes_0200
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdRxBytes0200
-     * @tc.desc  : fd of a nonexistent socket;callback
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdRxBytes0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdRxBytes0200';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdRxBytes(147258, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(err.code === 2100002, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2200
+    * @tc.name  : GetTrafficStatsTestPromise2200
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2200';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdRxBytes_0300
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdRxBytes0300
-     * @tc.desc  : Error type parameter;callback
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdRxBytes0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdRxBytes0300';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdRxBytes(null, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(err.code == 401, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(err.code == 401, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2300
+    * @tc.name  : GetTrafficStatsTestPromise2300
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2300';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdRxBytes_0400
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdRxBytes0400
-     * @tc.desc  : Gets downstream traffic information about the specified socket;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdRxBytes0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdRxBytes0400';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdRxBytes(networkStatisticsSocketFd).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(stats > 0, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2400
+    * @tc.name  : GetTrafficStatsTestPromise2400
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2400';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdRxBytes_0500
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdRxBytes0500
-     * @tc.desc  : fd of a nonexistent socket;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdRxBytes0500', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdRxBytes0500';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdRxBytes(147258).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(err.code === 2100002, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2500
+    * @tc.name  : GetTrafficStatsTestPromise2500
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2500';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 0)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdRxBytes_0600
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdRxBytes0600
-     * @tc.desc  : Error type parameter;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdRxBytes0600', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdRxBytes0600';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdRxBytes(null).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(err.code == 401, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(err.code == 401, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2600
+    * @tc.name  : GetTrafficStatsTestPromise2600
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2600';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 0)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdTxBytes_0100
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdTxBytes0100
-     * @tc.desc  : Gets upstream traffic information about the specified socket;callback
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdTxBytes0100', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdTxBytes0100';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdTxBytes(networkStatisticsSocketFd, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(stats > 0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2700
+    * @tc.name  : GetTrafficStatsTestPromise2700
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2700';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 0)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdTxBytes_0200
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdTxBytes0200
-     * @tc.desc  : fd of a nonexistent socket;callback
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdTxBytes0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdTxBytes0200';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdTxBytes(147258, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(err.code === 2100002, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2800
+    * @tc.name  : GetTrafficStatsTestPromise2800
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2800';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 0)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdTxBytes_0300
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdTxBytes0300
-     * @tc.desc  : Error type parameter;callback
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdTxBytes0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdTxBytes0300';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdTxBytes(null, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(err.code == 401, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(err.code == 401, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_2900
+    * @tc.name  : GetTrafficStatsTestPromise2900
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise2900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise2900';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdTxBytes_0400
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdTxBytes0400
-     * @tc.desc  : Gets upstream traffic information about the specified socket;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdTxBytes0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdTxBytes0400';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdTxBytes(networkStatisticsSocketFd).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(stats > 0, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3000
+    * @tc.name  : GetTrafficStatsTestPromise3000
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3000';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdTxBytes_0500
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdTxBytes0500
-     * @tc.desc  : fd of a nonexistent socket;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdTxBytes0500', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdTxBytes0500';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdTxBytes(147258).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(err.code === 2100002, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3100
+    * @tc.name  : GetTrafficStatsTestPromise3100
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3100';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetSockfdTxBytes_0600
-     * @tc.name  : testNetworkMgrStatisticsGetSockfdTxBytes0600
-     * @tc.desc  : Error type parameter;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetSockfdTxBytes0600', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetSockfdTxBytes0600';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getSockfdTxBytes(null).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(err.code == 401, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        console.info(`${caseName} ${JSON.stringify(err)} bind fail`);
-        ExpectTrue(err.code == 401, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3200
+    * @tc.name  : GetTrafficStatsTestPromise3200
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3200';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidRxBytes_0100
-     * @tc.name  : testNetworkMgrStatisticsGetUidRxBytes0100
-     * @tc.desc  : Obtain the real-time downstream traffic of a specified application;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidRxBytes0100', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidRxBytes0100';
-      console.info(`${caseName} test start`);
-      try {
-        let uid: number = await getApplicationUid();
-        console.info(`${caseName} ${uid}`);
-        statistics.getUidRxBytes(uid, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(stats > 0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3300
+    * @tc.name  : GetTrafficStatsTestPromise3300
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3300';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        0)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidRxBytes_0200
-     * @tc.name  : testNetworkMgrStatisticsGetUidRxBytes0200
-     * @tc.desc  : Error type parameter;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidRxBytes0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidRxBytes0200';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getUidRxBytes(null, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(err.code == 401, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} catch ${JSON.stringify(err)}`);
-        ExpectTrue(err.code == 401, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3400
+    * @tc.name  : GetTrafficStatsTestPromise3400
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3400';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        0)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidRxBytes_0300
-     * @tc.name  : testNetworkMgrStatisticsGetUidRxBytes0300
-     * @tc.desc  : An application that does not exist;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidRxBytes0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidRxBytes0300';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getUidRxBytes(200, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(err.code === 2103005, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3500
+    * @tc.name  : GetTrafficStatsTestPromise3500
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3500';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        0)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidRxBytes_0400
-     * @tc.name  : testNetworkMgrStatisticsGetUidRxBytes0400
-     * @tc.desc  : Obtain the real-time downstream traffic of a specified application;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidRxBytes0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidRxBytes0400';
-      console.info(`${caseName} test start`);
-      try {
-        let uid: number = await getApplicationUid();
-        console.info(`${caseName} ${uid}`);
-
-        statistics.getUidRxBytes(uid).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(stats > 0, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3600
+    * @tc.name  : GetTrafficStatsTestPromise3600
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3600';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        0)
+      done()
+    });
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3700
+    * @tc.name  : GetTrafficStatsTestPromise3700
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3700';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        1)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidRxBytes_0500
-     * @tc.name  : testNetworkMgrStatisticsGetUidRxBytes0500
-     * @tc.desc  : Error type parameter;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidRxBytes0500', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidRxBytes0500';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getUidRxBytes(null).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(err.code == 401, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        console.info(`${caseName} catch ${JSON.stringify(err)}`);
-        ExpectTrue(err.code == 401, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3800
+    * @tc.name  : GetTrafficStatsTestPromise3800
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3800';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        1)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidRxBytes_0600
-     * @tc.name  : testNetworkMgrStatisticsGetUidRxBytes0600
-     * @tc.desc  : An application that does not exist;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidRxBytes0600', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidRxBytes0600';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getUidRxBytes(200).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(err.code === 2103005, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_3900
+    * @tc.name  : GetTrafficStatsTestPromise3900
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise3900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise3900';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        1)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidTxBytes_0100
-     * @tc.name  : testNetworkMgrStatisticsGetUidTxBytes0100
-     * @tc.desc  : Obtain the real-time upstream traffic of a specified application;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidTxBytes0100', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidTxBytes0100';
-      console.info(`${caseName} test start`);
-      try {
-        let uid: number = await getApplicationUid();
-        console.info(`${caseName} ${uid}`);
-        statistics.getUidTxBytes(uid, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(stats > 0, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4000
+    * @tc.name  : GetTrafficStatsTestPromise4000
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4000';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        1)
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidTxBytes_0200
-     * @tc.name  : testNetworkMgrStatisticsGetUidTxBytes0200
-     * @tc.desc  : Error type parameter;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidTxBytes0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidTxBytes0200';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getUidTxBytes(null, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(err.code == 401, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} catch ${JSON.stringify(err)}`);
-        ExpectTrue(err.code == 401, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4100
+    * @tc.name  : GetTrafficStatsTestPromise4100
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4100';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidTxBytes_0300
-     * @tc.name  : testNetworkMgrStatisticsGetUidTxBytes0300
-     * @tc.desc  : An application that does not exist;callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidTxBytes0300', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidTxBytes0300';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getUidTxBytes(200, (err: BusinessError, stats: number) => {
-          if (err) {
-            console.info(`${caseName} err ${JSON.stringify(err)}`);
-            ExpectTrue(err.code === 2103005, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          } else {
-            console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-            ExpectTrue(false, caseName);
-            done();
-            console.info(`${caseName} test end`);
-          }
-        });
-      } catch (err) {
-        ExpectTrue(false);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4200
+    * @tc.name  : GetTrafficStatsTestPromise4200
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4200';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidTxBytes_0400
-     * @tc.name  : testNetworkMgrStatisticsGetUidTxBytes0400
-     * @tc.desc  : Obtain the real-time downstream traffic of a specified application;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidTxBytes0400', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidTxBytes0400';
-      console.info(`${caseName} test start`);
-      try {
-        let uid: number = await getApplicationUid();
-        console.info(`${caseName} ${uid}`);
-
-        statistics.getUidTxBytes(uid).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(stats > 0, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4300
+    * @tc.name  : GetTrafficStatsTestPromise4300
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4300';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidTxBytes_0500
-     * @tc.name  : testNetworkMgrStatisticsGetUidTxBytes0500
-     * @tc.desc  : Error type parameter;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidTxBytes0500', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidTxBytes0500';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getUidTxBytes(null).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(err.code == 401, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        console.info(`${caseName} catch ${JSON.stringify(err)}`);
-        ExpectTrue(err.code == 401, caseName);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4400
+    * @tc.name  : GetTrafficStatsTestPromise4400
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4400';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
     /* *
-     * @tc.number: SUB_NetworkMgr_Statistics_GetUidTxBytes_0600
-     * @tc.name  : testNetworkMgrStatisticsGetUidTxBytes0600
-     * @tc.desc  : An application that does not exist;promise
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 3
-     */
-    it('testNetworkMgrStatisticsGetUidTxBytes0600', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrStatisticsGetUidTxBytes0600';
-      console.info(`${caseName} test start`);
-      try {
-        statistics.getUidTxBytes(200).then((stats: number) => {
-          console.info(`${caseName} succes ${JSON.stringify(stats)}`);
-          ExpectTrue(false, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} err ${JSON.stringify(err)}`);
-          ExpectTrue(err.code === 2103005, caseName);
-          done();
-          console.info(`${caseName} test end`);
-        });
-      } catch (err) {
-        ExpectTrue(false);
-        done();
-        console.info(`${caseName} test end`);
-      }
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4500
+    * @tc.name  : GetTrafficStatsTestPromise4500
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4500';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR, 0,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
     });
 
-  });
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4600
+    * @tc.name  : GetTrafficStatsTestPromise4600
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4600';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI, 0,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4700
+    * @tc.name  : GetTrafficStatsTestPromise4700
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4700';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET, 0,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4800
+    * @tc.name  : GetTrafficStatsTestPromise4800
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4800';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN, 0,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_4900
+    * @tc.name  : GetTrafficStatsTestPromise4900
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise4900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise4900';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5000
+    * @tc.name  : GetTrafficStatsTestPromise5000
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5000';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5100
+    * @tc.name  : GetTrafficStatsTestPromise5100
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5100';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5200
+    * @tc.name  : GetTrafficStatsTestPromise5200
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5200';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5300
+    * @tc.name  : GetTrafficStatsTestPromise5300
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5300';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5400
+    * @tc.name  : GetTrafficStatsTestPromise5400
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5400';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5500
+    * @tc.name  : GetTrafficStatsTestPromise5500
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5500';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5600
+    * @tc.name  : GetTrafficStatsTestPromise5600
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5600';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5700
+    * @tc.name  : GetTrafficStatsTestPromise5700
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5700';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR, 0,
+        -Math.floor(Date.now() / 1000) + 5,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5800
+    * @tc.name  : GetTrafficStatsTestPromise5800
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5800';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI, 0,
+        -Math.floor(Date.now() / 1000) + 5,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_5900
+    * @tc.name  : GetTrafficStatsTestPromise5900
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise5900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise5900';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET, 0,
+        -Math.floor(Date.now() / 1000) + 5,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_6000
+    * @tc.name  : GetTrafficStatsTestPromise6000
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise6000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise6000';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN, 0,
+        -Math.floor(Date.now() / 1000) + 5,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_6100
+    * @tc.name  : GetTrafficStatsTestPromise6100
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise6100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise6100';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_CELLULAR, 0, 0, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_6200
+    * @tc.name  : GetTrafficStatsTestPromise6200
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise6200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise6200';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_WIFI, 0, 0, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_6300
+    * @tc.name  : GetTrafficStatsTestPromise6300
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise6300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise6300';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_ETHERNET, 0, 0, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_6400
+    * @tc.name  : GetTrafficStatsTestPromise6400
+    * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsTestPromise6400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsTestPromise6400';
+      await getTrafficStatsByNetwork(done, caseName, connection.NetBearType.BEARER_VPN, 0, 0, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0100
+    * @tc.name  : GetTrafficStatsByUidTestPromise0100
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0100';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0200
+    * @tc.name  : GetTrafficStatsByUidTestPromise0200
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0200';
+      getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        await Math.floor(Date.now() / 1000) + 5, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0300
+    * @tc.name  : GetTrafficStatsByUidTestPromise0300
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0300';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0400
+    * @tc.name  : GetTrafficStatsByUidTestPromise0400
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0400';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0500
+    * @tc.name  : GetTrafficStatsByUidTestPromise0500
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0500';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0600
+    * @tc.name  : GetTrafficStatsByUidTestPromise0600
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0600';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0700
+    * @tc.name  : GetTrafficStatsByUidTestPromise0700
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0700';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0800
+    * @tc.name  : GetTrafficStatsByUidTestPromise0800
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0800';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_0900
+    * @tc.name  : GetTrafficStatsByUidTestPromise0900
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise0900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise0900';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1000
+    * @tc.name  : GetTrafficStatsByUidTestPromise1000
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1000';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1100
+    * @tc.name  : GetTrafficStatsByUidTestPromise1100
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1100';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1200
+    * @tc.name  : GetTrafficStatsByUidTestPromise1200
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1200';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1300
+    * @tc.name  : GetTrafficStatsByUidTestPromise1300
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1300';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1400
+    * @tc.name  : GetTrafficStatsByUidTestPromise1400
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1400';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1500
+    * @tc.name  : GetTrafficStatsByUidTestPromise1500
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1500';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1600
+    * @tc.name  : GetTrafficStatsByUidTestPromise1600
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1600';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1700
+    * @tc.name  : GetTrafficStatsByUidTestPromise1700
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1700';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1800
+    * @tc.name  : GetTrafficStatsByUidTestPromise1800
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1800';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_1900
+    * @tc.name  : GetTrafficStatsByUidTestPromise1900
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise1900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise1900';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2000
+    * @tc.name  : GetTrafficStatsByUidTestPromise2000
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2000';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2100
+    * @tc.name  : GetTrafficStatsByUidTestPromise2100
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2100';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2200
+    * @tc.name  : GetTrafficStatsByUidTestPromise2200
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2200';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2300
+    * @tc.name  : GetTrafficStatsByUidTestPromise2300
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2300';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2400
+    * @tc.name  : GetTrafficStatsByUidTestPromise2400
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2400';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2500
+    * @tc.name  : GetTrafficStatsByUidTestPromise2500
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2500';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 0)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2600
+    * @tc.name  : GetTrafficStatsByUidTestPromise2600
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2600';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 0)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2700
+    * @tc.name  : GetTrafficStatsByUidTestPromise2700
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2700';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 0)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2800
+    * @tc.name  : GetTrafficStatsByUidTestPromise2800
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2800';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, 0)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2900
+    * @tc.name  : GetTrafficStatsByUidTestPromise2900
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise2900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise2900';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3000
+    * @tc.name  : GetTrafficStatsByUidTestPromise3000
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3000';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3100
+    * @tc.name  : GetTrafficStatsByUidTestPromise3100
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3100';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3200
+    * @tc.name  : GetTrafficStatsByUidTestPromise3200
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3200';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) - 86400 * 7,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3300
+    * @tc.name  : GetTrafficStatsByUidTestPromise3300
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3300';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3400
+    * @tc.name  : GetTrafficStatsByUidTestPromise3400
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3400';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3500
+    * @tc.name  : GetTrafficStatsByUidTestPromise3500
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3500';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3600
+    * @tc.name  : GetTrafficStatsByUidTestPromise3600
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3600';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3700
+    * @tc.name  : GetTrafficStatsByUidTestPromise3700
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3700';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        1)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3800
+    * @tc.name  : GetTrafficStatsByUidTestPromise3800
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3800';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        1)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3900
+    * @tc.name  : GetTrafficStatsByUidTestPromise3900
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise3900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise3900';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        1)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4000
+    * @tc.name  : GetTrafficStatsByUidTestPromise4000
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4000';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        1)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4100
+    * @tc.name  : GetTrafficStatsByUidTestPromise4100
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4100';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4200
+    * @tc.name  : GetTrafficStatsByUidTestPromise4200
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4200';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4300
+    * @tc.name  : GetTrafficStatsByUidTestPromise4300
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4300';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4400
+    * @tc.name  : GetTrafficStatsByUidTestPromise4400
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4400';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) + 5,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4500
+    * @tc.name  : GetTrafficStatsByUidTestPromise4500
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4500';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR, 0,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4600
+    * @tc.name  : GetTrafficStatsByUidTestPromise4600
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4600';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI, 0,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4700
+    * @tc.name  : GetTrafficStatsByUidTestPromise4700
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4700';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET, 0,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4800
+    * @tc.name  : GetTrafficStatsByUidTestPromise4800
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4800';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN, 0,
+        Math.floor(Date.now() / 1000) - 86400 * 7,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_4900
+    * @tc.name  : GetTrafficStatsByUidTestPromise4900
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise4900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise4900';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5000
+    * @tc.name  : GetTrafficStatsByUidTestPromise5000
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5000';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5100
+    * @tc.name  : GetTrafficStatsByUidTestPromise5100
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5100';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5200
+    * @tc.name  : GetTrafficStatsByUidTestPromise5200
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5200';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5300
+    * @tc.name  : GetTrafficStatsByUidTestPromise5300
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5300';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR,
+        -Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5400
+    * @tc.name  : GetTrafficStatsByUidTestPromise5400
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5400';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI,
+        -Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5500
+    * @tc.name  : GetTrafficStatsByUidTestPromise5500
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5500';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET,
+        -Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5600
+    * @tc.name  : GetTrafficStatsByUidTestPromise5600
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5600';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN,
+        -Math.floor(Date.now() / 1000) + 5,
+        0,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5700
+    * @tc.name  : GetTrafficStatsByUidTestPromise5700
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5700', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5700';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR, 0,
+        -Math.floor(Date.now() / 1000) + 5,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5800
+    * @tc.name  : GetTrafficStatsByUidTestPromise5800
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5800', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5800';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI, 0,
+        -Math.floor(Date.now() / 1000) + 5,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_5900
+    * @tc.name  : GetTrafficStatsByUidTestPromise5900
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise5900', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise5900';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET, 0,
+        -Math.floor(Date.now() / 1000) + 5,
+        -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_6000
+    * @tc.name  : GetTrafficStatsByUidTestPromise6000
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise6000', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise6000';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN, 0,
+        -Math.floor(Date.now() / 1000) + 5, -1)
+      await sleep(3000);
+      expect(ERR_CODE).assertEqual(ERR_NETWORK);
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_6100
+    * @tc.name  : GetTrafficStatsByUidTestPromise6100
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise6100', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise6100';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_CELLULAR, 0, 0, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_6200
+    * @tc.name  : GetTrafficStatsByUidTestPromise6200
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise6200', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise6200';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_WIFI, 0, 0, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_6200
+    * @tc.name  : GetTrafficStatsByUidTestPromise6200
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise6300', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise6300';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_ETHERNET, 0, 0, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_6400
+    * @tc.name  : GetTrafficStatsByUidTestPromise6400
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise6400', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise6400';
+      await getTrafficStatsByUidNetwork(done, caseName, 20020147, connection.NetBearType.BEARER_VPN, 0, 0, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_6500
+    * @tc.name  : GetTrafficStatsByUidTestPromise6500
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise6500', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise6500';
+      await getTrafficStatsByUidNetwork(done, caseName, 0, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7, Math.floor(Date.now() / 1000) + 5, 0)
+      done()
+    });
+
+    /* *
+    * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_6600
+    * @tc.name  : GetTrafficStatsByUidTestPromise6600
+    * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 3
+    */
+    it('GetTrafficStatsByUidTestPromise6600', 0, async (done: Function) => {
+      const caseName: string = 'GetTrafficStatsByUidTestPromise6600';
+      await getTrafficStatsByUidNetwork(done, caseName, -20020147, connection.NetBearType.BEARER_WIFI,
+        Math.floor(Date.now() / 1000) - 86400 * 7, Math.floor(Date.now() / 1000) + 5, 0)
+      done()
+    });
+
+  })
 }

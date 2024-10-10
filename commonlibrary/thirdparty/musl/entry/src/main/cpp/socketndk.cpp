@@ -23,6 +23,7 @@
 #include <sys/types.h>
 #include <sys/un.h>
 #include <unistd.h>
+#include <securec.h>
 
 #define PARAM_5 5
 #define ONEVAL 1
@@ -225,6 +226,7 @@ static napi_value Sendmmsg(napi_env env, napi_callback_info info)
                                sizeof(server));
             }
             struct mmsghdr msg[2];
+            memset_s(msg, sizeof(msg), 0, sizeof(msg));
             ret = sendmmsg(sock, msg, TWOVAL, PARAM_0);
         }
         close(sock);

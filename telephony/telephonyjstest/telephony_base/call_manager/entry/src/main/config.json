@@ -13,7 +13,6 @@
     "name": ".entry",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "wearable",
       "default",
       "tablet",
       "2in1"

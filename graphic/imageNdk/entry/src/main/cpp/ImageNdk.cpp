@@ -45,6 +45,7 @@ namespace {
     const uint32_t MAX_BUFFER_SIZE = 512;
     const uint32_t MAX_COLOR_SIZE = 96;
     const uint32_t MAX_QUALITY_SIZE = 98;
+    constexpr int8_t ARGB_8888_BYTES = 4;
 }
 
 const char *LOG_APP = "ImageNDK";
@@ -220,6 +221,69 @@ static napi_value TestNativeGetMetaDataNull(napi_env env, napi_callback_info inf
     return getJsResult(env, IMAGE_SUCCESS);
 }
 
+static napi_value TestNativeSetMemoryName(napi_env env, napi_callback_info info)
+{
+    OH_PixelmapNative *pixelmap = nullptr;
+    char name[] = "testName";
+    size_t len = strlen(name);
+    Image_ErrorCode errCode = OH_PixelmapNative_SetMemoryName(pixelmap, name, &len);
+    if (errCode != IMAGE_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_SetMemoryName failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeSetMemoryName success.");
+    return getJsResult(env, IMAGE_SUCCESS);
+}
+
+static napi_value TestNativeGetArgbPixels(napi_env env, napi_callback_info info)
+{
+    OH_PixelmapNative *pixelMap = nullptr;
+    size_t dataSize = ARGB_8888_BYTES;
+    uint8_t result[ARGB_8888_BYTES];
+    
+    uint8_t data[] = {0x01, 0x02, 0x03, 0xFF};
+    OH_Pixelmap_InitializationOptions *createOpts;
+    OH_PixelmapInitializationOptions_Create(&createOpts);
+    OH_PixelmapInitializationOptions_SetWidth(createOpts, 1);
+    OH_PixelmapInitializationOptions_SetHeight(createOpts, 1);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_BGRA_8888);
+    Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelMap);
+
+    errCode = OH_PixelmapNative_GetArgbPixels(pixelMap, result, &dataSize);
+    if (errCode != IMAGE_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetArgbPixels failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeGetArgbPixels success.");
+    return getJsResult(env, IMAGE_SUCCESS);
+}
+
+static napi_value TestNativeGetColorSpaceNative(napi_env env, napi_callback_info info)
+{
+    OH_PixelmapNative *pixelmap = nullptr;
+    OH_NativeColorSpaceManager *getColorSpaceNative = nullptr;
+    Image_ErrorCode errCode = OH_PixelmapNative_GetColorSpaceNative(pixelmap, &getColorSpaceNative);
+    if (errCode != IMAGE_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetColorSpaceNative failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeGetColorSpaceNative success.");
+    return getJsResult(env, IMAGE_SUCCESS);
+}
+
+static napi_value TestNativeSetColorSpaceNative(napi_env env, napi_callback_info info)
+{
+    OH_PixelmapNative *pixelmap = nullptr;
+    OH_NativeColorSpaceManager *setColorSpaceNative = nullptr;
+    Image_ErrorCode errCode = OH_PixelmapNative_SetColorSpaceNative(pixelmap, setColorSpaceNative);
+    if (errCode != IMAGE_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_SetColorSpaceNative failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeSetColorSpaceNative success.");
+    return getJsResult(env, IMAGE_SUCCESS);
+}
+
 static void setInt32NamedProperty(napi_env env, napi_value object, const char *utf8name, uint32_t value)
 {
     napi_value tmp;
@@ -254,6 +318,14 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testNativeGetNativeBufferAbnormal", nullptr, TestNativeGetNativeBufferAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"testNativeSetMetaDataNull", nullptr, TestNativeSetMetaDataNull, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testNativeSetMemoryName", nullptr, TestNativeSetMemoryName, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testNativeGetArgbPixels", nullptr, TestNativeGetArgbPixels, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testNativeGetColorSpaceNative", nullptr, TestNativeGetColorSpaceNative, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testNativeSetColorSpaceNative", nullptr, TestNativeSetColorSpaceNative, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"testNativeGetMetaDataNull", nullptr, TestNativeGetMetaDataNull, nullptr, nullptr,
          nullptr, napi_default, nullptr}

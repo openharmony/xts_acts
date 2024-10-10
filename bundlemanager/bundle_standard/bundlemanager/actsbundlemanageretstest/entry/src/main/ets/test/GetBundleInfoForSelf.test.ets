@@ -15,7 +15,7 @@
 
 import bundle from '@ohos.bundle.bundleManager';
 import util from "./Utils";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 export default function getBundleInfoForSelf() {
   describe('getBundleInfoForSelf', function () {

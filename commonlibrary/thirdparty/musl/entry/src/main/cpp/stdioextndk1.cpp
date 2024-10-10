@@ -194,7 +194,7 @@ static napi_value Fpurge_One(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int ret = INIT;
-    char buf[100];
+    char buf[100] = {0};
     FILE *fp = nullptr;
     do {
         int fileDescribe = open(TEMP_FILE, O_CREAT | O_WRONLY);

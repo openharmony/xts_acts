@@ -46,6 +46,7 @@
 #include <unistd.h>
 #include <utmp.h>
 #include <atomic>
+#include <securec.h>
 
 #define NAMELEN 16
 #define NSEC_PER_SEC 1000000000
@@ -113,10 +114,11 @@ static napi_value DlaDdr(napi_env env, napi_callback_info info)
     int backParam = PARAM_0;
     Dl_info *dlInfo = nullptr;
     errno = SUCCESS;
-    const char *path = "libotherstestndk.so";
-    void *ptr = dlopen(path, RTLD_LAZY);
+    const char *path = "/system/lib/extensionability/libstatic_subscriber_extension_module.z.so";
+    void *handle = dlopen(path, RTLD_LAZY);
+    void* ptr = dlsym(handle, "OHOS_EXTENSION_GetExtensionModule");
     backParam = dladdr(ptr, dlInfo);
-    dlclose(ptr);
+    dlclose(handle);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -803,11 +805,12 @@ static napi_value Accept(napi_env env, napi_callback_info info)
     if (sockfd < PARAM_0) {
         ret = PARAM_2;
     } else {
-        struct sockaddr_in local = {PARAM_0};
+        struct sockaddr_in local;
+        memset_s(&local, sizeof(local), 0, sizeof(local));
         local.sin_family = AF_INET;
         local.sin_port = htons(PORT);
         local.sin_addr.s_addr = inet_addr("127.0.0.1");
-        rets = bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+        rets = bind(sockfd, reinterpret_cast<sockaddr *>(&local), sizeof(local));
         if (rets != PARAM_0) {
             ret = PARAM_3;
         } else {
@@ -888,7 +891,9 @@ static napi_value Deletemodule(napi_env env, napi_callback_info info)
     pid_t pid = fork();
     if (pid == NO_ERROR) {
         const char *put_old = "0";
-        delete_module(put_old, PARAM_5);
+        if (access(put_old, F_OK) == 0) {
+            delete_module(put_old, PARAM_5);
+        }
         exit(PARAM_0);
     }
     napi_value result = nullptr;

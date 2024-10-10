@@ -24,56 +24,48 @@ const event = 'terminateSelf1000'
 
 export default class AssistantAbilityOne extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'Ability onCreate');
   }
 
   onDestroy() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'Ability onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('assistantabilityone/pages/AssistantOneIndex', (err, data) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(0x0000, 'testTag AssistantAbilityOne', 'Failed to load the content. Cause: %{public}s',
+          JSON.stringify(err) ?? '');
         return;
       }
       setTimeout(() => {
         this.context.terminateSelf();
       }, 500)
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      hilog.info(0x0000, 'testTag AssistantAbilityOne', 'Succeeded in loading the content. Data: %{public}s',
+        JSON.stringify(data) ?? '');
     })
   }
 
 
   onWindowStageDestroy() {
     // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-
-    // let commonEventPublishData = {
-    //   parameters: {
-    //     'isTerminate' : true
-    //   }
-    // }
-    // commonEvent.publish(event , commonEventPublishData , (err, data) => {
-    //   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy publish commonevent');
-    // })
-
+    hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground() {
     // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'Ability onForeground');
     setTimeout(() => {
-      hilog.info(0x0000, 'testTag', 'assistantabilityone terminateSelf start.');
-      this.context.terminateSelf()
-    }, 500)
+      hilog.info(0x0000, 'testTag AssistantAbilityOne', 'assistantabilityone terminateSelf start.');
+      this.context.terminateSelf();
+    }, 500);
   }
 
   onBackground() {
     // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    hilog.info(0x0000, 'testTag AssistantAbilityOne', '%{public}s', 'Ability onBackground');
   }
 }

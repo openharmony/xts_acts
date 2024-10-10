@@ -313,6 +313,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -357,6 +359,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`FMS_acquireForm_4300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_4300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -402,6 +406,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`FMS_acquireForm_4400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_4400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();

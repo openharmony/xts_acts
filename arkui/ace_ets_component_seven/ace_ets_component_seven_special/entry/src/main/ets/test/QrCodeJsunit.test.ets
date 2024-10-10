@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function qrCodeJsunit() {
-  describe('qrCodeTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/qrCode',
+  describe('qrCodeTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/qrCode',
       }
       try {
         router.clear();
@@ -48,10 +48,10 @@ export default function qrCodeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_qrCode_001', 0, async function (done) {
+    it('test_qrCode_001', 0, async (done: Function) => {
       console.info('[test_qrCode_001] START');
-      var strJson = getInspectorByKey('QrCodeColorKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('QrCodeColorKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_qrCode_001] obj is: " + JSON.stringify(obj.$attrs));
       expect(Math.abs(obj.$attrs.opacity - 0.1) < 0.000001).assertTrue();
       console.info('[test_qrCode_001] END');
@@ -66,10 +66,10 @@ export default function qrCodeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_qrCode_002', 0, async function (done) {
+    it('test_qrCode_002', 0, async (done: Function) => {
       console.info('[test_qrCode_002] START');
-      var strJson = getInspectorByKey('QrCodeColorKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('QrCodeColorKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_qrCode_002] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.color).assertEqual("#FF0011FF");
@@ -86,10 +86,10 @@ export default function qrCodeJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_qrCode_003', 0, async function (done) {
+    it('test_qrCode_003', 0, async (done: Function) => {
       console.info('[test_qrCode_003] START');
-      var strJson = getInspectorByKey('QrCodeColorKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('QrCodeColorKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_qrCode_003] obj is: " + JSON.stringify(obj.$attrs));
       
       expect(obj.$attrs.backgroundColor).assertEqual("#FF008000");

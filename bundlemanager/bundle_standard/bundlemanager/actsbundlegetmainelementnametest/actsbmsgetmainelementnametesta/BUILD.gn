@@ -11,43 +11,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
-
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("ActsBmsGetMainElementNameTestA") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":ace_third_ets_resources",
-    ":ace_third_ets_test_assets",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+
+ohos_app_assist_suite("ActsBmsGetMainElementNameTestA_ndk_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsBmsGetMainElementNameTestAmain"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
+}
+
+ohos_js_app_suite("ActsBmsGetMainElementNameTestA") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsBmsGetMainElementNameTestA"
+
   subsystem_name = "bundlemanager"
   part_name = "bundle_framework"
-  shared_libraries = [
-    "entry/src/main/cpp:bundlendka",
-    ":libcppsharedso",
-  ]
-}
-
-ohos_app_scope("systemapi_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_prebuilt_shared_library("libcppsharedso") {
-  source = rebase_path(libcxx_ndk_shared_file)
-  subsystem_name = "bundlemanager"
-  part_name = "bundle_framework"
-}
-
-ohos_js_assets("ace_third_ets_test_assets") {
-  source_dir = "entry/src/main/ets"
-}
-ohos_resources("ace_third_ets_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":systemapi_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  deps = [ ":ActsBmsGetMainElementNameTestA_ndk_main" ]
 }

@@ -538,6 +538,20 @@ export default function nativeDrawingNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_TYPOGRAPHYGETLONGESTLINEWithIndent
+     * @tc.name       : testOHDrawingTypographyGetLongestLineWithIndent
+     * @tc.desc       : test OH_Drawing_TypographyGetLongestLineWithIndent
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingTypographyGetLongestLineWithIndent', 0, async (done: Function) => {
+      let result: number = nativeDrawing.oHDrawingTypographyGetLongestLineWithIndent();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_TYPOGRAPHYGETALPHABETICBASELINE_0100
      * @tc.name       : testOHDrawingTypographyGetAlphabeticBaseline001
      * @tc.desc       : test OH_Drawing_TypographyGetAlphabeticBaseline

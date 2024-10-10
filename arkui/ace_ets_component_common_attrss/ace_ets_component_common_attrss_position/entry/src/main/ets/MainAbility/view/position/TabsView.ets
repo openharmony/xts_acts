@@ -20,7 +20,7 @@ export struct TabsView {
   @State currentIndex: number = 0;
   private controller: TabsController = new TabsController();
   @Link _position: Position;
-  private componentKey: string;
+  private componentKey: string = '';
 
   @Builder TabBuilder(index: number, name: string) {
     Column() {

@@ -19,9 +19,9 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compatibleSdkVersion": 12,
-        "targetSdkVersion": 12,
-        "compileSdkVersion": 12
+        "compatibleSdkVersion": 14,
+        "targetSdkVersion": 14,
+        "compileSdkVersion": 14
       }
     ],
     "buildModeSet": [

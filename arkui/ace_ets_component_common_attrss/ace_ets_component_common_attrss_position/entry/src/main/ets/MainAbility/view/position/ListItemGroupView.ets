@@ -16,11 +16,11 @@
 @Component
 export struct ListItemGroupView {
   @Link _position: Position;
-  private componentKey: string;
-  private parentWidth: number;
-  private parentHeight: number;
-  private parentComponentKey: string;
-  private referenceComponentKey: string;
+  private componentKey: string = '';
+  private parentWidth: number = 0;
+  private parentHeight: number = 0;
+  private parentComponentKey: string = '';
+  private referenceComponentKey: string = '';
   private projects: string[] = ['item1', 'item2', 'item3']
 
   @Builder

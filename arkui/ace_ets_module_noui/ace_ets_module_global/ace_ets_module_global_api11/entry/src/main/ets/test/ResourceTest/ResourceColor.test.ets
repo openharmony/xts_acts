@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {
   UiComponent,
   Driver,
@@ -35,8 +35,8 @@ export default function ResourceColor() {
   describe('ResourceColor', () => {
     beforeEach(async (done: Function) => {
       console.info("ResourceColor beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Resource/ResourceColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Resource/ResourceColor',
       }
       try {
         router.clear();
@@ -58,7 +58,7 @@ export default function ResourceColor() {
     it('ResourceColor_0100', 0, async (done: Function) => {
       console.info('ResourceColor_0100 START');
       let strJson = getInspectorByKey('color');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ResourceColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF445566');
@@ -74,7 +74,7 @@ export default function ResourceColor() {
       await button.click();
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('color');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ResourceColor_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ResourceColor_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF998877');

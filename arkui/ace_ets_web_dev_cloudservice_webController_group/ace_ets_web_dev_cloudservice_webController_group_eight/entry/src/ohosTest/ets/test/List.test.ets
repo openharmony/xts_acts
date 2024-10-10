@@ -1,0 +1,44 @@
+/*
+* Copyright (C) 2024 HiHope Open Source Organization.
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+import hasGesture from './HasGesture.test';
+import ActsAceRegisterJavaScriptProxy from './WebViewRegisterJavaScriptProxy.test'
+import DeleteJavaScriptRegisterUnitTest from './WebViewDeleteJavaScriptRegister.test'
+import abilityTest from './Ability.test'
+import webRequestHeaderList from './WebRequestHeaderList.test';
+import ActsWebViewTest6 from './TestWebViewCallAPI.test';
+import ActsWebViewTest4 from './MainFrameReturnFalse.test';
+import ActsWebViewTest3 from './TestWebViewEnableSafeBrowsing.test';
+import ActsWebViewTest2 from './TestWebViewGeolocation.test';
+import ActsWebViewTest1 from './TestWebViewCookie.test';
+import WebDownloadItem from './GetGuid.test';
+import Download from './Download.test';
+import lastErrorCode from './LastErrorCode.test';
+
+export default function testsuite() {
+  abilityTest();
+  hasGesture();
+  DeleteJavaScriptRegisterUnitTest();
+  ActsAceRegisterJavaScriptProxy();
+  webRequestHeaderList();
+  ActsWebViewTest6();
+  ActsWebViewTest4();
+  ActsWebViewTest3();
+  ActsWebViewTest2();
+  ActsWebViewTest1();
+  WebDownloadItem();
+  Download();
+  lastErrorCode();
+}

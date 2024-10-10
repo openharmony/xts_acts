@@ -18,16 +18,16 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  targetGroupView: string;
-  parentWidth: number;
-  parentHeight: number;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  targetGroupView: string = '';
+  parentWidth: number = 0;
+  parentHeight: number = 0;
 }
 
 class TestValue {
-  describe: string;
+  describe: string = '';
   setValue: ESObject;
   expectValue: ESObject;
 }

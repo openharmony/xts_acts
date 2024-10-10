@@ -67,7 +67,7 @@ export default function SwiperAttribute_2() {
     it('SwiperAttribute_0090', 0, async (done: Function) => {
       console.info('[SwiperAttribute_0090] START');
 
-      let parentColumnRect = CommonFunc.getComponentRect('swiperAttributeParentColumn_2');
+      let parentColumnRect = CommonFunc.getComponentRectOnScreen('swiperAttributeParentColumn_2');
       let parentColumnRectTop = parentColumnRect.top;
       let parentColumnRectRight = parentColumnRect.right;
       let parentColumnRectLeft = parentColumnRect.left;
@@ -86,7 +86,8 @@ export default function SwiperAttribute_2() {
           Number.parseInt(`${(rect.right - rect.left) * 0.1 + rect.left}`),
           Number.parseInt(`${(rect.bottom - rect.top) * 0.5 + rect.top}`),
           1000);
-        let columnRect = CommonFunc.getComponentRect('swiperAttributeColumn_20' + i);
+        await CommonFunc.sleep(1000);
+        let columnRect = CommonFunc.getComponentRectOnScreen('swiperAttributeColumn_20' + i);
         console.info("SwiperAttribute_0090 column rect is " + columnRect.left + " --" + columnRect.right + "--" +
         columnRect.top + "--" + columnRect.bottom);
 

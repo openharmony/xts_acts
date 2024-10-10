@@ -11,10 +11,6 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
-    },
-    {
-      "name": "reason_usb_ddk",
-      "value": "usb_ddk ndk test"
     }
   ]
 }

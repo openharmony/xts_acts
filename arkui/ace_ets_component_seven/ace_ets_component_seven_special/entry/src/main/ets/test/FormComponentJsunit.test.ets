@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function formComponentJsunitJsunit() {
-  describe('formComponentJsunitTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/formComponent',
+  describe('formComponentJsunitTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/formComponent',
       }
       try {
         router.clear();
@@ -49,10 +49,10 @@ export default function formComponentJsunitJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_formComponentJsunit001', 0, async function (done) {
+    it('test_formComponentJsunit001', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit001] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('FormComponentKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_formComponentJsunit001] obj is: " + JSON.stringify(obj.$attrs));
       // expect(obj.$attrs.allowUpdate).assertEqual("true");
       expect(true).assertEqual(true);
@@ -67,10 +67,10 @@ export default function formComponentJsunitJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_formComponentJsunit002', 0, async function (done) {
+    it('test_formComponentJsunit002', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit002] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('FormComponentKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_formComponentJsunit002] obj is: " + JSON.stringify(obj.$attrs));
       // expect(obj.$attrs.dimension).assertEqual("FormDimension.Dimension_2_2");
       expect(true).assertEqual(true);
@@ -86,10 +86,10 @@ export default function formComponentJsunitJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_formComponentJsunit003', 0, async function (done) {
+    it('test_formComponentJsunit003', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit003] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('FormComponentKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_formComponentJsunit003] obj is: " + JSON.stringify(obj.$attrs));
       // expect(obj.$attrs.moduleName).assertEqual("model1");
       expect(true).assertEqual(true);
@@ -105,10 +105,10 @@ export default function formComponentJsunitJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_formComponentJsunit004', 0, async function (done) {
+    it('test_formComponentJsunit004', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit004] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('FormComponentKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_formComponentJsunit004] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.size.width).assertEqual("200.00vp");
       expect(obj.$attrs.size.height).assertEqual("300.00vp");
@@ -124,13 +124,13 @@ export default function formComponentJsunitJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('test_formComponentJsunit005', 0, async function (done) {
+    it('test_formComponentJsunit005', 0, async (done: Function) => {
       console.info('[test_formComponentJsunit005] START');
-      var strJson = getInspectorByKey('FormComponentKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('FormComponentKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_formComponentJsunit005] obj is: " + JSON.stringify(obj.$attrs));
-      var strJson1 = getInspectorByKey('FormComponentKey2');
-      var obj1 = JSON.parse(strJson1);
+      let strJson1 = getInspectorByKey('FormComponentKey2');
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[test_formComponentJsunit005] obj1 is: " + JSON.stringify(obj1.$attrs));
       //得到json值与 设置不一致，与原生json返回做对比验证
       expect(obj.$attrs.visibility).assertEqual(obj1.$attrs.visibility);

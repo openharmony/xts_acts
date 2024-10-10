@@ -14,21 +14,21 @@
  */
 
 import globalJsunit from './globalTest/GlobalJsunit.test';
-import ResourceColor from './ResourceTest/ResourceColor.test.ets'
-import ResourceFloat from './ResourceTest/ResourceFloat.test.ets'
-import ResourceInteger from './ResourceTest/ResourceInteger.test.ets'
-import ResourcePlural from './ResourceTest/ResourcePlural.test.ets'
-import ResourceStrarray from './ResourceTest/ResourceStrarray.test.ets'
-import ResourceString from './ResourceTest/ResourceString.test.ets'
+import ResourceColor from './ResourceTest/ResourceColor.test'
+import ResourceFloat from './ResourceTest/ResourceFloat.test'
+import ResourceInteger from './ResourceTest/ResourceInteger.test'
+import ResourcePlural from './ResourceTest/ResourcePlural.test'
+import ResourceStrarray from './ResourceTest/ResourceStrarray.test'
+import ResourceString from './ResourceTest/ResourceString.test'
 
 import appStorageJsunit from './AppStorageTest/AppStorageJsunit.test';
 import basicJsunit from './BasicTest/BasicJsunit.test';
 import systemAppJsunit from './AppStorageTest/SystemAppJsunit.test';
-import webEditTextJsunit from './webTest/web.test.ets';
+import webEditTextJsunit from './webTest/web.test';
 
 import globalJsunit1 from './globalTest/global1.test';
 import webGetTitleJsunit from './webTest/web2.test';
-import configurationJsunit from './configuration/ConfigurationJsunit.test.ets';
+import configurationJsunit from './configuration/ConfigurationJsunit.test';
 
 export default function testsuite() {
   globalJsunit();

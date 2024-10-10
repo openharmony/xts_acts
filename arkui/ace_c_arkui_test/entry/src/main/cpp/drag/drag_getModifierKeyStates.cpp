@@ -56,7 +56,9 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
     auto result = OH_ArkUI_DragEvent_GetModifierKeyStates(dragEvent, &pressedKeys);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getModifierKeyStates",
                  "Drag getModifierKeyStates result : %{public}d", result);
-    if (result == 0) {
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getModifierKeyStates",
+                 "Drag getModifierKeyStates pressedKeys : %{public}llu", pressedKeys);
+    if (result == 0 && pressedKeys == 0) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
                                                      sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};

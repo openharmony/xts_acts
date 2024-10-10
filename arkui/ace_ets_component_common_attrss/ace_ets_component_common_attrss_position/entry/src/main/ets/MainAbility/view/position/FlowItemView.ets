@@ -16,11 +16,11 @@
 @Component
 export struct FlowItemView {
   @Link _position: Position;
-  private componentKey: string;
-  private parentWidth: number;
-  private parentHeight: number;
-  private parentComponentKey: string;
-  private referenceComponentKey: string;
+  private componentKey: string = '';
+  private parentWidth: number = 0;
+  private parentHeight: number = 0;
+  private parentComponentKey: string = '';
+  private referenceComponentKey: string = '';
 
   build() {
     Column({ space: 2 }) {

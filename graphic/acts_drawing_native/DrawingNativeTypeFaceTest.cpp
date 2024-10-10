@@ -38,6 +38,9 @@
 #include "gtest/gtest.h"
 #include <random>
 
+#define NUMBER_10 10
+#define NUMBER_100 100
+
 using namespace testing;
 using namespace testing::ext;
 
@@ -241,8 +244,204 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNormal, TestSize.Le
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNull, TestSize.Level3) {
-    // 1. OH_Drawing_TypeFaceDestroy
+    // 1. OH_Drawing_TypefaceDestroy
     OH_Drawing_TypefaceDestroy(nullptr);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_TYPEFACE_0500
+ * @tc.name: testTypefaceCreateFromFileWithArugumentsNormal
+ * @tc.desc: test for testTypefaceCreateFromFileWithArugumentsNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNormal, TestSize.Level0) {
+    // 1. OH_Drawing_FontArgumentsCreate
+    OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // 2. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", 0);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    // 3. OH_Drawing_TypefaceCreateFromFileWithArguments
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments(
+        "/system/fonts/NotoSansBengaliUI-Regular", fontArguments);
+    // 4. OH_Drawing_TypefaceDestroy
+    OH_Drawing_TypefaceDestroy(typeface);
+    // 5. OH_Drawing_FontArgumentsDestroy
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_TYPEFACE_0501
+ * @tc.name: testTypefaceCreateFromFileWithArugumentsNull
+ * @tc.desc: test for testTypefaceCreateFromFileWithArugumentsNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNull, TestSize.Level3) {
+    // 1. OH_Drawing_FontArgumentsCreate
+    OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // 2. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    // 3. OH_Drawing_TypefaceCreateFromFileWithArguments,the first parameter is nullptr,return nullptr
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments(nullptr, fontArguments);
+    EXPECT_EQ(typeface, nullptr);
+    // 4. OH_Drawing_TypefaceCreateFromFileWithArguments,the second parameter is nullptr,return nullptr
+    OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromFileWithArguments(
+        "/system/fonts/NotoSansBengaliUI-Regular", nullptr);
+    EXPECT_EQ(typeface1, nullptr);
+    // 5. OH_Drawing_TypefaceDestroy
+    OH_Drawing_TypefaceDestroy(typeface);
+    // 6. OH_Drawing_FontArgumentsDestroy
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_TYPEFACE_0502
+ * @tc.name: testTypefaceCreateFromFileWithArugumentsAbnormal
+ * @tc.desc: test for testTypefaceCreateFromFileWithArugumentsAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_FontArgumentsCreate
+    OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // 2. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    // 3. OH_Drawing_TypefaceCreateFromFileWithArguments,the first parameter is nullptr,return nullptr
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFileWithArguments("", fontArguments);
+    EXPECT_EQ(typeface, nullptr);
+    // 4. OH_Drawing_TypefaceCreateFromFileWithArguments,the second parameter is nullptr,return nullptr
+    OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromFileWithArguments("aaa", nullptr);
+    EXPECT_EQ(typeface1, nullptr);
+    // 5. OH_Drawing_TypefaceDestroy
+    OH_Drawing_TypefaceDestroy(typeface);
+    // 6. OH_Drawing_FontArgumentsDestroy
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_TYPEFACE_0503
+ * @tc.name: testTypefaceCreateFromFileWithArugumentsMultipleCalls
+ * @tc.desc: test for testTypefaceCreateFromFileWithArugumentsMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_FontArgumentsCreate
+    OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // 2. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", 0);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    // 3. OH_Drawing_TypefaceCreateFromFileWithArguments
+    OH_Drawing_Typeface *typeface = nullptr;
+    for (int i = 0; i < NUMBER_10; i++)
+    {
+        typeface = OH_Drawing_TypefaceCreateFromFileWithArguments(
+            "/system/fonts/NotoSansBengaliUI-Regular", fontArguments);
+    }
+    // 4. OH_Drawing_TypefaceDestroy
+    OH_Drawing_TypefaceDestroy(typeface);
+    // 5. OH_Drawing_FontArgumentsDestroy
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_TYPEFACE_0600
+ * @tc.name: testTypefaceCreateFromCurrentNormal
+ * @tc.desc: test for testTypefaceCreateFromCurrentNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNormal, TestSize.Level0) {
+    // 1. OH_Drawing_TypefaceCreateFromFile
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
+    // 2. OH_Drawing_FontArgumentsCreate
+    OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    // 4. OH_Drawing_TypefaceCreateFromCurrent
+    OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromCurrent(typeface, fontArguments);
+    // 5. OH_Drawing_TypefaceDestroy typeface1
+    OH_Drawing_TypefaceDestroy(typeface1);
+    // 6. OH_Drawing_TypefaceDestroy typeface
+    OH_Drawing_TypefaceDestroy(typeface);
+    // 7. OH_Drawing_FontArgumentsDestroy
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_TYPEFACE_0601
+ * @tc.name: testTypefaceCreateFromCurrentNull
+ * @tc.desc: test for testTypefaceCreateFromCurrentNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNull, TestSize.Level3) {
+    // 1. OH_Drawing_TypefaceCreateFromFile
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
+    // 2. OH_Drawing_FontArgumentsCreate
+    OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    // 4. OH_Drawing_TypefaceCreateFromCurrent,the first parameter is nullptr
+    OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromCurrent(nullptr, fontArguments);
+    EXPECT_EQ(typeface1, nullptr);
+    // 5. OH_Drawing_TypefaceCreateFromCurrent,the second parameter is nullptr
+    OH_Drawing_Typeface *typeface2 = OH_Drawing_TypefaceCreateFromCurrent(typeface, nullptr);
+    EXPECT_EQ(typeface2, nullptr);
+    // 6. OH_Drawing_TypefaceDestroy typeface1
+    OH_Drawing_TypefaceDestroy(typeface1);
+    // 7. OH_Drawing_TypefaceDestroy typeface
+    OH_Drawing_TypefaceDestroy(typeface);
+    // 8. OH_Drawing_FontArgumentsDestroy
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_TYPEFACE_0602
+ * @tc.name: testTypefaceCreateFromCurrentMultipleCalls
+ * @tc.desc: test for testTypefaceCreateFromCurrentMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_TypefaceCreateFromFile
+    OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
+    // 2. OH_Drawing_FontArgumentsCreate
+    OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
+    OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
+    drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
+    EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
+    // 4. OH_Drawing_TypefaceCreateFromCurrent
+    OH_Drawing_Typeface *typeface1 = nullptr;
+    for (int i = 0; i < NUMBER_10; i++)
+    {
+        typeface1 = OH_Drawing_TypefaceCreateFromCurrent(typeface, fontArguments);
+    }
+    // 5. OH_Drawing_TypefaceDestroy typeface1
+    OH_Drawing_TypefaceDestroy(typeface1);
+    // 6. OH_Drawing_TypefaceDestroy typeface
+    OH_Drawing_TypefaceDestroy(typeface);
+    // 7. OH_Drawing_FontArgumentsDestroy
+    OH_Drawing_FontArgumentsDestroy(fontArguments);
 }
 
 } // namespace Drawing

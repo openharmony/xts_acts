@@ -14,6 +14,7 @@
  */
 
 import usbManager from '@ohos.usbManager';
+import { UiDriver, BY } from '@ohos.UiTest';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
@@ -28,7 +29,6 @@ describe('UsbApiParamExceJsunitTest', function () {
     const PARAM_NUMBEREX = 123;
     let gDeviceList;
     let devices;
-    let usbPortList;
     let gPipe;
     let isDeviceConnected;
     let tmpPipe = {
@@ -36,10 +36,6 @@ describe('UsbApiParamExceJsunitTest', function () {
         devAddress: null
     };
     function deviceConnected() {
-        if (usbPortList == undefined) {
-            console.info(TAG, "Test USB device is not supported");
-            return false;
-        }
         if (gDeviceList.length > 0) {
             console.info(TAG, "Test USB device is connected");
             return true;
@@ -54,29 +50,23 @@ describe('UsbApiParamExceJsunitTest', function () {
         console.info(TAG, 'usb unit begin test getversion :' + Version);
 
         // version > 17  host currentMode = 2 device currentMode = 1
-        usbPortList = usbManager.getPortList();
-
         gDeviceList = usbManager.getDevices();
         isDeviceConnected = deviceConnected();
         if (isDeviceConnected) {
-            if (usbPortList.length > 0) {
-                if (usbPortList[0].status.currentMode == 1) {
-                    try {
-                        let data = await usbManager.setPortRoleTypes(usbPortList[0].id,
-                            usbManager.SOURCE, usbManager.HOST);
-                        console.info(TAG, 'usb case setPortRoleTypesEx return: ' + data);
-                    } catch (error) {
-                        console.info(TAG, 'usb case setPortRoleTypesEx error : ' + error);
-                    }
-                    CheckEmptyUtils.sleep(4000);
-                    console.log(TAG, '*************Usb Unit Begin switch to host*************');
-                }
+            let hasRight = usbManager.hasRight(gDeviceList[0].name);
+            if (!hasRight) {
+                console.info(TAG, `beforeAll: usb requestRight start`);
+                await getPermission();
+                CheckEmptyUtils.sleep(1000);
+                await driveFn();
+                CheckEmptyUtils.sleep(1000);
             }
 
             tmpPipe.busNum = gDeviceList[0].busNum;
             tmpPipe.devAddress = gDeviceList[0].devAddress;
         }
     })
+
     beforeEach(function () {
         console.info(TAG, 'beforeEach: *************Usb Unit Test CaseEx*************');
         gDeviceList = usbManager.getDevices();
@@ -85,15 +75,46 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'beforeEach return devices : ' + JSON.stringify(devices));
         }
     })
+
     afterEach(function () {
         console.info(TAG, 'afterEach: *************Usb Unit Test CaseEx*************');
         devices = null;
         gPipe = null;
         console.info(TAG, 'afterEach return devices : ' + JSON.stringify(devices));
     })
+
     afterAll(function () {
         console.log(TAG, '*************Usb Unit UsbApiParamExceJsunitTest End*************');
     })
+
+    async function driveFn() {
+        console.info('**************driveFn**************');
+        try {
+            let driver = await UiDriver.create();
+            console.info(TAG, ` come in driveFn`);
+            console.info(TAG, `driver is ${JSON.stringify(driver)}`);
+            CheckEmptyUtils.sleep(1000);
+            let button = await driver.findComponent(BY.text('允许'));
+            console.info(TAG, `button is ${JSON.stringify(button)}`);
+            CheckEmptyUtils.sleep(1000);
+            await button.click();
+        } catch (err) {
+            console.info(TAG, 'err is ' + err);
+            return;
+        }
+    }
+
+    async function getPermission() {
+        console.info('**************getPermission**************');
+        try {
+            usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
+                console.info(TAG, `usb requestRight success, hasRight: ${hasRight}`);
+            })
+        } catch (err) {
+            console.info(TAG, `usb getPermission to requestRight hasRight fail: `, err);
+            return
+        }
+    }
 
     function getPipe(testCaseName) {
         gPipe = usbManager.connectDevice(devices);
@@ -1042,7 +1063,7 @@ describe('UsbApiParamExceJsunitTest', function () {
             gPipe.busNum = gPipe.busNum + 1000;
             let ret = usbManager.closePipe(gPipe);
             console.info(TAG, 'usb [', gPipe.busNum, '] closePipe ret : ', ret);
-            expect(ret !== null).assertTrue();
+            expect(ret !== 0).assertTrue();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamEx001 catch err code: ', err);
             expect(err !== null).assertFalse();
@@ -1070,7 +1091,7 @@ describe('UsbApiParamExceJsunitTest', function () {
             gPipe.devAddress = pipDevAdd;
             let ret = usbManager.closePipe(gPipe);
             console.info(TAG, 'usb [', gPipe.devAddress, '] closePipe ret : ', ret);
-            expect(ret !== null).assertTrue();
+            expect(ret !== 0).assertTrue();
         } catch (err) {
             console.info(TAG, 'testClosePipeParamEx002 catch err code: ', err);
             expect(err !== null).assertFalse();
@@ -2819,9 +2840,6 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx007 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
-        gDeviceList = usbManager.getDevices();
-        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
-        toReleaseInterface("testReleaseInterfaceParamEx007", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx007");
     })
 
@@ -2852,9 +2870,6 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx008 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
-        gDeviceList = usbManager.getDevices();
-        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
-        toReleaseInterface("testReleaseInterfaceParamEx008", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx008");
     })
 
@@ -2885,9 +2900,6 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx009 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
-        gDeviceList = usbManager.getDevices();
-        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
-        toReleaseInterface("testReleaseInterfaceParamEx009", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx009");
     })
 
@@ -2918,9 +2930,6 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx010 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
-        gDeviceList = usbManager.getDevices();
-        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
-        toReleaseInterface("testReleaseInterfaceParamEx010", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx010");
     })
 
@@ -2951,9 +2960,6 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx011 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
-        gDeviceList = usbManager.getDevices();
-        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
-        toReleaseInterface("testReleaseInterfaceParamEx011", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx011");
     })
 
@@ -2984,9 +2990,6 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx012 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
-        gDeviceList = usbManager.getDevices();
-        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
-        toReleaseInterface("testReleaseInterfaceParamEx012", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx012");
     })
 
@@ -3017,9 +3020,6 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx013 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
-        gDeviceList = usbManager.getDevices();
-        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
-        toReleaseInterface("testReleaseInterfaceParamEx013", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx013");
     })
 
@@ -3050,9 +3050,6 @@ describe('UsbApiParamExceJsunitTest', function () {
             console.info(TAG, 'testReleaseInterfaceParamEx014 catch err code: ', err);
             expect(err !== null).assertFalse();
         }
-        gDeviceList = usbManager.getDevices();
-        tmpInterface = gDeviceList[0].configs[0].interfaces[0];
-        toReleaseInterface("testReleaseInterfaceParamEx014", tmpInterface);
         toClosePipe("testReleaseInterfaceParamEx014");
     })
 

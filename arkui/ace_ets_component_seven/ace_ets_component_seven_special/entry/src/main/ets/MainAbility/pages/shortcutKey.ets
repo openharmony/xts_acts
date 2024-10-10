@@ -24,13 +24,13 @@ class ButtonModifier1 implements AttributeModifier<ButtonAttribute> {
 @Component
 struct ShortcutKey7Test {
   @State buttonModifier: ButtonModifier1 = new ButtonModifier1();
-  sendEvent(message, eventId) {
-    var eventData = {
+  sendEvent(message: string, eventId: number) {
+    let eventData: events_emitter.EventData = {
       data: {
         "msg": message
       }
     }
-    let event = {
+    let event: events_emitter.InnerEvent = {
       eventId: eventId,
       priority: events_emitter.EventPriority.LOW
     }

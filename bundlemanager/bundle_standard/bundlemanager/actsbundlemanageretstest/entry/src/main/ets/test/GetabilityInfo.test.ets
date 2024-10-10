@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from 'hypium/index';
+import { describe, it, expect } from '@ohos/hypium';
 import Utils from './Utils';
 import bundleManager from '@ohos.bundle';
 

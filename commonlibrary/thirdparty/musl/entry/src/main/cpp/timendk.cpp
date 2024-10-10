@@ -633,9 +633,9 @@ static napi_value Gmtime(napi_env env, napi_callback_info info)
 
 static napi_value GmtimeR(napi_env env, napi_callback_info info)
 {
-    time_t time;
-    struct tm parsed_time;
-    struct tm gmt_parsed_time;
+    time_t time = std::time(nullptr);
+    struct tm parsed_time = {0};
+    struct tm gmt_parsed_time = {0};
     napi_value result;
 
     if (localtime_r(&time, &parsed_time) == nullptr) {

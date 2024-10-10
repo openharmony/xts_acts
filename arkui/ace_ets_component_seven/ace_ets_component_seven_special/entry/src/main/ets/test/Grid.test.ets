@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function gridMaxCountJsunit() {
-  describe('gridMaxCountTest', function () {
-    beforeEach(async function (done) {
+  describe('gridMaxCountTest',() => {
+    beforeEach(async (done: Function) => {
       console.info("grid beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/grid',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/grid',
       }
       try {
         router.clear();
@@ -49,10 +49,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0100',0,async function (done){
+    it('GridJsunit_0100',0, async (done: Function) => {
       console.info('[GridJsunit_0100] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0100] obj GridJsunit_0100 is: " + JSON.stringify(obj.$attrs));
 
       expect(Math.abs(obj.$attrs.friction - 0.6) < 0.000001).assertTrue();
@@ -68,10 +68,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0101',0,async function (done){
+    it('GridJsunit_0101',0,async (done: Function) => {
       console.info('[GridJsunit_0101] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0101] obj GridJsunit_0101 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.enableScrollInteraction).assertEqual(true);
@@ -87,10 +87,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0102',0,async function (done){
+    it('GridJsunit_0102',0,async (done: Function) => {
       console.info('[GridJsunit_0102] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0102] obj GridJsunit_0102 is: " + JSON.stringify(obj.$attrs));
 
       // expect(obj.$attrs.nestedScroll).assertEqual("{scrollForward:SELF_ONLY,scrollBackward:PARENT_FIRST}");
@@ -107,10 +107,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0103',0,async function (done){
+    it('GridJsunit_0103',0,async (done: Function) => {
       console.info('[GridJsunit_0103] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0103] obj GridJsunit_0103 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.edgeEffect).assertEqual("EdgeEffect.Spring");
@@ -126,10 +126,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0104',0,async function (done){
+    it('GridJsunit_0104',0,async (done: Function) => {
       console.info('[GridJsunit_0104] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0104] obj GridJsunit_0104 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.rowsTemplate).assertEqual("1fr 1fr 1fr 1fr 1fr");
@@ -145,10 +145,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0105',0,async function (done){
+    it('GridJsunit_0105',0,async (done: Function) => {
       console.info('[GridJsunit_0105] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0105] obj GridJsunit_0105 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.columnsTemplate).assertEqual("1fr 1fr 1fr 1fr 1fr");
@@ -164,10 +164,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0106',0,async function (done){
+    it('GridJsunit_0106',0,async (done: Function) => {
       console.info('[GridJsunit_0106] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0106] obj GridJsunit_0106 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.columnsGap).assertEqual("10.00vp");
@@ -183,10 +183,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0107',0,async function (done){
+    it('GridJsunit_0107',0,async (done: Function) => {
       console.info('[GridJsunit_0107] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0107] obj GridJsunit_0107 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.rowsGap).assertEqual("10.00vp");
@@ -202,10 +202,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0108',0,async function (done){
+    it('GridJsunit_0108',0,async (done: Function) => {
       console.info('[GridJsunit_0108] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0108] obj GridJsunit_0108 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollBarWidth).assertEqual("5.00vp");
@@ -221,10 +221,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0109',0,async function (done){
+    it('GridJsunit_0109',0,async (done: Function) => {
       console.info('[GridJsunit_0109] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0109] obj GridJsunit_0109 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollBarColor).assertEqual("#FFFFC0CB");
@@ -240,10 +240,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0110',0,async function (done){
+    it('GridJsunit_0110',0,async (done: Function) => {
       console.info('[GridJsunit_0110] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0110] obj GridJsunit_0110 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollBar).assertEqual("BarState.On");
@@ -259,10 +259,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0111',0,async function (done){
+    it('GridJsunit_0111',0,async (done: Function) => {
       console.info('[GridJsunit_0111] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0111] obj GridJsunit_0111 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.editMode).assertEqual("true");
@@ -278,10 +278,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0112',0,async function (done){
+    it('GridJsunit_0112',0,async (done: Function) => {
       console.info('[GridJsunit_0112] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0112] obj GridJsunit_0112 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.editMode).assertEqual("true");
@@ -297,10 +297,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0113',0,async function (done){
+    it('GridJsunit_0113',0,async (done: Function) => {
       console.info('[GridJsunit_0113] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0113] obj GridJsunit_0113 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.multiSelectable).assertEqual("true");
@@ -316,10 +316,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0114',0,async function (done){
+    it('GridJsunit_0114',0,async (done: Function) => {
       console.info('[GridJsunit_0114] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0114] obj GridJsunit_0114 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.maxCount).assertEqual(10);
@@ -335,10 +335,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0115',0,async function (done){
+    it('GridJsunit_0115',0,async (done: Function) => {
       console.info('[GridJsunit_0115] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0115] obj GridJsunit_0115 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.minCount).assertEqual(2);
@@ -354,10 +354,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0116',0,async function (done){
+    it('GridJsunit_0116',0,async (done: Function) => {
       console.info('[GridJsunit_0116] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0116] obj GridJsunit_0116 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.cellLength).assertEqual(12);
@@ -373,10 +373,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0117',0,async function (done){
+    it('GridJsunit_0117',0,async (done: Function) => {
       console.info('[GridJsunit_0117] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0117] obj GridJsunit_0117 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.layoutDirection).assertEqual("GridDirection.Row");
@@ -392,10 +392,10 @@ export default function gridMaxCountJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('GridJsunit_0118',0,async function (done){
+    it('GridJsunit_0118',0,async (done: Function) => {
       console.info('[GridJsunit_0118] START');
       let strJson = getInspectorByKey('GridKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridJsunit_0118] obj GridJsunit_0118 is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.supportAnimation).assertEqual("true");

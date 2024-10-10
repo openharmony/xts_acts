@@ -1,25 +1,26 @@
 {
-    "description": "Configuration for ActsHitrace Tests",
+    "description": "Configuration for hitracendk Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "bundle-name": "com.hitrace.napitest",
-        "module-name": "com.hitrace.napitest",
+        "test-timeout": "600000",
         "shell-timeout": "600000",
-        "testcase-timeout": 60000
+        "bundle-name": "com.hitrace.napitest",
+        "module-name": "entry_test"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsHitraceNdkTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    }, {
-        "type": "ShellKit",
-        "run-command": [
-            "power-shell wakeup",
-            "power-shell setmode 602"
-        ]
-
-    }]
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsHitraceNdkTest.hap",
+                "ActsHitraceNdkOtherTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }

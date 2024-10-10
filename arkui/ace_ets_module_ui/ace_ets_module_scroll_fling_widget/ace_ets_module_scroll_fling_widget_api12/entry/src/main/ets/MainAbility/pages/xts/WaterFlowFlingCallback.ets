@@ -71,7 +71,7 @@ struct WaterFlowFlingCallback {
         .padding({ left: 5 })
         .backgroundColor(0xFAEEE0)
         .width('100%')
-        .height(600)
+        .height('60%')
 
         Button('更换速度 1000')
           .id('btn_waterflow_fling_01')

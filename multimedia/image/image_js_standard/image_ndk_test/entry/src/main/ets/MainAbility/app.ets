@@ -14,7 +14,7 @@
  */
 
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { Hypium } from 'hypium/index';
+import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
 
 export default {

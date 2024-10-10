@@ -15,7 +15,7 @@
 
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
-import Utils from '../../MainAbility/common/Utils';
+import Utils, {RectValue} from '../../MainAbility/common/Utils';
 import { AttrsManager } from '../../MainAbility/common/AttrsManager';
 
 class SetValue {
@@ -27,24 +27,24 @@ class SetValue {
 }
 
 class TestValues {
-  describe: string;
-  setValue: SetValue;
+  describe: string = '';
+  setValue: SetValue = {} as SetValue;
   expectValue: ESObject;
   exceptView?: ESObject;
 }
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  targetGroupView: string;
-  parentWidth: number;
-  parentHeight: number;
-  parentMargin: number;
-  parentKey: string;
-  compareButtonKey: string;
-  compareOldTextKey: string;
-  compareNewTextKey: string;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  targetGroupView: string = '';
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+  parentMargin: number = 0;
+  parentKey: string = '';
+  compareButtonKey: string = '';
+  compareOldTextKey: string = '';
+  compareNewTextKey: string = '';
 }
 
 export default function onAreaChangeTest() {
@@ -187,8 +187,8 @@ export default function onAreaChangeTest() {
   describe('OnAreaChangeTest', () => {
     CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Get Information about the location of the target component before the change
-      let parentRectBefore = Utils.getComponentRect(data.pageConfig.parentKey);
-      let targetRectBefore = Utils.getComponentRect(data.pageConfig.componentKey);
+      let parentRectBefore: RectValue = Utils.getComponentRect(data.pageConfig.parentKey);
+      let targetRectBefore: RectValue = Utils.getComponentRect(data.pageConfig.componentKey);
       if ((data.pageConfig.componentKey == 'TabContent') || (data.pageConfig.componentKey == 'StepperItem')) {
         console.info('[' + data.caseTag + '] Find Parent Component Before');
         let parentComponent: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
@@ -208,8 +208,8 @@ export default function onAreaChangeTest() {
       await Utils.sleep(1000);
 
       //After the change, obtain the location information of the target component and parent container
-      let parentRectAfter = Utils.getComponentRect(data.pageConfig.parentKey);
-      let targetRectAfter = Utils.getComponentRect(data.pageConfig.componentKey);
+      let parentRectAfter: RectValue = Utils.getComponentRect(data.pageConfig.parentKey);
+      let targetRectAfter: RectValue = Utils.getComponentRect(data.pageConfig.componentKey);
       let RectAfter = parentRectAfter
       let compareOldTextComponent: ESObject = Utils.getComponentByKey(data.pageConfig.compareOldTextKey);
       let compareNewTextComponent: ESObject = Utils.getComponentByKey(data.pageConfig.compareNewTextKey);
@@ -231,7 +231,7 @@ export default function onAreaChangeTest() {
       console.info('[' + data.caseTag + '] targetRectAfter: ' + JSON.stringify(targetRectAfter));
 
       if (data.testValue.describe == 'SetMove') {
-        let compareButtonRectAfter = Utils.getComponentRect(data.pageConfig.compareButtonKey);
+        let compareButtonRectAfter: RectValue = Utils.getComponentRect(data.pageConfig.compareButtonKey);
         console.info('[' + data.caseTag + '] compareButtonRectAfter: ' + JSON.stringify(compareButtonRectAfter));
         console.info('[' + data.caseTag + '] data.testValue.describe: ' + data.testValue.describe);
         expect(Math.abs(px2vp(compareButtonRectAfter.right - compareButtonRectAfter.left) -
