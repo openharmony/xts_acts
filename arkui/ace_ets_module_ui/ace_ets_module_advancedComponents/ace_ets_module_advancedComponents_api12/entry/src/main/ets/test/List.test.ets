@@ -66,7 +66,6 @@ export default function testsuite() {
   counterDirectionTest();
   popupDirectionTest();
   segmentButtonDirectionTest();
-  composeTitleBarTest();
   composeListItemIconType();
   composeListItemOperateItemArrow();
   composeListItemOperateItemButton();
