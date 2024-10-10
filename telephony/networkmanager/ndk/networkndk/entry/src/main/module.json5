@@ -25,6 +25,7 @@
     ],
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet"
     ],
