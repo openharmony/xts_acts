@@ -78,7 +78,6 @@ group("ability_runtime") {
       "apicover:apicover",
       "apitest:ActsApiTest",
       "appclone:appclonetest",
-      "capiabilityruntime:ActsCapiAbilityRuntimeTest",
       "capichildprocess:ActsCapiChildProcessTest",
       "context:context",
       "fa:fa",
