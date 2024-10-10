@@ -148,10 +148,10 @@ struct listVisibleContent {
             Text('Item:'+ item + ', itemIndex:' + itemIndex)
           }
           .onAppear(() => {
-            console.info('onAppear_item:' + item + ', itemIndex:' + itemIndex)
+            console.info("onAppear_item:" + item + ', itemIndex:' + itemIndex)
           })
           .onDisAppear(() => {
-            console.info('onDisAppear_item:' + item + ', itemIndex:' + itemIndex)
+            console.info("onDisAppear_item:" + item + ', itemIndex:' + itemIndex)
           })
           .height(65)
           .margin(10)

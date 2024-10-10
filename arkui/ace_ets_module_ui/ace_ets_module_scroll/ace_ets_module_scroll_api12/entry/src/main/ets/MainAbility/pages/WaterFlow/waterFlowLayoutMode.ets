@@ -47,7 +47,7 @@ struct layoutModeWaterFlow {
   build() {
     Column({ space: 5 }) {
       Column(){
-        Text('yOffset: ' + this.num)
+        Text('yOffset: ' + Math.round(this.num))
           .id('layoutMode_yOffset')
 
         Button('layoutMode_ALWAYS')

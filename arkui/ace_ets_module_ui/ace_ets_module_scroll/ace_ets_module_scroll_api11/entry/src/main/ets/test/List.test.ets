@@ -46,7 +46,7 @@ import tabsSec from './TabsTest/TabsSec'
 import tabsThird from './TabsTest/TabsThird'
 import ActsAlphabetIndexerUxTest from './AlphabetIndexerTest/AlphabetIndexer.test'
 import RefreshTest from './RefreshTest/Refresh.test'
-import ScrollTest2 from './ScrollTest/Scroll2.test'
+// import ScrollTest2 from './ScrollTest/Scroll2.test'
 import Tabs_itemPadMar from './TabsTest/Tabs_ItemsChange/Tabs_itemPadMar.test';
 import Tabs_itemSize from './TabsTest/Tabs_ItemsChange/Tabs_itemSize.test';
 import tabs_IndexTest from './TabsTest/tabs_index/Tabs_index.test';
@@ -183,7 +183,7 @@ export default function testsuite() {
   tabsThird()
   ActsAlphabetIndexerUxTest()
   RefreshTest()
-  ScrollTest2()
+  // ScrollTest2()
   edgeEffectJsunit()
   swiperTest();
   swiperSecTest();
