@@ -63,7 +63,8 @@ import TextPickerJsunit from './TextPicker/TextPickerJsunit.test';
 import TimePickerJsunit from './TimePickerTest/TimePickerJsunit.test';
 import timeStampJsunit from './TimePickerTest/TimeStampJsunit.test';
 import datePickerUIJsunit from './DatePickerTest/datePickerUIJsunit.test';
-
+import RatingAdvancedTest from './RatingTest/RatingAdvanced.test'
+import SliderInterfaceTest from './slider/sliderInterfaceTest.test'
 
 export default function testsuite() {
   stageTimePickerDialog();
@@ -122,4 +123,6 @@ export default function testsuite() {
   TimePickerJsunit();
   timeStampJsunit();
   datePickerUIJsunit();
+  RatingAdvancedTest()
+  SliderInterfaceTest()
 }
