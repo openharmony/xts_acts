@@ -1,11 +1,11 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/common/Common';
+
 
 export default function FileButtonDownloadFileTest() {
   describe('FileButtonDownloadFileTest', () => {
-    beforeEach(async (done: Function) => {
+    beforeEach(async (done: function) => {
       console.info('FileButtonDownloadFileTest beforeEach start');
       try {
         router.clear();
@@ -35,7 +35,7 @@ export default function FileButtonDownloadFileTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('FileButtonDownloadFileTest_0100', 0, async (done: Function) => {
+    it('FileButtonDownloadFileTest_0100', 0, async (done: function) => {
       console.info('[FileButtonDownloadFileTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

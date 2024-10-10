@@ -14,25 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@ohos.router';
+import router from '@system.router';
 import Utils from '../Utils';
 
 export default function editableTitleBarSafeAreaTypes() {
-  describe('editableTitleBarSafeAreaTypes', () => {
-    beforeEach(async (done: Function) => {
+  describe('editableTitleBarSafeAreaTypes', function () {
+    beforeEach(async function (done) {
       console.info('editableTitleBarSafeAreaTypes beforeEach start');
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaTypes',
+      let options = {
+        uri: 'MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaTypes',
       }
+      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get editableTitleBarSafeAreaTypes state pages: ' + JSON.stringify(pages));
         if (!('editableTitleBarSafeAreaTypes' == pages.name)) {
           console.info('get editableTitleBarSafeAreaTypes pages.name: ' + JSON.stringify(pages.name));
-          await router.pushUrl(options);
+          result = await router.push(options);
           await Utils.sleep(2000);
-          console.info('push editableTitleBarSafeAreaTypes page result successful');
+          console.info('push editableTitleBarSafeAreaTypes page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push editableTitleBarSafeAreaTypes page error: ' + err);
@@ -43,7 +44,7 @@ export default function editableTitleBarSafeAreaTypes() {
       done();
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info('editableTitleBarSafeAreaTypes after each called');
     })
@@ -56,7 +57,7 @@ export default function editableTitleBarSafeAreaTypes() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('editableTitleBarSafeAreaTypes_0100', 0, async (done: Function) => {
+    it('editableTitleBarSafeAreaTypes_0100', 0, async function (done) {
       console.info('[editableTitleBarSafeAreaTypes_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

@@ -14,25 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@ohos.router';
+import router from '@system.router';
 import Utils from '../Utils';
 
 export default function customContentDialogTest() {
-  describe('customContentDialogTest', () => {
-    beforeEach(async (done: Function) => {
+  describe('customContentDialogTest', function () {
+    beforeEach(async function (done) {
       console.info('alertDialogTest beforeEach start');
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/dialog/customContentDialogTest',
+      let options = {
+        uri: 'MainAbility/pages/dialog/customContentDialogTest',
       }
+      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get customContentDialogTest state pages: ' + JSON.stringify(pages));
         if (!('customContentDialogTest' == pages.name)) {
           console.info('get customContentDialogTest pages.name: ' + JSON.stringify(pages.name));
-          await router.pushUrl(options);
+          result = await router.push(options);
           await Utils.sleep(2000);
-          console.info('push customContentDialogTest page result successful');
+          console.info('push customContentDialogTest page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push customContentDialogTest page error: ' + err);
@@ -43,7 +44,7 @@ export default function customContentDialogTest() {
       done();
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info('customContentDialogTest after each called');
     })
@@ -56,7 +57,7 @@ export default function customContentDialogTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('customContentDialogTest_0100', 0, async (done: Function) => {
+    it('customContentDialogTest_0100', 0, async function (done) {
       console.info('[customContentDialogTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

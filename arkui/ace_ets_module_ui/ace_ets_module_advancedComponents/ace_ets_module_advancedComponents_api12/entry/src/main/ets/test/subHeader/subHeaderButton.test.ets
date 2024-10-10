@@ -14,25 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@ohos.router';
+import router from '@system.router';
 import Utils from '../Utils';
 
 export default function subHeaderButton() {
-  describe('subHeaderButton', () => {
-    beforeEach(async (done: Function) => {
+  describe('subHeaderButton', function () {
+    beforeEach(async function (done) {
       console.info('subHeaderButton beforeEach start');
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/subHeader/subHeaderButton',
+      let options = {
+        uri: 'MainAbility/pages/subHeader/subHeaderButton',
       }
+      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get subHeaderButton state pages: ' + JSON.stringify(pages));
         if (!('subHeaderButton' == pages.name)) {
           console.info('get subHeaderButton pages.name: ' + JSON.stringify(pages.name));
-          await router.pushUrl(options);
+          result = await router.push(options);
           await Utils.sleep(2000);
-          console.info('push subHeaderButton page result successful');
+          console.info('push subHeaderButton page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push subHeaderButton page error: ' + err);
@@ -43,7 +44,7 @@ export default function subHeaderButton() {
       done();
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info('subHeaderButton after each called');
     })
@@ -56,7 +57,7 @@ export default function subHeaderButton() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('subHeaderButton_0100', 0, async (done: Function) => {
+    it('subHeaderButton_0100', 0, async function (done) {
       console.info('[subHeaderButton_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

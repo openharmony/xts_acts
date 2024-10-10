@@ -15,25 +15,26 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@ohos.router';
+import router from '@system.router';
 import Utils from '../Utils';
 
 export default function composeListItemOperateItemButton() {
-  describe('composeListItemOperateItemButton', () => {
-    beforeEach(async (done: Function) => {
+  describe('composeListItemOperateItemButton', function () {
+    beforeEach(async function (done) {
       console.info('composeListItemOperateItemButton beforeEach start');
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/composeListItem/composeListItemOperateItemButton',
+      let options = {
+        uri: 'MainAbility/pages/composeListItem/composeListItemOperateItemButton',
       }
+      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get composeListItemOperateItemButton state pages: ' + JSON.stringify(pages));
         if (!('composeListItemOperateItemButton' == pages.name)) {
           console.info('get composeListItemOperateItemButton pages.name: ' + JSON.stringify(pages.name));
-          await router.pushUrl(options);
+          result = await router.push(options);
           await Utils.sleep(2000);
-          console.info('push composeListItemOperateItemButton page result successful');
+          console.info('push composeListItemOperateItemButton page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push composeListItemOperateItemButton page error: ' + err);
@@ -44,7 +45,7 @@ export default function composeListItemOperateItemButton() {
       done();
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info('composeListItemOperateItemButton after each called');
     })
@@ -57,7 +58,7 @@ export default function composeListItemOperateItemButton() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('composeListItemOperateItemButton_0100', 0, async (done: Function) => {
+    it('composeListItemOperateItemButton_0100', 0, async function (done) {
       console.info('[composeListItemOperateItemButton_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

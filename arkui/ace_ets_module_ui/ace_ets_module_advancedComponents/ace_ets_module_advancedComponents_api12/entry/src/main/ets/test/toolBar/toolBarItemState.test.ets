@@ -15,25 +15,26 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@ohos.router';
+import router from '@system.router';
 import Utils from '../Utils';
 
 export default function toolBarItemState() {
-  describe('toolBarItemState', () => {
-    beforeEach(async (done: Function) => {
+  describe('toolBarItemState', function () {
+    beforeEach(async function (done) {
       console.info("toolBarItemState beforeEach start");
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/toolBar/toolBarItemState',
+      let options = {
+        uri: 'MainAbility/pages/toolBar/toolBarItemState',
       }
+      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get toolBarItemState state pages: " + JSON.stringify(pages));
         if (!('toolBarItemState' == pages.name)) {
           console.info("get toolBarItemState pages.name: " + JSON.stringify(pages.name));
-          await router.pushUrl(options);
+          result = await router.push(options);
           await Utils.sleep(2000);
-          console.info("push toolBarItemState page result successful");
+          console.info("push toolBarItemState page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push toolBarItemState page error: " + err);
@@ -44,7 +45,7 @@ export default function toolBarItemState() {
       done();
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info('toolBarItemState after each called');
     })
@@ -57,7 +58,7 @@ export default function toolBarItemState() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('toolBarItemState_0100', 0, async (done: Function) => {
+    it('toolBarItemState_0100', 0, async function (done) {
       console.info('[toolBarItemState_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

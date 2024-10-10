@@ -31,9 +31,9 @@ export default function SelectTitleBarTest() {
         console.info('get SelectTitleBarTest state pages: ' + JSON.stringify(pages));
         if (!('selectTitleBarPage' == pages.name)) {
           console.info('get SelectTitleBarTest pages.name: ' + JSON.stringify(pages.name));
-          await router.pushUrl(options);
+          result = await router.push(options);
           await Utils.sleep(2000);
-          console.info('push SelectTitleBarTest page result successful');
+          console.info('push SelectTitleBarTest page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push SelectTitleBarTest page error: ' + err);

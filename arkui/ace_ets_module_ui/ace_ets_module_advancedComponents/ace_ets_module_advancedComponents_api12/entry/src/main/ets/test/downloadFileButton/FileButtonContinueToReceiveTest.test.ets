@@ -1,12 +1,11 @@
 import { describe,  beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/common/Common';
 
 export default function FileButtonContinueToReceiveTest() {
 
   describe('FileButtonContinueToReceiveTest', () => {
-    beforeEach(async (done: Function) => {
+    beforeEach(async (done: function) => {
       try {
         router.clear();
         let pages = router.getState();
@@ -35,7 +34,7 @@ export default function FileButtonContinueToReceiveTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('FileButtonContinueToReceiveTest_0100', 0, async (done: Function) => {
+    it('FileButtonContinueToReceiveTest_0100', 0, async (done: function) => {
       console.info('[FileButtonContinueToReceiveTest] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

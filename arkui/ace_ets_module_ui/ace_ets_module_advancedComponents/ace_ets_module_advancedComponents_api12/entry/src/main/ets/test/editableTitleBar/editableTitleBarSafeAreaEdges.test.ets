@@ -14,25 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@ohos.router';
+import router from '@system.router';
 import Utils from '../Utils';
 
 export default function editableTitleBarSafeAreaEdges() {
-  describe('editableTitleBarSafeAreaEdges', () => {
-    beforeEach(async (done: Function) => {
+  describe('editableTitleBarSafeAreaEdges', function () {
+    beforeEach(async function (done) {
       console.info('editableTitleBarSafeAreaEdges beforeEach start');
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaEdges',
+      let options = {
+        uri: 'MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaEdges',
       }
+      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get editableTitleBarSafeAreaEdges state pages: ' + JSON.stringify(pages));
         if (!('editableTitleBarSafeAreaEdges' == pages.name)) {
           console.info('get editableTitleBarSafeAreaEdges pages.name: ' + JSON.stringify(pages.name));
-          await router.pushUrl(options);
+          result = await router.push(options);
           await Utils.sleep(2000);
-          console.info('push editableTitleBarSafeAreaEdges page result successful');
+          console.info('push editableTitleBarSafeAreaEdges page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push editableTitleBarSafeAreaEdges page error: ' + err);
@@ -43,7 +44,7 @@ export default function editableTitleBarSafeAreaEdges() {
       done();
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info('editableTitleBarSafeAreaEdges after each called');
     })
@@ -56,7 +57,7 @@ export default function editableTitleBarSafeAreaEdges() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('editableTitleBarSafeAreaEdges_0100', 0, async (done: Function) => {
+    it('editableTitleBarSafeAreaEdges_0100', 0, async function (done) {
       console.info('[editableTitleBarSafeAreaEdges_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

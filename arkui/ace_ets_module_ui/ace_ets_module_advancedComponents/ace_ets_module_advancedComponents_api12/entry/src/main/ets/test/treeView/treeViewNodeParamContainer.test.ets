@@ -14,26 +14,27 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@ohos.router';
+import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function treeViewNodeParamContainer() {
-  describe('treeViewNodeParamContainer', () => {
-    beforeEach(async (done: Function) => {
+  describe('treeViewNodeParamContainer', function () {
+    beforeEach(async function (done) {
       console.info('treeViewNodeParamContainer beforeEach start');
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/treeView/treeViewNodeParamContainer',
+      let options = {
+        uri: 'MainAbility/pages/treeView/treeViewNodeParamContainer',
       }
+      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get treeViewNodeParamContainer state pages: ' + JSON.stringify(pages));
         if (!('treeViewNodeParamContainer' == pages.name)) {
           console.info('get treeViewNodeParamContainer pages.name: ' + JSON.stringify(pages.name));
-          await router.pushUrl(options);
+          result = await router.push(options);
           await Utils.sleep(2000);
-          console.info('push treeViewNodeParamContainer page result successful');
+          console.info('push treeViewNodeParamContainer page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push treeViewNodeParamContainer page error: ' + err);
@@ -44,7 +45,7 @@ export default function treeViewNodeParamContainer() {
       done()
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info('treeViewNodeParamContainer after each called');
     })

@@ -42,13 +42,9 @@ export default class Utils {
       .resourceManager
       .getRawFileContent(fileName)
       .then((data: ESObject) => {
-        return new Promise<ESObject>((resolve, reject) => {
+        return new Promise<ESObject>((resolve: ESObject, reject: ESObject) => {
           if (data) {
-            let result = '';
-            for (let i = 0; i < data.length; i++) {
-              result += String.fromCharCode(data[i]);
-            }
-            resolve(result);
+            resolve(String.fromCharCode.apply(null, data))
           } else {
             reject('')
           }
@@ -107,7 +103,7 @@ export default class Utils {
 
   static getComponentRectByObj(obj: ESObject) {
     console.info('[getInspectorByKey] current component is: ' + obj.$type);
-    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo: ESObject = JSON.parse('[' + obj.$rect + ']');
     let rect_value: RectValue = {
       left: Number(JSON.parse('[' + rectInfo[0] + ']')[0]),
       top: Number(JSON.parse('[' + rectInfo[0] + ']')[1]),
