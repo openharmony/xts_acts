@@ -131,7 +131,7 @@ describe('I18nTest', function () {
     it('i18n_test_3900', 0, function () {
         let value = I18n.getDisplayCountry('zh', 'en-US', true);
         console.log('i18n_test_3900 ' + value);
-        expect(value).assertEqual('');
+        expect(value).assertEqual(undefined);
     })
 
     /* *
@@ -153,7 +153,7 @@ describe('I18nTest', function () {
     it('i18n_test_4100', 0, function () {
         let value = I18n.getDisplayCountry('zh-Hans', 'en-US', true);
         console.log('i18n_test_4100 ' + value);
-        expect(value).assertEqual('');
+        expect(value).assertEqual(undefined);
     })
 
     /* *
