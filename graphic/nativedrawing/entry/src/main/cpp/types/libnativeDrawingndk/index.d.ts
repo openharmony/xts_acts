@@ -62,6 +62,7 @@ export const oHDrawingTypographyGetMaxIntrinsicWidth: () => number;
 
 export const oHDrawingTypographyGetLongestLine: () => number;
 export const oHDrawingTypographyGetLongestLineAbnormal: () => number;
+export const oHDrawingTypographyGetLongestLineWithIndent: () => number;
 
 export const oHDrawingTypographyGetAlphabeticBaseline: () => number;
 export const oHDrawingTypographyGetAlphabeticBaselineNormal: () => number;
