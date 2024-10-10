@@ -2,7 +2,6 @@ import { LengthMetrics } from '@kit.ArkUI';
 import { TextModifier } from '@ohos.arkui.modifier';
 
 class MainTitleTextModifier extends TextModifier {
-  useStyle1: boolean = true;
   applyNormalAttribute(instance: TextModifier): void {
       console.log(`testTag mainTitle use style1`);
       instance.fontColor('#FFFFC000')
@@ -14,7 +13,6 @@ class MainTitleTextModifier extends TextModifier {
 }
 
 class SubTitleTextModifier extends TextModifier {
-  useStyle1: boolean = true;
   applyNormalAttribute(instance: TextModifier): void {
       console.log(`testTag subTitle use style1`);
       instance.fontColor('#FFFFCEEE')
@@ -60,7 +58,7 @@ struct NavigationTitleTextModifier {
     }
     .titleMode(NavigationTitleMode.Full)
     .title(
-      {main: "Title", sub: "subTitle"},
+      {main: 'Title', sub: 'subTitle'},
       this.applyModifier ?
         {
           paddingStart: this.paddingStart,
