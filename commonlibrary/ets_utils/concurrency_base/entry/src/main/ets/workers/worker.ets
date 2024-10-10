@@ -47,7 +47,7 @@ async function sharedMultiWorkerJob(lockName: string, timeout: number, flagBuf: 
       }
     }
     if (!prevSet) {
-      throw new Error('Expected callback overlap');
+      throw new Error("Expected callback overlap");
     }
     flagBuf[idx] = 0;
   }, utils.locks.AsyncLockMode.SHARED);
