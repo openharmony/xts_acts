@@ -4,12 +4,13 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "ohos.audio.napitest",
-        "package-name": "ohos.audio.napitest",
-        "shell-timeout": "600000"
+        "shell-timeout": "600000",
+        "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
+                "ActsAudioNapiEtsTestMain.hap",
                 "ActsAudioNapiEtsTest.hap"
             ],
             "type": "AppInstallKit",
@@ -34,7 +35,6 @@
             "pre-push": [],
             "push": [
                 "./resource/audio/audioRenderer/test_44100_2.wav ->/data/app/el2/100/base/ohos.audio.napitest/haps/entry/files/"
-                
             ]
         }
     ]
