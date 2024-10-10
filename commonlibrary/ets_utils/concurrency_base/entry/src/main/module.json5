@@ -19,7 +19,8 @@
     "type": "entry",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
-    "deviceTypes": [
+     "deviceTypes": [
+      "wearable",
       "default",
       "tablet"
     ],

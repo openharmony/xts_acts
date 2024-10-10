@@ -26,9 +26,13 @@ export default function PixMapTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_PIXMAP_001
      * @tc.name: testPixMapWriteTask
      * @tc.desc: checks writing to PixelMap
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
      */
     it('testPixMapWriteTask', 0, async (done: Function) => {
       let result: Object = await skipConditional("testPixMapWriteTask in progress", true, testPixMapWriteTask);
@@ -37,9 +41,13 @@ export default function PixMapTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_PIXMAP_002
      * @tc.name: testPixMapWriteTaskGroup
      * @tc.desc: checks writing to PixelMap in several taskpool group tasks
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
      */
     it('testPixMapWriteTaskGroup', 0, async (done: Function) => {
       let result: Object = await skipConditional(
@@ -49,9 +57,13 @@ export default function PixMapTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_PIXMAP_003
      * @tc.name: testPixMapWriteSingleTaskGroup
      * @tc.desc: checks writing to PixelMap in single taskpool group task
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
      */
     it('testPixMapWriteSingleTaskGroup', 0, async (done: Function) => {
       let result: Object = await skipConditional(
