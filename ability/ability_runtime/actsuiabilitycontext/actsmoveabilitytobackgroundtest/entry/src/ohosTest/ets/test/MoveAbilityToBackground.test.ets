@@ -22,9 +22,15 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 export default function moveAbilityToBackgroundTest() {
   let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
   let driver = Driver.create();
-
+  let mpEnable: Boolean = false;
   describe('ActsMoveAbilityToBackgroundTest', () => {
     beforeAll(() => {
+      try {
+        mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable') === 'true';
+      } catch(err) {
+        console.error(`MoveAbilityToBackground Get system parameter error: ${JSON.stringify(err)}`);
+        mpEnable = false;
+      }
     });
     beforeEach(() => {
     });
@@ -45,47 +51,51 @@ export default function moveAbilityToBackgroundTest() {
     it('SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100`;
       console.log(`${tag}, it begin`);
-
-      try {
-        await abilityDelegator.executeShellCommand("aa start -b com.acts.moveabilitytobgtest -a EntryAbility");
-        await sleep(1000);
-        let button = await driver.waitForComponent(ON.text("Move To background"), 3000);
-        await sleep(100);
-        expect(button != null).assertTrue();
-        let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-        console.log(`====>SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100 deviceType: ${deviceType}`);
-        if (deviceType === '2in1') {
-          done();
-          return;
-        }
-
-        let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
-          events: ['Acts_onBackground_MoveAbilityToBackground_Event_1']
-        };
-        let subscriber = CommonEventManager.createSubscriberSync(subscribeInfo);
-        let subscribeCB = (err: BusinessError, data: CommonEventManager.CommonEventData) => {
-          if (err) {
-            console.error(`receive event failed, code is ${err.code}, message is ${err.message}`);
-            expect().assertFail();
+      if(mpEnable){
+        try {
+          await abilityDelegator.executeShellCommand("aa start -b com.acts.moveabilitytobgtest -a EntryAbility");
+          await sleep(1000);
+          let button = await driver.waitForComponent(ON.text("Move To background"), 3000);
+          await sleep(100);
+          expect(button != null).assertTrue();
+          let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+          console.log(`====>SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100 deviceType: ${deviceType}`);
+          if (deviceType === '2in1') {
             done();
-          } else {
-            console.info(`receive event success, event:${data.event}`);
-            if (data.event == 'Acts_onBackground_MoveAbilityToBackground_Event_1') {
-              unSubscribe(subscriber, done);
+            return;
+          }
+  
+          let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
+            events: ['Acts_onBackground_MoveAbilityToBackground_Event_1']
+          };
+          let subscriber = CommonEventManager.createSubscriberSync(subscribeInfo);
+          let subscribeCB = (err: BusinessError, data: CommonEventManager.CommonEventData) => {
+            if (err) {
+              console.error(`receive event failed, code is ${err.code}, message is ${err.message}`);
+              expect().assertFail();
+              done();
+            } else {
+              console.info(`receive event success, event:${data.event}`);
+              if (data.event == 'Acts_onBackground_MoveAbilityToBackground_Event_1') {
+                unSubscribe(subscriber, done);
+              }
             }
           }
+          CommonEventManager.subscribe(subscriber, subscribeCB);
+  
+          await button.click();
+          await sleep(5000);
+          console.error(`${tag}, timeout`);
+          expect().assertFail();
+        } catch (err) {
+          console.error(`${tag} error, errorCode: ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
         }
-        CommonEventManager.subscribe(subscriber, subscribeCB);
-
-        await button.click();
-        await sleep(5000);
-        console.error(`${tag}, timeout`);
-        expect().assertFail();
-      } catch (err) {
-        console.error(`${tag} error, errorCode: ${JSON.stringify(err)}`);
-        expect().assertFail();
+      }else{
         done();
       }
+      
     });
   })
 }
