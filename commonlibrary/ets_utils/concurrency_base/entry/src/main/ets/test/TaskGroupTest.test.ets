@@ -26,9 +26,14 @@ export default function TaskGroupTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASKGROUP_001
      * @tc.name: testHappyPath
      * @tc.desc: checks most basic task group use
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     * 
      */
     it('testHappyPath', 0, async (done: Function) => {
       let result: Object = await testHappyPath();
@@ -37,9 +42,13 @@ export default function TaskGroupTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASKGROUP_002
      * @tc.name: testHappyPathCombined
      * @tc.desc: checks basic use of group with tasks defined in different ways
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('testHappyPathCombined', 0, async (done: Function) => {
       let result: Object = await testHappyPathCombined();
@@ -48,9 +57,13 @@ export default function TaskGroupTest() {
     })
 
     /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_TASKGROUP_003
      * @tc.name: testRepeats
      * @tc.desc: checks repeated use of task group
      * @tc.author: oleg-ignatenko
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('testRepeats', 0, async (done: Function) => {
       let result: Object = await testRepeats();
