@@ -12,6 +12,7 @@
     "package": "ohos.acts.rdbjstest",
     "name": ".entry_test",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",
