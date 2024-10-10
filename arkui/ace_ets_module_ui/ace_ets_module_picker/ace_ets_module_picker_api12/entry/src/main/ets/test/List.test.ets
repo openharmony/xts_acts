@@ -38,6 +38,9 @@ import slideRange from './SliderTest/slideRange.test'
 import SliderAttrs2 from './SliderTest/SliderAttrs2.test'
 import TimePickerAddApi from './TimePickerTest/TimePickerAddApi.test';
 import enableHapticFeedbackTest from './TimePickerTest/enableHapticFeedbackTest.test'
+import RatingAdvancedTest from './RatingTest/RatingAdvanced.test'
+import XComponentSliderTest from './SliderTest/XcomponentSlider.test'
+
 export default function testsuite() {
     gradientHeight()
     dividerJsunit()
@@ -63,4 +66,6 @@ export default function testsuite() {
     slideRange()
     SliderAttrs2();
     enableHapticFeedbackTest();
+    RatingAdvancedTest()
+    XComponentSliderTest()
 }
