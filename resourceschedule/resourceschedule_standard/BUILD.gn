@@ -19,6 +19,7 @@ group("resourceschedule_standard") {
     deps = [
       "backgroundtaskmanager:resourceschedule_backgroundtaskmanager_js_test",
       "backgroundtaskmanager_nop:resourceschedule_backgroundtaskmanager_ets_nop_test",
+      "backgroundtaskmanager_ndk:backgroundtaskmanager_ndk_test",
       "deviceusagestatisticsjsunit:resourceschedule_deviceusagestatisticsjsunit_js_test",
       "ffrt:resourceschedule_ffrt_js_test",
       "qos_manager:ActsQoSCAPITest",
