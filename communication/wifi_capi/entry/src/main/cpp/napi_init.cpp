@@ -27,8 +27,9 @@ napi_value GetWifiSwitchState(napi_env env, napi_callback_info info)
     bool state = false;
     Wifi_ResultCode code = OH_Wifi_IsWifiEnabled(&state);
     OH_LOG_INFO(LOG_APP, "testTag ret success: %{public}d, wifi state: %{public}d",
-            static_cast<int>(code),
-            static_cast<int>(state));
+        static_cast<int>(code),
+        static_cast<int>(state)
+    );
     
     int32_t stateValue = static_cast<int32_t>(state);
     napi_value res;
