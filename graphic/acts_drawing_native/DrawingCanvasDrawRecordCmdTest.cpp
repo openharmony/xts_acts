@@ -128,8 +128,7 @@ HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdABNormal, TestSi
     if (picture != nullptr) {
         OH_Drawing_ErrorCode result = OH_Drawing_CanvasDrawRecordCmd(nullptr, picture);
         EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
-    }
-    
+}
 }
 } // namespace Drawing
 } // namespace Rosen
