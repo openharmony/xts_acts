@@ -130,7 +130,7 @@ let httpsWebSite: socket.NetAddress = {
 }
 
 let httpWebSite: socket.NetAddress = {
-  address: "httpforever.com", port: 80
+  address: "www.baidu.com", port: 80
 }
 
 let localServer: socket.NetAddress = {
