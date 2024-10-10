@@ -224,8 +224,12 @@ import richEditorTest from './RichEditorTest/RichEditorJsunit.test';
 import textTextCaseTest from './textTest/textTextCase.test';
 import textTextDecorationTest from './textTest/textTextDecoration.test';
 import searchTest from './SearchTest/SearchJsunit1.test';
+import ImageAdvancedTest from './imageTest/ImageAdvancedTest.test.ets'
+import ImageAnimatorAdvancedTest from './ImageAnimator/imageAnimatorAdvancedTest.test.ets'
 
 export default function testsuite() {
+  ImageAdvancedTest()
+  ImageAnimatorAdvancedTest()
   ToggleJsunit();
   stageFontTest();
   stageMediaquery();
