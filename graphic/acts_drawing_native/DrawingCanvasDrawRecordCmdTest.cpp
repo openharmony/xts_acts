@@ -59,13 +59,13 @@ void drawCircle1(OH_Drawing_Canvas *canvas, int position)
 }
 OH_Drawing_RecordCmd *threadFunctionTest6()
 {
-    int32_t width = 3;
+    int32_t width = 2;
     int32_t height = 5;
     OH_Drawing_RecordCmd *recordCmd = nullptr;
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_RecordCmdUtils *recordCmdUtils = OH_Drawing_RecordCmdUtilsCreate();
     OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, width, height, &canvas);
-    float penWidth = 1.0f; // pen width 
+    float penWidth = 1.0f; // pen width 1
     // 创建一个画笔Pen对象，Pen对象用于形状的边框线绘制
     OH_Drawing_Pen *cPen = OH_Drawing_PenCreate();
     OH_Drawing_PenSetAntiAlias(cPen, true);
