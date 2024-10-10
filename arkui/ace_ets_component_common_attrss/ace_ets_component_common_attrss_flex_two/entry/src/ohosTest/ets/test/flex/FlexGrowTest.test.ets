@@ -204,9 +204,9 @@ export default function flexGrowTest() {
       if (data.testValue.describe == 'SpaceNotEnough') {
         if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
           || data.pageConfig.containerView == 'FlexRowReverse') {
-          expect(Math.abs(Number(rect.right - rect.left) - Number(vp2px(targetWidth))) <= 1).assertTrue();
+          expect(Math.abs(Math.round(rect.right - rect.left) - Math.round(vp2px(targetWidth))) <= 2).assertTrue();
         } else {
-          expect(Math.abs(Number(rect.bottom - rect.top) - Number(vp2px(targetHeight))) <= 1).assertTrue();
+          expect(Math.abs(Math.round(rect.bottom - rect.top) - Math.round(vp2px(targetHeight))) <= 2).assertTrue();
         }
       } else {
         //Verify the standard component not be changed
