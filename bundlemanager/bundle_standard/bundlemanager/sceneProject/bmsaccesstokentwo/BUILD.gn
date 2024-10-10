@@ -17,6 +17,6 @@ ohos_app_assist_suite("bmsAccessTokenTest2") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "bmsAccessTokenTest2"
-    subsystem_name = "bundlemanager"
-    part_name = "bundle_framework"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
