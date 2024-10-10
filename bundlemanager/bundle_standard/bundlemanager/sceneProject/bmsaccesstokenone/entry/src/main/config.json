@@ -1,0 +1,83 @@
+{
+  "app": {
+    "vendor": "example",
+    "bundleName": "com.example.bmsaccesstoken1",
+    "version": {
+      "code": 2000000,
+      "name": "2.0.0"
+    }
+  },
+  "deviceConfig": {
+    "default": {}
+  },
+  "module": {
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "icon": "$media:icon",
+        "name": "com.example.l3jsdemo.MainAbility",
+        "description": "$string:mainability_description",
+        "label": "$string:app_name",
+        "type": "page",
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "Data3",
+              "value": "float",
+              "extra": "$string:mainability_description"
+            }
+          ]
+        },
+        "srcPath": "default",
+        "srcLanguage": "js"
+      }
+    ],
+    "deviceType": [
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
+    ],
+    "mainAbility": "com.example.l3jsdemo.MainAbility",
+    "distro": {
+      "moduleType": "entry",
+      "installationFree": false,
+      "deliveryWithInstall": true,
+      "moduleName": "entry"
+    },
+    "package": "com.example.l3jsdemo",
+    "name": ".MyApplication",
+    "js": [
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": "com.example.l3jsdemo.MainAbility",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        }
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+        "reason": "use ohos.permission.DISTRIBUTED_DATASYNC"
+      },
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
+        "reason": "use ohos.permission.KEEP_BACKGROUND_RUNNING"
+      }
+    ]
+  }
+}
