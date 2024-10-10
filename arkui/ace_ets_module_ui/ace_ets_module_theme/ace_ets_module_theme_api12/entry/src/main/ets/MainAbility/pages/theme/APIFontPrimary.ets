@@ -54,6 +54,7 @@ struct APIFontPrimary {
 
   build() {
     Column({ space: 5 }) {
+      // 代码同步
       Button('get').key('APIFontPrimary_Button')
         .width(200).height(40)
         .onClick(() => {
