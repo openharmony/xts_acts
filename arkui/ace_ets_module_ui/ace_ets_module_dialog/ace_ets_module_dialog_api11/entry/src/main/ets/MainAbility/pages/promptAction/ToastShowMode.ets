@@ -17,12 +17,16 @@ import promptAction from '@ohos.promptAction'
 @Entry
 @Component
 struct PromptActionShowMode {
+  @State message: string = 'Hello World'
   build() {
     Column({ space: 5 }) {
+	  Button(this.message)
+	    .id('mess_mode')
       Button('DEFAULT').key('ShowMode_p1')
         .onClick(() => {
+		  this.message = 'Message DEFAULT'
           promptAction.showToast({
-            message: 'Message Info',
+            message: this.message,
             duration: 2000,
             bottom: 100,
             showMode: promptAction.ToastShowMode.DEFAULT
@@ -31,8 +35,9 @@ struct PromptActionShowMode {
 
       Button('TOP_MOST').id('ShowMode_p2')
         .onClick(() => {
+		  this.message = 'Message TOP_MOST'
           promptAction.showToast({
-            message: 'Message Info',
+            message: this.message,
             duration: 2000,
             bottom: 100,
             showMode: promptAction.ToastShowMode.TOP_MOST
