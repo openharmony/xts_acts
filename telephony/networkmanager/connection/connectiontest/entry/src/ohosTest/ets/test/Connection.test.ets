@@ -57,8 +57,17 @@ export default function ConnectionTest() {
           username: "admin",
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        ExpectTrue(true)
-        done()
+        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
+          if(error) {
+            console.error(`${caseName} Failed to get default http proxy  .code: ${error.code},message:${error.message}`)
+            ExpectFail();
+            done();
+            return
+          }
+          console.log(`${caseName} succeeded to get data ${JSON.stringify(data)}`)
+          expect(data.host).assertEqual(httpProxy.host)
+          done()
+        })
       } catch (err) {
         console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
         ExpectFail();
@@ -87,8 +96,17 @@ export default function ConnectionTest() {
           username: "",
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        ExpectTrue(true)
-        done()
+        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
+          if(error) {
+            console.error(`${caseName} Failed to get default http proxy  .code: ${error.code},message:${error.message}`)
+            ExpectFail();
+            done();
+            return
+          }
+          console.log(`${caseName} succeeded to get data ${JSON.stringify(data)}`)
+          expect(data.host).assertEqual(httpProxy.host)
+          done()
+        })
       } catch (err) {
         console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
         ExpectFail();
@@ -145,8 +163,17 @@ export default function ConnectionTest() {
           password: '123456',
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        ExpectTrue(true)
-        done()
+        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
+          if(error) {
+            console.error(`${caseName} Failed to get default http proxy  .code: ${error.code},message:${error.message}`)
+            ExpectFail();
+            done();
+            return
+          }
+          console.log(`${caseName} succeeded to get data ${JSON.stringify(data)}`)
+          expect(data.host).assertEqual(httpProxy.host)
+          done()
+        })
       } catch (err) {
         console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
         ExpectFail();
@@ -174,8 +201,17 @@ export default function ConnectionTest() {
           password: '',
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        ExpectTrue(true)
-        done()
+        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
+          if(error) {
+            console.error(`${caseName} Failed to get default http proxy  .code: ${error.code},message:${error.message}`)
+            ExpectFail();
+            done();
+            return
+          }
+          console.log(`${caseName} succeeded to get data ${JSON.stringify(data)}`)
+          expect(data.host).assertEqual(httpProxy.host)
+          done()
+        })
       } catch (err) {
         console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
         ExpectFail();
@@ -263,8 +299,17 @@ export default function ConnectionTest() {
           password: '',
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        ExpectTrue(true)
-        done()
+        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
+          if(error) {
+            console.error(`${caseName} Failed to get default http proxy  .code: ${error.code},message:${error.message}`)
+            ExpectFail();
+            done();
+            return
+          }
+          console.log(`${caseName} succeeded to get data ${JSON.stringify(data)}`)
+          expect(data.host).assertEqual(httpProxy.host)
+          done()
+        })
       } catch (err) {
         console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
         ExpectFail();
@@ -293,8 +338,17 @@ export default function ConnectionTest() {
           password: '123456',
         }
         connection.setAppHttpProxy(httpProxy as connection.HttpProxy);
-        ExpectTrue(true)
-        done()
+        connection.getDefaultHttpProxy((error:BusinessError,data:connection.HttpProxy) => {
+          if(error) {
+            console.error(`${caseName} Failed to get default http proxy  .code: ${error.code},message:${error.message}`)
+            ExpectFail();
+            done();
+            return
+          }
+          console.log(`${caseName} succeeded to get data ${JSON.stringify(data)}`)
+          expect(data.host).assertEqual(httpProxy.host)
+          done()
+        })
       } catch (err) {
         console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
         ExpectFail();
@@ -422,8 +476,6 @@ export default function ConnectionTest() {
         console.info(`${caseName}---End`);
       }
     });
-
-
   })
 }
 
