@@ -22,15 +22,15 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 export default function moveAbilityToBackgroundTest() {
   let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
   let driver = Driver.create();
-  let mpEnable: Boolean = false;
+  let mpEnable = '';
   describe('ActsMoveAbilityToBackgroundTest', () => {
     beforeAll(() => {
       try {
-        mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable') === 'true';
+        mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable', 'false');
       } catch(err) {
         console.error(`MoveAbilityToBackground Get system parameter error: ${JSON.stringify(err)}`);
-        mpEnable = false;
       }
+      console.log(`${tag} MoveAbilityToBackground Get system parameter mpEnable is ${mpEnable}`);
     });
     beforeEach(() => {
     });
@@ -51,20 +51,13 @@ export default function moveAbilityToBackgroundTest() {
     it('SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100', 0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100`;
       console.log(`${tag}, it begin`);
-      if(mpEnable){
+      if (mpEnable === 'true') {
         try {
           await abilityDelegator.executeShellCommand("aa start -b com.acts.moveabilitytobgtest -a EntryAbility");
           await sleep(1000);
           let button = await driver.waitForComponent(ON.text("Move To background"), 3000);
           await sleep(100);
           expect(button != null).assertTrue();
-          let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-          console.log(`====>SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100 deviceType: ${deviceType}`);
-          if (deviceType === '2in1') {
-            done();
-            return;
-          }
-  
           let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
             events: ['Acts_onBackground_MoveAbilityToBackground_Event_1']
           };
@@ -82,7 +75,6 @@ export default function moveAbilityToBackgroundTest() {
             }
           }
           CommonEventManager.subscribe(subscriber, subscribeCB);
-  
           await button.click();
           await sleep(5000);
           console.error(`${tag}, timeout`);
@@ -92,7 +84,12 @@ export default function moveAbilityToBackgroundTest() {
           expect().assertFail();
           done();
         }
+      }else if(mpEnable === 'false') {
+        console.error(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
       }else{
+        console.error(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
         done();
       }
       
