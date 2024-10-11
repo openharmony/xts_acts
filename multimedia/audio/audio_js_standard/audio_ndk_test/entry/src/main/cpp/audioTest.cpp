@@ -28,13 +28,15 @@
 #include "ohaudio/native_audio_routing_manager.h"
 #include "ohaudio/native_audio_device_base.h"
 #include "ohaudio/native_audio_session_manager.h"
+#include "hilog/log.h"
 
 #define DEBUG
+#define LOG_TAG "audioTest"
 
 #ifdef DEBUG
-  #define LOG(fmt, ...) printf(fmt, ##__VA_ARGS__)
+  #define LOG(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 #else
- #define LOG(fmt, ...)
+ #define LOG(...)
 #endif
 
 const int32_t g_samplingRate = 48000; // 48000:g_samplingRate value
@@ -4972,7 +4974,7 @@ static napi_module g_module = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "audioNdkTest",
+    .nm_modname = "entry",
     .nm_priv = ((void *)0),
     .reserved = {0}};
 
