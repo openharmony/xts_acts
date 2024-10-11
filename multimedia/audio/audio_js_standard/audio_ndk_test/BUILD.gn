@@ -39,5 +39,5 @@ ohos_js_app_suite("audioDemo_ndk_hap") {
 
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "multimedia"
-  deps = [ ":audioDemo_ndk_hap_main" ]
+  deps = [":audioDemo_ndk_hap_main"]
 }
