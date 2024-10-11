@@ -67,8 +67,8 @@
 }
 
 class MySliderStyle18 implements ContentModifier<SliderConfiguration> {
-  private showSlider:boolean=true
-  private sliderChangeMode:number=0
+  public showSlider:boolean=true
+  public sliderChangeMode:number=0
   constructor(showSlider: boolean,sliderChangeMode:number) {
     this.showSlider = showSlider
     this.sliderChangeMode = sliderChangeMode

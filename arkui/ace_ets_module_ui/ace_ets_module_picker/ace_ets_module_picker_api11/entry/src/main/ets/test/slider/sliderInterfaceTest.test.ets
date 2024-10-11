@@ -22,8 +22,8 @@ import inputEventClient from '@ohos.multimodalInput.inputEventClient';
 export default function SliderInterfaceTest() {
   describe('SliderInterfaceTest', () => {
 
-    async function routerPush(target) {
-      let options = {
+    const routerPush = async (target:string) => {
+      let options:router.RouterOptions = {
         url: `MainAbility/pages/Slider/SliderInterface/${target}`,
       }
       try {
@@ -60,7 +60,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider01');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0180] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.constructor.direction).assertEqual('Axis.Vertical');
@@ -80,7 +80,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0200] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.constructor.direction).assertEqual('Axis.Vertical');
@@ -99,7 +99,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider03');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0210] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.constructor.max).assertEqual('100.000000');
@@ -118,7 +118,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider04');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0250] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.constructor.min).assertEqual('0.000000');
@@ -137,7 +137,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider05');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0380] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.showTips).assertEqual('false');
@@ -156,7 +156,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider06');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0390] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.showTips).assertEqual('true');
@@ -175,7 +175,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider07');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0420] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.showTips).assertEqual('false');
@@ -194,7 +194,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider08');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0430] obj1.$attrs.constructor is: " + JSON.stringify(obj1.$attrs.constructor));
       expect(obj1.$attrs.showTips).assertEqual('true');
@@ -213,7 +213,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider09');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0440] obj1.$attrs.width is: " + JSON.stringify(obj1.$attrs.width));
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0440] obj1.$attrs.height is: " + JSON.stringify(obj1.$attrs.height));
@@ -234,10 +234,10 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider10'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(70,224,125,224,600)
+      await driver.drag(70,224,128,224,600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider10');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0450] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual("20.000000")
@@ -259,10 +259,10 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider11'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(70,224,125,224,600)
+      await driver.drag(70,224,128,224,600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider11');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0480] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual("20.000000")
@@ -282,7 +282,7 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('Slider12');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0640] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('0.000000');
@@ -302,7 +302,7 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('Slider13');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0650] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('100.000000');
@@ -320,10 +320,10 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.drag(70,224,125,224,600)
+      await driver.drag(70,224,128,224,600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider14');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0660] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
@@ -341,13 +341,13 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.drag(70,224,125,224,600)
+      await driver.drag(70,224,120,224,600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider15');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0670] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
-      expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
+      expect(obj1.$attrs.constructor.value).assertEqual('10.000000');
       done();
     });
 
@@ -365,7 +365,7 @@ export default function SliderInterfaceTest() {
       await driver.drag(70,224,125,224,600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider16');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0680] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('0.000000');
@@ -386,7 +386,7 @@ export default function SliderInterfaceTest() {
       await driver.click(125,224)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider17');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0690] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
@@ -407,7 +407,7 @@ export default function SliderInterfaceTest() {
       await driver.click(39,224)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider18');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0700] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('0.000000');
@@ -428,7 +428,7 @@ export default function SliderInterfaceTest() {
       await driver.click(39,224)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider19');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0710] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('0.000000');
@@ -446,10 +446,10 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.drag(70,224,125,224,600)
+      await driver.drag(70,224,128,224,600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider20');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0720] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
@@ -467,10 +467,10 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.click(125,224)
+      await driver.click(128,224)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider20');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_0730] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
@@ -491,7 +491,7 @@ export default function SliderInterfaceTest() {
       await driver.drag(70,224,125,224,600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider21');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_INTERFACE_1080] obj1.$attrs.constructor.value is: " + JSON.stringify(obj1.$attrs.constructor.value));
       expect(obj1.$attrs.constructor.value).assertEqual('20.000000');
@@ -510,7 +510,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider22');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0010] obj1.$attrs.width is: " + JSON.stringify(obj1.$attrs.width));
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0010] obj1.$attrs.height is: " + JSON.stringify(obj1.$attrs.height));
@@ -531,7 +531,7 @@ export default function SliderInterfaceTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider23');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_SLIDER_LAYOUT_0020] obj1.$attrs.height is: " + JSON.stringify(obj1.$attrs.height));
       expect(obj1.$attrs.height).assertEqual('60.00vp');

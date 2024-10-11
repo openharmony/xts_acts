@@ -22,8 +22,8 @@ import inputEventClient from '@ohos.multimodalInput.inputEventClient';
 export default function RatingAdvancedTest() {
   describe('RatingAdvancedTest', () => {
 
-    async function routerPush(target) {
-      let options = {
+    const routerPush = async (target:string) => {
+      let options:router.RouterOptions = {
         url: `MainAbility/pages/Rating/ratingAdvanced/${target}`,
       }
       try {
@@ -64,7 +64,7 @@ export default function RatingAdvancedTest() {
       let rect = await btn1.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
       let strJson1 = getInspectorByKey('ratingText01');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0010] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain('2');
@@ -72,7 +72,7 @@ export default function RatingAdvancedTest() {
       await driver.click(297,246);
       await Utils.sleep(1000);
       let strJson2 = getInspectorByKey('ratingText01');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0010] obj2.$attrs.content is: " + obj2.$attrs.content);
       expect(obj2.$attrs.content).assertContain('4');
@@ -96,19 +96,19 @@ export default function RatingAdvancedTest() {
       console.info(`rect is: ` + JSON.stringify(rect))
 
       let strJson1 = getInspectorByKey('ratingText02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain('0');
       let strJson2 = getInspectorByKey('rating02');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020] obj2.$attrs.content is: " + obj2.$attrs.stars);
       expect(obj2.$attrs.stars).assertEqual("5");
 
       await driver.click(276,246);
       await Utils.sleep(1000);
       let strJson3 = getInspectorByKey('ratingText02');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020] obj3.$attrs.content is: " + obj3.$attrs.content);
       expect(obj3.$attrs.content).assertContain('1.5');
@@ -132,19 +132,19 @@ export default function RatingAdvancedTest() {
       console.info(`rect is: ` + JSON.stringify(rect))
 
       let strJson1 = getInspectorByKey('ratingText03');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0030] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain('-1');
       let strJson2 = getInspectorByKey('rating03');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020] obj2.$attrs.stars is: " + obj2.$attrs.stars);
       expect(obj2.$attrs.stars).assertEqual("5");
 
       await driver.click(269,246);
       await Utils.sleep(1000);
       let strJson3 = getInspectorByKey('ratingText03');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020] obj3.$attrs.content is: " + obj3.$attrs.content);
       expect(obj3.$attrs.content).assertContain('0.5');
@@ -170,7 +170,7 @@ export default function RatingAdvancedTest() {
       await driver.click(213,246);
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('ratingText04');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0040] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain('6');
@@ -178,7 +178,7 @@ export default function RatingAdvancedTest() {
       await driver.click(465,246);
       await Utils.sleep(1000);
       let strJson2 = getInspectorByKey('ratingText04');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0040] obj2.$attrs.content is: " + obj2.$attrs.content);
       expect(obj2.$attrs.content).assertContain('10');
@@ -199,19 +199,19 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('ratingText05');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0050] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain('8');
       let strJson2 = getInspectorByKey('rating05');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020] obj2.$attrs.stars is: " + obj2.$attrs.stars);
       expect(obj2.$attrs.stars).assertEqual("7");
 
       await driver.click(224,246);
       await Utils.sleep(1000);
       let strJson3 = getInspectorByKey('ratingText05');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0020] obj3.$attrs.content is: " + obj3.$attrs.content);
       expect(obj3.$attrs.content).assertContain('0.5');
@@ -236,7 +236,7 @@ export default function RatingAdvancedTest() {
       await driver.click(158,246);
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('ratingText06');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0060] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain('0.3');
@@ -262,7 +262,7 @@ export default function RatingAdvancedTest() {
       await btn2.click()
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('ratingText07');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0070] obj1 is: " + JSON.stringify(obj1));
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0070] obj1.$attrs.content is: " + obj1.$attrs.content);
@@ -272,7 +272,7 @@ export default function RatingAdvancedTest() {
       await btn2.click()
       await Utils.sleep(1000);
       let strJson2 = getInspectorByKey('ratingText07');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0070] obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0070] obj2.$attrs.content is: " + obj2.$attrs.content);
@@ -300,7 +300,7 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
 
       let strJson1 = getInspectorByKey('rating08');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0080] obj1.$attrs.stars is: " + obj1.$attrs.stars);
       expect(obj1.$attrs.stars).assertContain(4);
@@ -310,7 +310,7 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
 
       let strJson2 = getInspectorByKey('rating08');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0080] obj2.$attrs.stars is: " + obj2.$attrs.stars);
       expect(obj2.$attrs.stars).assertContain(5);
@@ -333,7 +333,7 @@ export default function RatingAdvancedTest() {
       await btn1.click()
 
       let strJson1 = getInspectorByKey('ratingText10');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0200] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertEqual("can't click rating");
@@ -356,7 +356,7 @@ export default function RatingAdvancedTest() {
       await btn1.click()
 
       let strJson1 = getInspectorByKey('ratingText11');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0210] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertEqual("can't click rating");

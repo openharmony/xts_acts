@@ -67,6 +67,8 @@ import RatingAdvancedTest from './RatingTest/RatingAdvanced.test'
 import SliderInterfaceTest from './slider/sliderInterfaceTest.test'
 
 export default function testsuite() {
+  RatingAdvancedTest()
+  SliderInterfaceTest()
   stageTimePickerDialog();
   stageTextPickerDialog();
   stageDatePickerDialog();
@@ -123,6 +125,4 @@ export default function testsuite() {
   TimePickerJsunit();
   timeStampJsunit();
   datePickerUIJsunit();
-  RatingAdvancedTest()
-  SliderInterfaceTest()
 }

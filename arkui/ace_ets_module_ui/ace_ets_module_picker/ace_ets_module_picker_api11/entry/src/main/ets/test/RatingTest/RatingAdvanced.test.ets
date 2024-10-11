@@ -21,8 +21,8 @@ import inputEventClient from '@ohos.multimodalInput.inputEventClient';
 export default function RatingAdvancedTest() {
   describe('RatingAdvancedTest', () => {
 
-    async function routerPush(target) {
-      let options = {
+    const routerPush = async (target:string) => {
+      let options:router.RouterOptions = {
         url: `MainAbility/pages/Rating/ratingAdvanced/${target}`,
       }
       try {
@@ -61,7 +61,7 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
       await driver.triggerKey(2049);
       let strJson1 = getInspectorByKey('ratingFocusText01');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0080] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain("Rating is focusAble");
@@ -82,7 +82,7 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
       await driver.triggerKey(2049);
       let strJson1 = getInspectorByKey('ratingFocusText02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0050] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain("Rating is not focusAble");
@@ -103,7 +103,7 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
       await driver.triggerKey(2049);
       let strJson1 = getInspectorByKey('ratingFocusText03');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0060] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain("Rating is focusAble");
@@ -124,7 +124,7 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
       await driver.triggerKey(2049);
       let strJson1 = getInspectorByKey('ratingFocusText04');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0070] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain("Rating is not focusAble");
@@ -145,7 +145,7 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
       await driver.triggerKey(2049);
       let strJson1 = getInspectorByKey('ratingFocusText05');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0080] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain("Rating is not focusAble");
@@ -166,7 +166,7 @@ export default function RatingAdvancedTest() {
       await Utils.sleep(1000);
       await driver.triggerKey(2049);
       let strJson1 = getInspectorByKey('ratingFocusText06');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0090] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain("Rating is not focusAble");
@@ -189,7 +189,7 @@ export default function RatingAdvancedTest() {
       await btn1.click()
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('ratingText01');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0010] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain('success rating');
@@ -212,7 +212,7 @@ export default function RatingAdvancedTest() {
       await btn1.click()
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('ratingText02');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0020] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertContain('failed rating');
@@ -235,12 +235,12 @@ export default function RatingAdvancedTest() {
       await btn1.click()
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('ratingText03');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0170] obj1.$attrs.content is: " + obj1.$attrs.content);
       expect(obj1.$attrs.content).assertEqual('success rating');
       let strJson2 = getInspectorByKey('rating03');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0170] obj2.$attrs.content is: " + obj2.$attrs.content);
       expect(obj2.$attrs.stepSize).assertContain(0.5);
@@ -260,7 +260,7 @@ export default function RatingAdvancedTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('rating04');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0010] obj1.$attrs.width is: " + obj1.$attrs.width);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0010] obj1.$attrs.height is: " + obj1.$attrs.height);
@@ -282,7 +282,7 @@ export default function RatingAdvancedTest() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('rating05');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0040] obj1.$attrs.width is: " + obj1.$attrs.width);
       console.info("[SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0040] obj1.$attrs.height is: " + obj1.$attrs.height);
