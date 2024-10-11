@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function SurfaceRotationOptionsLockTest() {
-  describe('SurfaceRotationOptionsLockTest', function () {
-    beforeEach(async function (done) {
+  describe('SurfaceRotationOptionsLockTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("SurfaceRotationOptionsLock beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/XComponent/surfaceRotationOptionsLock",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/XComponent/surfaceRotationOptionsLock",
       }
       try {
         router.clear();
@@ -50,11 +50,11 @@ export default function SurfaceRotationOptionsLockTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SurfaceRotationOptionsLockTest_0010', 0, async function (done) {
+    it('SurfaceRotationOptionsLockTest_0010', 0, async (done: Function) => {
       console.info('SurfaceRotationOptionsLockTest_0010 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SurfaceRotationOptionsLock');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[SurfaceRotationOptionsLockTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('Lock:true');
       console.info('[SurfaceRotationOptionsLockTest_0010] END');

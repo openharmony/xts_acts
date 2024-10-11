@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function setXComponentSurfaceRotationJsunit() {
-  describe('setXComponentSurfaceRotationJsunit', function () {
-    beforeEach(async function (done) {
+  describe('setXComponentSurfaceRotationJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("setXComponentSurfaceRotation beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/XComponent/setXComponentSurfaceRotation",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/XComponent/setXComponentSurfaceRotation",
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function setXComponentSurfaceRotationJsunit() {
         console.info("get setXComponentSurfaceRotation state pages: " + JSON.stringify(pages));
         if (!("setXComponentSurfaceRotation" == pages.name)) {
           console.info("get setXComponentSurfaceRotation state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push setXComponentSurfaceRotation success: " + JSON.stringify(result));
         }
@@ -43,19 +56,18 @@ export default function setXComponentSurfaceRotationJsunit() {
     });
 
     /**
-     * @tc.number    setXComponentSurfaceRotationTest_0010
-     * @tc.name      setXComponentSurfaceRotationTest_0010
-     * @tc.desc      Xcomponent: get the api of setXComponentSurfaceRotation
-     * @tc.level:    Level 2
+     * @tc.number setXComponentSurfaceRotationTest_0010
+     * @tc.name setXComponentSurfaceRotationTest_0010
+     * @tc.desc Xcomponent: get the api of setXComponentSurfaceRotation
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('setXComponentSurfaceRotationTest_0010', 0, async function (done) {
+    it('setXComponentSurfaceRotationTest_0010', 0, async (done: Function) => {
       console.info('setXComponentSurfaceRotationTest_0010 START');
       let strJson = getInspectorByKey('setXComponentSurfaceRotation_text');
-      let obj = JSON.parse(strJson);
-      console.info("[setXComponentSurfaceRotationTest_0010] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('{"lock":false}');
+      console.info("[setXComponentSurfaceRotationTest_0010] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('{"lock":false}');
       console.info('[setXComponentSurfaceRotationTest_0010] END');
       done();
     });

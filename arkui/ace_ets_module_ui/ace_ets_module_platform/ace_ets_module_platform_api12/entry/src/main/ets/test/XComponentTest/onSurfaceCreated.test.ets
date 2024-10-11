@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function onSurfaceCreatedJsunit() {
-  describe('onSurfaceCreatedJsunit', function () {
-    beforeEach(async function (done) {
+  describe('onSurfaceCreatedJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("onSurfaceCreated beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/XComponent/onSurfaceCreated",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/XComponent/onSurfaceCreated",
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function onSurfaceCreatedJsunit() {
         console.info("get onSurfaceCreated state pages: " + JSON.stringify(pages));
         if (!("onSurfaceCreated" == pages.name)) {
           console.info("get onSurfaceCreated state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push onSurfaceCreated success: " + JSON.stringify(result));
         }
@@ -43,14 +56,14 @@ export default function onSurfaceCreatedJsunit() {
     });
 
     /**
-     * @tc.number    onSurfaceCreatedTest_0010
-     * @tc.name      onSurfaceCreatedTest_0010
-     * @tc.desc      Xcomponent: get the api of onSurfaceCreated
-     * @tc.level:    Level 2
+     * @tc.number onSurfaceCreatedTest_0010
+     * @tc.name onSurfaceCreatedTest_0010
+     * @tc.desc Xcomponent: get the api of onSurfaceCreated
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('onSurfaceCreatedTest_0010', 0, async function (done) {
+    it('onSurfaceCreatedTest_0010', 0, async (done: Function) => {
       console.info('onSurfaceCreatedTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -58,22 +71,21 @@ export default function onSurfaceCreatedJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('onSurfaceCreated_text');
-      let obj = JSON.parse(strJson);
-      console.info("[onSurfaceCreatedTest_0010] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('onSurfaceCreated succ');
+      console.info("[onSurfaceCreatedTest_0010] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('onSurfaceCreated succ');
       console.info('[onSurfaceCreatedTest_0010] END');
       done();
     });
 
     /**
-     * @tc.number    onSurfaceChangedTest_0020
-     * @tc.name      onSurfaceChangedTest_0020
-     * @tc.desc      Xcomponent: get the api of onSurfaceChanged
-     * @tc.level:    Level 2
+     * @tc.number onSurfaceChangedTest_0020
+     * @tc.name onSurfaceChangedTest_0020
+     * @tc.desc Xcomponent: get the api of onSurfaceChanged
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('onSurfaceChangedTest_0020', 0, async function (done) {
+    it('onSurfaceChangedTest_0020', 0, async (done: Function) => {
       console.info('onSurfaceChangedTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -84,22 +96,21 @@ export default function onSurfaceCreatedJsunit() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('onSurfaceChanged_text');
-      let obj = JSON.parse(strJson);
-      console.info("[onSurfaceChangedTest_0020] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('onSurfaceChanged succ');
+      console.info("[onSurfaceChangedTest_0020] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('onSurfaceChanged succ');
       console.info('[onSurfaceChangedTest_0020] END');
       done();
-    }); 
+    });
 
     /**
-     * @tc.number    onSurfaceDestroyedTest_0030
-     * @tc.name      onSurfaceDestroyedTest_0030
-     * @tc.desc      Xcomponent: get the api of onSurfaceDestroyed
-     * @tc.level:    Level 2
+     * @tc.number onSurfaceDestroyedTest_0030
+     * @tc.name onSurfaceDestroyedTest_0030
+     * @tc.desc Xcomponent: get the api of onSurfaceDestroyed
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('onSurfaceDestroyedTest_0030', 0, async function (done) {
+    it('onSurfaceDestroyedTest_0030', 0, async (done: Function) => {
       console.info('onSurfaceDestroyedTest_0030 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -110,12 +121,11 @@ export default function onSurfaceCreatedJsunit() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('onSurfaceDestroyed_text');
-      let obj = JSON.parse(strJson);
-      console.info("[onSurfaceDestroyedTest_0030] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('onSurfaceDestroyed succ');
+      console.info("[onSurfaceDestroyedTest_0030] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('onSurfaceDestroyed succ');
       console.info('[onSurfaceDestroyedTest_0030] END');
       done();
-    }); 
+    });
   })
 }
 

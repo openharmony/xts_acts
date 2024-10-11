@@ -14,15 +14,28 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function onTerminatedJsunit() {
-  describe('onTerminatedJsunit', function () {
-    beforeEach(async function (done) {
+  describe('onTerminatedJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("onTerminated beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/EmbeddedComponent/onTerminated",
       }
       try {
@@ -31,7 +44,7 @@ export default function onTerminatedJsunit() {
         console.info("get onTerminated state pages: " + JSON.stringify(pages));
         if (!("onTerminated" == pages.name)) {
           console.info("get onTerminated state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push onTerminated success: " + JSON.stringify(result));
         }
@@ -43,19 +56,18 @@ export default function onTerminatedJsunit() {
     });
 
     /**
-     * @tc.number    onTerminatedTest_0010
-     * @tc.name      onTerminatedTest_0010
-     * @tc.desc      EmbeddedComponent: get the api of onTerminated
-     * @tc.level:    Level 2
+     * @tc.number onTerminatedTest_0010
+     * @tc.name onTerminatedTest_0010
+     * @tc.desc EmbeddedComponent: get the api of onTerminated
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('onTerminatedTest_0010', 0, async function (done) {
+    it('onTerminatedTest_0010', 0, async (done: Function) => {
       console.info('onTerminatedTest_0010 START');
       let strJson = getInspectorByKey('onTerminated_text');
-      let obj = JSON.parse(strJson);
-      console.info("[onTerminatedTest_0010] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('onTerminated succ');
+      console.info("[onTerminatedTest_0010] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('onTerminated succ');
       console.info('[onTerminatedTest_0010] END');
       done();
     });
