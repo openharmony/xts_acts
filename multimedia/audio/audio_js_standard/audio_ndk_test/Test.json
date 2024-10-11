@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAudioNapiEtsTestMain.hap",
+                "ActsAudioNapiEtsMainTest.hap",
                 "ActsAudioNapiEtsTest.hap"
             ],
             "type": "AppInstallKit",

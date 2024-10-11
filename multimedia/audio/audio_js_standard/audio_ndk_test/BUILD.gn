@@ -19,7 +19,7 @@ import("//foundation/arkui/napi/napi.gni")
 ohos_app_assist_suite("audioDemo_ndk_hap_main") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAudioNapiEtsTestMain"
+  hap_name = "ActsAudioNapiEtsMainTest"
 
   # 部件名称，真实数据，需要子系统对应
   part_name = "audio_framework"
