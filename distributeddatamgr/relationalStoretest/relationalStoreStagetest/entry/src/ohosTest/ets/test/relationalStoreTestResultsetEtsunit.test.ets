@@ -17,7 +17,8 @@ import dataRdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
 
 const TAG = '[RDB_JSKITS_TEST]';
-const CREATE_TABLE_TEST = 'CREATE TABLE IF NOT EXISTS test (' + 'id INTEGER PRIMARY KEY AUTOINCREMENT, ' + 'data1 text,' + 'data2 long, ' + 'data3 double,' + 'data4 blob)';
+let bigdata = 'a'.repeat(100)
+const CREATE_TABLE_TEST = 'CREATE TABLE IF NOT EXISTS test (' + 'id INTEGER PRIMARY KEY AUTOINCREMENT, ' + bigdata + ' text,' + '"邮箱：abc#$123@abc.com" long,' + '"@#$%^&*" text,' + '" " text,' + '年龄 long,' + 'data text,' + 'data1 text,' + 'data2 long, ' + 'data3 double,' + 'data4 blob,' + '"1" INTEGER)';
 let context: common.UIAbilityContext;
 const STORE_CONFIG: dataRdb.StoreConfig = {
     name: 'Resultset.db',
@@ -38,6 +39,12 @@ let resultSet: dataRdb.ResultSet | null = null;
                 'data2': 10,
                 'data3': 1.0,
                 'data4': u8,
+                '"1"': 123,
+                'data': 'data',
+                '年龄': 13,
+                '" "': 'kong',
+                '"@#$%^&*"': 'special',
+                '"邮箱：abc#$123@abc.com"':'abc#$123@abc.com'
             };
             await rdbStore.insert('test', valueBucket);
         }
@@ -148,6 +155,40 @@ describe('relationalStoreResultSetTest', () => {
       
       done();
       console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0020 end *************');
+    })
+    /**
+     * @tc.name SUB_DDM_RELATIONALETS_RESULTSET_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsApiTest_8500
+     * @tc.desc resultSet getRow normal test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_DDM_RELATIONALETS_RESULTSET_0030', 0, async (done: Function) => {
+        console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0030 start *************');
+        let predicates = new dataRdb.RdbPredicates('test');
+        let resultSet = await rdbStore.query(predicates);
+        try {
+            {
+                expect(true).assertEqual(resultSet.goToFirstRow());
+                let row = (resultSet as dataRdb.ResultSet).getRow();
+                console.log(TAG + JSON.stringify(row));
+                expect(123).assertEqual(row["1"]);
+                expect('data').assertEqual(row['data']);
+                expect(13).assertEqual(row['年龄']);
+                expect('kong').assertEqual(row[' ']);
+                expect('special').assertEqual(row['@#$%^&*']);
+                expect(null).assertEqual(row[bigdata]);
+                expect('abc#$123@abc.com').assertEqual(row['邮箱：abc#$123@abc.com']);
+            }
+            resultSet.close();
+            expect(true).assertEqual(resultSet.isClosed);
+        } catch (e) {
+            expect(null).assertFail();
+        }
+
+        done();
+        console.info(TAG + '************* SUB_DDM_RELATIONALETS_RESULTSET_0030 end *************');
     })
     console.info(TAG + '*************Unit Test End*************');
 })
