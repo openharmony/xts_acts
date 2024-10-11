@@ -30,7 +30,7 @@ export default function moveAbilityToBackgroundTest() {
       } catch(err) {
         console.error(`MoveAbilityToBackground Get system parameter error: ${JSON.stringify(err)}`);
       }
-      console.log(`${tag} MoveAbilityToBackground Get system parameter mpEnable is ${mpEnable}`);
+      console.log(`MoveAbilityToBackground Get system parameter mpEnable is ${mpEnable}`);
     });
     beforeEach(() => {
     });
