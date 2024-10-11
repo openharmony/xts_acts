@@ -29,7 +29,6 @@ let mainability:UIAbility;
 const START_ABILITY_TIMEOUT = 10000;
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 const START_ABILITY_TIMEOUT_THOUSAND = 1000;
-let mpEnable:string = '';
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time))
 }
@@ -38,13 +37,7 @@ export default function abilityTest() {
 
   describe('ActsChangeAbilityStagetest', () => {
     beforeAll(async (done:Function) => {
-      console.info('beforeAll called')
-      try {
-        mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable', 'false');
-      } catch(err) {
-        console.error(`MoveAbilityToBackground Get system parameter error: ${JSON.stringify(err)}`);
-      }
-      console.log(`${tag} MoveAbilityToBackground Get system parameter mpEnable is ${mpEnable}`);
+      console.info('beforeAll called');
       let delay = 3000;
       let start = new Date().getTime();
       while (true) {
@@ -62,7 +55,7 @@ export default function abilityTest() {
         done()
       })
     })
-    console.log("====>in describe====>");
+    console.log('====>in describe====>');
 
     /*
      * @tc.number  : ACTS_DoAbilityForeground_0100
