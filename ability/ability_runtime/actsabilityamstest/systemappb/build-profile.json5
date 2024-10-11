@@ -1,0 +1,70 @@
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/hu_guojin/.ohos/config/openharmony/default_systemappb_Ptwh07Fh0Lrd_7Qa5vjVf9k4twDC95V0S9KEgzvrXaI=.cer",
+          "storePassword": "000000198D8BFFAE4BE03F5BF0585306795EB8ED9C24C90787B59035DCBBEC0E52170495EFA75F384E",
+          "keyAlias": "debugKey",
+          "keyPassword": "000000194D1E1275112D182596A0EF1ED0029236944EAAF78579458267744FA486E5968E4115299047",
+          "profile": "C:/Users/hu_guojin/.ohos/config/openharmony/default_systemappb_Ptwh07Fh0Lrd_7Qa5vjVf9k4twDC95V0S9KEgzvrXaI=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/hu_guojin/.ohos/config/openharmony/default_systemappb_Ptwh07Fh0Lrd_7Qa5vjVf9k4twDC95V0S9KEgzvrXaI=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": 12,
+        "compileSdkVersion": 12,
+        "targetSdkVersion": 12,
+        "runtimeOS": "OpenHarmony",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
