@@ -11,14 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("ActsArktsModuleTest") {
+ohos_app_assist_suite("basic_scenario_main") {
+  hap_name = "ActsArkTsNapiLoadTest"
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "basic_scenario:ActsArktsModuleBasicScenarioTest",
-      "napi_load:ActsArkTsNapiLoadTest",
-    ]
-  }
+  part_name = "ets_runtime"
+  subsystem_name = "arkcompiler"
+  certificate_profile = "./signature/myApplication_ohos_Provision.p7b"
+}
+ohos_js_app_suite("ActsArkTsNapiLoadTest") {
+  hap_name = "ActsArkTsNapiLoadTest"
+  testonly = true
+  test_hap = true
+  part_name = "ets_runtime"
+  subsystem_name = "arkcompiler"
+  certificate_profile = "./signature/myApplication_ohos_Provision.p7b"
+  deps = [ ":basic_scenario_main" ]
 }
