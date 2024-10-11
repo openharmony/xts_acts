@@ -29,7 +29,7 @@ static void OnCallbackCompleted(void)
 static napi_value RequestSuspendDelay(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    int32_t res = OH_BackgroundTaskManager_RequestSuspendDelay("test", callback, &delaySuspendInfo);
+    int32_t res = OH_BackgroundTaskManager_RequestSuspendDelay("test", OnCallbackCompleted, &delaySuspendInfo);
     if (res == 0) {
         napi_create_int32(env, delaySuspendInfo.requestId, &result);
     } else {
