@@ -13,31 +13,15 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("stream_js_test") {
-  hap_profile = "src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":stream_ets_assets",
-    ":stream_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_js_app_suite("stream_js_test") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsStreamApiTest"
-  subsystem_name = "commonlibrary"
+
+  # 部件名称，真实数据，需要子系统对应
   part_name = "ets_utils"
-}
 
-ohos_app_scope("stream_ets_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("stream_ets_assets") {
-  source_dir = "src/main/ets"
-}
-
-ohos_resources("stream_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":stream_ets_app_profile" ]
-  hap_profile = "src/main/module.json"
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "commonlibrary"
 }

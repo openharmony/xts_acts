@@ -19,7 +19,7 @@ import { common } from './common';
 import emitter from '@ohos.events.emitter';
 
 export default function StreamTest() {
-  describe('ActStreamTest', function () {
+  describe('ActStreamTest', () => {
     afterEach(async () => {
       await common.mustCallCheckAll().catch(e => expect(e.message).assertNull());
     })
@@ -49,7 +49,7 @@ export default function StreamTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testStreamWritable002', 0, function () {
+    it('testStreamWritable002', 0, () => {
       let writableStream = new stream.Writable();
       expect(writableStream.writable).assertEqual(true);
       writableStream.end();
@@ -367,7 +367,7 @@ export default function StreamTest() {
       }));
       writable.cork();
       writable.write('test');
-      setTimeout(function () {
+      setTimeout(() => {
         writable.end('test');
       }, 10);
     });
@@ -1247,7 +1247,7 @@ export default function StreamTest() {
     it('testStreamWritableWritev001', 0, () => {
       let writable = new stream.Writable();
       let doWriteVCalled = false;
-      writable.doWritev = common.mustCall(function (chunks, cb) {
+      writable.doWritev = common.mustCall((chunks, cb) => {
         doWriteVCalled = true;
         cb();
       })
@@ -3151,7 +3151,7 @@ export default function StreamTest() {
      */
     it('testStreamDuplexDoWritev003', 0, () => {
       let duplex = new stream.Duplex();
-      duplex.doWritev = common.mustCall(function (chunks: string[] | Uint8Array[], callback: Function) {
+      duplex.doWritev = common.mustCall((chunks: string[] | Uint8Array[], callback: Function) => {
         callback();
         callback();
       })

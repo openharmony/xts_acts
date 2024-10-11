@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
+        "shell-timeout": "800000",
         "bundle-name": "com.example.stream",
-        "module-name": "stream_test",
-        "shell-timeout": "800000"
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -14,6 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
-    ] 
+    ]
 }
