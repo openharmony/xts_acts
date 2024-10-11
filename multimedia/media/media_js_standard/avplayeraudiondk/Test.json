@@ -10,7 +10,8 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAVPlayerAudioNDKTest.hap"
+            "ActsAVPlayerAudioNDKTest.hap",
+			"ActsAVPlayerAudioNDKMainTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
@@ -32,8 +33,7 @@
         "type": "ShellKit",
         "run-command": [
             "scanner",
-            "param set persist.ace.testmode.enabled 1",
-            "setenforce 0"
+            "param set persist.ace.testmode.enabled 1"
         ]
     }]
 }

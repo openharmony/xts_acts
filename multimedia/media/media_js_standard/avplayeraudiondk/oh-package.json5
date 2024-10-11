@@ -13,31 +13,14 @@
  * limitations under the License.
  */
 {
-  "app": {
-    "signingConfigs": [],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 14,
-        "compatibleSdkVersion": 13,
-        "targetSdkVersion": 13,
-        "runtimeOS": "OpenHarmony",
-      }
-    ]
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
   },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
-    }
-  ]
+  "author": "",
+  "name": "myapplication",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }

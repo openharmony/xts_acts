@@ -13,31 +13,21 @@
  * limitations under the License.
  */
 {
-  "app": {
-    "signingConfigs": [],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 14,
-        "compatibleSdkVersion": 13,
-        "targetSdkVersion": 13,
-        "runtimeOS": "OpenHarmony",
-      }
-    ]
+  "apiType": 'stageMode',
+  "buildOption": {
+    "externalNativeOptions": {
+      "path": "./src/main/cpp/CMakeLists.txt",
+      "arguments": "",
+      "cppFlags": "",
+	  "abiFilters": ["arm64-v8a", "armeabi-v7a", "x86_64"],
+    }
   },
-  "modules": [
+  "targets": [
     {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
+      "name": "default",
+    },
+    {
+      "name": "ohosTest",
     }
   ]
 }
