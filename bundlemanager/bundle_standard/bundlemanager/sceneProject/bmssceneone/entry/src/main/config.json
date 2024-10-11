@@ -1,16 +1,32 @@
 {
   "app": {
-    "vendor": "example",
     "bundleName": "com.example.myapplication1",
+    "vendor": "example",
     "version": {
       "code": 1,
       "name": "1.0"
+    },
+    "apiVersion": {
+      "compatible": 5,
+      "target": 5,
+      "releaseType": "Beta1"
     }
   },
-  "deviceConfig": {
-    "default": {}
-  },
+  "deviceConfig": {},
   "module": {
+    "package": "com.example.myapplication1",
+    "name": ".MyApplication1",
+    "deviceType": [
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
     "abilities": [
       {
         "skills": [
@@ -23,49 +39,37 @@
             ]
           }
         ],
+        "name": ".MainAbility",
         "icon": "$media:icon",
-        "name": "com.example.myapplication1.MainAbility",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
+        "isVisible": "true",
         "launchType": "standard",
+        "orientation": "unspecified",
+        "language": "C++",
+        "permissions": [
+          "com.permission.BMS_PERMISSION_CAMERA"
+        ],
         "metaData": {
           "customizeData": [
             {
-              "name": "Data3",
-              "value": "float",
-              "extra": "$string:mainability_description"
+              "name": "originWidgetName",
+              "value": "com.weather.testWidget"
             }
           ]
-        },
-        "srcPath": "default",
-        "srcLanguage": "js"
+        }
       }
     ],
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
-    "mainAbility": "com.example.myapplication1.MainAbility",
-    "distro": {
-      "moduleType": "entry",
-      "installationFree": false,
-      "deliveryWithInstall": true,
-      "moduleName": "entry"
-    },
-    "package": "com.example.l3jsdemo",
-    "name": ".MyApplication",
     "js": [
       {
         "pages": [
           "pages/index/index"
         ],
-        "name": "com.example.myapplication1.MainAbility",
+        "name": ".MainAbility",
         "window": {
           "designWidth": 720,
-          "autoDesignWidth": true
+          "autoDesignWidth": false
         }
       }
     ],
@@ -98,6 +102,16 @@
           "when": "always"
         }
       }
-    ]
+    ],
+    "metaData": {
+      "customizeData": [
+        {
+          "name": "metaDataName",
+          "value": "metaDataValue",
+          "extra": "$string:app_name"
+        }
+      ]
+    },
+    "description": "$string:entry_description"
   }
 }
