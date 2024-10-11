@@ -820,10 +820,14 @@ export default function cameraJSUnitOutput() {
      */
     it('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100', 1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100--------------");
+      createPhotoSession(1);
       if (isEmpty(metadataOutput)) {
         console.info(TAG +
           "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100 metadataOutput == null || undefined")
       } else {
+        await addCommit(0, 1);
+        cameraSession.addOutput(metadataOutput);
+        cameraSession.commitConfig();
         metadataOutput.start(async (err) => {
           if (!err) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100 success");
