@@ -22,8 +22,7 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
   isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
   errorManageTest, dealHashMapTest, noUseConcurrentTest, sendDataTest, sendableClassTestFunc, Int8ArrayTestFunc,
-  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray
-  } from './testFunclist'
+  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray } from './testFunclist'
 import { A, B, StrCat, printArgs, printStrArgs } from './exportFunclist'
 import { SendableClass, SimpleSendable } from './sendable';
 import HashMap from '@ohos.util.HashMap';
