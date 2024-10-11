@@ -489,7 +489,7 @@ function testNotifyUpdatePackages() {
     let updatePaskageInfo: Array<systemManager.Package> = [{
       "type": systemManager.PackageType.FIRMWARE,
       "path": "path",
-      "fd": 60,
+      "fd": -1,
     }]
     let updatePackageInfo: systemManager.UpdatePackageInfo = {
       "version" : UPDATE_VERSION,
