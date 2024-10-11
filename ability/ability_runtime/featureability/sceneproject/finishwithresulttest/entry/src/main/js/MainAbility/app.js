@@ -18,8 +18,8 @@ import featureAbility from '@ohos.ability.featureAbility'
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
-function PublishCallBack() {
-    console.debug("====>Publish CallBack ACTS_FinishWithResult_0200_CommonEvent====>");
+function publishCallBack() {
+    console.debug('====>Publish CallBack ACTS_FinishWithResult_0200_CommonEvent====>');
 }
 export default {
     data: {
@@ -29,14 +29,14 @@ export default {
         this.title = this.$t('strings.world');
     },
     async onShow() {
-        commonEvent.publish("ACTS_FinishWithResult_0200_CommonEvent", PublishCallBack);
+        commonEvent.publish('ACTS_FinishWithResult_0200_CommonEvent', publishCallBack);
         let promise = await featureAbility.terminateSelfWithResult(
             {
                 resultCode: 1,
                 want:
                 {
-                    bundleName: "com.example.finishwithresulttest",
-                    abilityName: "com.example.finishwithresulttest.MainAbility",
+                    bundleName: 'com.example.finishwithresulttest',
+                    abilityName: 'com.example.finishwithresulttest.MainAbility',
                 },
             }
         );

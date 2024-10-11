@@ -47,7 +47,7 @@ export default {
         );
         featureAbility.terminateSelf(
             (err, data)=>{
-                console.debug('==========Terminate Ability Success==========')
+                console.debug('==========Terminate Ability Success==========');
         });
     },
     onReady() {

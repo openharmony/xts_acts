@@ -35,10 +35,10 @@ export default {
         this.title = this.$t('strings.world');
     },
     async onShow() {
-        commonEvent.publish("ACTS_GetCallingBundle_0100_CommonEvent", publishCallBackOne);
+        commonEvent.publish('ACTS_GetCallingBundle_0100_CommonEvent', publishCallBackOne);
         let context = featureAbility.getContext();
         let info = await context.getCallingBundle();
-        commonEvent.publish(info + ".promise", publishCallBackTwo);
+        commonEvent.publish(info + '.promise', publishCallBackTwo);
         context.getCallingBundle(
             (err, data) => {
                 console.debug('getCallingBundle : ' + data);
