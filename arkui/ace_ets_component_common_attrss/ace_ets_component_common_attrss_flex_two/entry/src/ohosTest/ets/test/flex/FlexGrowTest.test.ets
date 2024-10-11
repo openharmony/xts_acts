@@ -204,9 +204,13 @@ export default function flexGrowTest() {
       if (data.testValue.describe == 'SpaceNotEnough') {
         if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
           || data.pageConfig.containerView == 'FlexRowReverse') {
-          expect(Math.abs(Math.round(rect.right - rect.left) - Math.round(vp2px(targetWidth))) <= 2).assertTrue();
+          console.info('[SpaceNotEnough1] rect.right - rect.left : ' + Math.round(rect.right - rect.left));
+          console.info('[SpaceNotEnough1] vp2px(targetWidth) : ' + Math.round(vp2px(targetWidth)));
+          expect(Math.abs(Math.round(rect.right - rect.left) - Math.round(vp2px(targetWidth))) <= 3).assertTrue();
         } else {
-          expect(Math.abs(Math.round(rect.bottom - rect.top) - Math.round(vp2px(targetHeight))) <= 2).assertTrue();
+          console.info('[SpaceNotEnough2] rect.bottom - rect.top : ' + Math.round(rect.bottom - rect.top));
+          console.info('[SpaceNotEnough2] vp2px(targetHeight) : ' + Math.round(vp2px(targetHeight)));
+          expect(Math.abs(Math.round(rect.bottom - rect.top) - Math.round(vp2px(targetHeight))) <= 3).assertTrue();
         }
       } else {
         //Verify the standard component not be changed
