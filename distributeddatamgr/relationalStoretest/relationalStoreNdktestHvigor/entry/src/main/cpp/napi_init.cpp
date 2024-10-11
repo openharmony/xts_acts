@@ -23,7 +23,7 @@
 #include "database/rdb/relational_store.h"
 #include "database/rdb/relational_store_error_code.h"
 
-
+#define DIRMODE 0770
 const char *TAG = "testLog";
 static  const char *RDB_TEST_PATH = "/data/storage/el2/database/ohos.acts.relationalstorendktesthvigor/entry/";
 
@@ -93,7 +93,7 @@ static napi_value OH_Rdb_SetDbType_0100(napi_env env, napi_callback_info info)
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_SetDbType RDB_SQLITE   errcode= %{public}d", errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetDbType RDB_SQLITE is fail.");
     
-    mkdir(RDB_TEST_PATH, 0770);
+    mkdir(RDB_TEST_PATH, DIRMODE);
     auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
     errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CloseStore is fail.");
@@ -180,7 +180,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0100(napi_env env, napi_callback_info 
     errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
     errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
     
-    mkdir(RDB_TEST_PATH, 0770);
+    mkdir(RDB_TEST_PATH, DIRMODE);
     auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
 
     char createTableSql[] = "CREATE TABLE store_test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
@@ -220,7 +220,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0200(napi_env env, napi_callback_info 
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
     errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
     
-    mkdir(RDB_TEST_PATH, 0770);
+    mkdir(RDB_TEST_PATH, DIRMODE);
     auto store = OH_Rdb_CreateOrOpen(config, &errCode);
     NAPI_ASSERT(env, store != nullptr, "OH_Rdb_CreateOrOpen is fail.");
 
@@ -274,8 +274,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0200(napi_env env, napi_callback_info 
 
 static napi_value OH_Rdb_SetDbType_SQLITE_0300(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0300 OH_Rdb_RollBackByTrxId ------------- ");
-
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0300 OH_Rdb_RollBackByTrxId ----------- ");
     int errCode = OH_Rdb_ErrCode::RDB_OK;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
@@ -287,8 +286,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0300(napi_env env, napi_callback_info 
     OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
     errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
-    
-    mkdir(RDB_TEST_PATH, 0770);
+    mkdir(RDB_TEST_PATH, DIRMODE);
     auto store = OH_Rdb_CreateOrOpen(config, &errCode);
     NAPI_ASSERT(env, store != nullptr, "OH_Rdb_CreateOrOpen is fail.");
 
@@ -314,20 +312,16 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0300(napi_env env, napi_callback_info 
     char querySql[] = "SELECT * FROM t1;";
     OH_Cursor *cursor = OH_Rdb_ExecuteQuery(store, querySql);
     NAPI_ASSERT(env, cursor != nullptr, "OH_Rdb_ExecuteQuery is fail.");
-
     int rowCount = 0;
     cursor->getRowCount(cursor, &rowCount);
     NAPI_ASSERT(env, rowCount == 1, "getRowCount rowCount is fail.");
-
     cursor->destroy(cursor);
     char dropSql[] = "DROP TABLE IF EXISTS t1;";
     errCode = OH_Rdb_ExecuteByTrxId(store, 0, dropSql);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_ExecuteByTrxId is fail.");
-
     char dropTableSql[] = "DROP TABLE IF EXISTS store_test";
     errCode =OH_Rdb_Execute(store, dropTableSql);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_Execute  dropTableSql is fail.");
-    
     errCode = OH_Rdb_CloseStore(store);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CloseStore is fail.");
     errCode = OH_Rdb_DeleteStoreV2(config);
@@ -343,7 +337,6 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0300(napi_env env, napi_callback_info 
 static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0100(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0300 Trxid=-1  ------------- ");
-
     int errCode = OH_Rdb_ErrCode::RDB_OK;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
@@ -355,8 +348,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0100(napi_env env, napi_callback
     OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
     errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
-    
-    mkdir(RDB_TEST_PATH, 0770);
+    mkdir(RDB_TEST_PATH, DIRMODE);
     auto store = OH_Rdb_CreateOrOpen(config, &errCode);
     NAPI_ASSERT(env, store != nullptr, "OH_Rdb_CreateOrOpen is fail.");
 
@@ -369,7 +361,6 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0100(napi_env env, napi_callback
     errCode = OH_Rdb_BeginTransWithTrxId(store, &trxId);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_BeginTransWithTrxId 222  errcode= %{public}d", errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_NOT_SUPPORTED, "OH_Rdb_BeginTransWithTrxId 222 is fail.");
-
     char insertSql[] = "INSERT INTO t1 VALUES(2, '[1, 2, 3, 4]');";
     errCode = OH_Rdb_ExecuteByTrxId(store, -1, insertSql);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_ExecuteByTrxId INSERT  errcode= %{public}d", errCode);
@@ -378,15 +369,12 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0100(napi_env env, napi_callback
     errCode = OH_Rdb_RollBackByTrxId (store, -1);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_RollBackByTrxId 222  errcode= %{public}d", errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_NOT_SUPPORTED, "OH_Rdb_RollBackByTrxId is fail.");
-
     char querySql[] = "SELECT * FROM t1;";
     OH_Cursor *cursor = OH_Rdb_ExecuteQuery(store, querySql);
     NAPI_ASSERT(env, cursor != nullptr, "OH_Rdb_ExecuteQuery is fail.");
-
     int rowCount = 0;
     cursor->getRowCount(cursor, &rowCount);
     NAPI_ASSERT(env, rowCount == 1, "getRowCount rowCount is fail.");
-
     cursor->destroy(cursor);
     char dropSql[] = "DROP TABLE IF EXISTS t1;";
     errCode = OH_Rdb_ExecuteByTrxId(store, -1, dropSql);
@@ -395,7 +383,6 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0100(napi_env env, napi_callback
     char dropTableSql[] = "DROP TABLE IF EXISTS store_test";
     errCode =OH_Rdb_Execute(store, dropTableSql);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_Execute  dropTableSql is fail.");
-    
     errCode = OH_Rdb_CloseStore(store);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CloseStore is fail.");
     errCode = OH_Rdb_DeleteStoreV2(config);
@@ -411,7 +398,6 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0100(napi_env env, napi_callback
 static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0200(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0300 Trxid=2  ------------- ");
-
     int errCode = OH_Rdb_ErrCode::RDB_OK;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
@@ -423,11 +409,9 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0200(napi_env env, napi_callback
     OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
     errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
-    
-    mkdir(RDB_TEST_PATH, 0770);
+    mkdir(RDB_TEST_PATH, DIRMODE);
     auto store = OH_Rdb_CreateOrOpen(config, &errCode);
     NAPI_ASSERT(env, store != nullptr, "OH_Rdb_CreateOrOpen is fail.");
-
     char createTableSql[] = "CREATE TABLE t1(id INT PRIMARY KEY, repr floatvector(4));";
     errCode = OH_Rdb_ExecuteByTrxId(store, 2, createTableSql);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_ExecuteByTrxId CREATE   errcode= %{public}d", errCode);
@@ -442,28 +426,22 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0200(napi_env env, napi_callback
     errCode = OH_Rdb_ExecuteByTrxId(store, 2, insertSql);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_ExecuteByTrxId INSERT  errcode= %{public}d", errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_ExecuteByTrxId is fail.");
-
     errCode = OH_Rdb_RollBackByTrxId (store, 2);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_RollBackByTrxId 222  errcode= %{public}d", errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_NOT_SUPPORTED, "OH_Rdb_RollBackByTrxId is fail.");
-
     char querySql[] = "SELECT * FROM t1;";
     OH_Cursor *cursor = OH_Rdb_ExecuteQuery(store, querySql);
     NAPI_ASSERT(env, cursor != nullptr, "OH_Rdb_ExecuteQuery is fail.");
-
     int rowCount = 0;
     cursor->getRowCount(cursor, &rowCount);
     NAPI_ASSERT(env, rowCount == 1, "getRowCount rowCount is fail.");
-
     cursor->destroy(cursor);
     char dropSql[] = "DROP TABLE IF EXISTS t1;";
     errCode = OH_Rdb_ExecuteByTrxId(store, 2, dropSql);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_ExecuteByTrxId is fail.");
-
     char dropTableSql[] = "DROP TABLE IF EXISTS store_test";
     errCode =OH_Rdb_Execute(store, dropTableSql);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_Execute  dropTableSql is fail.");
-    
     errCode = OH_Rdb_CloseStore(store);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CloseStore is fail.");
     errCode = OH_Rdb_DeleteStoreV2(config);
@@ -480,16 +458,26 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"OH_Rdb_CreateConfig_0100", nullptr, OH_Rdb_CreateConfig_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_CreateConfig_0200", nullptr, OH_Rdb_CreateConfig_0200, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_SetDbType_0100", nullptr, OH_Rdb_SetDbType_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_SetDbType_0300", nullptr, OH_Rdb_SetDbType_0300, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_GetSupportedDbType_0100", nullptr, OH_Rdb_GetSupportedDbType_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_SetDbType_SQLITE_0100", nullptr, OH_Rdb_SetDbType_SQLITE_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_SetDbType_SQLITE_0200", nullptr, OH_Rdb_SetDbType_SQLITE_0200, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_SetDbType_SQLITE_0300", nullptr, OH_Rdb_SetDbType_SQLITE_0300, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_SetDbType_SQLITE_Trxid_0100", nullptr, OH_Rdb_SetDbType_SQLITE_Trxid_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Rdb_SetDbType_SQLITE_Trxid_0200", nullptr, OH_Rdb_SetDbType_SQLITE_Trxid_0200, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Rdb_CreateConfig_0100", nullptr, OH_Rdb_CreateConfig_0100, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_CreateConfig_0200", nullptr, OH_Rdb_CreateConfig_0200, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_SetDbType_0100", nullptr, OH_Rdb_SetDbType_0100, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_SetDbType_0300", nullptr, OH_Rdb_SetDbType_0300, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_GetSupportedDbType_0100", nullptr, OH_Rdb_GetSupportedDbType_0100, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_SetDbType_SQLITE_0100", nullptr, OH_Rdb_SetDbType_SQLITE_0100, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_SetDbType_SQLITE_0200", nullptr, OH_Rdb_SetDbType_SQLITE_0200, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_SetDbType_SQLITE_0300", nullptr, OH_Rdb_SetDbType_SQLITE_0300, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_SetDbType_SQLITE_Trxid_0100", nullptr, OH_Rdb_SetDbType_SQLITE_Trxid_0100, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
+        {"OH_Rdb_SetDbType_SQLITE_Trxid_0200", nullptr, OH_Rdb_SetDbType_SQLITE_Trxid_0200, nullptr, nullptr, nullptr, 
+        napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
