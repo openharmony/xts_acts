@@ -22,6 +22,7 @@ group("relationalStoretest") {
       "relationalStoreEtstest:ActsRelationalStoreEtsTest",
       "relationalStoreJstest/hap:relationalstore_js_test",
       "relationalStoreNdktest:ActsRelationalStoreNdkTest",
+      "relationalStoreNdktestHvigor:ActsRelationalStoreNdkTestHvigor",
       "relationalStoreSendabletest:relationalstoreSendable_ets_test",
       "relationalStoreStagetest:relationalstore_ets_test",
     ]
