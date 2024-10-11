@@ -18,8 +18,6 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from '../../MainAbility/common/Utils';
 import { BusinessError } from '@ohos.base';
 
-;
-
 export default function videoJsunit2() {
   describe('videoTest', () => {
     beforeEach(async (done: Function) => {
