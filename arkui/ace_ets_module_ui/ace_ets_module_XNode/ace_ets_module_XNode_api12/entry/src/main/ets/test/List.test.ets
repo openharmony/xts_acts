@@ -145,6 +145,14 @@ export default function testsuite() {
   PercentReferenceTest();
   setCircleShapeTest();
   graphicGetInterfaceTest();
+  typeNodeBlankTest();
+  typeNodeDividerTest();
+  typeNodeGridColTest();
+  typeNodeListTest();
+  typeNodeLoadingProgressTest();
+  typeNodeProgressTest();
+  typeNodeRelativeContainerTest();
+  typeNodeSwiperTest();
   typeNodeTextInputTest();
   typeNodeListItemTest();
   typeNodechildrenMainSizeTest();
@@ -154,6 +162,7 @@ export default function testsuite() {
   attachNodeAdapterTest();
   updateConfigurationTest1();
   updateConfigurationTest2();
+  expectedUpdateInterval();
   getAttachedFrameNodeById();
 
 }
