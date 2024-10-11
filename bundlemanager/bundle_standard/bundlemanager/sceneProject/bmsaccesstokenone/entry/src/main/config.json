@@ -32,8 +32,9 @@
         "metaData": {
           "customizeData": [
             {
-              "name": "originWidgetName",
-              "value": "com.weather.testWidget"
+              "name": "Data3",
+              "value": "float",
+              "extra": "$string:mainability_description"
             }
           ]
         },
@@ -47,15 +48,15 @@
       "2in1",
       "wearable"
     ],
-    "mainAbility": "com.example.bmsaccesstoken1.MainAbility",
+    "mainAbility": "com.example.l3jsdemo.MainAbility",
     "distro": {
       "moduleType": "entry",
       "installationFree": false,
       "deliveryWithInstall": true,
       "moduleName": "entry"
     },
-    "package": "com.example.bmsaccesstoken1",
-    "name": ".MyApplication1",
+    "package": "com.example.l3jsdemo",
+    "name": ".MyApplication",
     "js": [
       {
         "pages": [
@@ -64,7 +65,7 @@
         "name": "com.example.bmsaccesstoken1.MainAbility",
         "window": {
           "designWidth": 720,
-          "autoDesignWidth": false
+          "autoDesignWidth": true
         }
       }
     ],
