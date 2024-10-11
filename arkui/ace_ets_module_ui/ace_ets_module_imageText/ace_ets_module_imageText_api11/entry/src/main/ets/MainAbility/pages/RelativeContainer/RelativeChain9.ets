@@ -53,7 +53,7 @@ struct RelativeChain9 {
       }
       .id('RelativeChain9')
       .width('auto').height(200)
-      .margin({left: 50, top: 50})
+      .margin({left: 5, top: 50})
       .backgroundColor(Color.Grey)
 
       Column() {
@@ -91,12 +91,6 @@ struct RelativeChain9 {
         .margin({left: 50, top: 50})
         .backgroundColor(Color.Grey)
       }.height(500)
-
-
-
-
-
-
     }
     .height('100%')
   }
