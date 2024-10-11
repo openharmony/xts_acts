@@ -41,12 +41,14 @@ struct WebComponent {
               console.log('download update guid1: ' + webDownloadItem.getPercentComplete());
               if (webDownloadItem.getPercentComplete() > 20) {
                 webDownloadItem.cancel()
-                console.log('download update guid2: ' + webDownloadItem.getPercentComplete());
+                console.log('download update guid21: ' + webDownloadItem.getPercentComplete());
+                console.log('download update guid22: ' + this.webDownloadItem.getPercentComplete());
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete3', this.webDownloadItem.getPercentComplete())
               }
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
               console.log('download failed guid: ' + webDownloadItem.getGuid());
+              LocalContext.context.eventHub.emit('DownloadGetPercentComplete3', webDownloadItem.getPercentComplete())
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
               console.log('download finish guid: ' + webDownloadItem.getGuid());

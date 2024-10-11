@@ -56,17 +56,17 @@ export default function SetDownloadDelegate() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_onDownloadFinish1003', 0, async () => {
+    it('testWebView_onDownloadFinish1003', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFinish_1003 start')
       console.info('SUB_ACE_WEB_onDownloadFinish_1003 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("SetDownloadDelegate1", (data: number) => {
-        flg = true
         expect(data).assertEqual(webview.WebDownloadState.CANCELED)
         console.info('SUB_ACE_WEB_onDownloadFinish_1003 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFinish_1003 end')
+        done()
       })
       router.pushUrl({
         url: "testability/pages/SetDownloadDelegate1"
@@ -75,8 +75,6 @@ export default function SetDownloadDelegate() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -88,17 +86,17 @@ export default function SetDownloadDelegate() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_onDownloadFinish1004', 0, async () => {
+    it('testWebView_onDownloadFinish1004', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFinish_1004 start')
       console.info('SUB_ACE_WEB_onDownloadFinish_1004 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("SetDownloadDelegate2", (data: number) => {
-        flg = true
         expect(data).assertEqual(webview.WebDownloadState.CANCELED)
         console.info('SUB_ACE_WEB_onDownloadFinish_1004 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFinish_1004 end')
+        done()
       })
       router.pushUrl({
         url: "testability/pages/SetDownloadDelegate2"
@@ -107,8 +105,6 @@ export default function SetDownloadDelegate() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -120,17 +116,17 @@ export default function SetDownloadDelegate() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_onDownloadFinish1005', 0, async () => {
+    it('testWebView_onDownloadFinish1005', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFinish_1005 start')
       console.info('SUB_ACE_WEB_onDownloadFinish_1005 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("SetDownloadDelegate3", (data: number) => {
-        flg = true
         expect(data).assertEqual(webview.WebDownloadState.IN_PROGRESS)
         console.info('SUB_ACE_WEB_onDownloadFinish_1005 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFinish_1005 end')
+        done()
       })
       router.pushUrl({
         url: "testability/pages/SetDownloadDelegate3"
@@ -139,8 +135,6 @@ export default function SetDownloadDelegate() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -152,17 +146,17 @@ export default function SetDownloadDelegate() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_onDownloadFailed1001', 0, async () => {
+    it('testWebView_onDownloadFailed1001', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFailed_1001 start')
       console.info('SUB_ACE_WEB_onDownloadFailed_1001 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("SetDownloadDelegate4", (data: number) => {
-        flg = true
         expect(data).assertEqual(webview.WebDownloadState.CANCELED)
         console.info('SUB_ACE_WEB_onDownloadFailed_1001 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFailed_1001 end')
+        done()
       })
       router.pushUrl({
         url: "testability/pages/SetDownloadDelegate4"
@@ -171,8 +165,6 @@ export default function SetDownloadDelegate() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -193,7 +185,7 @@ export default function SetDownloadDelegate() {
       LocalContext.context.eventHub.on("SetDownloadDelegate5", (data: number) => {
         flg = true
         expect(data).assertEqual('https:' +
-          '//releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso0')
+          '//cd001.v78q.com/cs/104sem/Beyond%20Compare%20%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94%E5%B7%A5%E5%85%B7_sm60000068e.exe0')
         console.info('SUB_ACE_WEB_getUrl_2000 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2000 end')
       })
@@ -226,7 +218,7 @@ export default function SetDownloadDelegate() {
       LocalContext.context.eventHub.on("SetDownloadDelegate5", (data: number) => {
         flg = true
         expect(data).assertEqual('https:' +
-          '//releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso0')
+          '//cd001.v78q.com/cs/104sem/Beyond%20Compare%20%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94%E5%B7%A5%E5%85%B7_sm60000068e.exe0')
         console.info('SUB_ACE_WEB_getUrl_2001 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2001 end')
       })

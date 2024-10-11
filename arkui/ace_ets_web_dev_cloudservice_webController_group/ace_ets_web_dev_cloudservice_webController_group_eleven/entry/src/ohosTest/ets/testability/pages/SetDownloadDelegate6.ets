@@ -57,7 +57,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.controller.startDownload('https:' +
-              '//releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso');
+              '//cd001.v78q.com/cs/104sem/Beyond Compare 文件对比工具_sm60000068e.exe');
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }

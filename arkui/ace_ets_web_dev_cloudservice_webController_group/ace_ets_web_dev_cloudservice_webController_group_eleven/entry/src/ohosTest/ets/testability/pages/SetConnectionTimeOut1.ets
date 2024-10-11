@@ -38,8 +38,9 @@ struct WebComponent {
             this.delegate.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem) => {
               console.log('download update guid: ' + webDownloadItem.getState());
               if (this.isPaused) {
-                LocalContext.context.eventHub.emit('setConnectionTimeOut1',
-                  webDownloadItem.getState())
+                LocalContext.context.eventHub.emit('setConnectionTimeOut1', webDownloadItem.getState())
+                webDownloadItem.cancel()
+                return
               }
               if (!(webDownloadItem.getCurrentSpeed() > 0)) {
                 return

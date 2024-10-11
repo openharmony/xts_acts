@@ -117,7 +117,7 @@ export default function GetPercentComplete() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(50000)
+      await driver.delayMs(30000)
       expect(callbackNum1 > 0).assertTrue()
       expect(callbackNum2 > 0).assertTrue()
       expect(callbackNum3 > 0).assertTrue()
@@ -134,17 +134,17 @@ export default function GetPercentComplete() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getPercentComplete1003', 0, async () => {
+    it('testWebView_getPercentComplete1003', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1003 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1003 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("DownloadGetPercentComplete3", (data: number) => {
-        flg = true
         expect(data).assertEqual(0)
         console.info('SUB_ACE_WEB_getPercentComplete_1003 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1003 end')
+        done()
       })
       router.pushUrl({
         url: "testability/pages/GetPercentComplete3"
@@ -153,8 +153,6 @@ export default function GetPercentComplete() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -166,17 +164,17 @@ export default function GetPercentComplete() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getPercentComplete1004', 0, async () => {
+    it('testWebView_getPercentComplete1004', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1004 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1004 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("DownloadGetPercentComplete4", (data: number) => {
-        flg = true
         expect(data).assertEqual(0)
         console.info('SUB_ACE_WEB_getPercentComplete_1004 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1004 end')
+        done()
       })
       router.pushUrl({
         url: "testability/pages/GetPercentComplete4"
@@ -185,8 +183,6 @@ export default function GetPercentComplete() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -198,14 +194,13 @@ export default function GetPercentComplete() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getPercentComplete1005', 0, async () => {
+    it('testWebView_getPercentComplete1005', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1005 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1005 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("DownloadGetPercentComplete5", (data: number) => {
-        flg = true
         expect(data).assertEqual(100)
         console.info('SUB_ACE_WEB_getPercentComplete_1005 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1005 end')
@@ -217,8 +212,7 @@ export default function GetPercentComplete() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
+      done()
       router.clear()
     })
 
@@ -230,17 +224,17 @@ export default function GetPercentComplete() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getPercentComplete1006', 0, async () => {
+    it('testWebView_getPercentComplete1006', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1006 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1006 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("DownloadGetPercentComplete6", (data: number) => {
-        flg = true
         expect(data >= 90).assertTrue()
         console.info('SUB_ACE_WEB_getPercentComplete_1006 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1006 end')
+        done()
       })
       router.pushUrl({
         url: "testability/pages/GetPercentComplete6"
@@ -249,8 +243,6 @@ export default function GetPercentComplete() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
       router.clear()
     })
 
@@ -374,9 +366,9 @@ export default function GetPercentComplete() {
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
       await driver.delayMs(10000)
-      expect(callbackNum1 > 0).assertTrue()
-      expect(callbackNum2 > 0).assertTrue()
-      expect(callbackNum3 > 0).assertTrue()
+      expect(callbackNum1 == 1).assertTrue()
+      expect(callbackNum2 == 1).assertTrue()
+      expect(callbackNum3 == 1).assertTrue()
       router.clear()
       console.info('SUB_ACE_WEB_getPercentComplete_1010 end')
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1010 end')

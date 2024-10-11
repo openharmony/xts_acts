@@ -41,8 +41,9 @@ struct WebComponent {
             })
             this.delegate1.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               console.log('download update guid1: ', webDownloadItem.getPercentComplete());
-              if (webDownloadItem.getPercentComplete() > 10) {
+              if (webDownloadItem.getPercentComplete() > 10 && webDownloadItem.getCurrentSpeed() > 0) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete21', webDownloadItem.getPercentComplete())
+                webDownloadItem.cancel()
               }
             })
             this.delegate1.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
@@ -63,8 +64,9 @@ struct WebComponent {
             })
             this.delegate2.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               console.log('download update guid2: ' + webDownloadItem.getPercentComplete());
-              if (webDownloadItem.getPercentComplete() > 10) {
+              if (webDownloadItem.getPercentComplete() > 10 && webDownloadItem.getCurrentSpeed() > 0) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete22', webDownloadItem.getPercentComplete())
+                webDownloadItem.cancel()
               }
             })
             this.delegate2.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
@@ -85,8 +87,9 @@ struct WebComponent {
             })
             this.delegate3.onDownloadUpdated(async (webDownloadItem: webview.WebDownloadItem) => {
               console.log('download update guid3: ' + webDownloadItem.getPercentComplete());
-              if (webDownloadItem.getPercentComplete() > 10) {
+              if (webDownloadItem.getPercentComplete() > 10 && webDownloadItem.getCurrentSpeed() > 0) {
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete23', webDownloadItem.getPercentComplete())
+                webDownloadItem.cancel()
               }
             })
             this.delegate3.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {

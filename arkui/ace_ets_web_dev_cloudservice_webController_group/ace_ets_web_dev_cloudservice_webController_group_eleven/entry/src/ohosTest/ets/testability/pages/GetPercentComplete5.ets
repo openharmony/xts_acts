@@ -42,6 +42,7 @@ struct WebComponent {
               if (webDownloadItem.getPercentComplete() == 100) {
                 console.log('download update guid3: ' + webDownloadItem.getPercentComplete());
                 LocalContext.context.eventHub.emit('DownloadGetPercentComplete5', webDownloadItem.getPercentComplete())
+                return
               }
               if (webDownloadItem.getPercentComplete() > 40) {
                 this.webDownloadItem.pause()

@@ -19,6 +19,7 @@ import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
 import { router } from '@kit.ArkUI';
+import emitter from '@ohos.events.emitter';
 
 let driver: Driver = Driver.create();
 let flg: boolean = false
@@ -63,7 +64,6 @@ export default function SetConnectionTimeOut() {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0700 start')
       console.info('SUB_ACE_WEB_pause_0700 start')
       await driver.delayMs(500)
-
       LocalContext.context.eventHub.on("setConnectionTimeOut1", (data: webview.WebDownloadState) => {
         flg = true
         expect(data).assertEqual(webview.WebDownloadState.PAUSED)
@@ -90,17 +90,17 @@ export default function SetConnectionTimeOut() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_pause0800', 0, async () => {
+    it('testWebView_pause0800', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0800 start')
       console.info('SUB_ACE_WEB_pause_0800 start')
       await driver.delayMs(500)
 
       LocalContext.context.eventHub.on("setConnectionTimeOut2", (data: webview.WebDownloadState) => {
-        flg = true
         expect(data).assertEqual(webview.WebDownloadState.COMPLETED)
         console.info('SUB_ACE_WEB_pause_0800 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0800 end')
+        done()
       })
       router.pushUrl({
         url: "testability/pages/SetConnectionTimeOut2"
@@ -109,8 +109,6 @@ export default function SetConnectionTimeOut() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      await driver.delayMs(60000)
-      expect(flg).assertTrue()
       router.clear()
     })
 
