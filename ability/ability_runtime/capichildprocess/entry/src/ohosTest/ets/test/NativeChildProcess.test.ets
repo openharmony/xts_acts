@@ -30,10 +30,14 @@ export default function nativeChildProcessTest() {
     beforeAll(() => {
       try {
         mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model') === 'true';
-        ncpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.start_native_child_process') === 'true';
       } catch(err) {
         console.error(`ACTS_NativeStartChildProcess Get system parameter error: ${JSON.stringify(err)}`);
         mpEnable = false;
+      }
+      try{
+        ncpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.start_native_child_process') === 'true';
+      }catch(err){
+        console.error(`ACTS_NativeStartChildProcess Get system parameter error: ${JSON.stringify(err)}`);
         ncpEnable = false;
       }
     })
