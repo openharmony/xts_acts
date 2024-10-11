@@ -48,14 +48,15 @@
       "2in1",
       "wearable"
     ],
-    "mainAbility": "com.example.bmsaccesstoken2.MainAbility",
+    "mainAbility": "com.example.l3jsdemo.MainAbility",
     "distro": {
+      "moduleType": "entry",
+      "installationFree": false,
       "deliveryWithInstall": true,
-      "moduleName": "entry",
-      "moduleType": "entry"
+      "moduleName": "entry"
     },
-    "package": "com.example.bmsaccesstoken2",
-    "name": ".MyApplication1",
+    "package": "com.example.l3jsdemo",
+    "name": ".MyApplication",
     "js": [
       {
         "pages": [
@@ -64,7 +65,7 @@
         "name": "com.example.bmsaccesstoken2.MainAbility",
         "window": {
           "designWidth": 720,
-          "autoDesignWidth": false
+          "autoDesignWidth": true
         }
       }
     ],
