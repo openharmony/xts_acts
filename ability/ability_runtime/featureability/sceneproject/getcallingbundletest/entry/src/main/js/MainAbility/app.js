@@ -18,13 +18,13 @@ import featureAbility from '@ohos.ability.featureAbility'
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
-function PublishCallBackOne() {
+function publishCallBackOne() {
     console.debug('====>Publish CallBack ACTS_GetCallingBundle_0100_CommonEvent====>');
 }
-function PublishCallBackTwo() {
+function publishCallBackTwo() {
     console.debug('====>Publish CallBack ACTS_GetCallingBundle_0100_Promise====>');
 }
-function PublishCallBackThree() {
+function publishCallBackThree() {
     console.debug('====>Publish CallBack ACTS_GetCallingBundle_0100_Callback====>');
 }
 export default {
@@ -35,14 +35,14 @@ export default {
         this.title = this.$t('strings.world');
     },
     async onShow() {
-        commonEvent.publish("ACTS_GetCallingBundle_0100_CommonEvent", PublishCallBackOne);
+        commonEvent.publish("ACTS_GetCallingBundle_0100_CommonEvent", publishCallBackOne);
         let context = featureAbility.getContext();
         let info = await context.getCallingBundle();
-        commonEvent.publish(info + ".promise", PublishCallBackTwo);
+        commonEvent.publish(info + ".promise", publishCallBackTwo);
         context.getCallingBundle(
             (err, data) => {
-                console.debug("getCallingBundle : " + data);
-                commonEvent.publish(data + '.callback', PublishCallBackThree);
+                console.debug('getCallingBundle : ' + data);
+                commonEvent.publish(data + '.callback', publishCallBackThree);
             }
         );
     },
