@@ -80,13 +80,6 @@ struct InstanceData {
     napi_ref jsCbRef;
 };
 
-struct InstanceAddonData {
-    napi_ref jsCbRef;
-    napi_ref jsTsfnFinalizerRef;
-    napi_threadsafe_function tsfn;
-    uv_thread_t thread;
-};
-
 struct AsyncData {
     uv_async_t async;
     napi_env env;
@@ -474,6 +467,7 @@ static napi_value referenceRefAndUnref(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, refValue != nullptr,
                 "A reference must have been created.");
     napi_delete_reference(env, resultRef);
+    resultRef = nullptr;
 
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
@@ -2355,6 +2349,7 @@ static void AddCallbackCompleteCB(napi_env env, napi_status status, void *data) 
 
     if (addonData->callback != nullptr) {
         NAPI_CALL_RETURN_VOID(env, napi_delete_reference(env, addonData->callback));
+        addonData->callback = nullptr;
     }
 
     NAPI_CALL_RETURN_VOID(env, napi_delete_async_work(env, addonData->asyncWork));
@@ -3254,27 +3249,28 @@ static void CallCbAndDeleteRef(napi_env env, napi_ref *optionalRef)
     napi_value jsCb;
     napi_value undefined;
 
+    napi_ref *ref = optionalRef;
     if (optionalRef == nullptr) {
-        InstanceAddonData *data;
-        napi_get_instance_data(env, (void **)&data);
-        optionalRef = &data->jsCbRef;
+        InstanceData *data;
+        napi_get_instance_data(env, reinterpret_cast<void**>(&data));
+        ref = &data->jsCbRef;
     }
 
-    napi_get_reference_value(env, *optionalRef, &jsCb);
+    napi_get_reference_value(env, *ref, &jsCb);
     napi_get_undefined(env, &undefined);
     napi_call_function(env, undefined, jsCb, 0, nullptr, nullptr);
-    napi_delete_reference(env, *optionalRef);
+    napi_delete_reference(env, *ref);
 
-    *optionalRef = nullptr;
+    *ref = nullptr;
 }
 
 static bool EstablishCallbackRef(napi_env env, napi_callback_info info)
 {
-    InstanceAddonData *data;
+    InstanceData *data;
     size_t argc = 1;
     napi_value jsCb;
 
-    napi_get_instance_data(env, (void **)&data);
+    napi_get_instance_data(env, reinterpret_cast<void**>(&data));
 
     napi_get_cb_info(env, info, &argc, &jsCb, nullptr, nullptr);
     napi_create_reference(env, jsCb, 1, &data->jsCbRef);
@@ -3302,13 +3298,15 @@ static void DeleteAddonData(napi_env env, void* rawData, void* hint)
     }
     if (data->jsCbRef != nullptr) {
         NAPI_CALL_RETURN_VOID(env, napi_delete_reference(env, data->jsCbRef));
+        data->jsCbRef = nullptr;
     }
-    free(data);
+    delete data;
+    data = nullptr;
 }
 
 static napi_value NapiSetInstanceData(napi_env env, napi_callback_info info)
 {
-    InstanceData* data = reinterpret_cast<InstanceData*>(malloc(sizeof(*data)));
+    InstanceData* data = new InstanceData();
     data->value = 1;
     data->print = true;
     data->jsCbRef = nullptr;
@@ -3316,7 +3314,7 @@ static napi_value NapiSetInstanceData(napi_env env, napi_callback_info info)
     NAPI_CALL(env, napi_set_instance_data(env, data, DeleteAddonData, nullptr));
 
     InstanceData* getData = nullptr;
-    NAPI_CALL(env, napi_get_instance_data(env, (void**)&getData));
+    NAPI_CALL(env, napi_get_instance_data(env, reinterpret_cast<void**>(&getData)));
     ++getData->value;
     const size_t expectValue = 2;
 
@@ -3409,6 +3407,7 @@ static void ObjectFinalizer(napi_env env, void* data, void* hint)
 
     napi_ref *ref = reinterpret_cast<napi_ref *>(data);
     NAPI_CALL_RETURN_VOID(env, napi_delete_reference(env, *ref));
+    *ref = nullptr;
     free(ref);
 }
 
@@ -3471,7 +3470,9 @@ static void CustomObjectFinalizer(napi_env env, void* data, void* hint)
 
     napi_ref *ref = reinterpret_cast<napi_ref *>(data);
     NAPI_CALL_RETURN_VOID(env, napi_delete_reference(env, *ref));
+    *ref = nullptr;
     free(ref);
+    ref = nullptr;
 }
 
 static void ObjectWrapper(napi_env env)
@@ -9794,7 +9795,7 @@ static napi_value NapiGetInstanceDataEnvNull(napi_env env, napi_callback_info in
     data->jsCbRef = nullptr;
     NAPI_CALL(env, napi_set_instance_data(env, data, DeleteAddonData, nullptr));
     InstanceData* getData = nullptr;
-    napi_status status = napi_get_instance_data(nullptr, (void**)&getData);
+    napi_status status = napi_get_instance_data(nullptr, reinterpret_cast<void**>(&getData));
     bool bRet = (status == napi_invalid_arg);
     napi_value retValue;
     napi_create_int32(env, bRet, &retValue);
