@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import rdbSqliteNdkTest from './Ability.test';
+import rdbConfigV2NdkTest from './Ability.test';
 
 export default function testsuite() {
-  rdbSqliteNdkTest();
+  rdbConfigV2NdkTest();
 }

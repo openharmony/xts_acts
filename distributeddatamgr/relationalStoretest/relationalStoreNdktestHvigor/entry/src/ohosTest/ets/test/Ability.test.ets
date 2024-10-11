@@ -17,8 +17,8 @@ import testndk from 'libentry.so';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 let TAG = '[testLog-ets]';
-export default function rdbSqliteNdkTest() {
-  describe('rdbSqliteNdkTest', async (done: Function) => {
+export default function rdbConfigV2NdkTest() {
+  describe('rdbConfigV2NdkTest', async (done: Function) => {
 
     /**
      * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0100
