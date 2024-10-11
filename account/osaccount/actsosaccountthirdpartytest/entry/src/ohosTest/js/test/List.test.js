@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,9 +16,11 @@ import ActsOsAccountThirdPartyTest_third_2 from './OsAccountGet.test.js'
 import ActsOsAccountThirdPartyTest_third_1 from './OsAccountIs.test.js'
 import ActsOsAccountThirdPartyTest_third_4 from './OsAccountQuery.test.js'
 import ActsOsAccountThirdPartyTest_third_3 from './OsAccountCheck.test.js'
+import ActsOsAccountTest from './OsAccount.test.js'
 export default function testsuite() {
     ActsOsAccountThirdPartyTest_third_2()
     ActsOsAccountThirdPartyTest_third_1()
     ActsOsAccountThirdPartyTest_third_4()
     ActsOsAccountThirdPartyTest_third_3()
+    ActsOsAccountTest()
 }
