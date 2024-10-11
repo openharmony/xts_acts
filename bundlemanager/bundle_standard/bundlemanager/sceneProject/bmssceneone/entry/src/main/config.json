@@ -32,8 +32,8 @@
         "metaData": {
           "customizeData": [
             {
-              "name": "Data3",
-              "value": "float",
+              "name": "originWidgetName",
+              "value": "com.weather.testWidget",
               "extra": "$string:mainability_description"
             }
           ]
@@ -98,6 +98,15 @@
           "when": "always"
         }
       }
-    ]
+    ],
+    "metaData": {
+      "customizeData": [
+        {
+          "name": "metaDataName",
+          "value": "metaDataValue",
+          "extra": "$string:app_name"
+        }
+      ]
+    }
   }
 }
