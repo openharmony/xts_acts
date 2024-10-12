@@ -17,6 +17,8 @@ group("ActsAbilityAmsTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsapplicationstartabilitytest:ActsApplicationStartAbilityAuxiliary",
+      "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsstartchildprocesstest:ActsStartChildProcessTest",
