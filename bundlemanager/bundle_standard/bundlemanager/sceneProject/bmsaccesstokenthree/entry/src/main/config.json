@@ -3,8 +3,8 @@
     "vendor": "example",
     "bundleName": "com.example.bmsaccesstoken1",
     "version": {
-      "code": 1,
-      "name": "1.0"
+      "code": 2000000,
+      "name": "2.0.0"
     }
   },
   "deviceConfig": {
@@ -54,8 +54,8 @@
       "deliveryWithInstall": true,
       "moduleName": "entry"
     },
-    "package": "com.example.bmsaccesstoken1",
-    "name": ".MyApplication1",
+    "package": "com.example.bmsaccesstoken2",
+    "name": ".MyApplication2",
     "js": [
       {
         "pages": [
@@ -66,56 +66,24 @@
           "designWidth": 720,
           "autoDesignWidth": false
         }
-      },
-      {
-        "pages": [
-          "pages/index/index"
-        ],
-        "name": ".canOpenLinktest1",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": false
-        }
-      },
-      {
-        "pages": [
-          "pages/index/index"
-        ],
-        "name": ".canOpenLinktest2",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": false
-        }
-      },
-      {
-        "pages": [
-          "pages/index/index"
-        ],
-        "name": ".canOpenLinktest3",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": false
-        }
-      },
-      {
-        "pages": [
-          "pages/index/index"
-        ],
-        "name": ".canOpenLinktest4",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": false
-        }
       }
     ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
-        "reason": "use ohos.permission.DISTRIBUTED_DATASYNC"
-      },
-      {
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
         "reason": "use ohos.permission.KEEP_BACKGROUND_RUNNING"
+      },
+      {
+        "name": "ohos.permission.LOCATION_IN_BACKGROUND",
+        "reason": "use ohos.permission.LOCATION_IN_BACKGROUND"
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH",
+        "reason": "use ohos.permission.USE_BLUETOOTH"
+      },
+      {
+        "name": "ohos.permission.VIBRATE",
+        "reason": "use ohos.permission.VIBRATE"
       }
     ]
   }
