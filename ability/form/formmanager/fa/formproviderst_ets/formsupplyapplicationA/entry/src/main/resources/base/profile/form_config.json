@@ -3,7 +3,7 @@
     {
       "name": "Form_Js001",
       "description": "This is a form 001",
-      "src": "./js/Form_Js001/pages/index/index",
+      "src": "./js/widget/pages/index/index",
       "window": {
         "designWidth": 720,
         "autoDesignWidth": true
@@ -23,7 +23,7 @@
     {
       "name": "Form_Js002",
       "description": "This is a form 002",
-      "src": "./js/Form_Js001/pages/index/index",
+      "src": "./js/widget/pages/index/index",
       "window": {
         "designWidth": 720,
         "autoDesignWidth": true

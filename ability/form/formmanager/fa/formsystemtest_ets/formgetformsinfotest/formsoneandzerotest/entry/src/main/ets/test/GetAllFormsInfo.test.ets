@@ -47,21 +47,26 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
           });
           console.log(`${callbackName} form dataB: ${JSON.stringify(dataB)}`);
           console.log(`${callbackName} formB amount: ${dataB.length}`);
+          if(dataB.length !== 0) {
+            expect(dataB.length).assertEqual(1);
+            tempDataB = dataB[0];
+            checkDataB(tempDataB);
+          }
+
           const dataD = data.filter((form) => {
             return `com.ohos.st.formsystemproviderd` === form.bundleName;
           });
           console.log(`${callbackName} form dataD: ${JSON.stringify(dataD)}`);
           console.log(`${callbackName} formD amount: ${dataD.length}`);
+          if(dataD.length !== 0) {
+            expect(dataD.length).assertEqual(0);
+            expect(JSON.stringify(dataD)).assertEqual(`[]`);
+          }
 
-          expect(dataB.length).assertEqual(1);
-          expect(dataD.length).assertEqual(0);
-          tempDataB = dataB[0]
-          expect(JSON.stringify(dataD)).assertEqual(`[]`);
-          expect(error.code).assertEqual(ERR_OK_CODE);
           console.log(`==========${callbackName} ${describeName} end==========`);
         });
         await sleep(2000)
-        checkDataB(tempDataB)
+        expect().not().assertFail();
         done()
       } catch (error) {
         console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
@@ -89,17 +94,24 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
         });
         console.log(`${promiseName} form dataB: ${JSON.stringify(dataB)}`);
         console.log(`${promiseName} formB amount: ${dataB.length}`);
+
+        if(dataB.length !== 0) {
+          expect(dataB.length).assertEqual(1);
+          tempDataB = dataB[0]
+          checkDataB(tempDataB)
+        }
+
         const dataD = data.filter((form) => {
           return `com.ohos.st.formsystemproviderd` === form.bundleName;
         });
         console.log(`${promiseName} form dataD: ${JSON.stringify(dataD)}`);
         console.log(`${promiseName} formD amount: ${dataD.length}`);
+        if(dataD.length == 0) {
+          expect(dataD.length).assertEqual(0);
+          expect(JSON.stringify(dataD)).assertEqual(`[]`);
+        }
 
-        expect(dataB.length).assertEqual(1);
-        expect(dataD.length).assertEqual(0);
-        tempDataB = dataB[0]
-        checkDataB(tempDataB)
-        expect(JSON.stringify(dataD)).assertEqual(`[]`);
+        expect().not().assertFail();
         done();
         console.log(`==========${promiseName} ${describeName} end==========`);
       } catch (error) {

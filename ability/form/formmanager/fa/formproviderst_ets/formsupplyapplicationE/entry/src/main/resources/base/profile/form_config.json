@@ -9,7 +9,7 @@
         "autoDesignWidth": true
       },
       "colorMode": "auto",
-      "type":"JS",
+
       "formVisibleNotify": true,
       "isDefault": true,
       "scheduledUpdateTime": "10:30",
@@ -35,7 +35,6 @@
       "updateEnabled": true,
       "updateDuration":1,
       "defaultDimension": "2*2",
-      "type":"JS",
       "supportDimensions": [
         "1*2",
         "2*2"

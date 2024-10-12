@@ -1,28 +1,20 @@
 {
   "app": {
     "bundleName": "com.form.formsystemtestserviceh.hmservice",
-    "vendor": "ohos",
+    "vendor": "example",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
-    },
-    "apiVersion": {
-      "compatible": 8,
-      "releaseType": "Release",
-      "target": 9
     }
   },
   "deviceConfig": {},
   "module": {
     "package": "com.form.formsystemtestserviceh.hmservice",
-    "name": ".FormSupplyAppH",
+    "name": ".entry",
     "mainAbility": ".MainAbility",
-    "srcPath": "",
     "deviceType": [
       "default",
-      "tablet",
-      "2in1",
-      "wearable"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -43,14 +35,15 @@
           }
         ],
         "orientation": "unspecified",
-        "visible": true,
-        "srcPath": "MainAbility",
+        "formsEnabled": false,
         "name": ".MainAbility",
         "srcLanguage": "ets",
+        "srcPath": "MainAbility",
         "icon": "$media:icon",
-        "description": "$string:description_mainability",
-        "label": "$string:entry_MainAbility",
+        "description": "$string:MainAbility_desc",
+        "label": "$string:MainAbility_label",
         "type": "page",
+        "visible": true,
         "launchType": "standard"
       },
       {
@@ -80,20 +73,20 @@
             "updateDuration": 1
           },
           {
-            "jsComponentName": "widget",
-            "isDefault": false,
-            "defaultDimension": "2*2",
-            "formVisibleNotify": true,
-            "name": "Form_Js002",
-            "colorMode": "auto",
-            "description": "This is a form 002",
-            "supportDimensions": [
+            "jsComponentName":"widget",
+            "isDefault":false,
+            "defaultDimension":"2*2",
+            "formVisibleNotify":true,
+            "name":"Form_Js002",
+            "colorMode":"auto",
+            "description":"This is a form 002",
+            "supportDimensions":[
               "1*2",
               "2*2"
             ],
-            "type": "JS",
-            "updateEnabled": true,
-            "updateDuration": 1
+            "type":"JS",
+            "updateEnabled":true,
+            "updateDuration":1
           }
         ],
         "srcLanguage": "ets"
