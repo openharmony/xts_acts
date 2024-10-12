@@ -13,12 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("fasupportfunction") {
+ohos_app_assist_suite("FaSupportFunction") {
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "entry:FaSupportFunction",
-      "fasupportfunctiontwo:FaSupportFunctionTwo",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "FaSupportFunction"
+  hap_list = [
+    "FaSupportFunction-fasupportfunctiontwo-entry-default-unsigned:FaSupportFunctionTwo",
+    "FaSupportFunction-entry-default-unsigned:FaSupportFunction",
+  ]
+  part_name = "ability_runtime"
+  subsystem_name = "ability"
 }

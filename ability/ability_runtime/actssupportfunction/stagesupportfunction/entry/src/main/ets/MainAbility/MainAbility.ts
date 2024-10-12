@@ -14,15 +14,21 @@
  */
 import Ability from '@ohos.app.ability.UIAbility';
 import commonEvent from '@ohos.commonEvent';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
+import commonEventManager from '@ohos.commonEventManager';
+import window from '@ohos.window';
 
 const TAG1 = 'StageSupportFunction:MainAbility:';
 const listPush1 = "Stage_SupportFunction_MainAbility_";
-let status1 = undefined;
-let status2 = undefined;
+let status1:boolean = undefined;
+let status2:boolean = undefined;
 let lifeList: string[] = [];
 
 export default class MainAbility extends Ability {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.log(TAG1 + 'onCreate : status1 : ' + status1 + ' ,ifeList : ' + JSON.stringify(lifeList));
     status1 = this.context.isTerminating();
     lifeList.push('onCreate');
@@ -35,12 +41,12 @@ export default class MainAbility extends Ability {
       if (want.parameters.number == 1) {
         this.context.terminateSelf().then((data) => {
           console.log(TAG1 + "terminateSelfWithResult data = " + JSON.stringify(data));
-        }).catch((error) => {
+        }).catch((error:BusinessError) => {
           console.log(TAG1 + "terminateSelfWithResult error = " + JSON.stringify(error));
         })
       }
       if (want.parameters.number == 2) {
-        let wantNum = {
+        let wantNum:common.AbilityResult = {
           want: {
             bundleName: "ohos.acts.aafwk.test.stagesupportfunction",
             abilityName: "MainAbility"
@@ -49,7 +55,7 @@ export default class MainAbility extends Ability {
         }
         this.context.terminateSelfWithResult(wantNum).then((data) => {
           console.log(TAG1 + "terminateSelfWithResult data = " + JSON.stringify(data));
-        }).catch((error) => {
+        }).catch((error:BusinessError) => {
           console.log(TAG1 + "terminateSelfWithResult error = " + JSON.stringify(error));
         })
       }
@@ -60,7 +66,7 @@ export default class MainAbility extends Ability {
     console.log(TAG1 + 'onDestroy');
     lifeList.push('onDestroy');
     status2 = this.context.isTerminating();
-    let options = {
+    let options:commonEventManager.CommonEventPublishData = {
       parameters: {
         isTerminating1: status1,
         isTerminating2: status2,
@@ -72,7 +78,7 @@ export default class MainAbility extends Ability {
     });
   }
 
-  onWindowStageCreate(windowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     console.log(TAG1 + 'onWindowStageCreate');
     lifeList.push('onWindowStageCreate');
 

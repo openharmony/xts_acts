@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import commonEvent from '@ohos.commonEventManager';
 import ability_featureAbility from '@ohos.ability.featureAbility';
-import commonEvent from '@ohos.commonEvent';
+import { BusinessError } from '@ohos.base';
 
 const TAG1 = "Fa:SupportFunction:MainAbility6:";
 const listPush1 = "Fa_SupportFunction_MainAbility6_";
 let lifeList: string[] = [];
-
-export default {
+class MainAbility {
   onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
@@ -27,38 +27,63 @@ export default {
     ability_featureAbility.getWant().then((data) => {
       console.log(TAG1 + "getWant data = " + JSON.stringify(data));
 
-      if (data.parameters.number == 1) {
-        setDisplayOrientationP(ability_featureAbility, undefined)
+      if (data.parameters?.number == 1) {
+        try {
+          console.log(TAG1 + "setDisplayOrientationP start: undefined");
+          ability_featureAbility.getContext().setDisplayOrientation(undefined).then((data) => {
+            console.log(TAG1 + "setDisplayOrientation data = " + JSON.stringify(data));
+          }).catch((error:BusinessError) => {
+            console.log(TAG1 + "setDisplayOrientation error = " + JSON.stringify(error));
+          })
+        } catch (error) {
+          console.log(TAG1 + "setDisplayOrientation catch error = " + JSON.stringify(error));
+          commonEvent.publish(listPush1 + "displayOrientationErr", (err) => {
+            console.log(TAG1 + listPush1 + "displayOrientationErr");
+          });
+        }
       }
-      if (data.parameters.number == 2) {
-        setDisplayOrientationP(ability_featureAbility, -1)
+      if (data.parameters?.number == 2) {
+        try {
+          console.log(TAG1 + "setDisplayOrientationP start: -1");
+          ability_featureAbility.getContext().setDisplayOrientation(-1).then((data) => {
+            console.log(TAG1 + "setDisplayOrientation data = " + JSON.stringify(data));
+          }).catch((error:BusinessError) => {
+            console.log(TAG1 + "setDisplayOrientation error = " + JSON.stringify(error));
+          })
+        } catch (error) {
+          console.log(TAG1 + "setDisplayOrientation catch error = " + JSON.stringify(error));
+          commonEvent.publish(listPush1 + "displayOrientationErr", (err) => {
+            console.log(TAG1 + listPush1 + "displayOrientationErr");
+          });
+        }
       }
-      if (data.parameters.number == 3) {
-        setDisplayOrientationP(ability_featureAbility, 4)
+      if (data.parameters?.number == 3) {
+        try {
+          console.log(TAG1 + "setDisplayOrientationP start: 4");
+          ability_featureAbility.getContext().setDisplayOrientation(4).then((data) => {
+            console.log(TAG1 + "setDisplayOrientation data = " + JSON.stringify(data));
+          }).catch((error:BusinessError) => {
+            console.log(TAG1 + "setDisplayOrientation error = " + JSON.stringify(error));
+          })
+        } catch (error) {
+          console.log(TAG1 + "setDisplayOrientation catch error = " + JSON.stringify(error));
+          commonEvent.publish(listPush1 + "displayOrientationErr", (err) => {
+            console.log(TAG1 + listPush1 + "displayOrientationErr");
+          });
+        }
       }
-      if (data.parameters.number == 4) {
-        setDisplayOrientationP(ability_featureAbility, "1")
-      }
-      if (data.parameters.number == 5) {
-        setDisplayOrientationP(ability_featureAbility, [1, 2])
-      }
-      if (data.parameters.number == 6) {
-        setDisplayOrientationP(ability_featureAbility, {
-          number1: 1, number2: 2
-        })
-      }
-    }).catch((error) => {
+    }).catch((error:BusinessError) => {
       console.log(TAG1 + "getWant error = " + JSON.stringify(error));
     })
-  },
+  }
   onDestroy() {
     console.log(TAG1 + 'onDestroy');
-  },
+  }
   async onActive() {
     console.log(TAG1 + 'onActive');
     lifeList.push('onActive');
 
-    let options = {
+    let options:commonEvent.CommonEventPublishData = {
       parameters: {
         lifeList: lifeList
       }
@@ -66,31 +91,15 @@ export default {
     commonEvent.publish(listPush1 + "onActive", options, (err) => {
       console.log(TAG1 + listPush1 + "onActive");
     });
-  },
+  }
   onInactive() {
     console.log(TAG1 + 'onInactive');
-  },
+  }
   onShow() {
     console.log(TAG1 + 'onShow');
-  },
+  }
   onHide() {
     console.log(TAG1 + 'onHide');
   }
 }
-
-function setDisplayOrientationP(featureAbility, displayOrientationErr) {
-  try {
-    console.log(TAG1 + "setDisplayOrientationP start: " + JSON.stringify(displayOrientationErr));
-    featureAbility.getContext().setDisplayOrientation(displayOrientationErr).then((data) => {
-      console.log(TAG1 + "setDisplayOrientation data = " + JSON.stringify(data));
-    }).catch((error) => {
-      console.log(TAG1 + "setDisplayOrientation error = " + JSON.stringify(error));
-    })
-  } catch (error) {
-    console.log(TAG1 + "setDisplayOrientation catch error = " + JSON.stringify(error));
-
-    commonEvent.publish(listPush1 + "displayOrientationErr", (err) => {
-      console.log(TAG1 + listPush1 + "displayOrientationErr");
-    });
-  }
-}
+export default new MainAbility();

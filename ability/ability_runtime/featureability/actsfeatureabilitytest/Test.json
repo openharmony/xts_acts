@@ -3,25 +3,25 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "bundle-name": "com.example.actsfeatureabilitytest",
-        "package-name": "com.example.actsfeatureabilitytest",
         "shell-timeout": "600000",
-        "testcase-timeout": "30000"
+        "testcase-timeout": "30000",
+        "bundle-name": "com.example.actsfeatureabilitytest",
+        "package-name": "com.example.actsfeatureabilitytest"
     },
     "kits": [
-        {
-            "test-file-name": [
-                "FinishWithResultEmptyTest.hap",
-                "FinishWithResultPromiseParametersTest.hap",
-                "FinishWithResultTest.hap",
-                "GetCallingBundlePromiseTest.hap",
-                "StartAbility.hap",
-                "StartAbilityForResult.hap",
-                "TerminateAbilityTest.hap",
-                "ActsFeatureAbilityTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
-        }
-    ]
+      {
+          "test-file-name": [
+              "FinishWithResultEmptyTest.hap",
+              "FinishWithResultPromiseParametersTest.hap",
+              "FinishWithResultTest.hap",
+              "GetCallingBundlePromiseTest.hap",
+              "StartAbility.hap",
+              "StartAbilityForResult.hap",
+              "TerminateAbilityTest.hap",
+              "ActsFeatureAbilityTest.hap"
+          ],
+          "type": "AppInstallKit",
+          "cleanup-apps": true
+      }
+  ]
 }

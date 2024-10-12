@@ -12,28 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ability_featureAbility from '@ohos.ability.featureAbility';
-import commonEvent from '@ohos.commonEvent';
-
+import commonEvent from '@ohos.commonEventManager';
 const TAG1 = "Fa:SupportFunction:MainAbility2:";
 const listPush1 = "Fa_SupportFunction_MainAbility2_";
 let lifeList: string[] = [];
 let lifeListActive: string[] = [];
 
-export default {
+class MainAbility {
   async onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
     lifeListActive.push('onCreate');
-  },
+  }
   onDestroy() {
     console.log(TAG1 + 'onDestroy');
-  },
+  }
   onActive() {
     console.log(TAG1 + 'onActive');
     lifeListActive.push('onActive');
 
-    let options = {
+    let options:commonEvent.CommonEventPublishData = {
       parameters: {
         lifeList: lifeListActive
       }
@@ -41,18 +39,15 @@ export default {
     commonEvent.publish(listPush1 + "onActive", options, (err) => {
       console.log(TAG1 + listPush1 + "onActive");
     });
-  },
+  }
   onInactive() {
     console.log(TAG1 + 'onInactive');
-  },
+  }
   onShow() {
     console.log(TAG1 + 'onShow');
-  },
+  }
   onHide() {
     console.log(TAG1 + 'onHide');
   }
 }
-
-function sleep(ms: number) {
-  return new Promise<void>(resolve => setTimeout(resolve, ms));
-}
+export default new MainAbility();

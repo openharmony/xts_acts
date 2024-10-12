@@ -12,20 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import commonEvent from '@ohos.commonEvent';
+import commonEvent from '@ohos.commonEventManager';
 
 const TAG1 = "Fa:FaOnAndOffScreen:MainAbility:";
 const listPush1 = "FaOnAndOffScreen_MainAbility_";
 const lifeList: string[] = [];
-
-export default {
+class MainAbility {
   onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
-  },
+  }
   onDestroy() {
     console.log(TAG1 + 'onDestroy');
-  },
+  }
   onActive() {
     console.log(TAG1 + 'onActive');
     lifeList.push('onActive');
@@ -33,16 +32,16 @@ export default {
     commonEvent.publish(listPush1 + "onActive", (err) => {
       console.log(TAG1 + listPush1 + "onActive");
     });
-  },
+  }
   onInactive() {
     console.log(TAG1 + 'onInactive');
     lifeList.push('onInactive');
-  },
+  }
   onHide() {
     console.log(TAG1 + 'onHide');
     lifeList.push('onHide');
 
-    let options = {
+    let options: commonEvent.CommonEventPublishData = {
       parameters: {
         lifeList: lifeList
       }
@@ -50,8 +49,10 @@ export default {
     commonEvent.publish(listPush1 + "onHide", options, (err) => {
       console.log(TAG1 + listPush1 + "onHide");
     });
-  },
-  onNewWant(want) {
+  }
+  onNewWant(want: Want) {
     console.log(TAG1 + 'onNewWant');
   }
 }
+
+export default new MainAbility();

@@ -12,34 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import commonEvent from '@ohos.commonEventManager';
 import ability_featureAbility from '@ohos.ability.featureAbility';
-import commonEvent from '@ohos.commonEvent';
 import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
 
-var TAG1 = "Fa:SupportFunctionTwo:MainAbility:";
-var listPush1 = "Fa_SupportFunctionTwo_MainAbility_";
-var lifeList = [];
-export default {
+let TAG1 = "Fa:SupportFunctionTwo:MainAbility:";
+let listPush1 = "Fa_SupportFunctionTwo_MainAbility_";
+let lifeList: string[] = [];
+class MainAbility {
   onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
-  },
+  }
   onDestroy() {
     console.log(TAG1 + 'onDestroy');
-  },
+  }
   async onActive() {
     console.log(TAG1 + 'onActive');
     lifeList.push('onActive');
 
-    let displayOrientationBefore = undefined;
-    let displayOrientationAfter = undefined;
+    let displayOrientationBefore:bundle.DisplayOrientation|undefined = undefined;
+    let displayOrientationAfter:bundle.DisplayOrientation|undefined = undefined;
     let setDisplayOrientation = 0;
     let orientation = bundle.DisplayOrientation.FOLLOW_RECENT;
 
     await ability_featureAbility.getContext().getDisplayOrientation().then((data) => {
       console.log(TAG1 + "getDisplayOrientation data = " + JSON.stringify(data));
       displayOrientationBefore = data;
-    }).catch((error) => {
+    }).catch((error:BusinessError) => {
       console.log(TAG1 + "getDisplayOrientation error = " + JSON.stringify(error));
     })
 
@@ -50,18 +51,18 @@ export default {
       } else {
         console.log(`${TAG1} setDisplayOrientation callBack is error: ${JSON.stringify(data)}`);
       }
-    }).catch((error) => {
+    }).catch((error:BusinessError) => {
       console.log(TAG1 + "setShowOnLockScreen error = " + JSON.stringify(error));
     })
 
     await ability_featureAbility.getContext().getDisplayOrientation().then((data) => {
       console.log(TAG1 + "getDisplayOrientation data = " + JSON.stringify(data));
       displayOrientationAfter = data;
-    }).catch((error) => {
+    }).catch((error:BusinessError) => {
       console.log(TAG1 + "getDisplayOrientation error = " + JSON.stringify(error));
     })
 
-    let options = {
+    let options:commonEvent.CommonEventPublishData = {
       parameters: {
         displayOrientationBefore: displayOrientationBefore,
         displayOrientationAfter: displayOrientationAfter,
@@ -72,14 +73,15 @@ export default {
     commonEvent.publish(listPush1 + "onActive", options, (err) => {
       console.log(TAG1 + listPush1 + "onActive");
     });
-  },
+  }
   onInactive() {
     console.log(TAG1 + 'onInactive');
-  },
+  }
   onShow() {
     console.log(TAG1 + 'onShow');
-  },
+  }
   onHide() {
     console.log(TAG1 + 'onHide');
   }
 }
+export default new MainAbility();
