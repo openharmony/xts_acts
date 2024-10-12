@@ -23,7 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let ON_CREATE = 'on_Create';
 let CALL_BACK = 'call_back';
 let tag = 'SystemAppB_SecondAbility11'
-let ON_Second_ReleaseBACK = 'ON_Second_ReleaseBACK';
+let ON_SECOND_RELEASE_BACK = 'ON_Second_Release_BacK';
 let CALLER_ENTER = 'call_enter';
 
 export default class SecondAbility14 extends UIAbility {
@@ -79,7 +79,7 @@ export default class SecondAbility14 extends UIAbility {
                 data: result,
               }
             };
-            commonEvent.publish(ON_Second_ReleaseBACK, commonEventData, (err) => {
+            commonEvent.publish(ON_SECOND_RELEASE_BACK, commonEventData, (err) => {
               hilog.info(0x0000, tag, '%{public}s',
                 `ON_ERROR_BACK SecondAbility14 publish err:  ${JSON.stringify(err)}`);
             });

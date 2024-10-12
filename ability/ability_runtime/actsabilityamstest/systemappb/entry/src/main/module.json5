@@ -554,8 +554,8 @@
         ]
       },
       {
-        "name": "SecondAbility_0200",
-        "srcEntry": "./ets/secondability_0200/SecondAbility_0200.ets",
+        "name": "SecondAbility23",
+        "srcEntry": "./ets/secondability23/SecondAbility23.ets",
         "description": "$string:SecondAbility_0200_desc",
         "icon": "$media:layered_image",
         "label": "$string:SecondAbility_0200_label",
@@ -576,8 +576,8 @@
         ]
       },
       {
-        "name": "SecondAbility_5500",
-        "srcEntry": "./ets/secondability_5500/SecondAbility_5500.ets",
+        "name": "SecondAbility26",
+        "srcEntry": "./ets/secondability26/SecondAbility26.ets",
         "description": "$string:SecondAbility_5500_desc",
         "icon": "$media:layered_image",
         "label": "$string:SecondAbility_5500_label",
@@ -597,8 +597,8 @@
         ]
       },
       {
-        "name": "SecondAbility_1900",
-        "srcEntry": "./ets/secondability_1900/SecondAbility_1900.ets",
+        "name": "SecondAbility22",
+        "srcEntry": "./ets/secondability22/SecondAbility22.ets",
         "description": "$string:SecondAbility_1900_desc",
         "icon": "$media:layered_image",
         "label": "$string:SecondAbility_1900_label",
@@ -618,8 +618,8 @@
         ]
       },
       {
-        "name": "SecondAbility_4900",
-        "srcEntry": "./ets/secondability_4900/SecondAbility_4900.ets",
+        "name": "SecondAbility25",
+        "srcEntry": "./ets/secondability25/SecondAbility25.ets",
         "description": "$string:SecondAbility_4900_desc",
         "icon": "$media:layered_image",
         "label": "$string:SecondAbility_4900_label",
