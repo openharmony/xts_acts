@@ -19,7 +19,7 @@ import { window } from '@kit.ArkUI';
 import { rpc } from '@kit.IPCKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
-export default class mainability23 extends UIAbility{
+export default class MainAbility23 extends UIAbility{
   async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): Promise<void>{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
 

@@ -78,10 +78,8 @@ export default class SecondAbility22 extends UIAbility{
     // 获取Caller发送的序列化数据
     let msg = new MyMessageAble('msgBack' + this.index, '');
     pdata.readParcelable(msg); // 从MessageSequence实例中读取成员变量到指定的对象（pdata）
-    console.log("read___" + pdata.readString())
     console.log(`testTag__name:${msg.getName()}——str:${msg.getStr()}——num:${msg.getNum()}`);
 
-    //let backStr: string = msg.str + '_back'
     let commonEventPublishData: commonEventManager.CommonEventPublishData ={
       parameters: {
         data: msg.getStr()
