@@ -190,7 +190,6 @@ export default function nativeWindowTest() {
     });
 
 
-
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_0400
      * @tc.name       : testNativeWindowNativeWindowRequestBufferNullptr
@@ -297,7 +296,6 @@ export default function nativeWindowTest() {
     });
 
 
-
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_0500
      * @tc.name       : testNativeWindowWriteToParcelErrptr
@@ -381,8 +379,6 @@ export default function nativeWindowTest() {
       expect(result).assertEqual(0);
       done();
     });
-
-
 
 
     /**
@@ -516,6 +512,21 @@ export default function nativeWindowTest() {
 
 
     /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_0701
+     * @tc.name       : testNativeWindowGetNativeObjectMagicNormal
+     * @tc.desc       : testNativeWindowGetNativeObjectMagicNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeWindowGetNativeObjectMagicNormal', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowGetNativeObjectMagicNormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+
+    /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_0700
      * @tc.name       : testNativeWindowGetNativeObjectMagicNullptr
      * @tc.desc       : testNativeWindowGetNativeObjectMagicNullptr
@@ -529,20 +540,6 @@ export default function nativeWindowTest() {
       done();
     });
 
-
-    /**
-     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_0701
-     * @tc.name       : testNativeWindowGetNativeObjectMagicNormal
-     * @tc.desc       : testNativeWindowGetNativeObjectMagicNormal
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testNativeWindowGetNativeObjectMagicNormal', 0, async (done: Function) => {
-      let result: number = nativeWindow.testNativeWindowGetNativeObjectMagicNormal();
-      expect(result).assertEqual(0);
-      done();
-    });
 
 
     /**
@@ -568,7 +565,7 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowNativeObjectReferenceNormal', 0, async (done: Function) => {
+    it('testNativeWindowNativeObjectReferenceNormal', 3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeObjectReferenceNormal();
       expect(result).assertEqual(0);
       done();
@@ -890,7 +887,6 @@ export default function nativeWindowTest() {
     });
 
 
-
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_0911
      * @tc.name       : testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal
@@ -934,7 +930,6 @@ export default function nativeWindowTest() {
       expect(result).assertEqual(0);
       done();
     });
-
 
 
     /**
@@ -1102,7 +1097,6 @@ export default function nativeWindowTest() {
     });
 
 
-
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_0925
      * @tc.name       : testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal
@@ -1133,7 +1127,6 @@ export default function nativeWindowTest() {
     });
 
 
-
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1301
      * @tc.name       : testNativeWindowNativeWindowSetScalingModeV2ScalingMode
@@ -1149,7 +1142,6 @@ export default function nativeWindowTest() {
     });
 
 
-
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1500
      * @tc.name       : testNativeWindowGetColorSpaceFirst
@@ -1163,7 +1155,6 @@ export default function nativeWindowTest() {
       expect(result).assertEqual(0);
       done();
     });
-
 
 
     /**
@@ -1196,7 +1187,6 @@ export default function nativeWindowTest() {
     });
 
 
-
     /**
      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1503
      * @tc.name       : testNativeWindowSetColorSpaceAbnormal
@@ -1210,7 +1200,6 @@ export default function nativeWindowTest() {
       expect(result).assertEqual(0);
       done();
     });
-
 
 
     /**
@@ -1358,6 +1347,36 @@ export default function nativeWindowTest() {
      */
     it('testNativeWindowGetMetadataValueNullptr', 3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetMetadataValueNullptr();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1514
+     * @tc.name       : testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal
+     * @tc.desc       : testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1515
+     * @tc.name       : testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal
+     * @tc.desc       : testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal();
       expect(result).assertEqual(0);
       done();
     });

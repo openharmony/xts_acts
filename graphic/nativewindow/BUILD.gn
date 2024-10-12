@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 ohos_app_assist_suite("nativewindow_ndk_main") {
   testonly = true
   certificate_profile =
-      "./signature/com_nativebuffer_napitest_openharmony_sx.p7b"
+      "./signature/default_nativewindow__napitest_openharmony_sx.p7b"
   hap_name = "ActsNativeWindowMainTest"
   part_name = "graphic_2d"
   subsystem_name = "graphic"
@@ -26,7 +26,7 @@ ohos_js_app_suite("ActsNativeWindowTest") {
   test_hap = true
   testonly = true
   certificate_profile =
-      "./signature/com_nativebuffer_napitest_openharmony_sx.p7b"
+      "./signature/default_nativewindow__napitest_openharmony_sx.p7b"
   hap_name = "ActsNativeWindowTest"
   part_name = "graphic_2d"
   subsystem_name = "graphic"

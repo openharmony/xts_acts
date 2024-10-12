@@ -105,4 +105,5 @@ export const testNativeWindowSetNullMetadataValue: () => number;
 export const testNativeWindowSetMetadataValueNullptr: () => number;
 export const testNativeWindowGetMetadataValueAbnormal: () => number;
 export const testNativeWindowGetMetadataValueNullptr: () => number;
-
+export const testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal: () => number;
+export const testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal: () => number;
