@@ -1,8 +1,22 @@
+/*
+  * Copyright (C) 2024 HiHope Open Source Organization.
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *    http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+*/
+
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import commonEventManager from '@ohos.commonEventManager';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   private onCreateFlag = false;
@@ -61,7 +75,8 @@ export default class EntryAbility extends UIAbility {
         }
       };
       commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_2`, commonEventData, (result) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200, 50==: ${JSON.stringify(result)}`);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200, 50==: ${JSON.stringify(result)}`);
       });
 
       let want: Want = {
@@ -82,8 +97,8 @@ export default class EntryAbility extends UIAbility {
           `Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
       }
     }
-    this.sleep(1000)
-    this.context.terminateSelf()
+    this.sleep(1000);
+    this.context.terminateSelf();
   }
 
   onBackground(): void {
