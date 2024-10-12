@@ -81,12 +81,12 @@ export default class SecondAbility_1900 extends UIAbility{
     let msg = new MyMessageAble('msgBack' + this.index, '');
     pdata.readParcelable(msg); // 从MessageSequence实例中读取成员变量到指定的对象（pdata）
     console.log("read___" + pdata.readString())
-    console.log(`testTag__name:${msg.name}——str:${msg.str}——num:${msg.num}`);
+    console.log(`testTag__name:${msg.getName()}——str:${msg.getStr()}——num:${msg.getNum()}`);
 
     //let backStr: string = msg.str + '_back'
     let commonEventPublishData: commonEventManager.CommonEventPublishData ={
       parameters: {
-        data: msg.str
+        data: msg.getStr()
       }
     };
     commonEventManager.publish('SecondAbility_calleeOnCallBack_' + this.index, commonEventPublishData,
@@ -98,8 +98,8 @@ export default class SecondAbility_1900 extends UIAbility{
       return;
     } else{
       this.index++;
-      let backStr: string = msg.str + '_back'
-      return new MyMessageAble(msg.name, backStr);
+      let backStr: string = msg.getStr() + '_back'
+      return new MyMessageAble(msg.getName(), backStr);
     }
 
   }
@@ -107,9 +107,22 @@ export default class SecondAbility_1900 extends UIAbility{
 
 // 定义约定的序列化数据。 调用端及被调用端发送接收的数据格式需协商一致，如下示例约定数据由name、str和num组成
 export class MyMessageAble implements rpc.Parcelable{
-  name: string
-  str: string
-  num: number = 1
+  private  name: string
+  private  str: string
+  private  num: number = 1
+
+  getName(){
+    return this.name;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getNum(){
+    return this.num;
+  }
+
 
   constructor(name: string, str: string){
     this.name = name;

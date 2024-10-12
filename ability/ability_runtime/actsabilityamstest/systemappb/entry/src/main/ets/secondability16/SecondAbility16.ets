@@ -32,7 +32,7 @@ export default class SecondAbility16 extends UIAbility {
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCalleeA SecondAbility16 on testCall <======')
     data.readParcelable(recvSequence);
-    let result = recvSequence.str;
+    let result = recvSequence.getStr();
     console.log('SystemAppCalleeA export default class SecondAbility16  data===' + JSON.stringify(result));
     let commonEventData: commonEvent.CommonEventPublishData = {
       parameters: {
@@ -117,9 +117,22 @@ export default class SecondAbility16 extends UIAbility {
 }
 
 class MyParcelable {
-  num: number = 0;
-  str: string = "";
-  result: boolean = false;
+  private num: number = 0;
+  private str: string = '';
+  private result: boolean = false;
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result;
+  }
+
 
   constructor(num: number, string: string, result: boolean){
     this.num = num;
@@ -149,9 +162,21 @@ class MyParcelable {
 }
 
 class MySequenceable {
-  num: number = 0;
-  str: string = '';
-  result: string = '';
+  private num: number = 0;
+  private str: string = '';
+  private result: string = '';
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result;
+  }
 
   constructor(num: number, string: string, result: string){
     this.num = num;

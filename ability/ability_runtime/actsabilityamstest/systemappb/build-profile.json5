@@ -16,18 +16,6 @@
 {
   "app": {
     "signingConfigs": [
-      {
-        "name": "default",
-        "material": {
-          "certpath": "C:/Users/hu_guojin/.ohos/config/openharmony/default_systemappb_Ptwh07Fh0Lrd_7Qa5vjVf9k4twDC95V0S9KEgzvrXaI=.cer",
-          "storePassword": "000000198D8BFFAE4BE03F5BF0585306795EB8ED9C24C90787B59035DCBBEC0E52170495EFA75F384E",
-          "keyAlias": "debugKey",
-          "keyPassword": "000000194D1E1275112D182596A0EF1ED0029236944EAAF78579458267744FA486E5968E4115299047",
-          "profile": "C:/Users/hu_guojin/.ohos/config/openharmony/default_systemappb_Ptwh07Fh0Lrd_7Qa5vjVf9k4twDC95V0S9KEgzvrXaI=.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:/Users/hu_guojin/.ohos/config/openharmony/default_systemappb_Ptwh07Fh0Lrd_7Qa5vjVf9k4twDC95V0S9KEgzvrXaI=.p12"
-        }
-      }
     ],
     "products": [
       {
@@ -36,12 +24,7 @@
         "compatibleSdkVersion": 12,
         "compileSdkVersion": 12,
         "targetSdkVersion": 12,
-        "runtimeOS": "OpenHarmony",
-        "buildOption": {
-          "strictMode": {
-            "caseSensitiveCheck": true
-          }
-        }
+        "runtimeOS": "OpenHarmony"
       }
     ],
     "buildModeSet": [

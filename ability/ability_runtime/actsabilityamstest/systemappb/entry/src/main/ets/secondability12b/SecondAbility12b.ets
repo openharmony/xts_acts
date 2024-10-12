@@ -43,11 +43,11 @@ export default class SecondAbility12b extends UIAbility {
         let data = await caller.callWithResult('test', param);
         let retMsg = new MySequenceable(0, '', '');
         data.readParcelable(retMsg);
-        let result = retMsg.str;
+        let result = retMsg.getStr();
         let data2 = await caller.callWithResult('test2', param);
         let retMsgB = new MySequenceable(0, '', '');
         data2.readParcelable(retMsgB);
-        let resultB = retMsgB.str;
+        let resultB = retMsgB.getStr();
         caller.onRelease(this.releaseCallback);
         caller.release();
         let commonEventData: commonEvent.CommonEventPublishData = {
@@ -132,9 +132,21 @@ class MyParcelable {
 }
 
 class MySequenceable {
-  num: number = 0;
-  str: string = '';
-  result: string = '';
+  private num: number = 0;
+  private str: string = '';
+  private result: string = '';
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result;
+  }
 
   constructor(num: number, string: string, result: string){
     this.num = num;

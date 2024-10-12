@@ -29,7 +29,7 @@ export default class SecondAbility12 extends UIAbility {
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCalleeA SecondAbility12 on testCall <======')
     data.readParcelable(recvSequence);
-    let result = recvSequence.str;
+    let result = recvSequence.getStr();
     console.log('======>CallTestSysA SecondAbility12 Call_Finish<======' + result);
     commonEvent.publish(ENTER_FIRST, (err) => {
       hilog.info(0x0000, tag, '%{public}s',
@@ -50,7 +50,7 @@ export default class SecondAbility12 extends UIAbility {
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCalleeA SecondAbility12 on testCall <======')
     data.readParcelable(recvSequence);
-    let result = recvSequence.str;
+    let result = recvSequence.getStr();
     console.log('======>CallTestSysA SecondAbility12 Call_Finish<======' + result);
     let commonEventData: commonEvent.CommonEventPublishData = {
       parameters: {
@@ -104,9 +104,21 @@ export default class SecondAbility12 extends UIAbility {
 
 
 class MySequenceable {
-  num: number = 0;
-  str: string = '';
-  result: string = '';
+  private num: number = 0;
+  private str: string = '';
+  private result: string = '';
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result;
+  }
 
   constructor(num: number, string: string, result: string){
     this.num = num;
