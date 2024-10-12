@@ -164,6 +164,42 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
                 done()
             }
         });
-        
+
+        /**
+         * @tc.number: SUB_AA_SetFontSize_0100
+         * @tc.name: Check wrong parameters
+         * @tc.desc:  Function test
+         * @tc.level   1
+         */
+         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFontSize__0100', 0, function (done) {
+            console.info('=============ApplicationContext_SetFontSize__0100============')
+            try {
+                applicationContext.setFontSizeScale(undefined);
+                expect().assertFail()
+                done()
+            } catch(e) {
+                expect(JSON.stringify(e.code)).assertEqual("401")
+                done()
+            }
+        });
+
+        /**
+         * @tc.number: SUB_AA_SetFontSize_0200
+         * @tc.name: Check wrong parameters
+         * @tc.desc:  Function test
+         * @tc.level   1
+         */
+         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFontSize__0200', 0, function (done) {
+            console.info('=============ApplicationContext_SetFontSize__0200============')
+            try {
+                applicationContext.setFontSizeScale(-1);
+                expect().assertFail()
+                done()
+            } catch(e) {
+                expect(JSON.stringify(e.code)).assertEqual("401")
+                done()
+            }
+        });
+
     })
 }
