@@ -315,7 +315,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0300(napi_env env, napi_callback_info 
     return ret;
 }
 
-static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0100(napi_env env, napi_callback_info info)
+static napi_value OH_Rdb_SetDbType_SQLITE_Id_0100(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0300 Trxid=-1  ------------- ");
     int64_t trxId = 2;
@@ -371,7 +371,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0100(napi_env env, napi_callback
     return ret;
 }
 
-static napi_value OH_Rdb_SetDbType_SQLITE_Trxid_0200(napi_env env, napi_callback_info info)
+static napi_value OH_Rdb_SetDbType_SQLITE_Id_0200(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0300 Trxid=2  ------------- ");
     int64_t trxId = 2;
@@ -446,9 +446,9 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"OH_Rdb_SetDbType_SQLITE_0300", nullptr, OH_Rdb_SetDbType_SQLITE_0300, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"OH_Rdb_SetDbType_SQLITE_Trxid_0100", nullptr, OH_Rdb_SetDbType_SQLITE_Trxid_0100, nullptr, nullptr, nullptr,
+        {"OH_Rdb_SetDbType_SQLITE_Id_0100", nullptr, OH_Rdb_SetDbType_SQLITE_Id_0100, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"OH_Rdb_SetDbType_SQLITE_Trxid_0200", nullptr, OH_Rdb_SetDbType_SQLITE_Trxid_0200, nullptr, nullptr, nullptr,
+        {"OH_Rdb_SetDbType_SQLITE_Id_0200", nullptr, OH_Rdb_SetDbType_SQLITE_Id_0200, nullptr, nullptr, nullptr,
          napi_default, nullptr},
 
     };
