@@ -23,7 +23,7 @@ export default class MainAbility19b extends UIAbility {
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCalleeA SecondAbility19 on testCall <======')
     data.readParcelable(recvSequence);
-    let result = recvSequence.str;
+    let result = recvSequence.getStr();
     console.log('======>SystemAppCalleeA SecondAbility19 on testCall <======' + result)
     return recvSequence;
   }
@@ -68,9 +68,21 @@ export default class MainAbility19b extends UIAbility {
 }
 
 class MySequenceable {
-  num: number = 0;
-  str: string = '';
-  result: string = '';
+  private num: number = 0;
+  private str: string = '';
+  private result: string = '';
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result
+  }
 
   constructor(num: number, string: string, result: string){
     this.num = num;

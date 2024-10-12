@@ -90,9 +90,21 @@ export default class MainAbility3 extends UIAbility {
 }
 
 class MyParcelable {
-  num: number = 0;
-  str: string = "";
-  result: boolean = false;
+  private num: number = 0;
+  private str: string = '';
+  private result: boolean = false;
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result
+  }
 
   constructor(num: number, string: string, result: boolean){
     this.num = num;

@@ -54,14 +54,14 @@ export default class MainAbility_4900 extends UIAbility{
                   let retmsg = new MyMessageAble('msgBackGet', '');
                   data.readParcelable(retmsg); // 从MessageSequence实例中读取成员变量到指定的对象（retmsg）
 
-                  console.log(`testTag__name:${retmsg.name}——str:${retmsg.str}——num:${retmsg.num}`);
+                  console.log(`testTag__name:${retmsg.getName()}——str:${retmsg.getStr()}`);
 
                   caller.onRelease((str) =>{
                     console.log(`Caller OnRelease CallBack is called ${str}`);
 
                     let commonEventPublishData: commonEventManager.CommonEventPublishData = {
                       parameters: {
-                        data: retmsg.str
+                        data: retmsg.getStr()
                       }
                     };
                     commonEventManager.publish('MainAbility_releaseCallBack', commonEventPublishData, async (error) =>{
@@ -134,13 +134,20 @@ function sleep(time: number){
 }
 
 export class MyMessageAble implements rpc.Parcelable{
-  name: string
-  str: string
-  num: number = 1
+  private name: string
+  private str: string
+  private num: number = 1
 
   constructor(name: string, str: string){
     this.name = name;
     this.str = str;
+  }
+  getName(){
+    return this.name;
+  }
+
+  getStr(){
+    return this.str;
   }
 
   // 将此可序列对象封送到MessageSequence中。

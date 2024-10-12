@@ -53,14 +53,14 @@ export default class MainAbility12 extends UIAbility {
         let data = await caller.callWithResult('test', param);
         let retMsg = new MySequenceable(0, '', '');
         data.readParcelable(retMsg)
-        let result = retMsg.str;
+        let result = retMsg.getStr();
         await this.sleep(100);
         await this.context.startAbility(wantInfob);
         await this.sleep(100);
         let data2 = await caller.callWithResult('test2', param);
         let retMsgB = new MySequenceable(0, '', '');
         data2.readParcelable(retMsgB)
-        let resultB = retMsgB.str;
+        let resultB = retMsgB.getStr();
         caller.onRelease(this.releaseCallback);
         try {
           caller.release();
@@ -115,9 +115,21 @@ export default class MainAbility12 extends UIAbility {
 }
 
 class MyParcelable {
-  num: number = 0;
-  str: string = "";
-  result: boolean = false;
+  private num: number = 0;
+  private str: string = '';
+  private result: boolean = false;
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result
+  }
 
   constructor(num: number, string: string, result: boolean){
     this.num = num;
@@ -147,9 +159,21 @@ class MyParcelable {
 }
 
 class MySequenceable {
-  num: number = 0;
-  str: string = '';
-  result: string = '';
+  private num: number = 0;
+  private str: string = '';
+  private result: string = '';
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result
+  }
 
   constructor(num: number, string: string, result: string){
     this.num = num;

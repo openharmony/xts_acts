@@ -30,7 +30,7 @@ export default class MainAbility12b extends UIAbility{
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCalleeA MainAbility12b on testCall <======')
     data.readParcelable(recvSequence);
-    let result = recvSequence.str;
+    let result = recvSequence.getStr();
     console.log('======>CallTestSysA MainAbility12b Call_Finish<======' + result);
     commonEvent.publish(ENTER_SECOND, (err) => {
       hilog.info(0x0000, tag, '%{public}s', `ON_ERROR_BACK MainAbility12b publish err:  ${JSON.stringify(err)}`);
@@ -50,7 +50,7 @@ export default class MainAbility12b extends UIAbility{
     let recvSequence = new MySequenceable(0, '', '');
     console.log('======>SystemAppCalleeA MainAbility12b1 on testCall <======')
     data.readParcelable(recvSequence);
-    let result = recvSequence.str;
+    let result = recvSequence.getStr();
     console.log('======>CallTestSysA MainAbility12b1 Call_Finish<======' + result);
     let commonEventData: commonEvent.CommonEventPublishData = {
       parameters: {
@@ -103,9 +103,21 @@ export default class MainAbility12b extends UIAbility{
 }
 
 class MySequenceable {
-  num: number = 0;
-  str: string = '';
-  result: string = '';
+  private num: number = 0;
+  private str: string = '';
+  private result: string = '';
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result
+  }
 
   constructor(num: number, string: string, result: string){
     this.num = num;

@@ -52,7 +52,7 @@ export default class MainAbility20 extends UIAbility {
           JSON.stringify(data));
           let retMsg = new MySequenceable(0, '', '');
           data.readParcelable(retMsg)
-          let result = retMsg.str;
+          let result = retMsg.getStr();
           this.context.startAbility(wantInfob);
           caller.onRelease(this.releaseCallback);
           try {
@@ -116,9 +116,21 @@ export default class MainAbility20 extends UIAbility {
 }
 
 class MyParcelable {
-  num: number = 0;
-  str: string = "";
-  result: boolean = false;
+  private num: number = 0;
+  private str: string = "";
+  private result: boolean = false;
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result
+  }
 
   constructor(num: number, string: string, result: boolean){
     this.num = num;
@@ -148,9 +160,21 @@ class MyParcelable {
 }
 
 class MySequenceable {
-  num: number = 0;
-  str: string = '';
-  result: string = '';
+  private num: number = 0;
+  private str: string = '';
+  private result: string = '';
+
+  getNum(){
+    return this.num;
+  }
+
+  getStr(){
+    return this.str;
+  }
+
+  getResult(){
+    return this.result
+  }
 
   constructor(num: number, string: string, result: string){
     this.num = num;
