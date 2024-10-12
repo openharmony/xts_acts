@@ -1,0 +1,175 @@
+{
+  "module": {
+    "name": "entry_test",
+    "type": "feature",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "abilities": [
+      {
+        "name": "TestAbility",
+        "srcEntry": "./ets/testability/TestAbility.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "standard",
+        "skills": [
+          {
+          }
+        ]
+      },
+      {
+        "name": "EntryAbility1",
+        "srcEntry": "./ets/entryability1/EntryAbility1.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "standard",
+        "skills": [
+          {
+          }
+        ]
+      },
+      {
+        "name": "EntryAbility2",
+        "srcEntry": "./ets/entryability2/EntryAbility2.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": [
+          {
+          }
+        ]
+      },
+      {
+        "name": "EntryAbility3",
+        "srcEntry": "./ets/entryability3/EntryAbility3.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": [
+          {
+          }
+        ]
+      },
+      {
+        "name": "EntryAbility4",
+        "srcEntry": "./ets/entryability4/EntryAbility4.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": []
+      },
+      {
+        "name": "EntryAbility5",
+        "srcEntry": "./ets/entryability5/EntryAbility5.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": []
+      },
+      {
+        "name": "EntryAbility6",
+        "srcEntry": "./ets/entryability6/EntryAbility6.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": []
+      },
+      {
+        "name": "EntryAbility7",
+        "srcEntry": "./ets/entryability7/EntryAbility7.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": []
+      },
+      {
+        "name": "EntryAbility8",
+        "srcEntry": "./ets/entryability8/EntryAbility8.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": []
+      },
+      {
+        "name": "EntryAbility9",
+        "srcEntry": "./ets/entryability9/EntryAbility9.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": []
+      },
+      {
+        "name": "EntryAbility10",
+        "srcEntry": "./ets/entryability10/EntryAbility10.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": []
+      },
+      {
+        "name": "EntryAbility11",
+        "srcEntry": "./ets/entryability11/EntryAbility11.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "singleton",
+        "skills": []
+      }
+      ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.START_INVISIBLE_ABILITY"
+      }
+    ]
+    }
+}
