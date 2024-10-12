@@ -1564,7 +1564,7 @@ napi_value testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal(napi_env 
         napi_create_int32(env, CONSTANT_1000 + CONSTANT_2, &result);
         return result;
     }
-    result = testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal1(env, info, paramater);    
+    result = testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal1(env, info, paramater);
     if (result != nullptr) {
         return result;
     }
