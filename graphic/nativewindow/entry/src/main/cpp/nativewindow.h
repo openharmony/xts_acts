@@ -129,5 +129,9 @@ napi_value testNativeWindowSetNullMetadataValue(napi_env env, napi_callback_info
 napi_value testNativeWindowSetMetadataValueNullptr(napi_env env, napi_callback_info info);
 napi_value testNativeWindowGetMetadataValueAbnormal(napi_env env, napi_callback_info info);
 napi_value testNativeWindowGetMetadataValueNullptr(napi_env env, napi_callback_info info);
+napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal(napi_env env,
+                                                                                 napi_callback_info info);
+napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal(napi_env env,
+                                                                                   napi_callback_info info);
 
 #endif // NATIVEWINDOW_USELESS_H
