@@ -22,9 +22,11 @@ group("ActsAbilityAmsTest") {
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsstartappcloneapptest:ActsStartAppCloneAppTest",
       "actsstartchildprocesstest:ActsStartChildProcessTest",
+      "actsterminateselfwithresulttest:ActsTerminateselfWithResultEntry",
+      "actsterminateselfwithresulttest:ActsTerminateselfWithResultTest",
       "appclonedemo:AppCloneDemo",
-      "systemappa":"SystemAppA",
-      "systemappb":"SystemAppB",
+      "terminateselfwithresulttesthap:TerminateSelfWithResultTestHap",
+      "terminateselfwithresulttesthap2:TerminateSelfWithResultTestHap2",
     ]
   }
 }
