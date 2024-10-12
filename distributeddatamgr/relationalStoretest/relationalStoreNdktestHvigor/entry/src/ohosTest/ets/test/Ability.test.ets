@@ -21,7 +21,7 @@ export default function rdbConfigV2NdkTest() {
   describe('rdbConfigV2NdkTest', async (done: Function) => {
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0100
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0100
      * @tc.name OH_Rdb_CreateConfig_0100
      * @tc.desc OH_Rdb_CreateConfig_0100
      * @tc.level: Level 2
@@ -36,7 +36,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0200
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0200
      * @tc.name OH_Rdb_CreateConfig_0200
      * @tc.desc OH_Rdb_CreateConfig_0200
      * @tc.level: Level 2
@@ -51,7 +51,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0300
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0300
      * @tc.name OH_Rdb_SetDbType_0100
      * @tc.desc OH_Rdb_SetDbType_0100
      * @tc.level: Level 2
@@ -66,7 +66,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0400
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0400
      * @tc.name OH_Rdb_SetDbType_0300
      * @tc.desc OH_Rdb_SetDbType_0300
      * @tc.level: Level 2
@@ -81,7 +81,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0500
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0500
      * @tc.name OH_Rdb_GetSupportedDbType_0100
      * @tc.desc OH_Rdb_GetSupportedDbType_0100
      * @tc.level: Level 2
@@ -96,7 +96,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0600
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0600
      * @tc.name OH_Rdb_SetDbType_SQLITE_0100
      * @tc.desc OH_Rdb_SetDbType_SQLITE_0100
      * @tc.level: Level 2
@@ -111,7 +111,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0700
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0700
      * @tc.name OH_Rdb_SetDbType_SQLITE_0200
      * @tc.desc OH_Rdb_SetDbType_SQLITE_0200
      * @tc.level: Level 2
@@ -126,7 +126,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0800
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0800
      * @tc.name OH_Rdb_SetDbType_SQLITE_0300
      * @tc.desc OH_Rdb_SetDbType_SQLITE_0300
      * @tc.level: Level 2
@@ -141,7 +141,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0900
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_0900
      * @tc.name OH_Rdb_SetDbType_SQLITE_Id_0100
      * @tc.desc OH_Rdb_SetDbType_SQLITE_Id_0100
      * @tc.level: Level 2
@@ -156,7 +156,7 @@ export default function rdbConfigV2NdkTest() {
     });
 
     /**
-     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_1000
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1000
      * @tc.name OH_Rdb_SetDbType_SQLITE_Id_0200
      * @tc.desc OH_Rdb_SetDbType_SQLITE_Id_0200
      * @tc.level: Level 2
@@ -166,6 +166,924 @@ export default function rdbConfigV2NdkTest() {
     it('OH_Rdb_SetDbType_SQLITE_Id_0200', 0, async (done: Function) => {
       let res = testndk.OH_Rdb_SetDbType_SQLITE_Id_0200();
       console.info(TAG + "OH_Rdb_SetDbType_SQLITE_Id_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1100
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0100
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0100();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1200
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0200
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0200();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1300
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0300
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0300();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1400
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0400
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0400
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0400', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0400();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0400 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1500
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0500
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0500
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0500', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0500();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0500 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1600
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0600
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0600
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0600', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0600();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0600 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1700
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0700
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0700
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0700', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0700();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0700 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1800
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0800
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0800
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0800', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0800();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0800 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_1900
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_0900
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_0900
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_0900', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_0900();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_0900 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2000
+     * @tc.name OH_Rdb_SetDatabaseDir_Param_1000
+     * @tc.desc OH_Rdb_SetDatabaseDir_Param_1000
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDatabaseDir_Param_1000', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDatabaseDir_Param_1000();
+      console.info(TAG + "OH_Rdb_SetDatabaseDir_Param_1000 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2100
+     * @tc.name OH_Rdb_SetStoreName_Param_0100
+     * @tc.desc OH_Rdb_SetStoreName_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0100();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2200
+     * @tc.name OH_Rdb_SetStoreName_Param_0200
+     * @tc.desc OH_Rdb_SetStoreName_Param_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0200();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2300
+     * @tc.name OH_Rdb_SetStoreName_Param_0300
+     * @tc.desc OH_Rdb_SetStoreName_Param_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0300();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2400
+     * @tc.name OH_Rdb_SetStoreName_Param_0400
+     * @tc.desc OH_Rdb_SetStoreName_Param_0400
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0400', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0400();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0400 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2500
+     * @tc.name OH_Rdb_SetStoreName_Param_0500
+     * @tc.desc OH_Rdb_SetStoreName_Param_0500
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0500', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0500();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0500 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2600
+     * @tc.name OH_Rdb_SetStoreName_Param_0600
+     * @tc.desc OH_Rdb_SetStoreName_Param_0600
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0600', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0600();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0600 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2700
+     * @tc.name OH_Rdb_SetStoreName_Param_0700
+     * @tc.desc OH_Rdb_SetStoreName_Param_0700
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0700', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0700();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0700 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2800
+     * @tc.name OH_Rdb_SetStoreName_Param_0800
+     * @tc.desc OH_Rdb_SetStoreName_Param_0800
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0800', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0800();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0800 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_2900
+     * @tc.name OH_Rdb_SetStoreName_Param_0900
+     * @tc.desc OH_Rdb_SetStoreName_Param_0900
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_0900', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_0900();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_0900 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3000
+     * @tc.name OH_Rdb_SetStoreName_Param_1000
+     * @tc.desc OH_Rdb_SetStoreName_Param_1000
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetStoreName_Param_1000', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetStoreName_Param_1000();
+      console.info(TAG + "OH_Rdb_SetStoreName_Param_1000 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3100
+     * @tc.name OH_Rdb_SetBundleName_0100
+     * @tc.desc OH_Rdb_SetBundleName_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0100();
+      console.info(TAG + "OH_Rdb_SetBundleName_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3200
+     * @tc.name OH_Rdb_SetBundleName_0200
+     * @tc.desc OH_Rdb_SetBundleName_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0200();
+      console.info(TAG + "OH_Rdb_SetBundleName_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3300
+     * @tc.name OH_Rdb_SetBundleName_0300
+     * @tc.desc OH_Rdb_SetBundleName_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0300();
+      console.info(TAG + "OH_Rdb_SetBundleName_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3400
+     * @tc.name OH_Rdb_SetBundleName_0400
+     * @tc.desc OH_Rdb_SetBundleName_0400
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0400', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0400();
+      console.info(TAG + "OH_Rdb_SetBundleName_0400 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3500
+     * @tc.name OH_Rdb_SetBundleName_0500
+     * @tc.desc OH_Rdb_SetBundleName_0500
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0500', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0500();
+      console.info(TAG + "OH_Rdb_SetBundleName_0500 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3600
+     * @tc.name OH_Rdb_SetBundleName_0600
+     * @tc.desc OH_Rdb_SetBundleName_0600
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0600', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0600();
+      console.info(TAG + "OH_Rdb_SetBundleName_0600 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3700
+     * @tc.name OH_Rdb_SetBundleName_0700
+     * @tc.desc OH_Rdb_SetBundleName_0700
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0700', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0700();
+      console.info(TAG + "OH_Rdb_SetBundleName_0700 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3800
+     * @tc.name OH_Rdb_SetBundleName_0800
+     * @tc.desc OH_Rdb_SetBundleName_0800
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0800', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0800();
+      console.info(TAG + "OH_Rdb_SetBundleName_0800 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_3900
+     * @tc.name OH_Rdb_SetBundleName_0900
+     * @tc.desc OH_Rdb_SetBundleName_0900
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_0900', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_0900();
+      console.info(TAG + "OH_Rdb_SetBundleName_0900 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4000
+     * @tc.name OH_Rdb_SetBundleName_1000
+     * @tc.desc OH_Rdb_SetBundleName_1000
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetBundleName_1000', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetBundleName_1000();
+      console.info(TAG + "OH_Rdb_SetBundleName_1000 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4100
+     * @tc.name OH_Rdb_SetEncrypted_0100
+     * @tc.desc OH_Rdb_SetEncrypted_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetEncrypted_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetEncrypted_0100();
+      console.info(TAG + "OH_Rdb_SetEncrypted_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4200
+     * @tc.name OH_Rdb_SetEncrypted_0200
+     * @tc.desc OH_Rdb_SetEncrypted_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetEncrypted_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetEncrypted_0200();
+      console.info(TAG + "OH_Rdb_SetEncrypted_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4300
+     * @tc.name OH_Rdb_SetEncrypted_0300
+     * @tc.desc OH_Rdb_SetEncrypted_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetEncrypted_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetEncrypted_0300();
+      console.info(TAG + "OH_Rdb_SetEncrypted_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4400
+     * @tc.name OH_Rdb_SetSecurityLevel_0100
+     * @tc.desc OH_Rdb_SetSecurityLevel_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetSecurityLevel_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetSecurityLevel_0100();
+      console.info(TAG + "OH_Rdb_SetSecurityLevel_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4500
+     * @tc.name OH_Rdb_SetSecurityLevel_0200
+     * @tc.desc OH_Rdb_SetSecurityLevel_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetSecurityLevel_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetSecurityLevel_0200();
+      console.info(TAG + "OH_Rdb_SetSecurityLevel_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4600
+     * @tc.name OH_Rdb_SetSecurityLevel_0300
+     * @tc.desc OH_Rdb_SetSecurityLevel_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetSecurityLevel_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetSecurityLevel_0300();
+      console.info(TAG + "OH_Rdb_SetSecurityLevel_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4700
+     * @tc.name OH_Rdb_SetArea_0100
+     * @tc.desc OH_Rdb_SetArea_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetArea_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetArea_0100();
+      console.info(TAG + "OH_Rdb_SetArea_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4800
+     * @tc.name OH_Rdb_SetArea_0200
+     * @tc.desc OH_Rdb_SetArea_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetArea_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetArea_0200();
+      console.info(TAG + "OH_Rdb_SetArea_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_4900
+     * @tc.name OH_Rdb_SetArea_0300
+     * @tc.desc OH_Rdb_SetArea_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetArea_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetArea_0300();
+      console.info(TAG + "OH_Rdb_SetArea_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5000
+     * @tc.name OH_Rdb_SetArea_0400
+     * @tc.desc OH_Rdb_SetArea_0400
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetArea_0400', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetArea_0400();
+      console.info(TAG + "OH_Rdb_SetArea_0400 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5100
+     * @tc.name OH_Rdb_SetArea_0500
+     * @tc.desc OH_Rdb_SetArea_0500
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetArea_0500', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetArea_0500();
+      console.info(TAG + "OH_Rdb_SetArea_0500 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5200
+     * @tc.name OH_Rdb_SetArea_Param_0100
+     * @tc.desc OH_Rdb_SetArea_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetArea_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetArea_Param_0100();
+      console.info(TAG + "OH_Rdb_SetArea_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5300
+     * @tc.name OH_Rdb_SetArea_Param_0200
+     * @tc.desc OH_Rdb_SetArea_Param_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetArea_Param_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetArea_Param_0200();
+      console.info(TAG + "OH_Rdb_SetArea_Param_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5400
+     * @tc.name OH_Rdb_SetArea_Param_0300
+     * @tc.desc OH_Rdb_SetArea_Param_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetArea_Param_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetArea_Param_0300();
+      console.info(TAG + "OH_Rdb_SetArea_Param_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5500
+     * @tc.name OH_Rdb_SetDbType_Param_0100
+     * @tc.desc OH_Rdb_SetDbType_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDbType_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDbType_Param_0100();
+      console.info(TAG + "OH_Rdb_SetDbType_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5600
+     * @tc.name OH_Rdb_SetDbType_Param_0200
+     * @tc.desc OH_Rdb_SetDbType_Param_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDbType_Param_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDbType_Param_0200();
+      console.info(TAG + "OH_Rdb_SetDbType_Param_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5700
+     * @tc.name OH_Rdb_SetDbType_Param_0300
+     * @tc.desc OH_Rdb_SetDbType_Param_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_SetDbType_Param_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDbType_Param_0300();
+      console.info(TAG + "OH_Rdb_SetDbType_Param_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5800
+     * @tc.name OH_Rdb_GetSupportedDbType_Param_0100
+     * @tc.desc OH_Rdb_GetSupportedDbType_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_GetSupportedDbType_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_GetSupportedDbType_Param_0100();
+      console.info(TAG + "OH_Rdb_GetSupportedDbType_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_5900
+     * @tc.name OH_Rdb_DestroyConfig_Param_0100
+     * @tc.desc OH_Rdb_DestroyConfig_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_DestroyConfig_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_DestroyConfig_Param_0100();
+      console.info(TAG + "OH_Rdb_DestroyConfig_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6000
+     * @tc.name OH_Rdb_CreateOrOpen_Param_0100
+     * @tc.desc OH_Rdb_CreateOrOpen_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_CreateOrOpen_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_CreateOrOpen_Param_0100();
+      console.info(TAG + "OH_Rdb_CreateOrOpen_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6100
+     * @tc.name OH_Rdb_DeleteStoreV2_Param_0100
+     * @tc.desc OH_Rdb_DeleteStoreV2_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_DeleteStoreV2_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_DeleteStoreV2_Param_0100();
+      console.info(TAG + "OH_Rdb_DeleteStoreV2_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6200
+     * @tc.name OH_Rdb_ExecuteByTrxId_Param_0100
+     * @tc.desc OH_Rdb_ExecuteByTrxId_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_ExecuteByTrxId_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_ExecuteByTrxId_Param_0100();
+      console.info(TAG + "OH_Rdb_ExecuteByTrxId_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6300
+     * @tc.name OH_Rdb_ExecuteByTrxId_Param_0200
+     * @tc.desc OH_Rdb_ExecuteByTrxId_Param_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_ExecuteByTrxId_Param_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_ExecuteByTrxId_Param_0200();
+      console.info(TAG + "OH_Rdb_ExecuteByTrxId_Param_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6400
+     * @tc.name OH_Rdb_ExecuteByTrxId_Param_0300
+     * @tc.desc OH_Rdb_ExecuteByTrxId_Param_0300
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_ExecuteByTrxId_Param_0300', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_ExecuteByTrxId_Param_0300();
+      console.info(TAG + "OH_Rdb_ExecuteByTrxId_Param_0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6500
+     * @tc.name OH_Rdb_BeginTransWithTrxId_Param_0100
+     * @tc.desc OH_Rdb_BeginTransWithTrxId_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_BeginTransWithTrxId_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_BeginTransWithTrxId_Param_0100();
+      console.info(TAG + "OH_Rdb_BeginTransWithTrxId_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6600
+     * @tc.name OH_Rdb_BeginTransWithTrxId_Param_0200
+     * @tc.desc OH_Rdb_BeginTransWithTrxId_Param_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_BeginTransWithTrxId_Param_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_BeginTransWithTrxId_Param_0200();
+      console.info(TAG + "OH_Rdb_BeginTransWithTrxId_Param_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6700
+     * @tc.name OH_Rdb_CommitByTrxId_Param_0100
+     * @tc.desc OH_Rdb_CommitByTrxId_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_CommitByTrxId_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_CommitByTrxId_Param_0100();
+      console.info(TAG + "OH_Rdb_CommitByTrxId_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6800
+     * @tc.name OH_Rdb_CommitByTrxId_Param_0200
+     * @tc.desc OH_Rdb_CommitByTrxId_Param_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_CommitByTrxId_Param_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_CommitByTrxId_Param_0200();
+      console.info(TAG + "OH_Rdb_CommitByTrxId_Param_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_6900
+     * @tc.name OH_Rdb_RollBackByTrxId_Param_0100
+     * @tc.desc OH_Rdb_RollBackByTrxId_Param_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_RollBackByTrxId_Param_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_RollBackByTrxId_Param_0100();
+      console.info(TAG + "OH_Rdb_RollBackByTrxId_Param_0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_7000
+     * @tc.name OH_Rdb_RollBackByTrxId_Param_0200
+     * @tc.desc OH_Rdb_RollBackByTrxId_Param_0200
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_RollBackByTrxId_Param_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_RollBackByTrxId_Param_0200();
+      console.info(TAG + "OH_Rdb_RollBackByTrxId_Param_0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_ConfigV2_7100
+     * @tc.name OH_Rdb_DBType_Enum_0100
+     * @tc.desc OH_Rdb_DBType_Enum_0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_Rdb_DBType_Enum_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_DBType_Enum_0100();
+      console.info(TAG + "OH_Rdb_DBType_Enum_0100 res=" + res );
       expect(res).assertEqual(0);
       done();
     });
