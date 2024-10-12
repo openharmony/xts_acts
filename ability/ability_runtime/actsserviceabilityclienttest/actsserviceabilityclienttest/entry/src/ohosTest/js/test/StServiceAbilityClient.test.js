@@ -396,8 +396,8 @@ export default function ActsStServiceAbilityTest() {
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_0500_onFailedCallback ====> code='
-                    + JSON.stringify(code) + " , " + code)
+                    console.debug('ACTS_JsServiceAbility_0500_onFailedCallback ====> code=' +
+                    JSON.stringify(code) + " , " + code)
                 }
 
                 mConnIdJsPromise = featureAbility.connectAbility(
@@ -469,8 +469,8 @@ export default function ActsStServiceAbilityTest() {
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_0600_onFailedCallback ====> code='
-                    + JSON.stringify(code) + " , " + code)
+                    console.debug('ACTS_JsServiceAbility_0600_onFailedCallback ====> code=' +
+                    JSON.stringify(code) + " , " + code)
                     expect(code == featureAbility.ErrorCode.ABILITY_NOT_FOUND
                     || (code != featureAbility.ErrorCode.NO_ERROR
                     || code != featureAbility.ErrorCode.INVALID_PARAMETER
@@ -651,8 +651,8 @@ export default function ActsStServiceAbilityTest() {
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_1300_onFailedCallback ====> code='
-                    + JSON.stringify(code) + " , " + code)
+                    console.debug('ACTS_JsServiceAbility_1300_onFailedCallback ====> code=' +
+                    JSON.stringify(code) + " , " + code)
                 }
 
                 mConnIdJsPromise = featureAbility.connectAbility(
@@ -724,8 +724,8 @@ export default function ActsStServiceAbilityTest() {
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_1400_onFailedCallback ====> code='
-                    + JSON.stringify(code) + " , " + code)
+                    console.debug('ACTS_JsServiceAbility_1400_onFailedCallback ====> code=' +
+                    JSON.stringify(code) + " , " + code)
                 }
 
                 mConnIdJsAsyncCallback = featureAbility.connectAbility(
@@ -802,8 +802,8 @@ export default function ActsStServiceAbilityTest() {
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_1500_onFailedCallback ====> code='
-                    + JSON.stringify(code) + " , " + code)
+                    console.debug('ACTS_JsServiceAbility_1500_onFailedCallback ====> code=' +
+                    JSON.stringify(code) + " , " + code)
                 }
 
                 mConnIdJsPromise = featureAbility.connectAbility(

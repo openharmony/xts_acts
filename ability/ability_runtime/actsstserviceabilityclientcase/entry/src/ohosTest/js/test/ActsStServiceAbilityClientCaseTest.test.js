@@ -385,8 +385,8 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
             }
 
             function onFailedCallback(code) {
-                console.debug('ACTS_AJsServiceAbility_0600_onFailedCallback ====> code='
-                    + JSON.stringify(code) + " , " + code)
+                console.debug('ACTS_AJsServiceAbility_0600_onFailedCallback ====> code=' +
+                    JSON.stringify(code) + " , " + code)
                     expect(code==featureAbility.ErrorCode.ABILITY_NOT_FOUND 
                         || (code!=featureAbility.ErrorCode.NO_ERROR 
                             || code!=featureAbility.ErrorCode.INVALID_PARAMETER
@@ -472,8 +472,8 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
             }
 
             function onFailedCallback(code) {
-                console.debug('ACTS_AJsServiceAbility_1400_onFailedCallback ====> code='
-                    + JSON.stringify(code) + " , " + code)
+                console.debug('ACTS_AJsServiceAbility_1400_onFailedCallback ====> code=' +
+                    JSON.stringify(code) + " , " + code)
             }
 
             mConnIdJsAsyncCallback = featureAbility.connectAbility(
