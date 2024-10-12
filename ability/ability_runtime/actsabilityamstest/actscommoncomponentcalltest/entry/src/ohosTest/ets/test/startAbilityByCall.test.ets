@@ -18,7 +18,6 @@ import { common, Want } from '@kit.AbilityKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { data } from '@kit.TelephonyKit';
-import { rpc } from '@kit.IPCKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -85,7 +84,7 @@ export default function startAbilityByCallTest(){
         let want: Want = {
           deviceId: '',
           bundleName: 'com.acts.systemappa',
-          abilityName: 'MainAbility_5500'
+          abilityName: 'MainAbility26'
         }
         try {
           context.startAbility(want, (err: BusinessError) => {
@@ -197,7 +196,7 @@ export default function startAbilityByCallTest(){
           let want: Want = {
             deviceId: '',
             bundleName: 'com.acts.systemappa',
-            abilityName: 'MainAbility_0200',
+            abilityName: 'MainAbility23',
             parameters: {
               data: TEST_CASE_NAME
             }
@@ -255,7 +254,7 @@ export default function startAbilityByCallTest(){
         let want: Want = {
           deviceId: '',
           bundleName: 'com.acts.systemappa',
-          abilityName: 'MainAbility_4700'
+          abilityName: 'MainAbility24'
         }
         try {
           await context.startAbilityForResult(want).then((result: common.AbilityResult) => {
@@ -370,7 +369,7 @@ export default function startAbilityByCallTest(){
           let want: Want = {
             deviceId: '',
             bundleName: 'com.acts.systemappa',
-            abilityName: 'MainAbility_1900',
+            abilityName: 'MainAbility22',
             parameters: {
               data: TEST_CASE_NAME
             }
@@ -483,7 +482,7 @@ export default function startAbilityByCallTest(){
           let want: Want = {
             deviceId: '',
             bundleName: 'com.acts.systemappa',
-            abilityName: 'MainAbility_4900',
+            abilityName: 'MainAbility25',
             parameters: {
               data: TEST_CASE_NAME
             }

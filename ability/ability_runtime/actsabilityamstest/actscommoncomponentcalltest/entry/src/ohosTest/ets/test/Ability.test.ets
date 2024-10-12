@@ -38,7 +38,7 @@ export default function abilityTest() {
     let ON_ERROR_BACK = 'on_Error_Back';
     let CALL_BACK = 'call_back';
     let ON_RELEASE_BACK = 'on_Release_Back';
-    let ON_Second_ReleaseBACK = 'ON_Second_ReleaseBACK';
+    let ON_SECOND_RELEASE_BACK = 'ON_Second_Release_BacK';
     let ON_SECOND_ACCEPT_VALUE = 'on_second_accept_value';
     let FIRST_RELEASE_BACK = 'first_release_back';
     let SECOND_RELEASE_BACK = 'second_release_back';
@@ -68,7 +68,7 @@ export default function abilityTest() {
     let mainBackBValue = '';
 
     let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
-      events: [CREATE_EVENT, ON_CREATE, ON_BACKGROUND, ON_ERROR_BACK, CALL_BACK, ON_RELEASE_BACK, ON_Second_ReleaseBACK,
+      events: [CREATE_EVENT, ON_CREATE, ON_BACKGROUND, ON_ERROR_BACK, CALL_BACK, ON_RELEASE_BACK, ON_SECOND_RELEASE_BACK,
         ON_SECOND_ACCEPT_VALUE, FIRST_RELEASE_BACK, SECOND_RELEASE_BACK, CALL_BACK_MAIN, CALL_BACK_MAINB,
         CALL_BACK_SECOND, CALL_BACK_SECONDB],
     };
@@ -137,7 +137,7 @@ export default function abilityTest() {
             }
             break;
           }
-          case ON_Second_ReleaseBACK: {
+          case ON_SECOND_RELEASE_BACK: {
             onSecondReleaseBackFlag = true;
             if (data.parameters) {
               let dataObj = data.parameters as Map<string, string>;
@@ -973,7 +973,7 @@ export default function abilityTest() {
     /**
      * @tc.number SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2000
      * @tc.name test caller.callWithResult
-     * @tc.desc test the service provider of a system application is called/callWithResult by multiple initiators
+     * @tc.desc test the caller.call function and checked released function
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
@@ -1126,7 +1126,7 @@ export default function abilityTest() {
     /**
      * @tc.number SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2100
      * @tc.name test caller.released function
-     * @tc.desc test  after the initiator requests a successful call, the service provider exits abnormally
+     * @tc.desc test  service kill and checked caller.released function
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
@@ -1176,7 +1176,7 @@ export default function abilityTest() {
     /**
      * @tc.number SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2300
      * @tc.name test caller.released function
-     * @tc.desc test initiate a call request to service provider S1, and service provider S1 then requests a call call from service provider S2
+     * @tc.desc test caller.call function and checked released function
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
@@ -1229,7 +1229,7 @@ export default function abilityTest() {
     /**
      * @tc.number SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2400
      * @tc.name test caller.released function
-     * @tc.desc test initiate a call request to the service provider, where the service provider is located in an independent process called AbilyStage
+     * @tc.desc test  independent process called and checked released function
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
@@ -1281,7 +1281,7 @@ export default function abilityTest() {
     /**
      * @tc.number SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2200
      * @tc.name test caller.released function
-     * @tc.desc test after the initiator requests a call call call from the service provider, the service provider then requests a call call call from the initiator
+     * @tc.desc test callee.on function and checked caller.release function
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
@@ -1334,7 +1334,7 @@ export default function abilityTest() {
     /**
      * @tc.number SUB_Ability_AbilityRuntime_ABILITY_StartAbility_CommonComponent_Call_2500
      * @tc.name test callee.off function
-     * @tc.desc test the service provider cannot provide the corresponding service after calling Callee.off
+     * @tc.desc test callee.off function and checked released function
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
