@@ -30,7 +30,11 @@ struct webViewSetConnectionTimeout {
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
   @State isFrameResourceType: boolean = false
-  
+  aboutToAppear(): void {
+    if (this.emitKey == 'emitWebViewSetConnectionAboutAppearTimeoutFiveSeconds') {
+      webview.WebviewController.setConnectionTimeout(5);
+    }
+  }
   onPageShow() {
       let valueChangeEvent: events_emitter.InnerEvent = {
           eventId: 10,
@@ -123,7 +127,12 @@ struct webViewSetConnectionTimeout {
                     console.log('getErrorInfo:' + event.error.getErrorInfo())
                     console.log('getErrorCode:' + event.error.getErrorCode())
                     let getErrorInfo = event.error.getErrorInfo()
-                    Utils.emitEvent('Time_out', 8005);
+                    if (this.emitKey == 'emitWebViewSetConnectionTimeoutTenSeconds') {
+                      Utils.emitEvent('Time_out', 8005);
+                    }
+                    if (this.emitKey == 'emitWebViewSetConnectionAboutAppearTimeoutFiveSeconds') {
+                      Utils.emitEvent('Time_out', 24801);
+                    }
                   }
                 })
       }

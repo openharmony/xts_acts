@@ -257,6 +257,10 @@ struct webViewObjectEmbed {
                     Utils.emitEvent('success', 8002);
                   }
 
+                  if(this.isChange && isEventUp && isEventDown && isAdd) {
+                    Utils.emitEvent('success', 8002);
+                  }
+
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
                   console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
