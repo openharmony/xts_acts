@@ -19,35 +19,15 @@ import formManager from '@ohos.application.formProvider';
 import commonEvent from '@ohos.commonEvent';
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
-
-
-interface FormDataType {
-  temperature: string,
-  time: string
-}
-
-interface DataObjType {
-  temperature: string,
-  time: string,
-  test: number,
-  test3: boolean
-};
-
-interface ParametersType {
-  formId : string
-}
-
-interface CommonEventPublishDataType {
-  data: string,
-  parameters: ParametersType
-};
+import { formParmData, dataObjType, commonEventPublishDataType } from './reportParms';
 
 @Entry
 @Component
 struct Index {
   @State formId: string = "0";
   @State opt : string = "updateForm";
-  @State formData: FormDataType = {temperature: "14c", "time": "12:00"};
+  @State formData: formParmData = new formParmData();
+
   @State nextTime: number = 5;
 
   private formUpdateFormEvent = "FMS_FormUpdateRefresh_commonEvent";
@@ -60,24 +40,32 @@ struct Index {
     console.debug("====>formsystemhostc formOnDynamicRefreshEventk ====>");
   }
 
+  private onPageInit() {
+    this.formdata.setValue("temperature", Number("14c"));
+    this.formdata.setValue("time", Number("12:00"));
+  }
+
   aboutToAppear() {
     console.log(`form supply B aboutToAppear start`);
     console.error('form supply B getWant');
+    this.onPageInit();
+
     featureAbility.getWant()
       .then((want: Want) => {
-        this.formId = want!.parameters.formId;
-        this.opt = want!.parameters.opt;
-        if(want!.parameters.formData) {
-          this.formData = want!.parameters.formData;
+        this.formId = want.parameters?.formId;
+        this.opt = want.parameters?.opt;
+        if(want.parameters?.formData) {
+          this.formData.setValue("temperature", want.parameters?.temperature);
+          this.formData.setValue("time", want.parameters?.time);
         }
-        if(want!.parameters.nextTime) {
-          this.nextTime = want!.parameters.nextTime;
+        if(want.parameters?.nextTime) {
+          this.nextTime = want.parameters?.nextTime;
         }
         console.error('form supply B getWant end'+ JSON.stringify(want));
 
         if(this.opt == "updateForm") {
           console.log("form supply B updateForm start");
-          let dataObj: DataObjType = {
+          let dataObj: dataObjType = {
             temperature: "14c",
             "time": "12:00",
             "test": 11,
@@ -87,7 +75,7 @@ struct Index {
           formManager.updateForm(this.formId, bindingData)
             .then((data) => {
               console.info('form supply B updateForm result:' + data);
-              let commonEventPublishData: CommonEventPublishDataType = {
+              let commonEventPublishData: commonEventPublishDataType = {
                 data: JSON.stringify(data),
                 parameters: {
                   "formId" : this.formId
@@ -104,7 +92,7 @@ struct Index {
           formManager.setFormNextRefreshTime(this.formId, this.nextTime)
             .then((data) => {
               console.info('form supply B setNextRefreshTime result:' + data);
-              let commonEventPublishData: CommonEventPublishDataType = {
+              let commonEventPublishData: commonEventPublishDataType = {
                 data: JSON.stringify(data),
                 parameters: {
                   "formId" : this.formId
