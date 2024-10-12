@@ -16,27 +16,15 @@
 {
   "app": {
     "signingConfigs": [
-      {
-        "name": "actsapplicationstartabilityauxiliary2",
-        "material": {
-          "certpath": "C:/Users/Administrator/.ohos/config/openharmony/actsapplicationstartabilityauxiliary2_actsapplicationstartabilityauxiliary_2_3BKRtu4ao1oLmOcD602yKkQoo16dE3j5tbJi65IzO_4=.cer",
-          "storePassword": "0000001BDC42D46CFE56DFB0D80FDC3570CD0FD0C42FFDFED7948278E5BF2C28AF6DAFE2AC6FFD5D336B6F",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001B7BA9F191857143060671FCC562115B78CB5F925DA3D3DC29A61B72B6FFF9157BD0AB52B4B3CC78",
-          "profile": "C:/Users/Administrator/.ohos/config/openharmony/actsapplicationstartabilityauxiliary2_actsapplicationstartabilityauxiliary_2_3BKRtu4ao1oLmOcD602yKkQoo16dE3j5tbJi65IzO_4=.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:/Users/Administrator/.ohos/config/openharmony/actsapplicationstartabilityauxiliary2_actsapplicationstartabilityauxiliary_2_3BKRtu4ao1oLmOcD602yKkQoo16dE3j5tbJi65IzO_4=.p12"
-        }
-      }
     ],
     "products": [
       {
         "name": "default",
-        "signingConfig": "actsapplicationstartabilityauxiliary2",
+        "signingConfig": "default",
         "compileSdkVersion": 12,
         "compatibleSdkVersion": 12,
         "targetSdkVersion": 12,
-        "runtimeOS": "OpenHarmony"
+        "runtimeOS": "OpenHarmony",
       }
     ],
     "buildModeSet": [
