@@ -62,8 +62,8 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
         expect(datainfo.versionName).assertEqual("1.0");
         expect(datainfo.entryModuleName).assertEqual("entry");
-        expect(datainfo.compatibleVersion).assertEqual(5);
-        expect(datainfo.targetVersion).assertEqual(5);
+        expect(datainfo.compatibleVersion).assertEqual(12);
+        expect(datainfo.targetVersion).assertEqual(12);
         expect(datainfo.uid).assertLarger(0);
         expect(datainfo.appId).assertContain(NAME1);
         expect(datainfo.type).assertEqual("");
@@ -84,8 +84,8 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.reqPermissionDetails[0].reason).assertEqual("Need PERMISSION_A");
         expect(datainfo.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual(NAME1 + ".MainAbility");
         expect(datainfo.reqPermissionDetails[0].usedScene.when).assertEqual("always");
-        expect(datainfo.compatibleVersion).assertEqual(5);
-        expect(datainfo.targetVersion).assertEqual(5);
+        expect(datainfo.compatibleVersion).assertEqual(12);
+        expect(datainfo.targetVersion).assertEqual(12);
         expect(datainfo.isCompressNativeLibs).assertEqual(true);
         for (let s = 0; s < datainfo.hapModuleInfos.length; s++) {
             expect(datainfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1.MyApplication1");
@@ -125,8 +125,8 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
         expect(datainfo.versionName).assertEqual("1.0");
         expect(datainfo.entryModuleName).assertEqual("entry");
-        expect(datainfo.compatibleVersion).assertEqual(5);
-        expect(datainfo.targetVersion).assertEqual(5);
+        expect(datainfo.compatibleVersion).assertEqual(12);
+        expect(datainfo.targetVersion).assertEqual(12);
         expect(datainfo.uid).assertLarger(0);
         expect(datainfo.appId).assertContain(NAME1);
         expect(datainfo.type).assertEqual("");
@@ -147,8 +147,8 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.reqPermissionDetails[0].reason).assertEqual("Need PERMISSION_A");
         expect(datainfo.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual(NAME1 + ".MainAbility");
         expect(datainfo.reqPermissionDetails[0].usedScene.when).assertEqual("always");
-        expect(datainfo.compatibleVersion).assertEqual(5);
-        expect(datainfo.targetVersion).assertEqual(5);
+        expect(datainfo.compatibleVersion).assertEqual(12);
+        expect(datainfo.targetVersion).assertEqual(12);
         expect(datainfo.isCompressNativeLibs).assertEqual(true);
         for (let s = 0; s < datainfo.hapModuleInfos.length; s++) {
             expect(datainfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1.MyApplication1");
@@ -229,8 +229,8 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.versionName).assertEqual("1.0");
         expect(datainfo.type).assertEqual("");
         expect(datainfo.cpuAbi).assertEqual("");
-        expect(datainfo.compatibleVersion).assertEqual(5);
-        expect(datainfo.targetVersion).assertEqual(5);
+        expect(datainfo.compatibleVersion).assertEqual(12);
+        expect(datainfo.targetVersion).assertEqual(12);
         expect(datainfo.installTime).assertLarger(0);
         expect(datainfo.updateTime).assertLarger(0);
         expect(datainfo.uid).assertLarger(0);
@@ -273,8 +273,8 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.versionName).assertEqual("1.0");
             expect(datainfo.type).assertEqual("");
             expect(datainfo.cpuAbi).assertEqual("");
-            expect(datainfo.compatibleVersion).assertEqual(5);
-            expect(datainfo.targetVersion).assertEqual(5);
+            expect(datainfo.compatibleVersion).assertEqual(12);
+            expect(datainfo.targetVersion).assertEqual(12);
             expect(datainfo.installTime).assertLarger(0);
             expect(datainfo.updateTime).assertLarger(0);
             expect(datainfo.uid).assertLarger(0);
