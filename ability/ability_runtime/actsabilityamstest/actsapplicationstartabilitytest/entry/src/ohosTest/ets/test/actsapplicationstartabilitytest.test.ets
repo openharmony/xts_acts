@@ -88,9 +88,7 @@ export default function actsApplicationStartAbilityTest() {
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
           `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-        let times = 0;
         if (allowed) {
-          times = 1000;
           let buttons = await driver.findComponents(ON.text('打开'));
           if (buttons && buttons.length > 0) {
             buttons[buttons.length - 1].click();
@@ -140,9 +138,7 @@ export default function actsApplicationStartAbilityTest() {
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
           `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-        let times = 0;
         if (allowed) {
-          times = 1000;
           let buttons = await driver.findComponents(ON.text('打开'));
           if (buttons && buttons.length > 0) {
             buttons[buttons.length - 1].click();
@@ -191,9 +187,7 @@ export default function actsApplicationStartAbilityTest() {
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
           `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-        let times = 0;
         if (allowed) {
-          times = 1000;
           let buttons = await driver.findComponents(ON.text('打开'));
           if (buttons && buttons.length > 0) {
             buttons[buttons.length - 1].click();
@@ -268,9 +262,7 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
@@ -345,9 +337,7 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
@@ -436,9 +426,7 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
@@ -507,9 +495,7 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
@@ -582,9 +568,7 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
@@ -631,9 +615,7 @@ export default function actsApplicationStartAbilityTest() {
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
           `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-        let times = 0;
         if (allowed) {
-          times = 1000;
           let buttons = await driver.findComponents(ON.text('打开'));
           if (buttons && buttons.length > 0) {
             buttons[buttons.length - 1].click();
@@ -706,9 +688,7 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
@@ -782,9 +762,7 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
@@ -857,9 +835,7 @@ export default function actsApplicationStartAbilityTest() {
                   let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
                   hilog.info(0x0000, 'testTag', '%{public}s',
                     `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-                  let times = 0;
                   if (allowed) {
-                    times = 1000;
                     let buttons = await driver.findComponents(ON.text('打开'));
                     if (buttons && buttons.length > 0) {
                       buttons[buttons.length - 1].click();
@@ -907,9 +883,7 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
@@ -1003,14 +977,23 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
             }
           }
+          await sleep(2000);
+          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed1) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+
         } catch (error) {
           expect().assertFail()
           hilog.info(0x0000, 'testTag', '%{public}s',
@@ -1111,9 +1094,17 @@ export default function actsApplicationStartAbilityTest() {
           let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, 'testTag', '%{public}s',
             `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          let times = 0;
           if (allowed) {
-            times = 1000;
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(2000);
+          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed1) {
             let buttons = await driver.findComponents(ON.text('打开'));
             if (buttons && buttons.length > 0) {
               buttons[buttons.length - 1].click();
