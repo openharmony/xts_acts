@@ -12,12 +12,14 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
 */
+
 import { describe, it, expect, beforeAll, afterEach, beforeEach } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { common } from '@kit.AbilityKit';
+import { Driver, MatchPattern, ON } from '@kit.TestKit';
 
 let bundleName = 'com.example.actsapplicationstartabilityauxiliary'
 let abilityName = 'EntryAbility1'
@@ -32,6 +34,7 @@ export default function actsApplicationStartAbilityTest() {
     const PARAM_ERRCODE = 401;
     const PARAMETER_ERROR_CODE = 401;
     let context: common.UIAbilityContext;
+    let driver = Driver.create();
     beforeAll(async (done: Function) => {
       setTimeout(() => {
         context = getContext() as common.UIAbilityContext;
@@ -72,15 +75,32 @@ export default function actsApplicationStartAbilityTest() {
         }
       };
       try {
-        await context.startAbility(want)
-        hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility`);
-        expect().assertFail()
+        await context.startAbility(want).then(()=>{
+          hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility`);
+          expect().assertFail()
+        }).catch((error:BusinessError)=>{
+          expect(error.code).assertEqual(expectErrCode)
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+        })
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        let times = 0;
+        if (allowed) {
+          times = 1000;
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
       } catch (error) {
         expect(error.code).assertEqual(expectErrCode)
         hilog.info(0x0000, 'testTag', '%{public}s',
           `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+        done();
       }
-      done();
     })
 
     /**

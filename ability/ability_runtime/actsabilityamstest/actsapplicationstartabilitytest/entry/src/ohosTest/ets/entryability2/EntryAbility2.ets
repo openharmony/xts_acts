@@ -1,3 +1,18 @@
+/*
+  * Copyright (C) 2024 HiHope Open Source Organization.
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *    http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+*/
+
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -9,7 +24,6 @@ export default class EntryAbility extends UIAbility {
   private onWindowStageCreateFlag = false;
   private onForegroundFlag = false;
   private onBackgroundFlag = false;
-  private onNewWantFlag = false;
   private onDestroyFlag = false;
   private TEST_CASE_NAME = '';
 
@@ -18,13 +32,13 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', `Wantyy: ${JSON.stringify(want)}`);
     hilog.info(0x0000, 'testTag', '%{public}s', `Wantyy: ${JSON.stringify(this.onCreateFlag)}`);
     this.TEST_CASE_NAME = want.action as string;
-    this.onCreateFlag = true
+    this.onCreateFlag = true;
   }
 
   onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-    this.onDestroyFlag = true
+    this.onDestroyFlag = true;
     let commonEventData: commonEventManager.CommonEventPublishData = {
       parameters: {
         data: {
@@ -42,7 +56,7 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', `Wantyy: ${JSON.stringify(this.onWindowStageCreateFlag)}`);
-    this.onWindowStageCreateFlag = true
+    this.onWindowStageCreateFlag = true;
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
@@ -83,15 +97,15 @@ export default class EntryAbility extends UIAbility {
           hilog.info(0x0000, 'testTag', '%{public}s',
             `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200, 50==: ${JSON.stringify(result)}`);
         });
-      this.sleep(3000)
-      this.context.terminateSelf()
+      this.sleep(3000);
+      this.context.terminateSelf();
     }
   }
 
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-    this.onBackgroundFlag = true
+    this.onBackgroundFlag = true;
   }
 
   sleep(ms: number): Promise<void> {

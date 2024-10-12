@@ -20,19 +20,19 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', `Wantyy: ${JSON.stringify(this.onCreateFlag)}`);
     this.TEST_CASE_NAME = want.action as string;
     hilog.info(0x0000, 'testTag', '%{public}s', `${this.TEST_CASE_NAME} singleEntry Ability onCreate`);
-    this.onCreateFlag = true
+    this.onCreateFlag = true;
   }
 
   onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', `${this.TEST_CASE_NAME}Ability ohosTest onDestroy`);
-    this.onDestroyFlag = true
+    this.onDestroyFlag = true;
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', `Wantyy: ${JSON.stringify(this.onWindowStageCreateFlag)}`);
-    this.onWindowStageCreateFlag = true
+    this.onWindowStageCreateFlag = true;
     let context: common.UIAbilityContext;
     context = getContext() as common.UIAbilityContext;
     windowStage.loadContent('pages/Index', (err) => {
@@ -94,7 +94,7 @@ export default class EntryAbility extends UIAbility {
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', `${this.TEST_CASE_NAME} Ability ohosTest onBackground`);
-    this.onBackgroundFlag = true
+    this.onBackgroundFlag = true;
     let commonEventData: commonEventManager.CommonEventPublishData = {
       parameters: {
         data: {
@@ -105,9 +105,9 @@ export default class EntryAbility extends UIAbility {
     commonEventManager.publish(`${this.TEST_CASE_NAME}_onBackgroundHap_1`, commonEventData, (result) => {
       hilog.info(0x0000, 'testTag', '%{public}s', `${this.TEST_CASE_NAME} onConnect, 50==: ${JSON.stringify(result)}`);
     });
-    setTimeout(()=>{
-      this.context.terminateSelf()
-    },1000)
+    setTimeout(() => {
+      this.context.terminateSelf();
+    }, 1000)
   }
 
   sleep(ms: number): Promise<void> {
