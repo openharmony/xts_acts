@@ -18,15 +18,15 @@ group("ActsAbilityAmsTest") {
   if (is_standard_system) {
     deps = [
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
-      "actscommoncomponentcalltest":"ActsCommonComponentCallTest",
+      "actscommoncomponentcalltest:ActsCommonComponentCallTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsstartappcloneapptest:ActsStartAppCloneAppTest",
       "actsstartchildprocesstest:ActsStartChildProcessTest",
       "actsterminateselfwithresulttest:ActsTerminateselfWithResultEntry",
       "actsterminateselfwithresulttest:ActsTerminateselfWithResultTest",
       "appclonedemo:AppCloneDemo",
-      "systemappa":"SystemAppA",
-      "systemappb":"SystemAppB",
+      "systemappa:SystemAppA",
+      "systemappb:SystemAppB",
       "terminateselfwithresulttesthap:TerminateSelfWithResultTestHap",
       "terminateselfwithresulttesthap2:TerminateSelfWithResultTestHap2",
     ]
