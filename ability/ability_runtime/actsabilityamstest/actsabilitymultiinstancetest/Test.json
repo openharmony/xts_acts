@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.example.backwithresulttest",
+        "bundle-name": "com.example.abilitymultiinstance",
         "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 70000
@@ -11,7 +11,11 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBackToCallerAbilityWithResultTest.hap"
+                "ActsAbilityMultiInstanceTest.hap",
+                "AbilityMultiInstanceTestA.hap",
+                "AbilityMultiInstanceTestB.hap",
+                "AbilityMultiInstanceTestC.hap",
+                "AbilityMultiInstanceTestD.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

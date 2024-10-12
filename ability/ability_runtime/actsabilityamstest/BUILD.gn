@@ -17,6 +17,11 @@ group("ActsAbilityAmsTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "abilitymultiinstancetesta:AbilityMultiInstanceTestA",
+      "abilitymultiinstancetestb:AbilityMultiInstanceTestB",
+      "abilitymultiinstancetestc:AbilityMultiInstanceTestC",
+      "abilitymultiinstancetestd:AbilityMultiInstanceTestD",
+      "actsabilitymultiinstancetest:ActsAbilityMultiInstanceTest",
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsstartappcloneapptest:ActsStartAppCloneAppTest",
