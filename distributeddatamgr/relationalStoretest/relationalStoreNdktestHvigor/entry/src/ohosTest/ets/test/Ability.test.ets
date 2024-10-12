@@ -142,30 +142,30 @@ export default function rdbConfigV2NdkTest() {
 
     /**
      * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_0900
-     * @tc.name OH_Rdb_SetDbType_SQLITE_Trxid_0100
-     * @tc.desc OH_Rdb_SetDbType_SQLITE_Trxid_0100
+     * @tc.name OH_Rdb_SetDbType_SQLITE_Id_0100
+     * @tc.desc OH_Rdb_SetDbType_SQLITE_Id_0100
      * @tc.level: Level 2
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_SQLITE_Trxid_0100', 0, async (done: Function) => {
-      let res = testndk.OH_Rdb_SetDbType_SQLITE_Trxid_0100();
-      console.info(TAG + "OH_Rdb_SetDbType_SQLITE_Trxid_0100 res=" + res );
+    it('OH_Rdb_SetDbType_SQLITE_Id_0100', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDbType_SQLITE_Id_0100();
+      console.info(TAG + "OH_Rdb_SetDbType_SQLITE_Id_0100 res=" + res );
       expect(res).assertEqual(0);
       done();
     });
 
     /**
      * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_Sqlite_1000
-     * @tc.name OH_Rdb_SetDbType_SQLITE_Trxid_0200
-     * @tc.desc OH_Rdb_SetDbType_SQLITE_Trxid_0200
+     * @tc.name OH_Rdb_SetDbType_SQLITE_Id_0200
+     * @tc.desc OH_Rdb_SetDbType_SQLITE_Id_0200
      * @tc.level: Level 2
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Rdb_SetDbType_SQLITE_Trxid_0200', 0, async (done: Function) => {
-      let res = testndk.OH_Rdb_SetDbType_SQLITE_Trxid_0200();
-      console.info(TAG + "OH_Rdb_SetDbType_SQLITE_Trxid_0200 res=" + res );
+    it('OH_Rdb_SetDbType_SQLITE_Id_0200', 0, async (done: Function) => {
+      let res = testndk.OH_Rdb_SetDbType_SQLITE_Id_0200();
+      console.info(TAG + "OH_Rdb_SetDbType_SQLITE_Id_0200 res=" + res );
       expect(res).assertEqual(0);
       done();
     });
