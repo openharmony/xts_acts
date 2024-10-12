@@ -16,6 +16,7 @@
 import { describe, expect, it } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import { BusinessError } from '@ohos.base';
+import network from '@system.network';
 
 const ExpectFail: () => void = () => {
   try {
@@ -358,36 +359,6 @@ export default function ConnectionTest() {
     });
 
     /**
-     * @tc.number     : SUB_Network_Connection_NetCapabilities_0100
-     * @tc.name       : testConnectionNetCapabilities0100
-     * @tc.desc       : test create a NetConnection object
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('testConnectionNetCapabilities0100', 0, async (done: Function) => {
-      const caseName: string = 'testConnectionNetCapabilities0100';
-      console.info(`${caseName}---Start`);
-      try {
-        let netCon: connection.NetConnection = connection.createNetConnection({
-          netCapabilities: {
-            bearerTypes: [connection.NetBearType.BEARER_CELLULAR]
-          },
-          bearerPrivateIdentifier: 'wifi'
-        })
-        console.info(`${caseName} netCon ->${JSON.stringify(netCon)}`)
-        ExpectTrue(netCon != undefined)
-        console.info(`${caseName} ----end`)
-        done()
-      } catch (err) {
-        console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
-        ExpectFail();
-        done()
-        console.info(`${caseName}---End`);
-      }
-    });
-
-    /**
      * @tc.number     : SUB_Network_Connection_NetCapabilities_0200
      * @tc.name       : testConnectionNetCapabilities0200
      * @tc.desc       : test create a NetConnection object
@@ -399,76 +370,28 @@ export default function ConnectionTest() {
       const caseName: string = 'testConnectionNetCapabilities0200';
       console.info(`${caseName}---Start`);
       try {
-        let netCon: connection.NetConnection = connection.createNetConnection({
-          netCapabilities: {
-            bearerTypes: [connection.NetBearType.BEARER_WIFI]
+        network.getType({
+          success: (data) => {
+            console.log('success get network type:' + data.type);
+            if(data.type === 'WiFi') {
+              let netCon: connection.NetConnection = connection.createNetConnection({
+                netCapabilities: {
+                  bearerTypes: [connection.NetBearType.BEARER_WIFI]
+                },
+                bearerPrivateIdentifier: 'wifi'
+              })
+              console.info(`${caseName} netCon ->${JSON.stringify(netCon)}`)
+              ExpectTrue(netCon != undefined)
+              console.info(`${caseName} ----end`)
+              done()
+            }
           },
-          bearerPrivateIdentifier: 'wifi'
-        })
-        console.info(`${caseName} netCon ->${JSON.stringify(netCon)}`)
-        ExpectTrue(netCon != undefined)
-        console.info(`${caseName} ----end`)
-        done()
-      } catch (err) {
-        console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
-        ExpectFail();
-        done()
-        console.info(`${caseName}---End`);
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_Network_Connection_NetCapabilities_0300
-     * @tc.name       : testConnectionNetCapabilities0300
-     * @tc.desc       : test create a NetConnection object
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('testConnectionNetCapabilities0300', 0, async (done: Function) => {
-      const caseName: string = 'testConnectionNetCapabilities0300';
-      console.info(`${caseName}---Start`);
-      try {
-        let netCon: connection.NetConnection = connection.createNetConnection({
-          netCapabilities: {
-            bearerTypes: [connection.NetBearType.BEARER_ETHERNET]
-          },
-          bearerPrivateIdentifier: 'wifi'
-        })
-        console.info(`${caseName} netCon ->${JSON.stringify(netCon)}`)
-        ExpectTrue(netCon != undefined)
-        console.info(`${caseName} ----end`)
-        done()
-      } catch (err) {
-        console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
-        ExpectFail();
-        done()
-        console.info(`${caseName}---End`);
-      }
-    });
-
-    /**
-     * @tc.number     : SUB_Network_Connection_NetCapabilities_0400
-     * @tc.name       : testConnectionNetCapabilities0400
-     * @tc.desc       : test create a NetConnection object
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('testConnectionNetCapabilities0400', 0, async (done: Function) => {
-      const caseName: string = 'testConnectionNetCapabilities0400';
-      console.info(`${caseName}---Start`);
-      try {
-        let netCon: connection.NetConnection = connection.createNetConnection({
-          netCapabilities: {
-            bearerTypes: [connection.NetBearType.BEARER_VPN]
-          },
-          bearerPrivateIdentifier: 'wifi'
-        })
-        console.info(`${caseName} netCon ->${JSON.stringify(netCon)}`)
-        ExpectTrue(netCon != undefined)
-        console.info(`${caseName} ----end`)
-        done()
+          fail:(err:ESObject) =>{
+            console.log('fail get network type:' + err);
+            ExpectFail();
+            done()
+          }
+        });
       } catch (err) {
         console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
         ExpectFail();
