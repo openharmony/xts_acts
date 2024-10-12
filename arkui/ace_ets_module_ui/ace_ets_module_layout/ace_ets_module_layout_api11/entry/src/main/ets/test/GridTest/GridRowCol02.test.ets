@@ -187,8 +187,5 @@ export default function GridRowCol02() {
       console.info('[GridRowCol02_006] END');
       done();
     });
-
-
-
   })
 }
