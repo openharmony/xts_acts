@@ -24,7 +24,8 @@
       "moduleType": "feature",
       "installationFree": false
     },
-    "defPermissions": [],
+    "defPermissions": [
+    ],
     "reqPermissions": [
       {
         "name": "ohos.permission.DISTRIBUTED_DATASYNC"
