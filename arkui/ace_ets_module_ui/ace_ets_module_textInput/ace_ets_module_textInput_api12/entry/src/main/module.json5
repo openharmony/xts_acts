@@ -15,12 +15,12 @@
 
 {
   "module": {
-    "name": "entry_test",
-    "type": "feature",
-    "description": "$string:module_test_desc",
-    "mainElement": "TestAbility",
+    "name": "entry",
+    "type": "entry",
+    "srcEntry": "./ets/Application/AbilityStage.ts",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
     "deviceTypes": [
-      "wearable",
       "default",
       "tablet",
       "2in1"
@@ -30,24 +30,37 @@
     "pages": "$profile:main_pages",
     "abilities": [
       {
-        "name": "TestAbility",
-        "srcEntry": "./ets/testability/TestAbility.ets",
-        "description": "$string:TestAbility_desc",
+        "name": "com.acts.arkui.component.common.attrs.test.EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:description_application",
         "icon": "$media:icon",
-        "label": "$string:TestAbility_label",
-        "exported": true,
+        "label": "$string:entry_label",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "orientation": "portrait",
         "skills": [
           {
-            "actions": [
-              "action.system.home"
-            ],
             "entities": [
               "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
             ]
           }
         ]
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "$string:description_application",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "always"
+        }
       }
     ]
   }

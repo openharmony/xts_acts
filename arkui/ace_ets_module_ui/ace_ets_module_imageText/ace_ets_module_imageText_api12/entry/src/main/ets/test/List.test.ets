@@ -135,12 +135,11 @@ import TextAddApi1 from './Text/TextAddApi1.test'
 import StyledStringKeyTest1 from './StyledString/StyledStringKeyTest1.test'
 import RichEditorAddApi from './RichEditor/RichEditorAddApi.test'
 import editMeunOptionsTest from './Text/editMeunOptions.test'
-import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
 import RichEditorApi13 from './RichEditor/RichEditorApi13.test'
-import imageAddApi3 from './ImageTest/imageAddApi3.test'
+import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
 import TextHalfLeading from './Text/TextHalfLeading.test'
-import FontSettingOptions from './Text/FontSettingOptions.test';
 import ImageResizable from './ImageTest/ImageResizable.test';
+import FontSettingOptions from './Text/FontSettingOptions.test';
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -149,7 +148,6 @@ export default function testsuite() {
   TextInputEvent()
   TextInputEvent2()
   RichEditorApi13()
-  imageAddApi3()
   SearchEvent()
   SearchEvent2()
   onSelectionChange1();
@@ -262,6 +260,7 @@ export default function testsuite() {
   editMeunOptionsTest();
   onDidIMEInputTest();
   TextHalfLeading();
-  FontSettingOptions();
   ImageResizable();
+  FontSettingOptions();
+
 }

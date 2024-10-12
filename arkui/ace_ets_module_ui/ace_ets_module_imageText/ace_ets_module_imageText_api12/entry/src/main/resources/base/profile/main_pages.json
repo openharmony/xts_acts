@@ -33,10 +33,10 @@
     "MainAbility/pages/TextInput/TextInputAddApi",
     "MainAbility/pages/Search/searchTest",
     "MainAbility/pages/Image/imageAddApi2",
+    "MainAbility/pages/Text/styledStringAddApi",
     "MainAbility/pages/RichEditor/RichEditorApi13",
     "MainAbility/pages/Image/imageAddApi3",
     "MainAbility/pages/Text/minFontScale",
-    "MainAbility/pages/Text/styledStringAddApi",
   "MainAbility/pages/Image/onComplete",
   "MainAbility/pages/Text/clearStyles",
   "MainAbility/pages/Text/removeStyles",
@@ -124,7 +124,7 @@
     "MainAbility/pages/Text/editMeunOptions",
     "MainAbility/pages/RichEditor/onDidIMEInput",
     "MainAbility/pages/Text/TextHalfLeading",
-    "MainAbility/pages/Text/FontSettingOptions",
-    "MainAbility/pages/Image/ImageResizable"
+    "MainAbility/pages/Image/ImageResizable",
+    "MainAbility/pages/Text/FontSettingOptions"
   ]
 }
