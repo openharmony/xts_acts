@@ -1,0 +1,29 @@
+{
+  "module": {
+    "name": "entry_test",
+    "type": "feature",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "abilities": [
+      {
+        "name": "TestAbility",
+        "srcEntry": "./entryability/EntryAbility.ets",
+        "description": "$string:module_test_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "launchType": "standard",
+        "skills": [
+          {
+          }
+        ]
+      },
+      ]
+    }
+}
