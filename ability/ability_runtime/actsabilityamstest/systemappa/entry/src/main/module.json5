@@ -617,8 +617,8 @@
         ]
       },
       {
-        "name": "MainAbility_5500",
-        "srcEntry": "./ets/mainability_5500/MainAbility_5500.ets",
+        "name": "MainAbility26",
+        "srcEntry": "./ets/mainability26/MainAbility26.ets",
         "description": "$string:SystemAppA_5500_desc",
         "icon": "$media:layered_image",
         "label": "$string:SystemAppA_5500_label",
@@ -639,8 +639,8 @@
         ]
       },
       {
-        "name": "MainAbility_0200",
-        "srcEntry": "./ets/mainability_0200/MainAbility_0200.ets",
+        "name": "MainAbility23",
+        "srcEntry": "./ets/mainability23/MainAbility23.ets",
         "description": "$string:mainability_0200_desc",
         "icon": "$media:layered_image",
         "label": "$string:mainability_0200_label",
@@ -661,8 +661,8 @@
         ]
       },
       {
-        "name": "MainAbility_1900",
-        "srcEntry": "./ets/mainability_1900/MainAbility_1900.ets",
+        "name": "MainAbility22",
+        "srcEntry": "./ets/mainability22/MainAbility22.ets",
         "description": "$string:MainAbility_1900_desc",
         "icon": "$media:layered_image",
         "label": "$string:MainAbility_1900_label",
@@ -683,8 +683,8 @@
         ]
       },
       {
-        "name": "MainAbility_4900",
-        "srcEntry": "./ets/mainability_4900/MainAbility_4900.ets",
+        "name": "MainAbility25",
+        "srcEntry": "./ets/mainability25/MainAbility25.ets",
         "description": "$string:MainAbility_4900_desc",
         "icon": "$media:layered_image",
         "label": "$string:MainAbility_4900_label",
@@ -703,8 +703,8 @@
         ]
       },
       {
-        "name": "MainAbility_4700",
-        "srcEntry": "./ets/mainability_4700/MainAbility_4700.ets",
+        "name": "MainAbility24",
+        "srcEntry": "./ets/mainability24/MainAbility24.ets",
         "description": "$string:MainAbility_4700_desc",
         "icon": "$media:layered_image",
         "label": "$string:MainAbility_4700_label",
@@ -724,8 +724,8 @@
         ]
       },
       {
-        "name": "ThirdAbility_4700",
-        "srcEntry": "./ets/thirdability_4700/ThirdAbility_4700.ets",
+        "name": "ThirdAbility24",
+        "srcEntry": "./ets/thirdability24/ThirdAbility24.ets",
         "description": "$string:ThirdAbility_4700_desc",
         "icon": "$media:layered_image",
         "label": "$string:ThirdAbility_4700_label",

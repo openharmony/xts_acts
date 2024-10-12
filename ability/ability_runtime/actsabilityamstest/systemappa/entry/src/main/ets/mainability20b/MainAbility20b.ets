@@ -21,7 +21,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import commonEvent from '@ohos.commonEventManager';
 
 let tag = 'SystemAppA_MainAbility20b';
-let ON_Second_ReleaseBACK = 'ON_Second_ReleaseBACK';
+let ON_SECOND_RELEASE_BACK = 'ON_Second_Release_BacK';
 
 export default class MainAbility20b extends UIAbility {
   releaseCallback(data: string){
@@ -55,7 +55,7 @@ export default class MainAbility20b extends UIAbility {
                 data: result,
               }
             };
-            commonEvent.publish(ON_Second_ReleaseBACK, commonEventData, (err) => {
+            commonEvent.publish(ON_SECOND_RELEASE_BACK, commonEventData, (err) => {
               hilog.info(0x0000, tag, '%{public}s', `ON_Release_BACK publish err:  ${JSON.stringify(err)}`);
             })
             console.log('SystemAppCalleeA export default class MainAbility20b  release==');
@@ -155,7 +155,7 @@ class MyParcelable {
 
 class MySequenceable {
   private num: number = 0;
-  private str: string = "";
+  private str: string = '';
   private result: string = '';
 
   getNum(){

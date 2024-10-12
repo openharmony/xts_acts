@@ -117,7 +117,7 @@ export default class MainAbility20 extends UIAbility {
 
 class MyParcelable {
   private num: number = 0;
-  private str: string = "";
+  private str: string = '';
   private result: boolean = false;
 
   getNum(){

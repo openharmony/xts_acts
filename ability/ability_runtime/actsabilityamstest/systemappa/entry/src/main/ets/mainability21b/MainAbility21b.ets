@@ -20,7 +20,7 @@ import { rpc } from '@kit.IPCKit';
 import commonEvent from '@ohos.commonEventManager';
 
 let tag = 'SystemAppA_MainAbility20b';
-let ON_Second_ReleaseBACK = 'ON_Second_ReleaseBACK';
+let ON_SECOND_RELEASE_BACK = 'ON_Second_Release_BacK';
 
 export default class MainAbility21b extends UIAbility {
   releaseCallback(data: string){
@@ -44,7 +44,7 @@ export default class MainAbility21b extends UIAbility {
         caller.onRelease(this.releaseCallback);
         try {
           caller.release();
-          commonEvent.publish(ON_Second_ReleaseBACK, (err) => {
+          commonEvent.publish(ON_SECOND_RELEASE_BACK, (err) => {
             hilog.info(0x0000, tag, '%{public}s', `ON_Release_BACK publish err:  ${JSON.stringify(err)}`);
           })
         } catch (e) {

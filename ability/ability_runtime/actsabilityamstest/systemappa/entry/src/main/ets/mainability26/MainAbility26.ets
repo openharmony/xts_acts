@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 HiHope Open Source Organization.
+ * Copyright (C) 2024 HiHope Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,40 +13,26 @@
  * limitations under the License.
  */
 
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { commonEventManager } from '@kit.BasicServicesKit';
 
-export default class MainAbility extends UIAbility {
+export default class MainAbility26 extends UIAbility{
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let wantInfo: Want = {
-      bundleName: 'com.acts.systemappb',
-      abilityName: 'SecondAbility',
-    };
-    try {
-      this.context.startAbilityByCall(wantInfo).then((caller) => {
-        console.log('SystemAppCalleeA MainAbility startAbilityByCall' + JSON.stringify(caller));
-      }).catch((err: BusinessError) => {
-        console.log('SystemAppCalleeA MainAbility startAbilityByCall catch err==' + JSON.stringify(err));
-      });
-    } catch (e) {
-      console.log('SystemAppCalleeA MainAbility startAbilityByCall err==' + JSON.stringify(e));
-    }
   }
 
-
-  onDestroy(): void {
+  onDestroy(): void{
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
+  onWindowStageCreate(windowStage: window.WindowStage): void{
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
+    windowStage.loadContent('pages/Index', (err) =>{
+      if (err.code){
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
@@ -54,18 +40,48 @@ export default class MainAbility extends UIAbility {
     });
   }
 
-  onWindowStageDestroy(): void {
+  onWindowStageDestroy(): void{
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onForeground(): void {
+  async onForeground(): Promise<void>{
     // Ability has brought to foreground
+
+    let commonEventPublishData: commonEventManager.CommonEventPublishData = {};
+    try{
+      await this.context.startAbilityByCall(undefined).then((caller: Caller) =>{
+        hilog.info(0x0000, 'testTag', '%{public}s', `start MainAbility success : ${JSON.stringify(caller)}`);
+        commonEventPublishData = {
+          parameters: {
+            success: JSON.stringify(caller)
+          }
+        }
+      })
+    } catch (error){
+      hilog.info(0x0000, 'testTag', '%{public}s', `start MainAbility fail : ${error}`);
+      commonEventPublishData = {
+        parameters: {
+          error: JSON.stringify(error)
+        }
+      }
+    }
+
+    await sleep(500);
+    commonEventManager.publish('MainAbility_onForegroundCallBack', commonEventPublishData, async (error) =>{
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        `onForeground publish: ${JSON.stringify(error)}__commonEventPublishData：${JSON.stringify(commonEventPublishData)}`);
+    })
+    await sleep(1000);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
-  onBackground(): void {
+  onBackground(): void{
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }
+}
+
+function sleep(time: number){
+  return new Promise<void>((resolve) => setTimeout(resolve, time))
 }
