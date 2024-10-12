@@ -1,3 +1,18 @@
+/*
+  * Copyright (C) 2024 HiHope Open Source Organization.
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *    http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+*/
+
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -17,7 +32,7 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', `Wantyy: ${JSON.stringify(want)}`);
     hilog.info(0x0000, 'testTag', '%{public}s', `Wantyy: ${JSON.stringify(this.onCreateFlag)}`);
     this.TEST_CASE_NAME = want.action as string;
-    this.onCreateFlag = true
+    this.onCreateFlag = true;
   }
 
   onDestroy(): void {
@@ -28,7 +43,7 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', `Wantyy: ${JSON.stringify(this.onWindowStageCreateFlag)}`);
-    this.onWindowStageCreateFlag = true
+    this.onWindowStageCreateFlag = true;
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
@@ -48,9 +63,9 @@ export default class EntryAbility extends UIAbility {
         instanceKey: this.TEST_CASE_NAME
       }
     };
-    this.context.startAbility(wants).then((data)=>{
+    this.context.startAbility(wants).then((data) => {
       hilog.info(0x0000, 'testTag', '%{public}s', `Succeeded in starting SpecifiedAbility辅助hap2 ${data}`);
-    }).catch((err:BusinessError)=>{
+    }).catch((err: BusinessError) => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         `Failed to start SpecifiedAbility. err.Code is ${err.code},SpecifiedAbility辅助hap2  err.message is ${err.message}`);
     })
@@ -61,16 +76,16 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
-  onNewWant():void{
+  onNewWant(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-    this.onNewWantFlag = true
+    this.onNewWantFlag = true;
   }
 
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     this.onForegroundFlag = true;
-    if(this.TEST_CASE_NAME == 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200'){
+    if (this.TEST_CASE_NAME == 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200') {
       let commonEventData: commonEventManager.CommonEventPublishData = {
         parameters: {
           data: {
@@ -81,9 +96,10 @@ export default class EntryAbility extends UIAbility {
         }
       }
       commonEventManager.publish(this.TEST_CASE_NAME, commonEventData, (result) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200, 50==: ${JSON.stringify(result)}`);
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200, 50==: ${JSON.stringify(result)}`);
       });
-    }else if(this.TEST_CASE_NAME == 'actsapplicationstartabilityauxiliary2'){
+    } else if (this.TEST_CASE_NAME == 'actsapplicationstartabilityauxiliary2') {
       let commonEventData: commonEventManager.CommonEventPublishData = {
         parameters: {
           data: {
@@ -96,14 +112,14 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', '%{public}s', `onConnect SingleEntryAbility2, 50==: ${JSON.stringify(result)}`);
       });
     }
-    this.sleep(2000)
-    this.context.terminateSelf()
+    this.sleep(2000);
+    this.context.terminateSelf();
   }
 
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-    this.onBackgroundFlag = true
+    this.onBackgroundFlag = true;
     let commonEventData: commonEventManager.CommonEventPublishData = {
       parameters: {
         data: {
@@ -111,16 +127,17 @@ export default class EntryAbility extends UIAbility {
         }
       }
     }
-    if(this.TEST_CASE_NAME == 'SingleEntryAbility2'){
+    if (this.TEST_CASE_NAME == 'SingleEntryAbility2') {
       commonEventManager.publish('SingleEntryAbility2', commonEventData, (result) => {
         hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
       });
-    }else if(this.TEST_CASE_NAME == 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200'){
+    } else if (this.TEST_CASE_NAME == 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200') {
       commonEventManager.publish(this.TEST_CASE_NAME, commonEventData, (result) => {
         hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
       });
     }
   }
+
   sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
