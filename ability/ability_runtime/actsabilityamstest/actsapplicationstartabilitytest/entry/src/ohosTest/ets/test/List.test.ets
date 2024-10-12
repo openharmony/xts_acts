@@ -14,7 +14,9 @@
 */
 
 import actsapplicationstartabilitytest from './actsapplicationstartabilitytest.test';
+import actsapplicationstartabilitytest2 from './actsapplicationstartabilitytest2.test';
 
 export default function testsuite() {
   actsapplicationstartabilitytest();
+  actsapplicationstartabilitytest2();
 }
