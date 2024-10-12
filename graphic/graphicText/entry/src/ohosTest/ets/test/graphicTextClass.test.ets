@@ -760,5 +760,321 @@ export default function graphicTextClass() {
         }
       }
     })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_028
+     * @tc.name      : Run GetGlyphs
+     * @tc.desc      : To test Run GetGlyphs interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextRun_GetGlyphs', 28, async ()=> {
+      let msg = 'testTextRun_GetGlyphs';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          try {
+            expect(run.getGlyphs({start:-1, end:1})).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs({start:-1, end:-20})).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs({start:0, end:1}).length).assertEqual(1);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs(null)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs(undefined)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs({start:0, end:0}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_029
+     * @tc.name      : Run GetPositions
+     * @tc.desc      : To test Run GetPositions interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextRun_GetPositions', 29, async ()=> {
+      let msg = 'testTextRun_GetPositions';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          try {
+              expect(run.getPositions({start:0, end:3}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions({start:0, end:30}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions({start:0, end:0}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions({start:-1, end:-2})).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions(null)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions(undefined)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_030
+    * @tc.name      : Run getStringIndices
+    * @tc.desc      : To test Run getStringIndices interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testTextRun_getStringIndices', 30, async ()=>{
+      let msg = 'testTextRun_getStringIndices';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          try {
+            expect(run.getStringIndices().length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices({start:0, end:1}).length).assertEqual(1);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices({start:0, end:0}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices({start:0, end:30}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices({start:-1, end:-1})).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices(null)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices(undefined)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_031
+    * @tc.name      : Run getStringRange
+    * @tc.desc      : To test Run getStringRange interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testTextRun_getStringRange', 31, async ()=> {
+      let msg = 'testTextRun_getStringRange';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          try {
+            let stringRange:text.Range = run.getStringRange();
+            expect(stringRange.start).assertEqual(0);
+            expect(stringRange.end).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_032
+    * @tc.name      : Run getImageBounds
+    * @tc.desc      : To test Run getImageBounds interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testTextRun_getImageBounds', 32, async ()=> {
+      let msg = 'testTextRun_getImageBounds';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          let bounds:common2D.Rect = run.getImageBounds();
+          try {
+            expect(bounds.right > bounds.left).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(bounds.bottom > bounds.top).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_033
+    * @tc.name      : Run getTypographicBounds
+    * @tc.desc      : To test Run getTypographicBounds interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testTextRun_getTypographicBounds', 33, async ()=> {
+      let msg = 'testTextRun_getTypographicBounds';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          let bounds:text.TypographicBounds = run.getTypographicBounds();
+          try {
+            expect(bounds.ascent > 0).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(bounds.descent > 0).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(bounds.leading >= 0).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(bounds.width > 0).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
   })
 }
