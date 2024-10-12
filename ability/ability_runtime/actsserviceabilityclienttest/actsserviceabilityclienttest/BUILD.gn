@@ -13,23 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsServiceAbilityClientTest") {
-  hap_name = "ActsServiceAbilityClientTest"
-  hap_profile = "./src/main/config.json"
-  deps = [
-    ":hjs_demo_js_assets",
-    ":hjs_demo_resources",
-  ]
+ohos_app_assist_suite("ActsServiceAbilityClientMain") {
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsServiceAbilityClientMain"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
-ohos_js_assets("hjs_demo_js_assets") {
-  js2abc = true
-  hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"
-}
-ohos_resources("hjs_demo_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
+
+ohos_js_app_suite("ActsServiceAbilityClientTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsServiceAbilityClientTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsServiceAbilityClientMain" ]
 }
