@@ -52,7 +52,7 @@ export default function navigatorJsunit() {
     it('test_Navigator_0021', 0, async (done: Function) => {
       console.info('[test_Navigator_0021] START');
       let strJson = getInspectorByKey('Navigator1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_Navigator_0021] component obj is: " + JSON.stringify(obj));
       expect(JSON.parse(obj.$attrs.params).text).assertEqual('news');
       console.info('[test_Navigator_0021] END');
@@ -70,7 +70,7 @@ export default function navigatorJsunit() {
     it('test_Navigator_0022', 0, async (done: Function) => {
       console.info('[test_Navigator_0022] START');
       let strJson = getInspectorByKey('Navigator1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_Navigator_0022] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.active).assertEqual('true');
       console.info('[test_Navigator_0022] END');
@@ -88,7 +88,7 @@ export default function navigatorJsunit() {
     it('test_Navigator_0023', 0, async (done: Function) => {
       console.info('[test_Navigator_0023] START');
       let strJson = getInspectorByKey('Navigator1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_Navigator_0023] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.target).assertEqual('');
       console.info('[test_Navigator_0023] END');
@@ -106,7 +106,7 @@ export default function navigatorJsunit() {
     it('test_Navigator_0024', 0, async (done: Function) => {
       console.info('[test_Navigator_0024] START');
       let strJson = getInspectorByKey('Navigator1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_Navigator_0024] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.type).assertEqual('NavigationType.Push');
       console.info('[test_Navigator_0024] END');
@@ -129,7 +129,7 @@ export default function navigatorJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('Navigator1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("test_Navigator_0025 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.type).assertEqual('NavigationType.Replace');
       console.info('test_Navigator_0025 END');

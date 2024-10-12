@@ -51,7 +51,7 @@ export default function searchJsunit() {
     it('searchTest_002', 0, async (done: Function) => {
       console.info('searchTest_002 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_002 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.None");
       console.info('searchTest_002 END');
@@ -69,7 +69,7 @@ export default function searchJsunit() {
     it('searchTest_003', 0, async (done: Function) => {
       console.info('searchTest_003 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_003 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontColor).assertEqual("#FF4169E1");
       console.info('searchTest_003 END');
@@ -87,7 +87,7 @@ export default function searchJsunit() {
     it('searchTest_004', 0, async (done: Function) => {
       console.info('searchTest_004 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_004 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.placeholderColor).assertEqual("#FF4169E1");
       console.info('searchTest_004 END');
@@ -105,9 +105,9 @@ export default function searchJsunit() {
     it('searchTest_005', 0, async (done: Function) => {
       console.info('searchTest_005 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_005 component  is: " + JSON.stringify(objNew.$attrs.placeholderFont.size));
-      let markObj = JSON.parse(objNew.$attrs.placeholderFont);
+      let markObj: ESObject = JSON.parse(objNew.$attrs.placeholderFont);
       expect(markObj.size).assertEqual("16.00fp");
       expect(markObj.style).assertEqual("FontStyle.Italic");
       console.info('searchTest_005 END');
@@ -125,9 +125,9 @@ export default function searchJsunit() {
     it('searchTest_006', 0, async (done: Function) => {
       console.info('searchTest_006 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_006 component  is: " + JSON.stringify(objNew.$attrs));
-      let markObj = JSON.parse(objNew.$attrs.textFont);
+      let markObj: ESObject = JSON.parse(objNew.$attrs.textFont);
       expect(markObj.fontSize).assertEqual("16.00fp");
       expect(markObj.fontStyle).assertEqual("FontStyle.Italic");
       console.info('searchTest_006 END');
@@ -145,7 +145,7 @@ export default function searchJsunit() {
     it('searchTest_007', 0, async (done: Function) => {
       console.info('searchTest_007 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_007 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.textAlign).assertEqual("TextAlign.Start");
       console.info('searchTest_007 END');
@@ -163,7 +163,7 @@ export default function searchJsunit() {
     it('searchTest_008', 0, async (done: Function) => {
       console.info('searchTest_008 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_008 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.enableKeyboardOnFocus).assertEqual(undefined);
       console.info('searchTest_008 END');
@@ -181,7 +181,7 @@ export default function searchJsunit() {
     it('searchTest_009', 0, async (done: Function) => {
       console.info('searchTest_009 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_009 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.selectionMenuHidden).assertEqual(undefined);
       console.info('searchTest_009 END');
@@ -199,7 +199,7 @@ export default function searchJsunit() {
     it('searchTest_010', 0, async (done: Function) => {
       console.info('searchTest_010 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_010 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.caretStyle.width).assertEqual("3.20fp");
       expect(objNew.$attrs.caretStyle.color).assertEqual("#80FF64FF");
@@ -218,7 +218,7 @@ export default function searchJsunit() {
     it('searchTest_011', 0, async (done: Function) => {
       console.info('searchTest_011 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_011 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.searchIcon.size).assertEqual("15.00px");
       console.info('searchTest_011 END');
@@ -236,7 +236,7 @@ export default function searchJsunit() {
     it('searchTest_012', 0, async (done: Function) => {
       console.info('searchTest_012 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_012 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.searchButton).assertEqual("SearchText");
       console.info('searchTest_012 END');
@@ -254,7 +254,7 @@ export default function searchJsunit() {
     it('searchTest_013', 0, async (done: Function) => {
       console.info('searchTest_013 START');
       let strJsonNew = getInspectorByKey('search');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_013 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.cancelButton.style).assertEqual("CancelButtonStyle.CONSTANT");
       console.info('searchTest_013 END');
@@ -276,7 +276,7 @@ export default function searchJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('search'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("searchTest_001 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.InApp");
       console.info('searchTest_001 END');

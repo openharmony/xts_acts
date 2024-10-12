@@ -52,12 +52,11 @@ export default function timepickerJsunit() {
      */
     it('ArkUI_Stage_timepicker_1000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_1000] obj is: " + JSON.stringify(obj.$attrs));
-      let textStyle = obj.$attrs.textStyle;
-      expect(textStyle.color).assertEqual('#FFFF0000');
-      expect(textStyle.font.size).assertEqual('10.00px');
-      expect(textStyle.font.weight).assertEqual('FontWeight.Normal');
+      expect(obj.$attrs.textStyle.color).assertEqual('#FFFF0000');
+      expect(obj.$attrs.textStyle.font.size).assertEqual('10.00px');
+      expect(obj.$attrs.textStyle.font.weight).assertEqual('FontWeight.Normal');
 
       done();
     });
@@ -72,12 +71,11 @@ export default function timepickerJsunit() {
      */
     it('ArkUI_Stage_timepicker_2000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_2000] obj is: " + JSON.stringify(obj.$attrs));
-      let selectedTextStyle = obj.$attrs.selectedTextStyle;
-      expect(selectedTextStyle.color).assertEqual('#FF0000FF');
-      expect(selectedTextStyle.font.size).assertEqual('20.00px');
-      expect(selectedTextStyle.font.weight).assertEqual('FontWeight.Bold');
+      expect(obj.$attrs.selectedTextStyle.color).assertEqual('#FF0000FF');
+      expect(obj.$attrs.selectedTextStyle.font.size).assertEqual('20.00px');
+      expect(obj.$attrs.selectedTextStyle.font.weight).assertEqual('FontWeight.Bold');
       done();
     });
 
@@ -91,12 +89,11 @@ export default function timepickerJsunit() {
      */
     it('ArkUI_Stage_timepicker_3000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_3000] obj is: " + JSON.stringify(obj.$attrs));
-      let disappearTextStyle = obj.$attrs.disappearTextStyle;
-      expect(disappearTextStyle.color).assertEqual('#FF000000');
-      expect(disappearTextStyle.font.size).assertEqual('8.00fp');
-      expect(disappearTextStyle.font.weight).assertEqual('FontWeight.Lighter');
+      expect(obj.$attrs.disappearTextStyle.color).assertEqual('#FF000000');
+      expect(obj.$attrs.disappearTextStyle.font.size).assertEqual('8.00fp');
+      expect(obj.$attrs.disappearTextStyle.font.weight).assertEqual('FontWeight.Lighter');
       done();
     });
 
@@ -110,7 +107,7 @@ export default function timepickerJsunit() {
      */
     it('ArkUI_Stage_timepicker_4000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_4000] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.useMilitaryTime).assertEqual('true');
       done();
@@ -131,7 +128,7 @@ export default function timepickerJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJson = getInspectorByKey('timePickerDefault');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_5000] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.useMilitaryTime).assertEqual('false');
       done();

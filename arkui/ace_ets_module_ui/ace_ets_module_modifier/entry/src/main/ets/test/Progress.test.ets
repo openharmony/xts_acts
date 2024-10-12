@@ -51,7 +51,7 @@ export default function progressStyleJsunit() {
     it('testProgressStyle0001', 0, async (done: Function) => {
       console.info('testProgressStyle0001 START');
       let strJson = getInspectorByKey('ProgressKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testProgressStyle0001] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.color).assertEqual("#FF123456");
@@ -71,7 +71,7 @@ export default function progressStyleJsunit() {
     it('testProgressStyle0002', 0, async (done: Function) => {
       console.info('testProgressStyle0002 START');
       let strJson = getInspectorByKey('ProgressKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testProgressStyle0002] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.value).assertEqual("12.000000");
@@ -91,7 +91,7 @@ export default function progressStyleJsunit() {
     it('testProgressStyle0003', 0, async (done: Function) => {
       console.info('testProgressStyle0003 START');
       let strJson = getInspectorByKey('ProgressKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testProgressStyle0003] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.style).assertEqual('{"strokeWidth":"20.00vp","scaleCount":"30","scaleWidth":"20.00vp"}');
@@ -114,7 +114,7 @@ export default function progressStyleJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('ProgressKey1'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("testProgressStyle0004 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.value).assertEqual('5.000000'); //
       console.info('testProgressStyle0004 END');

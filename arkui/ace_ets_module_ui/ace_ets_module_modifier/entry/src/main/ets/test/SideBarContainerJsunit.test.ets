@@ -50,7 +50,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0002', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0002 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0002 component is: " + JSON.stringify(objNew.$attrs));
       expect(JSON.parse(objNew.$attrs.divider)?.strokeWidth).assertEqual("100.00vp");
       expect(JSON.parse(objNew.$attrs.divider)?.color).assertEqual("#FFFF0000");
@@ -71,7 +71,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0003', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0003 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0003 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.minContentWidth).assertEqual("100.000000");
       console.info('sideBarContainerTest_0003 END');
@@ -89,7 +89,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0004', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0004 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0004 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.sideBarWidth).assertEqual("100.000000");
       console.info('sideBarContainerTest_0004 END');
@@ -107,7 +107,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0005', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0005 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0005 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.minSideBarWidth).assertEqual("100.000000");
       console.info('sideBarContainerTest_0005 END');
@@ -125,7 +125,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0006', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0006 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0006 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.maxSideBarWidth).assertEqual("100.000000");
       console.info('sideBarContainerTest_0006 END');
@@ -143,7 +143,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0007', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0007 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0007 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.showSideBar).assertEqual("true");
       console.info('sideBarContainerTest_0007 END');
@@ -161,7 +161,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0008', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0008 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0008 component is: " + JSON.stringify(objNew.$attrs));
       expect(JSON.parse(objNew.$attrs.controlButton)?.left).assertEqual("10.000000");
       expect(JSON.parse(objNew.$attrs.controlButton)?.top).assertEqual("10.000000");
@@ -182,7 +182,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0009', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0009 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0009 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.showControlButton).assertEqual("true");
       console.info('sideBarContainerTest_0009 END');
@@ -200,7 +200,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0010', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0010 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0010 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.autoHide).assertEqual("false");
       console.info('sideBarContainerTest_0010 END');
@@ -218,7 +218,7 @@ export default function sideBarContainerJsunit() {
     it('sideBarContainerTest_0011', 0, async (done: Function) => {
       console.info('sideBarContainerTest_0011 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0011 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.sideBarPosition).assertEqual("SideBarPosition.Start");
       console.info('sideBarContainerTest_0011 END');
@@ -240,7 +240,7 @@ export default function sideBarContainerJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('sideBarContainer');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("sideBarContainerTest_0012 component is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.autoHide).assertEqual("true");
       console.info('sideBarContainerTest_0012 END');

@@ -50,8 +50,8 @@ export default function spanJsunit() {
      */
     it('test_span_001', 0, async (done: Function) => {
       console.info('[test_span_001] START');
-      var strJson = getInspectorByKey('SpanKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_001] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.lineHeight).assertEqual('0.00fp');
       console.info('[test_span_001] END');
@@ -68,8 +68,8 @@ export default function spanJsunit() {
      */
     it('test_span_002', 0, async (done: Function) => {
       console.info('[test_span_002] START');
-      var strJson = getInspectorByKey('SpanKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_002] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.textCase).assertEqual('TextCase.Normal');
       console.info('[test_span_002] END');
@@ -86,8 +86,8 @@ export default function spanJsunit() {
      */
     it('test_span_003', 0, async (done: Function) => {
       console.info('[test_span_003] START');
-      var strJson = getInspectorByKey('SpanKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_003] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.letterSpacing).assertEqual('0.00fp');
       console.info('[test_span_003] END');
@@ -104,10 +104,10 @@ export default function spanJsunit() {
      */
     it('test_span_004', 0, async (done: Function) => {
       console.info('[test_span_004] START');
-      var strJson = getInspectorByKey('SpanKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_004] obj is: " + JSON.stringify(obj.$attrs));
-      let mDecoration = JSON.parse(obj.$attrs.decoration);
+      let mDecoration: ESObject = JSON.parse(obj.$attrs.decoration);
       expect(mDecoration.type).assertEqual('TextDecorationType.LineThrough');
       console.info('[test_span_004] END');
       done();
@@ -123,8 +123,8 @@ export default function spanJsunit() {
      */
     it('test_span_005', 0, async (done: Function) => {
       console.info('[test_span_005] START');
-      var strJson = getInspectorByKey('SpanKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_005] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontColor).assertEqual('#FF808080');
       console.info('[test_span_005] END');
@@ -141,10 +141,10 @@ export default function spanJsunit() {
      */
     it('test_span_006', 0, async (done: Function) => {
       console.info('[test_span_006] START');
-      var strJson = getInspectorByKey('SpanKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_006] obj is: " + JSON.stringify(obj.$attrs));
-      let mFont = JSON.parse(obj.$attrs.font);
+      let mFont: ESObject = JSON.parse(obj.$attrs.font);
       expect(mFont.size).assertEqual('40.00fp');
       console.info('[test_span_006] END');
       done();
@@ -160,8 +160,8 @@ export default function spanJsunit() {
      */
     it('test_span_007', 0, async (done: Function) => {
       console.info('[test_span_007] START');
-      var strJson = getInspectorByKey('SpanKey2');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey2');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_007] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontFamily).assertEqual("fontFamily");
       console.info('[test_span_007] END');
@@ -178,8 +178,8 @@ export default function spanJsunit() {
      */
     it('test_span_008', 0, async (done: Function) => {
       console.info('[test_span_008] START');
-      var strJson = getInspectorByKey('SpanKey2');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey2');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_008] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.fontWeight).assertEqual('FontWeight.Bolder');
@@ -198,8 +198,8 @@ export default function spanJsunit() {
      */
     it('test_span_009', 0, async (done: Function) => {
       console.info('[test_span_009] START');
-      var strJson = getInspectorByKey('SpanKey2');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey2');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_009] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Normal');
       console.info('[test_span_009] END');
@@ -216,8 +216,8 @@ export default function spanJsunit() {
      */
     it('test_span_010', 0, async (done: Function) => {
       console.info('[test_span_010] START');
-      var strJson = getInspectorByKey('SpanKey2');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('SpanKey2');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_span_010] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontSize).assertEqual('20.00fp');
       console.info('[test_span_010] END');
@@ -239,7 +239,7 @@ export default function spanJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('SpanKey2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("test_span_011 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.textCase).assertEqual('TextCase.Normal');
       console.info('test_span_011 END');

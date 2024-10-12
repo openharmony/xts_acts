@@ -54,7 +54,7 @@ export default function loadingProgressJsunit() {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_loadingProgress_attrs_0100');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Stage_loadingProgress_attrs_0100 component obj is: " + JSON.stringify(obj));
           expect(obj.$attrs.color).assertEqual("#FF0000FF");
           console.info('ArkUX_Stage_loadingProgress_attrs_0100 END ');
@@ -78,7 +78,7 @@ export default function loadingProgressJsunit() {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_loadingProgress_attrs_0101');
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Stage_loadingProgress_attrs_0101 component obj is: " + JSON.stringify(obj));
           expect(obj.$attrs.enableLoading).assertEqual("true");
           console.info('ArkUX_Stage_loadingProgress_attrs_0101 END ');
@@ -104,7 +104,7 @@ export default function loadingProgressJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('ArkUX_Stage_loadingProgress_attrs_0100'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("ArkUX_Stage_loadingProgress_attrs_0102 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.enableLoading).assertEqual("true"); //
       console.info('ArkUX_Stage_loadingProgress_attrs_0102 END');

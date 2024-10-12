@@ -51,7 +51,7 @@ export default function columnJsunit() {
 
       console.info('columnTest_0001 START');
       let strJsonNew = getInspectorByKey('column');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("columnTest_0001 component is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.justifyContent).assertEqual('FlexAlign.Center');
@@ -72,7 +72,7 @@ export default function columnJsunit() {
       console.info('columnTest_0002 START');
 
       let strJsonNew = getInspectorByKey('column');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("columnTest_0002 component is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.alignItems).assertEqual('HorizontalAlign.Center');
@@ -97,7 +97,7 @@ export default function columnJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('column');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("columnTest_0003 component is: " + JSON.stringify(objNew.$attrs));
 
       expect(objNew.$attrs.justifyContent).assertEqual('FlexAlign.Start');

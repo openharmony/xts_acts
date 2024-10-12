@@ -50,8 +50,8 @@ export default function qrCodeJsunit() {
      */
     it('test_qrCode_001', 0, async (done: Function) => {
       console.info('[test_qrCode_001] START');
-      var strJson = getInspectorByKey('QrCodeColorKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('QrCodeColorKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_qrCode_001] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.opacity).assertEqual(1);
       console.info('[test_qrCode_001] END');
@@ -68,8 +68,8 @@ export default function qrCodeJsunit() {
      */
     it('test_qrCode_002', 0, async (done: Function) => {
       console.info('[test_qrCode_002] START');
-      var strJson = getInspectorByKey('QrCodeColorKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('QrCodeColorKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_qrCode_002] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.color).assertEqual("#FF0011FF");
@@ -88,8 +88,8 @@ export default function qrCodeJsunit() {
      */
     it('test_qrCode_003', 0, async (done: Function) => {
       console.info('[test_qrCode_003] START');
-      var strJson = getInspectorByKey('QrCodeColorKey1');
-      var obj = JSON.parse(strJson);
+      let strJson = getInspectorByKey('QrCodeColorKey1');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[test_qrCode_003] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.contentOpacity).assertEqual(undefined); //not support
@@ -112,7 +112,7 @@ export default function qrCodeJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('QrCodeColorKey1'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("test_qrCode_004 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.backgroundColor).assertEqual("#FF008001"); //
       console.info('test_qrCode_004 END');

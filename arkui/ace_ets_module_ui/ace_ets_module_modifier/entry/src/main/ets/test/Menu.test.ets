@@ -53,7 +53,7 @@ export default function MenuJsunit() {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0100 START');
         let strJson = getInspectorByKey('MenuKey1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Stage_Menu_attrs_0100 component obj is: " + JSON.stringify(obj));
         expect(obj.$attrs.fontColor).assertEqual("#FF123654");
         console.info('ArkUX_Stage_Menu_attrs_0100 END ');
@@ -75,7 +75,7 @@ export default function MenuJsunit() {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0101 START');
         let strJson = getInspectorByKey('MenuKey1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Stage_Menu_attrs_0101 component obj is: " + JSON.stringify(obj));
         expect(obj.$attrs.font?.size).assertEqual("20.00fp");
         expect(obj.$attrs.font?.weight).assertEqual("FontWeight.Normal");
@@ -100,7 +100,7 @@ export default function MenuJsunit() {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0102 START');
         let strJson = getInspectorByKey('MenuKey1');
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Stage_Menu_attrs_0102 component obj is: " + JSON.stringify(obj));
         expect(obj.$attrs.borderRadius?.topLeft).assertEqual("12.00vp");
         expect(obj.$attrs.borderRadius?.topRight).assertEqual("12.00vp");
@@ -130,7 +130,7 @@ export default function MenuJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('MenuKey1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("ArkUX_Stage_Menu_attrs_0103 component  is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.borderRadius?.topLeft).assertEqual("20.00vp");
       expect(objNew.$attrs.borderRadius?.topRight).assertEqual("20.00vp");

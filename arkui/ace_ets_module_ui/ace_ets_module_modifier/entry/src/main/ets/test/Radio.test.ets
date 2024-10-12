@@ -48,10 +48,10 @@ export default function radioGroupJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testRadioGroup001', 0, async function (done) {
+    it('testRadioGroup001', 0, async (done: Function) => {
       console.info("[testRadioGroup001] START");
       let strJson = getInspectorByKey('RadioOne');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testRadioGroup001] obj  is: " + JSON.stringify(obj.$attrs));
 
       expect(JSON.parse(obj.$attrs.radioStyle).checkedBackgroundColor).assertEqual('#FF147258');
@@ -70,10 +70,10 @@ export default function radioGroupJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testRadioGroup002', 0, async function (done) {
+    it('testRadioGroup002', 0, async (done: Function) => {
       console.info("[testRadioGroup002] START");
       let strJson = getInspectorByKey('RadioOne');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testRadioGroup002] obj  is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.checked).assertEqual('true');
@@ -97,7 +97,7 @@ export default function radioGroupJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('RadioOne'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("testRadioGroup003 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.checked).assertEqual('false'); //
       console.info('testRadioGroup003 END');

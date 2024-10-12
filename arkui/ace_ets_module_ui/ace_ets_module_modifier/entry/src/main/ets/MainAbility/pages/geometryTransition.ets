@@ -34,19 +34,19 @@ struct geometryTransition7Example {
       Button(this.show).width(80).height(30).backgroundColor(0x317aff).margin({ bottom: 50 }).key('button')
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "btn1": this.btn1,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 104,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("geometryTransitionTest_0100 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("geometryTransitionTest_0100 emit action state err: " + JSON.stringify(err.message))
+            console.info("geometryTransitionTest_0100 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           animateTo({ duration: 1000 }, () => {
             this.btn1 = !this.btn1

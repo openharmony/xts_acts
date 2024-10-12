@@ -53,14 +53,12 @@ export default function calendarPickerJsunit() {
     it('ArkUI_Stage_CalendarPicker_0100', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_CalendarPicker_0100] START');
       let strJson = getInspectorByKey('CalendarPickerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_CalendarPicker_0100] obj is: " + JSON.stringify(obj.$attrs));
-      let edgeAlign = obj.$attrs.edgeAlign;
-      let textStyle = obj.$attrs.textStyle;
 
-      expect(edgeAlign.alignType).assertEqual("CalendarAlign.END");
-      expect(edgeAlign.offset.dx).assertEqual("10.00vp");
-      expect(edgeAlign.offset.dy).assertEqual("15.00vp");
+      expect(obj.$attrs.edgeAlign.alignType).assertEqual("CalendarAlign.END");
+      expect(obj.$attrs.edgeAlign.offset.dx).assertEqual("10.00vp");
+      expect(obj.$attrs.edgeAlign.offset.dy).assertEqual("15.00vp");
       console.info('[ArkUI_Stage_CalendarPicker_0100] END');
       done();
     });
@@ -76,14 +74,12 @@ export default function calendarPickerJsunit() {
     it('ArkUI_Stage_CalendarPicker_attributeModifier_0101', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_CalendarPicker_attributeModifier_0101] START');
       let strJson = getInspectorByKey('CalendarPickerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_CalendarPicker_attributeModifier_0101] obj is: " + JSON.stringify(obj.$attrs));
-      let edgeAlign = obj.$attrs.edgeAlign;
-      let textStyle = obj.$attrs.textStyle;
 
-      expect(textStyle.color).assertEqual("#FF182431");
-      expect(textStyle.font.size).assertEqual("8.00fp");
-      expect(textStyle.font.weight).assertEqual("FontWeight.Lighter");
+      expect(obj.$attrs.textStyle.color).assertEqual("#FF182431");
+      expect(obj.$attrs.textStyle.font.size).assertEqual("8.00fp");
+      expect(obj.$attrs.textStyle.font.weight).assertEqual("FontWeight.Lighter");
       console.info('[ArkUI_Stage_CalendarPicker_attributeModifier_0101] END');
       done();
     });
@@ -104,10 +100,10 @@ export default function calendarPickerJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('CalendarPickerKey1'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("ArkUI_Stage_CalendarPicker_attributeModifier_0102 component  is: " + JSON.stringify(objNew.$attrs));
 
-      let edgeAlign = objNew.$attrs.edgeAlign;
+      let edgeAlign: ESObject = objNew.$attrs.edgeAlign;
       expect(edgeAlign.alignType).assertEqual("CalendarAlign.START");
 
       console.info('ArkUI_Stage_CalendarPicker_attributeModifier_0102 END');

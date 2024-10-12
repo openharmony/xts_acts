@@ -54,14 +54,14 @@ export default function transitionJsunit() {
      */
     it('transitionTest_0200', 0, async (done: Function) => {
       console.info('transitionTest_0200 START');
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 233,
         priority: events_emitter.EventPriority.LOW
       }
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("transitionTest_0200 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.btn1).assertEqual(false);
+        expect(indexEvent.data?.btn1).assertEqual(false);
       }
       try {
         events_emitter.on(indexEvent, callback);

@@ -51,7 +51,7 @@ export default function richEditorJsunit() {
     it('richEditorTest_002', 0, async (done: Function) => {
       console.info('richEditorTest_002 START');
       let strJsonNew = getInspectorByKey('richEditor');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("richEditorTest_002 component  is: " + JSON.stringify(objNew.$attrs.copyOptions));
       expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.InApp");
       console.info('richEditorTest_002 END');
@@ -73,7 +73,7 @@ export default function richEditorJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('richEditor'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("richEditorTest_001 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.None"); //
       console.info('richEditorTest_001 END');

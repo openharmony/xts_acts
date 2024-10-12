@@ -66,7 +66,7 @@ export default function navRouterJsunit() {
       console.info('[NavRouterJsunit_0100] START');
       let strJson = getInspectorByKey('NavRouter1');
       console.info("[NavRouterJsunit_0100] strJson mode is: " + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavRouterJsunit_0100] obj mode is: " + JSON.stringify(obj.$attrs.mode));
       expect(obj.$attrs.mode).assertEqual(undefined);
       console.info('[NavRouterJsunit_0100] END');
@@ -89,7 +89,7 @@ export default function navRouterJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('NavRouter1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("NavRouterJsunit_0101 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.mode).assertEqual(undefined);
       console.info('NavRouterJsunit_0101 END');
