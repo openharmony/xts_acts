@@ -27,31 +27,6 @@ function sleep(time: number){
   return new Promise<void>((resolve) => setTimeout(resolve, time))
 }
 
-export class MyMessageAble implements rpc.Parcelable{
-  name: string
-  str: string
-  num: number = 1
-
-  constructor(name: string, str: string){
-    this.name = name;
-    this.str = str;
-  }
-
-  marshalling(messageSequence: rpc.MessageSequence){
-    messageSequence.writeInt(this.num);
-    messageSequence.writeString(this.str);
-    console.log(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
-    return true;
-  }
-
-  unmarshalling(messageSequence: rpc.MessageSequence){
-    this.num = messageSequence.readInt();
-    this.str = messageSequence.readString();
-    console.log(`MyMessageAble unmarshalling num[${this.num}] str[${this.str}]`);
-    return true;
-  }
-}
-
 export default function startAbilityByCallTest(){
   describe('ACTS_StartAbilityByCall_Test', () => {
 
