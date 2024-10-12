@@ -15,8 +15,8 @@
 import rpc from '@ohos.rpc';
 import particleAbility from '@ohos.ability.particleAbility'
 import commonEvent from '@ohos.commonEvent'
-var server_bundleName = 'com.amsst.stserviceabilityclient';
-var server_abilityName = 'com.amsst.stserviceabilityclient.ServiceAbility1';
+var serverBundleName = 'com.amsst.stserviceabilityclient';
+var serverAbilityName = 'com.amsst.stserviceabilityclient.ServiceAbility1';
 var mConnIdJs;
 class StubTest extends rpc.RemoteObject {
     constructor(des) {
@@ -63,8 +63,8 @@ export default {
         commonEvent.publish('ACTS_SerivceAbilityServerSecond_onStop', (err) => { });
     },
     onCommand(want, restart, startId) {
-        console.debug('ACTS_SerivceAbilityServerSecond ====>onCommand='
-        + 'JSON(want)=' + JSON.stringify(want) +
+        console.debug('ACTS_SerivceAbilityServerSecond ====>onCommand=' + 
+        'JSON(want)=' + JSON.stringify(want) +
         ' ,restart=' + restart + ' ,startId=' + startId);
         commonEvent.publish('ACTS_SerivceAbilityServerSecond_onCommand' + '_' + want.action, (err) => {
             console.debug('ACTS_SerivceAbilityServerSecond_onCommand' + '_' + want.action +
@@ -97,14 +97,14 @@ export default {
             }
 
             function onFailedCallback(code) {
-                console.debug('ACTS_SerivceAbilityServerSecond_onFailedCallback ====> code='
-                + JSON.stringify(code) + ' , ' + code)
+                console.debug('ACTS_SerivceAbilityServerSecond_onFailedCallback ====> code=' + 
+                JSON.stringify(code) + ' , ' + code)
             }
             if (want.action === 'ServiceConnectService_1500') {
                 mConnIdJs = particleAbility.connectAbility(
                     {
-                        bundleName: server_bundleName,
-                        abilityName: server_abilityName,
+                        bundleName: serverBundleName,
+                        abilityName: serverAbilityName,
                         action: 'ServiceConnectService_1501',
                     },
                     {
@@ -116,8 +116,8 @@ export default {
             } else if (want.action === 'ServiceConnectService_1600') {
                 mConnIdJs = particleAbility.connectAbility(
                     {
-                        bundleName: server_bundleName,
-                        abilityName: server_abilityName,
+                        bundleName: serverBundleName,
+                        abilityName: serverAbilityName,
                         action: 'ServiceConnectService_1601',
                     },
                     {
@@ -129,8 +129,8 @@ export default {
             } else if (want.action === 'ServiceConnectService_1590') {
                 mConnIdJs = particleAbility.connectAbility(
                     {
-                        bundleName: server_bundleName,
-                        abilityName: server_abilityName,
+                        bundleName: serverBundleName,
+                        abilityName: serverAbilityName,
                         action: 'ServiceConnectService_1591',
                     },
                     {
@@ -138,7 +138,7 @@ export default {
                         onDisconnect: onDisconnectCallback,
                         onFailed: onFailedCallback,
                     },
-                )
+                );
             } else {
                 commonEvent.publish('ACTS_SerivceAbilityServerSecond_onConnect' + '_' + want.action, (err) => { });
             }
@@ -161,8 +161,8 @@ export default {
                 || want.action === 'ServiceConnectService_1600' || want.action === 'ServiceConnectService_1601'
                 || want.action === 'ServiceConnectService_1590') {
                     particleAbility.disconnectAbility(mConnIdJs, (err) => {
-                        console.debug('=ACTS_SerivceAbilityServerSecond_onDisConnect err====>'
-                        + ('json err=') + JSON.stringify(err) + ' , ' + want.action);
+                        console.debug('=ACTS_SerivceAbilityServerSecond_onDisConnect err====>' + 
+                        ('json err=') + JSON.stringify(err) + ' , ' + want.action);
                     });
                 }
             }

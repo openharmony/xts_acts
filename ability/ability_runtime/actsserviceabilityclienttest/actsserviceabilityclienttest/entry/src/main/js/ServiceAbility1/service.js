@@ -15,8 +15,8 @@
 import rpc from '@ohos.rpc';
 import particleAbility from '@ohos.ability.particleAbility'
 import commonEvent from '@ohos.commonEvent'
-var serversecond_bundleName = 'com.amsst.stserviceabilityclient';
-var serversecond_abilityName = 'com.amsst.stserviceabilityclient.ServiceAbility2';
+var serverSecondBundleName = 'com.amsst.stserviceabilityclient';
+var serverSecondAbilityName = 'com.amsst.stserviceabilityclient.ServiceAbility2';
 var mConnIdJs;
 class StubTest extends rpc.RemoteObject {
     constructor(des) {
@@ -69,16 +69,16 @@ export default {
         commonEvent.publish('ACTS_SerivceAbilityServer_onStop', (err) => { });
     },
     onCommand(want, restart, startId) {
-        console.debug('ACTS_SerivceAbilityServer ====>onCommand='
-        + 'JSON(want)=' + JSON.stringify(want) +
+        console.debug('ACTS_SerivceAbilityServer ====>onCommand=' + 
+        'JSON(want)=' + JSON.stringify(want) + 
         ' ,restart=' + restart + ' ,startId=' + startId);
         if (want.action === 'ServiceStartService_0900') {
             particleAbility.startAbility(
                 {
                     want:
                     {
-                        bundleName: serversecond_bundleName,
-                        abilityName: serversecond_abilityName,
+                        bundleName: serverSecondBundleName,
+                        abilityName: serverSecondAbilityName,
                         action: 'ServiceStartService_0900',
                     },
                 }
@@ -89,13 +89,13 @@ export default {
                 {
                     want:
                     {
-                        bundleName: serversecond_bundleName,
-                        abilityName: serversecond_abilityName,
+                        bundleName: serverSecondBundleName,
+                        abilityName: serverSecondAbilityName,
                         action: 'ServiceStartService_1000',
                     },
                 }, (err, data) => {
-                console.debug('ACTS_SerivceAbilityServer start Ability 1000 callback====='
-                + err + ', data= ' + data + ' , JSON.' + JSON.stringify(data));
+                console.debug('ACTS_SerivceAbilityServer start Ability 1000 callback=====' + 
+                err + ', data= ' + data + ' , JSON.' + JSON.stringify(data));
             }
             );
         } else {
@@ -103,8 +103,8 @@ export default {
                 if (!err.code) {
                     if (want.action === 'PageStartService_0100' || want.action === 'PageStartService_0200'
                     || want.action === 'PageStartService_0301' || want.action === 'PageStartService_0401') {
-                        console.debug('ACTS_SerivceAbilityServer_onCommand 100 200 301 401.=====>'
-                        + want.action);
+                        console.debug('ACTS_SerivceAbilityServer_onCommand 100 200 301 401.=====>' + 
+                        want.action);
                     }
                 } else {
                     console.debug('ACTS_SerivceAbilityServer_onCommand publish err=====>' + err);
@@ -119,27 +119,27 @@ export default {
             want + ' , JSON.' + JSON.stringify(want));
             commonEvent.publish('ACTS_SerivceAbilityServer_onConnect' + '_' + want.action, (err) => { });
             function onConnectCallback(element, remote) {
-                console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> mConnIdJs='
-                + JSON.stringify(mConnIdJs) + ' , ' + mConnIdJs);
-                console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> element='
-                + JSON.stringify(element) + ' , ' + element);
-                console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> remote='
-                + JSON.stringify(remote) + ' , ' + remote);
+                console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> mConnIdJs=' + 
+                JSON.stringify(mConnIdJs) + ' , ' + mConnIdJs);
+                console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> element=' + 
+                JSON.stringify(element) + ' , ' + element);
+                console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> remote=' + 
+                JSON.stringify(remote) + ' , ' + remote);
             }
             function onDisconnectCallback(element) {
-                console.debug('ACTS_SerivceAbilityServer_onDisconnectCallback ====> element='
-                + JSON.stringify(element) + ' , ' + element);
+                console.debug('ACTS_SerivceAbilityServer_onDisconnectCallback ====> element=' + 
+                JSON.stringify(element) + ' , ' + element);
             }
             function onFailedCallback(code) {
-                console.debug('ACTS_SerivceAbilityServer_onFailedCallback ====> code='
-                + JSON.stringify(code) + ' , ' + code);
+                console.debug('ACTS_SerivceAbilityServer_onFailedCallback ====> code=' + 
+                JSON.stringify(code) + ' , ' + code);
             }
             if (want.action === 'ServiceConnectService_1300' || want.action === 'ServiceConnectService_1400'
             || want.action === 'ServiceConnectService_1500' || want.action === 'ServiceConnectService_1600') {
                 mConnIdJs = particleAbility.connectAbility(
                     {
-                        bundleName: serversecond_bundleName,
-                        abilityName: serversecond_abilityName,
+                        bundleName: serverSecondBundleName,
+                        abilityName: serverSecondAbilityName,
                         action: want.action,
                     },
                     {
@@ -175,7 +175,7 @@ export default {
         console.debug('ACTS_SerivceAbilityServer ====<onReady');
     },
     onReconnect(want) {
-        console.debug('ACTS_SerivceAbilityServer ====>onReconnect='+
+        console.debug('ACTS_SerivceAbilityServer ====>onReconnect=' + 
         want + ' , JSON.' + JSON.stringify(want));
         commonEvent.publish('ACTS_SerivceAbilityServer_onReconnect' + '_' + want.action, (err) => { });
     },
