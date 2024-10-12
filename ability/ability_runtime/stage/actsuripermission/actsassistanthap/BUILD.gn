@@ -13,61 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsAssistantHap") {
+ohos_app_assist_suite("ActsAssistantHap") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAssistantHap"
-  js_build_mode = "debug"
-
-  testonly = true
-  hap_profile = "entry/src/main/module.json"
-  deps = [
-    ":actsassistanthap_js_assets",
-    ":actsassistanthap_resources",
+  hap_list = [
+    "ActsAssistantHap-hap4-entry-default-unsigned:ActsAssistantHap4",
+    "ActsAssistantHap-entry-default-unsigned:ActsAssistantHap",
   ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-
   subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-
-ohos_app_scope("actsassistanthap_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("actsassistanthap_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("actsassistanthap_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":actsassistanthap_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
-}
-
-ohos_hap_assist_suite("ActsAssistantHap4") {
-  hap_name = "ActsAssistantHap4"
-  js_build_mode = "debug"
-
-  testonly = true
-  hap_profile = "hap4/src/main/module.json"
-  deps = [
-    ":actsassistanthap4_js_assets",
-    ":actsassistanthap4_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-
-  subsystem_name = "ability"
-  part_name = "ability_runtime"
-}
-
-ohos_js_assets("actsassistanthap4_js_assets") {
-  source_dir = "hap4/src/main/ets"
-}
-
-ohos_resources("actsassistanthap4_resources") {
-  sources = [ "hap4/src/main/resources" ]
-  deps = [ ":actsassistanthap_app_profile" ]
-  hap_profile = "hap4/src/main/module.json"
 }
