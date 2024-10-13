@@ -26,15 +26,15 @@ export class formParmData {
 }
 
 export class dataObjType {
-  temperature: string,
-  time: string,
-  test: number,
+  temperature: string
+  time: string
+  test: number
   test3: boolean
 }
 
 export class commonEventPublishDataType {
-    data: string,
+    data: string
     parameters: {
-        formId : string;
+        formId : string
     }
 }
