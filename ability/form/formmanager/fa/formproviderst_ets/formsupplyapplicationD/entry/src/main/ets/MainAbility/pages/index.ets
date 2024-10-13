@@ -55,8 +55,8 @@ struct Index {
         this.formId = want.parameters?.formId;
         this.opt = want.parameters?.opt;
         if(want.parameters?.formData) {
-          this.formData.setValue("temperature", want.parameters?.temperature);
-          this.formData.setValue("time", want.parameters?.time);
+          this.formData.setValue('temperature', want.parameters?.temperature);
+          this.formData.setValue('time', want.parameters?.time);
         }
         if(want.parameters?.nextTime) {
           this.nextTime = want.parameters?.nextTime;
