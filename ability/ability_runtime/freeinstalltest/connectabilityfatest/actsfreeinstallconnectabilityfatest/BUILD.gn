@@ -44,4 +44,3 @@ ohos_js_app_suite("ActsFreeInstallConnectAbilityFaTest") {
   part_name = "ability_runtime"
   deps = [ ":ActsFreeInstallConnectAbilityFeature" ]
 }
-
