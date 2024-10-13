@@ -13,24 +13,35 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsFreeInstallConnectAbilityFaTest") {
-  hap_profile = "./entry/src/main/config.json"
-  deps = [
-    ":actsfreeinstallconnectabilityfatest_ets_assets",
-    ":actsfreeinstallconnectabilityfatest_ets_resources",
-  ]
-  ets2abc = true
+ohos_app_assist_suite("ActsFreeInstallConnectAbilityFeature") {
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsFreeInstallConnectAbilityFaTest"
+  hap_name = "ActsFreeInstallConnectAbilityFeature"
+  hap_list = [
+    "ActsFreeInstallConnectAbilityFeature-myapplication1-entry-default-unsigned:ConnectFaMyApplication1",
+    "ActsFreeInstallConnectAbilityFeature-myapplication2-entry-default-unsigned:ConnectFaMyApplication2",
+    "ActsFreeInstallConnectAbilityFeature-myapplication4-entry-default-unsigned:ConnectFaMyApplication4",
+    "ActsFreeInstallConnectAbilityFeature-myapplication5-entry-default-unsigned:ConnectFaMyApplication5",
+    "ActsFreeInstallConnectAbilityFeature-myapplication6-entry-default-unsigned:ConnectFaMyApplication6",
+    "ActsFreeInstallConnectAbilityFeature-myapplication7-entry-default-unsigned:ConnectFaMyApplication7",
+    "ActsFreeInstallConnectAbilityFeature-myapplication8-entry-default-unsigned:ConnectFaMyApplication8",
+    "ActsFreeInstallConnectAbilityFeature-myapplication9-entry-default-unsigned:ConnectFaMyApplication9",
+    "ActsFreeInstallConnectAbilityFeature-myapplication10-entry-default-unsigned:ConnectFaMyApplication10",
+    "ActsFreeInstallConnectAbilityFeature-myapplication11-entry-default-unsigned:ConnectFaMyApplication11",
+    "ActsFreeInstallConnectAbilityFeature-entry-default-unsigned:ActsFreeInstallConnectAbilityFeature",
+  ]
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
-ohos_js_assets("actsfreeinstallconnectabilityfatest_ets_assets") {
-  source_dir = "./entry/src/main/ets"
-  hap_profile = "entry/src/main/config.json"
-  ets2abc = true
+
+ohos_js_app_suite("ActsFreeInstallConnectAbilityFaTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsFreeInstallConnectAbilityFaTest"
+
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsFreeInstallConnectAbilityFeature" ]
 }
-ohos_resources("actsfreeinstallconnectabilityfatest_ets_resources") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
-}
+
