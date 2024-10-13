@@ -21,7 +21,7 @@ export default function webViewMenuInputFieldType() {
   describe('webViewMenuInputFieldType', () => {
     beforeAll(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'testability/pages/WebViewMenuInputFieldType',
+        url: 'MainAbility/pages/WebViewMenuInputFieldType',
       }
       try {
         router.clear();
