@@ -41,8 +41,8 @@ struct Index {
   }
 
   private onPageInit() {
-    this.formdata.setValue('temperature', Number('14c'));
-    this.formdata.setValue('time', Number('12:00'));
+    this.formData.setValue('temperature', Number('14c'));
+    this.formData.setValue('time', Number('12:00'));
   }
 
   aboutToAppear() {
