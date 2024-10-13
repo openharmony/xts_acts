@@ -13,9 +13,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.ohos.actsfaabilitydisplayorientationtest_test",
-    "name": ".entry_test",
-    "mainAbility": ".TestAbility",
+    "package": "com.ohos.actsfaabilitydisplayorientationtest",
+    "name": ".entry",
+    "mainAbility": ".TestAbility1",
     "deviceType": [
       "default",
       "tablet",
@@ -24,8 +24,8 @@
     ],
     "distro": {
       "deliveryWithInstall": true,
-      "moduleName": "entry_test",
-      "moduleType": "feature",
+      "moduleName": "entry",
+      "moduleType": "entry",
       "installationFree": false
     },
     "abilities": [
@@ -43,7 +43,7 @@
         "orientation": "unspecified",
         "visible": true,
         "srcPath": "TestAbility",
-        "name": ".TestAbility",
+        "name": ".TestAbility1",
         "srcLanguage": "ets",
         "icon": "$media:icon",
         "description": "$string:TestAbility_desc",
@@ -62,7 +62,7 @@
         "pages": [
           "pages/index"
         ],
-        "name": ".TestAbility",
+        "name": ".TestAbility1",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
