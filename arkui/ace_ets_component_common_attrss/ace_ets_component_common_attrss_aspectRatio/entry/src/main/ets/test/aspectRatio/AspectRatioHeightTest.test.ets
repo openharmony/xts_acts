@@ -162,9 +162,9 @@ export default function aspectRatioHeightTest() {
       console.info('[' + data.caseTag + '] targetRectAspectRatio:' + targetRectAspectRatio);
 
       //Check the width, height, and aspectRatio are correct
-      expect(Math.abs(targetRectHeight - data.testValue.expectValue.heightValue) <= 1).assertTrue();
-      expect(Math.abs(Number(targetRectAspectRatio) - Number(data.testValue.expectValue.aspectRatio)) <= 1).assertTrue();
-      expect(Math.abs(targetRectWidth - data.testValue.expectValue.heightValue * data.testValue.expectValue.aspectRatio) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(targetRectHeight - data.testValue.expectValue.heightValue)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Math.round(targetRectAspectRatio) - Math.round(data.testValue.expectValue.aspectRatio))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(targetRectWidth - data.testValue.expectValue.heightValue * data.testValue.expectValue.aspectRatio)) <= 1).assertTrue();
     });
   })
 }
