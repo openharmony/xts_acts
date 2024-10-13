@@ -98,7 +98,7 @@ export default {
 
             function onFailedCallback(code) {
                 console.debug('ACTS_SerivceAbilityServerSecond_onFailedCallback ====> code=' + 
-                JSON.stringify(code) + ' , ' + code)
+                JSON.stringify(code) + ' , ' + code);
             }
             if (want.action === 'ServiceConnectService_1500') {
                 mConnIdJs = particleAbility.connectAbility(
@@ -112,7 +112,7 @@ export default {
                         onDisconnect: onDisconnectCallback,
                         onFailed: onFailedCallback,
                     },
-                )
+                );
             } else if (want.action === 'ServiceConnectService_1600') {
                 mConnIdJs = particleAbility.connectAbility(
                     {
@@ -125,7 +125,7 @@ export default {
                         onDisconnect: onDisconnectCallback,
                         onFailed: onFailedCallback,
                     },
-                )
+                );
             } else if (want.action === 'ServiceConnectService_1590') {
                 mConnIdJs = particleAbility.connectAbility(
                     {
@@ -179,8 +179,7 @@ export default {
         console.debug('ACTS_SerivceAbilityServerSecond ====>OnAbilityConnectDone=' +
         element + ' , JSON.' + JSON.stringify(element) + 
         remoteObject + ' , JSON.' + JSON.stringify(remoteObject) + 
-        resultCode + ' , JSON.' + JSON.stringify(resultCode)
-        );
+        resultCode + ' , JSON.' + JSON.stringify(resultCode));
         commonEvent.publish('ACTS_SerivceAbilityServerSecond_OnAbilityConnectDone', (err) => { });
     },
 };

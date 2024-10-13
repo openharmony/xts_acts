@@ -96,8 +96,7 @@ export default {
                 }, (err, data) => {
                 console.debug('ACTS_SerivceAbilityServer start Ability 1000 callback=====' + 
                 err + ', data= ' + data + ' , JSON.' + JSON.stringify(data));
-            }
-            );
+            });
         } else {
             commonEvent.publish('ACTS_SerivceAbilityServer_onCommand' + '_' + want.action, (err) => {
                 if (!err.code) {
@@ -147,7 +146,7 @@ export default {
                         onDisconnect: onDisconnectCallback,
                         onFailed: onFailedCallback,
                     },
-                )
+                );
             }
         } catch (err) {
             console.log('ACTS_SerivceAbilityServer ====< error:' + err);
@@ -183,8 +182,7 @@ export default {
         console.debug('ACTS_SerivceAbilityServer ====>OnAbilityConnectDone=' + 
         element + ' , JSON.' + JSON.stringify(element) + 
         remoteObject + ' , JSON.' + JSON.stringify(remoteObject) + 
-        resultCode + ' , JSON.' + JSON.stringify(resultCode)
-        );
+        resultCode + ' , JSON.' + JSON.stringify(resultCode));
         commonEvent.publish('ACTS_SerivceAbilityServer_OnAbilityConnectDone', (err) => { });
     },
 };
