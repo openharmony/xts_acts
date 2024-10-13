@@ -101,8 +101,8 @@ export default {
         } else {
             commonEvent.publish('ACTS_SerivceAbilityServer_onCommand' + '_' + want.action, (err) => {
                 if (!err.code) {
-                    if (want.action === 'PageStartService_0100' || want.action === 'PageStartService_0200'
-                    || want.action === 'PageStartService_0301' || want.action === 'PageStartService_0401') {
+                    if (want.action === 'PageStartService_0100' || want.action === 'PageStartService_0200' || 
+                    want.action === 'PageStartService_0301' || want.action === 'PageStartService_0401') {
                         console.debug('ACTS_SerivceAbilityServer_onCommand 100 200 301 401.=====>' + 
                         want.action);
                     }
@@ -134,8 +134,8 @@ export default {
                 console.debug('ACTS_SerivceAbilityServer_onFailedCallback ====> code=' + 
                 JSON.stringify(code) + ' , ' + code);
             }
-            if (want.action === 'ServiceConnectService_1300' || want.action === 'ServiceConnectService_1400'
-            || want.action === 'ServiceConnectService_1500' || want.action === 'ServiceConnectService_1600') {
+            if (want.action === 'ServiceConnectService_1300' || want.action === 'ServiceConnectService_1400' || 
+            want.action === 'ServiceConnectService_1500' || want.action === 'ServiceConnectService_1600') {
                 mConnIdJs = particleAbility.connectAbility(
                     {
                         bundleName: serverSecondBundleName,
@@ -161,13 +161,13 @@ export default {
         commonEvent.publish('ACTS_SerivceAbilityServer_onDisConnect_' + want.action, (err) => {
             console.debug('ACTS_SerivceAbilityServer_onDisConnect ===' + want.action);
         });
-        if (want.action === 'ServiceConnectService_1300' || want.action === 'ServiceConnectService_1400'
-        || want.action === 'ServiceConnectService_1500' || want.action === 'ServiceConnectService_1501'
-        || want.action === 'ServiceConnectService_1600' || want.action === 'ServiceConnectService_1601'
+        if (want.action === 'ServiceConnectService_1300' || want.action === 'ServiceConnectService_1400' || 
+        want.action === 'ServiceConnectService_1500' || want.action === 'ServiceConnectService_1501' || 
+        want.action === 'ServiceConnectService_1600' || want.action === 'ServiceConnectService_1601'
         ) {
             particleAbility.disconnectAbility(mConnIdJs, (err) => {
-                console.debug('=ACTS_SerivceAbilityServer_onDisConnect 13 14 15 16 err====>'
-                + ('json err=') + JSON.stringify(err) + ' , ' + want.action);
+                console.debug('=ACTS_SerivceAbilityServer_onDisConnect 13 14 15 16 err====>' +
+                ('json err=') + JSON.stringify(err) + ' , ' + want.action);
             });
         }
     },
@@ -180,10 +180,10 @@ export default {
         commonEvent.publish('ACTS_SerivceAbilityServer_onReconnect' + '_' + want.action, (err) => { });
     },
     OnAbilityConnectDone(element, remoteObject, resultCode) {
-        console.debug('ACTS_SerivceAbilityServer ====>OnAbilityConnectDone='
-        + element + ' , JSON.' + JSON.stringify(element)
-        + remoteObject + ' , JSON.' + JSON.stringify(remoteObject)
-        + resultCode + ' , JSON.' + JSON.stringify(resultCode)
+        console.debug('ACTS_SerivceAbilityServer ====>OnAbilityConnectDone=' + 
+        element + ' , JSON.' + JSON.stringify(element) + 
+        remoteObject + ' , JSON.' + JSON.stringify(remoteObject) + 
+        resultCode + ' , JSON.' + JSON.stringify(resultCode)
         );
         commonEvent.publish('ACTS_SerivceAbilityServer_OnAbilityConnectDone', (err) => { });
     },

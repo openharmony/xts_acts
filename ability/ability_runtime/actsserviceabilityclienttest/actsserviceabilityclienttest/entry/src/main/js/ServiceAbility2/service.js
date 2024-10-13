@@ -78,12 +78,12 @@ export default {
             console.debug('ACTS_SerivceAbilityServerSecond ====>onConnect=' +
             want + ' , JSON.' + JSON.stringify(want));
             function onConnectCallback(element, remote) {
-                console.debug('ACTS_SerivceAbilityServerSecond_onConnectCallback ====> want.action='
-                + JSON.stringify(want.action) + ' , ' + want.action);
-                console.debug('ACTS_SerivceAbilityServerSecond_onConnectCallback ====> element='
-                + JSON.stringify(element) + ' , ' + element);
-                console.debug('ACTS_SerivceAbilityServerSecond_onConnectCallback ====> remote='
-                + JSON.stringify(remote) + ' , ' + remote);
+                console.debug('ACTS_SerivceAbilityServerSecond_onConnectCallback ====> want.action=' + 
+                JSON.stringify(want.action) + ' , ' + want.action);
+                console.debug('ACTS_SerivceAbilityServerSecond_onConnectCallback ====> element=' + 
+                JSON.stringify(element) + ' , ' + element);
+                console.debug('ACTS_SerivceAbilityServerSecond_onConnectCallback ====> remote=' + 
+                JSON.stringify(remote) + ' , ' + remote);
                 if (want.action === 'ServiceConnectService_1500' || want.action === 'ServiceConnectService_1600') {
                     commonEvent.publish('ACTS_SerivceAbilityServerSecond_onConnect' + '_' + want.action, (err) => {
                         console.debug('publish = ACTS_SerivceAbilityServerSecond_onConnect' + '_' + want.action);
@@ -92,8 +92,8 @@ export default {
             }
 
             function onDisconnectCallback(element) {
-                console.debug('ACTS_SerivceAbilityServerSecond_onDisconnectCallback ====> element='
-                + JSON.stringify(element) + ' , ' + element);
+                console.debug('ACTS_SerivceAbilityServerSecond_onDisconnectCallback ====> element=' + 
+                JSON.stringify(element) + ' , ' + element);
             }
 
             function onFailedCallback(code) {
@@ -155,11 +155,11 @@ export default {
             if (err.code) {
                 console.debug('ACTS_SerivceAbilityServerSecond_onDisConnect publish err=====>' + err);
             } else {
-                console.debug('ACTS_SerivceAbilityServerSecond_onDisConnect =====<'
-                + want.action);
-                if (want.action === 'ServiceConnectService_1500' || want.action === 'ServiceConnectService_1501'
-                || want.action === 'ServiceConnectService_1600' || want.action === 'ServiceConnectService_1601'
-                || want.action === 'ServiceConnectService_1590') {
+                console.debug('ACTS_SerivceAbilityServerSecond_onDisConnect =====<' + 
+                want.action);
+                if (want.action === 'ServiceConnectService_1500' || want.action === 'ServiceConnectService_1501' || 
+                want.action === 'ServiceConnectService_1600' || want.action === 'ServiceConnectService_1601' || 
+                want.action === 'ServiceConnectService_1590') {
                     particleAbility.disconnectAbility(mConnIdJs, (err) => {
                         console.debug('=ACTS_SerivceAbilityServerSecond_onDisConnect err====>' + 
                         ('json err=') + JSON.stringify(err) + ' , ' + want.action);
@@ -176,10 +176,10 @@ export default {
         want + ' , JSON.' + JSON.stringify(want));
     },
     OnAbilityConnectDone(element, remoteObject, resultCode) {
-        console.debug('ACTS_SerivceAbilityServerSecond ====>OnAbilityConnectDone='
-        + element + ' , JSON.' + JSON.stringify(element)
-        + remoteObject + ' , JSON.' + JSON.stringify(remoteObject)
-        + resultCode + ' , JSON.' + JSON.stringify(resultCode)
+        console.debug('ACTS_SerivceAbilityServerSecond ====>OnAbilityConnectDone=' +
+        element + ' , JSON.' + JSON.stringify(element) + 
+        remoteObject + ' , JSON.' + JSON.stringify(remoteObject) + 
+        resultCode + ' , JSON.' + JSON.stringify(resultCode)
         );
         commonEvent.publish('ACTS_SerivceAbilityServerSecond_OnAbilityConnectDone', (err) => { });
     },
