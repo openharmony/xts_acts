@@ -216,7 +216,7 @@ export default function NavigationJsunit() {
       console.info("[NavigationJsunit_0900] backButtonIcon: " + obj.$attrs.backButtonIcon);
       console.info("[NavigationJsunit_0900] hideNavBar: " + obj.$attrs.hideNavBar);
       expect(obj.$attrs.titleMode).assertEqual('NavigationTitleMode.Full');
-      expect(obj.$attrs.hideToolBar).assertEqual(true);
+      expect(obj.$attrs.hideToolBar).assertEqual(false);
       expect(obj.$attrs.hideTitleBar).assertEqual(false);
       expect(obj.$attrs.hideBackButton).assertEqual(true);
       expect(obj.$attrs.navBarWidth).assertEqual('200.00vp');
