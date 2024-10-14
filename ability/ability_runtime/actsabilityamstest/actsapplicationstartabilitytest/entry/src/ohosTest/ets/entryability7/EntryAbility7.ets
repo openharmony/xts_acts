@@ -47,7 +47,7 @@ export default class EntryAbility extends UIAbility {
       let commonEventData: commonEventManager.CommonEventPublishData = {
         parameters: {
           data: {
-            "onDestroyFlag": this.onDestroyFlag
+            'onDestroyFlag': this.onDestroyFlag
           }
         }
       }
