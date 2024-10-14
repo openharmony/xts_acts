@@ -56,9 +56,9 @@ export default function common1Jsunit() {
     it('Common1001', 0, async (done: Function) => {
       console.info('[Common1001] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1001] component Common1001 is: " + JSON.stringify(objNew.$attrs));
-      let outlineRadius = objNew.$attrs.outlineRadius
+      let outlineRadius: ESObject = objNew.$attrs.outlineRadius
       expect(outlineRadius.topLeft).assertEqual("10.00vp");
       expect(outlineRadius.topRight).assertEqual("10.00vp");
       expect(outlineRadius.bottomLeft).assertEqual("20.00vp");
@@ -77,9 +77,9 @@ export default function common1Jsunit() {
     it('Common1002', 0, async (done: Function) => {
       console.info('[Common1002] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1002] component Common1002 is: " + JSON.stringify(objNew.$attrs));
-      let outlineStyle = objNew.$attrs.outlineStyle
+      let outlineStyle: ESObject = objNew.$attrs.outlineStyle
       expect(outlineStyle.left).assertEqual("OutlineStyle.SOLID");
       expect(outlineStyle.top).assertEqual("OutlineStyle.SOLID");
       expect(outlineStyle.right).assertEqual("OutlineStyle.SOLID");
@@ -98,9 +98,9 @@ export default function common1Jsunit() {
     it('Common1003', 0, async (done: Function) => {
       console.info('[Common1003] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1003] component Common1003 is: " + JSON.stringify(objNew.$attrs));
-      let outlineWidth = objNew.$attrs.outlineWidth
+      let outlineWidth: ESObject = objNew.$attrs.outlineWidth
       expect(outlineWidth.left).assertEqual("2.00vp");
       expect(outlineWidth.top).assertEqual("2.00vp");
       expect(outlineWidth.right).assertEqual("2.00vp");
@@ -119,9 +119,9 @@ export default function common1Jsunit() {
     it('Common1004', 0, async (done: Function) => {
       console.info('[Common1004] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1004] component Common1004 is: " + JSON.stringify(objNew.$attrs));
-      let outlineColor = objNew.$attrs.outlineColor
+      let outlineColor: ESObject = objNew.$attrs.outlineColor
       expect(outlineColor.left).assertEqual("#FFFFC0CB");
       expect(outlineColor.top).assertEqual("#FFFFC0CB");
       expect(outlineColor.right).assertEqual("#FFFFC0CB");
@@ -140,7 +140,7 @@ export default function common1Jsunit() {
     it('Common1005', 0, async (done: Function) => {
       console.info('[Common1005] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1005] component Common1005 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.align).assertEqual("Alignment.TopStart");
       done();
@@ -157,7 +157,7 @@ export default function common1Jsunit() {
     it('Common1006', 0, async (done: Function) => {
       console.info('[Common1006] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1006] component Common1006 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.direction).assertEqual("Direction.Ltr");
       done();
@@ -174,7 +174,7 @@ export default function common1Jsunit() {
     it('Common1007', 0, async (done: Function) => {
       console.info('[Common1007] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1007] component Common1007 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.backdropBlur).assertEqual(20);
       done();
@@ -191,7 +191,7 @@ export default function common1Jsunit() {
     it('Common1008', 0, async (done: Function) => {
       console.info('[Common1008] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1008] component Common1008 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.invert).assertEqual(0.5);
       done();
@@ -208,7 +208,7 @@ export default function common1Jsunit() {
     it('Common1009', 0, async (done: Function) => {
       console.info('[Common1009] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1009] component Common1009 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.blur).assertEqual(15);
       done();
@@ -225,9 +225,9 @@ export default function common1Jsunit() {
     it('Common1010', 0, async (done: Function) => {
       console.info('[Common1010] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1010] component Common1010 is: " + JSON.stringify(objNew.$attrs));
-      let outline = JSON.parse(objNew.$attrs.outline);
+      let outline: ESObject = JSON.parse(objNew.$attrs.outline);
       expect(outline.width.left).assertEqual("10.00vp");
       expect(outline.width.top).assertEqual("10.00vp");
       expect(outline.width.right).assertEqual("10.00vp");
@@ -246,7 +246,7 @@ export default function common1Jsunit() {
     it('Common1011', 0, async (done: Function) => {
       console.info('[Common1011] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1011] component Common1011 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.useShadowBatching).assertEqual("true");
       done();
@@ -263,7 +263,7 @@ export default function common1Jsunit() {
     it('Common1012', 0, async (done: Function) => {
       console.info('[Common1012] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1012] component Common1012 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.obscured[0]).assertEqual("1");
       done();
@@ -280,9 +280,9 @@ export default function common1Jsunit() {
     it('Common1013', 0, async (done: Function) => {
       console.info('[Common1013] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1013] component Common1013 is: " + JSON.stringify(objNew.$attrs));
-      let shadow = objNew.$attrs.shadow;
+      let shadow: ESObject = objNew.$attrs.shadow;
       expect(shadow.radius).assertEqual("10.000000");
       done();
     });
@@ -298,7 +298,7 @@ export default function common1Jsunit() {
     it('Common1014', 0, async (done: Function) => {
       console.info('[Common1014] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1014] component Common1014 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.renderFit).assertEqual("RenderFit.CENTER");
       done();
@@ -315,7 +315,7 @@ export default function common1Jsunit() {
     it('Common1015', 0, async (done: Function) => {
       console.info('[Common1015] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1015] component Common1015 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.clip).assertEqual("false");
       done();
@@ -332,7 +332,7 @@ export default function common1Jsunit() {
     it('Common1016', 0, async (done: Function) => {
       console.info('[Common1016] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1016] component Common1016 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.radialGradient.radius).assertEqual("15.00vp");
       expect(true).assertEqual(true);
@@ -350,7 +350,7 @@ export default function common1Jsunit() {
     it('Common1017', 0, async (done: Function) => {
       console.info('[Common1017] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1017] component Common1017 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.sweepGradient.start).assertEqual("100.00px");
       expect(objNew.$attrs.sweepGradient.end).assertEqual("359.00px");
@@ -369,7 +369,7 @@ export default function common1Jsunit() {
     it('Common1018', 0, async (done: Function) => {
       console.info('[Common1018] START');
       let strJsonNew = getInspectorByKey('common3');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1018] component Common1018 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.mask.shape).assertEqual("Rect");
       done();
@@ -417,7 +417,7 @@ export default function common1Jsunit() {
     it('Common1021', 0, async (done: Function) => {
       console.info('[Common1021] START');
       let strJsonNew = getInspectorByKey('common3');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1021] component Common1021 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.overlay.title).assertEqual("Winter");
       done();
@@ -434,7 +434,7 @@ export default function common1Jsunit() {
     it('Common1022', 0, async (done: Function) => {
       console.info('[Common1022] START');
       let strJsonNew = getInspectorByKey('common3');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1022] component Common1022 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.draggable).assertEqual("true");
       done();
@@ -451,7 +451,7 @@ export default function common1Jsunit() {
     it('Common1023', 0, async (done: Function) => {
       console.info('[Common1023] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1023] component Common1023 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.aspectRatio).assertEqual(2);
       done();
@@ -468,7 +468,7 @@ export default function common1Jsunit() {
     it('Common1024', 0, async (done: Function) => {
       console.info('[Common1024] START');
       let strJsonNew = getInspectorByKey('common3');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1024] component Common1024 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.enabled).assertEqual(false);
       done();
@@ -485,7 +485,7 @@ export default function common1Jsunit() {
     it('Common1025', 0, async (done: Function) => {
       console.info('[Common1025] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1025] component Common1025 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.offset.x).assertEqual("10.00px");
       expect(objNew.$attrs.offset.y).assertEqual("20.00px");
@@ -503,7 +503,7 @@ export default function common1Jsunit() {
     it('Common1026', 0, async (done: Function) => {
       console.info('[Common1026] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1026] component Common1026 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.markAnchor.x).assertEqual("15.00px");
       expect(objNew.$attrs.markAnchor.y).assertEqual("25.00px");
@@ -521,7 +521,7 @@ export default function common1Jsunit() {
     it('Common1027', 0, async (done: Function) => {
       console.info('[Common1027] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1027] component Common1027 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.position.x).assertEqual("20.00px");
       expect(objNew.$attrs.position.y).assertEqual("30.00px");
@@ -539,7 +539,7 @@ export default function common1Jsunit() {
     it('Common1028', 0, async (done: Function) => {
       console.info('[Common1028] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1028] component Common1028 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.zIndex).assertEqual(2);
       done();
@@ -556,7 +556,7 @@ export default function common1Jsunit() {
     it('Common1029', 0, async (done: Function) => {
       console.info('[Common1029] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1029] component Common1029 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.alignSelf).assertEqual("ItemAlign.Start");
       done();
@@ -573,7 +573,7 @@ export default function common1Jsunit() {
     it('Common1030', 0, async (done: Function) => {
       console.info('[Common1030] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1030] component Common1030 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.flexBasis).assertEqual("20.00vp");
       done();
@@ -590,7 +590,7 @@ export default function common1Jsunit() {
     it('Common1031', 0, async (done: Function) => {
       console.info('[Common1031] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1031] component Common1031 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.flexGrow).assertEqual(3);
       done();
@@ -608,7 +608,7 @@ export default function common1Jsunit() {
     it('Common1032', 0, async (done: Function) => {
       console.info('[Common1032] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1032] component Common1032 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.flexShrink).assertEqual(4);
       done();
@@ -625,7 +625,7 @@ export default function common1Jsunit() {
     it('Common1033', 0, async (done: Function) => {
       console.info('[Common1033] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1033] component Common1033 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.displayPriority).assertEqual(2);
       done();
@@ -642,7 +642,7 @@ export default function common1Jsunit() {
     it('Common1034', 0, async (done: Function) => {
       console.info('[Common1034] START');
       let strJsonNew = getInspectorByKey('common3');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1034] component Common1034 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.backgroundEffect.options.color).assertEqual("#FF008000");
       done();
@@ -659,7 +659,7 @@ export default function common1Jsunit() {
     it('Common1035', 0, async (done: Function) => {
       console.info('[Common1035] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1035] component Common1035 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.transform.type).assertEqual("matrix");
       done();
@@ -676,7 +676,7 @@ export default function common1Jsunit() {
     it('Common1036', 0, async (done: Function) => {
       console.info('[Common1036] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1036] component Common1036 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.translate.x).assertEqual("30.00vp");
       expect(objNew.$attrs.translate.y).assertEqual("10.00vp");
@@ -694,7 +694,7 @@ export default function common1Jsunit() {
     it('Common1037', 0, async (done: Function) => {
       console.info('[Common1037] START');
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1037] component Common1037 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.rotate.angle).assertEqual("10.000000");
       done();
@@ -711,7 +711,7 @@ export default function common1Jsunit() {
     it('Common1038', 0, async (done: Function) => {
       console.info('[Common1038] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1038] component Common1038 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.renderGroup).assertEqual("true");
       done();
@@ -729,7 +729,7 @@ export default function common1Jsunit() {
     it('Common1039', 0, async (done: Function) => {
       console.info('[Common1039] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1039] component Common1039 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.gridOffset).assertEqual(2);
       done();
@@ -746,7 +746,7 @@ export default function common1Jsunit() {
     it('Common1040', 0, async (done: Function) => {
       console.info('[Common1040] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1040] component Common1040 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.gridSpan).assertEqual(3);
       done();
@@ -763,7 +763,7 @@ export default function common1Jsunit() {
     it('Common1041', 0, async (done: Function) => {
       console.info('[Common1041] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1041] component Common1041 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.hueRotate).assertEqual(1);
       done();
@@ -780,7 +780,7 @@ export default function common1Jsunit() {
     it('Common1042', 0, async (done: Function) => {
       console.info('[Common1042] START');
       let strJsonNew = getInspectorByKey('common2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1042] component Common1042 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.sepia).assertEqual(1);
       done();
@@ -797,7 +797,7 @@ export default function common1Jsunit() {
     it('Common1043', 0, async (done: Function) => {
       console.info('[Common1043] START');
       let strJsonNew = getInspectorByKey('testbutton');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1043] component Common1043 is: " + JSON.stringify(objNew.$attrs.clickEffect));
       // let clickEffect = JSON.parse(objNew.$attrs.clickEffect);
       expect(objNew.$attrs.clickEffect.level).assertEqual("2");
@@ -816,7 +816,7 @@ export default function common1Jsunit() {
     it('Common1044', 0, async (done: Function) => {
       console.info('[Common1044] START');
       let strJsonNew = getInspectorByKey('testbutton');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1044] hoverEffect obj is: " + JSON.stringify(objNew.$attrs.hoverEffect));
       expect(objNew.$attrs.hoverEffect).assertEqual("HoverEffect.Auto");
       done();
@@ -837,7 +837,7 @@ export default function common1Jsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('common1');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("[Common1046] component Common1046 is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.zIndex).assertEqual(5);
       done();

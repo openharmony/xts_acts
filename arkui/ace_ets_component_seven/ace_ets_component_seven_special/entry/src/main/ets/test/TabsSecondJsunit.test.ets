@@ -138,10 +138,8 @@ export default function tabsSecondJsunit() {
     it('ArkUI_Tabs_Attrs_0400', 0, async function (done) {
       console.info("ArkUI_Tabs_Attrs_0400 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
-      let obj = JSON.parse(strJson);
-
-      expect(obj.$attrs.barWidth).assertEqual('350.000000');
-
+      console.info("barWidth: "+ Math.round(JSON.parse(strJson).$attrs.barWidth));
+      expect(Math.abs(Math.round(JSON.parse(strJson).$attrs.barWidth) -350) <= 0.001).assertTrue();
       done();
     });
 

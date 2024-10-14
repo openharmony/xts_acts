@@ -64,7 +64,7 @@ export default function TextClockJsunit() {
     it('TextClock_0100', 0, async (done: Function) => {
       console.info('[TextClock_0100] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0100] obj :" + obj.$attrs);
       expect(obj.$attrs.format).assertEqual('hh:mm:ss');
       console.info('[TextClock_0100] END');
@@ -82,7 +82,7 @@ export default function TextClockJsunit() {
     it('TextClock_0200', 0, async (done: Function) => {
       console.info('[TextClock_0200] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0200] obj :" + obj.$attrs);
       expect(obj.$attrs.fontColor).assertEqual('#FF123456');
       console.info('[TextClock_0200] END');
@@ -100,7 +100,7 @@ export default function TextClockJsunit() {
     it('TextClock_0300', 0, async (done: Function) => {
       console.info('[TextClock_0300] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0300] obj :" + obj.$attrs);
       expect(obj.$attrs.fontSize).assertEqual('15.00fp');
       console.info('[TextClock_0400] END');
@@ -118,7 +118,7 @@ export default function TextClockJsunit() {
     it('TextClock_0400', 0, async (done: Function) => {
       console.info('[TextClock_0400] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0400] obj :" + obj.$attrs);
       expect(obj.$attrs.fontWeight).assertEqual('FontWeight.Normal');
       console.info('[TextClock_0400] END');
@@ -136,7 +136,7 @@ export default function TextClockJsunit() {
     it('TextClock_0500', 0, async (done: Function) => {
       console.info('[TextClock_0500] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0500] obj :" + obj.$attrs);
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Italic');
       console.info('[TextClock_0500] END');
@@ -154,7 +154,7 @@ export default function TextClockJsunit() {
     it('TextClock_0600', 0, async (done: Function) => {
       console.info('[TextClock_0600] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0600] obj :" + obj.$attrs);
       expect(obj.$attrs.fontFamily).assertEqual('cursive');
       console.info('[TextClock_0600] END');
@@ -175,7 +175,7 @@ export default function TextClockJsunit() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('TextClockKey1'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("TextClock_0601 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontSize).assertEqual('15.00fp'); //
       console.info('TextClock_0601 END');

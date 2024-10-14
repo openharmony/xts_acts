@@ -52,12 +52,12 @@ export default function polyLineJsunit() {
     it('testpolyLine', 0, async (done: Function) => {
       console.info('[testpolyLine] START');
       let strJson = getInspectorByKey('polyLine');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testpolyLine] obj is : " + JSON.stringify(obj.$attrs));
 
       //原生数据
       let strJson1 = getInspectorByKey('polyLine1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[testpolyLine] obj is : " + JSON.stringify(obj1.$attrs));
 
       //与原生做对比
@@ -83,10 +83,10 @@ export default function polyLineJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('polyLine'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
 
       let strJsonNew2 = getInspectorByKey('polyLine2'); //测试组件的key名称
-      let objNew2 = JSON.parse(strJsonNew2);
+      let objNew2: ESObject = JSON.parse(strJsonNew2);
 
       console.info("testpolyLine_001 objNew component  is: " + JSON.stringify(objNew.$attrs));
       console.info("testpolyLine_001 objNew2 component  is: " + JSON.stringify(objNew2.$attrs));

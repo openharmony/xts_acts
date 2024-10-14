@@ -58,7 +58,7 @@ export default function listNestedScrollJsunit() {
       let x = Math.floor(Utils.getRectHorizontalCenterX(webRect))
       let y = Math.floor(Utils.getRectVerticalCenterY(webRect))
       let driver = Driver.create();
-      await driver.swipe(x, y + 200, x, y - 200);
+      await driver.swipe(Math.round(x), Math.round(y + vp2px(140)), Math.round(x), Math.round(y - vp2px(140)));
       console.info('[ArkUI_Stage_listNestedScroll01] driver.swipe end');
       try {
         let callBack = (backData: events_emitter.EventData) => {

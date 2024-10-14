@@ -15,6 +15,7 @@
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils';
 import { ListModifier } from "@ohos.arkui.modifier";
+import { BusinessError } from '@ohos.base';
 
 class CustomModifier extends ListModifier {
   applyNormalAttribute(instance: ListAttribute): void {
@@ -67,7 +68,7 @@ struct ListNestedScroll {
               console.info("List NestedScrollOptionsScroll emit action state err: " + JSON.stringify(err));
             }
           } catch (error) {
-            console.error(`List NestedScrollOptionsScroll ErrorCode: ${error.code},  Message: ${error.message}`);
+            console.error(`List NestedScrollOptionsScroll ErrorCode: ${(error as BusinessError)?.code},  Message: ${(error as Error)?.message}`);
           }
           console.info("List NestedScrollOptionsScroll  onClick end ");
         })

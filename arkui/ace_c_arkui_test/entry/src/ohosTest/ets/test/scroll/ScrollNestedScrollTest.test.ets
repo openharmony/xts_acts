@@ -25,9 +25,9 @@ async function doIt(pageTag: string, testType: number, X: number, Y: number) {
   await Utils.sleep(2000)
   let driver = Driver.create();
   if (testType > 4) {
-    await driver.swipe(X, Y - 50, X, Y + 50);
+    await driver.swipe(Math.round(globalThis.winLeft + X), Math.round(globalThis.winTop + Y - vp2px(33.33)), Math.round(globalThis.winLeft + X), Math.round(globalThis.winTop + Y + vp2px(33.33)));
   } else {
-    await driver.swipe(X, Y + 50, X, Y - 50);
+    await driver.swipe(Math.round(globalThis.winLeft + X), Math.round(globalThis.winTop + Y + vp2px(33.33)), Math.round(globalThis.winLeft + X), Math.round(globalThis.winTop + Y - vp2px(33.33)));
   }
   await Utils.sleep(2000)
   Utils.clickComponent('compareButton')

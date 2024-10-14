@@ -48,10 +48,10 @@ export default function textTimer() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTimerJsunit_0100', 0, async function (done) {
+    it('textTimerJsunit_0100', 0, async (done: Function) => {
       console.info('textTimerJsunit_0100 START');
       let strJson = getInspectorByKey('TextTimerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textTimerJsunit_0100] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontSize).assertEqual('20.00fp');
       console.info('textTimerJsunit_0100 END');
@@ -66,10 +66,10 @@ export default function textTimer() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTimerJsunit_0200', 0, async function (done) {
+    it('textTimerJsunit_0200', 0, async (done: Function) => {
       console.info('textTimerJsunit_0200 START');
       let strJson = getInspectorByKey('TextTimerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textTimerJsunit_0200] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontColor).assertEqual('#FFFFC0CB');
       console.info('textTimerJsunit_0200 END');
@@ -84,10 +84,10 @@ export default function textTimer() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTimerJsunit_0300', 0, async function (done) {
+    it('textTimerJsunit_0300', 0, async (done: Function) => {
       console.info('textTimerJsunit_0300 START');
       let strJson = getInspectorByKey('TextTimerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textTimerJsunit_0300] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.format).assertEqual('mm:ss.SS');
       console.info('textTimerJsunit_0300 END');
@@ -102,10 +102,10 @@ export default function textTimer() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTimerJsunit_0400', 0, async function (done) {
+    it('textTimerJsunit_0400', 0, async (done: Function) => {
       console.info('textTimerJsunit_0400 START');
       let strJson = getInspectorByKey('TextTimerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textTimerJsunit_0400] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontWeight).assertEqual('FontWeight.Normal');
       console.info('textTimerJsunit_0400 END');
@@ -120,10 +120,10 @@ export default function textTimer() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTimerJsunit_0500', 0, async function (done) {
+    it('textTimerJsunit_0500', 0, async (done: Function) => {
       console.info('textTimerJsunit_0500 START');
       let strJson = getInspectorByKey('TextTimerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textTimerJsunit_0500] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Italic');
       console.info('textTimerJsunit_0500 END');
@@ -138,10 +138,10 @@ export default function textTimer() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textTimerJsunit_0600', 0, async function (done) {
+    it('textTimerJsunit_0600', 0, async (done: Function) => {
       console.info('textTimerJsunit_0600 START');
       let strJson = getInspectorByKey('TextTimerKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textTimerJsunit_0600] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.fontFamily).assertEqual('cursive');
       console.info('textTimerJsunit_0600 END');
@@ -162,7 +162,7 @@ export default function textTimer() {
       await button.click();
       await Utils.sleep(2000)
       let strJsonNew = getInspectorByKey('TextTimerKey1'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textTimerJsunit_0601 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontSize).assertEqual('5.00fp'); //
       console.info('textTimerJsunit_0601 END');

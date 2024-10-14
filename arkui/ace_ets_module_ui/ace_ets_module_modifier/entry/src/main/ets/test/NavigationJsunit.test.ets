@@ -67,7 +67,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1000] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1000] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.minContentWidth).assertEqual('10.00px');
@@ -87,7 +87,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1001] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1001] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.navBarWidthRange).assertEqual("300.00vp, 800.00vp");
@@ -107,7 +107,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1002] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1002] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.navBarWidth).assertEqual('120.00vp');
@@ -127,7 +127,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1003] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1003] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.navBarPosition).assertEqual('NavBarPosition.Start');
@@ -147,7 +147,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1004] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1004] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.mode).assertEqual('NavigationMode.SPLIT');
@@ -167,7 +167,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1005] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1005] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.backButtonIcon).assertEqual('resources/base/media/icon.png');
@@ -187,7 +187,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1006] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1006] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.hideNavBar).assertEqual(false);
@@ -207,7 +207,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1007] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1007] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.hideTitleBar).assertEqual(false);
@@ -227,7 +227,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1008] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1008] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.subtitle).assertEqual('test');
@@ -247,7 +247,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1009] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1009] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.hideBackButton).assertEqual(false);
@@ -267,7 +267,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1010] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1010] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.titleMode).assertEqual('NavigationTitleMode.Free');
@@ -287,7 +287,7 @@ export default function navigationJsunit() {
 
       console.info('[NavigationJsunit_1011] START');
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1011] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.hideToolBar).assertEqual(false);
@@ -311,7 +311,7 @@ export default function navigationJsunit() {
       await Utils.sleep(2000)
 
       let strJson = getInspectorByKey('navigation1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavigationJsunit_1012] component obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.minContentWidth).assertEqual('20.00px');

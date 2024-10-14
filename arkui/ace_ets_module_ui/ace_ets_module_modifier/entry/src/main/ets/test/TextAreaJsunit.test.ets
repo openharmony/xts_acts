@@ -51,7 +51,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_002', 0, async (done: Function) => {
       console.info('textAreaTest_002 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_002 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.copyOption).assertEqual("CopyOptions.None");
       console.info('textAreaTest_002 END');
@@ -69,7 +69,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_003', 0, async (done: Function) => {
       console.info('textAreaTest_003 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_003 component  is: " + JSON.stringify(objNew.$attrs));
       // expect(objNew.$attrs.fontColor).assertEqual("#FF123456");
       expect(objNew.$attrs.fontColor).assertNotNull;
@@ -88,7 +88,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_004', 0, async (done: Function) => {
       console.info('textAreaTest_004 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_004 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.placeholderColor).assertEqual("#FF000000");
       console.info('textAreaTest_004 END');
@@ -106,7 +106,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_005', 0, async (done: Function) => {
       console.info('textAreaTest_005 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_005 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.placeholderFont)
         .assertEqual("{\"style\":\"FontStyle.Normal\",\"size\":\"16.00fp\",\"weight\":\"400\",\"fontFamily\":\"sans-serif\"}");
@@ -125,7 +125,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_006', 0, async (done: Function) => {
       console.info('textAreaTest_006 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_006 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontWeight).assertEqual("100");
       console.info('textAreaTest_006 END');
@@ -143,7 +143,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_007', 0, async (done: Function) => {
       console.info('textAreaTest_007 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_007 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.textAlign).assertEqual("TextAlign.Start");
       console.info('textAreaTest_007 END');
@@ -161,7 +161,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_008', 0, async (done: Function) => {
       console.info('textAreaTest_008 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_008 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.selectionMenuHidden).assertEqual(undefined);
       console.info('textAreaTest_008 END');
@@ -179,7 +179,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_009', 0, async (done: Function) => {
       console.info('textAreaTest_009 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_009 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.enableKeyboardOnFocus).assertEqual(undefined);
       console.info('textAreaTest_009 END');
@@ -197,7 +197,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_010', 0, async (done: Function) => {
       console.info('textAreaTest_010 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_010 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.caretColor).assertEqual("#FF000000");
       console.info('textAreaTest_010 END');
@@ -215,7 +215,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_011', 0, async (done: Function) => {
       console.info('textAreaTest_011 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_011 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.maxLength).assertEqual("40");
       console.info('textAreaTest_011 END');
@@ -233,7 +233,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_012', 0, async (done: Function) => {
       console.info('textAreaTest_012 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_012 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.maxLines).assertEqual("20");
       console.info('textAreaTest_012 END');
@@ -251,7 +251,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_013', 0, async (done: Function) => {
       console.info('textAreaTest_013 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_013 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.style).assertEqual("TextContentStyle.INLINE");
       console.info('textAreaTest_013 END');
@@ -269,7 +269,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_014', 0, async (done: Function) => {
       console.info('textAreaTest_014 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_014 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontStyle).assertEqual("FontStyle.Italic");
       console.info('textAreaTest_014 END');
@@ -287,7 +287,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_018', 0, async (done: Function) => {
       console.info('textAreaTest_018 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_018 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontSize).assertEqual("12.00fp");
       console.info('textAreaTest_018 END');
@@ -305,7 +305,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_015', 0, async (done: Function) => {
       console.info('textAreaTest_015 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_015 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontFamily).assertEqual("fontFamily");
       console.info('textAreaTest_015 END');
@@ -323,7 +323,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_016', 0, async (done: Function) => {
       console.info('textAreaTest_016 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_016 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.barState).assertEqual("BarState.ON");
       console.info('textAreaTest_016 END');
@@ -341,7 +341,7 @@ export default function textAreaJsunit() {
     it('textAreaTest_017', 0, async (done: Function) => {
       console.info('textAreaTest_017 START');
       let strJsonNew = getInspectorByKey('textArea');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_017 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.showCounter.value).assertEqual(false);
       console.info('textAreaTest_017 END');
@@ -364,7 +364,7 @@ export default function textAreaJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('textArea'); //测试组件的key名称
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("textAreaTest_001 component  is: " + JSON.stringify(objNew.$attrs));
       expect(objNew.$attrs.fontStyle).assertEqual("FontStyle.Normal");
       console.info('textAreaTest_001 END');
