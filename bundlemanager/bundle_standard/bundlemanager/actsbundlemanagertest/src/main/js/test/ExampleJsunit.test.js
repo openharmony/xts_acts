@@ -495,8 +495,8 @@ describe('ActsBundleManagerTest', function () {
         expect(dataInfo.updateTime).assertLarger(0);
         expect(dataInfo.reqPermissions.length).assertEqual(0);
         expect(dataInfo.reqPermissionDetails.length).assertEqual(0);
-        expect(dataInfo.compatibleVersion).assertEqual(5);
-        expect(dataInfo.targetVersion).assertEqual(5);
+        expect(dataInfo.compatibleVersion).assertEqual(12);
+        expect(dataInfo.targetVersion).assertEqual(12);
         expect(dataInfo.isCompressNativeLibs).assertEqual(true);
         for (let s = 0; s < dataInfo.hapModuleInfos.length; s++) {
             expect(dataInfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1.MyApplication1");
@@ -544,8 +544,8 @@ describe('ActsBundleManagerTest', function () {
             expect(dataInfo.updateTime).assertLarger(0);
             expect(dataInfo.reqPermissions.length).assertEqual(0);
             expect(dataInfo.reqPermissionDetails.length).assertEqual(0);
-            expect(dataInfo.compatibleVersion).assertEqual(5);
-            expect(dataInfo.targetVersion).assertEqual(5);
+            expect(dataInfo.compatibleVersion).assertEqual(12);
+            expect(dataInfo.targetVersion).assertEqual(12);
             expect(dataInfo.isCompressNativeLibs).assertEqual(true);
             for (let s = 0; s < dataInfo.hapModuleInfos.length; s++) {
                 expect(dataInfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1.MyApplication1");
