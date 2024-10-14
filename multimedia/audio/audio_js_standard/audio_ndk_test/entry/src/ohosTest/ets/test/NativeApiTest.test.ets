@@ -77,7 +77,7 @@ export default function audioNDK() {
         * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.CreateAudioStreamBuilder();
+      let result = myaudioNdk.createAudioStreamBuilder();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100 createa: ${result}`);
       expect(result).assertEqual(0)
       done()
