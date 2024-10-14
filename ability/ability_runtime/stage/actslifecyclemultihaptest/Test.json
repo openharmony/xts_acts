@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "com.example.lifecycletest",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 70000
     },
@@ -13,7 +13,8 @@
             "test-file-name": [
                 "ActsLifecycleMultiHapTest.hap",
                 "ActsLifecycleMultiHap2.hap",
-                "ActsLifecycleMultiHap3.hap"
+                "ActsLifecycleMultiHap3.hap",
+                "ActsLifecycleMultiHapMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
