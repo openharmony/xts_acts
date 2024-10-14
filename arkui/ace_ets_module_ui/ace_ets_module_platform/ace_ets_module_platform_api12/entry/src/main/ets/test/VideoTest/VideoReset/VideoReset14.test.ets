@@ -48,12 +48,12 @@ export default function VideoReset14() {
     });
 
     /**
-     * @tc.number    VideoReset14_0100
-     * @tc.name      VideoReset14_0100
-     * @tc.desc      Test video reset
-     * @tc.level     Level 2
+     * @tc.number VideoReset14_0100
+     * @tc.name VideoReset14_0100
+     * @tc.desc Test video reset
+     * @tc.level Level 2
      */
-    it('VideoReset14_0100', 0, async function (done) {
+    it('VideoReset14_0100', 0, async (done: Function) => {
       console.info('[VideoReset14_0100] START');
       await CommonFunc.sleep(5000);
 
@@ -76,20 +76,20 @@ export default function VideoReset14() {
       await CommonFunc.sleep(3000);
 
       let strJson1 = getInspectorByKey('VideoReset14_text2');
-      let obj1 = JSON.parse(strJson1);
+
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset14_0100] obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.content).assertEqual('0');
+      console.info("[VideoReset14_0100] JSON.parse(strJson1) is: " + JSON.stringify(JSON.parse(strJson1)));
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('0');
 
       await btn1.click()
       console.info("[VideoReset14_0100] btnStart click2");
       await CommonFunc.sleep(3000);
 
       let strJson2 = getInspectorByKey('VideoReset14_text1');
-      let obj2 = JSON.parse(strJson2);
+
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset14_0100] obj2 is: " + JSON.stringify(obj2));
-      expect(obj2.$attrs.content).assertEqual('onStart2');
+      console.info("[VideoReset14_0100] JSON.parse(strJson2) is: " + JSON.stringify(JSON.parse(strJson2)));
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('onStart2');
 
       let textInput = await driver.findComponent(ON.id('VideoReset14_textInput'));
       await textInput.click()
@@ -100,20 +100,19 @@ export default function VideoReset14() {
       await CommonFunc.sleep(3000);
 
       let strJson3 = getInspectorByKey('VideoReset14_text2');
-      let obj3 = JSON.parse(strJson3);
+
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset1_0100] obj3 is: " + JSON.stringify(obj3));
-      expect(Number(obj3.$attrs.content) >= 9).assertTrue();
+      console.info("[VideoReset1_0100] JSON.parse(strJson3) is: " + JSON.stringify(JSON.parse(strJson3)));
+      expect(Number(JSON.parse(strJson3).$attrs.content) >= 9).assertTrue();
 
       await btn2.click()
       console.info("[VideoReset14_0100] btnReset click2");
       await CommonFunc.sleep(3000);
 
       let strJson4 = getInspectorByKey('VideoReset14_text2');
-      let obj4 = JSON.parse(strJson4);
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset14_0100] obj4 is: " + JSON.stringify(obj4));
-      expect(obj4.$attrs.content).assertEqual('0');
+      console.info("[VideoReset14_0100] obj4 is: " + JSON.stringify(JSON.parse(strJson4)));
+      expect(JSON.parse(strJson4).$attrs.content).assertEqual('0');
 
       console.info('[VideoReset14_0100] END');
       done();

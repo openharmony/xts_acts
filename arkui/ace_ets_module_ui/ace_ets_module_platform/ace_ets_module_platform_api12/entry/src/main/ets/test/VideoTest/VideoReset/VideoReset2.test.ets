@@ -48,12 +48,12 @@ export default function VideoReset2() {
     });
 
     /**
-     * @tc.number    VideoReset2_0100
-     * @tc.name      VideoReset2_0100
-     * @tc.desc      Test video reset
-     * @tc.level     Level 2
+     * @tc.number VideoReset2_0100
+     * @tc.name VideoReset2_0100
+     * @tc.desc Test video reset
+     * @tc.level Level 2
      */
-    it('VideoReset2_0100', 0, async function (done) {
+    it('VideoReset2_0100', 0, async (done: Function) => {
       console.info('[VideoReset2_0100] START');
       await CommonFunc.sleep(5000);
 
@@ -85,10 +85,9 @@ export default function VideoReset2() {
       await CommonFunc.sleep(3000);
 
       let strJson2 = getInspectorByKey('VideoReset2_text1');
-      let obj2 = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
-      console.info("[VideoReset2_0100] obj2 is: " + JSON.stringify(obj2));
-      expect(obj2.$attrs.content).assertEqual('onStart2');
+      console.info("[VideoReset2_0100] JSON.parse(strJson2) is: " + JSON.stringify(JSON.parse(strJson2)));
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('onStart2');
 
       console.info('[VideoReset2_0100] END');
       done();

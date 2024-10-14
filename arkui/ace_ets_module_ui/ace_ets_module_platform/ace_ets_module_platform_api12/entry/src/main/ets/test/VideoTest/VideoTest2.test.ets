@@ -48,12 +48,12 @@ export default function VideoTest2() {
     });
 
     /**
-     * @tc.number    VideoTest2_0100
-     * @tc.name      VideoTest2_0100
-     * @tc.desc      Test video onStart
-     * @tc.level     Level 2
+     * @tc.number VideoTest2_0100
+     * @tc.name VideoTest2_0100
+     * @tc.desc Test video onStart
+     * @tc.level Level 2
      */
-    it('VideoTest2_0100', 0, async function (done) {
+    it('VideoTest2_0100', 0, async (done: Function) => {
       console.info('[VideoTest2_0100] START');
       await CommonFunc.sleep(5000);
 
@@ -65,10 +65,9 @@ export default function VideoTest2() {
       await CommonFunc.sleep(3000);
 
       let strJson1 = getInspectorByKey('VideoTest2_text');
-      let obj1 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
-      console.info("[VideoTest2_0100] obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.content).assertEqual('onStart');
+      console.info("[VideoTest2_0100] obj1 is: " + JSON.stringify(JSON.parse(strJson1)));
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('onStart');
 
       console.info('[VideoTest2_0100] END');
       done();

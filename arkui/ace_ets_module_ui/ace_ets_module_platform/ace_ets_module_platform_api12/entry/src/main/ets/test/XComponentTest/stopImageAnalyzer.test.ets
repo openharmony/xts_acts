@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function stopImageAnalyzerJsunit() {
-  describe('stopImageAnalyzerJsunit', function () {
-    beforeEach(async function (done) {
+  describe('stopImageAnalyzerJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("stopImageAnalyzer beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/XComponent/stopImageAnalyzer",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/XComponent/stopImageAnalyzer",
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function stopImageAnalyzerJsunit() {
         console.info("get stopImageAnalyzer state pages: " + JSON.stringify(pages));
         if (!("stopImageAnalyzer" == pages.name)) {
           console.info("get stopImageAnalyzer state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push stopImageAnalyzer success: " + JSON.stringify(result));
         }
@@ -43,14 +56,14 @@ export default function stopImageAnalyzerJsunit() {
     });
 
     /**
-     * @tc.number    startImageAnalyzerTest_0010
-     * @tc.name      startImageAnalyzerTest_0010
-     * @tc.desc      Xcomponent: get the api of startImageAnalyzer
-     * @tc.level:    Level 2
+     * @tc.number startImageAnalyzerTest_0010
+     * @tc.name startImageAnalyzerTest_0010
+     * @tc.desc Xcomponent: get the api of startImageAnalyzer
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('startImageAnalyzerTest_0010', 0, async function (done) {
+    it('startImageAnalyzerTest_0010', 0, async (done: Function) => {
       console.info('startImageAnalyzerTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -58,22 +71,21 @@ export default function stopImageAnalyzerJsunit() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('startImageAnalyzer_text');
-      let obj = JSON.parse(strJson);
-      console.info("[startImageAnalyzerTest_0010] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('startImageAnalyzer succ');
+      console.info("[startImageAnalyzerTest_0010] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('startImageAnalyzer succ');
       console.info('[startImageAnalyzerTest_0010] END');
       done();
     });
 
     /**
-     * @tc.number    stopImageAnalyzerTest_0020
-     * @tc.name      stopImageAnalyzerTest_0020
-     * @tc.desc      Xcomponent: get the api of stopImageAnalyzer
-     * @tc.level:    Level 2
+     * @tc.number stopImageAnalyzerTest_0020
+     * @tc.name stopImageAnalyzerTest_0020
+     * @tc.desc Xcomponent: get the api of stopImageAnalyzer
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('stopImageAnalyzerTest_0020', 0, async function (done) {
+    it('stopImageAnalyzerTest_0020', 0, async (done: Function) => {
       console.info('stopImageAnalyzerTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -84,12 +96,11 @@ export default function stopImageAnalyzerJsunit() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('stopImageAnalyzer_text');
-      let obj = JSON.parse(strJson);
-      console.info("[stopImageAnalyzerTest_0020] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('stopImageAnalyzer succ');
+      console.info("[stopImageAnalyzerTest_0020] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('stopImageAnalyzer succ');
       console.info('[stopImageAnalyzerTest_0020] END');
       done();
-    }); 
+    });
   })
 }
 

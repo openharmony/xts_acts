@@ -14,7 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -22,8 +22,8 @@ export default function videoOnFullscreenChangeJsunit() {
   describe('videoOnFullscreenChangeTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/video/videoApI",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/video/videoApI",
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function videoOnFullscreenChangeJsunit() {
         console.info("get video state success " + JSON.stringify(pages));
         if (!("videoApI" == pages.name)) {
           console.info("get video state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push video page success " + JSON.stringify(result));
         }
