@@ -17,10 +17,10 @@ group("ActsAbilityAmsTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsapplicationstartabilityentry:"ActsApplicationStartAbilityEntry",
-      "actsapplicationstartabilitytest:ActsApplicationStartAbilityTest",
       "actsapplicationstartabilityauxiliary:ActsApplicationStartAbilityAuxiliary",
       "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
+      "actsapplicationstartabilityentry:"ActsApplicationStartAbilityEntry",
+      "actsapplicationstartabilitytest:ActsApplicationStartAbilityTest",
      "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsstartappcloneapptest:ActsStartAppCloneAppTest",
