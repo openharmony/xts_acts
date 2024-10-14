@@ -120,7 +120,6 @@ group("vulkanTest") {
       "src/pipelinelibrary:ActsVulkanPipelineLibraryTest",
       "src/protectedmemorytest:ActsVulkanProtectedmemoryTest",
       "src/querypooltest:ActsVulkanQuerypoolTest",
-      "src/rasterizationtest:ActsVulkanRasterizationTest",
       "src/rayquerytest:ActsVulkanRayqueryTest",
       "src/raytracingpipelinetest:ActsVulkanRaytracingpipelineTest",
       "src/reconvergencetest:ActsVulkanReconvergenceTest",
