@@ -21,7 +21,7 @@ group("ActsAbilityAmsTest") {
       "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
       "actsapplicationstartabilityentry:"ActsApplicationStartAbilityEntry",
       "actsapplicationstartabilitytest:ActsApplicationStartAbilityTest",
-     "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
+      "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsstartchildprocesstest:ActsStartChildProcessTest",
     ]
