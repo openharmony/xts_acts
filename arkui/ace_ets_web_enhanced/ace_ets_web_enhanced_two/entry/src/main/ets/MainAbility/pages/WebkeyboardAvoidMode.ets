@@ -726,7 +726,7 @@ struct WebkeyboardAvoidMode {
         .javaScriptAccess(true)
         .geolocationAccess(true)
         .databaseAccess(true)
-        .height(500)
+        .height(2000)
         .width('100%')
     }
   }

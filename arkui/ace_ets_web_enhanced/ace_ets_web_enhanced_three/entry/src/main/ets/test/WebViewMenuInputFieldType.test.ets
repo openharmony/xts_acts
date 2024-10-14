@@ -160,7 +160,7 @@ export default function webViewMenuInputFieldType() {
     it('onInterceptKeyboardAttach0300', 0, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0300", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("onInterceptKeyboardAttach0300", 6, 2895, done);
+      Utils.registerEvent("onInterceptKeyboardAttach0300", '6', 2895, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -175,7 +175,7 @@ export default function webViewMenuInputFieldType() {
     it('onInterceptKeyboardAttach0400', 0, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0400", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("onInterceptKeyboardAttach0400", 2, 2896, done);
+      Utils.registerEvent("onInterceptKeyboardAttach0400", '2', 2896, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -190,7 +190,7 @@ export default function webViewMenuInputFieldType() {
     it('onInterceptKeyboardAttach0500', 0, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0500", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("onInterceptKeyboardAttach0500", 5, 2897, done);
+      Utils.registerEvent("onInterceptKeyboardAttach0500", '5', 2897, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -205,7 +205,7 @@ export default function webViewMenuInputFieldType() {
     it('onInterceptKeyboardAttach0600', 0, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0600", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("onInterceptKeyboardAttach0600", 7, 2898, done);
+      Utils.registerEvent("onInterceptKeyboardAttach0600", '7', 2898, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -220,7 +220,7 @@ export default function webViewMenuInputFieldType() {
     it('onInterceptKeyboardAttach0700', 0, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0700", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("onInterceptKeyboardAttach0700", 3, 2899, done);
+      Utils.registerEvent("onInterceptKeyboardAttach0700", '3', 2899, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -235,7 +235,7 @@ export default function webViewMenuInputFieldType() {
     it('onInterceptKeyboardAttach0800', 0, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0800", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("onInterceptKeyboardAttach0800", 4, 2880, done);
+      Utils.registerEvent("onInterceptKeyboardAttach0800", '4', 2880, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -250,7 +250,22 @@ export default function webViewMenuInputFieldType() {
     it('onInterceptKeyboardAttach0900', 0, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0900", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("onInterceptKeyboardAttach0900", 0, 2881, done);
+      Utils.registerEvent("onInterceptKeyboardAttach0900", '0', 2881, done);
+      sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ONINTERCEPTKEYBOARDATTACH_1000
+    * @tc.name       : testOnInterceptKeyboardAttach1000
+    * @tc.desc       : test onInterceptKeyboardAttach
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('onInterceptKeyboardAttach1000', 0, async (done: Function) => {
+      Utils.emitEvent("onInterceptKeyboardAttach1000", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("onInterceptKeyboardAttach1000", 1, 2882, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
   })

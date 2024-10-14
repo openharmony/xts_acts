@@ -17,7 +17,11 @@
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
-import { Driver, MouseButton, UiWindow  } from '@ohos.UiTest';
+import { Driver, MouseButton, UiWindow, ON, On  } from '@ohos.UiTest';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import { BusinessError } from '@ohos.base';
+
+
 
 @Entry
 @Component
@@ -27,6 +31,8 @@ struct WebViewMenuShowResult {
   @State menuShowState: string = ''
   @State userAgentPC:string = "";
   controller: webView.WebviewController = new webView.WebviewController();
+
+  
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -70,6 +76,21 @@ struct WebViewMenuShowResult {
             }
             case "emitCopy001": {
               let driver: Driver = Driver.create();
+              webView.WebviewController.setWebDebuggingAccess(true);
+              let atManager = abilityAccessCtrl.createAtManager();
+              atManager.requestPermissionsFromUser(getContext(this), ['ohos.permission.READ_PASTEBOARD'])
+                .then((data) => {
+                  console.info('data:' + JSON.stringify(data));
+                  console.info('data permissions:' + data.permissions);
+                  console.info('data authResults:' + data.authResults);
+                }).catch((error: BusinessError) => {
+                console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
+              })
+              await Utils.sleep(4000)
+              let buttontwo = await driver.findComponent(ON.text('仅本次允许'));
+              await buttontwo.click();
+              await Utils.sleep(4000)
+              
               this.menuShowState = 'SelectAll'
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
@@ -93,7 +114,7 @@ struct WebViewMenuShowResult {
               this.menuShowState = 'copyPaste'
               await Utils.sleep(2000);
               if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 400 }, MouseButton.MOUSE_BUTTON_RIGHT)
+                await driver.mouseClick({ x: webRect.left + 120, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT)
               } else {
                 await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
               }
@@ -121,7 +142,7 @@ struct WebViewMenuShowResult {
               this.menuShowState = 'cutPaste'
               await Utils.sleep(2000);
               if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 400 }, MouseButton.MOUSE_BUTTON_RIGHT)
+                await driver.mouseClick({ x: webRect.left + 120, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT)
               } else {
                 await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
               }
