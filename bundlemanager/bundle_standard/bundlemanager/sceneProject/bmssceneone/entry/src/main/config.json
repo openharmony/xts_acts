@@ -29,6 +29,10 @@
         "label": "$string:app_name",
         "type": "page",
         "launchType": "standard",
+        "orientation": "unspecified",
+        "permissions": [
+          "com.permission.BMS_PERMISSION_CAMERA"
+        ],
         "metaData": {
           "customizeData": [
             {
