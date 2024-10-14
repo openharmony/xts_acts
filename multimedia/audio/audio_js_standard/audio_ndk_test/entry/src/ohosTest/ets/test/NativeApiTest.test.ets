@@ -70,22 +70,22 @@ export default function audioNDK() {
 
     /* *
         * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100
-        * @tc.name      : create OH_a with AUDIOSTREAM_TYPE_CAPTURER
-        * @tc.desc      : test OH_a with AUDIOSTREAM_TYPE_CAPTURER
+        * @tc.name      : create OH_AudioStreamBuilder with AUDIOSTREAM_TYPE_CAPTURER
+        * @tc.desc      : test OH_AudioStreamBuilder with AUDIOSTREAM_TYPE_CAPTURER
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.createa();
+      let result = myaudioNdk.CreateAudioStreamBuilder();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100 createa: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
         * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_CAPTURER_0100
-        * @tc.name      : generate audioCapturer with OH_a_GenerateCapturer
-        * @tc.desc      : test OH_a_GenerateCapturer
+        * @tc.name      : generate audioCapturer with OH_AudioStreamBuilder_GenerateCapturer
+        * @tc.desc      : test OH_AudioStreamBuilder_GenerateCapturer
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
@@ -100,7 +100,7 @@ export default function audioNDK() {
     /* *
         * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GERNERTATE_CAPTURER_ERR_0100
         * @tc.name      : generate audioCapturer err
-        * @tc.desc      : test OH_a is not instantiated in OH_a_GenerateCapturer
+        * @tc.desc      : test OH_AudioStreamBuilder is not instantiated in OH_AudioStreamBuilder_GenerateCapturer
         * @tc.size      : MediumTest MediumTest
         * @tc.type      : Function
         * @tc.level     : Level3
@@ -410,7 +410,7 @@ export default function audioNDK() {
 
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100
-       * @tc.name      : SetSpeed with OH_a_GenerateRenderer
+       * @tc.name      : SetSpeed with OH_AudioStreamBuilder_GenerateRenderer
        * @tc.desc      : test OH_AudioRenderer_SetSpeed
        * @tc.size      : MediumTest
        * @tc.type      : Function
@@ -425,7 +425,7 @@ export default function audioNDK() {
 
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100
-       * @tc.name      : GetSpeed with OH_a_GenerateRenderer
+       * @tc.name      : GetSpeed with OH_AudioStreamBuilder_GenerateRenderer
        * @tc.desc      : test OH_AudioRenderer_GetSpeed
        * @tc.size      : MediumTest
        * @tc.type      : Function
@@ -440,7 +440,7 @@ export default function audioNDK() {
 
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100
-       * @tc.name      : SetSpeed&GetSpeed with OH_a_GenerateRenderer
+       * @tc.name      : SetSpeed&GetSpeed with OH_AudioStreamBuilder_GenerateRenderer
        * @tc.desc      : test OH_AudioRenderer_GetSpeed
        * @tc.size      : MediumTest
        * @tc.type      : Function
@@ -455,8 +455,8 @@ export default function audioNDK() {
 
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100
-       * @tc.name      : SetRendererOutputDeviceChangeCallback with OH_a_GenerateRenderer
-       * @tc.desc      : test OH_a_SetRendererOutputDeviceChangeCallback
+       * @tc.name      : SetRendererOutputDeviceChangeCallback with OH_AudioStreamBuilder_GenerateRenderer
+       * @tc.desc      : test OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level0
@@ -512,8 +512,8 @@ export default function audioNDK() {
     })
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_RENDERER_0100
-       * @tc.name      : generate audioRenderer with OH_a_GenerateRenderer
-       * @tc.desc      : test OH_a_GenerateRenderer
+       * @tc.name      : generate audioRenderer with OH_AudioStreamBuilder_GenerateRenderer
+       * @tc.desc      : test OH_AudioStreamBuilder_GenerateRenderer
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level0
@@ -527,7 +527,7 @@ export default function audioNDK() {
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_RENDERER_ERR_0100
        * @tc.name      : generate audioRenderer err
-       * @tc.desc      : test OH_a is not instantiated in OH_a_GenerateRenderer
+       * @tc.desc      : test OH_AudioStreamBuilder is not instantiated in OH_AudioStreamBuilder
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level3
@@ -793,27 +793,27 @@ export default function audioNDK() {
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100
        * @tc.name      : set sampleRate 48000 after create a
-       * @tc.desc      : test OH_a_SetSamplingRate
+       * @tc.desc      : test OH_AudioStreamBuilder_SetSamplingRate
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetSamplingRate();
+      let result = myaudioNdk.audioStreamBuilderSetSamplingRate();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100 aSetSamplingRate: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100
-       * @tc.name      : set channelCount 1 after create a
-       * @tc.desc      : test OH_a_SetChannelCount
+       * @tc.name      : set channelCount 1 after create audioStreamBuilder
+       * @tc.desc      : test OH_AudioStreamBuilder_SetChannelCount
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetChannelCount();
+      let result = myaudioNdk.audioStreamBuilderSetChannelCount();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100 aSetChannelCount: ${result}`);
       expect(result).assertEqual(0)
       done()
@@ -821,27 +821,27 @@ export default function audioNDK() {
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100
        * @tc.name      : set sampleFormat AUDIOSTREAM_SAMPLE_U8 after create a
-       * @tc.desc      : test OH_a_SetSampleFormat
+       * @tc.desc      : test OH_AudioStreamBuilder_SetSampleFormat
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetSampleFormat();
+      let result = myaudioNdk.audioStreamBuilderSetSampleFormat();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100 aSetSampleFormat: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100
-       * @tc.name      : set encodingType AUDIOSTREAM_ENCODING_TYPE_RAW after create a
-       * @tc.desc      : test OH_a_SetEncodingType
+       * @tc.name      : set encodingType AUDIOSTREAM_ENCODING_TYPE_RAW after create audioStreamBuilder
+       * @tc.desc      : test OH_AudioStreamBuilder_SetEncodingType
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetEncodingType();
+      let result = myaudioNdk.audioStreamBuilderSetEncodingType();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100 aSetEncodingType: ${result}`);
       expect(result).assertEqual(0)
       done()
@@ -849,69 +849,69 @@ export default function audioNDK() {
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100
        * @tc.name      : set latencyMode AUDIOSTREAM_LATENCY_MODE_NORMAL streamUsage after create a
-       * @tc.desc      : test OH_a_SetLatencyMode
+       * @tc.desc      : test OH_AudioStreamBuilder_SetLatencyMode
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetLatencyMode();
+      let result = myaudioNdk.audioStreamBuilderSetLatencyMode();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100 aSetLatencyMode: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100
-       * @tc.name      : set captureInfo AUDIOSTREAM_USAGE_MUSIC after create a
-       * @tc.desc      : test OH_a_SetRendererInfo
+       * @tc.name      : set captureInfo AUDIOSTREAM_USAGE_MUSIC after create audioStreamBuilder
+       * @tc.desc      : test OH_AudioStreamBuilder_SetRendererInfo
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetRendererInfo();
+      let result = myaudioNdk.audioStreamBuilderSetRendererInfo();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100 aSetRendererInfo: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100
-       * @tc.name      : set captureInfo AUDIOSTREAM_SOURCE_TYPE_MIC after create a
-       * @tc.desc      : test OH_a_SetCapturerInfo
+       * @tc.name      : set captureInfo AUDIOSTREAM_SOURCE_TYPE_MIC after create audioStreamBuilder
+       * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerInfo
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetCapturerInfo();
+      let result = myaudioNdk.audioStreamBuilderSetCapturerInfo();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100 aSetCapturerInfo: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100
-       * @tc.name      : set rendererCallback after create a
-       * @tc.desc      : test OH_a_SetRendererCallback
+       * @tc.name      : set rendererCallback after create audioStreamBuilder
+       * @tc.desc      : test OH_AudioStreamBuilder_SetRendererCallback
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetRendererCallback();
+      let result = myaudioNdk.audioStreamBuilderSetRendererCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100 aSetRendererCallback: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100
-       * @tc.name      : set captureCallback after create a
-       * @tc.desc      : test OH_a_SetCapturerCallback
+       * @tc.name      : set captureCallback after create audioStreamBuilder
+       * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerCallback
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetCapturerCallback();
+      let result = myaudioNdk.audioStreamBuilderSetCapturerCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100 aSetCapturerCallback: ${result}`);
       expect(result).assertEqual(0)
       done()
@@ -920,14 +920,14 @@ export default function audioNDK() {
 
     /* *
        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100
-       * @tc.name      : set framesize in callback after create a
-       * @tc.desc      : test OH_a_SetFrameSizeInCallback
+       * @tc.name      : set framesize in callback after create audioStreamBuilder
+       * @tc.desc      : test OH_AudioStreamBuilder_SetFrameSizeInCallback
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level2
    */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetFrameSizeInCallback();
+      let result = myaudioNdk.audioStreamBuilderSetFrameSizeInCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100 aSetFrameSizeInCallback: ${result}`);
       expect(result).assertEqual(0)
       done()
@@ -2345,15 +2345,15 @@ export default function audioNDK() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100
      * @tc.name      : set rendererWriteDataCallback with VALID result after create a
-     * @tc.desc      : test OH_a_SetRendererWriteDataCallback
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererWriteDataCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetRendererWriteDataCallback_001();
+      let result = myaudioNdk.audioStreamBuilderSetRendererWriteDataCallback_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100`,
-        `aSetRendererWriteDataCallback_001: ${result}`);
+        `audioStreamBuilderSetRendererWriteDataCallback_001: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
@@ -2361,22 +2361,22 @@ export default function audioNDK() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200
      * @tc.name      : set rendererWriteDataCallback with INVALID result after create a
-     * @tc.desc      : test OH_a_SetRendererWriteDataCallback
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererWriteDataCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200', 0, async (done: Function) => {
-      let result = myaudioNdk.aSetRendererWriteDataCallback_002();
+      let result = myaudioNdk.audioStreamBuilderSetRendererWriteDataCallback_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200`,
-        `aSetRendererWriteDataCallback_002: ${result}`);
+        `audioStreamBuilderSetRendererWriteDataCallback_002: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
 
     /**
      * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
-     * @tc.name      : set  create a
+     * @tc.name      : set  create audioStreamBuilder
      * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
      * @tc.size      : MediumTest
      * @tc.type      : Function
