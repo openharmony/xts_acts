@@ -1127,15 +1127,18 @@ static napi_value OH_Rdb_SetSecurityLevel_0200(napi_env env, napi_callback_info 
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetSecurityLevel_0200 ------------- ");
     int errcode = 0;
+    int level1f = -1;
+    int level0 = 0;
+    int level5 = 5;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
     errcode = OH_Rdb_SetSecurityLevel(config, NULL);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetSecurityLevel NULL err is fail.");
-    errcode = OH_Rdb_SetSecurityLevel(config, -1);
+    errcode = OH_Rdb_SetSecurityLevel(config, level1f);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetSecurityLevel err -1 is fail.");
-    errcode = OH_Rdb_SetSecurityLevel(config, 0);
+    errcode = OH_Rdb_SetSecurityLevel(config, level0);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetSecurityLevel err 0 is fail.");
-    errcode = OH_Rdb_SetSecurityLevel(config, 5);
+    errcode = OH_Rdb_SetSecurityLevel(config, level5);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetSecurityLevel err 5 is fail.");
     errcode = OH_Rdb_DestroyConfig (config);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig  is fail.");
