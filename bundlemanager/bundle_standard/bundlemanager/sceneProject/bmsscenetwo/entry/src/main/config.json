@@ -29,6 +29,7 @@
         "label": "$string:app_name",
         "type": "page",
         "launchType": "standard",
+        "orientation": "landscape",
         "srcPath": "default",
         "srcLanguage": "js"
       }
