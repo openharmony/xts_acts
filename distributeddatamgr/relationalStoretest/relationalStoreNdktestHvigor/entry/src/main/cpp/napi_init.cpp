@@ -199,7 +199,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0100(napi_env env, napi_callback_info 
 
 static napi_value OH_Rdb_SetDbType_SQLITE_0200(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0200  OH_Rdb_CommitByTrxId ------------ ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0200  OH_Rdb_CommitByTrxId -------- ");
     int errCode = OH_Rdb_ErrCode::RDB_OK;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
@@ -252,7 +252,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0200(napi_env env, napi_callback_info 
 
 static napi_value OH_Rdb_SetDbType_SQLITE_0300(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0300 OH_Rdb_RollBackByTrxId ---------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDbType_SQLITE_0300 OH_Rdb_RollBackByTrxId ------- ");
     int64_t trxId = 0;
     int64_t trxIderr = 0;
     int errCode = OH_Rdb_ErrCode::RDB_OK;
@@ -650,7 +650,7 @@ static napi_value OH_Rdb_SetStoreName_Param_0600(napi_env env, napi_callback_inf
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
     int strLen = 50;
-    std::string strname(strLen,'n');
+    std::string strname(strLen, 'n');
     errcode = OH_Rdb_SetStoreName(config, strname.c_str());
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetStoreName 2 is fail.");
     errcode = OH_Rdb_DestroyConfig(config);
@@ -803,7 +803,7 @@ static napi_value OH_Rdb_SetBundleName_0600(napi_env env, napi_callback_info inf
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
     int strLen = 50;
-    std::string strname(strLen,'n');
+    std::string strname(strLen, 'n');
     errcode = OH_Rdb_SetBundleName(config, strname.c_str());
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetBundleName 2 is fail.");
     errcode = OH_Rdb_DestroyConfig (config);
@@ -955,7 +955,7 @@ static napi_value OH_Rdb_SetModuleName_0600(napi_env env, napi_callback_info inf
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
     int strLen = 50;
-    std::string strname(strLen,'n');
+    std::string strname(strLen, 'n');
     errcode = OH_Rdb_SetModuleName(config, strname.c_str());
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetModuleName 2 is fail.");
     errcode = OH_Rdb_DestroyConfig (config);
@@ -1058,7 +1058,7 @@ static napi_value OH_Rdb_SetEncrypted_0200(napi_env env, napi_callback_info info
     OH_Rdb_SetModuleName(config, "module");
     
     errcode = OH_Rdb_SetEncrypted(config, NULL);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_SetEncrypted(config, NULL) err 3  errcode= %{public}d", errcode);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_SetEncrypted(config, NULL) err 3 errcode= %{public}d", errcode);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetEncrypted(config, NULL) err 3 is fail.");
     errcode = OH_Rdb_SetEncrypted(config, "false");
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_SetEncrypted err 4   errcode= %{public}d", errcode);
@@ -1130,7 +1130,7 @@ static napi_value OH_Rdb_SetSecurityLevel_0200(napi_env env, napi_callback_info 
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
     errcode = OH_Rdb_SetSecurityLevel(config, NULL);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetSecurityLevel(config, NULL) err is fail.");
+    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetSecurityLevel NULL err is fail.");
     errcode = OH_Rdb_SetSecurityLevel(config, -1);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetSecurityLevel err -1 is fail.");
     errcode = OH_Rdb_SetSecurityLevel(config, 0);
@@ -1149,14 +1149,18 @@ static napi_value OH_Rdb_SetSecurityLevel_0300(napi_env env, napi_callback_info 
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetSecurityLevel_0300 ------------- ");
     int errcode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+    int level1 = 1;
+    int level2 = 2;
+    int level3 = 3;
+    int level4 = 4;
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetSecurityLevel(config, 1);
+    errcode = OH_Rdb_SetSecurityLevel(config, level1);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetSecurityLevel 1 is fail.");
-    errcode = OH_Rdb_SetSecurityLevel(config, 2);
+    errcode = OH_Rdb_SetSecurityLevel(config, level2);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetSecurityLevel 2 is fail.");
-    errcode = OH_Rdb_SetSecurityLevel(config, 3);
+    errcode = OH_Rdb_SetSecurityLevel(config, level3);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetSecurityLevel 3 is fail.");
-    errcode = OH_Rdb_SetSecurityLevel(config, 4);
+    errcode = OH_Rdb_SetSecurityLevel(config, level4);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetSecurityLevel 4 is fail.");
     errcode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetSecurityLevel S1 is fail.");
@@ -1292,7 +1296,7 @@ static napi_value OH_Rdb_SetArea_Param_0300(napi_env env, napi_callback_info inf
     int area2 = 2;
     int area3 = 3;
     int area4 = 4;
-    int area5 = 5; 
+    int area5 = 5;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
     errcode = OH_Rdb_SetArea(config, area1);
@@ -1350,15 +1354,19 @@ static napi_value OH_Rdb_SetDbType_Param_0300(napi_env env, napi_callback_info i
     int errcode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
+    int type3 = 3;
+    int type4 = 4;
+    int type0 = 0;
+    int type1f = -1;
     errcode = OH_Rdb_SetDbType(config, NULL);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetDbType(config, NULL)  is fail.");
-    errcode = OH_Rdb_SetDbType(config, 3);
+    errcode = OH_Rdb_SetDbType(config, type3);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetDbType 3 is fail.");
-    errcode = OH_Rdb_SetDbType(config, 4);
+    errcode = OH_Rdb_SetDbType(config, type4);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetDbType 4 is fail.");
-    errcode = OH_Rdb_SetDbType(config, 0);
+    errcode = OH_Rdb_SetDbType(config, type0);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetDbType 0 is fail.");
-    errcode = OH_Rdb_SetDbType(config, -1);
+    errcode = OH_Rdb_SetDbType(config, type1f);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_SetDbType -1 is fail.");
     errcode = OH_Rdb_DestroyConfig (config);
     NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
@@ -1475,7 +1483,7 @@ static napi_value OH_Rdb_ExecuteByTrxId_Param_0200(napi_env env, napi_callback_i
     NAPI_ASSERT(env, store != nullptr, "OH_Rdb_CreateOrOpen is fail.");
 
     int64_t id1f = -1;
-    int64_t id1 = 1;  
+    int64_t id1 = 1;
     int64_t id2 = 2;  
     char createTableSql[] = "CREATE TABLE t1(id INT PRIMARY KEY, repr floatvector(4));";
     errCode = OH_Rdb_ExecuteByTrxId(store, NULL, createTableSql);
@@ -1570,7 +1578,7 @@ static napi_value OH_Rdb_BeginTransWithTrxId_Param_0100(napi_env env, napi_callb
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_BeginTransWithTrxId  NULL is fail.");
     errCode = OH_Rdb_BeginTransWithTrxId(nullptr, &trxId);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_BeginTransWithTrxId nullptr   errcode= %{public}d", errCode);
-    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_BeginTransWithTrxId  nullptr is fail.");
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "OH_Rdb_BeginTransWithTrxId nullptr is fail.");
     
     errCode = OH_Rdb_CloseStore(store);
     errCode = OH_Rdb_DeleteStoreV2(config);
@@ -1765,9 +1773,9 @@ static napi_value OH_Rdb_RollBackByTrxId_Param_0200(napi_env env, napi_callback_
 static napi_value OH_Rdb_DBType_Enum_0100(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_DBType_Enum_0100 ------------- ");
-    int res = 1; 
-    int res2 = 2; 
-    int res3 = 64; 
+    int res = 1;
+    int res2 = 2;
+    int res3 = 64;
     NAPI_ASSERT(env, res == Rdb_DBType::RDB_SQLITE, "RDB_SQLITE is fail.");
     NAPI_ASSERT(env, res2 == Rdb_DBType::RDB_CAYLEY, "RDB_CAYLEY is fail.");
     NAPI_ASSERT(env, res3 == Rdb_DBType::DBTYPE_BUTT, "DBTYPE_BUTT is fail.");
@@ -1914,7 +1922,7 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"OH_Rdb_SetDbType_Param_0300", nullptr, OH_Rdb_SetDbType_Param_0300, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"OH_Rdb_GetSupportedDbType_Param_0100", nullptr, OH_Rdb_GetSupportedDbType_Param_0100, nullptr, nullptr, 
+        {"OH_Rdb_GetSupportedDbType_Param_0100", nullptr, OH_Rdb_GetSupportedDbType_Param_0100, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"OH_Rdb_DestroyConfig_Param_0100", nullptr, OH_Rdb_DestroyConfig_Param_0100, nullptr, nullptr, nullptr,
          napi_default, nullptr},
