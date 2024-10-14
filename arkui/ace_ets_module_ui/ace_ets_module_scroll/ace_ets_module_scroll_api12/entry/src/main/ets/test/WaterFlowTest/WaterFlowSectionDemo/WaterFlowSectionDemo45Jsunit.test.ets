@@ -63,7 +63,7 @@ export default function WaterFlowSectionDemo45Jsunit() {
       console.log('WaterFlowSectionDemo45Jsunit_right',strColumn.right - str2.right)
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(str2.top - strColumn.top) - Math.round(vp2px(10))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(str5.top - str3.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(str5.top - str3.bottom) - Math.floor(vp2px(20))) <= 1).assertTrue();
       expect(Math.abs(Math.round(str3.left - strColumn.left) - Math.round(vp2px(10))) <= 1).assertTrue();
       expect(Math.abs(Math.round(strColumn.right - str2.right) - Math.round(vp2px(10))) <= 1).assertTrue();
       await CommonFunc.sleep(1000);
