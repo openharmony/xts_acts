@@ -53,7 +53,7 @@ export default function TextHalfLeading() {
     it('TextHalfLeading_0010', 0, async (done: Function) => {
       console.info('TextHalfLeading_0010 START');
       let TextHalfLeading_1 = getInspectorByKey('TextHalfLeading1');
-      expect(""+JSON.parse(TextHalfLeading_1).$type).assertEqual("Text");
+      expect(""+JSON.parse(TextHalfLeading_1).$type).assertEqual('Text');
       console.info('TextHalfLeading_0010 END');
       done();
     });
@@ -69,7 +69,7 @@ export default function TextHalfLeading() {
     it('TextHalfLeading_0020', 0, async (done: Function) => {
       console.info('TextHalfLeading_0020 START');
       let TextHalfLeading_2 = getInspectorByKey('TextHalfLeading2');
-      expect(""+JSON.parse(TextHalfLeading_2).$type).assertEqual("Text");
+      expect(""+JSON.parse(TextHalfLeading_2).$type).assertEqual('Text');
       console.info('TextHalfLeading_0020 END');
       done();
     });

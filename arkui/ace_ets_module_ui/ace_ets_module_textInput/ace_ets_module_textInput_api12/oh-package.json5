@@ -13,28 +13,15 @@
  * limitations under the License.
  */
 
-@Entry
-@Component
-struct TextHalfLeading {
-
-  build() {
-    Column({space:10}){
-
-      Text('halfLeading').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
-      Text("This is the text with the halfLeading set.")
-        .key("TextHalfLeading1")
-        .lineHeight(60)
-        .halfLeading(true)
-        .borderWidth(1)
-        .width('80%')
-      Text("This is the text without the halfLeading set.")
-        .key('TextHalfLeading2')
-        .lineHeight(60)
-        .halfLeading(false)
-        .borderWidth(1)
-        .width('80%')
-    }
-
-  }
+{
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
+  },
+  "author": "",
+  "name": "com.acts.arkui.component.common.attrs.test",
+  "description": "XTS",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }
-

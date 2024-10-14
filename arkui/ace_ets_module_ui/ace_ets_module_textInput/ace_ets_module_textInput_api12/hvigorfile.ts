@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,28 +13,5 @@
  * limitations under the License.
  */
 
-@Entry
-@Component
-struct TextHalfLeading {
-
-  build() {
-    Column({space:10}){
-
-      Text('halfLeading').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
-      Text("This is the text with the halfLeading set.")
-        .key("TextHalfLeading1")
-        .lineHeight(60)
-        .halfLeading(true)
-        .borderWidth(1)
-        .width('80%')
-      Text("This is the text without the halfLeading set.")
-        .key('TextHalfLeading2')
-        .lineHeight(60)
-        .halfLeading(false)
-        .borderWidth(1)
-        .width('80%')
-    }
-
-  }
-}
-
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { appTasks } from '@ohos/hvigor-ohos-plugin';
