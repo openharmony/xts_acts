@@ -12,6 +12,7 @@
         {
             "test-file-name": [
                 "ActsApplicationStartAbilityTest.hap",
+                "ActsApplicationStartAbilityEntry.hap",
                 "ActsApplicationStartAbilityAuxiliary.hap",
                 "ActsApplicationStartAbilityAuxiliary_2.hap"
             ],

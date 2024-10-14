@@ -26,4 +26,5 @@ ohos_js_app_suite("ActsApplicationStartAbilityTest") {
   hap_name = "ActsApplicationStartAbilityTest"
   part_name = "ability_runtime"
   subsystem_name = "ability"
+  deps=[:"ActsApplicationStartAbilityEntry"]
 }
