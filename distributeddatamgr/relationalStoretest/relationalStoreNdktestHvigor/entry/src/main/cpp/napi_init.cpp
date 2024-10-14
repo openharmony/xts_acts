@@ -1376,7 +1376,6 @@ static napi_value OH_Rdb_SetDbType_Param_0300(napi_env env, napi_callback_info i
     napi_value ret;
     napi_create_int32(env, 0, &ret);
     return ret;
-
 }
 
 static napi_value OH_Rdb_GetSupportedDbType_Param_0100(napi_env env, napi_callback_info info)
@@ -1487,7 +1486,7 @@ static napi_value OH_Rdb_ExecuteByTrxId_Param_0200(napi_env env, napi_callback_i
 
     int64_t id1f = -1;
     int64_t id1 = 1;
-    int64_t id2 = 2;  
+    int64_t id2 = 2;
     char createTableSql[] = "CREATE TABLE t1(id INT PRIMARY KEY, repr floatvector(4));";
     errCode = OH_Rdb_ExecuteByTrxId(store, NULL, createTableSql);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OOH_Rdb_ExecuteByTrxId(store, NULL   errcode= %{public}d", errCode);
@@ -1842,7 +1841,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OH_Rdb_SetStoreName_Param_0500", nullptr, OH_Rdb_SetStoreName_Param_0500, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"OH_Rdb_SetStoreName_Param_0600", nullptr, OH_Rdb_SetStoreName_Param_0600, nullptr, nullptr, nullptr,
-         napi_default, nullptr},        
+         napi_default, nullptr},
         {"OH_Rdb_SetStoreName_Param_0700", nullptr, OH_Rdb_SetStoreName_Param_0700, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"OH_Rdb_SetStoreName_Param_0800", nullptr, OH_Rdb_SetStoreName_Param_0800, nullptr, nullptr, nullptr,
