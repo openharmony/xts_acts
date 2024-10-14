@@ -13,4 +13,5 @@
  * limitations under the License.
  */
 
-export const IsNotificationEnabled: () => string;
+export const IsNotificationEnabled: () => boolean;
+
