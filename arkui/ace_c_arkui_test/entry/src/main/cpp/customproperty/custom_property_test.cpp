@@ -56,7 +56,7 @@ napi_value CustomPropertyTest::testAddCustomProperty001(napi_env env, napi_callb
     OH_ArkUI_NodeUtils_AddCustomProperty(column, "CustomValueA", "aaa");
     
     std::string id(xComponentID);
-    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) == 
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
         INVALID_PARAM) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testAddCustomProperty001",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
@@ -105,7 +105,7 @@ napi_value CustomPropertyTest::testRemoveCustomProperty002(napi_env env, napi_ca
     OH_ArkUI_NodeUtils_RemoveCustomProperty(column, "CustomValueA");
 
     std::string id(xComponentID);
-    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) == 
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
         INVALID_PARAM) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testRemoveCustomProperty002",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
