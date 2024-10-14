@@ -22,10 +22,10 @@ static napi_value IsNotificationEnabled(napi_env env, napi_callback_info info)
     napi_value res = nullptr;
     bool ret = OH_Notification_IsNotificationEnabled();
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "ANS_TEST", "OH_Notification_IsNotificationEnabled: %{public}d", ret);
-    if (ret == 1){
-        napi_create_string_utf8(env, "true", 4, &res);
+    if (ret) {
+        napi_create_string_utf8(env, "true", NAPI_BOOLEAN_TRUE_LENGTH, &res);
     } else {
-        napi_create_string_utf8(env, "false", 5, &res);
+        napi_create_string_utf8(env, "false", NAPI_BOOLEAN_FALSE_LENGTH, &res);
     }
     return res;
 }
