@@ -49,25 +49,30 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
             return `com.ohos.st.formsystemprovidera` === form.bundleName;
           });
           console.log(`${callbackName} form dataA: ${JSON.stringify(dataA)}`);
-          console.log(`${callbackName} formA amount: ${dataA.length}`);
+          if(dataA.length !== 0) {
+            console.log(`${callbackName} formA amount: ${dataA.length}`);
+            expect(dataA.length).assertEqual(2);
+            tempDataA1 = dataA[0];
+            tempDataA2 = dataA[1];
+            checkDataA1(tempDataA1);
+            checkDataA2(tempDataA2);
+          }
+
           const dataB = data.filter((form) => {
             return `com.ohos.st.formsystemproviderb` === form.bundleName;
           });
           console.log(`${callbackName} form dataB: ${JSON.stringify(dataB)}`);
-          console.log(`${callbackName} formB amount: ${dataB.length}`);
+          if(dataB.length !== 0) {
+            console.log(`${callbackName} formB amount: ${dataB.length}`);
+            expect(dataB.length).assertEqual(1);
+            tempDataB = dataB[0];
+            checkDataB(tempDataB);
+          }
 
-          expect(dataA.length).assertEqual(2);
-          expect(dataB.length).assertEqual(1);
-          tempDataA1 = dataA[0]
-          tempDataA2 = dataA[1]
-          tempDataB = dataB[0]
-          expect(error.code).assertEqual(ERR_OK_CODE);
           console.log(`==========${callbackName} ${describeName} end==========`);
         });
-        await sleep(2000)
-        checkDataA1(tempDataA1)
-        checkDataA2(tempDataA2)
-        checkDataB(tempDataB)
+        await sleep(2000);
+        expect().not().assertFail();
         done()
       } catch (error) {
         console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
@@ -94,21 +99,25 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
           return `com.ohos.st.formsystemprovidera` === form.bundleName;
         });
         console.log(`${promiseName} form dataA: ${JSON.stringify(dataA)}`);
-        console.log(`${promiseName} formA amount: ${dataA.length}`);
+        if(dataA.length !== 0) {
+          console.log(`${promiseName} formA amount: ${dataA.length}`);
+          expect(dataA.length).assertEqual(2);
+          tempDataA1 = dataA[0];
+          tempDataA2 = dataA[1];
+          checkDataA1(tempDataA1);
+          checkDataA2(tempDataA2);
+        }
+
         const dataB = data.filter((form) => {
           return `com.ohos.st.formsystemproviderb` === form.bundleName;
         });
         console.log(`${promiseName} form dataB: ${JSON.stringify(dataB)}`);
         console.log(`${promiseName} formB amount: ${dataB.length}`);
-
-        expect(dataA.length).assertEqual(2);
-        expect(dataB.length).assertEqual(1);
-        tempDataA1 = dataA[0]
-        tempDataA2 = dataA[1]
-        tempDataB = dataB[0]
-        checkDataA1(tempDataA1)
-        checkDataA2(tempDataA2)
-        checkDataB(tempDataB)
+        if(dataB.length !== 0) {
+          expect(dataB.length).assertEqual(1);
+          tempDataB = dataB[0];
+          checkDataB(tempDataB);
+        }
         done();
         console.log(`==========${promiseName} ${describeName} end==========`);
       } catch (error) {

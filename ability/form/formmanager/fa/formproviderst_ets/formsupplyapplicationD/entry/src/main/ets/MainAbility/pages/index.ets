@@ -17,13 +17,17 @@ import featureAbility from "@ohos.ability.featureAbility";
 import formBindingData from "@ohos.application.formBindingData";
 import formManager from '@ohos.application.formProvider';
 import commonEvent from '@ohos.commonEvent';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+import { formParmData, dataObjType, commonEventPublishDataType } from './reportParms';
 
 @Entry
 @Component
 struct Index {
   @State formId: string = "0";
   @State opt : string = "updateForm";
-  @State formData: {[key: string]: any} = {temperature: "14c", "time": "12:00"};
+  @State formData: formParmData = new formParmData();
+
   @State nextTime: number = 5;
 
   private formUpdateFormEvent = "FMS_FormUpdateRefresh_commonEvent";
@@ -36,24 +40,32 @@ struct Index {
     console.debug("====>formsystemhostc formOnDynamicRefreshEventk ====>");
   }
 
+  private onPageInit() {
+    this.formData.setValue('temperature', String('14c'));
+    this.formData.setValue('time', String('12:00'));
+  }
+
   aboutToAppear() {
     console.log(`form supply B aboutToAppear start`);
     console.error('form supply B getWant');
+    this.onPageInit();
+
     featureAbility.getWant()
-      .then((want: any) => {
-        this.formId = want.parameters.formId;
-        this.opt = want.parameters.opt;
-        if(want.parameters.formData) {
-          this.formData = want.parameters.formData;
+      .then((want: Want) => {
+        this.formId = String(want.parameters?.formId);
+        this.opt = String(want.parameters?.opt);
+        if(want.parameters?.formData) {
+          this.formData.setValue('temperature', String(want.parameters?.temperature));
+          this.formData.setValue('time', String(want.parameters?.time));
         }
-        if(want.parameters.nextTime) {
-          this.nextTime = want.parameters.nextTime;
+        if(want.parameters?.nextTime) {
+          this.nextTime = Number(want.parameters?.nextTime);
         }
         console.error('form supply B getWant end'+ JSON.stringify(want));
 
         if(this.opt == "updateForm") {
           console.log("form supply B updateForm start");
-          let dataObj = {
+          let dataObj: dataObjType = {
             temperature: "14c",
             "time": "12:00",
             "test": 11,
@@ -63,7 +75,7 @@ struct Index {
           formManager.updateForm(this.formId, bindingData)
             .then((data) => {
               console.info('form supply B updateForm result:' + data);
-              let commonEventPublishData = {
+              let commonEventPublishData: commonEventPublishDataType = {
                 data: JSON.stringify(data),
                 parameters: {
                   "formId" : this.formId
@@ -80,7 +92,7 @@ struct Index {
           formManager.setFormNextRefreshTime(this.formId, this.nextTime)
             .then((data) => {
               console.info('form supply B setNextRefreshTime result:' + data);
-              let commonEventPublishData = {
+              let commonEventPublishData: commonEventPublishDataType = {
                 data: JSON.stringify(data),
                 parameters: {
                   "formId" : this.formId
@@ -93,7 +105,7 @@ struct Index {
         }
 
       })
-      .catch((error: any) => {
+      .catch((error: BusinessError) => {
         console.error('form supply B Operation failed. Cause: ' + JSON.stringify(error));
       })
     console.log(`form supply aboutToAppear end`);

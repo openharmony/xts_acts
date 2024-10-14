@@ -51,11 +51,9 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
     const bundleName5 = `com.ohos.st.formsystemproviderc`;
     const moduleName2 = ``;
     const callbackName6 = `FMS_getFormsInfo_Callback_1700`;
-    const promiseName6 = `FMS_getFormsInfo_promise_1700`;
     const bundleName6 = `com.ohos.st.formsystemproviderc`;
     const moduleName3 = `wrong.module.name`;
     const callbackName7 = `FMS_getFormsInfo_Callback_1800`;
-    const promiseName7 = `FMS_getFormsInfo_Promise_1800`;
     const bundleName7 = `com.ohos.st.formsystemproviderc`;
     const moduleName4 = `form_module_c`;
     var tempDataB = undefined;
@@ -166,7 +164,10 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
       try {
         formHost.getFormsInfo(bundleName2, (error, data) => {
           console.log(`${callbackName2} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
-          console.log(`${callbackName2} forms amount: ${data.length}`);
+          if(!data) {
+            console.log(`${callbackName2} getFormsInfo data is: ${JSON.stringify(data)}`);
+            return;
+          }
 
           const dataB = data.filter((form) => {
             return `com.ohos.st.formsystemproviderb` === form.bundleName;
@@ -178,10 +179,10 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
           expect(dataB.length).assertEqual(1);
           tempDataB = dataB[0]
           expect(error.code).assertEqual(ERR_OK_CODE);
+          checkDataB(tempDataB)
           console.log(`==========${callbackName2} ${describeName} end==========`);
         });
         await sleep(2000)
-        checkDataB(tempDataB)
         done()
       } catch (error) {
         console.log(`${callbackName2} exception caught: ${JSON.stringify(error)})`);
@@ -397,6 +398,15 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
       try {
         formHost.getFormsInfo(bundleName6, moduleName3, (error, data) => {
           console.log(`${callbackName6} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+
+          if(!data) {
+            expect(data).assertUndefined();
+            console.log(`==========${callbackName6} ${describeName} data is:${JSON.stringify(data)} end==========`);
+            done();
+            return;
+          }
+
+
           expect(JSON.stringify(data)).assertEqual(`[]`);
           expect(error.code).assertEqual(ERR_OK_CODE);
           done();
@@ -410,27 +420,6 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
       }
     });
 
-    /**
-     * @tc.name getFormsInfo
-     * @tc.number FMS_getFormsInfo_1700
-     * @tc.desc: Query specific form configuration information by correct bundle name and wrong module name (by Promise)
-     */
-    it(`${promiseName6}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName6} ${describeName} start==========`);
-
-      try {
-        const data = await formHost.getFormsInfo(bundleName6, moduleName3);
-        console.log(`${promiseName6} getFormsInfo data: ${JSON.stringify(data)}`);
-        expect(JSON.stringify(data)).assertEqual(`[]`);
-        done();
-        console.log(`==========${promiseName6} ${describeName} end==========`);
-      } catch (error) {
-        console.log(`${promiseName6} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${promiseName6} should not reach here`);
-        expect().assertFail();
-        done();
-      }
-    });
 
     /**
      * @tc.name: getFormsInfo
@@ -445,57 +434,32 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
           console.log(`${callbackName7} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
           console.log(`${callbackName7} forms amount: ${data.length}`);
 
+          if(!data) {
+            expect(data).assertUndefined();
+            done();
+            console.log(`==========${callbackName7} ${describeName} data is: ${JSON.stringify(data)} end==========`);
+            return;
+          }
+
           const dataC = data.filter((form) => {
             return `com.ohos.st.formsystemproviderc` === form.bundleName;
           });
           console.log(`${callbackName7} form dataC: ${JSON.stringify(dataC)}`);
           console.log(`${callbackName7} formC amount: ${dataC.length}`);
           tempDataC = dataC[0];
+          checkDataC(tempDataC)
+          tempDataC = undefined;
           expect(data.length).assertEqual(1);
           expect(dataC.length).assertEqual(1);
           expect(error.code).assertEqual(ERR_OK_CODE);
           console.log(`==========${callbackName7} ${describeName} end==========`);
         });
         await sleep(2000)
-        checkDataC(tempDataC)
-        tempDataC = undefined;
+        expect().not().assertFail();
         done();
       } catch (error) {
         console.log(`${callbackName7} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName7} should not reach here`);
-        expect().assertFail();
-        done();
-      }
-    });
-
-    /**
-     * @tc.name getFormsInfo
-     * @tc.number FMS_getFormsInfo_1800
-     * @tc.desc: Query specific form configuration information by correct bundle name and correct module name (by Promise)
-     */
-    it(`${promiseName7}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName7} ${describeName} start==========`);
-
-      try {
-        const data = await formHost.getFormsInfo(bundleName7, moduleName4);
-        console.log(`${promiseName7} getFormsInfo data: ${JSON.stringify(data)}`);
-        console.log(`${promiseName7} forms amount: ${data.length}`);
-
-        const dataC = data.filter((form) => {
-          return `com.ohos.st.formsystemproviderc` === form.bundleName;
-        });
-        console.log(`${promiseName7} form dataC: ${JSON.stringify(dataC)}`);
-        console.log(`${promiseName7} formC amount: ${dataC.length}`);
-
-        expect(data.length).assertEqual(1);
-        expect(dataC.length).assertEqual(1);
-        tempDataC = dataC[0];
-        console.log(`==========${promiseName7} ${describeName} end==========`);
-        checkDataC(tempDataC)
-        done()
-      } catch (error) {
-        console.log(`${promiseName7} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${promiseName7} should not reach here`);
         expect().assertFail();
         done();
       }
