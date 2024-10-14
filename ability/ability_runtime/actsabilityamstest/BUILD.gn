@@ -17,11 +17,18 @@ group("ActsAbilityAmsTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsapplicationstartabilitytest:ActsApplicationStartAbilityAuxiliary",
+      "actsapplicationstartabilitytest:ActsApplicationStartAbilityTest",
+      "actsapplicationstartabilityauxiliary:ActsApplicationStartAbilityAuxiliary",
       "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
-      "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
+     "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
+      "actsstartappcloneapptest:ActsStartAppCloneAppTest",
       "actsstartchildprocesstest:ActsStartChildProcessTest",
+      "actsterminateselfwithresulttest:ActsTerminateselfWithResultEntry",
+      "actsterminateselfwithresulttest:ActsTerminateselfWithResultTest",
+      "appclonedemo:AppCloneDemo",
+      "terminateselfwithresulttesthap:TerminateSelfWithResultTestHap",
+      "terminateselfwithresulttesthap2:TerminateSelfWithResultTestHap2",
     ]
   }
 }
