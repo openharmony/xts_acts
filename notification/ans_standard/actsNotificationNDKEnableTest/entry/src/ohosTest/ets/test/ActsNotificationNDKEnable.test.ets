@@ -14,15 +14,15 @@ let ctx = getContext(this) as common.UIAbilityContext;
 export default function ActsNotificationNDKEnableTest() {
   describe('ActsNotificationNDKEnableTest', () => {
 
-    /*
-     * @tc.number    : Sub_Notification_Ans_enable_NDK_0001
-     * @tc.name      : Invoke the NDK interface. The query result is consistent with the database.
+     /*
+     * @tc.number    : Sub_Notification_Ans_enable_NDK_0010
+     * @tc.name      : Invoke the NDK interface and verify the query result against the database.
      * @tc.desc      : OH_Notification_IsNotificationEnabled Interface verification.
      * @tc.size      : Medium-sized Test
      * @tc.type      : Function test
      * @tc.level     : Level 0
      */
-    it('Sub_Notification_Ans_enable_NDK_0001', 0,async (done: Function) => {
+    it('Sub_Notification_Ans_enable_NDK_0010', 0,async (done: Function) => {
       try {
         let result = IsNotificationEnabled();
         console.info(`IsNotificationEnabled value is : ${result}`);
@@ -50,7 +50,7 @@ export default function ActsNotificationNDKEnableTest() {
           hilog.info(0x0000, 'testTag', 'null button');
         }
       } catch (err) {
-        console.info("Sub_Notification_Ans_enable_NDK_0001 is fail")
+        console.info("Sub_Notification_Ans_enable_NDK_0001 has failed")
         expect(false).assertEqual(true)
         done()
       }
