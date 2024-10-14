@@ -41,8 +41,8 @@ struct Index {
   }
 
   private onPageInit() {
-    this.formData.setValue('temperature', Number('14c'));
-    this.formData.setValue('time', Number('12:00'));
+    this.formData.setValue('temperature', String('14c'));
+    this.formData.setValue('time', String('12:00'));
   }
 
   aboutToAppear() {
@@ -52,14 +52,14 @@ struct Index {
 
     featureAbility.getWant()
       .then((want: Want) => {
-        this.formId = want.parameters?.formId;
-        this.opt = want.parameters?.opt;
+        this.formId = String(want.parameters?.formId);
+        this.opt = String(want.parameters?.opt);
         if(want.parameters?.formData) {
-          this.formData.setValue('temperature', want.parameters?.temperature);
-          this.formData.setValue('time', want.parameters?.time);
+          this.formData.setValue('temperature', String(want.parameters?.temperature));
+          this.formData.setValue('time', String(want.parameters?.time));
         }
         if(want.parameters?.nextTime) {
-          this.nextTime = want.parameters?.nextTime;
+          this.nextTime = Number(want.parameters?.nextTime);
         }
         console.error('form supply B getWant end'+ JSON.stringify(want));
 
