@@ -23,9 +23,9 @@ static napi_value IsNotificationEnabled(napi_env env, napi_callback_info info)
     bool ret = OH_Notification_IsNotificationEnabled();
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "ANS_TEST", "OH_Notification_IsNotificationEnabled: %{public}d", ret);
     if (ret) {
-        napi_create_string_utf8(env, "true", NAPI_BOOLEAN_TRUE_LENGTH, &res);
+        napi_get_boolean(env, true, &res);
     } else {
-        napi_create_string_utf8(env, "false", NAPI_BOOLEAN_FALSE_LENGTH, &res);
+        napi_get_boolean(env, false, &res);
     }
     return res;
 }
