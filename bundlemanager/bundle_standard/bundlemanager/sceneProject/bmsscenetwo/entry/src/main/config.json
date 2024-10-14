@@ -71,6 +71,7 @@
         "description": "BMS_PERMISSION_CAMERA permission in detail",
         "label": "BMS_PERMISSION_CAMERA permission"
       }
-    ]
+    ],
+    "description": "$string:entry_description"
   }
 }
