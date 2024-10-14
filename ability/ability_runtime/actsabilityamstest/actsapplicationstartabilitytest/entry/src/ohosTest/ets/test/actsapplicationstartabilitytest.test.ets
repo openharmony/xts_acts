@@ -32,7 +32,6 @@ export default function actsApplicationStartAbilityTest() {
   describe('actsApplicationStartAbilityTest', () => {
     let expectErrCode = 16000001;
     const PARAM_ERRCODE = 401;
-    const PARAMETER_ERROR_CODE = 401;
     let context: common.UIAbilityContext;
     let driver = Driver.create();
     beforeAll(async (done: Function) => {
@@ -55,7 +54,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900
+     * @tc.name Verify that the 'startAbility' parameter 'want' has the correct value for 'abilityName' and an incorrect value for 'bundleName'
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -104,7 +103,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800
+     * @tc.name Verify that the 'startAbility' parameter 'want' has the correct value for 'bundleName' and an incorrect value for 'abilityName'
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -154,7 +153,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5700
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5700
+     * @tc.name Verify that the 'startAbility' parameter 'want' has the incorrect value for 'deviceId'
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -203,7 +202,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000
+     * @tc.name Configure BundleName, AbileName, and DeviceId, with Deviceld set to undefined
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -279,7 +278,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400
+     * @tc.name Configure bundle name, ability name, and flags, a floating-point flag value
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -355,7 +354,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5200
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5200
+     * @tc.name Carrying multiple keys and values of various data types
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -443,7 +442,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5300
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5300
+     * @tc.name Ability custom action with corresponding action successfully launched
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -512,7 +511,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400
+     * @tc.name Ability with corresponding entities custom, array length greater than 1 successfully launched
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -585,7 +584,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5900
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5900
+     * @tc.name Ability without corresponding entities
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -630,7 +629,7 @@ export default function actsApplicationStartAbilityTest() {
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_6000
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_6000
+     * @tc.name The entities array of startAbili parameter 'want' is an empty array
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -704,7 +703,7 @@ export default function actsApplicationStartAbilityTest() {
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100
+     * @tc.name ConnectServiceExtension is configured with BundleName, AbileName, and URI, and corresponding Ability is configured with URI
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -744,8 +743,8 @@ export default function actsApplicationStartAbilityTest() {
           moduleName: 'entry', // moduleName非必选
           action: TEST_CASE_NAME,
           parameters: {
-            "ability.want.params.INTENT": {
-              "number": "123"
+            'ability.want.params.INTENT': {
+              'number': '123'
             }
           }
         };
@@ -779,7 +778,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500
+     * @tc.name Repeatedly activate Ability multiple examples
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -900,7 +899,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0400
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0400
+     * @tc.name Verify that different applications pull up Ability and end the initiator's Ability
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -1005,7 +1004,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0500
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0500
+     * @tc.name Verify that different applications pull up Ability and end the Ability of the launched party
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function

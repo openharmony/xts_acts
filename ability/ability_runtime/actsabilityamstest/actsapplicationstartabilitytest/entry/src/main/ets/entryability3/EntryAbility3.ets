@@ -42,8 +42,8 @@ export default class EntryAbility extends UIAbility {
     let commonEventData: commonEventManager.CommonEventPublishData = {
       parameters: {
         data: {
-          "onBackgroundFlag": this.onBackgroundFlag,
-          "onDestroyFlag": this.onDestroyFlag
+          'onBackgroundFlag': this.onBackgroundFlag,
+          'onDestroyFlag': this.onDestroyFlag
         }
       }
     }
@@ -87,9 +87,9 @@ export default class EntryAbility extends UIAbility {
     let commonEventData: commonEventManager.CommonEventPublishData = {
       parameters: {
         data: {
-          "onCreateFlag": this.onCreateFlag,
-          "onWindowStageCreateFlag": this.onWindowStageCreateFlag,
-          "onForegroundFlag": this.onForegroundFlag
+          'onCreateFlag': this.onCreateFlag,
+          'onWindowStageCreateFlag': this.onWindowStageCreateFlag,
+          'onForegroundFlag': this.onForegroundFlag
         }
       }
     }
@@ -134,8 +134,8 @@ export default class EntryAbility extends UIAbility {
     let commonEventData: commonEventManager.CommonEventPublishData = {
       parameters: {
         data: {
-          "onBackgroundFlag": this.onBackgroundFlag,
-          "onDestroyFlag": this.onDestroyFlag
+          'onBackgroundFlag': this.onBackgroundFlag,
+          'onDestroyFlag': this.onDestroyFlag
         }
       }
     }

@@ -30,9 +30,6 @@ abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 export default function actsApplicationStartAbilityTest() {
 
   describe('actsApplicationStartAbilityTest', () => {
-    let expectErrCode = 16000001;
-    const PARAM_ERRCODE = 401;
-    const PARAMETER_ERROR_CODE = 401;
     let context: common.UIAbilityContext;
     let driver = Driver.create();
     beforeAll(async (done: Function) => {
@@ -54,14 +51,14 @@ export default function actsApplicationStartAbilityTest() {
     })
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100
+     * @tc.name Configure BundleName, AbileName, and URI, corresponding to Ability configured with URI
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
 
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100", 1, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100', 1, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100';
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
         events: [`${TEST_CASE_NAME}_onForegroundHap_1`],
@@ -92,7 +89,7 @@ export default function actsApplicationStartAbilityTest() {
           deviceId: '', // deviceId为空表示本设备
           bundleName: 'com.example.actsapplicationstartabilityauxiliary',
           abilityName: 'SingleEntryAbility4',
-          uri: "actsapplicationstartabilitytest://com.example.actsapplicationstartabilitytest",
+          uri: 'actsapplicationstartabilitytest://com.example.actsapplicationstartabilitytest',
           action: TEST_CASE_NAME,
           parameters: {
             instanceKey: TEST_CASE_NAME
@@ -128,7 +125,7 @@ export default function actsApplicationStartAbilityTest() {
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100
+     * @tc.name UIAbility calls startAbilityForResult to mutually start singleton
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -235,7 +232,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200
+     * @tc.name UIAbility calls startAbilityForResult to start multiple instances with each other
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -341,7 +338,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300
+     * @tc.name StartAbilityForResult and terminateSelfWithResult repeated start stop single case
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -456,7 +453,7 @@ export default function actsApplicationStartAbilityTest() {
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1100
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1100
+     * @tc.name StartAbilityForResult takes options as an existing floating-point type
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -584,7 +581,7 @@ export default function actsApplicationStartAbilityTest() {
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900
+     * @tc.name StartAbilityForResult input options input as undefined
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -710,7 +707,7 @@ export default function actsApplicationStartAbilityTest() {
     });
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200
+     * @tc.name Start ability, after completion, restart ability single instance
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
@@ -841,7 +838,7 @@ export default function actsApplicationStartAbilityTest() {
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300
-     * @tc.name SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300
+     * @tc.name Start ability, after completion, restart ability multiple examples
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
