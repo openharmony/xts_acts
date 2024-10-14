@@ -19,7 +19,7 @@ group("ActsAbilityAmsTest") {
     deps = [
       "actsapplicationstartabilityauxiliary:ActsApplicationStartAbilityAuxiliary",
       "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
-      "actsapplicationstartabilityentry:"ActsApplicationStartAbilityEntry",
+      "actsapplicationstartabilityentry:ActsApplicationStartAbilityEntry",
       "actsapplicationstartabilitytest:ActsApplicationStartAbilityTest",
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
