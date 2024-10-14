@@ -14,26 +14,26 @@ let ctx = getContext(this) as common.UIAbilityContext;
 export default function ActsNotificationNDKEnableTest() {
   describe('ActsNotificationNDKEnableTest', () => {
 
-     /*
-     * @tc.number    : Sub_Notification_Ans_enable_NDK_0010
-     * @tc.name      : Invoke the NDK interface and verify the query result against the database.
+    /*
+     * @tc.number    : ACTS_Notification_Ans_enableVerification_0010
+     * @tc.name      : Invoke the Native Development Kit (NDK) interface and validate the query outcome with the database.
      * @tc.desc      : OH_Notification_IsNotificationEnabled Interface verification.
      * @tc.size      : Medium-sized Test
      * @tc.type      : Function test
      * @tc.level     : Level 0
      */
-    it('Sub_Notification_Ans_enable_NDK_0010', 0,async (done: Function) => {
+    it('ACTS_Notification_Ans_enableVerification_0010', 0,async (done: Function) => {
       try {
         let result = IsNotificationEnabled();
-        console.info(`IsNotificationEnabled value is : ${result}`);
-        expect(result).assertEqual("false")
+        hilog.info(0x0000, 'testTag',`IsNotificationEnabled value is : ${result}`);
+        expect(result).assertEqual(false)
         await sleep(500)
 
         notificationManager.requestEnableNotification(ctx).then(() => {
           hilog.info(0x0000, 'testTag',`requestEnableNotification succeeded`);
           let result1 = IsNotificationEnabled();
-          console.info(`IsNotificationEnabled value is : ${result1}`);
-          expect(result1).assertEqual("true")
+          hilog.info(0x0000, 'testTag',`IsNotificationEnabled value is : ${result1}`);
+          expect(result1).assertEqual(true)
           done()
         }).catch((err: Error) => {
           hilog.info(0x0000, 'testTag',`requestEnableNotification err: JSON.stringify(err)`);
@@ -50,7 +50,7 @@ export default function ActsNotificationNDKEnableTest() {
           hilog.info(0x0000, 'testTag', 'null button');
         }
       } catch (err) {
-        console.info("Sub_Notification_Ans_enable_NDK_0001 has failed")
+        hilog.info(0x0000, 'testTag',"Sub_Notification_Ans_enable_NDK_0001 execution failed")
         expect(false).assertEqual(true)
         done()
       }
