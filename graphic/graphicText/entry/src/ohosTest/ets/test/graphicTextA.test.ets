@@ -16,7 +16,21 @@ import { describe, beforeAll, it, expect } from "@ohos/hypium";
 import { BusinessError } from '@ohos.base';
 import text from "@ohos.graphics.text"
 
-
+async function loadFontByPromiseInvalidParameter(msg: string | null | undefined,
+  fontName: string | null | undefined, path: string | Resource | null | undefined, done:Function)
+{
+  console.info(msg + ' begin ');
+  let fontCollection = new text.FontCollection;
+  await fontCollection.loadFont(fontName, path).then(() => {
+    console.info(msg + `loadFont by promise successfully`);
+    expect(false).assertTrue();
+    done();
+  }).catch((error: BusinessError) => {
+    console.error(msg + ` loadFont by promise failed, error: [${error.code}, ${error.message}]`);
+    expect(error.code).assertEqual(401);
+    done();
+  });
+}
 
 export default function graphicTextATest() {
 
@@ -285,6 +299,176 @@ export default function graphicTextATest() {
         expect().assertFail();
         done()
       }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_056
+     * @tc.name      : testLoadFontByPromiseInvalidPath01
+     * @tc.desc      : To test interface loadFont of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidPath01', 56, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidPath01"
+      await loadFontByPromiseInvalidParameter(msg, "test", "", done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_057
+     * @tc.name      : testLoadFontByPromiseInvalidPath02
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidPath02', 57, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidPath02"
+      await loadFontByPromiseInvalidParameter(msg, 'test', 'File://', done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_058
+     * @tc.name      : testLoadFontByPromiseInvalidPath03
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidPath03', 58, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidPath03"
+      await loadFontByPromiseInvalidParameter(msg, 'test', '中文无效路径', done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_059
+     * @tc.name      : testLoadFontByPromiseInvalidPath04
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidPath04', 59, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidPath04"
+      await loadFontByPromiseInvalidParameter(msg, 'test', 'english中文无效路径$rawfile(MiSans_VF.ttf)', done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_060
+     * @tc.name      : testLoadFontByPromiseInvalidPath05
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidPath05', 60, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidPath05"
+      await loadFontByPromiseInvalidParameter(msg, 'test', 'File://', done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_061
+     * @tc.name      : testLoadFontByPromiseInvalidPath06
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidPath06', 61, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidPath06"
+      await loadFontByPromiseInvalidParameter(msg, "test", null, done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_062
+     * @tc.name      : testLoadFontByPromiseInvalidPath07
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidPath07', 62, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidPath07"
+      await loadFontByPromiseInvalidParameter(msg, "test", undefined, done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_063
+     * @tc.name      : testLoadFontByPromiseInvalidPath08
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidPath08', 63, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidPath08"
+      await loadFontByPromiseInvalidParameter(msg, "", undefined, done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_064
+     * @tc.name      : testLoadFontByPromiseInvalidName01
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidName01', 64, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidName01"
+      await loadFontByPromiseInvalidParameter(msg, null, 'File://', done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_065
+     * @tc.name      : testLoadFontByPromiseInvalidName02
+     * @tc.desc      : To test interface loadFontAsync of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testLoadFontByPromiseInvalidName02', 65, async (done:Function)=> {
+      let msg = "testLoadFontByPromiseInvalidName02"
+      await loadFontByPromiseInvalidParameter(msg, undefined, 'File://', done).catch((err: BusinessError) => {
+        console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
     })
 
   })

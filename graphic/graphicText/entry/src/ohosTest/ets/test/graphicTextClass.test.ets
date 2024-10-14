@@ -1076,5 +1076,195 @@ export default function graphicTextClass() {
         }
       }
     })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0034
+     * @tc.name      : testlayoutByPromise_1
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_1', 34, async ()=> {
+      let msg = "testlayoutByPromise_1 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(100).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0035
+     * @tc.name      : testlayoutByPromise_2
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_2', 35, async ()=> {
+      let msg = "testlayoutByPromise_2 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(-100).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(false).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(error.code).assertEqual(401);
+      });
+    })
+
+   /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0036
+     * @tc.name      : testlayoutByPromise_3
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_3', 36, async ()=> {
+      let msg = "testlayoutByPromise_3 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(null).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(false).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(error.code).assertEqual(401);
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0037
+     * @tc.name      : testlayoutByPromise_4
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_4', 37, async ()=> {
+      let msg = "testlayoutByPromise_4 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(undefined).then((data) => {
+        console.info(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(false).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.error(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(error.code).assertEqual(401);
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0038
+     * @tc.name      : testlayoutByPromise_5
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_5', 38, async ()=> {
+      let msg = "testlayoutByPromise_5 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(110.05).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0039
+     * @tc.name      : testlayoutByPromise_6
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_6', 39, async ()=> {
+      let msg = "testlayoutByPromise_6 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(Number.MAX_VALUE).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0040
+     * @tc.name      : testlayoutByPromise_7
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_7', 40, async ()=> {
+      let msg = "testlayoutByPromise_7 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(Number.MIN_VALUE).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0041
+     * @tc.name      : testlayoutByPromise_8
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_8', 41, async ()=> {
+      let msg = "testlayoutByPromise_8 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(Number.MAX_SAFE_INTEGER).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0042
+     * @tc.name      : testlayoutByPromise_9
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_9', 42, async ()=> {
+      let msg = "testlayoutByPromise_9 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(Number.MIN_SAFE_INTEGER).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(false).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.error(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(error.code).assertEqual(401);
+      });
+    })
+
   })
 }
