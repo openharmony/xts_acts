@@ -152,10 +152,9 @@ export default class EntryAbility extends UIAbility {
         this.context.moveAbilityToBackground()
       });
     }
-
-    // setTimeout(()=>{
-    //   this.context.terminateSelf()
-    // })
+    setTimeout(()=>{
+      this.context.terminateSelf()
+    })
   }
 
   onBackground(): void {

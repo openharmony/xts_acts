@@ -110,7 +110,7 @@ export default class EntryAbility extends UIAbility {
     if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1300') {
       commonEventManager.publish(`${this.TEST_CASE_NAME}_onBackgroundHap_2`, commonEventData, (result) => {
         hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
-        // this.context.terminateSelf()
+        this.context.terminateSelf()
       });
     }
   }

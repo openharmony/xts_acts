@@ -94,7 +94,7 @@ export default class EntryAbility extends UIAbility {
         this.onCreateFlag = false;
         this.onWindowStageCreateFlag = false;
         this.onForegroundFlag = false;
-        // this.context.moveAbilityToBackground()
+        this.context.moveAbilityToBackground()
       })
     } else if (this.onForegroundFlagNumber == 2) {
       commonEventManager.publish('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1400_1', commonEventData,
