@@ -22,9 +22,9 @@ const Event_FA_DisplayOrientation_0500 = 'Event_FA_DisplayOrientation_0500';
 const Event_FA_DisplayOrientation_0500_LifeCircle = 'Event_FA_DisplayOrientation_0500_LifeCircle';
 const Event_FA_DisplayOrientation_0600 = 'Event_FA_DisplayOrientation_0600';
 const Event_FA_DisplayOrientation_0600_LifeCircle = 'Event_FA_DisplayOrientation_0600_LifeCircle';
-let lifeCircleData = [];
+let lifeCircleData: string[] = [];
 
-function publishEvent(event, parameter) {
+let publishEvent = (event: string, parameter: ESObject) => {
   commonEvent.publish(event,
     {
       parameters: {
@@ -35,14 +35,14 @@ function publishEvent(event, parameter) {
     })
 }
 
-export default {
+class MainAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
     lifeCircleData[0] = 'onCreate';
-  },
+  }
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  },
+  }
   onActive() {
     try {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Application onActive');
@@ -50,7 +50,7 @@ export default {
 
       featureAbility.getWant((err, want) => {
         hilog.info(0x0000, 'testTag', '%{public}s', `get want: ${JSON.stringify(want)}`);
-        let number = want.parameters.data;
+        let number = want.parameters?.data;
         switch (number) {
           case 3:
             hilog.info(0x0000, 'testTag', '%{public}s', `case 3 ----->`);
@@ -105,3 +105,4 @@ export default {
     }
   }
 }
+export default new MainAbility();

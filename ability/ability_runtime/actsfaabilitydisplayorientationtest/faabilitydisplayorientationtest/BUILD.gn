@@ -13,26 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsOrientationTest") {
-  hap_name = "ActsOrientationTest"
-  js_build_mode = "debug"
-  hap_profile = "entry/src/main/config.json"
-
+ohos_js_app_suite("ActsOrientationTest") {
+  test_hap = true
   testonly = true
-  deps = [
-    ":hjs_demo_ets_assets",
-    ":hjs_demo_resources",
-  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsOrientationTest"
+
   subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-ohos_js_assets("hjs_demo_ets_assets") {
-  source_dir = "./entry/src/main/ets"
-  hap_profile = "./entry/src/main/config.json"
-  ets2abc = true
-}
-ohos_resources("hjs_demo_resources") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
 }
