@@ -14,7 +14,13 @@
  */
  
 import enableScrollJsunit from './ScrollBarTest/enableScrollJsunit.test';
+import getListVisible from './ListTest/getListVisible.test'; 
+import headerListJsunit from './ListTest/headerListJsunit.test'; 
+import waterFlowFad from './WaterFlowTest/waterFlowFad.test'; 
 
 export default function testsuite() {
   enableScrollJsunit()
+  getListVisible()
+  headerListJsunit()
+  waterFlowFad()
 }
