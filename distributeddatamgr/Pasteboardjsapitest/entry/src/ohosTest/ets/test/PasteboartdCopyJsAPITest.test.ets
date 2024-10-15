@@ -847,6 +847,7 @@ export default function PasteboartdCopyJsAPITest() {
             let text = records[i] as unifiedDataChannel.PlainText;
             expect(text.textContent).assertEqual("delayTextContent");
             expect(text.abstract).assertEqual("delayTextContent");
+            console.info('SUB_Pasteboard_Local_SDK_Copy_JsApiTest_1800 text.details: ' + JSON.stringify(text.details));
             if (text.details != undefined) {
               expect(text.details.Value1).assertEqual("delayPlaintext");
               expect(text.details.Value).assertEqual("delayPlaintext");
