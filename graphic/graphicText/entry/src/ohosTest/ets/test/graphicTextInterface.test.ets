@@ -131,6 +131,10 @@ export default function graphicTextInterface() {
         decorationStyle : text.TextDecorationStyle.SOLID,
         decorationThicknessScale : 20
       };
+      let textTab: text.TextTab = {
+        alignment: text.TextAlign.LEFT,
+        location: 200,
+      }
       let textStyle : text.TextStyle = {
         decoration: decoration,
         color: {
@@ -156,7 +160,8 @@ export default function graphicTextInterface() {
           align: text.TextAlign.LEFT,
           wordBreak: text.WordBreak.NORMAL,
           maxLines: 20,
-          breakStrategy: text.BreakStrategy.GREEDY
+          breakStrategy: text.BreakStrategy.GREEDY,
+          tab: textTab
         };
       } catch (err) {
         console.info(msg + 'test ParagraphStyle error ' + JSON.stringify(err));
@@ -255,6 +260,29 @@ export default function graphicTextInterface() {
         };
       } catch (err) {
         console.info(msg + 'test PositionWithAffinity error ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_008
+     * @tc.name      : testTextTab
+     * @tc.desc      : To test interface TextTab.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextTab', 8, async ()=> {
+      let msg = "testTextTab"
+      console.info(msg + 'begin');
+      try {
+        let textTab: text.TextTab = {
+          alignment: text.TextAlign.LEFT,
+          location: 200,
+        }
+        textTab.location = 0;
+        expect(0).assertEqual(textTab.location);
+      } catch (err) {
+        console.info(msg + 'test TextTab error ' + JSON.stringify(err));
         expect().assertFail();
       }
     })
