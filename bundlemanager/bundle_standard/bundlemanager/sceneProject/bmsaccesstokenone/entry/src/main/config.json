@@ -11,6 +11,20 @@
     "default": {}
   },
   "module": {
+    "package": "com.example.bmsaccesstoken1",
+    "name": ".MyApplication1",
+    "deviceType": [
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
+    ],
+    "distro": {
+      "moduleType": "entry",
+      "installationFree": false,
+      "deliveryWithInstall": true,
+      "moduleName": "entry"
+    },
     "abilities": [
       {
         "skills": [
@@ -28,7 +42,6 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "isVisible": "true",
         "launchType": "standard",
         "metaData": {
           "customizeData": [
@@ -41,7 +54,6 @@
         "srcPath": "default",
         "srcLanguage": "js"
       },
-
       {
         "skills": [
           {
@@ -60,9 +72,7 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "isVisible": "true",
         "launchType": "standard",
-        "language": "C++",
         "metaData": {
           "customizeData": [
             {
@@ -70,7 +80,9 @@
               "value": "com.weather.testWidget"
             }
           ]
-        }
+        },
+        "srcPath": "default",
+        "srcLanguage": "js"
       },
       {
         "skills": [
@@ -90,9 +102,7 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "isVisible": "true",
         "launchType": "standard",
-        "language": "C++",
         "metaData": {
           "customizeData": [
             {
@@ -100,7 +110,9 @@
               "value": "com.weather.testWidget"
             }
           ]
-        }
+        },
+        "srcPath": "default",
+        "srcLanguage": "js"
       },
       {
         "skills": [
@@ -121,9 +133,7 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "isVisible": "true",
         "launchType": "standard",
-        "language": "C++",
         "metaData": {
           "customizeData": [
             {
@@ -131,7 +141,9 @@
               "value": "com.weather.testWidget"
             }
           ]
-        }
+        },
+        "srcPath": "default",
+        "srcLanguage": "js"
       },
       {
         "skills": [
@@ -153,9 +165,7 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "isVisible": "true",
         "launchType": "standard",
-        "language": "C++",
         "metaData": {
           "customizeData": [
             {
@@ -163,25 +173,11 @@
               "value": "com.weather.testWidget"
             }
           ]
-        }
+        },
+        "srcPath": "default",
+        "srcLanguage": "js"
       }
-
     ],
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
-    "mainAbility": "com.example.bmsaccesstoken1.MainAbility",
-    "distro": {
-      "moduleType": "entry",
-      "installationFree": false,
-      "deliveryWithInstall": true,
-      "moduleName": "entry"
-    },
-    "package": "com.example.bmsaccesstoken1",
-    "name": ".MyApplication1",
     "js": [
       {
         "pages": [
