@@ -60,10 +60,13 @@ export default function editMenuIdAIWriterTest() {
       let density = await driver.getDisplayDensity();
       await CommonFunc.sleep(1000);
       console.info("[editMenuIdAIWriterTest_0100] getDisplayDensity is: " + JSON.stringify(density));
-      if(density.x == 1080 && density.y == 1920){        
-        await driver.assertComponentExist(ON.text('全选'));
-      }else{
+      let strJson = await getInspectorByKey('flag')
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[editMenuIdAIWriterTest_0100] component obj is: " + JSON.stringify(obj));
+      if(obj.$attrs.content == 'true'){
         await driver.assertComponentExist(ON.text('小艺帮写'));
+      }else{
+        await driver.assertComponentExist(ON.text('全选'));
       }
       console.info('editMenuIdAIWriterTest_0100 END');
       done();
@@ -87,10 +90,13 @@ export default function editMenuIdAIWriterTest() {
       let density = await driver.getDisplayDensity();
       await CommonFunc.sleep(1000);
       console.info("[editMenuIdAIWriterTest_0200] getDisplayDensity is: " + JSON.stringify(density));
-      if(density.x == 1080 && density.y == 1920){
-        await driver.assertComponentExist(ON.text('全选'));
-      }else{
+      let strJson = await getInspectorByKey('flag')
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[editMenuIdAIWriterTest_0200] component obj is: " + JSON.stringify(obj));
+      if(obj.$attrs.content == 'true'){
         await driver.assertComponentExist(ON.text('小艺帮写'));
+      }else{
+        await driver.assertComponentExist(ON.text('全选'));
       }
       console.info('editMenuIdAIWriterTest_0200 END');
       done();

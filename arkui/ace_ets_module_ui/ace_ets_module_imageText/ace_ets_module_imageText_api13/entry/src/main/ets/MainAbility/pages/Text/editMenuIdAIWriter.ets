@@ -19,17 +19,20 @@ struct editMenuIdAIWriter {
   @State text: string = 'Text editMenuOptions'
   @State textArea: string = 'TextArea editMenuOptions'
   @State textInput: string = 'TextInput editMenuOptions'
+  @State flag: boolean = false
 
   onCreateMenu(menuItems: Array<TextMenuItem>) {
     menuItems.forEach((value, index) => {
       if (value.id.equals(TextMenuItemId.AI_WRITER)) {
         value.content = 'AI_WRITER'
+        this.flag = true
       }
     })
     return menuItems
   }
   build() {
     Column() {
+      Text(''+this.flag).key('flag')
       TextArea({ text:this.textArea })
         .id('TextAreaEditMenuOptions')
         .height(50)
@@ -37,12 +40,19 @@ struct editMenuIdAIWriter {
         .fontSize(25)
         .copyOption(CopyOptions.InApp)
         .editMenuOptions({
-          onCreateMenu: this.onCreateMenu, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+          onCreateMenu: (menuItems: Array<TextMenuItem>)=>{
+            return this.onCreateMenu(menuItems)
+          }, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
             if (menuItem.id.equals(TextMenuItemId.AI_WRITER)) {
               console.log('Intercepted AI_WRITER start:' + textRange.start + '; end:' + textRange.end)
               return true;
             }
             return false;
+          }
+        })
+        .onEditChange((isEditing:boolean)=>{
+          if(!isEditing){
+            this.flag = false
           }
         })
         .margin({ top: 50 })
@@ -53,12 +63,19 @@ struct editMenuIdAIWriter {
         .fontSize(25)
         .copyOption(CopyOptions.InApp)
         .editMenuOptions({
-          onCreateMenu: this.onCreateMenu, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+          onCreateMenu: (menuItems: Array<TextMenuItem>)=>{
+            return this.onCreateMenu(menuItems)
+          }, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
             if (menuItem.id.equals(TextMenuItemId.AI_WRITER)) {
               console.log('Intercepted AI_WRITER start:' + textRange.start + '; end:' + textRange.end)
               return true;
             }
             return false;
+          }
+        })
+        .onEditChange((isEditing:boolean)=>{
+          if(!isEditing){
+            this.flag = false
           }
         })
         .margin({ top: 50 })
