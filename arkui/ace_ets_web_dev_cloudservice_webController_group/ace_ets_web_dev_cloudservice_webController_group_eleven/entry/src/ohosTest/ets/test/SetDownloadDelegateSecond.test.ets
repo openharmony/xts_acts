@@ -19,17 +19,15 @@ import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
 import { router } from '@kit.ArkUI';
-import emitter from '@ohos.events.emitter';
 
 let driver: Driver = Driver.create();
 let flg: boolean = false
 
-export default function SetConnectionTimeOut() {
-  describe('SetConnectionTimeOut', () => {
+export default function SetDownloadDelegateSecond() {
+  describe('SetDownloadDelegateSecond', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       webview.WebviewController.initializeWebEngine()
-      webview.WebviewController.setConnectionTimeout(5)
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
@@ -47,65 +45,33 @@ export default function SetConnectionTimeOut() {
       // This API supports only one parameter: clear action function.
     })
     afterAll(async () => {
-      webview.WebviewController.setConnectionTimeout(60)
       await driver.delayMs(500)
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
 
     /**
-     * @tc.number SUB_ACE_WEB_pause_0700
-     * @tc.name testWebView_pause0700
-     * @tc.desc test setConnectionTimeOut5
+     * @tc.number SUB_ACE_WEB_onDownloadFailed_1001
+     * @tc.name testWebView_onDownloadFailed1001
+     * @tc.desc test onDownloadFinish
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_pause0700', 0, async () => {
+    it('testWebView_onDownloadFailed1001', 0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0700 start')
-      console.info('SUB_ACE_WEB_pause_0700 start')
-      await driver.delayMs(500)
-      LocalContext.context.eventHub.on("setConnectionTimeOut1", (data: webview.WebDownloadState) => {
-        flg = true
-        expect(data).assertEqual(webview.WebDownloadState.PAUSED)
-        console.info('SUB_ACE_WEB_pause_0700 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0700 end')
-      })
-      router.pushUrl({
-        url: "testability/pages/SetConnectionTimeOut1"
-      })
-      await driver.delayMs(2000)
-      sendEventByKey('001', 10, '')
-      await driver.delayMs(2000)
-      sendEventByKey('002', 10, '')
-      await driver.delayMs(10000)
-      expect(flg).assertTrue()
-      router.clear()
-    })
-
-    /**
-     * @tc.number SUB_ACE_WEB_pause_0800
-     * @tc.name testWebView_pause0800
-     * @tc.desc test setConnectionTimeOut5
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('testWebView_pause0800', 0, async (done: Function) => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0800 start')
-      console.info('SUB_ACE_WEB_pause_0800 start')
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFailed_1001 start')
+      console.info('SUB_ACE_WEB_onDownloadFailed_1001 start')
       await driver.delayMs(500)
 
-      LocalContext.context.eventHub.on("setConnectionTimeOut2", (data: webview.WebDownloadState) => {
-        expect(data).assertEqual(webview.WebDownloadState.COMPLETED)
-        console.info('SUB_ACE_WEB_pause_0800 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_pause_0800 end')
+      LocalContext.context.eventHub.on("SetDownloadDelegate4", (data: number) => {
+        expect(data).assertEqual(webview.WebDownloadState.CANCELED)
+        console.info('SUB_ACE_WEB_onDownloadFailed_1001 end')
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFailed_1001 end')
         done()
       })
       router.pushUrl({
-        url: "testability/pages/SetConnectionTimeOut2"
+        url: "testability/pages/SetDownloadDelegate4"
       })
       await driver.delayMs(2000)
       sendEventByKey('001', 10, '')
@@ -115,27 +81,28 @@ export default function SetConnectionTimeOut() {
     })
 
     /**
-     * @tc.number SUB_ACE_WEB_resume_0600
-     * @tc.name testWebView_resume0600
-     * @tc.desc test setConnectionTimeOut5
+     * @tc.number SUB_ACE_WEB_getUrl_2000
+     * @tc.name testWebView_getUrl1000
+     * @tc.desc test onDownloadFinish
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_resume0600', 0, async () => {
+    it('testWebView_getUrl1000', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_resume_0600 start')
-      console.info('SUB_ACE_WEB_resume_0600 start')
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2000 start')
+      console.info('SUB_ACE_WEB_getUrl_2000 start')
       await driver.delayMs(500)
 
-      LocalContext.context.eventHub.on("setConnectionTimeOut3", (data: webview.WebDownloadState) => {
+      LocalContext.context.eventHub.on("SetDownloadDelegate5", (data: number) => {
         flg = true
-        expect(data).assertEqual(webview.WebDownloadState.CANCELED)
-        console.info('SUB_ACE_WEB_resume_0600 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_resume_0600 end')
+        expect(data).assertEqual('https:' +
+          '//cd001.v78q.com/cs/104sem/Beyond%20Compare%20%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94%E5%B7%A5%E5%85%B7_sm60000068e.exe0')
+        console.info('SUB_ACE_WEB_getUrl_2000 end')
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2000 end')
       })
       router.pushUrl({
-        url: "testability/pages/SetConnectionTimeOut3"
+        url: "testability/pages/SetDownloadDelegate5"
       })
       await driver.delayMs(2000)
       sendEventByKey('001', 10, '')
@@ -147,27 +114,60 @@ export default function SetConnectionTimeOut() {
     })
 
     /**
-     * @tc.number SUB_ACE_WEB_resume_0700
-     * @tc.name testWebView_resume0700
-     * @tc.desc test setConnectionTimeOut5
+     * @tc.number SUB_ACE_WEB_getUrl_2001
+     * @tc.name testWebView_getUrl1001
+     * @tc.desc test onDownloadFinish
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_resume0700', 0, async () => {
+    it('testWebView_getUrl1001', 0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_resume_0700 start')
-      console.info('SUB_ACE_WEB_resume_0700 start')
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2001 start')
+      console.info('SUB_ACE_WEB_getUrl_2001 start')
       await driver.delayMs(500)
 
-      LocalContext.context.eventHub.on("setConnectionTimeOut4", (data: webview.WebDownloadState) => {
+      LocalContext.context.eventHub.on("SetDownloadDelegate5", (data: number) => {
+        flg = true
+        expect(data).assertEqual('https:' +
+          '//cd001.v78q.com/cs/104sem/Beyond%20Compare%20%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94%E5%B7%A5%E5%85%B7_sm60000068e.exe0')
+        console.info('SUB_ACE_WEB_getUrl_2001 end')
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2001 end')
+      })
+      router.pushUrl({
+        url: "testability/pages/SetDownloadDelegate5"
+      })
+      await driver.delayMs(2000)
+      sendEventByKey('001', 10, '')
+      await driver.delayMs(2000)
+      sendEventByKey('002', 10, '')
+      await driver.delayMs(10000)
+      expect(flg).assertTrue()
+      router.clear()
+    })
+
+    /**
+     * @tc.number SUB_ACE_WEB_getUrl_2002
+     * @tc.name testWebView_getUrl1002
+     * @tc.desc test onDownloadFinish
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testWebView_getUrl1002', 0, async () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2002 start')
+      console.info('SUB_ACE_WEB_getUrl_2002 start')
+      await driver.delayMs(500)
+
+      LocalContext.context.eventHub.on("SetDownloadDelegate6", (data: number) => {
         flg = true
         expect(data).assertEqual(webview.WebDownloadState.PENDING)
-        console.info('SUB_ACE_WEB_resume_0700 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_resume_0700 end')
+        console.info('SUB_ACE_WEB_getUrl_2002 end')
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2002 end')
       })
       router.pushUrl({
-        url: "testability/pages/SetConnectionTimeOut4"
+        url: "testability/pages/SetDownloadDelegate6"
       })
       await driver.delayMs(2000)
       sendEventByKey('001', 10, '')
@@ -177,6 +177,5 @@ export default function SetConnectionTimeOut() {
       expect(flg).assertTrue()
       router.clear()
     })
-
   })
 }

@@ -15,12 +15,16 @@
 
 import GetCurrentSpeed from './GetCurrentSpeed.test';
 import GetPercentComplete from './GetPercentComplete.test';
+import GetPercentCompleteSecond from './GetPercentCompleteSecond.test';
 import SetConnectionTimeOut from './SetConnectionTimeOut.test';
 import SetDownloadDelegate from './SetDownloadDelegate.test';
+import SetDownloadDelegateSecond from './SetDownloadDelegateSecond.test';
 
 export default function testsuite() {
   GetCurrentSpeed();
   GetPercentComplete();
+  GetPercentCompleteSecond();
   SetConnectionTimeOut();
-  SetDownloadDelegate()
+  SetDownloadDelegate();
+  SetDownloadDelegateSecond();
 }

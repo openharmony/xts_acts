@@ -44,7 +44,8 @@ export default function GetCurrentSpeed() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(() => {
+    afterAll(async () => {
+      await driver.delayMs(500)
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })

@@ -44,7 +44,8 @@ export default function SetDownloadDelegate() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(() => {
+    afterAll(async () => {
+      await driver.delayMs(500)
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
@@ -136,134 +137,6 @@ export default function SetDownloadDelegate() {
       sendEventByKey('001', 10, '')
       await driver.delayMs(2000)
       sendEventByKey('002', 10, '')
-      router.clear()
-    })
-
-    /**
-     * @tc.number SUB_ACE_WEB_onDownloadFailed_1001
-     * @tc.name testWebView_onDownloadFailed1001
-     * @tc.desc test onDownloadFinish
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('testWebView_onDownloadFailed1001', 0, async (done: Function) => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFailed_1001 start')
-      console.info('SUB_ACE_WEB_onDownloadFailed_1001 start')
-      await driver.delayMs(500)
-
-      LocalContext.context.eventHub.on("SetDownloadDelegate4", (data: number) => {
-        expect(data).assertEqual(webview.WebDownloadState.CANCELED)
-        console.info('SUB_ACE_WEB_onDownloadFailed_1001 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFailed_1001 end')
-        done()
-      })
-      router.pushUrl({
-        url: "testability/pages/SetDownloadDelegate4"
-      })
-      await driver.delayMs(2000)
-      sendEventByKey('001', 10, '')
-      await driver.delayMs(2000)
-      sendEventByKey('002', 10, '')
-      router.clear()
-    })
-
-    /**
-     * @tc.number SUB_ACE_WEB_getUrl_2000
-     * @tc.name testWebView_getUrl1000
-     * @tc.desc test onDownloadFinish
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('testWebView_getUrl1000', 0, async () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2000 start')
-      console.info('SUB_ACE_WEB_getUrl_2000 start')
-      await driver.delayMs(500)
-
-      LocalContext.context.eventHub.on("SetDownloadDelegate5", (data: number) => {
-        flg = true
-        expect(data).assertEqual('https:' +
-          '//cd001.v78q.com/cs/104sem/Beyond%20Compare%20%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94%E5%B7%A5%E5%85%B7_sm60000068e.exe0')
-        console.info('SUB_ACE_WEB_getUrl_2000 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2000 end')
-      })
-      router.pushUrl({
-        url: "testability/pages/SetDownloadDelegate5"
-      })
-      await driver.delayMs(2000)
-      sendEventByKey('001', 10, '')
-      await driver.delayMs(2000)
-      sendEventByKey('002', 10, '')
-      await driver.delayMs(10000)
-      expect(flg).assertTrue()
-      router.clear()
-    })
-
-    /**
-     * @tc.number SUB_ACE_WEB_getUrl_2001
-     * @tc.name testWebView_getUrl1001
-     * @tc.desc test onDownloadFinish
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('testWebView_getUrl1001', 0, async () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2001 start')
-      console.info('SUB_ACE_WEB_getUrl_2001 start')
-      await driver.delayMs(500)
-
-      LocalContext.context.eventHub.on("SetDownloadDelegate5", (data: number) => {
-        flg = true
-        expect(data).assertEqual('https:' +
-          '//cd001.v78q.com/cs/104sem/Beyond%20Compare%20%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94%E5%B7%A5%E5%85%B7_sm60000068e.exe0')
-        console.info('SUB_ACE_WEB_getUrl_2001 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2001 end')
-      })
-      router.pushUrl({
-        url: "testability/pages/SetDownloadDelegate5"
-      })
-      await driver.delayMs(2000)
-      sendEventByKey('001', 10, '')
-      await driver.delayMs(2000)
-      sendEventByKey('002', 10, '')
-      await driver.delayMs(10000)
-      expect(flg).assertTrue()
-      router.clear()
-    })
-
-    /**
-     * @tc.number SUB_ACE_WEB_getUrl_2002
-     * @tc.name testWebView_getUrl1002
-     * @tc.desc test onDownloadFinish
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('testWebView_getUrl1002', 0, async () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2002 start')
-      console.info('SUB_ACE_WEB_getUrl_2002 start')
-      await driver.delayMs(500)
-
-      LocalContext.context.eventHub.on("SetDownloadDelegate6", (data: number) => {
-        flg = true
-        expect(data).assertEqual(webview.WebDownloadState.PENDING)
-        console.info('SUB_ACE_WEB_getUrl_2002 end')
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2002 end')
-      })
-      router.pushUrl({
-        url: "testability/pages/SetDownloadDelegate6"
-      })
-      await driver.delayMs(2000)
-      sendEventByKey('001', 10, '')
-      await driver.delayMs(2000)
-      sendEventByKey('002', 10, '')
-      await driver.delayMs(10000)
-      expect(flg).assertTrue()
       router.clear()
     })
   })
