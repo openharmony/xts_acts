@@ -1,32 +1,28 @@
 {
-    "description": "Configuration for drm ndk Tests",
+    "description": "Configuration for ActsDrmNdkTest demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-        "bundle-name": "com.example.nativecc",
+        "test-timeout": "360000",
+        "bundle-name": "com.example.myapplication",
         "module-name": "entry_test",
-        "shell-timeout": "120000",
-        "coverage": true
+        "shell-timeout": "360000",
+        "testcase-timeout": 70000
     },
     "kits": [
-	{
-        "test-file-name": [
-            "ActsDrmNDKTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    },
-	{
-		"type": "ShellKit",
-		"run-command":[
-		    "power-shell wakeup",
-			"uinput -T -m 300 2700 280 200",
-			"power-shell setmode 602"
-		],
-		"teardown-command":[
-		    "power-shell setmode 600"
-		],
-		"cleanup-apps": true
-	}
-	]
+        {
+            "test-file-name": [
+                "ActsDrmNDKTest.hap",
+				"ActsDrmMainNdkTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602",
+		"param set hiviewdfx.appfreeze.filter_bundle_name com.example.myapplication"
+            ]
+        }
+    ]
 }
