@@ -1,6 +1,9 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/ScrollBar/enableScroll"
+        "MainAbility/pages/ScrollBar/enableScroll",
+        "MainAbility/pages/List/getListVisible",
+        "MainAbility/pages/List/headerList",
+        "MainAbility/pages/WaterFlow/waterFlowFad"
     ]
 }
