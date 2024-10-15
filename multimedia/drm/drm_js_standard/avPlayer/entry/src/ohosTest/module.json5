@@ -19,8 +19,8 @@
     "description": "$string:TestAbility_label",
     "mainElement": "TestAbility",
     "deviceTypes": [
+      "phone",
       "wearable",
-      "default",
       "tablet",
       "2in1"
     ],
@@ -48,6 +48,9 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {"name":"ohos.permission.INTERNET"}
     ]
   }
 }

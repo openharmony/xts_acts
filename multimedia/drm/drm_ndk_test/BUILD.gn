@@ -13,15 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
+ohos_app_assist_suite("Drm_Main_NDK_test") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsDrmMainNdkTest"
+  subsystem_name = "multimedia"
+  part_name = "drm_framework"
+}
+
 ohos_js_app_suite("Drm_Framework_NDK_test") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsDrmNDKTest"
-
-  # 部件名称，真实数据，需要子系统对应
-  part_name = "drm_framework"
-
-  # 子系统名称，真实数据，需要部件对应
   subsystem_name = "multimedia"
+  part_name = "drm_framework"
+  deps = [ ":Drm_Main_NDK_test" ]
 }
