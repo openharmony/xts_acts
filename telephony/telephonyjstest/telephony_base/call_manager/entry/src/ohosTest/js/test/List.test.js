@@ -15,9 +15,10 @@
 
 import CallManagerTest from './CallManagerTest.test.js'
 import EmptyTest from './Empty.test.js';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.CallManager")){
+  if (sim.getMaxSimCount!=0){
     CallManagerTest();
   }else{
     EmptyTest()

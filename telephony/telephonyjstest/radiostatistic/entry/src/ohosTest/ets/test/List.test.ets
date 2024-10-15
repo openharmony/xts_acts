@@ -24,7 +24,7 @@ import sim from '@ohos.telephony.sim';
 import call from '@ohos.telephony.call';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.CoreService")){
+  if (sim.getMaxSimCount!=0){
     if(sim.hasSimCardSync(0)&&call.hasVoiceCapability()){
       dataJsunit();
       smsUiJsunit();

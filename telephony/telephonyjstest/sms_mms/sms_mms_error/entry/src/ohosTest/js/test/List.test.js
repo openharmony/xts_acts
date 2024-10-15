@@ -15,9 +15,10 @@
 
 import SmsMmsErrorTest from './SmsMmsError.test.js'
 import EmptyTest from './Empty.test.js';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.SmsMms")){
+  if (sim.getMaxSimCount!=0){
     SmsMmsErrorTest()
   }else{
     EmptyTest()

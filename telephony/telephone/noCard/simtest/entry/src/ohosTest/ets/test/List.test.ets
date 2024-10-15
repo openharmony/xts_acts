@@ -15,9 +15,10 @@
 
 import SimNoCardPublic from './SimNoCardPublic.test';
 import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.CoreService")){
+  if (sim.getMaxSimCount!=0){
     SimNoCardPublic();
   }else{
     EmptyTest()
