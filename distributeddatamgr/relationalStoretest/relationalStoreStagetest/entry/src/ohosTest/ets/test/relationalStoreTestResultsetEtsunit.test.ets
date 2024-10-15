@@ -18,7 +18,7 @@ import common from '@ohos.app.ability.common';
 
 const TAG = '[RDB_JSKITS_TEST]';
 let bigdata = 'a'.repeat(100)
-const CREATE_TABLE_TEST = 'CREATE TABLE IF NOT EXISTS test (' + 'id INTEGER PRIMARY KEY AUTOINCREMENT, ' + bigdata + ' text,' + '"邮箱：abc#$123@abc.com" long,' + '"@#$%^&*" text,' + '" " text,' + '年龄 long,' + 'null text,' + 'data text,' + 'data1 text,' + 'data2 long, ' + 'data3 double,' + 'data4 blob,' + '"1" INTEGER)';
+const CREATE_TABLE_TEST = 'CREATE TABLE IF NOT EXISTS test (' + 'id INTEGER PRIMARY KEY AUTOINCREMENT, ' + bigdata + ' text,' + '"邮箱：abc#$123@abc.com" long,' + '"@#$%^&*" text,' + '" " text,' + '年龄 long,' + '"null" text,' + 'data text,' + 'data1 text,' + 'data2 long, ' + 'data3 double,' + 'data4 blob,' + '"1" INTEGER)';
 let context: common.UIAbilityContext;
 const STORE_CONFIG: dataRdb.StoreConfig = {
     name: 'Resultset.db',
@@ -45,7 +45,7 @@ let resultSet: dataRdb.ResultSet | null = null;
                 '" "': 'kong',
                 '"@#$%^&*"': 'special',
                 '"邮箱：abc#$123@abc.com"':'abc#$123@abc.com',
-                'null': 'null'
+                '"null"': 'null'
             };
             await rdbStore.insert('test', valueBucket);
         }
