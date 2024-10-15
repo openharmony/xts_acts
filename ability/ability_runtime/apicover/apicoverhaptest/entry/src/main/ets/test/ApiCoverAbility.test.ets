@@ -1181,7 +1181,8 @@ export default function ApiCoverTest() {
       let tag = `SUB_Ability_AbilityRuntime_ProcessCache_0400`;
       console.log(`${tag}, test begin`);
       let maxCacheNum = parseInt(systemParameterEnhance.getSync('persist.sys.abilityms.maxProcessCacheNum', '0'));
-      if (maxCacheNum > 0) {
+      let warmStartEnable = systemParameterEnhance.getSync('persist.resourceschedule.enable_warm_start_process', 'false');
+      if (maxCacheNum > 0 || warmStartEnable === 'true') {
         console.log(`${tag}, ProcessCache support this device`);
       } else {
         try {
