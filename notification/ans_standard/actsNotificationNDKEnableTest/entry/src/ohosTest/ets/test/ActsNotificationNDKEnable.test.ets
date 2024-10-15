@@ -16,7 +16,7 @@ export default function ActsNotificationNDKEnableTest() {
 
     /*
      * @tc.number    : ACTS_Notification_Ans_enableVerification_0010
-     * @tc.name      : Invoke the NDK interface and verify data synchronization with database.
+     * @tc.name      : OH_Notification_IsNotificationEnabled Interface verification.
      * @tc.desc      : OH_Notification_IsNotificationEnabled Interface verification.
      * @tc.size      : Medium-sized Test
      * @tc.type      : Function test
