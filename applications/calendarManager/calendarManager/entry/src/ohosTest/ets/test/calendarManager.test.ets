@@ -20,6 +20,7 @@ import systemDateTime from '@ohos.systemDateTime';
 import radio from '@ohos.telephony.radio';
 import { BusinessError } from '@ohos.base';
 import { Permissions } from '@ohos.abilityAccessCtrl';
+import { mContext } from '../testability/TestAbility'
 
 let calendarMgr: calendarManager.CalendarManager;
 
@@ -110,7 +111,7 @@ export default function CalendarManagerTest() {
       try {
         let permissions: Permissions[] = ["ohos.permission.WRITE_CALENDAR", "ohos.permission.READ_CALENDAR"];
         let atManager = abilityAccessCtrl.createAtManager();
-        atManager.requestPermissionsFromUser(globalThis.context, permissions, (err, result) => {
+        atManager.requestPermissionsFromUser(mContext, permissions, (err, result) => {
           if (err) {
             console.info('getPermission failed: ' + JSON.stringify(err));
           } else {
@@ -133,7 +134,7 @@ export default function CalendarManagerTest() {
         console.info(`getPermission failed, error: ${error}`);
       }
       sleep(500);
-      calendarMgr = calendarManager.getCalendarManager(globalThis.context);
+      calendarMgr = calendarManager.getCalendarManager(mContext);
     });
 
 
@@ -1553,4 +1554,3 @@ export default function CalendarManagerTest() {
     });
 
   });
-}
