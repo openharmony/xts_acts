@@ -138,7 +138,7 @@ export default function WebViewEnumAndSetWebController() {
     it('testCacheMode003', 0, async (done: Function) => {
       Utils.emitEvent("emitCacheModeOnline", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testCacheMode003", "多快好省，购物逛京东！", 1405, done);
+      Utils.registerEvent("testCacheMode003", true, 1405, done);
       sendEventByKey('buttonEnumAndSetWebController', 10, '');
     })
 
