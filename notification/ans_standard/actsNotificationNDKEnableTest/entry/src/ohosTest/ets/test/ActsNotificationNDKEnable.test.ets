@@ -16,7 +16,7 @@ export default function ActsNotificationNDKEnableTest() {
 
     /*
      * @tc.number    : ACTS_Notification_Ans_enableVerification_0010
-     * @tc.name      : Invoke the Native Development Kit (NDK) interface and verify the query results against the database.
+     * @tc.name      : Invoke the Native Development Kit (NDK) interface and validate the retrieved data against the database.
      * @tc.desc      : OH_Notification_IsNotificationEnabled Interface verification.
      * @tc.size      : Medium-sized Test
      * @tc.type      : Function test
