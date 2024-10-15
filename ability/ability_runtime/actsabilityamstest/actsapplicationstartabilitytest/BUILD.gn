@@ -10,18 +10,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import("//test/xts/tools/build/suite.gni")
 
 ohos_app_assist_suite("ActsApplicationStartAbilityEntry") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsApplicationStartAbilityEntry"
-  hap_list = [
-    "ActsApplicationStartAbilityEntry:ActsApplicationStartAbilityEntry",
-  ]
-  subsystem_name = "xts"
-  part_name = "device_attest"
+  part_name = "ability_runtime"
+  subsystem_name = "ability"
 }
 
 ohos_js_app_suite("ActsApplicationStartAbilityTest") {
@@ -29,8 +25,6 @@ ohos_js_app_suite("ActsApplicationStartAbilityTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsApplicationStartAbilityTest"
-
-  subsystem_name = "xts"
-  part_name = "device_attest"
-  deps = [ ":ActsApplicationStartAbilityEntry" ]
+  part_name = "ability_runtime"
+  subsystem_name = "ability"
 }
