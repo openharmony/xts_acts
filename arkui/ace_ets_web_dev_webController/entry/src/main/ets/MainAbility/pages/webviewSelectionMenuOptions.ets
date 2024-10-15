@@ -19,13 +19,24 @@ import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview'
+import { Driver, ON, On } from '@ohos.UiTest';
 
 @Entry
 @Component
-struct webviewTerminateRenderProcess {
-  controller: web_webview.WebviewController = new web_webview.WebviewController();
-  @State str: string = "emitTerminateRenderProcess0100";
+struct webviewSelectionMenuOptions {
+  
+  @State str: string = "emitSelectionMenuOptions0100";
   @State userAgentPC:string = '';
+  controller: web_webview.WebviewController = new web_webview.WebviewController()
+  @State menuOptionArray: Array<ExpandedMenuItemOptions> = [
+    {content: 'Apple', action: (selectedText) => {
+      console.info('select Apple info ' + selectedText.toString());
+      Utils.emitEvent(1, 5400)
+    }},
+    {content: 'Banana', action: (selectedText) => {
+      console.info('select Banana info ' + selectedText.toString());
+    }}
+  ];
 
   onPageShow(){
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -38,7 +49,7 @@ struct webviewTerminateRenderProcess {
   private valueChangeCallBack = (eventData: ESObject) => {
     console.info("webOnSslError page valueChangeCallBack");
     if (eventData != null) {
-      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
       if (eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
@@ -48,92 +59,32 @@ struct webviewTerminateRenderProcess {
   build() {
     Column() {
       Row() {
-        Button("web click").key('TerminateRenderProcess').onClick(async () => {
+        Button("web click").key('SelectionMenuOptions').onClick(async () => {
           console.info("key==>" + this.str)
           switch (this.str) {
-            case "emitTerminateRenderProcess0100": {
+            case "emitSelectionMenuOptions0100": {
               try {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 5300)
+                  Utils.emitEvent(1, 5400)
                   break;
                 }else if((this.userAgentPC).includes("Tablet")){
-                  Utils.emitEvent(true, 5300)
+                  Utils.emitEvent(1, 5400)
                   break;
                 }
-                this.controller.loadUrl('www.baidu.com');
+                this.controller.loadUrl($rawfile("indexdemotwo.html"))
+                await Utils.sleep(12000);
+                let driver: Driver = Driver.create();
+                let buttonCenter = await driver.findComponent(ON.id('webCenter'));
+                await buttonCenter.longClick()
                 await Utils.sleep(4000);
-                let result = this.controller.terminateRenderProcess();
-                console.log("terminateRenderProcess result: " + result);
+                let buttonOne = await driver.findComponent(ON.text('Please'));
+                await buttonOne.longClick()
+                await Utils.sleep(4000);
+                let buttontwo = await driver.findComponent(ON.text('Apple'));
+                await buttontwo.click();
                 await Utils.sleep(1000);
-                Utils.emitEvent(result, 5300)
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              break;
-            }
-            case "emitTerminateRenderProcess0200": {
-              try {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent("百度一下，你就知道", 5302)
-                  break;
-                }else if((this.userAgentPC).includes("Tablet")){
-                  Utils.emitEvent("百度一下，你就知道", 5302)
-                  break;
-                }
-                this.controller.loadUrl('www.baidu.com');
-                await Utils.sleep(4000);
-                let result = this.controller.terminateRenderProcess();
-                console.log("terminateRenderProcess result: " + result);
-                await Utils.sleep(3000);
-                let title = this.controller.getTitle();
-                console.log("title: " + title);
-                Utils.emitEvent(title, 5302)
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              break;
-            }
-            case "emitTerminateRenderProcess0300": {
-              try {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 5304)
-                  break;
-                }else if((this.userAgentPC).includes("Tablet")){
-                  Utils.emitEvent(true, 5304)
-                  break;
-                }
-                this.controller.loadUrl($rawfile("indexdemo.html"))
-                await Utils.sleep(4000);
-                let result = this.controller.terminateRenderProcess();
-                console.log("terminateRenderProcess result: " + result);
-                await Utils.sleep(1000);
-                Utils.emitEvent(result, 5304)
-              } catch (error) {
-                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-              }
-              break;
-            }
-            case "emitTerminateRenderProcess0400": {
-              try {
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(true, 5306)
-                  break;
-                }else if((this.userAgentPC).includes("Tablet")){
-                  Utils.emitEvent(true, 5306)
-                  break;
-                }
-                this.controller.loadUrl($rawfile("indexdemo.html"))
-                await Utils.sleep(4000);
-                let result = this.controller.terminateRenderProcess();
-                console.log("terminateRenderProcess result: " + result);
-                await Utils.sleep(1000);
-                this.controller.slideScroll(500, 500);
-                await Utils.sleep(4000);
-                Utils.emitEvent(true, 5306)
+                
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -143,12 +94,9 @@ struct webviewTerminateRenderProcess {
         })
       }
 
-      Web({ src: 'https://wrong.host.badssl.com', controller: this.controller })
-      .onOverScroll((event) => {
-          console.info('x = ' + event.xOffset)
-          console.info('y = ' + event.yOffset)
-          Utils.emitEvent(false, 5306)
-      })
+      Web({ src: $rawfile('indexdemotwo.html'), controller: this.controller })
+      .selectionMenuOptions(this.menuOptionArray)
+      .id('webCenter')
     }
   }
 }
