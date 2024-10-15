@@ -18,6 +18,7 @@ ohos_app_assist_suite("TerminateSelfWithResultHelper") {
     ":terminateselfwithresulthelper_js_assets",
     ":terminateselfwithresulthelper_resources",
   ]
+  ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "TerminateSelfWithResultHelper"
   part_name = "ability_runtime"
@@ -46,6 +47,7 @@ ohos_app_assist_suite("TerminateSelfWithResultSecondHelper") {
     ":terminateselfwithresultsecondhelper_js_assets",
     ":terminateselfwithresultsecondhelper_resources",
   ]
+  ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "TerminateSelfWithResultSecondHelper"
   part_name = "ability_runtime"
