@@ -18,6 +18,7 @@ import UsbDevicePipeJsFunctionsTestEx from './UsbDevicePipeJsunitEx.test.js'
 import UsbCoreJsFunctionsTest from './UsbCoreJsunit.test.js'
 import UsbCoreJsFunctionsTestEx from './UsbCoreJsunitEx.test.js'
 import UsbApiParamErrJsunitTest from './UsbApiParamErrJsunit.test'
+import UsbApiParamExceJsunitTest from './UsbApiParamExceJsunit.test'
 import UsbApiTransferCompatJsunitTest from './UsbApiTransferCompatJsunitTest.test'
 
 /* host test case */
@@ -26,6 +27,7 @@ UsbCoreJsFunctionsTest()
 UsbCoreJsFunctionsTestEx()
 UsbDevicePipeJsFunctionsTest()
 UsbDevicePipeJsFunctionsTestEx()
+UsbApiParamExceJsunitTest()
 UsbApiTransferCompatJsunitTest()
 UsbApiParamErrJsunitTest()
 }
