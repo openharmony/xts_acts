@@ -28,7 +28,7 @@ group("ActsAbilityAmsTest") {
       "systemappa:SystemAppA",
       "systemappb:SystemAppB",
       "terminalselfdelayhelper:TerminalSelfDelayHelper",
-      "terminateselfwithresulthelper:TerminateSelfWithResultHelper"
+      "terminateselfwithresulthelper:TerminateSelfWithResultHelper",
       "terminateselfwithresulttesthap:TerminateSelfWithResultTestHap",
       "terminateselfwithresulttesthap2:TerminateSelfWithResultTestHap2",
     ]

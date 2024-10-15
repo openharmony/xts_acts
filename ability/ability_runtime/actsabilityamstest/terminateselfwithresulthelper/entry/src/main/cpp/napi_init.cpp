@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 HiHope Open Source Organization
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -35,7 +35,6 @@ static napi_value Add(napi_env env, napi_callback_info info)
     napi_value sum;
     napi_create_double(env, value0 + value1, &sum);
     return sum;
-
 }
 
 EXTERN_C_START
