@@ -20,9 +20,9 @@ struct MyComponent_AZ {
   @State  hight: ResourceStr | Length = 50;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(30).key('StateHight')
+        .fontSize(20).margin(10).key('StateHight')
       Text("设置变量number类型50-->100")
       Button('change')
         .height(this.hight)
@@ -47,6 +47,6 @@ struct MyComponent_AZ {
         })
         .key('StateHeight3')
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

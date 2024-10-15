@@ -19,7 +19,7 @@ struct Child_AU {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
   @Consume Array1: Date | Array<Length> | Array<Object>
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
 
 
     }
@@ -37,10 +37,10 @@ struct Ancestors_AU {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array1)) + " number is " + JSON.stringify(this.Array1))
-        .fontSize(20).margin(30).key('ProvideArray1')
+        .fontSize(20).margin(10).key('ProvideArray1')
 
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array1)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(30).key('ProvideArray1New')
+        .fontSize(20).margin(10).key('ProvideArray1New')
 
 
       Text("设置变量Array<Length>类型[1]-->[10]")
@@ -79,6 +79,6 @@ struct Ancestors_AU {
         .key('state9')
 
       Child_AU()
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

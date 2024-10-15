@@ -69,14 +69,14 @@ struct Ancestors_CA1 {
   @Provide Array1: Date | Array<Length> | Array<Object> = [1];
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array1)) + " number is " + JSON.stringify(this.Array1))
-        .fontSize(20).margin(30).key('ConsumeArray1')
+        .fontSize(20).margin(10).key('ConsumeArray1')
 
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array1)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(30).key('ConsumeArray1New')
+        .fontSize(20).margin(10).key('ConsumeArray1New')
 
       Child_CA1()
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

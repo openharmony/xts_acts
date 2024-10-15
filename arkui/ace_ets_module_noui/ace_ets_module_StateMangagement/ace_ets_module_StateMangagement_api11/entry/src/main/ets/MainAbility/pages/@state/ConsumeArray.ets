@@ -64,15 +64,15 @@ struct Ancestors_CA {
   @Provide Array: Array<Number> | Array<boolean> | Boolean | Array<Resource> = [1];
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + JSON.stringify(this.Array))
-        .fontSize(20).margin(30).key('ConsumeArray')
+        .fontSize(20).margin(10).key('ConsumeArray')
 
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(30).key('ConsumeArrayNew')
+        .fontSize(20).margin(10).key('ConsumeArrayNew')
 
       Child_CA()
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }
