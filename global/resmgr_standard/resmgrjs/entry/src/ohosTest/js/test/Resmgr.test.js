@@ -78,7 +78,7 @@ describe('resMgrTest', function () {
     */
     it('getString_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getString($r('app.string.app_name').id, (err, value) => {
+            mgr.getString(0x2000008, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getString_test_001 ' + value);
                 expect(value).assertEqual('L2Test');
@@ -94,7 +94,7 @@ describe('resMgrTest', function () {
     */
     it('getString_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getString($r('app.string.app_name').id).then(value => {
+            mgr.getString(0x2000008).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getString_test_002 ' + value);
                 expect(value).assertEqual('L2Test');
@@ -110,7 +110,7 @@ describe('resMgrTest', function () {
     */
     it('getString_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getString($r('app.string.mainability_description').id, (err, value) => {
+            mgr.getString(0x2000009, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getString_test_003 ' + value);
                 expect(value).assertEqual('JS_Phone_Empty Feature Ability');
@@ -126,7 +126,7 @@ describe('resMgrTest', function () {
     */
     it('getStringValue_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringValue($r('app.string.app_name').id, (err, value) => {
+            mgr.getStringValue(0x2000008, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getStringValue_test_003 ' + value);
                 expect(value).assertEqual('L2Test');
@@ -142,7 +142,7 @@ describe('resMgrTest', function () {
     */
     it('getStringValue_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringValue($r('app.string.app_name').id).then(value => {
+            mgr.getStringValue(0x2000008).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getStringValue_test_004 ' + value);
                 expect(value).assertEqual('L2Test');
@@ -189,7 +189,7 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             try{
                 // 0x01000000 id is integer resource,throw 9001002 error code
-                mgr.getStringValue($r('app.integer.integer_1').id, (err, value) => {
+                mgr.getStringValue(0x2000000, (err, value) => {
                     if(err){
                         console.log('getStringValue_test_006 err.code' + err.code);
                         console.log('getStringValue_test_006 err.message' + err.message);
@@ -217,7 +217,7 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             try{
                 // 0x01000006 id re-ref,throw 9001006 error code
-                mgr.getStringValue($r('app.string.Test_name1').id, (err, value) => {
+                mgr.getStringValue(0x2000006, (err, value) => {
                     if(err){
                         console.log('getStringValue_test_007 err.code' + err.code);
                         console.log('getStringValue_test_007 err.message' + err.message);
@@ -301,9 +301,9 @@ describe('resMgrTest', function () {
     it('getStringValue_test_010', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                // 0x01000000 id is integer resource,throw 9001002 error code
+                // 0x02000000 id is integer resource,throw 9001002 error code
                 console.log('getStringValue_test_010 promise start');
-                mgr.getStringValue($r('app.integer.integer_1').id).then(value => {
+                mgr.getStringValue(0x2000000).then(value => {
                     console.log('getStringValue_test_010 promise try' + value);
                     expect(value !== null).assertTrue();
                     console.log('getStringValue_test_010 ' + value);
@@ -334,7 +334,7 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             try{
                 // 0x01000006 id re-ref,throw 9001006 error code
-                mgr.getStringValue($r('app.string.Test_name1').id).then(value => {
+                mgr.getStringValue(0x2000006).then(value => {
                     expect(value !== null).assertTrue();
                     console.log('getStringValue_test_011 ' + value);
                     expect(value).assertEqual('L2Test');
@@ -388,7 +388,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArray_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArray($r('app.strarray.sizeList').id, (err, value) => {
+            mgr.getStringArray(0x200000A, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArray_test_001 ' + value);
                 console.log('getStringArray_test_001 ' + value.length);
@@ -410,7 +410,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArray_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArray($r('app.strarray.sizeList').id).then(value => {
+            mgr.getStringArray(0x200000A).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArray_test_002 ' + value);
                 console.log('getStringArray_test_002 ' + value.length);
@@ -432,7 +432,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArrayValue_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArrayValue($r('app.strarray.sizeList').id, (err, value) => {
+            mgr.getStringArrayValue(0x200000A, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArrayValue_test_003 ' + value);
                 console.log('getStringArrayValue_test_003 ' + value.length);
@@ -454,7 +454,7 @@ describe('resMgrTest', function () {
     */
     it('getStringArrayValue_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArrayValue($r('app.strarray.sizeList').id).then(value => {
+            mgr.getStringArrayValue(0x200000A).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getStringArrayValue_test_004 ' + value);
                 console.log('getStringArrayValue_test_004 ' + value.length);
@@ -476,7 +476,7 @@ describe('resMgrTest', function () {
     */
     it('getMedia_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMedia($r('app.media.icon').id, (err, value) => {
+            mgr.getMedia(0x200001C, (err, value) => {
                 console.log('getMedia_test_001 ' + value.length);
                 expect(value.length > 0).assertTrue();
                 done();
@@ -492,7 +492,7 @@ describe('resMgrTest', function () {
     */
     it('getMedia_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMedia($r('app.media.icon').id).then(value => {
+            mgr.getMedia(0x200001C).then(value => {
                 console.log('getMedia_test_002 ' + value.length);
                 expect(value.length > 0).assertTrue();
                 done();
@@ -507,7 +507,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent($r('app.media.icon').id, (err, value) => {
+            mgr.getMediaContent(0x200001C, (err, value) => {
                 console.log('getMediaContent_test_003 ' + value.length);
                 expect(value.length > 0).assertTrue();
                 done();
@@ -522,7 +522,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent($r('app.media.icon').id).then(value => {
+            mgr.getMediaContent(0x200001C).then(value => {
                 console.log('getMediaContent_test_004 ' + value.length);
                 expect(value.length > 0).assertTrue();
                 done();
@@ -537,7 +537,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaBase64_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaBase64($r('app.media.icon').id, (err, value) => {
+            mgr.getMediaBase64(0x200001C, (err, value) => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaBase64_test_001 ' + value);
                 done();
@@ -552,7 +552,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaBase64_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaBase64($r('app.media.icon').id).then(value => {
+            mgr.getMediaBase64(0x200001C).then(value => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaBase64_test_002 ' + value);
                 done();
@@ -567,7 +567,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64($r('app.media.icon').id, (err, value) => {
+            mgr.getMediaContentBase64(0x200001C, (err, value) => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaContentBase64_test_003 ' + value);
                 done();
@@ -582,7 +582,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64($r('app.media.icon').id).then(value => {
+            mgr.getMediaContentBase64(0x200001C).then(value => {
                 expect(value.length > 0).assertTrue();
                 console.log('getMediaContentBase64_test_004 ' + value);
                 done();
@@ -900,7 +900,7 @@ describe('resMgrTest', function () {
     */
     it('getPluralString_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralString($r('app.plural.plural_name').id, 1, (error, value) => {
+            mgr.getPluralString(0x2000017, 1, (error, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralString_test_001 ' + value);
                 expect(value).assertEqual('1 test other');
@@ -916,7 +916,7 @@ describe('resMgrTest', function () {
     */
     it('getPluralString_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralString($r('app.plural.plural_name').id, 1).then(value => {
+            mgr.getPluralString(0x2000017, 1).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralString_test_002 ' + value);
                 expect(value).assertEqual('1 test other');
@@ -932,7 +932,7 @@ describe('resMgrTest', function () {
     */
     it('getPluralStringValue_test_003', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue($r('app.plural.plural_name').id, 1, (error, value) => {
+            mgr.getPluralStringValue(0x2000017, 1, (error, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralStringValue_test_003 ' + value);
                 expect(value).assertEqual('1 test other');
@@ -948,7 +948,7 @@ describe('resMgrTest', function () {
     */
     it('getPluralStringValue_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue($r('app.plural.plural_name').id, 1).then(value => {
+            mgr.getPluralStringValue(0x2000017, 1).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getPluralStringValue_test_004 ' + value);
                 expect(value).assertEqual('1 test other');
@@ -1024,7 +1024,7 @@ describe('resMgrTest', function () {
     */
     it('release_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getString($r('app.string.app_name').id, (err, value) => {
+            mgr.getString(0x2000008, (err, value) => {
                 expect(value !== null).assertTrue();
                 done();
             })
@@ -1207,7 +1207,7 @@ describe('resMgrTest', function () {
         resmgr.getResourceManager((error, mgr) => {
             try {
                 // param type not correct,throw 401 error code
-                mgr.closeRawFd($r('app.integer.integer_1').id).then(value => {
+                mgr.closeRawFd(0x2000000).then(value => {
                     console.log('closeRawFd_test_006 ' + value);
                     done();
                 }).catch(error => {
@@ -1397,7 +1397,7 @@ describe('resMgrTest', function () {
     */
     it('getStringSync_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getStringSync($r('app.string.app_name').id);
+            let value = mgr.getStringSync(0x2000008);
             expect(value !== null).assertTrue();
             console.log('getStringSync_test_001 ' + value);
             expect(value).assertEqual('L2Test');
@@ -1449,7 +1449,7 @@ describe('resMgrTest', function () {
     */
     it('getBoolean_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getBoolean($r('app.boolean.boolean_1').id);
+            let value = mgr.getBoolean(0x200000C);
             console.log('getBoolean_test_001 ' + value);
             expect(value).assertTrue();
             done();
@@ -1478,7 +1478,7 @@ describe('resMgrTest', function () {
     it('getinteger_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             console.log('getinteger_test_001 0');
-            let value = mgr.getNumber($r('app.integer.integer_1').id);
+            let value = mgr.getNumber(0x2000000);
             console.log('getinteger_test_001 1');
             console.log('getinteger_test_001 ' + value);
             expect(value).assertEqual(100);
@@ -1507,7 +1507,7 @@ describe('resMgrTest', function () {
     */
     it('getfloat_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber($r('app.float.float_1').id);
+            let value = mgr.getNumber(0x200001A);
             console.log('getfloat_test_001 ' + value);
             expect(value > 0).assertTrue();
             done();
@@ -1536,7 +1536,7 @@ describe('resMgrTest', function () {
      it('getDrawableDescriptor_test_0100', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.icon').id);
+                let value = mgr.getDrawableDescriptor(0x200001C);
                 console.log('getDrawableDescriptor_test_0100 ' + JSON.stringify(value));
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1555,7 +1555,7 @@ describe('resMgrTest', function () {
      it('getDrawableDescriptor_test_0120', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.icon').id, undefined);
+                let value = mgr.getDrawableDescriptor(0x200001C, undefined);
                 console.log('getDrawableDescriptor_test_0120 ' + JSON.stringify(value));
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1574,7 +1574,7 @@ describe('resMgrTest', function () {
      it('getDrawableDescriptor_test_0140', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.icon').id, null);
+                let value = mgr.getDrawableDescriptor(0x200001C, null);
                 console.log('getDrawableDescriptor_test_0140 ' + JSON.stringify(value));
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1593,7 +1593,7 @@ describe('resMgrTest', function () {
     it('getDrawableDescriptor_test_0200', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.icon').id,120);
+                let value = mgr.getDrawableDescriptor(0x200001C,120);
                 console.log('getDrawableDescriptor_test_0200 ' + JSON.stringify(value));
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1612,7 +1612,7 @@ describe('resMgrTest', function () {
     it('getDrawableDescriptor_test_0300', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.stratify').id);
+                let value = mgr.getDrawableDescriptor(0x200001D);
                 console.log('getDrawableDescriptor_test_0300 ' + value);
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1631,7 +1631,7 @@ describe('resMgrTest', function () {
     it('getDrawableDescriptor_test_0400', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.stratify').id, 240);
+                let value = mgr.getDrawableDescriptor(0x200001D, 240);
                 console.log('getDrawableDescriptor_test_0400 ' + value);
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1690,7 +1690,7 @@ describe('resMgrTest', function () {
     it('getDrawableDescriptor_test_0700', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.integer.integer_1').id);
+                let value = mgr.getDrawableDescriptor(0x2000000);
                 console.log('getDrawableDescriptor_test_0700 ' + value);
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1710,7 +1710,7 @@ describe('resMgrTest', function () {
     it('getDrawableDescriptor_test_0800', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.stratify').id, 130);
+                let value = mgr.getDrawableDescriptor(0x200001D, 130);
                 console.log('getDrawableDescriptor_test_0800 ' + value);
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1730,7 +1730,7 @@ describe('resMgrTest', function () {
     it('getDrawableDescriptor_test_0900', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.stratify').id, '120');
+                let value = mgr.getDrawableDescriptor(0x200001D, '120');
                 console.log('getDrawableDescriptor_test_0900 ' + value);
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1750,7 +1750,7 @@ describe('resMgrTest', function () {
     it('getDrawableDescriptor_test_1000', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptor($r('app.media.stratify').id, 0);
+                let value = mgr.getDrawableDescriptor(0x200001D, 0);
                 console.log('getDrawableDescriptor_test_1000 ' + value);
                 expect(value != null).assertTrue();
             }catch(error){
@@ -1883,7 +1883,7 @@ describe('resMgrTest', function () {
     it('getDrawableDescriptor_test_1500', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getDrawableDescriptorByName($r('app.media.stratify').id);
+                let value = mgr.getDrawableDescriptorByName(0x200001D);
                 console.log('getDrawableDescriptor_test_1500 ' + value);
                 expect(value != null).assertTrue();
             }catch(error){
@@ -2198,7 +2198,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_0100', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent($r('app.media.icon').id, 0 , (err, value) => {
+            mgr.getMediaContent(0x200001C, 0 , (err, value) => {
                 console.log('getMediaContent_test_0100 ' + value);
                 expect(value.length > 0).assertTrue();
                 done();
@@ -2213,7 +2213,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContent_test_0200', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent($r('app.media.icon').id, 0).then(value => {
+            mgr.getMediaContent(0x200001C, 0).then(value => {
                 console.log('getMediaContent_test_0200 ' + value);
                 expect(value.length > 0).assertTrue();
                 done();
@@ -2228,7 +2228,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_0100', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64($r('app.media.icon').id, 0 , (err, value) => {
+            mgr.getMediaContentBase64(0x200001C, 0 , (err, value) => {
                 console.log('getMediaContentBase64_test_0100 ' + value);
                 expect(value.length > 0).assertTrue();
                 done();
@@ -2243,7 +2243,7 @@ describe('resMgrTest', function () {
     */
     it('getMediaContentBase64_test_0200', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64($r('app.media.icon').id, 0).then(value => {
+            mgr.getMediaContentBase64(0x200001C, 0).then(value => {
                 console.log('getMediaContentBase64_test_0200 ' + value);
                 expect(value.length > 0).assertTrue();
                 done();
@@ -2270,7 +2270,7 @@ describe('resMgrTest', function () {
     */
     it('getColor_test_0100', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getColor($r('app.color.color_test1').id, (err, value) => {
+            mgr.getColor(0x2000010, (err, value) => {
                 expect(value !== null).assertTrue();
                 console.log('getColor_test_001 ' + value);
                 expect(value).assertEqual(4294902015);
@@ -2330,7 +2330,7 @@ describe('resMgrTest', function () {
     it('getColor_test_0130', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                mgr.getColor($r('app.integer.integer_1').id, (err, value) => {
+                mgr.getColor(0x2000000, (err, value) => {
                     console.log('getColor_test_0130 err.code ' + err.code + '-');
                     console.log('getColor_test_0130 err.message ' + err.message + '-');
                     expect(err.code == 9001002).assertTrue();
@@ -2352,7 +2352,7 @@ describe('resMgrTest', function () {
     it('getColor_test_0140', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                mgr.getColor($r('app.color.color_test5').id, (err, value) => {
+                mgr.getColor(0x2000014, (err, value) => {
                     console.log('getColor_test_0140 err.code ' + err.code + '-');
                     console.log('getColor_test_0140 err.message ' + err.message + '-');
                     expect(err.code == 9001002).assertTrue();
@@ -2374,7 +2374,7 @@ describe('resMgrTest', function () {
     it('getColor_test_0150', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                mgr.getColor($r('app.color.color_test3').id, (err, value) => {
+                mgr.getColor(0x2000012, (err, value) => {
                     console.log('getColor_test_0150 err.code ' + err.code + '-');
                     console.log('getColor_test_0150 err.message ' + err.message + '-');
                     expect(err.code == 9001006).assertTrue();
@@ -2395,7 +2395,7 @@ describe('resMgrTest', function () {
     */
     it('getColor_test_0200', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            mgr.getColor($r('app.color.color_test1').id).then(value => {
+            mgr.getColor(0x2000010).then(value => {
                 expect(value !== null).assertTrue();
                 console.log('getColor_test_0200 ' + value);
                 expect(value).assertEqual(4294902015);
@@ -2456,7 +2456,7 @@ describe('resMgrTest', function () {
     it('getColor_test_0230', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                mgr.getColor($r('app.integer.integer_1').id).then(value => {
+                mgr.getColor(0x2000000).then(value => {
                 }).catch(err => {
                     console.log('getColor_test_0230 err.code ' + err.code + '-');
                     console.log('getColor_test_0230 err.message ' + err.message + '-');
@@ -2479,7 +2479,7 @@ describe('resMgrTest', function () {
     it('getColor_test_0240', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                mgr.getColor($r('app.color.color_test5').id).then(value => {
+                mgr.getColor(0x2000014).then(value => {
                 }).catch(err => {
                     console.log('getColor_test_0240 err.code ' + err.code + '-');
                     console.log('getColor_test_0240 err.message ' + err.message + '-');
@@ -2502,7 +2502,7 @@ describe('resMgrTest', function () {
     it('getColor_test_0250', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                mgr.getColor($r('app.color.color_test3').id).then(value => {
+                mgr.getColor(0x2000012).then(value => {
                 }).catch(err => {
                     console.log('getColor_test_0250 err.code ' + err.code + '-');
                     console.log('getColor_test_0250 err.message ' + err.message + '-');
@@ -2578,7 +2578,7 @@ describe('resMgrTest', function () {
     it('getColorSync_test_004', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getColorSync($r('app.integer.integer_1').id);
+                let value = mgr.getColorSync(0x2000000);
             }catch(err){
                 console.log('getColorSync_test_004 err.code' + err.code);
                 console.log('getColorSync_test_004 err.message' + err.message);
@@ -2597,7 +2597,7 @@ describe('resMgrTest', function () {
     it('getColorSync_test_005', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getColorSync($r('app.color.color_test5').id);
+                let value = mgr.getColorSync(0x2000014);
             }catch(err){
                 console.log('getColorSync_test_005 err.code' + err.code);
                 console.log('getColorSync_test_005 err.message' + err.message);
@@ -2616,7 +2616,7 @@ describe('resMgrTest', function () {
     it('getColorSync_test_006', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getColorSync($r('app.color.color_test3').id);
+                let value = mgr.getColorSync(0x2000012);
             }catch(err){
                 console.log('getColorSync_test_006 err.code' + err.code);
                 console.log('getColorSync_test_006 err.message' + err.message);
@@ -2651,7 +2651,7 @@ describe('resMgrTest', function () {
     it('getColorByName_test_0110', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                mgr.getColorByName($r('app.color.color_test1').id, (err, value) => {
+                mgr.getColorByName(0x2000010, (err, value) => {
                     done();
                 })
             }catch(err){
@@ -2776,7 +2776,7 @@ describe('resMgrTest', function () {
     it('getColorByName_test_0210', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                mgr.getColorByName($r('app.color.color_test1').id).then(value => {
+                mgr.getColorByName(0x2000010).then(value => {
                     done();
                 })
             }catch(err){
@@ -2904,7 +2904,7 @@ describe('resMgrTest', function () {
     it('getColorByNameSync_test_002', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
             try{
-                let value = mgr.getColorByNameSync($r('app.color.color_test1').id);
+                let value = mgr.getColorByNameSync(0x2000010);
             }catch(err){
                 console.log('getColorByNameSync_test_002 err.code' + err.code);
                 console.log('getColorByNameSync_test_002 err.message' + err.message);
