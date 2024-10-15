@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,50 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsThirdPartyUBSanTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":acts_third_party_ubsan_js_assets",
-    ":acts_third_party_ubsan_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("ActsUBSan_ndk_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsThirdPartyUBSanMainTest"
+  subsystem_name = "thirdparty"
+  part_name = "musl"
+}
+
+ohos_js_app_suite("ActsThirdPartyUBSanTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsThirdPartyUBSanTest"
   subsystem_name = "thirdparty"
   part_name = "musl"
-  shared_libraries = [
-    "./entry/src/main/cpp:ubalignment",
-    "./entry/src/main/cpp:ubbool",
-    "./entry/src/main/cpp:ubdivide0",
-    "./entry/src/main/cpp:ubbounds",
-    "./entry/src/main/cpp:ubenum",
-    "./entry/src/main/cpp:ubfloatCastOverflow",
-    "./entry/src/main/cpp:ubpointerOverflow",
-    "./entry/src/main/cpp:ubobjectSize",
-    "./entry/src/main/cpp:ubnull",
-    "./entry/src/main/cpp:ubnonnullAttribute",
-    "./entry/src/main/cpp:ubreturnNonnullAttribute",
-    "./entry/src/main/cpp:ubshift",
-    "./entry/src/main/cpp:ubintegerOverflow",
-    "./entry/src/main/cpp:ubvlaBound",
-  ]
-}
-
-ohos_app_scope("acts_third_party_ubsan_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("acts_third_party_ubsan_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("acts_third_party_ubsan_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":acts_third_party_ubsan_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  deps = [ ":ActsUBSan_ndk_main" ]
 }
