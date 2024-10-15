@@ -23,7 +23,9 @@ group("ActsAceWebDevCloudServiceWebControllerGroupTest") {
       "ace_ets_web_dev_cloudservice_webController_group_one:ActsAceWebDevCloudServiceWebControllerGroupOneTest",
       "ace_ets_web_dev_cloudservice_webController_group_seven:ActsAceWebDevCloudServiceWebControllerGroupSevenTest",
       "ace_ets_web_dev_cloudservice_webController_group_six:ActsAceWebDevCloudServiceWebControllerGroupSixTest",
+      "ace_ets_web_dev_cloudservice_webController_group_thirteen:ActsAceWebDevCloudServiceWebControllerGroupThirteenTest",
       "ace_ets_web_dev_cloudservice_webController_group_three:ActsAceWebDevCloudServiceWebControllerGroupThreeTest",
+      "ace_ets_web_dev_cloudservice_webController_group_twelve:ActsAceWebDevCloudServiceWebControllerGroupTwelveTest",
       "ace_ets_web_dev_cloudservice_webController_group_two:ActsAceWebDevCloudServiceWebControllerGroupTwoTest",
       "ace_ets_web_webapi_one:ActsAceWebWebapiOne",
     ]

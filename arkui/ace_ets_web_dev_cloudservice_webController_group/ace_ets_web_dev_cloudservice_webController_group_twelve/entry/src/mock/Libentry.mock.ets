@@ -12,11 +12,10 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+const NativeMock: Record<string, Object> = {
+  'add': (a: number, b: number) => {
+    return a + b;
+  },
+};
 
-import GetCurrentSpeed from './GetCurrentSpeed.test';
-import SetConnectionTimeOut from './SetConnectionTimeOut.test';
-
-export default function testsuite() {
-  GetCurrentSpeed();
-  SetConnectionTimeOut();
-}
+export default NativeMock;

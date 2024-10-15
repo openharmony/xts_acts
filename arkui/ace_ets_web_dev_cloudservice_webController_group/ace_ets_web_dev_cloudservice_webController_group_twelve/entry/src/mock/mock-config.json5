@@ -12,11 +12,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
-import GetCurrentSpeed from './GetCurrentSpeed.test';
-import SetConnectionTimeOut from './SetConnectionTimeOut.test';
-
-export default function testsuite() {
-  GetCurrentSpeed();
-  SetConnectionTimeOut();
+{
+  "libentry.so": {
+    "source": "src/mock/Libentry.mock.ets"
+  }
 }

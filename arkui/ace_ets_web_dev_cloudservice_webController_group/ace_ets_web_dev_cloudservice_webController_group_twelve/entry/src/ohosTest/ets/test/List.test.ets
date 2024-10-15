@@ -13,10 +13,10 @@
 * limitations under the License.
 */
 
-import GetCurrentSpeed from './GetCurrentSpeed.test';
-import SetConnectionTimeOut from './SetConnectionTimeOut.test';
+import GetPercentComplete from './GetPercentComplete.test';
+import GetPercentCompleteSecond from './GetPercentCompleteSecond.test';
 
 export default function testsuite() {
-  GetCurrentSpeed();
-  SetConnectionTimeOut();
+  GetPercentComplete();
+  GetPercentCompleteSecond();
 }

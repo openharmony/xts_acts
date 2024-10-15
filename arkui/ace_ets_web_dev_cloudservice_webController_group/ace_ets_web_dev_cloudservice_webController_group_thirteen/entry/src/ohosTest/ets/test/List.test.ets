@@ -13,10 +13,10 @@
 * limitations under the License.
 */
 
-import GetCurrentSpeed from './GetCurrentSpeed.test';
-import SetConnectionTimeOut from './SetConnectionTimeOut.test';
+import SetDownloadDelegate from './SetDownloadDelegate.test';
+import SetDownloadDelegateSecond from './SetDownloadDelegateSecond.test';
 
 export default function testsuite() {
-  GetCurrentSpeed();
-  SetConnectionTimeOut();
+  SetDownloadDelegate();
+  SetDownloadDelegateSecond();
 }

@@ -12,11 +12,23 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
-import GetCurrentSpeed from './GetCurrentSpeed.test';
-import SetConnectionTimeOut from './SetConnectionTimeOut.test';
-
-export default function testsuite() {
-  GetCurrentSpeed();
-  SetConnectionTimeOut();
+{
+  "files": [
+    "**/*.ets"
+  ],
+  "ignore": [
+    "**/src/ohosTest/**/*",
+    "**/src/test/**/*",
+    "**/src/mock/**/*",
+    "**/node_modules/**/*",
+    "**/oh_modules/**/*",
+    "**/build/**/*",
+    "**/.preview/**/*"
+  ],
+  "ruleSet": [
+    "plugin:@performance/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+  }
 }
