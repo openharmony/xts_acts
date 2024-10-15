@@ -16,6 +16,7 @@
                 "TerminateSelfWithResultTestHap.hap",
                 "TerminateSelfWithResultTestHap2.hap",
                 "TerminateSelfWithResultHelper.hap",
+                "TerminateSelfWithResultSecondHelper.hap"
                 "TerminalSelfDelayHelper.hap"
             ],
             "type": "AppInstallKit",
