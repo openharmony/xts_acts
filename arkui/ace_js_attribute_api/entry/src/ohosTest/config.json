@@ -1,21 +1,17 @@
 {
     "app": {
         "bundleName": "com.example.acejsapi",
-        "vendor": "example",
+        "vendor": "acts",
         "version": {
             "code": 1000000,
             "name": "1.0.0"
-        },
-        "apiVersion": {
-            "compatible": 4,
-            "target": 8
         }
     },
     "deviceConfig": {},
     "module": {
         "package": "com.example.acejsapi",
-        "name": ".entry",
-        "mainAbility": ".MainAbility",
+        "name": ".entry_test",
+        "mainAbility": ".TestAbility",
         "deviceType": [
             "tablet",
             "default",
@@ -25,8 +21,8 @@
         ],
         "distro": {
             "deliveryWithInstall": true,
-            "moduleName": "entry",
-            "moduleType": "entry",
+            "moduleName": "entry_test",
+            "moduleType": "feature",
             "installationFree": false
         },
         "abilities": [
@@ -87,7 +83,7 @@
                     "pages/viewModel1/comp/comp",
                     "pages/list/router/index"
                 ],
-                "name": "default",
+                "name": ".MainAbility",
                 "window": {
                     "designWidth": 720,
                     "autoDesignWidth": true
