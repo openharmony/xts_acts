@@ -27,9 +27,9 @@ struct MyComponent_AL {
   @State  count: number | Object | String | Date | Boolean = 0;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.count)) + " number is " + JSON.stringify(this.count))
-        .fontSize(20).margin(30).key('StateNumber')
+        .fontSize(20).margin(10).key('StateNumber')
 
 
       Text("变量赋值number类型")
@@ -67,6 +67,6 @@ struct MyComponent_AL {
         })
         .key('state5')
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

@@ -22,10 +22,10 @@ struct Child_AD {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + JSON.stringify(this.Array))
-        .fontSize(20).margin(30).key('PropArray')
+        .fontSize(20).margin(10).key('PropArray')
 
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(30).key('PropArrayNew')
+        .fontSize(20).margin(10).key('PropArrayNew')
       Text("设置变量Array<Number>类型[1]-->[10]")
       Button('change')
         .onClick(() => {
@@ -65,10 +65,10 @@ struct Library_AD {
 
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
       Child_AD({Array: this.Array})
 
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

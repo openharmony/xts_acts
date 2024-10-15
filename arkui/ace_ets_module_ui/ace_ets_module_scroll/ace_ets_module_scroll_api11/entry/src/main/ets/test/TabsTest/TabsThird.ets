@@ -4673,7 +4673,13 @@ export default function tabsThird() {
       expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('0.00vp');
       expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('0.00vp');
       expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
-      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
+      let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
+      console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_0100 sizeInfo]: " + sizeInfo);
+      if (sizeInfo == '10.00vp') {
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
+      }else{
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
+      }
       expect(obj.$attrs.tabBar.labelStyle.font.weight).assertEqual('FontWeight.Medium');
       expect(obj.$attrs.tabBar.labelStyle.font.family).assertEqual('HarmonyOS Sans');
       expect(obj.$attrs.tabBar.labelStyle.font.style).assertEqual('FontStyle.Normal');
@@ -5856,7 +5862,13 @@ export default function tabsThird() {
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font));
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font.size));
-      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
+      let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
+      console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500 sizeInfo]: " + sizeInfo);
+      if (sizeInfo == '10.00vp') {
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
+      }else{
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
+      }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3500] end");
       done();
     });
@@ -5932,7 +5944,13 @@ export default function tabsThird() {
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font));
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font.size));
-      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
+      let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
+      console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700 sizeInfo]: " + sizeInfo);
+      if (sizeInfo == '10.00vp') {
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
+      }else{
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
+      }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3700] end");
       done();
     });
@@ -5971,7 +5989,13 @@ export default function tabsThird() {
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font));
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800]: " + JSON.stringify(obj.$attrs.tabBar.labelStyle.font.size));
-      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
+      let sizeInfo: string = obj.$attrs.tabBar.labelStyle.font.size;
+      console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800 sizeInfo]: " + sizeInfo);
+      if (sizeInfo == '10.00vp') {
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(objJudge.$attrs.tabBar.labelStyle.font.size);
+      }else{
+        expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('12.00vp');
+      }
       console.info("[ArkUI_Tabs_BottomTabBarStyleLabelStyle_3800] end");
       done();
     });

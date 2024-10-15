@@ -82,12 +82,12 @@ struct Ancestors_CC {
   // @Provide装饰的联合类型count由入口组件Ancestors提供其后代组件
   @Provide color: undefined | null | ResourceColor = Color.Pink;
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.color)) + " number is " + JSON.stringify(this.color))
-        .fontSize(20).margin(30).key('ConsumeColor')
+        .fontSize(20).margin(10).key('ConsumeColor')
 
       Child_CC()
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

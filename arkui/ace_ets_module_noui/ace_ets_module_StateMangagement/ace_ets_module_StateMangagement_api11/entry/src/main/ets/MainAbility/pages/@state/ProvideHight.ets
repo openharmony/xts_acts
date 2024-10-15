@@ -20,7 +20,7 @@ struct Child_AT {
   @Consume hight: ResourceStr | Length;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
 
 
     }
@@ -37,7 +37,7 @@ struct Ancestors_AT {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(30).key('ProvideHight')
+        .fontSize(20).margin(10).key('ProvideHight')
       Text("设置变量number类型50-->100")
       Button('change')
         .height(this.hight)
@@ -63,6 +63,6 @@ struct Ancestors_AT {
         .key('ProvideHeight3')
 
       Child_AT()
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }
