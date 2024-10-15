@@ -14,7 +14,9 @@
                 "ActsTerminateselfWithResultTest.hap",
                 "ActsTerminateselfWithResultEntry.hap",
                 "TerminateSelfWithResultTestHap.hap",
-                "TerminateSelfWithResultTestHap2.hap"
+                "TerminateSelfWithResultTestHap2.hap",
+                "TerminateSelfWithResultHelper.hap",
+                "TerminalSelfDelayHelper.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
