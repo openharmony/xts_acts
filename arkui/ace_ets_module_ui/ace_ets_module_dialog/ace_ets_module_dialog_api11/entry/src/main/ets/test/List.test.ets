@@ -79,6 +79,7 @@ import responseRegionJsunit from './MenuTest/ResponseRegionJsunit.test';
 import bindMenuJsunitt from './MenuTest/BindMenuJsunitt.test.ets';
 import bindPopupJsunit from './MenuTest/BindPopupJsunit.test.ets';
 import CustomDialogRouter from './customDialogTest/CustomDialogRouter.test'
+import menuDividerTest from './MenuTest/menuDivider.test.ets'
 
 export default function testsuite() {
   responseRegionJsunit();
@@ -148,4 +149,5 @@ export default function testsuite() {
   bindMenuJsunitt()
   bindPopupJsunit();
   CustomDialogRouter();
+  menuDividerTest();
 }
