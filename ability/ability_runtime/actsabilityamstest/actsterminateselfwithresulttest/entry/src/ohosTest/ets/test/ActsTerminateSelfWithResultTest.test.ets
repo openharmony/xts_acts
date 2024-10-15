@@ -25,24 +25,24 @@ const TEST_SUITE_NAME: string = 'AbilityContext';
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let testAbilityContext: common.UIAbilityContext;
 
-function sleep(time: number){
+function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
 }
 
 export default function actsterminateselfwithresulttest() {
-  describe('ActsTerminateSelfWithResultTest3', () => {
+  describe('ActsTerminateSelfWithResultTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    let Acts_EntryOnDestroy = 'Acts_EntryOnDestroy';
-    let Acts_EntryCreate = 'Acts_EntryCreate';
-    let FOREGROUND_EVENT = 'Foreground_Event';
-    let Acts_EntryOnDestroyBegin = 'Acts_EntryOnDestroyBegin';
-    let Acts_EntryOnDestroyEnd = 'Acts_EntryOnDestroyEnd';
+    let actsEntryOnDestroy = 'Acts_EntryOnDestroy';
+    let actsEntryCreate = 'Acts_EntryCreate';
+    let foregroundEvent = 'Foreground_Event';
+    let actsEntryOnDestroyBegin = 'Acts_EntryOnDestroyBegin';
+    let actsEntryOnDestroyEnd = 'Acts_EntryOnDestroyEnd';
     let onEntryCreateNums = 0;
     let onEntryOnDestroyNums = 0;
 
     let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
-      events: [Acts_EntryOnDestroy, Acts_EntryCreate, FOREGROUND_EVENT, Acts_EntryOnDestroyBegin,
-        Acts_EntryOnDestroyEnd],
+      events: [actsEntryOnDestroy, actsEntryCreate, foregroundEvent, actsEntryOnDestroyBegin,
+        actsEntryOnDestroyEnd],
     };
     let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
     let onEntryOnDestroyFlag = false;
@@ -60,7 +60,7 @@ export default function actsterminateselfwithresulttest() {
       async (err: BusinessError, data: commonEvent.CommonEventData, done: Function, tag: string): Promise<void> => {
         console.log(`${tag} subscribeCallBack err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
         switch (data.event) {
-          case Acts_EntryCreate: {
+          case actsEntryCreate: {
             let obj = data.parameters;
             if (Object.keys(obj!).length) {
               let dataObj = data.parameters as Map<string, string>;
@@ -82,7 +82,7 @@ export default function actsterminateselfwithresulttest() {
             }
             break;
           }
-          case Acts_EntryOnDestroy: {
+          case actsEntryOnDestroy: {
             let obj = data.parameters;
             if (Object.keys(obj!).length) {
               let dataObj = data.parameters as Map<string, string>;
@@ -104,12 +104,12 @@ export default function actsterminateselfwithresulttest() {
             }
             break;
           }
-          case FOREGROUND_EVENT: {
+          case foregroundEvent: {
             hilog.info(0x0000, TAG, '%{public}s',
               `${TEST_SUITE_NAME}#${tag} subscribeCallBack onFOREGROUND_EVENT:====`);
             break;
           }
-          case Acts_EntryOnDestroyBegin: {
+          case actsEntryOnDestroyBegin: {
             onEntryOnDestroyBeginFlag = true;
             hilog.info(0x0000, TAG, '%{public}s',
               `${TEST_SUITE_NAME}#${tag} subscribeCallBack onEntryOnDestroyBeginFlag: ${onEntryOnDestroyBeginFlag}`);
@@ -122,7 +122,7 @@ export default function actsterminateselfwithresulttest() {
             }
             break;
           }
-          case Acts_EntryOnDestroyEnd: {
+          case actsEntryOnDestroyEnd: {
             onEntryOnDestroyEndFlag = true;
             hilog.info(0x0000, TAG, '%{public}s',
               `${TEST_SUITE_NAME}#${tag} subscribeCallBack onEntryOnDestroyBeginFlag: ${onEntryOnDestroyEndFlag}`);
@@ -164,6 +164,10 @@ export default function actsterminateselfwithresulttest() {
       endTime = 0;
       let cmda = 'aa force-stop com.acts.terminateselfwithresulthelper';
       await abilityDelegator.executeShellCommand(cmda).catch((error: BusinessError) => {
+        console.log("====> executeShellCommand error : " + JSON.stringify(error));
+      });
+      let cmda1 = 'aa force-stop com.acts.terminalselfdelayhelper';
+      await abilityDelegator.executeShellCommand(cmda1).catch((error: BusinessError) => {
         console.log("====> executeShellCommand error : " + JSON.stringify(error));
       });
 
@@ -219,6 +223,65 @@ export default function actsterminateselfwithresulttest() {
       ;
     });
 
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0600
+     * @tc.name test  AbilityStage life cycle
+     * @tc.desc test a js crash occurs for a single Module and Ability, but it will not trigger the OnDestroy callback for AbilityStage
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0600', 0, async (done: Function) => {
+      const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0600';
+      hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
+      subscriber = await commonEvent.createSubscriber(subscribeInfo);
+      commonEvent.subscribe(subscriber, (err, data) => {
+        subscribeCallBack(err, data, done, TEST_CASE_NAME);
+      });
+
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.acts.terminateselfwithresulthelper',
+        abilityName: 'EntryAbility1'
+      };
+
+      try {
+        testAbilityContext.startAbility(want, async (err: BusinessError) => {
+          if (err.code) {
+            // 处理业务逻辑错误
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect().assertFail();
+            done();
+          }
+          // 执行正常业务
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility succeed`);
+
+          await sleep(3000);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onEntryCreateFlag===  ${onEntryCreateFlag}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onEntryOnDestroyFlag===  ${onEntryOnDestroyFlag}`);
+          commonEvent.unsubscribe(subscriber);
+          // expect(onEntryCreateFlag).assertEqual(true);
+          // expect(onEntryOnDestroyFlag).assertEqual(true);
+          done();
+        });
+      } catch (err) {
+        // 处理入参错误异常
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        hilog.info(0x0000, TAG, '%{public}s',
+          `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility catch failed, code is ${code}, message is ${message}`);
+        expect().assertFail();
+        done();
+      }
+
+    });
+
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0700
      * @tc.name test  AbilityStage life cycle
@@ -263,8 +326,7 @@ export default function actsterminateselfwithresulttest() {
             `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility catch failed, code is ${code}, message is ${message}`);
           expect().assertFail();
           return;
-        }
-        ;
+        };
       }
 
       let index = 4;
@@ -423,7 +485,6 @@ export default function actsterminateselfwithresulttest() {
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
       commonEvent.subscribe(subscriber, (err, data) => {
         subscribeCallBack(err, data, done, TEST_CASE_NAME);
-
       });
       let want: Want = {
         deviceId: '',

@@ -15,36 +15,25 @@
 
 #include "napi/native_api.h"
 
-int test(){
-    int* ptr = nullptr;
-    // 尝试访问空指针，这通常会导致程序崩溃
-    *ptr = 10;
-    return 0;
-}
-
 static napi_value Add(napi_env env, napi_callback_info info)
 {
-    test();
     size_t argc = 2;
+    int* ptr = nullptr;
+    int ten = 10;
+    // 尝试访问空指针，这通常会导致程序崩溃
+    *ptr = ten;
     napi_value args[2] = {nullptr};
-
     napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-
     napi_valuetype valuetype0;
     napi_typeof(env, args[0], &valuetype0);
-
     napi_valuetype valuetype1;
     napi_typeof(env, args[1], &valuetype1);
-
     double value0;
     napi_get_value_double(env, args[0], &value0);
-
     double value1;
     napi_get_value_double(env, args[1], &value1);
-
     napi_value sum;
     napi_create_double(env, value0 + value1, &sum);
-
     return sum;
 
 }

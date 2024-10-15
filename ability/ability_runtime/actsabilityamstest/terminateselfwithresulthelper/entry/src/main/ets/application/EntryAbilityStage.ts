@@ -17,8 +17,8 @@ import AbilityStage from '@ohos.app.ability.AbilityStage';
 import commonEvent from '@ohos.commonEventManager';
 import hilog from '@ohos.hilog';
 
-let Acts_EntryOnDestroy = 'Acts_EntryOnDestroy';
-let Acts_EntryCreate = 'Acts_EntryCreate';
+let actsEntryOnDestroy = 'Acts_EntryOnDestroy';
+let actsEntryCreate = 'Acts_EntryCreate';
 let tag = '[ACTS_StartAbility EntryAbilityStage]';
 
 function sleep(delay: number){
@@ -31,7 +31,7 @@ function sleep(delay: number){
 export default class EntryAbilityStage extends AbilityStage {
   onCreate(): void{
     hilog.info(0x0000, 'testTag', '%{public}s', `EntryAbilityStage onCreate`);
-    commonEvent.publish(Acts_EntryCreate, (err) => {
+    commonEvent.publish(actsEntryCreate, (err) => {
       hilog.info(0x0000, tag, '%{public}s', `EntryAbilityStage Acts_EntryCreate publish err:  ${JSON.stringify(err)}`);
     })
 
@@ -39,7 +39,7 @@ export default class EntryAbilityStage extends AbilityStage {
 
   onDestroy(): void{
     hilog.info(0x0000, 'testTag', '%{public}s', `EntryAbilityStage onDestroy`);
-    commonEvent.publish(Acts_EntryOnDestroy, (err) => {
+    commonEvent.publish(actsEntryOnDestroy, (err) => {
       hilog.info(0x0000, tag, '%{public}s',
         `EntryAbilityStage Acts_EntryOnDestroy publish err:  ${JSON.stringify(err)}`);
     })

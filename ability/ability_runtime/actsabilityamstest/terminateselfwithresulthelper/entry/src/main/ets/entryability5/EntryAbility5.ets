@@ -18,8 +18,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import commonEvent from '@ohos.commonEventManager';
 
-let Acts_EntryOnDestroyBegin = 'Acts_EntryOnDestroyBegin';
-let Acts_EntryOnDestroyEnd = 'Acts_EntryOnDestroyEnd';
+let actsEntryOnDestroyBegin = 'Acts_EntryOnDestroyBegin';
+let actsEntryOnDestroyEnd = 'Acts_EntryOnDestroyEnd';
 let tag = '[ACTS_StartAbility EntryAbilityStage]';
 
 export default class EntryAbility5 extends UIAbility {
@@ -35,7 +35,7 @@ export default class EntryAbility5 extends UIAbility {
         time: startTime,
       }
     };
-    commonEvent.publish(Acts_EntryOnDestroyBegin, commonEventDataStart, (err) => {
+    commonEvent.publish(actsEntryOnDestroyBegin, commonEventDataStart, (err) => {
       hilog.info(0x0000, tag, '%{public}s', `Acts_EntryOnDestroyBegin publish err:  ${JSON.stringify(err)}`);
     })
     this.sleep(1000);
@@ -45,22 +45,9 @@ export default class EntryAbility5 extends UIAbility {
         time: endTime,
       }
     };
-    commonEvent.publish(Acts_EntryOnDestroyEnd, commonEventDataEnd, (err) => {
+    commonEvent.publish(actsEntryOnDestroyEnd, commonEventDataEnd, (err) => {
       hilog.info(0x0000, tag, '%{public}s', `Acts_EntryOnDestroyEnd publish err:  ${JSON.stringify(err)}`);
-    })
-
-    // this.sleep(1000).then(() => {
-    //   hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbilityStage onDestroy end');
-    //   let endTime = new Date().getTime();
-    //   let commonEventDataEnd: commonEvent.CommonEventPublishData = {
-    //     parameters: {
-    //       time: endTime,
-    //     }
-    //   };
-    //   commonEvent.publish(Acts_EntryOnDestroyEnd, commonEventDataEnd, (err) => {
-    //     hilog.info(0x0000, tag, '%{public}s', `Acts_EntryOnDestroyEnd publish err:  ${JSON.stringify(err)}`);
-    //   })
-    // })
+    });
 
   }
 
