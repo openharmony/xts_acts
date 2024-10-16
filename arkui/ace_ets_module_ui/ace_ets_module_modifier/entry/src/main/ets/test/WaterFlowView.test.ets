@@ -180,7 +180,8 @@ export default function waterFlowView() {
       let strJson = getInspectorByKey('WaterFlowKey1');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[waterFlowViewJsunit_0900] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs['layoutDirection ']).assertEqual("FlexDirection.Column");
+      console.info("[waterFlowViewJsunit_0900] ['layoutDirection']: " + JSON.stringify(obj.$attrs['layoutDirection']));
+      expect(obj.$attrs['layoutDirection']).assertEqual("FlexDirection.Column");
       console.info('[waterFlowViewJsunit_0900] END');
       done();
     });
