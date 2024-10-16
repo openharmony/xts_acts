@@ -11,7 +11,7 @@
   "kits": [
     {
       "test-file-name": [
-        "XtsUIExtensionExitReasonTest.hap",
+        "ActsXtsUIExtensionExitReasonTest.hap",
         "XtsUIExtensionExitReasonRely.hap"
       ],
       "type": "AppInstallKit",
