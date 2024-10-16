@@ -619,7 +619,7 @@ static napi_value OH_Rdb_SetDatabaseDir_Param_0900(napi_env env, napi_callback_i
 
 static napi_value OH_Rdb_SetDatabaseDir_Param_1000(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_1000 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, "*&^%$#@!*(()-");
@@ -789,7 +789,7 @@ static napi_value OH_Rdb_SetStoreName_Param_0700(napi_env env, napi_callback_inf
 
 static napi_value OH_Rdb_SetStoreName_Param_0800(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0700 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0800 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -816,7 +816,7 @@ static napi_value OH_Rdb_SetStoreName_Param_0800(napi_env env, napi_callback_inf
 
 static napi_value OH_Rdb_SetStoreName_Param_0900(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0700 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0800 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -843,7 +843,7 @@ static napi_value OH_Rdb_SetStoreName_Param_0900(napi_env env, napi_callback_inf
 
 static napi_value OH_Rdb_SetStoreName_Param_1000(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0700 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_1000 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -931,7 +931,7 @@ static napi_value OH_Rdb_SetBundleName_0400(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetBundleName_0500(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0500 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -988,7 +988,7 @@ static napi_value OH_Rdb_SetBundleName_0600(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetBundleName_0700(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0700 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -1015,7 +1015,7 @@ static napi_value OH_Rdb_SetBundleName_0700(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetBundleName_0800(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0800 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -1042,7 +1042,7 @@ static napi_value OH_Rdb_SetBundleName_0800(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetBundleName_0900(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0900 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -1069,7 +1069,7 @@ static napi_value OH_Rdb_SetBundleName_0900(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetBundleName_1000(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_1000 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -1212,7 +1212,7 @@ static napi_value OH_Rdb_SetModuleName_0600(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetModuleName_0700(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0700 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -1239,7 +1239,7 @@ static napi_value OH_Rdb_SetModuleName_0700(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetModuleName_0800(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0800 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -1266,7 +1266,7 @@ static napi_value OH_Rdb_SetModuleName_0800(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetModuleName_0900(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0900 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
@@ -1293,7 +1293,7 @@ static napi_value OH_Rdb_SetModuleName_0900(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetModuleName_1000(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_1000 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
