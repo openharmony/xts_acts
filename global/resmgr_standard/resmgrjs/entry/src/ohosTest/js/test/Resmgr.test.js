@@ -2524,7 +2524,7 @@ describe('resMgrTest', function () {
     */
     it('getColorSync_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getColorSync($r('app.color.color_test1').id);
+            let value = mgr.getColorSync(0x2000010);
             expect(value !== null).assertTrue();
             console.log('getColorSync_test_001 ' + value);
             expect(value).assertEqual(4294902015);
