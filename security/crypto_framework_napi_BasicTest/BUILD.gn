@@ -45,9 +45,9 @@ ohos_moduletest_suite("ActsCryptoFrameworkNAPITest") {
   include_dirs = [
     "include",
     "$root_path/base/security/crypto_framework/interfaces/kits/native/include",
-    "$root_path/base/security/crypto_framework/interfaces/innerkits/common",
+    "$root_path/base/security/crypto_framework/interfaces/inner_api/common",
     "$root_path/base/security/crypto_framework/common/inc",
-    "$root_path/base/security/crypto_framework/interfaces/innerkits/crypto_operation",
+    "$root_path/base/security/crypto_framework/interfaces/inner_api/crypto_operation",
   ]
 
   external_deps = [
