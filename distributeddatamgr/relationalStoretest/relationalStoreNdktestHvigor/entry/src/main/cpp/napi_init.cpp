@@ -154,6 +154,8 @@ static napi_value OH_Rdb_GetSupportedDbType_0100(napi_env env, napi_callback_inf
     NAPI_ASSERT(env, (numType == numLan) || (numType == numHuang), "OH_Rdb_GetSupportedDbType numType is fail.");
     NAPI_ASSERT(env, supportTypeList[0] == Rdb_DBType::RDB_SQLITE, "OH_Rdb_GetSupportedDbType RDB_SQLITE is fail.");
     
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
     napi_value ret;
     napi_create_int32(env, errCode, &ret);
     return ret;
@@ -282,7 +284,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_0300(napi_env env, napi_callback_info 
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_ExecuteByTrxId INSERT  errcode= %{public}d", errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_ExecuteByTrxId is fail.");
 
-    errCode = OH_Rdb_RollBackByTrxId (store, trxId);
+    errCode = OH_Rdb_RollBackByTrxId(store, trxId);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, "OH_Rdb_RollBackByTrxId 222  errcode= %{public}d", errCode);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_NOT_SUPPORTED, "OH_Rdb_RollBackByTrxId is fail.");
 
@@ -481,90 +483,164 @@ static napi_value OH_Rdb_SetDatabaseDir_Param_0400(napi_env env, napi_callback_i
 static napi_value OH_Rdb_SetDatabaseDir_Param_0500(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0500 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetDatabaseDir 1 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetDatabaseDir_Param_0600(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0600 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetDatabaseDir(config, "/data");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetDatabaseDir 2 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, "/data");
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore == nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
+
 
 static napi_value OH_Rdb_SetDatabaseDir_Param_0700(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0700 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetDatabaseDir(config, "");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetDatabaseDir 3 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, "");
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore == nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
+
 
 static napi_value OH_Rdb_SetDatabaseDir_Param_0800(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0800 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetDatabaseDir(config, " ");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetDatabaseDir 3 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, " ");
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore == nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetDatabaseDir_Param_0900(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetDatabaseDir(config, "/");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetDatabaseDir 4 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, "/");
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore == nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetDatabaseDir_Param_1000(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_1000 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetDatabaseDir(config, "*");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetDatabaseDir 5 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, "*&^%$#@!*(()-");
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore == nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
@@ -631,92 +707,164 @@ static napi_value OH_Rdb_SetStoreName_Param_0400(napi_env env, napi_callback_inf
 static napi_value OH_Rdb_SetStoreName_Param_0500(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0500 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetStoreName(config, "aaaaa");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetStoreName 1 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "aaaaa");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetStoreName_Param_0600(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0600 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
     int strLen = 50;
     std::string strname(strLen, 'n');
-    errcode = OH_Rdb_SetStoreName(config, strname.c_str());
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetStoreName 2 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetStoreName(config, strname.c_str());
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetStoreName_Param_0700(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0700 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetStoreName(config, "");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetStoreName 3 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore == nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetStoreName_Param_0800(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0800 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0700 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetStoreName(config, " ");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetStoreName 4 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, " ");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetStoreName_Param_0900(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0900 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0700 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetStoreName(config, "/");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetStoreName 5 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "/");   //"*&^%$#@!*(()-");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore == nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetStoreName_Param_1000(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_1000 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0700 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetStoreName(config, "_!@#%^*&*(()_+((&^%$%");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetStoreName 6 is fail.");
-    errcode = OH_Rdb_DestroyConfig(config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "*&^%$#@!*(()-");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
@@ -783,93 +931,166 @@ static napi_value OH_Rdb_SetBundleName_0400(napi_env env, napi_callback_info inf
 
 static napi_value OH_Rdb_SetBundleName_0500(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0500 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetBundleName(config, "aaaaa");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetBundleName 1 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "aaaaa");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetBundleName_0600(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0600 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
     int strLen = 50;
     std::string strname(strLen, 'n');
-    errcode = OH_Rdb_SetBundleName(config, strname.c_str());
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetBundleName 2 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetBundleName(config, strname.c_str());
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
+
 static napi_value OH_Rdb_SetBundleName_0700(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0700 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetBundleName(config, "");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetBundleName 3 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetBundleName_0800(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0800 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetBundleName(config, " ");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetBundleName 3 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, " ");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetBundleName_0900(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_0900 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetBundleName(config, "/");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetBundleName 4 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "/");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetBundleName_1000(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetBundleName_1000 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetDatabaseDir_Param_0900 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetBundleName(config, "_!@#%^*&*(()_+((&^%$%");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetBundleName 5 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "_!@#%^*&*(()_+((&^%$%");
+    errCode = OH_Rdb_SetModuleName(config, "module");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
@@ -936,92 +1157,164 @@ static napi_value OH_Rdb_SetModuleName_0400(napi_env env, napi_callback_info inf
 static napi_value OH_Rdb_SetModuleName_0500(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetModuleName(config, "aaaaa");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetModuleName 1 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "aaaaa");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetModuleName_0600(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0600 ------------- ");
-    int errcode = 0;
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
     int strLen = 50;
     std::string strname(strLen, 'n');
-    errcode = OH_Rdb_SetModuleName(config, strname.c_str());
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetModuleName 2 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetModuleName(config, strname.c_str());
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetModuleName_0700(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0700 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetModuleName(config, "");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetModuleName 3 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetModuleName_0800(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0800 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetModuleName(config, " ");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetModuleName 4 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, " ");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetModuleName_0900(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0900 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetModuleName(config, "/");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetModuleName 5 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "/");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
 static napi_value OH_Rdb_SetModuleName_1000(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_1000 ------------- ");
-    int errcode = 0;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetModuleName_0500 ------------- ");
+    int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_CreateConfig is fail.");
-    errcode = OH_Rdb_SetModuleName(config, "_!@#%^*&*(()_+((&^%$%");
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_SetModuleName 6 is fail.");
-    errcode = OH_Rdb_DestroyConfig (config);
-    NAPI_ASSERT(env, errcode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    errCode = OH_Rdb_SetStoreName(config, "rdb_store_test.db");
+    errCode = OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    errCode = OH_Rdb_SetModuleName(config, "_!@#%^*&*(()_+((&^%$%");
+    errCode = OH_Rdb_SetEncrypted(config, false);
+    errCode = OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    errCode = OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    
+    mkdir(RDB_TEST_PATH, DIRMODE);
+    auto storeConfigV2TestRdbStore = OH_Rdb_CreateOrOpen(config, &errCode);
+    NAPI_ASSERT(env, storeConfigV2TestRdbStore != nullptr, "OH_Rdb_CreateOrOpen is fail.");
+    
+    errCode = OH_Rdb_CloseStore(storeConfigV2TestRdbStore);
+    errCode = OH_Rdb_DeleteStoreV2(config);
+    errCode = OH_Rdb_DestroyConfig(config);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK, "OH_Rdb_CreateConfig is fail.");
     napi_value ret;
-    napi_create_int32(env, errcode, &ret);
+    napi_create_int32(env, errCode, &ret);
     return ret;
 }
 
