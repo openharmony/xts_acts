@@ -19,10 +19,11 @@
     "description": "$string:hap2_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet",
       "2in1",
-      "wearable"
+      "phone"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

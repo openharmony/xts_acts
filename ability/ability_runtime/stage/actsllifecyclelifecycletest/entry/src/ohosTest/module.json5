@@ -21,10 +21,11 @@
     "srcEntry": "./ets/Application/AbilityStage.ts",
     "mainElement": "TestAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet",
       "2in1",
-      "wearable"
+      "phone"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
