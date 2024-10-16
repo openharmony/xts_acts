@@ -69,7 +69,7 @@ export default function search_top() {
 
         let driver = await Driver.create();
         await CommonFunc.sleep(500);
-        await driver.click(vp2px(200),vp2px(20));
+        await driver.click(Math.round(vp2px(200)),Math.round(vp2px(20)));
         await CommonFunc.sleep(1000);
 
         expect(search_01.top).assertEqual(Column_1.top);

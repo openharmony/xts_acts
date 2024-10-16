@@ -143,7 +143,7 @@ export default function textArea_center() {
 
         await CommonFunc.sleep(500);
         await driver.click(
-          (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /45 *44))
+          (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /45 *40))
         );
         await CommonFunc.sleep(1000);
 

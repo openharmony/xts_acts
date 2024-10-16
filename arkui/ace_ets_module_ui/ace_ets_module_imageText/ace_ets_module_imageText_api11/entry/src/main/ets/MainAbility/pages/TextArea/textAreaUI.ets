@@ -23,7 +23,7 @@ struct TextAreaExample {
   @State placeholderFont:string ="#FFAACCEE"
   @State placeholderColor:string ="#FFAACCEE"
   @State textAlign:TextAlign = TextAlign.End
-  @State caretColor:string = "#ACDEFF"
+  @State caretColor:string|number|Resource = "#ACDEFF"
   @State fontSize:number = 16
   @State copyOption:CopyOptions = CopyOptions.LocalDevice
   @State placeholder:string ="The text area can hold an unlimited amount of text. input your word..."
@@ -122,6 +122,14 @@ struct TextAreaExample {
           console.info("paste value is " + value);
           this.message4 = 'paste'
         })
+
+      TextArea({
+        placeholder: this.placeholder,
+        controller: this.controller,
+        text: this.text
+      })
+        .caretColor($r('sys.color.ohos_id_color_connected'))
+        .key('textAreaResource')
 
       Text(this.message1).key('change')
       Text(this.message2).key('copy')

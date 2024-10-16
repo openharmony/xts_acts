@@ -23,6 +23,10 @@
     {
       "name": "TextInput_Color",
       "value": "#FFFD0000"
+    },
+    {
+      "name": "Caretcolor",
+      "value": "#FFFF0000"
     }
   ]
 }
