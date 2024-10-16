@@ -19,6 +19,7 @@ import { ENTINFO1, INVALID_WANT, SELFHAPNAME, SELFWANT, TEST_TOKEN_ID, TEST_CLIP
 
 import adminManager from '@ohos.enterprise.adminManager';
 import securityManager from '@ohos.enterprise.securityManager';
+import sysDeviceInfo from '@ohos.deviceInfo';
 
 const PATCH = 'patch';
 const ENCRYPTION = 'encryption';
@@ -1134,6 +1135,10 @@ function testSetWatermarkImage() {
    * @tc.size      : MediumTest
    */
   it("test_set_watermark_image_0106", 0, async (done: Function) => {
+    if (sysDeviceInfo.deviceType != '2in1') {
+      done();
+      return;
+    }
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       securityManager.setWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, PIXEL_MAP, DEFAULT_USER_ID);
