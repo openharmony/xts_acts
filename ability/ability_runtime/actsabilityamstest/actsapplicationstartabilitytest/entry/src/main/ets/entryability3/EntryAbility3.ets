@@ -47,11 +47,6 @@ export default class EntryAbility extends UIAbility {
         }
       }
     }
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300') {
-      commonEventManager.publish(`${this.TEST_CASE_NAME}_onDestroyFlag_2`, commonEventData, (result) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
-      });
-    }
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -93,38 +88,26 @@ export default class EntryAbility extends UIAbility {
         }
       }
     }
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200' ||
-      this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300' ||
-      this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1000') {
-      commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_2`, commonEventData,
-        (result) => {
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0400, 50==: ${JSON.stringify(result)}`);
-        });
-    }
-
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1000') {
-      let wants: Want = {
-        deviceId: '', // deviceId为空表示本设备
-        bundleName: 'com.example.actsapplicationstartabilitytest',
-        abilityName: 'SecondAbility',
-        action: this.TEST_CASE_NAME,
-        parameters: {
-          instanceKey: this.TEST_CASE_NAME
-        }
-      };
-      this.context.startAbility(wants).then((data) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `Succeeded in starting  ${this.TEST_CASE_NAME}}`);
-      }).catch((err: BusinessError) => {
+    commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_2`, commonEventData,
+      (result) => {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          `Failed to start SpecifiedAbility. ${this.TEST_CASE_NAME}err.Code is ${err.code}  err.message is ${err.message}`);
-      })
-    }
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300') {
-      setTimeout(() => {
-        this.context.terminateSelf()
-      }, 1000)
-    }
+          `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0400, 50==: ${JSON.stringify(result)}`);
+      });
+    let wants: Want = {
+      deviceId: '', // deviceId为空表示本设备
+      bundleName: 'com.example.actsapplicationstartabilitytest',
+      abilityName: 'SecondAbility',
+      action: this.TEST_CASE_NAME,
+      parameters: {
+        instanceKey: this.TEST_CASE_NAME
+      }
+    };
+    this.context.startAbility(wants).then((data) => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `Succeeded in starting  ${this.TEST_CASE_NAME}}`);
+    }).catch((err: BusinessError) => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        `Failed to start SpecifiedAbility. ${this.TEST_CASE_NAME}err.Code is ${err.code}  err.message is ${err.message}`);
+    })
   }
 
   onBackground(): void {
@@ -139,11 +122,9 @@ export default class EntryAbility extends UIAbility {
         }
       }
     }
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1000') {
-      commonEventManager.publish(`${this.TEST_CASE_NAME}_onBackgroundHap_2`, commonEventData, (result) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
-      });
-    }
+    commonEventManager.publish(`${this.TEST_CASE_NAME}_onBackgroundHap_2`, commonEventData, (result) => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
+    });
   }
 
   sleep(ms: number): Promise<void> {
