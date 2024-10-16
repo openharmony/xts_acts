@@ -47,12 +47,11 @@ export default class EntryAbility extends UIAbility {
         }
       }
     }
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200') {
-      hilog.info(0x0000, 'testTag', '%{public}s', `onDestroyFlag, 50==: ${JSON.stringify(this.onDestroyFlag)}`);
-      commonEventManager.publish(`${this.TEST_CASE_NAME}_onDestroyHap_1`, commonEventData, (result) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
-      });
-    }
+    hilog.info(0x0000, 'testTag', '%{public}s', `onDestroyFlag, 50==: ${JSON.stringify(this.onDestroyFlag)}`);
+    commonEventManager.publish(`${this.TEST_CASE_NAME}_onDestroyHap_1`, commonEventData, (result) => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
+    });
+
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -94,13 +93,12 @@ export default class EntryAbility extends UIAbility {
         }
       }
     }
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200') {
-      commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_1`, commonEventData,
-        (result) => {
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200, 50==: ${JSON.stringify(result)}`);
-        });
-    }
+    commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_1`, commonEventData,
+      (result) => {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200, 50==: ${JSON.stringify(result)}`);
+      });
+
     setTimeout(() => {
       this.context.terminateSelf()
     }, 1000)

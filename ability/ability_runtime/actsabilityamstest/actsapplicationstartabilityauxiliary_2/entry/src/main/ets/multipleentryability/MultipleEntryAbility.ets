@@ -49,11 +49,10 @@ export default class EntryAbility extends UIAbility {
         }
       }
     }
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300') {
-      commonEventManager.publish(`${this.TEST_CASE_NAME}_onDestroyHap_1`, commonEventData, (result) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
-      });
-    }
+    commonEventManager.publish(`${this.TEST_CASE_NAME}_onDestroyHap_1`, commonEventData, (result) => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
+    });
+
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -96,30 +95,30 @@ export default class EntryAbility extends UIAbility {
         }
       }
     }
-    if (this.TEST_CASE_NAME === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300') {
-      commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_1`, commonEventData,
-        (result) => {
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200, 50==: ${JSON.stringify(result)}`);
-        });
-      setTimeout(() => {
-        this.context.terminateSelf();
-      }, 1000)
-    }
-
-    if (this.TEST_CASE_NAME == 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500') {
-      this.onForegroundFlagNumber = this.onForegroundFlagNumber + 1
-      commonEventManager.publish('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500', commonEventData,
-        (result) => {
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200, 50==: ${JSON.stringify(result)}`);
-        });
-      if (this.onForegroundFlagNumber == 1) {
-        this.onCreateFlag = false;
-        this.onWindowStageCreateFlag = false;
-        this.onForegroundFlag = false;
-      }
-      this.context.moveAbilityToBackground();
+    switch (this.TEST_CASE_NAME) {
+      case 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300':
+        commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_1`, commonEventData,
+          (result) => {
+            hilog.info(0x0000, 'testTag', '%{public}s',
+              `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200, 50==: ${JSON.stringify(result)}`);
+          });
+        setTimeout(() => {
+          this.context.terminateSelf();
+        }, 1000)
+        break;
+      case 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500':
+        this.onForegroundFlagNumber = this.onForegroundFlagNumber + 1
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1500', commonEventData,
+          (result) => {
+            hilog.info(0x0000, 'testTag', '%{public}s',
+              `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200, 50==: ${JSON.stringify(result)}`);
+          });
+        if (this.onForegroundFlagNumber == 1) {
+          this.onCreateFlag = false;
+          this.onWindowStageCreateFlag = false;
+          this.onForegroundFlag = false;
+        }
+        this.context.moveAbilityToBackground();
     }
   }
 
