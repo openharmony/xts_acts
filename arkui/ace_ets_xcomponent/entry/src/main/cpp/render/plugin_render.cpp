@@ -40,9 +40,13 @@ uint32_t PluginRender::mousecallback_ = 0;
 float PluginRender::tiltX_ = 0;
 float PluginRender::tiltY_ = 0;
 uint32_t PluginRender::touchType = 4;
+int32_t three = 3;
+int32_t eight = 8;
 OH_NativeXComponent_TouchEvent PluginRender::testTouchEvent_;
 OH_NativeXComponent_MouseEvent PluginRender::testMouseEvent_;
 OH_NativeXComponent_MouseEvent_Callback PluginRender::mouseEventcallback_;
+
+ArkUI_AccessibilityProvider* provider_ = nullptr;
 
 void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
 {
@@ -58,6 +62,8 @@ void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
     std::string id(idStr);
     auto render = PluginRender::GetInstance(id);
     render->OnSurfaceCreated(component, window);
+    
+    PluginRender::GetInstance(id)->InterfaceDesignTest(component);
 }
 
 void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
@@ -247,6 +253,349 @@ void PluginRender::DispatchTouchEvent(OH_NativeXComponent* component, void* wind
     }
 }
 
+void FillElementInfo1(ArkUI_AccessibilityElementInfo* elementInfo)
+{
+    if (elementInfo == nullptr) {
+        LOGI("FillElementInfo1 elementInfo1 is null");
+        return;
+    }
+    //1.
+    ArkUI_AccessibleRect rect = { 0, 0, 1000, 1000 };
+    OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
+    //2.
+    int32_t size = 2;
+    ArkUI_AccessibleAction actions[size];
+    actions[0].actionType =
+        ArkUI_Accessibility_ActionType::ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS;
+    actions[0].description = "nativeAce";
+    actions[1].actionType =
+        ArkUI_Accessibility_ActionType::ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS;
+    actions[1].description = "nativeAce";
+    OH_ArkUI_AccessibilityElementInfoSetOperationActions(elementInfo, size, actions);
+    //3.
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(elementInfo, "yes");
+    //4.
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(elementInfo, false);
+    //5.
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(elementInfo, "FillElementInfo1Text");
+    //6.
+    //7.
+    OH_ArkUI_AccessibilityElementInfoSetComponentType(elementInfo, "root");
+    //8.
+    OH_ArkUI_AccessibilityElementInfoSetFocusable(elementInfo, true);
+    //9.
+    const int32_t kInvalidParentId = 2100000;
+    OH_ArkUI_AccessibilityElementInfoSetParentId(elementInfo, -kInvalidParentId);
+    //10.
+    OH_ArkUI_AccessibilityElementInfoSetVisible(elementInfo, true);
+    //11.
+    OH_ArkUI_AccessibilityElementInfoSetElementId(elementInfo, 0);
+    
+    // 12.
+    int64_t childNodeIds[3] =  {1, 2, 3};
+    const int32_t CHILD_NODE_COUNT = 3;
+    OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(elementInfo, CHILD_NODE_COUNT, childNodeIds);
+    
+    //13.
+    OH_ArkUI_AccessibilityElementInfoSetEnabled(elementInfo, true);
+    OH_ArkUI_AccessibilityElementInfoSetClickable(elementInfo, true);
+    OH_ArkUI_AccessibilityElementInfoSetContents(elementInfo, "root_content");
+    OH_ArkUI_AccessibilityElementInfoSetCheckable(elementInfo, true);
+    OH_ArkUI_AccessibilityElementInfoSetChecked(elementInfo, true);
+}
+
+void FillElementInfo2(ArkUI_AccessibilityElementInfo* elementInfo, int32_t i)
+{
+    if (elementInfo == nullptr) {
+        LOGI("FillElementInfo1 elementInfo1 is null");
+        return;
+    }
+    //1.
+    int32_t x = 0;
+    int32_t y = (i < 4)?(x + (i -1) * 500) : (x + (i -4) * 100);
+    int32_t zx = x + ((i < 4)? 500 : 100);
+    int32_t zy = y + ((i < 4)? 500 : 100);
+    ArkUI_AccessibleRect rect = { x, y, zx, zy };
+    OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
+    //2.
+    int32_t size = 3;
+    ArkUI_AccessibleAction actions[size];
+    actions[0].actionType =
+        ArkUI_Accessibility_ActionType::ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS;
+    actions[0].description = "ace";
+    actions[1].actionType =
+        ArkUI_Accessibility_ActionType::ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS;
+    actions[1].description = "ace";
+    const int32_t second = 2;
+    actions[second].actionType =
+        ArkUI_Accessibility_ActionType::ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK;
+    actions[second].description = "ace";
+    OH_ArkUI_AccessibilityElementInfoSetOperationActions(elementInfo, size, actions);
+    //3.
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(elementInfo, "yes");
+    //4.
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(elementInfo, false);
+    //5.
+    std::string text = "FillElementInfo222Text_" + std::to_string(i);
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(elementInfo, text.c_str());
+    //6.
+    //7.
+    const int32_t two = 2;
+    if (i % two == 0) {
+        OH_ArkUI_AccessibilityElementInfoSetComponentType(elementInfo, "button");
+    } else {
+        OH_ArkUI_AccessibilityElementInfoSetComponentType(elementInfo, "text");
+    }
+}
+
+void ExtractFunction(ArkUI_AccessibilityElementInfo* elementInfo, int32_t i)
+{
+    //8.
+    OH_ArkUI_AccessibilityElementInfoSetFocusable(elementInfo, true);
+    //9.
+    const int32_t kNoParent = 0;
+    const int32_t kHasParent = 1;
+    const int32_t four = 4;
+    OH_ArkUI_AccessibilityElementInfoSetParentId(elementInfo, i < four? kNoParent : kHasParent);
+    //10.
+    OH_ArkUI_AccessibilityElementInfoSetVisible(elementInfo, true);
+    //11.
+    OH_ArkUI_AccessibilityElementInfoSetElementId(elementInfo, i);
+    //12.
+    OH_ArkUI_AccessibilityElementInfoSetEnabled(elementInfo, true);
+
+    if (i == 1) {
+        int64_t childNodeIds[6] =  {4, 5, 6, 7, 8, 9};
+        const int32_t NUMBER_OF_CHILDREN = 6;
+        OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(elementInfo, NUMBER_OF_CHILDREN, childNodeIds);
+    }
+    OH_ArkUI_AccessibilityElementInfoSetClickable(elementInfo, true);
+    std::string ss;
+    ss.append("contenttest_").append(std::to_string(i));
+    OH_ArkUI_AccessibilityElementInfoSetContents(elementInfo, ss.c_str());
+    
+    OH_ArkUI_AccessibilityElementInfoSetCheckable(elementInfo, true);
+    OH_ArkUI_AccessibilityElementInfoSetChecked(elementInfo, true);
+}
+
+int32_t FindAccessibilityNodeInfosById(int64_t elementId, ArkUI_AccessibilitySearchMode mode,
+    int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
+{
+    if (elementList == nullptr) {
+        LOGI("FindAccessibilityNodeInfosById elementList is null");
+        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+    }
+    
+    // 传第一个info
+    ArkUI_AccessibilityElementInfo* elementInfo = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+    if (elementInfo == nullptr) {
+        LOGI("FindAccessibilityNodeInfosById elementInfo1 is null");
+        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+    }
+    if (mode == eight) {
+        FillElementInfo1(elementInfo);
+        const int32_t AccessibilityStartIndex = 1;
+        const int32_t AccessibilityEndIndex = 10;
+        for (int32_t i = AccessibilityStartIndex; i< AccessibilityEndIndex; i++) {
+            ArkUI_AccessibilityElementInfo* elementInfox = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+            if (elementInfox == nullptr) {
+                LOGI("FindAccessibilityNodeInfosById elementInfox is null");
+                return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+            }
+            FillElementInfo2(elementInfox, i);
+        }
+    } else if (elementId == 0) {
+        FillElementInfo1(elementInfo);
+    } else if (elementId == -1) {
+        FillElementInfo1(elementInfo);
+    } else {
+        FillElementInfo2(elementInfo, static_cast<int32_t>(elementId));
+    }
+    
+    LOGI("FindAccessibilityNodeInfosById end");
+    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+}
+
+int32_t FindAccessibilityNodeInfosByText(int64_t elementId, const char* text, int32_t requestId,
+                                         ArkUI_AccessibilityElementInfoList* elementList)
+{
+    LOGI("FindAccessibilityNodeInfosByText start,requestId: %{public}d, text: %{public}s",
+         requestId, text);
+    if (elementList == nullptr) {
+        LOGI("FindAccessibilityNodeInfosByText elementInfo is null");
+        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+    }
+    
+    // 传第一个info
+    ArkUI_AccessibilityElementInfo* elementInfo1 = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+    if (elementInfo1 == nullptr) {
+        LOGI("FindFocusedAccessibilityNode elementInfo1 is null");
+        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+    }
+    int32_t two = 2;
+    FillElementInfo2(elementInfo1, two);
+    
+    // 传第二个info
+    ArkUI_AccessibilityElementInfo* elementInfo2 = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+    if (elementInfo2 == nullptr) {
+        LOGI("FindFocusedAccessibilityNode elementInfo2 is null");
+        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+    }
+    FillElementInfo2(elementInfo2, three);
+
+    LOGI("FindAccessibilityNodeInfosByText end");
+    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+}
+
+int32_t FindFocusedAccessibilityNode(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId,
+                                     ArkUI_AccessibilityElementInfo* elementInfo)
+{
+    LOGI("FindFocusedAccessibilityNode start,requestId: %{public}d, focusType: %{public}d",
+        requestId, static_cast<int32_t>(focusType));
+    if (elementInfo == nullptr) {
+        LOGI("FindFocusedAccessibilityNode elementInfo is null");
+        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+    }
+    const int32_t four = 4;
+    FillElementInfo2(elementInfo, four);
+
+    LOGI("FindFocusedAccessibilityNode end");
+    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+}
+
+int32_t FindNextFocusAccessibilityNode(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction,
+                                       int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
+{
+    LOGI(
+        "FindNextFocusAccessibilityNode start,requestId: %{public}d, direction: %{public}d",
+        requestId, static_cast<int32_t>(direction));
+    if (elementInfo == nullptr) {
+        LOGI("FindNextFocusAccessibilityNode elementInfo is null");
+        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+    }
+    const int32_t CHILD_NODE_COUNT = 5;
+    FillElementInfo2(elementInfo, CHILD_NODE_COUNT);
+    LOGI("FindNextFocusAccessibilityNode end");
+    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+}
+
+void FillEvent(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityElementInfo* elementInfo)
+{
+    if (eventInfo == nullptr) {
+        LOGI("FillEvent eventInfo is null");
+        return;
+    }
+    
+    OH_ArkUI_AccessibilityEventSetEventType(eventInfo,
+        ArkUI_AccessibilityEventType::ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED);
+    
+    OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
+}
+
+void SendAccessibilityAsyncEvent(int64_t elementId, bool accessibilityFocus)
+{
+    LOGI("OH_ArkUI_SendAccessibilityAsyncEvent SendAccessibilityAsyncEvent elementId: %{public}lld", elementId);
+    if (provider_ == nullptr) {
+        LOGI("OH_ArkUI_SendAccessibilityAsyncEvent provider is null");
+        return;
+    }
+    // 1.调用CreateArkUI_AccessibilityEventInfo创建ArkUI_AccessibilityEventInfo对象
+    ArkUI_AccessibilityEventInfo *eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
+    if (eventInfo == nullptr) {
+        LOGI("OH_ArkUI_SendAccessibilityAsyncEvent eventInfo is null");
+        return;
+    }
+    
+    ArkUI_AccessibilityElementInfo* elementInfo = OH_ArkUI_CreateAccessibilityElementInfo();
+    if (elementInfo == nullptr) {
+        LOGI("OH_ArkUI_SendAccessibilityAsyncEvent elementInfo is null");
+        return;
+    }
+    // 2.为info赋值
+    FillElementInfo2(elementInfo, static_cast<int32_t>(elementId));
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(elementInfo, accessibilityFocus);
+    FillEvent(eventInfo, elementInfo);
+    // 3.callack
+    auto callback = [](int32_t errorCode) {
+        LOGI("errorCode: %{public}d", errorCode);
+    };
+    // 4.调用接口发给OH侧
+    LOGI("OH_ArkUI_SendAccessibilityAsyncEvent doing");
+    OH_ArkUI_SendAccessibilityAsyncEvent(provider_, eventInfo, callback);
+    // 销毁info
+    OH_ArkUI_DestoryAccessibilityEventInfo(eventInfo);
+};
+
+int32_t ExecuteAccessibilityAction(int64_t elementId, ArkUI_Accessibility_ActionType action,
+    ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
+{
+    LOGI("ExecuteAccessibilityAction start,requestId: %{public}d, action: %{public}d",
+        requestId, static_cast<int32_t>(action));
+    if (actionArguments == nullptr) {
+        LOGI("ExecuteAccessibilityAction actionArguments is null");
+        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+    }
+    
+    std::string key = "key1";
+    char* value;
+    OH_ArkUI_FindAccessibilityActionArgumentByKey(actionArguments, key.c_str(), &value);
+    if (value == nullptr) {
+        LOGI("ExecuteAccessibilityAction value is null");
+    } else {
+        LOGI("ExecuteAccessibilityAction 11111 value : %{public}s", value);
+    }
+    bool accessibilityFocu = (action == 64);
+    SendAccessibilityAsyncEvent(elementId, accessibilityFocu);
+
+    LOGI("ExecuteAccessibilityAction end");
+    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+}
+
+int32_t ClearFocusedFocusAccessibilityNode()
+{
+    LOGI("ClearFocusedFocusAccessibilityNode ");
+    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+}
+
+int32_t GetAccessibilityNodeCursorPosition(int64_t elementId, int32_t requestId, int32_t* index)
+{
+    LOGI("GetAccessibilityNodeCursorPosition start, %{public}lld, %{public}d", elementId, requestId);
+
+    const int32_t cursorPosition = 17805;
+    *index = cursorPosition;
+    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+}
+
+void PluginRender::InterfaceDesignTest(OH_NativeXComponent* nativeXComponent)
+{
+    LOGI("InterfaceDesignTest start");
+    if (nativeXComponent == nullptr) {
+        LOGI("InterfaceDesignTest nativeXComponent is null");
+        return;
+    }
+    
+    //1.获得provider实例
+    int32_t ret = OH_NativeXComponent_GetNativeAccessibilityProvider(nativeXComponent, &provider_);
+    if (provider_ == nullptr) {
+        LOGI("InterfaceDesignTest get provider is null");
+        return;
+    }
+    
+    accessibilityProviderCallbacks_ = new ArkUI_AccessibilityProviderCallbacks();
+    accessibilityProviderCallbacks_->findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
+    accessibilityProviderCallbacks_->findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
+    accessibilityProviderCallbacks_->findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
+    accessibilityProviderCallbacks_->findNextFocusAccessibilityNode = FindNextFocusAccessibilityNode;
+    accessibilityProviderCallbacks_->executeAccessibilityAction = ExecuteAccessibilityAction;
+    accessibilityProviderCallbacks_->clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
+    accessibilityProviderCallbacks_->getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
+    ret = OH_ArkUI_AccessibilityProviderRegisterCallback(provider_, accessibilityProviderCallbacks_);
+    if (ret != 0) {
+        LOGI("InterfaceDesignTest OH_ArkUI_AccessibilityProviderRegisterCallback failed");
+        return;
+    }
+}
+
 napi_value PluginRender::Export(napi_env env, napi_value exports)
 {
     LOGE("PluginRender::Export");
@@ -268,10 +617,67 @@ napi_value PluginRender::Export(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("TestGetXComponentpointtool_tiltx", PluginRender::TestGetXComponentpointtool_tiltx),
         DECLARE_NAPI_FUNCTION("TestGetXComponent_RegisterMouseEventCallback",
             PluginRender::TestGetXComponent_RegisterMouseEventCallback),
+        
+        DECLARE_NAPI_FUNCTION("TestXComponentFindAccessibilityNodeInfosById",
+            PluginRender::TestXComponentFindAccessibilityNodeInfosById),
+        DECLARE_NAPI_FUNCTION("TestXComponentFindAccessibilityNodeInfosByText",
+            PluginRender::TestXComponentFindAccessibilityNodeInfosByText),
+        DECLARE_NAPI_FUNCTION("TestXComponentFindFocusedAccessibilityNode",
+            PluginRender::TestXComponentFindFocusedAccessibilityNode),
+        DECLARE_NAPI_FUNCTION("TestXComponentFindNextFocusAccessibilityNode",
+            PluginRender::TestXComponentFindNextFocusAccessibilityNode),
+        DECLARE_NAPI_FUNCTION("TestXComponentSendAccessibilityAsyncEvent",
+            PluginRender::TestXComponentSendAccessibilityAsyncEvent),
+        DECLARE_NAPI_FUNCTION("TestXComponentExecuteAccessibilityAction",
+            PluginRender::TestXComponentExecuteAccessibilityAction),
+        DECLARE_NAPI_FUNCTION("TestXComponentClearFocusedFocusAccessibilityNode",
+            PluginRender::TestXComponentClearFocusedFocusAccessibilityNode),
+        DECLARE_NAPI_FUNCTION("TestXComponentGetAccessibilityNodeCursorPosition",
+            PluginRender::TestXComponentGetAccessibilityNodeCursorPosition),
 
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc));
     return exports;
+}
+
+napi_value PluginRender::TestXComponentFindAccessibilityNodeInfosById(napi_env env, napi_callback_info info)
+{
+    return nullptr;
+}
+
+napi_value PluginRender::TestXComponentFindAccessibilityNodeInfosByText(napi_env env, napi_callback_info info)
+{
+    return nullptr;
+}
+
+napi_value PluginRender::TestXComponentFindFocusedAccessibilityNode(napi_env env, napi_callback_info info)
+{
+    return nullptr;
+}
+
+napi_value PluginRender::TestXComponentFindNextFocusAccessibilityNode(napi_env env, napi_callback_info info)
+{
+    return nullptr;
+}
+
+napi_value PluginRender::TestXComponentSendAccessibilityAsyncEvent(napi_env env, napi_callback_info info)
+{
+    return nullptr;
+}
+
+napi_value PluginRender::TestXComponentExecuteAccessibilityAction(napi_env env, napi_callback_info info)
+{
+    return nullptr;
+}
+
+napi_value PluginRender::TestXComponentClearFocusedFocusAccessibilityNode(napi_env env, napi_callback_info info)
+{
+    return nullptr;
+}
+
+napi_value PluginRender::TestXComponentGetAccessibilityNodeCursorPosition(napi_env env, napi_callback_info info)
+{
+    return nullptr;
 }
 
 void PluginRender::DispatchMouseEvent(OH_NativeXComponent* component, void* window)
