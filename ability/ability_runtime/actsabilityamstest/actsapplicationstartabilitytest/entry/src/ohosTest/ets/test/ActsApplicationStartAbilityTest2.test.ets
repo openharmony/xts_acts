@@ -13,10 +13,9 @@
   * limitations under the License.
 */
 
-import { describe, it, expect, beforeAll, afterEach, beforeEach } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, beforeEach } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
-import { abilityDelegatorRegistry } from '@kit.TestKit';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { common } from '@kit.AbilityKit';
 import { Driver, MatchPattern, ON } from '@kit.TestKit';
@@ -49,6 +48,130 @@ export default function actsApplicationStartAbilityTest() {
       await abilityDelegator.executeShellCommand(startAbilityNoModuleNameCmd2);
       await sleep(2000);
     })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300
+     * @tc.name Start ability, after completion, restart ability multiple examples
+     * @tc.desc test Arguments
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300', 0, async (done: Function) => {
+      let onForegroundFlagNumber = 0;
+      let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300';
+      let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
+        events: [`${TEST_CASE_NAME}_onForegroundHap_1`, `${TEST_CASE_NAME}_onDestroyHap_1`,
+          `${TEST_CASE_NAME}_onForegroundHap_3`,
+          `${TEST_CASE_NAME}_onBackgroundHap_1`, `${TEST_CASE_NAME}_onBackgroundHap_2`],
+      };
+      await commonEventManager.createSubscriber(subscriberInfo_startdebugapp).then(async (subscriber) => {
+        commonEventManager.subscribe(subscriber, async (err, commonEventData) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `eventInfosubscribe ${TEST_CASE_NAME}`);
+          if (err) {
+            hilog.info(0x0000, 'testTag', '%{public}s',
+              `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
+          } else {
+            switch (commonEventData.event) {
+              case `${TEST_CASE_NAME}_onForegroundHap_1`:
+
+                onForegroundFlagNumber = onForegroundFlagNumber + 1
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                hilog.info(0x0000, 'testTag', '%{public}s', `onForegroundFlagNumber: ${onForegroundFlagNumber}`);
+
+                if (onForegroundFlagNumber == 1) {
+                  expect(onCreateFlag).assertTrue();
+                  expect(onWindowStageCreateFlag).assertTrue();
+                  expect(onForegroundFlag).assertTrue();
+                } else if (onForegroundFlagNumber == 2) {
+                  expect(onCreateFlag).assertTrue();
+                  expect(onWindowStageCreateFlag).assertTrue();
+                  expect(onForegroundFlag).assertTrue();
+                  await sleep(1000);
+                  commonEventManager.unsubscribe(subscriber, (err, data) => {
+                    done();
+                  });
+                }
+                break;
+              case `${TEST_CASE_NAME}_onDestroyHap_1`:
+
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+                expect(onDestroyFlag).assertTrue();
+
+                if (onForegroundFlagNumber == 1) {
+                  let want: Want = {
+                    deviceId: '', // deviceId为空表示本设备
+                    bundleName: 'com.example.actsapplicationstartabilityauxiliary2',
+                    abilityName: 'MultipleEntryAbility',
+                    action: TEST_CASE_NAME,
+                    parameters: {
+                      instanceKey: TEST_CASE_NAME
+                    }
+                  };
+                  await context.startAbility(want).then(async (data) => {
+                    hilog.info(0x0000, 'testTag', '%{public}s',
+                      `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
+                  }).catch((error: BusinessError) => {
+                    hilog.info(0x0000, 'testTag', '%{public}s',
+                      `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility2. Code is ${error.code}, message is ${error.message}`);
+                    expect().assertFail();
+                    done();
+                  });
+                  await sleep(1000);
+                  let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+                  hilog.info(0x0000, 'testTag', '%{public}s',
+                    `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+                  if (allowed) {
+                    let buttons = await driver.findComponents(ON.text('打开'));
+                    if (buttons && buttons.length > 0) {
+                      buttons[buttons.length - 1].click();
+                    }
+                  }
+                }
+                break;
+            }
+          }
+        });
+        let want: Want = {
+          deviceId: '', // deviceId为空表示本设备
+          bundleName: 'com.example.actsapplicationstartabilityauxiliary2',
+          abilityName: 'MultipleEntryAbility',
+          moduleName: 'entry', // moduleName非必选
+          action: TEST_CASE_NAME,
+          parameters: {
+            instanceKey: TEST_CASE_NAME
+          }
+        };
+        await context.startAbility(want).then((data) => {
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
+        }).catch((error: BusinessError) => {
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
+          done();
+        })
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+      })
+    });
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100
      * @tc.name Configure BundleName, AbileName, and URI, corresponding to Ability configured with URI
@@ -95,31 +218,24 @@ export default function actsApplicationStartAbilityTest() {
             instanceKey: TEST_CASE_NAME
           }
         };
-        try {
-          context.startAbility(want).then((data) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
-          }).catch((error: BusinessError) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
-            expect().assertFail();
-            done();
-          })
-          await sleep(1000);
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        await context.startAbility(want).then((data) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-        } catch (error) {
-          expect().assertFail()
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
+        }).catch((error: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
           done();
+        })
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
         }
       })
     });
@@ -149,8 +265,8 @@ export default function actsApplicationStartAbilityTest() {
               hilog.info(0x0000, 'testTag', '%{public}s',
                 `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
               let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
               expect(onCreateFlag).assertTrue();
               expect(onWindowStageCreateFlag).assertTrue();
               expect(onForegroundFlag).assertTrue();
@@ -159,8 +275,8 @@ export default function actsApplicationStartAbilityTest() {
               hilog.info(0x0000, 'testTag', '%{public}s',
                 `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
               let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
               expect(onCreateFlag).assertTrue();
               expect(onWindowStageCreateFlag).assertTrue();
               expect(onForegroundFlag).assertTrue();
@@ -191,41 +307,34 @@ export default function actsApplicationStartAbilityTest() {
             instanceKey: TEST_CASE_NAME
           }
         };
-        try {
-          context.startAbility(want).then((data) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
-          }).catch((error: BusinessError) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
-            expect().assertFail();
-            done();
-          })
-          await sleep(1000);
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        await context.startAbility(want).then((data) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-          await sleep(2000);
-          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
+        }).catch((error: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed1) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-        } catch (error) {
-          expect().assertFail()
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
           done();
+        })
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        await sleep(2000);
+        let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed1) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
         }
       })
     });
@@ -297,41 +406,34 @@ export default function actsApplicationStartAbilityTest() {
             instanceKey: TEST_CASE_NAME
           }
         };
-        try {
-          context.startAbility(want).then((data) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility111 ${data}`);
-          }).catch((error: BusinessError) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility111. Code is ${error.code}, message is ${error.message}`);
-            expect().assertFail();
-            done();
-          })
-          await sleep(1000);
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        await context.startAbility(want).then((data) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-          await sleep(2000);
-          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility111 ${data}`);
+        }).catch((error: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed1) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-        } catch (error) {
-          expect().assertFail()
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility111. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
           done();
+        })
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        await sleep(2000);
+        let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed1) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
         }
       })
     });
@@ -413,41 +515,34 @@ export default function actsApplicationStartAbilityTest() {
             instanceKey: TEST_CASE_NAME
           }
         };
-        try {
-          context.startAbility(want).then((data) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility111 ${data}`);
-          }).catch((error: BusinessError) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
-            expect().assertFail();
-            done();
-          })
-          await sleep(1000);
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        await context.startAbility(want).then((data) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-          await sleep(2000);
-          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility111 ${data}`);
+        }).catch((error: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed1) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-        } catch (error) {
-          expect().assertFail()
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
           done();
+        })
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        await sleep(2000);
+        let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed1) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
         }
       })
     });
@@ -477,8 +572,8 @@ export default function actsApplicationStartAbilityTest() {
               hilog.info(0x0000, 'testTag', '%{public}s',
                 `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
               let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
               expect(onCreateFlag).assertTrue();
               expect(onWindowStageCreateFlag).assertTrue();
               expect(onForegroundFlag).assertTrue();
@@ -487,8 +582,8 @@ export default function actsApplicationStartAbilityTest() {
               hilog.info(0x0000, 'testTag', '%{public}s',
                 `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
               let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
               expect(onCreateFlag).assertTrue();
               expect(onWindowStageCreateFlag).assertTrue();
               expect(onForegroundFlag).assertTrue();
@@ -497,8 +592,8 @@ export default function actsApplicationStartAbilityTest() {
               hilog.info(0x0000, 'testTag', '%{public}s',
                 `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
               let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
               expect(onCreateFlag).assertTrue();
               expect(onWindowStageCreateFlag).assertTrue();
               expect(onForegroundFlag).assertTrue();
@@ -531,51 +626,44 @@ export default function actsApplicationStartAbilityTest() {
           }
         };
         await sleep(2000)
-        try {
-          context.startAbility(want).then((data) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
-          }).catch((error: BusinessError) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
-            expect().assertFail();
-            done();
-          })
-          await sleep(1000);
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        await context.startAbility(want).then((data) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-          await sleep(1000);
-          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
+        }).catch((error: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed1) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-          await sleep(2000);
-          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed2) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-        } catch (error) {
-          expect().assertFail()
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
           done();
+        })
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        await sleep(1000);
+        let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed1) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
+        await sleep(2000);
+        let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed2) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
         }
       })
     });
@@ -605,8 +693,8 @@ export default function actsApplicationStartAbilityTest() {
               hilog.info(0x0000, 'testTag', '%{public}s',
                 `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
               let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
               expect(onCreateFlag).assertTrue();
               expect(onWindowStageCreateFlag).assertTrue();
               expect(onForegroundFlag).assertTrue();
@@ -615,8 +703,8 @@ export default function actsApplicationStartAbilityTest() {
               hilog.info(0x0000, 'testTag', '%{public}s',
                 `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
               let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
               expect(onCreateFlag).assertTrue();
               expect(onWindowStageCreateFlag).assertTrue();
               expect(onForegroundFlag).assertTrue();
@@ -625,8 +713,8 @@ export default function actsApplicationStartAbilityTest() {
               hilog.info(0x0000, 'testTag', '%{public}s',
                 `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
               let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
               expect(onCreateFlag).assertTrue();
               expect(onWindowStageCreateFlag).assertTrue();
               expect(onForegroundFlag).assertTrue();
@@ -642,6 +730,7 @@ export default function actsApplicationStartAbilityTest() {
                 `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
               let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
               expect(onBackgroundFlag).assertTrue();
+              sleep(1000)
               commonEventManager.unsubscribe(subscriber, (err, data) => {
                 done();
               });
@@ -658,7 +747,7 @@ export default function actsApplicationStartAbilityTest() {
           }
         };
         try {
-          context.startAbility(want).then((data) => {
+          await context.startAbility(want).then((data) => {
             hilog.info(0x0000, 'testTag', '%{public}s',
               `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
           }).catch((error: BusinessError) => {
@@ -667,36 +756,6 @@ export default function actsApplicationStartAbilityTest() {
             expect().assertFail();
             done();
           })
-          await sleep(1000);
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-          await sleep(1000);
-          let allowed1 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed1) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-          await sleep(2000);
-          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed2) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
         } catch (error) {
           expect().assertFail()
           hilog.info(0x0000, 'testTag', '%{public}s',
@@ -728,47 +787,49 @@ export default function actsApplicationStartAbilityTest() {
             hilog.info(0x0000, 'testTag', '%{public}s',
               `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
           } else {
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
-              onForegroundFlagNumber = onForegroundFlagNumber + 1
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              hilog.info(0x0000, 'testTag', '%{public}s', `onForegroundFlagNumber: ${onForegroundFlagNumber}`);
+            switch (commonEventData.event) {
+              case `${TEST_CASE_NAME}_onForegroundHap_1`:
+                onForegroundFlagNumber = onForegroundFlagNumber + 1
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                hilog.info(0x0000, 'testTag', '%{public}s', `onForegroundFlagNumber: ${onForegroundFlagNumber}`);
 
-              if (onForegroundFlagNumber == 1) {
-                expect(onCreateFlag).assertTrue();
-                expect(onWindowStageCreateFlag).assertTrue();
-                expect(onForegroundFlag).assertTrue();
-              } else if (onForegroundFlagNumber == 2) {
-                expect(onCreateFlag).assertTrue();
-                expect(onWindowStageCreateFlag).assertTrue();
-                expect(onForegroundFlag).assertTrue();
-                commonEventManager.unsubscribe(subscriber, (err, data) => {
-                  done();
-                });
-              }
-            } else if (commonEventData.event === `${TEST_CASE_NAME}_onDestroyHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onDestroyHap_1: ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-              expect(onDestroyFlag).assertTrue();
+                if (onForegroundFlagNumber == 1) {
+                  expect(onCreateFlag).assertTrue();
+                  expect(onWindowStageCreateFlag).assertTrue();
+                  expect(onForegroundFlag).assertTrue();
+                } else if (onForegroundFlagNumber == 2) {
+                  expect(onCreateFlag).assertTrue();
+                  expect(onWindowStageCreateFlag).assertTrue();
+                  expect(onForegroundFlag).assertTrue();
+                  sleep(1000)
+                  commonEventManager.unsubscribe(subscriber, (err, data) => {
+                    done();
+                  });
+                }
+                break;
+              case `${TEST_CASE_NAME}_onDestroyHap_1`:
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onDestroyHap_1: ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+                expect(onDestroyFlag).assertTrue();
 
-              if (onForegroundFlagNumber == 1) {
-                let want: Want = {
-                  deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.example.actsapplicationstartabilityauxiliary2',
-                  abilityName: 'SingleEntryAbility4',
-                  action: TEST_CASE_NAME,
-                  parameters: {
-                    instanceKey: TEST_CASE_NAME
-                  }
-                };
-                try {
-                  context.startAbility(want).then((data) => {
+                if (onForegroundFlagNumber == 1) {
+                  let want: Want = {
+                    deviceId: '', // deviceId为空表示本设备
+                    bundleName: 'com.example.actsapplicationstartabilityauxiliary2',
+                    abilityName: 'SingleEntryAbility4',
+                    action: TEST_CASE_NAME,
+                    parameters: {
+                      instanceKey: TEST_CASE_NAME
+                    }
+                  };
+                  await context.startAbility(want).then((data) => {
                     hilog.info(0x0000, 'testTag', '%{public}s',
                       `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
                   }).catch((error: BusinessError) => {
@@ -787,13 +848,7 @@ export default function actsApplicationStartAbilityTest() {
                       buttons[buttons.length - 1].click();
                     }
                   }
-                } catch (error) {
-                  expect().assertFail()
-                  hilog.info(0x0000, 'testTag', '%{public}s',
-                    `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
-                  done();
                 }
-              }
             }
           }
         });
@@ -807,162 +862,24 @@ export default function actsApplicationStartAbilityTest() {
             instanceKey: TEST_CASE_NAME
           }
         };
-        try {
-          context.startAbility(want).then((data) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
-          }).catch((error: BusinessError) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
-            expect().assertFail();
-            done();
-          })
-          await sleep(1000);
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        await context.startAbility(want).then((data) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-        } catch (error) {
-          expect().assertFail()
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
+        }).catch((error: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
           done();
-        }
-      })
-    });
-
-    /**
-     * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300
-     * @tc.name Start ability, after completion, restart ability multiple examples
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300', 0, async (done: Function) => {
-      let onForegroundFlagNumber = 0;
-      let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300';
-      let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
-        events: [`${TEST_CASE_NAME}_onForegroundHap_1`, `${TEST_CASE_NAME}_onDestroyHap_1`,
-          `${TEST_CASE_NAME}_onForegroundHap_3`,
-          `${TEST_CASE_NAME}_onBackgroundHap_1`, `${TEST_CASE_NAME}_onBackgroundHap_2`],
-      };
-      await commonEventManager.createSubscriber(subscriberInfo_startdebugapp).then(async (subscriber) => {
-        commonEventManager.subscribe(subscriber, async (err, commonEventData) => {
-          hilog.info(0x0000, 'testTag', '%{public}s', `eventInfosubscribe ${TEST_CASE_NAME}`);
-          if (err) {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
-          } else {
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
-              onForegroundFlagNumber = onForegroundFlagNumber + 1
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              hilog.info(0x0000, 'testTag', '%{public}s', `onForegroundFlagNumber: ${onForegroundFlagNumber}`);
-
-              if (onForegroundFlagNumber == 1) {
-                expect(onCreateFlag).assertTrue();
-                expect(onWindowStageCreateFlag).assertTrue();
-                expect(onForegroundFlag).assertTrue();
-              } else if (onForegroundFlagNumber == 2) {
-                expect(onCreateFlag).assertTrue();
-                expect(onWindowStageCreateFlag).assertTrue();
-                expect(onForegroundFlag).assertTrue();
-                commonEventManager.unsubscribe(subscriber, (err, data) => {
-                  done();
-                });
-              }
-            } else if (commonEventData.event === `${TEST_CASE_NAME}_onDestroyHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-              expect(onDestroyFlag).assertTrue();
-
-              if (onForegroundFlagNumber == 1) {
-                let want: Want = {
-                  deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.example.actsapplicationstartabilityauxiliary2',
-                  abilityName: 'MultipleEntryAbility',
-                  action: TEST_CASE_NAME,
-                  parameters: {
-                    instanceKey: TEST_CASE_NAME
-                  }
-                };
-                try {
-                  context.startAbility(want).then((data) => {
-                    hilog.info(0x0000, 'testTag', '%{public}s',
-                      `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
-                  }).catch((error: BusinessError) => {
-                    hilog.info(0x0000, 'testTag', '%{public}s',
-                      `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility2. Code is ${error.code}, message is ${error.message}`);
-                    expect().assertFail();
-                    done();
-                  })
-                  await sleep(1000);
-                  let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-                  hilog.info(0x0000, 'testTag', '%{public}s',
-                    `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-                  if (allowed) {
-                    let buttons = await driver.findComponents(ON.text('打开'));
-                    if (buttons && buttons.length > 0) {
-                      buttons[buttons.length - 1].click();
-                    }
-                  }
-                } catch (error) {
-                  expect().assertFail()
-                  hilog.info(0x0000, 'testTag', '%{public}s',
-                    `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
-                  done();
-                }
-              }
-            }
+        })
+        await sleep(1000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+        if (allowed) {
+          let buttons = await driver.findComponents(ON.text('打开'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
           }
-        });
-        let want: Want = {
-          deviceId: '', // deviceId为空表示本设备
-          bundleName: 'com.example.actsapplicationstartabilityauxiliary2',
-          abilityName: 'MultipleEntryAbility',
-          moduleName: 'entry', // moduleName非必选
-          action: TEST_CASE_NAME,
-          parameters: {
-            instanceKey: TEST_CASE_NAME
-          }
-        };
-        try {
-          context.startAbility(want).then((data) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
-          }).catch((error: BusinessError) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
-            expect().assertFail();
-            done();
-          })
-          await sleep(1000);
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
-        } catch (error) {
-          expect().assertFail()
-          hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
-          done();
         }
       })
     });

@@ -13,10 +13,10 @@
   * limitations under the License.
 */
 
-import actsapplicationstartabilitytest from './actsapplicationstartabilitytest.test';
-import actsapplicationstartabilitytest2 from './actsapplicationstartabilitytest2.test';
+import actsApplicationStartAbilityTest from './ActsApplicationStartAbilityTest.test';
+import actsApplicationStartAbilityTest2 from './ActsApplicationStartAbilityTest2.test';
 
 export default function testsuite() {
-  actsapplicationstartabilitytest();
-  actsapplicationstartabilitytest2();
+  actsApplicationStartAbilityTest();
+  actsApplicationStartAbilityTest2();
 }
