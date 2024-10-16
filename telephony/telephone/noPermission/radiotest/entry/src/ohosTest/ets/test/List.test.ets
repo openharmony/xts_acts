@@ -17,7 +17,6 @@ import telephonyRadioNoPermissionPublicTest from './TelephonyRadioNoPermissionPu
 import telephonyRadioNoPermissionEmptyTest from './TelephonyRadioNoPermissionPublic1.test';
 import sim from '@ohos.telephony.sim';
 import EmptyTest from './Empty.test';
-import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
