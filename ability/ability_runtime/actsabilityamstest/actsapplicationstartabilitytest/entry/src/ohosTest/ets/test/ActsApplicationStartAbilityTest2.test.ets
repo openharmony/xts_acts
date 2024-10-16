@@ -36,8 +36,8 @@ export default function actsApplicationStartAbilityTest() {
         context = getContext() as common.UIAbilityContext;
         hilog.info(0x0000, 'testTag', '%{public}s',
           `Succeeded in starting SpecifiedAbility11ww11` + JSON.stringify(context));
-        done()
-      }, 2000)
+        done();
+      }, 2000);
     });
 
     beforeEach(async () => {
@@ -47,7 +47,7 @@ export default function actsApplicationStartAbilityTest() {
       await abilityDelegator.executeShellCommand(startAbilityNoModuleNameCmd1);
       await abilityDelegator.executeShellCommand(startAbilityNoModuleNameCmd2);
       await sleep(2000);
-    })
+    });
 
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2300
@@ -82,30 +82,34 @@ export default function actsApplicationStartAbilityTest() {
                 let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
                 let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
                 hilog.info(0x0000, 'testTag', '%{public}s', `onForegroundFlagNumber: ${onForegroundFlagNumber}`);
-
-                if (onForegroundFlagNumber == 1) {
-                  expect(onCreateFlag).assertTrue();
-                  expect(onWindowStageCreateFlag).assertTrue();
-                  expect(onForegroundFlag).assertTrue();
-                } else if (onForegroundFlagNumber == 2) {
-                  expect(onCreateFlag).assertTrue();
-                  expect(onWindowStageCreateFlag).assertTrue();
-                  expect(onForegroundFlag).assertTrue();
-                  await sleep(1000);
-                  commonEventManager.unsubscribe(subscriber, (err, data) => {
-                    done();
-                  });
+                try {
+                  if (onForegroundFlagNumber == 1) {
+                    expect(onCreateFlag).assertTrue();
+                    expect(onWindowStageCreateFlag).assertTrue();
+                    expect(onForegroundFlag).assertTrue();
+                  } else if (onForegroundFlagNumber == 2) {
+                    expect(onCreateFlag).assertTrue();
+                    expect(onWindowStageCreateFlag).assertTrue();
+                    expect(onForegroundFlag).assertTrue();
+                    await sleep(1000);
+                    commonEventManager.unsubscribe(subscriber, (err, data) => {
+                      done();
+                    });
+                  }
+                  break;
+                } catch (error) {
+                  expect().assertFail();
+                  hilog.info(0x0000, 'testTag', '%{public}s',
+                    `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+                  done();
                 }
-                break;
               case `${TEST_CASE_NAME}_onDestroyHap_1`:
-
                 hilog.info(0x0000, 'testTag', '%{public}s',
                   `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
                 let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
                 let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
                 expect(onBackgroundFlag).assertTrue();
                 expect(onDestroyFlag).assertTrue();
-
                 if (onForegroundFlagNumber == 1) {
                   let want: Want = {
                     deviceId: '', // deviceId为空表示本设备
@@ -158,7 +162,7 @@ export default function actsApplicationStartAbilityTest() {
             `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
           expect().assertFail();
           done();
-        })
+        });
         await sleep(1000);
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -169,7 +173,7 @@ export default function actsApplicationStartAbilityTest() {
             buttons[buttons.length - 1].click();
           }
         }
-      })
+      });
     });
 
     /**
@@ -193,19 +197,26 @@ export default function actsApplicationStartAbilityTest() {
             hilog.info(0x0000, 'testTag', '%{public}s',
               `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
           } else {
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+            try {
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              commonEventManager.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            } catch (error) {
+              expect().assertFail();
               hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            commonEventManager.unsubscribe(subscriber, (err, data) => {
+                `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
               done();
-            });
+            }
           }
         });
         let want: Want = {
@@ -226,7 +237,7 @@ export default function actsApplicationStartAbilityTest() {
             `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
           expect().assertFail();
           done();
-        })
+        });
         await sleep(1000);
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -237,8 +248,9 @@ export default function actsApplicationStartAbilityTest() {
             buttons[buttons.length - 1].click();
           }
         }
-      })
+      });
     });
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100
      * @tc.name UIAbility calls startAbilityForResult to mutually start singleton
@@ -261,39 +273,46 @@ export default function actsApplicationStartAbilityTest() {
             hilog.info(0x0000, 'testTag', '%{public}s',
               `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
           } else {
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+            try {
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              } else if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+              } else if (commonEventData.event === `${TEST_CASE_NAME}_onDestroyHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onDestroyFlag: ${JSON.stringify(commonEventData)}`);
+                let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
+                expect(onDestroyFlag).assertTrue();
+                sleep(1000);
+                commonEventManager.unsubscribe(subscriber, (err, data) => {
+                  done();
+                });
+              }
+            } catch (error) {
+              expect().assertFail();
               hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            } else if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-            } else if (commonEventData.event === `${TEST_CASE_NAME}_onDestroyHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onDestroyFlag: ${JSON.stringify(commonEventData)}`);
-              let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
-              expect(onDestroyFlag).assertTrue();
-              sleep(1000)
-              commonEventManager.unsubscribe(subscriber, (err, data) => {
-                done();
-              });
+                `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+              done();
             }
           }
         });
@@ -315,7 +334,7 @@ export default function actsApplicationStartAbilityTest() {
             `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
           expect().assertFail();
           done();
-        })
+        });
         await sleep(1000);
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -336,7 +355,7 @@ export default function actsApplicationStartAbilityTest() {
             buttons[buttons.length - 1].click();
           }
         }
-      })
+      });
     });
 
     /**
@@ -360,40 +379,47 @@ export default function actsApplicationStartAbilityTest() {
             hilog.info(0x0000, 'testTag', '%{public}s',
               `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
           } else {
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+            try {
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onDestroyHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `onDestroyHap_1: ${JSON.stringify(commonEventData)}`);
+                let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
+                expect(onDestroyFlag).assertTrue();
+                commonEventManager.unsubscribe(subscriber, (err, data) => {
+                  done();
+                });
+              }
+            } catch (error) {
+              expect().assertFail();
               hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onDestroyHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `onDestroyHap_1: ${JSON.stringify(commonEventData)}`);
-              let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
-              expect(onDestroyFlag).assertTrue();
-              commonEventManager.unsubscribe(subscriber, (err, data) => {
-                done();
-              });
+                `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+              done();
             }
           }
         });
@@ -414,7 +440,7 @@ export default function actsApplicationStartAbilityTest() {
             `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility111. Code is ${error.code}, message is ${error.message}`);
           expect().assertFail();
           done();
-        })
+        });
         await sleep(1000);
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -435,7 +461,7 @@ export default function actsApplicationStartAbilityTest() {
             buttons[buttons.length - 1].click();
           }
         }
-      })
+      });
     });
 
     /**
@@ -460,49 +486,56 @@ export default function actsApplicationStartAbilityTest() {
             hilog.info(0x0000, 'testTag', '%{public}s',
               `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
           } else {
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+            try {
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onDestroyHap_2`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `onDestroyHap_1: ${JSON.stringify(commonEventData)}`);
+                let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+                expect(onDestroyFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_3`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onForegroundFlag).assertTrue();
+                await sleep(2000)
+                commonEventManager.unsubscribe(subscriber, (err, data) => {
+                  done();
+                });
+              }
+            } catch (error) {
+              expect().assertFail();
               hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onDestroyHap_2`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `onDestroyHap_1: ${JSON.stringify(commonEventData)}`);
-              let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-              expect(onDestroyFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_3`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onForegroundFlag).assertTrue();
-              await sleep(2000)
-              commonEventManager.unsubscribe(subscriber, (err, data) => {
-                done();
-              });
+                `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+              done();
             }
           }
         });
@@ -523,7 +556,7 @@ export default function actsApplicationStartAbilityTest() {
             `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
           expect().assertFail();
           done();
-        })
+        });
         await sleep(1000);
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -544,8 +577,9 @@ export default function actsApplicationStartAbilityTest() {
             buttons[buttons.length - 1].click();
           }
         }
-      })
+      });
     });
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1100
      * @tc.name StartAbilityForResult takes options as an existing floating-point type
@@ -568,51 +602,58 @@ export default function actsApplicationStartAbilityTest() {
             hilog.info(0x0000, 'testTag', '%{public}s',
               `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
           } else {
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+            try {
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_3`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_2`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+                sleep(1000)
+                commonEventManager.unsubscribe(subscriber, (err, data) => {
+                  done();
+                });
+              }
+            } catch (error) {
+              expect().assertFail();
               hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_3`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_2`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-              sleep(1000)
-              commonEventManager.unsubscribe(subscriber, (err, data) => {
-                done();
-              });
+                `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+              done();
             }
           }
         });
@@ -634,7 +675,7 @@ export default function actsApplicationStartAbilityTest() {
             `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
           expect().assertFail();
           done();
-        })
+        });
         await sleep(1000);
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -665,8 +706,9 @@ export default function actsApplicationStartAbilityTest() {
             buttons[buttons.length - 1].click();
           }
         }
-      })
+      });
     });
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900
      * @tc.name StartAbilityForResult input options input as undefined
@@ -689,51 +731,58 @@ export default function actsApplicationStartAbilityTest() {
             hilog.info(0x0000, 'testTag', '%{public}s',
               `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
           } else {
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+            try {
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_3`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+                let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+                let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+                let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+                expect(onCreateFlag).assertTrue();
+                expect(onWindowStageCreateFlag).assertTrue();
+                expect(onForegroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+              }
+              if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_2`) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
+                let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+                expect(onBackgroundFlag).assertTrue();
+                sleep(1000);
+                commonEventManager.unsubscribe(subscriber, (err, data) => {
+                  done();
+                });
+              }
+            } catch (error) {
+              expect().assertFail();
               hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_3`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
-              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
-              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
-              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
-              expect(onCreateFlag).assertTrue();
-              expect(onWindowStageCreateFlag).assertTrue();
-              expect(onForegroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-            }
-            if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_2`) {
-              hilog.info(0x0000, 'testTag', '%{public}s',
-                `eventInfosubscribe ${TEST_CASE_NAME} onBackgroundFlag: ${JSON.stringify(commonEventData)}`);
-              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
-              expect(onBackgroundFlag).assertTrue();
-              sleep(1000)
-              commonEventManager.unsubscribe(subscriber, (err, data) => {
-                done();
-              });
+                `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+              done();
             }
           }
         });
@@ -746,24 +795,18 @@ export default function actsApplicationStartAbilityTest() {
             instanceKey: TEST_CASE_NAME
           }
         };
-        try {
-          await context.startAbility(want).then((data) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
-          }).catch((error: BusinessError) => {
-            hilog.info(0x0000, 'testTag', '%{public}s',
-              `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
-            expect().assertFail();
-            done();
-          })
-        } catch (error) {
-          expect().assertFail()
+        await context.startAbility(want).then((data) => {
           hilog.info(0x0000, 'testTag', '%{public}s',
-            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
+        }).catch((error: BusinessError) => {
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
           done();
-        }
-      })
+        });
+      });
     });
+
     /**
      * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200
      * @tc.name Start ability, after completion, restart ability single instance
@@ -796,7 +839,6 @@ export default function actsApplicationStartAbilityTest() {
                 let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
                 let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
                 hilog.info(0x0000, 'testTag', '%{public}s', `onForegroundFlagNumber: ${onForegroundFlagNumber}`);
-
                 if (onForegroundFlagNumber == 1) {
                   expect(onCreateFlag).assertTrue();
                   expect(onWindowStageCreateFlag).assertTrue();
@@ -818,7 +860,6 @@ export default function actsApplicationStartAbilityTest() {
                 let onDestroyFlag = commonEventData.parameters?.data?.onDestroyFlag as boolean;
                 expect(onBackgroundFlag).assertTrue();
                 expect(onDestroyFlag).assertTrue();
-
                 if (onForegroundFlagNumber == 1) {
                   let want: Want = {
                     deviceId: '', // deviceId为空表示本设备
@@ -837,7 +878,7 @@ export default function actsApplicationStartAbilityTest() {
                       `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility2. Code is ${error.code}, message is ${error.message}`);
                     expect().assertFail();
                     done();
-                  })
+                  });
                   await sleep(1000);
                   let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
                   hilog.info(0x0000, 'testTag', '%{public}s',
@@ -870,7 +911,7 @@ export default function actsApplicationStartAbilityTest() {
             `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
           expect().assertFail();
           done();
-        })
+        });
         await sleep(1000);
         let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -881,9 +922,9 @@ export default function actsApplicationStartAbilityTest() {
             buttons[buttons.length - 1].click();
           }
         }
-      })
+      });
     });
-  })
+  });
 }
 
 function sleep(ms: number): Promise<void> {
