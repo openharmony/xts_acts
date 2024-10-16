@@ -6,7 +6,7 @@
         "shell-timeout": "1000000",
         "bundle-name": "com.example.acevideo",
         "package-name": "com.example.acevideo",
-        "testcase-timeout":"10000"
+		"testcase-timeout":"10000"
     },
     "kits": [
         {
@@ -15,6 +15,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
