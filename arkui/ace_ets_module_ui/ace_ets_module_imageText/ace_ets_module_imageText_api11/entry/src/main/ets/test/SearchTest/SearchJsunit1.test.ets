@@ -345,7 +345,7 @@ export default function searchTest() {
       console.info('[' + tagName + '] component obj is: ' + strJson);
       let obj:ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Search');
-      expect(obj.$attrs.copyOption).assertEqual("CopyOptions.Distributed");
+      expect(obj.$attrs.copyOption).assertEqual("CopyOptions.Local");
 
       try {
         let eventData: events_emitter.EventData = {
