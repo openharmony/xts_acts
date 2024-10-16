@@ -16,6 +16,7 @@
 import { beforeEach, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
+import { Driver } from '@kit.TestKit';
 
 export default function DragEventGetDropOperationTest() {
 
@@ -45,7 +46,8 @@ export default function DragEventGetDropOperationTest() {
       console.info("DragEventGetDropOperationTest001 textDragTest2 is " + JSON.stringify(rectOne));
       let upX = rectOne.left + (rectOne.right - rectOne.left) / 2;
       let upY = rectOne.top + (rectOne.bottom - rectOne.top) / 2;
-      await Utils.drag(downX, downY, upX, upY, 10);
+      let driver: Driver = Driver.create();
+      await driver.drag(Math.round(downX), Math.round(downY), Math.round(upX), Math.round(upY), 10);
       await Utils.sleep(2000);
       expect(Utils.getComponentInfoByKey('GetDropOperation').$attrs.backgroundColor).assertEqual('#FF00FF00');
       done();
