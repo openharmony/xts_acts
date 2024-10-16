@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 
 import colorSpaceManagerTest from './colorSpaceManager.test';
-import common from '@ohos.app.ability.common';
-import ohosWindow from '@ohos.window';
 
-export default function testsuite(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
-  colorSpaceManagerTest(context, windowStage, abilityStorage);
+export default function testsuite() {
+  colorSpaceManagerTest();
 }
