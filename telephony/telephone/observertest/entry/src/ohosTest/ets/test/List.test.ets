@@ -20,7 +20,7 @@ import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (sim.getMaxSimCount!=0){
+  if (sim.getMaxSimCount()!=0){
     if(sim.hasSimCardSync(0)){
       observerManagerCallStateTest();
       observerManagerSimStateTest1();
