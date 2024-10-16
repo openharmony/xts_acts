@@ -15,7 +15,8 @@
                 "ActsTerminateselfWithResultEntry.hap",
                 "TerminateSelfWithResultTestHap.hap",
                 "TerminateSelfWithResultTestHap2.hap",
-                "TerminateSelfWithResultHelper.hap",
+                "TerminateSelfWithResultHelper-entry-default-signed.hap",
+                "TerminateSelfWithResultHelper-Second-default-signed.hap",
                 "TerminateSelfWithResultSecondHelper.hap"
                 "TerminalSelfDelayHelper.hap"
             ],

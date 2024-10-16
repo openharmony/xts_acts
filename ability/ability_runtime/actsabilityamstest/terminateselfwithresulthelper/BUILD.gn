@@ -11,60 +11,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("TerminateSelfWithResultHelper") {
-  js_build_mode = "debug"
-  hap_profile = "entry/src/main/module.json"
-   deps = [
-    ":terminateselfwithresulthelper_js_assets",
-    ":terminateselfwithresulthelper_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("TerminateSelfWithResultHelper_entry") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "TerminateSelfWithResultHelper"
   part_name = "ability_runtime"
   subsystem_name = "ability"
 }
 
-ohos_app_scope("terminateselfwithresulthelper_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
 
-ohos_js_assets("terminateselfwithresulthelper_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("terminateselfwithresulthelper_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":terminateselfwithresulthelper_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
-}
-
-ohos_app_assist_suite("TerminateSelfWithResultSecondHelper") {
-  js_build_mode = "debug"
-  hap_profile = "Second/src/main/module.json"
-    deps = [
-    ":terminateselfwithresultsecondhelper_js_assets",
-    ":terminateselfwithresultsecondhelper_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "TerminateSelfWithResultSecondHelper"
+ohos_app_assist_suite("TerminateSelfWithResultHelper_Second") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "TerminateSelfWithResultHelperSecond"
   part_name = "ability_runtime"
   subsystem_name = "ability"
 }
-ohos_app_scope("terminateselfwithresultsecondhelper_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("terminateselfwithresultsecondhelper_js_assets") {
-  source_dir = "Second/src/main/ets"
-}
-
-ohos_resources("terminateselfwithresultsecondhelper_resources") {
-  sources = [ "Second/src/main/resources" ]
-  deps = [ ":terminateselfwithresultsecondhelper_app_profile" ]
-  hap_profile = "Second/src/main/module.json"
-}
-
