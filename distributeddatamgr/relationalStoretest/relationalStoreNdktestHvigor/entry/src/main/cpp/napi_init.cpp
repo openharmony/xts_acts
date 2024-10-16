@@ -816,7 +816,7 @@ static napi_value OH_Rdb_SetStoreName_Param_0800(napi_env env, napi_callback_inf
 
 static napi_value OH_Rdb_SetStoreName_Param_0900(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0800 ------------- ");
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, TAG, " func OH_Rdb_SetStoreName_Param_0900 ------------- ");
     int errCode = 0;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     errCode = OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
