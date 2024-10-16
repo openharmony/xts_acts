@@ -30,6 +30,7 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_gauge_contentModifier:ActsAceEtsModuleGaugeContentModifierTest",
     "ace_ets_module_grid:ActsAceEtsModuleGridTest",
     "ace_ets_module_griditem:ActsAceEtsModuleGridItemTest",
+    "ace_ets_module_imageSpan:ActsAceEtsModuleImageSpanTest",
     "ace_ets_module_imageText:ActsAceEtsModuleImageTextTest",
     "ace_ets_module_information:ActsAceEtsModuleInformationTest",
     "ace_ets_module_keyboardShortcut:ActsAceEtsModuleKeyboardShortcutTest",
