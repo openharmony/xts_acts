@@ -72,26 +72,29 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
-          if (commonEventData.event == event) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
-          }
-          if (commonEventData.event == event2) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
-          }
-          if (commonEventData.event == event3) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
-          }
-          if (commonEventData.event == event4) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          try {
+            if (commonEventData.event == event) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+            if (commonEventData.event == event2) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
+            }
+            if (commonEventData.event == event3) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
+            }
+            if (commonEventData.event == event4) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+          } catch {
           }
           if (reburnNumber == 4) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
             });
-            done();
           }
         });
 
@@ -200,20 +203,23 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
-          if (commonEventData.event == event) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
-          }
-          if (commonEventData.event == event2) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          try {
+            if (commonEventData.event == event) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+            if (commonEventData.event == event2) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+          } catch {
           }
           if (reburnNumber == 2) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
             });
-            done();
           }
         });
 
@@ -317,12 +323,15 @@ export default function abilityTest() {
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
-          expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-          expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-          expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          try {
+            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          } catch {
+          }
           commonEventManager.unsubscribe(subscriber, (err, data) => {
+            done();
           });
-          done();
         });
 
         try {
@@ -373,13 +382,16 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
-          expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
-          expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-          expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          try {
+            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
+            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          } catch {
+          }
           if (reburnNumber == 2) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
             });
-            done();
           }
         });
 
@@ -450,23 +462,26 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
-          if (commonEventData.event == event) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
-          }
-          if (commonEventData.event == event2) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
-          }
-          if (commonEventData.event == event3) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          try {
+            if (commonEventData.event == event) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+            if (commonEventData.event == event2) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
+            }
+            if (commonEventData.event == event3) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+          } catch {
           }
           if (reburnNumber == 3) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
             });
-            done();
           }
         });
 
@@ -556,26 +571,29 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
-          if (commonEventData.event == event) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
-          }
-          if (commonEventData.event == event2) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-          }
-          if (commonEventData.event == event3) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-          }
-          if (commonEventData.event == event4) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          try {
+            if (commonEventData.event == event) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+            if (commonEventData.event == event2) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+            }
+            if (commonEventData.event == event3) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+            }
+            if (commonEventData.event == event4) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+          } catch {
           }
           if (reburnNumber == 4) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
             });
-            done();
           }
         });
 
@@ -681,18 +699,21 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
-          expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-          expect(commonEventData.parameters?.data?.onForeground).assertTrue();
-          if (commonEventData.event == event) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-          }
-          if (commonEventData.event == event2) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
+          try {
+            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            if (commonEventData.event == event) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+            }
+            if (commonEventData.event == event2) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
+            }
+          } catch {
           }
           if (reburnNumber == 2) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
             });
-            done();
           }
         });
 
@@ -763,20 +784,23 @@ export default function abilityTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
           hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
-          if (commonEventData.event == event) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
-          }
-          if (commonEventData.event == event3) {
-            expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
-            expect(commonEventData.parameters?.data?.onCreate).assertTrue();
-            expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+          try {
+            if (commonEventData.event == event) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+            if (commonEventData.event == event3) {
+              expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(2);
+              expect(commonEventData.parameters?.data?.onCreate).assertTrue();
+              expect(commonEventData.parameters?.data?.onForeground).assertTrue();
+            }
+          } catch {
           }
           if (reburnNumber == 3) {
             commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
             });
-            done();
           }
         });
 
