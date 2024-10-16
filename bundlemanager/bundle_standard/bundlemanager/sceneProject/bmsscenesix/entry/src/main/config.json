@@ -1,32 +1,16 @@
 {
   "app": {
-    "bundleName": "com.example.myapplication6",
     "vendor": "example",
+    "bundleName": "com.example.myapplication6",
     "version": {
       "code": 1,
       "name": "1.0"
-    },
-    "apiVersion": {
-      "compatible": 5,
-      "target": 5,
-      "releaseType": "Beta1"
     }
   },
-  "deviceConfig": {},
+  "deviceConfig": {
+    "default": {}
+  },
   "module": {
-    "package": "com.example.myapplication",
-    "name": ".MyApplication",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
-    "distro": {
-      "deliveryWithInstall": true,
-      "moduleName": "entry",
-      "moduleType": "entry"
-    },
     "abilities": [
       {
         "skills": [
@@ -40,26 +24,41 @@
             ]
           }
         ],
-        "name": ".MainAbility",
         "icon": "$media:icon",
+        "name": "com.example.myapplication.MainAbility",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "isVisible": "true",
         "launchType": "standard",
         "orientation": "followRecent",
-        "language": "C++"
+        "srcPath": "default",
+        "srcLanguage": "js"
       }
     ],
+    "deviceType": [
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
+    ],
+    "mainAbility": "com.example.myapplication1.MainAbility",
+    "distro": {
+      "moduleType": "entry",
+      "installationFree": false,
+      "deliveryWithInstall": true,
+      "moduleName": "entry"
+    },
+    "package": "com.example.myapplication",
+    "name": ".MyApplication",
     "js": [
       {
         "pages": [
           "pages/index/index"
         ],
-        "name": "default",
+        "name": "com.example.myapplication.MainAbility",
         "window": {
           "designWidth": 720,
-          "autoDesignWidth": false
+          "autoDesignWidth": true
         }
       }
     ],
