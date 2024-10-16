@@ -21,6 +21,7 @@ import testsuite from '../test/List.test';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want'
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import common from '@ohos.app.ability.common';
 
 export let mContext: common.UIAbilityContext | null = null;
 export default class TestAbility extends UIAbility {
