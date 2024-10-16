@@ -41,7 +41,7 @@
       "2in1",
       "wearable"
     ],
-    "mainAbility": "com.example.myapplication1.MainAbility",
+    "mainAbility": "com.example.myapplication.MainAbility",
     "distro": {
       "moduleType": "entry",
       "installationFree": false,
