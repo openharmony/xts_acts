@@ -50,8 +50,8 @@ ohos_moduletest_suite("ActsCryptoFrameworkNAPITest") {
 
   external_deps = [
     "c_utils:utils",
-    "hilog:libhilog",
     "crypto_framework:crypto_framework_lib",
+    "hilog:libhilog",
   ]
 
   deps = [
