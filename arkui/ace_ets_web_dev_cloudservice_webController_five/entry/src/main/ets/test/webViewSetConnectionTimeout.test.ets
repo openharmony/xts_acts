@@ -62,7 +62,9 @@ export default function ActsAceWebViewSetConnectionTimeout() {
     it('testWebViewSetConnectionTimeoutZeroSeconds', 0, async (done: Function) => {
         emitKey = "emitWebViewSetConnectionTimeoutZeroSeconds"
         Utils.emitEvent(emitKey, 10);
-        Utils.registerEvent("testWebViewSetConnectionTimeoutZeroSeconds", 'Error', 8001, done);
+        Utils.registerBaseEvent("testWebViewSetConnectionTimeoutZeroSeconds", 'Error', 8001, done, (backData: events_emitter.EventData, expected: Object) => {
+         expect(backData?.data?.ACTION).assertEqual(expected);
+        });
         sendEventByKey('webViewSetConnectionTimeoutButton', 10, '');
     })
 
@@ -78,7 +80,9 @@ export default function ActsAceWebViewSetConnectionTimeout() {
     it('testWebViewSetConnectionTimeoutPointFiveSeconds', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutPointFiveSeconds"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSetConnectionTimeoutPointFiveSeconds", 'Error', 8002, done);
+      Utils.registerBaseEvent("testWebViewSetConnectionTimeoutPointFiveSeconds", 'Error', 8002, done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
       sendEventByKey('webViewSetConnectionTimeoutButton', 10, '');
     })
 
@@ -93,7 +97,9 @@ export default function ActsAceWebViewSetConnectionTimeout() {
     it('testWebViewSetConnectionTimeoutNegativeOneSeconds', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutNegativeOneSeconds"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSetConnectionTimeoutNegativeOneSeconds", 'Error', 8003, done);
+      Utils.registerBaseEvent("testWebViewSetConnectionTimeoutNegativeOneSeconds", 'Error', 8003, done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
       sendEventByKey('webViewSetConnectionTimeoutButton', 10, '');
     })
 
@@ -108,7 +114,9 @@ export default function ActsAceWebViewSetConnectionTimeout() {
     it('testWebViewSetConnectionTimeoutWithA', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutWithA"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSetConnectionTimeoutWithA", 'Error', 8004, done);
+      Utils.registerBaseEvent("testWebViewSetConnectionTimeoutWithA", 'Error', 8004, done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
       sendEventByKey('webViewSetConnectionTimeoutButton', 10, '');
     })
 
@@ -123,7 +131,26 @@ export default function ActsAceWebViewSetConnectionTimeout() {
     it('testWebViewSetConnectionTimeoutTenSeconds', 0, async (done: Function) => {
       emitKey = "emitWebViewSetConnectionTimeoutTenSeconds"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSetConnectionTimeoutTenSeconds", 'Time_out', 8005, done);
+      Utils.registerBaseEvent("testWebViewSetConnectionTimeoutTenSeconds", 'Time_out', 8005, done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
+      sendEventByKey('webViewSetConnectionTimeoutButton', 10, '');
+    })
+
+    /*
+    *@tc.number SUB_ACE_WEB_SETCONNECTIONTIMEOUT_API_0006
+    *@tc.name testWebViewSetConnectionTimeout
+    *@tc.desc test setConnectionTimeout_aboutAppear_five_seconds
+    *@tc.size MediumTest
+    *@tc.type Function
+    *@tc.level 1
+    */
+    it('testWebViewSetConnectionAboutAppearTimeoutFiveSeconds', 0, async (done: Function) => {
+      emitKey = "emitWebViewSetConnectionAboutAppearTimeoutFiveSeconds"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerBaseEvent("testWebViewSetConnectionAboutAppearTimeoutFiveSeconds", 'Time_out', 24801, done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
       sendEventByKey('webViewSetConnectionTimeoutButton', 10, '');
     })
   })
