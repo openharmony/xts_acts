@@ -88,6 +88,15 @@
         "MainAbility/pages/Computed/computedTrace",
         "MainAbility/pages/Computed/computedLocal",
         "MainAbility/pages/Param/ParamChange",
-        "MainAbility/pages/Param/ParamAndOnce"
+        "MainAbility/pages/Param/ParamAndOnce",
+        "MainAbility/pages/appstoragev2/AppStorageV20010",
+        "MainAbility/pages/appstoragev2/AppStorageV2Page2",
+        "MainAbility/pages/Provider/Provider0300",
+        "MainAbility/pages/Monitor/Monitor0031",
+        "MainAbility/pages/Monitor/Monitor0034",
+        "MainAbility/pages/Monitor/Monitor0260",
+        "MainAbility/pages/Monitor/Monitor0280",
+        "MainAbility/pages/Monitor/Monitor0290",
+        "MainAbility/pages/Monitor/Monitor0300"
     ]
 }
