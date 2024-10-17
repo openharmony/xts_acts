@@ -28,7 +28,7 @@ struct backgroundBlurStyle_inactiveColorTest {
           .height(100)
           .backgroundColor(Color.Green)
           .fontWeight(FontWeight.Bold)
-          .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.SYSTEM, policy: BlurStyleActivePolicy.FOLLOWS_WINDOW_ACTIVE_STATE, inactiveColor: this.mInactiveColor, type: BlurType.WITHIN_WINDOW })
+          .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.SYSTEM, policy: BlurStyleActivePolicy.FOLLOWS_WINDOW_ACTIVE_STATE, inactiveColor: this.mInactiveColor })
       }
       .width('100%')
     }
