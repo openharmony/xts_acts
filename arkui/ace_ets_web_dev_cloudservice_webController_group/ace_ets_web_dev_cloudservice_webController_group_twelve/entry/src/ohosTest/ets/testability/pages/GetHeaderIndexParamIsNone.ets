@@ -73,7 +73,7 @@ struct OH_ArkWebRequestHeaderList_GetHeader {
             case 'testWebRequestHeaderList_GetHeader_IndexParam_IsNone': {
               console.log('Execute testWebRequestHeaderList_GetHeader_IndexParam_IsNone');
               await Utils.sleep(1000);
-              let headerResult = testNapi.judgment2();
+              let headerResult: number = testNapi.judgment2();
               console.log('HeaderList test result: ' + headerResult);
               if (headerResult == 0) {
                 console.log('OH_ArkWebRequestHeaderList_GetHeader call failed ');

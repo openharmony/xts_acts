@@ -59,7 +59,7 @@ struct OH_ArkWebResourceRequest_GetUrl {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResourceRequest_GetUrl_Fail_URL_IsNone': {
-              let result = testNapi.judgment_num_2();
+              let result: number = testNapi.judgment_num_2();
               if (result == 0) {
                 console.log('Failed click');
                 Utils.emitEvent(false, 5200);

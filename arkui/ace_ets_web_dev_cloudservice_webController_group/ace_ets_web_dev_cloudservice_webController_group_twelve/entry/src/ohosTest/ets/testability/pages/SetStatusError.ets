@@ -59,7 +59,7 @@ struct testWebResponseSetStatusError {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResponse_SetStatus_Error': {
-              let result = testNapi.setStatus();
+              let result: number = testNapi.setStatus();
               if (result == 0) {
                 console.log('Succeed testWebResponse_SetStatus_Error');
                 Utils.emitEvent(result, 5112);

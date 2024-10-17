@@ -60,7 +60,7 @@ struct testWebResponseSetUrlUrlNotExist {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResponse_SetUrl_Url_NotExist': {
-              let result = testNapi.setUrl();
+              let result: number = testNapi.setUrl();
               if (result == 0) {
                 console.log('Succeed OH_ArkWebResponse_SetUrl');
                 Utils.emitEvent(result, 5103);

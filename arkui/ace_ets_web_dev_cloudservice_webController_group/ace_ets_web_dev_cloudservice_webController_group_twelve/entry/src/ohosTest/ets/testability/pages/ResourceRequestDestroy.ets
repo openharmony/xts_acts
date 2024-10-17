@@ -59,8 +59,7 @@ struct OH_ArkWebResourceRequest_Destroy {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResourceRequest_Destroy_Fail_Param_Error': {
-              let result = testNapi.judgment_num_2();
-              let result_num = testNapi.setUrl();
+              let result_num: number = testNapi.setUrl();
               if (result_num != 17100101) {
                 console.log('Failed click');
                 Utils.emitEvent(false, 5208);

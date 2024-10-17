@@ -59,7 +59,7 @@ struct testWebResponseSetUrlUrlError {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResourceRequest_GetUrl_Fail_URL_NotString': {
-              let result = testNapi.judgment_num_2();
+              let result: number = testNapi.judgment_num_2();
               if (result == 0) {
                 console.log('Succeed testWebResourceRequest_GetUrl_url_null');
                 Utils.emitEvent(false, 5201);

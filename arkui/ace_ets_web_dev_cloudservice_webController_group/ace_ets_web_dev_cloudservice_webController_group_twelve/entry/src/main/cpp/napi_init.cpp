@@ -4,7 +4,7 @@
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
-* http://www.apache.org/licenses/LICENSE-2.0
+*   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
@@ -20,6 +20,7 @@
 #include "napi/native_api.h"
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
 #include <stdint.h>
 #include <node_api.h>
 #include <string>
@@ -33,7 +34,6 @@ ArkWeb_SchemeHandler *g_schemeHandler;
 ArkWeb_SchemeHandler *g_schemeHandlerForSW;
 NativeResourceManager *g_resourceManager;
 
-int32_t  testHeader = 0;
 int32_t  result_num = 0;
 int32_t  result_num1 = 1;
 int32_t  result_num2 = 1;
@@ -42,6 +42,12 @@ int32_t  judgment_num = 1;
 std::string url_return = "";
 bool  judgment = true;
 int   g_parameter = 0;
+
+
+bool   judgment1 = false ;
+bool   judgment2 = false ;
+int    judgment_index = 0;
+char*  return_method ; 
 
 
 // 注册三方协议的配置，需要在Web内核初始化之前调用，否则会注册失败。
@@ -93,7 +99,11 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
      OH_LOG_ERROR(LOG_APP, "Failed to create ArkWeb_Response");
         return;
     }
-    const char* url = "https://www.baidu.com/";
+    const char *protocol = "https://";
+    const char *domain = "www.baidu.com/";
+    char url[256];
+    strcpy(url, protocol);
+    strcat(url, domain);
     result_num = OH_ArkWebResponse_SetUrl(nullptr, url);
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
@@ -144,7 +154,11 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
      OH_LOG_ERROR(LOG_APP, "Failed to create ArkWeb_Response");
      return;
     }
-     const char* url = "https://com.baidu123.www";
+    const char *protocol = "https://";
+    const char *domain = "com.baidu123.www";
+    char url[256];
+    strcpy(url, protocol);
+    strcat(url, domain);
      result_num =  OH_ArkWebResponse_SetUrl( response, url);
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
@@ -169,7 +183,11 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler,
      OH_LOG_ERROR(LOG_APP, "Failed to create ArkWeb_Response");
      return;
     }
-    const char* url = "https://www.baidu.com/";
+    const char *protocol = "https://";
+    const char *domain = "www.baidu.com/";
+    char url[256];
+    strcpy(url, protocol);
+    strcat(url, domain);
      char* geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -196,7 +214,11 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler,
      OH_LOG_ERROR(LOG_APP, "Failed to create ArkWeb_Response");
      return;
     }
-    const char* url = "https://www.baidu.com/";
+    const char *protocol = "https://";
+    const char *domain = "www.baidu.com/";
+    char url[256];
+    strcpy(url, protocol);
+    strcat(url, domain);
      char* geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -223,7 +245,11 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler,
      OH_LOG_ERROR(LOG_APP, "Failed to create ArkWeb_Response");
      return;
     }
-    const char* url = "https://www.baidu.com/";
+    const char *protocol = "https://";
+    const char *domain = "www.baidu.com/";
+    char url[256];
+    strcpy(url, protocol);
+    strcat(url, domain);
      char* geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -250,7 +276,11 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler,
      OH_LOG_ERROR(LOG_APP, "Failed to create ArkWeb_Response");
      return;
     }
-    const char* url = "https://www.baidu.com/";
+    const char *protocol = "https://";
+    const char *domain = "www.baidu.com/";
+    char url[256];
+    strcpy(url, protocol);
+    strcat(url, domain);
     char* geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -448,39 +478,6 @@ void OnURLRequestStart17(const ArkWeb_SchemeHandler *schemeHandler,
                        const ArkWeb_ResourceHandler *resourceHandler,
                        bool *intercept)
 {    
-    *intercept = true;
-    OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart17");
-    bool judgment123;
-    const char *scheme = "http";  
-    const char *webTag = "";
-    if (schemeHandler != NULL) {
-        judgment123 = OH_ArkWeb_SetSchemeHandler(scheme, webTag, (ArkWeb_SchemeHandler *)schemeHandler);
-        if (judgment123) {
-            OH_LOG_INFO(LOG_APP, "Scheme handler set successfully.");
-            result_num2 =  OH_ArkWeb_ClearSchemeHandlers (webTag);
-            if (result_num2 == 0) {
-                //SetSchemeHandler成功、ClearSchemeHandlers成功
-                OH_LOG_INFO(LOG_APP, "OH_ArkWeb_ClearSchemeHandlers result_num2 : %{public}d", result_num2);
-                OH_LOG_INFO(LOG_APP, "OH_ArkWeb_ClearSchemeHandlers clear successfully.");
-            } else if (result_num2 == 17100101) {
-                 OH_LOG_ERROR(LOG_APP, "OH_ArkWeb_ClearSchemeHandlers clear failed ");
-            }
-        } else {
-            // OH_ArkWeb_SetSchemeHandler设置失败
-            OH_LOG_ERROR(LOG_APP, "Failed to set scheme handler.");
-        }
-    } else {
-        //schemeHandler为空值
-        OH_LOG_ERROR(LOG_APP, "Scheme handler pointer is NULL.");
-    }
-    
-}
-
-void OnURLRequestStart19(const ArkWeb_SchemeHandler *schemeHandler,
-                       ArkWeb_ResourceRequest *resourceRequest,
-                       const ArkWeb_ResourceHandler *resourceHandler,
-                       bool *intercept)
-{    
    *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart19");
     void* userData = malloc(sizeof(int));
@@ -498,7 +495,678 @@ void OnURLRequestStart19(const ArkWeb_SchemeHandler *schemeHandler,
         OH_LOG_INFO(LOG_APP, "Failed to  OH_ArkWebSchemeHandler_SetUserData result_num2 : %{public}d", result_num2);
     }
 }
+void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept = true;
+    ArkWeb_RequestHeaderList* requestHeaderList;
+    OH_ArkWebResourceRequest_GetRequestHeaders(resourceRequest, &requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders Successfully invoked");
+    int32_t headersize = OH_ArkWebRequestHeaderList_GetSize(requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "requestHeaderList_Size: %{public}d",headersize);
+    OH_LOG_INFO(LOG_APP, "=========== g_parameter: %{public}d",g_parameter);
+     for (int i = 0; i < headersize; i++) {
+        char* key = nullptr;
+        char* value = nullptr;
+        int32_t a ;
+        OH_LOG_INFO(LOG_APP, "int32_t a : %{public}d", a);
+        if (g_parameter == 18)
+            {  a= -1 ; OH_LOG_INFO(LOG_APP, " g_parameter == 18 a : %{public}d", a); }
+        if (g_parameter == 19)
+            {  a = INT32_MAX ;  OH_LOG_INFO(LOG_APP, " g_parameter == 19 a : %{public}d", a); }
+        if (g_parameter == 20) 
+            {  a = i -1;OH_LOG_INFO(LOG_APP, " g_parameter == 20 a : %{public}d", a); }
+        if (g_parameter == 21)    
+            {  a = i ;OH_LOG_INFO(LOG_APP, " g_parameter == 21 a : %{public}d", a); }
 
+       OH_LOG_INFO(LOG_APP, " a : %{public}d", a);  
+       OH_ArkWebRequestHeaderList_GetHeader(requestHeaderList, a, &key, &value);
+       OH_LOG_INFO(LOG_APP, " index a : %{public}d", a);  
+       OH_LOG_INFO(LOG_APP, " Key: %{public}s, Value: %{public}s", key, value);
+        if (key != nullptr && value != nullptr) {
+           OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key, value);
+           judgment1 = true;
+        } else {
+           OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
+           OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key, value);
+           judgment2 = true;
+        }
+    }
+}
+
+void OnURLRequestStart22(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept = true;
+    ArkWeb_RequestHeaderList* requestHeaderList;
+    OH_ArkWebResourceRequest_GetRequestHeaders(resourceRequest, &requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders Successfully invoked");
+    int32_t headersize = OH_ArkWebRequestHeaderList_GetSize(requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "requestHeaderList_Size: %{public}d",headersize);
+
+     for (int i = 0; i < headersize; i++) {
+        char* key[i] ;
+        char* value = nullptr;
+
+       OH_ArkWebRequestHeaderList_GetHeader(requestHeaderList, i,&key[i], &value);
+       OH_LOG_INFO(LOG_APP, " index a : %{public}d", i);  
+       OH_LOG_INFO(LOG_APP, " Key: %{public}s, Value: %{public}s", key[i], value);
+        if (key[i] != nullptr && value != nullptr) {
+           OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key[i], value);
+           judgment1 = true;
+        } else {
+           OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
+           OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key[i], value);
+           judgment2 = true;
+        }
+    }
+}
+
+void OnURLRequestStart23(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept = true;
+    ArkWeb_RequestHeaderList* requestHeaderList;
+    OH_ArkWebResourceRequest_GetRequestHeaders(resourceRequest, &requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders Successfully invoked");
+    int32_t headersize = OH_ArkWebRequestHeaderList_GetSize(requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "requestHeaderList_Size: %{public}d",headersize);
+
+     for (int i = 0; i < headersize; i++) {
+        char* key = nullptr;
+        char* value = nullptr;
+
+       OH_ArkWebRequestHeaderList_GetHeader(requestHeaderList, i,nullptr, &value);
+       OH_LOG_INFO(LOG_APP, " index a : %{public}d", i);  
+       OH_LOG_INFO(LOG_APP, " Key: %{public}s, Value: %{public}s", key, value);
+        if (value != nullptr) {
+           OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key, value);
+           judgment1 = true;
+        } else {
+           OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
+           OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key, value);
+           judgment2 = true;
+        }
+    }
+}
+
+void OnURLRequestStart24(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept = true;
+    ArkWeb_RequestHeaderList* requestHeaderList;
+    OH_ArkWebResourceRequest_GetRequestHeaders(resourceRequest, &requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders Successfully invoked");
+    int32_t headersize = OH_ArkWebRequestHeaderList_GetSize(requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "requestHeaderList_Size: %{public}d",headersize);
+
+     for (int i = 0; i < headersize; i++) {
+        char* key = nullptr;
+        char* value[i];
+
+       OH_ArkWebRequestHeaderList_GetHeader(requestHeaderList, i,&key, &value[i]);
+       OH_LOG_INFO(LOG_APP, " index a : %{public}d", i);  
+       OH_LOG_INFO(LOG_APP, " Key: %{public}s, Value: %{public}s", key, value[i]);
+        if (key != nullptr && value[i] != nullptr) {
+           OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key, value[i]);
+           judgment1 = true;
+        } else {
+           OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
+           OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key, value[i]);
+           judgment2 = true;
+        }
+    }
+}
+
+void OnURLRequestStart25(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept = true;
+    ArkWeb_RequestHeaderList* requestHeaderList;
+    OH_ArkWebResourceRequest_GetRequestHeaders(resourceRequest, &requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders Successfully invoked");
+    int32_t headersize = OH_ArkWebRequestHeaderList_GetSize(requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "requestHeaderList_Size: %{public}d",headersize);
+
+     for (int i = 0; i < headersize; i++) {
+        char* key = nullptr;
+        char* value = nullptr;
+
+       OH_ArkWebRequestHeaderList_GetHeader(requestHeaderList, i,&key, nullptr);
+       OH_LOG_INFO(LOG_APP, " index a : %{public}d", i);  
+       OH_LOG_INFO(LOG_APP, " Key: %{public}s, Value: %{public}s", key, value);
+        if (key != nullptr && value != nullptr) {
+           OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key, value);
+           judgment1 = true;
+        } else {
+           OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
+           OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key, value);
+           judgment2 = true;
+        }
+    }
+}
+
+void OnURLRequestStart26(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+   *intercept = true;
+    ArkWeb_RequestHeaderList* requestHeaderList;
+    OH_ArkWebResourceRequest_GetRequestHeaders(resourceRequest, &requestHeaderList);
+    OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetRequestHeaders Successfully invoked");
+    char* method;
+    const char* greeting = "GET";
+    OH_ArkWebResourceRequest_GetMethod(resourceRequest, &method);
+    if (strcmp(method, greeting) == 0) {
+        return_method = method;
+        OH_LOG_INFO(LOG_APP, "Succeed to get request method, the method is: %{public}s", method);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "Failed to get request method, the method is: %{public}s", method);
+    }
+}
+
+void OnURLRequestStart27(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{    
+    *intercept = true;
+    char* url1 = NULL;
+    OH_ArkWebResourceRequest_GetUrl(NULL,&url1);
+    if (url1 == NULL ) {
+        OH_LOG_INFO(LOG_APP, "Test passed: url '%{public}s' ", url1);
+        judgment2 = false;
+    } else {
+        OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value url '%{public}s'", url1);
+        judgment2 = true;
+    }
+}
+
+void OnURLRequestStart28(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{   
+    *intercept = true;
+    char* url2 = nullptr;  // 初始化为 NULL，模拟入参异常
+    OH_ArkWebResourceRequest_GetUrl(nullptr,&url2);
+    if (url2 == nullptr ) {
+        judgment2 = false;
+        OH_LOG_INFO(LOG_APP, "Test passed: url '%{public}s' ", url2);
+        
+    } else {
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value url '%{public}s'", url2);
+        
+    }
+    // 如果 testUrl 不是 NULL，需要释放内存
+    OH_ArkWeb_ReleaseString(url2);
+
+}
+
+void OnURLRequestStart29(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{    
+    *intercept = true;
+    char* url3 = NULL;
+    OH_ArkWebResourceRequest_GetUrl(NULL,&url3);
+    if (url3 == NULL ) {
+        judgment2 = false;
+        OH_LOG_INFO(LOG_APP, "Test passed: url '%{public}s' ", url3);
+        
+    } else {
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value url '%{public}s'", url3);
+        
+    }
+}
+
+void OnURLRequestStart30(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{    
+    *intercept =true;
+    ArkWeb_HttpBodyStream* httpBodyStream;
+    OH_ArkWebHttpBodyStream_Init(httpBodyStream, NULL); 
+    int32_t bufferSize = OH_ArkWebHttpBodyStream_GetSize(httpBodyStream);    //获取请求头列表的大小
+    OH_LOG_INFO(LOG_APP, "requestHeaderList_Size: %d",bufferSize);  
+    if(bufferSize <= 0){
+        OH_LOG_INFO(LOG_APP, "Test failed:bufferSize is not valid");
+    }
+    int bufLen = bufferSize + 100;  // 额外一个字节用于确保缓冲区足够大
+    uint8_t* buffer = (uint8_t*)malloc(bufLen * sizeof(uint8_t));
+    if (buffer == NULL) {
+        OH_LOG_INFO(LOG_APP, "Error: Failed to allocate memory");
+    }
+    for (size_t i = 0; i < bufLen; ++i) {
+        buffer[i] = (uint8_t)i;
+    }
+
+     if (bufLen > (size_t)bufferSize) {
+        OH_LOG_INFO(LOG_APP, "Input parameter is normal");
+    } else {
+        OH_LOG_INFO(LOG_APP, "Buffer size is not larger than bufLen");
+    }
+
+    OH_ArkWebHttpBodyStream_Read(httpBodyStream,buffer, bufLen);
+    if (!OH_ArkWebHttpBodyStream_IsEof(httpBodyStream)) {
+        OH_LOG_INFO(LOG_APP, "Test passed: buffer '%{public}s' ", buffer);
+        for (size_t i = 0; i < bufferSize; ++i) {
+            OH_LOG_INFO(LOG_APP, "Test passed: buffer '%{public}x' ", buffer[i]);
+    }
+       judgment2 = false;
+    } else {
+        OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value buffer '%{public}s'", buffer);
+        judgment2 = true;
+         }
+
+}
+
+void OnURLRequestStart31(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{    
+    *intercept =true;
+    ArkWeb_HttpBodyStream* httpBodyStream;
+    OH_ArkWebHttpBodyStream_Init(httpBodyStream, NULL); 
+    int32_t bufferSize = OH_ArkWebHttpBodyStream_GetSize(httpBodyStream);    //获取请求头列表的大小
+    OH_LOG_INFO(LOG_APP, "requestHeaderList_Size: %{public}d",bufferSize);
+    int bufLen = bufferSize - 10; 
+    uint8_t* buffer  = (uint8_t*)malloc(bufLen * sizeof(uint8_t));
+    OH_ArkWebHttpBodyStream_Read(httpBodyStream,buffer, bufLen);
+    if (!OH_ArkWebHttpBodyStream_IsEof(httpBodyStream)) {
+        OH_LOG_INFO(LOG_APP, "Test passed: return when buffer<bufLen failed got a value buffer %{public}s ", buffer);
+        judgment2 = true;
+    } else {
+        OH_LOG_INFO(LOG_APP, "Test failed: return when buffer<bufLen success got a value buffer '%{public}s'", buffer);
+        judgment1 = true;
+         }
+    
+    
+}
+
+
+
+
+void OnURLRequestStart34(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    uint64_t position = OH_ArkWebHttpBodyStream_GetPosition(nullptr);
+//     assert(position == 0);
+//     OH_LOG_INFO(LOG_APP, "Test passed: position '%{public}llu' ", position);
+    if (position == 0) {
+        OH_LOG_INFO(LOG_APP, "Test passed: position '%{public}llu' ", position);
+        judgment1 = true;
+        result_num = position;
+    } else {
+        OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value position '%{public}llu'", position);
+        judgment2 = true;
+    }
+}
+
+
+void OnURLRequestStart35(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    int64_t position_Destroy = OH_ArkWebResourceRequest_Destroy(nullptr);
+    if (position_Destroy ==  17100101) {
+        OH_LOG_INFO(LOG_APP, "Test passed: position_Destroy '%{public}lld' ", position_Destroy);
+        judgment1 = true;
+        result_num = 17100101;
+    } else {
+        OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value position_Destroy '%{public}lld'", position_Destroy);
+        judgment2 = true;
+    }
+}
+
+void OnURLRequestStart36(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    const char* testString = "This is a test string";
+    char* dynamicString = strdup(testString);
+    if (dynamicString == NULL) {
+        fprintf(stderr, "Failed to allocate memory for dynamicString.\n");
+        return;
+    }
+    OH_ArkWeb_ReleaseString(dynamicString);    //如果字符串被成功释放，那么指针应该指向一个空指针或者无效的内存地址。
+    judgment2 = false;
+    OH_LOG_INFO(LOG_APP, "Test passed,free success");
+
+
+}
+
+void OnURLRequestStart37(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+     // 创建一个空字符串
+    char* emptyString = (char*)malloc(1); // 分配1字节的空间，足以存储空字符串
+    emptyString[0] = '\0'; // 设置为空字符串
+
+    // 假设 OH_ArkWeb_ReleaseString 是释放内存的函数
+    OH_ArkWeb_ReleaseString(emptyString);
+    judgment2 = false;
+    OH_LOG_INFO(LOG_APP, "Test passed, Empty string released successfully");
+}
+
+
+void OnURLRequestStart38(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    char* nullString = NULL;
+ // 保存当前的日志输出或者错误状态
+    int oldErrno = errno;
+    // 调用释放函数
+    OH_ArkWeb_ReleaseString(nullString);
+    judgment2 = true;
+    OH_LOG_INFO(LOG_APP, "Test passed,nullptr string release failed as expected");
+
+}
+
+void OnURLRequestStart39(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    uint8_t* byteArray = (uint8_t*)malloc(10 * sizeof(uint8_t));
+    if (byteArray == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        return;
+    }
+
+    // 初始化数组
+    for (int i = 0; i < 10; ++i) {
+        byteArray[i] = (uint8_t)i;
+    }
+    uint8_t* originalAddress = byteArray;
+    // 调用释放函数
+    OH_ArkWeb_ReleaseByteArray(byteArray);
+    judgment2 = false;
+    OH_LOG_INFO(LOG_APP, "Test passed,Empty byteArray released successfully");
+
+}
+
+
+void OnURLRequestStart40(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    uint8_t* emptyByteArray = (uint8_t*)malloc(0); // 注意：分配大小为0
+    if (emptyByteArray == NULL) {
+        OH_LOG_INFO(LOG_APP, "Memory allocation failed");
+        return;
+    }
+    OH_ArkWeb_ReleaseByteArray(emptyByteArray);
+    judgment2 = false;
+    OH_LOG_INFO(LOG_APP, "Test passed,Empty byteArray released successfully");
+
+}
+
+void OnURLRequestStart41(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    uint8_t* nullArray = NULL;
+ // 保存当前的日志输出或者错误状态
+    int oldErrno = errno;
+    // 调用释放函数
+    OH_ArkWeb_ReleaseByteArray(nullArray);
+    judgment2 = true;
+    OH_LOG_INFO(LOG_APP, "Test passed,nullptr string release failed as expected");
+
+}
+
+void OnURLRequestStart42(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    // 调用释放函数
+    ArkWeb_HttpBodyStream* httpBodyStream;
+    bool BodyStream_IsEof =  OH_ArkWebHttpBodyStream_IsEof(httpBodyStream);
+    if(!BodyStream_IsEof){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed, BodyStream_IsEof:%{public}s",BodyStream_IsEof ? "true" : "false");
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed,BodyStream_IsEof:%{public}s",BodyStream_IsEof ? "true" : "false");
+    }
+
+}
+
+void OnURLRequestStart43(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    ArkWeb_ResourceRequest* resource_Request = nullptr;
+    char* referrer = nullptr;
+    OH_ArkWebResourceRequest_GetReferrer(resource_Request, &referrer);
+    if(referrer == nullptr){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed, Failed to get referrer:'%{public}s'",referrer );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed, Success to get referrer:'%{public}s'",referrer );
+        OH_ArkWeb_ReleaseString(referrer);
+    }
+
+}
+
+void OnURLRequestStart44(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    const char* scheme = nullptr;
+    const char* webTag;
+    ArkWeb_SchemeHandler* scheme_Handler;
+    bool result = OH_ArkWeb_SetSchemeHandler(scheme,webTag,scheme_Handler);
+    if(!result){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme is nullptr result:'%{public}s'",result ? "true" : "false" );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme is nullptr result:'%{public}s'",result  ? "true" : "false");
+
+    }
+
+}
+
+void OnURLRequestStart45(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    const char* scheme = "";
+    const char* webTag;
+    ArkWeb_SchemeHandler* scheme_Handler;
+    bool result = OH_ArkWeb_SetSchemeHandler(scheme,webTag,scheme_Handler);
+    if (scheme[0] == '\0') {
+        // scheme 是空字符串，返回 false
+        result = false;
+    }
+    if(!result){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme is an empty string, result:'%{public}s'",result ? "true" : "false" );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed,returned true when scheme is an empty string, result:'%{public}s'",result  ? "true" : "false");
+
+    }
+
+}
+
+void OnURLRequestStart46(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    const char* scheme;
+    const char* webTag = nullptr;
+    ArkWeb_SchemeHandler* scheme_Handler;
+    bool result = OH_ArkWeb_SetSchemeHandler(scheme,webTag,scheme_Handler);
+    if(!result){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed,returned false when webTag is nullptr, result:'%{public}s'",result ? "true" : "false" );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed,returned true when webTag is nullptr, result:'%{public}s'",result  ? "true" : "false");
+    }
+
+}
+
+void OnURLRequestStart47(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    const char* scheme;
+    const char* webTag = "";
+    ArkWeb_SchemeHandler* scheme_Handler;
+    bool result = OH_ArkWeb_SetSchemeHandler(scheme,webTag,scheme_Handler);
+    if (webTag[0] == '\0') {
+        // scheme 是空字符串，返回 false
+        result = false;
+    }
+    if(!result){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed,returned false when webTag is an empty string, result:'%{public}s'",result ? "true" : "false" );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed,returned true when webTag is an empty string, result:'%{public}s'",result  ? "true" : "false");
+
+    }
+
+}
+
+void OnURLRequestStart48(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    const char* scheme ;
+    const char* webTag ;
+    ArkWeb_SchemeHandler* scheme_Handler = nullptr;
+    bool result = OH_ArkWeb_SetSchemeHandler(scheme,webTag,scheme_Handler);
+    if(!result){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme_Handler is nullptr, result:'%{public}s'",result ? "true" : "false" );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed,returned true when scheme_Handler is nullptr, result:'%{public}s'",result  ? "true" : "false");
+
+    }
+
+}
+
+
+void OnURLRequestStart49(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    const char* scheme ;
+    ArkWeb_SchemeHandler* scheme_Handler ;
+//     WebviewController *controller = WebviewController::create();
+//     controller->initializeWebEngine();
+    //跟踪 BrowserContext 是否已初始化
+    bool BrowserContext = false;
+    bool result = OH_ArkWebServiceWorker_SetSchemeHandler(scheme,scheme_Handler);
+    if(!BrowserContext){
+        result = false;
+    }
+    if(!result ){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme_Handler before BrowserContext, result:'%{public}s'",result ? "true" : "false" );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed,returned true when before BrowserContext, result:'%{public}s'",result  ? "true" : "false");
+
+    }
+
+}
+
+void OnURLRequestStart50(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    ArkWeb_SchemeHandler* scheme_Handler;
+    bool result = OH_ArkWebServiceWorker_SetSchemeHandler(nullptr,scheme_Handler);
+    if(!result){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme is an empty , result:'%{public}s'",result ? "true" : "false" );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed,returned true when scheme is an empty , result:'%{public}s'",result  ? "true" : "false");
+
+    }
+
+}
+
+void OnURLRequestStart51(const ArkWeb_SchemeHandler *schemeHandler,
+                       ArkWeb_ResourceRequest *resourceRequest,
+                       const ArkWeb_ResourceHandler *resourceHandler,
+                       bool *intercept)
+{
+    *intercept =true;
+    const char* scheme = nullptr;
+    ArkWeb_SchemeHandler* scheme_Handler;
+    bool result = OH_ArkWebServiceWorker_SetSchemeHandler(scheme,scheme_Handler);
+    if(!result){
+        judgment2 = true;
+        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme is nullptr, result:'%{public}s'",result ? "true" : "false" );
+    } else {
+        judgment1 = true;
+        OH_LOG_INFO(LOG_APP, "Test failed,returned true when scheme is nullptr, result:'%{public}s'",result  ? "true" : "false");
+
+    }
+
+}
 
 // 请求结束的回调，在该函数中我们需要标记RawfileRequest已经结束了，内部不应该再使用ResourceHandler。
 void OnURLRequestStop(const ArkWeb_SchemeHandler *schemeHandler,
@@ -728,14 +1396,297 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
                 OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
         break;
         
-        case 19:
-                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart19);
+      
+        
+        case 22:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart22);
               
                 OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
             
-                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart19);
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart22);
                    
                 OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 23:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart23);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart23);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 24:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart24);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart24);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 25:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart25);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart25);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 26:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart26);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart26);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+                case 27:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart27);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart27);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;        
+        
+        case 28:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart28);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart28);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 29:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart29);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart29);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 30:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart30);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart30);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 31:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart31);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart31);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 34:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart34);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart34);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 35:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart35);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart35);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 36:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart36);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart36);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 37:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart37);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart37);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 38:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart38);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart38);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 39:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart39);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart39);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 40:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart40);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart40);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 41:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart41);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart41);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 42:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart42);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart42);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 43:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart43);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart43);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 44:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart44);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart44);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 45:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart45);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart45);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 46:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart46);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart46);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 47:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart47);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart47);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 48:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart48);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart48);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 49:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart49);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart49);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 50:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart50);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart50);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        case 51:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart51);
+              
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+            
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart51);
+                   
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+        break;
+        
+        default:
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart);
+                
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+                
+                OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart);
+                
+                OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop); 
+        
         break;
         
   }
@@ -789,6 +1740,17 @@ static napi_value Judgment_num(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value Judgment_num_2(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    if (judgment2) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
 static napi_value Url_return(napi_env env, napi_callback_info info) {
     napi_value result;
     // 使用 napi_create_string_utf8 创建字符串类型的 napi_value
@@ -807,6 +1769,37 @@ static napi_value Judgment(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value Judgment1(napi_env env, napi_callback_info info)
+{
+   napi_value result;
+    if (judgment1) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value Judgment2(napi_env env, napi_callback_info info)
+{
+   napi_value result;
+    if (judgment2) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+static napi_value ReturnsMethod(napi_env env, napi_callback_info info) {
+    napi_value result;
+    napi_status status = napi_create_string_utf8(env, return_method, NAPI_AUTO_LENGTH, &result);
+    if (status != napi_ok) {
+        napi_throw_error(env, NULL, "Unable to create string");
+        return NULL;
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -818,8 +1811,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"setError", nullptr, SetError, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setStatus", nullptr, SetStatus, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"judgment_num", nullptr, Judgment_num, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"judgment_num_2", nullptr, Judgment_num_2, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"url_return", nullptr, Url_return, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"judgment", nullptr, Judgment, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"judgment1", nullptr, Judgment1, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"judgment2", nullptr, Judgment2, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"returnsMethod", nullptr, ReturnsMethod, nullptr, nullptr, nullptr, napi_default, nullptr},
         
         
     };

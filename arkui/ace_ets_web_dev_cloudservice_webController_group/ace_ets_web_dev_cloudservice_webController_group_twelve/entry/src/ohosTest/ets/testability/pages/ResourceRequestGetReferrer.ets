@@ -59,7 +59,7 @@ struct OH_ArkWebHttpBodyStream_GetPosition {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResourceRequest_GetReferrer_Param_Error': {
-              let result = testNapi.judgment_num_2();
+              let result: number = testNapi.judgment_num_2();
               if (result != 0) {
                 console.log('Failed click');
                 Utils.emitEvent(true, 5216);

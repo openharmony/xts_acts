@@ -59,7 +59,7 @@ struct testWebResponseSetStatusNotNum {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResponse_SetStatus_NotNum': {
-              let result = testNapi.setStatus();
+              let result: number = testNapi.setStatus();
               if (result == 0) {
                 console.log('Succeed testWebResponse_SetStatus_NotNum');
                 Utils.emitEvent(result, 5111);

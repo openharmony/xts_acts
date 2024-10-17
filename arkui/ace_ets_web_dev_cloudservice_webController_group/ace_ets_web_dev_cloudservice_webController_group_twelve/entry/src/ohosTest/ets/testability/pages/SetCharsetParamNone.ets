@@ -59,7 +59,7 @@ struct testWebResponseSetCharsetParamNone {
         .onClick(async () => {
           switch (this.str){
             case "testWebResponse_SetCharset_Param_None":{
-              let result = testNapi.setStatus();
+              let result: number = testNapi.setStatus();
               if (result == 0) {
                 console.log("Succeed testWebResponse_SetCharset_Param_None");
                 Utils.emitEvent(result, 5116);

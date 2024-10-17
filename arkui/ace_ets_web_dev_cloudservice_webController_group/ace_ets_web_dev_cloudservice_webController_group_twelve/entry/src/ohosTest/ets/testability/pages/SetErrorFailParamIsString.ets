@@ -59,7 +59,7 @@ struct testWebResponseSetErrorFailParamIsString {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResponse_SetError_Fail_ParamIsString': {
-              let result = testNapi.setError();
+              let result: number = testNapi.setError();
               if (result == 0) {
                 console.log('Succeed testWebResponse_SetError_Fail_ParamIsString');
                 Utils.emitEvent(result, 5109);

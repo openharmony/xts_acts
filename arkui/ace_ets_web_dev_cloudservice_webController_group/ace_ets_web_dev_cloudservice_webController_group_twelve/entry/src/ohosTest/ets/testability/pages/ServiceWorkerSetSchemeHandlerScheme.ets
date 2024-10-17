@@ -58,7 +58,7 @@ struct OH_ArkWebServiceWorker_SetSchemeHandler {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebServiceWorker_SetSchemeHandler_Fail_schemeParam_IsNone': {
-              let result = testNapi.judgment_num_2();
+              let result: number = testNapi.judgment_num_2();
               if (result == 0) {
                 console.log('Failed click');
                 Utils.emitEvent(false, 5223);

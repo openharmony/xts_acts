@@ -78,7 +78,7 @@ struct OH_ArkWebRequestHeaderList_GetHeader {
             case 'testWebRequestHeaderList_GetHeader_KeyParam_NotString': {
               console.log('Execute testWebRequestHeaderList_GetHeader_KeyParam_NotString');
               await Utils.sleep(1000);
-              let headerResult = testNapi.judgment1();
+              let headerResult: number = testNapi.judgment1();
               console.log('HeaderList test result: ' + headerResult);
               if (headerResult == 0) {
                 console.log('OH_ArkWebRequestHeaderList_GetHeader call succeed ');

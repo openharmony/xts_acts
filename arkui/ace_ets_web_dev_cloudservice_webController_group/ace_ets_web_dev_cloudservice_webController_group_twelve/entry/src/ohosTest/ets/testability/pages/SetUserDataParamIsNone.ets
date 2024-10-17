@@ -59,7 +59,7 @@ struct testWebResponseSetUserDataParamIsNone {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebSchemeHandler_SetUserData_ParamIsNone': {
-              let result = testNapi.setStatus();
+              let result: number = testNapi.setStatus();
               if (result == 0) {
                 console.log('Succeed testWebSchemeHandler_SetUserData_ParamIsNone');
                 Utils.emitEvent(result, 5117);

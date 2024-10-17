@@ -58,7 +58,7 @@ struct OH_ArkWeb_ReleaseByteArray {
         .onClick(async () => {
           switch (this.str) {
             case 'testWeb_ReleaseByteArray_Fail_Param_NotArray': {
-              let result = testNapi.judgment_num_2();
+              let result: number = testNapi.judgment_num_2();
               if (result == 0) {
                 console.log('Failed click');
                 Utils.emitEvent(false, 5214);

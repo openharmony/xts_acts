@@ -59,7 +59,7 @@ struct testWebResponseSetUrlUrlIsNone {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResponse_SetUrl_Url_IsNone': {
-              let result = testNapi.setUrl();
+              let result: number = testNapi.setUrl();
               if (result == 0) {
                 console.log('Succeed OH_ArkWebResponse_SetUrl');
                 Utils.emitEvent(result, 5101);

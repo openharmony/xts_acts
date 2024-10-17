@@ -58,7 +58,7 @@ struct testWebHttpBodyStream_Read {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebHttpBodyStream_Read_Success02': {
-              let result = testNapi.judgment_num_2();
+              let result: number = testNapi.judgment_num_2();
               if (result == 0) {
                 console.log('Succeed OH_ArkWebHttpBodyStream_Read');
                 Utils.emitEvent(false, 5203);

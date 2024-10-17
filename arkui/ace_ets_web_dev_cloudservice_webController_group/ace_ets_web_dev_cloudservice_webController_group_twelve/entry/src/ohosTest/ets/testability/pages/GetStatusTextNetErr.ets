@@ -59,7 +59,7 @@ struct testWebResponseGetStatusTextNetErr {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebResponse_GetStatusText_NetErr': {
-              let result = testNapi.setError();
+              let result: number = testNapi.setError();
               if (result == 0) {
                 console.log('Succeed testWebResponse_GetStatusText_NetErr');
                 Utils.emitEvent(true, 5115);

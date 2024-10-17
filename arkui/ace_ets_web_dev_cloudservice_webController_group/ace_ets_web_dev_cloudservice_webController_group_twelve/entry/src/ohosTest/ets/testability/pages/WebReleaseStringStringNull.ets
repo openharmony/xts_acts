@@ -59,7 +59,7 @@ struct OH_ArkWeb_ReleaseString {
         .onClick(async () => {
           switch (this.str) {
             case 'testWeb_ReleaseString_Fail_Param_NotString': {
-              let result = testNapi.judgment_num_2();
+              let result: number = testNapi.judgment_num_2();
               if (result == 0) {
                 console.log('Failed click');
                 Utils.emitEvent(false, 5211);
