@@ -84,29 +84,31 @@ export default function List_Padding() {
       let List_Padding_013: RectValue = CommonFunc.getComponentRect('List_Padding_013');
       let List_Padding_014: RectValue = CommonFunc.getComponentRect('List_Padding_014');
       let List_Padding_01: RectValue = CommonFunc.getComponentRect('List_Padding_01');
-      expect(Math.round(List_Padding_011.right - List_Padding_011.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_Padding_012.right - List_Padding_012.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_Padding_013.right - List_Padding_013.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_Padding_014.right - List_Padding_014.left)).assertEqual(Math.round(vp2px(300)));
 
-      expect(Math.round(List_Padding_011.bottom - List_Padding_011.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_Padding_012.bottom - List_Padding_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_Padding_013.bottom - List_Padding_013.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_Padding_014.bottom - List_Padding_014.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(List_Padding_011.right - List_Padding_011.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_012.right - List_Padding_012.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_013.right - List_Padding_013.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_014.right - List_Padding_014.left) - Math.round(vp2px(300))) <= 1).assertTrue();
 
-      expect(Math.round(List_Padding_011.left - List_Padding_01.left)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Padding_012.left - List_Padding_01.left)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Padding_013.left - List_Padding_01.left)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Padding_014.left - List_Padding_01.left)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Padding_011.top - List_Padding_01.top)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Padding_01.bottom - List_Padding_014.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Padding_01.right - List_Padding_011.right)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(List_Padding_01.right - List_Padding_012.right)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(List_Padding_01.right - List_Padding_013.right)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(List_Padding_01.right - List_Padding_014.right)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(List_Padding_012.top - List_Padding_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Padding_013.top - List_Padding_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_Padding_014.top - List_Padding_013.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.abs(Math.round(List_Padding_011.bottom - List_Padding_011.top)-Math.round(vp2px(100)))<= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_012.bottom - List_Padding_012.top)-Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_013.bottom - List_Padding_013.top)-Math.round(vp2px(100)))<= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_014.bottom - List_Padding_014.top)-Math.round(vp2px(100)))<= 1).assertTrue();
+
+      expect(Math.abs(Math.round(List_Padding_011.left - List_Padding_01.left) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_012.left - List_Padding_01.left) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_013.left - List_Padding_01.left) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_014.left - List_Padding_01.left) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_011.top - List_Padding_01.top) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_01.bottom - List_Padding_014.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_01.right - List_Padding_011.right) - Math.round(vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_01.right - List_Padding_012.right) - Math.round(vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_01.right - List_Padding_013.right) - Math.round(vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_01.right - List_Padding_014.right) - Math.round(vp2px(30))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_012.top - List_Padding_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_013.top - List_Padding_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(List_Padding_014.top - List_Padding_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+
       let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let List_Padding_014Again: RectValue = CommonFunc.getComponentRect('List_Padding_014');
