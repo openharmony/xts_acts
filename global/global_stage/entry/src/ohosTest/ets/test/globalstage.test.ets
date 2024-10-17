@@ -53,7 +53,7 @@ export default function globalStageTest() {
         let value: string = mgr.getStringSync(
           {
             bundleName: "ohos.acts.globalstage",
-            moduleName: "phone",
+            moduleName: "entry_test",
             id: $r('app.string.app_name').id
           }, 100);
         console.log('getStringSync_stagetest_0100 1' + value);
@@ -80,7 +80,7 @@ export default function globalStageTest() {
         let value: string = mgr.getStringSync(
           {
             bundleName: "ohos.acts.globalstage",
-            moduleName: "phone",
+            moduleName: "entry_test",
             id: $r('app.string.app_name').id
           });
         console.log('getStringSync_stagetest_0200 1' + value);
@@ -144,7 +144,7 @@ export default function globalStageTest() {
     it('getStringValue_stage_test_0100', 0, async (done: Function) => {
       res.resourceManager.getStringValue({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.string.app_name').id
       }, (err: BusinessError, value: string) => {
         expect(value !== null).assertTrue();
@@ -165,7 +165,7 @@ export default function globalStageTest() {
     it('getStringValue_stage_test_0200', 0, async (done: Function) => {
       res.resourceManager.getStringValue({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.string.app_name').id
       }).then((value: string) => {
         expect(value !== null).assertTrue();
@@ -186,7 +186,7 @@ export default function globalStageTest() {
     it('getStringArrayValue_stage_test_0100', 0, async (done: Function) => {
       res.resourceManager.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.strarray.sizeList').id
       }, (err: BusinessError, value: Array<string>) => {
         expect(value !== null).assertTrue();
@@ -210,7 +210,7 @@ export default function globalStageTest() {
     it('getStringArrayValue_stage_test_0200', 0, async (done: Function) => {
       res.resourceManager.getStringArrayValue({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.strarray.sizeList').id
       }).then((value: Array<string>) => {
         expect(value !== null).assertTrue();
@@ -234,7 +234,7 @@ export default function globalStageTest() {
     it('getMediaContent_stage_test_0100', 0, async (done: Function) => {
       res.resourceManager.getMediaContent({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.media.icon').id
       }, (err: BusinessError, value: Uint8Array) => {
         expect(value.length == 6790).assertTrue();
@@ -254,7 +254,7 @@ export default function globalStageTest() {
     it('getMediaContent_stage_test_0200', 0, async (done: Function) => {
       res.resourceManager.getMediaContent({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.media.icon').id
       }).then((value: Uint8Array) => {
         expect(value.length == 6790).assertTrue();
@@ -274,7 +274,7 @@ export default function globalStageTest() {
     it('getMediaContent_stage_test_0300', 0, async (done: Function) => {
       res.resourceManager.getMediaContent({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.media.icon').id
       }, 0, (err: BusinessError, value: Uint8Array) => {
         expect(value.length == 6790).assertTrue();
@@ -294,7 +294,7 @@ export default function globalStageTest() {
     it('getMediaContent_stage_test_0400', 0, async (done: Function) => {
       res.resourceManager.getMediaContent({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.media.icon').id
       }, 0).then((value: Uint8Array) => {
         expect(value.length == 6790).assertTrue();
@@ -314,7 +314,7 @@ export default function globalStageTest() {
     it('getMediaContentBase64_stage_test_0100', 0, async (done: Function) => {
       res.resourceManager.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.media.icon').id
       }, (err: BusinessError, value: string) => {
         expect(value.length == 9078).assertTrue();
@@ -334,7 +334,7 @@ export default function globalStageTest() {
     it('getMediaContentBase64_stage_test_0200', 0, async (done: Function) => {
       res.resourceManager.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.media.icon').id
       }).then((value: string) => {
         expect(value.length == 9078).assertTrue();
@@ -354,7 +354,7 @@ export default function globalStageTest() {
     it('getMediaContentBase64_stage_test_0300', 0, async (done: Function) => {
       res.resourceManager.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.media.icon').id
       }, 0, (err: BusinessError, value: string) => {
         expect(value.length == 9078).assertTrue();
@@ -374,7 +374,7 @@ export default function globalStageTest() {
     it('getMediaContentBase64_stage_test_0400', 0, async (done: Function) => {
       res.resourceManager.getMediaContentBase64({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.media.icon').id
       }, 0).then((value: string) => {
         expect(value.length == 9078).assertTrue();
@@ -394,7 +394,7 @@ export default function globalStageTest() {
     it('getPluralStringValue_stage_test_0100', 0, async (done: Function) => {
       res.resourceManager.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.plural.plural_name').id
       }, 2, (error: BusinessError, value: string) => {
         expect(value !== null).assertTrue();
@@ -415,7 +415,7 @@ export default function globalStageTest() {
     it('getPluralStringValue_stage_test_0200', 0, async (done: Function) => {
       res.resourceManager.getPluralStringValue({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.plural.plural_name').id
       }, 2).then((value: string) => {
         expect(value !== null).assertTrue();
@@ -436,7 +436,7 @@ export default function globalStageTest() {
     it('getBoolean_stage_test_0100', 0, async (done: Function) => {
       let value: boolean = res.resourceManager.getBoolean({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.boolean.boolean_1').id
       });
       console.log('getBoolean_stage_test_0100 ' + value);
@@ -455,7 +455,7 @@ export default function globalStageTest() {
     it('getNumber_stage_test_0100', 0, async (done: Function) => {
       let value: number = res.resourceManager.getNumber({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.integer.integer_1').id
       });
       console.log('getinteger_stage_test_0100 ' + value);
@@ -475,7 +475,7 @@ export default function globalStageTest() {
       let out = true;
       let value: DrawableDescriptor = res.resourceManager.getDrawableDescriptor(
         {
-          bundleName: "ohos.acts.globalstage", moduleName: "phone", id: $r('app.media.icon').id
+          bundleName: "ohos.acts.globalstage", moduleName: "entry_test", id: $r('app.media.icon').id
         });
       console.log('getDrawableDescriptor_stage_test_0100 ' + value);
       if (value == null) {
@@ -494,7 +494,7 @@ export default function globalStageTest() {
     it('getColor_test_0100', 0, async (done: Function) => {
       res.resourceManager.getColor({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.color.color_test1').id
       }, (err: BusinessError, value: number) => {
         expect(value !== null).assertTrue();
@@ -512,7 +512,7 @@ export default function globalStageTest() {
     it('getColor_test_0200', 0, async (done: Function) => {
       res.resourceManager.getColor({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.color.color_test1').id
       }).then((value: number) => {
         expect(value !== null).assertTrue();
@@ -530,7 +530,7 @@ export default function globalStageTest() {
     it('getColorSync_test_0100', 0, async (done: Function) => {
       let value: number = res.resourceManager.getColorSync({
         bundleName: "ohos.acts.globalstage",
-        moduleName: "phone",
+        moduleName: "entry_test",
         id: $r('app.color.color_test1').id
       });
       expect(value !== null).assertTrue();
@@ -635,7 +635,7 @@ export default function globalStageTest() {
       try {
         let value: Uint8Array = res.resourceManager.getMediaContentSync({
           bundleName: "ohos.acts.globalstage",
-          moduleName: "phone",
+          moduleName: "entry_test",
           id: $r('app.media.icon').id
         });
         console.log('getMediaContentSync_stagetest_0200 1' + value);
@@ -679,7 +679,7 @@ export default function globalStageTest() {
       try {
         let value: string = res.resourceManager.getMediaContentBase64Sync({
           bundleName: "ohos.acts.globalstage",
-          moduleName: "phone",
+          moduleName: "entry_test",
           id: $r('app.media.icon').id
         });
         console.log('getMediaContentBase64Sync_stagetest_0200 1' + value);
@@ -723,7 +723,7 @@ export default function globalStageTest() {
       try {
         let value: string = res.resourceManager.getPluralStringValueSync({
           bundleName: "ohos.acts.globalstage",
-          moduleName: "phone",
+          moduleName: "entry_test",
           id: $r('app.plural.plural_name').id
         }, 1);
         console.log('getPluralStringValueSync_stagetest_0200 1' + value);
@@ -768,7 +768,7 @@ export default function globalStageTest() {
       try {
         let value: Array<string> = res.resourceManager.getStringArrayValueSync({
           bundleName: "ohos.acts.globalstage",
-          moduleName: "phone",
+          moduleName: "entry_test",
           id: $r('app.strarray.sizeList').id
         });
         console.log('getStringArrayValueSync_stagetest_0200 1' + value);
