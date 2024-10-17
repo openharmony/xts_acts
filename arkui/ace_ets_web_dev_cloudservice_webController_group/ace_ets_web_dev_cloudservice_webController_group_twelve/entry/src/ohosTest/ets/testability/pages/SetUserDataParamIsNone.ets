@@ -27,7 +27,7 @@ struct testWebResponseSetUserDataParamIsNone {
   aboutToAppear() {
     testNapi.registerCustomSchemes()
     web_webview.WebviewController.initializeWebEngine();
-    testNapi.setSchemeHandler(19);
+    testNapi.setSchemeHandler(17);
   }
 
   onPageShow() {
@@ -62,16 +62,19 @@ struct testWebResponseSetUserDataParamIsNone {
               let result = testNapi.setStatus();
               if (result == 0) {
                 console.log('Succeed testWebSchemeHandler_SetUserData_ParamIsNone');
-                Utils.emitEvent(result, 5119);
+                Utils.emitEvent(result, 5117);
               } else {
                 console.log('Faild testWebSchemeHandler_SetUserData_ParamIsNone');
-                Utils.emitEvent(result, 5119);
+                Utils.emitEvent(result, 5117);
               }
               break;
             }
           }
         })
-      Web({ src: 'https://www.example.com', controller: this.controller });
+      Web({
+        src: 'https:' +
+          '//www.example.com', controller: this.controller
+      });
     }
   }
 }

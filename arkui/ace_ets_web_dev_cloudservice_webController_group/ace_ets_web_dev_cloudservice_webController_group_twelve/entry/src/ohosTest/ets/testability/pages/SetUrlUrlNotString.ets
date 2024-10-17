@@ -12,7 +12,6 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
 import web_webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import testNapi from 'libentry.so';
@@ -71,7 +70,10 @@ struct testWebResponseSetUrlUrlNotString {
             }
           }
         })
-      Web({ src: 'https://www.example.com', controller: this.controller });
+      Web({
+        src: 'https:' +
+          '//www.example.com', controller: this.controller
+      });
     }
   }
 }

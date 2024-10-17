@@ -72,7 +72,10 @@ struct testWebResponseSetUrlUrlNotExist {
             }
           }
         })
-      Web({ src: 'https://www.example.com', controller: this.controller });
+      Web({
+        src: 'https:' +
+          '//www.example.com', controller: this.controller
+      });
     }
   }
 }

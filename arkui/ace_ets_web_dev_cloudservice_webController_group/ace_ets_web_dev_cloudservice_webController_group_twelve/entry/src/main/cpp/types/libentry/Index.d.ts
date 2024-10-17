@@ -12,4 +12,16 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-export const add: (a: number, b: number) => number;
+import { resourceManager } from "@kit.LocalizationKit";
+
+export const registerCustomSchemes: () => number;
+export const setSchemeHandler: (number) => number;
+export const setUrl: () => number;
+export const setError: () => number;
+export const setStatus: () => number;
+export const judgment_num: () => number;
+export const url_return: () => string ;
+export const judgment: () => number ;
+
+
+export const initResourceManager: (resmgr: resourceManager.ResourceManager) => void;

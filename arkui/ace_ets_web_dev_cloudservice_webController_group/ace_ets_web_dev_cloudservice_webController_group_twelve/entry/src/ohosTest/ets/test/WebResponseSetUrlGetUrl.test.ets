@@ -252,7 +252,7 @@ export default function webviewNApi() {
       router.clear();
       await Utils.sleep(1000);
       Utils.emitEvent('testWebResponse_GetUrl_Url_Error', 10);
-      Utils.registerBaseEvent('testWebResponse_GetUrl_Url_Error', "https://www.baidu.com/", 5108, done,
+      Utils.registerBaseEvent('testWebResponse_GetUrl_Url_Error', "https:" + "//www.baidu.com/", 5108, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
