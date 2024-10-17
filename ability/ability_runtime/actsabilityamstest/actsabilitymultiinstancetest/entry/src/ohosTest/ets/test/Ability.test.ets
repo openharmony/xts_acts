@@ -230,7 +230,7 @@ export default function abilityTest() {
           parameters: {
             instanceKey: '1'
           }
-        };
+        }
         await context.startAbility(want).then(async () => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err: BusinessError) => {
