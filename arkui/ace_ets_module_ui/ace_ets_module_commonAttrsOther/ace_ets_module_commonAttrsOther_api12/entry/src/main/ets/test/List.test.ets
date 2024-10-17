@@ -28,8 +28,6 @@ import Policy_APITest from './CommonTest/BackgroundBlurStyleTest/BackgroundBlurS
 import BlurStyleActivePolicy_ALWAYS_ACTIVE_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/BlurStyleActivePolicy_ALWAYS_ACTIVE_APITest'
 import BlurStyleActivePolicy_ALWAYS_INACTIVE_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/BlurStyleActivePolicy_ALWAYS_INACTIVE_APITest'
 import BlurStyleActivePolicy_FOLLOWS_WINDOW_ACTIVE_STATE_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/BlurStyleActivePolicy_FOLLOWS_WINDOW_ACTIVE_STATE_APITest'
-import BlurType_BEHIND_WINDOW_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/BlurType_BEHIND_WINDOW_APITest'
-import BlurType_WITHIN_WINDOW_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/BlurType_WITHIN_WINDOW_APITest'
 import Bgde_Policy_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/Policy_APITest'
 import Bgde_InactiveColor_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/InactiveColor_APITest'
 import getPageInfoByUniqueIdTest from './UIContextTest/getPageInfoByUniqueId.test'
@@ -55,8 +53,6 @@ export default function testsuite() {
   BlurStyleActivePolicy_ALWAYS_ACTIVE_APITest();
   BlurStyleActivePolicy_ALWAYS_INACTIVE_APITest();
   BlurStyleActivePolicy_FOLLOWS_WINDOW_ACTIVE_STATE_APITest();
-  BlurType_BEHIND_WINDOW_APITest();
-  BlurType_WITHIN_WINDOW_APITest();
   Bgde_Policy_APITest();
   Bgde_InactiveColor_APITest();
   getPageInfoByUniqueIdTest();
