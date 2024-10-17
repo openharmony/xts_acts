@@ -59,8 +59,8 @@ struct OH_ArkWebHttpBodyStream_GetPosition {
         .onClick(async () => {
           switch (this.str) {
             case 'testWebHttpBodyStream_GetPosition_Fail_Param_Error': {
-              let result_num: number = testNapi.setUrl();
-              if (result_num != 0) {
+              let resultNum: number = testNapi.setUrl();
+              if (resultNum != 0) {
                 console.log('Failed click');
                 Utils.emitEvent(false, 5207);
               } else {

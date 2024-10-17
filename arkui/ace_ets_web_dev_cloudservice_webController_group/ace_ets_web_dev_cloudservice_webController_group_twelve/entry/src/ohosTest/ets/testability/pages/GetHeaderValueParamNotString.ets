@@ -25,7 +25,6 @@ struct OH_ArkWebRequestHeaderList_GetHeader {
   @State str: string = ''
   @State string: string = ''
   @State interceptUrl: string = ''
-  heads: Header[] = new Array()
   @State consoleCorsError: boolean = false
   responseWeb: WebResourceResponse = new WebResourceResponse()
   @State consoleMsg: string = ''

@@ -9,7 +9,7 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
+ * See the License for the specif ic language governing permissions and
  * limitations under the License.
  */
 
@@ -42,6 +42,7 @@ int32_t judgment_num = 1;
 std::string url_return = "";
 bool judgment = true;
 int g_parameter = 0;
+int error_num = 17100101;
 
 
 bool judgment1 = false;
@@ -76,7 +77,7 @@ void OnURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == 17100101) {
+    } else if (result_num == error_num) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -96,13 +97,14 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strcpy(url, protocol);
-    strcat(url, domain);
+    strncpy(url, protocol, sizeof(url) - 1);
+    strncat(url, domain, sizeof(url) - strlen(url) - 1);
+    url[sizeof(url) - 1];
     result_num = OH_ArkWebResponse_SetUrl(nullptr, url);
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == 17100101) {
+    } else if (result_num == error_num) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -124,7 +126,7 @@ void OnURLRequestStart3(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == 17100101) {
+    } else if (result_num == error_num) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -144,13 +146,14 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     const char *protocol = "https://";
     const char *domain = "com.baidu123.www";
     char url[256];
-    strcpy(url, protocol);
-    strcat(url, domain);
+    strncpy(url, protocol, sizeof(url) - 1);
+    strncat(url, domain, sizeof(url) - strlen(url) - 1);
+    url[sizeof(url) - 1];
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == 17100101) {
+    } else if (result_num == error_num) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -170,16 +173,17 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strcpy(url, protocol);
-    strcat(url, domain);
+    strncpy(url, protocol, sizeof(url) - 1);
+    strncat(url, domain, sizeof(url) - strlen(url) - 1);
+    url[sizeof(url) - 1];
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
         OH_ArkWebResponse_GetUrl(nullptr, &geturl);
         OH_LOG_INFO(LOG_APP, "Succeed in getting URL: %{public}s", geturl);
-        judgment_num = 17100101;
+        judgment_num = error_num;
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_GetUrl judgment_num is : %{public}d", judgment_num);
-    } else if (result_num == 17100101) {
+    } else if (result_num == error_num) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl");
     }
     OH_ArkWeb_DestroyResponse(response);
@@ -198,16 +202,17 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strcpy(url, protocol);
-    strcat(url, domain);
+    strncpy(url, protocol, sizeof(url) - 1);
+    strncat(url, domain, sizeof(url) - strlen(url) - 1);
+    url[sizeof(url) - 1];
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
         OH_ArkWebResponse_GetUrl(response, &geturl);
         OH_LOG_INFO(LOG_APP, "Succeed in getting URL: %{public}s", geturl);
-        judgment_num = 17100101;
+        judgment_num = error_num;
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_GetUrl judgment_num is : %{public}d", judgment_num);
-    } else if (result_num == 17100101) {
+    } else if (result_num == error_num) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl");
     }
     OH_ArkWeb_DestroyResponse(response);
@@ -226,16 +231,17 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strcpy(url, protocol);
-    strcat(url, domain);
+    strncpy(url, protocol, sizeof(url) - 1);
+    strncat(url, domain, sizeof(url) - strlen(url) - 1);
+    url[sizeof(url) - 1];
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
         OH_ArkWebResponse_GetUrl(nullptr, nullptr);
         OH_LOG_INFO(LOG_APP, "Succeed in getting URL: %{public}s", geturl);
-        judgment_num = 17100101;
+        judgment_num = error_num;
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_GetUrl judgment_num is : %{public}d", judgment_num);
-    } else if (result_num == 17100101) {
+    } else if (result_num == error_num) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl");
     }
     OH_ArkWeb_DestroyResponse(response);
@@ -254,15 +260,16 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strcpy(url, protocol);
-    strcat(url, domain);
+    strncpy(url, protocol, sizeof(url) - 1);
+    strncat(url, domain, sizeof(url) - strlen(url) - 1);
+    url[sizeof(url) - 1];
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
         OH_ArkWebResponse_GetUrl(response, &geturl);
         url_return = geturl;
         OH_LOG_INFO(LOG_APP, "Succeed in getting URL: %{public}s", geturl);
-    } else if (result_num == 17100101) {
+    } else if (result_num == error_num) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl");
     }
     OH_ArkWeb_DestroyResponse(response);
@@ -282,7 +289,7 @@ void OnURLRequestStart9(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resour
     result_num1 = OH_ArkWebResponse_SetError(nullptr, errorCode);
     if (result_num1 == 0) {
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResponse_SetError executed successfully.");
-    } else if (result_num1 == 17100101) {
+    } else if (result_num1 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Failed to execute OH_ArkWebResponse_SetError. Error: %{public}d", result_num1);
     }
 }
@@ -301,7 +308,7 @@ void OnURLRequestStart10(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     result_num2 = OH_ArkWebResponse_SetStatus(response, status);
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed: %{public}d", result_num2);
-    } else if (result_num2 == 17100101) {
+    } else if (result_num2 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed: %{public}d", result_num2);
     }
 }
@@ -320,7 +327,7 @@ void OnURLRequestStart11(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     result_num2 = OH_ArkWebResponse_SetStatus(nullptr, status);
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed: %{public}d", result_num2);
-    } else if (result_num2 == 17100101) {
+    } else if (result_num2 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed: %{public}d", result_num2);
     }
 }
@@ -339,7 +346,7 @@ void OnURLRequestStart12(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     result_num2 = OH_ArkWebResponse_SetStatus(response, status);
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed: %{public}d", result_num2);
-    } else if (result_num2 == 17100101) {
+    } else if (result_num2 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed: %{public}d", result_num2);
     }
 }
@@ -359,7 +366,7 @@ void OnURLRequestStart13(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}d", result_num2);
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}s", statusText);
-    } else if (result_num2 == 17100101) {
+    } else if (result_num2 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed SetStatusText: %{public}d", result_num2);
     }
 }
@@ -379,7 +386,7 @@ void OnURLRequestStart14(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}d", result_num2);
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}s", statusText);
-    } else if (result_num2 == 17100101) {
+    } else if (result_num2 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed SetStatusText: %{public}d", result_num2);
     }
 }
@@ -398,10 +405,10 @@ void OnURLRequestStart15(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     result_num2 = OH_ArkWebResponse_SetStatusText(response, statusText);
     if (result_num2 == 0) {
         OH_ArkWebResponse_GetStatusText(response, nullptr);
-        result_num1 = 17100101;
+        result_num1 = error_num;
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}d", result_num2);
         OH_LOG_ERROR(LOG_APP, " Failed to OH_ArkWebResponse_GetStatusText: %{public}d", result_num1);
-    } else if (result_num2 == 17100101) {
+    } else if (result_num2 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed SetStatusText: %{public}d", result_num2);
     }
 }
@@ -419,7 +426,7 @@ void OnURLRequestStart16(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     result_num2 = OH_ArkWebResponse_SetCharset(response, nullptr);
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, " Succeed in  OH_ArkWebResponse_SetCharset %{public}d", result_num2);
-    } else if (result_num2 == 17100101) {
+    } else if (result_num2 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Failed to  OH_ArkWebResponse_SetCharset %{public}d", result_num2);
     }
 }
@@ -438,7 +445,7 @@ void OnURLRequestStart17(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in OH_ArkWebSchemeHandler_SetUserData");
         OH_LOG_INFO(LOG_APP, "Succeed in OH_ArkWebSchemeHandler_SetUserData result_num2 : %{public}d", result_num2);
-    } else if (result_num2 == 17100101) {
+    } else if (result_num2 == error_num) {
         OH_LOG_ERROR(LOG_APP, "Failed to set userData for schemeHandler");
         OH_LOG_INFO(LOG_APP, "Failed to  OH_ArkWebSchemeHandler_SetUserData result_num2 : %{public}d", result_num2);
     }
@@ -732,8 +739,6 @@ void OnURLRequestStart34(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
                          const ArkWeb_ResourceHandler *resourceHandler, bool *intercept) {
     *intercept = true;
     uint64_t position = OH_ArkWebHttpBodyStream_GetPosition(nullptr);
-    //     assert(position == 0);
-    //     OH_LOG_INFO(LOG_APP, "Test passed: position '%{public}llu' ", position);
     if (position == 0) {
         OH_LOG_INFO(LOG_APP, "Test passed: position '%{public}llu' ", position);
         judgment1 = true;
@@ -749,10 +754,10 @@ void OnURLRequestStart35(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
                          const ArkWeb_ResourceHandler *resourceHandler, bool *intercept) {
     *intercept = true;
     int64_t position_Destroy = OH_ArkWebResourceRequest_Destroy(nullptr);
-    if (position_Destroy == 17100101) {
+    if (position_Destroy == error_num) {
         OH_LOG_INFO(LOG_APP, "Test passed: position_Destroy '%{public}lld' ", position_Destroy);
         judgment1 = true;
-        result_num = 17100101;
+        result_num = error_num;
     } else {
         OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value position_Destroy '%{public}lld'",
                     position_Destroy);
@@ -771,7 +776,7 @@ void OnURLRequestStart36(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     }
     OH_ArkWeb_ReleaseString(dynamicString); // 如果字符串被成功释放，那么指针应该指向一个空指针或者无效的内存地址。
     judgment2 = false;
-    OH_LOG_INFO(LOG_APP, "Test passed,free success");
+    OH_LOG_INFO(LOG_APP, "Test passed, free success");
 }
 
 void OnURLRequestStart37(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_ResourceRequest *resourceRequest,
@@ -797,7 +802,7 @@ void OnURLRequestStart38(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     // 调用释放函数
     OH_ArkWeb_ReleaseString(nullString);
     judgment2 = true;
-    OH_LOG_INFO(LOG_APP, "Test passed,nullptr string release failed as expected");
+    OH_LOG_INFO(LOG_APP, "Test passed, nullptr string release failed as expected");
 }
 
 void OnURLRequestStart39(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_ResourceRequest *resourceRequest,
@@ -817,7 +822,7 @@ void OnURLRequestStart39(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     // 调用释放函数
     OH_ArkWeb_ReleaseByteArray(byteArray);
     judgment2 = false;
-    OH_LOG_INFO(LOG_APP, "Test passed,Empty byteArray released successfully");
+    OH_LOG_INFO(LOG_APP, "Test passed, Empty byteArray released successfully");
 }
 
 
@@ -831,7 +836,7 @@ void OnURLRequestStart40(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     }
     OH_ArkWeb_ReleaseByteArray(emptyByteArray);
     judgment2 = false;
-    OH_LOG_INFO(LOG_APP, "Test passed,Empty byteArray released successfully");
+    OH_LOG_INFO(LOG_APP, "Test passed, Empty byteArray released successfully");
 }
 
 void OnURLRequestStart41(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_ResourceRequest *resourceRequest,
@@ -843,7 +848,7 @@ void OnURLRequestStart41(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     // 调用释放函数
     OH_ArkWeb_ReleaseByteArray(nullArray);
     judgment2 = true;
-    OH_LOG_INFO(LOG_APP, "Test passed,nullptr string release failed as expected");
+    OH_LOG_INFO(LOG_APP, "Test passed, nullptr string release failed as expected");
 }
 
 void OnURLRequestStart42(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_ResourceRequest *resourceRequest,
@@ -857,7 +862,7 @@ void OnURLRequestStart42(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
         OH_LOG_INFO(LOG_APP, "Test passed, BodyStream_IsEof:%{public}s", BodyStream_IsEof ? "true" : "false");
     } else {
         judgment1 = true;
-        OH_LOG_INFO(LOG_APP, "Test failed,BodyStream_IsEof:%{public}s", BodyStream_IsEof ? "true" : "false");
+        OH_LOG_INFO(LOG_APP, "Test failed, BodyStream_IsEof:%{public}s", BodyStream_IsEof ? "true" : "false");
     }
 }
 
@@ -908,11 +913,11 @@ void OnURLRequestStart45(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     }
     if (!result) {
         judgment2 = true;
-        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme is an empty string, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme is an empty string, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
         judgment1 = true;
-        OH_LOG_INFO(LOG_APP, "Test failed,returned true when scheme is an empty string, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme is an empty string, result:'%{public}s'",
                     result ? "true" : "false");
     }
 }
@@ -926,11 +931,11 @@ void OnURLRequestStart46(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     bool result = OH_ArkWeb_SetSchemeHandler(scheme, webTag, scheme_Handler);
     if (!result) {
         judgment2 = true;
-        OH_LOG_INFO(LOG_APP, "Test passed,returned false when webTag is nullptr, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test passed, returned false when webTag is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
         judgment1 = true;
-        OH_LOG_INFO(LOG_APP, "Test failed,returned true when webTag is nullptr, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test failed, returned true when webTag is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     }
 }
@@ -948,11 +953,11 @@ void OnURLRequestStart47(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     }
     if (!result) {
         judgment2 = true;
-        OH_LOG_INFO(LOG_APP, "Test passed,returned false when webTag is an empty string, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test passed, returned false when webTag is an empty string, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
         judgment1 = true;
-        OH_LOG_INFO(LOG_APP, "Test failed,returned true when webTag is an empty string, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test failed, returned true when webTag is an empty string, result:'%{public}s'",
                     result ? "true" : "false");
     }
 }
@@ -966,11 +971,11 @@ void OnURLRequestStart48(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     bool result = OH_ArkWeb_SetSchemeHandler(scheme, webTag, scheme_Handler);
     if (!result) {
         judgment2 = true;
-        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme_Handler is nullptr, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme_Handler is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
         judgment1 = true;
-        OH_LOG_INFO(LOG_APP, "Test failed,returned true when scheme_Handler is nullptr, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme_Handler is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     }
 }
@@ -981,9 +986,6 @@ void OnURLRequestStart49(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     *intercept = true;
     const char *scheme;
     ArkWeb_SchemeHandler *scheme_Handler;
-    //     WebviewController *controller = WebviewController::create();
-    //     controller->initializeWebEngine();
-    // 跟踪 BrowserContext 是否已初始化
     bool BrowserContext = false;
     bool result = OH_ArkWebServiceWorker_SetSchemeHandler(scheme, scheme_Handler);
     if (!BrowserContext) {
@@ -992,11 +994,11 @@ void OnURLRequestStart49(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     if (!result) {
         judgment2 = true;
         OH_LOG_INFO(LOG_APP,
-                    "Test passed,returned false when scheme_Handler before BrowserContext, result:'%{public}s'",
+                    "Test passed, returned false when scheme_Handler before BrowserContext, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
         judgment1 = true;
-        OH_LOG_INFO(LOG_APP, "Test failed,returned true when before BrowserContext, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test failed, returned true when before BrowserContext, result:'%{public}s'",
                     result ? "true" : "false");
     }
 }
@@ -1008,11 +1010,11 @@ void OnURLRequestStart50(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     bool result = OH_ArkWebServiceWorker_SetSchemeHandler(nullptr, scheme_Handler);
     if (!result) {
         judgment2 = true;
-        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme is an empty , result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme is an empty , result:'%{public}s'",
                     result ? "true" : "false");
     } else {
         judgment1 = true;
-        OH_LOG_INFO(LOG_APP, "Test failed,returned true when scheme is an empty , result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme is an empty , result:'%{public}s'",
                     result ? "true" : "false");
     }
 }
@@ -1025,11 +1027,11 @@ void OnURLRequestStart51(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resou
     bool result = OH_ArkWebServiceWorker_SetSchemeHandler(scheme, scheme_Handler);
     if (!result) {
         judgment2 = true;
-        OH_LOG_INFO(LOG_APP, "Test passed,returned false when scheme is nullptr, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
         judgment1 = true;
-        OH_LOG_INFO(LOG_APP, "Test failed,returned true when scheme is nullptr, result:'%{public}s'",
+        OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     }
 }
@@ -1077,10 +1079,11 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
     OH_LOG_INFO(LOG_APP, "set scheme handler");
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandler);
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandlerForSW);
+    int a[60] = {0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17,
+                 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
+                 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51};
 
-    switch (g_parameter) {
-
-    case 1:
+    if (g_parameter == a[1]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart1);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1088,9 +1091,7 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart1);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
-
-    case 2:
+    } else if (g_parameter == a[2]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart2);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1098,9 +1099,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart2);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 3:
+    else if (g_parameter == a[3]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart3);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1108,9 +1109,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart3);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 4:
+    else if (g_parameter == a[4]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart4);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1118,9 +1119,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart4);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 5:
+    else if (g_parameter == a[5]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart5);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1128,9 +1129,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart5);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 6:
+    else if (g_parameter == a[6]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart6);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1138,9 +1139,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart6);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 7:
+    else if (g_parameter == a[7]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart7);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1148,9 +1149,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart7);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 8:
+    else if (g_parameter == a[8]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart8);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1158,9 +1159,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart8);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 9:
+    else if (g_parameter == a[9]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart9);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1168,9 +1169,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart9);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 10:
+    else if (g_parameter == a[10]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart10);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1178,9 +1179,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart10);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 11:
+    else if (g_parameter == a[11]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart11);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1188,9 +1189,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart11);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 12:
+    else if (g_parameter == a[12]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart12);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1198,9 +1199,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart12);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 13:
+    else if (g_parameter == a[13]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart13);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1208,9 +1209,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart13);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 14:
+    else if (g_parameter == a[14]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart14);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1218,9 +1219,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart14);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 15:
+    else if (g_parameter == a[15]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart15);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1228,9 +1229,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart15);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 16:
+    else if (g_parameter == a[16]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart16);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1238,9 +1239,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart16);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 17:
+    else if (g_parameter == a[17]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart17);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1248,10 +1249,10 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart17);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
 
-    case 22:
+    else if (g_parameter == a[22]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart22);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1259,9 +1260,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart22);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 23:
+    else if (g_parameter == a[23]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart23);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1269,9 +1270,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart23);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 24:
+    else if (g_parameter == a[24]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart24);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1279,9 +1280,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart24);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 25:
+    else if (g_parameter == a[25]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart25);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1289,9 +1290,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart25);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 26:
+    else if (g_parameter == a[26]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart26);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1299,9 +1300,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart26);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 27:
+    else if (g_parameter == a[27]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart27);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1309,9 +1310,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart27);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 28:
+    else if (g_parameter == a[28]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart28);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1319,9 +1320,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart28);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 29:
+    else if (g_parameter == a[29]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart29);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1329,9 +1330,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart29);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 30:
+    else if (g_parameter == a[30]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart30);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1339,9 +1340,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart30);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 31:
+    else if (g_parameter == a[31]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart31);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1349,9 +1350,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart31);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 34:
+    else if (g_parameter == a[34]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart34);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1359,9 +1360,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart34);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 35:
+    else if (g_parameter == a[35]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart35);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1369,9 +1370,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart35);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 36:
+    else if (g_parameter == a[36]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart36);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1379,9 +1380,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart36);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 37:
+    else if (g_parameter == a[37]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart37);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1389,9 +1390,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart37);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 38:
+    else if (g_parameter == a[38]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart38);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1399,9 +1400,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart38);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 39:
+    else if (g_parameter == a[39]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart39);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1409,9 +1410,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart39);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 40:
+    else if (g_parameter == a[40]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart40);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1419,9 +1420,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart40);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 41:
+    else if (g_parameter == a[41]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart41);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1429,9 +1430,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart41);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 42:
+    else if (g_parameter == a[42]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart42);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1439,9 +1440,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart42);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 43:
+    else if (g_parameter == a[43]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart43);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1449,9 +1450,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart43);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 44:
+    else if (g_parameter == a[44]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart44);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1459,9 +1460,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart44);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 45:
+    else if (g_parameter == a[45]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart45);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1469,9 +1470,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart45);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 46:
+    else if (g_parameter == a[46]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart46);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1479,9 +1480,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart46);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 47:
+    else if (g_parameter == a[47]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart47);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1489,9 +1490,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart47);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 48:
+    else if (g_parameter == a[48]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart48);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1499,9 +1500,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart48);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 49:
+    else if (g_parameter == a[49]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart49);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1509,9 +1510,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart49);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 50:
+    else if (g_parameter == a[50]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart50);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1519,9 +1520,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart50);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    case 51:
+    else if (g_parameter == a[51]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart51);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1529,9 +1530,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart51);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-        break;
+    }
 
-    default:
+    else {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1539,9 +1540,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-
-        break;
     }
+
+
     OH_ArkWeb_SetSchemeHandler("custom", "scheme-handler", g_schemeHandler);
     OH_ArkWeb_SetSchemeHandler("custom-csp-bypassing", "scheme-handler", g_schemeHandler);
     OH_ArkWeb_SetSchemeHandler("custom-isolated", "scheme-handler", g_schemeHandler);

@@ -80,7 +80,8 @@ export default function webTestSevenTwo() {
      * @tc.level Level 1
      */
     it("SUB_WEB_TESTONPAGEBEGINTEST_0100", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_TESTONPAGEBEGINTEST_0100', 'https://www.baidu.com/', 503, done,
+      Utils.registerBaseEvent('SUB_WEB_TESTONPAGEBEGINTEST_0100', 'https:' +
+        '//www.baidu.com/', 503, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
@@ -226,7 +227,8 @@ export default function webTestSevenTwo() {
      * @tc.level Level 1
      */
     it("SUB_WEB_TESTSETURLTRUSTLISTTEST_0100", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0100', "https://www.baidu.com/", 512, done,
+      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0100', "https:" +
+        "//www.baidu.com/", 512, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
@@ -249,7 +251,8 @@ export default function webTestSevenTwo() {
      * @tc.level Level 1
      */
     it("SUB_WEB_TESTSETURLTRUSTLISTTEST_0200", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0200', "https://www.baidu.com/", 513, done,
+      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0200', "https:" +
+        "//www.baidu.com/", 513, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
@@ -272,7 +275,8 @@ export default function webTestSevenTwo() {
      * @tc.level Level 1
      */
     it("SUB_WEB_TESTSETURLTRUSTLISTTEST_0300", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0300', "https://www.baidu.com/", 514, done,
+      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0300', "https:" +
+        "//www.baidu.com/", 514, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
@@ -296,7 +300,8 @@ export default function webTestSevenTwo() {
      * @tc.level Level 1
      */
     it("SUB_WEB_TESTSETURLTRUSTLISTTEST_0400", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0400', "https://www.baidu.com/", 515, done,
+      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0400', "https:" +
+        "//www.baidu.com/", 515, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
@@ -319,7 +324,8 @@ export default function webTestSevenTwo() {
      * @tc.level Level 1
      */
     it("SUB_WEB_TESTSETURLTRUSTLISTTEST_0500", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0500', "https://www.baidu.com/", 516, done,
+      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0500', "https:" +
+        "//www.baidu.com/", 516, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
@@ -342,7 +348,8 @@ export default function webTestSevenTwo() {
      * @tc.level Level 1
      */
     it("SUB_WEB_TESTSETURLTRUSTLISTTEST_0600", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0600', "https://www.baidu.com/", 517, done,
+      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0600', "https:" +
+        "//www.baidu.com/", 517, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });

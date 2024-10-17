@@ -25,7 +25,7 @@
               xhr.send(formData);
               xhr.onreadystatechange = function (err) {
                 console.log(err.target.status);
-              }
+              };
           }
           function textPutXhr(url) {
                   let formData = new FormData();
@@ -36,7 +36,7 @@
                   xhr.send(formData);
                   xhr.onreadystatechange = function (err) {
                     console.log(err.target.status);
-                  }
+                  };
           }
     </script>
 </head>

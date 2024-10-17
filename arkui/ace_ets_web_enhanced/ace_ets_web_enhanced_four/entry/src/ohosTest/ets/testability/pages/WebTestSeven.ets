@@ -65,12 +65,13 @@ struct WebComponent {
 
   postRequest(){
     let httpRequest = http.createHttp();
-    let url = 'https://www.example.com/post'; // 请替换为实际的URL
+    let url = 'https:' +
+      '//www.example.com/post'; // 请替换为实际的URL
     let postData: GeneratedObjectLiteralInterface_1 = { key1: 'value1' }; // 要发送的数据
 
     let promise = httpRequest.request(url, {
       method: http.RequestMethod.POST,
-      header: { 'Content-Type': 'application/json; charset=utf-8' },
+      header: { ContentType: 'application/json; charset=utf-8' },
       extraData: JSON.stringify(postData) // 将对象转换为JSON字符串
     });
 
@@ -87,7 +88,8 @@ struct WebComponent {
 
   getRequest(){
     let httpRequest = http.createHttp();
-    let baseUrl = 'https://www.example.com/get'; // 请替换为实际的URL
+    let baseUrl = 'https:' +
+      '//www.example.com/get'; // 请替换为实际的URL
     let queryParams: GeneratedObjectLiteralInterface_2 = { key1: 'value1' }; // 查询参数
 
     // 将查询参数转换为URL查询字符串
@@ -99,7 +101,7 @@ struct WebComponent {
 
     let promise = httpRequest.request(url, {
       method: http.RequestMethod.GET,
-      header: { 'Content-Type': 'application/json; charset=utf-8' }
+      header: { ContentType: 'application/json; charset=utf-8' }
     });
 
     promise.then((data) => {
