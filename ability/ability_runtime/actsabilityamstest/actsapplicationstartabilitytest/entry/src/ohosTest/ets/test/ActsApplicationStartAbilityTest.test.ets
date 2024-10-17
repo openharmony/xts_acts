@@ -28,7 +28,7 @@ abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 export default function actsApplicationStartAbilityTest() {
 
-  describe('actsApplicationStartAbilityTest1', () => {
+  describe('actsApplicationStartAbilityTest', () => {
     let expectErrCode = 16000001;
     const PARAM_ERRCODE = 401;
     let context: common.UIAbilityContext;
