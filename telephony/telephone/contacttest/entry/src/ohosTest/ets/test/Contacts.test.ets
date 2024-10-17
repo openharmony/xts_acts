@@ -172,8 +172,8 @@ let attr: contact.ContactAttributes = {
 
 let permission = ['ohos.permission.WRITE_CONTACTS']
 
-export default function AddContactTest() {
-  describe('AddContactTest', async (done: Function) => {
+export default function ContactsTest() {
+  describe('ContactsTest', async (done: Function) => {
     beforeAll(async (done: Function) => {
       console.info("beforeAll case");
       await ability()
@@ -186,7 +186,7 @@ export default function AddContactTest() {
       done();
     });
 
-     /**
+    /**
      * @tc.number     : SUB_Telephony_Contact_AddContact_0100
      * @tc.name       : testContactAddContactCallBack0100
      * @tc.desc       : Add a contacts and useing the callback method as an asynchronous method
@@ -199,7 +199,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start`);
       try {
         // 获取context
-        let context = getContext() as Context;
+        let context: Context = AppStorage.get('context') as Context;
         await sleep()
         contact.addContact(context, {
           name: {
@@ -244,7 +244,7 @@ export default function AddContactTest() {
       }
     });
 
-     /**
+    /**
      * @tc.number     : SUB_Telephony_Contact_AddContact_0200
      * @tc.name       : testContactAddContactCallBack0200
      * @tc.desc       : Add a contacts and useing the callback method as an asynchronous method
@@ -257,7 +257,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start`);
       try {
         // 获取context
-        let context = getContext() as Context;
+        let context: Context = AppStorage.get('context') as Context;
         contact.addContact(context, contactData, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} Failed to addContact. Code:${JSON.stringify(err)}`)
@@ -295,7 +295,7 @@ export default function AddContactTest() {
       }
     });
 
-     /**
+    /**
      * @tc.number     : SUB_Telephony_Contact_AddContact_0300
      * @tc.name       : testContactAddContactCallBack0300
      * @tc.desc       : Add a contacts and useing the callback method as an asynchronous method
@@ -308,7 +308,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start`);
       try {
         // 获取context
-        let context = getContext() as Context;
+        let context: Context = AppStorage.get('context') as Context;
         contact.addContact(context, {}, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} Failed to addContact. Code:${JSON.stringify(err)}`)
@@ -346,7 +346,7 @@ export default function AddContactTest() {
       }
     });
 
-     /**
+    /**
      * @tc.number     : SUB_Telephony_Contact_AddContact_0400
      * @tc.name       : testContactAddContactPromise0100
      * @tc.desc       : Add a contacts and useing the promise method as an asynchronous method
@@ -359,7 +359,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start`);
       try {
         // 获取context
-        let context = getContext() as Context;
+        let context: Context = AppStorage.get('context') as Context;
         contact.addContact(context, {
           name: {
             fullName: 'LiSi'
@@ -401,7 +401,7 @@ export default function AddContactTest() {
       }
     });
 
-     /**
+    /**
      * @tc.number     : SUB_Telephony_Contact_AddContact_0500
      * @tc.name       : testContactAddContactPromise0200
      * @tc.desc       : Add a contacts and useing the promise method as an asynchronous method
@@ -414,7 +414,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start`);
       try {
         // 获取context
-        let context = getContext() as Context;
+        let context: Context = AppStorage.get('context') as Context;
         contact.addContact(context, contactData).then((data) => {
           console.info(`${caseName} sunccess to addContact. Code:${JSON.stringify(data)}`)
           contact.queryKey(context, data, (keyErr: BusinessError, keyData: string) => {
@@ -450,7 +450,7 @@ export default function AddContactTest() {
       }
     });
 
-     /**
+    /**
      * @tc.number     : SUB_Telephony_Contact_AddContact_0600
      * @tc.name       : testContactAddContactPromise0300
      * @tc.desc       : Add a contacts and useing the promise method as an asynchronous method
@@ -463,7 +463,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start`);
       try {
         // 获取context
-        let context = getContext() as Context;
+        let context: Context = AppStorage.get('context') as Context;
         contact.addContact(context, {}).then((data) => {
           console.info(`${caseName} sunccess to addContact. Code:${JSON.stringify(data)}`)
           ExpectFail()
@@ -471,7 +471,6 @@ export default function AddContactTest() {
             if (keyErr) {
               console.info(`${caseName} queryKey: err->${JSON.stringify(keyErr)}`);
               ExpectFail();
-              expect().assertFail()
               done();
             } else {
               console.info(`${caseName} queryKey: success data->${JSON.stringify(keyData)}`);
@@ -490,13 +489,11 @@ export default function AddContactTest() {
           })
         }).catch((error: BusinessError) => {
           console.info(`${caseName} Failed to addContact. Code:${JSON.stringify(error)}`)
-          // expectEqual(error.code, 401)
           expect(error.code).assertEqual(401)
           done()
         })
       } catch (error) {
         console.info(`${caseName} catch error ${JSON.stringify(error)}`);
-        // ExpectFail();
         expect().assertFail()
         console.info(`${caseName} test end`);
         done()
