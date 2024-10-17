@@ -282,7 +282,7 @@ describe('DateTimeFormatInIntlTest', function () {
         console.log('dateTimeFormat_test_1300 ' + datefmt.formatRange(startdate, enddate));
         let devType = deviceInfo.deviceType;
         if (devType == '2in1'){
-            expect(datefmt.formatRange(startdate, enddate)).assertEqual('20-21 Dec 2020');
+            expect(datefmt.formatRange(startdate, enddate)).assertEqual('20–21 Dec 2020');
         }else{
             expect(datefmt.formatRange(startdate, enddate)).assertEqual('20/12/2020 – 21/12/2020');
         }
