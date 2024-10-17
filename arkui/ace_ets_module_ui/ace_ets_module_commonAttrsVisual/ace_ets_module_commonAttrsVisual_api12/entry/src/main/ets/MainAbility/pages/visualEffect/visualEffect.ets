@@ -21,38 +21,38 @@ struct visualEffect1 {
   @State visualEffectTest: uiEffect.VisualEffect = uiEffect.createEffect()
   @State filterTest: uiEffect.Filter = uiEffect.createFilter()
 
-  build(){
+  build() {
     Column({ space: 15 }) {
       Text('visualEffect').fontSize(20).width('75%').fontColor('#DCDCDC')
-      Text().id('visualEffect_text')
+      Text().id("visualEffect_text")
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
-        .backgroundImage($r('app.media.icon'))
+        .backgroundImage($r("app.media.icon"))
         .visualEffect(this.visualEffectTest) // 通过 visualEffect 设置背景颜色提亮效果
 
       Text('foregroundFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
-      Text().id('foregroundFilter_text')
+      Text().id("foregroundFilter_text")
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
-        .backgroundImage($r('app.media.icon'))
+        .backgroundImage($r("app.media.icon"))
         .foregroundFilter(this.filterTest.blur(10)) // 通过 foregroundFilter 进行像素扩展
 
       Text('backgroundFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
-      Text().id('backgroundFilter_text')
+      Text().id("backgroundFilter_text")
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
-        .backgroundImage($r('app.media.icon'))
+        .backgroundImage($r("app.media.icon"))
         .backgroundFilter(this.filterTest.blur(10)) // 通过 backgroundFilter 设置模糊效果
 
       Text('compositingFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
-      Text().id('compositingFilter_text')
+      Text().id("compositingFilter_text")
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
-        .backgroundImage($r('app.media.icon'))
+        .backgroundImage($r("app.media.icon"))
         .compositingFilter(this.filterTest.blur(10)) // 通过 compositingFilter 设置模糊效果
     }
     .height('100%')
