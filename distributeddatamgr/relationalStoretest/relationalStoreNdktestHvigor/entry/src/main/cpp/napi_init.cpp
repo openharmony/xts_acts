@@ -328,14 +328,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Id_0100(napi_env env, napi_callback_in
     int64_t trxIderr = -1;
     int errCode = OH_Rdb_ErrCode::RDB_OK;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
-    OH_Rdb_SetStoreName(config, "rdb_store_test.db");
-    OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
-    OH_Rdb_SetModuleName(config, "module");
-    OH_Rdb_SetEncrypted(config, false);
-    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
-    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
-    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    InitRdbConfigV2(config);
     mkdir(RDB_TEST_PATH, DIRMODE);
     auto store = OH_Rdb_CreateOrOpen(config, &errCode);
 
@@ -384,14 +377,7 @@ static napi_value OH_Rdb_SetDbType_SQLITE_Id_0200(napi_env env, napi_callback_in
     int64_t trxIderr = 2;
     int errCode = OH_Rdb_ErrCode::RDB_OK;
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
-    OH_Rdb_SetStoreName(config, "rdb_store_test.db");
-    OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
-    OH_Rdb_SetModuleName(config, "module");
-    OH_Rdb_SetEncrypted(config, false);
-    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
-    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
-    errCode = OH_Rdb_SetDbType(config, RDB_SQLITE);
+    InitRdbConfigV2(config);
     mkdir(RDB_TEST_PATH, DIRMODE);
     auto store = OH_Rdb_CreateOrOpen(config, &errCode);
     char createTableSql[] = "CREATE TABLE t1(id INT PRIMARY KEY, repr floatvector(4));";
