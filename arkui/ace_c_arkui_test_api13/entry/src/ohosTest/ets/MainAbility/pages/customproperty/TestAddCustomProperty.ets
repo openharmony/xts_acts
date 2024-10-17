@@ -39,7 +39,7 @@ struct TestAddCustomProperty {
         .onClick(()=>{
           let uiContext:UIContext = this.getUIContext();
           if (uiContext) {
-            const node2: FrameNode | null = uiContext.getFrameNodeById("columnA") || null
+            const node2: FrameNode | null = uiContext.getFrameNodeById('columnA') || null
             if (node2) {
               const key = 'CustomValueA';
               const property = node2.getCustomProperty(key);
