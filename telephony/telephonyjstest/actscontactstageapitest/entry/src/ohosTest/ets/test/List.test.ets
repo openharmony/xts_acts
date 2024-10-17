@@ -15,10 +15,14 @@
 
 import contactStage from './contactstage.test';
 import ObjectInterfaceTest from './ObjectInterface_test';
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Applications.Contacts")){
+  if (sim.getMaxSimCount()!=0){
     contactStage();
     ObjectInterfaceTest();
+  }else{
+    EmptyTest()
   }
 }

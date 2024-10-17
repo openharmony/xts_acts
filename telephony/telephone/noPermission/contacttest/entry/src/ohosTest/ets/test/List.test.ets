@@ -15,9 +15,10 @@
 
 import NoPermissionTest from './NoPermission.test'
 import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Applications.Contacts")){
+  if (sim.getMaxSimCount()!=0){
     NoPermissionTest();
   }else{
     EmptyTest()
