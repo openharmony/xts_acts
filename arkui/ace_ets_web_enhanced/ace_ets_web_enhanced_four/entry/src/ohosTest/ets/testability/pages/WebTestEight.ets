@@ -76,11 +76,10 @@ struct Index {
   ParseX509CertInfo(x509CertArray: Array<cert.X509Cert>){
     let res: string = 'getCertificate success: len = ' + x509CertArray.length;
     for (let i = 0; i < x509CertArray.length; i++) {
-      res += ', index = ' + i + ', issuer name = '
-        + this.Uint8ArrayToString(x509CertArray[i].getIssuerName().data) + ', subject name = '
-        + this.Uint8ArrayToString(x509CertArray[i].getSubjectName().data) + ', valid start = '
-        + x509CertArray[i].getNotBeforeTime()
-        + ', valid end = ' + x509CertArray[i].getNotAfterTime();
+      res += ', index = ' + i + ', issuer name = ' +
+      this.Uint8ArrayToString(x509CertArray[i].getIssuerName().data) + ', subject name = ' +
+      this.Uint8ArrayToString(x509CertArray[i].getSubjectName().data) + ', valid start = ' +
+      x509CertArray[i].getNotBeforeTime() + ', valid end = ' + x509CertArray[i].getNotAfterTime();
     }
     return res;
   }

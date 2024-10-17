@@ -21,8 +21,8 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct testWebResponseSetCharsetParamNone {
-  controller: web_webview.WebviewController = new web_webview.WebviewController("scheme-handler");
-  @State str: string = ""
+  controller: web_webview.WebviewController = new web_webview.WebviewController('scheme-handler');
+  @State str: string = ''
 
   aboutToAppear() {
     testNapi.registerCustomSchemes()
@@ -43,9 +43,9 @@ struct testWebResponseSetCharsetParamNone {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
@@ -54,18 +54,17 @@ struct testWebResponseSetCharsetParamNone {
 
   build() {
     Column() {
-      Button("SetCharset")
+      Button('SetCharset')
         .key('SetCharset')
         .onClick(async () => {
           switch (this.str){
-            case "testWebResponse_SetCharset_Param_None":{
+            case 'testWebResponse_SetCharset_Param_None':{
               let result: number = testNapi.setStatus();
               if (result == 0) {
-                console.log("Succeed testWebResponse_SetCharset_Param_None");
+                console.log('Succeed testWebResponse_SetCharset_Param_None');
                 Utils.emitEvent(result, 5116);
-              }
-              else{
-                console.log("Faild testWebResponse_SetCharset_Param_None");
+              } else{
+                console.log('Faild testWebResponse_SetCharset_Param_None');
                 Utils.emitEvent(result, 5116);
               }
               break;

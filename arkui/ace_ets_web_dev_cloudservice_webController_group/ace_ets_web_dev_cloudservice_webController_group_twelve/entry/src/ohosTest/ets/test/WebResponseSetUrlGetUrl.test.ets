@@ -77,14 +77,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4751
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4751
      * @tc.name testWebResponse_SetUrl_Url_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4751', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4751', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetUrlUrlIsNone'
       });
@@ -102,14 +102,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4752
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4752
      * @tc.name testWebResponse_SetUrl_Url_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4752', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4752', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetUrlUrlNotString'
       });
@@ -127,14 +127,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4753
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4753
      * @tc.name testWebResponse_SetUrl_Url_NotExist
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4753', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4753', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetUrlUrlNotExist'
       });
@@ -152,14 +152,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4754
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4754
      * @tc.name testWebResponse_SetUrl_Url_Error
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4754', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4754', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetUrlUrlError'
       });
@@ -177,14 +177,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4801
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4801
      * @tc.name testWebResponse_GetUrl_Url_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4801', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4801', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetUrlUrlIsNone'
       });
@@ -202,14 +202,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4802
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4802
      * @tc.name testWebResponse_GetUrl_Url_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4802', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4802', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetUrlUrlNotString'
       });
@@ -227,14 +227,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4803
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4803
      * @tc.name testWebResponse_GetUrl_Url_NotExist
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4803', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4803', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetUrlUrlNotExist'
       });
@@ -252,14 +252,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4804
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4804
      * @tc.name testWebResponse_GetUrl_Url_Error
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4804', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4804', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetUrlUrlError'
       });
@@ -277,14 +277,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4951
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4951
      * @tc.name testWebResponse_SetError_Fail_ParamIsString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4951', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4951', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetErrorFailParamIsString'
       });
@@ -302,14 +302,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_5151
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_5151
      * @tc.name testWebResponse_SetStatus_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_5151', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_5151', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetStatusIsNone'
       });
@@ -327,14 +327,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_5152
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_5152
      * @tc.name testWebResponse_SetStatus_NotNum
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_5152', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_5152', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetStatusNotNum'
       });
@@ -352,14 +352,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_5153
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_5153
      * @tc.name testWebResponse_SetStatus_Error
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_5153', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_5153', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetStatusError'
       });
@@ -377,14 +377,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_5350
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_5350
      * @tc.name testWebResponse_SetStatusText_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_5350', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_5350', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetStatusTextIsNone'
       });
@@ -402,14 +402,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_5351
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_5351
      * @tc.name testWebResponse_SetStatusText_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_5351', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_5351', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetStatusTextNotString'
       });
@@ -427,14 +427,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_5400
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_5400
      * @tc.name testWebResponse_GetStatusText_NetErr
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_5400', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_5400', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetStatusTextNetErr'
       });
@@ -452,14 +452,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_5710
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_5710
      * @tc.name testWebResponse_SetCharset_Param_None
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_5710', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_5710', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetCharsetParamNone'
       });
@@ -477,14 +477,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4151
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_4151
      * @tc.name testWebSchemeHandler_SetUserData_ParamIsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_4151', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4151', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/SetUserDataParamIsNone'
       });
@@ -502,14 +502,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1110
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1110
      * @tc.name testWebRequestHeaderList_GetHeader_IndexParam_NotNum
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1110', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1110', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetHeaderIndexParamNotNum'
       });
@@ -527,14 +527,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1111
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1111
      * @tc.name testWebRequestHeaderList_GetHeader_IndexParam_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1111', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1111', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetHeaderIndexParamIsNone'
       });
@@ -552,14 +552,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1112
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1112
      * @tc.name testWebRequestHeaderList_GetHeader_IndexParam_MaxLen
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1112', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1112', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetHeaderIndexParamMaxLen'
       });
@@ -577,14 +577,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1113
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1113
      * @tc.name testWebRequestHeaderList_GetHeader_IndexParam_OverLen
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1113', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1113', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetHeaderIndexParamOverLen'
       });
@@ -602,14 +602,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1115
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1115
      * @tc.name testWebRequestHeaderList_GetHeader_KeyParam_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1115', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1115', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetHeaderKeyParamNotString'
       });
@@ -627,14 +627,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1116
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1116
      * @tc.name testWebRequestHeaderList_GetHeader_KeyParam_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1116', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1116', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetHeaderKeyParamIsNone'
       });
@@ -652,14 +652,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1117
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1117
      * @tc.name testWebRequestHeaderList_GetHeader_ValueParam_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1117', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1117', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetHeaderValueParamNotString'
       });
@@ -677,14 +677,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1118
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1118
      * @tc.name testWebRequestHeaderList_GetHeader_ValueParam_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1118', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1118', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/GetHeaderValueParamIsNone'
       });
@@ -702,14 +702,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1410
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1410
      * @tc.name testWebResourceRequest_GetMethod_get
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1410', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1410', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/RequestGetMethodGet'
       });
@@ -727,14 +727,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1510
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1510
      * @tc.name testWebResourceRequest_GetUrl_Fail_URL_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1510', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1510', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/ResourceRequestGetUrlResourceRequestNull'
       });
@@ -751,14 +751,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1520
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1520
      * @tc.name testWebResourceRequest_GetUrl_Fail_URL_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1520', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1520', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/ResourceRequestGetUrlUrlNull'
       });
@@ -775,14 +775,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_1530
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1530
      * @tc.name testWebResourceRequest_GetUrl_Fail_URL_IsNotExist
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_1530', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_1530', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/ResourceRequestGetUrlAllNull'
       });
@@ -799,14 +799,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_2230
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2230
      * @tc.name testWebHttpBodyStream_Read_Success02
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_2230', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_2230', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/HttpBodyStreamReadBufferBig'
       });
@@ -823,14 +823,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_2240
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2240
      * @tc.name testWebHttpBodyStream_Read_Fail03
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_2240', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_2240', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/HttpBodyStreamReadBufferSmall'
       });
@@ -848,14 +848,14 @@ export default function webviewNApi() {
 
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_2410
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2410
      * @tc.name testWebHttpBodyStream_GetPosition_Fail_Param_Error
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_2410', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_2410', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/HttpBodyStreamGetPosition'
       });
@@ -873,14 +873,14 @@ export default function webviewNApi() {
 
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_2810
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2810
      * @tc.name testWebResourceRequest_Destroy_Fail_Param_Error
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_2810', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_2810', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/ResourceRequestDestroy'
       });
@@ -897,22 +897,22 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_6710
-     * @tc.name testWeb_ReleaseString_Fail_Param_NotNDK
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_6710
+     * @tc.name testWeb_ReleaseString_Fail_Param_NotNSDK
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_6710', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_6710', 0, async (done: Function) => {
       router.pushUrl({
-        url: 'testability/pages/WebReleaseStringNotNDK'
+        url: 'testability/pages/WebReleaseStringNotNSDK'
       });
       router.clear();
       await Utils.sleep(1000);
-      Utils.emitEvent('testWeb_ReleaseString_Fail_Param_NotNDK', 10);
+      Utils.emitEvent('testWeb_ReleaseString_Fail_Param_NotNSDK', 10);
       await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWeb_ReleaseString_Fail_Param_NotNDK', true, 5209, done,
+      Utils.registerBaseEvent('testWeb_ReleaseString_Fail_Param_NotNSDK', true, 5209, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -922,14 +922,14 @@ export default function webviewNApi() {
 
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_6720
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_6720
      * @tc.name testWeb_ReleaseString_Fail_Param_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_6720', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_6720', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebReleaseStringString'
       });
@@ -947,14 +947,14 @@ export default function webviewNApi() {
 
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_6730
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_6730
      * @tc.name testWeb_ReleaseString_Fail_Param_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_6730', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_6730', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebReleaseStringStringNull'
       });
@@ -972,22 +972,22 @@ export default function webviewNApi() {
 
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_6810
-     * @tc.name testWeb_ReleaseByteArray_Fail_Param_NotNDK
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_6810
+     * @tc.name testWeb_ReleaseByteArray_Fail_Param_NotNSDK
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_6810', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_6810', 0, async (done: Function) => {
       router.pushUrl({
-        url: 'testability/pages/WebReleaseByteArrayNotNDK'
+        url: 'testability/pages/WebReleaseByteArrayNotNSDK'
       });
       router.clear();
       await Utils.sleep(1000);
-      Utils.emitEvent('testWeb_ReleaseByteArray_Fail_Param_NotNDK', 10);
+      Utils.emitEvent('testWeb_ReleaseByteArray_Fail_Param_NotNSDK', 10);
       await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWeb_ReleaseByteArray_Fail_Param_NotNDK', true, 5212, done,
+      Utils.registerBaseEvent('testWeb_ReleaseByteArray_Fail_Param_NotNSDK', true, 5212, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -996,14 +996,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_6820
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_6820
      * @tc.name testWeb_ReleaseByteArray_Fail_Param_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_6820', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_6820', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebReleaseByteArrayString'
       });
@@ -1020,14 +1020,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_6830
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_6830
      * @tc.name testWeb_ReleaseByteArray_Fail_Param_NotArray
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_6830', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_6830', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebReleaseByteArrayStringNull'
       });
@@ -1044,14 +1044,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_2620
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2620
      * @tc.name testWebHttpBodyStream_IsEof_Fail
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_2620', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_2620', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/HttpBodyStreamIsEof'
       });
@@ -1069,14 +1069,14 @@ export default function webviewNApi() {
 
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_2920
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2920
      * @tc.name testWebResourceRequest_GetReferrer_Param_Error
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_2920', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_2920', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/ResourceRequestGetReferrer'
       });
@@ -1093,14 +1093,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_3601
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_3601
      * @tc.name testWeb_SetSchemeHandler_Fail_schemeParam_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_3601', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_3601', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebSetSchemeHandlerSchemeNull'
       });
@@ -1117,14 +1117,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_3602
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_3602
      * @tc.name testWeb_SetSchemeHandler_Fail_schemeParam_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_3602', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_3602', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebSetSchemeHandlerScheme'
       });
@@ -1141,14 +1141,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_3603
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_3603
      * @tc.name testWeb_SetSchemeHandler_Fail_webTagParam_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_3603', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_3603', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebSetSchemeHandlerWebTagNull'
       });
@@ -1165,14 +1165,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_3604
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_3604
      * @tc.name testWeb_SetSchemeHandler_Fail_webTagParam_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_3604', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_3604', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebSetSchemeHandlerWebTag'
       });
@@ -1189,14 +1189,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_3605
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_3605
      * @tc.name testWeb_SetSchemeHandler_Fail_webTagParam_NotExist
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_3605', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_3605', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/WebSetSchemeHandlerSchemeHandlerNull'
       });
@@ -1214,14 +1214,14 @@ export default function webviewNApi() {
 
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_3502
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_3502
      * @tc.name testWebServiceWorker_SetSchemeHandler_Fail_schemeParam_IsNone
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_3502', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_3502', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/ServiceWorkerSetSchemeHandlerScheme'
       });
@@ -1238,14 +1238,14 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NDK_3503
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_3503
      * @tc.name testWebServiceWorker_SetSchemeHandler_Fail_schemeParam_NotString
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_WEBHOST_NDK_3503', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_3503', 0, async (done: Function) => {
       router.pushUrl({
         url: 'testability/pages/ServiceWorkerSetSchemeHandlerSchemeNull'
       });

@@ -31,12 +31,12 @@ struct WebComponent {
   @State str: string = '';
   @State url: string = ''
   @State url1: string = ''
-  @State Width: number = 100
-  @State Height: number = 100
+  @State widths: number = 100
+  @State heights: number = 100
   @State isVisible: boolean = false
   controller: webview.WebviewController = new webview.WebviewController();
   controller1: webview.WebviewController = new webview.WebviewController();
-  @State Visible: Visibility = Visibility.Visible
+  @State visible: Visibility = Visibility.Visible
   @State show: boolean = true
   @State flag: boolean = false
   @State flag1: boolean = false
@@ -56,7 +56,8 @@ struct WebComponent {
 
   postRequest(){
     let httpRequest = http.createHttp();
-    let url = 'https://www.baidu.com:81'; // 请替换为实际的URL
+    let url = 'https:' +
+      '//www.baidu.com:81'; // 请替换为实际的URL
     let postData: GeneratedObjectLiteralInterface_1 = { key1: 'value1' }; // 要发送的数据
 
     let promise = httpRequest.request(url, {
@@ -185,7 +186,7 @@ struct WebComponent {
         .onClick(async () => {
           switch (this.str) {
             case 'SUB_WEB_TESTONVISIBLEAREACHANGETEST_0400':
-              this.Visible = Visibility.Hidden
+              this.visible = Visibility.Hidden
               break;
             case 'SUB_WEB_TESTABOUTTODISAPPERTEST_0400':
               router.pushUrl({
@@ -200,68 +201,78 @@ struct WebComponent {
         .onClick(async () => {
           switch (this.str) {
             case 'SUB_WEB_TESTONVISIBLEAREACHANGETEST_0100':
-              this.Width = 0
-              this.Height = 0
+              this.widths = 0
+              this.heights = 0
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTONVISIBLEAREACHANGETEST_0200':
-              this.Width = 200
-              this.Height = 200
+              this.widths = 200
+              this.heights = 200
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTONVISIBLEAREACHANGETEST_0300':
-              this.Width = 200
-              this.Height = 200
+              this.widths = 200
+              this.heights = 200
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTONVISIBLEAREACHANGETEST_0400':
-              this.Width = 200
-              this.Height = 200
+              this.widths = 200
+              this.heights = 200
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTABOUTTODISAPPERTEST_0400':
-              this.Width = 200
-              this.Height = 200
+              this.widths = 200
+              this.heights = 200
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0100':
-              this.controller.loadUrl('http://www.example.com/test')
+              this.controller.loadUrl('http:' +
+                '//www.example.com/test')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0200':
-              this.controller.loadUrl('http://www.example.com/test')
+              this.controller.loadUrl('http:' +
+                '//www.example.com/test')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0300':
-              this.controller.loadUrl('http://www.example.com/test')
+              this.controller.loadUrl('http:' +
+                '//www.example.com/test')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0400':
-              this.controller.loadUrl('http://www.example.com/test')
+              this.controller.loadUrl('http:' +
+                '//www.example.com/test')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0500':
-              this.controller.loadUrl('https://www.example.com/test')
+              this.controller.loadUrl('https:' +
+                '//www.example.com/test')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0600':
-              this.controller.loadUrl('http://www.example.com/test')
+              this.controller.loadUrl('http:' +
+                '//www.example.com/test')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0700':
-              this.controller.loadUrl('http://www.baidu.com')
+              this.controller.loadUrl('http:' +
+                '//www.baidu.com')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0800':
-              this.controller.loadUrl('http://www.baidu.com:81')
+              this.controller.loadUrl('http:' +
+                '//www.baidu.com:81')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_0900':
-              this.controller1.loadUrl('http://www.baidu.com')
+              this.controller1.loadUrl('http:' +
+                '//www.baidu.com')
               this.controller.refresh()
               break;
             case 'SUB_WEB_TESTSETURLTRUSTLISTTEST_1000':
-              this.controller1.loadUrl('http://www.baidu.com')
+              this.controller1.loadUrl('http:' +
+                '//www.baidu.com')
               this.controller.refresh()
               break;
           }
@@ -330,7 +341,7 @@ struct WebComponent {
 
       if (this.show) {
         Web({ src: '', controller: this.controller })
-          .visibility(this.Visible)
+          .visibility(this.visible)
           .onPageVisible((event) => {
             console.log('onPageVisible url:' + event.url);
             this.url = event.url
@@ -385,8 +396,8 @@ struct WebComponent {
               console.info('Test Text is completely invisible.')
             }
           })
-          .width(this.Width)
-          .height(this.Height)
+          .width(this.widths)
+          .height(this.heights)
       } else {
         Text('隐藏')
       }

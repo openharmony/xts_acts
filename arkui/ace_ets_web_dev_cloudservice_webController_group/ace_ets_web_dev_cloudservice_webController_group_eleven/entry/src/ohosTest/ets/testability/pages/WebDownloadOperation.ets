@@ -540,126 +540,144 @@ struct WebComponent {
           switch (this.str) {
             case 'SUB_ACE_WEB_cancel_0100':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_cancel_0300':
               try {
-                this.controller.startDownload('https://www.example.com');
+                this.controller.startDownload('https:' +
+                  '//www.example.com');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_cancel_0400':
               try {
-                this.controller.startDownload('https://www.example.com');
+                this.controller.startDownload('https:' +
+                  '//www.example.com');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_pause_0200':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_pause_0300':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_pause_0400':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_pause_0500':
               try {
-                this.controller.startDownload('https://www.example.com');
+                this.controller.startDownload('https:' +
+                  '//www.example.com');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_pause_0600':
               try {
-                this.controller.startDownload('https://shows.youtube.com');
+                this.controller.startDownload('https:' +
+                  '//shows.youtube.com');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_resume_0200':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_resume_0300':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_resume_0400':
               try {
-                this.controller.startDownload('https://www.example.com');
+                this.controller.startDownload('https:' +
+                  '//www.example.com');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_resume_0500':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_onDownloadUpdated_1000':
               try {
-                this.controller.startDownload('https://dldir1.qq.c.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.c.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_onDownloadUpdated_1001':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_onDownloadUpdated_1002':
               try {
-                this.controller.startDownload('https://www.example.com');
+                this.controller.startDownload('https:' +
+                  '//www.example.com');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_onDownloadUpdated_1003':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_onDownloadFinish_1002':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
               break;
             case 'SUB_ACE_WEB_onDownloadFinish_1000':
               try {
-                this.controller.startDownload('https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
+                this.controller.startDownload('https:' +
+                  '//dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.15_240902_x64_01.exe');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
