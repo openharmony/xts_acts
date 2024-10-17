@@ -17,7 +17,7 @@ import { describe, it, expect, beforeAll, beforeEach } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { common } from '@kit.AbilityKit';
+import { common, wantConstant } from '@kit.AbilityKit';
 import { Driver, MatchPattern, ON } from '@kit.TestKit';
 
 let bundleName = 'com.example.actsapplicationstartabilityauxiliary'
@@ -28,7 +28,7 @@ abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 export default function actsApplicationStartAbilityTest() {
 
-  describe('actsApplicationStartAbilityTest', () => {
+  describe('actsApplicationStartAbilityTest1', () => {
     let expectErrCode = 16000001;
     const PARAM_ERRCODE = 401;
     let context: common.UIAbilityContext;
@@ -462,7 +462,8 @@ export default function actsApplicationStartAbilityTest() {
           action: TEST_CASE_NAME,
           parameters: {
             instanceKey: TEST_CASE_NAME
-          }
+          },
+          flags: wantConstant.Flags.FLAG_START_WITHOUT_TIPS
         }
         context.startAbility(want).then(() => {
           hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility`);
@@ -529,13 +530,12 @@ export default function actsApplicationStartAbilityTest() {
         });
         let want: Want = {
           deviceId: '', // deviceId为空表示本设备
-          bundleName: 'com.example.actsapplicationstartabilityauxiliary',
-          abilityName: 'EntitiesAbility',
           action: TEST_CASE_NAME,
           entities: [TEST_CASE_NAME],
           parameters: {
             instanceKey: TEST_CASE_NAME
-          }
+          },
+          flags: wantConstant.Flags.FLAG_START_WITHOUT_TIPS
         }
         context.startAbility(want).then(() => {
           hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility`);
@@ -574,7 +574,8 @@ export default function actsApplicationStartAbilityTest() {
         entities: [TEST_CASE_NAME],
         parameters: {
           instanceKey: TEST_CASE_NAME
-        }
+        },
+        flags: wantConstant.Flags.FLAG_START_WITHOUT_TIPS
       };
       context.startAbility(want).then((data) => {
         hilog.info(0x0000, 'testTag', '%{public}s', ` SpecifiedAbility succeed ${JSON.stringify(data)}`);
@@ -591,16 +592,6 @@ export default function actsApplicationStartAbilityTest() {
         `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
       if (allowed) {
         let buttons = await driver.findComponents(ON.text('打开'));
-        if (buttons && buttons.length > 0) {
-          buttons[buttons.length - 1].click();
-        }
-      }
-      await sleep(1000);
-      let allowed1 = await driver.findComponent(ON.text('无法打开次文件', MatchPattern.CONTAINS));
-      hilog.info(0x0000, 'testTag', '%{public}s',
-        `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
-      if (allowed1) {
-        let buttons = await driver.findComponents(ON.text('知道了'));
         if (buttons && buttons.length > 0) {
           buttons[buttons.length - 1].click();
         }
@@ -675,16 +666,6 @@ export default function actsApplicationStartAbilityTest() {
           `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
         if (allowed) {
           let buttons = await driver.findComponents(ON.text('打开'));
-          if (buttons && buttons.length > 0) {
-            buttons[buttons.length - 1].click();
-          }
-        }
-        await sleep(1000);
-        let allowed1 = await driver.findComponent(ON.text('无法打开次文件', MatchPattern.CONTAINS));
-        hilog.info(0x0000, 'testTag', '%{public}s',
-          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
-        if (allowed1) {
-          let buttons = await driver.findComponents(ON.text('知道了'));
           if (buttons && buttons.length > 0) {
             buttons[buttons.length - 1].click();
           }
@@ -765,16 +746,6 @@ export default function actsApplicationStartAbilityTest() {
             buttons[buttons.length - 1].click();
           }
         }
-        await sleep(1000);
-        let allowed1 = await driver.findComponent(ON.text('无法打开次文件', MatchPattern.CONTAINS));
-        hilog.info(0x0000, 'testTag', '%{public}s',
-          `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
-        if (allowed1) {
-          let buttons = await driver.findComponents(ON.text('知道了'));
-          if (buttons && buttons.length > 0) {
-            buttons[buttons.length - 1].click();
-          }
-        }
       });
     });
 
@@ -837,16 +808,6 @@ export default function actsApplicationStartAbilityTest() {
                   `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
                 if (allowed) {
                   let buttons = await driver.findComponents(ON.text('打开'));
-                  if (buttons && buttons.length > 0) {
-                    buttons[buttons.length - 1].click();
-                  }
-                }
-                await sleep(1000);
-                let allowed1 = await driver.findComponent(ON.text('无法打开次文件', MatchPattern.CONTAINS));
-                hilog.info(0x0000, 'testTag', '%{public}s',
-                  `${TEST_CASE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed1} `);
-                if (allowed1) {
-                  let buttons = await driver.findComponents(ON.text('知道了'));
                   if (buttons && buttons.length > 0) {
                     buttons[buttons.length - 1].click();
                   }
@@ -998,7 +959,6 @@ export default function actsApplicationStartAbilityTest() {
      * @tc.level Level 3
      */
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0500', 0, async (done: Function) => {
-      await sleep(3000);
       let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0500';
       let onForegroundFlagNumber = 0
       let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
