@@ -18,17 +18,16 @@ import Utils from '../../test/Utils';
 import testNapi from 'libentry.so';
 import events_emitter from '@ohos.events.emitter';
 
-// 修改后的Web视图组件
 @Entry
 @Component
-struct testWebResponseFailWebTagParamIsNone {
+struct testWebResponseSetUrlUrlNotString {
   controller: web_webview.WebviewController = new web_webview.WebviewController('scheme-handler');
-  @State str: string = '';
+  @State str: string = ''
 
   aboutToAppear() {
     testNapi.registerCustomSchemes()
     web_webview.WebviewController.initializeWebEngine();
-    testNapi.setSchemeHandler(17);
+    testNapi.setSchemeHandler(2);
   }
 
   onPageShow() {
@@ -55,24 +54,24 @@ struct testWebResponseFailWebTagParamIsNone {
 
   build() {
     Column() {
-      Button('SetClear')
-        .key('SetClear')
+      Button('SetUrl')
+        .key('SetUrl')
         .onClick(async () => {
           switch (this.str) {
-            case 'testWeb_ClearSchemeHandlers_Fail_webTagParam_IsNone': {
-              let result = testNapi.setStatus();
+            case 'testWebResponse_SetUrl_Url_NotString': {
+              let result = testNapi.setUrl();
               if (result == 0) {
-                console.log('Succeed testWeb_ClearSchemeHandlers_Fail_webTagParamIsNone');
-                Utils.emitEvent(true, 5117);
+                console.log('Succeed OH_ArkWebResponse_SetUrl');
+                Utils.emitEvent(result, 5102);
               } else {
-                console.log('Failed testWeb_ClearSchemeHandlers_Fail_webTagParamIsNone');
-                Utils.emitEvent(false, 5117);
+                console.log('Faild OH_ArkWebResponse_SetUrl');
+                Utils.emitEvent(result, 5102);
               }
               break;
             }
           }
         })
-      Web({ src: $rawfile('serviceWorker.html'), controller: this.controller });
+      Web({ src: 'https://www.example.com', controller: this.controller });
     }
   }
 }

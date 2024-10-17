@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
+
 let emitKey = '';
 
 export default function webviewNApi() {
@@ -85,7 +86,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4751', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetUrlUrlIsNone'
+        url: 'testability/pages/SetUrlUrlIsNone'
       });
       router.clear();
       await Utils.sleep(1000);
@@ -108,7 +109,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4752', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetUrlUrlNotString'
+        url: 'testability/pages/SetUrlUrlNotString'
       });
       router.clear();
       await Utils.sleep(1000);
@@ -131,7 +132,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4753', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetUrlUrlNotExist'
+        url: 'testability/pages/SetUrlUrlNotExist'
       });
       router.clear();
       await Utils.sleep(1000);
@@ -154,7 +155,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4754', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetUrlUrlError'
+        url: 'testability/pages/SetUrlUrlError'
       });
       router.clear();
       await Utils.sleep(1000);
@@ -177,12 +178,12 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4801', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/GetUrlUrlIsNone'
+        url: 'testability/pages/GetUrlUrlIsNone'
       });
       router.clear();
       await Utils.sleep(1000);
       Utils.emitEvent('testWebResponse_GetUrl_Url_IsNone', 10);
-      Utils.registerBaseEvent('testWebResponse_GetUrl_Url_IsNone',17100101, 5105, done,
+      Utils.registerBaseEvent('testWebResponse_GetUrl_Url_IsNone', 17100101, 5105, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -200,12 +201,12 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4802', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/GetUrlUrlNotString'
+        url: 'testability/pages/GetUrlUrlNotString'
       });
       router.clear();
       await Utils.sleep(1000);
       Utils.emitEvent('testWebResponse_GetUrl_Url_NotString', 10);
-      Utils.registerBaseEvent('testWebResponse_GetUrl_Url_NotString',17100101, 5106, done,
+      Utils.registerBaseEvent('testWebResponse_GetUrl_Url_NotString', 17100101, 5106, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -223,7 +224,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4803', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/GetUrlUrlNotExist'
+        url: 'testability/pages/GetUrlUrlNotExist'
       });
       router.clear();
       await Utils.sleep(1000);
@@ -246,7 +247,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4804', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/GetUrlUrlError'
+        url: 'testability/pages/GetUrlUrlError'
       });
       router.clear();
       await Utils.sleep(1000);
@@ -269,7 +270,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4951', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetErrorFailParamIsString'
+        url: 'testability/pages/SetErrorFailParamIsString'
       });
       router.clear();
       await Utils.sleep(1000);
@@ -292,7 +293,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_5151', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetStatusIsNone'
+        url: 'testability/pages/SetStatusIsNone'
       });
       router.clear();
       await Utils.sleep(1000);
@@ -315,7 +316,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_5152', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetStatusNotNum'
+        url: 'testability/pages/SetStatusNotNum'
       });
       router.clear();
       await Utils.sleep(800);
@@ -338,7 +339,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_5153', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetStatusError'
+        url: 'testability/pages/SetStatusError'
       });
       router.clear();
       await Utils.sleep(800);
@@ -361,7 +362,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_5350', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetStatusTextIsNone'
+        url: 'testability/pages/SetStatusTextIsNone'
       });
       router.clear();
       await Utils.sleep(800);
@@ -384,7 +385,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_5351', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetStatusTextNotString'
+        url: 'testability/pages/SetStatusTextNotString'
       });
       router.clear();
       await Utils.sleep(800);
@@ -407,7 +408,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_5400', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/GetStatusTextNetErr'
+        url: 'testability/pages/GetStatusTextNetErr'
       });
       router.clear();
       await Utils.sleep(800);
@@ -430,7 +431,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_5710', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetCharsetParamNone'
+        url: 'testability/pages/SetCharsetParamNone'
       });
       router.clear();
       await Utils.sleep(800);
@@ -443,29 +444,6 @@ export default function webviewNApi() {
       sendEventByKey('SetCharset', 10, '');
     });
 
-    // /**
-    //  * @tc.number SUB_ACE_WEB_WEBHOST_NDK_3801
-    //  * @tc.name testWeb_ClearSchemeHandlers_Fail_webTagParam_IsNone
-    //  * @tc.desc test Arguments
-    //  * @tc.size MediumTest
-    //  * @tc.type Function
-    //  * @tc.level Level 2
-    //  */
-    // it('SUB_ACE_WEB_WEBHOST_NDK_3801', 0, async (done: Function) => {
-    //   router.pushUrl({
-    //     url:'testability/pages/ClearSchemeHandlersFailWebTagParamIsNone'
-    //   });
-    //   router.clear();
-    //   await Utils.sleep(800);
-    //   Utils.emitEvent('testWeb_ClearSchemeHandlers_Fail_webTagParam_IsNone', 10);
-    //   Utils.registerBaseEvent('testWeb_ClearSchemeHandlers_Fail_webTagParam_IsNone', true, 5117, done,
-    //     (backData: events_emitter.EventData, expected: Object) => {
-    //       console.info('Received event data: ' + JSON.stringify(backData));
-    //       expect(backData?.data?.ACTION).assertEqual(expected);
-    //     });
-    //   sendEventByKey('SetClear', 10, '');
-    // });
-
     /**
      * @tc.number SUB_ACE_WEB_WEBHOST_NDK_4151
      * @tc.name testWebSchemeHandler_SetUserData_ParamIsNone
@@ -476,7 +454,7 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NDK_4151', 0, async (done: Function) => {
       router.pushUrl({
-        url:'testability/pages/SetUserDataParamIsNone'
+        url: 'testability/pages/SetUserDataParamIsNone'
       });
       router.clear();
       await Utils.sleep(800);

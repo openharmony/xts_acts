@@ -1,17 +1,17 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright (C) 2024 HiHope Open Source Organization.
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 import web_webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
@@ -21,8 +21,8 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct testWebResponseSetStatusIsNone {
-  controller: web_webview.WebviewController = new web_webview.WebviewController("scheme-handler");
-  @State str: string = ""
+  controller: web_webview.WebviewController = new web_webview.WebviewController('scheme-handler');
+  @State str: string = ''
 
   aboutToAppear() {
     testNapi.registerCustomSchemes()
@@ -30,7 +30,7 @@ struct testWebResponseSetStatusIsNone {
     testNapi.setSchemeHandler(10);
   }
 
-  onPageShow(){
+  onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
       priority: events_emitter.EventPriority.LOW
@@ -43,30 +43,28 @@ struct testWebResponseSetStatusIsNone {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
     }
   }
 
-
   build() {
     Column() {
-      Button("SetStatus")
+      Button('SetStatus')
         .key('SetStatus')
         .onClick(async () => {
-          switch (this.str){
-            case "testWebResponse_SetStatus_IsNone":{
+          switch (this.str) {
+            case 'testWebResponse_SetStatus_IsNone': {
               let result = testNapi.setStatus();
               if (result == 0) {
-                console.log("Succeed testWebResponse_SetStatus_IsNone");
+                console.log('Succeed testWebResponse_SetStatus_IsNone');
                 Utils.emitEvent(result, 5110);
-              }
-              else{
-                console.log("Faild OH_ArkWebResponse_SetStatus");
+              } else {
+                console.log('Faild OH_ArkWebResponse_SetStatus');
                 Utils.emitEvent(result, 5110);
               }
               break;

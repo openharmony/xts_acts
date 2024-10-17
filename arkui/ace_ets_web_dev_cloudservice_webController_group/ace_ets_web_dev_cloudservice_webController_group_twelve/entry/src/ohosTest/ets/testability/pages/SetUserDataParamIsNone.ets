@@ -18,17 +18,16 @@ import Utils from '../../test/Utils';
 import testNapi from 'libentry.so';
 import events_emitter from '@ohos.events.emitter';
 
-// 修改后的Web视图组件
 @Entry
 @Component
-struct testWebResponseFailWebTagParamIsNone {
+struct testWebResponseSetUserDataParamIsNone {
   controller: web_webview.WebviewController = new web_webview.WebviewController('scheme-handler');
-  @State str: string = '';
+  @State str: string = ''
 
   aboutToAppear() {
     testNapi.registerCustomSchemes()
     web_webview.WebviewController.initializeWebEngine();
-    testNapi.setSchemeHandler(17);
+    testNapi.setSchemeHandler(19);
   }
 
   onPageShow() {
@@ -55,24 +54,24 @@ struct testWebResponseFailWebTagParamIsNone {
 
   build() {
     Column() {
-      Button('SetClear')
-        .key('SetClear')
+      Button('SetUserData')
+        .key('SetUserData')
         .onClick(async () => {
           switch (this.str) {
-            case 'testWeb_ClearSchemeHandlers_Fail_webTagParam_IsNone': {
+            case 'testWebSchemeHandler_SetUserData_ParamIsNone': {
               let result = testNapi.setStatus();
               if (result == 0) {
-                console.log('Succeed testWeb_ClearSchemeHandlers_Fail_webTagParamIsNone');
-                Utils.emitEvent(true, 5117);
+                console.log('Succeed testWebSchemeHandler_SetUserData_ParamIsNone');
+                Utils.emitEvent(result, 5119);
               } else {
-                console.log('Failed testWeb_ClearSchemeHandlers_Fail_webTagParamIsNone');
-                Utils.emitEvent(false, 5117);
+                console.log('Faild testWebSchemeHandler_SetUserData_ParamIsNone');
+                Utils.emitEvent(result, 5119);
               }
               break;
             }
           }
         })
-      Web({ src: $rawfile('serviceWorker.html'), controller: this.controller });
+      Web({ src: 'https://www.example.com', controller: this.controller });
     }
   }
 }

@@ -10,6 +10,24 @@
     "testability/pages/GetPercentComplete7",
     "testability/pages/GetPercentComplete8",
     "testability/pages/GetPercentComplete10",
-    "testability/pages/GetPercentComplete11"
+    "testability/pages/GetPercentComplete11",
+    "testability/pages/SetUrlUrlIsNone",
+    "testability/pages/SetUrlUrlError",
+    "testability/pages/SetUrlUrlNotString",
+    "testability/pages/SetUrlUrlNotExist",
+    "testability/pages/GetUrlUrlIsNone",
+    "testability/pages/GetUrlUrlNotString",
+    "testability/pages/GetUrlUrlNotExist",
+    "testability/pages/GetUrlUrlError",
+    "testability/pages/SetErrorFailParamIsString",
+    "testability/pages/SetStatusIsNone",
+    "testability/pages/SetStatusNotNum",
+    "testability/pages/SetStatusError",
+    "testability/pages/SetStatusTextIsNone",
+    "testability/pages/SetStatusTextNotString",
+    "testability/pages/GetStatusTextNetErr",
+    "testability/pages/SetCharsetParamNone",
+    "testability/pages/ClearSchemeHandlersFailWebTagParamIsNone",
+    "testability/pages/SetUserDataParamIsNone"
   ]
 }
