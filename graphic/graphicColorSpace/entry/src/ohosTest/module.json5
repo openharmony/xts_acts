@@ -15,15 +15,14 @@
 
 {
   "module": {
-    "name": "phone",
+    "name": "entry_test",
     "type": "feature",
-    "description": "$string:phone_entry_dsc",
-    "mainElement": "MainAbility",
+    "description": "$string:module_test_desc",
+    "mainElement": "TestAbility",
     "deviceTypes": [
       "wearable",
-      "tablet",
       "default",
-      "phone",
+      "tablet",
       "2in1"
     ],
     "deliveryWithInstall": true,
@@ -31,13 +30,14 @@
     "pages": "$profile:test_pages",
     "abilities": [
       {
-        "name": "com.example.myapplication.MainAbility",
-        "srcEntry": "./ets/MainAbility/MainAbility.ts",
-        "description": "$string:phone_entry_main",
+        "name": "TestAbility",
+        "srcEntry": "./ets/TestAbility/TestAbility.ets",
+        "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
-        "label": "$string:entry_label",
-        "visible": true,
-        "orientation": "portrait",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
         "skills": [
           {
             "actions": [
@@ -47,9 +47,7 @@
               "entity.system.home"
             ]
           }
-        ],
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        ]
       }
     ]
   }

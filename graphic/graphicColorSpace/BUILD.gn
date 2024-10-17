@@ -8,14 +8,25 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
+
+ohos_app_assist_suite("ActsColorSpaceManager_ndk_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsColorSpaceManagerMainTest"
+  subsystem_name = "graphic"
+  part_name = "graphic_2d"
+}
 
 ohos_js_app_suite("ActsColorSpaceManagerTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsColorSpaceManagerTest"
-  part_name = "graphic_2d"
   subsystem_name = "graphic"
+  part_name = "graphic_2d"
+  deps = [ ":ActsColorSpaceManager_ndk_main" ]
 }

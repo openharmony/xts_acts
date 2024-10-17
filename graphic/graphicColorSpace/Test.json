@@ -1,18 +1,26 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for graphic Color Space Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "com.example.myapplication",
-        "module-name": "phone",
-        "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "module-name": "entry_test",
+        "shell-timeout": "180000"
     },
-    "kits": [{
+    "kits": [
+        {
         "test-file-name": [
-            "ActsColorSpaceManagerTest.hap"
+            "ActsColorSpaceManagerTest.hap",
+            "ActsColorSpaceManagerMainTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
-    }]
+    },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }

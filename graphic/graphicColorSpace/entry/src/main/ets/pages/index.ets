@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import hilog from '@ohos.hilog';
+
 @Entry
 @Component
 struct Index {
@@ -23,6 +25,8 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+          })
       }
       .width('100%')
     }
