@@ -15,8 +15,10 @@
 
 import GetCurrentSpeed from './GetCurrentSpeed.test';
 import SetConnectionTimeOut from './SetConnectionTimeOut.test';
+import webDownloadOperation from './WebDownloadOperation.test';
 
 export default function testsuite() {
   GetCurrentSpeed();
   SetConnectionTimeOut();
+  webDownloadOperation();
 }

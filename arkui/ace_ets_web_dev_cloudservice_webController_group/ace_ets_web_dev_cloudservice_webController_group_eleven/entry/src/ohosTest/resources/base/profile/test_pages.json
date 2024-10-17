@@ -24,6 +24,7 @@
     "testability/pages/SetDownloadDelegate3",
     "testability/pages/SetDownloadDelegate4",
     "testability/pages/SetDownloadDelegate5",
+    "testability/pages/WebDownloadOperation",
     "testability/pages/SetDownloadDelegate6"
   ]
 }

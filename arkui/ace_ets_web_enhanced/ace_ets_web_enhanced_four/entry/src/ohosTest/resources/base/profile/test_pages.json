@@ -32,6 +32,9 @@
     "testability/pages/ConfigCookieTest_sync",
     "testability/pages/SetCookieTest",
     "testability/pages/CookieTest",
+    "testability/pages/WebTestEight",
+    "testability/pages/WebTestSeven",
+    "testability/pages/WebTestSevenTwo",
     "testability/pages/Geolocation"
   ]
 }

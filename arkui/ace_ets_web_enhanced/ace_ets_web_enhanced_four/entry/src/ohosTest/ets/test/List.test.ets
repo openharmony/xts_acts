@@ -27,6 +27,9 @@ import ActsAceConfigCookiePromise from './ConfigCookieTest_promise.test';
 import ActsAceConfigCookieSync from './ConfigCookieTest_sync.test';
 import ActsAceSetCookie from './SetCookieTest.test';
 import ActsAceCookieTest from './ConfigCookieTest.test';
+import webTestEight from './WebTestEight.test';
+import webTestSeven from './WebTestSeven.test';
+import webTestSevenTwo from './WebTestSeven_two.test';
 
 export default function testsuite() {
   webSchemeHandler();
@@ -43,4 +46,7 @@ export default function testsuite() {
   ActsAceConfigCookieSync();
   ActsAceSetCookie();
   ActsAceCookieTest();
+  webTestEight();
+  webTestSeven();
+  webTestSevenTwo();
 }
