@@ -74,9 +74,6 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', `onConnect, 50==: ${JSON.stringify(result)}`);
       });
     }
-    setTimeout(() => {
-      this.context.terminateSelf();
-    }, 2000);
   }
 
   onBackground(): void {

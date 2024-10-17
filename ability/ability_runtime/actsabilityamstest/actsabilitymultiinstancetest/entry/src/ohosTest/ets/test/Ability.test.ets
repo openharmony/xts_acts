@@ -16,8 +16,12 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { common, StartOptions } from '@kit.AbilityKit';
-import { abilityDelegatorRegistry, Driver } from '@kit.TestKit';
+import { abilityDelegatorRegistry, Driver, MatchPattern, ON } from '@kit.TestKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, time));
+}
 
 export default function abilityTest() {
   describe('AbilityMultiInstanceTest', () => {
@@ -27,6 +31,10 @@ export default function abilityTest() {
     let bundleName3 = 'com.example.abilitymultiinstancetestc';
     let bundleName4 = 'com.example.abilitymultiinstancetestd';
     let cmdBeforeEach = 'aa start -d 0 -a TestAbility' + ' -b ' + 'com.example.abilitymultiinstance';
+    let cmdBeforeEach2 = 'aa force-stop com.example.abilitymultiinstancetesta';
+    let cmdBeforeEach3 = 'aa force-stop com.example.abilitymultiinstancetestb';
+    let cmdBeforeEach4 = 'aa force-stop com.example.abilitymultiinstancetestc';
+    let cmdBeforeEach5 = 'aa force-stop com.example.abilitymultiinstancetestd';
     let delegator = abilityDelegatorRegistry.getAbilityDelegator();
     const TAG: string = 'AbilityMultiInstance';
     const TEST_SUITE_NAME: string = 'AbilityMultiInstanceTest';
@@ -34,16 +42,21 @@ export default function abilityTest() {
     let driver = Driver.create();
 
     beforeAll(async (done: Function) => {
-      await driver.delayMs(1000);
+      await sleep(1000);
       context = getContext() as common.UIAbilityContext;
       hilog.info(0x0000, 'testTag', '%{public}s',
         `Succeeded in starting SpecifiedAbility11ww11` + JSON.stringify(context));
       done();
     });
     beforeEach(async () => {
-      await driver.delayMs(2500);
+      await sleep(2000);
+      await delegator.executeShellCommand(cmdBeforeEach2);
+      await delegator.executeShellCommand(cmdBeforeEach3);
+      await delegator.executeShellCommand(cmdBeforeEach4);
+      await delegator.executeShellCommand(cmdBeforeEach5);
+      await sleep(2000);
       await delegator.executeShellCommand(cmdBeforeEach);
-      await driver.delayMs(2500);
+      await sleep(2000);
     });
 
     /**
@@ -69,8 +82,10 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           try {
             if (commonEventData.event == event) {
@@ -114,9 +129,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
 
           let want2: Want = {
             bundleName: bundleName,
@@ -133,9 +158,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed2) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
 
           let want3: Want = {
             bundleName: bundleName3,
@@ -152,9 +187,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed3 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed3) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
 
           let want4: Want = {
             bundleName: bundleName,
@@ -171,6 +216,16 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed4 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed4) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -200,8 +255,10 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           try {
             if (commonEventData.event == event) {
@@ -223,26 +280,37 @@ export default function abilityTest() {
           }
         });
 
-        let want: Want = {
-          bundleName: bundleName,
-          abilityName: 'EntryAbility',
-          action: event,
-          parameters: {
-            instanceKey: '1'
-          }
-        }
-        await context.startAbility(want).then(async () => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          expect().assertFail();
-          done();
-        });
-        await driver.delayMs(300);
-        await delegator.executeShellCommand(cmdBeforeEach);
-        await driver.delayMs(300);
-
         try {
+
+          let want: Want = {
+            bundleName: bundleName,
+            abilityName: 'EntryAbility',
+            action: event,
+            parameters: {
+              instanceKey: '1'
+            }
+          }
+          await context.startAbility(want).then(async () => {
+            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
+          }).catch((err: BusinessError) => {
+            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
+            expect().assertFail();
+            done();
+          });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
+          await delegator.executeShellCommand(cmdBeforeEach);
+          await sleep(300);
+
           let want2: Want = {
             bundleName: bundleName2,
             abilityName: 'EntryAbility',
@@ -257,9 +325,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed2) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
 
           let want3: Want = {
             bundleName: bundleName3,
@@ -275,9 +353,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed3 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed3) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
 
           let want4: Want = {
             bundleName: bundleName,
@@ -294,6 +382,16 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed4 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed4) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -321,8 +419,10 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           try {
             expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(1);
             expect(commonEventData.parameters?.data?.onCreate).assertTrue();
@@ -350,6 +450,16 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -379,8 +489,10 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           try {
             expect(commonEventData.parameters?.data?.onAcceptWant).assertEqual(0);
@@ -411,9 +523,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want2: Want = {
             bundleName: bundleName2,
             abilityName: 'EntryAbility',
@@ -429,6 +551,16 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed2) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -459,8 +591,10 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           try {
             if (commonEventData.event == event) {
@@ -501,9 +635,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want2: Want = {
             bundleName: bundleName2,
             abilityName: 'EntryAbility',
@@ -519,9 +663,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed2) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want3: Want = {
             bundleName: bundleName,
             abilityName: 'EntryAbility3',
@@ -537,6 +691,16 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed3 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed3) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -568,8 +732,10 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           try {
             if (commonEventData.event == event) {
@@ -613,9 +779,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want2: Want = {
             bundleName: bundleName4,
             abilityName: 'SecondAbility',
@@ -631,9 +807,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed2) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want3: Want = {
             bundleName: bundleName4,
             abilityName: 'ThirdAbility',
@@ -649,15 +835,35 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed3 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed3) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want4: Want = {
             bundleName: bundleName4,
             abilityName: 'EntryAbility2',
             action: event4,
             parameters: {
               instanceKey: '1'
+            }
+          }
+          await sleep(1000);
+          let allowed4 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed4) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
             }
           }
           await context.startAbility(want4).then(async () => {
@@ -696,8 +902,10 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           try {
             expect(commonEventData.parameters?.data?.onCreate).assertTrue();
@@ -733,9 +941,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want2: Want = {
             bundleName: bundleName,
             abilityName: 'EntryAbility3',
@@ -751,6 +969,16 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed2) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -781,8 +1009,10 @@ export default function abilityTest() {
       await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscriber) => {
         hilog.info(0x0000, TAG, '%{public}s', `createSubscriber ok`);
         commonEventManager.subscribe(subscriber, (err, commonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
-          hilog.info(0x0000, TAG, '%{public}s', `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onConnect=338=` + JSON.stringify(commonEventData));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `SecondAbility want:  ${JSON.stringify(commonEventData.parameters?.data)}`);
           reburnNumber += 1;
           try {
             if (commonEventData.event == event) {
@@ -820,9 +1050,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want2: Want = {
             bundleName: bundleName3,
             abilityName: 'EntryAbility',
@@ -835,9 +1075,19 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
-          await driver.delayMs(300);
+          await sleep(1000);
+          let allowed2 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed2) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
+          await sleep(300);
           await delegator.executeShellCommand(cmdBeforeEach);
-          await driver.delayMs(300);
+          await sleep(300);
           let want3: Want = {
             bundleName: bundleName,
             abilityName: 'EntryAbility3',
@@ -853,6 +1103,16 @@ export default function abilityTest() {
             expect().assertFail();
             done();
           });
+          await sleep(1000);
+          let allowed3 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+          if (allowed3) {
+            let buttons = await driver.findComponents(ON.text('打开'));
+            if (buttons && buttons.length > 0) {
+              buttons[buttons.length - 1].click();
+            }
+          }
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();

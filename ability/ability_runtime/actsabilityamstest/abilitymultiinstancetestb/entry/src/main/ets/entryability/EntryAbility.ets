@@ -70,9 +70,6 @@ export default class EntryAbility extends UIAbility {
         AppStorage.setOrCreate<boolean>('onCreate', false);
       });
     }
-    setTimeout(() => {
-      this.context.terminateSelf();
-    }, 5000);
   }
 
   onBackground(): void {

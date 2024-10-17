@@ -63,9 +63,6 @@ export default class SecondAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', `onConnect, 50==: ${JSON.stringify(result)}`);
       });
     }
-    setTimeout(() => {
-      this.context.terminateSelf();
-    }, 5000);
   }
 
   onBackground(): void {
