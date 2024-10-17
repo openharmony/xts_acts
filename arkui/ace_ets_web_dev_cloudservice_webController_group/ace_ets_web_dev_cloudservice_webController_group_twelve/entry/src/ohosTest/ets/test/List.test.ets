@@ -15,8 +15,10 @@
 
 import GetPercentComplete from './GetPercentComplete.test';
 import GetPercentCompleteSecond from './GetPercentCompleteSecond.test';
+import webviewNApi from './WebResponseSetUrlGetUrl.test'
 
 export default function testsuite() {
   GetPercentComplete();
   GetPercentCompleteSecond();
+  webviewNApi();
 }
