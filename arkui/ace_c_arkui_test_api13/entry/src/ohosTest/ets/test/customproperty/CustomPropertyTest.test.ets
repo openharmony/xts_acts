@@ -16,7 +16,6 @@
 import { expect, describe, it, afterEach } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
-import nativeFunc from 'libnativefunc.so'
 
 export default function customPropertyTest(){
 
