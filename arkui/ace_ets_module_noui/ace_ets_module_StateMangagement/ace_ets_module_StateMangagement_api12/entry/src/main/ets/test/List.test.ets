@@ -100,6 +100,14 @@ import ComputedTraceTest from './ComputedTest/ComputedTrace.test';
 import ParamAndOnceTest from './ParamTest/ParamAndOnce.test';
 import ParamChangeTest from './ParamTest/ParamChange.test';
 import EventTest from './EventTest/Event.test';
+import ASV20010Test from './appstoragev2/ASV20010Test.test';
+import Provider0300Test from './ProviderTest/Provider0300Test.test';
+import Monitor0031Test from './MonitorTest/Monitor0031Test.test';
+import Monitor0034Test from './MonitorTest/Monitor0034Test.test';
+import Monitor0260Test from './MonitorTest/Monitor0260Test.test';
+import Monitor0280Test from './MonitorTest/Monitor0280Test.test';
+import Monitor0290Test from './MonitorTest/Monitor0290Test.test';
+import Monitor0300Test from './MonitorTest/Monitor0300Test.test';
 
 export default function testsuite() {
   ExtendTrackTest();
@@ -189,4 +197,12 @@ export default function testsuite() {
   ParamAndOnceTest();
   ParamChangeTest();
   EventTest();
+  Monitor0031Test();
+  Monitor0034Test();
+  ASV20010Test();
+  Provider0300Test();
+  Monitor0260Test();
+  Monitor0280Test();
+  Monitor0290Test();
+  Monitor0300Test();
 }
