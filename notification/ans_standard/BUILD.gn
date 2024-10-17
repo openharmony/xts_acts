@@ -22,6 +22,7 @@ group("ans_standard") {
       "actsNotificationEmitterTest:ActsNotificationEmitterTest",
       "actsNotificationInterfaceChangeTest:ActsNotificationInterfaceChangeTest",
       "actsNotificationManagerSlotTest:ActsNotificationManagerSlotTest",
+      "actsNotificationNDKEnableTest:ActsNotificationNDKEnableTest",
       "actsNotificationPublishTest:ActsNotificationPublishTest",
       "actsNotificationRequestTest:ActsNotificationRequestTest",
       "actsNotificationSecondaryDirectoryTest:ActsNotificationSecondaryDirectoryTest",
