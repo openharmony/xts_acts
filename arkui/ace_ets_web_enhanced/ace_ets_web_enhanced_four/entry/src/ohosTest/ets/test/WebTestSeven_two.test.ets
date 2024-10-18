@@ -418,11 +418,11 @@ export default function webTestSevenTwo() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       ``
-
+      await Utils.sleep(1000);
       Utils.emitEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0800', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('trust', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('ref', 10, '');
       await Utils.sleep(2000);
       sendEventByKey('open11', 10, '');
@@ -441,12 +441,11 @@ export default function webTestSevenTwo() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
-      ``
-
+      await Utils.sleep(1000);
       Utils.emitEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0900', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('trust', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('ref', 10, '');
       await Utils.sleep(2000);
       sendEventByKey('open11', 10, '');
@@ -465,10 +464,11 @@ export default function webTestSevenTwo() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(1000);
       Utils.emitEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_1000', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('trust', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('ref', 10, '');
       await Utils.sleep(2000);
       sendEventByKey('open11', 10, '');

@@ -906,17 +906,18 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NSDK_6710', 0, async (done: Function) => {
       router.pushUrl({
-        url: 'testability/pages/WebReleaseStringNotNSDK'
+        url: 'testability/pages/WebReleaseStringNotNDK'
       });
       router.clear();
       await Utils.sleep(1000);
-      Utils.emitEvent('testWeb_ReleaseString_Fail_Param_NotNSDK', 10);
+      Utils.emitEvent('testWeb_ReleaseString_Fail_Param_NotNDK', 10);
       await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWeb_ReleaseString_Fail_Param_NotNSDK', true, 5209, done,
+      Utils.registerBaseEvent('testWeb_ReleaseString_Fail_Param_NotNDK', true, 5209, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(1000);
       sendEventByKey('Click', 10, '');
     });
 
@@ -942,6 +943,7 @@ export default function webviewNApi() {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(1000);
       sendEventByKey('Click', 10, '');
     });
 
@@ -981,17 +983,18 @@ export default function webviewNApi() {
      */
     it('SUB_ACE_WEB_WEBHOST_NSDK_6810', 0, async (done: Function) => {
       router.pushUrl({
-        url: 'testability/pages/WebReleaseByteArrayNotNSDK'
+        url: 'testability/pages/WebReleaseByteArrayNotNDK'
       });
       router.clear();
       await Utils.sleep(1000);
-      Utils.emitEvent('testWeb_ReleaseByteArray_Fail_Param_NotNSDK', 10);
+      Utils.emitEvent('testWeb_ReleaseByteArray_Fail_Param_NotNDK', 10);
       await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWeb_ReleaseByteArray_Fail_Param_NotNSDK', true, 5212, done,
+      Utils.registerBaseEvent('testWeb_ReleaseByteArray_Fail_Param_NotNDK', true, 5212, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(1000);
       sendEventByKey('Click', 10, '');
     });
 

@@ -700,8 +700,9 @@ export default function webTestEight() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(500);
       Utils.emitEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_12900', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('eight', 10, '');
     })
 
@@ -720,8 +721,9 @@ export default function webTestEight() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(500);
       Utils.emitEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_13000', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('eight', 10, '');
     })
 
@@ -738,8 +740,9 @@ export default function webTestEight() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(500);
       Utils.emitEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_13100', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('eight', 10, '');
     })
 
@@ -757,8 +760,9 @@ export default function webTestEight() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(500);
       Utils.emitEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_13300', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('eight', 10, '');
     })
 
@@ -776,8 +780,9 @@ export default function webTestEight() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(1000);
       Utils.emitEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_13400', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('eight', 10, '');
     })
 
@@ -795,8 +800,9 @@ export default function webTestEight() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(1000);
       Utils.emitEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_13500', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('eight', 10, '');
     })
 
@@ -814,8 +820,9 @@ export default function webTestEight() {
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
+      await Utils.sleep(1000);
       Utils.emitEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_13600', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('eight', 10, '');
     })
   })
