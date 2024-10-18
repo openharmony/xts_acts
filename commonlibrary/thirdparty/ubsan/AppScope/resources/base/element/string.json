@@ -2,11 +2,7 @@
   "string": [
     {
       "name": "app_name",
-      "value": "ActsThirdPartyUBSanTest"
-    },
-    {
-      "name": "description_application",
-      "value": "ActsThirdPartyUBSanTest"
+      "value": "UBSanXTS"
     }
   ]
 }
