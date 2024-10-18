@@ -19,10 +19,11 @@ import context from '@ohos.app.ability.common';
 import router from '@ohos.router';
 import { BusinessError } from '@ohos.base';
 import screenLock from '@ohos.screenLock';
+import userAuth from '@ohos.userIAM.userAuth'
 
 /*
 * @tc.number: C-STD-SECURITY-0403
-* @tc.name: testSecureScreenLock
+* @tc.name: SecureScreenLock
 * @tc.desc: 【C-STD-SECURITY-0403】用户开通安全锁屏功能时，系统应提示用户设置一个口令作为主认证方式用于安全解锁；
 *             要求设置的口令应满足一定复杂度要求，至少为 6 位数字；用户删除用户口令，系统应同时关闭安全锁屏功能。
 * @tc.size: MediumTest
@@ -31,15 +32,23 @@ import screenLock from '@ohos.screenLock';
 */
 @Entry
 @Component
-struct testSecureScreenLock {
+struct SecureScreenLock {
   @State name: string = 'SecureScreenLock';
-  @State stepTips: string = '操作步骤：设置锁屏密码，开启安全锁屏' + '\n' + '查看锁屏后解锁是否需要输入密码' + '\n' +
-                            '关闭锁屏密码，查看安全锁屏是否关闭' + '\n' + 
-                            '预期结果：安全锁屏开启，解锁屏幕需输入密码；关闭锁屏密码，解锁屏幕无需输入密码';
+  @State stepTips: string = '1.进入设置应用，生物识别和密码页面，设置锁屏密码，锁屏密码自定义' + '\n' +
+                              '2.返回validator，点击\'设置锁屏密码完成\'按钮' + '\n' +
+                              '3.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若需输入密码，且输入自定义锁屏密码后可解锁，则继续；否则测试失败' + '\n' +
+                              '4.进入设置应用，生物识别和密码页面，关闭/删除锁屏密码' + '\n' +
+                              '5.返回validator，点击\'删除锁屏密码完成\'按钮' + '\n' +
+                              '6.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若无需输入密码，则测试通过；否则测试失败' + '\n' + '\n' + 
+                              '预期结果：安全锁屏开启，解锁屏幕需输入密码；关闭锁屏密码，解锁屏幕无需输入密码';
   @State testResult: boolean = false;
   @State startEnable: boolean = false;
   @State result: string = 'UNDEFINED';
+  @State hasLocked: boolean = false;
   scroller: Scroller = new Scroller();
+  unlockWithPassword: boolean = false
+  unlockWithoutPassword: boolean = false
+  @State hasReboot: boolean = false
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.stepTips, this.name);
@@ -66,8 +75,8 @@ struct testSecureScreenLock {
                 `3.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若需输入密码，且输入自定义锁屏密码后可解锁，则继续；否则测试失败` + '\n' + '\n' +
                 `4.进入设置应用，生物识别和密码页面，关闭/删除锁屏密码` + '\n' + '\n' +
                 `5.返回validator，点击\'删除锁屏密码完成\'按钮` + '\n' + '\n' +
-                `6.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若无需输入密码，则继续通过；否则测试失败` + '\n' + '\n')
-                
+                `6.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若无需输入密码，则测试通过；否则测试失败` + '\n' + '\n')
+                .width('90%')
                 .fontColor(Color.White)
                 .fontSize('20fp')
             }
@@ -80,19 +89,42 @@ struct testSecureScreenLock {
                   .width('50%')
                   .margin('10vp')
                   .onClick(async () => {
-                    this.startEnable = true
+                    try {
+                      let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.PIN);
+                      if (enrolledState.credentialCount > 0) {
+                        this.hasLocked = true
+                      }
+                    } catch (error) {
+                      console.error('getEnrolledState failed, err: ' + error);
+                      let err = error as BusinessError
+                      console.error(`getEnrolledState failed. error: ${JSON.stringify(err)}`)
+                      this.hasLocked = false
+                    }
+                    if (this.hasLocked) {
+                      this.startEnable = true
+                    }
                   })
                 Blank('10%')
-                Button(`关闭锁屏密码完成`)
+                Button(`删除锁屏密码完成`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('50%')
                   .margin('10vp')
                   .onClick(async () => {
-                    this.startEnable = true
+                    try {
+                      let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.PIN);
+                      if (enrolledState.credentialCount > 0) {
+                        this.hasLocked = true
+                      }
+                    } catch (error) {
+                      this.hasLocked = false
+                    }
+                    if (!this.hasLocked) {
+                      this.startEnable = true
+                    }
                   })
                 Blank('10%')
-                Button(`息屏`)
+                Button(`锁屏`)
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('50%')
@@ -100,12 +132,20 @@ struct testSecureScreenLock {
                   .enabled(this.startEnable)
                   .opacity(this.startEnable ? 1 : 0.4)
                   .onClick(async () => {
+                    this.startEnable = false
                     try {
                       let lockRes = await screenLock.lock()
                       if(!lockRes) {
                         this.result = 'FLASE'
                         this.testResult = false
+                      }
+                      if(this.hasLocked) {
+                        this.unlockWithPassword = true
                       } else {
+                        this.unlockWithoutPassword = true
+                      }
+                      if(this.unlockWithPassword && this.unlockWithoutPassword) {
+                        this.result = '操作执行完毕，若符合预期结果测试通过'
                         this.testResult = true
                       }
                     } catch (err) {
@@ -146,6 +186,7 @@ struct testSecureScreenLock {
         testResult: $testResult,
         startEnable: $startEnable,
         result: $result,
+        hasReboot: $hasReboot,
       })
     }
     .width('100%')

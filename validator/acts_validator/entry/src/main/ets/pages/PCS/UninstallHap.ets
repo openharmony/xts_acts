@@ -26,7 +26,7 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 
 /*
 * @tc.number: G-SOFTWARE-0502
-* @tc.name: testUninstallHap
+* @tc.name: UninstallHap
 * @tc.desc: 【G-SOFTWARE-0502】应为用户提供卸载已安装应用的入口。
 * @tc.size: MediumTest
 * @tc.type: Function
@@ -34,13 +34,17 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 */
 @Entry
 @Component
-struct testUninstallHap {
+struct UninstallHap {
   @State name: string = 'UninstallHap';
-  @State stepTips: string = '操作步骤：根据操作提示操作界面卸载应用' + '\n' + '预期结果：成功卸载应用';
+  @State stepTips: string = '操作步骤: ' + '\n' + '1.点击开始键进入系统桌面' + '\n' +
+              '2.卸载UninstallTest应用' + '\n' + '3.返回validator应用' + '\n' +
+              '4.点击结束按钮，观察卸载结果是否为TRUE' + '\n' + '\n' +
+              '预期结果：成功卸载应用';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = "FLASE";
   scroller: Scroller = new Scroller();
+  @State hasReboot: boolean = false
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.stepTips, this.name);
@@ -65,6 +69,7 @@ struct testUninstallHap {
               Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入系统桌面` + '\n' + '\n' + 
               '2.卸载UninstallTest应用' + '\n' + '\n' + '3.返回validator应用' + '\n' + '\n' +
               '4.点击结束按钮，观察卸载结果是否为TRUE' + '\n' + '\n')
+                .width('90%')
                 .fontColor(Color.White)
                 .fontSize('20fp')
             }
@@ -144,6 +149,7 @@ struct testUninstallHap {
         testResult: $testResult,
         startEnable: $startEnable,
         result: $result,
+        hasReboot: $hasReboot,
       })
     }
     .width('100%')
