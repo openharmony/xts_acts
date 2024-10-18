@@ -21,4 +21,3 @@ ohos_js_app_suite("ActsCrossplatformCallBackTest") {
   part_name = "ability_runtime"
   subsystem_name = "ability"
 }
-
