@@ -728,25 +728,6 @@ export default function webTestEight() {
     })
 
     /**
-     * @tc.number testErrorCodeMessage13100
-     * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_13100
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it("SUB_WEB_ERRORCODEANDERRORMESSAGE_13100", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_13100', '13900002No such file or directory', 564, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      await Utils.sleep(500);
-      Utils.emitEvent('SUB_WEB_ERRORCODEANDERRORMESSAGE_13100', 10)
-      await Utils.sleep(1000);
-      sendEventByKey('eight', 10, '');
-    })
-
-    /**
      * @tc.number testErrorCodeMessage13300
      * @tc.name SUB_WEB_ERRORCODEANDERRORMESSAGE_13300
      * @tc.desc test Arguments

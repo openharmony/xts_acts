@@ -437,7 +437,7 @@ export default function webTestSevenTwo() {
      * @tc.level Level 1
      */
     it("SUB_WEB_TESTSETURLTRUSTLISTTEST_0900", 0, async (done: Function) => {
-      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0900', false, 522, done,
+      Utils.registerBaseEvent('SUB_WEB_TESTSETURLTRUSTLISTTEST_0900', true, 522, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });

@@ -62,7 +62,7 @@ struct WebComponent {
 
     let promise = httpRequest.request(url, {
       method: http.RequestMethod.POST,
-      header: { 'ContentType': 'application/json; charset=utf-8' },
+      header: { 'contentType': 'application/json; charset=utf-8' },
       extraData: JSON.stringify(postData) // 将对象转换为JSON字符串
     });
 
