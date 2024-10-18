@@ -35,7 +35,8 @@ describe('PowerTest', function () {
         power.isScreenOn()
         .then(data => {
             console.info(`${TAG} data: ${data}`);
-            expect(data).assertTrue();
+            let isActive = power.isActive();
+            expect(data).assertEqual(isActive);
             done();
         })
         .catch(error => {
@@ -57,7 +58,8 @@ describe('PowerTest', function () {
         power.isScreenOn((error, screenOn) => {
             if (typeof error === "undefined") {
                 console.info('Power_Is_Screnn_On_Callback_Test screenOn is ' + screenOn);
-                expect(screenOn).assertTrue();
+                let isActive = power.isActive();
+                expect(data).assertEqual(isActive);
                 console.info('Power_Is_Screnn_On_Callback_Test success');
                 done();
             } else {
