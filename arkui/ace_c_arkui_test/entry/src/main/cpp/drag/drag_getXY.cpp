@@ -53,8 +53,8 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
                  "Drag getXY VelocityX : %{public}f VelocityY : %{public}f", velocityX, velocityY);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "getXY", "Drag getXY Velocity : %{public}f ", velocity);
 
-    if (windowX >= 0 && windowY >= 0 && displayX == 0 && displayY == 0 && touchPointX == 0 && touchPointY == 0 &&
-         velocityX == 0 && velocityY == 0 && velocity == 0) {
+    if (windowX >= 0 && windowY >= 0 && displayX >= 0 && displayY >= 0 && touchPointX >= 0 && touchPointY >= 0 &&
+         velocityX >= 0 && velocityY >= 0 && velocity >= 0) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
                                                      sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
