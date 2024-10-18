@@ -56,8 +56,8 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0100] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0100] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('4');
-      expect(obj.$attrs.breakpoints).assertEqual('4');
-      expect(obj.$attrs.direction).assertEqual('4');
+      expect(obj.$attrs.breakpoints).assertEqual('[400vp, 600vp, 800vp,]');
+      expect(obj.$attrs.direction).assertEqual('Row');
       // fix the vp2px
       let x = vp2px(5).toFixed(6);
       let y = vp2px(10).toFixed(6);
@@ -90,8 +90,8 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0200] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0200] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.breakpoints).assertEqual('12');
-      expect(obj.$attrs.direction).assertEqual('12');
+      expect(obj.$attrs.breakpoints).assertEqual('[320vp, 600vp, 840vp,]');
+      expect(obj.$attrs.direction).assertEqual('Row');
       let x = vp2px(0).toFixed(6);
       let y = vp2px(0).toFixed(6);
       let str = '<' + x + ', '+y;
@@ -123,8 +123,8 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0300] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0300] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
-      expect(obj.$attrs.breakpoints).assertEqual('12');
-      expect(obj.$attrs.direction).assertEqual('12');
+      expect(obj.$attrs.breakpoints).assertEqual('[320vp, 600vp, 840vp,]');
+      expect(obj.$attrs.direction).assertEqual('Row');
       let x = vp2px(-10).toFixed(6);
       let y = vp2px(-10).toFixed(6);
       let str = '<' + x + ', '+y;
@@ -145,8 +145,8 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0400] gutter: " + JSON.stringify(obj.$attrs.gutter));
       expect(obj.$attrs.columns).assertEqual('12');
       expect(obj.$attrs.gutter).assertEqual('<0.000000, 0.000000');
-      expect(obj.$attrs.breakpoints).assertEqual('12');
-      expect(obj.$attrs.direction).assertEqual('12');
+      expect(obj.$attrs.breakpoints).assertEqual('[320vp, 600vp, 840vp,]');
+      expect(obj.$attrs.direction).assertEqual('Row');
       console.info('[GridRowJsunit_0400] END');
       done();
     });
