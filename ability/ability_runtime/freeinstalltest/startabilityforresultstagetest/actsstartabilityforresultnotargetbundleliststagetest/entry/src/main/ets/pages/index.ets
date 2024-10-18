@@ -13,10 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import file from '@system.file';
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
-import { Hypium } from '@ohos/hypium'
-import testsuite from '../test/ListTest'
+
 
 async function routePage() {
   let options:router.RouterOptions = {
@@ -32,13 +29,6 @@ async function routePage() {
 @Entry
 @Component
 struct Index {
-  aboutToAppear() {
-    console.info("start run testcase!!!!")
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    console.info('start run testcase!!!')
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-  }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
