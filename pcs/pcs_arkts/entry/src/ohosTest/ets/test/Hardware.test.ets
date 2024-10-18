@@ -151,7 +151,9 @@ export default function hardwareTest() {
      */
     it('testWlanSupportSTAAndAP0100', 0, async (done: Function) => {
       if (isWlanSupported) {
-        expect(wifiManager.isFeatureSupported(staAndApFeature)).assertTrue()
+        let isSTASupported = canIUse("SystemCapability.Communication.WiFi.STA")
+        let isAPSupported = canIUse("SystemCapability.Communication.WiFi.AP.Core")
+        expect(isSTASupported && isAPSupported).assertTrue()
       }
       done()
     })
@@ -166,7 +168,8 @@ export default function hardwareTest() {
      */
     it('testWlanSupportP2P0100', 0, async (done: Function) => {
       if (isWlanSupported) {
-        expect(wifiManager.isFeatureSupported(p2pFeature)).assertTrue()
+        let isP2PSupported = canIUse("SystemCapability.Communication.WiFi.P2P")
+        expect(isP2PSupported).assertTrue()
       }
       done()
     })

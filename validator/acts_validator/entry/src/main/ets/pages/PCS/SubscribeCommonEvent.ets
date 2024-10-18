@@ -23,7 +23,7 @@ import CommonEventManager from '@ohos.commonEventManager';
 
 /*
 * @tc.number: STD-SOFTWARE-0302
-* @tc.name: testSubscribeCommonEvent
+* @tc.name: SubscribeCommonEvent
 * @tc.desc: 【STD-SOFTWARE-0302】ohos 设备必须发送公共事件 want 以响应适当的系统事件来通知三方应用硬件或软件环境的改变。
 * @tc.size: MediumTest
 * @tc.type: Function
@@ -31,14 +31,18 @@ import CommonEventManager from '@ohos.commonEventManager';
 */
 @Entry
 @Component
-struct testSubscribeCommonEvent {
+struct SubscribeCommonEvent {
   @State name: string = 'SubscribeCommonEvent';
-  @State stepTips: string = '操作步骤：订阅系统公共事件' + '\n' + '根据操作提示操作界面触发系统公共事件' + '\n' + '预期结果：获取系统公共事件通知';
+  @State stepTips: string = '操作步骤: ' + '\n' + '1.点击订阅屏幕关闭公共事件按钮' + '\n' +
+                '2.点击息屏按钮关闭屏幕并等待5s' + '\n' + '3.开启屏幕进入应用' + '\n' +
+                '4.观察测试结果是否为TRUE' + '\n' + '\n' + 
+                '预期结果：获取系统公共事件通知';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = "FLASE";
   scroller: Scroller = new Scroller();
   subscriber: CommonEventManager.CommonEventSubscriber | null = null;
+  @State hasReboot: boolean = false
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.stepTips, this.name);
@@ -63,6 +67,7 @@ struct testSubscribeCommonEvent {
               Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击订阅屏幕关闭公共事件按钮` + '\n' + '\n' +
                 `2.点击息屏按钮关闭屏幕并等待5s` + '\n' + '\n' + '3.开启屏幕进入应用' + '\n' + '\n' +
                 '4.观察测试结果是否为TRUE' + '\n' + '\n')
+                .width('90%')
                 .fontColor(Color.White)
                 .fontSize('20fp')
             }
@@ -146,6 +151,7 @@ struct testSubscribeCommonEvent {
         testResult: $testResult,
         startEnable: $startEnable,
         result: $result,
+        hasReboot: $hasReboot,
       })
     }
     .width('100%')

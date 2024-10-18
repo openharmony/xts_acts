@@ -22,7 +22,7 @@ import systemparameter from '@ohos.systemParameterEnhance';
 
 /*
 * @tc.number: STD-TOOLS-0200
-* @tc.name: testDeveloperMode
+* @tc.name: DeveloperMode
 * @tc.desc: 【STD-TOOLS-0200】必须支持进入 OpenHarmony 调试模式。
 *           【G-TOOLS-0201】必须支持 OpenHarmony 调试配置。
 * @tc.size: MediumTest
@@ -31,13 +31,17 @@ import systemparameter from '@ohos.systemParameterEnhance';
 */
 @Entry
 @Component
-struct testDeveloperMode {
+struct DeveloperMode {
   @State name: string = 'DeveloperMode';
-  @State stepTips: string = '操作步骤：设置保证调试/开发者模式开启' + '\n' + '查看页面读取到的调试/开发者模式状态' + '\n' + '预期结果：页面中调试/开发者模式状态为TRUE';
+  @State stepTips: string = '操作步骤：' + '\n' + '1.点击按钮获取设备调试/开发者模式状态，若为TRUE则测试通过' + '\n' +
+                '2.若为FALSE，进入设置应用，调试/开发者模式配置页面，打开调试/开发者模式并重启' + '\n' + '3.重启后再次进入validator此页面' + '\n' +
+                '4.点击完成设置按钮' + '\n' + '5.观察页面中调试/开发者模式状态为TRUE' + '\n' + '\n' + 
+                '预期结果：页面中调试/开发者模式状态为TRUE';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = "UNDEFINED";
   scroller: Scroller = new Scroller();
+  @State hasReboot: boolean = false
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.stepTips, this.name);
@@ -77,6 +81,7 @@ struct testDeveloperMode {
                 `2.若为FALSE，进入设置应用，调试/开发者模式配置页面，打开调试/开发者模式并重启` + '\n' + '\n' + '3.重启后再次进入validator此页面' + '\n' + '\n' +
                 '4.点击完成设置按钮' + '\n' + '\n' +
                 '5.观察页面中调试/开发者模式状态为TRUE' + '\n' + '\n')
+                .width('90%')
                 .fontColor(Color.White)
                 .fontSize('20fp')
             }
@@ -130,6 +135,7 @@ struct testDeveloperMode {
         testResult: $testResult,
         startEnable: $startEnable,
         result: $result,
+        hasReboot: $hasReboot,
       })
     }
     .width('100%')

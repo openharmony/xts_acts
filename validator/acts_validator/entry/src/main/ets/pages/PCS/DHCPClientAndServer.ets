@@ -32,9 +32,23 @@ function uintToIP(uint32 : number) {
     ].join('.');
 }
 
+function isLegalIP(ipStr : string) {
+    let parts = ipStr.split('.')
+    if (parts.length != 4) {
+      return false
+    }
+    for (let part of parts) {
+      let num = parseInt(part)
+      if (num < 0 || num > 255) {
+        return false
+      }
+    }
+    return true
+}
+
 /*
 * @tc.number: G-HARDWARE-0207
-* @tc.name: testDHCPClientAndServer
+* @tc.name: DHCPClientAndServer
 * @tc.desc: 【G-HARDWARE-0207】必须支持 DHCPv4 Client/Server。
 * @tc.size: MediumTest
 * @tc.type: Function
@@ -42,13 +56,17 @@ function uintToIP(uint32 : number) {
 */
 @Entry
 @Component
-struct testDHCPClientAndServer {
+struct DHCPClientAndServer {
   @State name: string = 'DHCPClientAndServer';
-  @State stepTips: string = '操作步骤：连接WLAN，IP获取方式为DHCP' + '\n' + '查看应用读取到的DHCP IP信息合法' + '\n' + '预期结果：连接WLAN后读取到的DHCP IP信息合法';
+  @State stepTips: string = '操作步骤：1.若设备不支持WLAN，点击\'设备不支持WLAN\'按钮跳过测试，测试通过' + '\n' +
+                    '2.若支持WLAN，进入设置应用WLAN配置界面' + '\n' + '3.连接任意WLAN，本机IP获取方式设置为DHCP（若无此选项则默认为DHCP）' + '\n' +
+                    '4.返回validator，点击完成设置按钮' + '\n' + '5.查看输出IP校验结果，若显示\'合法IP\'则测试通过，否则测试失败' + '\n' + '\n' + 
+                    '预期结果：连接WLAN后读取到的DHCP IP信息合法';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = "UNDEFINED";
   scroller: Scroller = new Scroller();
+  @State hasReboot: boolean = false
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.stepTips, this.name);
@@ -79,10 +97,10 @@ struct testDHCPClientAndServer {
             }
 
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.若设备不支持WLAN，点击设备不支持WLAN按钮跳过测试` + '\n' + '\n' +
-                `2.若支持WLAN，进入设置应用WLAN配置界面` + '\n' + '\n' + '3.连接任意WLAN，本机IP获取方式设置为DHCP' + '\n' + '\n' +
-                '4.返回validator，点击完成设置按钮' + '\n' + '\n' +
-                '5.观察页面中读取到的DHCP IP地址是否合法' + '\n' + '\n')
+              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.若设备不支持WLAN，点击\'设备不支持WLAN\'按钮跳过测试，测试通过` + '\n' + '\n' +
+                `2.若支持WLAN，进入设置应用WLAN配置界面` + '\n' + '\n' + '3.连接任意WLAN，本机IP获取方式设置为DHCP（若无此选项则默认为DHCP）' + '\n' + '\n' +
+                '4.返回validator，点击完成设置按钮' + '\n' + '\n' + '5.查看输出IP校验结果，若显示\'合法IP\'则测试通过，否则测试失败' + '\n' + '\n')
+                .width('90%')
                 .fontColor(Color.White)
                 .fontSize('20fp')
             }
@@ -100,7 +118,14 @@ struct testDHCPClientAndServer {
                     let ipInfo = wifiManager.getIpInfo()
                     let dhcpIp = ipInfo.serverIp
                     if(dhcpIp > 0) {
-                      this.result = uintToIP(dhcpIp)
+                      let ipStr = uintToIP(dhcpIp)
+                      let isIPLegal = isLegalIP(ipStr)
+                      this.result = uintToIP(dhcpIp) + '  '
+                      if (isIPLegal) {
+                        this.result += '合法IP'
+                      } else {
+                        this.result += '非法IP'
+                      }
                       this.testResult = true
                     }
                   })
@@ -136,6 +161,7 @@ struct testDHCPClientAndServer {
         testResult: $testResult,
         startEnable: $startEnable,
         result: $result,
+        hasReboot: $hasReboot,
       })
     }
     .width('100%')

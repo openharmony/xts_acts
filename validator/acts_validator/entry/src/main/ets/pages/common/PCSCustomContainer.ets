@@ -28,6 +28,7 @@ export struct CustomContainer {
   url: string = '';
   @Link startEnable: boolean;
   @Link result: string;
+  @Link hasReboot: boolean;
 
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
