@@ -97,12 +97,7 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strncpy(url, protocol, sizeof(url) - 1);
-    url[sizeof(url) - 1] = '\0';
-    strncpy(url, protocol, sizeof(url) - 1);
-    url[sizeof(url) - 1] = '\0';
-    strncat(url, domain, sizeof(url) - strlen(url) - 1);
-    url[sizeof(url) - 1] = '\0';
+    snprintf(url, sizeof(url), "%s%s", protocol, domain);
     result_num = OH_ArkWebResponse_SetUrl(nullptr, url);
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
@@ -155,10 +150,7 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "com.baidu123.www";
     char url[256];
-    strncpy(url, protocol, sizeof(url) - 1);
-    url[sizeof(url) - 1] = '\0';
-    strncat(url, domain, sizeof(url) - strlen(url) - 1);
-    url[sizeof(url) - 1] = '\0';
+    snprintf(url, sizeof(url), "%s%s", protocol, domain);
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
@@ -186,10 +178,7 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strncpy(url, protocol, sizeof(url) - 1);
-    url[sizeof(url) - 1] = '\0';
-    strncat(url, domain, sizeof(url) - strlen(url) - 1);
-    url[sizeof(url) - 1] = '\0';
+    snprintf(url, sizeof(url), "%s%s", protocol, domain);
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -219,10 +208,7 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strncpy(url, protocol, sizeof(url) - 1);
-    url[sizeof(url) - 1] = '\0';
-    strncat(url, domain, sizeof(url) - strlen(url) - 1);
-    url[sizeof(url) - 1] = '\0';
+    snprintf(url, sizeof(url), "%s%s", protocol, domain);
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -252,10 +238,7 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strncpy(url, protocol, sizeof(url) - 1);
-    url[sizeof(url) - 1] = '\0';
-    strncat(url, domain, sizeof(url) - strlen(url) - 1);
-    url[sizeof(url) - 1] = '\0';
+    snprintf(url, sizeof(url), "%s%s", protocol, domain);
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -285,10 +268,7 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    strncpy(url, protocol, sizeof(url) - 1);
-    url[sizeof(url) - 1] = '\0';
-    strncat(url, domain, sizeof(url) - strlen(url) - 1);
-    url[sizeof(url) - 1] = '\0';
+    snprintf(url, sizeof(url), "%s%s", protocol, domain);
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
