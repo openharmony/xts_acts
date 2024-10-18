@@ -4636,5 +4636,24 @@ export default function TaskPoolTest() {
       }
       done();
     })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0203
+     * @tc.name      : TaskPoolTestClass203
+     * @tc.desc      : cancel executed task for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass203', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(testString, "hello");
+      await taskpool.execute(task);
+      try {
+        taskpool.cancel(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed');
+      }
+      done();
+    })
   })
 }
