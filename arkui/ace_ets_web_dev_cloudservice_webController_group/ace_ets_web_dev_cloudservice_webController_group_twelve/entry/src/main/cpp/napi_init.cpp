@@ -163,8 +163,7 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == errorNum)
-    {
+    } else if (result_num == errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -1275,7 +1274,8 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
         IDX_49 = 49,
         IDX_50 = 50,
         IDX_51 = 51
-    } ArrayIndices;
+    }
+    ArrayIndices;
 
     if (g_parameter == a[IDX_1]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart1);
@@ -1725,8 +1725,7 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart51);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
-    }
-    else {
+    } else {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart);
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
@@ -1788,8 +1787,7 @@ static napi_value Judgment_num_2(napi_env env, napi_callback_info info)
     napi_value result;
     if (judgment2_) {
         napi_create_int32(env, 0, &result);
-    }
-    else {
+    } else {
         napi_create_int32(env, -1, &result);
     }
     return result;
@@ -1808,8 +1806,7 @@ static napi_value Judgment(napi_env env, napi_callback_info info)
     napi_value result;
     if (judgment_) {
         napi_create_int32(env, 0, &result);
-    }
-    else {
+    } else {
         napi_create_int32(env, -1, &result);
     }
     return result;
@@ -1820,8 +1817,7 @@ static napi_value Judgment1(napi_env env, napi_callback_info info)
     napi_value result;
     if (judgment1_) {
         napi_create_int32(env, 0, &result);
-    }
-    else {
+    } else {
         napi_create_int32(env, -1, &result);
     }
     return result;
@@ -1832,8 +1828,7 @@ static napi_value Judgment2(napi_env env, napi_callback_info info)
     napi_value result;
     if (judgment2_) {
         napi_create_int32(env, 0, &result);
-    }
-    else {
+    } else {
         napi_create_int32(env, -1, &result);
     }
     return result;
