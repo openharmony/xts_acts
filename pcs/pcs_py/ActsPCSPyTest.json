@@ -7,7 +7,7 @@
     ],
     "driver": {
         "type": "DeviceTestSuite",
-        "testsuite": "PCSPyTest.py",
+        "testsuite": "ActsPCSPyTest.py",
         "suitecases": [
             "./testAppSignatureVerify.py",
             "./testBundleInstallVerify.py",

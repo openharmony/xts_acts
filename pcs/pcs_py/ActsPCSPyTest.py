@@ -17,7 +17,7 @@
 from devicetest.core.test_case import Step
 from devicetest.core.suite.test_suite import TestSuite
 
-class PCSPyTest(TestSuite):
+class ActsPCSPyTest(TestSuite):
     
     def setup(self):
         Step("Setup")
