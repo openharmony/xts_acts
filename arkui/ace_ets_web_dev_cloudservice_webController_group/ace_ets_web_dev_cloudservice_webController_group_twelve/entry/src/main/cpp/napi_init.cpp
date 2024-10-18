@@ -59,7 +59,7 @@ static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info)
 void OnURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler, 
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept)  
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart1");
@@ -84,7 +84,7 @@ void OnURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler, 
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept)  
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart2");
@@ -117,7 +117,7 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart3(const ArkWeb_SchemeHandler *schemeHandler, 
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept) 
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart3");
@@ -142,7 +142,7 @@ void OnURLRequestStart3(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler, 
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept) 
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart4");
@@ -174,7 +174,7 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler, 
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept) 
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart5");
@@ -207,7 +207,7 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler, 
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept) 
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart6");
@@ -240,7 +240,7 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler, 
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept)  
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart7");
@@ -273,7 +273,7 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler, 
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept) 
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart8");
@@ -305,7 +305,7 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart9(const ArkWeb_SchemeHandler *schemeHandler,  
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler, 
-                        bool *intercept)  
+                        bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart9");
@@ -327,7 +327,7 @@ void OnURLRequestStart9(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart10(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart10");
@@ -349,7 +349,7 @@ void OnURLRequestStart10(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart11(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart11");
@@ -371,7 +371,7 @@ void OnURLRequestStart11(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart12(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept)  
+                         bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart12");
@@ -393,7 +393,7 @@ void OnURLRequestStart12(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart13(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart13");
@@ -416,7 +416,7 @@ void OnURLRequestStart13(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart14(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart14");
@@ -439,7 +439,7 @@ void OnURLRequestStart14(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart15(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart15");
@@ -464,7 +464,7 @@ void OnURLRequestStart15(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart16(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart16");
@@ -485,7 +485,7 @@ void OnURLRequestStart16(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart17(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     OH_LOG_INFO(LOG_APP, "Succeed in OnURLRequestStart19");
@@ -508,7 +508,7 @@ void OnURLRequestStart17(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler,  
                        ArkWeb_ResourceRequest *resourceRequest,
                        const ArkWeb_ResourceHandler *resourceHandler, 
-                       bool *intercept) 
+                       bool *intercept)
 {
     *intercept = true;
     ArkWeb_RequestHeaderList *requestHeaderList;
@@ -562,7 +562,7 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart22(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_RequestHeaderList *requestHeaderList;
@@ -592,7 +592,7 @@ void OnURLRequestStart22(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart23(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_RequestHeaderList *requestHeaderList;
@@ -622,7 +622,7 @@ void OnURLRequestStart23(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart24(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_RequestHeaderList *requestHeaderList;
@@ -652,7 +652,7 @@ void OnURLRequestStart24(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart25(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_RequestHeaderList *requestHeaderList;
@@ -682,7 +682,7 @@ void OnURLRequestStart25(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart26(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept)  
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_RequestHeaderList *requestHeaderList;
@@ -702,7 +702,7 @@ void OnURLRequestStart26(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart27(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     char *url1 = NULL;
@@ -719,7 +719,7 @@ void OnURLRequestStart27(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart28(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept)  
+                         bool *intercept)
 {
     *intercept = true;
     char *url2 = nullptr; // 初始化为 NULL，模拟入参异常
@@ -738,7 +738,7 @@ void OnURLRequestStart28(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart29(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     char *url3 = NULL;
@@ -755,7 +755,7 @@ void OnURLRequestStart29(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart30(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept)  
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_HttpBodyStream *httpBodyStream;
@@ -794,7 +794,7 @@ void OnURLRequestStart30(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart31(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_HttpBodyStream *httpBodyStream;
@@ -817,7 +817,7 @@ void OnURLRequestStart31(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart34(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept)  
+                         bool *intercept)
 {
     *intercept = true;
     uint64_t position = OH_ArkWebHttpBodyStream_GetPosition(nullptr);
@@ -835,7 +835,7 @@ void OnURLRequestStart34(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart35(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     int64_t positionDestroy = OH_ArkWebResourceRequest_Destroy(nullptr);
@@ -853,7 +853,7 @@ void OnURLRequestStart35(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart36(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     const char *testString = "This is a test string";
@@ -870,7 +870,7 @@ void OnURLRequestStart36(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart37(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     // 创建一个空字符串
@@ -889,7 +889,7 @@ void OnURLRequestStart37(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart38(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     char *nullString = NULL;
@@ -904,7 +904,7 @@ void OnURLRequestStart38(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart39(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     uint8_t* byteArray = static_cast<uint8_t*>(malloc(10 * sizeof(uint8_t)));
@@ -915,7 +915,6 @@ void OnURLRequestStart39(const ArkWeb_SchemeHandler *schemeHandler,
     int a = 10 ;
     for (int i = 0; i < a; ++i) {
         byteArray[i] = static_cast<uint8_t>(i);
-        
     }
     // 调用释放函数
     OH_ArkWeb_ReleaseByteArray(byteArray);
@@ -926,7 +925,7 @@ void OnURLRequestStart39(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart40(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     uint8_t* emptyByteArray = static_cast<uint8_t*>(malloc(0)); // 注意：分配大小为0
@@ -942,7 +941,7 @@ void OnURLRequestStart40(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart41(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     uint8_t *nullArray = NULL;
@@ -957,13 +956,13 @@ void OnURLRequestStart41(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart42(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept)  
+                         bool *intercept)
 {
     *intercept = true;
     // 调用释放函数
     ArkWeb_HttpBodyStream *httpBodyStream;
-    bool bodyStreamIsEof  = OH_ArkWebHttpBodyStream_IsEof(httpBodyStream);
-    if (!bodyStreamIsEof ) {
+    bool bodyStreamIsEof = OH_ArkWebHttpBodyStream_IsEof(httpBodyStream);
+    if (!bodyStreamIsEof) {
         judgment2_ = true;
         OH_LOG_INFO(LOG_APP, "Test passed, BodyStream_IsEof:%{public}s", bodyStreamIsEof  ? "true" : "false");
     } else {
@@ -975,7 +974,7 @@ void OnURLRequestStart42(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart43(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_ResourceRequest *resource_Request = nullptr;
@@ -994,7 +993,7 @@ void OnURLRequestStart43(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart44(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept)  
+                         bool *intercept)
 {
     *intercept = true;
     const char *scheme = nullptr;
@@ -1015,7 +1014,7 @@ void OnURLRequestStart44(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart45(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     const char *scheme = "";
@@ -1040,7 +1039,7 @@ void OnURLRequestStart45(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart46(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept)  
+                         bool *intercept)
 {
     *intercept = true;
     const char *scheme;
@@ -1061,7 +1060,7 @@ void OnURLRequestStart46(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart47(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     const char *scheme;
@@ -1086,7 +1085,7 @@ void OnURLRequestStart47(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart48(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     const char *scheme;
@@ -1108,7 +1107,7 @@ void OnURLRequestStart48(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart49(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     const char *scheme;
@@ -1133,7 +1132,7 @@ void OnURLRequestStart49(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart50(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     ArkWeb_SchemeHandler *scheme_Handler;
@@ -1152,7 +1151,7 @@ void OnURLRequestStart50(const ArkWeb_SchemeHandler *schemeHandler,
 void OnURLRequestStart51(const ArkWeb_SchemeHandler *schemeHandler,  
                          ArkWeb_ResourceRequest *resourceRequest,
                          const ArkWeb_ResourceHandler *resourceHandler, 
-                         bool *intercept) 
+                         bool *intercept)
 {
     *intercept = true;
     const char *scheme = nullptr;
@@ -1170,7 +1169,7 @@ void OnURLRequestStart51(const ArkWeb_SchemeHandler *schemeHandler,
 }
 
 // 请求结束的回调，在该函数中我们需要标记RawfileRequest已经结束了，内部不应该再使用ResourceHandler。
-void OnURLRequestStop(const ArkWeb_SchemeHandler *schemeHandler, const ArkWeb_ResourceRequest *request) 
+void OnURLRequestStop(const ArkWeb_SchemeHandler *schemeHandler, const ArkWeb_ResourceRequest *request)
 {
     if (!request) {
         OH_LOG_ERROR(LOG_APP, "on request stop request is nullptr.");
@@ -1179,12 +1178,11 @@ void OnURLRequestStop(const ArkWeb_SchemeHandler *schemeHandler, const ArkWeb_Re
 }
 
 void OnURLRequestStartForSW(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_ResourceRequest *resourceRequest,
-                            const ArkWeb_ResourceHandler *resourceHandler, bool *intercept) 
+                            const ArkWeb_ResourceHandler *resourceHandler, bool *intercept)
 {
-    
 }
 
-void OnURLRequestStopForSW(const ArkWeb_SchemeHandler *schemeHandler, const ArkWeb_ResourceRequest *request) 
+void OnURLRequestStopForSW(const ArkWeb_SchemeHandler *schemeHandler, const ArkWeb_ResourceRequest *request)
 {
     if (!request) {
         OH_LOG_ERROR(LOG_APP, "on request stop request is nullptr.");
@@ -1193,7 +1191,7 @@ void OnURLRequestStopForSW(const ArkWeb_SchemeHandler *schemeHandler, const ArkW
 }
 
 // 设置SchemeHandler。
-static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) 
+static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
 {
     napi_value argv[1];
     size_t argc = 1;
@@ -1221,7 +1219,8 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     int a[60] = {
         0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17,
         18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
-        36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51};
+        36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51
+    };
     typedef enum 
     {
         IDX_0 = 0,
@@ -1447,8 +1446,7 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
 
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
     }
-
-
+    
     else if (g_parameter == a[IDX_22]) {
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart22);
 
@@ -1748,7 +1746,7 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     return nullptr;
 }
 
-static napi_value InitResourceManager(napi_env env, napi_callback_info info) 
+static napi_value InitResourceManager(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
@@ -1757,98 +1755,91 @@ static napi_value InitResourceManager(napi_env env, napi_callback_info info)
     return nullptr;
 }
 
-static napi_value SetUrl(napi_env env, napi_callback_info info) 
+static napi_value SetUrl(napi_env env, napi_callback_info info)
 {
     napi_value result;
     napi_create_int32(env, result_num, &result);
     return result;
 }
 
-static napi_value SetError(napi_env env, napi_callback_info info) {
+static napi_value SetError(napi_env env, napi_callback_info info)
+{
     napi_value result;
     napi_create_int32(env, result_num1, &result);
     return result;
 }
 
 static napi_value SetStatus(napi_env env, napi_callback_info info)
-{ 
+{
     napi_value result;
     napi_create_int32(env, result_num2, &result);
     return result;
 }
 
-static napi_value Judgment_num(napi_env env, napi_callback_info info) 
-{ 
+static napi_value Judgment_num(napi_env env, napi_callback_info info)
+{
     napi_value result;
     napi_create_int32(env, judgment_num, &result);
     return result;
 }
 
-static napi_value Judgment_num_2(napi_env env, napi_callback_info info) 
-{ 
+static napi_value Judgment_num_2(napi_env env, napi_callback_info info)
+{
     napi_value result;
-    if (judgment2_) 
-    {
+    if (judgment2_) {
         napi_create_int32(env, 0, &result);
     } 
-    else 
-    {
+    else {
         napi_create_int32(env, -1, &result);
     }
     return result;
 }
 
-static napi_value Url_return(napi_env env, napi_callback_info info) 
-{ 
+static napi_value Url_return(napi_env env, napi_callback_info info)
+{
     napi_value result;
     // 使用 napi_create_string_utf8 创建字符串类型的 napi_value
     napi_create_string_utf8(env, url_return.c_str(), url_return.length(), &result);
     return result;
 }
 
-static napi_value Judgment(napi_env env, napi_callback_info info) 
-{ 
+static napi_value Judgment(napi_env env, napi_callback_info info)
+{
     napi_value result;
-    if (judgment_) 
-    {
+    if (judgment_) {
         napi_create_int32(env, 0, &result);
     } 
-    else 
-    {
+    else {
         napi_create_int32(env, -1, &result);
     }
     return result;
 }
 
-static napi_value Judgment1(napi_env env, napi_callback_info info) 
-{ 
+static napi_value Judgment1(napi_env env, napi_callback_info info)
+{
     napi_value result;
-    if (judgment1_) 
-    {
+    if (judgment1_) {
         napi_create_int32(env, 0, &result);
     } 
-    else 
-    {
+    else {
         napi_create_int32(env, -1, &result);
     }
     return result;
 }
 
-static napi_value Judgment2(napi_env env, napi_callback_info info) 
-{ 
+static napi_value Judgment2(napi_env env, napi_callback_info info)
+{
     napi_value result;
-    if (judgment2_) 
-    {
+    if (judgment2_) {
         napi_create_int32(env, 0, &result);
     } 
-    else 
-    {
+    else {
         napi_create_int32(env, -1, &result);
     }
     return result;
 }
-static napi_value ReturnsMethod(napi_env env, napi_callback_info info) 
-{ 
+static napi_value ReturnsMethod(napi_env env, napi_callback_info info)
+{
     napi_value result;
     napi_status status = napi_create_string_utf8(env, returnMethod, NAPI_AUTO_LENGTH, &result);
     if (status != napi_ok) {
@@ -1859,8 +1850,8 @@ static napi_value ReturnsMethod(napi_env env, napi_callback_info info)
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) 
-{ 
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
         {"setSchemeHandler", nullptr, SetSchemeHandler, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"initResourceManager", nullptr, InitResourceManager, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1891,4 +1882,7 @@ static napi_module demoModule = {
     .reserved = {0},
 };
 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+{
+    napi_module_register(&demoModule); 
+}
