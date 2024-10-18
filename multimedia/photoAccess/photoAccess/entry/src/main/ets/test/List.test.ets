@@ -59,6 +59,7 @@ import createVideoAssetRequestTest from './MediaAssetChangeRequest/createVideoAs
 import deleteAssetsChangeRequestTest from './MediaAssetChangeRequest/deleteAssets'
 import getAssetChangeRequestTest from './MediaAssetChangeRequest/getAsset'
 import setTitleChangeRequestTest from './MediaAssetChangeRequest/setTitle'
+import setOrientationChangeRequestTest from './MediaAssetChangeRequest/setOrientation'
 import addResourceChangeRequestTest from './MediaAssetChangeRequest/addResource'
 import getWriteCacheHandlerTest from './MediaAssetChangeRequest/getWriteCacheHandler'
 import requestImageTest from './MediaAssetManager/requestImage'
@@ -125,6 +126,7 @@ export default function testsuite () {
   deleteAssetsChangeRequestTest()
   getAssetChangeRequestTest()
   setTitleChangeRequestTest()
+  setOrientationChangeRequestTest()
   addResourceChangeRequestTest()
   getWriteCacheHandlerTest()
   requestImageTest()
