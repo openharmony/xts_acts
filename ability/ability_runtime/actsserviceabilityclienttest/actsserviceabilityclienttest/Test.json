@@ -4,14 +4,16 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "com.amsst.stserviceabilityclient",
-        "package-name": "com.amsst.stserviceabilityclient",
+        "package-name": "com.amsst.stserviceabilityclient_test",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 30000
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsServiceAbilityClientTest.hap"
+                "ActsServiceAbilityClientTest.hap",
+                "ActsServiceAbilityClientMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
