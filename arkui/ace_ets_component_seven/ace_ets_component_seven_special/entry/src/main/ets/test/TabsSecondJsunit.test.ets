@@ -141,6 +141,7 @@ export default function tabsSecondJsunit() {
       let obj = JSON.parse(strJson);
       console.info("barWidth: "+ Math.round(obj.$attrs.barWidth));
       expect(Math.abs(Math.round(obj.$attrs.barWidth) -350) <= 0.001).assertTrue();
+      
       done();
     });
 
