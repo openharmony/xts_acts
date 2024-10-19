@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import bindContextMenuMargin from './bindContextMenuTest/bindContextMenuMargin.test'
+import bindSheetKeyboardAvoidMode from './bindSheetTest/bindSheetKeyboardAvoidMode.test'
+
 export default function testsuite() {
   bindContextMenuMargin()
+  bindSheetKeyboardAvoidMode()
 }
