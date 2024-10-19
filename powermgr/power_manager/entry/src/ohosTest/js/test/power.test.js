@@ -59,7 +59,7 @@ describe('PowerTest', function () {
             if (typeof error === "undefined") {
                 console.info('Power_Is_Screnn_On_Callback_Test screenOn is ' + screenOn);
                 let isActive = power.isActive();
-                expect(data).assertEqual(isActive);
+                expect(screenOn).assertEqual(isActive);
                 console.info('Power_Is_Screnn_On_Callback_Test success');
                 done();
             } else {
