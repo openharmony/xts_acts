@@ -1391,7 +1391,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("MPEG-4 video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".mp4");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".mp4,.mp4v,.mpeg4");
       expect(typeObj.mimeTypes.toString()).assertEqual("video/mp4,video/mp4v");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4600 end");
     });
@@ -6796,7 +6796,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Audio-only MPEG-4 file");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".m4a");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".m4a,.m4b");
       expect(typeObj.mimeTypes.toString()).assertEqual("audio/mpeg");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2630 end");
     });
