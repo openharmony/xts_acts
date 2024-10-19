@@ -15,9 +15,10 @@
 
 import observerManagerNotCartTest from './ObserverManagerNotCart.test';
 import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.StateRegistry")){
+  if (sim.getMaxSimCount()!=0){
     observerManagerNotCartTest();
   }else{
     EmptyTest()
