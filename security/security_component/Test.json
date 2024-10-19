@@ -21,6 +21,7 @@
             "run-command": [
                 "param set persist.ace.testmode.enabled 1",
                 "param set persist.sys.suspend_manager_enbled 0",
+                "param set persist.usb.setting.gadget_conn_prompt false",
                 "reboot",
                 "wait 5",
                 "power-shell wakeup",
