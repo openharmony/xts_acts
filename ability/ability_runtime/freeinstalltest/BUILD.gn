@@ -23,22 +23,14 @@ group("freeinstalltest") {
       "mockservicetimeout:MockServiceTimeout",
       "startabilityfatest/actsstartabilitynotargetbundlelistfatest:ActsStartAbilityNoTargetBundleListFaTest",
       "startabilityfatest/atomizationfaentry:AtomizationFaEntry",
-      "startabilityfatest/famyapplication1:FaMyApplication1",
       "startabilityforresultfatest/actsstartabilityforresultnotargetfatest:ActsStartAbilityForResultNoTargetFaTest",
       "startabilityforresultfatest/atomizationresultfaentry:AtomizationResultFaEntry",
-      "startabilityforresultfatest/faresultmyapplication1:FaResultMyApplication1",
       "startabilityforresultstagetest/actsfreeinstallstartabilityforresultstagetest:ActsFreeInstallStartAbilityForResultStageTest",
       "startabilityforresultstagetest/actsstartabilityforresultnotargetbundleliststagetest:ActsStartAbilityForResultNoTargetBundleListStageTest",
       "startabilityforresultstagetest/atomizationresultstageentry:AtomizationResultStageEntry",
-      "startabilityforresultstagetest/atomizationresultstagehm2:AtomizationResultStageHm2",
-      "startabilityforresultstagetest/atomizationresultstagehnm2:AtomizationResultStageHnm2",
-      "startabilityforresultstagetest/stageresultmyapplication1:StageResultMyApplication1",
       "startabilitystagetest/actsfreeinstallstartabilitystagetest:ActsFreeInstallStartAbilityStageTest",
       "startabilitystagetest/actsstartabilitynotargetbundleliststagetest:ActsStartAbilityNoTargetBundleListStageTest",
       "startabilitystagetest/atomizationstageentry:AtomizationStageEntry",
-      "startabilitystagetest/atomizationstagehm2:AtomizationStageHm2",
-      "startabilitystagetest/atomizationstagehm4:AtomizationStageHm4",
-      "startabilitystagetest/stagemyapplication1:StageMyApplication1",
     ]
   }
 }

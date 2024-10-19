@@ -37,6 +37,18 @@
           ]
         }
       ]
+    },
+    {
+      "name": "myapplication1",
+      "srcPath": "./myapplication1",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
   ]
 }

@@ -13,22 +13,10 @@
  * limitations under the License.
  */
 
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
-import { Hypium } from '@ohos/hypium'
-import testsuite from '../test/ListTest'
-import file from '@system.file';
-
 @Entry
 @Component
 struct Index {
   @State message: string = 'StartAbility NoTargetBundleList Test'
-  aboutToAppear() {
-    console.info("start run testcase!!!!")
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    console.info('start run testcase!!!')
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-  }
 
   build() {
     Row() {

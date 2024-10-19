@@ -3,8 +3,8 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-		"bundle-name": "com.example.startAbilityForResult.hmservice",
-        "module-name": "entry",
+        "bundle-name": "com.example.startAbilityForResult.hmservice",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": "50000"
     },

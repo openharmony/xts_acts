@@ -13,34 +13,22 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsStartAbilityForResultNoTargetBundleListStageTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":actsstartabilityforresultnotargetbundleliststagetest_js_assets",
-    ":actsstartabilityforresultnotargetbundleliststagetest_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsStartAbilityForResultNoTargetBundleListStageTest"
+ohos_app_assist_suite("ActsStartAbilityForResultNoTargetBundleListStageMain") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsStartAbilityForResultNoTargetBundleListStageMain"
+  hap_list = [ "ActsStartAbilityForResultNoTargetBundleListStageMain-myapplication1-entry-default-unsigned:StageResultMyApplication1" ]
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
 
-ohos_app_scope(
-    "actsstartabilityforresultnotargetbundleliststagetest_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
+ohos_js_app_suite("ActsStartAbilityForResultNoTargetBundleListStageTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsStartAbilityForResultNoTargetBundleListStageTest"
 
-ohos_js_assets(
-    "actsstartabilityforresultnotargetbundleliststagetest_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources(
-    "actsstartabilityforresultnotargetbundleliststagetest_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":actsstartabilityforresultnotargetbundleliststagetest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsStartAbilityForResultNoTargetBundleListStageMain" ]
 }
