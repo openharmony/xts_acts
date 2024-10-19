@@ -15,9 +15,10 @@
 
 import SimManagerTest from './SimManager.test.js'
 import EmptyTest from './Empty.test.js';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.CoreService")){
+  if (sim.getMaxSimCount()!=0){
     SimManagerTest()
   }else{
     EmptyTest()

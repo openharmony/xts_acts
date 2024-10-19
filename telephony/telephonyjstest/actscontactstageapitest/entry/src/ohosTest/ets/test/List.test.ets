@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,13 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import contact_NopTest from './ContactNop.test';
-import EmptyTest from './Empty.test'
+
+import contactStage from './contactstage.test';
+import ObjectInterfaceTest from './ObjectInterface_test';
+import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
-    contact_NopTest()
+    contactStage();
+    ObjectInterfaceTest();
   }else{
     EmptyTest()
   }
