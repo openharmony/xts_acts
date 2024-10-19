@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,30 +11,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("image_pixelmap_ndk_hap") {
-  hap_profile = "./entry/src/main/config.json"
-  deps = [
-    ":pixelmap_ets_assets",
-    ":pixelmap_ets_resources",
-    ":pixelmap_ets_test_assets",
-  ]
-  ets2abc = true
+import("//build/config/ohos/config.gni")
+import("//build/ohos.gni")
+import("//foundation/arkui/napi/napi.gni")
+
+ohos_app_assist_suite("image_pixelmap_ndk_hap_main") {
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsPixelMapNapiEtsTest"
-  shared_libraries = [ "./entry/src/main/cpp:imagePixelmap" ]
-  subsystem_name = "multimedia"
+  hap_name = "ActsPixelMapNapiEtsTestMain"
+
+  # 部件名称，真实数据，需要子系统对应
   part_name = "image_framework"
+
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "multimedia"
 }
 
-ohos_js_assets("pixelmap_ets_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
-}
-ohos_js_assets("pixelmap_ets_test_assets") {
-  source_dir = "./entry/src/main/ets/TestAbility"
-}
-ohos_resources("pixelmap_ets_resources") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+ohos_js_app_suite("image_pixelmap_ndk_hap") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsPixelMapNapiEtsTest"
+
+  # 部件名称，真实数据，需要子系统对应
+  part_name = "image_framework"
+
+  # 子系统名称，真实数据，需要部件对应
+  subsystem_name = "multimedia"
+  deps = [ ":image_pixelmap_ndk_hap_main" ]
 }
