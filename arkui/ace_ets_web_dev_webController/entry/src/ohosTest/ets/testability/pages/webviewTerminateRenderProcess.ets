@@ -76,10 +76,10 @@ struct webviewTerminateRenderProcess {
               try {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent("百度一下，你就知道", 5302)
+                  Utils.emitEvent(true, 5302)
                   break;
                 }else if((this.userAgentPC).includes("Tablet")){
-                  Utils.emitEvent("百度一下，你就知道", 5302)
+                  Utils.emitEvent(true, 5302)
                   break;
                 }
                 this.controller.loadUrl('www.baidu.com');
@@ -89,7 +89,10 @@ struct webviewTerminateRenderProcess {
                 await Utils.sleep(3000);
                 let title = this.controller.getTitle();
                 console.log("title: " + title);
-                Utils.emitEvent(title, 5302)
+                if ((this.controller.getTitle()).includes("百度")) {
+                  Utils.emitEvent(true, 5302)
+                  console.log("title:" + this.controller.getTitle())
+                }
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
