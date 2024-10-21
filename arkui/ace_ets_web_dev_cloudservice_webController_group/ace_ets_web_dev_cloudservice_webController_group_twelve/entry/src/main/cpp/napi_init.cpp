@@ -23,7 +23,7 @@
 #include <cstring>
 #include <node_api.h>
 #include <string>
-
+#include <iostream>
 #undef LOG_TAG
 #define LOG_TAG "ss-handler"
 
@@ -43,61 +43,7 @@ int errorNum = 17100101;
 bool judgmentOne = false;
 bool judgmentTwo = false;
 char *returnMethod;
-    typedef enum {
-        IDX_0 = 0,
-        IDX_1 = 1,
-        IDX_2 = 2,
-        IDX_3 = 3,
-        IDX_4 = 4,
-        IDX_5 = 5,
-        IDX_6 = 6,
-        IDX_7 = 7,
-        IDX_8 = 8,
-        IDX_9 = 9,
-        IDX_10 = 10,
-        IDX_11 = 11,
-        IDX_12 = 12,
-        IDX_13 = 13,
-        IDX_14 = 14,
-        IDX_15 = 15,
-        IDX_16 = 16,
-        IDX_17 = 17,
-        IDX_18 = 18,
-        IDX_19 = 19,
-        IDX_20 = 20,
-        IDX_21 = 21,
-        IDX_22 = 22,
-        IDX_23 = 23,
-        IDX_24 = 24,
-        IDX_25 = 25,
-        IDX_26 = 26,
-        IDX_27 = 27,
-        IDX_28 = 28,
-        IDX_29 = 29,
-        IDX_30 = 30,
-        IDX_31 = 31,
-        IDX_32 = 32,
-        IDX_33 = 33,
-        IDX_34 = 34,
-        IDX_35 = 35,
-        IDX_36 = 36,
-        IDX_37 = 37,
-        IDX_38 = 38,
-        IDX_39 = 39,
-        IDX_40 = 40,
-        IDX_41 = 41,
-        IDX_42 = 42,
-        IDX_43 = 43,
-        IDX_44 = 44,
-        IDX_45 = 45,
-        IDX_46 = 46,
-        IDX_47 = 47,
-        IDX_48 = 48,
-        IDX_49 = 49,
-        IDX_50 = 50,
-        IDX_51 = 51
-    }
-    ArrayIndices;
+
 // 注册三方协议的配置，需要在Web内核初始化之前调用，否则会注册失败。
 static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info)
 {
@@ -151,8 +97,18 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    snprintf(url, sizeof(url)-1, "%s%s", protocol, domain);
-    url[sizeof(url)-1] = '\0'; // 确保null结尾
+    int url_len = 0;
+    while (*protocol) {
+        url[url_len++] = *protocol++;
+    }
+    while (*domain) {
+        url[url_len++] = *domain++;
+    }
+    if (url_len < sizeof(url) - 1) {
+        url[url_len] = '\0'; 
+    } else {
+        url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
+    }
     result_num = OH_ArkWebResponse_SetUrl(nullptr, url);
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
@@ -205,8 +161,18 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "com.baidu123.www";
     char url[256];
-    snprintf(url, sizeof(url)-1, "%s%s", protocol, domain);
-    url[sizeof(url)-1] = '\0'; // 确保null结尾
+    int url_len = 0;
+    while (*protocol) {
+        url[url_len++] = *protocol++;
+    }
+    while (*domain) {
+        url[url_len++] = *domain++;
+    }
+    if (url_len < sizeof(url) - 1) {
+        url[url_len] = '\0'; 
+    } else {
+        url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
+    }
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
@@ -234,8 +200,18 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    snprintf(url, sizeof(url)-1, "%s%s", protocol, domain);
-    url[sizeof(url)-1] = '\0'; // 确保null结尾
+    int url_len = 0;
+    while (*protocol) {
+        url[url_len++] = *protocol++;
+    }
+    while (*domain) {
+        url[url_len++] = *domain++;
+    }
+    if (url_len < sizeof(url) - 1) {
+        url[url_len] = '\0'; 
+    } else {
+        url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
+    }
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -265,8 +241,18 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    snprintf(url, sizeof(url)-1, "%s%s", protocol, domain);
-    url[sizeof(url)-1] = '\0';
+    int url_len = 0;
+    while (*protocol) {
+        url[url_len++] = *protocol++;
+    }
+    while (*domain) {
+        url[url_len++] = *domain++;
+    }
+    if (url_len < sizeof(url) - 1) {
+        url[url_len] = '\0'; 
+    } else {
+        url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
+    }
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -296,8 +282,18 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    snprintf(url, sizeof(url)-1, "%s%s", protocol, domain);
-    url[sizeof(url)-1] = '\0';
+    int url_len = 0;
+    while (*protocol) {
+        url[url_len++] = *protocol++;
+    }
+    while (*domain) {
+        url[url_len++] = *domain++;
+    }
+    if (url_len < sizeof(url) - 1) {
+        url[url_len] = '\0'; 
+    } else {
+        url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
+    }
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -327,8 +323,18 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    snprintf(url, sizeof(url)-1, "%s%s", protocol, domain);
-    url[sizeof(url)-1] = '\0';
+    int url_len = 0;
+    while (*protocol) {
+        url[url_len++] = *protocol++;
+    }
+    while (*domain) {
+        url[url_len++] = *domain++;
+    }
+    if (url_len < sizeof(url) - 1) {
+        url[url_len] = '\0'; 
+    } else {
+        url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
+    }
     char *geturl = nullptr;
     result_num = OH_ArkWebResponse_SetUrl(response, url);
     if (result_num == 0) {
@@ -1228,61 +1234,65 @@ void OnURLRequestStopForSW(const ArkWeb_SchemeHandler *schemeHandler, const ArkW
         return;
     }
 }
-typedef void (*RequestStartFunc)(const ArkWeb_SchemeHandler*, ArkWeb_ResourceRequest*, const ArkWeb_ResourceHandler*, bool*);
-RequestStartFunc OnURLRequestStartArray[] = {
-    OnURLRequestStart1, 
-	OnURLRequestStart2, 
-	OnURLRequestStart3, 
-	OnURLRequestStart4,
-    OnURLRequestStart5,
-    OnURLRequestStart6,
-    OnURLRequestStart7,
-	OnURLRequestStart8,
-	OnURLRequestStart9,
-	OnURLRequestStart10,
-	OnURLRequestStart11,
-	OnURLRequestStart12,
-	OnURLRequestStart13,
-	OnURLRequestStart14,
-	OnURLRequestStart15,
-	OnURLRequestStart16,
-	OnURLRequestStart17,
-    nullptr,  // Placeholder for OnURLRequestStart18
-    nullptr,  // Placeholder for OnURLRequestStart19
-    nullptr,  // Placeholder for OnURLRequestStart20
-    nullptr,  // Placeholder for OnURLRequestStart21
-	OnURLRequestStart22,
-	OnURLRequestStart23,
-	OnURLRequestStart24,
-	OnURLRequestStart25,
-	OnURLRequestStart26,
-	OnURLRequestStart27,
-	OnURLRequestStart28,
-	OnURLRequestStart29,
-	OnURLRequestStart30,
-	OnURLRequestStart31,
-    nullptr,  // Placeholder for OnURLRequestStart32
-    nullptr,  // Placeholder for OnURLRequestStart33
-	OnURLRequestStart34,
-	OnURLRequestStart35,
-	OnURLRequestStart36,
-	OnURLRequestStart37,
-	OnURLRequestStart38,
-	OnURLRequestStart39,
-	OnURLRequestStart40,
-	OnURLRequestStart41,
-	OnURLRequestStart42,
-	OnURLRequestStart43,
-	OnURLRequestStart44,
-	OnURLRequestStart45,
-	OnURLRequestStart46,
-	OnURLRequestStart47,
-	OnURLRequestStart48,
-	OnURLRequestStart49,
-	OnURLRequestStart50,
-	OnURLRequestStart51,
-	nullptr
-};
+typedef void (*RequestStartFunc)(
+    const ArkWeb_SchemeHandler*,
+    ArkWeb_ResourceRequest*,
+    const ArkWeb_ResourceHandler*,
+    bool*);
+    RequestStartFunc OnURLRequestStartArray[] = {
+        OnURLRequestStart1,
+        OnURLRequestStart2,
+        OnURLRequestStart3,
+        OnURLRequestStart4,
+        OnURLRequestStart5,
+        OnURLRequestStart6,
+        OnURLRequestStart7,
+        OnURLRequestStart8,
+        OnURLRequestStart9,
+        OnURLRequestStart10,
+        OnURLRequestStart11,
+        OnURLRequestStart12,
+        OnURLRequestStart13,
+        OnURLRequestStart14,
+        OnURLRequestStart15,
+        OnURLRequestStart16,
+        OnURLRequestStart17,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        OnURLRequestStart22,
+        OnURLRequestStart23,
+        OnURLRequestStart24,
+        OnURLRequestStart25,
+        OnURLRequestStart26,
+        OnURLRequestStart27,
+        OnURLRequestStart28,
+        OnURLRequestStart29,
+        OnURLRequestStart30,
+        OnURLRequestStart31,
+        nullptr,
+        nullptr,
+        OnURLRequestStart34,
+        OnURLRequestStart35,
+        OnURLRequestStart36,
+        OnURLRequestStart37,
+        OnURLRequestStart38,
+        OnURLRequestStart39,
+        OnURLRequestStart40,
+        OnURLRequestStart41,
+        OnURLRequestStart42,
+        OnURLRequestStart43,
+        OnURLRequestStart44,
+        OnURLRequestStart45,
+        OnURLRequestStart46,
+        OnURLRequestStart47,
+        OnURLRequestStart48,
+        OnURLRequestStart49,
+        OnURLRequestStart50,
+        OnURLRequestStart51,
+        nullptr
+    };
 // 设置SchemeHandler。
 static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
 {
@@ -1306,12 +1316,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "set scheme handler");
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandler);
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandlerForSW);
-    int a[60] = {
-        0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17,
-        18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
-        36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51
-    };
-    if ((1 <= g_parameter && g_parameter < 18) || (22 <= g_parameter && g_parameter <= 51)) {
+    int A = 1; int B = 18;
+    int C = 22; int D = 51;
+    if ((A <= g_parameter && g_parameter < B) || (C <= g_parameter && g_parameter <= D)) {
 	    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStartArray[g_parameter - 1]);
         OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
         OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStartArray[g_parameter - 1]);
