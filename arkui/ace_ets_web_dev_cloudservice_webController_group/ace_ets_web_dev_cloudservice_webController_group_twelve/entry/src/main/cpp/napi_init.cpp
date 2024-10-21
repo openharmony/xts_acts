@@ -56,7 +56,7 @@ static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info)
     return nullptr;
 }
 
-void OnURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler,
+void onURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler,
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler,
                         bool *intercept)
@@ -81,7 +81,7 @@ void OnURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler,
     OH_ArkWeb_DestroyResponse(response);
 }
 
-void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
+void onURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler,
                         bool *intercept)
@@ -99,10 +99,10 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
     char url[256];
     int urlLen  = 0;
     while (*protocol) {
-        url[urlLen ++] = *protocol++;
+        url[urlLen++] = *protocol++;
     }
     while (*domain) {
-        url[urlLen ++] = *domain++;
+        url[urlLen++] = *domain++;
     }
     if (urlLen  < sizeof(url) - 1) {
         url[urlLen ] = '\0';
@@ -163,10 +163,10 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
     char url[256];
     int urlLen  = 0;
     while (*protocol) {
-        url[urlLen ++] = *protocol++;
+        url[urlLen++] = *protocol++;
     }
     while (*domain) {
-        url[urlLen ++] = *domain++;
+        url[urlLen++] = *domain++;
     }
     if (urlLen  < sizeof(url) - 1) {
         url[urlLen ] = '\0';
@@ -202,10 +202,10 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler,
     char url[256];
     int urlLen  = 0;
     while (*protocol) {
-        url[urlLen ++] = *protocol++;
+        url[urlLen++] = *protocol++;
     }
     while (*domain) {
-        url[urlLen ++] = *domain++;
+        url[urlLen++] = *domain++;
     }
     if (urlLen  < sizeof(url) - 1) {
         url[urlLen ] = '\0';
@@ -243,10 +243,10 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler,
     char url[256];
     int urlLen  = 0;
     while (*protocol) {
-        url[urlLen ++] = *protocol++;
+        url[urlLen++] = *protocol++;
     }
     while (*domain) {
-        url[urlLen ++] = *domain++;
+        url[urlLen++] = *domain++;
     }
     if (urlLen  < sizeof(url) - 1) {
         url[urlLen ] = '\0';
@@ -284,10 +284,10 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler,
     char url[256];
     int urlLen  = 0;
     while (*protocol) {
-        url[urlLen ++] = *protocol++;
+        url[urlLen++] = *protocol++;
     }
     while (*domain) {
-        url[urlLen ++] = *domain++;
+        url[urlLen++] = *domain++;
     }
     if (urlLen  < sizeof(url) - 1) {
         url[urlLen ] = '\0';
@@ -325,10 +325,10 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler,
     char url[256];
     int urlLen  = 0;
     while (*protocol) {
-        url[urlLen ++] = *protocol++;
+        url[urlLen++] = *protocol++;
     }
     while (*domain) {
-        url[urlLen ++] = *domain++;
+        url[urlLen++] = *domain++;
     }
     if (urlLen  < sizeof(url) - 1) {
         url[urlLen ] = '\0';
@@ -1240,7 +1240,7 @@ typedef void (*RequestStartFunc)(
     const ArkWeb_ResourceHandler*,
     bool*);
     RequestStartFunc onURLRequestStartArray[] = {
-        OnURLRequestStart1, OnURLRequestStart2,
+        onURLRequestStart1, onURLRequestStart2,
         OnURLRequestStart3, OnURLRequestStart4,
         OnURLRequestStart5, OnURLRequestStart6,
         OnURLRequestStart7, OnURLRequestStart8,
