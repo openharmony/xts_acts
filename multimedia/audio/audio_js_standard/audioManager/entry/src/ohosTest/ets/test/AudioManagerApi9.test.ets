@@ -101,10 +101,6 @@ async function driveFn() {
 export default function audioManagerApi9() {
   describe('audioManagerApi9', () => {
     beforeAll(async () => {
-      console.info(`${TagFrmwk}: beforeAll: Prerequisites at the test suite level`);
-      getPermission();
-      await driveFn();
-      await sleep(100);
       await getAudioManager();
       getStreamManager();
       console.info(`${TagFrmwk}: beforeAll: END`);
@@ -1466,8 +1462,11 @@ export default function audioManagerApi9() {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2901', 2, async (done: Function) => {
       try {
-        let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
-        await audioManager.setVolume(audio.AudioVolumeType.ALARM, maxVolumeSetting);
+        if (voice) {
+          await audioManager.setVolume(audio.AudioVolumeType.ALARM, 15);
+        } else {
+          await audioManager.setVolume(audio.AudioVolumeType.ALARM, 20);
+        }
         await audioManager.mute(audio.AudioVolumeType.ALARM, true);
         let data = await audioManager.isMute(audio.AudioVolumeType.ALARM);
         if (data == false) {
@@ -1523,8 +1522,11 @@ export default function audioManagerApi9() {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2902', 2, async (done: Function) => {
       try {
-        let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
-        await audioManager.setVolume(audio.AudioVolumeType.ALARM, maxVolumeSetting+1);
+        if (voice) {
+          await audioManager.setVolume(audio.AudioVolumeType.ALARM, 16);
+        } else {
+          await audioManager.setVolume(audio.AudioVolumeType.ALARM, 21);
+        }
         await audioManager.mute(audio.AudioVolumeType.ALARM, true);
         let data = await audioManager.isMute(audio.AudioVolumeType.ALARM);
         if (data == false) {
@@ -1683,8 +1685,11 @@ export default function audioManagerApi9() {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3001', 2, async (done: Function) => {
       try {
-        let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
-        await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, maxVolumeSetting);
+        if (voice) {
+          await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 15);
+        } else {
+          await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 20);
+        }
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
         let data = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
         if (data == false) {
@@ -1740,8 +1745,11 @@ export default function audioManagerApi9() {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3002', 2, async (done: Function) => {
       try {
-        let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
-        await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, maxVolumeSetting+1);
+        if (voice) {
+          await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 16);
+        } else {
+          await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 21);
+        }
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
         let data = await audioManager.isMute(audio.AudioVolumeType.ACCESSIBILITY);
         if (data == false) {

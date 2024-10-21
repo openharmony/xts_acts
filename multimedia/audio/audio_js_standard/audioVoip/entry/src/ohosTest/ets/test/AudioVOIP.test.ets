@@ -143,8 +143,7 @@ export default function audioVoip() {
 
     let getAbilityInfo = async (fileName: string) => {
       try {
-        let appContext = testContext.getApplicationContext();
-        mediaDir = appContext.filesDir + '/' + fileName;
+        mediaDir = testContext.filesDir + '/' + fileName;
         console.info(`case2 mediaDir is : ${mediaDir}`);
       } catch (err) {
         console.log(`${TagRender}:case getFileDir err: ${err}`);
@@ -163,8 +162,7 @@ export default function audioVoip() {
 
     let getFdRead = async (pathName: string) => {
       try {
-        let appContext = testContext.getApplicationContext();
-        filePath = appContext.filesDir + '/' + pathName;
+        filePath = testContext.filesDir + '/' + pathName;
         console.info(`case4 filePath is : ${filePath}`);
       } catch (err) {
         console.log(`${TagRender}:case getFilesDir err:  ${err}`);
