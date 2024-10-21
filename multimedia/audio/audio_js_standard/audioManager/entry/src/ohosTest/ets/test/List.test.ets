@@ -17,7 +17,11 @@ import audioFramework from './AudioFramework.test';
 import AudioManagerApi9 from './AudioManagerApi9.test';
 import audioRoutingManager from './AudioRoutingManager.test';
 import getAudioSceneApi12 from './GetAudioScene.test';
+import { getPermission, driveFn } from './AudioFramework.test';
+
 export default function testsuite() {
+  getPermission();
+  driveFn();
   audioFramework();
   AudioManagerApi9();
   audioRoutingManager();
