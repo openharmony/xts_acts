@@ -35,6 +35,10 @@
                 {
                     "name": "push",
                     "value": "picture->/storage/media/100/local/files/Pictures"
+                },
+                {
+                    "name": "shell",
+                    "value": "mediatool send /storage/media/100/local/files/Pictures"
                 }
             ]
         },
