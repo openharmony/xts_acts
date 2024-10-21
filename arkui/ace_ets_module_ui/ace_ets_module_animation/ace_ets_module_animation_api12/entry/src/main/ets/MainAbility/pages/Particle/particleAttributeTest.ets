@@ -147,7 +147,7 @@ struct ParticleExample2 {
           noiseScale: 10,
           noiseFrequency: 15,
           noiseAmplitude: 5,
-        }]).key("particleTest")
+        }]).key('particleTest')
           .id('btn')
           .onClick(() => {
             this.text = '1';
