@@ -37,11 +37,11 @@ int32_t result_num2 = 1;
 
 int32_t judgment_num = 1;
 std::string url_return = "";
-bool judgment_ = true;
+
 int g_parameter = 0;
-int errorNum = 17100101;
-bool judgmentOne = false;
-bool judgmentTwo = false;
+int g_errorNum = 17100101;
+bool g_judgment1 = false;
+bool g_judgment2 = false;
 char *returnMethod;
 
 // 注册三方协议的配置，需要在Web内核初始化之前调用，否则会注册失败。
@@ -74,7 +74,7 @@ void OnURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == errorNum) {
+    } else if (result_num == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -105,7 +105,7 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
         url[url_len++] = *domain++;
     }
     if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0'; 
+        url[url_len] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -113,7 +113,7 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == errorNum) {
+    } else if (result_num == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -138,7 +138,7 @@ void OnURLRequestStart3(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == errorNum) {
+    } else if (result_num == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -169,7 +169,7 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
         url[url_len++] = *domain++;
     }
     if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0'; 
+        url[url_len] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -177,7 +177,7 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in setting URL: %{public}s", url);
         OH_LOG_INFO(LOG_APP, "Succeed OH_ArkWebResponse_SetUrl with code: %{public}d", result_num);
-    } else if (result_num == errorNum) {
+    } else if (result_num == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl url: %{public}s", url);
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl with error code: %{public}d", result_num);
     }
@@ -208,7 +208,7 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler,
         url[url_len++] = *domain++;
     }
     if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0'; 
+        url[url_len] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -217,9 +217,9 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num == 0) {
         OH_ArkWebResponse_GetUrl(nullptr, &geturl);
         OH_LOG_INFO(LOG_APP, "Succeed in getting URL: %{public}s", geturl);
-        judgment_num = errorNum;
+        judgment_num = g_errorNum;
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_GetUrl judgment_num is : %{public}d", judgment_num);
-    } else if (result_num == errorNum) {
+    } else if (result_num == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl");
     }
     OH_ArkWeb_DestroyResponse(response);
@@ -249,7 +249,7 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler,
         url[url_len++] = *domain++;
     }
     if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0'; 
+        url[url_len] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -258,9 +258,9 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num == 0) {
         OH_ArkWebResponse_GetUrl(response, &geturl);
         OH_LOG_INFO(LOG_APP, "Succeed in getting URL: %{public}s", geturl);
-        judgment_num = errorNum;
+        judgment_num = g_errorNum;
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_GetUrl judgment_num is : %{public}d", judgment_num);
-    } else if (result_num == errorNum) {
+    } else if (result_num == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl");
     }
     OH_ArkWeb_DestroyResponse(response);
@@ -290,7 +290,7 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler,
         url[url_len++] = *domain++;
     }
     if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0'; 
+        url[url_len] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -299,9 +299,9 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num == 0) {
         OH_ArkWebResponse_GetUrl(nullptr, nullptr);
         OH_LOG_INFO(LOG_APP, "Succeed in getting URL: %{public}s", geturl);
-        judgment_num = errorNum;
+        judgment_num = g_errorNum;
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_GetUrl judgment_num is : %{public}d", judgment_num);
-    } else if (result_num == errorNum) {
+    } else if (result_num == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl");
     }
     OH_ArkWeb_DestroyResponse(response);
@@ -331,7 +331,7 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler,
         url[url_len++] = *domain++;
     }
     if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0'; 
+        url[url_len] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -341,7 +341,7 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler,
         OH_ArkWebResponse_GetUrl(response, &geturl);
         url_return = geturl;
         OH_LOG_INFO(LOG_APP, "Succeed in getting URL: %{public}s", geturl);
-    } else if (result_num == errorNum) {
+    } else if (result_num == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Fail to OH_ArkWebResponse_SetUrl");
     }
     OH_ArkWeb_DestroyResponse(response);
@@ -364,7 +364,7 @@ void OnURLRequestStart9(const ArkWeb_SchemeHandler *schemeHandler,
     result_num1 = OH_ArkWebResponse_SetError(nullptr, errorCode);
     if (result_num1 == 0) {
         OH_LOG_INFO(LOG_APP, "OH_ArkWebResponse_SetError executed successfully.");
-    } else if (result_num1 == errorNum) {
+    } else if (result_num1 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Failed to execute OH_ArkWebResponse_SetError. Error: %{public}d", result_num1);
     }
 }
@@ -386,7 +386,7 @@ void OnURLRequestStart10(const ArkWeb_SchemeHandler *schemeHandler,
     result_num2 = OH_ArkWebResponse_SetStatus(response, status);
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed: %{public}d", result_num2);
-    } else if (result_num2 == errorNum) {
+    } else if (result_num2 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed: %{public}d", result_num2);
     }
 }
@@ -408,7 +408,7 @@ void OnURLRequestStart11(const ArkWeb_SchemeHandler *schemeHandler,
     result_num2 = OH_ArkWebResponse_SetStatus(nullptr, status);
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed: %{public}d", result_num2);
-    } else if (result_num2 == errorNum) {
+    } else if (result_num2 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed: %{public}d", result_num2);
     }
 }
@@ -430,7 +430,7 @@ void OnURLRequestStart12(const ArkWeb_SchemeHandler *schemeHandler,
     result_num2 = OH_ArkWebResponse_SetStatus(response, status);
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed: %{public}d", result_num2);
-    } else if (result_num2 == errorNum) {
+    } else if (result_num2 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed: %{public}d", result_num2);
     }
 }
@@ -453,7 +453,7 @@ void OnURLRequestStart13(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}d", result_num2);
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}s", statusText);
-    } else if (result_num2 == errorNum) {
+    } else if (result_num2 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed SetStatusText: %{public}d", result_num2);
     }
 }
@@ -476,7 +476,7 @@ void OnURLRequestStart14(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}d", result_num2);
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}s", statusText);
-    } else if (result_num2 == errorNum) {
+    } else if (result_num2 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed SetStatusText: %{public}d", result_num2);
     }
 }
@@ -498,10 +498,10 @@ void OnURLRequestStart15(const ArkWeb_SchemeHandler *schemeHandler,
     result_num2 = OH_ArkWebResponse_SetStatusText(response, statusText);
     if (result_num2 == 0) {
         OH_ArkWebResponse_GetStatusText(response, nullptr);
-        result_num1 = errorNum;
+        result_num1 = g_errorNum;
         OH_LOG_INFO(LOG_APP, "Test with invalid status code passed SetStatusText: %{public}d", result_num2);
         OH_LOG_ERROR(LOG_APP, " Failed to OH_ArkWebResponse_GetStatusText: %{public}d", result_num1);
-    } else if (result_num2 == errorNum) {
+    } else if (result_num2 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Test with invalid status code failed SetStatusText: %{public}d", result_num2);
     }
 }
@@ -522,7 +522,7 @@ void OnURLRequestStart16(const ArkWeb_SchemeHandler *schemeHandler,
     result_num2 = OH_ArkWebResponse_SetCharset(response, nullptr);
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, " Succeed in  OH_ArkWebResponse_SetCharset %{public}d", result_num2);
-    } else if (result_num2 == errorNum) {
+    } else if (result_num2 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Failed to  OH_ArkWebResponse_SetCharset %{public}d", result_num2);
     }
 }
@@ -545,7 +545,7 @@ void OnURLRequestStart17(const ArkWeb_SchemeHandler *schemeHandler,
     if (result_num2 == 0) {
         OH_LOG_INFO(LOG_APP, "Succeed in OH_ArkWebSchemeHandler_SetUserData");
         OH_LOG_INFO(LOG_APP, "Succeed in OH_ArkWebSchemeHandler_SetUserData result_num2 : %{public}d", result_num2);
-    } else if (result_num2 == errorNum) {
+    } else if (result_num2 == g_errorNum) {
         OH_LOG_ERROR(LOG_APP, "Failed to set userData for schemeHandler");
         OH_LOG_INFO(LOG_APP, "Failed to  OH_ArkWebSchemeHandler_SetUserData result_num2 : %{public}d", result_num2);
     }
@@ -594,12 +594,12 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler,
         if (key != nullptr && value != nullptr) {
             OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key,
                         value);
-            judgmentOne = true;
+            g_judgment1 = true;
         } else {
             OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
             OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key,
                         value);
-            judgmentTwo = true;
+            g_judgment2 = true;
         }
     }
 }
@@ -624,12 +624,12 @@ void OnURLRequestStart22(const ArkWeb_SchemeHandler *schemeHandler,
         if (key[i] != nullptr && value != nullptr) {
             OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key[i],
                         value);
-            judgmentOne = true;
+            g_judgment1 = true;
         } else {
             OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
             OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key[i],
                         value);
-            judgmentTwo = true;
+            g_judgment2 = true;
         }
     }
 }
@@ -654,12 +654,12 @@ void OnURLRequestStart23(const ArkWeb_SchemeHandler *schemeHandler,
         if (value != nullptr) {
             OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key,
                         value);
-            judgmentOne = true;
+            g_judgment1 = true;
         } else {
             OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
             OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key,
                         value);
-            judgmentTwo = true;
+            g_judgment2 = true;
         }
     }
 }
@@ -684,12 +684,12 @@ void OnURLRequestStart24(const ArkWeb_SchemeHandler *schemeHandler,
         if (key != nullptr && value[i] != nullptr) {
             OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key,
                         value[i]);
-            judgmentOne = true;
+            g_judgment1 = true;
         } else {
             OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
             OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key,
                         value[i]);
-            judgmentTwo = true;
+            g_judgment2 = true;
         }
     }
 }
@@ -714,12 +714,12 @@ void OnURLRequestStart25(const ArkWeb_SchemeHandler *schemeHandler,
         if (key != nullptr && value != nullptr) {
             OH_LOG_INFO(LOG_APP, "Within a reasonable index range class. Key: %{public}s, Value: %{public}s", key,
                         value);
-            judgmentOne = true;
+            g_judgment1 = true;
         } else {
             OH_LOG_ERROR(LOG_APP, "Failed to get header key or value at index");
             OH_LOG_INFO(LOG_APP, "Not in a reasonable index range class.Key: %{public}s, Value: %{public}s", key,
                         value);
-            judgmentTwo = true;
+            g_judgment2 = true;
         }
     }
 }
@@ -754,10 +754,10 @@ void OnURLRequestStart27(const ArkWeb_SchemeHandler *schemeHandler,
     OH_ArkWebResourceRequest_GetUrl(NULL, &url1);
     if (url1 == NULL) {
         OH_LOG_INFO(LOG_APP, "Test passed: url '%{public}s' ", url1);
-        judgmentTwo = false;
+        g_judgment2 = false;
     } else {
         OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value url '%{public}s'", url1);
-        judgmentTwo = true;
+        g_judgment2 = true;
     }
 }
 
@@ -770,10 +770,10 @@ void OnURLRequestStart28(const ArkWeb_SchemeHandler *schemeHandler,
     char *url2 = nullptr; // 初始化为 NULL，模拟入参异常
     OH_ArkWebResourceRequest_GetUrl(nullptr, &url2);
     if (url2 == nullptr) {
-        judgmentTwo = false;
+        g_judgment2 = false;
         OH_LOG_INFO(LOG_APP, "Test passed: url '%{public}s' ", url2);
     } else {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value url '%{public}s'", url2);
     }
     // 如果 testUrl 不是 NULL，需要释放内存
@@ -789,10 +789,10 @@ void OnURLRequestStart29(const ArkWeb_SchemeHandler *schemeHandler,
     char *url3 = NULL;
     OH_ArkWebResourceRequest_GetUrl(NULL, &url3);
     if (url3 == NULL) {
-        judgmentTwo = false;
+        g_judgment2 = false;
         OH_LOG_INFO(LOG_APP, "Test passed: url '%{public}s' ", url3);
     } else {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value url '%{public}s'", url3);
     }
 }
@@ -829,10 +829,10 @@ void OnURLRequestStart30(const ArkWeb_SchemeHandler *schemeHandler,
         for (size_t i = 0; i < bufferSize; ++i) {
             OH_LOG_INFO(LOG_APP, "Test passed: buffer '%{public}x' ", buffer[i]);
         }
-        judgmentTwo = false;
+        g_judgment2 = false;
     } else {
         OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value buffer '%{public}s'", buffer);
-        judgmentTwo = true;
+        g_judgment2 = true;
     }
 }
 
@@ -851,10 +851,10 @@ void OnURLRequestStart31(const ArkWeb_SchemeHandler *schemeHandler,
     OH_ArkWebHttpBodyStream_Read(httpBodyStream, buffer, bufLen);
     if (!OH_ArkWebHttpBodyStream_IsEof(httpBodyStream)) {
         OH_LOG_INFO(LOG_APP, "Test passed: return when buffer<bufLen failed got a value buffer %{public}s ", buffer);
-        judgmentTwo = true;
+        g_judgment2 = true;
     } else {
         OH_LOG_INFO(LOG_APP, "Test failed: return when buffer<bufLen success got a value buffer '%{public}s'", buffer);
-        judgmentOne = true;
+        g_judgment1 = true;
     }
 }
 
@@ -868,11 +868,11 @@ void OnURLRequestStart34(const ArkWeb_SchemeHandler *schemeHandler,
     uint64_t position = OH_ArkWebHttpBodyStream_GetPosition(nullptr);
     if (position == 0) {
         OH_LOG_INFO(LOG_APP, "Test passed: position '%{public}llu' ", position);
-        judgmentOne = true;
+        g_judgment1 = true;
         result_num = position;
     } else {
         OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value position '%{public}llu'", position);
-        judgmentTwo = true;
+        g_judgment2 = true;
     }
 }
 
@@ -884,14 +884,14 @@ void OnURLRequestStart35(const ArkWeb_SchemeHandler *schemeHandler,
 {
     *intercept = true;
     int64_t positionDestroy = OH_ArkWebResourceRequest_Destroy(nullptr);
-    if (positionDestroy == errorNum) {
+    if (positionDestroy == g_errorNum) {
         OH_LOG_INFO(LOG_APP, "Test passed: positionDestroy '%{public}lld' ", positionDestroy);
-        judgmentOne = true;
-        result_num = errorNum;
+        g_judgment1 = true;
+        result_num = g_errorNum;
     } else {
         OH_LOG_INFO(LOG_APP, "Test failed: should be NULL but got a value positionDestroy '%{public}lld'",
                     positionDestroy);
-        judgmentTwo = true;
+        g_judgment2 = true;
     }
 }
 
@@ -908,7 +908,7 @@ void OnURLRequestStart36(const ArkWeb_SchemeHandler *schemeHandler,
         return;
     }
     OH_ArkWeb_ReleaseString(dynamicString); // 如果字符串被成功释放，那么指针应该指向一个空指针或者无效的内存地址。
-    judgmentTwo = false;
+    g_judgment2 = false;
     OH_LOG_INFO(LOG_APP, "Test passed, free success");
 }
 
@@ -927,7 +927,7 @@ void OnURLRequestStart37(const ArkWeb_SchemeHandler *schemeHandler,
     }
     // 假设 OH_ArkWeb_ReleaseString 是释放内存的函数
     OH_ArkWeb_ReleaseString(emptyString);
-    judgmentTwo = false;
+    g_judgment2 = false;
     OH_LOG_INFO(LOG_APP, "Test passed, Empty string released successfully");
 }
 
@@ -942,7 +942,7 @@ void OnURLRequestStart38(const ArkWeb_SchemeHandler *schemeHandler,
     int oldErrno = errno;
     // 调用释放函数
     OH_ArkWeb_ReleaseString(nullString);
-    judgmentTwo = true;
+    g_judgment2 = true;
     OH_LOG_INFO(LOG_APP, "Test passed, nullptr string release failed as expected");
 }
 
@@ -963,7 +963,7 @@ void OnURLRequestStart39(const ArkWeb_SchemeHandler *schemeHandler,
     }
     // 调用释放函数
     OH_ArkWeb_ReleaseByteArray(byteArray);
-    judgmentTwo = false;
+    g_judgment2 = false;
     OH_LOG_INFO(LOG_APP, "Test passed, Empty byteArray released successfully");
 }
 
@@ -979,7 +979,7 @@ void OnURLRequestStart40(const ArkWeb_SchemeHandler *schemeHandler,
         return;
     }
     OH_ArkWeb_ReleaseByteArray(emptyByteArray);
-    judgmentTwo = false;
+    g_judgment2 = false;
     OH_LOG_INFO(LOG_APP, "Test passed, Empty byteArray released successfully");
 }
 
@@ -994,7 +994,7 @@ void OnURLRequestStart41(const ArkWeb_SchemeHandler *schemeHandler,
     int oldErrno = errno;
     // 调用释放函数
     OH_ArkWeb_ReleaseByteArray(nullArray);
-    judgmentTwo = true;
+    g_judgment2 = true;
     OH_LOG_INFO(LOG_APP, "Test passed, nullptr string release failed as expected");
 }
 
@@ -1008,10 +1008,10 @@ void OnURLRequestStart42(const ArkWeb_SchemeHandler *schemeHandler,
     ArkWeb_HttpBodyStream *httpBodyStream;
     bool bodyStreamIsEof = OH_ArkWebHttpBodyStream_IsEof(httpBodyStream);
     if (!bodyStreamIsEof) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, BodyStream_IsEof:%{public}s", bodyStreamIsEof  ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, BodyStream_IsEof:%{public}s", bodyStreamIsEof  ? "true" : "false");
     }
 }
@@ -1026,10 +1026,10 @@ void OnURLRequestStart43(const ArkWeb_SchemeHandler *schemeHandler,
     char *referrer = nullptr;
     OH_ArkWebResourceRequest_GetReferrer(resource_Request, &referrer);
     if (referrer == nullptr) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, Failed to get referrer:'%{public}s'", referrer);
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, Success to get referrer:'%{public}s'", referrer);
         OH_ArkWeb_ReleaseString(referrer);
     }
@@ -1046,11 +1046,11 @@ void OnURLRequestStart44(const ArkWeb_SchemeHandler *schemeHandler,
     ArkWeb_SchemeHandler *scheme_Handler;
     bool result = OH_ArkWeb_SetSchemeHandler(scheme, webTag, scheme_Handler);
     if (!result) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme is nullptr result:'%{public}s'",
                     result ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme is nullptr result:'%{public}s'",
                     result ? "true" : "false");
     }
@@ -1071,11 +1071,11 @@ void OnURLRequestStart45(const ArkWeb_SchemeHandler *schemeHandler,
         result = false;
     }
     if (!result) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme is an empty string, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme is an empty string, result:'%{public}s'",
                     result ? "true" : "false");
     }
@@ -1092,11 +1092,11 @@ void OnURLRequestStart46(const ArkWeb_SchemeHandler *schemeHandler,
     ArkWeb_SchemeHandler *scheme_Handler;
     bool result = OH_ArkWeb_SetSchemeHandler(scheme, webTag, scheme_Handler);
     if (!result) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, returned false when webTag is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, returned true when webTag is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     }
@@ -1117,11 +1117,11 @@ void OnURLRequestStart47(const ArkWeb_SchemeHandler *schemeHandler,
         result = false;
     }
     if (!result) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, returned false when webTag is an empty string, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, returned true when webTag is an empty string, result:'%{public}s'",
                     result ? "true" : "false");
     }
@@ -1138,11 +1138,11 @@ void OnURLRequestStart48(const ArkWeb_SchemeHandler *schemeHandler,
     ArkWeb_SchemeHandler *scheme_Handler = nullptr;
     bool result = OH_ArkWeb_SetSchemeHandler(scheme, webTag, scheme_Handler);
     if (!result) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme_Handler is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme_Handler is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     }
@@ -1163,12 +1163,12 @@ void OnURLRequestStart49(const ArkWeb_SchemeHandler *schemeHandler,
         result = false;
     }
     if (!result) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP,
                     "Test passed, returned false when scheme_Handler before BrowserContext, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, returned true when before BrowserContext, result:'%{public}s'",
                     result ? "true" : "false");
     }
@@ -1183,11 +1183,11 @@ void OnURLRequestStart50(const ArkWeb_SchemeHandler *schemeHandler,
     ArkWeb_SchemeHandler *scheme_Handler;
     bool result = OH_ArkWebServiceWorker_SetSchemeHandler(nullptr, scheme_Handler);
     if (!result) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme is an empty , result:'%{public}s'",
                     result ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme is an empty , result:'%{public}s'",
                     result ? "true" : "false");
     }
@@ -1203,11 +1203,11 @@ void OnURLRequestStart51(const ArkWeb_SchemeHandler *schemeHandler,
     ArkWeb_SchemeHandler *scheme_Handler;
     bool result = OH_ArkWebServiceWorker_SetSchemeHandler(scheme, scheme_Handler);
     if (!result) {
-        judgmentTwo = true;
+        g_judgment2 = true;
         OH_LOG_INFO(LOG_APP, "Test passed, returned false when scheme is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     } else {
-        judgmentOne = true;
+        g_judgment1 = true;
         OH_LOG_INFO(LOG_APP, "Test failed, returned true when scheme is nullptr, result:'%{public}s'",
                     result ? "true" : "false");
     }
@@ -1316,18 +1316,20 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "set scheme handler");
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandler);
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandlerForSW);
-    int A = 1; int B = 18;
-    int C = 22; int D = 51;
+    int A = 1;
+    int B = 18;
+    int C = 22;
+    int D = 51;
     if ((A <= g_parameter && g_parameter < B) || (C <= g_parameter && g_parameter <= D)) {
-	    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStartArray[g_parameter - 1]);
-        OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
-        OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStartArray[g_parameter - 1]);
-        OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStartArray[g_parameter - 1]);
+    OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStartArray[g_parameter - 1]);
+    OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
     } else {
-     	OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart);
-        OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
-        OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart);
-        OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
+    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart);
+    OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
+    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStart);
+    OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
     }
     OH_ArkWeb_SetSchemeHandler("custom", "scheme-handler", g_schemeHandler);
     OH_ArkWeb_SetSchemeHandler("custom-csp-bypassing", "scheme-handler", g_schemeHandler);
@@ -1379,7 +1381,7 @@ static napi_value Judgment_num(napi_env env, napi_callback_info info)
 static napi_value Judgment_num_2(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if (judgmentTwo) {
+    if (g_judgment2) {
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
@@ -1395,21 +1397,12 @@ static napi_value Url_return(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Judgment(napi_env env, napi_callback_info info)
-{
-    napi_value result;
-    if (judgment_) {
-        napi_create_int32(env, 0, &result);
-    } else {
-        napi_create_int32(env, -1, &result);
-    }
-    return result;
-}
+
 
 static napi_value Judgment1(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if (judgmentOne) {
+    if (g_judgment1) {
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
@@ -1420,7 +1413,7 @@ static napi_value Judgment1(napi_env env, napi_callback_info info)
 static napi_value Judgment2(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if (judgmentTwo) {
+    if (g_judgment2) {
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
@@ -1451,7 +1444,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"judgment_num", nullptr, Judgment_num, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"judgment_num_2", nullptr, Judgment_num_2, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"url_return", nullptr, Url_return, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"judgment", nullptr, Judgment, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"judgment1", nullptr, Judgment1, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"judgment2", nullptr, Judgment2, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"returnsMethod", nullptr, ReturnsMethod, nullptr, nullptr, nullptr, napi_default, nullptr},

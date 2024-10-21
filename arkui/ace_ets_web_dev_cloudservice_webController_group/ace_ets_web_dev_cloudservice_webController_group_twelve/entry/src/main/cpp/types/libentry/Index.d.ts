@@ -22,7 +22,6 @@ export const setStatus: () => number;
 export const judgment_num: () => number;
 export const judgment_num_2: () => number;
 export const url_return: () => string ;
-export const judgment: () => number ;
 export const judgment1: () => number;
 export const judgment2: () => number;
 export const returnsMethod: () => string;
