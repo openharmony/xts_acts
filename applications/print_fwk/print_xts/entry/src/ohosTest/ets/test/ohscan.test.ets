@@ -16,8 +16,8 @@
 import { describe, expect, it } from '@ohos/hypium'
 import entry from 'libentry.so'
 
-export default function oHScanTest() {
-  describe('OHScanTest', () => {
+export default function oHScannerServicesInterfaceTest() {
+  describe('oHScannerServicesInterfaceTest', () => {
     /**
      * @tc.number     : SUB_PRINT_FWK_OH_SCAN_TEST_0100
      * @tc.name       : testOHScan001
