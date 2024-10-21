@@ -48,6 +48,9 @@
       },
       {
         "name": "ohos.permission.MODIFY_AUDIO_SETTINGS"
+      },
+      {
+        "name": "ohos.permission.READ_PASTEBOARD"
       }
     ]
   }
