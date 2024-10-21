@@ -1235,62 +1235,35 @@ void OnURLRequestStopForSW(const ArkWeb_SchemeHandler *schemeHandler, const ArkW
     }
 }
 typedef void (*RequestStartFunc)(
-    const ArkWeb_SchemeHandler*, 
-    ArkWeb_ResourceRequest*, 
-    const ArkWeb_ResourceHandler*, 
+    const ArkWeb_SchemeHandler*,
+    ArkWeb_ResourceRequest*,
+    const ArkWeb_ResourceHandler*,
     bool*);
-    RequestStartFunc OnURLRequestStartArray[] = {
-        OnURLRequestStart1,
-        OnURLRequestStart2,
-        OnURLRequestStart3,
-        OnURLRequestStart4,
-        OnURLRequestStart5,
-        OnURLRequestStart6,
-        OnURLRequestStart7,
-        OnURLRequestStart8,
-        OnURLRequestStart9,
-        OnURLRequestStart10,
-        OnURLRequestStart11,
-        OnURLRequestStart12,
-        OnURLRequestStart13,
-        OnURLRequestStart14,
-        OnURLRequestStart15,
-        OnURLRequestStart16,
-        OnURLRequestStart17,
-        nullptr,
-        nullptr,
-        nullptr,
-        nullptr,
-        OnURLRequestStart22,
-        OnURLRequestStart23,
-        OnURLRequestStart24,
-        OnURLRequestStart25,
-        OnURLRequestStart26,
-        OnURLRequestStart27,
-        OnURLRequestStart28,
-        OnURLRequestStart29,
-        OnURLRequestStart30,
-        OnURLRequestStart31,
-        nullptr,
-        nullptr,
-        OnURLRequestStart34,
-        OnURLRequestStart35,
-        OnURLRequestStart36,
-        OnURLRequestStart37,
-        OnURLRequestStart38,
-        OnURLRequestStart39,
-        OnURLRequestStart40,
-        OnURLRequestStart41,
-        OnURLRequestStart42,
-        OnURLRequestStart43,
-        OnURLRequestStart44,
-        OnURLRequestStart45,
-        OnURLRequestStart46,
-        OnURLRequestStart47,
-        OnURLRequestStart48,
-        OnURLRequestStart49,
-        OnURLRequestStart50,
-        OnURLRequestStart51,
+    RequestStartFunc onURLRequestStartArray[] = {
+        OnURLRequestStart1, OnURLRequestStart2,
+        OnURLRequestStart3, OnURLRequestStart4,
+        OnURLRequestStart5, OnURLRequestStart6,
+        OnURLRequestStart7, OnURLRequestStart8,
+        OnURLRequestStart9, OnURLRequestStart10,
+        OnURLRequestStart11, OnURLRequestStart12,
+        OnURLRequestStart13, OnURLRequestStart14,
+        OnURLRequestStart15, OnURLRequestStart16,
+        OnURLRequestStart17, nullptr, nullptr,
+        nullptr, nullptr, OnURLRequestStart22,
+        OnURLRequestStart23, OnURLRequestStart24,
+        OnURLRequestStart25, OnURLRequestStart26,
+        OnURLRequestStart27, OnURLRequestStart28,
+        OnURLRequestStart29, OnURLRequestStart30,
+        OnURLRequestStart31, nullptr, nullptr,
+        OnURLRequestStart34, OnURLRequestStart35,
+        OnURLRequestStart36, OnURLRequestStart37,
+        OnURLRequestStart38, OnURLRequestStart39,
+        OnURLRequestStart40, OnURLRequestStart41,
+        OnURLRequestStart42, OnURLRequestStart43,
+        OnURLRequestStart44, OnURLRequestStart45,
+        OnURLRequestStart46, OnURLRequestStart47,
+        OnURLRequestStart48, OnURLRequestStart49,
+        OnURLRequestStart50, OnURLRequestStart51,
         nullptr
     };
 // 设置SchemeHandler。
@@ -1321,9 +1294,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     int three = 22;
     int four = 51;
     if ((one <= g_parameter && g_parameter < two) || (three <= g_parameter && g_parameter <= four)) {
-    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStartArray[g_parameter - 1]);
+    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, onURLRequestStartArray[g_parameter - 1]);
     OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
-    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStartArray[g_parameter - 1]);
+    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, onURLRequestStartArray[g_parameter - 1]);
     OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
     } else {
     OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart);
