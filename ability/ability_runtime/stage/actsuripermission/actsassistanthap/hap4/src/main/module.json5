@@ -32,12 +32,14 @@
     "abilities": [
       {
         "name": "Hap4MainAbility1",
-        "srcEntrance": "./ets/Hap4MainAbility1/Hap4MainAbility1.ts",
+        "srcEntry": "./ets/Hap4MainAbility1/Hap4MainAbility1.ts",
         "description": "$string:Hap4MainAbility1_desc",
         "icon": "$media:icon",
         "label": "$string:Hap4MainAbility1_label",
         "visible": true,
-        "orientation": "portrait"
+        "orientation": "portrait",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background"
       }
     ]
   }
