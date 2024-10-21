@@ -67,7 +67,7 @@ const adResponse =
     "}";
 
 export default function adsTestPart2() {
-  describe('ActsAdsTest', function () {
+  describe('ActsAdsTest1', function () {
     /**
      * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0500
      * @tc.name: testGetAdRequestBody
