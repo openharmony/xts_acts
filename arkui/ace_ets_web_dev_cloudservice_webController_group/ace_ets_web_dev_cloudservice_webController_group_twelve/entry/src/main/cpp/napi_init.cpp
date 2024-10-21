@@ -42,7 +42,7 @@ int g_parameter = 0;
 int g_errorNum = 17100101;
 bool g_judgment1 = false;
 bool g_judgment2 = false;
-char *returnMethod;
+char *g_return;
 
 // 注册三方协议的配置，需要在Web内核初始化之前调用，否则会注册失败。
 static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info)
@@ -97,15 +97,15 @@ void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    int url_len = 0;
+    int urlLen  = 0;
     while (*protocol) {
-        url[url_len++] = *protocol++;
+        url[urlLen ++] = *protocol++;
     }
     while (*domain) {
-        url[url_len++] = *domain++;
+        url[urlLen ++] = *domain++;
     }
-    if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0';
+    if (urlLen  < sizeof(url) - 1) {
+        url[urlLen ] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -161,15 +161,15 @@ void OnURLRequestStart4(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "com.baidu123.www";
     char url[256];
-    int url_len = 0;
+    int urlLen  = 0;
     while (*protocol) {
-        url[url_len++] = *protocol++;
+        url[urlLen ++] = *protocol++;
     }
     while (*domain) {
-        url[url_len++] = *domain++;
+        url[urlLen ++] = *domain++;
     }
-    if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0';
+    if (urlLen  < sizeof(url) - 1) {
+        url[urlLen ] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -200,15 +200,15 @@ void OnURLRequestStart5(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    int url_len = 0;
+    int urlLen  = 0;
     while (*protocol) {
-        url[url_len++] = *protocol++;
+        url[urlLen ++] = *protocol++;
     }
     while (*domain) {
-        url[url_len++] = *domain++;
+        url[urlLen ++] = *domain++;
     }
-    if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0';
+    if (urlLen  < sizeof(url) - 1) {
+        url[urlLen ] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -241,15 +241,15 @@ void OnURLRequestStart6(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    int url_len = 0;
+    int urlLen  = 0;
     while (*protocol) {
-        url[url_len++] = *protocol++;
+        url[urlLen ++] = *protocol++;
     }
     while (*domain) {
-        url[url_len++] = *domain++;
+        url[urlLen ++] = *domain++;
     }
-    if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0';
+    if (urlLen  < sizeof(url) - 1) {
+        url[urlLen ] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -282,15 +282,15 @@ void OnURLRequestStart7(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    int url_len = 0;
+    int urlLen  = 0;
     while (*protocol) {
-        url[url_len++] = *protocol++;
+        url[urlLen ++] = *protocol++;
     }
     while (*domain) {
-        url[url_len++] = *domain++;
+        url[urlLen ++] = *domain++;
     }
-    if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0';
+    if (urlLen  < sizeof(url) - 1) {
+        url[urlLen ] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -323,15 +323,15 @@ void OnURLRequestStart8(const ArkWeb_SchemeHandler *schemeHandler,
     const char *protocol = "https://";
     const char *domain = "www.baidu.com/";
     char url[256];
-    int url_len = 0;
+    int urlLen  = 0;
     while (*protocol) {
-        url[url_len++] = *protocol++;
+        url[urlLen ++] = *protocol++;
     }
     while (*domain) {
-        url[url_len++] = *domain++;
+        url[urlLen ++] = *domain++;
     }
-    if (url_len < sizeof(url) - 1) {
-        url[url_len] = '\0';
+    if (urlLen  < sizeof(url) - 1) {
+        url[urlLen ] = '\0';
     } else {
         url[sizeof(url) - 1] = '\0'; // 确保字符串以空字符结束
     }
@@ -737,7 +737,7 @@ void OnURLRequestStart26(const ArkWeb_SchemeHandler *schemeHandler,
     const char *greeting = "GET";
     OH_ArkWebResourceRequest_GetMethod(resourceRequest, &method);
     if (strcmp(method, greeting) == 0) {
-        returnMethod = method;
+        g_return = method;
         OH_LOG_INFO(LOG_APP, "Succeed to get request method, the method is: %{public}s", method);
     } else {
         OH_LOG_ERROR(LOG_APP, "Failed to get request method, the method is: %{public}s", method);
@@ -1235,9 +1235,9 @@ void OnURLRequestStopForSW(const ArkWeb_SchemeHandler *schemeHandler, const ArkW
     }
 }
 typedef void (*RequestStartFunc)(
-    const ArkWeb_SchemeHandler*,
-    ArkWeb_ResourceRequest*,
-    const ArkWeb_ResourceHandler*,
+    const ArkWeb_SchemeHandler*, 
+    ArkWeb_ResourceRequest*, 
+    const ArkWeb_ResourceHandler*, 
     bool*);
     RequestStartFunc OnURLRequestStartArray[] = {
         OnURLRequestStart1,
@@ -1316,11 +1316,11 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "set scheme handler");
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandler);
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandlerForSW);
-    int A = 1;
-    int B = 18;
-    int C = 22;
-    int D = 51;
-    if ((A <= g_parameter && g_parameter < B) || (C <= g_parameter && g_parameter <= D)) {
+    int one = 1;
+    int two = 18;
+    int three = 22;
+    int four = 51;
+    if ((one <= g_parameter && g_parameter < two) || (three <= g_parameter && g_parameter <= four)) {
     OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStartArray[g_parameter - 1]);
     OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
     OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, OnURLRequestStartArray[g_parameter - 1]);
@@ -1397,8 +1397,6 @@ static napi_value Url_return(napi_env env, napi_callback_info info)
     return result;
 }
 
-
-
 static napi_value Judgment1(napi_env env, napi_callback_info info)
 {
     napi_value result;
@@ -1423,7 +1421,7 @@ static napi_value Judgment2(napi_env env, napi_callback_info info)
 static napi_value ReturnsMethod(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    napi_status status = napi_create_string_utf8(env, returnMethod, NAPI_AUTO_LENGTH, &result);
+    napi_status status = napi_create_string_utf8(env, g_return, NAPI_AUTO_LENGTH, &result);
     if (status != napi_ok) {
         napi_throw_error(env, NULL, "Unable to create string");
         return NULL;
