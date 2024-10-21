@@ -15,6 +15,7 @@
 import events_emitter from '@ohos.events.emitter'
 import webview from '@ohos.web.webview'
 import Utils from '../../test/Utils'
+import CommonConstants from '../../test/constant'
 import business_error from '@ohos.base'
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
@@ -367,13 +368,13 @@ struct webAdsBlockManager {
                     }
 
                     case 'emitOnAdsBlockedTest': {
-                      this.controller.loadUrl("https://www.hao123.com/");
+                      this.controller.loadUrl(CommonConstants.ADS_URL1);
                       Utils.sleep(4000);
-                      this.controller.loadUrl("https://www.163.com/");
+                      this.controller.loadUrl(CommonConstants.ADS_URL2);
                       Utils.sleep(4000);
-                      this.controller.loadUrl("https://www.2345.com/");
+                      this.controller.loadUrl(CommonConstants.ADS_URL3);
                       Utils.sleep(4000);
-                      this.controller.loadUrl("https://www.4399.com/");
+                      this.controller.loadUrl(CommonConstants.ADS_URL4);
                       Utils.sleep(2000);
 
                       if (this.testOnAdsBlockedDetails) {
