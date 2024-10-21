@@ -23,6 +23,21 @@ import window from '@ohos.window';
 export default function pasteComponentTest() {
   describe('pasteComponentTest', function () {
     beforeAll(async function (done) {
+      try {
+        let driver = Driver.create();
+        await Utils.sleep(500);
+        let dialog_usb = await driver.findComponent(ON.type('Dialog'));
+        if (dialog_usb !== null) {
+          let button = await driver.findComponent(ON.id('advanced_dialog_button_0'));
+          console.info("====>beforeAll USB_Dialog button is : " + JSON.stringify(button));
+          await button.click();
+          await Utils.sleep(500);
+        } else {
+          console.info("====>beforeAll USB_Dialog not exist.");
+        }
+      } catch (err) {
+        console.info("====>beforeAll USB_Dialog err : " + JSON.stringify(err));
+      }
       let options = {
         url: 'MainAbility/pages/pasteButton',
       }
