@@ -112,7 +112,7 @@ function displayDeviceProp(value: ESObject, index: number, array: ESObject) {
   cMask = value.channelMasks;
   console.info(`${TagFrmwk}: device info: ${value}`);
 }
-let getPermission = () => {
+export function getPermission() {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
   let testContext:ESObject = AppStorage.get('testContext');
   let permissions: Array<Permissions> =
@@ -124,7 +124,7 @@ let getPermission = () => {
     })
 }
 
-async function driveFn() {
+export async function driveFn() {
   console.info(`come in driveFn`);
   let driver = await UiDriver.create();
   console.info(`driver is ${JSON.stringify(driver)}`);
@@ -139,13 +139,12 @@ async function driveFn() {
   await sleep(100);
   await button.click();
 }
+
 export default function audioFramework() {
 
   describe('audioFramework', () => {
     beforeAll(async () => {
-      getPermission();
-      await driveFn();
-      await sleep(100);
+      sleep(1000);
       await getAudioManager();
       await getVolumeGroupManager();
       console.info('TestLog: Start Testing AudioFrameworkTest Interfaces');
