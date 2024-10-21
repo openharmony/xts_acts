@@ -8,6 +8,8 @@
         "MainAbility/pages/setPolyToPoly",
         "MainAbility/pages/Particle/Particle",
         "MainAbility/pages/SymbolGlyph/SymbolGlyph",
-	"MainAbility/pages/Particle/particleAnimationTest"
+        "MainAbility/pages/Particle/particleAnimationTest",
+        "MainAbility/pages/Particle/particleAttributeTest"
+
     ]
 }
