@@ -20,7 +20,7 @@ import common2D from '@ohos.graphics.common2D';
 import { getEnumCount } from './utils';
 
 export default function drawingTsCanvasPart5Test() {
-  describe('DrawingTsCanvas5Test', () => {
+  describe('DrawingTsCanvasPart5Test', () => {
     let pixel: image.PixelMap;
     const DEFAULT = 0;
     let pixelMap: image.PixelMap;
