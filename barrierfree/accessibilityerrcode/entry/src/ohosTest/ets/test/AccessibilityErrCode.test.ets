@@ -1102,6 +1102,52 @@ export default function abilityTest() {
     })
 
     /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0403
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0403
+    * @tc.desc    test AccessibilityGetCursorPosition
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0403', 0, async function (done) {
+      if (axContext != null) {
+        let isAccessibilityFocus = true;
+        try {
+          axContext.getFocusElement(isAccessibilityFocus, (err, rootElement) => {
+            if (err) {
+              console.error('failed to get focus element, because ' + JSON.stringify(err));
+              done();
+              return;
+            }
+            rootElement.findElement('id', '-100000').then((subElement) => {
+              console.log('subElement' + JSON.stringify(subElement));
+              subElement.getCursorPosition().then((data: number) => {
+                console.info('get cursorPosition success');
+                expect(data == -1).assertTrue();
+              }).catch((err) => {
+                console.log('failed to getCursorPosition, because ' + JSON.stringify(err));
+                expect(false).assertTrue();
+                done();
+              });
+              done();
+            }).catch((err) => {
+              console.log('failed to find element, because ' + JSON.stringify(err));
+              expect(false).assertTrue();
+              done();
+            });
+          });
+        } catch (exception) {
+          console.error('failed to get focus element, because ' + JSON.stringify(exception));
+          expect(false).assertTrue();
+          done();
+        }
+      } else {
+        console.log('axContext null');
+        done();
+      }
+    })
+
+    /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0500
     * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibilityErrCode0500
     * @tc.desc    test AccessibilityGetWindowRootElement
