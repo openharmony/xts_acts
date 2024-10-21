@@ -20,7 +20,7 @@ struct ParticleExample2 {
   build() {
     Column() {
       Column() {
-        Text(this.text).id("text")
+        Text(this.text).id('text')
       }
       Stack() {
         Text()
@@ -148,11 +148,11 @@ struct ParticleExample2 {
           noiseFrequency: 15,
           noiseAmplitude: 5,
         }]).key("particleTest")
-          .id("btn")
+          .id('btn')
           .onClick(() => {
             this.text = '1';
           })
-       }.width("100%").height("100%").align(Alignment.Center)
+       }.width('100%').height('100%').align(Alignment.Center)
     }
   }
 }
