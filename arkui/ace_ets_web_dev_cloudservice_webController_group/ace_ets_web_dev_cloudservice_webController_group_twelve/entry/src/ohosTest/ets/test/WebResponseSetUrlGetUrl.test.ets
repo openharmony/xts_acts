@@ -34,9 +34,7 @@ export default function webviewNApi() {
         console.info('get webviewBFCacheSuspendPlayer state success ' + JSON.stringify(pages));
         if (!('Index' == pages.name)) {
           console.info('get index state success ' + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info('push index state success ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push index page error:' + err);
