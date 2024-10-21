@@ -18,7 +18,7 @@ import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 
 export default function flexOffset_StretchJsunit() {
-  describe('flexItemAlignStretchTest', () => {
+  describe('flexOffset_StretchJsunit', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexOffset',
