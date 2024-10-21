@@ -4617,7 +4617,7 @@ export default function TaskPoolTest() {
      */
     it('TaskPoolTestClass202', 0, async (done: Function) => {
       let isTerminate1: boolean = false;
-      let isTerminate2: boolean = true;
+      let isTerminate2: boolean = false;
       let task1 = new taskpool.Task(sendableFuncTest, sendableFunc);
       taskpool.execute(task1).then((res) => {
         isTerminate1 = true;
@@ -4653,6 +4653,104 @@ export default function TaskPoolTest() {
       } catch (e) {
         expect(e.toString()).assertEqual('BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed');
       }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0204
+     * @tc.name      : TaskPoolTestClass204
+     * @tc.desc      : Register a callback of TaskGroup
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass204', 0, async (done: Function) => {
+      let isTerminate: boolean = false;
+      let result: number = 0;
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+      let task1: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: test number
+      task1.onExecutionSucceeded(()=>{
+        result += 100;
+      })
+      let task2: taskpool.Task = new taskpool.Task(printArgs, 200); // 200: test number
+      task2.onExecutionSucceeded(()=>{
+        result += 200;
+      })
+      taskGroup.addTask(task1);
+      taskGroup.addTask(task2);
+      taskpool.execute(taskGroup).then((res) => {
+        isTerminate = true;
+        expect(res.includes(100)).assertTrue();
+        expect(res.includes(200)).assertTrue();
+      })
+      while (!isTerminate) {
+        await promiseCase();
+      }
+      expect(result).assertEqual(300);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0205
+     * @tc.name      : TaskPoolTestClass205
+     * @tc.desc      : Register a callback of TaskGroup
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass205', 0, async (done: Function) => {
+      let isTerminate: boolean = false;
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+      let task1: taskpool.Task = new taskpool.Task(hashMapTest, 300); // 300: test number
+      task1.onExecutionFailed((e:Error)=>{
+        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+      })
+      taskGroup.addTask(task1);
+      taskpool.execute(taskGroup).then((res)=>{
+      }).catch((e:BusinessError)=>{
+        isTerminate = true;
+      })
+      while (!isTerminate) {
+        await promiseCase();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0206
+     * @tc.name      : TaskPoolTestClass206
+     * @tc.desc      : Register a callback of SequenceRunner
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass206', 0, async (done: Function) => {
+      let result: number = 0;
+      let isTerminate: boolean = false;
+      let task1: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
+      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 300);
+      let task3: taskpool.Task = new taskpool.Task(hashMapTest, 100);
+
+      task1.onExecutionSucceeded(()=>{
+        result += 500;
+      })
+      task2.onExecutionSucceeded(()=>{
+        result += 300;
+      })
+      task3.onExecutionFailed((e:Error)=>{
+        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+      })
+      let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
+      runner.execute(task1);
+      runner.execute(task2);
+      runner.execute(task3).then((res)=>{
+      }).catch((e:BusinessError)=>{
+        isTerminate = true;
+      })
+      while (!isTerminate) {
+        await promiseCase();
+      }
+      expect(result).assertEqual(800);
       done();
     })
   })
