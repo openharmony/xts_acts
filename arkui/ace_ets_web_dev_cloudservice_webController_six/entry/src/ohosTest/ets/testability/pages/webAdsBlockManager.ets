@@ -367,6 +367,15 @@ struct webAdsBlockManager {
                     }
 
                     case 'emitOnAdsBlockedTest': {
+                      this.controller.loadUrl("https://www.hao123.com/");
+                      Utils.sleep(4000);
+                      this.controller.loadUrl("https://www.163.com/");
+                      Utils.sleep(4000);
+                      this.controller.loadUrl("https://www.2345.com/");
+                      Utils.sleep(4000);
+                      this.controller.loadUrl("https://www.4399.com/");
+                      Utils.sleep(2000);
+
                       if (this.testOnAdsBlockedDetails) {
                         Utils.emitEvent(true, 1015)
                       } else {
