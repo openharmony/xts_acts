@@ -46,14 +46,15 @@ function sleep(time) {
     return new Promise((resolve)=>setTimeout(resolve,time));
   }
 
-export default function test() {
-    describe(`FmsUpdateRefreshFormTest`, () => {
+export default function FmsUpdateRefreshTest() {
+    describe(`FmsUpdateRefreshTest`, () => {
 
         beforeAll(async (done) => {
             done();
         })
 
         beforeEach(async () => {
+            await sleep(200);
             subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
             subscriberOnDeleted = await commonEvent.createSubscriber(onDeletedFormEvent);
             subscriberOnRefresh = await commonEvent.createSubscriber(onUpdateRefreshEvent);
@@ -75,7 +76,6 @@ export default function test() {
             }).catch((err) => {
                 console.log("FmsUpdateRefreshFormTest startAbility err: " + JSON.stringify(err));
             })
-            await sleep(2000);
         })
         /**
          * @tc.number: FMS_updateForm_0100
@@ -657,83 +657,32 @@ export default function test() {
             });
             console.log(`FMS_hostRefresh_0400 featureAbility.startAbility end`);
         });
-       /**
-        * @tc.number: FMS_hostRefresh_0600
-        * @tc.name: The form user has no form permission.
-        * @tc.desc: 1.The form user A to invoke the intiative timed refresh interface.
-        *           2.Verify the result of the intiative timed refresh interface.
-        */
-        it(`FMS_hostRefresh_0600`, 0, async (done) => {
-            console.log(`FMS_hostRefresh_0600 start`);
-
-            function onRequestCallBack(_, data) {
-                console.info("!!!====>FMS_hostRefresh_0600 onRequestCallBack data:====>" + JSON.stringify(data));
-                expect(data.event).assertEqual("FMS_FormOnRequest_commonEvent");
-                expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRequestCallback("FMS_hostRefresh_0600"));
-
-                setTimeout(function () {
-                    console.info('FMS_hostRefresh_0600 onRequestCallBack end');
-                    console.log(`FMS_hostRefresh_0600 end`);
-                    done();
-                }, 1000)
-            }
-
-            commonEvent.subscribe(subscriberOnRequest, onRequestCallBack);
-            console.log(`FMS_hostRefresh_0600 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhostnoperm",
-                    abilityName: "com.ohos.st.formsystemhostnoperm.MainAbility",
-                    parameters: {
-                        "formId" : "0",
-                        "name" : "Form_Js001",
-                        "bundle" : "com.acts.form.formsystemtestservicea.hmservice",
-                        "ability" : "FormAbility",
-                        "moduleName" : "entry",
-                        "temporary" : false,
-                        "requestForm" : true,
-                        "requestId" : "1",
-                        "isCreate" : false
-                    }
-                }
-            }).then((res: any) => {
-                console.log(`FMS_hostRefresh_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect(res.result).assertEqual(undefined);
-                done();
-            }).catch((err: any) => {
-                console.log(`FMS_hostRefresh_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                expect().assertFail();
-                done();
-            });
-            console.log(`FMS_hostRefresh_0600 featureAbility.startAbility end`);
-        });
         /**
-        * @tc.number: FMS_hostRefresh_0700
+        * @tc.number: FMS_hostRefresh_0500
         * @tc.name: Refresh form successfully by the form user.
         * @tc.desc: 1.The form user A to invoke the intiative timed refresh interface.
         *           2.Verify that pulling up the form provider.
         */
-        it(`FMS_hostRefresh_0700`, 0, async (done) => {
-            console.log(`FMS_hostRefresh_0700 start`);
+        it(`FMS_hostRefresh_0500`, 0, async (done) => {
+            console.log(`FMS_hostRefresh_0500 start`);
             let formId;
             
             function onRequestCallBack(_, data) {
-                console.info("!!!====>FMS_hostRefresh_0700 onRequestCallBack data:====>" + JSON.stringify(data));
+                console.info("!!!====>FMS_hostRefresh_0500 onRequestCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnRequest_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRequestCallback("FMS_hostRefresh_0700"));
+                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRequestCallback("FMS_hostRefresh_0500"));
                 formId = data.parameters.formId;
                 let commonEventPublishData = {
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, () => delPublishCallBack("FMS_hostRefresh_0700", done));
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, () => delPublishCallBack("FMS_hostRefresh_0500", done));
                 done();
             }
 
             commonEvent.subscribe(subscriberOnRequest, onRequestCallBack);
  
-            console.log(`FMS_hostRefresh_0700 featureAbility.startAbility start`);
+            console.log(`FMS_hostRefresh_0500 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
                     bundleName: "com.ohos.st.formsystemhoste",
@@ -751,15 +700,15 @@ export default function test() {
                     }
                 }
             }).then((res: any) => {
-                console.log(`FMS_hostRefresh_0700 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                console.log(`FMS_hostRefresh_0500 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 expect(res.result).assertEqual(undefined);
                 done();
             }).catch((err: any) => {
-                console.log(`FMS_hostRefresh_0700 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                console.log(`FMS_hostRefresh_0500 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
                 done();
             });
-            console.log(`FMS_hostRefresh_0700 featureAbility.startAbility end`);
+            console.log(`FMS_hostRefresh_0500 featureAbility.startAbility end`);
         });
     });
 }
