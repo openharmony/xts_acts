@@ -56,7 +56,7 @@ static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info)
     return nullptr;
 }
 
-void onURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler,
+void OnURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler,
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler,
                         bool *intercept)
@@ -81,7 +81,7 @@ void onURLRequestStart1(const ArkWeb_SchemeHandler *schemeHandler,
     OH_ArkWeb_DestroyResponse(response);
 }
 
-void onURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
+void OnURLRequestStart2(const ArkWeb_SchemeHandler *schemeHandler,
                         ArkWeb_ResourceRequest *resourceRequest,
                         const ArkWeb_ResourceHandler *resourceHandler,
                         bool *intercept)
@@ -1239,8 +1239,8 @@ typedef void (*RequestStartFunc)(
     ArkWeb_ResourceRequest*,
     const ArkWeb_ResourceHandler*,
     bool*);
-    RequestStartFunc onURLRequestStartArray[] = {
-        onURLRequestStart1, onURLRequestStart2,
+    RequestStartFunc g_onURLRequestStartArray[] = {
+        OnURLRequestStart1, OnURLRequestStart2,
         OnURLRequestStart3, OnURLRequestStart4,
         OnURLRequestStart5, OnURLRequestStart6,
         OnURLRequestStart7, OnURLRequestStart8,
@@ -1294,9 +1294,9 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     int three = 22;
     int four = 51;
     if ((one <= g_parameter && g_parameter < two) || (three <= g_parameter && g_parameter <= four)) {
-    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, onURLRequestStartArray[g_parameter - 1]);
+    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, g_onURLRequestStartArray[g_parameter - 1]);
     OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandler, OnURLRequestStop);
-    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, onURLRequestStartArray[g_parameter - 1]);
+    OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandlerForSW, g_onURLRequestStartArray[g_parameter - 1]);
     OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
     } else {
     OH_ArkWebSchemeHandler_SetOnRequestStart(g_schemeHandler, OnURLRequestStart);
