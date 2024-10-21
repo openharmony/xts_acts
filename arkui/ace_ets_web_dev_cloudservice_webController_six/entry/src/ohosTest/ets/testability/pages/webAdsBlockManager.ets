@@ -15,7 +15,7 @@
 import events_emitter from '@ohos.events.emitter'
 import webview from '@ohos.web.webview'
 import Utils from '../../test/Utils'
-import CommonConstants from '../../test/constant'
+import { CommonConstants } from '../../test/constant'
 import business_error from '@ohos.base'
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
