@@ -83,7 +83,7 @@ export default function webviewTerminateRenderProcess() {
      */
     it('emitTerminateRenderProcess0200', 0, async (done: Function) => {
       emitKey = "emitTerminateRenderProcess0300";
-      Utils.registerEvent("emitTerminateRenderProcess0200", "百度一下，你就知道", 5302, done);
+      Utils.registerEvent("emitTerminateRenderProcess0200", true, 5302, done);
       sendEventByKey('TerminateRenderProcess', 10, '');
     })
     /*
