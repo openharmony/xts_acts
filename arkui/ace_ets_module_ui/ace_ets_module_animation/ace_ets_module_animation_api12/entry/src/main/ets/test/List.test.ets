@@ -30,6 +30,6 @@ export default function testsuite() {
   ParticleTest();
   ParticleAnimatorTest();
   APIParticleEmitter();
-  animateToTest()；
+  animateToTest();
   ParticleAttributeTest();
 }
