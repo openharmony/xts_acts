@@ -21,9 +21,9 @@ import common from '@ohos.app.ability.common';
 
 export default function windowMaximizeTest() {
   describe('windowMaximize_test', () => {
-    let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
-    let context : common.UIAbilityContext;
-    let windowStage:ohosWindow.WindowStage;
+    let sleep = (sleepMs: number) => new Promise < string > (resolve => setTimeout(resolve, sleepMs));
+    let context: common.UIAbilityContext;
+    let windowStage: ohosWindow.WindowStage;
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -61,7 +61,7 @@ export default function windowMaximizeTest() {
           console.info(`Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
@@ -94,11 +94,11 @@ export default function windowMaximizeTest() {
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
             done();
@@ -129,11 +129,11 @@ export default function windowMaximizeTest() {
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
             done();
@@ -165,11 +165,11 @@ export default function windowMaximizeTest() {
           expect(immersiveModeEnabledState).assertTrue();
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect().assertFail();
             done();
@@ -201,11 +201,11 @@ export default function windowMaximizeTest() {
           expect(immersiveModeEnabledState).assertFalse();
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect().assertFail();
             done();
@@ -237,11 +237,11 @@ export default function windowMaximizeTest() {
           expect(immersiveModeEnabledState).assertTrue();
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect().assertFail();
             done();
@@ -273,11 +273,11 @@ export default function windowMaximizeTest() {
           expect(immersiveModeEnabledState).assertFalse();
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect().assertFail();
             done();
@@ -309,11 +309,11 @@ export default function windowMaximizeTest() {
           expect(immersiveModeEnabledState).assertTrue();
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect().assertFail();
             done();
@@ -345,11 +345,11 @@ export default function windowMaximizeTest() {
           expect(immersiveModeEnabledState).assertFalse();
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect().assertFail();
             done();
@@ -382,11 +382,11 @@ export default function windowMaximizeTest() {
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
           done();
         }).catch((err: BusinessError) => {
-          if(err.code == 801){
+          if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
             expect(true).assertTrue();
             done();
-          } else{
+          } else {
             console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
             done();
@@ -398,6 +398,763 @@ export default function windowMaximizeTest() {
         done();
       }
     })
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0100
+    * @tc.name      : testSetTitleAndDockHoverShow_subWindow_1300004
+    * @tc.desc      : testSetTitleAndDockHoverShow_subWindow_1300004
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('testSetTitleAndDockHoverShow_subWindow_1300004', 2, async (done: Function) => {
+      const message = 'testSetTitleAndDockHoverShow_subWindow_1300004';
+      try {
+        let subWindow = windowStage.createSubWindow("testSetTitleAndDockHoverShow_subWindow_1300004");
+        subWindow.then((data) => {
+          if (data == null) {
+            console.error("Failed to create the subWindow. Cause: The data is empty");
+            expect(false).assertTrue();
+            done();
+          }
+          let windowClass = data;
+          try {
+            let promise = windowClass.setTitleAndDockHoverShown(true, false);
+            promise.then(async () => {
+              console.info('Succeeded in setTitleAndDockHoverShown the window.');
+              windowClass.destroyWindow();
+              expect(false).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.info(`${message} The device type is not support`);
+                done();
+              }else if(err.code == 1300004) {
+                console.info(`${message} The subWindow is not support`);
+                expect(true).assertTrue();
+                done();
+              }else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (err) {
+            if (err.code == 801) {
+              console.info(`${message} The device type is not support`);
+              done();
+            } else {
+              console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+              expect(false).assertTrue();
+              done();
+            }
+          }
+        });
+      } catch (exception) {
+        console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0200
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_show_dock_hide_1
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_hide_1
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_1', 2, async (done: Function) => {
+      const message = 'testSetTitleAndDockHoverShow_Title_show_dock_hide_1';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+        promise.then(async () => {
+          console.info('Succeeded in maximizing the window.');
+          try {
+            let promise = windowClass.setTitleAndDockHoverShown(true, false);
+            promise.then(async () => {
+              console.info('Succeeded in setTitleAndDockHoverShown the window.');
+              windowClass.recover();
+              expect(true).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.info(`${message} The device type is not support`);
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (err) {
+            console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (exception) {
+        console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0300
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_show_dock_hide_2
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_hide_2
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_2', 2, async (done: Function) => {
+      const message = 'testSetTitleAndDockHoverShow_Title_show_dock_hide_2';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+        promise.then(async () => {
+          console.info('Succeeded in maximizing the window.');
+          try {
+            let promise = windowClass.setTitleAndDockHoverShown(undefined, false);
+            promise.then(async () => {
+              console.info('Succeeded in setTitleAndDockHoverShown the window.');
+              windowClass.recover();
+              expect(true).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.info(`${message} The device type is not support`);
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (err) {
+            console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (exception) {
+        console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0400
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_show_dock_hide_3
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_hide_3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('testSetTitleAndDockHoverShow_Title_show_dock_hide_3', 2, async (done: Function) => {
+      const message = 'testSetTitleAndDockHoverShow_Title_show_dock_hide_3';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+        promise.then(async () => {
+          console.info('Succeeded in maximizing the window.');
+          try {
+            let promise = windowClass.setTitleAndDockHoverShown(true, false);
+            promise.then(async () => {
+              console.info('Succeeded in setTitleAndDockHoverShown the window.');
+              windowClass.recover();
+              expect(true).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.info(`${message} The device type is not support`);
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (err) {
+            console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (exception) {
+        console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0500
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_1
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_1
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_1', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_1';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      try {
+        let promise = windowClass.setTitleAndDockHoverShown(false, false);
+        promise.then(async () => {
+          console.info('Succeeded in setTitleAndDockHoverShown the window.');
+          windowClass.recover();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(`${message} The device type is not support`);
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0600
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_2
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_2
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_2', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_2';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      await windowClass.recover();
+      expect(true).assertTrue();
+      done();
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0700
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_3
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_3', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_3';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.setTitleAndDockHoverShown(true, true);
+    promise.then(async () => {
+      console.info('Succeeded in setTitleAndDockHoverShown the window.');
+      let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+      promise.then(async () => {
+        console.info('Succeeded in maximizing the window.');
+        await windowClass.recover();
+        expect(true).assertTrue();
+        done();
+      }).catch((err: BusinessError) => {
+        console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801) {
+          done();
+        } else {
+          expect(false).assertTrue();
+          done();
+        }
+      });
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        console.info(`${message} The device type is not support`);
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0800
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_4
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_4
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_4', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_4';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.setTitleAndDockHoverShown(true, false);
+    promise.then(async () => {
+      console.info('Succeeded in setTitleAndDockHoverShown the window.');
+      let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+      promise.then(async () => {
+        console.info('Succeeded in maximizing the window.');
+        expect(true).assertTrue();
+        done();
+      }).catch((err: BusinessError) => {
+        console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801) {
+          done();
+        } else {
+          expect(false).assertTrue();
+          done();
+        }
+      });
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        console.info(`${message} The device type is not support`);
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_0900
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_5
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_hide_5
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_dock_hide_5', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_hide_5';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.setTitleAndDockHoverShown(false, true);
+    promise.then(async () => {
+      console.info('Succeeded in setTitleAndDockHoverShown the window.');
+      let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+      promise.then(async () => {
+        console.info('Succeeded in maximizing the window.');
+        await windowClass.recover();
+        expect(true).assertTrue();
+        done();
+      }).catch((err: BusinessError) => {
+        console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801) {
+          done();
+        } else {
+          expect(false).assertTrue();
+          done();
+        }
+      });
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        console.info(`${message} The device type is not support`);
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_1000
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_show_dock_show_1
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_show_1
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_show_dock_show_1', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_show_dock_show_1';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      try {
+        let promise = windowClass.setTitleAndDockHoverShown(true, true);
+        promise.then(async () => {
+          console.info('Succeeded in setTitleAndDockHoverShown the window.');
+          windowClass.recover();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(`${message} The device type is not support`);
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_1100
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_show_dock_show_2
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_show_2
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_show_dock_show_1', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_show_dock_show_1';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      try {
+        let promise = windowClass.setTitleAndDockHoverShown(true, true);
+        promise.then(async () => {
+          console.info('Succeeded in setTitleAndDockHoverShown the window.');
+          windowClass.recover();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(`${message} The device type is not support`);
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_1200
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_show_dock_show_2
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_show_dock_show_2
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_show_dock_show_2', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_show_dock_show_2';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      try {
+        let promise = windowClass.setTitleAndDockHoverShown();
+        promise.then(async () => {
+          console.info('Succeeded in setTitleAndDockHoverShown the window.');
+          windowClass.recover();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(`${message} The device type is not support`);
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_1300
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_dock_show
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_show
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_dock_show', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_show';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      try {
+        let promise = windowClass.setTitleAndDockHoverShown(false,true);
+        promise.then(async () => {
+          console.info('Succeeded in setTitleAndDockHoverShown the window.');
+          windowClass.recover();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(`${message} The device type is not support`);
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_1400
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_dock_show_1
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_show_1
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_dock_show_1', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_show_1';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      try {
+        let promise = windowClass.setTitleAndDockHoverShown(false,true);
+        promise.then(async () => {
+          console.info('Succeeded in setTitleAndDockHoverShown the window.');
+          windowClass.recover();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(`${message} The device type is not support`);
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+/**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_TITLE_AND_DOCK_HOVER_SHOW_1500
+        * @tc.name      : testSetTitleAndDockHoverShow_Title_hide_dock_show_2
+        * @tc.desc      : testSetTitleAndDockHoverShow_Title_hide_dock_show_2
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+it('testSetTitleAndDockHoverShow_Title_hide_dock_show_2', 2, async (done: Function) => {
+  const message = 'testSetTitleAndDockHoverShow_Title_hide_dock_show_2';
+  try {
+    let windowClass = windowStage.getMainWindowSync();
+    let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+    promise.then(async () => {
+      console.info('Succeeded in maximizing the window.');
+      try {
+        let promise = windowClass.setTitleAndDockHoverShown(false,true);
+        promise.then(async () => {
+          console.info('Succeeded in setTitleAndDockHoverShown the window.');
+          windowClass.recover();
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} Failed to setTitleAndDockHoverShown the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(`${message} The device type is not support`);
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (err) {
+        console.error(`${message} error, Cause code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`${message} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+      if (err.code == 801) {
+        done();
+      } else {
+        expect(false).assertTrue();
+        done();
+      }
+    });
+  } catch (exception) {
+    console.error(`${message} error, Cause code: ${exception.code}, message: ${exception.message}`);
+    expect().assertFail();
+    done();
+  }
+})
+
+
+
+
+
+
+
+
   })
 }
 
