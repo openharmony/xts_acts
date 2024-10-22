@@ -20,7 +20,7 @@ import { MessageManager, Callback } from '../../../../MainAbility/common/Message
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
 export default function flexVisibility_StretchJsunit() {
-  describe('flexItemAlignStretchTest', () => {
+  describe('flexVisibility_StretchJsunit', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexVisibility',
