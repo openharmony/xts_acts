@@ -31,6 +31,7 @@ export default function RatingJsunit() {
         if (!("rating" == pages.name)) {
           console.info("get RatingJsunit state pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
+          await Utils.sleep(2000);
         }
       } catch (err) {
         console.error("push RatingJsunit page error: " + err);
