@@ -11,33 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite.gni")
-import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
-import("./globalnapi.gni")
-
-ohos_app_assist_suite("ActsGlobalNapiTest_main") {
-  testonly = true
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsGlobalNapiTestMain"
-
-  # 部件名称，真实数据，需要子系统对应
-  part_name = "resource_management"
-
-  # 子系统名称，真实数据，需要部件对应
-  subsystem_name = "global"
-}
+import("//test/xts/tools/build/suite.gni")
 
 ohos_js_app_suite("ActsGlobalNapiTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsGlobalNapiTest"
-
-  # 部件名称，真实数据，需要子系统对应
   part_name = "resource_management"
-
-  # 子系统名称，真实数据，需要部件对应
   subsystem_name = "global"
-  deps = [ ":ActsGlobalNapiTest_main" ]
 }
