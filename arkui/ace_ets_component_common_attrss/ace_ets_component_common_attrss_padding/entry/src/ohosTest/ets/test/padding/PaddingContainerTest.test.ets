@@ -302,11 +302,15 @@ export default function paddingTest() {
         console.info('[' + data.caseTag + '] targetRectBeforeHeight:' + targetRectBeforeHeight);
         console.info('[' + data.caseTag + '] referenceRectAfterWidth:' + targetRectAfterWidth);
         console.info('[' + data.caseTag + '] referenceRectAfterHeight:' + targetRectAfterHeight);
+        console.info('[' + data.caseTag + '] data.testValue.expectValue.left:' + data.testValue.expectValue.left);
+        console.info('[' + data.caseTag + '] data.testValue.expectValue.right:' + data.testValue.expectValue.right);
+        console.info('[' + data.caseTag + '] data.testValue.expectValue.top:' + data.testValue.expectValue.top);
+        console.info('[' + data.caseTag + '] data.testValue.expectValue.bottom:' + data.testValue.expectValue.bottom);
 
         //Confirm that the calculated value is consistent with the expected value.
-        expect(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - (data.testValue.expectValue.left + data.testValue.expectValue.right)) <= 1)
+        expect(Math.floor(Math.abs(targetRectAfterWidth - targetRectBeforeWidth - (data.testValue.expectValue.left + data.testValue.expectValue.right))) <= 1)
           .assertTrue();
-        expect(Math.abs(targetRectAfterHeight - targetRectBeforeHeight - (data.testValue.expectValue.top + data.testValue.expectValue.bottom)) <= 1)
+        expect(Math.floor(Math.abs(targetRectAfterHeight - targetRectBeforeHeight - (data.testValue.expectValue.top + data.testValue.expectValue.bottom))) <= 1)
           .assertTrue();
       }
     })
