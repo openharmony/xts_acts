@@ -30,10 +30,10 @@ const int SUBLEN = 100;
 static napi_value GetFileList(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
-    napi_value argv[2] = {nullptr};
+    napi_value argv[2] = { nullptr };
 
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-
+    
     napi_valuetype valueType;
     napi_typeof(env, argv[0], &valueType);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
@@ -41,10 +41,10 @@ static napi_value GetFileList(napi_env env, napi_callback_info info)
     char strBuf[256];
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
     std::string filename(strBuf, strSize);
-    RawDir *rawDir = OH_ResourceManager_OpenRawDir(mNativeResMgr, filename.c_str());
+    RawDir* rawDir = OH_ResourceManager_OpenRawDir(mNativeResMgr, filename.c_str());
     int count = OH_ResourceManager_GetRawFileCount(rawDir);
     std::vector<std::string> tempArray;
-    for (int i = 0; i < count; i++) {
+    for(int i = 0; i < count; i++) {
         std::string rawfilename = OH_ResourceManager_GetRawFileName(rawDir, i);
         tempArray.emplace_back(rawfilename);
     }
@@ -132,7 +132,7 @@ napi_value CreateJsArrayValue(napi_env env, std::unique_ptr<uint8_t[]> &data, lo
 static napi_value GetRawFileContent(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
-    napi_value argv[2] = {nullptr};
+    napi_value argv[2] = { nullptr };
 
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
 
@@ -151,12 +151,12 @@ static napi_value GetRawFileContent(napi_env env, napi_callback_info info)
     std::unique_ptr<uint8_t[]> data = std::make_unique<uint8_t[]>(len);
 
     long offset = OH_ResourceManager_GetRawFileOffset(rawFile);
-    if (offset == 0) {
+    if(offset == 0){
         return nullptr;
     }
 
     long size = OH_ResourceManager_SeekRawFile(rawFile, 1, 0);
-    if (size == -1) {
+    if(size == -1){
         return nullptr;
     }
 
@@ -290,10 +290,10 @@ napi_value createJsFileDescriptor64(napi_env env, RawFileDescriptor64 *descripto
 static napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
-    napi_value argv[2] = {nullptr};
+    napi_value argv[2] = { nullptr };
 
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-
+    
     napi_valuetype valueType;
     napi_typeof(env, argv[0], &valueType);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
@@ -909,7 +909,7 @@ static napi_value GetMediaBase64Data(napi_env env, napi_callback_info info)
     uint32_t hexValue;
     ss >> hexValue;
 
-    char *result = NULL;
+    char *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     OH_ResourceManager_GetMediaBase64Data(mNativeResMgr, hexValue, &result, &len, 0);
@@ -924,12 +924,12 @@ static napi_value GetMediaData(napi_env env, napi_callback_info info)
     uint32_t id = 0;
     napi_get_value_uint32(env, argv[1], &id);
 
-    uint8_t *result = NULL;
+    uint8_t *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     OH_ResourceManager_GetMediaData(mNativeResMgr, id, &result, &len, 0);
 
-    bool flag = (result != NULL && len != 0);
+    bool flag = (result != nullptr && len != 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -944,12 +944,12 @@ static napi_value GetMediaDataByName(napi_env env, napi_callback_info info)
     char strBuf[256];
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
 
-    uint8_t *result = NULL;
+    uint8_t *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     OH_ResourceManager_GetMediaDataByName(mNativeResMgr, strBuf, &result, &len, 0);
 
-    bool flag = (result != NULL && len != 0);
+    bool flag = (result != nullptr && len != 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -1084,8 +1084,8 @@ static napi_module demoModule = {
     .nm_filename = nullptr,
     .nm_register_func = Init,
     .nm_modname = "resmgrndk",
-    .nm_priv = ((void *)0),
-    .reserved = {0},
+    .nm_priv = ((void*)0),
+    .reserved = { 0 },
 };
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
