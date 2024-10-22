@@ -209,7 +209,7 @@ struct DNSHostIP {
                 web_webview.WebviewController.clearHostIP('www.baidu.com');
                 this.controller.removeCache(true);
                 await Utils.sleep(65000);
-                this.controller.loadUrl('www.baidu.com')
+                this.controller.loadUrl('https://www.baidu.com')
                 await Utils.sleep(5000);
                 this.getURL2 = this.controller.getUrl();
                 console.log('setHostIP1500_getUrl2' + this.getURL2)
@@ -228,7 +228,7 @@ struct DNSHostIP {
                 web_webview.WebviewController.clearHostIP('www.baidu.com');
                 this.controller.removeCache(true);
                 await Utils.sleep(65000);
-                this.controller.loadUrl('www.baidu.com')
+                this.controller.loadUrl('http://www.baidu.com')
                 await Utils.sleep(5000);
                 this.getURL4 = this.controller.getUrl();
                 console.log('setHostIP1500_getUrl4' + this.getURL4)
