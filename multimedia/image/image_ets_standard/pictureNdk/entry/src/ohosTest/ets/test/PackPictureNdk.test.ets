@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterAll, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterAll, afterEach, it, expect } from '@ohos/hypium';
 import ndkTest from 'libPictureNdk.so';
 import image from "@ohos.multimedia.image";
 import fs from '@ohos.file.fs';
@@ -150,6 +150,12 @@ class Logger {
 
 export default function packPictureNdkTest() {
   describe('packPictureNdkTest', () => {
+    let isSupportHdr: boolean = false;
+    beforeAll(() => {
+      isSupportHdr = !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
+        display.getDefaultDisplaySync().hdrFormats.length != 0;
+    })
+
     afterEach(() => {
       try {
         ndkTest.releaseTestContext();
@@ -157,11 +163,6 @@ export default function packPictureNdkTest() {
         hilog.error(domain, testTag, `afterAll: Test exception ` + err);
       }
     })
-
-    const isSupportHdr = () => {
-        return !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
-          display.getDefaultDisplaySync().hdrFormats.length != 0
-    }
 
     const testCreateAuxiliaryPicture = (type: image.AuxiliaryPictureType) => {
       let auxSize: image.Size = {height: 15, width: 20};
@@ -357,7 +358,7 @@ export default function packPictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_CONVERT_PNG_TO_DATA_0100', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -399,7 +400,7 @@ export default function packPictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_PACK_PNG_PICTURE_TO_DATA_0100', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();

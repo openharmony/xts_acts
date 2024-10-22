@@ -38,6 +38,7 @@ export const pictureMetadataGetProperty: (metadataType: image.MetadataType, key:
 export const auxiliaryMetadataGetProperty: (metadataType: image.MetadataType, key: string) => string;
 export const GetPixelmapBuffer: (src: ArrayBuffer) => ArrayBuffer;
 export const setNeedsPackPropertiesToTestPackingOptions: (needpackExif: boolean) => void;
+export const compareArrayBuffer: (arrayBuffer1: ArrayBuffer, arrayBuffer2: ArrayBuffer) => boolean;
 
 // Metadata
 export const MetadataCreate: (metadataType: image.MetadataType) => image.Metadata;

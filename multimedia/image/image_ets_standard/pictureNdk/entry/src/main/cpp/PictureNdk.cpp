@@ -2063,6 +2063,42 @@ static napi_value GetImageSourceInfoSize(napi_env env, napi_callback_info info)
     SetUint32NamedProperty(env, result, AUX_INFO_HEIGHT, height);
     return result;
 }
+
+static napi_value CompareArrayBuffer(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        LOGE("CompareArrayBuffer: failed to get input arguments!");
+        return result;
+    }
+
+    uint8_t* data1;
+    size_t bufferSize1;
+    napi_get_arraybuffer_info(env, argValue[NUM_0], (void **)&data1, &bufferSize1);
+    uint8_t* data2;
+    size_t bufferSize2;
+    napi_get_arraybuffer_info(env, argValue[NUM_1], (void **)&data2, &bufferSize2);
+
+    if (bufferSize1 != bufferSize2) {
+        LOGE("CompareArrayBuffer: Wrong! Different array lengths!");
+        napi_get_boolean(env, false, &result);
+        return result;
+    }
+    int compareResult = memcmp(data1, data2, bufferSize1);
+    if (compareResult != 0) {
+        LOGE("CompareArrayBuffer: Wrong! memcmp failed");
+        napi_get_boolean(env, false, &result);
+        return result;
+    }
+
+    LOGE("CompareArrayBuffer: Same Array!");
+    napi_get_boolean(env, true, &result);
+    return result;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2192,6 +2228,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"setNeedsPackPropertiesToTestPackingOptions", nullptr, SetNeedsPackPropertiesToTestPackingOptions, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"GetImageSourceInfoSize", nullptr, GetImageSourceInfoSize, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"compareArrayBuffer", nullptr, CompareArrayBuffer, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

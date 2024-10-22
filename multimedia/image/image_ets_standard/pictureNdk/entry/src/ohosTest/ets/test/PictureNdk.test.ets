@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
 import ndkTest from 'libPictureNdk.so';
 import image from "@ohos.multimedia.image";
 import fs from '@ohos.file.fs';
@@ -53,12 +53,12 @@ const imageLengthKey = 'ImageLength';
 const imageWidthValue = '20';
 const imageHeightValue = "512";
 const imageLengthValue = '15';
-const fragmentImageWidthKey = 'WIDTH';
-const fragmentImageHeightKey = 'HEIGHT';
+const fragmentImageWidthKey = 'FragmentImageWidth';
+const fragmentImageHeightKey = 'FragmentImageHeight';
 const fragmentImageWidthValue = '512';
 const fragmentImageHeightValue = '512';
-const xInOriginalKey = "X_IN_ORIGINAL";
-const yInOriginalKey = "Y_IN_ORIGINAL";
+const xInOriginalKey = "XInOriginal";
+const yInOriginalKey = "YInOriginal";
 const xInOriginalValue = '0';
 const yInOriginalValue = '0';
 const orientationKey = 'Orientation';
@@ -393,15 +393,7 @@ function compareArrayBuffer(buffer1: ArrayBuffer, buffer2: ArrayBuffer): boolean
   if (buffer1.byteLength != buffer2.byteLength) {
     return false;
   }
-
-  let view1 = new Uint8Array(buffer1);
-  let view2 = new Uint8Array(buffer2);
-  for (let i = 0; i < view1.length; i++) {
-    if (view1[i] != view2[i]) {
-      return false;
-    }
-  }
-  return true;
+  return ndkTest.compareArrayBuffer(buffer1, buffer2);
 }
 
 function compareArrayForLessTimes(buffer1: ArrayBuffer, buffer2: ArrayBuffer): boolean {
@@ -452,6 +444,12 @@ async function sleep(delay: number): Promise<void> {
 
 export default function pictureNdkTest() {
   describe('pictureNdkTest', () => {
+    let isSupportHdr: boolean = false;
+    beforeAll(() => {
+      isSupportHdr = !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
+        display.getDefaultDisplaySync().hdrFormats.length != 0;
+    })
+
     afterEach(() => {
       try {
         ndkTest.releaseTestContext();
@@ -459,11 +457,6 @@ export default function pictureNdkTest() {
         hilog.error(domain, testTag, `afterEach: Test exception ` + err);
       }
     })
-
-    const isSupportHdr = () => {
-        return !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
-          display.getDefaultDisplaySync().hdrFormats.length != 0
-    }
 
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_CREATEPICTUREDECODINGOPTIONS_0100
@@ -1762,7 +1755,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0100', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -1806,7 +1799,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0200', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -1850,7 +1843,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0300', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -1893,7 +1886,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0400', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -3343,7 +3336,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0200', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -3377,7 +3370,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0400', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -3411,7 +3404,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0600', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -3445,7 +3438,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0800', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
@@ -3479,7 +3472,7 @@ export default function pictureNdkTest() {
      */
     it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_2000', 0, async (done: Function) => {
       await sleep(1000);
-      if (!isSupportHdr()) {
+      if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
         expect(true).assertTrue();
         done();
