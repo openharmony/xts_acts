@@ -26,16 +26,6 @@ struct Index {
   @State text: string = ''
   Controller: TextInputController = new TextInputController();
 
-  // aboutToAppear() {
-  //   hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-  //   hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-  //   let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-  //   let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
-  //   hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-  //   hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-  //   Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-  // }
-
   @State textValue: string = '';
   @State inputValue: string = 'click me';
   dialogController: CustomDialogController = new CustomDialogController({
