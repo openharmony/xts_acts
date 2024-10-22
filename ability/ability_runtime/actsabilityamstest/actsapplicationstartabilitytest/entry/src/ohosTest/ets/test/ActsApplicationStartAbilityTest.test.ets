@@ -723,7 +723,7 @@ export default function actsApplicationStartAbilityTest() {
           moduleName: 'entry', // moduleName非必选
           action: TEST_CASE_NAME,
           parameters: {
-            'ability.want.params.INTENT': {
+            'ability.want.params.INTENT_ACTION': {
               'number': '123'
             }
           }
