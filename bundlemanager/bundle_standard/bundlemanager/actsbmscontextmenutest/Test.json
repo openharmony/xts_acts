@@ -1,18 +1,17 @@
 {
-    "description": "Configuration for ActsBundleMgrStageEtsTest Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-        "shell-timeout": "600000",
-        "bundle-name": "ohos.acts.bundle.stage.test",
-        "module-name": "testModule",
-        "testcase-timeout": 240000
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
+        "bundle-name": "ohos.acts.bms.stage.test",
+        "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsBundleMgrStageEtsTest.hap",
-                "bmsJstest1.hap"
+                "ActsBmsContextmenuTest_Entry.hap",
+                "ActsBmsContextmenuTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
