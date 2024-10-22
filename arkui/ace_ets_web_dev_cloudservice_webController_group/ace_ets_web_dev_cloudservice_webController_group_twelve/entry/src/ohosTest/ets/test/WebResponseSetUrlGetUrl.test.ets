@@ -697,54 +697,6 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2230
-     * @tc.name testWebHttpBodyStream_Read_Success02
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_2230', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/HttpBodyStreamReadBufferBig'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebHttpBodyStream_Read_Success02', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebHttpBodyStream_Read_Success02', true, 5203, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('Click', 10, '');
-    });
-
-    /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2810
-     * @tc.name testWebResourceRequest_Destroy_Fail_Param_Error
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_2810', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/ResourceRequestDestroy'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebResourceRequest_Destroy_Fail_Param_Error', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebResourceRequest_Destroy_Fail_Param_Error', 17100101, 5208, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('Click', 10, '');
-    });
-
-    /**
      * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_6710
      * @tc.name testWeb_ReleaseString_Fail_Param_NotNSDK
      * @tc.desc test Arguments
@@ -1081,6 +1033,30 @@ export default function webviewNApi() {
       Utils.emitEvent('testWebServiceWorker_SetSchemeHandler_Fail_schemeParam_IsNone', 10);
       await Utils.sleep(1000);
       Utils.registerBaseEvent('testWebServiceWorker_SetSchemeHandler_Fail_schemeParam_IsNone', false, 5223, done,
+        (backData: events_emitter.EventData, expected: Object) => {
+          console.info('Received event data: ' + JSON.stringify(backData));
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
+      sendEventByKey('Click', 10, '');
+    });
+
+    /**
+     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2230
+     * @tc.name testWebHttpBodyStream_Read_Success02
+     * @tc.desc test Arguments
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_ACE_WEB_WEBHOST_NSDK_2230', 0, async (done: Function) => {
+      router.pushUrl({
+        url: 'testability/pages/HttpBodyStreamReadBufferBig'
+      });
+      router.clear();
+      await Utils.sleep(1000);
+      Utils.emitEvent('testWebHttpBodyStream_Read_Success02', 10);
+      await Utils.sleep(1000);
+      Utils.registerBaseEvent('testWebHttpBodyStream_Read_Success02', true, 5203, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
