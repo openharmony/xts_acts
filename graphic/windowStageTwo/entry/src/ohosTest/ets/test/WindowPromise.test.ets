@@ -63,8 +63,8 @@ export default function windowPromiseTest() {
     }
     let currentDeviceIsRk = false;
     let currentDeviceIsPC = false;
-    let context : common.UIAbilityContext;
-    let windowStage:ohosWindow.WindowStage;
+    let context: common.UIAbilityContext;
+    let windowStage: ohosWindow.WindowStage;
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -87,7 +87,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testsetSubWindowModal_Function_Promise1", 0, async (done:Function) => {
+    it("testsetSubWindowModal_Function_Promise1", 0, async (done: Function) => {
       let msgStr = "testsetSubWindowModal_Function_Promise1 ";
       console.log(msgStr + " begin");
       try {
@@ -108,7 +108,7 @@ export default function windowPromiseTest() {
             expect().assertFail();
             done();
           });
-        }).catch((error:BusinessError) => {
+        }).catch((error: BusinessError) => {
           console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
           if (error.code == 1300002) {
             expect(true).assertTrue();
@@ -138,7 +138,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testsetSubWindowModal_Function_Promise2", 0, async (done:Function) => {
+    it("testsetSubWindowModal_Function_Promise2", 0, async (done: Function) => {
       let msgStr = "testsetSubWindowModal_Function_Promise2 ";
       console.log(msgStr + " begin");
       try {
@@ -159,7 +159,7 @@ export default function windowPromiseTest() {
             expect().assertFail();
             done();
           });
-        }).catch((error:BusinessError) => {
+        }).catch((error: BusinessError) => {
           console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
           if (error.code == 1300002) {
             expect(true).assertTrue();
@@ -189,7 +189,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testsetSubWindowModal_Function_Promise3", 0, async (done:Function) => {
+    it("testsetSubWindowModal_Function_Promise3", 0, async (done: Function) => {
       let msgStr = "testsetSubWindowModal_Function_Promise3 ";
       console.log(msgStr + " begin");
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -211,15 +211,15 @@ export default function windowPromiseTest() {
         }
       });
     })
-/**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0100
-     * @tc.name      : test_SubWindow_IsModal_true
-     * @tc.desc      : test_SubWindow_IsModal_true
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it("test_SubWindow_IsModal_true", 0, async (done:Function) => {
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0100
+         * @tc.name      : test_SubWindow_IsModal_true
+         * @tc.desc      : test_SubWindow_IsModal_true
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("test_SubWindow_IsModal_true", 0, async (done: Function) => {
       let msgStr = "test_SubWindow_IsModal_true";
       console.log(msgStr + "begin");
       let driver: Driver = Driver.create();
@@ -294,7 +294,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("test_SubWindow_IsModal_false", 0, async (done:Function) => {
+    it("test_SubWindow_IsModal_false", 0, async (done: Function) => {
       let msgStr = "test_SubWindow_IsModal_false";
       console.log(msgStr + "begin");
       let driver: Driver = Driver.create();
@@ -369,7 +369,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("test_SubWindow_hide_IsModal_true", 0, async (done:Function) => {
+    it("test_SubWindow_hide_IsModal_true", 0, async (done: Function) => {
       let msgStr = "test_SubWindow_hide_IsModal_true";
       console.log(msgStr + "begin");
       let driver: Driver = Driver.create();
@@ -422,6 +422,560 @@ export default function windowPromiseTest() {
       }
     })
     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0400
+     * @tc.name      : test_setSubWindowModal_isModal_null_401
+     * @tc.desc      : test_setSubWindowModal_isModal_null_401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("test_setSubWindowModal_isModal_null_401", 0, async (done: Function) => {
+      let msgStr = "test_setSubWindowModal_isModal_null_401";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_setSubWindowModal_isModal_null_401');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          try {
+            await subWindowClass.setSubWindowModal(null).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              expect(false).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.log(msgStr + 'The device not support setSubWindowModal');
+                subWindowClass.destroyWindow();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(error.code).assertEqual(401);
+            subWindowClass.destroyWindow();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0500
+         * @tc.name      : test_setSubWindowModal_ModalityType_TypeError_401
+         * @tc.desc      : test_setSubWindowModal_ModalityType_TypeError_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("test_setSubWindowModal_ModalityType_TypeError_401", 0, async (done: Function) => {
+      let msgStr = "test_setSubWindowModal_ModalityType_TypeError_401";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_setSubWindowModal_ModalityType_TypeError_401');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          try {
+            await subWindowClass.setSubWindowModal(true, 123).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              expect(false).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.log(msgStr + 'The device not support setSubWindowModal');
+                subWindowClass.destroyWindow();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(error.code).assertEqual(401);
+            subWindowClass.destroyWindow();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0600
+         * @tc.name      : test_setSubWindowModal_ModalityType_incorrect_401
+         * @tc.desc      : test_setSubWindowModal_ModalityType_incorrect_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("test_setSubWindowModal_ModalityType_incorrect_401", 0, async (done: Function) => {
+      let msgStr = "test_setSubWindowModal_ModalityType_incorrect_401";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_setSubWindowModal_ModalityType_incorrect_401');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          try {
+            await subWindowClass.setSubWindowModal(true, 123).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              expect(false).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.log(msgStr + 'The device not support setSubWindowModal');
+                subWindowClass.destroyWindow();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(error.code).assertEqual(401);
+            subWindowClass.destroyWindow();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0700
+         * @tc.name      : test_setSubWindowModal_ModalityType_isModal_false_401
+         * @tc.desc      : test_setSubWindowModal_ModalityType_isModal_false_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("test_setSubWindowModal_ModalityType_isModal_false_401", 0, async (done: Function) => {
+      let msgStr = "test_setSubWindowModal_ModalityType_isModal_false_401";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_setSubWindowModal_ModalityType_isModal_false_401');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          try {
+            await subWindowClass.setSubWindowModal(false, ohosWindow.ModalityType.WINDOW_MODALITY).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              expect(false).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.log(msgStr + 'The device not support setSubWindowModal');
+                subWindowClass.destroyWindow();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(error.code).assertEqual(401);
+            subWindowClass.destroyWindow();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0800
+         * @tc.name      : test_setSubWindowModal_ModalityType_null_401
+         * @tc.desc      : test_setSubWindowModal_ModalityType_null_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("test_setSubWindowModal_ModalityType_null_401", 0, async (done: Function) => {
+      let msgStr = "test_setSubWindowModal_ModalityType_null_401";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_setSubWindowModal_ModalityType_null_401');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          try {
+            await subWindowClass.setSubWindowModal(false, ohosWindow.ModalityType.WINDOW_MODALITY).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              expect(false).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.log(msgStr + 'The device not support setSubWindowModal');
+                subWindowClass.destroyWindow();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(error.code).assertEqual(401);
+            subWindowClass.destroyWindow();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0900
+         * @tc.name      : test_setSubWindowModal_ModalityType_enum
+         * @tc.desc      : test_setSubWindowModal_ModalityType_enum
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("test_setSubWindowModal_ModalityType_enum", 0, async (done: Function) => {
+      let msgStr = "test_setSubWindowModal_ModalityType_enum";
+      console.log(msgStr + "begin");
+      expect(ohosWindow.ModalityType.WINDOW_MODALITY).assertEqual(0);
+      expect(ohosWindow.ModalityType.APPLICATION_MODALITY).assertEqual(1);
+      done();
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_1000
+         * @tc.name      : test_setSubWindowModal_subWindow_destory_1300002
+         * @tc.desc      : test_setSubWindowModal_subWindow_destory_1300002
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("test_setSubWindowModal_subWindow_destory_1300002", 0, async (done: Function) => {
+      let msgStr = "test_setSubWindowModal_subWindow_destory_1300002";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_setSubWindowModal_subWindow_destory_1300002');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          try {
+            await subWindowClass.destroyWindow();
+            await subWindowClass.setSubWindowModal(true, ohosWindow.ModalityType.WINDOW_MODALITY).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              expect(false).assertTrue();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 1300002) {
+                console.log(msgStr + 'The SubWindow is destroyed');
+                expect(true).assertTrue();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+             * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_1100
+             * @tc.name      : test_setSubWindowModal_MainWindow_1300004
+             * @tc.desc      : test_setSubWindowModal_MainWindow_1300004
+             * @tc.size      : MediumTest
+             * @tc.type      : Function
+             * @tc.level     : Level3
+             */
+    it("test_setSubWindowModal_MainWindow_1300004", 0, async (done: Function) => {
+      let msgStr = "test_setSubWindowModal_MainWindow_1300004";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        await windowClass.setSubWindowModal(true, ohosWindow.ModalityType.APPLICATION_MODALITY).then(async () => {
+          console.info(msgStr + 'Succeeded in setting subwindow modal');
+          expect(false).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 1300004) {
+            console.log(msgStr + 'The mainWindow not support setSubWindowModal');
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_CREATE_SUBWINDOW_WITH_OPTIONS_0100
+         * @tc.name      : testCreateSubWindowWithOptions_name_is_null_401
+         * @tc.desc      : testCreateSubWindowWithOptions_name_is_null_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("testCreateSubWindowWithOptions_name_is_null_401", 0, async (done: Function) => {
+      let msgStr = "testCreateSubWindowWithOptions_name_is_null_401";
+      console.log(msgStr + " begin");
+      let windowClass: ohosWindow.Window;
+      console.log(msgStr + " try begin")
+      let options: ohosWindow.SubWindowOptions = {
+        title: 'title',
+        decorEnabled: true,
+        isModal: false,
+      };
+      try {
+        await windowStage.createSubWindowWithOptions(null, options)
+          .then((data) => {
+            windowClass = data;
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          });
+      } catch (error) {
+        console.log(msgStr + '入参错误,error code:' + error.code);
+        expect(error.code).assertEqual(401);
+        done();
+      }
+
+    })
+
+    /**
+             * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_CREATE_SUBWINDOW_WITH_OPTIONS_0200
+             * @tc.name      : testCreateSubWindowWithOptions_modalityType_401
+             * @tc.desc      : testCreateSubWindowWithOptions_modalityType_401
+             * @tc.size      : MediumTest
+             * @tc.type      : Function
+             * @tc.level     : Level3
+             */
+    it("testCreateSubWindowWithOptions_modalityType_401", 0, async (done: Function) => {
+      let msgStr = "testCreateSubWindowWithOptions_modalityType_401";
+      console.log(msgStr + " begin");
+      let windowClass: ohosWindow.Window;
+      console.log(msgStr + " try begin")
+      let options: ohosWindow.SubWindowOptions = {
+        title: 'title',
+        decorEnabled: true,
+        isModal: false,
+        modalityType: ohosWindow.ModalityType.APPLICATION_MODALITY
+      };
+      try {
+        await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_modalityType_401', options)
+          .then((data) => {
+            windowClass = data;
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          });
+      } catch (error) {
+        console.log(msgStr + '入参错误,error code:' + error.code);
+        expect(error.code).assertEqual(401);
+        done();
+      }
+
+    })
+
+    /**
+             * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_CREATE_SUBWINDOW_WITH_OPTIONS_0300
+             * @tc.name      : testCreateSubWindowWithOptions_modalityType_is_INCORRECT_401
+             * @tc.desc      : testCreateSubWindowWithOptions_modalityType_is_INCORRECT_401
+             * @tc.size      : MediumTest
+             * @tc.type      : Function
+             * @tc.level     : Level3
+             */
+    it("testCreateSubWindowWithOptions_modalityType_is_INCORRECT_401", 0, async (done: Function) => {
+      let msgStr = "testCreateSubWindowWithOptions_modalityType_is_INCORRECT_401";
+      console.log(msgStr + " begin");
+      let windowClass: ohosWindow.Window;
+      console.log(msgStr + " try begin")
+      let options: ohosWindow.SubWindowOptions = {
+        title: 'title',
+        decorEnabled: true,
+        isModal: true,
+        modalityType: 5
+      };
+      try {
+        await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_modalityType_is_INCORRECT_401', options)
+          .then((data) => {
+            windowClass = data;
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          });
+      } catch (error) {
+        console.log(msgStr + '入参错误,error code:' + error.code);
+        expect(error.code).assertEqual(401);
+        done();
+      }
+
+    })
+    /**
+       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_CREATE_SUBWINDOW_WITH_OPTIONS_0400
+       * @tc.name      : testCreateSubWindowWithOptions_modalityType_APPLICATION_MODALITY
+       * @tc.desc      : testCreateSubWindowWithOptions_modalityType_APPLICATION_MODALITY
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level3
+      */
+    it("testCreateSubWindowWithOptions_modalityType_APPLICATION_MODALITY", 0, async (done: Function) => {
+      let msgStr = "testCreateSubWindowWithOptions_modalityType_APPLICATION_MODALITY";
+      console.log(msgStr + " begin");
+      let windowClass: ohosWindow.Window;
+      console.log(msgStr + " try begin")
+      let options: ohosWindow.SubWindowOptions = {
+        title: 'title',
+        decorEnabled: true,
+        isModal: true,
+        modalityType: ohosWindow.ModalityType.APPLICATION_MODALITY
+      };
+      try {
+        await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_modalityType_APPLICATION_MODALITY', options)
+          .then((data) => {
+            windowClass = data;
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+            windowClass.destroyWindow();
+            expect(true).assertTrue();
+            done();
+          })
+          .catch((error: BusinessError) => {
+            console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+            if (error.code == 1300002) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+      } catch (error) {
+        console.log(msgStr + ',error code:' + error.code);
+        expect(false).assertTrue();
+        done();
+      }
+
+    })
+
+    /**
+           * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_CREATE_SUBWINDOW_WITH_OPTIONS_0500
+           * @tc.name      : testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY
+           * @tc.desc      : testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
+          */
+    it("testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY", 0, async (done: Function) => {
+      let msgStr = "testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY";
+      console.log(msgStr + " begin");
+      let windowClass: ohosWindow.Window;
+      console.log(msgStr + " try begin")
+      let options: ohosWindow.SubWindowOptions = {
+        title: 'title',
+        decorEnabled: true,
+        isModal: true,
+        modalityType: ohosWindow.ModalityType.WINDOW_MODALITY
+      };
+      try {
+        await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY', options)
+          .then((data) => {
+            windowClass = data;
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+            windowClass.destroyWindow();
+            expect(true).assertTrue();
+            done();
+          })
+          .catch((error: BusinessError) => {
+            console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+            if (error.code == 1300002) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+      } catch (error) {
+        console.log(msgStr + ',error code:' + error.code);
+        expect(false).assertTrue();
+        done();
+      }
+
+    })
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0010
      * @tc.name      : testSetDefaultDensityEnabled_true
      * @tc.desc      : Test the function value of setDefaultDensityEnabled
@@ -429,7 +983,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetDefaultDensityEnabled_true", 0, async (done:Function) => {
+    it("testSetDefaultDensityEnabled_true", 0, async (done: Function) => {
       let msgStr = "testSetDefaultDensityEnabled_true";
       console.log(msgStr + "begin");
       try {
@@ -451,7 +1005,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetDefaultDensityEnabled_false", 0, async (done:Function) => {
+    it("testSetDefaultDensityEnabled_false", 0, async (done: Function) => {
       let msgStr = "testSetDefaultDensityEnabled_false";
       console.log(msgStr + "begin");
       try {
@@ -473,7 +1027,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testRectChangeOptions_on", 0, async (done:Function) => {
+    it("testRectChangeOptions_on", 0, async (done: Function) => {
       let msgStr = "testRectChangeOptions_on";
       console.log(msgStr + "begin");
       try {
@@ -512,7 +1066,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testRectChangeOptions_off", 0, async (done:Function) => {
+    it("testRectChangeOptions_off", 0, async (done: Function) => {
       let msgStr = "testRectChangeOptions_off";
       console.log(msgStr + "begin");
       try {
@@ -548,7 +1102,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testRectChangeReason_enum", 0, async (done:Function) => {
+    it("testRectChangeReason_enum", 0, async (done: Function) => {
       let msgStr = "testRectChangeReason_enum";
       console.log(msgStr + "begin");
       try {
@@ -581,289 +1135,289 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-it("testRectChangeOptions_on_resize", 0, async (done:Function) => {
-  let msgStr = "testRectChangeOptions_on_resize";
-  console.log(msgStr + "begin");
-  try {
-    let windowClass = await windowStage.getMainWindow();
-    let rect: ohosWindow.Rect = {
-      left: 10,
-      top: 10,
-      width: 10,
-      height: 10
-    };
-    let reason: ohosWindow.RectChangeReason;
-    windowClass.on('windowRectChange', (data: ohosWindow.RectChangeOptions) => {
-      console.log(msgStr + 'Succeeded window rect changes. Data: ' + JSON.stringify(data));
-      expect(true).assertTrue();
-      done();
-    });
-    await windowClass.resize(1000, 1000).then(async () => {
-      console.info(msgStr + 'Succeeded in changing the window size.');
-      await sleep(500);
-      windowClass.off('windowRectChange');
-      expect(true).assertTrue();
-      done();
-    }).catch((err: BusinessError) => {
-      console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
-      if (err.code == 1300002) {
-        console.info(msgStr + 'This window state is abnormal.');
-        windowClass.off('windowRectChange');
-        done();
-      } else {
-        expect(false).assertTrue();
-        done();
+    it("testRectChangeOptions_on_resize", 0, async (done: Function) => {
+      let msgStr = "testRectChangeOptions_on_resize";
+      console.log(msgStr + "begin");
+      try {
+        let windowClass = await windowStage.getMainWindow();
+        let rect: ohosWindow.Rect = {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        };
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.on('windowRectChange', (data: ohosWindow.RectChangeOptions) => {
+          console.log(msgStr + 'Succeeded window rect changes. Data: ' + JSON.stringify(data));
+          expect(true).assertTrue();
+          done();
+        });
+        await windowClass.resize(1000, 1000).then(async () => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          await sleep(500);
+          windowClass.off('windowRectChange');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 1300002) {
+            console.info(msgStr + 'This window state is abnormal.');
+            windowClass.off('windowRectChange');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
-    });
-  } catch (error) {
-    if (error.code === 801) {
-      console.info(`${msgStr} The current device type does not support to windowRectChange`);
-      done();
-    } else {
-      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-      expect().assertFail();
-      done();
-    }
-  }
-})
-/**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0700
-     * @tc.name      : testRectChangeOptions_on_moveWindowTo
-     * @tc.desc      : Test the function value of testRectChangeOptions
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-it("testRectChangeOptions_on_moveWindowTo", 0, async (done:Function) => {
-  let msgStr = "testRectChangeOptions_on_moveWindowTo";
-  console.log(msgStr + "begin");
-  try {
-    let windowClass = await windowStage.getMainWindow();
-    let rect: ohosWindow.Rect = {
-      left: 10,
-      top: 10,
-      width: 10,
-      height: 10
-    };
-    let reason: ohosWindow.RectChangeReason;
-    windowClass.on('windowRectChange', (data: ohosWindow.RectChangeOptions) => {
-      console.log(msgStr + 'Succeeded window rect changes. Data: ' + JSON.stringify(data));
-      windowClass.off('windowRectChange');
-      expect(true).assertTrue();
-      done();
-    });
-    await windowClass.moveWindowTo(500, 500).then(async () => {
-      console.info(msgStr + 'Succeeded in moving the window.');
-      await sleep(1000);
-      expect(true).assertTrue();
-      done();
-    }).catch((err: BusinessError) => {
-      console.error(msgStr + `Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
-      if (err.code == 1300002) {
-        console.info(msgStr + 'This window state is abnormal..');
-        windowClass.off('windowRectChange');
-        done();
-      } else {
-        expect(false).assertTrue();
-        done();
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0700
+         * @tc.name      : testRectChangeOptions_on_moveWindowTo
+         * @tc.desc      : Test the function value of testRectChangeOptions
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("testRectChangeOptions_on_moveWindowTo", 0, async (done: Function) => {
+      let msgStr = "testRectChangeOptions_on_moveWindowTo";
+      console.log(msgStr + "begin");
+      try {
+        let windowClass = await windowStage.getMainWindow();
+        let rect: ohosWindow.Rect = {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        };
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.on('windowRectChange', (data: ohosWindow.RectChangeOptions) => {
+          console.log(msgStr + 'Succeeded window rect changes. Data: ' + JSON.stringify(data));
+          windowClass.off('windowRectChange');
+          expect(true).assertTrue();
+          done();
+        });
+        await windowClass.moveWindowTo(500, 500).then(async () => {
+          console.info(msgStr + 'Succeeded in moving the window.');
+          await sleep(1000);
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 1300002) {
+            console.info(msgStr + 'This window state is abnormal..');
+            windowClass.off('windowRectChange');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
-    });
-  } catch (error) {
-    if (error.code === 801) {
-      console.info(`${msgStr} The current device type does not support to windowRectChange`);
-      done();
-    } else {
-      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-      expect().assertFail();
-      done();
-    }
-  }
-})
-/**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0800
-     * @tc.name      : testRectChangeOptions_on_TwoCallback
-     * @tc.desc      : Test the function value of testRectChangeOptions
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-it("testRectChangeOptions_on_TwoCallback", 0, async (done:Function) => {
-  let msgStr = "testRectChangeOptions_on_TwoCallback";
-  console.log(msgStr + "begin");
-  let windowClass = await windowStage.getMainWindow();
-  let num = 0;
-  const callback1 = () => {
-    num++;
-    console.info(msgStr + 'callback1 is called,num = ' + num);
-    windowClass.off('windowRectChange', callback1);
-  };
-  const callback2 = () => {
-    num++;
-    console.info(msgStr + 'callback2 is called,num = ' + num);
-    windowClass.off('windowRectChange', callback2);
-  };
-  try {
-    let rect: ohosWindow.Rect = {
-      left: 10,
-      top: 10,
-      width: 10,
-      height: 10
-    };
-    let reason: ohosWindow.RectChangeReason;
-    windowClass.on('windowRectChange', callback1);
-    windowClass.on('windowRectChange', callback2);
-    await windowClass.resize(800, 1000).then(async () => {
-      console.info(msgStr + 'Succeeded in changing the window size.');
-      await sleep(500);
-      expect(num).assertEqual(2);
-      windowClass.off('windowRectChange');
-      done();
-    }).catch((err: BusinessError) => {
-      console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
-      if (err.code == 1300002) {
-        console.info(msgStr + 'This window state is abnormal.');
-        windowClass.off('windowRectChange');
-        done();
-      } else {
-        expect(false).assertTrue();
-        done();
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0800
+         * @tc.name      : testRectChangeOptions_on_TwoCallback
+         * @tc.desc      : Test the function value of testRectChangeOptions
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("testRectChangeOptions_on_TwoCallback", 0, async (done: Function) => {
+      let msgStr = "testRectChangeOptions_on_TwoCallback";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let num = 0;
+      const callback1 = () => {
+        num++;
+        console.info(msgStr + 'callback1 is called,num = ' + num);
+        windowClass.off('windowRectChange', callback1);
+      };
+      const callback2 = () => {
+        num++;
+        console.info(msgStr + 'callback2 is called,num = ' + num);
+        windowClass.off('windowRectChange', callback2);
+      };
+      try {
+        let rect: ohosWindow.Rect = {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        };
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.on('windowRectChange', callback1);
+        windowClass.on('windowRectChange', callback2);
+        await windowClass.resize(800, 1000).then(async () => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          await sleep(500);
+          expect(num).assertEqual(2);
+          windowClass.off('windowRectChange');
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 1300002) {
+            console.info(msgStr + 'This window state is abnormal.');
+            windowClass.off('windowRectChange');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
-    });
-  } catch (error) {
-    if (error.code === 801) {
-      console.info(`${msgStr} The current device type does not support to windowRectChange`);
-      done();
-    } else {
-      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-      expect().assertFail();
-      done();
-    }
-  }
-})
-/**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0900
-     * @tc.name      : testRectChangeOptions_off_callback1
-     * @tc.desc      : Test the function value of testRectChangeOptions
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-it("testRectChangeOptions_off_callback1", 0, async (done:Function) => {
-  let msgStr = "testRectChangeOptions_off_callback1";
-  console.log(msgStr + "begin");
-  let windowClass = await windowStage.getMainWindow();
-  let num = 0;
-  const callback1 = () => {
-    num++;
-    console.info(msgStr + 'callback1 is called,num = ' + num);
-    windowClass.off('windowRectChange', callback1);
-  };
-  const callback2 = () => {
-    num--;
-    console.info(msgStr + 'callback2 is called,num = ' + num);
-    windowClass.off('windowRectChange', callback2);
-  };
-  try {
-    let rect: ohosWindow.Rect = {
-      left: 10,
-      top: 10,
-      width: 10,
-      height: 10
-    };
-    let reason: ohosWindow.RectChangeReason;
-    windowClass.on('windowRectChange', callback1);
-    windowClass.on('windowRectChange', callback2);
-    windowClass.off('windowRectChange', callback1);
-    await windowClass.resize(1100, 1000).then(async () => {
-      console.info(msgStr + 'Succeeded in changing the window size.');
-      await sleep(500);
-      expect(num).assertEqual(-1);
-      windowClass.off('windowRectChange');
-      done();
-    }).catch((err: BusinessError) => {
-      console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
-      if (err.code == 1300002) {
-        console.info(msgStr + 'This window state is abnormal.');
-        windowClass.off('windowRectChange');
-        done();
-      } else {
-        expect(false).assertTrue();
-        done();
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0900
+         * @tc.name      : testRectChangeOptions_off_callback1
+         * @tc.desc      : Test the function value of testRectChangeOptions
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("testRectChangeOptions_off_callback1", 0, async (done: Function) => {
+      let msgStr = "testRectChangeOptions_off_callback1";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let num = 0;
+      const callback1 = () => {
+        num++;
+        console.info(msgStr + 'callback1 is called,num = ' + num);
+        windowClass.off('windowRectChange', callback1);
+      };
+      const callback2 = () => {
+        num--;
+        console.info(msgStr + 'callback2 is called,num = ' + num);
+        windowClass.off('windowRectChange', callback2);
+      };
+      try {
+        let rect: ohosWindow.Rect = {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        };
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.on('windowRectChange', callback1);
+        windowClass.on('windowRectChange', callback2);
+        windowClass.off('windowRectChange', callback1);
+        await windowClass.resize(1100, 1000).then(async () => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          await sleep(500);
+          expect(num).assertEqual(-1);
+          windowClass.off('windowRectChange');
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 1300002) {
+            console.info(msgStr + 'This window state is abnormal.');
+            windowClass.off('windowRectChange');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
-    });
-  } catch (error) {
-    if (error.code === 801) {
-      console.info(`${msgStr} The current device type does not support to windowRectChange`);
-      done();
-    } else {
-      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-      expect().assertFail();
-      done();
-    }
-  }
-})
-/**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1000
-     * @tc.name      : testRectChangeOptions_off_all_callback
-     * @tc.desc      : Test the function value of testRectChangeOptions
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
-  let msgStr = "testRectChangeOptions_off_all_callback";
-  console.log(msgStr + "begin");
-  let windowClass = await windowStage.getMainWindow();
-  let num = 0;
-  const callback1 = () => {
-    num++;
-    console.info(msgStr + 'callback1 is called,num = ' + num);
-    windowClass.off('windowRectChange', callback1);
-  };
-  const callback2 = () => {
-    num++;
-    console.info(msgStr + 'callback2 is called,num = ' + num);
-    windowClass.off('windowRectChange', callback2);
-  };
-  try {
-    let rect: ohosWindow.Rect = {
-      left: 10,
-      top: 10,
-      width: 10,
-      height: 10
-    };
-    let reason: ohosWindow.RectChangeReason;
-    windowClass.on('windowRectChange', callback1);
-    windowClass.on('windowRectChange', callback2);
-    windowClass.off('windowRectChange');
-    await windowClass.resize(1200, 1000).then(async () => {
-      console.info(msgStr + 'Succeeded in changing the window size.');
-      await sleep(500);
-      expect(num).assertEqual(0);
-      windowClass.off('windowRectChange');
-      done();
-    }).catch((err: BusinessError) => {
-      console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
-      if (err.code == 1300002) {
-        console.info(msgStr + 'This window state is abnormal.');
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_1000
+         * @tc.name      : testRectChangeOptions_off_all_callback
+         * @tc.desc      : Test the function value of testRectChangeOptions
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it("testRectChangeOptions_off_all_callback", 0, async (done: Function) => {
+      let msgStr = "testRectChangeOptions_off_all_callback";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let num = 0;
+      const callback1 = () => {
+        num++;
+        console.info(msgStr + 'callback1 is called,num = ' + num);
+        windowClass.off('windowRectChange', callback1);
+      };
+      const callback2 = () => {
+        num++;
+        console.info(msgStr + 'callback2 is called,num = ' + num);
+        windowClass.off('windowRectChange', callback2);
+      };
+      try {
+        let rect: ohosWindow.Rect = {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        };
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.on('windowRectChange', callback1);
+        windowClass.on('windowRectChange', callback2);
         windowClass.off('windowRectChange');
-        done();
-      } else {
-        expect(false).assertTrue();
-        done();
+        await windowClass.resize(1200, 1000).then(async () => {
+          console.info(msgStr + 'Succeeded in changing the window size.');
+          await sleep(500);
+          expect(num).assertEqual(0);
+          windowClass.off('windowRectChange');
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 1300002) {
+            console.info(msgStr + 'This window state is abnormal.');
+            windowClass.off('windowRectChange');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
-    });
-  } catch (error) {
-    if (error.code === 801) {
-      console.info(`${msgStr} The current device type does not support to windowRectChange`);
-      done();
-    } else {
-      console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
-      expect().assertFail();
-      done();
-    }
-  }
-})
+    })
     /**
          * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0100
          * @tc.name      : test_setWindowGrayScale_0
@@ -872,7 +1426,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    it("test_setWindowGrayScale_0", 0, async (done:Function) => {
+    it("test_setWindowGrayScale_0", 0, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_0";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -882,7 +1436,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
           console.info(msgStr + 'Succeeded in setting the grayScale 0.');
           expect(true).assertTrue();
           done();
-        }).catch((err:BusinessError) => {
+        }).catch((err: BusinessError) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
           if (err.code == 801) {
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
@@ -906,7 +1460,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    it("test_setWindowGrayScale_0.5", 0, async (done:Function) => {
+    it("test_setWindowGrayScale_0.5", 0, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_0.5";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -916,7 +1470,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
           console.info(msgStr + 'Succeeded in setting the grayScale 0.5.');
           expect(true).assertTrue();
           done();
-        }).catch((err:BusinessError) => {
+        }).catch((err: BusinessError) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
           if (err.code == 801) {
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
@@ -940,7 +1494,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    it("test_setWindowGrayScale_1", 0, async (done:Function) => {
+    it("test_setWindowGrayScale_1", 0, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_1";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -950,7 +1504,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
           console.info(msgStr + 'Succeeded in setting the grayScale 1.');
           expect(true).assertTrue();
           done();
-        }).catch((err:BusinessError) => {
+        }).catch((err: BusinessError) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
           if (err.code == 801) {
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
@@ -975,7 +1529,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    it("test_setWindowGrayScale_-1", 0, async (done:Function) => {
+    it("test_setWindowGrayScale_-1", 0, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_-1";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -985,7 +1539,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
           console.info(msgStr + 'Succeeded in setting the grayScale -1.');
           expect(false).assertTrue();
           done();
-        }).catch((err:BusinessError) => {
+        }).catch((err: BusinessError) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
           if (err.code == 801) {
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
@@ -1009,7 +1563,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    it("test_setWindowGrayScale_2", 0, async (done:Function) => {
+    it("test_setWindowGrayScale_2", 0, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_2";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1019,7 +1573,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
           console.info(msgStr + 'Succeeded in setting the grayScale 2.');
           expect(false).assertTrue();
           done();
-        }).catch((err:BusinessError) => {
+        }).catch((err: BusinessError) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
           if (err.code == 801) {
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
@@ -1044,7 +1598,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    it("test_subWindow_setWindowGrayScale_1", 0, async (done:Function) => {
+    it("test_subWindow_setWindowGrayScale_1", 0, async (done: Function) => {
       let msgStr = "test_subWindow_setWindowGrayScale_1";
       console.log(msgStr + "begin");
       let grayScale = 1;
@@ -1058,7 +1612,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
               console.info(msgStr + 'Succeeded in setting the grayScale 1.');
               expect(true).assertTrue();
               done();
-            }).catch((err:BusinessError) => {
+            }).catch((err: BusinessError) => {
               console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
               if (err.code == 801) {
                 console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
@@ -1073,7 +1627,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
             expect(false).assertTrue();
             done();
           });
-        }).catch((err:BusinessError) => {
+        }).catch((err: BusinessError) => {
           console.log(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
           done();
@@ -1094,7 +1648,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
          * @tc.level     : Level 2
          */
 
-    it("test_on_windowRectChange", 2, async (done:Function) => {
+    it("test_on_windowRectChange", 2, async (done: Function) => {
       let msgStr = "test_on_windowRectChange";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1128,7 +1682,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100", 2, async (done:Function) => {
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100", 2, async (done: Function) => {
       let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1141,7 +1695,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to setImmersiveModeEnabledState enable' + JSON.stringify(error.code) +
-        error.message);
+          error.message);
         expect(false).assertTrue();
         done();
       }
@@ -1155,7 +1709,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200", 2, async (done:Function) => {
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200", 2, async (done: Function) => {
       let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1168,7 +1722,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
         done();
       } catch (error) {
         console.log(msgStr + 'Failed to setImmersiveModeEnabledState disEnable' + JSON.stringify(error.code) +
-        error.message);
+          error.message);
         expect(false).assertTrue();
         done();
       }
@@ -1182,12 +1736,12 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_setWindowMask", 2, async (done:Function) => {
+    it("test_mainWindow_setWindowMask", 2, async (done: Function) => {
       let msgStr = "test_mainWindow_setWindowMask";
       console.log(msgStr + "begin");
-      let windowMask: Array<Array<number>> = new Array<Array<number>>();
+      let windowMask: Array<Array<number>> = new Array < Array < number >> ();
       for (let i = 0; i < 500; i++) {
-        let arr: Array<number> = new Array<number>(500);
+        let arr: Array<number> = new Array < number > (500);
         for (let j = 0; j < 500; j++) {
           if (i + j < 500) {
             arr[j] = 0;
@@ -1232,7 +1786,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_on_noInteractionDetected", 2, async (done:Function) => {
+    it("test_mainWindow_on_noInteractionDetected", 2, async (done: Function) => {
       let msgStr = "test_mainWindow_on_noInteractionDetected";
       console.log(msgStr + "begin");
       let time1: number;
@@ -1275,7 +1829,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_off_noInteractionDetected", 2, async (done:Function) => {
+    it("test_mainWindow_off_noInteractionDetected", 2, async (done: Function) => {
       let msgStr = "test_mainWindow_off_noInteractionDetected";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1312,7 +1866,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("test_subWindow_on_noInteractionDetected", 2, async (done:Function) => {
+    it("test_subWindow_on_noInteractionDetected", 2, async (done: Function) => {
       let msgStr = "test_subWindow_on_noInteractionDetected";
       console.log(msgStr + "begin");
       let time1: number;
@@ -1373,7 +1927,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_on_noInteractionDetected_two", 2, async (done:Function) => {
+    it("test_mainWindow_on_noInteractionDetected_two", 2, async (done: Function) => {
       let msgStr = "test_mainWindow_on_noInteractionDetected_two";
       console.log(msgStr + "begin");
       let time1: number;
@@ -1430,7 +1984,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_on_noInteractionDetected_One", 2, async (done:Function) => {
+    it("test_mainWindow_on_noInteractionDetected_One", 2, async (done: Function) => {
       let msgStr = "test_mainWindow_on_noInteractionDetected_One";
       console.log(msgStr + "begin");
       let time1: number;
@@ -1488,7 +2042,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_on_noInteractionDetected_Two", 2, async (done:Function) => {
+    it("test_mainWindow_on_noInteractionDetected_Two", 2, async (done: Function) => {
       let msgStr = "test_mainWindow_on_noInteractionDetected_Two";
       console.log(msgStr + "begin");
       let time1: number;
@@ -1545,7 +2099,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it(" test_mainWindow_on_noInteractionDetected_Not_triggered", 2, async (done:Function) => {
+    it(" test_mainWindow_on_noInteractionDetected_Not_triggered", 2, async (done: Function) => {
       let msgStr = " test_mainWindow_on_noInteractionDetected_Not_triggered";
       console.log(msgStr + "begin");
       let driver: Driver = Driver.create();
@@ -1586,7 +2140,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it(" test_mainWindow_on_noInteractionDetected_0_5", 2, async (done:Function) => {
+    it(" test_mainWindow_on_noInteractionDetected_0_5", 2, async (done: Function) => {
       let msgStr = " test_mainWindow_on_noInteractionDetected_0.5";
       console.log(msgStr + "begin");
       let flag = false;
@@ -1625,7 +2179,7 @@ it("testRectChangeOptions_off_all_callback", 0, async (done:Function) => {
      * @tc.level     : Level 2
      */
 
-    it(" test_mainWindow_on_noInteractionDetected__1", 2, async (done:Function) => {
+    it(" test_mainWindow_on_noInteractionDetected__1", 2, async (done: Function) => {
       let msgStr = " test_mainWindow_on_noInteractionDetected_-1";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
