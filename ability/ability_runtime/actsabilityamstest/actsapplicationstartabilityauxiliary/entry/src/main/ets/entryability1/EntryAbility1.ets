@@ -69,9 +69,15 @@ export default class EntryAbility extends UIAbility {
       }
     }
     hilog.info(0x0000, 'testTag', '%{public}s', `commonEventData, 50==: ${JSON.stringify(commonEventData)}`);
-    commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_1`, commonEventData, (result) => {
-      hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 5011==: ${JSON.stringify(result)}`);
-    });
+    if(this.TEST_CASE_NAME == ''){
+      commonEventManager.publish('onForegroundHap_3800', commonEventData, (result) => {
+        hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 5011==: ${JSON.stringify(result)}`);
+      });
+    }else{
+      commonEventManager.publish(`${this.TEST_CASE_NAME}_onForegroundHap_1`, commonEventData, (result) => {
+        hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 5011==: ${JSON.stringify(result)}`);
+      });
+    }
 
     this.sleep(2000);
     this.context.terminateSelf();

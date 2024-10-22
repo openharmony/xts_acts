@@ -94,6 +94,23 @@ export default class EntryAbility extends UIAbility {
           hilog.info(0x0000, 'testTag', '%{public}s',
             `onConnect SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200, 50==: ${JSON.stringify(result)}`);
         });
+        let wants: Want = {
+          deviceId: '', // deviceId为空表示本设备
+          bundleName: 'com.example.actsapplicationstartabilityauxiliary2',
+          abilityName: 'singleentryability',
+          moduleName: 'entry', // moduleName非必选
+          action: this.TEST_CASE_NAME,
+          parameters: {
+            instanceKey: this.TEST_CASE_NAME
+          }
+        };
+        this.context.startAbility(wants).then((data) => {
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${this.TEST_CASE_NAME} Succeeded in starting SpecifiedAbility辅助hap2 ${data}`);
+        }).catch((err: BusinessError) => {
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${this.TEST_CASE_NAME} Failed to start SpecifiedAbility. err.Code is ${err.code},SpecifiedAbility辅助hap2  err.message is ${err.message}`);
+        })
       }
       if (this.onForegroundFlagNumber == 2) {
         let commonEventData: commonEventManager.CommonEventPublishData = {
@@ -108,26 +125,7 @@ export default class EntryAbility extends UIAbility {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect SingleEntryAbility2, 50==: ${JSON.stringify(result)}`);
         });
       }
-      this.context.moveAbilityToBackground()
-
-      let wants: Want = {
-        deviceId: '', // deviceId为空表示本设备
-        bundleName: 'com.example.actsapplicationstartabilityauxiliary2',
-        abilityName: 'singleentryability',
-        moduleName: 'entry', // moduleName非必选
-        action: this.TEST_CASE_NAME,
-        parameters: {
-          instanceKey: this.TEST_CASE_NAME
-        }
-      };
-      this.context.startAbility(wants).then((data) => {
-        hilog.info(0x0000, 'testTag', '%{public}s',
-          `${this.TEST_CASE_NAME} Succeeded in starting SpecifiedAbility辅助hap2 ${data}`);
-      }).catch((err: BusinessError) => {
-        hilog.info(0x0000, 'testTag', '%{public}s',
-          `${this.TEST_CASE_NAME} Failed to start SpecifiedAbility. err.Code is ${err.code},SpecifiedAbility辅助hap2  err.message is ${err.message}`);
-      })
-
+      // this.context.moveAbilityToBackground()
     }
     if (this.TEST_CASE_NAME == 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1400') {
       this.onForegroundFlagNumber = this.onForegroundFlagNumber + 1
@@ -151,10 +149,10 @@ export default class EntryAbility extends UIAbility {
         }
         this.context.moveAbilityToBackground()
       });
+      setTimeout(()=>{
+        this.context.terminateSelf()
+      })
     }
-    setTimeout(()=>{
-      this.context.terminateSelf()
-    })
   }
 
   onBackground(): void {

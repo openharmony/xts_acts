@@ -20,15 +20,12 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import { common } from '@kit.AbilityKit';
 import { Driver, MatchPattern, ON } from '@kit.TestKit';
 
-let bundleName = 'com.example.actsapplicationstartabilityauxiliary'
-let abilityName = 'EntryAbility1'
-let startAbilityNoModuleNameCmd = `aa start -a ${abilityName} -b ${bundleName} `;
 let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
 abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-export default function actsApplicationStartAbilityTest() {
+export default function actsApplicationStartAbilityTest2() {
 
-  describe('actsApplicationStartAbilityTest', () => {
+  describe('actsApplicationStartAbilityTest2', () => {
     let context: common.UIAbilityContext;
     let driver = Driver.create();
     beforeAll(async (done: Function) => {
@@ -923,6 +920,228 @@ export default function actsApplicationStartAbilityTest() {
           }
         }
       });
+    });
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800
+     * @tc.name Send the 'want' parameter with the 'aa' command
+     * @tc.desc test Arguments
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800", 1, async (done: Function) => {
+      let bundleName = 'com.example.actsapplicationstartabilityauxiliary'
+      let abilityName = 'EntryAbility1'
+      let startAbilityNoModuleNameCmd = `aa start -a ${abilityName} -b ${bundleName} `;
+      const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800';
+      let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
+        events: ['onForegroundHap_3800'],
+      };
+      await commonEventManager.createSubscriber(subscriberInfo_startdebugapp).then((subscriber) => {
+        commonEventManager.subscribe(subscriber, (err, commonEventData) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `eventInfosubscribe ${TEST_CASE_NAME}`);
+          if (err) {
+            hilog.info(0x0000, 'testTag', '%{public}s',
+              `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
+          } else {
+            if (commonEventData.event === 'onForegroundHap_3800') {
+              hilog.info(0x0000, 'testTag', '%{public}s',
+                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+              expect(onCreateFlag).assertTrue();
+              expect(onWindowStageCreateFlag).assertTrue();
+              expect(onForegroundFlag).assertTrue();
+            }
+            commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
+            });
+          }
+        });
+
+        abilityDelegator.executeShellCommand(startAbilityNoModuleNameCmd, (error: BusinessError, data) => {
+          if (error) {
+            hilog.info(0x0000, 'testTag', '%{public}s',
+              `${TEST_CASE_NAME}   start ablility err: ${JSON.stringify(error)}`);
+            expect().assertFail();
+            done();
+          } else {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_CASE_NAME} start ablility suucessce :`);
+          }
+        });
+      })
+    });
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1300
+     * @tc.name The test application calls the startAbility interface through context to start the Ability of multiple instances of auxiliary application
+     * @tc.desc test Arguments
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1300', 0, async (done: Function) => {
+      let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1300';
+      let subscriberInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: [`${TEST_CASE_NAME}_onForegroundHap_1`, `${TEST_CASE_NAME}_onForegroundHap_2`,
+          `${TEST_CASE_NAME}_onForegroundHap_3`, `${TEST_CASE_NAME}_onBackgroundHap_1`,
+          `${TEST_CASE_NAME}_onBackgroundHap_2`, `${TEST_CASE_NAME}_onBackgroundHap_3`],
+      };
+      await commonEventManager.createSubscriber(subscriberInfo).then((subscriber) => {
+        commonEventManager.subscribe(subscriber, (err, commonEventData) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `eventInfosubscribe ${TEST_CASE_NAME}`);
+          if (err) {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_CASE_NAME} onBackground fail:${JSON.stringify(err)}`);
+          } else {
+            if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_1`) {
+              hilog.info(0x0000, 'testTag', '%{public}s',
+                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+              expect(onCreateFlag).assertTrue();
+              expect(onWindowStageCreateFlag).assertTrue();
+              expect(onForegroundFlag).assertTrue();
+            } else if (commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_2` ||
+              commonEventData.event === `${TEST_CASE_NAME}_onForegroundHap_3`) {
+              hilog.info(0x0000, 'testTag', '%{public}s',
+                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+              let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+              let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+              let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+              expect(onCreateFlag).assertTrue();
+              expect(onWindowStageCreateFlag).assertTrue();
+              expect(onForegroundFlag).assertTrue();
+            } else if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_1`) {
+              hilog.info(0x0000, 'testTag', '%{public}s',
+                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+              expect(onBackgroundFlag).assertTrue();
+            } else if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_2`) {
+              hilog.info(0x0000, 'testTag', '%{public}s',
+                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+              expect(onBackgroundFlag).assertTrue();
+            } else if (commonEventData.event === `${TEST_CASE_NAME}_onBackgroundHap_3`) {
+              hilog.info(0x0000, 'testTag', '%{public}s',
+                `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+              let onBackgroundFlag = commonEventData.parameters?.data?.onBackgroundFlag as boolean;
+              expect(onBackgroundFlag).assertTrue();
+              commonEventManager.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            }
+          }
+        });
+        let want: Want = {
+          deviceId: '', // deviceId为空表示本设备
+          bundleName: 'com.example.actsapplicationstartabilityauxiliary',
+          abilityName: 'MultipleEntryAbility',
+          moduleName: 'entry', // moduleName非必选
+          action: TEST_CASE_NAME,
+          parameters: {
+            instanceKey: TEST_CASE_NAME
+          }
+        };
+        context.startAbility(want).then((data) => {
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility EntryAbility1 ${data}`);
+        }).catch((error: BusinessError) => {
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility EntryAbility1. Code is ${error.code}, message is ${error.message}`);
+          expect().assertFail();
+          done();
+        })
+      })
+    });
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1400
+     * @tc.name Start singleton Ability by calling the startAbility interface through context
+     * @tc.desc test Arguments
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1400', 0, async (done: Function) => {
+      let TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1400';
+      let subscriberInfo_startdebugapp: commonEventManager.CommonEventSubscribeInfo = {
+        events: [TEST_CASE_NAME, 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1400_1'],
+      };
+      await commonEventManager.createSubscriber(subscriberInfo_startdebugapp).then((subscriber) => {
+        let onForegroundFlagNumber = 0;
+        commonEventManager.subscribe(subscriber, async (err, commonEventData) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `eventInfosubscribe ${TEST_CASE_NAME}`);
+          if (err) {
+            hilog.info(0x0000, 'testTag', '%{public}s',
+              `eventInfosubscribe ${TEST_CASE_NAME} fail:${JSON.stringify(err)}`);
+          } else {
+            onForegroundFlagNumber = onForegroundFlagNumber + 1
+            hilog.info(0x0000, 'testTag', '%{public}s',
+              `eventInfosubscribe ${TEST_CASE_NAME}: ${JSON.stringify(commonEventData)}`);
+            let onCreateFlag = commonEventData.parameters?.data?.onCreateFlag as boolean;
+            let onWindowStageCreateFlag = commonEventData.parameters?.data?.onWindowStageCreateFlag as boolean;
+            let onForegroundFlag = commonEventData.parameters?.data?.onForegroundFlag as boolean;
+            if (commonEventData.event === TEST_CASE_NAME) {
+              expect(onCreateFlag).assertTrue();
+              expect(onWindowStageCreateFlag).assertTrue();
+              expect(onForegroundFlag).assertTrue();
+
+              let want: Want = {
+                deviceId: '', // deviceId为空表示本设备
+                bundleName: 'com.example.actsapplicationstartabilityauxiliary',
+                abilityName: 'SingleEntryAbility6',
+                moduleName: 'entry', // moduleName非必选
+                action: TEST_CASE_NAME,
+                entities: [TEST_CASE_NAME],
+                parameters: {
+                  instanceKey: TEST_CASE_NAME
+                }
+              };
+              await sleep(2000);
+              context.startAbility(want).then(() => {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility`);
+              }).catch((error: BusinessError) => {
+                expect().assertFail();
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+                done();
+              })
+            }
+            if (commonEventData.event === 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1400_1') {
+              expect(onCreateFlag).assertFalse();
+              expect(onWindowStageCreateFlag).assertFalse();
+              expect(onForegroundFlag).assertTrue();
+              commonEventManager.unsubscribe(subscriber, (err, data) => {
+                done();
+              });
+            }
+          }
+        });
+        let want: Want = {
+          deviceId: '', // deviceId为空表示本设备
+          bundleName: 'com.example.actsapplicationstartabilityauxiliary',
+          abilityName: 'SingleEntryAbility6',
+          moduleName: 'entry', // moduleName非必选
+          action: TEST_CASE_NAME,
+          entities: [TEST_CASE_NAME],
+          parameters: {
+            instanceKey: TEST_CASE_NAME
+          }
+        };
+        try {
+          context.startAbility(want);
+          hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility`);
+        } catch (error) {
+          expect().assertFail();
+          hilog.info(0x0000, 'testTag', '%{public}s',
+            `${TEST_CASE_NAME} Failed to start SpecifiedAbility. Code is ${error.code}, message is ${error.message}`);
+          done();
+        }
+      })
     });
   });
 }

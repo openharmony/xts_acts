@@ -84,7 +84,7 @@ export default class EntryAbility extends UIAbility {
       }
     };
     this.context.startAbility(want).then((data) => {
-      hilog.info(0x0000, 'testTag', '%{public}s', `${this.TEST_CASE_NAME} Succeeded in starting  ${data}`);
+      hilog.info(0x0000, 'testTag', '%{public}s', `${this.TEST_CASE_NAME} Succeeded in starting EntryAbility_7  ${data}`);
     }).catch((err: BusinessError) => {
       hilog.info(0x0000, 'testTag', '%{public}s',
         `${this.TEST_CASE_NAME} Failed to start SpecifiedAbility. err.Code is ${err.code}  err.message is ${err.message}`);
