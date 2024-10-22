@@ -22,6 +22,8 @@ import common from '@ohos.app.ability.common';
 import rpc from '@ohos.rpc';
 import resourceManager from '@ohos.resourceManager';
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
+import hdrCapability from '@ohos.graphics.hdrCapability';
+import display from '@ohos.display';
 
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
@@ -55,7 +57,7 @@ export default function imagePicture() {
   const FRAGMENT_METADATA = image.MetadataType.FRAGMENT_METADATA;
   let exifRecords: Record<string, string|null> = {"ImageWidth": "512", "ImageLength": "512"};
   let isSupportHEIFDecode: boolean;
-
+  let isSupportHdr: Boolean;
 
   describe('imagePicture', () => {
     beforeAll(async () => {
@@ -64,6 +66,9 @@ export default function imagePicture() {
       cacheDir = AppStorage.get('cacheDir')
       isSupportHEIFDecode =
         image.createImageSource(filesDir + '/' + "test.jpg").supportedFormats.includes("image/heif");
+      isSupportHdr = 
+        !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
+          display.getDefaultDisplaySync().hdrFormats.length != 0;
     })
 
     afterEach(async () => {
@@ -697,9 +702,15 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0100', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0100");
-        typeList = [GAINMAP]; 
-        undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-        testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "buffer");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          typeList = [GAINMAP]; 
+          undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+          testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "buffer");
+        }
       })
 
     /**
@@ -713,9 +724,15 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0200', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0200");
-        typeList = [GAINMAP]; 
-        undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-        testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "uri");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          typeList = [GAINMAP]; 
+          undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+          testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "uri");
+        }
       })
 
       /**
@@ -729,9 +746,15 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0300', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0300");
-        typeList = [GAINMAP]; 
-        undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-        testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "fd");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          typeList = [GAINMAP]; 
+          undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+          testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "fd");
+        }
     })
 
       /**
@@ -745,14 +768,20 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0400', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0400");
-        undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-        let picture = await createPictureImageSourcePic("test.jpg", "buffer");
-        for (let i = 0; i < undefinedTypeList.length; i++) {
-          let ret = picture?.getAuxiliaryPicture(undefinedTypeList[i]) == undefined;
-          logger.log("ret = " + ret)
-          expect(ret).assertTrue();
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+          let picture = await createPictureImageSourcePic("test.jpg", "buffer");
+          for (let i = 0; i < undefinedTypeList.length; i++) {
+            let ret = picture?.getAuxiliaryPicture(undefinedTypeList[i]) == undefined;
+            logger.log("ret = " + ret)
+            expect(ret).assertTrue();
+          }
+          done();
         }
-        done();
     })
 
     /**
@@ -865,8 +894,14 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0100', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0100");
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        testMarshalling(done, logger, picture, "picture", EXIF_METADATA);
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let picture = await createPictureImageSourcePic("test.jpg", "fd");
+          testMarshalling(done, logger, picture, "picture", EXIF_METADATA);
+        }
     });
 
     /**
@@ -881,8 +916,14 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0200', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0200");
-        let picture = await createPictureImageSourcePic("test_gainMap.jpg", "fd");
-        testMarshalling(done, logger, picture, "GAINMAP");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let picture = await createPictureImageSourcePic("test_gainMap.jpg", "fd");
+          testMarshalling(done, logger, picture, "GAINMAP");
+        }
       });
 
        /**
@@ -901,9 +942,15 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0100', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0100");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
           let picture = await createPictureImageSourcePic("test_gainMap.jpg", "fd");
           //readPixelsToBuffer && writePixelsFromBuffer
           await testReadPixelsToBuffer(done, logger, picture, GAINMAP);
+        }
     });
 
     /**
@@ -948,16 +995,22 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0100");
-      let picture = await createPictureImageSourcePic("test_gainMap.jpg", "fd");
-      let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
-        auxiliaryPictureType: GAINMAP,
-        size: {width: 1536, height: 2048},
-        rowStride: 10,
-        pixelFormat: image.PixelMapFormat.RGB_565,
-        colorSpace: await colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("test_gainMap.jpg", "fd");
+        let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+          auxiliaryPictureType: GAINMAP,
+          size: {width: 1536, height: 2048},
+          rowStride: 10,
+          pixelFormat: image.PixelMapFormat.RGB_565,
+          colorSpace: await colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+        }
+        typeList = [GAINMAP];
+        testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin);
       }
-      typeList = [GAINMAP];
-      testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin);
     });
 
     /**
@@ -976,8 +1029,14 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_JPEG_0100', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_JPEG_0100");
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        await testMetadataProperty(done, logger, exifRecords, picture, EXIF_METADATA);
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let picture = await createPictureImageSourcePic("test.jpg", "fd");
+          await testMetadataProperty(done, logger, exifRecords, picture, EXIF_METADATA);
+        }
       });
 
 
@@ -1020,14 +1079,20 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0100', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0100");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98,
-          desiredDynamicRange: image.PackingDynamicRange.AUTO,
-          needsPackProperties: true
-        };
-        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let picture = await createPictureOnlyMainPic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98,
+            desiredDynamicRange: image.PackingDynamicRange.AUTO,
+            needsPackProperties: true
+          };
+          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        }
       })
 
 
@@ -1044,14 +1109,20 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0200', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0200");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98,
-          desiredDynamicRange: image.PackingDynamicRange.SDR,
-          needsPackProperties: false
-        };
-        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let picture = await createPictureOnlyMainPic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98,
+            desiredDynamicRange: image.PackingDynamicRange.SDR,
+            needsPackProperties: false
+          };
+          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        }
       })
 
 
@@ -1068,14 +1139,20 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0300', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0300");
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98,
-          desiredDynamicRange: image.PackingDynamicRange.AUTO,
-          needsPackProperties: true
-        };
-        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let picture = await createPictureImageSourcePic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98,
+            desiredDynamicRange: image.PackingDynamicRange.AUTO,
+            needsPackProperties: true
+          };
+          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        }
       })
 
       /**
@@ -1091,14 +1168,20 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0400', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0400");
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98,
-          desiredDynamicRange: image.PackingDynamicRange.SDR,
-          needsPackProperties: false
-        };
-        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let picture = await createPictureImageSourcePic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98,
+            desiredDynamicRange: image.PackingDynamicRange.SDR,
+            needsPackProperties: false
+          };
+          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        }
       })
 
       /**
@@ -1114,12 +1197,18 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0500', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0500");
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98
-        };
-        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let picture = await createPictureImageSourcePic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98
+          };
+          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+        }
       })
 
       /**
@@ -1135,15 +1224,21 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0100', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0100");
-        let writeFd = await getFdCacheDir("pack_picture_01.jpg");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98,
-          desiredDynamicRange: image.PackingDynamicRange.AUTO,
-          needsPackProperties: true
-        };
-        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let writeFd = await getFdCacheDir("pack_picture_01.jpg");
+          let picture = await createPictureOnlyMainPic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98,
+            desiredDynamicRange: image.PackingDynamicRange.AUTO,
+            needsPackProperties: true
+          };
+          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        }
       })
   
       /**
@@ -1159,15 +1254,21 @@ export default function imagePicture() {
        */
        it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0200', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0200");
-        let writeFd = await getFdCacheDir("pack_picture_02.jpg");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98,
-          desiredDynamicRange: image.PackingDynamicRange.SDR,
-          needsPackProperties: false
-        };
-        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let writeFd = await getFdCacheDir("pack_picture_02.jpg");
+          let picture = await createPictureOnlyMainPic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98,
+            desiredDynamicRange: image.PackingDynamicRange.SDR,
+            needsPackProperties: false
+          };
+          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        }
       })
   
       /**
@@ -1183,15 +1284,21 @@ export default function imagePicture() {
        */
       it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0300', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0300");
-        let writeFd = await getFdCacheDir("pack_picture_03.jpg");
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98,
-          desiredDynamicRange: image.PackingDynamicRange.AUTO,
-          needsPackProperties: true
-        };
-        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let writeFd = await getFdCacheDir("pack_picture_03.jpg");
+          let picture = await createPictureImageSourcePic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98,
+            desiredDynamicRange: image.PackingDynamicRange.AUTO,
+            needsPackProperties: true
+          };
+          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        }
       })
   
       /**
@@ -1207,15 +1314,21 @@ export default function imagePicture() {
        */
        it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0400', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0400");
-        let writeFd = await getFdCacheDir("pack_picture_04.jpg");
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98,
-          desiredDynamicRange: image.PackingDynamicRange.SDR,
-          needsPackProperties: false
-        };
-        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let writeFd = await getFdCacheDir("pack_picture_04.jpg");
+          let picture = await createPictureImageSourcePic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98,
+            desiredDynamicRange: image.PackingDynamicRange.SDR,
+            needsPackProperties: false
+          };
+          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        }
       })
   
       /**
@@ -1231,13 +1344,19 @@ export default function imagePicture() {
        */
       it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0500', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0500");
-        let writeFd = await getFdCacheDir("pack_picture_05.jpg");
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        let packOpts: image.PackingOption = {
-          format: "image/jpeg",
-          quality: 98
-        };
-        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        if (!isSupportHdr) {
+          logger.log("device is not support hdr");
+          expect(true).assertTrue();
+          done();
+        } else {
+          let writeFd = await getFdCacheDir("pack_picture_05.jpg");
+          let picture = await createPictureImageSourcePic("test.jpg", "fd");
+          let packOpts: image.PackingOption = {
+            format: "image/jpeg",
+            quality: 98
+          };
+          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+        }
       })
 
       /**
