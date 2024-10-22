@@ -23,8 +23,8 @@ import { WebNetErrorList } from '@ohos.web.netErrorList'
 @Component
 struct webAdsBlockManager {
   controller: webview.WebviewController = new webview.WebviewController();
-  main_url: string = 'baidu.com';
-  src_url: string = 'https://www.baidu.com/';
+  main_url: string = 'hao123.com';
+  src_url: string = CommonConstants.ADS_URL1;
 
   @State testIsOnAdsBlocked: boolean = false;
   @State testOnAdsBlockedDetails: boolean = false;
@@ -312,6 +312,9 @@ struct webAdsBlockManager {
                         console.log(' clearAdsBlockAllowedList isBlockedCurPageBefore :  ' + isBlockedCurPageBefore);
                         console.log(' clearAdsBlockAllowedList isBlockedCurPageAfter :  ' + isBlockedCurPageAfter);
 
+                        this.controller.loadUrl(CommonConstants.ADS_URL1);
+                        await Utils.sleep(1000)
+
                         await Utils.sleep(1000)
                         Utils.emitEvent(true, 1011)
                       } catch (error) {
@@ -324,6 +327,19 @@ struct webAdsBlockManager {
                     }
 
                     case 'emitOnAdsBlocked': {
+
+                      this.controller.loadUrl(CommonConstants.ADS_URL1);
+                      Utils.sleep(4000);
+                      this.controller.loadUrl(CommonConstants.ADS_URL2);
+                      this.controller.refresh();
+                      Utils.sleep(4000);
+                      this.controller.loadUrl(CommonConstants.ADS_URL3);
+                      this.controller.refresh();
+                      Utils.sleep(4000);
+                      this.controller.loadUrl(CommonConstants.ADS_URL4);
+                      this.controller.refresh();
+                      Utils.sleep(2000);
+
                       if (this.testIsOnAdsBlocked) {
                         Utils.emitEvent(true, 1012)
                       } else {
@@ -368,15 +384,6 @@ struct webAdsBlockManager {
                     }
 
                     case 'emitOnAdsBlockedTest': {
-                      this.controller.loadUrl(CommonConstants.ADS_URL1);
-                      Utils.sleep(4000);
-                      this.controller.loadUrl(CommonConstants.ADS_URL2);
-                      Utils.sleep(4000);
-                      this.controller.loadUrl(CommonConstants.ADS_URL3);
-                      Utils.sleep(4000);
-                      this.controller.loadUrl(CommonConstants.ADS_URL4);
-                      Utils.sleep(2000);
-
                       if (this.testOnAdsBlockedDetails) {
                         Utils.emitEvent(true, 1015)
                       } else {
