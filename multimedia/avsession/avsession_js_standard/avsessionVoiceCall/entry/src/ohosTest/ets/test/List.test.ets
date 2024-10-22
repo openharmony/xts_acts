@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import voiceCall from './AVSessionVoiceCall.test'
+import avSessionERRCode from './AVSessionERRCode.test'
 
 export default function testsuite() {
   voiceCall()
+  avSessionERRCode()
 }
