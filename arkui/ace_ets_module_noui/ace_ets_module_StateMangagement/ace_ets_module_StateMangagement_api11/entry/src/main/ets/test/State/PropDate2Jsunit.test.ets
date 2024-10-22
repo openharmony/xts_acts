@@ -249,11 +249,15 @@ export default function PropDate2Jsunit() {
     it('PropDate2Jsunit_0150', 0, async (done: Function) => {
 
       console.info('PropDate2Jsunit_0150 START');
+      let driver = Driver.create();
+      let button = await driver.findComponent(ON.id('ChildDate2_reset'));
+      await button.click();
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('setUTCMilliseconds1');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[PropDate2Jsunit_0150] component obj is: " + JSON.stringify(obj));
       console.info("[PropDate2Jsunit_0150] text: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual("increase the UTCMillisecond by 11");
+      expect(obj.$attrs.label).assertEqual("increase the UTCMillisecond by 10");
       console.info('[PropDate2Jsunit_0150] END');
       done();
     });
@@ -269,7 +273,7 @@ export default function PropDate2Jsunit() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[PropDate2Jsunit_0160] component obj is: " + JSON.stringify(obj));
       console.info("[PropDate2Jsunit_0160] text: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual("increase the UTCMillisecond by 12");
+      expect(obj.$attrs.label).assertEqual("increase the UTCMillisecond by 11");
       console.info('[PropDate2Jsunit_0160] END');
       done();
     });
@@ -472,11 +476,15 @@ export default function PropDate2Jsunit() {
     it('PropDate2Jsunit_0310', 0, async (done: Function) => {
 
       console.info('PropDate2Jsunit_0310 START');
+      let driver = Driver.create();
+      let button = await driver.findComponent(ON.id('PropDate2_reset'));
+      await button.click();
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('setUTCMilliseconds');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[PropDate2Jsunit_0310] component obj is: " + JSON.stringify(obj));
       console.info("[PropDate2Jsunit_0310] text: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual("increase the UTCMillisecond by 11");
+      expect(obj.$attrs.label).assertEqual("increase the UTCMillisecond by 10");
       console.info('[PropDate2Jsunit_0310] END');
       done();
     });
@@ -492,7 +500,7 @@ export default function PropDate2Jsunit() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[PropDate2Jsunit_0320] component obj is: " + JSON.stringify(obj));
       console.info("[PropDate2Jsunit_0320] text: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual("increase the UTCMillisecond by 12");
+      expect(obj.$attrs.label).assertEqual("increase the UTCMillisecond by 11");
       console.info('[PropDate2Jsunit_0320] END');
       done();
     });

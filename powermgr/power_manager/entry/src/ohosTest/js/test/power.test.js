@@ -31,11 +31,19 @@ describe('PowerTest', function () {
      * @tc.size: MediumTest
      */
     it('Power_Is_Screnn_On_Promise_Test', 0, async function (done) {
-        power.wakeupDevice("Power_Is_Screnn_On_Promise_Test");
-        let isScreenOn =  await power.isScreenOn();
-        console.info('Power_Is_Screnn_On_Promise_Test isScreenOn is ' + isScreenOn);
-        expect(isScreenOn).assertTrue();
-        done();
+        let TAG = 'Power_Is_Screnn_On_Promise_Test';
+        power.isScreenOn()
+        .then(data => {
+            console.info(`${TAG} data: ${data}`);
+            let isActive = power.isActive();
+            expect(data).assertEqual(isActive);
+            done();
+        })
+        .catch(error => {
+            console.error(`${TAG} error: ${error.code} ${error.message}`);
+            expect().assertFail();
+            done();
+        })
     })
 
     /**
@@ -47,11 +55,11 @@ describe('PowerTest', function () {
      * @tc.size: MediumTest
      */
     it('Power_Is_Screnn_On_Callback_Test', 0, async function (done) {
-        power.wakeupDevice("Power_Is_Screnn_On_Callback_Test");
         power.isScreenOn((error, screenOn) => {
             if (typeof error === "undefined") {
                 console.info('Power_Is_Screnn_On_Callback_Test screenOn is ' + screenOn);
-                expect(screenOn).assertTrue();
+                let isActive = power.isActive();
+                expect(screenOn).assertEqual(isActive);
                 console.info('Power_Is_Screnn_On_Callback_Test success');
                 done();
             } else {

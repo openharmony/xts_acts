@@ -60,6 +60,21 @@ export default function webViewMenuShowResult() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_COPYGETEDITSTATEFLAGS_0100
+    * @tc.name       : testCopyGetEditStateFlags001
+    * @tc.desc       : test Copy
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('emitCopyGetEditStateFlags001', 0, async (done: Function) => {
+      Utils.emitEvent("emitCopyGetEditStateFlags001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("emitCopyGetEditStateFlags001", 4, 20241018, done);
+      sendEventByKey('WebViewMenuShowResultTestButton', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_CONTEXTMENURESULTCOPY_0100
     * @tc.name       : testCopy001
     * @tc.desc       : test Copy
