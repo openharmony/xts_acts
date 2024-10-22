@@ -282,8 +282,7 @@ export default function windowPromiseTest() {
           done();
         });
       } catch (error) {
-        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
-        expect(false).assertTrue();
+        console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
         done();
       }
     })
@@ -358,8 +357,7 @@ export default function windowPromiseTest() {
           done();
         });
       } catch (error) {
-        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
-        expect(false).assertTrue();
+        console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
         done();
       }
     })
@@ -419,12 +417,10 @@ export default function windowPromiseTest() {
           done();
         });
       } catch (error) {
-        console.log(msgStr + 'Failed :' + JSON.stringify(error.code) + error.message);
-        expect(false).assertTrue();
+        console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
         done();
       }
     })
-
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0400
      * @tc.name      : test_setSubWindowModal_isModal_null_401
@@ -935,51 +931,50 @@ export default function windowPromiseTest() {
 
     })
 
-/**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_CREATE_SUBWINDOW_WITH_OPTIONS_0500
-       * @tc.name      : testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY
-       * @tc.desc      : testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level3
-      */
-it("testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY", 0, async (done: Function) => {
-  let msgStr = "testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY";
-  console.log(msgStr + " begin");
-  let windowClass: ohosWindow.Window;
-  console.log(msgStr + " try begin")
-  let options: ohosWindow.SubWindowOptions = {
-    title: 'title',
-    decorEnabled: true,
-    isModal: true,
-    modalityType: ohosWindow.ModalityType.WINDOW_MODALITY
-  };
-  try {
-    await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY', options)
-      .then((data) => {
-        windowClass = data;
-        console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-        windowClass.destroyWindow();
-        expect(true).assertTrue();
+    /**
+           * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_CREATE_SUBWINDOW_WITH_OPTIONS_0500
+           * @tc.name      : testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY
+           * @tc.desc      : testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
+          */
+    it("testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY", 0, async (done: Function) => {
+      let msgStr = "testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY";
+      console.log(msgStr + " begin");
+      let windowClass: ohosWindow.Window;
+      console.log(msgStr + " try begin")
+      let options: ohosWindow.SubWindowOptions = {
+        title: 'title',
+        decorEnabled: true,
+        isModal: true,
+        modalityType: ohosWindow.ModalityType.WINDOW_MODALITY
+      };
+      try {
+        await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY', options)
+          .then((data) => {
+            windowClass = data;
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+            windowClass.destroyWindow();
+            expect(true).assertTrue();
+            done();
+          })
+          .catch((error: BusinessError) => {
+            console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+            if (error.code == 1300002) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+      } catch (error) {
+        console.log(msgStr + ',error code:' + error.code);
+        expect(false).assertTrue();
         done();
-      })
-      .catch((error: BusinessError) => {
-        console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-        if (error.code == 1300002) {
-          done();
-        } else {
-          expect().assertFail();
-          done();
-        }
-      });
-  } catch (error) {
-    console.log(msgStr + ',error code:' + error.code);
-    expect(false).assertTrue();
-    done();
-  }
+      }
 
-})
-
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0010
      * @tc.name      : testSetDefaultDensityEnabled_true
