@@ -19,8 +19,8 @@ group("bundlemanager") {
     deps = [
       "actsbmsaccesstokentest:ActsBmsAccessTokenTest",
       "actsbmsatomicserviceetstest:actsbmsatomicserviceetstest",
-     "actsbmscontextmenutest:ActsBmsContextmenuTest_Entry",
-     "actsbmscontextmenutest:ActsBmsContextmenuTest",
+      "actsbmscontextmenutest:ActsBmsContextmenuTest",
+      "actsbmscontextmenutest:ActsBmsContextmenuTest_Entry",
       "actsbmsetsunpermissiontest:ActsBmsEtsUnPermissionTest",
       "actsbmsgetinfostest:ActsBmsGetInfosTest",
       "actsbmshapmoduletest:ActsBmsHapModuleTest",
