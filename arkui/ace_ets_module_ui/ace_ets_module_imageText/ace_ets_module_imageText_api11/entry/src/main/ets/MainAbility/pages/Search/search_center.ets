@@ -36,7 +36,7 @@ struct search_center {
             ForEach(this.arr,(item:number) => {
               Text(item.toString())
                 .width('90%')
-                .height('18%')
+                .height('17%')
                 .backgroundColor(0xFFFFFF)
                 .borderRadius(15)
                 .fontSize(16)

@@ -18,7 +18,7 @@ import { MessageManager, Callback } from '../../common/MessageManager';
 @Component
 struct textArea_center {
   private arr:number[] = [0,1,2,3,4,5]
-  @State height1:string = '65%'
+  @State height1:string = '60%'
   @State fontSize1:number = 17
   @State fontWeight1:number = 400
   controller: TextAreaController = new TextAreaController()
