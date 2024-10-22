@@ -1,9 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/Index",
-        "MainAbility/pages/webAdsBlockManager",
-        "MainAbility/pages/webViewObjectPositionReport",
-        "MainAbility/pages/webViewAvoidArea"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
-

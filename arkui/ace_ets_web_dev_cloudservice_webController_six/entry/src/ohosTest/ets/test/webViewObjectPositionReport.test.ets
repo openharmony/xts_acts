@@ -25,7 +25,7 @@ export default function ActsAceWebViewObjectPositionReport() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webViewObjectPositionReport',
+        url: 'testability/pages/webViewObjectPositionReport',
       }
 
       try {
@@ -57,7 +57,7 @@ export default function ActsAceWebViewObjectPositionReport() {
      *@tc.desc test objectPositionReport
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewObjectPositionReport', 0, async (done: Function) => {
       emitKey = "emitWebViewObjectPositionReport"
