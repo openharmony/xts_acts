@@ -64,6 +64,7 @@ export default class Utils {
       return isPc
     } catch (error) {
       console.info("userAgent error:" + error);
+      return false
     }
   }
 

@@ -25,7 +25,7 @@ export default function ActsAceWebAdsBlockManager() {
 
     beforeAll(async (done: Function) => {
       let options : router.RouterOptions = {
-        url: 'MainAbility/pages/webAdsBlockManager',
+        url: 'testability/pages/webAdsBlockManager',
       }
 
       try {
@@ -76,7 +76,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test EnableAdsBlock
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testEnableAdsBlock', 0, async (done: Function) => {
       emitKey = "emitEnableAdsBlock"
@@ -91,7 +91,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test IsAdsBlockEnabled
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testIsAdsBlockEnabled', 0, async (done: Function) => {
       emitKey = "emitIsAdsBlockEnabled"
@@ -106,7 +106,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test IsAdsBlockEnabledForCurPage
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testIsAdsBlockEnabledForCurPage', 0, async (done: Function) => {
       emitKey = "emitIsAdsBlockEnabledForCurPage"
@@ -121,7 +121,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test SetAdsBlockRules
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testSetAdsBlockRules', 0, async (done: Function) => {
       emitKey = "emitSetAdsBlockRules"
@@ -136,7 +136,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test SetAdsBlockRulesFalse
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testSetAdsBlockRulesFalse', 0, async (done: Function) => {
       emitKey = "emitSetAdsBlockRulesFalse"
@@ -151,7 +151,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test AddAdsBlockDisallowedList
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testAddAdsBlockDisallowedList', 0, async (done: Function) => {
       emitKey = "emitAddAdsBlockDisallowedList"
@@ -166,7 +166,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test RemoveAdsBlockDisallowedList
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testRemoveAdsBlockDisallowedList', 0, async (done: Function) => {
       emitKey = "emitRemoveAdsBlockDisallowedList"
@@ -181,7 +181,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test ClearAdsBlockDisallowedList
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testClearAdsBlockDisallowedList', 0, async (done: Function) => {
       emitKey = "emitClearAdsBlockDisallowedList"
@@ -196,7 +196,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test AddAdsBlockAllowedList
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testAddAdsBlockAllowedList', 0, async (done: Function) => {
       emitKey = "emitAddAdsBlockAllowedList"
@@ -211,7 +211,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test RemoveAdsBlockAllowedList
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testRemoveAdsBlockAllowedList', 0, async (done: Function) => {
       emitKey = "emitRemoveAdsBlockAllowedList"
@@ -226,7 +226,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test ClearAdsBlockAllowedList
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testClearAdsBlockAllowedList', 0, async (done: Function) => {
       emitKey = "emitClearAdsBlockAllowedList"
@@ -241,7 +241,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test OnAdsBlocked
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testOnAdsBlocked', 0, async (done: Function) => {
       emitKey = "emitOnAdsBlocked"
@@ -256,7 +256,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test EnableAdsBlockFalse
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testEnableAdsBlockFalse', 0, async (done: Function) => {
       emitKey = "emitEnableAdsBlockFalse"
@@ -271,7 +271,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test IsAdsBlockEnabledCheck
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testIsAdsBlockEnabledCheck', 0, async (done: Function) => {
       emitKey = "emitIsAdsBlockEnabledCheck"
@@ -286,7 +286,7 @@ export default function ActsAceWebAdsBlockManager() {
      *@tc.desc test OnAdsBlockedTest
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testOnAdsBlockedTest', 0, async (done: Function) => {
       emitKey = "emitOnAdsBlockedTest"
