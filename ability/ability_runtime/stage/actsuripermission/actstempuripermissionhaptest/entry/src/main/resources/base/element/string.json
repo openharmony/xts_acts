@@ -1,20 +1,16 @@
 {
-  "string":  [
-      {
-          "name": "phone_entry_dsc",
-          "value": "i am an entry for phone"
-      },
-      {
-          "name": "phone_entry_main",
-          "value": "the phone entry ability"
-      },
-      {
-          "name": "entry_label",
-          "value": "ActsLifecycleMultihapTest"
-      },
-      {
-        "name": "description_application",
-        "value": "demo for test"
-      }
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    }
   ]
 }

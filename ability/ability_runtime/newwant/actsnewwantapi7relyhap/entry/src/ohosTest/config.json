@@ -13,9 +13,11 @@
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
     "deviceType": [
+      "wearable",
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "phone"
     ],
     "distro": {
       "deliveryWithInstall": true,

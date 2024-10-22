@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "com.example.getgroupdir",
-        "module-name": "entry",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 15000
     },
@@ -12,19 +12,10 @@
         {
             "test-file-name": [
                 "ActsGetgroupdirTest.hap",
-				"ActsGetgroupdirhap.hap"
+                "ActsGetgroupdirhap.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-          "type": "ShellKit",
-          "run-command": [
-              "power-shell wakeup",
-              "power-shell setmode 602",
-              "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
-              "hilog -G 2M"
-          ]
-      }
-    ] 
+        }
+    ]
 }
