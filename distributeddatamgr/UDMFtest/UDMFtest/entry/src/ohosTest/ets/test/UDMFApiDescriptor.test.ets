@@ -6739,8 +6739,8 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Shockwave flash movie");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".swf .flv");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-shockwave-flash");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".swf,.flv");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-shockwave-flash,video/x-flv");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610 end");
     });
 
