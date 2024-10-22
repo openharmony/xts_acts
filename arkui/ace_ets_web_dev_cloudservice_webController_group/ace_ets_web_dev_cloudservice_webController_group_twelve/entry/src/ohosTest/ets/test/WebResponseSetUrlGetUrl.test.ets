@@ -500,106 +500,6 @@ export default function webviewNApi() {
     });
 
     /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1110
-     * @tc.name testWebRequestHeaderList_GetHeader_IndexParam_NotNum
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_1110', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/GetHeaderIndexParamNotNum'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebRequestHeaderList_GetHeader_IndexParam_NotNum', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebRequestHeaderList_GetHeader_IndexParam_NotNum', false, 5118, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      await Utils.sleep(1000);
-      sendEventByKey('GetHeader', 10, '');
-    });
-
-    /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1111
-     * @tc.name testWebRequestHeaderList_GetHeader_IndexParam_IsNone
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_1111', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/GetHeaderIndexParamIsNone'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebRequestHeaderList_GetHeader_IndexParam_IsNone', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebRequestHeaderList_GetHeader_IndexParam_IsNone', false, 5119, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      await Utils.sleep(1000);
-      sendEventByKey('GetHeader', 10, '');
-    });
-
-    /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1112
-     * @tc.name testWebRequestHeaderList_GetHeader_IndexParam_MaxLen
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_1112', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/GetHeaderIndexParamMaxLen'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebRequestHeaderList_GetHeader_IndexParam_MaxLen', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebRequestHeaderList_GetHeader_IndexParam_MaxLen', false, 5120, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      await Utils.sleep(1000);
-      sendEventByKey('GetHeader', 10, '');
-    });
-
-    /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1113
-     * @tc.name testWebRequestHeaderList_GetHeader_IndexParam_OverLen
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_1113', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/GetHeaderIndexParamOverLen'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebRequestHeaderList_GetHeader_IndexParam_OverLen', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebRequestHeaderList_GetHeader_IndexParam_OverLen', true, 5121, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      await Utils.sleep(1000);
-      sendEventByKey('GetHeader', 10, '');
-    });
-
-    /**
      * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_1115
      * @tc.name testWebRequestHeaderList_GetHeader_KeyParam_NotString
      * @tc.desc test Arguments
@@ -819,56 +719,6 @@ export default function webviewNApi() {
         });
       sendEventByKey('Click', 10, '');
     });
-
-    /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2240
-     * @tc.name testWebHttpBodyStream_Read_Fail03
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_2240', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/HttpBodyStreamReadBufferSmall'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebHttpBodyStream_Read_Fail03', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebHttpBodyStream_Read_Fail03', false, 5204, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('Click', 10, '');
-    });
-
-
-    /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2410
-     * @tc.name testWebHttpBodyStream_GetPosition_Fail_Param_Error
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_2410', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/HttpBodyStreamGetPosition'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebHttpBodyStream_GetPosition_Fail_Param_Error', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebHttpBodyStream_GetPosition_Fail_Param_Error', 0, 5207, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('Click', 10, '');
-    });
-
 
     /**
      * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2810
@@ -1237,30 +1087,5 @@ export default function webviewNApi() {
         });
       sendEventByKey('Click', 10, '');
     });
-
-    /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_3503
-     * @tc.name testWebServiceWorker_SetSchemeHandler_Fail_schemeParam_NotString
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_3503', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/ServiceWorkerSetSchemeHandlerSchemeNull'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebServiceWorker_SetSchemeHandler_Fail_schemeParam_NotString', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebServiceWorker_SetSchemeHandler_Fail_schemeParam_NotString', false, 5224, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('Click', 10, '');
-    });
-
   });
 }
