@@ -379,7 +379,7 @@ export default function packPictureNdkTest() {
   
           let writeFile = getCachePath("pack_native_picture.png");
           let file = fs.openSync(writeFile, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-          expect(ndkTest.PackToFileFromPicture(file.fd)).assertEqual(IMAGE_UNKNOWN_ERROR);
+          expect(ndkTest.PackToFileFromPicture(file.fd)).assertEqual(IMAGE_BAD_PARAMETER);
           fs.closeSync(file.fd);
           done();
         } catch (err) {
@@ -420,7 +420,7 @@ export default function packPictureNdkTest() {
           ndkTest.setMimeTypeToTestPackingOptions(packOpt.format);
   
           let buffer = new ArrayBuffer(10000 * 10000);
-          expect(ndkTest.PackToDataFromPictureErrorCode(buffer)).assertEqual(IMAGE_UNKNOWN_ERROR);
+          expect(ndkTest.PackToDataFromPictureErrorCode(buffer)).assertEqual(IMAGE_BAD_PARAMETER);
           done();
         } catch (err) {
           logger.log(`Test exception: ${JSON.stringify(err)}`);
