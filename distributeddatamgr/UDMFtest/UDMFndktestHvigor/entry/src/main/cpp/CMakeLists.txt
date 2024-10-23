@@ -16,3 +16,27 @@ target_link_libraries(entry PUBLIC
      libpixelmap.so
      libpixelmap_ndk.z.so
 )
+
+add_library(UtdNdk SHARED utd_ndk_test.cpp)
+
+target_link_libraries(UtdNdk PUBLIC
+     libace_napi.z.so
+     libhilog_ndk.z.so
+     libudmf.so
+)
+
+add_library(UdsNdk SHARED uds_ndk_test.cpp)
+
+target_link_libraries(UdsNdk PUBLIC
+     libace_napi.z.so
+     libhilog_ndk.z.so
+     libudmf.so
+)
+
+add_library(UdmfNdk SHARED udmf_ndk_test.cpp)
+
+target_link_libraries(UdmfNdk PUBLIC
+     libace_napi.z.so
+     libhilog_ndk.z.so
+     libudmf.so
+)
