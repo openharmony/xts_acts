@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,37 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("ActsRdbNapiEtsTest") {
-  hap_profile = "./entry/src/main/config.json"
-  deps = [
-    ":ace_third_ets_assets",
-    ":ace_third_ets_resources",
-    ":ace_third_ets_test_assets",
-  ]
-  ets2abc = true
+
+ohos_app_assist_suite("ActsRdbNapiMainEtsTest") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsRdbNapiMainEtsTest"
+  subsystem_name = "distributeddatamgr"
+  part_name = "relational_store"
+}
+
+ohos_js_app_suite("ActsRdbNapiEtsTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsRdbNapiEtsTest"
   subsystem_name = "distributeddatamgr"
   part_name = "relational_store"
-  shared_libraries = [
-    "./entry/src/main/cpp:backup",
-    "./entry/src/main/cpp:encrypt",
-    "./entry/src/main/cpp:level",
-    "./entry/src/main/cpp:cursor",
-    "./entry/src/main/cpp:predicates",
-    "./entry/src/main/cpp:rdbstore",
-  ]
-}
-
-ohos_js_assets("ace_third_ets_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
-}
-ohos_js_assets("ace_third_ets_test_assets") {
-  source_dir = "./entry/src/main/ets/TestAbility"
-}
-ohos_resources("ace_third_ets_resources") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+  deps = [ ":ActsRdbNapiMainEtsTest" ]
 }
