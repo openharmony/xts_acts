@@ -22,6 +22,7 @@ import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
 import {buildParagraph} from './utils';
+import { display } from '@kit.ArkUI';
 
 function sleep(time: number): Promise<void> {
   return new Promise((resolve) => {
@@ -1264,6 +1265,460 @@ export default function graphicTextClass() {
         console.error(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
         expect(error.code).assertEqual(401);
       });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_043
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : Constructs a LineTypeset object test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_1', 43, async ()=> {
+      let msg = "testParagraphBuilder_BuildLineTypeset_1"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      try {
+        let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+        console.info(msg + 'build LineTypeset successed');
+        try {
+          let count = lineTypeset.getLineBreak(0, 800);
+          if (count != str.length) {
+            console.info(msg + 'getLineBreak return error value');
+            expect().assertFail();
+          }
+        } catch (err) {
+          console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        try {
+          lineTypeset.createLine(0, str.length);
+        } catch (err) {
+          console.info(msg + 'build LineTypeset error cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+      } catch (err) {
+        console.info(msg + 'build LineTypeset error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_044
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : getLineBreak interface abnormal parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_2', 44, async ()=> {
+      let msg = "testParagraphBuilder_BuildLineTypeset_2"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let count = lineTypeset.getLineBreak(null, 800);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(undefined, 800);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_045
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : getLineBreak interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_3', 45, async ()=> {
+      let msg = "testParagraphBuilder_BuildLineTypeset_3"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let count = lineTypeset.getLineBreak(-10, 800);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(0, -10);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(Number.MIN_VALUE, Number.MAX_VALUE);
+        expect(count).assertEqual(str.length);
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(Number.MAX_VALUE, Number.MIN_VALUE);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(1.23, Number.MAX_VALUE);
+        expect(count).assertEqual(str.length - 1);
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_046
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : getLineBreak interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_4', 46, async ()=> {
+      let msg = "testParagraphBuilder_BuildLineTypeset_4"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let count = lineTypeset.getLineBreak(0, display.getDefaultDisplaySync().width);
+        expect(count).assertEqual(str.length);
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(3, display.getDefaultDisplaySync().width);
+        expect(count).assertEqual(str.length - 3);
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_047
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : getLineBreak interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_5', 47, async ()=> {
+      let msg = "testLineTypeset_BuildLineTypeset_5"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let count = lineTypeset.getLineBreak(0, null);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(0, undefined);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_048
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : Constructs a LineTypeset object test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_6', 48, async ()=> {
+      let msg = "testLineTypeset_BuildLineTypeset_6"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let line = lineTypeset.createLine(0, str.length);
+        expect(6).assertEqual(line.getGlyphCount());
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+
+      try {
+        let line = lineTypeset.createLine(1, 5);
+        expect(5).assertEqual(line.getGlyphCount());
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_049
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : createLine interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_7', 49, async ()=> {
+      let msg = "testLineTypeset_BuildLineTypeset_7"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        lineTypeset.createLine(-10, str.length);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        lineTypeset.createLine(0, -10);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let line = lineTypeset.createLine(Number.MIN_VALUE, Number.MAX_VALUE);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let line = lineTypeset.createLine(Number.MAX_VALUE, Number.MIN_VALUE);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let line = lineTypeset.createLine(1.23, str.length);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_050
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : createLine interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_8', 50, async ()=> {
+      let msg = "testLineTypeset_BuildLineTypeset_7"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        lineTypeset.createLine(null, str.length);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        lineTypeset.createLine(undefined, str.length);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        lineTypeset.createLine(0, null);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        lineTypeset.createLine(0, undefined);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
     })
 
   })
