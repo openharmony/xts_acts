@@ -16,6 +16,7 @@
 import { afterAll , afterEach , beforeAll , beforeEach , describe , expect , it } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import { getEnumCount } from './utils';
+import buffer from '@ohos.buffer';
 
 export default function fontPart2Test() {
   describe('DrawingTsFontPart2Test' , () => {
@@ -1334,5 +1335,214 @@ export default function fontPart2Test() {
         }
       }
     });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_1904
+     * @tc.name      : testFontGetTextPath
+     * @tc.desc      : Test for testFontGetTextPathForCharacterNormal1
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testFontGetTextPathForCharacterNormal1' , DEFAULT , () => {
+      const msg = 'testFontGetTextPathForCharacterNormal1';
+      let font = new drawing.Font();
+      let myString: string = "Hello, TypeScript!";
+      let path: drawing.Path | null = null;
+      try {
+        path = font.getTextPath(myString, buffer.from(myString).length, 0, 200);
+        expect(path).not().assertNull();
+        expect(path.getLength(false)).assertLarger(0);
+        console.info(msg + ' getTextPath successed');
+      } catch(e) {
+        console.info(msg + ' getTextPath failed');
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_1905
+     * @tc.name      : testFontGetTextPath
+     * @tc.desc      : Test for testFontGetTextPathForCharacterNormal2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testFontGetTextPathForCharacterNormal2' , DEFAULT , () => {
+      const msg = 'testFontGetTextPathForCharacterNormal2';
+      let font = new drawing.Font();
+      try {
+        let myString: string = " ";
+        let path = font.getTextPath(myString, buffer.from(myString).length, 0, 200);
+        expect(path).not().assertNull();
+        expect(path.getLength(false) == 0).assertTrue();
+        console.info(msg + ' GetTextPath successed,path length:' + path.getLength(false));
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_1906
+     * @tc.name      : testFontGetTextPath
+     * @tc.desc      : Test for testFontGetTextPathForCharacterNormal3
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testFontGetTextPathForCharacterNormal3' , DEFAULT , () => {
+      const msg = 'testFontGetTextPathForCharacterNormal3';
+      let font = new drawing.Font();
+      try {
+        let myString: string = "Hello, TypeScript!";
+        let path = font.getTextPath(myString, buffer.from(myString).length, -1, -1);
+        expect(path).not().assertNull();
+        console.info(msg + ' GetTextPath successed');
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_1907
+     * @tc.name      : testFontGetTextPath
+     * @tc.desc      : Test for testFontGetTextPathForCharacterNormal4
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testFontGetTextPathForCharacterNormal4' , DEFAULT , () => {
+      const msg = 'testFontGetTextPathForCharacterNormal4';
+      let font = new drawing.Font();
+      try {
+        let myString: string = "Hello, TypeScript!";
+        let path = font.getTextPath(myString, buffer.from(myString).length, 0, 200);
+        expect(path).not().assertNull();
+        expect(path.getLength(false)).assertEqual(46.921875);
+        console.info(msg + ' GetTextPath successed');
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_1907
+     * @tc.name      : testFontGetTextPath
+     * @tc.desc      : Test for testFontGetTextPathParameterError1
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testFontGetTextPathParameterError1' , DEFAULT , () => {
+      const msg = 'testFontGetTextPathParameterError1';
+      let font = new drawing.Font();
+      let myString: string = "Hello, TypeScript!";
+      try {
+        font.getTextPath(null, buffer.from(myString).length, -1, -1);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().not().assertFail();
+      }
+
+      try {
+        font.getTextPath(undefined, buffer.from(myString).length, -1, -1);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().not().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_1908
+     * @tc.name      : testFontGetTextPath
+     * @tc.desc      : Test for testFontGetTextPathParameterError2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testFontGetTextPathParameterError2' , DEFAULT , () => {
+      const msg = 'testFontGetTextPathParameterError2';
+      let font = new drawing.Font();
+      let myString: string = "Hello, TypeScript!";
+      try {
+        font.getTextPath(myString, null, -1, -1);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().not().assertFail();
+      }
+
+      try {
+        font.getTextPath(myString, undefined, -1, -1);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().not().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_1909
+     * @tc.name      : testFontGetTextPath
+     * @tc.desc      : Test for testFontGetTextPathParameterError3
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testFontGetTextPathParameterError3' , DEFAULT , () => {
+      const msg = 'testFontGetTextPathParameterError3';
+      let font = new drawing.Font();
+      let myString: string = "Hello, TypeScript!";
+      try {
+        font.getTextPath(myString, buffer.from(myString).length, null, -1);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().not().assertFail();
+      }
+
+      try {
+        font.getTextPath(myString, buffer.from(myString).length, undefined, -1);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().not().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_1910
+     * @tc.name      : testFontGetTextPath
+     * @tc.desc      : Test for testFontGetTextPathParameterError4
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testFontGetTextPathParameterError4' , DEFAULT , () => {
+      const msg = 'testFontGetTextPathParameterError4';
+      let font = new drawing.Font();
+      let myString: string = "Hello, TypeScript!";
+      try {
+        font.getTextPath(myString, buffer.from(myString).length, 0, null);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().not().assertFail();
+      }
+
+      try {
+        font.getTextPath(myString, buffer.from(myString).length, 0, undefined);
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` GetTextPath errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().not().assertFail();
+      }
+    });
+
   });
 }
