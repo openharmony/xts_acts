@@ -245,7 +245,7 @@ describe('HidebugToDevJsTest', function () {
                 hidebug.tags.NOTIFICATION, hidebug.tags.NWEB, hidebug.tags.OHOS, hidebug.tags.POWER_MANAGER,
                 hidebug.tags.RPC, hidebug.tags.SAMGR, hidebug.tags.WINDOW_MANAGER, hidebug.tags.AUDIO,
                 hidebug.tags.CAMERA, hidebug.tags.IMAGE, hidebug.tags.MEDIA];
-            let limit_size = 1;
+            let limit_size = 102400;
             let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
             hidebug.stopAppTraceCapture();
             console.info(`SUB_DFX_DFT_Trace_Collect_Js_0200 > path =: ${path}`)
@@ -740,6 +740,31 @@ describe('HidebugToDevJsTest', function () {
         }
         console.info('testHiDebugJs29 end');
         done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2000
+     * @tc.name testHiDebugJs27
+     * @tc.desc 验证应用内动态启停采集应用trace-ts接口-startAppTraceCapture、stopAppTraceCapture-ALL_THREADS（limit_size为1)
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs27', 1, async function (done) {
+        try {
+            let flag = hidebug.TraceFlag.ALL_THREADS;
+            let tag = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI];
+            let limit_size = 1;
+            let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
+            hidebug.stopAppTraceCapture();
+            console.info(`SUB_DFX_DFT_Trace_Collect_Js_2000 > path =: ${path}`)
+            expect(path != "").assertTrue();
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2000 > error code: ${err.code}, error msg: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
     })
 
 })
