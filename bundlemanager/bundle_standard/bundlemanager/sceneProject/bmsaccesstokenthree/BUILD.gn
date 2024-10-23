@@ -14,7 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_app_assist_suite("bmsAccessTokenTest3") {
-  test_hap = true 
+  test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "bmsAccessTokenTest3"
