@@ -129,9 +129,5 @@ HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0300, Function | MediumTest 
     printf("[CLIENT MAIN] query.\n");
     ret = GetAttestStatus(&attestResultInfo);
     printf("[CLIENT MAIN] wrong. ret:%d\n", ret);
-#ifdef __LINUX__
     EXPECT_EQ(ret, ACTS_DEVATTEST_SUCCESS);
-#else
-    EXPECT_FALSE(ret == ACTS_DEVATTEST_SUCCESS);
-#endif
 }
