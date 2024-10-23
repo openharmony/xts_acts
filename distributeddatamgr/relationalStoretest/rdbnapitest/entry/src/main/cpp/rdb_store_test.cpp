@@ -1709,7 +1709,7 @@ static napi_value SUB_DDM_RDB_3100(napi_env env, napi_callback_info info) {
     storeTestRdbStore_->id = rdbID;
 
     errCode = valueObject->destroy(valueObject);
-    NAPI_ASSERT(env, errCode ==0, "valueObject id2 is fail.");
+    NAPI_ASSERT(env, errCode == 0, "valueObject id2 is fail.");
     errCode = valueBucket->destroy(valueBucket);
     NAPI_ASSERT(env, errCode == 0, "valueBucket id2 is fail.");
     errCode = predicates->destroy(predicates);

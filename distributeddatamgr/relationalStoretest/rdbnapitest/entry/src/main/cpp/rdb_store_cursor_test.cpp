@@ -485,7 +485,7 @@ static napi_value SUB_DDM_RDB_CURSOR_0900(napi_env env, napi_callback_info info)
 
     size_t size = 0;
     cursor->getSize(cursor, 6, &size);
-    NAPI_ASSERT(env, (int)size == 0, "getSize  is fail.");
+    NAPI_ASSERT(env, static_cast<int>(size) == 0, "getSize  is fail.");
 
     predicates->destroy(predicates);
     errCode = cursor->destroy(cursor);
@@ -519,9 +519,9 @@ static napi_value SUB_DDM_RDB_CURSOR_1000(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, columnCount == 4, "getColumnCount  is fail.");
 
     size_t size = 0;
-    cursor->getSize(cursor, 6, &size);
+    cursor->getSize(cursor, columnCount, &size);
     char data1Value[10] = "";
-    cursor->getText(cursor, 6, data1Value, 10);
+    cursor->getText(cursor, columnCount, data1Value, 10);
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "", "SUB_DDM_RDB_CURSOR_1000 data1Value= %{public}s", data1Value);
     NAPI_ASSERT(env, strcmp(data1Value, "") == 0, "getText  is fail.");
     
