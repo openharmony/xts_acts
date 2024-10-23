@@ -22,8 +22,8 @@ ohos_copy("PyTestCase") {
   subsystem_name = "pcs"
   part_name = "pcs"
   sources = [
-    "./PCSPyTest.json",
-    "./PCSPyTest.py",
+    "./ActsPCSPyTest.json",
+    "./ActsPCSPyTest.py",
     "./PermissionUtils.py",
     "./sysCapUtils.py",
     "./testAppSignatureVerify.py",

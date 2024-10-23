@@ -151,6 +151,12 @@
       },
       {
         "name": "ohos.permission.ACTIVITY_MOTION"
+      },
+      {
+        "name": "ohos.permission.REBOOT"
+      },
+      {
+        "name": "ohos.permission.ACCESS_BIOMETRIC"
       }
     ]
   }
