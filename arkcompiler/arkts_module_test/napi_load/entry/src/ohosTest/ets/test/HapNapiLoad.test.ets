@@ -146,6 +146,44 @@ export default function HapNapiLoadTest() {
         expect().assertFail();
       }
     })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0007
+     * @tc.name: test moduleName is incorrect
+     * @tc.desc: Test moduleName incorrectly when loading har package in hap
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0007', 0, () => {
+      try {
+        TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0007';
+        console.info(TAG, ' start');
+        let har: ESObject = testNapi.loadModuleWithInfo('harTwo', 'com.acts.arttsnapiloadtest/entry_tes');
+      } catch (err) {
+        expect(5).assertEqual(5);
+      }
+
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0008
+     * @tc.name: test moduleName is incorrect
+     * @tc.desc: Test moduleName incorrectly when loading hsp package in hap
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0008', 0, () => {
+      try {
+        TAG = 'ARK_ETSRuntime_HAP_NAPI_LOAD_0008';
+        console.info(TAG, ' start');
+        let har: ESObject = testNapi.loadModuleWithInfo('hspTwo', 'com.acts.arttsnapiloadtest/entry_tes');
+      } catch (err) {
+        expect(5).assertEqual(5);
+      }
+
+    })
     
   })
 }
