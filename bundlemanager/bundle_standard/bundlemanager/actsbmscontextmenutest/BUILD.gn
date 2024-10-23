@@ -12,12 +12,18 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-
-ohos_js_app_suite("ActsBundleMgrStageEtsTest") {
+ohos_app_assist_suite("ActsBmsContextmenuTest_Entry") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsBmsContextmenuTest_Entry"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
+}
+ohos_js_app_suite("ActsBmsContextmenuTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsBundleMgrStageEtsTest"
+  hap_name = "ActsBmsContextmenuTest"
   subsystem_name = "bundlemanager"
   part_name = "bundle_framework"
 }

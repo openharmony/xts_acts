@@ -3,10 +3,6 @@
     {
       "name": "app_name",
       "value": "MyApplication"
-    },
-    {
-      "name": "description_application",
-      "value": "MyApplication"
     }
   ]
 }
