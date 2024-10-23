@@ -1026,7 +1026,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Windows bitmap image.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".bmp");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".bmp,.bm");
       expect(typeObj.mimeTypes.toString()).assertEqual("image/bmp,image/x-ms-bmp");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3300 end");
     });
@@ -6739,8 +6739,8 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Shockwave flash movie");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".swf");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-shockwave-flash");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".swf,.flv");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-shockwave-flash,video/x-flv");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610 end");
     });
 
