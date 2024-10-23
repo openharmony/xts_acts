@@ -163,7 +163,7 @@ struct refresh {
 
         Refresh({ refreshing: $$this.isRefreshing, offset: 120, friction: 100 }) {
           Text('点击我下拉进行刷新: ' + this.text)
-            .fontSize(30)
+            .fontSize(16)
             .margin(10)
         }
         .onStateChange((refreshStatus: RefreshStatus) => {
@@ -176,6 +176,7 @@ struct refresh {
           }, 3000)
           Logger.info(TAG, 'onRefreshing test')
         })
+        .height('100%')
       }
       .height('80%')
       .width('100%')
