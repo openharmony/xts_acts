@@ -1380,6 +1380,7 @@ export default function windowImmersiveTest() {
         console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
         windowClass.setSpecificSystemBarEnabled('status', false).then(async () => {
           console.log(`${caseName} Succeeded in setting the status bar to be invisible.`);
+          await sleep(100);
           let avoidArea = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
           console.info(`${caseName} Get Window Avoid Area: ${JSON.stringify(avoidArea)}`);
           expect(avoidArea.bottomRect.height).assertEqual(0);
