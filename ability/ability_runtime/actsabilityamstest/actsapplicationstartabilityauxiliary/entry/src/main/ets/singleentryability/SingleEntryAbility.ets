@@ -125,7 +125,6 @@ export default class EntryAbility extends UIAbility {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect SingleEntryAbility2, 50==: ${JSON.stringify(result)}`);
         });
       }
-      // this.context.moveAbilityToBackground()
     }
     if (this.TEST_CASE_NAME == 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1400') {
       this.onForegroundFlagNumber = this.onForegroundFlagNumber + 1
