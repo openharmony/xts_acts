@@ -112,40 +112,12 @@ function displayDeviceProp(value: ESObject, index: number, array: ESObject) {
   cMask = value.channelMasks;
   console.info(`${TagFrmwk}: device info: ${value}`);
 }
-let getPermission = () => {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let testContext:ESObject = AppStorage.get('testContext');
-  let permissions: Array<Permissions> =
-    ["ohos.permission.MANAGE_AUDIO_CONFIG", "ohos.permission.MICROPHONE"];
-  atManager.requestPermissionsFromUser(testContext, permissions,
-    (err: BusinessError, data: PermissionRequestResult) => {
-      console.info("request success permissions" + JSON.stringify(data));
-      console.info("getPermissionRequestResult err", JSON.stringify(err));
-    })
-}
 
-async function driveFn() {
-  console.info(`come in driveFn`);
-  let driver = await UiDriver.create();
-  console.info(`driver is ${JSON.stringify(driver)}`);
-  await sleep(100);
-  console.info(`UiDriver start`);
-  let button = await driver.findComponent(BY.text('允许'));
-  if (button == null) {
-    let cmd = "hidumper -s WindowManagerService -a'-a'"
-    await delegator.executeShellCommand(cmd);
-  }
-  console.info(`button is ${JSON.stringify(button)}`);
-  await sleep(100);
-  await button.click();
-}
 export default function audioFramework() {
 
   describe('audioFramework', () => {
     beforeAll(async () => {
-      getPermission();
-      await driveFn();
-      await sleep(100);
+      sleep(1000);
       await getAudioManager();
       await getVolumeGroupManager();
       console.info('TestLog: Start Testing AudioFrameworkTest Interfaces');
