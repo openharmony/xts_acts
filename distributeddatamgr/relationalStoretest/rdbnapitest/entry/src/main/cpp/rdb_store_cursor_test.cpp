@@ -521,7 +521,7 @@ static napi_value SUB_DDM_RDB_CURSOR_1000(napi_env env, napi_callback_info info)
     size_t size = 0;
     cursor->getSize(cursor, columnCount, &size);
     char data1Value[10] = "";
-    cursor->getText(cursor, columnCount, data1Value, 10);
+    cursor->getText(cursor, columnCount, data1Value, sizeof(data1Value));
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "", "SUB_DDM_RDB_CURSOR_1000 data1Value= %{public}s", data1Value);
     NAPI_ASSERT(env, strcmp(data1Value, "") == 0, "getText  is fail.");
     
