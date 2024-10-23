@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +26,7 @@ export default function abilityTest() {
     */
     it('getResourceManager_ndktest_0100', 0, () => {
       console.log("getResourceManager_ndktest_0100 1");
-      let value = ndk.GetFileList(getContext().resourceManager, "test");
+      let value = ndk.GetFileList(getContext().createModuleContext("entry_test").resourceManager, "test");
       console.log("getResourceManager_ndktest_0100 3");
       console.log("getResourceManager_ndktest_0100" + value);
       console.log("getResourceManager_ndktest_0100" + value.length);
@@ -41,7 +40,7 @@ export default function abilityTest() {
     */
     it('getResourceManager_ndktest_0200', 0, () => {
       console.log("getResourceManager_ndktest_0200 1");
-      let value = ndk.GetRawFileContent(getContext().resourceManager, "test/aa.xml");
+      let value = ndk.GetRawFileContent(getContext().createModuleContext("entry_test").resourceManager, "test/aa.xml");
       console.log("getResourceManager_ndktest_0200 3");
       console.log("getResourceManager_ndktest_0200" + value);
       expect(value !== null).assertTrue();
@@ -115,7 +114,7 @@ export default function abilityTest() {
     */
     it('getDrawableDescriptor_ndktest_0100', 0, () => {
       console.log("getDrawableDescriptor_ndktest_0100 1");
-      let value = ndk.GetDrawableDescriptor(getContext().createModuleContext("entry_test").resourceManager, $r('app.media.icon').id);
+      let value = ndk.GetDrawableDescriptor(getContext().resourceManager, $r('app.media.icon').id);
       console.log("getDrawableDescriptor_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -175,7 +174,7 @@ export default function abilityTest() {
     */
     it('getMedia_ndktest_0100', 0, () => {
       console.log("getMedia_ndktest_0100 1");
-      let value = ndk.GetMedia(getContext().resourceManager, $r('app.media.icon').id);
+      let value = ndk.GetMedia(getContext().createModuleContext("entry_test").resourceManager, $r('app.media.icon').id);
       console.log("getMedia_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -205,7 +204,7 @@ export default function abilityTest() {
     */
     it('getSymbolByName_ndktest_0100', 0, () => {
       console.log("getSymbolByName_ndktest_0100 1");
-      let value = ndk.GetSymbolByName(getContext().resourceManager);
+      let value = ndk.GetSymbolByName(getContext().createModuleContext("entry_test").resourceManager);
       console.log("getSymbolByName_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -220,7 +219,7 @@ export default function abilityTest() {
     */
     it('getSymbol_ndktest_0100', 0, () => {
       console.log("getSymbol_ndktest_0100 1");
-      let value = ndk.GetSymbol(getContext().resourceManager, $r('app.symbol.symbol_test').id);
+      let value = ndk.GetSymbol(getContext().createModuleContext("entry_test").resourceManager, $r('app.symbol.symbol_test').id);
       console.log("getSymbol_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -235,7 +234,7 @@ export default function abilityTest() {
     */
     it('getBoolByName_ndktest_0100', 0, () => {
       console.log("getBoolByName_ndktest_0100 1");
-      let value = ndk.GetBoolByName(getContext().resourceManager);
+      let value = ndk.GetBoolByName(getContext().createModuleContext("entry_test").resourceManager);
       console.log("getBoolByName_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -250,7 +249,7 @@ export default function abilityTest() {
     */
     it('getBool_ndktest_0100', 0, () => {
       console.log("getBool_ndktest_0100 1");
-      let value = ndk.GetBool(getContext().resourceManager, $r('app.boolean.boolean_1').id);
+      let value = ndk.GetBool(getContext().createModuleContext("entry_test").resourceManager, $r('app.boolean.boolean_1').id);
       console.log("getBool_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -265,7 +264,7 @@ export default function abilityTest() {
     */
     it('getPluralStringByName_ndktest_0100', 0, () => {
       console.log("getPluralStringByName_ndktest_0100 1");
-      let value = ndk.GetPluralStringByName(getContext().resourceManager);
+      let value = ndk.GetPluralStringByName(getContext().createModuleContext("entry_test").resourceManager);
       console.log("getPluralStringByName_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -280,7 +279,7 @@ export default function abilityTest() {
     */
     it('getPluralString_ndktest_0100', 0, () => {
       console.log("getPluralString_ndktest_0100 1");
-      let value = ndk.GetPluralString(getContext().resourceManager, $r('app.plural.eat_apple').id, 1);
+      let value = ndk.GetPluralString(getContext().createModuleContext("entry_test").resourceManager, $r('app.plural.eat_apple').id, 1);
       console.log("getPluralString_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -295,7 +294,7 @@ export default function abilityTest() {
     */
     it('getColorByName_ndktest_0100', 0, () => {
       console.log("getColorByName_ndktest_0100 1");
-      let value = ndk.GetColorByName(getContext().resourceManager);
+      let value = ndk.GetColorByName(getContext().createModuleContext("entry_test").resourceManager);
       console.log("getColorByName_ndktest_0100" + value);
       expect(value).assertEqual(4294967210);
     })
@@ -310,7 +309,7 @@ export default function abilityTest() {
     */
     it('getColor_ndktest_0100', 0, () => {
       console.log("getColor_ndktest_0100 1");
-      let value = ndk.GetColor(getContext().resourceManager, $r('app.color.start_window_background_jjq').id);
+      let value = ndk.GetColor(getContext().createModuleContext("entry_test").resourceManager, $r('app.color.start_window_background_jjq').id);
       console.log("getColor_ndktest_0100" + value);
       expect(value).assertEqual(4294967210);
     })
@@ -325,7 +324,7 @@ export default function abilityTest() {
     */
     it('getIntByName_ndktest_0100', 0, () => {
       console.log("getIntByName_ndktest_0100 1");
-      let value = ndk.GetIntByName(getContext().resourceManager);
+      let value = ndk.GetIntByName(getContext().createModuleContext("entry_test").resourceManager);
       console.log("getIntByName_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -340,7 +339,7 @@ export default function abilityTest() {
     */
     it('getInt_ndktest_0100', 0, () => {
       console.log("getInt_ndktest_0100 1");
-      let value = ndk.GetInt(getContext().resourceManager, $r('app.integer.integer_1').id);
+      let value = ndk.GetInt(getContext().createModuleContext("entry_test").resourceManager, $r('app.integer.integer_1').id);
       console.log("getInt_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -355,7 +354,7 @@ export default function abilityTest() {
     */
     it('getFloatByName_ndktest_0100', 0, () => {
       console.log("getFloatByName_ndktest_0100 1");
-      let value = ndk.GetFloatByName(getContext().resourceManager);
+      let value = ndk.GetFloatByName(getContext().createModuleContext("entry_test").resourceManager);
       console.log("getFloatByName_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -370,7 +369,7 @@ export default function abilityTest() {
     */
     it('getFloat_ndktest_0100', 0, () => {
       console.log("getFloat_ndktest_0100 1");
-      let value = ndk.GetFloat(getContext().resourceManager, $r('app.float.float_1').id);
+      let value = ndk.GetFloat(getContext().createModuleContext("entry_test").resourceManager, $r('app.float.float_1').id);
       console.log("getFloat_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -415,7 +414,7 @@ export default function abilityTest() {
     */
     it('getStringArray_ndktest_0100', 0, () => {
       console.log("getStringArray_ndktest_0100 1");
-      let value = ndk.GetStringArray(getContext().resourceManager, $r('app.strarray.size').id);
+      let value = ndk.GetStringArray(getContext().createModuleContext("entry_test").resourceManager, $r('app.strarray.size').id);
       console.log("getStringArray_ndktest_0100" + value);
       expect('' + value).assertEqual('small,big');
     })
@@ -430,7 +429,7 @@ export default function abilityTest() {
     */
     it('getStringArrayByName_ndktest_0100', 0, () => {
       console.log("getStringArrayByName_ndktest_0100 1");
-      let value = ndk.GetStringArrayByName(getContext().resourceManager);
+      let value = ndk.GetStringArrayByName(getContext().createModuleContext("entry_test").resourceManager);
       console.log("getStringArrayByName_ndktest_0100" + value);
       expect('' + value).assertEqual('small,big');
     })
@@ -445,7 +444,7 @@ export default function abilityTest() {
     */
     it('releaseStringArray_ndktest_0100', 0, () => {
       console.log("releaseStringArray_ndktest_0100 1");
-      let value = ndk.ReleaseStringArray(getContext().resourceManager);
+      let value = ndk.ReleaseStringArray(getContext().createModuleContext("entry_test").resourceManager);
       console.log("releaseStringArray_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -460,7 +459,7 @@ export default function abilityTest() {
     */
     it('releaseConfiguration_ndktest_0100', 0, () => {
       console.log("releaseConfiguration_ndktest_0100 1");
-      let value = ndk.ReleaseConfiguration(getContext().resourceManager);
+      let value = ndk.ReleaseConfiguration(getContext().createModuleContext("entry_test").resourceManager);
       console.log("releaseConfiguration_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -475,7 +474,7 @@ export default function abilityTest() {
     */
     it('getStringByName_ndktest_0100', 0, () => {
       console.log("getStringByName_ndktest_0100 1");
-      let value = ndk.GetStringByName(getContext().resourceManager);
+      let value = ndk.GetStringByName(getContext().createModuleContext("entry_test").resourceManager);
       console.log("getStringByName_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -490,7 +489,7 @@ export default function abilityTest() {
     */
     it('getString_ndktest_0100', 0, () => {
       console.log("getString_ndktest_0100 1");
-      let value = ndk.GetString(getContext().resourceManager, $r('app.string.entry_MainAbility').id);
+      let value = ndk.GetString(getContext().createModuleContext("entry_test").resourceManager, $r('app.string.entry_MainAbility').id);
       console.log("getString_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -505,7 +504,7 @@ export default function abilityTest() {
     */
     it('getRawFileDescriptorData_ndktest_0100', 0, () => {
       console.log("getRawFileDescriptorData_ndktest_0100 1");
-      let value = ndk.GetRawFileDescriptorData(getContext().resourceManager, "test/aa.xml");
+      let value = ndk.GetRawFileDescriptorData(getContext().createModuleContext("entry_test").resourceManager, "test/aa.xml");
       console.log("getRawFileDescriptorData_ndktest_0100" + value);
       expect(value.length).assertLarger(0);
     })
@@ -550,7 +549,7 @@ export default function abilityTest() {
     */
     it('getMediaBase64Data_ndktest_0100', 0, () => {
       console.log("getMediaBase64Data_ndktest_0100 1");
-      let value = ndk.GetMediaBase64Data(getContext().resourceManager, $r('app.media.icon').id);
+      let value = ndk.GetMediaBase64Data(getContext().createModuleContext("entry_test").resourceManager, $r('app.media.icon').id);
       console.log("getMediaBase64Data_ndktest_0100" + value);
       expect(value != null).assertTrue();
     })
@@ -595,7 +594,7 @@ export default function abilityTest() {
     */
     it('getDrawableDescriptorData_ndktest_0100', 0, () => {
       console.log("getDrawableDescriptorData_ndktest_0100 1");
-      let value = ndk.GetDrawableDescriptorData(getContext().resourceManager, $r('app.media.icon').id);
+      let value = ndk.GetDrawableDescriptorData(getContext().createModuleContext("entry_test").resourceManager, $r('app.media.icon').id);
       console.log("getDrawableDescriptorData_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -625,7 +624,7 @@ export default function abilityTest() {
     */
     it('addResource_ndktest_0100', 0, () => {
       console.log("addResource_ndktest_0100 1");
-      let value = ndk.AddResource(getContext().resourceManager, "");
+      let value = ndk.AddResource(getContext().resourceManager);
       console.log("addResource_ndktest_0100" + value);
       expect(value).assertTrue();
     })
@@ -640,7 +639,7 @@ export default function abilityTest() {
     */
     it('removeResource_ndktest_0100', 0, () => {
       console.log("removeResource_ndktest_0100 1");
-      let value = ndk.RemoveResource(getContext().resourceManager, "");
+      let value = ndk.RemoveResource(getContext().resourceManager);
       console.log("removeResource_ndktest_0100" + value);
       expect(value).assertTrue();
     })
