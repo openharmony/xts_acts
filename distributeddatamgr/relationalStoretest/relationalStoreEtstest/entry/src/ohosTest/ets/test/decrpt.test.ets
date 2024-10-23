@@ -1,13 +1,13 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import data_relationalStore from '@ohos.data.relationalStore'
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import common from '@ohos.app.ability.common';
 
 const TAG = "[RELATIONAL_STORE_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
   + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)"
 
 
-import common from '@ohos.app.ability.common';
+
 
 let context: common.UIAbilityContext;
 let rdbStore: data_relationalStore.RdbStore | undefined = undefined;
