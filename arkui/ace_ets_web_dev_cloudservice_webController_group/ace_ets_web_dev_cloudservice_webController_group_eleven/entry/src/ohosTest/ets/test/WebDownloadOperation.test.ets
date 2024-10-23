@@ -86,15 +86,15 @@ export default function webDownloadOperation() {
         });
 
       Utils.emitEvent('SUB_ACE_WEB_cancel_0100', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('config', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('start', 10, '');
-      await Utils.sleep(500);
+      await Utils.sleep(1000);
       sendEventByKey('pause11', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('cancel11', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('state11', 10, '');
     })
 
@@ -451,9 +451,9 @@ export default function webDownloadOperation() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('SUB_ACE_onDownloadUpdated_1001', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('config', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('start', 10, '');
     })
 
@@ -471,9 +471,9 @@ export default function webDownloadOperation() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('SUB_ACE_onDownloadUpdated_1002', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('config', 10, '');
-      await Utils.sleep(2000);
+      await Utils.sleep(1000);
       sendEventByKey('start', 10, '');
     })
 
@@ -491,13 +491,13 @@ export default function webDownloadOperation() {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
       Utils.emitEvent('SUB_ACE_onDownloadUpdated_1003', 10)
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('config', 10, '');
-      await Utils.sleep(200);
+      await Utils.sleep(1000);
       sendEventByKey('start', 10, '');
-      await Utils.sleep(6000);
+      await Utils.sleep(10000);
       sendEventByKey('resume11', 10, '');
-      await Utils.sleep(300);
+      await Utils.sleep(1000);
       sendEventByKey('state11', 10, '');
     })
 
