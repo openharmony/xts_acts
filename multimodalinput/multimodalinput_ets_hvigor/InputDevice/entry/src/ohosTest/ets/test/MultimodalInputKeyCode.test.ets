@@ -69,7 +69,7 @@ export default function MultimodalInputKeyCodeTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_KEYCODE_SEARCH_0100", 0, async (done: Function) => {
+    it("SUB_MMI_Input_Api_KEYCODE_SEARCH_0100", 0, async (done:Function) => {
       let caseName = "SUB_MMI_Input_Api_KEYCODE_SEARCH_0100";
       try {
         let KEYCODE_SEARCH = KeyCode.KEYCODE_SEARCH;
