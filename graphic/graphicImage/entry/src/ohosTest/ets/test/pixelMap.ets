@@ -51,10 +51,11 @@ export default function imagePixelMapTest() {
       let button1 = await driver.findComponent(ON.text('允许'));
       await driver.delayMs(1000);
       await button1.click();
+	  await driver.delayMs(1000);
       let button2 = await driver.findComponent(ON.text('允许'));
       await driver.delayMs(1000);
       await button2.click();
-
+      
       let options :router.RouterOptions= {
         url: 'MainAbility/pages/index/indexPixel',
       }
