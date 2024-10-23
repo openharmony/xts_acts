@@ -2979,5 +2979,747 @@ export default function MultimodalInputNdkTest() {
       }
       console.info(`${caseName} end to test OH_Input_GetIntervalSinceLastInput`);
     });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_CreateHotkey_0100
+     * @tc.name: SUB_MMI_Api_Input_CreateHotkey_0100
+     * @tc.desc: OH_Input_CreateHotkey Interface testing 
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_CreateHotkey_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_CreateHotkey_0100';
+      console.info(`${caseName} start to test OH_Input_CreateHotkey`);
+      try {
+        let data = input.CreateHotkey();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_CreateHotkey`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0100
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0100
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Z
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0100';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0200
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0200
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Alt + Z
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0200';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0300
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0300
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Shift + Alt + Z
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0300';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor3();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0400
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0400
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Alt + Z
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0400';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor4();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0500
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0500
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Shift + C
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0500';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor5();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0600
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0600
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + 9
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0600';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor6();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0700
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0700
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + â†?     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0700', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0700';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor7();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0800
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0800
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + â†?     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0800', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0800';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor8();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0900
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0900
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + F1
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0900', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0900';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor9();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1000
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1000
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Home
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1000', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1000';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor10();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1100
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1100
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Enter
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1100';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor11();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1200
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1200
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + P
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1200';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor12();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1300
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1300
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Alt + D + C
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1300';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor13();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1400
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1400
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Alt + D + C
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1400';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor14();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1500
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1500
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe 9 + D
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1500';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor15();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1600
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1600
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe F + D
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1600';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor16();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1700
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1700
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Meta
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1700', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1700';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor17();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1800
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1800
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Right_Ctrl
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1800', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1800';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor18();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1900
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1900
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Scroll Lock
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1900', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1900';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor19();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_2000
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_2000
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_2000', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_2000';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor20();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_2100
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_2100
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_2100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_2100';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor21();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_2200
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_2200
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Table
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_2200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_2200';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor22();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_2300
+     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_2300
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Alt + Table
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Api_Input_AddHotkeyMonitor_2300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_2300';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor23();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
   });
 }
