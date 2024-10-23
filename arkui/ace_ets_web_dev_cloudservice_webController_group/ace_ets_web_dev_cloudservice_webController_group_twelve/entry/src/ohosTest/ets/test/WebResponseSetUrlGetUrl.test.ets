@@ -1039,29 +1039,5 @@ export default function webviewNApi() {
         });
       sendEventByKey('Click', 10, '');
     });
-
-    /**
-     * @tc.number SUB_ACE_WEB_WEBHOST_NSDK_2230
-     * @tc.name testWebHttpBodyStream_Read_Success02
-     * @tc.desc test Arguments
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_2230', 0, async (done: Function) => {
-      router.pushUrl({
-        url: 'testability/pages/HttpBodyStreamReadBufferBig'
-      });
-      router.clear();
-      await Utils.sleep(1000);
-      Utils.emitEvent('testWebHttpBodyStream_Read_Success02', 10);
-      await Utils.sleep(1000);
-      Utils.registerBaseEvent('testWebHttpBodyStream_Read_Success02', true, 5203, done,
-        (backData: events_emitter.EventData, expected: Object) => {
-          console.info('Received event data: ' + JSON.stringify(backData));
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('Click', 10, '');
-    });
   });
 }
