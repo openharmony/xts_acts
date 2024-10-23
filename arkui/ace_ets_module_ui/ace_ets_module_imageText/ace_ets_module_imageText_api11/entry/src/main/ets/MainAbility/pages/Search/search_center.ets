@@ -36,7 +36,7 @@ struct search_center {
             ForEach(this.arr,(item:number) => {
               Text(item.toString())
                 .width('90%')
-                .height(150)
+                .height('17%')
                 .backgroundColor(0xFFFFFF)
                 .borderRadius(15)
                 .fontSize(16)
@@ -101,7 +101,7 @@ struct search_center {
         .backgroundColor('#f9eff6')
       }
       .width('100%')
-      .height(700)
+      .height('98%')
     }
     .height('100%')
     .alignItems(VerticalAlign.Top)
