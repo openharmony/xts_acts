@@ -33,5 +33,7 @@ ohos_static_library("utilskit") {
     "c_utils:utils",
     "hilog:libhilog",
   ]
-  deps = [ "//base/hiviewdfx/hiview/base:hiviewbase" ]
+  deps = [
+    "//base/hiviewdfx/hiview/base:hiviewbase",
+  ]
 }
