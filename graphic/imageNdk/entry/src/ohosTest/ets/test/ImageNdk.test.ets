@@ -218,5 +218,53 @@ export default function imageNdkTest() {
       done();
     })
 
+    /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetGetSrcPixelFormat_1300
+    * @tc.name      : testNativeSetGetSrcPixelFormat
+    * @tc.desc      : 1.testNativeSetGetSrcPixelFormat
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetGetSrcPixelFormat_1300', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeSetGetSrcPixelFormat()
+      let msg = 'testNativeSetGetSrcPixelFormat result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+   /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeCreateEmptyPixelmap_1400
+    * @tc.name      : testNativeCreateEmptyPixelmap
+    * @tc.desc      : 1.testNativeCreateEmptyPixelmap
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeCreateEmptyPixelmap_1400', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeCreateEmptyPixelmap()
+      let msg = 'testNativeCreateEmptyPixelmap result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+   /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeConvertAlphaFormat_1500
+    * @tc.name      : testNativeConvertAlphaFormat
+    * @tc.desc      : 1.testNativeConvertAlphaFormat
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeConvertAlphaFormat_1500', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeConvertAlphaFormat()
+      let msg = 'testNativeConvertAlphaFormat result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
   })
 }

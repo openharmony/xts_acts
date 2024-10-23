@@ -24,3 +24,6 @@ export const testNativeSetMemoryName: () => number;
 export const testNativeGetArgbPixels: () => number;
 export const testNativeGetColorSpaceNative: () => number;
 export const testNativeSetColorSpaceNative: () => number;
+export const testNativeSetGetSrcPixelFormat: () => number;
+export const testNativeCreateEmptyPixelmap: () => number;
+export const testNativeConvertAlphaFormat: () => number;
