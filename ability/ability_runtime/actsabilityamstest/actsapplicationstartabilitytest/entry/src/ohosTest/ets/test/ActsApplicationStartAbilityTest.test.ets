@@ -793,6 +793,7 @@ export default function actsApplicationStartAbilityTest() {
                     instanceKey: TEST_CASE_NAME
                   }
                 };
+                await sleep(1000);
                 context.startAbility(want).then(() => {
                   hilog.info(0x0000, 'testTag', '%{public}s',
                     `${TEST_CASE_NAME} Succeeded in starting SpecifiedAbility`);
