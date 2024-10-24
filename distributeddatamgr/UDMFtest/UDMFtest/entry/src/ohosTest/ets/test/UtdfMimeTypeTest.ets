@@ -4609,7 +4609,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.rn-realmedia-vbr"
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter is "application/vnd.rn-realmedia-vbr"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
