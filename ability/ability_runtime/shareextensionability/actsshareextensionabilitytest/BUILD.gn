@@ -13,31 +13,25 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsShareExtensionAbilityTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":actsshareextensionabilitytest_js_assets",
-    ":actsshareextensionabilitytest_resources",
+ohos_app_assist_suite("ActsShareExtensionAbilitySelfRely") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsShareExtensionAbilitySelfRely"
+  hap_list = [
+    "ActsShareExtensionAbilitySelfRely-feature-entry-default-unsigned:ActsShareExtensionAbilitySelfModule",
+    "ActsShareExtensionAbilitySelfRely-entry-default-unsigned:ActsShareExtensionAbilitySelfRely",
   ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsShareExtensionAbilityTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
 
-ohos_app_scope("actsshareextensionabilitytest_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
+ohos_js_app_suite("ActsShareExtensionAbilityTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsShareExtensionAbilityTest"
 
-ohos_js_assets("actsshareextensionabilitytest_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("actsshareextensionabilitytest_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":actsshareextensionabilitytest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsShareExtensionAbilitySelfRely" ]
 }

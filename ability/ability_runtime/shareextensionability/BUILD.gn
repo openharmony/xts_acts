@@ -18,8 +18,6 @@ group("actsshareextensionability") {
   if (is_standard_system) {
     deps = [
       "actsshareextensionabilityotherrely:ActsShareExtensionAbilityOtherRely",
-      "actsshareextensionabilityself:ActsShareExtensionAbilitySelfModule",
-      "actsshareextensionabilityself:ActsShareExtensionAbilitySelfRely",
       "actsshareextensionabilitytest:ActsShareExtensionAbilityTest",
     ]
   }
