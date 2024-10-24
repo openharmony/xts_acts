@@ -13,6 +13,7 @@
     "name": ".appliFeature",
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "wearable",
       "phone",
       "tablet"
     ],
