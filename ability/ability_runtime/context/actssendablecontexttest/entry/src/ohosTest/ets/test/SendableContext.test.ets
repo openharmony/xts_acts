@@ -66,6 +66,37 @@ export default function sendableContextTest() {
     })
 
     /**
+     * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0200
+     * @tc.name: convertToAbilityStageContext
+     * @tc.desc: Test AbilityStageContext convertTo and convertFrom in same thread.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: 1
+     */
+    it('SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0200', 0, async () => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0200 begin');
+      let aStr = AppStorage.get<string>('[NormalContext] AbilityStageContext convert in same thread');
+      hilog.info(0x0000, 'testTag', '%{public}s', aStr);
+      expect(aStr == 'succeed').assertTrue();
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0300
+     * @tc.name: convertToAbilityStageContext
+     * @tc.desc: Test AbilityStageContext convertTo and convertFrom in same thread and post it.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: 1
+     */
+    it('SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0300', 0, async () => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_SendableContext_AbilityStageContext_0300 begin');
+      let aStr = AppStorage.get<string>('[NormalContext] AbilityStageContext after convert and post');
+      expect(aStr == 'succeed').assertTrue();
+    })
+
+    /**
      * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0100
      * @tc.name: convertToApplicationContext
      * @tc.desc: Test ApplicationContext convertTo and convertFrom.
@@ -84,6 +115,36 @@ export default function sendableContextTest() {
       expect(cStr == 'failed').assertTrue();
       let dStr = AppStorage.get<string>('[sendableApplicationContext] ApplicationContext convert to Context');
       expect(dStr == 'succeed').assertTrue();
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0200
+     * @tc.name: convertToApplicationContext
+     * @tc.desc: Test ApplicationContext convertTo and convertFrom in same thread.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: 1
+     */
+    it('SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0200', 0, async () => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0200 begin');
+      let aStr = AppStorage.get<string>('[NormalContext] ApplicationContext convert in same thread');
+      expect(aStr == 'succeed').assertTrue();
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0300
+     * @tc.name: convertToApplicationContext
+     * @tc.desc: Test ApplicationContext convertTo and convertFrom in same thread and post it.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: 1
+     */
+    it('SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0300', 0, async () => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_SendableContext_ApplicationContext_0300 begin');
+      let aStr = AppStorage.get<string>('[NormalContext] ApplicationContext after convert and post');
+      expect(aStr == 'succeed').assertTrue();
     })
 
     /**
@@ -107,6 +168,36 @@ export default function sendableContextTest() {
     })
 
     /**
+     * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0200
+     * @tc.name: convertToUIAbilityContext
+     * @tc.desc: Test UIAbilityContext convertTo and convertFrom in same thread.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: 1
+     */
+    it('SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0200', 0, async () => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0200 begin');
+      let aStr = AppStorage.get<string>('[NormalContext] UIAbilityContext convert in same thread');
+      expect(aStr == 'succeed').assertTrue();
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0300
+     * @tc.name: convertToUIAbilityContext
+     * @tc.desc: Test UIAbilityContext convertTo and convertFrom in same thread and post it.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: 1
+     */
+    it('SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0300', 0, async () => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_SendableContext_UIAbilityContext_0300 begin');
+      let aStr = AppStorage.get<string>('[NormalContext] UIAbilityContext after convert and post');
+      expect(aStr == 'succeed').assertTrue();
+    })
+
+    /**
      * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_Context_0100
      * @tc.name: convertToContext
      * @tc.desc: Test Context convertTo and convertFrom.
@@ -124,6 +215,36 @@ export default function sendableContextTest() {
       expect(cStr == 'failed').assertTrue();
       let dStr = AppStorage.get<string>('[sendableContext] Context convert to UIAbilityContext');
       expect(dStr == 'succeed').assertTrue();
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_Context_0200
+     * @tc.name: convertToContext
+     * @tc.desc: Test Context convertTo and convertFrom in same thread.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: 1
+     */
+    it('SUB_Ability_AbilityRuntime_SendableContext_Context_0200', 0, async () => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_SendableContext_Context_0200 begin');
+      let aStr = AppStorage.get<string>('[NormalContext] Context convert in same thread');
+      expect(aStr == 'succeed').assertTrue();
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_SendableContext_Context_0300
+     * @tc.name: convertToContext
+     * @tc.desc: Test Context convertTo and convertFrom in same thread and post it.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: 1
+     */
+    it('SUB_Ability_AbilityRuntime_SendableContext_Context_0300', 0, async () => {
+      hilog.info(0x0000, 'testTag', '%{public}s',
+        'SUB_Ability_AbilityRuntime_SendableContext_Context_0300 begin');
+      let aStr = AppStorage.get<string>('[NormalContext] Context after convert and post');
+      expect(aStr == 'succeed').assertTrue();
     })
   })
 }
