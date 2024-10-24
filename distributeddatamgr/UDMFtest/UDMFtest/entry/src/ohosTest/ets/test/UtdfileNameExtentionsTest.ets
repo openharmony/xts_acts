@@ -5771,7 +5771,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4160
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4160
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m2ts"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mts"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -5785,7 +5785,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4170
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4170
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m2ts"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m2t"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -5953,7 +5953,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4290
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4290
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mp1v"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m1v"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -5995,7 +5995,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4320
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4320
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rv"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".divx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2

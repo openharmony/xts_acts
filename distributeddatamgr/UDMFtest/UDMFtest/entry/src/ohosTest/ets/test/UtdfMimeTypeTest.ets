@@ -4847,7 +4847,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/ix-jg"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-jg"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
