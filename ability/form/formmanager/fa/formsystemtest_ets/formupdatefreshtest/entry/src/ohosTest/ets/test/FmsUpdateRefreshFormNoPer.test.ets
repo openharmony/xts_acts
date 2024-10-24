@@ -34,7 +34,7 @@ export default function FmsUpdateRefreshNoPerTest() {
         it(`FMS_hostRefreshNoPer_0100`, 0, async (done: () => void) => {
             console.log(`FMS_hostRefreshNoPer_0100 start`);
 
-            let FMS_hostRefreshNoPer_0100_Temp = () => {
+            let FMS_hostRefreshNoPer_0100_Temp = async () => {
                 console.log(`FMS_hostRefreshNoPer_0100 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
