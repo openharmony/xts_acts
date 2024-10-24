@@ -27,6 +27,7 @@ group("bundlemanager") {
       "actsbmskilltest:ActsBmsSkillTest",
       "actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbmsorientationetstest:ActsBmsOrientationTest",
+      "actsbundlegetmainelementnametest:ActsBundleGetMainElementNameTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",
       "actsbundlemanagerstagetest:ActsBundleMgrStageEtsTestGroup",
