@@ -22,13 +22,18 @@ struct editMenuIdAIWriter {
   @State flag: boolean = false
 
   onCreateMenu(menuItems: Array<TextMenuItem>) {
+    let newMenuItems:TextMenuItem[]=[]
     menuItems.forEach((value, index) => {
       if (value.id.equals(TextMenuItemId.AI_WRITER)) {
         value.content = 'AI_WRITER'
         this.flag = true
+        newMenuItems.push(value)
+      }
+      if (value.id.equals(TextMenuItemId.SELECT_ALL)) {
+        newMenuItems.push(value)
       }
     })
-    return menuItems
+    return newMenuItems
   }
   build() {
     Column() {
