@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,20 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World'
 
-  build() {
+const local = new LocalStorage();
+@Entry(local)
+@Component
+struct WidgetCard {
+  @LocalStorageProp('newValue') newValue: string = 'Origin';
+  @LocalStorageProp('image') image: string = 'app.media.startIcon';
+  build(){
     Row() {
       Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+        Text(this.newValue)
+        .fontSize($r('app.float.font_size'))
+        .fontColor($r('app.color.item_title_font'))
+        }
       }
-      .width('100%')
-    }
-    .height('100%')
+    .size({width:'100%',height:'100%'})
+    .backgroundImage($r(this.image))
+    .backgroundImageSize({ width: '100%', height: '100%' })
   }
 }
