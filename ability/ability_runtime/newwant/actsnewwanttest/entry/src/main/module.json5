@@ -19,9 +19,11 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "phone"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

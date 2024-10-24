@@ -13,32 +13,27 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsLifecycleMultiHapTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":actslifecyclemultihaptest_js_assets",
-    ":actslifecyclemultihaptest_resources",
+ohos_app_assist_suite("ActsLifecycleMultiHapMain") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsLifecycleMultiHapMain"
+  hap_list = [
+    "ActsLifecycleMultiHapMain-hap2-entry-default-unsigned:ActsLifecycleMultiHap2",
+    "ActsLifecycleMultiHapMain-hap3-entry-default-unsigned:ActsLifecycleMultiHap3",
+    "ActsLifecycleMultiHapMain-hap4-entry-default-unsigned:ActsLifecycleMultiHap4",
+    "ActsLifecycleMultiHapMain-entry-default-unsigned:ActsLifecycleMultiHapMain",
   ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsLifecycleMultiHapTest"
-
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
 
-ohos_app_scope("actslifecyclemultihaptest_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
+ohos_js_app_suite("ActsLifecycleMultiHapTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsLifecycleMultiHapTest"
 
-ohos_js_assets("actslifecyclemultihaptest_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("actslifecyclemultihaptest_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":actslifecyclemultihaptest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsLifecycleMultiHapMain" ]
 }

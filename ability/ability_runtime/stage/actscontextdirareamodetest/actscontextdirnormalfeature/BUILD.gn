@@ -13,31 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsContextDirNormalFeature") {
-  hap_profile = "application/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":actscontextdirnormalfeature_js_assets",
-    ":actscontextdirnormalfeature_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("ActsContextDirNormalFeature") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsContextDirNormalFeature"
   subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-
-ohos_app_scope("actscontextdirnormalfeature_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("actscontextdirnormalfeature_js_assets") {
-  source_dir = "application/src/main/ets"
-}
-
-ohos_resources("actscontextdirnormalfeature_resources") {
-  sources = [ "application/src/main/resources" ]
-  deps = [ ":actscontextdirnormalfeature_app_profile" ]
-  hap_profile = "application/src/main/module.json"
 }
