@@ -19,7 +19,7 @@ import formHostNew from '@ohos.app.form.formHost';
 import formInfo from '@ohos.app.form.formInfo';
 import Want from '@ohos.app.ability.Want';
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium';
 
 
 interface wantType {
@@ -158,7 +158,7 @@ export default function test() {
             const tcNumber: string = `FMS_stressTest_0700`;
 
             console.log(`${tcNumber} start`);
-            let FMS_stressTest_0700_Temp = () => {
+            let FMS_stressTest_0700_Temp = async () => {
                 try {
                     const res = await featureAbility.startAbility({
                         want: {
