@@ -187,7 +187,7 @@ export default function initNdkTest() {
       console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
       expect(marketNameInfo).assertInstanceOf('String');
       if (marketNameInfo != "" && marketNameInfo != null && marketNameInfo != undefined) {
-        let str: RegExp = new RegExp("[\\w\\-\\.(\\)\\s]","g");
+        let str: RegExp = new RegExp("[\\u4e00-\\u9fa5\\w\\-\\.(\\)\\s]","g");
         let arr = marketNameInfo.match(str);
         if(arr !== null){
           let bufferstr = arr.join('');
@@ -216,7 +216,7 @@ export default function initNdkTest() {
       let len = marketNameInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str: RegExp = new RegExp("[\\w\\-\\.(\\)\\s]","g");
+      let str: RegExp = new RegExp("[\\u4e00-\\u9fa5\\w\\-\\.(\\)\\s]","g");
       let arr = marketNameInfo.match(str);
       if(arr !== null){
         let bufferstr = arr.join('');
