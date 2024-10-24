@@ -14,6 +14,14 @@
 import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
+ohos_app_assist_suite("ActsGlobalNapiTest_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsGlobalNapiTestMain"
+  part_name = "resource_management"
+  subsystem_name = "global"
+}
+
 ohos_js_app_suite("ActsGlobalNapiTest") {
   test_hap = true
   testonly = true
@@ -21,4 +29,5 @@ ohos_js_app_suite("ActsGlobalNapiTest") {
   hap_name = "ActsGlobalNapiTest"
   part_name = "resource_management"
   subsystem_name = "global"
+  deps = [ ":ActsGlobalNapiTest_main" ]
 }
