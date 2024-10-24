@@ -1013,7 +1013,7 @@ export default function rdbDecryptTest() {
       console.log(TAG + "************* rdbDecryptTest2100 end *************");
     })
     /**
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_CryptoParamJsAPITest_2100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CryptoParamJsAPITest_2200
      * @tc.name invaild params7
      * @tc.desc params is Infinity
      * @tc.size MediumTest
