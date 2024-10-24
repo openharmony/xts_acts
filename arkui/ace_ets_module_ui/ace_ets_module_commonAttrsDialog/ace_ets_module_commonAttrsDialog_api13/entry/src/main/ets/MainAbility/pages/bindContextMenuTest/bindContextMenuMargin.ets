@@ -27,6 +27,10 @@ struct bindContextMenuMargin {
       MenuItem({ startIcon: this.iconStr, content: '菜单选项'})
       MenuItem({ startIcon: this.iconStr, content: '菜单选项'})
     }
+    .id('menu')
+    .onClick(()=>{
+        this.isShown = false;
+     })
   }
   build(){
     Column({ space: 50 }) {
