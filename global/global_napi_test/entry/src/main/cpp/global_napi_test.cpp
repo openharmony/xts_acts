@@ -112,8 +112,8 @@ napi_value createJsFileDescriptor(napi_env env, RawFileDescriptor *descriptor)
 napi_value CreateJsArrayValue(napi_env env, std::unique_ptr<uint8_t[]> &data, long length)
 {
     napi_value buffer;
-    napi_status status = napi_create_external_arraybuffer(env, data.get(), 
-            length, [](napi_env env, void *data, void *hint) {
+    napi_status status = napi_create_external_arraybuffer(env, data.get(), length,
+            [](napi_env env, void *data, void *hint) {
                 delete[] static_cast<char*>(data);
             }, nullptr, &buffer);
     if (status != napi_ok) {
@@ -791,7 +791,8 @@ static napi_value ReleaseConfiguration(napi_env env, napi_callback_info info)
     ResourceManager_ErrorCode code;
     char *temp = static_cast<char *>(malloc(10 * sizeof(char)));
     OH_ResourceManager_GetConfiguration(mNativeResMgr, &config);
-    strcpy(temp, config.locale);
+    strncpy(temp, config.locale, 20);
+    temp[20] = '\0';
     code = OH_ResourceManager_ReleaseConfiguration(&config);
 
     bool flag = (code == 0 && strcmp(temp, "zh_Hans_CN") == 0 && config.locale == nullptr);
