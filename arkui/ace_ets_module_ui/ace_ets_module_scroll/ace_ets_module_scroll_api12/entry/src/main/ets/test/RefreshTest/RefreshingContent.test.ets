@@ -69,7 +69,7 @@ export default function RefreshingContent() {
       let height = bottom -top;
       let width = right - left;
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(left + width*0.2),Math.round(bottom - height/2),Math.round(left + width*0.2),Math.round(bottom - height/4));
+      await driver.swipe(Math.round(left + width*0.2),Math.round(top + height/10),Math.round(left + width*0.2),Math.round(bottom - height/10));
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('RefreshingContent');
       let obj: ESObject = JSON.parse(strJson);
