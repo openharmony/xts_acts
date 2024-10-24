@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct Extension {
-  @State message: string = `RelyD UIExtAbility`;
+  @State message: string = `RelyA UIExtAbility`;
 
   build() {
     Row() {
