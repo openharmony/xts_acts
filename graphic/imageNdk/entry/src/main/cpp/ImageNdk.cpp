@@ -240,16 +240,7 @@ static napi_value TestNativeGetArgbPixels(napi_env env, napi_callback_info info)
     OH_PixelmapNative *pixelMap = nullptr;
     size_t dataSize = ARGB_8888_BYTES;
     uint8_t result[ARGB_8888_BYTES];
-    
-    uint8_t data[] = {0x01, 0x02, 0x03, 0xFF};
-    OH_Pixelmap_InitializationOptions *createOpts;
-    OH_PixelmapInitializationOptions_Create(&createOpts);
-    OH_PixelmapInitializationOptions_SetWidth(createOpts, 1);
-    OH_PixelmapInitializationOptions_SetHeight(createOpts, 1);
-    OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_BGRA_8888);
-    Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelMap);
-
-    errCode = OH_PixelmapNative_GetArgbPixels(pixelMap, result, &dataSize);
+    Image_ErrorCode errCode = OH_PixelmapNative_GetArgbPixels(pixelMap, result, &dataSize);
     if (errCode != IMAGE_BAD_PARAMETER) {
         OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetArgbPixels failed, errCode: %{public}d.", errCode);
         return getJsResult(env, errCode);
@@ -281,6 +272,49 @@ static napi_value TestNativeSetColorSpaceNative(napi_env env, napi_callback_info
         return getJsResult(env, errCode);
     }
     OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeSetColorSpaceNative success.");
+    return getJsResult(env, IMAGE_SUCCESS);
+}
+
+static napi_value TestNativeSetGetSrcPixelFormat(napi_env env, napi_callback_info info)
+{
+    OH_Pixelmap_InitializationOptions *ops = nullptr;
+    OH_PixelmapInitializationOptions_Create(&ops);
+    int32_t srcpixelFormat = 0;
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(ops, 1);
+    OH_PixelmapInitializationOptions_GetSrcPixelFormat(ops, &srcpixelFormat);
+    Image_ErrorCode errCode = OH_PixelmapInitializationOptions_Release(ops);
+    if (errCode != IMAGE_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_SetGetSrcPixelFormat failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeSetGetSrcPixelFormat success.");
+    return getJsResult(env, IMAGE_SUCCESS);
+}
+
+static napi_value TestNativeCreateEmptyPixelmap(napi_env env, napi_callback_info info)
+{
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapNative **pixelmap = nullptr;
+    Image_ErrorCode errCode = OH_PixelmapNative_CreateEmptyPixelmap(options, pixelmap);
+    if (errCode != IMAGE_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_CreateEmptyPixelmap failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeCreateEmptyPixelmap success.");
+    return getJsResult(env, IMAGE_SUCCESS);
+}
+
+static napi_value TestNativeConvertAlphaFormat(napi_env env, napi_callback_info info)
+{
+    OH_PixelmapNative* srcpixelmap = nullptr;
+    OH_PixelmapNative* dstpixelmap = nullptr;
+    const bool isPremul = false;
+    Image_ErrorCode errCode = OH_PixelmapNative_ConvertAlphaFormat(srcpixelmap, dstpixelmap, isPremul);
+    if (errCode != IMAGE_BAD_PARAMETER) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_ConvertAlphaFormat failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    }
+    OH_LOG_INFO(LOG_APP, "ImagePixelmapNativeCTest TestNativeConvertAlphaFormat success.");
     return getJsResult(env, IMAGE_SUCCESS);
 }
 
@@ -328,7 +362,13 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testNativeSetColorSpaceNative", nullptr, TestNativeSetColorSpaceNative, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"testNativeGetMetaDataNull", nullptr, TestNativeGetMetaDataNull, nullptr, nullptr,
-         nullptr, napi_default, nullptr}
+         nullptr, napi_default, nullptr},
+        {"testNativeSetGetSrcPixelFormat", nullptr, TestNativeSetGetSrcPixelFormat, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testNativeCreateEmptyPixelmap", nullptr, TestNativeCreateEmptyPixelmap, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testNativeConvertAlphaFormat", nullptr, TestNativeConvertAlphaFormat, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
