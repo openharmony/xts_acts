@@ -5,11 +5,6 @@
     "version": {
       "code": 1000000,
       "name": "2.0.0"
-    },
-    "apiVersion": {
-      "compatible": 4,
-      "target": 5,
-      "releaseType": "Beta1"
     }
   },
   "deviceConfig": {
@@ -39,11 +34,11 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".MainAbility",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
-        "description": "$string:master_desc",
+        "description": "$string:mainability_description",
         "formsEnabled": false,
         "label": "$string:app_name",
         "type": "page",
@@ -56,9 +51,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".actionEmpty",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "actionEmpty",
         "formsEnabled": false,
@@ -75,9 +70,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".actionStringLenZero",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "actionStringLenZero",
         "formsEnabled": false,
@@ -94,9 +89,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".actionSingleString",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "actionSingleString",
         "formsEnabled": false,
@@ -114,9 +109,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".actionDoubleString",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "actionDoubleString",
         "formsEnabled": false,
@@ -140,9 +135,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".actionDoubleSkill",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "actionDoubleSkill",
         "formsEnabled": false,
@@ -160,9 +155,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".entityEmpty",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "entityEmpty",
         "formsEnabled": false,
@@ -182,9 +177,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".entitySingleString",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "entitySingleString",
         "formsEnabled": false,
@@ -205,9 +200,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".entityDoubleString",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "entityDoubleString",
         "formsEnabled": false,
@@ -237,9 +232,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".entityDoubleSkill",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "entityDoubleSkill",
         "formsEnabled": false,
@@ -257,9 +252,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriEmpty",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriEmpty",
         "formsEnabled": false,
@@ -281,9 +276,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriScheme",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriScheme",
         "formsEnabled": false,
@@ -306,9 +301,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriSchemeHost",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriSchemeHost",
         "formsEnabled": false,
@@ -332,9 +327,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriSchemeHostPort",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriSchemeHostPort",
         "formsEnabled": false,
@@ -359,9 +354,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriSchemeHostPortPath",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriSchemeHostPortPath",
         "formsEnabled": false,
@@ -386,9 +381,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriSchemeHostPortPathStartWith",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriSchemeHostPortPathStartWith",
         "formsEnabled": false,
@@ -413,9 +408,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriSchemeHostPortPathRegx",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriSchemeHostPortPathRegx",
         "formsEnabled": false,
@@ -439,9 +434,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriSchemeEmpty",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriSchemeEmpty",
         "formsEnabled": false,
@@ -465,9 +460,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriHostEmpty",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriHostEmpty",
         "formsEnabled": false,
@@ -491,9 +486,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriPortEmptyWithPath",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriPortEmptyWithPath",
         "formsEnabled": false,
@@ -517,9 +512,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriPortEmptyWithPathStartWith",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriPortEmptyWithPathStartWith",
         "formsEnabled": false,
@@ -543,9 +538,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriPortEmptyWithPathRegx",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriPortEmptyWithPathRegx",
         "formsEnabled": false,
@@ -572,9 +567,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".uriMultiPath",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "uriMultiPath",
         "formsEnabled": false,
@@ -596,9 +591,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".TypeDoubleWildCard",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "TypeDoubleWildCard",
         "formsEnabled": false,
@@ -620,9 +615,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".TypeSingleWildCard",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "TypeSingleWildCard",
         "formsEnabled": false,
@@ -644,9 +639,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".TypeString",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "TypeString",
         "formsEnabled": false,
@@ -668,9 +663,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".TypeStringExt",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "TypeStringExt",
         "formsEnabled": false,
@@ -692,9 +687,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".TypeEmpty",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "TypeEmpty",
         "formsEnabled": false,
@@ -714,9 +709,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".TypeEmptyExt",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "TypeEmptyExt",
         "formsEnabled": false,
@@ -736,9 +731,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".allAE",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "allAE",
         "formsEnabled": false,
@@ -759,9 +754,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".allAEs",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "allAEs",
         "formsEnabled": false,
@@ -789,9 +784,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".allUT",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "allUT",
         "formsEnabled": false,
@@ -821,9 +816,9 @@
           }
         ],
         "visible": true,
-        "srcPath": "MainAbility",
+        "srcPath": "default",
         "name": ".allAEUT",
-        "srcLanguage": "ets",
+        "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "allAEUT",
         "formsEnabled": false,
@@ -874,10 +869,6 @@
     ],
     "js": [
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
           "pages/index/index"
         ],
@@ -888,322 +879,194 @@
         }
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".actionEmpty"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".actionStringLenZero"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".actionSingleString"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".actionDoubleString"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".actionDoubleSkill"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".entityEmpty"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".entitySingleString"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".entityDoubleString"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".entityDoubleSkill"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriEmpty"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriScheme"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriSchemeHost"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriSchemeHostPort"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriSchemeHostPortPath"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriSchemeHostPortPathStartWith"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriSchemeHostPortPathRegx"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriSchemeEmpty"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriHostEmpty"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriPortEmptyWithPath"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriPortEmptyWithPathStartWith"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriPortEmptyWithPathRegx"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".uriMultiPath"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".TypeDoubleWildCard"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".TypeSingleWildCard"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".TypeString"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".TypeStringExt"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".TypeEmpty"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".TypeEmptyExt"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".allAE"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".allAEs"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".allUT"
       },
       {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
         "pages": [
-          "pages/index"
+          "pages/index/index"
         ],
         "name": ".allAEUT"
       }
