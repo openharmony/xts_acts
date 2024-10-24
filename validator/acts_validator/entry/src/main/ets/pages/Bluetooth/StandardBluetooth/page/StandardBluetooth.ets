@@ -39,7 +39,8 @@ struct StandardBluetooth {
   @State X: number = 0;
   @State name: string = 'StandardBluetooth';
   @State StepTips: string = '操作步骤：\n1、请打开蓝牙' + '\n2、自己创建一个蓝牙' + '\n3、应用是否扫描到自己创建的蓝牙MAC地址'
-    + '\n4、选择点击蓝牙后进行配对' + '\n预期结果：列表能扫描到自己的蓝牙，能配对成功则通过';
+    + '\n4、选择点击蓝牙后进行配对' + '\n预期结果：列表能扫描到自己的蓝牙，能配对成功则通过' + 
+    '\n注：若点击MAC地址后长时间无弹窗或弹窗弹出后点击配对无反应，请将蓝牙关闭再开启，并重新点击其他MAC号重试';
   @State Vue: boolean = false;
   @State btnState: boolean = false;
   @State isOn: boolean = false;

@@ -6,7 +6,7 @@
         "testcase-timeout": "300000",
         "shell-timeout": "120000",
         "bundle-name": "ohos.acts.multimedia.audio.audiointerrupt",
-        "package-name": "ohos.acts.multimedia.audio.audiointerrupt"
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -23,10 +23,10 @@
                 "power-shell wakeup",
                 "uinput -T -m 300 2700 280 200",
                 "power-shell setmode 602",
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiointerrupt/haps/entry/files/",
-                "mkdir -p /data/app/el2/100/base/com.example.audiorenderinterrupt/haps/entry/files/",
-                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiointerrupt/haps/entry",
-                "chmod 777 -R /data/app/el2/100/base/com.example.audiorenderinterrupt/haps/entry"
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiointerrupt/haps/entry_test/files/",
+                "mkdir -p /data/app/el2/100/base/com.example.audiorenderinterrupt/haps/entry_test/files/",
+                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiointerrupt/haps/entry_test",
+                "chmod 777 -R /data/app/el2/100/base/com.example.audiorenderinterrupt/haps/entry_test"
             ],
             "teardown-command": [
                 "power-shell setmode 600"
@@ -37,7 +37,7 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/audio/audioManager/StarWars10s-2C-48000-4SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiointerrupt/haps/entry/files/",
+                "./resource/audio/audioManager/StarWars10s-2C-48000-4SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiointerrupt/haps/entry_test/files/",
                 "./resource/audio/audioManager/StarWars10s-2C-48000-4SW.wav ->/data/app/el2/100/base/com.example.audiorenderinterrupt/haps/entry/files/"
             ]
         }

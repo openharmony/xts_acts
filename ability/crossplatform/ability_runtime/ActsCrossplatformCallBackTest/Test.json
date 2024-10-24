@@ -5,7 +5,7 @@
         "test-timeout": "600000",
         "shell-timeout": "60000",
         "bundle-name": "com.example.crossplatformcallback",
-        "module-name": "entry",
+        "module-name": "entry_test",
         "testcase-timeout": 15000
     },
     "kits": [

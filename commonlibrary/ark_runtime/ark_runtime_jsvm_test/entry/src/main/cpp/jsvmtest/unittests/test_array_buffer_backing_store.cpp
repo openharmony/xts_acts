@@ -57,8 +57,8 @@ TEST(ArrayBufferBackingStore)
             writeBuffer(buffer3);
         )JS");
         uint8_t *array = static_cast<uint8_t *>(backingStore);
-        for (auto i = 0; i < 100; ++i) {
-            CHECK(array[i] == i % 25 % 256);
+        for (auto j = 0; j < 100; ++j) {
+            CHECK(array[j] == j % 25 % 256);
         }
         JSVMTEST_CALL(OH_JSVM_DetachArraybuffer(env, arrayBuffer));
         JSVMTEST_CALL(OH_JSVM_DetachArraybuffer(env, arrayBuffer1));
@@ -96,9 +96,9 @@ TEST(ArrayBufferBackingStore1)
             )JS");
             std::string run_func = "writeBuffer(" + bufferName + ')';
             jsvm::Run(run_func.c_str());
-            uint8_t *array = static_cast<uint8_t *>(backingStore);
-            for (auto i = 0; i < 100 / random_number * random_number; ++i) {
-                CHECK(array[i] >= 0);
+            int8_t *array = static_cast<int8_t *>(backingStore);
+            for (auto k = 0; k < 100 / random_number * random_number; ++k) {
+                CHECK(array[k] >= 0);
             }
             JSVMTEST_CALL(OH_JSVM_DetachArraybuffer(env, arrayBuffer));
         }
@@ -116,6 +116,7 @@ TEST(FreeArrayBufferBackingStoreData)
     CHECK(status == JSVM_OK);
     JSVM_Value result;
     status = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, data, byteLength, 6, 20, &result);
+    CHECK(status == JSVM_OK);
     // 类型化数组
     JSVM_Value result1;
     JSVMTEST_CALL(OH_JSVM_CreateTypedarray(env, JSVM_INT8_ARRAY, 2, result, 5, &result1));
@@ -125,6 +126,7 @@ TEST(FreeArrayBufferBackingStoreData)
     CHECK(status == JSVM_OK);
     CHECK(isTypedArray == true);
     status = OH_JSVM_DetachArraybuffer(env, result);
+    CHECK(status == JSVM_OK);
     JSVMTEST_CALL(OH_JSVM_FreeArrayBufferBackingStoreData(data));
 }
 #endif

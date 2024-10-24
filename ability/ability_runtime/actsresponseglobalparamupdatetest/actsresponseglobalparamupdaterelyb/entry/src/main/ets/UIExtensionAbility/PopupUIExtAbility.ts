@@ -21,7 +21,7 @@ import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 import Want from '@ohos.app.ability.Want';
 
-const TAG: string = 'PopupUIExtAbilityB';
+const TAG: string = 'PopupUIExtAbilityA';
 
 export default class PopupUIExtAbility extends UIExtensionAbility {
   onCreate(launchParam: AbilityConstant.LaunchParam): void {
@@ -54,13 +54,13 @@ export default class PopupUIExtAbility extends UIExtensionAbility {
     };
     hilog.info(0x0000, TAG, 'publishData: %{public}s', JSON.stringify(publishData.parameters) ?? '');
     commonEventManager.publish(
-      'RelyB_PopupUIExtAbility_ConfigurationUpdateEvent', publishData, (err) => {
+      'RelyA_PopupUIExtAbility_ConfigurationUpdateEvent', publishData, (err) => {
       if (err) {
         hilog.info(0x0000, TAG,
-          'RelyB_PopupUIExtAbility_ConfigurationUpdateEvent publish failed, Cause: %{public}s',
+          'RelyA_PopupUIExtAbility_ConfigurationUpdateEvent publish failed, Cause: %{public}s',
           JSON.stringify(err) ?? '');
       } else {
-        hilog.info(0x0000, TAG, '%{public}s', 'RelyB_PopupUIExtAbility_ConfigurationUpdateEvent publish successful');
+        hilog.info(0x0000, TAG, '%{public}s', 'RelyA_PopupUIExtAbility_ConfigurationUpdateEvent publish successful');
       }
     });
   }

@@ -17,7 +17,7 @@ import ActsNetworkSearchTest from './NetworkSearchErrors.test.js'
 import EmptyTest from './Empty.test.js';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.CoreService")){
+  if (sim.getMaxSimCount()!=0){
     ActsNetworkSearchTest()
   }else{
     EmptyTest()

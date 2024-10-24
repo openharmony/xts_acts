@@ -14,6 +14,7 @@
  */
 
 import sendableContextManager from '@ohos.app.ability.sendableContextManager';
+import common from '@ohos.app.ability.common';
 
 @Sendable
 export class SendableContextObject {
@@ -25,3 +26,14 @@ export class SendableContextObject {
   public sendableContext: sendableContextManager.SendableContext;
   public contextName: string;
 }
+
+export class NormalContextObject {
+  constructor(context: common.Context, contextName: string) {
+    this.normalContext = context;
+    this.contextName = contextName;
+  }
+
+  public normalContext: common.Context;
+  public contextName: string;
+}
+

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,37 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import file from '@system.file';
-
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-
 @Entry
 @Component
 struct Index {
-
-  aboutToAppear(){
-    console.info("start run testcase!!!!")
-  }
+  @State message: string = 'Hello World'
 
   build() {
-    Flex({ direction:FlexDirection.Column, alignItems:ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Text('Hello World')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-      Button() {
-        Text('next page')
-          .fontSize(25)
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
           .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({
-        top: 20
-      })
-      .backgroundColor('#0D9FFB')
-      .onClick(() => {
-
-      })
+      }
+      .width('100%')
     }
-    .width('100%')
     .height('100%')
   }
 }
