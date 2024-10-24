@@ -401,8 +401,8 @@ export default function ImageAnimatorAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       let images:Array<ImageFrameInfo> = JSON.parse(obj1.$attrs.images)
       console.info("images is: " + JSON.stringify(images));
-      expect(images[0].src).assertEqual('resource:///16777260.gif');
-      expect(images[1].src).assertEqual('resource:///16777255.mp4');
+      expect(images[0].src).assertEqual('resource:///16777261.gif');
+      expect(images[1].src).assertEqual('resource:///16777256.mp4');
       done();
     });
 
@@ -444,11 +444,11 @@ export default function ImageAnimatorAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       let images:Array<ImageFrameInfo> = JSON.parse(obj1.$attrs.images)
       console.info("images is: " + JSON.stringify(images));
-      expect(images[0].src).assertEqual('resource:///16777261.jpg');
-      expect(images[1].src).assertEqual('resource:///16777262.png');
-      expect(images[2].src).assertEqual('resource:///16777259.bmp');
-      expect(images[3].src).assertEqual('resource:///16777263.svg');
-      expect(images[4].src).assertEqual('resource:///16777260.gif');
+      expect(images[0].src).assertEqual('resource:///16777262.jpg');
+      expect(images[1].src).assertEqual('resource:///16777263.png');
+      expect(images[2].src).assertEqual('resource:///16777260.bmp');
+      expect(images[3].src).assertEqual('resource:///16777264.svg');
+      expect(images[4].src).assertEqual('resource:///16777261.gif');
       done();
     });
 
