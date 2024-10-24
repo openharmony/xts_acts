@@ -60,7 +60,9 @@ export default function bindContextMenuMargin() {
       console.info("[bindContextMenuMargin_0100] title: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
       expect(JSON.parse(strJson).$attrs.content).assertEqual('bindContextMenuMargin');
       await CommonFunc.sleep(1000);
-
+      let btn1 = await driver.findComponent(ON.id('menu'));
+      await btn1.click()
+      await CommonFunc.sleep(1000);
       console.info('[bindContextMenuMargin_0100] END');
       done();
     });
