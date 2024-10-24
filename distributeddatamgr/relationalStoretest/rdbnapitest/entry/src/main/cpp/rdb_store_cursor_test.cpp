@@ -630,7 +630,7 @@ static napi_value SUB_DDM_RDB_CURSOR_1300(napi_env env, napi_callback_info info)
     cursor->getSize(cursor, 3, &size);
     unsigned char data4Value[] = "string";
     int errCode = cursor->getBlob(cursor, 6, data4Value, size);
-    NAPI_ASSERT(env, strcmp((char*)data4Value, "string") == 0, "getBlob is fail.");
+    NAPI_ASSERT(env, strcmp((char*)data4Value, (char*)"string") == 0, "getBlob is fail.");
 
     predicates->destroy(predicates);
     errCode = cursor->destroy(cursor);    
