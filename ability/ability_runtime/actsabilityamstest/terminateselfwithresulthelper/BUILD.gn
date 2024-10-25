@@ -17,7 +17,7 @@ ohos_app_assist_suite("TerminateSelfWithResultHelper") {
   hap_name = "TerminateSelfWithResultHelper"
   hap_list = [
     "TerminateSelfWithResultHelper-Second-default-unsigned:TerminateSelfWithResultHelperSecond",
-    "TerminateSelfWithResultHelper-entry-default-signed:TerminateSelfWithResultHelper",
+    "TerminateSelfWithResultHelper-entry-default-unsigned:TerminateSelfWithResultHelper",
   ]
   subsystem_name = "ability"
   part_name = "ability_runtime"
