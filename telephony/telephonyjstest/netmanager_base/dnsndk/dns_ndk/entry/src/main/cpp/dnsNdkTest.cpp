@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 #include "napi/native_api.h"
-#include "network/netmanager/net_connection.h"
-#include "network/netmanager/net_connection_type.h"
+#include <network/netmanager/net_connection.h>
+#include <network/netmanager/net_connection_type.h>
 #include <netdb.h>
 #include <cstring>
 #include "hilog/log.h"
