@@ -791,8 +791,9 @@ static napi_value ReleaseConfiguration(napi_env env, napi_callback_info info)
     ResourceManager_ErrorCode code;
     char *temp = static_cast<char *>(malloc(10 * sizeof(char)));
     OH_ResourceManager_GetConfiguration(mNativeResMgr, &config);
-    strncpy(temp, config.locale, 20);
-    temp[20] = '\0';
+    static const int MAX_LENGTH = 20
+    strncpy(temp, config.locale, MAX_LENGTH);
+    temp[MAX_LENGTH] = '\0';
     code = OH_ResourceManager_ReleaseConfiguration(&config);
 
     bool flag = (code == 0 && strcmp(temp, "zh_Hans_CN") == 0 && config.locale == nullptr);
