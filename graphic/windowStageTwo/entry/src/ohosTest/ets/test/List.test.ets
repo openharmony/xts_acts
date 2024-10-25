@@ -17,10 +17,12 @@ import windowPromiseTest from './WindowPromise.test';
 import windowMaximizeTest from './WindowMaximize.test';
 import windowImmersiveTest from './WindowImmersive.test';
 import windowPropertiesTest from './WindowProperties.test';
+import windowManageTest from './WindowManage.test';
 export default function testsuite() {
   WindowLifecycle();
   windowPromiseTest();
   windowMaximizeTest();
   windowImmersiveTest();
   windowPropertiesTest();
+  windowManageTest();
 }
