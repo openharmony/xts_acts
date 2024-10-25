@@ -85,16 +85,16 @@ static napi_value RegisterDnsResolver(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &function);
 
     if (function == 0) {
-        neterrno = OHOS_NetConn_RegisterDnsResolver(DnsResolver);
+        neterrno = OH_NetConn_RegisterDnsResolver(DnsResolver);
         napi_create_int32(env, neterrno, &ret);
-        OHOS_NetConn_UnregisterDnsResolver();
+        OH_NetConn_UnregisterDnsResolver();
         return ret;
     }
 
     if (function == 1) {
-        neterrno = OHOS_NetConn_RegisterDnsResolver(nullptr);
+        neterrno = OH_NetConn_RegisterDnsResolver(nullptr);
         napi_create_int32(env, neterrno, &ret);
-        OHOS_NetConn_UnregisterDnsResolver();
+        OH_NetConn_UnregisterDnsResolver();
         return ret;
     }
 

@@ -13,5 +13,5 @@ include_directories(${NATIVERENDER_ROOT_PATH}
 add_library(testDnsNdk SHARED dnsNdkTest.cpp)
 # 声明产物entry链接时需要的三方库libace_napi.z.so
 # 这里直接写三方库的名称是因为它是在ndk中，已在链接寻址路径中，无需额外声明
-target_link_libraries(testDnsNdk PUBLIC libace_napi.z.so libhilog_ndk.z.so libnet_websocket.so libnet_ssl.so)
+target_link_libraries(testDnsNdk PUBLIC libace_napi.z.so libhilog_ndk.z.so libnet_connection.so)
 
