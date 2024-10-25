@@ -30,7 +30,6 @@ group("ActsAbilityAmsTest") {
       "terminalselfdelayhelper:TerminalSelfDelayHelper",
       "terminateselfwithresulthelper:TerminateSelfWithResultHelper",
       "terminateselfwithresulttesthap:TerminateSelfWithResultTestHap",
-      "terminateselfwithresulttesthap1:TerminateSelfWithResultTestHap1",
       "terminateselfwithresulttesthap2:TerminateSelfWithResultTestHap2",
     ]
   }
