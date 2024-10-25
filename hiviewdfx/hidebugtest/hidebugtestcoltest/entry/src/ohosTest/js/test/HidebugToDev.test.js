@@ -753,7 +753,7 @@ describe('HidebugToDevJsTest', function () {
     it('testHiDebugJs27', 1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.ALL_THREADS;
-            let tag = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI];
+            let tag = [hidebug.tags.ABILITY_MANAGER];
             let limit_size = 1;
             let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
             hidebug.stopAppTraceCapture();
