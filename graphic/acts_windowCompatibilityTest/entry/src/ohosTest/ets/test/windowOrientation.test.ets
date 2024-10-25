@@ -59,7 +59,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      // let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -97,7 +96,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      // let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -139,7 +137,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       let caseName = 'testSetPreferredOrientation_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      // let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetPreferredOrientation_SubWindow_Promise')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -173,7 +170,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       let caseName = 'testSetPreferredOrientation_SubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      // let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetPreferredOrientation_SubWindow_Callback')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -221,7 +217,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      // let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
