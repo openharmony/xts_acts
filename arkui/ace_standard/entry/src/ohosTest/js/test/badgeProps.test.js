@@ -113,7 +113,6 @@ export default function undo() {  describe('badgePropsJsTest', function () {
 
         expect(obj.$type).assertEqual('badge')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     })
 

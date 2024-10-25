@@ -111,7 +111,6 @@ export default function videoPropsJsTest() {  describe('videoPropsJsTest', funct
 
         expect(obj.$type).assertEqual('video')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

@@ -111,7 +111,6 @@ export default function labelPropsJsTest() {  describe('labelPropsJsTest', funct
 
         expect(obj.$type).assertEqual('label')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

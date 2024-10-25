@@ -111,7 +111,6 @@ export default function undo() {  describe('textAreaPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('textarea')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

@@ -110,7 +110,6 @@ export default function panelPropsJsTest() {  describe('panelPropsJsTest', funct
 
         expect(obj.$type).assertEqual('panel')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

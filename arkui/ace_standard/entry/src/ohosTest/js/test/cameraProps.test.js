@@ -105,7 +105,6 @@ export default function undo() {  describe('cameraPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('camera')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

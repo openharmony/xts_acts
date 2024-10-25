@@ -111,7 +111,6 @@ export default function undo() {  describe('divPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('div')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

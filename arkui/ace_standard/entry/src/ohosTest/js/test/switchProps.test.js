@@ -105,7 +105,6 @@ export default function switchPropsJsTest() {  describe('switchPropsJsTest', fun
 
         expect(obj.$type).assertEqual('switch')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

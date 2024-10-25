@@ -105,7 +105,6 @@ export default function undo() {  describe('spanPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('span')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

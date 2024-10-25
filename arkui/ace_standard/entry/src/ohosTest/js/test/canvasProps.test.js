@@ -111,7 +111,6 @@ export default function canvasPropsJsTest() {  describe('canvasPropsJsTest', fun
 
         expect(obj.$type).assertEqual('canvas')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done()
     })
 

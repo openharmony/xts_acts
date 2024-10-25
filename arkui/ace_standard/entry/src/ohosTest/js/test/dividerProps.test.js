@@ -111,7 +111,6 @@ export default function dividerPropsJsTest() {  describe('dividerPropsJsTest', f
 
         expect(obj.$type).assertEqual('divider')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

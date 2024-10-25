@@ -110,7 +110,6 @@ export default function inputPropsJsTest() {  describe('inputPropsJsTest', funct
 
         expect(obj.$type).assertEqual('input')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

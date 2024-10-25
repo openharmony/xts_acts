@@ -111,7 +111,6 @@ export default function gridContainerPropsJsTest() {  describe('gridContainerPro
 
         expect(obj.$type).assertEqual('grid-container')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

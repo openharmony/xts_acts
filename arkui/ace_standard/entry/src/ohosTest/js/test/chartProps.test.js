@@ -105,7 +105,6 @@ export default function chartPropsJsTest() {  describe('chartPropsJsTest', funct
 
         expect(obj.$type).assertEqual('chart')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

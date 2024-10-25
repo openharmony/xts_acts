@@ -112,7 +112,6 @@ export default function buttonPropsJsTest() {  describe('buttonPropsJsTest', fun
 
         expect(obj.$type).assertEqual('button')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

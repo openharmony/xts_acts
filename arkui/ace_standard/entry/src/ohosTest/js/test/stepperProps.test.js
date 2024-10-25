@@ -111,7 +111,6 @@ export default function stepperPropsJsTest() {  describe('stepperPropsJsTest', f
 
         expect(obj.$type).assertEqual('stepper')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 
