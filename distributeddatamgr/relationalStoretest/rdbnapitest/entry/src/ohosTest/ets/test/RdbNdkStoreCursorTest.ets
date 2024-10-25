@@ -23,7 +23,6 @@ const TAG = "[RdbNdkStoreTest]";
 
 export default function RdbNdkStoreCursorTest() {
     describe('RdbNdkStoreCursorTest', async () => {
-        // Defines a test suite. Two parameters are supported: test suite name and test suite function.
         beforeAll(async () => {
             try {
                 let data = context.filesDir
@@ -46,9 +45,8 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag CursorTearDownTestCase' , ' begin');
 
         })
-        afterAll(async () => {
+        afterAll(async () => {})
 
-        })
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_0100
          * @tc.desc: Normal testCase of NDK cursor for GetColumnType.
@@ -72,6 +70,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_0300
          * @tc.desc: Normal testCase of NDK cursor for GetColumnName.
@@ -95,6 +94,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_0500
          * @tc.desc: Normal testCase of NDK cursor for GetColumnIndex.
@@ -106,6 +106,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_0600
          * @tc.desc: Normal testCase of NDK cursor for GetColumnIndex.
@@ -117,6 +118,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_0700
          * @tc.desc: Normal testCase of NDK cursor for GetColumnType.
@@ -128,6 +130,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_0800
          * @tc.desc: Normal testCase of NDK cursor for GetColumnName.
@@ -139,6 +142,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_0900
          * @tc.desc: Normal testCase of NDK cursor for getSize.
@@ -150,6 +154,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1000
          * @tc.desc: Normal testCase of NDK cursor for getText.
@@ -173,6 +178,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1200
          * @tc.desc: Normal testCase of NDK cursor for getReal.
@@ -184,6 +190,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1300
          * @tc.desc: getBlob
@@ -195,6 +202,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1400
          * @tc.desc: isNull
@@ -206,6 +214,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1500
          * @tc.desc: getRowCount
@@ -217,6 +226,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1600
          * @tc.desc: getRowCount
@@ -228,6 +238,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1700
          * @tc.desc: getRowCount
@@ -239,6 +250,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1800
          * @tc.desc:
@@ -250,6 +262,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_1900
          * @tc.desc: getRowCount
@@ -261,6 +274,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2000
          * @tc.desc:
@@ -272,6 +286,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2100
          * @tc.desc:
@@ -295,6 +310,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2300
          * @tc.desc:
@@ -306,6 +322,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2400
          * @tc.desc:
@@ -317,6 +334,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2500
          * @tc.desc:
@@ -328,6 +346,7 @@ export default function RdbNdkStoreCursorTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+        
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_ResultSetNdkAPITest_2600
          * @tc.desc:

@@ -31,7 +31,6 @@ export default function RdbNdkStoreLevelTest() {
             } catch (err) {
                 hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
             }
-
         })
         beforeEach(() => {})
         afterEach(() => {})
@@ -84,6 +83,7 @@ export default function RdbNdkStoreLevelTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1500
          * @tc.desc: Normal testCase of NDK SecurityLevel is S4
@@ -95,6 +95,7 @@ export default function RdbNdkStoreLevelTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1600
          * @tc.desc: Normal testCase of NDK
@@ -106,6 +107,7 @@ export default function RdbNdkStoreLevelTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1700
          * @tc.desc: Normal testCase of NDK
@@ -117,6 +119,7 @@ export default function RdbNdkStoreLevelTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1800
          * @tc.desc: Normal testCase of NDK
@@ -128,6 +131,5 @@ export default function RdbNdkStoreLevelTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
-
     })
 }

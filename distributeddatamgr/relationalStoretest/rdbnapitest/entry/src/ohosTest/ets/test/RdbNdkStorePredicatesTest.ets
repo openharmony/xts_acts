@@ -31,7 +31,6 @@ export default function RdbNdkStorePredicatesTest() {
             } catch (err) {
                 hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
             }
-
         })
         beforeEach(() => {
             hilog.info(0x0000, TAG, 'testTag PredicatesSetUpTestCase' , ' begin');
@@ -43,10 +42,8 @@ export default function RdbNdkStorePredicatesTest() {
         })
         afterEach(() => {
             hilog.info(0x0000, TAG, 'testTag PredicatesTearDownTestCase' , ' begin');
-
         })
-        afterAll(() => {
-        })
+        afterAll(() => {})
 
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0100
@@ -71,6 +68,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0300
          * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
@@ -82,6 +80,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0400
          * @tc.desc: Normal testCase of NDK Predicates for GreaterThanOrEqualTo
@@ -105,6 +104,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0600
          * @tc.desc: Normal testCase of NDK Predicates for LessThanOrEqualTo
@@ -116,6 +116,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0700
          * @tc.desc: Normal testCase of NDK Predicates for IsNull
@@ -127,6 +128,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0800
          * @tc.desc: Normal testCase of NDK Predicates for isNotNull
@@ -138,6 +140,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_0900
          * @tc.desc: Normal testCase of NDK Predicates for Between
@@ -149,6 +152,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1000
          * @tc.desc: Normal testCase of NDK Predicates for NotBetween
@@ -161,7 +165,6 @@ export default function RdbNdkStorePredicatesTest() {
             expect(re == 0).assertTrue();
         })
 
-
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1100
          * @tc.desc: Normal testCase of NDK Predicates for OrderBy、Limit、Offset.
@@ -173,6 +176,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1200
          * @tc.desc: Normal testCase of NDK Predicates for In.
@@ -184,6 +188,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1300
          * @tc.desc: Normal testCase of NDK Predicates for NotIn
@@ -195,6 +200,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1400
          * @tc.desc: Normal testCase of NDK Predicates for Like
@@ -206,6 +212,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1500
          * @tc.desc: Normal testCase of NDK Predicates for GroupBy
@@ -217,6 +224,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1600
          * @tc.desc: Normal testCase of NDK Predicates for And
@@ -228,6 +236,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1700
          * @tc.desc: Normal testCase of NDK Predicates for Clear
@@ -239,6 +248,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1800
          * @tc.desc: Normal testCase of NDK Predicates for table name is NULL.
@@ -250,6 +260,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_1900
          * @tc.desc: Normal testCase of NDK Predicates for equalTo
@@ -261,6 +272,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2000
          * @tc.desc: Normal testCase of NDK Predicates for equalTo
@@ -273,19 +285,18 @@ export default function RdbNdkStorePredicatesTest() {
             expect(re == 0).assertTrue();
         })
 
-
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2100
          * @tc.desc: Normal testCase of NDK Predicates for equalTo
          * @tc.type: FUNC
          */
-
         it('SUB_DDM_RDB_Predicates_2100',0, async () => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_Predicates_2100' , ' begin');
             let re = testNapi.SUB_DDM_RDB_Predicates_2100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2200
          * @tc.desc: Normal testCase of NDK Predicates for equalTo
@@ -297,6 +308,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2300
          * @tc.desc: Normal testCase of NDK Predicates for notEqualTo
@@ -308,6 +320,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2400
          * @tc.desc: Normal testCase of NDK Predicates for notEqualTo
@@ -319,6 +332,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2500
          * @tc.desc: Normal testCase of NDK Predicates for notEqualTo
@@ -330,6 +344,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2600
          * @tc.desc: Normal testCase of NDK Predicates for notEqualTo
@@ -341,6 +356,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2700
          * @tc.desc: Normal testCase of NDK Predicates for beginWrap and endWrap
@@ -352,6 +368,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2800
          * @tc.desc: Normal testCase of NDK Predicates for beginWrap and endWrap
@@ -363,6 +380,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_2900
          * @tc.desc: Normal testCase of NDK Predicates for beginWrap and endWrap
@@ -374,6 +392,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3000
          * @tc.desc: Normal testCase of NDK Predicates for EqualTo、AndOR、beginWrap and endWrap
@@ -385,6 +404,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3100
          * @tc.desc: Normal testCase of NDK Predicates for
@@ -396,6 +416,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3200
          * @tc.desc: Normal testCase of NDK Predicates for And
@@ -407,6 +428,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3300
          * @tc.desc: Normal testCase of NDK Predicates for IsNull
@@ -418,6 +440,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3400
          * @tc.desc: Normal testCase of NDK Predicates for isNotNull
@@ -429,6 +452,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3500
          * @tc.desc: Normal testCase of NDK Predicates for Like
@@ -440,6 +464,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3600
          * @tc.desc: Normal testCase of NDK Predicates for Like
@@ -451,6 +476,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3700
          * @tc.desc: Normal testCase of NDK Predicates for Like
@@ -462,6 +488,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3800
          * @tc.desc: Normal testCase of NDK Predicates for Between
@@ -473,6 +500,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_3900
          * @tc.desc: Normal testCase of NDK Predicates for Between
@@ -484,6 +512,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4000
          * @tc.desc: Normal testCase of NDK Predicates for Between
@@ -507,6 +536,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4200
          * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
@@ -518,6 +548,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4300
          * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
@@ -529,6 +560,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4400
          * @tc.desc: Normal testCase of NDK Predicates for GreaterThan
@@ -540,6 +572,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4500
          * @tc.desc: Normal testCase of NDK Predicates for LessThan
@@ -551,6 +584,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4600
          * @tc.desc: Normal testCase of NDK Predicates for LessThan
@@ -562,6 +596,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4700
          * @tc.desc: Normal testCase of NDK Predicates for LessThan
@@ -573,6 +608,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4800
          * @tc.desc: Normal testCase of NDK Predicates for GreaterThanOrEqualTo
@@ -584,6 +620,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_4900
          * @tc.desc: Normal testCase of NDK Predicates for GreaterThanOrEqualTo
@@ -595,6 +632,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5000
          * @tc.desc: Normal testCase of NDK Predicates for GreaterThanOrEqualTo
@@ -606,6 +644,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5100
          * @tc.desc: Normal testCase of NDK Predicates for LessThanOrEqualTo
@@ -617,6 +656,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5200
          * @tc.desc: Normal testCase of NDK Predicates for LessThanOrEqualTo
@@ -628,6 +668,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5300
          * @tc.desc: Normal testCase of NDK Predicates for
@@ -639,6 +680,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5400
          * @tc.desc: Normal testCase of NDK Predicates for GroupBy
@@ -650,6 +692,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5500
          * @tc.desc: Normal testCase of NDK Predicates for GroupBy
@@ -661,6 +704,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5600
          * @tc.desc: Normal testCase of NDK Predicates for GroupBy
@@ -684,6 +728,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_5900
          * @tc.desc: Normal testCase of NDK Predicates for In.
@@ -695,6 +740,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6000
          * @tc.desc: Normal testCase of NDK Predicates for In.
@@ -718,6 +764,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6200
          * @tc.desc: Normal testCase of NDK Predicates for NotIn
@@ -729,6 +776,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6300
          * @tc.desc: Normal testCase of NDK Predicates for OrderBy
@@ -740,6 +788,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6400
          * @tc.desc: Normal testCase of NDK Predicates for OrderBy
@@ -751,6 +800,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6500
          * @tc.desc: Normal testCase of NDK Predicates for Limit
@@ -762,6 +812,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6600
          * @tc.desc: Normal testCase of NDK Predicates for Offset
@@ -773,6 +824,7 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesNdkAPITest_6700
          * @tc.desc: Normal testCase of NDK Predicates for Offset
@@ -784,6 +836,5 @@ export default function RdbNdkStorePredicatesTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
-
     })
 }

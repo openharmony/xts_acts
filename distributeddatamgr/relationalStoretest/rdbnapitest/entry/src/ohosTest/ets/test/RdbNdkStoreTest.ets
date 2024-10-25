@@ -31,7 +31,6 @@ export default function RdbNdkStoreTest() {
             } catch (err) {
                 hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
             }
-
         })
         beforeEach(() => {
             hilog.info(0x0000, TAG, 'testTag RdbstoreSetUpTestCase' , ' begin');
@@ -43,8 +42,7 @@ export default function RdbNdkStoreTest() {
             let re = testNapi.RdbstoreTearDownTestCase();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
         })
-        afterAll(() => {
-        })
+        afterAll(() => {})
 
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_0100
@@ -53,8 +51,6 @@ export default function RdbNdkStoreTest() {
          */
         it('SUB_DDM_RDB_0100',0, async () => {
             hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_0100' , ' begin');
-
-
             let re = testNapi.SUB_DDM_RDB_0100();
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
@@ -71,6 +67,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_0300
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
@@ -82,6 +79,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_0400
          * @tc.desc: Normal testCase of NDK store for Update with valueBucket is NULL.
@@ -93,6 +91,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_0500
          * @tc.desc: Normal testCase of NDK store for Update with wrong predicates.
@@ -104,6 +103,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_0600
          * @tc.desc: Normal testCase of NDK store for Query with wrong table or table is NULL.
@@ -115,6 +115,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_0700
          * @tc.desc: Normal testCase of NDK store for Query with wrong columnNames.
@@ -126,6 +127,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_0800
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -137,6 +139,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_0900
          * @tc.desc: Normal testCase of NDK store for Delete、ExecuteQuery.
@@ -148,6 +151,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1000
          * @tc.desc: Normal testCase of NDK store for querysql is NULL.
@@ -159,6 +163,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1100
          * @tc.desc: Normal testCase of NDK store for Delete with wrong table or table is NULL.
@@ -170,6 +175,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1200
          * @tc.desc: Normal testCase of NDK store for Delete with wrong predicates.
@@ -181,6 +187,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1300
          * @tc.desc: Normal testCase of NDK store for Delete multiple.
@@ -192,6 +199,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1400
          * @tc.desc: Normal testCase of NDK store for Transaction、Commit.
@@ -203,6 +211,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1500
          * @tc.desc: Normal testCase of NDK store for Transaction、RollBack.
@@ -214,6 +223,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1600
          * @tc.desc: Normal testCase of NDK store for Transaction、Commit.
@@ -225,6 +235,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1700
          * @tc.desc: Normal testCase of NDK store for Transaction、Commit.
@@ -236,6 +247,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1800
          * @tc.desc: Normal testCase of NDK store for GetVersion、SetVersion.
@@ -247,6 +259,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_1900
          * @tc.desc: Normal testCase of NDK store for Query with wrong columnNames.
@@ -258,6 +271,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2000
          * @tc.desc: Normal testCase of NDK store for Update with wrong columnNames.
@@ -269,6 +283,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2100
          * @tc.desc: Normal testCase of NDK store for Delete with wrong columnNames.
@@ -280,6 +295,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2200
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -291,6 +307,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2300
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -302,6 +319,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2400
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -313,6 +331,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2500
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -324,6 +343,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2600
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -335,6 +355,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2700
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -346,6 +367,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2800
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -357,6 +379,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_2900
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -368,6 +391,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_3000
          * @tc.desc: Normal testCase of NDK store for Query with wrong length.
@@ -415,6 +439,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_3400
          * @tc.desc: Normal testCase of NDK store
@@ -426,6 +451,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_3500
          * @tc.desc: Normal testCase of NDK store
@@ -437,6 +463,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_3600
          * @tc.desc: Normal testCase of NDK store
@@ -448,6 +475,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_3700
          * @tc.desc: Normal testCase of NDK store
@@ -459,6 +487,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_3800
          * @tc.desc: Normal testCase of NDK store
@@ -470,6 +499,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_3900
          * @tc.desc: Normal testCase of NDK store
@@ -481,6 +511,7 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4000
          * @tc.desc: Normal testCase of NDK store
@@ -553,8 +584,6 @@ export default function RdbNdkStoreTest() {
             expect(re == 0).assertTrue();
         })
 
-
-
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4600
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
@@ -566,7 +595,6 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
-
 
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4700
@@ -580,7 +608,6 @@ export default function RdbNdkStoreTest() {
             expect(re == 0).assertTrue();
         })
 
-
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4800
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
@@ -592,7 +619,6 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
-
 
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4900
@@ -606,8 +632,6 @@ export default function RdbNdkStoreTest() {
             expect(re == 0).assertTrue();
         })
 
-
-
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_5000
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
@@ -620,7 +644,6 @@ export default function RdbNdkStoreTest() {
             expect(re == 0).assertTrue();
         })
 
-
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_5100
          * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
@@ -632,8 +655,5 @@ export default function RdbNdkStoreTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
-
-
-
     })
 }

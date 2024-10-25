@@ -31,7 +31,6 @@ export default function RdbNdkStoreEncryptTest() {
             } catch (err) {
                 hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
             }
-
         })
         beforeEach(() => {})
         afterEach(() => {})
@@ -60,7 +59,5 @@ export default function RdbNdkStoreEncryptTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
-
-
     })
 }

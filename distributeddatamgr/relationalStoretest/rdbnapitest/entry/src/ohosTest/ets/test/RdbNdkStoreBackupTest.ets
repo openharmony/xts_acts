@@ -83,6 +83,7 @@ export default function RdbNdkStoreBackupTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
+
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_0300
          * @tc.desc: Exception testCase of NDK store for Backup、Restore.
@@ -95,7 +96,6 @@ export default function RdbNdkStoreBackupTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
-
 
         /**
          * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_0500
@@ -161,8 +161,5 @@ export default function RdbNdkStoreBackupTest() {
             hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
             expect(re == 0).assertTrue();
         })
-
-
-
     })
 }
