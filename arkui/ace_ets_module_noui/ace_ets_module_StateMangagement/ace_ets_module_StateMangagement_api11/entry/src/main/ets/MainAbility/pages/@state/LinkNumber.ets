@@ -26,7 +26,7 @@ struct Child_CP {
   @Link count: number | Object | String | Date | Boolean;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
 
 
       Text("变量赋值number类型")
@@ -64,7 +64,7 @@ struct Child_CP {
         })
         .key('state5')
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }
 
@@ -76,7 +76,7 @@ struct Index_CP {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.count)) + " number is " + JSON.stringify(this.count))
-        .fontSize(20).margin(30).key('LinkNumber')
+        .fontSize(20).margin(10).key('LinkNumber')
       Child_CP({count: this.count})
 
     }

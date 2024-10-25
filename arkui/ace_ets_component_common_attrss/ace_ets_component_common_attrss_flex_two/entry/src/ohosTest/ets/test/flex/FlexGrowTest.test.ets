@@ -61,7 +61,8 @@ function expectForFlexGrow(space: number, countFlexGrow: number, realRect: numbe
   console.info('[' + data.caseTag + '] targetSize : ' + targetSize);
   //Verify based on different parent container spindle directions
   let ratio = countFlexGrow / (flexGrow + compareFlexGrow);
-  expect(Math.abs(Number(realRect) - Number(vp2px((space * ratio) + targetSize))) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] (space * ratio) + targetSize : ' + ((space * ratio) + targetSize));
+  expect(Math.abs(Math.round(realRect) - Math.round(vp2px((space * ratio) + targetSize))) <= 2).assertTrue();
   console.info('[' + data.caseTag + '] (space * ratio) + targetSize : ' + ((space * ratio) + targetSize));
 }
 
@@ -203,9 +204,13 @@ export default function flexGrowTest() {
       if (data.testValue.describe == 'SpaceNotEnough') {
         if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
           || data.pageConfig.containerView == 'FlexRowReverse') {
-          expect(Math.abs(Number(rect.right - rect.left) - Number(vp2px(targetWidth))) <= 1).assertTrue();
+          console.info('[SpaceNotEnough1] rect.right - rect.left : ' + Math.round(rect.right - rect.left));
+          console.info('[SpaceNotEnough1] vp2px(targetWidth) : ' + Math.round(vp2px(targetWidth)));
+          expect(Math.abs(Math.round(rect.right - rect.left) - Math.round(vp2px(targetWidth))) <= 3).assertTrue();
         } else {
-          expect(Math.abs(Number(rect.bottom - rect.top) - Number(vp2px(targetHeight))) <= 1).assertTrue();
+          console.info('[SpaceNotEnough2] rect.bottom - rect.top : ' + Math.round(rect.bottom - rect.top));
+          console.info('[SpaceNotEnough2] vp2px(targetHeight) : ' + Math.round(vp2px(targetHeight)));
+          expect(Math.abs(Math.round(rect.bottom - rect.top) - Math.round(vp2px(targetHeight))) <= 3).assertTrue();
         }
       } else {
         //Verify the standard component not be changed

@@ -17,7 +17,6 @@ group("ActsFAAbilityDisplayOrientationTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "faabilitydisplayorientationfeaturehelper:ActsOrientationFeatureHelper",
       "faabilitydisplayorientationmainhelper:ActsOrientationMainHelper",
       "faabilitydisplayorientationsechelper:ActsOrientationSecHelper",
       "faabilitydisplayorientationtest:ActsOrientationTest",

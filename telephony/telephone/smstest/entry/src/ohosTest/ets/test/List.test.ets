@@ -19,7 +19,7 @@ import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.SmsMms")){
+  if (sim.getMaxSimCount()!=0){
     if(sim.hasSimCardSync(0)){
       smsTextPublic();
       smsTextNoCardPublic();

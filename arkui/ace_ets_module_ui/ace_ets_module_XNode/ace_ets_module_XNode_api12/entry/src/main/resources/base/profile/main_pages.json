@@ -36,6 +36,7 @@
         "MainAbility/pages/Graphics/getRed",
         "MainAbility/pages/Graphics/getGreen",
         "MainAbility/pages/FrameNode/onAppear",
+        "MainAbility/pages/FrameNode/createNodeSymbolGlyph",
         "MainAbility/pages/FrameNode/createNodeBlank",
         "MainAbility/pages/FrameNode/createNodeColumn",
         "MainAbility/pages/FrameNode/createNodeDivider",

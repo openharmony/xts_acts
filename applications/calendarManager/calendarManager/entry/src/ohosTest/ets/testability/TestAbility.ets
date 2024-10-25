@@ -21,7 +21,9 @@ import testsuite from '../test/List.test';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want'
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import common from '@ohos.app.ability.common';
 
+export let mContext: common.UIAbilityContext | null = null;
 export default class TestAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onCreate');
@@ -49,6 +51,7 @@ export default class TestAbility extends UIAbility {
             hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
                 JSON.stringify(data) ?? '');
         });
+        mContext = this.context;
     }
 
     onWindowStageDestroy() {

@@ -238,6 +238,12 @@ export const textInputOnCutTest: (a: string) => void;
 export const textInputOnPasteTest: (a: string) => void;
 
 export const gestureTest: (a: string) => void;
+export const longPressGestureTest: (a: string) => void;
+export const swipeGestureTest: (a: string) => void;
+export const panGestureTest: (a: string) => void;
+export const rotateGestureTest: (a: string) => void;
+export const pinchGestureTest: (a: string) => void;
+export const interruptGestureTest: (a: string) => void;
 
 export const dragTest: (a: string) => void;
 
@@ -262,3 +268,33 @@ export const getXYTest: (a: string) => void;
 export const getWidthHeightTest: (a: string) => void;
 
 export const getModifierKeyStatesTest: (a: string) => void;
+
+export const createDragActionTest: (a: string) => void;
+
+export const setPointerIdTest: (a: string) => void;
+
+export const setTouchPointXYTest: (a: string) => void;
+
+export const setDragPreviewOptionTest: (a: string) => void;
+
+export const registerStatusListenerTest: (a: string) => void;
+
+export const animatorEventTest: (a: string) => void;
+
+export const testKeyframeRegisterOnFinish: (a: string) => void;
+
+export const testKeyframeRegisterOnEvent: (a: string) => void;
+
+export const testAnimatorRegisterOnFrame: (a: string) => void;
+
+export const testAnimatorRegisterOnFinish: (a: string) => void;
+
+export const testAnimatorRegisterOnCancel: (a: string) => void;
+
+export const testAnimatorRegisterOnRepeat: (a: string) => void;
+
+export const customPropertyTest: (a: string) => void;
+
+export const testAddCustomProperty: (a: string) => void;
+
+export const testRemoveCustomProperty: (a: string) => void;

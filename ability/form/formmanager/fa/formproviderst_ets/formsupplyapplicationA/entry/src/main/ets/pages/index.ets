@@ -15,8 +15,12 @@
 
 import router from '@system.router';
 
+interface optionsObj {
+  uri: string
+}
+
 async function routePage() {
-  let options = {
+  let options: optionsObj = {
     uri: 'pages/second'
   }
   try {

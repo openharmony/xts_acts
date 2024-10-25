@@ -22,9 +22,10 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
   isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
   errorManageTest, dealHashMapTest, noUseConcurrentTest, sendDataTest, sendableClassTestFunc, Int8ArrayTestFunc,
-  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray } from './testFunclist'
+  SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray,
+  sendableFuncTest, sendableClassTest } from './testFunclist'
 import { A, B, StrCat, printArgs, printStrArgs } from './exportFunclist'
-import { SendableClass, SimpleSendable } from './sendable';
+import { SendableClass, SimpleSendable, sendableFunc, SendableClassTest } from './sendable';
 import HashMap from '@ohos.util.HashMap';
 
 export default function TaskPoolTest() {
@@ -4582,6 +4583,174 @@ export default function TaskPoolTest() {
       }
       expect(res).assertEqual(2000);
       taskpool.cancel(periodicTask)
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0201
+     * @tc.name      : TaskPoolTestClass201
+     * @tc.desc      : taskpool taskGroup
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass201', 0, async (done: Function) => {
+      let task:taskpool.Task = new taskpool.Task(errorTest);
+      let task2:taskpool.Task = new taskpool.Task(printArgs, 100);
+      let taskGroup:taskpool.TaskGroup = new taskpool.TaskGroup();
+      taskGroup.addTask(task);
+      taskGroup.addTask(task2);
+      await taskpool.execute(taskGroup).catch((e: BusinessError) => {
+        console.log(e.message)
+        expect(e.message).assertContain("this is an error");
+      })
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0202
+     * @tc.name      : TaskPoolTestClass202
+     * @tc.desc      : taskpool sendableFunc add sendableClass test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass202', 0, async (done: Function) => {
+      let isTerminate1: boolean = false;
+      let isTerminate2: boolean = false;
+      let task1 = new taskpool.Task(sendableFuncTest, sendableFunc);
+      taskpool.execute(task1).then((res) => {
+        isTerminate1 = true;
+        expect(res).assertEqual(500);
+      })
+
+      let classTest: SendableClassTest = new SendableClassTest(sendableFunc);
+      let task2 = new taskpool.Task(sendableClassTest, classTest);
+      taskpool.execute(task2).then((res) => {
+        isTerminate2 = true;
+        expect(res).assertEqual(600);
+      })
+
+      while (!isTerminate1 && !isTerminate2) {
+        await promiseCase();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0203
+     * @tc.name      : TaskPoolTestClass203
+     * @tc.desc      : cancel executed task for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass203', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(testString, "hello");
+      await taskpool.execute(task);
+      try {
+        taskpool.cancel(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0204
+     * @tc.name      : TaskPoolTestClass204
+     * @tc.desc      : Register a callback of TaskGroup
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass204', 0, async (done: Function) => {
+      let isTerminate: boolean = false;
+      let result: number = 0;
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+      let task1: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: test number
+      task1.onExecutionSucceeded(()=>{
+        result += 100;
+      })
+      let task2: taskpool.Task = new taskpool.Task(printArgs, 200); // 200: test number
+      task2.onExecutionSucceeded(()=>{
+        result += 200;
+      })
+      taskGroup.addTask(task1);
+      taskGroup.addTask(task2);
+      taskpool.execute(taskGroup).then((res) => {
+        isTerminate = true;
+        expect(res.includes(100)).assertTrue();
+        expect(res.includes(200)).assertTrue();
+      })
+      while (!isTerminate) {
+        await promiseCase();
+      }
+      expect(result).assertEqual(300);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0205
+     * @tc.name      : TaskPoolTestClass205
+     * @tc.desc      : Register a callback of TaskGroup
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass205', 0, async (done: Function) => {
+      let isTerminate: boolean = false;
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+      let task1: taskpool.Task = new taskpool.Task(hashMapTest, 300); // 300: test number
+      task1.onExecutionFailed((e:Error)=>{
+        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+      })
+      taskGroup.addTask(task1);
+      taskpool.execute(taskGroup).then((res)=>{
+      }).catch((e:BusinessError)=>{
+        isTerminate = true;
+      })
+      while (!isTerminate) {
+        await promiseCase();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0206
+     * @tc.name      : TaskPoolTestClass206
+     * @tc.desc      : Register a callback of SequenceRunner
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass206', 0, async (done: Function) => {
+      let result: number = 0;
+      let isTerminate: boolean = false;
+      let task1: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
+      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 300);
+      let task3: taskpool.Task = new taskpool.Task(hashMapTest, 100);
+
+      task1.onExecutionSucceeded(()=>{
+        result += 500;
+      })
+      task2.onExecutionSucceeded(()=>{
+        result += 300;
+      })
+      task3.onExecutionFailed((e:Error)=>{
+        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+      })
+      let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
+      runner.execute(task1);
+      runner.execute(task2);
+      runner.execute(task3).then((res)=>{
+      }).catch((e:BusinessError)=>{
+        isTerminate = true;
+      })
+      while (!isTerminate) {
+        await promiseCase();
+      }
+      expect(result).assertEqual(800);
       done();
     })
   })

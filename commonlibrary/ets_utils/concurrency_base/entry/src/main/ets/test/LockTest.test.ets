@@ -23,7 +23,8 @@ import { exclusiveSingleTest, exclusiveMultiTest, exclusiveMultiWorkerTest, shar
   acquireLockTwiceSharedSharedNotAvailable, acquireLockTwiceSharedExclusiveAvailable,
   acquireLockTwiceSharedExclusiveNotAvailable, acquireLockTwiceExclusiveSharedAvailable,
   acquireLockTwiceExclusiveSharedNotAvailable, acquireLockTwiceExclusiveExclusiveAvailable,
-  acquireLockTwiceExclusiveExclusiveNotAvailable, pressureTest, disarmTimeoutTest, disarmTimeoutLongAwaitTest } from './LockTest';
+  acquireLockTwiceExclusiveExclusiveNotAvailable, pressureTest, disarmTimeoutTest, disarmTimeoutLongAwaitTest,
+  doubleExitSharedLockTest} from './LockTest';
 
 
 export default function LockTest() {
@@ -540,6 +541,21 @@ export default function LockTest() {
      */
     it('disarmTimeoutLongAwaitTest', 0, async (done: Function) => {
       let result: Object = await disarmTimeoutLongAwaitTest();
+      expect(result).assertEqual("PASSED");
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_035
+     * @tc.name: doubleExitSharedLock
+     * @tc.desc: checks that shared lock cannot be acquired in a worker after it is acquired twice in the main thread
+     * @tc.author: udav
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('doubleExitSharedLockTest', 0, async (done: Function) => {
+      let result: Object = await doubleExitSharedLockTest();
       expect(result).assertEqual("PASSED");
       done();
     })

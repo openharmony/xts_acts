@@ -148,7 +148,10 @@ struct WebViewEnumAndSetWebController {
               await Utils.sleep(2000)
               this.controller.getTitle()
               await Utils.sleep(2000)
-              Utils.emitEvent(this.controller.getTitle(), 1405)
+              if ((this.controller.getTitle()).includes("京东")) {
+                Utils.emitEvent(true, 1405)
+                console.log("title:" + this.controller.getTitle())
+              }
               this.controller.loadUrl("resource://rawfile/fullScreenEnter.html")
               break;
             }

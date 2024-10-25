@@ -19,15 +19,26 @@ import fileio from '@ohos.fileio'
 import commonEvent from '@ohos.commonEventManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
+import common from '@ohos.app.ability.common';
 
 export default function requestUploadOnetJSUnitTest() {
   describe('requestUploadOneJSUnit', () => {
+
+    let baseContext: common.Context;
+
     beforeAll((done: Function) => {
       try {
         console.info('====>beforeAll: startServer');
         new Server().startServer();
         console.info('====>beforeAll: startServer success!');
-        let pathDir: string = globalThis.abilityContext.cacheDir;
+        let context: common.Context | undefined = AppStorage.get('context');
+        if (context !== undefined){
+          baseContext = context;
+          console.info('====>beforeAll requestUploadJSUnit baseContext:'+JSON.stringify(baseContext))
+        } else {
+          console.info('====>beforeAll requestUploadJSUnit baseContext is undefined')
+        }
+        let pathDir: string = baseContext.cacheDir;
         let filePath = pathDir + `/test.txt`;
         let fd = fileio.openSync(filePath, 0o100 | 0o2, 0o666);
         let content = ''.padEnd(1 * 1024, 'Hello world!');
@@ -104,7 +115,7 @@ export default function requestUploadOnetJSUnitTest() {
         data: attachments,
       };
 
-      request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+      request.agent.create(baseContext, config_, async (err, task) => {
         let on_pauseCallback = async (pro: request.agent.Progress) => {
           task.off('pause', on_pauseCallback);
           try {
@@ -170,7 +181,7 @@ export default function requestUploadOnetJSUnitTest() {
       let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Upload_Pause_0100 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -252,7 +263,7 @@ export default function requestUploadOnetJSUnitTest() {
 
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Upload_Pause_0200 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -378,7 +389,7 @@ export default function requestUploadOnetJSUnitTest() {
      */
     it('SUB_Misc_REQUEST_Remove_Upload_Callback_0060', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0060 is starting-----------------------");
-      let task = await request.agent.create(globalThis.abilityContext, config);
+      let task = await request.agent.create(baseContext, config);
       request.agent.remove(task.tid, (err) => {
         try {
           if(err){
@@ -420,7 +431,7 @@ export default function requestUploadOnetJSUnitTest() {
     it('SUB_Misc_REQUEST_Remove_Upload_Promise_0060', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0060 is starting-----------------------");
       try {
-        let task = await request.agent.create(globalThis.abilityContext, config);
+        let task = await request.agent.create(baseContext, config);
         await request.agent.remove(task.tid);
         await sleep(100);
         await request.agent.remove(task.tid);
@@ -450,7 +461,7 @@ export default function requestUploadOnetJSUnitTest() {
       try {
         let flag = true;
         let flag1 = true;
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0020 on_progressCallback flag: " + flag);
@@ -508,7 +519,7 @@ export default function requestUploadOnetJSUnitTest() {
       let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           try {
             if(err){
               console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0030 create err: " + JSON.stringify(err));
@@ -564,7 +575,7 @@ export default function requestUploadOnetJSUnitTest() {
       config_.mode = request.agent.Mode.FOREGROUND;
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_progressCallback1 =async (pro1: request.agent.Progress) => {
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0030 pro1: " + JSON.stringify(pro1));
             arr.push(1);
@@ -617,7 +628,7 @@ export default function requestUploadOnetJSUnitTest() {
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_progressCallback = async (pro: request.agent.Progress) => {
             task.off('progress', on_progressCallback);
             console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0040 pro: " +  JSON.stringify(pro));
@@ -658,7 +669,7 @@ export default function requestUploadOnetJSUnitTest() {
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
         let flag = true;
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0040 on_progressCallback flag: " + flag);
@@ -716,8 +727,8 @@ export default function requestUploadOnetJSUnitTest() {
         console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 pro2: " + JSON.stringify(pro2));
       }
       try {
-        let task1: request.agent.Task = await request.agent.create(globalThis.abilityContext, config);
-        let task2: request.agent.Task = await request.agent.create(globalThis.abilityContext, config);
+        let task1: request.agent.Task = await request.agent.create(baseContext, config);
+        let task2: request.agent.Task = await request.agent.create(baseContext, config);
         console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 create task1 and task2 success");
         task1.on('completed', on_offCompletedCallback1);
         task2.on('completed', on_offCompletedCallback2);
@@ -758,7 +769,7 @@ export default function requestUploadOnetJSUnitTest() {
       config_.mode = request.agent.Mode.FOREGROUND;
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           try {
             if(err){
               console.info("====>SUB_Misc_REQUEST_On_Upload_Completed_0030 create err: " + JSON.stringify(err));
@@ -815,7 +826,7 @@ export default function requestUploadOnetJSUnitTest() {
       config_.mode = request.agent.Mode.FOREGROUND;
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_offCompletedCallback1 =async (pro1: request.agent.Progress) => {
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0030 pro1: " + JSON.stringify(pro1));
             arr.push(1);
@@ -868,7 +879,7 @@ export default function requestUploadOnetJSUnitTest() {
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_completedCallback =async (pro: request.agent.Progress) => {
             task.off('completed', on_completedCallback);
             console.info("====>SUB_Misc_REQUEST_On_Upload_Completed_0040 pro: " + JSON.stringify(pro));
@@ -909,7 +920,7 @@ export default function requestUploadOnetJSUnitTest() {
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
         let flag = true;
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_offCompletedCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 on_offCompletedCallback flag: " + flag);
@@ -962,7 +973,7 @@ export default function requestUploadOnetJSUnitTest() {
       try {
         let flag = true;
         let flag1 = true;
-        request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        request.agent.create(baseContext, config, async (err, task) => {
           let on_progressCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0020 on_progressCallback flag: " + flag);
@@ -1022,7 +1033,7 @@ export default function requestUploadOnetJSUnitTest() {
       let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           try {
             if(err){
               console.info("====>SUB_Misc_REQUEST_On_Upload_Failed_0030 create err: " + JSON.stringify(err));
@@ -1077,7 +1088,7 @@ export default function requestUploadOnetJSUnitTest() {
       config_.mode = request.agent.Mode.FOREGROUND;
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_offCompletedCallback1 =async (pro1: request.agent.Progress) => {
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0030 pro1: " + JSON.stringify(pro1));
             arr.push(1);
@@ -1124,7 +1135,7 @@ export default function requestUploadOnetJSUnitTest() {
       config_.url = 'http://127.0.0.1';
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_failedCallback = async (pro: request.agent.Progress) => {
             task.off('failed', on_failedCallback);
             console.info("====>SUB_Misc_REQUEST_On_Upload_Failed_0040 pro: " + JSON.stringify(pro));
@@ -1164,7 +1175,7 @@ export default function requestUploadOnetJSUnitTest() {
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
         let flag = true;
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_failedCallback = (pro: request.agent.Progress) => {
             flag = false;
             console.info("====>SUB_Misc_REQUEST_Off_Upload_Failed_0040 on_failedCallback flag: " + flag);
@@ -1212,14 +1223,14 @@ export default function requestUploadOnetJSUnitTest() {
       console.info("====>-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0060 is starting-----------------------");
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
-      request.agent.create(globalThis.abilityContext, config_, async (err, task1)=>{
+      request.agent.create(baseContext, config_, async (err, task1)=>{
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0060 uploadTask: " + task1);
         try{
           if(err){
             console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0060 create err: " + JSON.stringify(err));
             expect().assertFail();
           }
-          request.agent.create(globalThis.abilityContext, config_, async (err, task2)=>{
+          request.agent.create(baseContext, config_, async (err, task2)=>{
             try {
               if(err){
                 console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0060 create err: " + JSON.stringify(err));
@@ -1258,8 +1269,8 @@ export default function requestUploadOnetJSUnitTest() {
       let config_: request.agent.Config = config
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
-        let task1 = await request.agent.create(globalThis.abilityContext, config_);
-        let task2 = await request.agent.create(globalThis.abilityContext, config_);
+        let task1 = await request.agent.create(baseContext, config_);
+        let task2 = await request.agent.create(baseContext, config_);
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 task1 and task2 create success");
         await request.agent.remove(task1.tid);
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0060 task1 remove");
@@ -1297,7 +1308,7 @@ export default function requestUploadOnetJSUnitTest() {
       };
 
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_failedCallback = async (pro: request.agent.Progress) => {
             task.off('failed', on_failedCallback);
             expect(true).assertTrue();
@@ -1349,7 +1360,7 @@ export default function requestUploadOnetJSUnitTest() {
       let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Upload_Failed_0500 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -1415,7 +1426,7 @@ export default function requestUploadOnetJSUnitTest() {
 
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Upload_Failed_0600 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -1479,7 +1490,7 @@ export default function requestUploadOnetJSUnitTest() {
       };
 
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           let on_removeCallback = async (pro: request.agent.Progress) => {
             try {
               task.off('remove', on_removeCallback);
@@ -1536,7 +1547,7 @@ export default function requestUploadOnetJSUnitTest() {
       let arr: Array<number> = new Array();
       let arr1 = [0, 1, 2];
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Upload_Remove_0100 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -1602,7 +1613,7 @@ export default function requestUploadOnetJSUnitTest() {
 
       let arr: Array<number> = new Array();
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           if (err) {
             console.info("====>SUB_REQUEST_Off_Upload_Remove_0200 create err: " + JSON.stringify(err));
             expect().assertFail();
@@ -1700,7 +1711,7 @@ export default function requestUploadOnetJSUnitTest() {
       })
 
       try {
-        request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
+        request.agent.create(baseContext, config_, async (err, task) => {
           try {
             if(err){
               console.info("====>SUB_REQUEST_Upload_broadcastEvent_0200 create err: " + JSON.stringify(err));

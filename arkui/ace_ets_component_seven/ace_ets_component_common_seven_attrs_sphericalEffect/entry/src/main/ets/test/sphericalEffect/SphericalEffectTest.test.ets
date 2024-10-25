@@ -30,7 +30,7 @@ export default function SphericalEffectTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig: ESObject = {
     testName: 'testSphericalEffect',
     pageName: 'sphericalEffectPage',
     pageUrl: 'MainAbility/pages/sphericalEffect/SphericalEffectPage',
@@ -42,24 +42,24 @@ export default function SphericalEffectTest() {
     parentComponentKey: 'parentComponentKey',
     gutter: gutter,
     columns: columns
-  }
+  } as ESObject
 
-  let testValues = [{
+  let testValues: ESObject[] = [{
     describe: 'SetSphericalEffect',
     setValue: {
       sphericalEffect: 0.6
-    },
+    } as ESObject,
     expectValue: {
       sphericalEffect: 0.6
-    }
-  }]
+    } as ESObject
+  } as ESObject]
 
   /**
    * Create test suite.
    */
   describe('sphericalEffectTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       //Modify the target component properties.
       console.error('[' + data.caseTag + '] sphericalEffectTest');
       console.error('[' + data.caseTag + '] check sphericalEffect.' + ` ${data.testValue.setValue.sphericalEffect}`);

@@ -5738,5 +5738,696 @@ export default function UtdfileNameTest() {
       console.log("typeId:" + result);
       expect(result).assertEqual("org.openxmlformats.presentationml.slideshow.macroenabled");
     });
+
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4140
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4140
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".f4v"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4140', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4140");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".f4v");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.f4v");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4150
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4150
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m2ts"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4150', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4150");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m2ts");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mp2t");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4160
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4160
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mts"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4160', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4160");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mts");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mp2t");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4170
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4170
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m2t"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4170', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4170");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m2t");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mp2t");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4180
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4180
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".yt"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4180', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4180");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".yt");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.youtube.video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4190
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4190
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vt"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4190', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4190");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".vt");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.youtube.video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4200
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4200
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".wrf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4200', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4200");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".wrf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.cisco.webex-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4210
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4210
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mpeg2"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4210', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4210");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mpeg2");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-2");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4220
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4220
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mpv2"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4220', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4220");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mpv2");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-2");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4230
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4230
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mp2v"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4230', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4230");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mp2v");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-2");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4240
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4240
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m2v"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4240', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4240");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m2v");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-2");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4250
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4250
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mpv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4250', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4250");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mpv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-2");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4260
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4260
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mpeg1"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4260', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4260");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mpeg1");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-1");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4270
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4270
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mpv1"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4270', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4270");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mpv1");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-1");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4280
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4280
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mp1v"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4280', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4280");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mp1v");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-1");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4290
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4290
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m1v"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4290', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4290");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m1v");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-1");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4300
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4300
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rmvb"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4300', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4300");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rmvb");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.real.realmedia-vbr");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4310
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4310
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4310', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4310");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.real.realvideo");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4320
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4320
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".divx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4320', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4320");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".divx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.divx-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4330
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4330
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".axv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4330', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4330");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".axv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.csiro.annodex");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4340
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4340
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ogv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4340', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4340");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ogv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ogv");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4350
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4350
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".lsf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4350', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4350");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".lsf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.lsf-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4360
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4360
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".lsx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4360', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4360");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".lsx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.lsf-video");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4370
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4370
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".h264"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4370', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4370");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".h264");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.h264-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4380
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4380
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".jp2"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4380', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4380");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".jp2");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jpeg-2000");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4390
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4390
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".nrw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4390', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4390");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".nrw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.nikon.nrw-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4400
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".jpg2"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4400', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4400");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".jpg2");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jpeg-2000");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4410
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4410
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".jpx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4410', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4410");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".jpx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jpeg-2000");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4420
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4420
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".jpf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4420', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4420");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".jpf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jpeg-2000");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4430
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4430
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".jpm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4430', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4430");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".jpm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jpeg-2000");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4440
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4440
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".raf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4440', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4440");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".raf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.fujifilm.raf-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4450
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4450
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".raw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4450', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4450");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".raw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.panasonic.rw2-raw-image");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4460
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4460
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pef"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4460', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4460");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pef");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.pentax.pef-raw-image");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4470
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4470
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".srw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4470', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4470");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".srw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.sumsung.srw-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4480
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4480
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".erf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4480', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4480");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".erf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.epson.erf-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4490
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".orf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4490', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4490");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".orf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.olympus.orf-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4500
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ief"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4500', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4500");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ief");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ief-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4510
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4510
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".art"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4510', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4510");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".art");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.aol.art-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4520
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4520
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".heifs"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4520', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4520");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".heifs");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.heif");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4530
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4530
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hif"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4530', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4530");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".hif");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.heif");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4540
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4540
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".heics"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4540', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4540");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".heics");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.heic");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4550
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4550
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mp4v"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4550', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4550");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mp4v");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-4");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4560
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4560
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mpeg4"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4560', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4560");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mpeg4");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-4");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4570
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4570
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m4p"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4570', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4570");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m4p");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.apple.m4p-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4580
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4580
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m4b"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4580', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4580");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m4b");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-4-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4590
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4590
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ac3"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4590', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4590");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ac3");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ac3-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4600
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4600
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".bm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4600', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4600");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".bm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.bmp");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4610
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4610
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".flv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4610', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4610");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".flv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.flash");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4440
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4620
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rw2"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4620', 0, () => {
+      console.log("SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_4620");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rw2");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.panasonic.rw2-raw-image");
+    });
   });
 }

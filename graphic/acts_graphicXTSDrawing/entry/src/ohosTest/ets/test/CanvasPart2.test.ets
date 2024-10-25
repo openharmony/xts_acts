@@ -20,7 +20,7 @@ import { getEnumCount } from './utils';
 import common2D from '@ohos.graphics.common2D';
 
 export default function drawingTsCanvasPart2Test() {
-  describe('DrawingTsCanvasTest', () => {
+  describe('DrawingTsCanvasPart2Test', () => {
     let pixel: image.PixelMap;
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.

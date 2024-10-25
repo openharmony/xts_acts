@@ -14,6 +14,9 @@
 */
 
 export const URL1: string = 'https'
+
 export const URL2: string = '://'
+
 export const URL3: string = 'www.example.com'
+
 export const URL: string = URL1 + URL2 + URL3

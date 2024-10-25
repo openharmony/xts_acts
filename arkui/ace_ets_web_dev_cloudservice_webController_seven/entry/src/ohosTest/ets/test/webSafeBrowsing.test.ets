@@ -76,7 +76,7 @@ export default function ActsAceWebSafeBrowsing() {
      *@tc.desc test EnableSafeBrowsingTrue
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testEnableSafeBrowsingTrue', 0, async (done: Function) => {
       emitKey = "emitEnableSafeBrowsingTrue"
@@ -91,7 +91,7 @@ export default function ActsAceWebSafeBrowsing() {
      *@tc.desc test EnableSafeBrowsingFalse
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testEnableSafeBrowsingFalse', 0, async (done: Function) => {
       emitKey = "emitEnableSafeBrowsingFalse"
@@ -106,7 +106,7 @@ export default function ActsAceWebSafeBrowsing() {
      *@tc.desc test IsSafeBrowsingEnabledTrue
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testIsSafeBrowsingEnabledTrue', 0, async (done: Function) => {
       emitKey = "emitIsSafeBrowsingEnabledTrue"
@@ -121,7 +121,7 @@ export default function ActsAceWebSafeBrowsing() {
      *@tc.desc test IsSafeBrowsingEnabledFalse
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testIsSafeBrowsingEnabledFalse', 0, async (done: Function) => {
       emitKey = "emitIsSafeBrowsingEnabledFalse"

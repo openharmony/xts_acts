@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -67,7 +67,8 @@ struct FeatureAbilityStartAbility {
         .onClick(() => {
           FeatureAbility.startAbilityForResult({
             bundleName: "com.example.testapp",
-            abilityName: "com.example.testApp.MainAbility" })
+            abilityName: "com.example.testApp.MainAbility"
+          })
         })
 
       Text("featureAbility-FinishWithResult")
@@ -260,7 +261,215 @@ struct FeatureAbilityStartAbility {
           FeatureAbility.unsubscribeMsg()
         })
 
-    }.width("100%").height("100%")
+      Text("featureAbility-StartAbility")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-StartAbility")
+        .onClick(() => {
+          FeatureAbility.startAbility(
+            {
+
+              bundleName: "com.example.myapplication",
+              abilityName: "com.example.entry.secondAbility",
+              entities: ['a', 'b'],
+              url: ""
+            }
+          ).then((data) => {
+            console.info("==========================>startAbility=======================>");
+          });
+        })
+
+      Text("featureAbility-startAbilityForResult")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-startAbilityForResult")
+        .onClick(() => {
+          FeatureAbility.startAbilityForResult(
+            {
+              bundleName: "com.example.myapplication",
+              abilityName: "com.example.entry.secondAbility",
+              entities: ['a', 'b'],
+              url: ""
+            },
+          ).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+
+      Text("featureAbility-finishWithResult")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-finishWithResult")
+        .onClick(() => {
+          FeatureAbility.finishWithResult({
+            code: 20002,
+            result: {}
+          }).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+
+      Text("featureAbility-getDeviceList")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-finishWithResult")
+        .onClick(() => {
+          FeatureAbility.getDeviceList(23).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+
+      Text("featureAbility-getDeviceList")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-finishWithResult")
+        .onClick(() => {
+          FeatureAbility.getDeviceList(23).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+
+      Text("featureAbility-callAbility")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-callAbility")
+        .onClick(() => {
+          FeatureAbility.callAbility({
+            bundleName: "com.example.myapplication",
+            abilityName: "com.example.entry.secondAbility",
+            messageCode: 50,
+            abilityType: 12
+          }).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+
+      Text("featureAbility-continueAbility")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-continueAbility")
+        .onClick(() => {
+          FeatureAbility.continueAbility().then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+      Text("featureAbility-subscribeAbilityEvent")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-subscribeAbilityEvent")
+        .onClick(() => {
+          FeatureAbility.subscribeAbilityEvent({
+            bundleName: "ss",
+            abilityName: "d",
+            messageCode: 50,
+            abilityType: 60,
+            syncOption: 20
+          }, () => {
+            console.info("hello subscribeAbilityEvent")
+          }).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+      Text("featureAbility-unsubscribeAbilityEvent")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-unsubscribeAbilityEvent")
+        .onClick(() => {
+          FeatureAbility.unsubscribeAbilityEvent({
+            bundleName: "d",
+            abilityName: "s",
+            messageCode: 20,
+            abilityType: 30,
+            syncOption: 40
+          }).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

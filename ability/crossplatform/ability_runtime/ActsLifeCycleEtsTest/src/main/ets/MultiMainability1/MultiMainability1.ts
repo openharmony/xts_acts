@@ -114,7 +114,7 @@ export default class MultiMainability1 extends Ability {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     console.log("[Demo] MultiMainability1 onWindowStageCreate")
-    globalThis.ability1context = this.context;
+    globalThis.multiability1context = this.context;
 
     windowStage.loadContent('TestAbility/pages/index1', (err: BusinessError) => {
       if (err.code) {

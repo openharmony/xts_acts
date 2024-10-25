@@ -31,4 +31,3 @@ struct Index {
     .height('100%')
   }
 }
-

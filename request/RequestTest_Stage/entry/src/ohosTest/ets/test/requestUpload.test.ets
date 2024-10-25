@@ -153,7 +153,6 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_FileUpload_UploadTaskCreation_0300', 0, async (done: Function) => {
       console.info('-----------------------SUB_REQUEST_FileUpload_UploadTaskCreation_0300 is starting-----------------------');
-      // let uploadConfig1: request.UploadConfig = Object.assign({}, uploadConfig);
       let uploadConfig1: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
       uploadConfig1.files = [{
         filename: 'test',
@@ -1455,7 +1454,7 @@ export default function requestUploadJSUnit() {
       try {
         let uploadConfig_: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
         uploadConfig_.url = 'http://127.1.1.1'
-        request.uploadFile(globalThis.abilityContext, uploadConfig_, (err, uploadTask)=>{
+        request.uploadFile(baseContext, uploadConfig_, (err, uploadTask)=>{
           console.info("====>SUB_REQUEST_uploadFile_STAGE_API_CALLBACK_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
@@ -1501,7 +1500,7 @@ export default function requestUploadJSUnit() {
     it('SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001', 0, async (done: Function) => {
       console.info("-----------------------SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
       try{
-        request.uploadFile(globalThis.abilityContext, uploadConfig).then(uploadTask => {
+        request.uploadFile(baseContext, uploadConfig).then(uploadTask => {
           console.info("====>SUB_REQUEST_uploadFile_STAGE_API_PROMISE_0001 uploadFile: " + uploadTask);
           try{
             expect(true).assertEqual(uploadTask != undefined);
@@ -1532,7 +1531,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_UPLOAD_API_DELETE_0001', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 is starting-----------------------");
-      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask) => {
+      request.uploadFile(baseContext, uploadConfig, (err, uploadTask) => {
         try{
           console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask: " + uploadTask);
           expect(uploadTask != undefined).assertEqual(true);
@@ -1569,7 +1568,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_REQUEST_UPLOAD_API_DELETE_0002', 0, async (done: Function) => {
       console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 is starting-----------------------");
-      request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask) => {
+      request.uploadFile(baseContext, uploadConfig, (err, uploadTask) => {
         console.info("====>SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask: " + uploadTask);
         try{
           expect(uploadTask != undefined).assertEqual(true);
@@ -1588,5 +1587,93 @@ export default function requestUploadJSUnit() {
         }
       })
     });
+
+    /**
+     * @tc.number    SUB_Request_FileUpload_Default_0100
+     * @tc.name      SUB_Request_FileUpload_Default_0100
+     * @tc.desc      different index,begins and ends.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_Request_FileUpload_Default_0100', 0, async (done: Function) => {
+      let config: request.UploadConfig = {
+        url: 'http://127.0.0.1:8080',
+        header: { 'Accept': '*/*' },
+        method: "POST",
+        files: [{ filename: "test", name: "test", uri: "internal://cache/test.txt", type: "txt" }],
+        data: [{ name: "name123", value: "123" }],
+        index: undefined,
+        begins: undefined,
+        ends: undefined
+      }
+      console.info('====>SUB_Request_FileUpload_Default_0100 config_multi: ' + JSON.stringify(config));
+      request.uploadFile(baseContext, config, async (err, uploadTask)=>{
+        try{
+          if (err) {
+            console.info('====>SUB_Request_FileUpload_Default_0100 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+          }
+          console.info('====>SUB_Request_FileUpload_Default_0100 uploadFile: ' + uploadTask);
+          uploadTask.on('complete', (taskStates: Array<request.TaskState>) => {
+            try {
+              uploadTask.off('complete');
+              console.info('====>SUB_Request_FileUpload_Default_0100 taskStates: ' + JSON.stringify(taskStates));
+              expect(taskStates[0].responseCode).assertEqual(0);
+              done();
+            } catch (err) {
+              console.info('====>SUB_Request_FileUpload_Default_0100 catch err: ' + err);
+              done();
+            }
+          })
+        }catch(err){
+          console.info('====>SUB_Request_FileUpload_Default_0100 except err: ' + err);
+          await deleteTask(uploadTask);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_upload_headerReceive_0100
+     * @tc.name      SUB_REQUEST_upload_headerReceive_0100
+     * @tc.desc      the onHeaderReceive interfaces.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_REQUEST_upload_headerReceive_0100', 0, async (done: Function) => {
+      console.info('-----------------------SUB_REQUEST_upload_headerReceive_0100 is starting-----------------------');
+      request.uploadFile(baseContext, uploadConfig, async (err, uploadTask)=>{
+        console.info('====>SUB_REQUEST_upload_headerReceive_0100 uploadFile: ' + uploadTask);
+        console.info('====>SUB_REQUEST_upload_headerReceive_0100 uploadConfig: ' + JSON.stringify(uploadConfig));
+        try{
+          let headerCallback = async (header: ESObject) => {
+            try {
+              uploadTask.off('headerReceive', headerCallback);
+              console.info('====>SUB_REQUEST_upload_headerReceive_0100 headerCallback: ' + JSON.stringify(header));
+              expect(header['headers']['headertest']).assertEqual('headerreceivetest');
+              await deleteTask(uploadTask);
+              done();
+            } catch (err) {
+              console.info('====>SUB_REQUEST_upload_headerReceive_0100 catch err: ' + JSON.stringify(err));
+              await deleteTask(uploadTask);
+              done();
+            }
+          }
+          if (err) {
+            console.info('====>SUB_REQUEST_upload_headerReceive_0100 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+          }
+          uploadTask.on('headerReceive', headerCallback);
+          console.info('====>SUB_REQUEST_upload_headerReceive_0100 on headerReceive success');
+        }catch(err){
+          console.info('====>SUB_REQUEST_upload_headerReceive_0100 except err: ' + err);
+          await deleteTask(uploadTask);
+          done();
+        }
+      });
+    });
+
   })
 }

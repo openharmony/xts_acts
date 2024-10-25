@@ -12,21 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import featureAbility from '@ohos.ability.featureAbility';
-export default {
+import { BusinessError } from '@ohos.base';
+class MainAbility {
   onCreate() {
-    console.info('Application onCreate')
+    console.info('Application onCreate');
     setTimeout(()=> {
       featureAbility.terminateSelf()
         .then((data) => {
           console.info('[Demo] MainAbility2 terminateself succeeded: ' + data);
-        }).catch((error) => {
+        }).catch((error:BusinessError) => {
         console.error('[Demo] MainAbility2 terminateself failed. Cause: ' + error);
-      })
+      });
     }, 3200);
-  },
+  }
   onDestroy() {
-    console.info('Application onDestroy')
-  },
+    console.info('Application onDestroy');
+  }
 }
+
+export default new MainAbility();

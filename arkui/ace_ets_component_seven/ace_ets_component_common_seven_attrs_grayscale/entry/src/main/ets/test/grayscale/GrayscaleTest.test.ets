@@ -30,7 +30,7 @@ export default function GrayscaleTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig: ESObject = {
     testName: 'testGrayscale',
     pageName: 'grayscalePage',
     pageUrl: 'MainAbility/pages/grayscale/GrayscalePage',
@@ -42,24 +42,24 @@ export default function GrayscaleTest() {
     parentComponentKey: 'parentComponentKey',
     gutter: gutter,
     columns: columns
-  }
+  } as ESObject
 
-  let testValues = [{
+  let testValues: ESObject[] = [{
     describe: 'SetGrayscale',
     setValue: {
       grayscale: 0.9
-    },
+    } as ESObject,
     expectValue: {
       grayscale: 0.9
-    }
-  }]
+    } as ESObject
+  } as ESObject]
 
   /**
    * Create test suite.
    */
   describe('grayscaleTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data:ESObject) => {
       //Modify the target component properties.
       console.error('[' + data.caseTag + '] grayscaleTest');
       console.error('[' + data.caseTag + '] check grayscale.' + ` ${data.testValue.setValue.grayscale}`);

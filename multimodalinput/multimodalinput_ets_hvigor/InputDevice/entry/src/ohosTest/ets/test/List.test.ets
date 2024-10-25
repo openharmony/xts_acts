@@ -14,7 +14,11 @@
  */
 
 import MultimodalInputDeviceTest from './MultimodalInputDevice.test';
+import MultimodalInputKeyCodeTest from './MultimodalInputKeyCode.test';
+import MultimodalInputConsumerTest from './MultimodalInputConsumer.test';
 
 export default function testsuite() {
   MultimodalInputDeviceTest();
+  MultimodalInputKeyCodeTest();
+  MultimodalInputConsumerTest();
 }

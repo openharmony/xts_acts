@@ -101,6 +101,10 @@ export default function swiperDelAddTest() {
       let buttonAdd :Component = await driver.findComponent(ON.id('addTT'));
       await buttonAdd.click();
       await CommonFunc.sleep(2000);
+	  
+      let changeIndex :Component = await driver.findComponent(ON.id('change_8'));
+      await changeIndex.click();
+      await CommonFunc.sleep(2000);
 
       // left scroll
       let bt = CommonFunc.getComponentRect('swiperTestWidth5');

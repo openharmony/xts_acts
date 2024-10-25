@@ -77,12 +77,12 @@ struct Ancestors_CN {
   @Provide count: number | Object | String | Date | Boolean = 0;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.count)) + " number is " + JSON.stringify(this.count))
-        .fontSize(20).margin(30).key('ConsumeNumber')
+        .fontSize(20).margin(10).key('ConsumeNumber')
 
       Child_CN()
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

@@ -76,7 +76,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.desc test WebSetNetErrorCode_ERR_UNKNOWN_URL_SCHEME (-302)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_UNKNOWN_URL_SCHEME', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNKNOWN_URL_SCHEME"
@@ -91,7 +91,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.desc test WebSetNetErrorCode_ERR_INVALID_REDIRECT (-303)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_INVALID_REDIRECT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INVALID_REDIRECT"
@@ -106,7 +106,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.desc test WebSetNetErrorCode_ERR_TOO_MANY_REDIRECTS (-310)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_TOO_MANY_REDIRECTS', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_TOO_MANY_REDIRECTS"
@@ -117,16 +117,16 @@ export default function ActsAceWebSetNetErrorCodeFly() {
 
     /*
      *@tc.number SUB_ACE_WEB_SET_NET_ERROR_CODE_TWO_API_0004
-     *@tc.name testWebSetNetErrorCode_ERR_UNSAFE_REDIRECT
+     *@tc.name testWebSetNetErrorCode_ERR_ERR_UNSAFE_REDIRECT
      *@tc.desc test WebSetNetErrorCode_ERR_UNSAFE_REDIRECT (-311)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_ERR_UNSAFE_REDIRECT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNSAFE_REDIRECT"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebSetNetErrorCode_ERR_UNSAFE_REDIRECT", true, 1304, done);
+      Utils.registerEvent("testWebSetNetErrorCode_ERR_ERR_UNSAFE_REDIRECT", true, 1304, done);
       sendEventByKey('webSetNetErrorCodeFly', 10, '');
     })
 
@@ -136,7 +136,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.desc test WebSetNetErrorCode_ERR_UNSAFE_PORT (-312)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_UNSAFE_PORT', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNSAFE_PORT"
@@ -151,7 +151,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.desc test WebSetNetErrorCode_ERR_INVALID_RESPONSE (-320)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_INVALID_RESPONSE', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INVALID_RESPONSE"
@@ -166,7 +166,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.desc test WebSetNetErrorCode_ERR_INVALID_CHUNKED_ENCODING (-321)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_INVALID_CHUNKED_ENCODING', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INVALID_CHUNKED_ENCODING"
@@ -181,7 +181,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.desc test WebSetNetErrorCode_ERR_METHOD_UNSUPPORTED (-322)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_METHOD_UNSUPPORTED', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_METHOD_UNSUPPORTED"
@@ -196,7 +196,7 @@ export default function ActsAceWebSetNetErrorCodeFly() {
      *@tc.desc test WebSetNetErrorCode_ERR_UNEXPECTED_PROXY_AUTH (-323)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 1
      */
     it('testWebSetNetErrorCode_ERR_UNEXPECTED_PROXY_AUTH', 0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNEXPECTED_PROXY_AUTH"

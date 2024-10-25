@@ -16,6 +16,7 @@
 import { beforeEach, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
+import { Driver } from '@kit.TestKit';
 
 export default function DragEventGetXYTest() {
 
@@ -39,13 +40,14 @@ export default function DragEventGetXYTest() {
       console.info('DragEventGetXYTest001 START');
       let rect = Utils.getDragComponentRect('getXYTest');
       console.info("DragEventGetXYTest001 GetXYTest is " + JSON.stringify(rect));
-      let downX = rect.left + (rect.right - rect.left) / 2;
-      let downY = rect.top + (rect.bottom - rect.top) / 2;
+      let downX = Math.round(globalThis.winLeft + rect.left + (rect.right - rect.left) / 2);
+      let downY = Math.round(globalThis.winTop + rect.top + (rect.bottom - rect.top) / 2);
       let rectOne = Utils.getDragComponentRect('dragArea');
       console.info("DragEventGetXYTest001 dragArea is " + JSON.stringify(rectOne));
-      let upX = rectOne.left + (rectOne.right - rectOne.left) / 2;
-      let upY = rectOne.top + (rectOne.bottom - rectOne.top) / 2;
-      await Utils.drag(downX, downY, upX, upY, 10);
+      let upX = Math.round(globalThis.winLeft + rectOne.left + (rectOne.right - rectOne.left) / 2);
+      let upY = Math.round(globalThis.winTop + rectOne.top + (rectOne.bottom - rectOne.top) / 2);
+      let driver: Driver = Driver.create();
+      await driver.drag(downX, downY, upX, upY, 10);
       await Utils.sleep(2000);
       expect(Utils.getComponentInfoByKey('getXYTest').$attrs.backgroundColor).assertEqual('#FF00FF00');
       done();

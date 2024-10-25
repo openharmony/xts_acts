@@ -15,9 +15,10 @@
 
 import ActsCellularDataAbnormalTest from './CellularDataAbnorma.test.js'
 import EmptyTest from './Empty.test.js';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.CellularData")){
+  if (sim.getMaxSimCount()!=0){
     ActsCellularDataAbnormalTest()
   }else{
     EmptyTest()

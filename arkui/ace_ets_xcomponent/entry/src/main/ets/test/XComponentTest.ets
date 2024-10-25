@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,13 +14,13 @@
  */
 
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
-import Utils from './Utils.ets'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import Utils from './Utils'
 
 export default function XComponentTestJsunit() {
-  describe('XComponentTest', function () {
+  describe('XComponentTest', () => {
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("xclog after each called");
     });
@@ -31,21 +30,17 @@ export default function XComponentTestJsunit() {
      * @tc.name      XComponentTest001
      * @tc.desc      aceXComponentEtsTest
      */
-    it('XComponentTest001', 0, async function (done) {
+    it('XComponentTest001', 0, async (done: Function) => {
       await Utils.sleep(1500);
       console.info('XComponentTest001 START');
 
-      var xcomponentContext2 = globalThis.xcomponentContext2;
-
-      var result;
-      if (!xcomponentContext2) {
+      let result: boolean = false;
+      if (!globalThis.xcomponentContext2) {
         console.error('xcomponentContext2 null');
-        result = -1;
         expect(result).assertEqual(true);
         done();
       } else {
-
-        result = xcomponentContext2.TestOnSurfaceCreated();
+        result = globalThis.xcomponentContext2.TestOnSurfaceCreated();
         expect(result).assertEqual(true);
         done();
       }
@@ -56,14 +51,14 @@ export default function XComponentTestJsunit() {
      * @tc.name      XComponentTest002
      * @tc.desc      aceXComponentEtsTest
      */
-    it('XComponentTest002', 0, async function (done) {
+    it('XComponentTest002', 0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest002 START');    
 
-      var xcomponentContext1 = globalThis.xcomponentContext1;
-      var xcomponentId1 = globalThis.xcomponentId1;
+      let xcomponentContext1: Record<string, () => void> = globalThis.xcomponentContext1;
+      let xcomponentId1: string = globalThis.xcomponentId1;
 
-      var result;
+      let result: boolean = false;
       if (!xcomponentContext1) {
         console.error('xcomponentContext1 null');
         result = false;
@@ -77,8 +72,7 @@ export default function XComponentTestJsunit() {
         done();
       }
       else {
-        result = xcomponentContext1.TestGetXComponentId();
-        expect(result).assertEqual(xcomponentId1);
+        expect(xcomponentContext1.TestGetXComponentId()).assertEqual(xcomponentId1);
         done();
       }
     });
@@ -88,14 +82,14 @@ export default function XComponentTestJsunit() {
      * @tc.name      XComponentTest003
      * @tc.desc      aceXComponentEtsTest
      */
-    it('XComponentTest003', 0, async function (done) {
+    it('XComponentTest003', 0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest003 START');
 
-      var xcomponentContext2 = globalThis.xcomponentContext2;
-      var xcomponentId2 = globalThis.xcomponentId2;
+      let xcomponentContext2: Record<string, () => void> = globalThis.xcomponentContext2;
+      let xcomponentId2: string = globalThis.xcomponentId2;
 
-      var result;
+      let result: boolean = false;
       if (!xcomponentContext2) {
         console.error('xcomponentContext2 null');
         result = false;
@@ -109,8 +103,7 @@ export default function XComponentTestJsunit() {
         done();
       }
       else {
-        result = xcomponentContext2.TestGetXComponentId();
-        expect(result).assertEqual(xcomponentId2);
+        expect(xcomponentContext2.TestGetXComponentId()).assertEqual(xcomponentId2);
         done();
       }
     });
@@ -120,17 +113,17 @@ export default function XComponentTestJsunit() {
      * @tc.name      XComponentTest004
      * @tc.desc      aceXComponentEtsTest
      */
-    it('XComponentTest004', 0, async function (done) {
+    it('XComponentTest004', 0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest004 START');
 
-      var xcomponentContext1 = globalThis.xcomponentContext1;
-      var xcomponentHeight= globalThis.xcomponentHeight;
-      var xcomponentWidth= globalThis.xcomponentWidth;
+      let xcomponentContext1: Record<string, () => number> = globalThis.xcomponentContext1;
+      let xcomponentHeight: number = globalThis.xcomponentHeight;
+      let xcomponentWidth: number = globalThis.xcomponentWidth;
 
-      var result_height;
-      var result_width;
-      var undef;
+      let result_height: number = 0;
+      let result_width: number = 0;
+      let undef: number = 0;
 
       if (!xcomponentContext1) {
         console.error('xcomponentContext null');
@@ -162,18 +155,18 @@ export default function XComponentTestJsunit() {
      * @tc.name      XComponentTest005
      * @tc.desc      aceXComponentEtsTest
      */
-    it('XComponentTest005', 0, async function (done) {
+    it('XComponentTest005', 0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest005 START');
 
 
-      var xcomponentContext2 = globalThis.xcomponentContext2;
-      var xcomponentHeight = globalThis.xcomponentHeight;
-      var xcomponentWidth = globalThis.xcomponentWidth;
+      let xcomponentContext2: Record<string, () => number> = globalThis.xcomponentContext2;
+      let xcomponentHeight: number = globalThis.xcomponentHeight;
+      let xcomponentWidth: number = globalThis.xcomponentWidth;
 
-      var result_height;
-      var result_width;
-      var undef;
+      let result_height: number = 0;
+      let result_width: number = 0;
+      let undef: number = 0;
 
       if (!xcomponentContext2) {
         console.error('xcomponentContext2 null');
@@ -205,28 +198,27 @@ export default function XComponentTestJsunit() {
      * @tc.name      XComponentTest006
      * @tc.desc      aceXComponentEtsTest
      */
-    it('XComponentTest006', 0, async function (done) {
+    it('XComponentTest006', 0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest006 START');
-      var x_value = 340;
-      var y_value = 350;
+      let x_value = 340;
+      let y_value = 350;
       //x:300 y:430左右范围是xcomponent.context2的changelayout范围
       //x:300 y:150左右范围是xcomponent.context1的changeshape范围
 
 
-      var xcomponentContext1= globalThis.xcomponentContext1;
-      var insidex = globalThis.index;
+      let xcomponentContext1: Record<string, () => ESObject> = globalThis.xcomponentContext1;
+      let insidex: number = globalThis.index;
 
+      let result: boolean = false;
+      let inside_x: number = 0;
+      let inside_y: number = 0;
+      let button_t: number = 0;
       if (!xcomponentContext1) {
         console.error('xclog xcomponentContext null')
         result = false;
       } else {
           result = true;
-          var result;
-          var inside_x;
-          var inside_y;
-          var button_t;
-
           await Utils.sleep(1000);
           inside_x = xcomponentContext1.TestGetXComponent_MouseEvent().surface_X1;
           inside_y = xcomponentContext1.TestGetXComponent_MouseEvent().surface_Y1;
@@ -235,6 +227,7 @@ export default function XComponentTestJsunit() {
           console.info('xclog ets touchEvent: surf_x1 is '+ inside_x + ', surf_y1 is '+ inside_y + ', button_t is ' + button_t );
 
       }
+      expect(result).assertEqual(true);
       expect(inside_x).assertEqual(insidex);
       done();
     });
@@ -244,33 +237,33 @@ export default function XComponentTestJsunit() {
      * @tc.name      XComponentTest007
      * @tc.desc      aceXComponentEtsTest
      */
-    it('XComponentTest007', 0, async function (done) {
+    it('XComponentTest007', 0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest007 START');
-      var x_value = 340;
-      var y_value = 350;
+      //let x_value = 340;
+      //let y_value = 350;
       //x:300 y:430左右范围是xcomponent.context2的changelayout范围
       //x:300 y:150左右范围是xcomponent.context1的changeshape范围
 
 
-      var xcomponentContext2= globalThis.xcomponentContext2;
-      var callback_ = globalThis.callback_;
+      let xcomponentContext2: Record<string, () => ESObject> = globalThis.xcomponentContext2;
+      let callback_: number = globalThis.callback_;
 
 
+      let result: boolean = false;
+      let callback: number = -1;
       if (!xcomponentContext2) {
         console.error('xclog xcomponentContext null')
-        tilty = false;
+        result = false;
       } else {
           result = true;
-          var result;
-          var callback;
-
           await Utils.sleep(1000);
           callback = xcomponentContext2.TestGetXComponent_RegisterMouseEventCallback().MouseCallback_;
           console.info('xclog ets touchEvent: callback is ' + callback );
 
       }
       
+      expect(result).assertEqual(true);
       expect(callback).assertEqual(callback_);
       done();
     });
@@ -280,33 +273,33 @@ export default function XComponentTestJsunit() {
      * @tc.name      XComponentTest008
      * @tc.desc      aceXComponentEtsTest
      */
-  it('XComponentTest008', 0, async function (done) {
+  it('XComponentTest008', 0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest008 START');
-      var x_value = 340;
-      var y_value = 350;
+      //let x_value = 340;
+      //let y_value = 350;
       //x:300 y:430左右范围是xcomponent.context2的changelayout范围
       //x:300 y:150左右范围是xcomponent.context1的changeshape范围
 
-      var xcomponentContext1= globalThis.xcomponentContext1;
-      var type_ = globalThis.type_;
+      let xcomponentContext1: Record<string, () => boolean> = globalThis.xcomponentContext1;
+      let type_: number = globalThis.type_;
 
+      let result: boolean = false;
+      let tilty: boolean = false;
+      let tiltx: boolean = false;
+      let type_t: boolean = false;
       if (!xcomponentContext1) {
         console.error('xclog xcomponentContext null')
         result = false;
       } else {
-          result = true;
-          var result;
-          var tilty;
-          var tiltx;
-          var type_t;
-          await Utils.sleep(1000);
-          tilty = xcomponentContext1.TestGetXComponentpointtool_tilty();
-          type_t = xcomponentContext1.TestGetXComponentpointtool_type();
-          tiltx = xcomponentContext1.TestGetXComponentpointtool_tiltx();
-          console.info('xclog ets touchEvent: surf_x is '+ tiltx + ', surf_y is '+ tilty + ', type_t is ' + type_t );
-
+        result = true;
+        await Utils.sleep(1000);
+        tilty = xcomponentContext1.TestGetXComponentpointtool_tilty();
+        type_t = xcomponentContext1.TestGetXComponentpointtool_type();
+        tiltx = xcomponentContext1.TestGetXComponentpointtool_tiltx();
+        console.info('xclog ets touchEvent: surf_x is '+ tiltx + ', surf_y is '+ tilty + ', type_t is ' + type_t );
       } 
+      expect(result).assertEqual(true);
       expect(type_t).assertEqual(type_);
       done();
     });

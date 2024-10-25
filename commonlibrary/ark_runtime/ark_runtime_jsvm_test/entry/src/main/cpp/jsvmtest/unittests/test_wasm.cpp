@@ -298,7 +298,6 @@ TEST(Wasm_CompileWasmModule)
 
 [[maybe_unused]] static void RandomDeserialize(JSVM_Env env, const std::string &filename)
 {
-    static int cnt = 0;
     std::string wasmFile = wasmPath + filename;
     std::string cacheFile = wasmPath + filename + ".test.cache";
     std::ifstream infile(cacheFile);
@@ -327,6 +326,7 @@ TEST(Wasm_CompileWasmModule)
         CHECK(jsvm::IsWasmModuleObject(wasmModule));
         // 运行一定次数后，删除缓存
         constexpr int kPeriodToRemoveCache = 3;
+        static int cnt = 0;
         if (++cnt % kPeriodToRemoveCache == 0) {
             int result = remove(cacheFile.c_str());
             CHECK(result == 0);
@@ -458,7 +458,7 @@ static void TestImportTable(JSVM_Env env, JSVM_Value exports)
         JSVM_Value argv[1] = {jsvm::Run("0")};
         status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
         CHECK(status == JSVM_PENDING_EXCEPTION);
-        status = OH_JSVM_GetAndClearLastException(env, &exception);
+        OH_JSVM_GetAndClearLastException(env, &exception);
     }
 
     testFunc = jsvm::GetProperty(exports, jsvm::Str("test_table"));
@@ -474,7 +474,7 @@ static void TestImportTable(JSVM_Env env, JSVM_Value exports)
         JSVM_Value argv[1] = {jsvm::Run("3")};
         status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
         CHECK(status == JSVM_PENDING_EXCEPTION);
-        status = OH_JSVM_GetAndClearLastException(env, &exception);
+        OH_JSVM_GetAndClearLastException(env, &exception);
     }
 
     {
@@ -482,7 +482,7 @@ static void TestImportTable(JSVM_Env env, JSVM_Value exports)
         JSVM_Value argv[1] = {jsvm::Run("100")};
         status = OH_JSVM_CallFunction(jsvm_env, jsvm::Undefined(), testFunc, 1, argv, &result);
         CHECK(status == JSVM_PENDING_EXCEPTION);
-        status = OH_JSVM_GetAndClearLastException(env, &exception);
+        OH_JSVM_GetAndClearLastException(env, &exception);
     }
 }
 

@@ -154,5 +154,117 @@ export default function imageNdkTest() {
       done();
     })
 
+   /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMemoryName_0900
+    * @tc.name      : testNativeSetMemoryName
+    * @tc.desc      : 1.testNativeSetMemoryName
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMemoryName_0900', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeSetMemoryName()
+      let msg = 'testNativeSetMemoryName result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+   /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMemoryName_0900
+    * @tc.name      : testNativeGetArgbPixels
+    * @tc.desc      : 1.testNativeGetArgbPixels
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetArgbPixels_1000', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeGetArgbPixels()
+      let msg = 'testNativeGetArgbPixels result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+   /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMemoryName_0900
+    * @tc.name      : testNativeGetColorSpaceNative
+    * @tc.desc      : 1.testNativeGetColorSpaceNative
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetColorSpaceNative_1100', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeGetColorSpaceNative()
+      let msg = 'testNativeGetColorSpaceNative result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+   /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMemoryName_0900
+    * @tc.name      : testNativeSetColorSpaceNative
+    * @tc.desc      : 1.testNativeSetColorSpaceNative
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetColorSpaceNative_1200', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeSetColorSpaceNative()
+      let msg = 'testNativeSetColorSpaceNative result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+    /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetGetSrcPixelFormat_1300
+    * @tc.name      : testNativeSetGetSrcPixelFormat
+    * @tc.desc      : 1.testNativeSetGetSrcPixelFormat
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetGetSrcPixelFormat_1300', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeSetGetSrcPixelFormat()
+      let msg = 'testNativeSetGetSrcPixelFormat result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+   /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeCreateEmptyPixelmap_1400
+    * @tc.name      : testNativeCreateEmptyPixelmap
+    * @tc.desc      : 1.testNativeCreateEmptyPixelmap
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeCreateEmptyPixelmap_1400', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeCreateEmptyPixelmap()
+      let msg = 'testNativeCreateEmptyPixelmap result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
+   /*
+    * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_NativeConvertAlphaFormat_1500
+    * @tc.name      : testNativeConvertAlphaFormat
+    * @tc.desc      : 1.testNativeConvertAlphaFormat
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeConvertAlphaFormat_1500', 0, (done: Function) => {
+      let result: number = ndkTest.testNativeConvertAlphaFormat()
+      let msg = 'testNativeConvertAlphaFormat result: '
+      console.info(msg + result);
+      expect(result).assertEqual(0)
+      done();
+    })
+
   })
 }

@@ -14,8 +14,8 @@
  */
 
 #include "napi/native_api.h"
-#include "error_code.h"
-#include "oh_file_uri.h"
+#include "filemanagement/fileio/error_code.h"
+#include "filemanagement/file_uri/oh_file_uri.h"
 #include <iostream>
 #include "native_common.h"
 #include "hilog/log.h"
@@ -50,7 +50,7 @@ static napi_value GetPathFromUri(napi_env env, napi_callback_info info)
 static napi_value GetFullDirectoryUri(napi_env env, napi_callback_info info)
 {
     char uri[] =
-"file://com.acts.storage.fileurindk/data/storage/el2/base/haps/com.acts.storage.fileurindk/files/1.txt";
+"file://com.acts.storage.fileurindk/data/storage/el2/base/files/test3.txt";
     unsigned int length = strlen(uri);
     char *uriResult = nullptr;
     FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
@@ -62,7 +62,7 @@ static napi_value GetFullDirectoryUri(napi_env env, napi_callback_info info)
 static napi_value IsValidUri(napi_env env, napi_callback_info info)
 {
     char uri[] =
-"file://com.acts.storage.fileurindk/data/storage/el2/base/haps/com.acts.storage.fileurindk/files/4.txt";
+"file://com.acts.storage.fileurindk/data/storage/el2/base/files/test4.txt";
     unsigned int length = strlen(uri);
     bool falgs = OH_FileUri_IsValidUri(uri, length);
     napi_value result = nullptr;
@@ -70,6 +70,17 @@ static napi_value IsValidUri(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value GetFileName(napi_env env, napi_callback_info info)
+{
+    char uri[] =
+"file://com.acts.storage.fileurindk/data/storage/el2/base/files/test5.txt";
+    unsigned int length = strlen(uri);
+    char *uriResult = nullptr;
+    OH_FileUri_GetFileName(uri, length, &uriResult);
+    napi_value result = nullptr;
+    napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
+    return result;
+}
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -79,7 +90,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "GetPathFromUri", nullptr, GetPathFromUri, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "GetFullDirectoryUri", nullptr, GetFullDirectoryUri, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "IsValidUri", nullptr, IsValidUri, nullptr, nullptr, nullptr, napi_default, nullptr },
-
+        { "GetFileName", nullptr, GetFileName, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
@@ -91,7 +102,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "libfileshare",
+    .nm_modname = "fileuri",
     .nm_priv = ((void*)0),
     .reserved = { 0 },
 };

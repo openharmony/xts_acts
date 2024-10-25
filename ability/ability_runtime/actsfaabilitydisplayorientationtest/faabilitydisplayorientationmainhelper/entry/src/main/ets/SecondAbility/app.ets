@@ -20,7 +20,7 @@ import commonEvent from '@ohos.commonEvent';
 
 const Event_FA_DisplayOrientation_1000 = 'Event_FA_DisplayOrientation_1000';
 
-function publishEvent(event, value) {
+let publishEvent = (event: string, value: ESObject) => {
   commonEvent.publish(event,
     {
       parameters: {
@@ -31,13 +31,13 @@ function publishEvent(event, value) {
     })
 }
 
-export default {
+class SecondAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
-  },
+  }
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  },
+  }
   onActive() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onActive - sec_ability');
     featureAbility.getWant((error, want) => {
@@ -61,3 +61,4 @@ export default {
     })
   }
 }
+export default new SecondAbility();

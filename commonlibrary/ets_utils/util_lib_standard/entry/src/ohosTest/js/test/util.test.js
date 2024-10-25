@@ -2318,6 +2318,101 @@ describe('TextEncoderTest', function () {
       expect(dest[1]).assertEqual(97)
       expect(dest[3]).assertEqual(98)
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_008
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_008', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(4)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('😃', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(2)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(4)
+      expect(dest[0]).assertEqual(240)
+      expect(dest[3]).assertEqual(131)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_009
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_009', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(10)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('aé中😃', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(5)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(10)
+      expect(dest[0]).assertEqual(97)
+      expect(dest[3]).assertEqual(228)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_0010
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_0010', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(7)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('😃🤞', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(2)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(4)
+      expect(dest[1]).assertEqual(159)
+      expect(dest[3]).assertEqual(131)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_0011
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_0011', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(10)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('😃🤞', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(4)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(8)
+      expect(dest[1]).assertEqual(159)
+      expect(dest[3]).assertEqual(131)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TEXTENCODER_TEXTDECODER_0109
+     * @tc.name: testencodeIntoUint8Array_Info_0012
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testencodeIntoUint8Array_Info_0012', 0, function () {
+      let that = new util.TextEncoder()
+      let buffer = new ArrayBuffer(15)
+      let dest = new Uint8Array(buffer)
+      let encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('a😃🤞b', dest)
+      expect(encodeIntoUint8ArrayInfo.read).assertEqual(6)
+      expect(encodeIntoUint8ArrayInfo.written).assertEqual(10)
+      expect(dest[0]).assertEqual(97)
+      expect(dest[3]).assertEqual(152)
+    })
   })
 
   describe('ScopeTest', function () {
@@ -3872,6 +3967,176 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0006
+     * @tc.name: test_createRationalFromString_006
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_006', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('123');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of 123 must be effective string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0007
+     * @tc.name: test_createRationalFromString_007
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_007', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc must be effective string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0008
+     * @tc.name: test_createRationalFromString_008
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_008', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('123abc');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of 123abc must be effective string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0009
+     * @tc.name: test_createRationalFromString_009
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_009', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc:');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc: must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0010
+     * @tc.name: test_createRationalFromString_010
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_010', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString(':abc');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of :abc must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0011
+     * @tc.name: test_createRationalFromString_011
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_011', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc/');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc/ must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0012
+     * @tc.name: test_createRationalFromString_012
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_012', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('123:abc');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of 123:abc must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0013
+     * @tc.name: test_createRationalFromString_013
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_013', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc/123');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc/123 must be character string");
+      }
+    })
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0014
+     * @tc.name: test_createRationalFromString_014
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_014', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('abc/abcd');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of abc/abcd must be character string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0015
+     * @tc.name: test_createRationalFromString_015
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_createRationalFromString_015', 0, function () {
+      try{
+        let rational = util.RationalNumber.createRationalFromString('');
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of  must be effective string");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0016
      * @tc.name: test_compareTo_001
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -3886,7 +4151,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0007
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0017
      * @tc.name: test_compareTo_002
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -3901,7 +4166,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0008
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0018
      * @tc.name: test_compareTo_003
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -3916,7 +4181,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0009
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0019
      * @tc.name: test_compareTo_004
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -3931,7 +4196,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0010
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0020
      * @tc.name: test_compareTo_005
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.size: MediumTest
@@ -3946,7 +4211,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0011
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0021
      * @tc.name: test_equals_001
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -3961,7 +4226,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0012
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0022
      * @tc.name: test_equals_002
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -3976,7 +4241,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0013
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0023
      * @tc.name: test_equals_003
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -3991,7 +4256,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0014
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0024
      * @tc.name: test_equals_004
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4006,7 +4271,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0015
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0025
      * @tc.name: test_equals_005
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4021,7 +4286,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0016
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0026
      * @tc.name: testRationalNumberValueOf001
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4035,7 +4300,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0017
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0027
      * @tc.name: testRationalNumberValueOf002
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4049,7 +4314,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0018
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0028
      * @tc.name: testRationalNumberValueOf003
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4063,7 +4328,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0019
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0029
      * @tc.name: testRationalNumberValueOf004
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4077,7 +4342,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0020
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0030
      * @tc.name: testRationalNumberValueOf005
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.size: MediumTest
@@ -4091,7 +4356,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0021
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0031
      * @tc.name: testGetCommonDivisor001
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4105,7 +4370,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0022
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0032
      * @tc.name: testGetCommonDivisor002
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4119,7 +4384,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0023
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0033
      * @tc.name: testGetCommonDivisor003
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4133,7 +4398,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0024
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0034
      * @tc.name: testGetCommonDivisor004
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4147,7 +4412,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0025
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0035
      * @tc.name: testGetCommonDivisor005
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.size: MediumTest
@@ -4161,7 +4426,101 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0026
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0036
+     * @tc.name: testGetCommonFactor001
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor001', 0, function () {
+      let result = util.RationalNumber.getCommonFactor(4, 6);
+      expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0037
+     * @tc.name: testGetCommonFactor002
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor002', 0, function () {
+      let result = util.RationalNumber.getCommonFactor(1, 6);
+      expect(result).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0038
+     * @tc.name: testGetCommonFactor003
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor003', 0, function () {
+      try{
+        let result = util.RationalNumber.getCommonFactor(0, 6);
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The Parameter cannot be zero");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0039
+     * @tc.name: testGetCommonFactor004
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor004', 0, function () {
+      try{
+        let result = util.RationalNumber.getCommonFactor(0, 0);
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The Parameter cannot be zero");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0040
+     * @tc.name: testGetCommonFactor005
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor005', 0, function () {
+      try{
+        let result = util.RationalNumber.getCommonFactor(null, null);
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of null must be number");
+      }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0041
+     * @tc.name: testGetCommonFactor006
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonFactor006', 0, function () {
+      try{
+        let result = util.RationalNumber.getCommonFactor('123', 456);
+        } catch(e) {
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertContain("Parameter error. The type of 123 must be number");
+      }
+    })
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0042
      * @tc.name: testGetDenominator001
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4175,7 +4534,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0027
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0043
      * @tc.name: testGetDenominator002
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4189,7 +4548,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0028
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0044
      * @tc.name: testGetDenominator003
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4203,7 +4562,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0029
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0045
      * @tc.name: testGetDenominator004
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4217,7 +4576,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0030
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0046
      * @tc.name: testGetDenominator005
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4231,7 +4590,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0031
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0047
      * @tc.name: testGetDenominator006
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4245,7 +4604,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0032
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0048
      * @tc.name: testGetNumerator001
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4259,7 +4618,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0033
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0049
      * @tc.name: testGetNumerator002
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4273,7 +4632,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0034
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0050
      * @tc.name: testGetNumerator003
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4287,7 +4646,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0035
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0051
      * @tc.name: testGetNumerator004
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4301,7 +4660,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0036
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0052
      * @tc.name: testGetNumerator005
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4315,7 +4674,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0037
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0053
      * @tc.name: testisFinite001
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4329,7 +4688,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0038
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0054
      * @tc.name: testisFinite002
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4343,7 +4702,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0039
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0055
      * @tc.name: testisFinite003
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4357,7 +4716,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0040
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0056
      * @tc.name: testisFinite004
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4371,7 +4730,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0041
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0057
      * @tc.name: testisFinite005
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4385,7 +4744,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0042
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0058
      * @tc.name: testisNaN001
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.size: MediumTest
@@ -4399,7 +4758,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0043
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0059
      * @tc.name: testisNaN002
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.size: MediumTest
@@ -4413,7 +4772,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0044
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0060
      * @tc.name: testisNaN003
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.size: MediumTest
@@ -4427,7 +4786,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0045
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0061
      * @tc.name: testisNaN004
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.size: MediumTest
@@ -4441,7 +4800,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0046
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0062
      * @tc.name: testisNaN005
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.size: MediumTest
@@ -4455,7 +4814,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0047
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0063
      * @tc.name: testisZero001
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4469,7 +4828,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0048
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0064
      * @tc.name: testisZero002
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4483,7 +4842,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0049
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0065
      * @tc.name: testisZero003
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4497,7 +4856,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0050
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0066
      * @tc.name: testisZero004
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4511,7 +4870,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0051
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0067
      * @tc.name: testisZero005
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.size: MediumTest
@@ -4525,7 +4884,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0052
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0068
      * @tc.name: testRationalNumberToString001
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4539,7 +4898,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0053
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0069
      * @tc.name: testRationalNumberToString002
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4553,7 +4912,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0054
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0070
      * @tc.name: testRationalNumberToString003
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4567,7 +4926,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0055
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0071
      * @tc.name: testRationalNumberToString004
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -4581,7 +4940,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0056
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0072
      * @tc.name: testRationalNumberToString005
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.size: MediumTest
@@ -8743,6 +9102,153 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0016
+     * @tc.name: testAddBefore016
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore016', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore(123, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 123 must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of 123 must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0017
+     * @tc.name: testAddBefore017
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore017', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore('string', 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of string must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of string must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0018
+     * @tc.name: testAddBefore018
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore018', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore(undefined, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0019
+     * @tc.name: testAddBefore019
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore019', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore(null, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of null must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of null must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0020
+     * @tc.name: testAddBefore020
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore020', 0, function() {
+      let errorHappen = false;
+      try{
+        function  isFunc() {
+          console.log('test testAddBefore020');
+        }
+        util.Aspect.addBefore(isFunc, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of func must be a method of targetClass');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of func must be a method of targetClass");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0021
+     * @tc.name: testAddBefore021
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore021', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore(false, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of false must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of false must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0022
      * @tc.name: testAddAfter001
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8752,7 +9258,7 @@ describe('TextEncoderTest', function () {
      * @tc.level: Level 2
      */
     it('testAddAfter001', 0, function() {
-      util.Aspect.addAfter(AfterClass, 'foo', false,  (AfterClass, arg1, arg2) =>{
+      util.Aspect.addAfter(AfterClass, 'foo', false, (AfterClass, arg1, arg2) =>{
         AfterClass.myFunc('intMsg');
         expect(arg1).assertEqual('msg123');
         expect(arg2).assertEqual('123');
@@ -8763,7 +9269,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0017
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0023
      * @tc.name: testAddAfter002
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8773,7 +9279,7 @@ describe('TextEncoderTest', function () {
      * @tc.level: Level 2
      */
     it('testAddAfter002', 0, function() {
-      util.Aspect.addAfter(AfterClass, 'getData', false,  (This, arg1, arg2) =>{
+      util.Aspect.addAfter(AfterClass, 'getData', false, (This, arg1, arg2) =>{
         This.msg = 'intMsg';
         expect(arg1).assertEqual(0);
         expect(arg2).assertEqual('123');
@@ -8786,7 +9292,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0018
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0024
      * @tc.name: testAddAfter003
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8805,7 +9311,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0019
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0025
      * @tc.name: testAddAfter004
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8825,7 +9331,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0020
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0026
      * @tc.name: testAddAfter005
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8844,7 +9350,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0021
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0027
      * @tc.name: testAddAfter006
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8865,7 +9371,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0022
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0028
      * @tc.name: testAddAfter007
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8886,7 +9392,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0023
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0029
      * @tc.name: testAddAfter008
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8908,7 +9414,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0024
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0030
      * @tc.name: testAddAfter009
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8929,7 +9435,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0025
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0031
      * @tc.name: testAddAfter010
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8953,7 +9459,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0026
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0032
      * @tc.name: testAddAfter011
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8972,7 +9478,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0027
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0033
      * @tc.name: testAddAfter012
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -8994,7 +9500,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0028
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0034
      * @tc.name: testAddAfter013
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9021,7 +9527,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0029
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0035
      * @tc.name: testAddAfter014
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9046,7 +9552,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0030
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0036
      * @tc.name: testAddAfter015
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9068,7 +9574,154 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0031
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0037
+     * @tc.name: testAddAfter016
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter016', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter(123, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 123 must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of 123 must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0038
+     * @tc.name: testAddAfter017
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter017', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter('string', 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of string must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of string must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0039
+     * @tc.name: testAddAfter018
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter018', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter(undefined, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0040
+     * @tc.name: testAddAfter019
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter019', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter(null, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of null must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of null must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0041
+     * @tc.name: testAddAfter020
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter020', 0, function() {
+      let errorHappen = false;
+      try{
+        function  isFunc() {
+          console.log('test testAddBefore020');
+        }
+        util.Aspect.addAfter(isFunc, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of func must be a method of targetClass');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of func must be a method of targetClass");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0042
+     * @tc.name: testAddAfter021
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter021', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter(false, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of false must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of false must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0043
      * @tc.name: testReplace001
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9089,7 +9742,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0032
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0044
      * @tc.name: testReplace002
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9111,7 +9764,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0033
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0045
      * @tc.name: testReplace003
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9129,7 +9782,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0034
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0046
      * @tc.name: testReplace004
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9149,7 +9802,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0035
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0047
      * @tc.name: testReplace005
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9166,7 +9819,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0036
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0048
      * @tc.name: testReplace006
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9191,7 +9844,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0037
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0049
      * @tc.name: testReplace007
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9210,7 +9863,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0038
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0050
      * @tc.name: testReplace008
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9231,7 +9884,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0039
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0051
      * @tc.name: testReplace009
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9251,7 +9904,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0040
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0052
      * @tc.name: testReplace010
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9271,7 +9924,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0041
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0053
      * @tc.name: testReplace011
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9291,7 +9944,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0042
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0054
      * @tc.name: testReplace012
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9314,7 +9967,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0043
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0055
      * @tc.name: testReplace013
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9332,7 +9985,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0044
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0056
      * @tc.name: testReplace014
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9353,7 +10006,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0045
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0057
      * @tc.name: testReplace015
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9379,7 +10032,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0046
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0058
      * @tc.name: testReplace016
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9405,7 +10058,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0047
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0059
      * @tc.name: testReplace017
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9423,6 +10076,147 @@ describe('TextEncoderTest', function () {
       });
       asp.replaceAsync('123');
       expect(asp.replaceAsync.constructor.name).assertEqual('AsyncFunction');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0060
+     * @tc.name: testReplace018
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace018', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace(123, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 123 must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of 123 must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0061
+     * @tc.name: testReplace019
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace019', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace('string', 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of string must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of string must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0062
+     * @tc.name: testReplace020
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace019', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace(undefined, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0063
+     * @tc.name: testReplace021
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace021', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace(null, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of null must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of null must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0064
+     * @tc.name: testReplace022
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace022', 0, function() {
+      let errorHappen = false;
+      try{
+        function  isFunc() {
+          console.log('test testReplace022');
+        }
+        util.Aspect.replace(isFunc, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of func must be a method of targetClass');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of func must be a method of targetClass");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0065
+     * @tc.name: testReplace023
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace023', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace(false, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of false must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of false must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
     })
 
     /**

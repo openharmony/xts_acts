@@ -21,13 +21,13 @@ struct List_aspectRatio_neither {
   @State aspectRatio1: number = 1;
   messageManager: MessageManager<number> = new MessageManager();
 
-  onPageShow() {
+  onPageShow(){
     console.info('Grid_RowCol_ItemContentSize onPageShow');
     globalThis.value = {
       name: 'messageManager', message: this.messageManager
     };
     let callback: Callback<number> = (message: Message<number>) => {
-      console.log('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + '--' + message.value);
       if (message.name == 'aspectRatio1') {
         this.aspectRatio1 = message.value;
       }
@@ -35,7 +35,7 @@ struct List_aspectRatio_neither {
     this.messageManager.registerCallback(callback);
   }
 
-  build() {
+  build(){
     Column() {
       List({ space: 10 }) {
         ListItem() {
@@ -85,7 +85,7 @@ struct List_aspectRatio_neither {
       .key('List_aspectRatio_neither_01')
       .alignListItem(ListItemAlign.Center)
     }
-    .width(350)
+    .width(300)
     .height('100%')
   }
 }

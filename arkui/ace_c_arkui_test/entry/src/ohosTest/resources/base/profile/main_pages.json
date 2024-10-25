@@ -1,6 +1,7 @@
 {
   "src": [
     "MainAbility/pages/XTSIndex",
+    "MainAbility/pages/testgesture",
     "MainAbility/pages/button/ButtonOnClickTest",
     "MainAbility/pages/checkbox/CheckboxOnChangeTest",
     "MainAbility/pages/commonattrs/CommonAttrsEnabledTest",
@@ -121,6 +122,26 @@
     "MainAbility/pages/gesturenestScroll/gestureNestScrollTest",
     "MainAbility/pages/drag/DragEventGetXYTest",
     "MainAbility/pages/drag/DragEventGetWidthHeightTest",
-    "MainAbility/pages/drag/DragEventGetModifierKeyStatesTest"
+    "MainAbility/pages/drag/DragEventGetModifierKeyStatesTest",
+    "MainAbility/pages/drag/DragActionCreateDragActionTest",
+    "MainAbility/pages/drag/DragActionSetPointerIdTest",
+    "MainAbility/pages/drag/DragActionSetDragPreviewOptionTest",
+    "MainAbility/pages/drag/DragActionSetTouchPointXYTest",
+    "MainAbility/pages/drag/DragActionRegisterStatusListenerTest",
+    "MainAbility/pages/gesture/InterruptGestureTest",
+    "MainAbility/pages/gesture/LongPressGestureTest",
+    "MainAbility/pages/gesture/PanGestureTest",
+    "MainAbility/pages/gesture/PinchGestureTest",
+    "MainAbility/pages/gesture/RotateGestureTest",
+    "MainAbility/pages/gesture/SwipeGestureTest",
+    "MainAbility/pages/animation/TestKeyframeRegisterOnFinish",
+    "MainAbility/pages/animation/TestKeyframeRegisterOnEvent",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnFrame",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnFinish",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnCancel",
+    "MainAbility/pages/animation/TestAnimatorRegisterOnRepeat",
+    "MainAbility/pages/customproperty/TestAddCustomProperty",
+    "MainAbility/pages/customproperty/TestRemoveCustomProperty"
+
   ]
 }

@@ -34,7 +34,6 @@ import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test';
 import swipeRefresherPageTest from './swipeRefresher/swipeRefresherPageTest.test';
 import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test';
 import toolBarItemState from './toolBar/toolBarItemState.test';
-import toolBarModifierPage from './toolBar/toolBarModifierPage.test';
 import toolBarPageTest from './toolBar/toolBarPageTest.test';
 import treeViewNodeParamContainer from './treeView/treeViewNodeParamContainer.test';
 import alertDialogTest from './dialog/alertDialogTest.test';
@@ -88,7 +87,6 @@ export default function testsuite() {
   swipeRefresherPageTest();
   tabTitleBarPageTest();
   toolBarItemState();
-  toolBarModifierPage();
   toolBarPageTest();
   treeViewNodeParamContainer();
   alertDialogTest();

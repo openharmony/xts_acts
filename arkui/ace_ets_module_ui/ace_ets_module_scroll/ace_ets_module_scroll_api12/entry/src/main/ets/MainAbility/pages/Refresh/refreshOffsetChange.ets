@@ -104,7 +104,7 @@ struct RefreshOffsetOffsetExample {
           .backgroundColor(0x89CFF0)
           .refreshOffset(64)
           .pullDownRatio(1)
-          .width(200)
+          .width('30%')
         }
 
         Column() {
@@ -150,7 +150,7 @@ struct RefreshOffsetOffsetExample {
           .backgroundColor(0x89CFF0)
           .refreshOffset(400)
           .pullDownRatio(1)
-          .width(120)
+          .width('30%')
         }
 
         Column() {
@@ -189,7 +189,7 @@ struct RefreshOffsetOffsetExample {
           .backgroundColor(0x89CFF0)
           .refreshOffset(400)
           .pullDownRatio(1)
-          .width(120)
+          .width('30%')
         }
       }
       .height('90%')

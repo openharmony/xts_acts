@@ -3,10 +3,10 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "3000000",
-        "bundle-name":"com.example.xts_audiocapturerenhance",
-        "package-name": "com.example.xts_audiocapturerenhance",
+        "bundle-name": "com.example.xts_audiocapturerenhance",
         "shell-timeout": "600000",
-		"testcase-timeout": "100000"
+        "testcase-timeout": "100000",
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -23,7 +23,7 @@
                 "uinput -T -m 300 2700 280 200",
                 "power-shell setmode 602"
             ],
-            "teardown-command":[
+            "teardown-command": [
                 "power-shell setmode 600"
             ]
         }

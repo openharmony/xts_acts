@@ -55,7 +55,7 @@ static napi_value GetGrNamR(napi_env env, napi_callback_info info)
 
 static napi_value GetGroupList(napi_env env, napi_callback_info info)
 {
-    int ngroups;
+    static int ngroups;
     struct passwd *pwd;
     const char *user = "root";
     pwd = getpwnam(user);

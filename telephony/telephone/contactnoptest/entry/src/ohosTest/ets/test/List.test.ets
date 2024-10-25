@@ -14,9 +14,10 @@
  */
 import contact_NopTest from './ContactNop.test';
 import EmptyTest from './Empty.test'
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Applications.Contacts")){
+  if (sim.getMaxSimCount()!=0){
     contact_NopTest()
   }else{
     EmptyTest()

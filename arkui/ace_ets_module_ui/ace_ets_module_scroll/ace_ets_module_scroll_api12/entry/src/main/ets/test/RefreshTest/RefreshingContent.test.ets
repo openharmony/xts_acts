@@ -60,7 +60,16 @@ export default function RefreshingContent() {
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      await driver.swipe(100,200,100,600);
+      let swiperOffset = CommonFunc.getComponentRectOnScreen('refresh_content');
+      let top = swiperOffset.top;
+      let right = swiperOffset.right;
+      let left = swiperOffset.left;
+      let bottom = swiperOffset.bottom;
+      console.info("RefreshingContent_0100 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      let height = bottom -top;
+      let width = right - left;
+      await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round(left + width*0.2),Math.round(top + height/10),Math.round(left + width*0.2),Math.round(bottom - height/10));
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('RefreshingContent');
       let obj: ESObject = JSON.parse(strJson);

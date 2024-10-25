@@ -69,16 +69,16 @@ export default function webViewSetRenderProcessMode() {
         await Utils.sleep(1000);
       done();
     })
-    
+
     /*
-     *@tc.number SUB_ACE_WEB_SETRENDERPROCESSMODE_API_0500
-     *@tc.name testWebViewRegisterNativeEmbedRule
-     *@tc.desc test setRenderProcessMode
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('emitSetRenderProcessMode', 0, async (done: Function) => {
+    * @tc.number     : SUB_ACE_WEB_SETRENDERPROCESSMODE_API_0500
+    * @tc.name       : testWebViewSetRenderProcessMode
+    * @tc.desc       : test setRenderProcessMode
+    * @tc.size_t     : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testWebViewSetRenderProcessMode', 0, async (done: Function) => {
         Utils.registerEvent("emitSetRenderProcessMode", true, 10005, done);
         sendEventByKey('webViewSetRenderProcessMode', 10, '');
     })

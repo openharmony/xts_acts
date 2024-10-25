@@ -103,6 +103,13 @@
 #include "drag/drag_getWidthHeight.h"
 #include "drag/drag_getModifierKeyStates.h"
 #include "drag/drag_getDropOperation.h"
+#include "drag/dragAction_createDragAction.h"
+#include "drag/dragAction_setPointerId.h"
+#include "drag/dragAction_setDragPreviewOption.h"
+#include "drag/dragAction_setTouchPointXY.h"
+#include "drag/dragAction_registerStatusListener.h"
+#include "animation/animator_event_test.h"
+#include "customproperty/custom_property_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -368,6 +375,32 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"getModifierKeyStatesTest", nullptr, GetModifierKeyStatesTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"createDragActionTest", nullptr, CreateDragActionTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"setPointerIdTest", nullptr, SetPointerIdTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"setTouchPointXYTest", nullptr, SetTouchPointXYTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"setDragPreviewOptionTest", nullptr, SetDragPreviewOptionTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"registerStatusListenerTest", nullptr, RegisterStatusListenerTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testKeyframeRegisterOnFinish", nullptr, AnimatorEventTest::testKeyframeRegisterOnFinish_001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testKeyframeRegisterOnEvent", nullptr, AnimatorEventTest::testKeyframeRegisterOnEvent_002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testAnimatorRegisterOnFrame", nullptr, AnimatorEventTest::testAnimatorRegisterOnFrame_003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testAnimatorRegisterOnFinish", nullptr, AnimatorEventTest::testAnimatorRegisterOnFinish_004,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testAnimatorRegisterOnCancel", nullptr, AnimatorEventTest::testAnimatorRegisterOnCancel_005,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testAnimatorRegisterOnRepeat", nullptr, AnimatorEventTest::testAnimatorRegisterOnRepeat_006,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testAddCustomProperty", nullptr, CustomPropertyTest::testAddCustomProperty001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRemoveCustomProperty", nullptr, CustomPropertyTest::testRemoveCustomProperty002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

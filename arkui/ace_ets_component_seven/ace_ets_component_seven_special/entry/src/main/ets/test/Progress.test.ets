@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 
 export default function progressStyleJsunit() {
-  describe('progressStyleTest', function () {
-    beforeAll(async function (done) {
+  describe('progressStyleTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/progress',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/progress',
       }
       try {
         router.clear();
@@ -48,10 +48,10 @@ export default function progressStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testProgressStyle0001', 0, async function (done) {
+    it('testProgressStyle0001', 0, async (done: Function) => {
       console.info('testProgressStyle0001 START');
       let strJson = getInspectorByKey('ProgressKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testProgressStyle0001] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.color).assertEqual("#FF123456");
@@ -68,10 +68,10 @@ export default function progressStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testProgressStyle0002', 0, async function (done) {
+    it('testProgressStyle0002', 0, async (done: Function) => {
       console.info('testProgressStyle0002 START');
       let strJson = getInspectorByKey('ProgressKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testProgressStyle0002] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.value).assertEqual("12.000000");
@@ -88,10 +88,10 @@ export default function progressStyleJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testProgressStyle0003', 0, async function (done) {
+    it('testProgressStyle0003', 0, async (done: Function) => {
       console.info('testProgressStyle0003 START');
       let strJson = getInspectorByKey('ProgressKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[testProgressStyle0003] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.style).assertEqual('{"strokeWidth":"20.00vp","scaleCount":"30","scaleWidth":"20.00vp"}');

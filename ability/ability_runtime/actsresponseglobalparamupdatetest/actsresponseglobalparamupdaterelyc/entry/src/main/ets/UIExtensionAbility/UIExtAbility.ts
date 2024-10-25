@@ -13,14 +13,14 @@
  * limitations under the License.
  */
 
+import commonEventManager from '@ohos.commonEventManager';
 import { Configuration } from '@ohos.app.ability.Configuration';
 import hilog from '@ohos.hilog';
 import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 import Want from '@ohos.app.ability.Want';
-import commonEventManager from '@ohos.commonEventManager';
 
-const TAG: string = 'UIExtAbilityC';
+const TAG: string = 'UIExtAbilityA';
 
 export default class UIExtAbility extends UIExtensionAbility {
   onForeground() {
@@ -45,12 +45,12 @@ export default class UIExtAbility extends UIExtensionAbility {
     };
     hilog.info(0x0000, TAG, 'publishData: %{public}s', JSON.stringify(publishData.parameters) ?? '');
     commonEventManager.publish(
-      'RelyC_UIExtAbility_ConfigurationUpdateEvent', publishData, (err) => {
+      'RelyA_UIExtAbility_ConfigurationUpdateEvent', publishData, (err) => {
       if (err) {
         hilog.info(0x0000, TAG,
-          'RelyC_UIExtAbility_ConfigurationUpdateEvent publish failed, Cause: %{public}s', JSON.stringify(err) ?? '');
+          'RelyA_UIExtAbility_ConfigurationUpdateEvent publish failed, Cause: %{public}s', JSON.stringify(err) ?? '');
       } else {
-        hilog.info(0x0000, TAG, '%{public}s', 'RelyC_UIExtAbility_ConfigurationUpdateEvent publish successful');
+        hilog.info(0x0000, TAG, '%{public}s', 'RelyA_UIExtAbility_ConfigurationUpdateEvent publish successful');
       }
     });
   }

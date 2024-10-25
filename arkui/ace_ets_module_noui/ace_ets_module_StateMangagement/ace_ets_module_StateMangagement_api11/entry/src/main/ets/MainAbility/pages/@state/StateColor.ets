@@ -22,9 +22,9 @@ struct MyComponent_AX {
 
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.color)) + " number is " + JSON.stringify(this.color))
-        .fontSize(20).margin(30).key('StateColor')
+        .fontSize(20).margin(10).key('StateColor')
       Text("设置变量color类型pink-->Orange")
       Button('change')
         .backgroundColor(this.color)
@@ -73,6 +73,6 @@ struct MyComponent_AX {
         })
         .key('state6')
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

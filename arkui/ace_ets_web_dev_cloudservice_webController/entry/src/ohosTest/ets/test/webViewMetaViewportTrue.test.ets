@@ -69,16 +69,17 @@ export default function webViewMetaViewportTrue() {
         await Utils.sleep(1000);
       done();
     })
-    
+
+
     /*
-     *@tc.number SUB_ACE_WEB_METAAVIEWPORT_API_0100
-     *@tc.name testWebViewMetaViewportTrue
-     *@tc.desc test interface of metaViewport with runjavascript
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('emitWebViewMetaViewportTrue', 0, async (done: Function) => {
+    * @tc.number     : SUB_ACE_WEB_METAAVIEWPORT_API_0100
+    * @tc.name       : testWebViewMetaViewportTrue
+    * @tc.desc       : test interface of metaViewport with runjavascript
+    * @tc.size_t     : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testWebViewMetaViewportTrue', 0, async (done: Function) => {
         Utils.registerEvent("emitWebViewMetaViewportTrue", "true", 10001, done);
         sendEventByKey('webViewMetaViewportTrue', 10, '');
     })

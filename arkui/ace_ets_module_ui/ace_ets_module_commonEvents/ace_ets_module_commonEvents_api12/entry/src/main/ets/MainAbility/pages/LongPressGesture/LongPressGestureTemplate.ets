@@ -36,6 +36,7 @@ struct LongPressGestureTemplate {
   build() {
     Column({space:10}) {
       Text('LongPressGesture').fontSize(20).width(240).height(80).margin({left:0,top:0}).padding({left:0,top:0}).backgroundColor(Color.Yellow).id('LongPressGestureTemplate_Click')
+        .draggable(false)
         .gesture(
           LongPressGesture({ repeat: false })
             .onAction((event: GestureEvent) => {

@@ -20,7 +20,7 @@ struct Child_AY {
   @Consume color: undefined | null | ResourceColor;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
 
 
     }
@@ -38,7 +38,7 @@ struct Ancestors_AY {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.color)) + " number is " + JSON.stringify(this.color))
-        .fontSize(20).margin(30).key('ProvideColor')
+        .fontSize(20).margin(10).key('ProvideColor')
       Text("设置变量color类型pink-->Orange")
       Button('change')
         .backgroundColor(this.color)
@@ -88,6 +88,6 @@ struct Ancestors_AY {
         .key('state6')
 
       Child_AY()
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

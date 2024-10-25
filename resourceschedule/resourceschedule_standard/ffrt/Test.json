@@ -1,19 +1,29 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for FFRT Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
+        "shell-timeout": "600000",
         "bundle-name": "com.actsffrt.napitest",
-        "package-name": "com.actsffrt.napitest",
-        "shell-timeout": "600000"
+        "module-name": "entry_test",
+        "testcase-timeout":"30000",
+        "compile-mode":"esmodule"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsFfrtNativeTest.hap"
+                "ActsFfrtNativeTest.hap",
+                "ActsFfrtNativeMainTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

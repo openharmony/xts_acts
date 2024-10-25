@@ -36,6 +36,7 @@
 #include <threads.h>
 #include <unistd.h>
 #include <utime.h>
+#include <securec.h>
 
 #define PARAM_5 5
 #define PARAM_0 0
@@ -599,10 +600,12 @@ extern "C" int __select_time64(int, fd_set *__restrict, fd_set *__restrict, fd_s
 static napi_value Select_time64(napi_env env, napi_callback_info info)
 {
     int backParam = PARAM_UNNORMAL, firstParam = PARAM_1;
-    fd_set secondParam;
-    fd_set thirdParam;
-    fd_set fourthParam;
-    struct timeval fifthParam {};
+    fd_set secondParam, thirdParam, fourthParam;
+    FD_ZERO(&secondParam);
+    FD_ZERO(&thirdParam);
+    FD_ZERO(&fourthParam);
+    struct timeval fifthParam;
+    memset_s(&fifthParam, sizeof(fifthParam), 0, sizeof(fifthParam));
     backParam = __select_time64(firstParam, &secondParam, &thirdParam, &fourthParam, &fifthParam);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
@@ -785,6 +788,7 @@ static napi_value UTimes_time64(napi_env env, napi_callback_info info)
     int fileDescribe = open(TEST_FILE, O_RDWR | O_RSYNC | O_CREAT);
     close(fileDescribe);
     struct timeval tv[2];
+    memset_s(tv, sizeof(tv), 0, sizeof(tv));
     tv[0].tv_usec = PARAM_1;
     int ret = __utimes_time64(TEST_FILE, tv);
     napi_value result = nullptr;

@@ -23,6 +23,7 @@ export default class MainAbility9 extends Ability {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.log("[Demo] MainAbility9 onCreate")
     globalThis.abilityWant9 = want;
+    globalThis.ability9 = this.context;
     globalThis.mainAbility9ListKey = [];
     let abilityName: string = "";
     let AbilityLifecycleCallback: AbilityLifecycleCallback = {

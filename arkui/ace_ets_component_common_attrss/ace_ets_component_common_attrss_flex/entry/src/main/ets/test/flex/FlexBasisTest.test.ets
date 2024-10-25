@@ -18,17 +18,17 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  parentWidth: number;
-  parentHeight: number;
-  targetWidth: number;
-  targetHeight: number;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  parentWidth: number = 0;
+  parentHeight: number = 0;
+  targetWidth: number = 0;
+  targetHeight: number = 0;
 }
 
 class TestValue {
-  describe: string;
+  describe: string = '';
   setValue: ESObject;
   expectValue: ESObject;
 }
@@ -164,9 +164,9 @@ export default function flexBasisTest() {
       if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
         || data.pageConfig.containerView == 'FlexRowReverse') {
 
-        let realWidth = Number(rect.right - rect.left).toFixed(2);
+        let realWidth = rect.right - rect.left;
         console.info('[' + data.caseTag + '] realWidth : ' + realWidth);
-        expect(Math.abs(realWidth - Number(data.testValue.expectValue.expectSize).toFixed(2)) <= 1).assertTrue();
+        expect(Math.abs(realWidth - (data.testValue.expectValue.expectSize)) <= 1).assertTrue();
       } else if (data.pageConfig.containerView == 'Column' || data.pageConfig.containerView == 'FlexColumn'
         || data.pageConfig.containerView == 'FlexColumnReverse') {
 

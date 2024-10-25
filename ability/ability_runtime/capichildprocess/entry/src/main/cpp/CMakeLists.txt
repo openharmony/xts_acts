@@ -13,6 +13,7 @@ add_library(entry SHARED
     IpcProxy.cpp
     IpcStub.cpp
     ChildProcess.cpp
+    native_child_demo.cpp
 )
 
 target_link_libraries(entry PUBLIC

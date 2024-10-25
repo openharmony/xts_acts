@@ -92,7 +92,7 @@
     "MainAbility/pages/RichEditor/RichEditorGetLayoutManagerTest1",
     "MainAbility/pages/RichEditor/RichEditorStyledStringTest1",
     "MainAbility/pages/RichEditor/RichEditorStyledStringTest2",
-
+    "MainAbility/pages/RichEditor/RichEditorStyledStringTest3",
     "MainAbility/pages/Text/TextAPI/AttributeUpdater",
     "MainAbility/pages/Text/TextAPI/Unit",
     "MainAbility/pages/TextClock/TextClockApi/TextClockApi",
@@ -135,6 +135,10 @@
     "MainAbility/pages/Text/imageSpan5",
     "MainAbility/pages/Text/imageSpan6",
     "MainAbility/pages/Text/imageSpan7",
-    "MainAbility/pages/Text/imageSpan8"
+    "MainAbility/pages/Text/imageSpan8",
+    "MainAbility/pages/RichEditor/getRectsForRange",
+    "MainAbility/pages/TextInput/textInputEnterKeyType",
+    "MainAbility/pages/span/spanPage",
+    "MainAbility/pages/TextArea/textAreaAutoFill"
   ]
 }

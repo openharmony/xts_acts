@@ -15,9 +15,10 @@
 
 import ObserverJsunit from './ObserverJsunit.test';
 import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.StateRegistry")){
+  if (sim.getMaxSimCount()!=0){
     ObserverJsunit();
   }else{
     EmptyTest()

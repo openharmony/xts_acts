@@ -18,8 +18,8 @@ import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
 
-export default function drawingTsCanvasPart2Test() {
-  describe('DrawingTsCanvasTest', () => {
+export default function drawingTsCanvasPart3Test() {
+  describe('DrawingTsCanvasPart3Test', () => {
     let pixel: image.PixelMap;
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.

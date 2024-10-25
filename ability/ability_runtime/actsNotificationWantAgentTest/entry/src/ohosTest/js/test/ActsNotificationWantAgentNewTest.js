@@ -893,7 +893,7 @@ export default function ActsNotificationWantAgentNewTest() {
             } else {
               console.info(`${TAG} trigger AsyncCallback success: ${JSON.stringify(data)}`)
               expect(typeof(data.wantAgent)).assertEqual('object')
-              expect(data.finalCode).assertEqual(0)
+              expect(data.finalCode).assertEqual(16000050)
               expect(data.finalData).assertEqual('')
               expect(typeof(data.extraInfo)).assertEqual('object')
               expect(data.want.deviceId).assertEqual('deviceId')
@@ -988,7 +988,7 @@ export default function ActsNotificationWantAgentNewTest() {
             } else {
               console.info(`${TAG} trigger AsyncCallback success: ${JSON.stringify(data)}`)
               expect(typeof(data.wantAgent)).assertEqual('object')
-              expect(data.finalCode).assertEqual(0)
+              expect(data.finalCode).assertEqual(16000050)
               expect(data.finalData).assertEqual('')
               expect(typeof(data.extraInfo)).assertEqual('object')
               expect(data.want.deviceId).assertEqual('deviceId')
@@ -1082,7 +1082,7 @@ export default function ActsNotificationWantAgentNewTest() {
             } else {
               console.info(`${TAG} trigger AsyncCallback success: ${JSON.stringify(data)}`)
               expect(typeof(data.wantAgent)).assertEqual('object')
-              expect(data.finalCode).assertEqual(0)
+              expect(data.finalCode).assertEqual(16000050)
               expect(data.finalData).assertEqual('')
               expect(typeof(data.extraInfo)).assertEqual('object')
               expect(data.want.deviceId).assertEqual('deviceId')

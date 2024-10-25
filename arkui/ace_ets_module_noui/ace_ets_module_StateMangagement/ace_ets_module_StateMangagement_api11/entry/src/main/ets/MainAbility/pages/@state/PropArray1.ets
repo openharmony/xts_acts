@@ -22,10 +22,10 @@ struct Child_AS {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array1)) + " number is " + JSON.stringify(this.Array1))
-        .fontSize(20).margin(30).key('PropArray1')
+        .fontSize(20).margin(10).key('PropArray1')
 
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array1)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(30).key('PropArray1New')
+        .fontSize(20).margin(10).key('PropArray1New')
 
 
       Text("设置变量Array<Length>类型[1]-->[10]")
@@ -75,8 +75,8 @@ struct Library_AS {
   @State Array1: Date | Array<Length> | Array<Object> = [1];
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
       Child_AS({Array1: this.Array1})
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

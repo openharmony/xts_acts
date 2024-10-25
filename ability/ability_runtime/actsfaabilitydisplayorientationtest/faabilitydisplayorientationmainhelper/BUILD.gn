@@ -13,28 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsOrientationMainHelper") {
-  hap_name = "ActsOrientationMainHelper"
-  js_build_mode = "debug"
-  hap_profile = "entry/src/main/config.json"
-
+ohos_app_assist_suite("ActsOrientationMainHelper") {
   testonly = true
-  deps = [
-    ":dataability_resources",
-    ":dataability_ts_assets",
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsOrientationMainHelper"
+  hap_list = [
+    "ActsOrientationMainHelper-feature1-entry-default-unsigned:ActsOrientationFeatureHelper",
+    "ActsOrientationMainHelper-entry-default-unsigned:ActsOrientationMainHelper",
   ]
-  certificate_profile = "signature/openharmony_sx.p7b"
   subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-
-ohos_js_assets("dataability_ts_assets") {
-  source_dir = "entry/src/main/ets"
-  hap_profile = "entry/src/main/config.json"
-  ets2abc = true
-}
-
-ohos_resources("dataability_resources") {
-  sources = [ "entry/src/main/resources" ]
-  hap_profile = "entry/src/main/config.json"
 }

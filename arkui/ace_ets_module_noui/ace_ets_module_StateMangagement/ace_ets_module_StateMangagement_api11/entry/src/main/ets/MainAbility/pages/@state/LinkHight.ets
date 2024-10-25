@@ -19,7 +19,7 @@ struct Child_CJ {
   @Link hight: ResourceStr | Length;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 5 }) {
 
       Text("设置变量number类型50-->100")
       Button('change')
@@ -45,7 +45,7 @@ struct Child_CJ {
         })
         .key('LinkHeight3')
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }
 
@@ -57,7 +57,7 @@ struct Index_CJ {
   build() {
     Column() {
       Text("count type of " + JSON.stringify(CommonFunc.getType(this.hight)) + " number is " + JSON.stringify(this.hight))
-        .fontSize(20).margin(30).key('LinkHight')
+        .fontSize(20).margin(10).key('LinkHight')
       Child_CJ({hight: this.hight})
 
     }

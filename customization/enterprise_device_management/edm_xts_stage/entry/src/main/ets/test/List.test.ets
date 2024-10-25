@@ -30,6 +30,11 @@ import locationManagerTest from './locationManager/locationManager.test.ets';
 import usbManagerTest from './usbManager/usbManager.test.ets';
 
 export default function testsuite() {
+  systemManagerTest();
+  wifiManagerTest();
+  deviceControlTest();
+  locationManagerTest();
+  usbManagerTest();
   browserManagerTest();
   bluetoothManagerTest();
   securityManagerTest();
@@ -41,9 +46,4 @@ export default function testsuite() {
   bundleManagerTest();
   networkManagerTest();
   restrictionsTest();
-  systemManagerTest();
-  wifiManagerTest();
-  deviceControlTest();
-  locationManagerTest();
-  usbManagerTest();
 }

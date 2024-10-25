@@ -19,7 +19,7 @@ import sim from '@ohos.telephony.sim';
 import EmptyTest from './Empty.test';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Telephony.CoreService")){
+  if (sim.getMaxSimCount()!=0){
     if(sim.hasSimCardSync(0)){
       telephonyRadioNoPermissionPublicTest();
     }else{

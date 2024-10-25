@@ -14,7 +14,33 @@
 */
 
 import webSchemeHandler from './WebSchemeHandler.test';
+import WebSendTest from './WebSend.test';
+import ActsAceWebMessageExt from './WebMessageExtTest.test'
+import ActsAceSaveHttpAuthCredentials from './SaveHttpAuthCredentials.test'
+import ActsAceGetHttpAuthCredentials from './GetHttpAuthCredentials.test'
+import ActsAcGetOriginUsage from './GetOriginUsage.test'
+import ActsAceGetOriginQuota from './GetOriginQuota.test'
+import GeolocationTest from './Geolocation.test'
+import webTestFour from './WebTestFour.test';
+import ActsAceConfigCookieCallback from './ConfigCookieTest_callback.test';
+import ActsAceConfigCookiePromise from './ConfigCookieTest_promise.test';
+import ActsAceConfigCookieSync from './ConfigCookieTest_sync.test';
+import ActsAceSetCookie from './SetCookieTest.test';
+import ActsAceCookieTest from './ConfigCookieTest.test';
 
 export default function testsuite() {
   webSchemeHandler();
+  WebSendTest();
+  ActsAceWebMessageExt();
+  ActsAceSaveHttpAuthCredentials();
+  ActsAceGetHttpAuthCredentials();
+  ActsAcGetOriginUsage();
+  ActsAceGetOriginQuota();
+  GeolocationTest();
+  webTestFour();
+  ActsAceConfigCookieCallback();
+  ActsAceConfigCookiePromise();
+  ActsAceConfigCookieSync();
+  ActsAceSetCookie();
+  ActsAceCookieTest();
 }

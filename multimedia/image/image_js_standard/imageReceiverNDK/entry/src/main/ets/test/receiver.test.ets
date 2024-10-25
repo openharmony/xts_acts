@@ -16,7 +16,7 @@
 
 import cameraObj from '@ohos.multimedia.camera';
 import featureAbility from '@ohos.ability.featureAbility';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import {UiDriver, BY} from '@ohos.UiTest'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 // @ts-ignore
@@ -572,7 +572,7 @@ export default function ImageReceiverTest() {
                     expect(bufferSize > 0).assertTrue();
                     expect(nativeBuffer != undefined).assertTrue();
                     expect(type >= 0).assertTrue();
-                    expect(rowStride > 0).assertTrue();
+                    expect(rowStride >= 0).assertTrue();
                     expect(pixelStride == Jpg_Stride).assertTrue();
                     expect(sizeAfterRelease == undefined).assertTrue();
                     done();

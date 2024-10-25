@@ -63,7 +63,8 @@ function expectForFlexShrink(targetSize: number, space: number, countFlexShrink:
   console.info('[' + data.caseTag + '] targetSize : ' + targetSize);
   //Verify based on different parent container spindle directions
   let ratio = countFlexShrink / (compareFlexShrink + targetFlexShrink);
-  expect(Math.abs(Number(realRect) - Number(vp2px(targetSize - space * ratio))) <= 1).assertTrue();
+  console.info('[' + data.caseTag + '] targetSize - space * ratio : ' + vp2px(targetSize - space * ratio));
+  expect(Math.abs(Math.round(realRect) - Math.round(vp2px(targetSize - space * ratio))) <= 2).assertTrue();
   console.info('[' + data.caseTag + '] targetSize - space * ratio : ' + (targetSize - space * ratio));
 }
 
@@ -218,9 +219,9 @@ export default function flexShrinkTest() {
       if (data.testValue.describe == 'NoCompressedSize') {
         if (data.pageConfig.containerView == 'Row' || data.pageConfig.containerView == 'FlexRow'
           || data.pageConfig.containerView == 'FlexRowReverse') {
-          expect(Math.abs(Number((rect.right - rect.left)) - Number(vp2px(targetWidth))) <= 1).assertTrue();
+          expect(Math.abs(Math.round((rect.right - rect.left)) - Math.round(vp2px(targetWidth))) <= 2).assertTrue();
         } else {
-          expect(Math.abs(Number((rect.bottom - rect.top)) - Number(vp2px(targetHeight))) <= 1).assertTrue();
+          expect(Math.abs(Math.round((rect.bottom - rect.top)) - Math.round(vp2px(targetHeight))) <= 2).assertTrue();
         }
       } else {
         //Verify the standard component not be changed

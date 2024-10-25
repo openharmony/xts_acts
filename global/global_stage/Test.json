@@ -3,16 +3,18 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "ohos.acts.globalstage",
-        "module-name": "phone",
         "shell-timeout": "600000",
+        "bundle-name": "ohos.acts.globalstage",
+        "module-name": "entry_test",
         "testcase-timeout": 70000
     },
-    "kits": [{
+    "kits": [
+        {
             "test-file-name": [
                 "ActsGlobalStageTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-    }] 
+        }
+    ]
 }

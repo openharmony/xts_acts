@@ -29,7 +29,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0001
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0001
     * @tc.name       : testWeb_ResourceType_MAIN_FRAME
     * @tc.desc       : testWeb_ResourceType_MAIN_FRAME
     * @tc.size       : MediumTest
@@ -47,7 +47,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0002
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0002
     * @tc.name       : testWeb_ResourceType_SUB_FRAME
     * @tc.desc       : testWeb_ResourceType_SUB_FRAME
     * @tc.size       : MediumTest
@@ -65,7 +65,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0003
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0003
     * @tc.name       : testWeb_ResourceType_STYLE_SHEET
     * @tc.desc       : testWeb_ResourceType_STYLE_SHEET
     * @tc.size       : MediumTest
@@ -83,7 +83,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0004
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0004
     * @tc.name       : testWeb_ResourceType_SCRIPT
     * @tc.desc       : testWeb_ResourceType_SCRIPT
     * @tc.size       : MediumTest
@@ -101,7 +101,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0005
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0005
     * @tc.name       : testWeb_ResourceType_IMAGE
     * @tc.desc       : testWeb_ResourceType_IMAGE
     * @tc.size       : MediumTest
@@ -119,7 +119,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0006
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0006
     * @tc.name       : testWeb_ResourceType_FONT_RESOURCE
     * @tc.desc       : testWeb_ResourceType_FONT_RESOURCE
     * @tc.size       : MediumTest
@@ -137,7 +137,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0007
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0007
     * @tc.name       : testWeb_ResourceType_SUB_RESOURCE
     * @tc.desc       : testWeb_ResourceType_SUB_RESOURCE
     * @tc.size       : MediumTest
@@ -155,7 +155,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0008
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0008
     * @tc.name       : testWeb_ResourceType_OBJECT
     * @tc.desc       : testWeb_ResourceType_OBJECT
     * @tc.size       : MediumTest
@@ -173,7 +173,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0009
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0009
     * @tc.name       : testWeb_ResourceType_MEDIA
     * @tc.desc       : testWeb_ResourceType_MEDIA
     * @tc.size       : MediumTest
@@ -191,7 +191,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0010
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0010
     * @tc.name       : testWeb_ResourceType_WORKER
     * @tc.desc       : testWeb_ResourceType_WORKER
     * @tc.size       : MediumTest
@@ -209,7 +209,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0011
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0011
     * @tc.name       : testWeb_ResourceType_SHARED_WORKER
     * @tc.desc       : testWeb_ResourceType_SHARED_WORKER
     * @tc.size       : MediumTest
@@ -227,7 +227,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0012
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0012
     * @tc.name       : testWeb_ResourceType_PREFETCH
     * @tc.desc       : testWeb_ResourceType_PREFETCH
     * @tc.size       : MediumTest
@@ -245,7 +245,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0013
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0013
     * @tc.name       : testWeb_ResourceType_FAVICON
     * @tc.desc       : testWeb_ResourceType_FAVICON
     * @tc.size       : MediumTest
@@ -263,7 +263,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0014
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0014
     * @tc.name       : testWeb_ResourceType_XHR
     * @tc.desc       : testWeb_ResourceType_XHR
     * @tc.size       : MediumTest
@@ -281,7 +281,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0015
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0015
     * @tc.name       : testWeb_ResourceType_PING
     * @tc.desc       : testWeb_ResourceType_PING
     * @tc.size       : MediumTest
@@ -299,7 +299,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0016
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0016
     * @tc.name       : testWeb_ResourceType_SERVICE_WORKER
     * @tc.desc       : testWeb_ResourceType_SERVICE_WORKER
     * @tc.size       : MediumTest
@@ -317,7 +317,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0017
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0017
     * @tc.name       : testWeb_ResourceType_CSP_REPORT
     * @tc.desc       : testWeb_ResourceType_CSP_REPORT
     * @tc.size       : MediumTest
@@ -335,7 +335,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0018
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0018
     * @tc.name       : testWeb_ResourceType_PLUGIN_RESOURCE
     * @tc.desc       : testWeb_ResourceType_PLUGIN_RESOURCE
     * @tc.size       : MediumTest
@@ -353,7 +353,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0019
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0019
     * @tc.name       : testWeb_ResourceType_PRELOAD_MAIN
     * @tc.desc       : testWeb_ResourceType_PRELOAD_MAIN
     * @tc.size       : MediumTest
@@ -371,7 +371,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0020
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0020
     * @tc.name       : testWeb_ResourceType_PRELOAD_SUB
     * @tc.desc       : testWeb_ResourceType_PRELOAD_SUB
     * @tc.size       : MediumTest
@@ -389,7 +389,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0021
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0021
     * @tc.name       : testWebViewFrameUrl
     * @tc.desc       : testWebViewFrameUrl
     * @tc.size       : MediumTest
@@ -407,7 +407,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0022
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0022
     * @tc.name       : testWebViewServiceWorkerFrameUrl
     * @tc.desc       : testWebViewServiceWorkerFrameUrl
     * @tc.size       : MediumTest
@@ -425,7 +425,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0023
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0023
     * @tc.name       : testWebViewLoadUrlFrameUrl
     * @tc.desc       : testWebViewLoadUrlFrameUrl
     * @tc.size       : MediumTest
@@ -443,7 +443,7 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0024
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_ENHANCE_TWO_0024
     * @tc.name       : testWebViewSubFrameUrl
     * @tc.desc       : testWebViewSubFrameUrl
     * @tc.size       : MediumTest

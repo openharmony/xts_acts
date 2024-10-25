@@ -76,7 +76,7 @@ export default function ActsAceWebViewAnrCallback() {
      *@tc.desc OnRenderProcessResponding
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewOnRenderProcessResponding', 0, async (done: Function) => {
         emitKey = "emitWebViewOnRenderProcessResponding"
@@ -87,11 +87,11 @@ export default function ActsAceWebViewAnrCallback() {
 
     /*
      *@tc.number SUB_ACE_WEB_NotRespondingReason_NAVIGATION_COMMIT_TIMEOUT_API_0002
-     *@tc.name testWebView_NotRespondingReason_NAVIGATION_COMMIT_TIMEOUT
+     *@tc.name testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT
      *@tc.desc NotRespondingReason_NAVIGATION_COMMIT_TIMEOUT
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 2
      */
     it('testWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT', 0, async (done: Function) => {
         emitKey = "emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT"

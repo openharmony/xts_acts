@@ -665,6 +665,7 @@ struct WebAttributeTest {
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .key('webView')
           .height('50%')
+          .fileAccess(true)
           .width('100%')
           .javaScriptAccess(true)
           .horizontalScrollBarAccess(true)

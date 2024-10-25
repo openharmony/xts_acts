@@ -113,6 +113,7 @@
         "MainAbility/pages/stepper/stepperAction/stepperAction005",
         "MainAbility/pages/stepper/stepperAction/stepperAction006",
         "MainAbility/pages/stepper/stepperAction/stepperAction007",
-        "MainAbility/pages/stepper/stepperAction/stepperAction027"
+        "MainAbility/pages/stepper/stepperAction/stepperAction027",
+        "MainAbility/pages/Navigation/navigation_lack"
     ]
 }

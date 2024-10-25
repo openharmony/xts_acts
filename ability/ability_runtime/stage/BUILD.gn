@@ -23,8 +23,6 @@ group("stage") {
       "actseuripermission:ActsServiceExtensionUriPermissionTest",
       "actsflagstartwithouttips:ActsFlagStartWithoutTips",
       "actsgetgroupdirtest:actsgetgroupdirtest",
-      "actslifecyclemultihap2:ActsLifecycleMultiHap2",
-      "actslifecyclemultihap3:ActsLifecycleMultiHap3",
       "actslifecyclemultihaptest:ActsLifecycleMultiHapTest",
       "actslifecyclesinglehaptest:ActsLifecycleSingleHapTest",
       "actsllifecyclelifecycletest:ActsLifeCycleLifeCycleTest",

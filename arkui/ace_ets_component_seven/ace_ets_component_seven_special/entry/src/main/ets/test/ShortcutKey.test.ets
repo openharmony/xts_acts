@@ -17,16 +17,17 @@ import router from '@ohos.router'
 import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import input from '@ohos.multimodalInput.keyCode';
+import { BusinessError } from '@ohos.base';
 
 export default function shortcutKeyJsunit() {
 
   const SUITE = 'ShortcutKey'
   const baseEvent = 62000
 
-  describe('shortcutKeyJsunit', function () {
+  describe('shortcutKeyJsunit', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/shortcutKey",
       }
       try {
@@ -34,8 +35,8 @@ export default function shortcutKeyJsunit() {
         if (pages == null || !("shortcutKey" == pages.name)) {
           await router.pushUrl(options).then(()=>{
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          }).catch((err: BusinessError) => {
+            console.error(`${SUITE} router.pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
           })
         }
       } catch (err) {
@@ -52,16 +53,16 @@ export default function shortcutKeyJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Shortcut_Key_0100', 0, async function (done) {
+    it('ArkUI_Shortcut_Key_0100', 0, async (done: Function) => {
       let CASE = 'ArkUI_Shortcut_Key_0100'
       console.info(`${SUITE} ${CASE} START`);
 
-      let callback = (event) => {
-        expect(event.data.msg).assertEqual('Ctrl_B');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
+      let callback = (event: events_emitter.EventData) => {
+        expect(event.data?.msg).assertEqual('Ctrl_B');
+        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data?.msg);
         done();
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: baseEvent,
         priority: events_emitter.EventPriority.LOW
       }

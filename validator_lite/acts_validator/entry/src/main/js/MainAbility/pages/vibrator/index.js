@@ -33,7 +33,7 @@ export default {
         Vibrator.vibrate({
             mode: 'short',
             success: function(ret) {
-                obj.state = this.strStates[0];
+                obj.state = obj.strStates[0];
                 console.info('vibrate is successful');
             },
             fail: function(ret) {
@@ -51,7 +51,7 @@ export default {
         Vibrator.vibrate({
             mode: 'long',
             success: function(ret) {
-                obj.state = this.strStates[1];
+                obj.state = obj.strStates[1];
                 console.info('vibrate is successful');
             },
             fail: function(ret) {

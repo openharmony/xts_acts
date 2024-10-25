@@ -76,7 +76,7 @@ export default function ActsAceWebViewWarmupServiceWorker() {
      *@tc.desc test WarmupServiceWorker
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewWarmupServiceWorker', 0, async (done: Function) => {
         emitKey = "emitWebViewWarmupServiceWorker"

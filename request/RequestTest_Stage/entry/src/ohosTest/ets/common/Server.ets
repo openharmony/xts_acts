@@ -87,7 +87,7 @@ let on_message_callback = (value: SocketInfo) => {
         let subInfo = ''.padEnd(10 * 1024 *  1024, '888');
         messageView = `HTTP/1.1 200 OK\r\ncontent-length:${subInfo.length}\r\n\r\n${subInfo}`
       } else {
-        messageView = 'HTTP/1.1 200 OK\r\ncontent-length:18\r\n\r\nupload successful!'
+        messageView = 'HTTP/1.1 200 OK\r\ncontent-length:18\r\nheadertest:headerreceivetest\r\n\r\nupload successful!'
       }
     }else{
       messageView = 'HTTP/1.1 200 OK\r\ncontent-length:14\r\n\r\nupload failed!'

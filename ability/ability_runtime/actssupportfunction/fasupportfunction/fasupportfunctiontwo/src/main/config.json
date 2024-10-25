@@ -17,10 +17,9 @@
     "name": ".fasupportfunctiontwo",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
+        "default",
+        "tablet",
+        "2in1"
     ],
     "distro": {
       "deliveryWithInstall": true,

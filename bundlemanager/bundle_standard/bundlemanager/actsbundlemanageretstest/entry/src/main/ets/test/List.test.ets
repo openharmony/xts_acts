@@ -24,6 +24,7 @@ import getNameForUid from "./GetNameForUid.test.ets";
 import getBundleArchiveInfo from "./getBundleArchiveInfo.test.ets";
 import getQueryAbilityByWant from './GetQueryAbilityByWant.test.ets';
 import getBundleInfoForSelf from './GetBundleInfoForSelf.test.ets';
+import getLaunchWant from './GetLaunchWant.test.ets';
 
 export default function testsuite() {
   getBundleInfoForSelf();
@@ -38,4 +39,5 @@ export default function testsuite() {
   isAbilityEnableETSUnit();
   isApplicationEnabledETSUnit();
   getBundleArchiveInfo();
+  getLaunchWant();
 }

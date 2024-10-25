@@ -17,7 +17,7 @@ import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
 import bundle from '@ohos.bundle';
 import commonEvent from '@ohos.commonEvent';
-
+import { BusinessError } from '@ohos.base';
 const Event_FA_DisplayOrientation_0300 = 'Event_FA_DisplayOrientation_0300';
 const Event_FA_DisplayOrientation_0300_LifeCircle = 'Event_FA_DisplayOrientation_0300_LifeCircle';
 const Event_FA_DisplayOrientation_0400 = 'Event_FA_DisplayOrientation_0400';
@@ -25,9 +25,9 @@ const Event_FA_DisplayOrientation_0400_LifeCircle = 'Event_FA_DisplayOrientation
 const Event_FA_DisplayOrientation_0700 = 'Event_FA_DisplayOrientation_0700';
 const Event_FA_DisplayOrientation_0800 = 'Event_FA_DisplayOrientation_0800';
 const Event_FA_DisplayOrientation_0900 = 'Event_FA_DisplayOrientation_0900';
-let lifeCircleData = [];
+let lifeCircleData: string[] = [];
 
-function publishEvent(event, value) {
+let publishEvent = (event: string, value: ESObject) => {
   commonEvent.publish(event,
     {
       parameters: {
@@ -38,20 +38,20 @@ function publishEvent(event, value) {
     })
 }
 
-export default {
+class FourthAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
     lifeCircleData[0] = 'onCreate';
-  },
+  }
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  },
+  }
   onActive() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onActive');
     lifeCircleData[1] = 'onActive';
     featureAbility.getWant((error, want) => {
       hilog.info(0x0000, 'testTag', '%{public}s', `get want: ${JSON.stringify(want)}`);
-      let number = want.parameters.number;
+      let number = want.parameters?.number;
       switch (number) {
         case 1:
           hilog.info(0x0000, 'testTag', '%{public}s', 'case 1 ---->');
@@ -112,9 +112,9 @@ export default {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, (err => {
+                    }).catch((err:BusinessError) => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility err: ${JSON.stringify(err)}`);
-                    }))
+                    })
                   }
                 })
               })
@@ -142,9 +142,9 @@ export default {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `4-fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, (err => {
+                    }).catch((err:BusinessError) => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `4-fa startAbility err: ${JSON.stringify(err)}`);
-                    }))
+                    })
                   }
                 })
               })
@@ -172,9 +172,9 @@ export default {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, (err => {
+                    }).catch((err:BusinessError) => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility err: ${JSON.stringify(err)}`);
-                    }))
+                    })
                   }
                 })
               })
@@ -202,9 +202,9 @@ export default {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `6-fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, (err => {
+                    }).catch((err:BusinessError) => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `6-fa startAbility err: ${JSON.stringify(err)}`);
-                    }))
+                    })
                   }
                 })
               })
@@ -275,3 +275,4 @@ export default {
     })
   }
 }
+export default new FourthAbility();

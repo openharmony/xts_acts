@@ -18,22 +18,22 @@ import { describe, expect } from '@ohos/hypium'
 import Utils from '../../MainAbility/common/Utils';
 
 class TestValue {
-  describe: string;
+  describe: string = '';
   setValue: ESObject;
   expectValue: ESObject;
 }
 
 class PageConfig {
-  testName: string;
-  pageName: string;
-  pageUrl: string;
-  targetGroupView: string;
-  parentComponentKey: string;
-  referenceComponentKey: string;
-  childWidth: number;
-  childHeight: number;
-  parentWidth: number;
-  parentHeight: number;
+  testName: string = '';
+  pageName: string = '';
+  pageUrl: string = '';
+  targetGroupView: string = '';
+  parentComponentKey: string = '';
+  referenceComponentKey: string = '';
+  childWidth: number = 0;
+  childHeight: number = 0;
+  parentWidth: number = 0;
+  parentHeight: number = 0;
 }
 
 export default function marginLengthTest() {

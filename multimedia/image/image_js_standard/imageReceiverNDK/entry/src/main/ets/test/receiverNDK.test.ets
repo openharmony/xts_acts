@@ -15,7 +15,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 // @ts-ignore
 import ndkTest from 'libImageReceiverNDKTest.so'
 
@@ -356,7 +356,7 @@ export default function ImageReceiverNDKTest() {
                 expect(myImageFormat == RGBA).assertTrue();
                 expect(myImageComponent.byteBuffer != undefined).assertTrue();
                 expect(myImageComponent.componentType == JPEG).assertTrue();
-                expect(myImageComponent.rowStride == WIDTH / Jpg_Stride).assertTrue();
+                expect(myImageComponent.rowStride == WIDTH * 4).assertTrue();
                 expect(myImageComponent.pixelStride == Jpg_Stride).assertTrue();
                 done();
             } catch (error) {

@@ -3,13 +3,14 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-	    "bundle-name": "ohos.image.napitest",
-        "package-name": "ohos.image.napitest",
-        "shell-timeout": "600000"
+        "bundle-name": "ohos.image.napitest",
+        "shell-timeout": "600000",
+        "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
+                "ActsPixelMapNapiEtsTestMain.hap",
                 "ActsPixelMapNapiEtsTest.hap"
             ],
             "type": "AppInstallKit",

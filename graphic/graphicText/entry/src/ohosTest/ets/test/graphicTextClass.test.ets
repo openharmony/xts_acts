@@ -22,6 +22,7 @@ import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
 import {buildParagraph} from './utils';
+import { display } from '@kit.ArkUI';
 
 function sleep(time: number): Promise<void> {
   return new Promise((resolve) => {
@@ -760,5 +761,965 @@ export default function graphicTextClass() {
         }
       }
     })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_028
+     * @tc.name      : Run GetGlyphs
+     * @tc.desc      : To test Run GetGlyphs interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextRun_GetGlyphs', 28, async ()=> {
+      let msg = 'testTextRun_GetGlyphs';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          try {
+            expect(run.getGlyphs({start:-1, end:1})).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs({start:-1, end:-20})).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs({start:0, end:1}).length).assertEqual(1);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs(null)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs(undefined)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getGlyphs({start:0, end:0}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_029
+     * @tc.name      : Run GetPositions
+     * @tc.desc      : To test Run GetPositions interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextRun_GetPositions', 29, async ()=> {
+      let msg = 'testTextRun_GetPositions';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          try {
+              expect(run.getPositions({start:0, end:3}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions({start:0, end:30}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions({start:0, end:0}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions({start:-1, end:-2})).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions(null)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getPositions(undefined)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_030
+    * @tc.name      : Run getStringIndices
+    * @tc.desc      : To test Run getStringIndices interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testTextRun_getStringIndices', 30, async ()=>{
+      let msg = 'testTextRun_getStringIndices';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          try {
+            expect(run.getStringIndices().length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices({start:0, end:1}).length).assertEqual(1);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices({start:0, end:0}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices({start:0, end:30}).length).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices({start:-1, end:-1})).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices(null)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(run.getStringIndices(undefined)).assertEqual(undefined);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_031
+    * @tc.name      : Run getStringRange
+    * @tc.desc      : To test Run getStringRange interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testTextRun_getStringRange', 31, async ()=> {
+      let msg = 'testTextRun_getStringRange';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          try {
+            let stringRange:text.Range = run.getStringRange();
+            expect(stringRange.start).assertEqual(0);
+            expect(stringRange.end).assertEqual(3);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_032
+    * @tc.name      : Run getImageBounds
+    * @tc.desc      : To test Run getImageBounds interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testTextRun_getImageBounds', 32, async ()=> {
+      let msg = 'testTextRun_getImageBounds';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          let bounds:common2D.Rect = run.getImageBounds();
+          try {
+            expect(bounds.right > bounds.left).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(bounds.bottom > bounds.top).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_033
+    * @tc.name      : Run getTypographicBounds
+    * @tc.desc      : To test Run getTypographicBounds interface.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testTextRun_getTypographicBounds', 33, async ()=> {
+      let msg = 'testTextRun_getTypographicBounds';
+      console.info(msg + 'begin');
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for(let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+        let runs: Array<text.Run> = textLine.getGlyphRuns();
+        let runslength = runs.length;
+        for (let j = 0; j < runslength; j++) {
+          let run: text.Run = runs[j];
+          let bounds:text.TypographicBounds = run.getTypographicBounds();
+          try {
+            expect(bounds.ascent > 0).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(bounds.descent > 0).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(bounds.leading >= 0).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            expect(bounds.width > 0).assertTrue();
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0034
+     * @tc.name      : testlayoutByPromise_1
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_1', 34, async ()=> {
+      let msg = "testlayoutByPromise_1 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(100).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0035
+     * @tc.name      : testlayoutByPromise_2
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_2', 35, async ()=> {
+      let msg = "testlayoutByPromise_2 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(-100).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(false).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(error.code).assertEqual(401);
+      });
+    })
+
+   /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0036
+     * @tc.name      : testlayoutByPromise_3
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_3', 36, async ()=> {
+      let msg = "testlayoutByPromise_3 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(null).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(false).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(error.code).assertEqual(401);
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0037
+     * @tc.name      : testlayoutByPromise_4
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_4', 37, async ()=> {
+      let msg = "testlayoutByPromise_4 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(undefined).then((data) => {
+        console.info(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(false).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.error(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(error.code).assertEqual(401);
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0038
+     * @tc.name      : testlayoutByPromise_5
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_5', 38, async ()=> {
+      let msg = "testlayoutByPromise_5 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(110.05).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0039
+     * @tc.name      : testlayoutByPromise_6
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_6', 39, async ()=> {
+      let msg = "testlayoutByPromise_6 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(Number.MAX_VALUE).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0040
+     * @tc.name      : testlayoutByPromise_7
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_7', 40, async ()=> {
+      let msg = "testlayoutByPromise_7 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(Number.MIN_VALUE).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0041
+     * @tc.name      : testlayoutByPromise_8
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_8', 41, async ()=> {
+      let msg = "testlayoutByPromise_8 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(Number.MAX_SAFE_INTEGER).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.log(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(false).assertTrue();
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_0042
+     * @tc.name      : testlayoutByPromise_9
+     * @tc.desc      : To test Paragraph layoutAsync interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testlayoutByPromise_9', 42, async ()=> {
+      let msg = "testlayoutByPromise_9 "
+      console.info(msg + 'begin');
+      let paragraph = buildParagraph();
+      await paragraph.layout(Number.MIN_SAFE_INTEGER).then((data) => {
+        console.log(msg + `layout success !  ${JSON.stringify(data)}`);
+        expect(false).assertTrue();
+      }).catch((error: BusinessError) => {
+        console.error(msg + `layout failed ! error: ${JSON.stringify(error, ['code', 'message'])}`);
+        expect(error.code).assertEqual(401);
+      });
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_043
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : Constructs a LineTypeset object test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_1', 43, async ()=> {
+      let msg = "testParagraphBuilder_BuildLineTypeset_1"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      try {
+        let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+        console.info(msg + 'build LineTypeset successed');
+        try {
+          let count = lineTypeset.getLineBreak(0, 800);
+          if (count != str.length) {
+            console.info(msg + 'getLineBreak return error value');
+            expect().assertFail();
+          }
+        } catch (err) {
+          console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        try {
+          lineTypeset.createLine(0, str.length);
+        } catch (err) {
+          console.info(msg + 'build LineTypeset error cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+      } catch (err) {
+        console.info(msg + 'build LineTypeset error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_044
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : getLineBreak interface abnormal parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_2', 44, async ()=> {
+      let msg = "testParagraphBuilder_BuildLineTypeset_2"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let count = lineTypeset.getLineBreak(null, 800);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(undefined, 800);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_045
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : getLineBreak interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_3', 45, async ()=> {
+      let msg = "testParagraphBuilder_BuildLineTypeset_3"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let count = lineTypeset.getLineBreak(-10, 800);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(0, -10);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(Number.MIN_VALUE, Number.MAX_VALUE);
+        expect(count).assertEqual(str.length);
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(Number.MAX_VALUE, Number.MIN_VALUE);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(1.23, Number.MAX_VALUE);
+        expect(count).assertEqual(str.length - 1);
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_046
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : getLineBreak interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_4', 46, async ()=> {
+      let msg = "testParagraphBuilder_BuildLineTypeset_4"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let count = lineTypeset.getLineBreak(0, display.getDefaultDisplaySync().width);
+        expect(count).assertEqual(str.length);
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(3, display.getDefaultDisplaySync().width);
+        expect(count).assertEqual(str.length - 3);
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_047
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : getLineBreak interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_5', 47, async ()=> {
+      let msg = "testLineTypeset_BuildLineTypeset_5"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let count = lineTypeset.getLineBreak(0, null);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let count = lineTypeset.getLineBreak(0, undefined);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_048
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : Constructs a LineTypeset object test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_6', 48, async ()=> {
+      let msg = "testLineTypeset_BuildLineTypeset_6"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        let line = lineTypeset.createLine(0, str.length);
+        expect(6).assertEqual(line.getGlyphCount());
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+
+      try {
+        let line = lineTypeset.createLine(1, 5);
+        expect(5).assertEqual(line.getGlyphCount());
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_049
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : createLine interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_7', 49, async ()=> {
+      let msg = "testLineTypeset_BuildLineTypeset_7"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        lineTypeset.createLine(-10, str.length);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        lineTypeset.createLine(0, -10);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let line = lineTypeset.createLine(Number.MIN_VALUE, Number.MAX_VALUE);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let line = lineTypeset.createLine(Number.MAX_VALUE, Number.MIN_VALUE);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        let line = lineTypeset.createLine(1.23, str.length);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_050
+     * @tc.name      : run BuildLineTypeset
+     * @tc.desc      : createLine interface parameter test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testLineTypeset_BuildLineTypeset_8', 50, async ()=> {
+      let msg = "testLineTypeset_BuildLineTypeset_7"
+      console.info(msg + 'begin');
+      let textStyle: text.TextStyle = {
+        color : {alpha: 255, red: 0, green: 0, blue: 255},
+        fontSize: 66,
+      };
+      let paragraphStyle: text.ParagraphStyle = {
+        textStyle : textStyle,
+        align: 3,
+      };
+      let fontCollection = new text.FontCollection();
+      let paragraphGraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+      let str : string = "123456";
+      try {
+        paragraphGraphBuilder.addText(str);
+        console.info(msg + 'addText successed first');
+      } catch (err) {
+        console.info(msg + 'second addText error cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+      let lineTypeset = paragraphGraphBuilder.buildLineTypeset();
+      console.info(msg + 'build LineTypeset successed');
+      try {
+        lineTypeset.createLine(null, str.length);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        lineTypeset.createLine(undefined, str.length);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        lineTypeset.createLine(0, null);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+
+      try {
+        lineTypeset.createLine(0, undefined);
+        expect().assertFail();
+      } catch (err) {
+        console.info(msg + 'getLineBreak error cause: ' + JSON.stringify(err));
+        expect().not().assertFail();
+      }
+    })
+
   })
 }

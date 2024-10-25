@@ -42,7 +42,7 @@ struct onSelectionChange10 {
         })
         .id('onSelectionChange10_RichEditor')
         .width('100%')
-        .height('20%')
+        .height(80)
       Text('' + this.text1).key("onSelectionChange10_text1")
     }
     .borderWidth(1)

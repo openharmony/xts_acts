@@ -14,7 +14,7 @@
  */
 import bundle from '@ohos.bundle'
 import account from '@ohos.account.osAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 const BUNDLE_NAME1 = 'com.example.third1';
 const BUNDLE_NAME2 = 'com.example.third7';

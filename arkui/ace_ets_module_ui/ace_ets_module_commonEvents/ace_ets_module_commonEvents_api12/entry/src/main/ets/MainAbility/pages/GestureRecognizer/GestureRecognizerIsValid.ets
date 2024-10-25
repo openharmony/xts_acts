@@ -33,18 +33,19 @@ struct FatherControlChildTest1 {
       Button()
         .id('childScrollVisBtn')
         .onClick(()=>{
-        if(this.vis == Visibility.Visible){
-          this.vis = Visibility.None
-        }else{
-          this.vis = Visibility.Visible
-        }
-      }).width(300)
-        .height(200)
+          if(this.vis == Visibility.Visible){
+            this.vis = Visibility.None
+          }else{
+            this.vis = Visibility.Visible
+          }
+        }).width(200)
+        .height('10%')
       Scroll(this.scroller) { // 外部滚动容器
         Column() {
+          Flex({direction: FlexDirection.Column, justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center}){
           Text("Scroll Area").id('FatherControlChildTest1_text')
             .width('90%')
-            .height(150)
+            .height('15%')
             .backgroundColor(0xFFFFFF)
             .borderRadius(15)
             .fontSize(16)
@@ -53,36 +54,36 @@ struct FatherControlChildTest1 {
 
           Scroll(this.scroller2) { // 内部滚动容器
             Column() {
-              Text("Scroll Area2")
-                .width('90%')
-                .height(150)
-                .backgroundColor(0xFFFFFF)
-                .borderRadius(15)
-                .fontSize(16)
-                .textAlign(TextAlign.Center)
-                .margin({ top: 10 })
-              Column() {
-                ForEach(this.arr, (item: number) => {
-                  Text(item.toString()).id(`FatherControlChildTest1_inner_${item}`)
-                    .width('90%')
-                    .height(150)
-                    .backgroundColor(0xFFFFFF)
-                    .borderRadius(15)
-                    .fontSize(16)
-                    .textAlign(TextAlign.Center)
-                    .margin({ top: 10 })
-                }, (item: string) => item)
-              }.width('100%')
-            }
-          }
-          .visibility(this.vis)
+                Text("Scroll Area2")
+                  .width('90%')
+                  .height('15%')
+                  .backgroundColor(0xFFFFFF)
+                  .borderRadius(15)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .margin({ top: 10 })
+                Column() {
+                  ForEach(this.arr, (item: number) => {
+                    Text(item.toString()).id(`FatherControlChildTest1_inner_${item}`)
+                      .width('90%')
+                      .height('15%')
+                      .backgroundColor(0xFFFFFF)
+                      .borderRadius(15)
+                      .fontSize(16)
+                      .textAlign(TextAlign.Center)
+                      .margin({ top: 10 })
+                  }, (item: string) => item)
+                }.width('100%')
+              }
+            }.visibility(this.vis)
           .id("FatherControlChildTest1_inner")
           .width('100%')
-          .height(800)
-        }.width('100%')
+          .height('80%')
+          }
+        }.width('100%').height('80%')
       }
       .id("outer")
-      .height(600)
+      .height('80%')
       .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
       .scrollBar(BarState.On) // 滚动条常驻显示
       .scrollBarColor(Color.Gray) // 滚动条颜色

@@ -14,7 +14,7 @@
  */
 import account from '@ohos.account.appAccount'
 import file from '@system.file'
-import {Core, ExpectExtend} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
@@ -29,7 +29,7 @@ export default {
         console.info('====>creat scene manager finish====');
         let enableBundle = 'com.example.actsaccountpressure';
         console.info('====>add first account start====');
-        appAccountManager.createAccount('account_name_scene_first', async (err)=>{
+        appAccountManager.createAccount('account_name_scene_first', async (err) => {
             console.info('====>add first account err:' + JSON.stringify(err));
             try {
                 await appAccountManager.setAppAccess('account_name_scene_first', enableBundle, true);
@@ -43,9 +43,9 @@ export default {
                 console.info('====>setAppAccess account_name_scene_second err:' + JSON.stringify(err));
             }
             featureAbility.terminateSelf(
-                (err, data)=>{
+                (err, data) => {
                     console.info('====>Terminate Ability Success====');
-            });
+                });
         });
     },
     onShow() {

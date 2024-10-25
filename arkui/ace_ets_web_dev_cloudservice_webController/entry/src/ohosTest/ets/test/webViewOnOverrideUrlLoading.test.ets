@@ -69,15 +69,16 @@ export default function webViewOnOverrideUrlLoading() {
         await Utils.sleep(1000);
       done();
     })
-    
+
+
     /*
-     *@tc.number SUB_ACE_SUB_ONOVERRIDEURLLOADING_API_0600
-     *@tc.name testWebViewwebViewOnOverrideUrlLoading
-     *@tc.desc test interface of OnOverrideUrlLoading with runjavascript jump
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
+    * @tc.number     : SUB_ACE_SUB_ONOVERRIDEURLLOADING_API_0600
+    * @tc.name       : testWebViewwebViewOnOverrideUrlLoading
+    * @tc.desc       : test interface of OnOverrideUrlLoading with runjavascript jump
+    * @tc.size_t     : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
     it('testWebViewwebViewOnOverrideUrlLoading', 0, async (done: Function) => {
         Utils.registerEvent("emitWebViewwebViewOnOverrideUrlLoading", "true", 10007, done);
         sendEventByKey('webViewOnOverrideUrlLoading', 10, '');

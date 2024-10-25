@@ -12,28 +12,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ability_featureAbility from '@ohos.ability.featureAbility';
-import commonEvent from '@ohos.commonEvent';
+import commonEvent from '@ohos.commonEventManager';
 
 const TAG1 = "Fa:SupportFunction:MainAbility:";
 const listPush1 = "Fa_SupportFunction_MainAbility_";
 let lifeList: string[] = [];
 let lifeListActive: string[] = [];
 
-export default {
+
+class MainAbility {
   onCreate() {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
     lifeListActive.push('onCreate');
-  },
+  }
   onDestroy() {
     console.log(TAG1 + 'onDestroy');
-  },
+  }
   onActive() {
     console.log(TAG1 + 'onActive');
     lifeListActive.push('onActive');
 
-    let options = {
+    let options:commonEvent.CommonEventPublishData = {
       parameters: {
         lifeList: lifeListActive
       }
@@ -41,43 +41,45 @@ export default {
     commonEvent.publish(listPush1 + "onActive", options, (err) => {
       console.log(TAG1 + listPush1 + "onActive");
     });
-  },
+  }
   onInactive() {
     console.log(TAG1 + 'onInactive');
-  },
+  }
   onShow() {
     console.log(TAG1 + 'onShow');
-  },
+  }
   onHide() {
     console.log(TAG1 + 'onHide');
-  },
-  onNewWant(want) {
+  }
+  onNewWant(want: Want) {
     console.log(TAG1 + 'onNewWant');
-  },
+  }
   onStartContinuation() {
     console.log(TAG1 + 'onStartContinuation');
     return true;
-  },
-  onSaveData(data) {
+  }
+  onSaveData() {
     console.log(TAG1 + 'onSaveData');
     return true;
-  },
-  onCompleteContinuation(number) {
+  }
+  onCompleteContinuation(number:number) {
     console.log(TAG1 + 'onCompleteContinuation');
-  },
-  onRestoreData(data) {
+  }
+  onRestoreData() {
     console.log(TAG1 + 'onRestoreData');
-  },
+  }
   onRemoteTerminated() {
     console.log(TAG1 + 'onRemoteTerminated');
-  },
-  onSaveAbilityState(outState) {
+  }
+  onSaveAbilityState() {
     console.log(TAG1 + 'onSaveAbilityState');
-  },
-  onRestoreAbilityState(inState) {
+  }
+  onRestoreAbilityState() {
     console.log(TAG1 + 'onRestoreAbilityState');
-  },
-  onMemoryLevel(level) {
+  }
+  onMemoryLevel(level:number) {
     console.log(TAG1 + 'onMemoryLevel');
   }
 }
+
+export default new MainAbility();

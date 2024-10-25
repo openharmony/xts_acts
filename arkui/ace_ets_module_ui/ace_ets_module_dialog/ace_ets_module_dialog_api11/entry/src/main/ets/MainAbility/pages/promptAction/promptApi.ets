@@ -16,6 +16,7 @@
 import prompt from '@ohos.prompt'
 import Log from '../../common/Log';
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 const TAG = 'ets_apiLack_add';
 
@@ -55,7 +56,7 @@ struct PromptShowDialog {
             ]
           }).then(data => {
             console.info('showDialog success, click button: ' + data.index)
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.info('showDialog error: ' + err)
           })
         })

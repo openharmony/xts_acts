@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import { Context } from "@kit.AbilityKit"
+
 export const oHPrintInit: () => Promise<number>;
 export const oHPrintListener: () => Promise<number>;
 export const oHPrintDiscovery: () => Promise<number>;
@@ -32,3 +34,4 @@ export const oHScanStartScan: () => Promise<number>;
 export const oHScanCancelScan: () => Promise<number>;
 export const oHScanGetPictureScanProgress: () => Promise<number>;
 export const oHScanExit: () => Promise<number>;
+export const oHPrintStartPrintByNative: (context: Context) => Promise<number>;

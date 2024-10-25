@@ -70,364 +70,390 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFail3_2() {
       done();
     })
 
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0030
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -300
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0324
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative300
+     * @tc.desc        : test SdkSchemeHandler didFail code -300
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative300', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative300"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative300", 'success', 11300, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0031
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -301
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0325
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative301
+     * @tc.desc        : test SdkSchemeHandler didFail code -301
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative301', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative301"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative301", 'success', 11301, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0032
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -302
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0326
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative302
+     * @tc.desc        : test SdkSchemeHandler didFail code -302
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative302', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative302"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative302", 'success', 11302, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0033
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -303
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0327
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative303
+     * @tc.desc        : test SdkSchemeHandler didFail code -303
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative303', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative303"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative303", 'success', 11303, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0034
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -310
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0328
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative310
+     * @tc.desc        : test SdkSchemeHandler didFail code -310
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative310', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative310"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative310", 'success', 11310, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0035
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -311
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0329
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative311
+     * @tc.desc        : test SdkSchemeHandler didFail code -311
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative311', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative311"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative311", 'success', 11311, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0036
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -312
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0330
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative312
+     * @tc.desc        : test SdkSchemeHandler didFail code -312
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative312', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative312"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative312", 'success', 11312, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0037
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -320
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0331
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative320
+     * @tc.desc        : test SdkSchemeHandler didFail code -320
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative320', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative320"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative320", 'success', 11320, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0038
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -321
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0332
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative321
+     * @tc.desc        : test SdkSchemeHandler didFail code -321
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative321', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative321"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative321", 'success', 11321, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0039
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -322
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0333
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative322
+     * @tc.desc        : test SdkSchemeHandler didFail code -322
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative322', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative322"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative322", 'success', 11322, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0040
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -323
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0334
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative323
+     * @tc.desc        : test SdkSchemeHandler didFail code -323
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative323', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative323"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative323", 'success', 11323, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0041
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -324
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0335
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative324
+     * @tc.desc        : test SdkSchemeHandler didFail code -324
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative324', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative324"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative324", 'success', 11324, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0042
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -325
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0336
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative325
+     * @tc.desc        : test SdkSchemeHandler didFail code -325
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative325', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative325"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative325", 'success', 11325, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0043
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -327
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0337
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative327
+     * @tc.desc        : test SdkSchemeHandler didFail code -327
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative327', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative327"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative327", 'success', 11327, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0044
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -328
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0338
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative328
+     * @tc.desc        : test SdkSchemeHandler didFail code -328
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative328', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative328"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative328", 'success', 11328, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0045
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -329
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0339
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative329
+     * @tc.desc        : test SdkSchemeHandler didFail code -329
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative329', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative329"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative329", 'success', 11329, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0046
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -330
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0340
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative330
+     * @tc.desc        : test SdkSchemeHandler didFail code -330
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative330', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative330"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative330", 'success', 11330, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0047
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -331
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0341
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative331
+     * @tc.desc        : test SdkSchemeHandler didFail code -331
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative331', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative331"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative331", 'success', 11331, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0048
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -332
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0342
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative332
+     * @tc.desc        : test SdkSchemeHandler didFail code -332
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative332', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative332"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative332", 'success', 11332, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0049
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -333
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0343
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative333
+     * @tc.desc        : test SdkSchemeHandler didFail code -333
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative333', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative333"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative333", 'success', 11333, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0050
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -334
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0344
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative334
+     * @tc.desc        : test SdkSchemeHandler didFail code -334
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative334', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative334"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative334", 'success', 11334, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0051
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -336
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0345
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative336
+     * @tc.desc        : test SdkSchemeHandler didFail code -336
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative336', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative336"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative336", 'success', 11336, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0052
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -337
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0346
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative337
+     * @tc.desc        : test SdkSchemeHandler didFail code -337
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative337', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative337"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative337", 'success', 11337, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0053
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -338
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0347
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative338
+     * @tc.desc        : test SdkSchemeHandler didFail code -338
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative338', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative338"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative338", 'success', 11338, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0054
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -339
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0348
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative339
+     * @tc.desc        : test SdkSchemeHandler didFail code -339
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative339', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative339"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative339", 'success', 11339, done);
       sendEventByKey('webViewSdkSchemeHandlerDidFail3Button', 10, '');
     })
+
     /*
-    *@tc.number SUB_ACE_WEB_SdkSchemeHandler_didFail_API_0055
-    *@tc.name testWebViewSdkSchemeHandlerDidFail
-    *@tc.desc test SdkSchemeHandler didFail code -340
-    *@tc.size MediumTest
-    *@tc.type Function
-    *@tc.level 1
-    */
+     * @tc.number      : SUB_ACE_WEB_WEBHOST_SDK_0349
+     * @tc.name        : testWebViewSdkSchemeHandlerDidFailNegative340
+     * @tc.desc        : test SdkSchemeHandler didFail code -340
+     * @tc.size        : MediumTest
+     * @tc.type        : Function
+     * @tc.level       : Level 0
+     */
     it('testWebViewSdkSchemeHandlerDidFailNegative340', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative340"
       Utils.emitEvent(emitKey, 10);

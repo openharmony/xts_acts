@@ -47,7 +47,7 @@ struct ListItem_aspectRatio_width {
             .textAlign(TextAlign.Center)
             .backgroundColor(0xAFEEEE)
         }
-        .width(300)
+        .width('80%')
         .aspectRatio(this.aspectRatio1)
         .key('ListItem_aspectRatio_width_01')
 
@@ -81,7 +81,7 @@ struct ListItem_aspectRatio_width {
             .backgroundColor(0xAFEEEE)
         }
       }
-      .width('80%')
+      .width(200)
       .height(600)
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.On)

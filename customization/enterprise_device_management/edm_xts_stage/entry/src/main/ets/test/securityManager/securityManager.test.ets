@@ -13,18 +13,20 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
-import { ENTINFO1, INVALID_WANT, SELFHAPNAME, SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY } from '../commom';
+import { describe, expect, it, beforeAll } from '@ohos/hypium';
+import { ENTINFO1, INVALID_WANT, SELFHAPNAME, SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY,
+  WATERMARK_BUNDLE_NAME, DEFAULT_USER_ID, getPixelMap, PIXEL_MAP } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import securityManager from '@ohos.enterprise.securityManager';
+import sysDeviceInfo from '@ohos.deviceInfo';
 
 const PATCH = 'patch';
 const ENCRYPTION = 'encryption';
 
 const PASSWORD_POLICY: securityManager.PasswordPolicy = {
   complexityRegex: 'g',
-  validityPeriod: 180,
+  validityPeriod: 60 * 60 * 24 * 1000,
   additionalDescription: '123'
 };
 
@@ -130,6 +132,9 @@ export default function securityManagerTest() {
 
     testSetClipboardPolicy();
     testGetClipboardPolicy();
+
+    testSetWatermarkImage();
+    testCancelWatermarkImage();
   })
 }
 
@@ -986,6 +991,266 @@ function testGetClipboardPolicy() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+}
+
+function testSetWatermarkImage() {
+
+  beforeAll(function (done) {
+    getPixelMap();
+    done();
+  })
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WATERMARK_IMAGE_JS_0100
+   * @tc.name      : test_set_watermark_image_0100
+   * @tc.desc      : test securityManager setWatermarkImage without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_watermark_image_0100", 0, async (done: Function) => {
+    try {
+      securityManager.setWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, PIXEL_MAP, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WATERMARK_IMAGE_JS_0101
+   * @tc.name      : test_set_watermark_image_0101
+   * @tc.desc      : test securityManager setWatermarkImage with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_watermark_image_0101", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.setWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, PIXEL_MAP, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WATERMARK_IMAGE_JS_0102
+   * @tc.name      : test_set_watermark_image_0102
+   * @tc.desc      : test securityManager setWatermarkImage with invalid admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_watermark_image_0102", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setWatermarkImage(INVALID_WANT, WATERMARK_BUNDLE_NAME, PIXEL_MAP, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WATERMARK_IMAGE_JS_0103
+   * @tc.name      : test_set_watermark_image_0103
+   * @tc.desc      : test securityManager setWatermarkImage with bundleName empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_watermark_image_0103", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setWatermarkImage(SELFWANT, null, PIXEL_MAP, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WATERMARK_IMAGE_JS_0104
+   * @tc.name      : test_set_watermark_image_0104
+   * @tc.desc      : test securityManager setWatermarkImage with source empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_watermark_image_0104", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, null, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WATERMARK_IMAGE_JS_0105
+   * @tc.name      : test_set_watermark_image_0105
+   * @tc.desc      : test securityManager setWatermarkImage with accountId empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_watermark_image_0105", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, PIXEL_MAP, null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_WATERMARK_IMAGE_JS_0106
+   * @tc.name      : test_set_watermark_image_0106
+   * @tc.desc      : test securityManager setWatermarkImage
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_watermark_image_0106", 0, async (done: Function) => {
+    if (sysDeviceInfo.deviceType != '2in1') {
+      done();
+      return;
+    }
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, PIXEL_MAP, DEFAULT_USER_ID);
+      securityManager.cancelWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, DEFAULT_USER_ID);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testCancelWatermarkImage() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_CANCEL_WATERMARK_IMAGE_JS_0100
+   * @tc.name      : test_cancel_watermark_image_0100
+   * @tc.desc      : test securityManager cancelWatermarkImage without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_cancel_watermark_image_0100", 0, async (done: Function) => {
+    try {
+      securityManager.cancelWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_CANCEL_WATERMARK_IMAGE_JS_0101
+   * @tc.name      : test_cancel_watermark_image_0101
+   * @tc.desc      : test securityManager cancelWatermarkImage with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_cancel_watermark_image_0101", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      securityManager.cancelWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_CANCEL_WATERMARK_IMAGE_JS_0102
+   * @tc.name      : test_cancel_watermark_image_0102
+   * @tc.desc      : test securityManager cancelWatermarkImage with invalid admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_cancel_watermark_image_0102", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.cancelWatermarkImage(INVALID_WANT, WATERMARK_BUNDLE_NAME, PIXEL_MAP, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_CANCEL_WATERMARK_IMAGE_JS_0103
+   * @tc.name      : test_cancel_watermark_image_0103
+   * @tc.desc      : test securityManager cancelWatermarkImage with bundleName empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_cancel_watermark_image_0103", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.cancelWatermarkImage(SELFWANT, null, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_CANCEL_WATERMARK_IMAGE_JS_0104
+   * @tc.name      : test_cancel_watermark_image_0104
+   * @tc.desc      : test securityManager cancelWatermarkImage with accountId empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_cancel_watermark_image_0104", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.cancelWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });

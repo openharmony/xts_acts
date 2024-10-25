@@ -14,7 +14,7 @@
  */
 
 import { describe, afterAll, it, expect } from '@ohos/hypium'
-import { setDelayRequestAndCloseWorkerInstantlyTest } from './LockTest';
+import { setDelayRequestAndCloseWorkerInstantlyTest, gcAfterLockAsyncTest } from './LockTest';
 
 
 export default function AsyncLockTest() {
@@ -39,5 +39,21 @@ export default function AsyncLockTest() {
       expect(result).assertEqual('PASSED');
       done();
     });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_002
+     * @tc.name: gcAfterLockAsyncTest
+     * @tc.desc: checks that trigger gc immediately after call lockAsync
+     * @tc.author: liu-zelin
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('gcAfterLockAsyncTest0', 0, async (done: Function) => {
+      let result: Object = await gcAfterLockAsyncTest();
+      expect(result).assertEqual("PASSED");
+      done();
+    })
+
   })
 }

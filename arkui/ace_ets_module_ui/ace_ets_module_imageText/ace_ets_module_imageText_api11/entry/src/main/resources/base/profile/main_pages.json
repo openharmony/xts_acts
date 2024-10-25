@@ -209,6 +209,10 @@
         "MainAbility/pages/Progress/loadingProgress2",
         "MainAbility/pages/Search/SearchGesture",
         "MainAbility/pages/text/TextDrag",
-        "MainAbility/pages/TextArea/textAreaOnCaretAndKeyboard"
+        "MainAbility/pages/TextArea/textAreaOnCaretAndKeyboard",
+        "MainAbility/pages/RichEditor/richEditorPage",
+        "MainAbility/pages/text/textTextCase",
+        "MainAbility/pages/text/textDecoration",
+        "MainAbility/pages/Search/searchPage1"
     ]
 }

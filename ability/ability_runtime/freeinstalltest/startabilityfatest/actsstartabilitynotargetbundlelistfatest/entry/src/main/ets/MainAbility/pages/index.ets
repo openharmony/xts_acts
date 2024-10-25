@@ -14,54 +14,15 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import file from '@system.file';
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
-import { Hypium } from '@ohos/hypium'
-import testsuite from "../test/List.test";
-import featureAbility from "@ohos.ability.featureAbility";
-
-async function routePage() {
-  let options = {
-    uri: 'pages/second'
-  }
-  try {
-    await router.push(options)
-  } catch (err) {
-    console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`)
-  }
-}
-
 @Entry
 @Component
 struct Index {
-  aboutToAppear() {
-    console.info("aboutToAppear start!!!!")
-    //let abilityDelegator: any
-    //abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    //let abilityDelegatorArguments: any
-    //abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    //console.info('start run testcase!!!')
-    //Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-  }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
-      Button() {
-        Text(' FA- StartAbility- NoTargetBundleList TEST ')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({
-        top: 20
-      })
-      .backgroundColor('#0D9FFB')
-      .onClick(() => {
-        routePage()
-      })
     }
     .width('100%')
     .height('100%')

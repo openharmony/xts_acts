@@ -29,12 +29,12 @@ export default function webviewApi() {
     })
 
     /*
-    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_049
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0490
     * @tc.name       : testWebResourceHandler_DidFailWithError
     * @tc.desc       : test WebResourceHandler_DidFailWithError
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
     it('testWebResourceHandler_DidFailWithError', 0, async (done: Function) => {
 

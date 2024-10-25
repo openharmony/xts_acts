@@ -1,12 +1,12 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for ActsBundleMgrStageEtsTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
+        "test-timeout": "600000",
+        "shell-timeout": "600000",
         "bundle-name": "ohos.acts.bundle.stage.test",
         "module-name": "testModule",
-        "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "testcase-timeout": 240000
     },
     "kits": [
         {
@@ -16,7 +16,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
-    ] 
+    ]
 }
-

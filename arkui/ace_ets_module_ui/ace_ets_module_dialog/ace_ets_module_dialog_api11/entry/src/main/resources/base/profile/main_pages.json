@@ -8,6 +8,7 @@
     "MainAbility/pages/promptAction/CustomDialogMask",
     "MainAbility/pages/Menu/menu",
     "MainAbility/pages/Menu/menufirst",
+    "MainAbility/pages/Menu/menuDivider",
     "MainAbility/pages/Menu/menusecond",
     "MainAbility/pages/promptAction/ToastShowMode",
     "MainAbility/pages/promptAction/prompt",

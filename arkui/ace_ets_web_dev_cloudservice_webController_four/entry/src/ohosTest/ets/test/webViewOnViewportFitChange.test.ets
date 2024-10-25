@@ -76,7 +76,7 @@ export default function webViewOnViewportFitChange() {
      *@tc.desc test OnViewportFitChange
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewOnViewportFitChange', 0, async (done: Function) => {
         emitKey = "emitWebViewOnViewportFitChange"
@@ -91,7 +91,7 @@ export default function webViewOnViewportFitChange() {
      *@tc.desc ViewportFit_COVER
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebView_ViewportFit_COVER', 0, async (done: Function) => {
         emitKey = "emitWebView_ViewportFit_COVER"

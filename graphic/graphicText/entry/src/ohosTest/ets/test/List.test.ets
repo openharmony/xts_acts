@@ -17,13 +17,17 @@ import graphicTextBTest from './graphicTextB.test'
 import graphicTextClass from './graphicTextClass.test'
 import graphicTextEnum from './graphicTextEnum.test'
 import graphicTextInterface from './graphicTextInterface.test'
+import graphicFontDescriptorTest from './graphicFontDescriptor.test'
 import LineMetricsTest from './LineMetricsTest.test'
+import LineMetricsTwoTest from './LineMetricsTwoTest.test'
 
 export default function testsuite() {
   graphicTextATest()
   graphicTextBTest()
   graphicTextClass();
   graphicTextEnum();
-  graphicTextInterface(); 
-  LineMetricsTest()
+  graphicTextInterface();
+  graphicFontDescriptorTest()
+  LineMetricsTest();
+  LineMetricsTwoTest()
 }

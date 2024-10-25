@@ -25,6 +25,7 @@ group("distributeddatamgr") {
       "distributedKVStoretest:distributedKVStoretest",
       "kvStoretest:kvStoretest",
       "preferencesEtstest:ActsPreferencesEtsTest",
+      "preferencesNdktestHvigor:ActsPreferencesNdkTest",
       "preferencesSendabletest:preferencesSendable_ets_test",
       "preferencesdatagroupidtest:ActsPreferencesDataGroupIdTest",
       "preferencesjstest/hap:preferences_js_test",
@@ -42,5 +43,8 @@ group("distributeddatamgr") {
 
 group("pasteboard") {
   testonly = true
-  deps = [ "Pasteboardjsapitest:ActsPasteBoardETSApiTest" ]
+  deps = [
+    "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
+    "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
+  ]
 }

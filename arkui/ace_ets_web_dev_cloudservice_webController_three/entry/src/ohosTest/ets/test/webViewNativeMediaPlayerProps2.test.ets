@@ -55,7 +55,7 @@ export default function webViewNativeMediaPlayerProps2() {
      *@tc.desc test MediaPlayerProps2
      *@tc.type Function
      *@tc.size MediumTest
-     *@tc.level 1
+     *@tc.level Level 0
      */
     it('testWebViewNativeMediaPlayerProps2', 0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerProps2";

@@ -914,6 +914,44 @@ export default function TCPSocketTest() {
         done();
       }
     });
+    
+        /* *
+     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_2500
+     * @tc.name  : testNetworkMgrSocketTCPSocketBind2500
+     * @tc.desc  : Bind IP address and port,Address is Domain name ; promise
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 2
+     */
+    it('testNetworkMgrSocketTCPSocketBind2500', 0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrSocketTCPSocketBind2500';
+      try {
+        console.info(`${caseName} test start `);
+        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+        expect(tcp).assertInstanceOf('Object');
+        let bindAddress: socket.NetAddress = {
+          address: 'www.baidu.com',
+          port: 80,
+          family: 1
+        };
+        tcp.bind(bindAddress).then(() => {
+          expectFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(`${caseName} fail ${JSON.stringify(err)}`);
+          expectTrue(err.code===401);
+          done();
+        }).finally(() => {
+          console.info(`${caseName} test end`);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName}_catch fail ${JSON.stringify(err)}`);
+        expectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
 
     /* *
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Connect_0100

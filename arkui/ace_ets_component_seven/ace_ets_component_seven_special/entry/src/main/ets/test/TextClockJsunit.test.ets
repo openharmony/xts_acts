@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function TextClockJsunit() {
-  describe('TextClockJsunit', function () {
-    beforeEach(async function (done) {
+  describe('TextClockJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextClock beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textClockPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textClockPage',
       }
       try {
         router.clear();
@@ -49,10 +49,10 @@ export default function TextClockJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextClock_0100', 0, async function (done) {
+    it('TextClock_0100', 0, async (done: Function) => {
       console.info('[TextClock_0100] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0100] obj :" + obj.$attrs);
 
       expect(obj.$attrs.format).assertEqual('hh:mm:ss');
@@ -69,10 +69,10 @@ export default function TextClockJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextClock_0200', 0, async function (done) {
+    it('TextClock_0200', 0, async (done: Function) => {
       console.info('[TextClock_0200] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0200] obj :" + obj.$attrs);
 
       expect(obj.$attrs.fontColor).assertEqual('#FF123456');
@@ -88,10 +88,10 @@ export default function TextClockJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextClock_0300', 0, async function (done) {
+    it('TextClock_0300', 0, async (done: Function) => {
       console.info('[TextClock_0300] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0300] obj :" + obj.$attrs);
 
       expect(obj.$attrs.fontSize).assertEqual('15.00fp');
@@ -107,10 +107,10 @@ export default function TextClockJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextClock_0400', 0, async function (done) {
+    it('TextClock_0400', 0, async (done: Function) => {
       console.info('[TextClock_0400] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0400] obj :" + obj.$attrs);
 
       expect(obj.$attrs.fontWeight).assertEqual('FontWeight.Normal');
@@ -127,10 +127,10 @@ export default function TextClockJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextClock_0500', 0, async function (done) {
+    it('TextClock_0500', 0, async (done: Function) => {
       console.info('[TextClock_0500] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0500] obj :" + obj.$attrs);
 
       expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Italic');
@@ -146,10 +146,10 @@ export default function TextClockJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('TextClock_0600', 0, async function (done) {
+    it('TextClock_0600', 0, async (done: Function) => {
       console.info('[TextClock_0600] START');
       let strJson = getInspectorByKey('TextClockKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextClock_0600] obj :" + obj.$attrs);
 
       expect(obj.$attrs.fontFamily).assertEqual('cursive');

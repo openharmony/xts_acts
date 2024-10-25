@@ -22,11 +22,13 @@ import UpdateContactTest from './UpdateContact.test';
 import IsMyCardTest from './IsMyCard.test';
 import ContactTest from './Contact.test';
 import QueryGroupsTest from './QueryGroups.test';
+import EmptyTest from './Empty.test';
+import ContactsTest from './Contacts.test';
 import SelectTest from './select.test'
-import EmptyTest from './Empty.test'
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if (canIUse("SystemCapability.Applications.Contacts")){
+  if (sim.getMaxSimCount()!=0){
     SelectTest();
     AddContactTest();
     QueryKeyTest();
@@ -37,6 +39,7 @@ export default function testsuite() {
     QueryGroupsTest();
     IsMyCardTest();
     ContactTest();
+    ContactsTest()
   }else{
     EmptyTest()
   }

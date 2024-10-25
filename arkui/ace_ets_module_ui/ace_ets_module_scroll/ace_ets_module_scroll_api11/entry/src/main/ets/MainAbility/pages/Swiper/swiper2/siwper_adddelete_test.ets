@@ -119,6 +119,12 @@ struct SwiperExampleT5 {
           }).key("showPreviousTT")
 
       }.margin(5)
+	  
+      Button('changeIndex').id('change_8')
+        .onClick(() => {
+          this.swiperController.changeIndex(7)
+          console.log('change Index 8')
+        })
 
       Row({ space: 12 }) {
         Button('add')

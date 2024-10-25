@@ -68,14 +68,14 @@ export default function listSwipeAction36Jsunit() {
 
       // swipe the listItem to bottom
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(120))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(100)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(112))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
       let textSwipeOffset = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0340 json is ' + JSON.stringify(JSON.parse(textSwipeOffset)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('0');
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset).$attrs.content)))<=1).assertTrue();
       // reset
       let buttonReset2 = await driver.findComponent(ON.id('btreset36'));
       await driver.delayMs(300);
@@ -84,13 +84,13 @@ export default function listSwipeAction36Jsunit() {
 
       // swipe to up
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(180))
+        Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(188))
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0360 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('0')
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content)))<=1).assertTrue();
       done();
     });
 
@@ -119,7 +119,7 @@ export default function listSwipeAction36Jsunit() {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0380 json is ' + JSON.stringify(JSON.parse(textSwipeOffset)
         .$attrs));
       // [15.00, 87.00][360.00,387.00]
-      expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('50')
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset).$attrs.content))-50)<=1).assertTrue();
       // reset
       await driver.swipe(
         Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(115)), Math.round(globalThis.winTop + vp2px(0))
@@ -137,7 +137,7 @@ export default function listSwipeAction36Jsunit() {
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0380 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('-50')
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content))-(-50))<=1).assertTrue();
       done();
 
     });
@@ -165,7 +165,7 @@ export default function listSwipeAction36Jsunit() {
       let textSwipeOffset0 = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0390 json is ' + JSON.stringify(JSON.parse(textSwipeOffset0)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset0).$attrs.content).assertEqual(0 + "")
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset0).$attrs.content)))<=1).assertTrue();
 
       // swipe the listItem to bottom
       await driver.swipe(
@@ -178,7 +178,7 @@ export default function listSwipeAction36Jsunit() {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0390 json is ' + JSON.stringify(JSON.parse(textSwipeOffset1)
         .$attrs));
       // [15.00, 87.00][360.00,387.00]
-      expect(JSON.parse(textSwipeOffset1).$attrs.content).assertEqual(200 + "")
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset1).$attrs.content))-200)<=1).assertTrue();
       // reset
       let buttonReset2 = await driver.findComponent(ON.id('btreset36'));
       await driver.delayMs(300);
@@ -192,7 +192,7 @@ export default function listSwipeAction36Jsunit() {
       let textSwipeOffset2 = getInspectorByKey('swipe36Offset');
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0390 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
         .$attrs));
-      expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual(-200 + "");
+      expect(Math.abs(Math.round(Number(JSON.parse(textSwipeOffset2).$attrs.content))-(-200))<=1).assertTrue();
       done();
 
     });

@@ -19,6 +19,14 @@
     {
       "name": "UIExtension_label",
       "value": "label"
+    },
+    {
+      "name": "CalledAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "CalledAbility_label",
+      "value": "label"
     }
   ]
 }

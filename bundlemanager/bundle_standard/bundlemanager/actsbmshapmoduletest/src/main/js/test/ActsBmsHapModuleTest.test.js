@@ -92,7 +92,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo1.moduleName).assertEqual('bmsmainabilitysecondscene');
                 expect(hapModuleInfo1.mainAbilityName).assertEqual(SECONDMAINABILITY);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
-                expect(hapModuleInfo1.installationFree).assertEqual(true);
+                expect(hapModuleInfo1.installationFree).assertEqual(false);
                 done();
             }
         });

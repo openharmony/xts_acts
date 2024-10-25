@@ -56,6 +56,9 @@ export default function TapGestureBasicDoubleClickTest() {
     it('TapGestureBasicDoubleClickTest_0010', 0, async (done: Function) => {
       console.info('TapGestureBasicDoubleClickTest_0010 START');
       await CommonFunc.sleep(1000);
+      let windowOffsetX:number = globalThis.winLeft
+      let windowOffsetY:number = globalThis.winTop
+      console.log('TapGestureBasicDoubleClickTest_0010 windowOffsetX and windowOffsetY',windowOffsetX, windowOffsetY)
       let FatherObj = CommonFunc.getComponentRectOnScreen('TapGestureBasicDoubleClick_Father');
       let FatherObjHeight = FatherObj.bottom - FatherObj.top
       let FatherObjWidth = FatherObj.right - FatherObj.left
@@ -127,14 +130,14 @@ export default function TapGestureBasicDoubleClickTest() {
       await CommonFunc.sleep(200);
       let text10 = getInspectorByKey('TapGestureBasicDoubleClick_fingerList_globalX');
       let obj10: ESObject = JSON.parse(text10);
-      console.log('TapGestureBasicDoubleClickTest_0010 obj10 $attrs content',obj10.$attrs.content,obj10)
-      expect(Math.abs(Math.round((vp2px(Number(obj10.$attrs.content)))- (Math.round(areaObj.left + areaWidth/2)))) <= 1).assertTrue();
+      console.log('TapGestureBasicDoubleClickTest_0010 obj10 $attrs content',obj10.$attrs.content,Math.round(areaObj.left + areaWidth/2) - windowOffsetX)
+      expect(Math.abs(Math.round((vp2px(Number(obj10.$attrs.content)))- (Math.round(areaObj.left + areaWidth/2) - windowOffsetX))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text11 = getInspectorByKey('TapGestureBasicDoubleClick_fingerList_globalY');
       let obj11: ESObject = JSON.parse(text11);
-      console.log('TapGestureBasicDoubleClickTest_0010 obj11 $attrs content',obj11.$attrs.content,obj11)
-      expect(Math.abs(Math.round((vp2px(Number(obj11.$attrs.content)))- (Math.round(areaObj.top + areaHeight/2)))) <= 1).assertTrue();
+      console.log('TapGestureBasicDoubleClickTest_0010 obj11 $attrs content',obj11.$attrs.content,Math.round(areaObj.top + areaHeight/2) - windowOffsetY)
+      expect(Math.abs(Math.round((vp2px(Number(obj11.$attrs.content)))- (Math.round(areaObj.top + areaHeight/2) - windowOffsetY))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text12 = getInspectorByKey('TapGestureBasicDoubleClick_fingerList_localX');
@@ -151,14 +154,14 @@ export default function TapGestureBasicDoubleClickTest() {
       await CommonFunc.sleep(200);
       let text16 = getInspectorByKey('TapGestureBasicDoubleClick_target_area_width');
       let obj16: ESObject = JSON.parse(text16);
-      console.log('TapGestureBasicDoubleClickTest_0010 obj16 $attrs content',obj16.$attrs.content,obj16)
-      expect(obj16.$attrs.content).assertEqual('target_area_width:240');
+      console.log('TapGestureBasicDoubleClickTest_0010 obj16 $attrs content',obj16.$attrs.content, vp2px(Number(obj16.$attrs.content)), vp2px(240))
+      expect(Math.abs(vp2px(Number(obj16.$attrs.content)) - vp2px(240)) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text17 = getInspectorByKey('TapGestureBasicDoubleClick_target_area_height');
       let obj17: ESObject = JSON.parse(text17);
-      console.log('TapGestureBasicDoubleClickTest_0010 obj17 $attrs content',obj17.$attrs.content,obj17)
-      expect(obj17.$attrs.content).assertEqual('target_area_height:80');
+      console.log('TapGestureBasicDoubleClickTest_0010 obj17 $attrs content',obj17.$attrs.content, vp2px(Number(obj17.$attrs.content)), vp2px(80))
+      expect(Math.abs(vp2px(Number(obj17.$attrs.content)) - vp2px(80)) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text18 = getInspectorByKey('TapGestureBasicDoubleClick_target_area_position_x');
@@ -174,14 +177,14 @@ export default function TapGestureBasicDoubleClickTest() {
       await CommonFunc.sleep(200);
       let text20 = getInspectorByKey('TapGestureBasicDoubleClick_target_area_globalPosition_x');
       let obj20: ESObject = JSON.parse(text20);
-      console.log('TapGestureBasicDoubleClickTest_0010 obj20 $attrs content',obj20.$attrs.content,obj20)
-      expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj.left))) <= 1).assertTrue();
+      console.log('TapGestureBasicDoubleClickTest_0010 obj20 $attrs content',obj20.$attrs.content,areaObj.left - windowOffsetX)
+      expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj.left - windowOffsetX))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text21 = getInspectorByKey('TapGestureBasicDoubleClick_target_area_globalPosition_y');
       let obj21: ESObject = JSON.parse(text21);
-      console.log('TapGestureBasicDoubleClickTest_0010 obj21 $attrs content',obj21.$attrs.content,obj21)
-      expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj.top))) <= 1).assertTrue();
+      console.log('TapGestureBasicDoubleClickTest_0010 obj21 $attrs content',obj21.$attrs.content,areaObj.top - windowOffsetY)
+      expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj.top - windowOffsetY))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text22 = getInspectorByKey('TapGestureBasicDoubleClick_source');

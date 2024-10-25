@@ -220,6 +220,10 @@ import textSpanFontTest from './textTest/textSpanFont.test';
 import search_gesture from './SearchTest/search_gesture.test';
 import text_drag from './textTest/text_drag.test';
 import textAreaOnCaretAndKeyboardTest from './TextAreaTest/textAreaOnCaretAndKeyboard.test';
+import richEditorTest from './RichEditorTest/RichEditorJsunit.test';
+import textTextCaseTest from './textTest/textTextCase.test';
+import textTextDecorationTest from './textTest/textTextDecoration.test';
+import searchTest from './SearchTest/SearchJsunit1.test';
 
 export default function testsuite() {
   ToggleJsunit();
@@ -430,4 +434,8 @@ export default function testsuite() {
   search_gesture();
   text_drag();
   textAreaOnCaretAndKeyboardTest();
+  richEditorTest();
+  textTextCaseTest();
+  textTextDecorationTest();
+  searchTest();
 }

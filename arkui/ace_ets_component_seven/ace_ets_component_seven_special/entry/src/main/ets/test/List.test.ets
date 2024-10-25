@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router'
 import Utils from './Utils';
 
 export default function list() {
-  describe('listJsunit', function () {
-    beforeEach(async function (done) {
+  describe('listJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("listJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/list',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/list',
       }
-      let result;
+      let result: ESObject;
       try {
         router.clear();
         let pages = router.getState();
@@ -48,10 +48,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0100', 0, async function (done) {
+    it('ListJsunit_0100', 0, async (done: Function) => {
       console.info('[ListJsunit_0100] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0100] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE");
@@ -67,10 +67,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0101', 0, async function (done) {
+    it('ListJsunit_0101', 0, async (done: Function) => {
       console.info('[ListJsunit_0101] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0101] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.lanes).assertEqual("1");
@@ -86,10 +86,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0102', 0, async function (done) {
+    it('ListJsunit_0102', 0, async (done: Function) => {
       console.info('[ListJsunit_0102] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0102] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(Math.abs(obj.$attrs.friction - 0.6) < 0.000001).assertTrue();
@@ -105,10 +105,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0103', 0, async function (done) {
+    it('ListJsunit_0103', 0, async (done: Function) => {
       console.info('[ListJsunit_0103] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0103] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.enableScrollInteraction).assertEqual(true);
@@ -124,10 +124,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0104', 0, async function (done) {
+    it('ListJsunit_0104', 0, async (done: Function) => {
       console.info('[ListJsunit_0104] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0104] obj is: " + JSON.stringify(obj.$attrs));
 
       //expect(obj.$attrs.nestedScroll).assertEqual("{scrollForward:SELF_ONLY,scrollBackward:PARALLEL}");
@@ -144,10 +144,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0105', 0, async function (done) {
+    it('ListJsunit_0105', 0, async (done: Function) => {
       console.info('[ListJsunit_0105] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0105] obj is: " + JSON.stringify(obj.$attrs));
 
       //expect(obj.$attrs.chainAnimationOptions).assertEqual("{minSpace:1,maxSpace:2,conductivity:0.6,intensity:0.2,edgeEffect:ChainEdgeEffect.DEFAULT}");
@@ -164,10 +164,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0106', 0, async function (done) {
+    it('ListJsunit_0106', 0, async (done: Function) => {
       console.info('[ListJsunit_0106] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0106] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.alignListItem).assertEqual("ListItemAlign.Start");
@@ -183,10 +183,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0107', 0, async function (done) {
+    it('ListJsunit_0107', 0, async (done: Function) => {
       console.info('[ListJsunit_0107] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0107] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.listDirection).assertEqual("Axis.Vertical");
@@ -202,10 +202,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0108', 0, async function (done) {
+    it('ListJsunit_0108', 0, async (done: Function) => {
       console.info('[ListJsunit_0108] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0108] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.scrollBar).assertEqual("BarState.Off");
@@ -221,10 +221,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0109', 0, async function (done) {
+    it('ListJsunit_0109', 0, async (done: Function) => {
       console.info('[ListJsunit_0109] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0109] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.edgeEffect).assertEqual("EdgeEffect.Spring");
@@ -240,10 +240,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0110', 0, async function (done) {
+    it('ListJsunit_0110', 0, async (done: Function) => {
       console.info('[ListJsunit_0110] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0110] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.divider.strokeWidth).assertEqual("1.00vp");
@@ -262,10 +262,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0111', 0, async function (done) {
+    it('ListJsunit_0111', 0, async (done: Function) => {
       console.info('[ListJsunit_0111] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0111] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.editMode).assertEqual(true);
@@ -281,10 +281,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0112', 0, async function (done) {
+    it('ListJsunit_0112', 0, async (done: Function) => {
       console.info('[ListJsunit_0112] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0112] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.multiSelectable).assertEqual(true);
@@ -300,10 +300,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0113', 0, async function (done) {
+    it('ListJsunit_0113', 0, async (done: Function) => {
       console.info('[ListJsunit_0113] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0113] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.cachedCount).assertEqual("2");
@@ -319,10 +319,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0114', 0, async function (done) {
+    it('ListJsunit_0114', 0, async (done: Function) => {
       console.info('[ListJsunit_0114] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0114] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.chainAnimation).assertEqual(true);
@@ -338,10 +338,10 @@ export default function list() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ListJsunit_0115', 0, async function (done) {
+    it('ListJsunit_0115', 0, async (done: Function) => {
       console.info('[ListJsunit_0115] START');
       let strJson = getInspectorByKey('ListKey1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListJsunit_0115] obj is: " + JSON.stringify(obj.$attrs));
 
       expect(obj.$attrs.sticky).assertEqual("StickyStyle.Header");
