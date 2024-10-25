@@ -31,7 +31,17 @@ async function sleep(time: number) {
 export default function windowLayoutTest(context: common.UIAbilityContext, windowStage: window.WindowStage) {
   describe('window_layout_test', () => {
     console.log('describe window_focus_test start!!!')
+    let tempWnd: window.Window | void;
+    let subWin: window.Window | void;
 
+    beforeEach(async ()=>{
+      if(tempWnd !== null && tempWnd !== undefined){
+        await (tempWnd as window.Window).destroyWindow();
+      }
+      if(subWin !== null && subWin !== undefined){
+        await (subWin as window.Window).destroyWindow();
+      }
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5090
      * @tc.name      : testSetAspectRatio_DialogWindow
@@ -49,7 +59,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -82,7 +91,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testSetAspectRatio_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetAspectRatio_SubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -149,7 +157,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -181,7 +188,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testResetAspectRatio_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testResetAspectRatio_SubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -339,7 +345,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -373,7 +378,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testGetWindowLimits_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testGetWindowLimits_SubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -438,13 +442,11 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testSetWindowLimits_DialogWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-
       let windowConfig: window.Configuration = {
         name: "testSetWindowLimits_DialogWindow",
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -501,7 +503,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testSetWindowLimits_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetWindowLimits_SubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -610,7 +611,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testSetWindowLimits_InvalidParameter';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetWindowLimits_InvalidParameter')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -668,7 +668,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testSetWindowLimits_MoreThenInitGetValue';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetWindowLimits_MoreThenInitGetValue')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -731,7 +730,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testSetWindowLimits_LessThenMinInitGetValue';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetWindowLimits_LessThenMinInitGetValue')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -794,7 +792,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testOnOffWindowStatusChange_OnSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testOnOffWindowStatusChange_OnSubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -915,7 +912,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testSetAspectRatio_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testSetAspectRatio_SubWindowWithOptions',
         decorEnabled: true
@@ -963,7 +959,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testResetAspectRatio_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testSetAspectRatio_SubWindowWithOptions',
         decorEnabled: true
@@ -1009,7 +1004,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testGetWindowLimits_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testGetWindowLimits_SubWindowWithOptions',
         decorEnabled: true
@@ -1058,7 +1052,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testSetWindowLimits_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testGetWindowLimits_SubWindowWithOptions',
         decorEnabled: true
@@ -1129,7 +1122,6 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       let caseName = 'testOnOffWindowStatusChange_OnSubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testOnOffWindowStatusChange_OnSubWindowWithOptions',
         decorEnabled: true

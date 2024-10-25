@@ -17,10 +17,41 @@ import window from '@ohos.window';
 import { BusinessError, Callback } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
+
 export default function specialWindowTest(context: common.UIAbilityContext, windowStage: window.WindowStage) {
   describe('special_window_test', () => {
     console.log('describe special_window_test start!!!')
+    let windowClass: window.Window | void;
+    let subWin: window.Window | void;
+    let subWinFirst: window.Window | void;
+    let subWinSecond: window.Window | void;
+    let subWinThird: window.Window | void;
+    let tempWnd: window.Window | void;
+    let subWinWithOPs: window.Window | void;
 
+    beforeEach(async ()=>{
+      if(windowClass !== null && windowClass !== undefined){
+        await (windowClass as window.Window).destroyWindow();
+      }
+      if(subWin !== null && subWin !== undefined){
+        await (subWin as window.Window).destroyWindow();
+      }
+      if(subWinFirst !== null && subWinFirst !== undefined){
+        await (subWinFirst as window.Window).destroyWindow();
+      }
+      if(subWinSecond !== null && subWinSecond !== undefined){
+        await (subWinSecond as window.Window).destroyWindow();
+      }
+      if(subWinThird !== null && subWinThird !== undefined){
+        await (subWinThird as window.Window).destroyWindow();
+      }
+      if(tempWnd !== null && tempWnd !== undefined){
+        await (tempWnd as window.Window).destroyWindow();
+      }
+      if(subWinWithOPs !== null && subWinWithOPs !== undefined){
+        await (subWinWithOPs as window.Window).destroyWindow();
+      }
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4620
      * @tc.name      : testCreateWindow_DialogWindow_Callback
@@ -33,7 +64,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreateWindow_DialogWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       let config: window.Configuration = {
         name: "testCreateWindow_DialogWindow_Callback",
         windowType: window.WindowType.TYPE_DIALOG,
@@ -72,7 +102,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreateWindow_DialogWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       let config: window.Configuration = {
         name: "testCreateWindow_DialogWindow_Promise",
         windowType: window.WindowType.TYPE_DIALOG,
@@ -107,7 +136,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreate_DialogWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       window.create(context, 'testCreate_DialogWindow_Callback', window.WindowType.TYPE_DIALOG, async (err: BusinessError, data) => {
         const errCode: number = err.code;
         if (errCode) {
@@ -135,7 +163,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreate_DialogWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       await window.create(context, 'testCreate_DialogWindow_Promise', window.WindowType.TYPE_DIALOG)
         .then(async (data) => {
           windowClass = data;
@@ -161,7 +188,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testGetSubWindow_SubWinNumIsOne_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testGetSubWindow_SubWinNumIsOne_Promise')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -194,7 +220,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testGetSubWindow_SubWinNumIsMore_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWinFirst: window.Window | void;
       subWinFirst = await windowStage.createSubWindow('testGetSubWindow_SubWinNumIsMore_Promise_First')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -202,7 +227,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
           done();
         });
       expect(!!subWinFirst).assertTrue();
-      let subWinSecond: window.Window | void;
       subWinSecond = await windowStage.createSubWindow('testGetSubWindow_SubWinNumIsMore_Promise_Second')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -210,7 +234,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
           done();
         });
       expect(!!subWinSecond).assertTrue();
-      let subWinThird: window.Window | void;
       subWinThird = await windowStage.createSubWindow('testGetSubWindow_SubWinNumIsMore_Promise_Third')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -245,7 +268,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testGetSubWindow_SubWinAndHasDialogWin_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWinFirst: window.Window | void;
       subWinFirst = await windowStage.createSubWindow('testGetSubWindow_SubWinAndHasDialogWin_Promise_First')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -253,7 +275,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
           done();
         });
       expect(!!subWinFirst).assertTrue();
-      let subWinSecond: window.Window | void;
       subWinSecond = await windowStage.createSubWindow('testGetSubWindow_SubWinAndHasDialogWin_Promise_Second')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -266,7 +287,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -300,7 +320,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testGetSubWindow_SubWinNumIsOne_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testGetSubWindow_SubWinNumIsOne_Callback')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -338,7 +357,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testGetSubWindow_SubWinNumIsMore_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWinFirst: window.Window | void;
       subWinFirst = await windowStage.createSubWindow('testGetSubWindow_SubWinNumIsMore_Callback_First')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -346,7 +364,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
           done();
         });
       expect(!!subWinFirst).assertTrue();
-      let subWinSecond: window.Window | void;
       subWinSecond = await windowStage.createSubWindow('testGetSubWindow_SubWinNumIsMore_Callback_Second')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -354,7 +371,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
           done();
         });
       expect(!!subWinSecond).assertTrue();
-      let subWinThird: window.Window | void;
       subWinThird = await windowStage.createSubWindow('testGetSubWindow_SubWinNumIsMore_Callback_Third')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -396,7 +412,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testGetSubWindow_SubWinAndHasDialogWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWinFirst: window.Window | void;
       subWinFirst = await windowStage.createSubWindow('testGetSubWindow_SubWinAndHasDialogWin_Callback_First')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -404,7 +419,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
           done();
         });
       expect(!!subWinFirst).assertTrue();
-      let subWinSecond: window.Window | void;
       subWinSecond = await windowStage.createSubWindow('testGetSubWindow_SubWinAndHasDialogWin_Callback_Second')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -417,7 +431,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -459,7 +472,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreateSubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       try {
         windowStage.createSubWindow('testCreateSubWindow_Callback', async (err: BusinessError, data) => {
           const errCode: number = err.code;
@@ -492,7 +504,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreateSubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       try {
         await windowStage.createSubWindow('testCreateSubWindow_Promise').then(async (data) => {
           windowClass = data;
@@ -519,7 +530,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreateSubWindow_WinNameNull_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       try {
         await windowStage.createSubWindow(null).then(async (data) => {
           windowClass = data;
@@ -547,7 +557,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreateSubWindow_WinNameNull_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       try {
         windowStage.createSubWindow(null, async (err: BusinessError, data) => {
           const errCode: number = err.code;
@@ -581,7 +590,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreateSubWindow_WinNameUndefined_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       try {
         await windowStage.createSubWindow(undefined).then(async (data) => {
           windowClass = data;
@@ -609,7 +617,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testCreateSubWindow_WinNameUndefined_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: window.Window | void;
       try {
         windowStage.createSubWindow(undefined, async (err: BusinessError, data) => {
           const errCode: number = err.code;
@@ -648,7 +655,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -697,7 +703,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testSetSubWindowModal_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetSubWindowModal_SubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -734,7 +739,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWinFirst: window.Window | void;
       subWinFirst = await windowStage.createSubWindow('testGetSubWindow_subWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -747,7 +751,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -755,7 +758,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       });
       expect(!!tempWnd).assertTrue();
       let subWinWithOPsCreateSuccessed = false;
-      let subWinWithOPs: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback_Sub',
         decorEnabled: true
@@ -817,7 +819,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       let caseName = 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWinFirst: window.Window | void;
       subWinFirst = await windowStage.createSubWindow('testGetSubWindow_subWindow_Promise')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -830,7 +831,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -838,7 +838,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       });
       expect(!!tempWnd).assertTrue();
       let subWinWithOPsCreateSuccessed = false;
-      let subWinWithOPs: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise_Sub',
         decorEnabled: true
@@ -966,7 +965,6 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         title: 'testSetSubWindowModal_SubWindowWithOps',
         decorEnabled: true
       };
-      let subWin: window.Window | void;
       await windowStage.createSubWindowWithOptions('testSetSubWindowModal_SubWindowWithOps', options)
         .then(async (data) => {
           subWin = data;
