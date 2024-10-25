@@ -16,7 +16,7 @@ ohos_app_assist_suite("TerminateSelfWithResultHelper") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "TerminateSelfWithResultHelper"
   hap_list = [
-    "TerminateSelfWithResultHelper-Second-default-signed:TerminateSelfWithResultHelperSecond",
+    "TerminateSelfWithResultHelper-Second-default-unsigned:TerminateSelfWithResultHelperSecond",
     "TerminateSelfWithResultHelper-entry-default-signed:TerminateSelfWithResultHelper",
   ]
   subsystem_name = "ability"
