@@ -17,8 +17,6 @@ group("actsstageappcontext") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"actsstagecontextassistone:ActsStageContextAssistOne",
-      #"actsstagecontextassisttwo:ActsStageContextAssistTwo",
       "actsstageappcontexttest:ActsStageAppContextTest",
       "clearupappdatahelpassistentry:ClearUpAppDataHelpAssistEntry",
       "clearupappdatahelpassistfeature:ClearUpAppDataHelpAssistFeature",

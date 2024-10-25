@@ -10,34 +10,27 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsStageContextTest") {
-  hap_profile = "./entry/src/main/module.json"
-  deps = [
-    ":actsstagecontext_js_assets",
-    ":actsstagecontext_resources",
+ohos_app_assist_suite("ActsStageContextMain") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsStageContextMain"
+  hap_list = [
+    "ActsStageContextMain-module1-entry-default-unsigned:ActsStageContextModule1",
+    "ActsStageContextMain-entry-default-unsigned:ActsStageContextMain",
   ]
-  ets2abc = true
+  subsystem_name = "xts"
+  part_name = "device_attest"
+}
+
+ohos_js_app_suite("ActsStageContextTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsStageContextTest"
-  js_build_mode = "debug"
-  subsystem_name = "ability"
-  part_name = "ability_runtime"
-}
 
-ohos_app_scope("actsstagecontext_app_profile") {
-  app_profile = "./AppScope/app.json"
-  sources = [ "./AppScope/resources" ]
-}
-
-ohos_js_assets("actsstagecontext_js_assets") {
-  source_dir = "./entry/src/main/ets"
-}
-
-ohos_resources("actsstagecontext_resources") {
-  sources = [ "./entry/src/main/resources" ]
-  deps = [ ":actsstagecontext_app_profile" ]
-  hap_profile = "./entry/src/main/module.json"
+  subsystem_name = "xts"
+  part_name = "device_attest"
+  deps = [ ":ActsStageContextMain" ]
 }

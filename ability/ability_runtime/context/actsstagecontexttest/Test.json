@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "com.example.stage_app",
-        "module-name": "entry",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 30000
     },
@@ -12,6 +12,7 @@
         {
             "test-file-name": [
                 "ActsStageContextTest.hap",
+                "ActsStageContextMain.hap",
                 "ActsStageContextModule1.hap",
                 "ContextApp.hap",
                 "Fa8App.hap"
