@@ -33,7 +33,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
     let tempWnd: window.Window | void;
     let subWin: window.Window | void;
 
-    beforeEach(async ()=>{
+    afterEach(async ()=>{
       if(tempWnd !== null && tempWnd !== undefined){
         await (tempWnd as window.Window).destroyWindow();
       }

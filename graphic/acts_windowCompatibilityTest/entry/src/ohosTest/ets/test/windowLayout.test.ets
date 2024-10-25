@@ -34,7 +34,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
     let tempWnd: window.Window | void;
     let subWin: window.Window | void;
 
-    beforeEach(async ()=>{
+    afterEach(async ()=>{
       if(tempWnd !== null && tempWnd !== undefined){
         await (tempWnd as window.Window).destroyWindow();
       }

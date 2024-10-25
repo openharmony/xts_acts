@@ -35,7 +35,7 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
     let subWindowTwo: window.Window | void;
     let tempWnd: window.Window | void;
 
-    beforeEach(async ()=>{
+    afterEach(async ()=>{
       if(subWindow !== null && subWindow !== undefined){
         await (subWindow as window.Window).destroyWindow();
       }
