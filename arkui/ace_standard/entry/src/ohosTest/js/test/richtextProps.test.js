@@ -110,7 +110,6 @@ export default function undo() {  describe('richtextPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('richtext')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

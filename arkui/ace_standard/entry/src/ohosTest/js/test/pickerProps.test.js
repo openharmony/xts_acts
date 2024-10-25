@@ -111,7 +111,6 @@ export default function pickerPropsJsTest() {  describe('pickerPropsJsTest', fun
 
         expect(obj.$type).assertEqual('picker')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

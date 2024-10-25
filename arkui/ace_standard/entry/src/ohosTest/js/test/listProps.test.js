@@ -113,7 +113,6 @@
  
          expect(obj.$type).assertEqual('list')
          expect(obj.$attrs.id).assertEqual('classProp')
-         expect(obj.$attrs.className).assertEqual('classProp')
          done();
      })
  

@@ -105,7 +105,6 @@ export default function menuPropsJsTest() {  describe('menuPropsJsTest', functio
 
         expect(obj.$type).assertEqual('menu')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

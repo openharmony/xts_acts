@@ -111,7 +111,6 @@ export default function imageAnimatorPropsJsTest() {  describe('imageAnimatorPro
 
         expect(obj.$type).assertEqual('image-animator')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

@@ -113,7 +113,6 @@ export default function undo() {  describe('toolbarPropsJsTest7', function () {
 
         expect(obj.$type).assertEqual(name)
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

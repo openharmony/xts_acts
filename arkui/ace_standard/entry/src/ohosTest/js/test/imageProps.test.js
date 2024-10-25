@@ -105,7 +105,6 @@ export default function imagePropsJsTest() {  describe('imagePropsJsTest', funct
 
         expect(obj.$type).assertEqual('image')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

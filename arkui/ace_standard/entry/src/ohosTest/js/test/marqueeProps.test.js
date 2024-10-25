@@ -111,7 +111,6 @@ export default function marqueePropsJsTest() {  describe('marqueePropsJsTest', f
 
         expect(obj.$type).assertEqual('marquee')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

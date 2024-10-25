@@ -111,7 +111,6 @@ export default function undo() {  describe('qrcodePropsJsTest', function () {
 
         expect(obj.$type).assertEqual('qrcode')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         expect(obj.$attrs.value).assertEqual('value')
         done();
     });

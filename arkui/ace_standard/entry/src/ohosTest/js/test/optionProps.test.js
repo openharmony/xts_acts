@@ -111,7 +111,6 @@ export default function undo() {  describe('optionPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('option')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

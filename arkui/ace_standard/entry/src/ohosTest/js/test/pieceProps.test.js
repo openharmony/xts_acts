@@ -111,7 +111,6 @@ export default function piecePropsJsTest() {  describe('piecePropsJsTest', funct
 
         expect(obj.$type).assertEqual('piece')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

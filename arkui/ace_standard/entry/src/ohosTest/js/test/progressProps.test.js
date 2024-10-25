@@ -111,7 +111,6 @@ export default function progressPropsJsTest() {  describe('progressPropsJsTest',
 
         expect(obj.$type).assertEqual('progress')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

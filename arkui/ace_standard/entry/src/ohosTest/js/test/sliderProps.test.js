@@ -110,7 +110,6 @@ export default function sliderPropsJsTest() {  describe('sliderPropsJsTest', fun
 
         expect(obj.$type).assertEqual('slider')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

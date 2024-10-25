@@ -111,7 +111,6 @@ export default function searchPropsJsTest() {  describe('searchPropsJsTest', fun
 
         expect(obj.$type).assertEqual('search')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

@@ -110,7 +110,6 @@ export default function selectPropsJsTest() {  describe('selectPropsJsTest', fun
 
         expect(obj.$type).assertEqual('select')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

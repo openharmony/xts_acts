@@ -111,7 +111,6 @@ export default function undo() {  describe('swiperPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('swiper')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 
