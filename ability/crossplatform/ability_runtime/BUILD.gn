@@ -27,11 +27,9 @@ group("ability_crossplatform_runtime") {
       "ActsCrossplatformMonitorTest:ActsCrossplatformMonitorTest",
       "ActsCrossplatformPromiseTest:ActsCrossplatformPromiseTest",
       "ActsCrossplatformStartAbilityTest:ActsCrossplatformStartAbilityTest",
-      "ActsLifeCycleEtsFeatureTest:ActsLifeCycleEtsFeatureTest",
       "ActsLifeCycleEtsTest:ActsLifeCycleEtsTest",
       "ActsUiAbilityEtsTest:ActsUiAbilityEtsTest",
       "actscontexttest:ActsCrossplatformAbilityContextTest",
-      "actscontexttestentry:ActsCrossplatformAbilityContextEntryTest",
       "actsuiabilitycontexttest:ActsCrossplatformAbilityUIAbilityContextTest",
       "commonTestAbilityApp:commonTestAbilityApp",
     ]
