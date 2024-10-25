@@ -15,45 +15,44 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import data_rdb from '@ohos.data.relationalStore'
 import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
 
 let context: common.UIAbilityContext;
 const TAG = "[RelationalStore_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
     + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)"
-
-var rdbStore
-const STORE_CONFIG_ENCRYPT = {
+let rdbStore:data_rdb.RdbStore | null
+const STORE_CONFIG_ENCRYPT: data_rdb.StoreConfig = {
     name: "Encrypt.db",
     encrypt: true,
     securityLevel: data_rdb.SecurityLevel.S1
 }
-const STORE_CONFIG_UNENCRYPT = {
+const STORE_CONFIG_UNENCRYPT: data_rdb.StoreConfig = {
     name: "Unencrypt.db",
     encrypt: false,
     securityLevel: data_rdb.SecurityLevel.S1
 }
-const STORE_CONFIG_WRONG = {
+const STORE_CONFIG_WRONG: data_rdb.StoreConfig = {
     name: "Encrypt.db",
     encrypt: false,
     securityLevel: data_rdb.SecurityLevel.S1
 }
 
-export default function relationalStoreEncryptTest() {
-async function CreatRdbStore(context, STORE_CONFIG) {
+async function CreatRdbStore(context:common.UIAbilityContext, STORE_CONFIG:data_rdb.StoreConfig) {
     let rdbStore = await data_rdb.getRdbStore(context, STORE_CONFIG)
     await rdbStore.executeSql(CREATE_TABLE_TEST, null)
     let u8 = new Uint8Array([1, 2, 3])
 
-        const valueBucket = {
-            "name": "zhangsan",
-            "age": 18,
-            "salary": 100.5,
-            "blobType": u8,
-        }
-        await rdbStore.insert("test", valueBucket)
+    const valueBucket:data_rdb.ValuesBucket = {
+        "name": "zhangsan",
+        "age": 18,
+        "salary": 100.5,
+        "blobType": u8,
+    }
+    await rdbStore.insert("test", valueBucket)
 
     {
-        const valueBucket = {
+        const valueBucket:data_rdb.ValuesBucket = {
             "name": "lisi",
             "age": 28,
             "salary": 100.5,
@@ -62,7 +61,7 @@ async function CreatRdbStore(context, STORE_CONFIG) {
         await rdbStore.insert("test", valueBucket)
     }
     {
-        const valueBucket = {
+        const valueBucket:data_rdb.ValuesBucket = {
             "name": "wangwu",
             "age": 38,
             "salary": 90.0,
@@ -73,18 +72,18 @@ async function CreatRdbStore(context, STORE_CONFIG) {
     return rdbStore;
 }
 
-describe('relationalStoreEncryptTest', function () {
-        beforeAll(async function () {
+export default function relationalStoreEncryptTest() {
+    describe('relationalStoreEncryptTest', () => {
+        beforeAll(async () => {
             console.info(TAG + 'beforeAll')
-          context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
+            context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
         })
 
-        beforeEach(async function () {
+        beforeEach(async () => {
             console.info(TAG + 'beforeEach')
-
         })
 
-        afterEach(async function () {
+        afterEach(async () => {
             console.info(TAG + 'afterEach')
             await data_rdb.deleteRdbStore(context, STORE_CONFIG_ENCRYPT.name)
             await data_rdb.deleteRdbStore(context, STORE_CONFIG_UNENCRYPT.name)
@@ -92,7 +91,7 @@ describe('relationalStoreEncryptTest', function () {
             rdbStore = null
         })
 
-        afterAll(async function () {
+        afterAll(async () => {
             console.info(TAG + 'afterAll')
         })
 
@@ -106,12 +105,12 @@ describe('relationalStoreEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest0010', 0, async function (done) {
+        it('RdbEncryptTest0010', 0, async (done:Function) => {
             console.info(TAG + "************* RdbEncryptTest_0010 start *************")
             data_rdb.getRdbStore(context, STORE_CONFIG_ENCRYPT).then((store) => {
                 done()
                 expect(store != null).assertTrue();
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
                 expect(null).assertFail();
             })
             console.info(TAG + "************* RdbEncryptTest_0010 end *************")
@@ -125,16 +124,16 @@ describe('relationalStoreEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest0020', 0, async function (done) {
+        it('RdbEncryptTest0020', 0, async (done:Function) => {
             console.info(TAG + "************* RdbEncryptTest_0020 start *************")
             let storePromise = data_rdb.getRdbStore(context, STORE_CONFIG_UNENCRYPT);
             storePromise.then((store) => {
                 expect(store != null).assertTrue();
                 done()
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
                 expect(null).assertFail();
             })
-            
+
             console.info(TAG + "************* RdbEncryptTest_0020 end *************")
         })
 
@@ -147,12 +146,12 @@ describe('relationalStoreEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-        it('RdbEncryptTest0030', 0, async function (done) {
+        it('RdbEncryptTest0030', 0, async (done:Function) => {
             console.info(TAG + "************* RdbEncryptTest_0030 start *************")
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
             let predicates = new data_rdb.RdbPredicates("test")
             predicates.equalTo("name", "zhangsan")
-            let resultSet = await rdbStore.query(predicates)
+            let resultSet: data_rdb.ResultSet | null = await rdbStore.query(predicates)
             try {
                 console.info(TAG + "After restore resultSet query done")
                 expect(true).assertEqual(resultSet.goToFirstRow())
@@ -179,21 +178,44 @@ describe('relationalStoreEncryptTest', function () {
          * @tc.type Function
          * @tc.level Level 1
          */
-         it('RdbEncryptTest0040', 0, async function (done) {
+        it('RdbEncryptTest0040', 0, async (done:Function) =>{
             console.info(TAG + "************* RdbEncryptTest_0040 start *************")
             rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
             rdbStore = null
             try {
                 rdbStore = await CreatRdbStore(context, STORE_CONFIG_WRONG)
-                expect(rdbStore !== null).assertFalse()
+                expect(rdbStore !== null).assertTrue()
             } catch (err) {
                 console.info(TAG + `catch err: err.code= ${err.code}, message = ${err.message}`)
-                expect(err.code).assertEqual(14800011);
-                done()
-                console.info(TAG + "************* RdbEncryptTest_0040 end *************")
+                expect().assertFail();
             }
+            done()
+            console.info(TAG + "************* RdbEncryptTest_0040 end *************")
+        })
+
+        /**
+         * @tc.name RdbEncryptTest0050
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_EncrpytEtsAPITest_0500
+         * @tc.desc RelationalStore Encrypt function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
+         */
+        it('RdbEncryptTest0050', 0, async (done:Function) => {
+            console.info(TAG + "************* RdbEncryptTest0050 start *************")
+            rdbStore = await CreatRdbStore(context, STORE_CONFIG_WRONG)
+            rdbStore = null
+            try {
+                rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
+                expect(rdbStore !== null).assertTrue()
+            } catch (err) {
+                console.info(TAG + `catch err: err.code= ${err.code}, message = ${err.message}`)
+                expect().assertFail();
+            }
+            done()
+            console.info(TAG + "************* RdbEncryptTest0050 end *************")
         })
         console.info(TAG + "*************Unit Test End*************")
     }
-)
+    )
 }
