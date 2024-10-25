@@ -61,6 +61,17 @@
         "orientation": "portrait",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background"
+      },
+      {
+        "name": "TestAbility",
+        "srcEntry": "./ets/TestAbility/TestAbility.ets",
+        "description": "$string:phone_entry_main",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "visible": true,
+        "orientation": "portrait",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background"
       }
     ],
     "requestPermissions": [
