@@ -17,11 +17,7 @@
   "apiType": 'stageMode',
   "targets": [
     {
-      "name": "default",
-      "runtimeOS": "OpenHarmony"
-    },
-    {
-      "name": "ohosTest",
+      "name": "default"
     }
   ]
 }

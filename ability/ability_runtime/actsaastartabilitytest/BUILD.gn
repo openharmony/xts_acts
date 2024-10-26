@@ -18,7 +18,6 @@ group("actsaastartabilitytest") {
   if (is_standard_system) {
     deps = [
       "aastartabilitytest:AaStartAbilityTest",
-      "abilityfeature:ActsAbilityFeature",
       "abilityhaps:ActsAbilityHaps",
     ]
   }

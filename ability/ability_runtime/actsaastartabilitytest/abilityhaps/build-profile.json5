@@ -30,8 +30,20 @@
   },
   "modules": [
     {
-      "name": "phone",
+      "name": "entry",
       "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "feature",
+      "srcPath": "./feature",
       "targets": [
         {
           "name": "default",
