@@ -17,7 +17,7 @@ ohos_js_app_suite("ActsGetgroupdirtest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsGetgroupdirtest"
+  hap_name = "ActsGetgroupdirTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
