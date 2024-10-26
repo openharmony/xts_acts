@@ -2205,5 +2205,38 @@ export default function BitVectorTest() {
         }
       })
     });
+    /**
+     * @tc.number    : BITVECTOR_TEST_077
+     * @tc.name      : BitVector_has_Func_008
+     * @tc.desc      : Check if bit vector contains a particular bit element.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("BitVector_has_Func_008", 0, async () => {
+      let lock = new ArkTSUtils.locks.AsyncLock();
+      lock.lockAsync<void>(() => {
+        let bitVector = new collections.BitVector(0);
+        let bitVectorLength = 20;
+        for (let i = 0; i < bitVectorLength; i++) {
+          if (i >= 10) {
+            let res0 = bitVector.push(1);
+            expect(res0).assertEqual(true);
+          } else {
+            let res0 = bitVector.push(0);
+            expect(res0).assertEqual(true);
+          }
+        }
+        expect(bitVector.length).assertEqual(20);
+        let res0 = bitVector.has(1, 0, 10);
+        expect(res0).assertEqual(true);
+        let res1 = bitVector.has(1, 0, 9);
+        expect(res1).assertEqual(false);
+        let res2 = bitVector.has(0, 10, 19);
+        expect(res2).assertEqual(false);
+        let res3 = bitVector.has(0, 0, 19);
+        expect(res3).assertEqual(true);
+      })
+    });
   });
 }
