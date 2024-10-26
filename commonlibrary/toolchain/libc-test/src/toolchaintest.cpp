@@ -46,9 +46,8 @@ static void Handler(int sig)
 
 static int Start(const char *argvs)
 {
-    int pid;
     // Create a child process
-    pid = fork();
+    int pid = fork();
     if (pid == 0) {
         int exe = execl(argvs, "strptime", nullptr);
         printf("exe:%d %s exec failed: %s\n", exe, argvs, strerror(errno));
