@@ -98,7 +98,6 @@ class CameraService {
     try {
       await this.releaseCamera()
       this.cameraManager = this.getCameraManagerFn()
-      console.info('www data succeed' + 111)
       if (this.cameraManager === undefined) {
         return
       }
@@ -107,32 +106,27 @@ class CameraService {
       if (this.cameras.length < 1 || this.cameras.length < cameraDeviceIndex + 1) {
         return
       }
-      console.info('www data 2')
       this.curCameraDevice = this.cameras[cameraDeviceIndex]
       let isSupported = this.isSupportedSceneMode(this.cameraManager, this.curCameraDevice)
       if (!isSupported) {
         return
       }
-      console.info('www data 3')
      let cameraOutputCapability=this.cameraManager.getSupportedOutputCapability(this.curCameraDevice,this.curSceneMode)
       let previewProfile = this.getPreviewProfile(cameraOutputCapability)
       if (previewProfile === undefined) {
         return
       }
-      console.info('www data 4')
       this.previewProfileObj = previewProfile
       let photoProfile = this.getPhotoProfile(cameraOutputCapability)
       if (photoProfile === undefined) {
         return
       }
-      console.info('www data 5')
       this.photoProfileObj = photoProfile
       //创建previewOutput输出对象
       this.previewOutput = this.createPreviewOutputFn(this.cameraManager, this.previewProfileObj, surfaceId)
       if (this.previewOutput === undefined) {
         return
       }
-      console.info('www data 6')
       //监听预览事件
       this.previewOutputCallBack(this.previewOutput)
       //创建photoOutPut输出对象
@@ -140,30 +134,23 @@ class CameraService {
       if (this.photoOutput === undefined) {
         return
       }
-      console.info('www data 7')
       //创建cameraInput输出对象
       this.cameraInput = this.createCameraInputFn(this.cameraManager, this.curCameraDevice)
       if (this.cameraInput === undefined) {
         return
       }
-      console.info('www data 8')
       //打开相机
       let isOpenSuccess = await this.cameraInputOpenFn(this.cameraInput)
       if (!isOpenSuccess) {
         return
       }
-      console.info('www data 9')
       //镜头状态回调
       this.onCameraStatusChange(this.cameraManager)
       //监听CameraInput的错误事件
       this.onCameraInputChange(this.cameraInput, this.curCameraDevice)
-      console.info('www data 9.5')
       //会话流程
       await this.sessionFlowFn(this.cameraManager, this.cameraInput, this.previewOutput, this.photoOutput)
-      console.info('www data 10')
     } catch (error) {
-      console.info('www data3' + error)
-      console.info('www data3' + error.message)
       let err = error as BusinessError
     }
   }
