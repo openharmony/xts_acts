@@ -393,5 +393,23 @@ export default function cameraEnumTest() {
       console.info(`${TAG} PreconfigRatio.PRECONFIG_RATIO_16_9:${camera.PreconfigRatio.PRECONFIG_RATIO_16_9}`);
       done();
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_FOLD_STATUS_0100
+     * @tc.name      : test fold status enum
+     * @tc.desc      : assert all fold status enums
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_FOLD_STATUS_0100', 0, async (done: Function) => {
+      expect(camera.FoldStatus.NON_FOLDABLE == 0).assertTrue();
+      console.info(`${TAG} FoldStatus.NON_FOLDABLE:${camera.FoldStatus.NON_FOLDABLE}`);
+      expect(camera.FoldStatus.EXPANDED == 1).assertTrue();
+      console.info(`${TAG} FoldStatus.EXPANDED:${camera.FoldStatus.EXPANDED}`);
+      expect(camera.FoldStatus.FOLDED == 2).assertTrue();
+      console.info(`${TAG} FoldStatus.FOLDED:${camera.FoldStatus.FOLDED}`);
+      done();
+    })
   })
 }
