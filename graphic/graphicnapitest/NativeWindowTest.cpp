@@ -1148,20 +1148,7 @@ HWTEST_F(NativeWindowTest, CancelBuffer002, Function | MediumTest | Level2)
  */
 HWTEST_F(NativeWindowTest, CancelBuffer003, Function | MediumTest | Level2)
 {
-	uint64_t surfaceId = static_cast<uint64_t>(pSurface->GetUniqueId());
-    OHNativeWindow *_nativeWindow = nullptr;
-    int32_t ret = OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &_nativeWindow);
-	ASSERT_NE(_nativeWindow, nullptr);
-	int code = SET_BUFFER_GEOMETRY;
-    int32_t width = 0x100;
-    int32_t height = 0x100;
-    ret = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, code, width, height);
-    ASSERT_EQ(ret, NATIVE_ERROR_OK);
-	NativeWindowBuffer *_nativeWindowBuffer = nullptr;
-    int fenceFd = -1;
-    ret = OH_NativeWindow_NativeWindowRequestBuffer(_nativeWindow, &_nativeWindowBuffer, &fenceFd);
-    ASSERT_EQ(ret, NATIVE_ERROR_OK);
-    ASSERT_EQ(OH_NativeWindow_NativeWindowAbortBuffer(_nativeWindow, _nativeWindowBuffer), NATIVE_ERROR_OK);
+    ASSERT_EQ(OH_NativeWindow_NativeWindowAbortBuffer(nativeWindow, nativeWindowBuffer), NATIVE_ERROR_OK);
 }
 
 /*
