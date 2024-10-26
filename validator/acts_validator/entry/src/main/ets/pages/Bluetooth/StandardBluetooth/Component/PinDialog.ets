@@ -79,6 +79,9 @@ export struct PinDialog {
               }
             } catch (err) {
               Logger.info(TAG, `点击配对` + JSON.stringify(err.message))
+              if(this.controller !== undefined) {
+                this.controller.close()
+              }
             }
           }
         })
