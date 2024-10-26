@@ -690,7 +690,7 @@ export default function windowManageTest() {
         await sleep(1000);
         subWindowClass.setWindowTitleButtonVisible(false, false);
         console.info(`${caseName} Succeeded in setting whether to display the maximize buttons of main window.`)
-        expect(true).assertTrue();
+        expect(false).assertTrue();
         await subWindowClass.destroyWindow();
         done();
       }).catch(async (err: BusinessError) => {
@@ -750,6 +750,8 @@ export default function windowManageTest() {
      */
     it('testRestoreByMinimize', 0, async (done: Function) => {
       let caseName = 'TestRestoreByMinimize';
+      const mainWindowstatus = windowClass.getWindowStatus();
+      console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
       windowClass.minimize().then(async () => {
         console.info(`${caseName} Succeeded in minimizing the window.`);
         await sleep(2000);
@@ -758,7 +760,7 @@ export default function windowManageTest() {
           await sleep(1000);
           let windowStatus = windowClass.getWindowStatus();
           console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
-          expect(windowStatus !== window.WindowStatusType.MINIMIZE).assertTrue();
+          expect(windowStatus).assertEqual(mainWindowstatus);
           done();
         }).catch((err: BusinessError) => {
           if (err.code === 801) {
@@ -786,6 +788,8 @@ export default function windowManageTest() {
      */
     it('testRestoreByMinimizeBtn', 0, async (done: Function) => {
       let caseName = 'TestRestoreByMinimizeBtn';
+      const mainWindowstatus = windowClass.getWindowStatus();
+      console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
       let driver: Driver = Driver.create();
       let minimizeBtn = await driver.findComponent(ON.id('EnhanceMinimizeBtn'));
       if (minimizeBtn) {
@@ -796,7 +800,7 @@ export default function windowManageTest() {
           await sleep(1000);
           let windowStatus = windowClass.getWindowStatus();
           console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
-          expect(windowStatus !== window.WindowStatusType.MINIMIZE).assertTrue();
+          expect(windowStatus).assertEqual(mainWindowstatus);
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
