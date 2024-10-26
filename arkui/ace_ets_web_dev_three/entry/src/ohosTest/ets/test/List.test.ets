@@ -14,8 +14,10 @@
  */
 import webJsunit from './WebJsunit.test';
 import webTwoJsunit from './WebTwoJsunit.test';
+import bindSelectionMenu from './bindSelectionMenu.test'
 
 export default function testsuite() {
   webJsunit();
   webTwoJsunit();
+  bindSelectionMenu()
 }

@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/web",
-        "MainAbility/pages/webTwo"
+        "MainAbility/pages/webTwo",
+        "MainAbility/pages/bindSelectionMenu"
     ]
 }
