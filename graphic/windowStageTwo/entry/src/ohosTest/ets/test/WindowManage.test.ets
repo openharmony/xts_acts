@@ -750,33 +750,44 @@ export default function windowManageTest() {
      */
     it('testRestoreByMinimize', 0, async (done: Function) => {
       let caseName = 'TestRestoreByMinimize';
-      const mainWindowstatus = windowClass.getWindowStatus();
-      console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
-      windowClass.minimize().then(async () => {
-        console.info(`${caseName} Succeeded in minimizing the window.`);
-        await sleep(2000);
-        windowClass.restore().then(async () => {
-          console.info(`${caseName} Succeeded in restoring the window.`);
-          await sleep(1000);
-          let windowStatus = windowClass.getWindowStatus();
-          console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
-          expect(windowStatus).assertEqual(mainWindowstatus);
-          done();
+      try {
+        const mainWindowstatus = windowClass.getWindowStatus();
+        console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
+        windowClass.minimize().then(async () => {
+          console.info(`${caseName} Succeeded in minimizing the window.`);
+          await sleep(2000);
+          windowClass.restore().then(async () => {
+            console.info(`${caseName} Succeeded in restoring the window.`);
+            await sleep(1000);
+            let windowStatus = windowClass.getWindowStatus();
+            console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
+            expect(windowStatus).assertEqual(mainWindowstatus);
+            done();
+          }).catch((err: BusinessError) => {
+            if (err.code === 801) {
+              console.error(`${caseName} The current device type does not support to restore.`);
+              done();
+            } else {
+              console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
+              expect(1300004).assertEqual(err.code);
+              done();
+            }
+          });
         }).catch((err: BusinessError) => {
-          if (err.code === 801) {
-            console.error(`${caseName} The current device type does not support to restore.`);
-            done();
-          } else {
-            console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-            expect(1300004).assertEqual(err.code);
-            done();
-          }
+          console.error(`${caseName} Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
         });
-      }).catch((err: BusinessError) => {
-        console.error(`${caseName} Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
-        expect().assertFail();
-        done();
-      });
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
+          done();
+        } else {
+          console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
@@ -788,40 +799,51 @@ export default function windowManageTest() {
      */
     it('testRestoreByMinimizeBtn', 0, async (done: Function) => {
       let caseName = 'TestRestoreByMinimizeBtn';
-      const mainWindowstatus = windowClass.getWindowStatus();
-      console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
-      let driver: Driver = Driver.create();
-      let minimizeBtn = await driver.findComponent(ON.id('EnhanceMinimizeBtn'));
-      if (minimizeBtn) {
-        await minimizeBtn.click();
-        await sleep(1000);
-        windowClass.restore().then(async () => {
-          console.info(`${caseName} Succeeded in restoring the window.`);
+      try {
+        const mainWindowstatus = windowClass.getWindowStatus();
+        console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
+        let driver: Driver = Driver.create();
+        let minimizeBtn = await driver.findComponent(ON.id('EnhanceMinimizeBtn'));
+        if (minimizeBtn) {
+          await minimizeBtn.click();
           await sleep(1000);
-          let windowStatus = windowClass.getWindowStatus();
-          console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
-          expect(windowStatus).assertEqual(mainWindowstatus);
-          done();
-        }).catch((err: BusinessError) => {
-          console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-          expect(1300004).assertEqual(err.code);
-          done();
-        });
-      } else {
-        windowClass.restore().then(() => {
-          console.info(`${caseName} Succeeded in restoring the window.`);
-          expect().assertFail();
-          done();
-        }).catch((err: BusinessError) => {
-          if (err.code === 801) {
-            console.error(`${caseName} The current device type does not support to restore. Cause code: ${err.code}, message: ${err.message}`);
+          windowClass.restore().then(async () => {
+            console.info(`${caseName} Succeeded in restoring the window.`);
+            await sleep(1000);
+            let windowStatus = windowClass.getWindowStatus();
+            console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
+            expect(windowStatus).assertEqual(mainWindowstatus);
             done();
-          } else {
+          }).catch((err: BusinessError) => {
             console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
             expect(1300004).assertEqual(err.code);
             done();
-          }
-        });
+          });
+        } else {
+          windowClass.restore().then(() => {
+            console.info(`${caseName} Succeeded in restoring the window.`);
+            expect().assertFail();
+            done();
+          }).catch((err: BusinessError) => {
+            if (err.code === 801) {
+              console.error(`${caseName} The current device type does not support to restore. Cause code: ${err.code}, message: ${err.message}`);
+              done();
+            } else {
+              console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
+              expect(1300004).assertEqual(err.code);
+              done();
+            }
+          });
+        }
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
+          done();
+        } else {
+          console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
       }
     })
   })
