@@ -130,23 +130,20 @@ struct WebComponent {
             }),
             menuType: MenuType.PREVIEW_MENU
           })
-        .onContextMenuShow((event) => {
+        .onContextMenuShow((event:OnContextMenuShowEvent) => {
           if (event) {
             this.result = event.result;
-            if (event.param.getLinkUrl()) {
+            if (event?.param.getLinkUrl()) {
               return false;
             }
-            if(event.param.getPreviewWidth){
-              this.previewWidth = px2vp(event.param.getPreviewWidth());
-            }
-            if(event.param.getPreviewHeight()) {
-              this.previewHeight = px2vp(event.param.getPreviewHeight());
-            }
+
+              this.previewWidth = px2vp(event?.param?.getPreviewWidth());
+              this.previewHeight = px2vp(event?.param.getPreviewHeight());
             Utils.emitEvent(this.previewWidth > 0 && this.previewHeight > 0, 8301)
             if (event.param.getSourceUrl().indexOf("resource://rawfile/") == 0) {
-              this.previewImage = $rawfile(event.param.getSourceUrl().substr(19));
+              this.previewImage = $rawfile(event?.param.getSourceUrl().substr(19));
             } else {
-              this.previewImage = event.param.getSourceUrl();
+              this.previewImage = event?.param.getSourceUrl();
             }
             return true;
           }

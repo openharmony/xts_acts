@@ -57,7 +57,6 @@ import webViewSetAudioMuted from './webViewSetAudioMuted.test'
 import webViewGetAccessibleGeolocation from './webViewGetAccessibleGeolocation.test'
 import webViewOnAudioStateChanged from './webViewOnAudioStateChanged.test'
 import webViewMediaOption from './webViewMediaOption.test'
-import bindSelectionMenu from './bindSelectionMenu.test'
 
 export default function testsuite() {
        webViewControllerJsunit()
@@ -105,5 +104,4 @@ export default function testsuite() {
        //webViewMediaOption()
        webViewOnWindowNewJsunit()
        webViewOnErrorReceive03Jsunit()
-	   bindSelectionMenu()
 }
