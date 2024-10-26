@@ -13,31 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsStageContextAssistTwo") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":stagecontextassisttwo_js_assets",
-    ":stagecontextassisttwo_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("ActsStageContextAssistTwo") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsStageContextAssistTwo"
   subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-
-ohos_app_scope("stagecontextassisttwo_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("stagecontextassisttwo_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("stagecontextassisttwo_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":stagecontextassisttwo_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }
