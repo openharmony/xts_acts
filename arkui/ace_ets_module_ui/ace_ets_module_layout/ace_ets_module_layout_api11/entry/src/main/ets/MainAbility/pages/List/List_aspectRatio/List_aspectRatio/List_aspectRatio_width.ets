@@ -40,7 +40,7 @@ struct List_aspectRatio_width {
       List({ space: 10 }) {
         ListItem() {
           Text('1')
-            .width(300)
+            .width('100%')
             .height(50)
             .fontSize(16)
             .borderRadius(10)
@@ -50,7 +50,7 @@ struct List_aspectRatio_width {
 
         ListItem() {
           Text('2')
-            .width(300)
+            .width('100%')
             .height(50)
             .fontSize(16)
             .borderRadius(10)
@@ -60,7 +60,7 @@ struct List_aspectRatio_width {
 
         ListItem() {
           Text('3')
-            .width(300)
+            .width('100%')
             .height(50)
             .fontSize(16)
             .borderRadius(10)
@@ -70,7 +70,7 @@ struct List_aspectRatio_width {
 
         ListItem() {
           Text('4')
-            .width(300)
+            .width('100%')
             .height(50)
             .fontSize(16)
             .borderRadius(10)
@@ -78,14 +78,14 @@ struct List_aspectRatio_width {
             .backgroundColor(Color.White)
         }
       }
-      .width(350)
+      .width('80%')
       .aspectRatio(this.aspectRatio1)
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.On)
       .backgroundColor(0xAFEEEE)
       .key('List_aspectRatio_width_01')
     }
-    .width('100%')
+    .width(200)
     .height('100%')
   }
 }
