@@ -1,6 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/web",
-        "MainAbility/pages/webTwo"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }
