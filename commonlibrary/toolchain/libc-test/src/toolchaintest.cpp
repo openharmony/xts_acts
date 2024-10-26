@@ -46,9 +46,13 @@ static void Handler(int sig)
 
 static int Start(const char *argvs)
 {
+    int pid, spaceSize = 200 * 1024;
     // Create a child process
-    int pid = fork();
+    // Set the process stack space
+    pid = fork();
     if (pid == 0) {
+        Runtest::TSetrlim(RLIMIT_STACK, spaceSize);
+        // Overloading the subprocess space
         int exe = execl(argvs, "strptime", nullptr);
         printf("exe:%d %s exec failed: %s\n", exe, argvs, strerror(errno));
         exit(1);
