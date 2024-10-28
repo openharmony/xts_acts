@@ -245,7 +245,7 @@ describe('HidebugToDevJsTest', function () {
                 hidebug.tags.NOTIFICATION, hidebug.tags.NWEB, hidebug.tags.OHOS, hidebug.tags.POWER_MANAGER,
                 hidebug.tags.RPC, hidebug.tags.SAMGR, hidebug.tags.WINDOW_MANAGER, hidebug.tags.AUDIO,
                 hidebug.tags.CAMERA, hidebug.tags.IMAGE, hidebug.tags.MEDIA];
-            let limit_size = 102400;
+            let limit_size = 500 * 1024 * 1024;
             let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
             hidebug.stopAppTraceCapture();
             console.info(`SUB_DFX_DFT_Trace_Collect_Js_0200 > path =: ${path}`)
@@ -685,6 +685,66 @@ describe('HidebugToDevJsTest', function () {
     /**
      * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2000
      * @tc.name testHiDebugJs27
+     * @tc.desc 验证isDebugState,未连接调试状态下
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs27', 1, async function (done) {
+        console.info('testHiDebugJs27 start');
+        try {
+            let result = hidebug.isDebugState();
+            expect(result).assertFalse();
+        } catch (error) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2000 > error code: ${err.code}, error msg: ${err.message}`);
+        }
+        console.info('testHiDebugJs27 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2100
+     * @tc.name testHiDebugJs28
+     * @tc.desc getGraphicsMemory正常测试
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs28', 1, async function (done) {
+        console.info('testHiDebugJs28 start');
+        try {
+            let result = hidebug.getGraphicsMemory();
+            expect(result >= 0).assertFalse();
+        } catch (error) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2100 > error code: ${err.code}, error msg: ${err.message}`);
+        }
+        console.info('testHiDebugJs28 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2200
+     * @tc.name testHiDebugJs29
+     * @tc.desc getGraphicsMemorySync正常测试
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs29', 1, async function (done) {
+        console.info('testHiDebugJs29 start');
+        try {
+            let result = hidebug.getGraphicsMemorySync();
+            expect(result >= 0).assertTrue();
+        } catch (error) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2200 > error code: ${err.code}, error msg: ${err.message}`);
+        }
+        console.info('testHiDebugJs29 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2000
+     * @tc.name testHiDebugJs30
      * @tc.desc 验证应用内动态启停采集应用trace-ts接口-startAppTraceCapture、stopAppTraceCapture-ALL_THREADS(limit_size最小值)
      * @tc.size MediumTest
      * @tc.type Function
@@ -718,7 +778,7 @@ describe('HidebugToDevJsTest', function () {
 
     /**
      * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2100
-     * @tc.name testHiDebugJs28
+     * @tc.name testHiDebugJs31
      * @tc.desc 验证应用内动态启停采集应用trace-ts接口-startAppTraceCapture、stopAppTraceCapture-MAIN_THREAD(limit_size最小值)
      * @tc.size MediumTest
      * @tc.type Function
