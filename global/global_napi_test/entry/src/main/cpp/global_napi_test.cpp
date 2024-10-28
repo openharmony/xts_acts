@@ -301,9 +301,6 @@ static napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
     std::string filename(strBuf, strSize);
     RawFile *rawFile = OH_ResourceManager_OpenRawFile(mNativeResMgr, filename.c_str());
-    if (rawFile != nullptr) {
-        return nullptr;
-    }
     RawFileDescriptor descriptor;
     OH_ResourceManager_GetRawFileDescriptor(rawFile, descriptor);
     OH_ResourceManager_ReleaseRawFileDescriptor(descriptor);
@@ -328,9 +325,6 @@ static napi_value GetRawFileDescriptor64(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
     std::string filename(strBuf, strSize);
     RawFile64 *rawFile = OH_ResourceManager_OpenRawFile64(mNativeResMgr, filename.c_str());
-    if (rawFile != nullptr) {
-        return nullptr;
-    }
     RawFileDescriptor64 *descriptor = new RawFileDescriptor64();
     OH_ResourceManager_GetRawFileDescriptor64(rawFile, descriptor);
     OH_ResourceManager_ReleaseRawFileDescriptor64(descriptor);
@@ -366,9 +360,9 @@ static napi_value GetDrawableDescriptor(napi_env env, napi_callback_info info)
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, args[0]);
     uint32_t id = 0;
     napi_get_value_uint32(env, args[1], &id);
-    OH_ResourceManager_GetDrawableDescriptor(mNativeResMgr, id, &drawable);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDrawableDescriptor(mNativeResMgr, id, &drawable);
 
-    bool flag = (drawable == nullptr);
+    bool flag = (drawable != nullptr && code = 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -702,8 +696,7 @@ static napi_value GetConfiguration(napi_env env, napi_callback_info info)
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     ResourceManager_ErrorCode code = OH_ResourceManager_GetConfiguration(mNativeResMgr, &config);
 
-    bool flag = (code == 0 && config.direction == 0 && config.deviceType == 0 && config.screenDensity == 3 &&
-    config.colorMode == 1 && config.mcc == 0 && config.mnc == 0 && strcmp(config.locale, "zh_Hans_CN") == 0);
+    bool flag = (code == 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
