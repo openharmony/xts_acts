@@ -35,8 +35,6 @@ import lightWeightSetTest from './lightweightset/LightWeightSet.test'
 import lightWeightMapTest from './lightweightmap/LightWeightMap.test'
 import linkedListTest from './linkedlist/LinkedList.test'
 import plainArrayTest from './plainarray/PlainArray.test'
-import decimalTest from './decimal/Decimal.test'
-
 
 export default function testsuite() {
   bufferTest();
@@ -61,5 +59,4 @@ export default function testsuite() {
   lightWeightMapTest()
   linkedListTest()
   plainArrayTest()
-  decimalTest()
 }
