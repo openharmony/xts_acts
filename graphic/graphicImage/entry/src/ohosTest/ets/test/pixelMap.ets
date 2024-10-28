@@ -13,18 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
+import { Driver, ON } from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 
 export default function imagePixelMapTest() {
   describe('imagePixelMapTest', ()=> {
     beforeAll(async (done:Function)=> {
-      console.info("Component3DTest beforeEach start");
+      console.info("imagePixelMapTest beforeEach start");
       done();
     });
 
@@ -47,20 +45,20 @@ export default function imagePixelMapTest() {
       })
 
       let driver: Driver = Driver.create();
-      await driver.delayMs(3000);
+      await driver.delayMs(1000);
       let button1 = await driver.findComponent(ON.text('允许'));
       await driver.delayMs(1000);
       await button1.click();
-	  await driver.delayMs(1000);
+	    await driver.delayMs(1000);
       let button2 = await driver.findComponent(ON.text('允许'));
       await driver.delayMs(1000);
       await button2.click();
-
+      await driver.delayMs(1000);
       let options :router.RouterOptions= {
         url: 'MainAbility/pages/index/indexPixel',
       }
       let result = await router.replace(options);
-      await driver.delayMs(5000);
+      await driver.delayMs(1000);
       let button3 = await driver.findComponent(ON.id('createPixelMapFromSurfaceSync'));
       await button3.click();
       await driver.delayMs(1000);
@@ -84,14 +82,14 @@ export default function imagePixelMapTest() {
       }
       let result = await router.replace(options);
       let driver: Driver = Driver.create();
-      await driver.delayMs(2000);
+      await driver.delayMs(1000);
       let button3 = await driver.findComponent(ON.id('createPixelMapFromSurfaceSync'));
       await button3.click();
       await driver.delayMs(1000);
       let strJson = getInspectorByKey('createPixelMapFromSurfaceSync');
       let obj :ESObject= JSON.parse(strJson);
       expect(obj.$attrs.content).assertEqual('pass');
-      await driver.delayMs(2000);
+      await driver.delayMs(1000);
       done();
     });
 
