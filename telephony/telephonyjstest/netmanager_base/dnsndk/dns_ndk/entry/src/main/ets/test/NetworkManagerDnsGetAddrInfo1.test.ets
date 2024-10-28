@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it, afterEach, afterAll } from '@ohos/hypium';
-import testNapi from 'libdnsndknapitest.so'
+import testNapi from 'libtestDnsNdk.so'
 
 
 function expectFalse() {
