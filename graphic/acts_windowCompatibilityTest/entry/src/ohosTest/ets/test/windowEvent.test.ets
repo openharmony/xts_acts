@@ -55,7 +55,17 @@ function buttonClick(buttonText: string, msgStr: string) {
 export default function windowEventTest(context: common.UIAbilityContext, windowStage: window.WindowStage) {
   describe('window_event_test', () => {
     console.log('describe window_event_test start!!!')
+    let tempWnd: window.Window | void;
+    let subWin: window.Window | void;
 
+    afterEach(async ()=>{
+      if(tempWnd !== null && tempWnd !== undefined){
+        await (tempWnd as window.Window).destroyWindow();
+      }
+      if(subWin !== null && subWin !== undefined){
+        await (subWin as window.Window).destroyWindow();
+      }
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4820
      * @tc.name      : testTouchOutside_OnDialogWindow_ClickMainWindow
@@ -73,7 +83,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -129,7 +138,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -175,7 +183,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testTouchOutside_OnSubWindow_ClickMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testTouchOutside_OnSubWindow_ClickMainWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -220,7 +227,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testTouchOutside_OnMainWindow_ClickSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testTouchOutside_OnMainWindow_ClickSubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -272,7 +278,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -327,7 +332,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -371,7 +375,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testDialogTargetTouch_OnSubWindow_ClickSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testDialogTargetTouch_OnSubWindow_Sub')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -387,7 +390,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -439,7 +441,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testDialogTargetTouch_OnDialogWindow_ClickSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testDialogTargetTouch_OnDialogWindow_ClickSubWindow_Sub')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -455,7 +456,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -538,7 +538,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testNoInteractionDetected_OnSubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testNoInteractionDetected_OnSubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -656,7 +655,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testSetWindowTouchable_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetWindowTouchable_SubWindow_Promise')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -698,7 +696,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testSetWindowTouchable_SubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetWindowTouchable_SubWindow_Callback')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -747,7 +744,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testTouchOutside_OnSubWindowWithOps_ClickMainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testTouchOutside_OnSubWindowWithOps_ClickMainWindow',
         decorEnabled: true
@@ -808,7 +804,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testTouchOutside_OnMainWindow_ClickSubWindowWithOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testTouchOutside_OnMainWindow_ClickSubWindowWithOps',
         decorEnabled: true
@@ -875,7 +870,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -886,7 +880,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       await (tempWnd as window.Window).setUIContent("testability/pages/second/second");
       await (tempWnd as window.Window).showWindow();
       await (tempWnd as window.Window).moveWindowTo(900, 900);
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testDialogTargetTouch_OnSubWindowWithOps',
         decorEnabled: true
@@ -954,7 +947,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testDialogTargetTouch_OnDialogWindow_ClickSubWinOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testDialogTargetTouch_OnDialogWindow_ClickSubWinOps',
         decorEnabled: true
@@ -972,7 +964,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
             windowType: window.WindowType.TYPE_DIALOG,
             ctx: context,
           };
-          let tempWnd: window.Window | void;
           tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
             console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
             expect().assertFail();
@@ -1032,7 +1023,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testNoInteractionDetected_OnSubWindowWithOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testNoInteractionDetected_OnSubWindowWithOps',
         decorEnabled: true
@@ -1094,7 +1084,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testSetWindowTouchable_SubWindowWithOps_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testSetWindowTouchable_SubWindowWithOps_Promise',
         decorEnabled: true
@@ -1151,7 +1140,6 @@ export default function windowEventTest(context: common.UIAbilityContext, window
       let caseName = 'testSetWindowTouchable_SubWindowWithOps_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testSetWindowTouchable_SubWindowWithOps_Callback',
         decorEnabled: true

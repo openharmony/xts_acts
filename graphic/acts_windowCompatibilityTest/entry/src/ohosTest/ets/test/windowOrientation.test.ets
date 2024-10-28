@@ -31,7 +31,17 @@ async function sleep(time: number) {
 export default function windowOrientationTest(context: common.UIAbilityContext, windowStage: window.WindowStage) {
   describe('window_orientation_test', () => {
     console.log('describe window_orientation_test start!!!')
+    let tempWnd: window.Window | void;
+    let subWin: window.Window | void;
 
+    afterEach(async ()=>{
+      if(tempWnd !== null && tempWnd !== undefined){
+        await (tempWnd as window.Window).destroyWindow();
+      }
+      if(subWin !== null && subWin !== undefined){
+        await (subWin as window.Window).destroyWindow();
+      }
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5340
      * @tc.name      : testSetPreferredOrientation_DialogWindow_Promise
@@ -49,7 +59,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -87,7 +96,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -129,7 +137,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       let caseName = 'testSetPreferredOrientation_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetPreferredOrientation_SubWindow_Promise')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -163,7 +170,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       let caseName = 'testSetPreferredOrientation_SubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetPreferredOrientation_SubWindow_Callback')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -211,7 +217,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -239,7 +244,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       let caseName = 'testGetPreferredOrientation_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testGetPreferredOrientation_SubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -269,7 +273,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       let caseName = 'testSetPreferredOrientation_SubWindowWithOptions_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'SetPreOrie_SubWinOpt',
         decorEnabled: true
@@ -317,7 +320,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       let caseName = 'testSetPreferredOrientation_SubWindowWithOptions_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'SetPreOrie_SubWinOpt',
         decorEnabled: true
@@ -375,7 +377,6 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       let caseName = 'testGetPreferredOrientation_SubWindowWithOptions';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'SetPreOrie_SubWinOpt',
         decorEnabled: true

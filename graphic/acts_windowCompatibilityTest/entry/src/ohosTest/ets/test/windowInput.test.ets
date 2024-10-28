@@ -22,6 +22,17 @@ import common from '@ohos.app.ability.common';
 export default function windowInputTest(context: common.UIAbilityContext, windowStage: window.WindowStage) {
   describe('window_input_test', () => {
     console.log('describe window_input_test start!!!')
+    let tempWnd: window.Window | void;
+    let subWin: window.Window | void;
+
+    afterEach(async ()=>{
+      if(tempWnd !== null && tempWnd !== undefined){
+        await (tempWnd as window.Window).destroyWindow();
+      }
+      if(subWin !== null && subWin !== undefined){
+        await (subWin as window.Window).destroyWindow();
+      }
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5060
      * @tc.name      : testKeepKeyboardOnFocus_DialogWindow
@@ -39,7 +50,6 @@ export default function windowInputTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -72,7 +82,6 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       let caseName = 'testKeepKeyboardOnFocus_SubWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testKeepKeyboardOnFocus_SubWindow')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -135,7 +144,6 @@ export default function windowInputTest(context: common.UIAbilityContext, window
       let caseName = 'testKeepKeyboardOnFocus_SubWindowWithOps';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'testKeepKeyboardOnFocus_SubWindowWithOps',
         decorEnabled: true
