@@ -46,7 +46,7 @@ static void Handler(int sig)
 
 static int Start(const char *argvs)
 {
-    int pid, spaceSize = 100 * 1024;
+    int pid, spaceSize = 200 * 1024;
     // Create a child process
     // Set the process stack space
     pid = fork();
