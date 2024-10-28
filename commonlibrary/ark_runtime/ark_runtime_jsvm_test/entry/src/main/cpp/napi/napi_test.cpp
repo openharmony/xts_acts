@@ -2345,7 +2345,7 @@ static napi_value testValueOperation7(napi_env env1, napi_callback_info info)
     return result11;
 }
 
-void prototypeof_test_1(JSVM_Env env)
+void prototypeof_test_1(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -2354,12 +2354,12 @@ void prototypeof_test_1(JSVM_Env env)
     OH_JSVM_CreateObject(env, &obj);
     JSVM_Value result;
     OH_JSVM_ObjectGetPrototypeOf(env, obj, &result);
-    JSVM_ASSERT_RETURN_VOID(env, result != nullptr, "check OH_JSVM_ObjectGetPrototype");
+    NAPI_ASSERT_RETURN_VOID(env1, result != nullptr, "check OH_JSVM_ObjectGetPrototype 1");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void prototypeof_test_2(JSVM_Env env)
+void prototypeof_test_2(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -2369,16 +2369,16 @@ void prototypeof_test_2(JSVM_Env env)
     JSVM_Value mySet;
     OH_JSVM_CreateSet(env, &mySet);
     JSVM_Status status = OH_JSVM_ObjectSetPrototypeOf(env, obj, mySet);
-    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_OK, "OH_JSVM_ObjectSetPrototypeOf check status");
+    NAPI_ASSERT_RETURN_VOID(env1, status == JSVM_OK, "OH_JSVM_ObjectSetPrototypeOf check status");
     JSVM_Value proto;
     OH_JSVM_ObjectGetPrototypeOf(env, obj, &proto);
     bool result = false;
     OH_JSVM_StrictEquals(env, proto, mySet, &result);
-    JSVM_ASSERT_RETURN_VOID(env, result, "check OH_JSVM_ObjectGetPrototype");
+    NAPI_ASSERT_RETURN_VOID(env1, result, "check OH_JSVM_ObjectGetPrototype 2");
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void prototypeof_test_3(JSVM_Env env)
+void prototypeof_test_3(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -2387,11 +2387,11 @@ void prototypeof_test_3(JSVM_Env env)
     OH_JSVM_GetUndefined(env, &obj);
     JSVM_Value proto;
     JSVM_Status status = OH_JSVM_ObjectGetPrototypeOf(env, obj, &proto);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectGetPrototype");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "check OH_JSVM_ObjectGetPrototype 3");
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void prototypeof_test_4(JSVM_Env env)
+void prototypeof_test_4(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -2400,13 +2400,13 @@ void prototypeof_test_4(JSVM_Env env)
     OH_JSVM_GetUndefined(env, &obj);
     JSVM_Value proto = nullptr;
     JSVM_Status status = OH_JSVM_ObjectSetPrototypeOf(env, obj, proto);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype obj not an object");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype obj not an object");
     status = OH_JSVM_ObjectSetPrototypeOf(env, nullptr, proto);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype obj is null");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype obj is null");
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void prototypeof_test_5(JSVM_Env env)
+void prototypeof_test_5(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -2414,15 +2414,15 @@ void prototypeof_test_5(JSVM_Env env)
     JSVM_Value obj;
     OH_JSVM_CreateObject(env, &obj);
     JSVM_Status status = OH_JSVM_ObjectSetPrototypeOf(env, obj, nullptr);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is null");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is null");
     JSVM_Value proto;
     OH_JSVM_GetUndefined(env, &proto);
     status = OH_JSVM_ObjectSetPrototypeOf(env, obj, proto);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is not an object");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is not an object 1");
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void prototypeof_test_6(JSVM_Env env)
+void prototypeof_test_6(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -2430,39 +2430,39 @@ void prototypeof_test_6(JSVM_Env env)
     JSVM_Value obj;
     OH_JSVM_CreateObject(env, &obj);
     JSVM_Status status = OH_JSVM_ObjectSetPrototypeOf(nullptr, obj, nullptr);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is null");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is null");
     JSVM_Value proto;
     OH_JSVM_GetUndefined(env, &proto);
     status = OH_JSVM_ObjectSetPrototypeOf(nullptr, obj, proto);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is not an object");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is not an object 2");
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void set_test_1(JSVM_Env env)
+void set_test_1(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
     JSVM_Status status = OH_JSVM_CreateSet(env, nullptr);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateSet check status");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "OH_JSVM_CreateSet check status 1");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void set_test_2(JSVM_Env env)
+void set_test_2(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
     JSVM_Value mySet;
     JSVM_Status status = OH_JSVM_CreateSet(env, &mySet);
-    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_OK, "OH_JSVM_CreateSet check status");
+    NAPI_ASSERT_RETURN_VOID(env1, status == JSVM_OK, "OH_JSVM_CreateSet check status 2");
     bool isSet = false;
     OH_JSVM_IsSet(env, mySet, &isSet);
-    JSVM_ASSERT_RETURN_VOID(env, mySet != nullptr, "OH_JSVM_CreateSet check status");
+    NAPI_ASSERT_RETURN_VOID(env1, mySet != nullptr, "OH_JSVM_CreateSet check status 3");
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void set_test_3(JSVM_Env env)
+void set_test_3(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -2470,20 +2470,20 @@ void set_test_3(JSVM_Env env)
     JSVM_Value mySet = nullptr;
     bool isSet = false;
     OH_JSVM_IsSet(env, mySet, &isSet);
-    JSVM_ASSERT_RETURN_VOID(env, !isSet, "check OH_JSVM_IsSet when not a set");
+    NAPI_ASSERT_RETURN_VOID(env1, !isSet, "check OH_JSVM_IsSet when not a set");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void set_test_4(JSVM_Env env)
+void set_test_4(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
     JSVM_Status status = OH_JSVM_CreateSet(nullptr, nullptr);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateSet check status");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "OH_JSVM_CreateSet check status 4");
     bool isSet = false;
     JSVM_Status status2 = OH_JSVM_IsSet(nullptr, nullptr, &isSet);
-    JSVM_ASSERT_RETURN_VOID(env, status2 != JSVM_OK, "OH_JSVM_IsSet check status");
+    NAPI_ASSERT_RETURN_VOID(env1, status2 != JSVM_OK, "OH_JSVM_IsSet check status");
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
@@ -2519,17 +2519,17 @@ static napi_value testValueOperation8(napi_env env1, napi_callback_info info)
     JSVM_EnvScope envScope;
     OH_JSVM_OpenEnvScope(env, &envScope);
 
-    prototypeof_test_1(env);
-    prototypeof_test_2(env);
-    prototypeof_test_3(env);
-    prototypeof_test_4(env);
-    prototypeof_test_5(env);
-    prototypeof_test_6(env);
+    prototypeof_test_1(env, env1);
+    prototypeof_test_2(env, env1);
+    prototypeof_test_3(env, env1);
+    prototypeof_test_4(env, env1);
+    prototypeof_test_5(env, env1);
+    prototypeof_test_6(env, env1);
 
-    set_test_1(env);
-    set_test_2(env);
-    set_test_3(env);
-    set_test_4(env);
+    set_test_1(env, env1);
+    set_test_2(env, env1);
+    set_test_3(env, env1);
+    set_test_4(env, env1);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -8873,7 +8873,7 @@ static napi_value testOpenInspectorWithName(napi_env env1, napi_callback_info in
     return result11;
 }
 
-void useArrayBuffer(JSVM_Env env)
+void useArrayBuffer(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -8881,19 +8881,19 @@ void useArrayBuffer(JSVM_Env env)
     void *backingStore;
     JSVM_Value arrayBuffer;
     JSVM_Status stat1 = OH_JSVM_AllocateArrayBufferBackingStoreData(100, JSVM_ZERO_INITIALIZED, &backingStore);
-    JSVM_ASSERT_RETURN_VOID(env, stat1 != JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat1 == JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
 
     JSVM_Status stat2 = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, backingStore, 100, 30, 20, &arrayBuffer);
-    JSVM_ASSERT_RETURN_VOID(env, stat2 != JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat2 == JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
 
     JSVM_Value js_global;
     JSVM_Value name;
     JSVM_Status stat3 = OH_JSVM_GetGlobal(env, &js_global);
-    JSVM_ASSERT_RETURN_VOID(env, stat3 != JSVM_OK, "OH_JSVM_GetGlobal check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat3 == JSVM_OK, "OH_JSVM_GetGlobal check status");
     JSVM_Status stat4 = OH_JSVM_CreateStringUtf8(env, "buffer", JSVM_AUTO_LENGTH, &name);
-    JSVM_ASSERT_RETURN_VOID(env, stat4 != JSVM_OK, "OH_JSVM_CreateStringUtf8 check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat4 == JSVM_OK, "OH_JSVM_CreateStringUtf8 check status");
     JSVM_Status stat5 = OH_JSVM_SetProperty(env, js_global, name, arrayBuffer);
-    JSVM_ASSERT_RETURN_VOID(env, stat5 != JSVM_OK, "OH_JSVM_SetProperty check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat5 == JSVM_OK, "OH_JSVM_SetProperty check status");
 
     JSVM_Script script;
     JSVM_Value scriptString;
@@ -8909,24 +8909,24 @@ void useArrayBuffer(JSVM_Env env)
         writeBuffer(buffer)
     )JS";
     JSVM_Status stat6 = OH_JSVM_CreateStringUtf8(env, src, JSVM_AUTO_LENGTH, &scriptString);
-    JSVM_ASSERT_RETURN_VOID(env, stat6 != JSVM_OK, "OH_JSVM_CreateStringUtf8 check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat6 == JSVM_OK, "OH_JSVM_CreateStringUtf8 check status");
     JSVM_Status stat7 = OH_JSVM_CompileScriptWithOptions(env, scriptString, 0, nullptr, &script);
-    JSVM_ASSERT_RETURN_VOID(env, stat7 != JSVM_OK, "OH_JSVM_CompileScriptWithOption check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat7 == JSVM_OK, "OH_JSVM_CompileScriptWithOption check status");
     JSVM_Status stat8 = OH_JSVM_RunScript(env, script, &result);
-    JSVM_ASSERT_RETURN_VOID(env, stat8 != JSVM_OK, "OH_JSVM_RunScript check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat8 == JSVM_OK, "OH_JSVM_RunScript check status");
 
     uint8_t *array = static_cast<uint8_t*>(backingStore);
     for (auto i = 0; i < 100; ++i) {
         if (array[i] != i % 25 % 256) {
-            JSVM_ASSERT_RETURN_VOID(env, true, "OH_JSVM_RunScript check status");
+            NAPI_ASSERT_RETURN_VOID(env1, true, "OH_JSVM_RunScript check status");
         }
     }
 
     JSVM_Status stat9 = OH_JSVM_DetachArraybuffer(env, arrayBuffer);
-    JSVM_ASSERT_RETURN_VOID(env, stat9 != JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat9 == JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
 
     JSVM_Status stat10 = OH_JSVM_FreeArrayBufferBackingStoreData(backingStore);
-    JSVM_ASSERT_RETURN_VOID(env, stat10 != JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat10 == JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
@@ -8963,7 +8963,7 @@ static napi_value testArrayBuffer(napi_env env1, napi_callback_info info)
     JSVM_EnvScope envScope;
     OH_JSVM_OpenEnvScope(env, &envScope);
 
-    useArrayBuffer(env);
+    useArrayBuffer(env, env1);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -8974,34 +8974,33 @@ static napi_value testArrayBuffer(napi_env env1, napi_callback_info info)
     return result11;
 }
 
-
-void useArrayBuffer2(JSVM_Env env)
+void useArrayBuffer2(JSVM_Env env, napi_env env1)
 {
     void *storeData = nullptr;
     size_t storeLen = SIXTEEN;
     JSVM_Status stat1 = OH_JSVM_AllocateArrayBufferBackingStoreData(storeLen, JSVM_ZERO_INITIALIZED, &storeData);
-    JSVM_ASSERT_RETURN_VOID(env, stat1 != JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat1 == JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
     
     JSVM_Value arrayBuffer;
     JSVM_Status stat2 = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, storeData, storeLen, 0, storeLen, &arrayBuffer);
-    JSVM_ASSERT_RETURN_VOID(env, stat2 != JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat2 == JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
     
     void *tmpArrayBufferPtr = nullptr;
     size_t arrayBufferLen = 0;
     JSVM_Status stat3 = OH_JSVM_GetArraybufferInfo(env, arrayBuffer, &tmpArrayBufferPtr, &arrayBufferLen);
-    JSVM_ASSERT_RETURN_VOID(env, stat3 != JSVM_OK, "OH_JSVM_GetArraybufferInfo check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat3 == JSVM_OK, "OH_JSVM_GetArraybufferInfo check status");
     
     size_t typedArrayLen = arrayBufferLen / sizeof(int32_t);
     JSVM_Value typedArray;
     JSVM_Status stat4 = OH_JSVM_CreateTypedarray(env, JSVM_TypedarrayType::JSVM_INT32_ARRAY, typedArrayLen,
                                                  arrayBuffer, 0, &typedArray);
-    JSVM_ASSERT_RETURN_VOID(env, stat4 != JSVM_OK, "OH_JSVM_CreateTypedarray check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat4 == JSVM_OK, "OH_JSVM_CreateTypedarray check status");
     
     JSVM_Status stat5 = OH_JSVM_DetachArraybuffer(env, arrayBuffer);
-    JSVM_ASSERT_RETURN_VOID(env, stat5 != JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat5 == JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
     
     JSVM_Status stat6 = OH_JSVM_FreeArrayBufferBackingStoreData(storeData);
-    JSVM_ASSERT_RETURN_VOID(env, stat6 != JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat6 == JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
 }
 static napi_value testArrayBuffer2(napi_env env1, napi_callback_info info)
 {
@@ -9037,7 +9036,7 @@ static napi_value testArrayBuffer2(napi_env env1, napi_callback_info info)
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
-	useArrayBuffer2(env);
+	useArrayBuffer2(env, env1);
 
     OH_JSVM_CloseHandleScope(env, handleScope);
     OH_JSVM_CloseEnvScope(env, envScope);
@@ -9049,40 +9048,39 @@ static napi_value testArrayBuffer2(napi_env env1, napi_callback_info info)
     return result11;
 }
 
-
-void useArrayBuffer3(JSVM_Env env)
+void useArrayBuffer3(JSVM_Env env, napi_env env1)
 {
     void *storeData = nullptr;
     size_t storeLen = SIXTEEN;
     JSVM_Status stat1 = OH_JSVM_AllocateArrayBufferBackingStoreData(storeLen, JSVM_ZERO_INITIALIZED, &storeData);
-    JSVM_ASSERT_RETURN_VOID(env, stat1 != JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat1 == JSVM_OK, "OH_JSVM_AllocateArrayBufferBackingStoreData check status");
  
     JSVM_Value arrayBuffer;
     JSVM_Status stat2 = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, storeData, storeLen, 0, storeLen, &arrayBuffer);
-    JSVM_ASSERT_RETURN_VOID(env, stat2 != JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat2 == JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
  
     void *tmpArrayBufferPtr = nullptr;
     size_t arrayBufferLen = 0;
     JSVM_Status stat3 = OH_JSVM_GetArraybufferInfo(env, arrayBuffer, &tmpArrayBufferPtr, &arrayBufferLen);
-    JSVM_ASSERT_RETURN_VOID(env, stat3 != JSVM_OK, "OH_JSVM_GetArraybufferInfo check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat3 == JSVM_OK, "OH_JSVM_GetArraybufferInfo check status");
  
     size_t typedArrayLen = arrayBufferLen / sizeof(int32_t);
  
     JSVM_Value typedArray;
     JSVM_Status stat4 = OH_JSVM_CreateTypedarray(env, JSVM_TypedarrayType::JSVM_INT32_ARRAY, typedArrayLen, arrayBuffer, 0, &typedArray);
-    JSVM_ASSERT_RETURN_VOID(env, stat4 != JSVM_OK, "OH_JSVM_CreateTypedarray check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat4 == JSVM_OK, "OH_JSVM_CreateTypedarray check status");
  
     JSVM_Status stat5 = OH_JSVM_DetachArraybuffer(env, arrayBuffer);
-    JSVM_ASSERT_RETURN_VOID(env, stat5 != JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat5 == JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
  
     JSVM_Value arrayBuffer2;
     JSVM_Status stat6 = OH_JSVM_CreateArrayBufferFromBackingStoreData(env, storeData, storeLen, 0, storeLen, &arrayBuffer2);
-    JSVM_ASSERT_RETURN_VOID(env, stat6 != JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat6 == JSVM_OK, "OH_JSVM_CreateArrayBufferFromBackingStoreData check status");
     JSVM_Status stat7 = OH_JSVM_DetachArraybuffer(env, arrayBuffer2);
-    JSVM_ASSERT_RETURN_VOID(env, stat7 != JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat7 == JSVM_OK, "OH_JSVM_DetachArraybuffer check status");
  
     JSVM_Status stat8 = OH_JSVM_FreeArrayBufferBackingStoreData(storeData);
-    JSVM_ASSERT_RETURN_VOID(env, stat8 != JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
+    NAPI_ASSERT_RETURN_VOID(env1, stat8 == JSVM_OK, "OH_JSVM_FreeArrayBufferBackingStoreData check status");
 }
 static napi_value testArrayBuffer3(napi_env env1, napi_callback_info info)
 {
@@ -9118,7 +9116,7 @@ static napi_value testArrayBuffer3(napi_env env1, napi_callback_info info)
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
-	useArrayBuffer3(env);
+	useArrayBuffer3(env, env1);
 
     OH_JSVM_CloseHandleScope(env, handleScope);
     OH_JSVM_CloseEnvScope(env, envScope);
@@ -9130,43 +9128,43 @@ static napi_value testArrayBuffer3(napi_env env1, napi_callback_info info)
     return result11;
 }
 
-void test_CompileWasmModule(JSVM_Env env)
+void test_CompileWasmModule(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
     JSVM_Value wasmModule;
     JSVM_Status status = OH_JSVM_CompileWasmModule(env, nullptr, 0, nullptr, 0, nullptr, &wasmModule);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CompileWasmModule check status");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "OH_JSVM_CompileWasmModule check status");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void test_CompileWasmFunctionNULL(JSVM_Env env)
+void test_CompileWasmFunctionNULL(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
     JSVM_Status status = OH_JSVM_CompileWasmFunction(env, nullptr, 0, JSVM_WASM_OPT_BASELINE);
-    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_INVALID_ARG, "OH_JSVM_CompileWasmFunction check status");
+    NAPI_ASSERT_RETURN_VOID(env1, status == JSVM_INVALID_ARG, "OH_JSVM_CompileWasmFunction check status");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void test_IsWasmModuleValueisNULL(JSVM_Env env)
+void test_IsWasmModuleValueisNULL(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
     bool result = false;
     JSVM_Status status = OH_JSVM_IsWasmModuleObject(env, nullptr, &result);
-    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_INVALID_ARG, "OH_JSVM_IsWasmModuleObject check status");
-    JSVM_ASSERT_RETURN_VOID(env, result == false, "OH_JSVM_IsWasmModuleObject check result");
+    NAPI_ASSERT_RETURN_VOID(env1, status == JSVM_INVALID_ARG, "OH_JSVM_IsWasmModuleObject check status");
+    NAPI_ASSERT_RETURN_VOID(env1, result == false, "OH_JSVM_IsWasmModuleObject check result");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void test_CreateWarmCache_wasmmodule_is_null(JSVM_Env env)
+void test_CreateWarmCache_wasmmodule_is_null(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -9175,12 +9173,12 @@ void test_CreateWarmCache_wasmmodule_is_null(JSVM_Env env)
     size_t cacheLength = 0;
     JSVM_Value wasmModule = nullptr;
     JSVM_Status status = OH_JSVM_CreateWasmCache(env, wasmModule, &cacheData, &cacheLength);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateWarmCache check status not ok");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "OH_JSVM_CreateWarmCache check status not ok 1");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void test_CreateWarmCache_wasmmodule_is_not_wasmmodule(JSVM_Env env)
+void test_CreateWarmCache_wasmmodule_is_not_wasmmodule(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -9190,18 +9188,18 @@ void test_CreateWarmCache_wasmmodule_is_not_wasmmodule(JSVM_Env env)
     JSVM_Value wasmModule;
     OH_JSVM_CreateSet(env, &wasmModule);
     JSVM_Status status = OH_JSVM_CreateWasmCache(env, wasmModule, &cacheData, &cacheLength);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateWarmCache check status not ok");
+    NAPI_ASSERT_RETURN_VOID(env1, status != JSVM_OK, "OH_JSVM_CreateWarmCache check status not ok 2");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
-void test_ReleaseCache_cachedata_is_null(JSVM_Env env)
+void test_ReleaseCache_cachedata_is_null(JSVM_Env env, napi_env env1)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
     JSVM_Status status = OH_JSVM_ReleaseCache(env, nullptr, JSVM_CACHE_TYPE_JS);
-    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_INVALID_ARG, "OH_JSVM_CreateWarmCache check status is invalid_arg");
+    NAPI_ASSERT_RETURN_VOID(env1, status == JSVM_INVALID_ARG, "OH_JSVM_CreateWarmCache check status is invalid_arg");
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
@@ -9238,12 +9236,12 @@ static napi_value testWasmOperator(napi_env env1, napi_callback_info info)
     JSVM_EnvScope envScope;
     OH_JSVM_OpenEnvScope(env, &envScope);
 
-    test_CompileWasmModule(env);
-    test_CompileWasmFunctionNULL(env);
-    test_IsWasmModuleValueisNULL(env);
-    test_CreateWarmCache_wasmmodule_is_null(env);
-    test_CreateWarmCache_wasmmodule_is_not_wasmmodule(env);
-    test_ReleaseCache_cachedata_is_null(env);
+    test_CompileWasmModule(env, env1);
+    test_CompileWasmFunctionNULL(env, env1);
+    test_IsWasmModuleValueisNULL(env, env1);
+    test_CreateWarmCache_wasmmodule_is_null(env, env1);
+    test_CreateWarmCache_wasmmodule_is_not_wasmmodule(env, env1);
+    test_ReleaseCache_cachedata_is_null(env, env1);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
