@@ -20,22 +20,9 @@ import uiAppearance from '@ohos.uiAppearance'
 import { BusinessError } from '@ohos.base';
 import events_emitter from '@ohos.events.emitter';
 
-// xxx.ets
 @Entry
 @Component
 struct Index {
-  aboutToAppear() {
-    hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-  }
-
   @State isRefreshingText: boolean = false
   @State counterText: number = 0
   @State promptText1: string | undefined = "pull down and refresh : 0"
@@ -82,7 +69,7 @@ struct Index {
              })
            }
       .border({ width: 1, color: Color.Blue })
-      .size({ width: "100%", height: 300 })
+      .size({ width: "100%", height: '15%' })
 
       Column() {
         Refresh({ refreshing: $$this.isRefreshingText, offset: 10, friction: 100, promptText: this.promptText2 }) {
@@ -103,7 +90,7 @@ struct Index {
         })
       }
       .border({ width: 1, color: Color.Blue })
-      .size({ width: "100%", height: 300 })
+      .size({ width: "100%", height: '15%' })
 
       Column() {
         Refresh({ refreshing: $$this.isRefreshingText, offset: 10, friction: 100, promptText: this.promptText3 }) {
@@ -124,7 +111,7 @@ struct Index {
         })
       }
       .border({ width: 1, color: Color.Blue })
-      .size({ width: "100%", height: 300 })
+      .size({ width: "100%", height: '15%' })
 
       Column() {
         Refresh({ refreshing: $$this.isRefreshing, offset: 10, friction: 100 }) {
@@ -144,7 +131,7 @@ struct Index {
         })
       }
       .border({ width: 1, color: Color.Blue })
-      .size({ width: "100%", height: 300 })
+      .size({ width: "100%", height: '15%' })
 
       Column() {
         Refresh({ refreshing: $$this.isRefreshingText, offset: 10, friction: 100, promptText: this.promptText5 }) {
@@ -165,7 +152,7 @@ struct Index {
         })
       }
       .border({ width: 1, color: Color.Blue })
-      .size({ width: "100%", height: 300 })
+      .size({ width: "100%", height: '15%' })
     }
  }
 }

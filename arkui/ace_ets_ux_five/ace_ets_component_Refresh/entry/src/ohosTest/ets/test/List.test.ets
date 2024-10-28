@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import abilityTest from './Ability.test'
+import RefreshTest from './Refresh.test'
 
 export default function testsuite() {
-  abilityTest()
+  RefreshTest()
 }
