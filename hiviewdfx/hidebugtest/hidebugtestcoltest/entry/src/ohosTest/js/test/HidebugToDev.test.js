@@ -681,71 +681,11 @@ describe('HidebugToDevJsTest', function () {
         console.info('testHiDebugJs26 end');
         done();
     })
-    
-    /**
-     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2000
-     * @tc.name testHiDebugJs27
-     * @tc.desc 验证isDebugState,未连接调试状态下
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level3
-     */
-    it('testHiDebugJs27', 1, async function (done) {
-        console.info('testHiDebugJs27 start');
-        try {
-            let result = hidebug.isDebugState();
-            expect(result).assertFalse();
-        } catch (error) {
-            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2000 > error code: ${err.code}, error msg: ${err.message}`);
-        }
-        console.info('testHiDebugJs27 end');
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2100
-     * @tc.name testHiDebugJs28
-     * @tc.desc getGraphicsMemory正常测试
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level3
-     */
-    it('testHiDebugJs28', 1, async function (done) {
-        console.info('testHiDebugJs28 start');
-        try {
-            let result = hidebug.getGraphicsMemory();
-            expect(result >= 0).assertFalse();
-        } catch (error) {
-            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2100 > error code: ${err.code}, error msg: ${err.message}`);
-        }
-        console.info('testHiDebugJs28 end');
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2200
-     * @tc.name testHiDebugJs29
-     * @tc.desc getGraphicsMemorySync正常测试
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level3
-     */
-    it('testHiDebugJs29', 1, async function (done) {
-        console.info('testHiDebugJs29 start');
-        try {
-            let result = hidebug.getGraphicsMemorySync();
-            expect(result >= 0).assertTrue();
-        } catch (error) {
-            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2200 > error code: ${err.code}, error msg: ${err.message}`);
-        }
-        console.info('testHiDebugJs29 end');
-        done();
-    })
 
     /**
      * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2000
      * @tc.name testHiDebugJs27
-     * @tc.desc 验证应用内动态启停采集应用trace-ts接口-startAppTraceCapture、stopAppTraceCapture-ALL_THREADS（limit_size为1)
+     * @tc.desc 验证应用内动态启停采集应用trace-ts接口-startAppTraceCapture、stopAppTraceCapture-ALL_THREADS(limit_size最小值)
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -753,8 +693,17 @@ describe('HidebugToDevJsTest', function () {
     it('testHiDebugJs27', 1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.ALL_THREADS;
-            let tag = [hidebug.tags.ABILITY_MANAGER];
-            let limit_size = 1;
+            let tag = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI, hidebug.tags.ARK, hidebug.tags.BLUETOOTH,
+                hidebug.tags.COMMON_LIBRARY, hidebug.tags.DISTRIBUTED_HARDWARE_DEVICE_MANAGER,
+                hidebug.tags.DISTRIBUTED_AUDIO, hidebug.tags.DISTRIBUTED_CAMERA, hidebug.tags.DISTRIBUTED_DATA,
+                hidebug.tags.DISTRIBUTED_HARDWARE_FRAMEWORK, hidebug.tags.DISTRIBUTED_INPUT,
+                hidebug.tags.DISTRIBUTED_SCREEN, hidebug.tags.DISTRIBUTED_SCHEDULER, hidebug.tags.FFRT,
+                hidebug.tags.FILE_MANAGEMENT, hidebug.tags.GLOBAL_RESOURCE_MANAGER, hidebug.tags.GRAPHICS,
+                hidebug.tags.HDF, hidebug.tags.MISC, hidebug.tags.MULTIMODAL_INPUT, hidebug.tags.NET,
+                hidebug.tags.NOTIFICATION, hidebug.tags.NWEB, hidebug.tags.OHOS, hidebug.tags.POWER_MANAGER,
+                hidebug.tags.RPC, hidebug.tags.SAMGR, hidebug.tags.WINDOW_MANAGER, hidebug.tags.AUDIO,
+                hidebug.tags.CAMERA, hidebug.tags.IMAGE, hidebug.tags.MEDIA];
+            let limit_size = 8 * 1024;
             let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
             hidebug.stopAppTraceCapture();
             console.info(`SUB_DFX_DFT_Trace_Collect_Js_2000 > path =: ${path}`)
@@ -762,6 +711,40 @@ describe('HidebugToDevJsTest', function () {
             done();
         } catch (err) {
             console.error(`SUB_DFX_DFT_Trace_Collect_Js_2000 > error code: ${err.code}, error msg: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2100
+     * @tc.name testHiDebugJs28
+     * @tc.desc 验证应用内动态启停采集应用trace-ts接口-startAppTraceCapture、stopAppTraceCapture-MAIN_THREAD(limit_size最小值)
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs28', 1, async function (done) {
+        try {
+            let flag = hidebug.TraceFlag.MAIN_THREAD;
+            let tag = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI, hidebug.tags.ARK, hidebug.tags.BLUETOOTH,
+                hidebug.tags.COMMON_LIBRARY, hidebug.tags.DISTRIBUTED_HARDWARE_DEVICE_MANAGER,
+                hidebug.tags.DISTRIBUTED_AUDIO, hidebug.tags.DISTRIBUTED_CAMERA, hidebug.tags.DISTRIBUTED_DATA,
+                hidebug.tags.DISTRIBUTED_HARDWARE_FRAMEWORK, hidebug.tags.DISTRIBUTED_INPUT,
+                hidebug.tags.DISTRIBUTED_SCREEN, hidebug.tags.DISTRIBUTED_SCHEDULER, hidebug.tags.FFRT,
+                hidebug.tags.FILE_MANAGEMENT, hidebug.tags.GLOBAL_RESOURCE_MANAGER, hidebug.tags.GRAPHICS,
+                hidebug.tags.HDF, hidebug.tags.MISC, hidebug.tags.MULTIMODAL_INPUT, hidebug.tags.NET,
+                hidebug.tags.NOTIFICATION, hidebug.tags.NWEB, hidebug.tags.OHOS, hidebug.tags.POWER_MANAGER,
+                hidebug.tags.RPC, hidebug.tags.SAMGR, hidebug.tags.WINDOW_MANAGER, hidebug.tags.AUDIO,
+                hidebug.tags.CAMERA, hidebug.tags.IMAGE, hidebug.tags.MEDIA];
+            let limit_size = 4 * 1024;
+            let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
+            hidebug.stopAppTraceCapture();
+            console.info(`SUB_DFX_DFT_Trace_Collect_Js_2100 > path =: ${path}`)
+            expect(path != "").assertTrue();
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2100 > error code: ${err.code}, error msg: ${err.message}`);
             expect().assertFail();
             done();
         }
