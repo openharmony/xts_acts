@@ -19,7 +19,6 @@ group("networkmanager") {
     "http:http",
     "mdns:mdns",
     "ndk:ndk",
-    "netstack_websocket:netstack_websocket",
     "network:network",
     "networksecurity:networksecurity",
     "noNet:noNet",
@@ -27,6 +26,7 @@ group("networkmanager") {
     "policy:policy",
     "socket:socket",
     "statistics:statistics",
-    "websocket:websocket"
+    "websocket:websocket",
+    "netstack_websocket:netstack_websocket",
   ]
 }
