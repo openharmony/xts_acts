@@ -15,7 +15,7 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import webSocket from 'libwebsocketndknapitest.so'
+import webSocket from 'libtestNetStackWebsocketNdk.so'
 export default function webSocketTest() {
   describe('ActsAbilityTest', function () {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
