@@ -743,14 +743,14 @@ describe('HidebugToDevJsTest', function () {
     })
 
     /**
-     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2000
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2300
      * @tc.name testHiDebugJs30
      * @tc.desc 验证应用内动态启停采集应用trace-ts接口-startAppTraceCapture、stopAppTraceCapture-ALL_THREADS(limit_size最小值)
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs27', 1, async function (done) {
+    it('testHiDebugJs30', 1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.ALL_THREADS;
             let tag = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI, hidebug.tags.ARK, hidebug.tags.BLUETOOTH,
@@ -766,25 +766,25 @@ describe('HidebugToDevJsTest', function () {
             let limit_size = 8 * 1024;
             let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
             hidebug.stopAppTraceCapture();
-            console.info(`SUB_DFX_DFT_Trace_Collect_Js_2000 > path =: ${path}`)
+            console.info(`SUB_DFX_DFT_Trace_Collect_Js_2300 > path =: ${path}`)
             expect(path != "").assertTrue();
             done();
         } catch (err) {
-            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2000 > error code: ${err.code}, error msg: ${err.message}`);
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2300 > error code: ${err.code}, error msg: ${err.message}`);
             expect().assertFail();
             done();
         }
     })
 
     /**
-     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2100
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2400
      * @tc.name testHiDebugJs31
      * @tc.desc 验证应用内动态启停采集应用trace-ts接口-startAppTraceCapture、stopAppTraceCapture-MAIN_THREAD(limit_size最小值)
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs28', 1, async function (done) {
+    it('testHiDebugJs31', 1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.MAIN_THREAD;
             let tag = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI, hidebug.tags.ARK, hidebug.tags.BLUETOOTH,
@@ -800,11 +800,11 @@ describe('HidebugToDevJsTest', function () {
             let limit_size = 4 * 1024;
             let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
             hidebug.stopAppTraceCapture();
-            console.info(`SUB_DFX_DFT_Trace_Collect_Js_2100 > path =: ${path}`)
+            console.info(`SUB_DFX_DFT_Trace_Collect_Js_2400 > path =: ${path}`)
             expect(path != "").assertTrue();
             done();
         } catch (err) {
-            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2100 > error code: ${err.code}, error msg: ${err.message}`);
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2400 > error code: ${err.code}, error msg: ${err.message}`);
             expect().assertFail();
             done();
         }
