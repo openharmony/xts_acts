@@ -362,7 +362,7 @@ static napi_value GetDrawableDescriptor(napi_env env, napi_callback_info info)
     napi_get_value_uint32(env, args[1], &id);
     ResourceManager_ErrorCode code = OH_ResourceManager_GetDrawableDescriptor(mNativeResMgr, id, &drawable);
 
-    bool flag = (drawable != nullptr && code = 0);
+    bool flag = (drawable != nullptr && code == 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -904,7 +904,7 @@ static napi_value GetMediaBase64Data(napi_env env, napi_callback_info info)
     uint32_t hexValue;
     ss >> hexValue;
 
-    char *result = NULL;
+    char *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     OH_ResourceManager_GetMediaBase64Data(mNativeResMgr, hexValue, &result, &len, 0);
@@ -919,12 +919,12 @@ static napi_value GetMediaData(napi_env env, napi_callback_info info)
     uint32_t id = 0;
     napi_get_value_uint32(env, argv[1], &id);
 
-    uint8_t *result = NULL;
+    uint8_t *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     OH_ResourceManager_GetMediaData(mNativeResMgr, id, &result, &len, 0);
 
-    bool flag = (result != NULL && len != 0);
+    bool flag = (result != nullptr && len != 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -939,12 +939,12 @@ static napi_value GetMediaDataByName(napi_env env, napi_callback_info info)
     char strBuf[256];
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
 
-    uint8_t *result = NULL;
+    uint8_t *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     OH_ResourceManager_GetMediaDataByName(mNativeResMgr, strBuf, &result, &len, 0);
 
-    bool flag = (result != NULL && len != 0);
+    bool flag = (result != nullptr && len != 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -955,7 +955,7 @@ static napi_value GetDrawableDescriptorData(napi_env env, napi_callback_info inf
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-    ArkUI_DrawableDescriptor *drawable = NULL;
+    ArkUI_DrawableDescriptor *drawable = nullptr;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
 
     uint32_t id = 0x000000;
@@ -967,7 +967,7 @@ static napi_value GetDrawableDescriptorData(napi_env env, napi_callback_info inf
     ss >> hexValue;
 
     OH_ResourceManager_GetDrawableDescriptorData(mNativeResMgr, id, &drawable, 0, 0);
-    bool flag = (drawable != NULL);
+    bool flag = (drawable != nullptr);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -981,11 +981,11 @@ static napi_value GetDrawableDescriptorDataByName(napi_env env, napi_callback_in
     size_t strSize;
     char strBuf[256];
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
-    ArkUI_DrawableDescriptor *drawable = NULL;
+    ArkUI_DrawableDescriptor *drawable = nullptr;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
 
     OH_ResourceManager_GetDrawableDescriptorDataByName(mNativeResMgr, strBuf, &drawable, 0, 0);
-    bool flag = (drawable != NULL);
+    bool flag = (drawable != nullptr);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
