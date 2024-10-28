@@ -13,31 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsAdsKitTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":ads_demo_assets",
-    ":ads_demo_resources",
-  ]
-  ets2abc = true
+ohos_app_assist_suite("ActsAdsKitTest") {
+  testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAdsKitTest"
   subsystem_name = "advertising"
   part_name = "advertising"
-}
-
-ohos_app_scope("ads_demo_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("ads_demo_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("ads_demo_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":ads_demo_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }

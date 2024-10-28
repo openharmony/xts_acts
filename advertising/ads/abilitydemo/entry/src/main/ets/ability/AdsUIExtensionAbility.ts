@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
-import Want from '@ohos.app.ability.Want';
-import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
+import { UIExtensionContentSession, UIExtensionAbility, Want } from '@kit.AbilityKit';
 import Logger from '../log/HiAdLog';
 
 const TAG: string = '[AdsUIExtensionAbility]';
@@ -30,7 +28,7 @@ export default class AdsUIExtensionAbility extends UIExtensionAbility {
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     Logger.i(TAG, `AdsUIExtensionAbility test onSessionCreate`);
-    const storage = new LocalStorage();
+    const storage: LocalStorage = new LocalStorage();
     storage.setOrCreate('session', session);
     storage.setOrCreate('want', want);
     let parameters = want?.parameters;
@@ -40,10 +38,11 @@ export default class AdsUIExtensionAbility extends UIExtensionAbility {
       Logger.i(TAG, `AdsUIExtensionAbility refreshTime: ${AdDisplayOptions["refreshTime"]}`);
       session.loadContent("pages/AutoRefreshPage", storage);
     } else {
+      Logger.i(TAG, `enter loadContent UIExtensionAbilityPage`);
       session.loadContent("pages/UIExtensionAbilityPage", storage);
     }
-
   }
+
 
   onForeground() {
     Logger.i(TAG, `AdsUIExtensionAbility test onForeground`);

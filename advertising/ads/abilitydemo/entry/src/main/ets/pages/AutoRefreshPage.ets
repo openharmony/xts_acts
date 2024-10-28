@@ -24,13 +24,13 @@ const storage = LocalStorage.GetShared();
 struct AutoRefreshPage {
   @State message: string = 'AutoRefreshPage';
   @State currentTime: string = '';
-  @LocalStorageLink('session') session: UIExtensionContentSession = void 0;
+  @LocalStorageLink('session') session: UIExtensionContentSession = new UIExtensionContentSession();
 
   aboutToAppear() {
     Logger.i(TAG, '%{public}s', 'aboutToAppear');
     this.session?.sendData({ status: 'onAdOpen', ad: {}, data: 'AdsTest' });
 
-    this.session.setReceiveDataCallback((data)=> {
+    this.session.setReceiveDataCallback((data) => {
       Logger.i(TAG, `setReceiveDataCallback:${(JSON.stringify(data))}`);
       try {
         systemDateTime.getDate((error, date) => {
@@ -38,10 +38,11 @@ struct AutoRefreshPage {
             console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
             return;
           }
-          console.info(`Succeeded in getting date : ${date}`);;
+          console.info(`Succeeded in getting date : ${date}`);
+          ;
           this.currentTime = this.currentTime + '\n' + date.toString();
         });
-      } catch(e) {
+      } catch (e) {
         console.info(`Failed to get date. message: ${e.message}, code: ${e.code}`);
       }
     })

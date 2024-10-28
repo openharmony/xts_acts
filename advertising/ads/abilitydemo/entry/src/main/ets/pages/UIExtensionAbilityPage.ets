@@ -12,22 +12,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+import advertising from '@ohos.advertising';
 import Logger from '../log/HiAdLog';
 
-const TAG = 'AdPage';
+const TAG = 'UIExtensionAbilityPage';
 const storage = LocalStorage.GetShared();
+const advertisement: advertising.Advertisement = {
+  adType: 7,
+  clicked: false,
+  rewardVerifyConfig: new Map([
+    ["key1", "value1"],
+    ["key2", "value2"]
+  ]),
+  rewarded: false,
+  shown: false,
+  uniqueId: "5bb42294-e601-4d84-9185-b6fd0f6f49b8"
+};
 
 @Entry(storage)
 @Component
 struct UIExtensionAbilityPage {
-  @State message: string = 'UIExtensionAbilityPage';
-  @LocalStorageLink('session') session: UIExtensionContentSession = void 0;
-
-  aboutToAppear() {
-    Logger.i(TAG, '%{public}s', 'aboutToAppear');
-    this.session?.sendData({ status: 'onAdOpen', ad: {}, data: 'AdsTest' });
-  }
+  @State message: string = 'UIExtensionAbilityPage+aaa';
+  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
 
   build() {
     Row() {
@@ -40,5 +47,15 @@ struct UIExtensionAbilityPage {
       .width('100%')
     }
     .height('100%')
+  }
+
+  aboutToAppear() {
+    Logger.i(TAG, 'UIExtensionAbilityPage aboutToAppear');
+    let data: Record<string, Object> = {
+      'status': 'onAdOpen',
+      'ad': advertisement,
+      'data': 'AdsTest',
+    };
+    this.session?.sendData(data);
   }
 }
