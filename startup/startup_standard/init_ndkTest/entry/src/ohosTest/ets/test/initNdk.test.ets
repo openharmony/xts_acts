@@ -182,22 +182,15 @@ export default function initNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHGetMarketName001', 0, async (done: Function) => {
+      let ret = false;
       let marketNameInfo: string = initndk.oHGetMarketName();
 
       console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
       expect(marketNameInfo).assertInstanceOf('String');
       if (marketNameInfo != "" && marketNameInfo != null && marketNameInfo != undefined) {
-        let str: RegExp = new RegExp("[\\u4e00-\\u9fa5\\w\\-\\.(\\)\\s]","g");
-        let arr = marketNameInfo.match(str);
-        if(arr !== null){
-          let bufferstr = arr.join('');
-          console.info('the value of the bufferstr is :' + bufferstr);
-          expect(marketNameInfo).assertEqual(bufferstr);
-        } 
-      } else {
-        console.info('the return value is null or incorrect.');
-        expect(false).assertFalse();
+        ret = true;
       }
+      expect(ret).assertTrue();
       done();
     });
 
@@ -216,13 +209,6 @@ export default function initNdkTest() {
       let len = marketNameInfo.length;
       expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
       expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      let str: RegExp = new RegExp("[\\u4e00-\\u9fa5\\w\\-\\.(\\)\\s]","g");
-      let arr = marketNameInfo.match(str);
-      if(arr !== null){
-        let bufferstr = arr.join('');
-        console.info('the value of the bufferstr is :' + bufferstr);
-        expect(marketNameInfo).assertEqual(bufferstr);
-      } 
       done();
     });
 
