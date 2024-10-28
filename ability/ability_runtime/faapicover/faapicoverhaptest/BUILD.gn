@@ -13,24 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsFaApiCoverTest") {
-  hap_profile = "./entry/src/main/config.json"
-  deps = [
-    ":faapicoverhaptest_ets_assets",
-    ":faapicoverhaptest_ets_resources",
-  ]
-  ets2abc = true
+ohos_js_app_suite("ActsFaApiCoverTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsFaApiCoverTest"
+  part_name = "ability_base"
   subsystem_name = "ability"
-  part_name = "ability_runtime"
-}
-ohos_js_assets("faapicoverhaptest_ets_assets") {
-  source_dir = "entry/src/main/ets"
-  hap_profile = "entry/src/main/config.json"
-  ets2abc = true
-}
-ohos_resources("faapicoverhaptest_ets_resources") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
 }

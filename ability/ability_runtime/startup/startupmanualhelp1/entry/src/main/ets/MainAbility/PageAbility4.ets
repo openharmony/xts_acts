@@ -22,35 +22,36 @@ import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
-
-let subscriber = undefined;
-let uiContext:common.UIAbilityContext = undefined;
+import { AbilityConstant} from '@kit.AbilityKit';
+import {BusinessError} from "@ohos.base";
+let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+let uiContext:common.UIAbilityContext | undefined = undefined;
 let startupSampleInit9:boolean = false;
 let startupSampleInit10:boolean = false;
 let startupSampleInit11:boolean = false;
 let startupDefaultConfig:boolean = false;
 let onAbiltiyDestory = false;
 let keepAlive = false;
-let startOrder = [];
+let startOrder:ESObject = [];;
 let customConfig = false;
 
 export default class PageAbility4 extends UIAbility {
   // Sample_009 -> Sample_010 -> Sample_009
   //                          -> Sample_011
-  onCreate(want:Want, launchParam){
+  onCreate(want:Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'PageAbility4 StartupTest', '%{public}s', 'Ability onCreate');
 
-    if (want.parameters && want.parameters.keepAlive) {
+    if (want.parameters && want.parameters?.keepAlive) {
       console.info('PageAbility4 StartupTest PageAbility4 keepAlive = true');
       keepAlive = true;
     }
-    if (want.parameters && want.parameters.customConfig) {
+    if (want.parameters && want.parameters?.customConfig) {
       console.info('StartupTest PageAbility4 customConfig = true');
       customConfig = true;
     }
 
     uiContext = this.context;
-    let subscribeInfo = {
+    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
       events: ['StartupSample_009', 'StartupSample_010', 'StartupSample_011', 'StartupTestDefaultConfig'],
     };
     commonEventManager.createSubscriber(subscribeInfo).then(data => {
@@ -62,7 +63,7 @@ export default class PageAbility4 extends UIAbility {
         if (event === 'StartupSample_009') {
           startupSampleInit9 = true;
           startOrder.push(['startupSampleInit9']);
-          let message;
+          let message: string;
           if (!customConfig) {
             message = '默认配置 StartupSample_009加载完毕';
           } else {
@@ -79,7 +80,7 @@ export default class PageAbility4 extends UIAbility {
         if (event === 'StartupSample_010') {
           startupSampleInit10 = true;
           startOrder.push(['startupSampleInit10']);
-          let message;
+          let message: string;
           if (!customConfig) {
             message = '默认配置 StartupSample_004加载完毕';
           } else {
@@ -96,7 +97,7 @@ export default class PageAbility4 extends UIAbility {
         if (event === 'StartupSample_011') {
           startupSampleInit11 = true;
           startOrder.push(['startupSampleInit11']);
-          let message;
+          let message: string;
           if (!customConfig) {
             message = '默认配置 StartupSample_005加载完毕';
           } else {
@@ -112,7 +113,7 @@ export default class PageAbility4 extends UIAbility {
         }
         if (event === 'StartupTestDefaultConfig') {
           startupDefaultConfig = true;
-          let message;
+          let message: string;
           if (!customConfig) {
             message = '默认配置 配置监听到测试框架加载完毕';
           } else {
@@ -132,13 +133,13 @@ export default class PageAbility4 extends UIAbility {
               startResult = true;
             }
             setTimeout(()=>{
-              uiContext.terminateSelfWithResult({
+              uiContext?.terminateSelfWithResult({
                 resultCode: 0,
                 want:{
                   parameters:{
                     'startResult': startResult,
                     'startOrder': startOrder,
-                    'code' :data.parameters.error.code // 28800002
+                    'code' :data.parameters?.error.code // 28800002
                   }
                 }
               })
@@ -146,7 +147,7 @@ export default class PageAbility4 extends UIAbility {
           }
         }
       })
-    }).catch(error=>{
+    }).catch((error: BusinessError)=>{
       console.info('StartupTest PageAbility4 createSubscriber failed, error=' + JSON.stringify(error));
     })
   }
@@ -197,8 +198,8 @@ export default class PageAbility4 extends UIAbility {
       }
     } else {
       console.log('StartupTest PageAbility4 startupManager run with custom Config');
-      let onCompletedCallback = (error) => {
-        let initValue9 = AppStorage.get('Sample_009_init');
+      let onCompletedCallback = (error: ESObject) => {
+        let initValue9: string = AppStorage.get('Sample_009_init') as string;
         if (initValue9 == 'Sample_009_init') {
           console.log('Custom StartupTest PageAbility4 startupManager AppStorage.get success');
           commonEventManager.publish('StartupSample_009', (err, data)=>{
@@ -208,7 +209,7 @@ export default class PageAbility4 extends UIAbility {
         } else {
           console.log('Custom StartupTest PageAbility4 startupManager AppStorage.get error');
         }
-        let initValue10 = AppStorage.get('Sample_010_init');
+        let initValue10: string = AppStorage.get('Sample_010_init') as string;
         if (initValue10 == 'Sample_010_init') {
           console.log('Custom StartupTest PageAbility4 startupManager AppStorage.get success');
           commonEventManager.publish('StartupSample_010', (err, data)=>{
@@ -218,7 +219,7 @@ export default class PageAbility4 extends UIAbility {
         } else {
           console.log('Custom StartupTest PageAbility4 startupManager AppStorage.get error');
         }
-        let initValue11 = AppStorage.get('Sample_011_init');
+        let initValue11: string = AppStorage.get('Sample_011_init') as string;
         if (initValue11 == 'Sample_011_init') {
           console.log('Custom StartupTest PageAbility4 startupManager AppStorage.get success');
           commonEventManager.publish('StartupSample_011', (err, data)=>{

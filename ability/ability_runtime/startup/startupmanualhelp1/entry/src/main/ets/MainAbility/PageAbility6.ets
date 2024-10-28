@@ -22,33 +22,34 @@ import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
-
-let subscriber = undefined;
-let uiContext:common.UIAbilityContext = undefined;
+import { AbilityConstant} from '@kit.AbilityKit';
+import {BusinessError} from "@ohos.base";
+let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+let uiContext:common.UIAbilityContext | undefined = undefined;
 let hasInit001:boolean = false;
 let hasInit003:boolean = false;
 let onAbiltiyDestory = false;
 let keepAlive = false;
-let startOrder = [];
+let startOrder:ESObject = [];;
 let customConfig = false;
 
 export default class PageAbility6 extends UIAbility {
 
   // Sample_002 -> Sample_003 -> Sample_001
-  onCreate(want:Want, launchParam){
+  onCreate(want:Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'StartupTest PageAbility6', '%{public}s', 'Ability onCreate');
 
-    if (want.parameters && want.parameters.keepAlive) {
+    if (want.parameters && want.parameters?.keepAlive) {
       console.info('StartupTest PageAbility6 keepAlive = true');
       keepAlive = true;
     }
-    if (want.parameters && want.parameters.customConfig) {
+    if (want.parameters && want.parameters?.customConfig) {
       console.info('StartupTest PageAbility6 customConfig = true');
       customConfig = true;
     }
 
     uiContext = this.context;
-    let subscribeInfo = {
+    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
       events: ['StartupSample_002_onDependencyCompleted', 'StartupSample_003_onDependencyCompleted'],
     };
     commonEventManager.createSubscriber(subscribeInfo).then(data => {
@@ -58,10 +59,10 @@ export default class PageAbility6 extends UIAbility {
         console.info('StartupTest PageAbility6 receive event, data = ' + JSON.stringify(data));
         let event = data.event;
         if (event === 'StartupSample_003_onDependencyCompleted') {
-          if (data.parameters.name == 'Sample_001') {
+          if (data.parameters?.name == 'Sample_001') {
             hasInit001 = true;
           }
-          let message;
+          let message: string;
           if (!customConfig) {
             message = '默认配置 Sample_003收到StartupSample_001加载完毕';
           } else {
@@ -76,10 +77,10 @@ export default class PageAbility6 extends UIAbility {
           })
         }
         if (event === 'StartupSample_002_onDependencyCompleted') {
-          if (data.parameters.name == 'Sample_003') {
+          if (data.parameters?.name == 'Sample_003') {
             hasInit003 = true;
           }
-          let message;
+          let message: string;
           if (!customConfig) {
             message = '默认配置 StartupSample_002收到Sample_003加载完毕';
           } else {
@@ -97,7 +98,7 @@ export default class PageAbility6 extends UIAbility {
           console.info('StartupTest PageAbility6 terminateSelfWithResult , result = true');
           if (!keepAlive) {
             setTimeout(()=>{
-              uiContext.terminateSelfWithResult({
+              uiContext?.terminateSelfWithResult({
                 resultCode: 0,
                 want:{
                   parameters:{
@@ -110,7 +111,7 @@ export default class PageAbility6 extends UIAbility {
           }
         }
       })
-    }).catch(error=>{
+    }).catch((error: BusinessError)=>{
       console.info('StartupTest PageAbility6 createSubscriber failed, error=' + JSON.stringify(error));
     })
   }
@@ -155,8 +156,8 @@ export default class PageAbility6 extends UIAbility {
         startupManager.run(['Sample_002']);
       } else {
         console.log('StartupTest PageAbility6 startupManager run with custom Config');
-        let onCompletedCallback = (error) => {
-          let initValue2 = AppStorage.get('Sample_002_onDependencyCompleted');
+        let onCompletedCallback = (error: ESObject) => {
+          let initValue2: string= AppStorage.get('Sample_002_onDependencyCompleted') as string;
           if (initValue2 == 'Sample_003') {
             console.log('Custom StartupTest PageAbility6 startupManager AppStorage.get success ' + initValue2);
             commonEventManager.publish('StartupSample_002_onDependencyCompleted', {
@@ -170,7 +171,7 @@ export default class PageAbility6 extends UIAbility {
           } else {
             console.log('Custom StartupTest PageAbility6 startupManager AppStorage.get error');
           }
-          let initValue3 = AppStorage.get('Sample_003_onDependencyCompleted');
+          let initValue3: string = AppStorage.get('Sample_003_onDependencyCompleted') as string;
           if (initValue3 == 'Sample_001') {
             console.log('Custom StartupTest PageAbility6 startupManager AppStorage.get success ' + initValue3);
             commonEventManager.publish('StartupSample_003_onDependencyCompleted', {

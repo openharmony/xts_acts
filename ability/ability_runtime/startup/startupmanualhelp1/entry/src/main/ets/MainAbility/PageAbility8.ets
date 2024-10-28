@@ -22,23 +22,24 @@ import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
+import { AbilityConstant} from '@kit.AbilityKit';
 
-let subscriber = undefined;
-let uiContext:common.UIAbilityContext = undefined;
+let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+let uiContext:common.UIAbilityContext | undefined = undefined;
 let onAbiltiyDestory = false;
 let keepAlive = false;
-let startOrder = [];
+let startOrder:ESObject = [];;
 let customConfig = false;
 
 export default class PageAbility8 extends UIAbility {
-  onCreate(want:Want, launchParam){
+  onCreate(want:Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'StartupTest PageAbility8', '%{public}s', 'Ability onCreate');
 
-    if (want.parameters && want.parameters.keepAlive) {
+    if (want.parameters && want.parameters?.keepAlive) {
       console.info('StartupTest PageAbility8 keepAlive = true');
       keepAlive = true;
     }
-    if (want.parameters && want.parameters.customConfig) {
+    if (want.parameters && want.parameters?.customConfig) {
       console.info('StartupTest PageAbility8 customConfig = true');
       customConfig = true;
     }
@@ -60,7 +61,7 @@ export default class PageAbility8 extends UIAbility {
           })
           if (!keepAlive) {
             setTimeout(()=>{
-              uiContext.terminateSelfWithResult({
+              uiContext?.terminateSelfWithResult({
                 resultCode: 0,
                 want:{
                   parameters:{
@@ -72,7 +73,7 @@ export default class PageAbility8 extends UIAbility {
           }
         })
       } else {
-        let onCompletedCallback = (error) => {
+        let onCompletedCallback = (error: ESObject) => {
           console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',
@@ -110,7 +111,7 @@ export default class PageAbility8 extends UIAbility {
           })
           if (!keepAlive) {
             setTimeout(()=>{
-              uiContext.terminateSelfWithResult({
+              uiContext?.terminateSelfWithResult({
                 resultCode: 0,
                 want:{
                   parameters:{

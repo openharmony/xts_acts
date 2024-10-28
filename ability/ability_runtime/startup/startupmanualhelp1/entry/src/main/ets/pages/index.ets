@@ -16,7 +16,7 @@
 import common from '@ohos.app.ability.common';
 import commonEventManager from '@ohos.commonEventManager';
 
-let subscriber;
+let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
 
 @Entry
 @Component
@@ -34,7 +34,7 @@ struct Index {
       subscriber = data;
       commonEventManager.subscribe(subscriber, (err, data)=>{
         console.info("StartupTest show msg receive event, data = " + JSON.stringify(data))
-        let msg:string = data.parameters.msg as string
+        let msg:string = data.parameters?.msg as string
         this.simpleList.push(msg)
       })
     })
