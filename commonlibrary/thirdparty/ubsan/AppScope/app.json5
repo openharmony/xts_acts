@@ -20,6 +20,12 @@
     "versionCode": 1000000,
     "versionName": "1.0.0",
     "icon": "$media:app_icon",
-    "label": "$string:app_name"
+    "label": "$string:app_name",
+    "appEnvironments": [
+      {
+        "name": "UBSAN_OPTIONS",
+        "value": "print_stacktrace=false abort_on_error=true print_module_map=0 log_exe_name=true"
+      },
+    ],
   }
 }

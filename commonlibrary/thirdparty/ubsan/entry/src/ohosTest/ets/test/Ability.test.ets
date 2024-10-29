@@ -131,13 +131,13 @@ export default function abilityTest() {
 
     /**
      * @tc.number     : SUB_THIRDPARTY_UBSAN_VPTR
-     * @tc.name       : testVptrCheck
-     * @tc.desc       : test VptrCheck
+     * @tc.name       : testVptr
+     * @tc.desc       : test Vptr
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testVptrCheck', 0, async (done: Function) => {
+    it('testVptr', 0, async (done: Function) => {
       let result: number = ubsan.vptrCheck();
       expect(result).assertEqual(19);
       done()
