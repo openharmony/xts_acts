@@ -21,7 +21,7 @@
 
 #include <native_interface_xcomponent.h>
 #include <napi/native_api.h>
-#include <arkui/native_interface_accessibility.h>
+#include <native_interface_accessibility.h>
 
 #include "egl_core.h"
 
