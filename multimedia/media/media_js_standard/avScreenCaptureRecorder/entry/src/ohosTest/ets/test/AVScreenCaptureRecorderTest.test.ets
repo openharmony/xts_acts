@@ -150,7 +150,7 @@ export default function avScreenCaptureTest() {
       let sessionId: number = 0; // 替换成拉起此进程的sessionId
       let choice: string = 'false'; // 替换成用户的选择内容
       try {
-        // await media.reportAVScreenCaptureUserChoice(sessionId, choice);
+        await media.reportAVScreenCaptureUserChoice(sessionId, choice);
       } catch (error) {
         console.error(`reportAVScreenCaptureUserChoice error, error message: ${error.message}`);
         expect().assertFail()
