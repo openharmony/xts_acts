@@ -2,11 +2,11 @@
     "description": "Configuration for avScreenCaptureRecorder Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "6000000",
-        "shell-timeout": "6000000",
-        "testcase-timeout": 1100000,
+        "test-timeout": "90000",
+        "shell-timeout": "90000",
+        "testcase-timeout": 90000,
         "bundle-name": "ohos.acts.multimedia.avscreencapturerecorder",
-        "package-name": "ohos.acts.multimedia.avscreencapturerecorder"
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -15,6 +15,21 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files",
+                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "./resource/audio/H264_AAC.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files/",
+                "./resource/media/audioplayer/lbvc_1c_16000hz_6k.pcm -> /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files/"
+            ]
         }
     ]
 }
