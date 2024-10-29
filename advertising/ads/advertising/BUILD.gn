@@ -20,4 +20,3 @@ ohos_js_app_suite("ActsCloudAdTest") {
   subsystem_name = "advertising"
   part_name = "advertising"
 }
-
