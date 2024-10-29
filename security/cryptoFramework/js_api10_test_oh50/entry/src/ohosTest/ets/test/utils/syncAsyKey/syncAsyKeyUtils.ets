@@ -15,7 +15,7 @@
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as rsa from '../pkcs1Topkcs8/pkcs1topkcs8';
 
-function createAsyKeySync(algName: string): cryptoFramework.KeyPair {
+async function createAsyKeySync(algName: string): Promise<cryptoFramework.KeyPair> {
   try {
     let asyKeyGenerator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
     let syncAsyKey: cryptoFramework.KeyPair = {} as cryptoFramework.KeyPair;
@@ -28,7 +28,7 @@ function createAsyKeySync(algName: string): cryptoFramework.KeyPair {
     } else if (algName === "RSA8192") {
       syncAsyKey = asyKeyGenerator.convertPemKeySync(rsa.pubKeyPkcs1Str8192, rsa.priKeyPkcs1Str8192);
     } else {
-      syncAsyKey = asyKeyGenerator.generateKeyPairSync();
+      syncAsyKey = await asyKeyGenerator.generateKeyPair();
     }
 
     return syncAsyKey;
