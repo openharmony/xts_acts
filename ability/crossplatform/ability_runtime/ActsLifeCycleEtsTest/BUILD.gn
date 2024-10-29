@@ -13,28 +13,24 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsLifeCycleEtsTest") {
-  hap_profile = "src/main/module.json"
-  deps = [
-    ":windowStage_js_assets",
-    ":windowStage_resources",
-  ]
-  ets2abc = true
+ohos_app_assist_suite("ActsLifeCycleEtsMain") {
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-
-  hap_name = "ActsLifeCycleEtsTest"
+  hap_name = "ActsLifeCycleEtsMain"
+  hap_list = [
+    "ActsLifeCycleEtsMain-feature-entry-default-unsigned:ActsLifeCycleEtsFeatureTest",
+    "ActsLifeCycleEtsMain-entry-default-unsigned:ActsLifeCycleEtsMain",
+  ]
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
-ohos_app_scope("windowStage_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("windowStage_js_assets") {
-  source_dir = "src/main/ets"
-}
-ohos_resources("windowStage_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":windowStage_app_profile" ]
-  hap_profile = "src/main/module.json"
+
+ohos_js_app_suite("ActsLifeCycleEtsTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsLifeCycleEtsTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsLifeCycleEtsMain" ]
 }
