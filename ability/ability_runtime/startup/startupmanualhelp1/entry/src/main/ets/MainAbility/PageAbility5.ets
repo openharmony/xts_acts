@@ -260,7 +260,7 @@ export default class PageAbility5 extends UIAbility {
 
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',
-              ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.mssage);
+              ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.message);
           } else {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ', ' onCompletedCallback: success');
           }

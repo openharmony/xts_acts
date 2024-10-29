@@ -144,7 +144,7 @@ export default class SingleStartAbility2 extends UIAbility {
           } else {
             console.log('Custom StartupTest SingleStartAbility startupManager AppStorage.get error');
           }
-          let onDependencyCompletedValue: string = AppStorage.get('Sample_001_onDependencyCompleted') as string;
+          let onDependencyCompletedValue: number = AppStorage.get('Sample_001_onDependencyCompleted') as number;
           if (onDependencyCompletedValue == 1) {
             commonEventManager.publish('StartupSample_001_onDependencyCompleted', {
               parameters: {
@@ -161,7 +161,7 @@ export default class SingleStartAbility2 extends UIAbility {
           console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',
-              ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.mssage);
+              ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.message);
           } else {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ', ' onCompletedCallback: success');
           }

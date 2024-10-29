@@ -78,7 +78,7 @@ export default class PageAbility9 extends UIAbility {
           console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',
-              ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.mssage);
+              ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.message);
           } else {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ', ' onCompletedCallback: success');
           }
