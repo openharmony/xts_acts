@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-export const OHWebsocketClientConstruct: () => number;
-export const OHWebsocketClientAddHeader: () => number;
-export const OHWebsocketClientConnect: () => number;
-export const OHWebsocketClientsend: () => number;
-export const OHWebsocketClientColse: () => number;
-export const OHWebsocketClientDestroy: () => number;
+export const OHWebSocketClientConstruct: () => number;
+export const OHWebSocketClientAddHeader: () => number;
+export const OHWebSocketClientConnect: () => number;
+export const OHWebSocketClientSend: () => number;
+export const OHWebSocketClientClose: () => number;
+export const OHWebSocketClientDestroy: () => number;
 

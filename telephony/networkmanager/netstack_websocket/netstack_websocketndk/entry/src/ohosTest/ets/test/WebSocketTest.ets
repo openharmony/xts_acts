@@ -21,21 +21,21 @@ export default function webSocketTest() {
 
     it('testWebSocketClientConstruct001',0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let result = webSocket.OHWebSocketClientConstruct();
+      let result:number = webSocket.OHWebSocketClientConstruct();
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientConstruct001 result=%{public}d', result);
       expect(0).assertEqual(result)
     })
 
     it('testWebSocketClientAddHeader002',0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let result = webSocket.OHWebSocketClientAddHeader();
+      let result:number = webSocket.OHWebSocketClientAddHeader();
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientAddHeader002 result=%{public}d', result);
       expect(0).assertEqual(result)
     })
 
     it('testWebSocketClientConnect003',0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let result = webSocket.OHWebSocketClientConnect();
+      let result:number = webSocket.OHWebSocketClientConnect();
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientConnect003 result=%{public}d', result);
       expect(0).assertEqual(result)
     })
@@ -43,21 +43,21 @@ export default function webSocketTest() {
     it('tesWebSocketClientSend004',0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientConnect004 %{public}s', 'it begin');
-      let result = webSocket.OHWebSocketClientSend();
+      let result:number = webSocket.OHWebSocketClientSend();
       hilog.info(0x0000, 'testTag', 'websocket XTS Connect004 result=%{public}d', result);
       expect(0).assertEqual(result)
     })
 
     it('testwebSocketClientClose005',0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let result = webSocket.OHWebSocketClientClose();
+      let result:number = webSocket.OHWebSocketClientClose();
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientClose005 result=%{public}d', result);
       expect(1002).assertEqual(result)
     })
 
     it('testWebSocketClientDestroy006',0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let result = webSocket.OHWebSocketClientDestroy();
+      let result:number = webSocket.OHWebSocketClientDestroy();
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientDestroy006 result=%{public}d', result);
       expect(1002).assertEqual(result)
     })
