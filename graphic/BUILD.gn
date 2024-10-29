@@ -42,6 +42,7 @@ group("graphic") {
       "graphicnapitest:ActsGraphicNapiTest",
       "graphicvulkannapitest:ActsGraphicVulkanTest",
       "imageNdk:image_ndk_hap",
+      "nativeEffectNdk:ActsNativeEffectTest",
       "nativebuffer:ActsNativeBufferTest",
       "nativedrawing:ActsNativeDrawingTest",
       "nativeimage:ActsNativeImageTest",
