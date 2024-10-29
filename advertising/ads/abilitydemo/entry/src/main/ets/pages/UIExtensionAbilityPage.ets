@@ -22,12 +22,12 @@ const advertisement: advertising.Advertisement = {
   adType: 7,
   clicked: false,
   rewardVerifyConfig: new Map([
-    ["key1", "value1"],
-    ["key2", "value2"]
+    ['key1', 'value1'],
+    ['key2', 'value2']
   ]),
   rewarded: false,
   shown: false,
-  uniqueId: "5bb42294-e601-4d84-9185-b6fd0f6f49b8"
+  uniqueId: '5bb42294-e601-4114-9185-b6fd0f6f49b8'
 };
 
 @Entry(storage)
