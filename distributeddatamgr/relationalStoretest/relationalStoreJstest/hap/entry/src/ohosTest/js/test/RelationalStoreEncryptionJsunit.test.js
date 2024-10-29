@@ -103,6 +103,9 @@ describe('relationalStoreEncryptTest', function () {
          * @tc.name RelationalStore encrypted test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_EncrpytJsAPITest_0100
          * @tc.desc RelationalStore create encrypt db test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbEncryptTest_0010', 0, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0010 start *************")
@@ -120,6 +123,9 @@ describe('relationalStoreEncryptTest', function () {
          * @tc.name RelationalStore unencrypted test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_EncrpytJsAPITest_0200
          * @tc.desc RelationalStore create unencrypted db test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbEncryptTest_0020', 0, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0020 start *************")
@@ -140,6 +146,9 @@ describe('relationalStoreEncryptTest', function () {
          * @tc.name RelationalStore Encrypt test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_EncrpytJsAPITest_0300
          * @tc.desc RelationalStore Encrypt function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbEncryptTest_0030', 0, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0030 start *************")
@@ -170,6 +179,9 @@ describe('relationalStoreEncryptTest', function () {
          * @tc.name RelationalStore Encrypt test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_EncrpytJsAPITest_0400
          * @tc.desc RelationalStore Encrypt function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
          it('RdbEncryptTest_0040', 0, async function (done) {
             console.info(TAG + "************* RdbEncryptTest_0040 start *************")
@@ -178,13 +190,37 @@ describe('relationalStoreEncryptTest', function () {
             rdbStore = null
             try {
                 rdbStore = await CreatRdbStore(context, STORE_CONFIG_WRONG)
-                expect(rdbStore !== null).assertFalse()
+                expect(rdbStore !== null).assertTrue()
             } catch (err) {
                 console.info(TAG + `catch err: err.code= ${err.code}, message = ${err.message}`)
-                expect(err.code).assertEqual(14800011);
-                done()
-                console.info(TAG + "************* RdbEncryptTest_0040 end *************")
+                expect().assertFail();
             }
+            done()
+            console.info(TAG + "************* RdbEncryptTest_0040 end *************")
+        })
+
+        /**
+         * @tc.name RdbEncryptTest_0050
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_EncrpytJsAPITest_0500
+         * @tc.desc RelationalStore Encrypt function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
+         */
+        it('RdbEncryptTest_0050', 0, async function (done) {
+            console.info(TAG + "************* RdbEncryptTest_0050 start *************")
+            context = ability_featureAbility.getContext()
+            rdbStore = await CreatRdbStore(context, STORE_CONFIG_WRONG)
+            rdbStore = null
+            try {
+                rdbStore = await CreatRdbStore(context, STORE_CONFIG_ENCRYPT)
+                expect(rdbStore !== null).assertTrue()
+            } catch (err) {
+                console.info(TAG + `catch err: err.code= ${err.code}, message = ${err.message}`)
+                expect().assertFail();
+            }
+            done()
+            console.info(TAG + "************* RdbEncryptTest_0050 end *************")
         })
         console.info(TAG + "*************Unit Test End*************")
     }
