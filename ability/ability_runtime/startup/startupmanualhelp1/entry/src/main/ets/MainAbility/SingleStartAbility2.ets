@@ -23,7 +23,7 @@ import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
 import { AbilityConstant} from '@kit.AbilityKit';
-import {BusinessError} from "@ohos.base";
+import {BusinessError} from '@ohos.base';
 
 let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
 let uiContext:common.UIAbilityContext | undefined = undefined;
@@ -133,7 +133,7 @@ export default class SingleStartAbility2 extends UIAbility {
         startupManager.run(['Sample_001']);
       } else {
         console.log('StartupTest SingleStartAbility2 startupManager run with custom Config');
-        let onCompletedCallback = (error: ESObject) => {
+        let onCompletedCallback = (error: BusinessError) => {
           let initValue1: string = AppStorage.get('Sample_001_init') as string;
           if (initValue1 == 'Sample_001_init') {
             console.log('Custom StartupTest SingleStartAbility startupManager AppStorage.get success');
@@ -144,7 +144,7 @@ export default class SingleStartAbility2 extends UIAbility {
           } else {
             console.log('Custom StartupTest SingleStartAbility startupManager AppStorage.get error');
           }
-          let onDependencyCompletedValue: ESObject = AppStorage.get('Sample_001_onDependencyCompleted') as ESObject;
+          let onDependencyCompletedValue: string = AppStorage.get('Sample_001_onDependencyCompleted') as string;
           if (onDependencyCompletedValue == 1) {
             commonEventManager.publish('StartupSample_001_onDependencyCompleted', {
               parameters: {

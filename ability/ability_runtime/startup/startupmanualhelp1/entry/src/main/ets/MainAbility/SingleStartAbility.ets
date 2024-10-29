@@ -22,8 +22,9 @@ import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
-import {BusinessError} from "@ohos.base";
+import {BusinessError} from '@ohos.base';
 import { AbilityConstant} from '@kit.AbilityKit';
+
 let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
 let uiContext:common.UIAbilityContext | undefined = undefined;
 let startupSampleInit:boolean = false;
@@ -143,7 +144,7 @@ export default class SingleStartAbility extends UIAbility {
         startupManager.run(['Sample_001']);
       } else {
         console.log('Custom StartupTest SingleStartAbility startupManager run with custom Config');
-        let onCompletedCallback = (error: ESObject) => {
+        let onCompletedCallback = (error: BusinessError) => {
           let initValue1:string = AppStorage.get('Sample_001_init') as string;
           if (initValue1 == 'Sample_001_init') {
             console.log('Custom StartupTest SingleStartAbility startupManager AppStorage.get success');

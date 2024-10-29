@@ -23,13 +23,13 @@ import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
 import { AbilityConstant} from '@kit.AbilityKit';
-import {BusinessError} from "@ohos.base";
+import {BusinessError} from '@ohos.base';
 
 let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
 let uiContext:common.UIAbilityContext | undefined = undefined;
 let onAbiltiyDestory = false;
 let keepAlive = false;
-let startOrder:ESObject = [];;
+let startOrder:string[][] = [];
 let customConfig = false;
 export default class PageAbility7 extends UIAbility {
   // Sample_004 -> Sample_005 -> Sample_006
@@ -159,7 +159,7 @@ export default class PageAbility7 extends UIAbility {
         startupManager.run(['Sample_004']);
       } else {
         console.log('StartupTest PageAbility7 startupManager run with custom Config')
-        let onCompletedCallback = (error: ESObject) => {
+        let onCompletedCallback = (error: BusinessError) => {
           let initValue4: string = AppStorage.get('Sample_004_onDependencyCompleted') as string;
           if (initValue4 == 'Sample_005' || initValue4 == 'Sample_007') {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + initValue4);
@@ -174,7 +174,7 @@ export default class PageAbility7 extends UIAbility {
           } else {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
           }
-          let onCompletedCallback4: ESObject = AppStorage.get('Sample_004_onDependencyCompleted2') as ESObject;
+          let onCompletedCallback4: string = AppStorage.get('Sample_004_onDependencyCompleted2') as string;
           if (onCompletedCallback4 == 'Sample_005' || onCompletedCallback4 == 'Sample_007') {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback4);
             commonEventManager.publish('StartupSample_004_onDependencyCompleted', {
@@ -216,7 +216,7 @@ export default class PageAbility7 extends UIAbility {
           } else {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
           }
-          let onCompletedCallback7: ESObject= AppStorage.get('Sample_007_onDependencyCompleted2') as ESObject;
+          let onCompletedCallback7: string= AppStorage.get('Sample_007_onDependencyCompleted2') as string;
           if (onCompletedCallback7 == 'Sample_008' || onCompletedCallback7 == 'Sample_001') {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback7);
             commonEventManager.publish('StartupSample_007_onDependencyCompleted', {

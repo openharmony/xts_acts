@@ -31,7 +31,7 @@ export default class Sample_004 extends StartupTask {
   onDependencyCompleted(dependence: string, result: Object): void {
     console.info('StartupTest Sample_004 onDependencyCompleted dependence=' + dependence);
     console.info('StartupTest Sample_004 onDependencyCompleted result=' + JSON.stringify(result));
-    let completedValue4:ESObject = AppStorage.get('Sample_004_onDependencyCompleted') as ESObject;
+    let completedValue4:string = AppStorage.get('Sample_004_onDependencyCompleted') as string;
     if (completedValue4 == undefined) {
       PersistentStorage.persistProp('Sample_004_onDependencyCompleted', dependence);
       console.info('Sample_004_onDependencyCompleted completedValue4=' + completedValue4);

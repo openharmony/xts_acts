@@ -23,14 +23,13 @@ import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
 import { AbilityConstant} from '@kit.AbilityKit';
-import {BusinessError} from "@ohos.base";
+import {BusinessError} from '@ohos.base';
 let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
 let uiContext:common.UIAbilityContext | undefined = undefined;
 let hasInit001:boolean = false;
 let hasInit003:boolean = false;
 let onAbiltiyDestory = false;
 let keepAlive = false;
-let startOrder:ESObject = [];;
 let customConfig = false;
 
 export default class PageAbility6 extends UIAbility {
@@ -156,7 +155,7 @@ export default class PageAbility6 extends UIAbility {
         startupManager.run(['Sample_002']);
       } else {
         console.log('StartupTest PageAbility6 startupManager run with custom Config');
-        let onCompletedCallback = (error: ESObject) => {
+        let onCompletedCallback = (error: BusinessError) => {
           let initValue2: string= AppStorage.get('Sample_002_onDependencyCompleted') as string;
           if (initValue2 == 'Sample_003') {
             console.log('Custom StartupTest PageAbility6 startupManager AppStorage.get success ' + initValue2);

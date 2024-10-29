@@ -22,7 +22,7 @@ import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
-import {BusinessError} from "@ohos.base";
+import {BusinessError} from '@ohos.base';
 import { AbilityConstant} from '@kit.AbilityKit';
 let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
 let uiContext: common.UIAbilityContext| undefined = undefined;

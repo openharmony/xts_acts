@@ -23,12 +23,12 @@ import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
 import { AbilityConstant} from '@kit.AbilityKit';
+import {BusinessError} from '@ohos.base';
 
 let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
 let uiContext:common.UIAbilityContext | undefined = undefined;
 let onAbiltiyDestory = false;
 let keepAlive = false;
-let startOrder:ESObject = [];;
 let customConfig = false;
 
 export default class PageAbility8 extends UIAbility {
@@ -73,7 +73,7 @@ export default class PageAbility8 extends UIAbility {
           }
         })
       } else {
-        let onCompletedCallback = (error: ESObject) => {
+        let onCompletedCallback = (error: BusinessError) => {
           console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',

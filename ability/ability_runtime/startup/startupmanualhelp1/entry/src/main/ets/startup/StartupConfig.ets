@@ -18,12 +18,13 @@ import StartupConfigEntry from '@ohos.app.appstartup.StartupConfigEntry'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
 import commonEventManager from '@ohos.commonEventManager';
 import hilog from '@ohos.hilog';
+import {BusinessError} from '@ohos.base';
 
 export default class MyStartupConfigEntry extends StartupConfigEntry {
   onConfig() {
     hilog.info(0x000, 'StartupTest MyStartupConfigEntry TAG ', 'onConfig');
     console.log('StartupTest MyStartupConfigEntry onConfig');
-    let onCompletedCallback = (error:ESObject) => {
+    let onCompletedCallback = (error:BusinessError) => {
       let initValue1: string = AppStorage.get('Sample_001_init') as string;
       if (initValue1 == 'Sample_001_init') {
         console.log('Custom StartupTest SingleStartAbility startupManager AppStorage.get success');
@@ -175,7 +176,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
         console.log('Custom StartupTest PageAbility5 startupManager AppStorage.get error');
         console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
       }
-      let completedValue2:ESObject = AppStorage.get('Sample_002_onDependencyCompleted') as ESObject;
+      let completedValue2:string = AppStorage.get('Sample_002_onDependencyCompleted') as string;
       if (completedValue2 == 'Sample_003') {
         console.log('Custom StartupTest PageAbility2 startupManager AppStorage.get success');
         commonEventManager.publish('StartupSample_002_onDependencyCompleted', {
@@ -189,7 +190,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
       } else {
         console.log('Custom StartupTest PageAbility6 startupManager AppStorage.get error');
       }
-      let completedValue3:ESObject = AppStorage.get('Sample_003_onDependencyCompleted') as ESObject;
+      let completedValue3:string = AppStorage.get('Sample_003_onDependencyCompleted') as string;
       if (completedValue3 == 'Sample_001') {
         console.log('Custom StartupTest PageAbility6 startupManager AppStorage.get success');
         commonEventManager.publish('StartupSample_003_onDependencyCompleted', {
@@ -203,7 +204,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
       } else {
         console.log('Custom StartupTest PageAbility6 startupManager AppStorage.get error');
       }
-      let onCompletedCallback4: ESObject = AppStorage.get('Sample_004_onDependencyCompleted') as ESObject;
+      let onCompletedCallback4: string = AppStorage.get('Sample_004_onDependencyCompleted') as string;
           if (onCompletedCallback4 == 'Sample_005' || onCompletedCallback4 == 'Sample_007') {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback4);
             commonEventManager.publish('StartupSample_004_onDependencyCompleted', {
@@ -217,7 +218,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
           } else {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
           }
-          let onCompletedCallback04: ESObject = AppStorage.get('Sample_004_onDependencyCompleted2') as ESObject;
+          let onCompletedCallback04: string = AppStorage.get('Sample_004_onDependencyCompleted2') as string;
           if (onCompletedCallback04 == 'Sample_005' || onCompletedCallback04 == 'Sample_007') {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback04);
             commonEventManager.publish('StartupSample_004_onDependencyCompleted', {
@@ -231,7 +232,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
           } else {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
           }
-          let onCompletedCallback5: ESObject = AppStorage.get('Sample_005_onDependencyCompleted') as ESObject;
+          let onCompletedCallback5: string = AppStorage.get('Sample_005_onDependencyCompleted') as string;
           if (onCompletedCallback5 == 'Sample_006') {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback5);
             commonEventManager.publish('StartupSample_005_onDependencyCompleted', {
@@ -245,7 +246,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
           } else {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
           }
-          let onCompletedCallback7: ESObject = AppStorage.get('Sample_007_onDependencyCompleted') as ESObject;
+          let onCompletedCallback7: string = AppStorage.get('Sample_007_onDependencyCompleted') as string;
           if (onCompletedCallback7 == 'Sample_008' || onCompletedCallback7 == 'Sample_001') {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback7);
             commonEventManager.publish('StartupSample_007_onDependencyCompleted', {
@@ -259,7 +260,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
           } else {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get error');
           }
-          let onCompletedCallback07: ESObject = AppStorage.get('Sample_007_onDependencyCompleted2') as ESObject;
+          let onCompletedCallback07: string = AppStorage.get('Sample_007_onDependencyCompleted2') as string;
           if (onCompletedCallback07 == 'Sample_008' || onCompletedCallback07 == 'Sample_001') {
             console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback07);
             commonEventManager.publish('StartupSample_007_onDependencyCompleted', {
