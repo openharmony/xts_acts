@@ -12797,6 +12797,7 @@ export default function audioRendererTest() {
         console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
       }).catch((err) => {
         console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        except(false).assertTrue();
       });
       await sleep(1000);
 
@@ -12951,6 +12952,7 @@ export default function audioRendererTest() {
         console.info(`AudioRenderer release : SUCCESS`);
       }).catch((err) => {
         console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        except(false).assertTrue();
       });
       console.info('afterAll called')
       done();
@@ -12999,6 +13001,7 @@ export default function audioRendererTest() {
         console.info(`AudioRenderer release : SUCCESS`);
       }).catch((err) => {
         console.info(`AudioRenderer release :ERROR : ${err.message}`);
+        except(false).assertTrue();
       });
       console.info('afterAll called')
       done();
