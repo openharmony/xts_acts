@@ -97,6 +97,9 @@
         "MainAbility/pages/Monitor/Monitor0260",
         "MainAbility/pages/Monitor/Monitor0280",
         "MainAbility/pages/Monitor/Monitor0290",
-        "MainAbility/pages/Monitor/Monitor0300"
+        "MainAbility/pages/Monitor/Monitor0300",
+        "MainAbility/pages/link/Link0090",
+        "MainAbility/pages/Repeat/Repeat0040",
+        "MainAbility/pages/local/Local0140"
     ]
 }
