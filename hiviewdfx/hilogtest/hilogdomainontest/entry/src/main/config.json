@@ -12,6 +12,7 @@
     "package": "ohos.acts.hiviewdfx.hilogdomainon.function",
     "name": ".entry",
     "deviceType": [
+      "wearable",
       "tablet",
       "default",
       "phone",
