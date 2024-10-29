@@ -1,0 +1,133 @@
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import nativeEffectNdk from 'libnativeEffectNdk.so';
+
+export default function nativeEffectTest() {
+  describe('NativeEffectTest', () => {
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterCreateEffect
+     * @tc.name       : testOHFilterCreateEffect
+     * @tc.desc       : test OH_Filter_Create_Effect
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterCreateEffect', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterCreateEffect();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterInvert
+     * @tc.name       : testOHFilterInvert
+     * @tc.desc       : test OH_Filter_Invert
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterInvert', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterInvert();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterBlur
+     * @tc.name       : testOHFilterBlur
+     * @tc.desc       : test OH_Filter_Blur
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterBlur', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterBlur();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterGrayScale
+     * @tc.name       : testOHFilterGrayScale
+     * @tc.desc       : test OH_Filter_Gray_Scale
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterGrayScale', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterGrayScale();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterBrighten
+     * @tc.name       : testOHFilterBrighten
+     * @tc.desc       : test OH_Filter_Brighten
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterBrighten', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterBrighten();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterSetColorMatrix
+     * @tc.name       : testOHFilterSetColorMatrix
+     * @tc.desc       : test OH_Filter_Set_Color_Matrix
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterSetColorMatrix', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterSetColorMatrix();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterGetEffectPixelMap
+     * @tc.name       : testOHFilterGetEffectPixelMap
+     * @tc.desc       : test OH_Filter_Get_Effect_PixelMap
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterGetEffectPixelMap', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterGetEffectPixelMap();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterRelease
+     * @tc.name       : testOHFilterRelease
+     * @tc.desc       : test OH_Filter_Release
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterRelease', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterRelease();
+      expect(result).assertEqual(0);
+      done();
+    });
+  })
+}
