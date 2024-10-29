@@ -22,9 +22,11 @@ import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
+import {BusinessError} from '@ohos.base';
+import { AbilityConstant} from '@kit.AbilityKit';
 
-let subscriber = undefined;
-let uiContext:common.UIAbilityContext = undefined;
+let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+let uiContext:common.UIAbilityContext | undefined = undefined;
 let startupSampleInit:boolean = false;
 let startupDefaultConfig:boolean = false;
 let onAbiltiyDestory = false;
@@ -33,20 +35,20 @@ let customConfig = true;
 
 export default class SingleStartAbility extends UIAbility {
 
-  onCreate(want:Want, launchParam){
+  onCreate(want:Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'StartupTest SingleStartAbility', '%{public}s', 'Ability onCreate');
 
-    if (want.parameters && want.parameters.keepAlive) {
+    if (want.parameters && want.parameters?.keepAlive) {
       console.info('StartupTest SingleStartAbility keepAlive = true');
       keepAlive = true;
     }
-    if (want.parameters && want.parameters.customConfig) {
+    if (want.parameters && want.parameters?.customConfig) {
       console.info('StartupTest SingleStartAbility customConfig = true');
       customConfig = false;
     }
 
     uiContext = this.context;
-    let subscribeInfo = {
+    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
       events: ['StartupSample_001', 'StartupTestDefaultConfig'],
     };
     commonEventManager.createSubscriber(subscribeInfo).then(data => {
@@ -91,7 +93,7 @@ export default class SingleStartAbility extends UIAbility {
           console.info('StartupTest SingleStartAbility terminateSelfWithResult , result = true');
           if (!keepAlive) {
             setTimeout(()=>{
-              uiContext.terminateSelfWithResult({
+              uiContext?.terminateSelfWithResult({
                 resultCode: 0,
                 want:{
                   parameters:{
@@ -103,7 +105,7 @@ export default class SingleStartAbility extends UIAbility {
           }
         }
       })
-    }).catch(error=>{
+    }).catch((error: BusinessError)=>{
       console.info('StartupTest SingleStartAbility createSubscriber failed, error=' + JSON.stringify(error));
     })
   }
@@ -142,8 +144,8 @@ export default class SingleStartAbility extends UIAbility {
         startupManager.run(['Sample_001']);
       } else {
         console.log('Custom StartupTest SingleStartAbility startupManager run with custom Config');
-        let onCompletedCallback = (error) => {
-          let initValue1 = AppStorage.get('Sample_001_init');
+        let onCompletedCallback = (error: BusinessError) => {
+          let initValue1:string = AppStorage.get('Sample_001_init') as string;
           if (initValue1 == 'Sample_001_init') {
             console.log('Custom StartupTest SingleStartAbility startupManager AppStorage.get success');
             commonEventManager.publish('StartupSample_001', (err, data)=>{
@@ -157,7 +159,7 @@ export default class SingleStartAbility extends UIAbility {
           console.log('Custom StartupTest MyStartupConfigEntry callback, error=' + JSON.stringify(error));
           if (error) {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ',
-              ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.mssage);
+              ' onCompletedCallback: %{public}d, mssage: %{public}s', error.code, error.message);
           } else {
             hilog.info(0x000, 'Custom MyStartupConfigEntry TAG ', ' onCompletedCallback: success');
           }

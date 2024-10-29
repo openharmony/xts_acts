@@ -22,9 +22,10 @@ import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
-
-let subscriber = undefined;
-let uiContext: common.UIAbilityContext = undefined;
+import {BusinessError} from '@ohos.base';
+import { AbilityConstant} from '@kit.AbilityKit';
+let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+let uiContext: common.UIAbilityContext| undefined = undefined;
 let keepAlive = false;
 let type: number = 0;
 // 0 undefined
@@ -34,20 +35,20 @@ let type: number = 0;
 // 4 第一个参数为不存在的启动框架 Sample_100
 
 export default class PageAbility10 extends UIAbility {
-  onCreate(want: Want, launchParam){
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'StartupTest PageAbility10', '%{public}s', 'Ability onCreate');
 
-    if (want.parameters && want.parameters.keepAlive) {
+    if (want.parameters && want.parameters?.keepAlive) {
       console.info('StartupTest PageAbility10 keepAlive = true');
       keepAlive = true;
     }
-    type = want.parameters.type as number;
+    type = want.parameters?.type as number;
     uiContext = this.context;
   }
 
   onForeground(){
     hilog.info(0x0000, 'StartupTest PageAbility10', '%{public}s', 'Ability onForeground');
-    let subscribeInfo = {
+    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
       events: ['StartupTestDefaultConfig'],
     };
     setTimeout(()=>{
@@ -59,8 +60,7 @@ export default class PageAbility10 extends UIAbility {
           let event = data.event;
         })
         console.log('StartupTest PageAbility10 startupManager run');
-        let startup = startupManager
-        let startParams;
+        let startParams: ESObject;
         if (type == 0) {
           startParams = undefined;
         }
@@ -77,7 +77,7 @@ export default class PageAbility10 extends UIAbility {
           startParams = 'Sample_100';
         }
         try {
-          startup.run(startParams).then(() => {
+          startupManager.run(startParams).then(() => {
             console.log('StartupTest PageAbility10 startupManager run then, startParams = ' +
               JSON.stringify(startParams));
             commonEventManager.publish('show_msg', {
@@ -87,14 +87,14 @@ export default class PageAbility10 extends UIAbility {
             }, () => {
               console.info('StartupTest PageAbility10 send msg');
             })
-          }).catch(error => {
+          }).catch((error:BusinessError) => {
             console.info('StartupTest PageAbility10 promise catch error, error = ' + JSON.stringify(error));
             console.info('StartupTest PageAbility10 promise catch error, startParams = ' +
               JSON.stringify(startParams));
           })
         } catch (error) {
           let errmsg = JSON.stringify(error)
-          let errCode = error.code
+          let errCode: number = error.code
           console.log('StartupTest PageAbility10 catch error , errCode= ' + errCode);
           console.log('StartupTest PageAbility10 catch error ,error= ' + errmsg);
           commonEventManager.publish('show_msg', {
@@ -107,7 +107,7 @@ export default class PageAbility10 extends UIAbility {
           })
           if (!keepAlive) {
             setTimeout(()=>{
-              uiContext.terminateSelfWithResult({
+              uiContext?.terminateSelfWithResult({
                 resultCode: 0,
                 want:{
                   parameters:{

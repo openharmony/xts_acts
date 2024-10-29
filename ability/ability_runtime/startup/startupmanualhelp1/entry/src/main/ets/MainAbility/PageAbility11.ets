@@ -22,18 +22,19 @@ import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import StartupConfig from '@ohos.app.appstartup.StartupConfig'
 import StartupListener from '@ohos.app.appstartup.StartupListener'
-
-let subscriber = undefined;
-let uiContext: common.UIAbilityContext = undefined;
+import {BusinessError} from '@ohos.base';
+import { AbilityConstant} from '@kit.AbilityKit';
+let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
+let uiContext: common.UIAbilityContext|undefined = undefined;
 let keepAlive = false;
 let apiResult:boolean[];
 let timeOutNumber = -1;
 
 export default class PageAbility11 extends UIAbility {
-  onCreate(want: Want, launchParam){
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'StartupTest PageAbility11', '%{public}s', 'Ability onCreate');
 
-    if (want.parameters && want.parameters.keepAlive) {
+    if (want.parameters && want.parameters?.keepAlive) {
       console.info('StartupTest PageAbility11 keepAlive = true');
       keepAlive = true;
     }
@@ -53,7 +54,7 @@ export default class PageAbility11 extends UIAbility {
       timeOutNumber = setTimeout(()=>{
         if (!keepAlive) {
           hilog.info(0x0000, 'StartupTest PageAbility11', '%{public}s', ' query api timeout');
-          uiContext.terminateSelfWithResult({
+          uiContext?.terminateSelfWithResult({
             resultCode: 0,
             want:{
               parameters:{
@@ -188,7 +189,7 @@ export default class PageAbility11 extends UIAbility {
         this.pushMsg('StartupTest PageAbility11 apiResult = ' + JSON.stringify(apiResult));
         if (!keepAlive) {
           clearTimeout(timeOutNumber);
-          uiContext.terminateSelfWithResult({
+          uiContext?.terminateSelfWithResult({
             resultCode: 0,
             want:{
               parameters:{
