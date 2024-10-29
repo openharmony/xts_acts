@@ -208,8 +208,7 @@ async function toNextStep(avScreenCaptureRecorder: media.AVScreenCaptureRecorder
       break;
     case AV_CREATEAVPLAYER:
       steps.shift();
-      // AvPlayerMp4(outputName, done)
-      AvPlayerMp4("H264_AAC.mp4", done)
+      AvPlayerMp4(outputName, done)
       break;
     default:
       break;
