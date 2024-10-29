@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import cryptoFramework from '@ohos.security.cryptoFramework';
-import { buffer } from '@kit.ArkTS';
 
 function stringToUint8Array(str: string) {
   let arr: number[] = [];
@@ -50,33 +49,39 @@ function convertToUint8Array(str: string): number[] {
 }
 
 function compareDataBlob(a: cryptoFramework.DataBlob, b: cryptoFramework.DataBlob): boolean {
-  let buf1 = buffer.from(a.data);
-  let buf2 = buffer.from(b.data);
-  if (buf1.compare(buf2, 0, a.data.byteLength, 0, b.data.byteLength) == 0) {
-    return true;
-  } else {
+  if (a.data.length != b.data.length) {
     return false;
   }
+  for (let i = 0; i < a.data.length; i++) {
+    if (a.data[i] !== b.data[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function compareNumber(a: number[], b: number[]): boolean {
-  let buf1 = buffer.from(a);
-  let buf2 = buffer.from(b);
-  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
-    return true;
-  } else {
+  if (a.length != b.length) {
     return false;
   }
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function compareString(a: string, b: string): boolean {
-  let buf1 = buffer.from(a);
-  let buf2 = buffer.from(b);
-  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
-    return true;
-  } else {
+  if (a.length != b.length) {
     return false;
   }
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 async function createData(dataLen: number): Promise<cryptoFramework.DataBlob>{
