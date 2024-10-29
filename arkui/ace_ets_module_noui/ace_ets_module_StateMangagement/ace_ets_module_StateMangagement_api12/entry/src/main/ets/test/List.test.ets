@@ -108,6 +108,9 @@ import Monitor0260Test from './MonitorTest/Monitor0260Test.test';
 import Monitor0280Test from './MonitorTest/Monitor0280Test.test';
 import Monitor0290Test from './MonitorTest/Monitor0290Test.test';
 import Monitor0300Test from './MonitorTest/Monitor0300Test.test';
+import LinkTest0090 from './link/LinkTest0090.test';
+import RepeatTest0040 from './RepeatTest/RepeatTest0040.test';
+import LocalTest0140 from './local/LocalTest0140.test';
 
 export default function testsuite() {
   ExtendTrackTest();
@@ -205,4 +208,7 @@ export default function testsuite() {
   Monitor0280Test();
   Monitor0290Test();
   Monitor0300Test();
+  LinkTest0090();
+  RepeatTest0040();
+  LocalTest0140();
 }
