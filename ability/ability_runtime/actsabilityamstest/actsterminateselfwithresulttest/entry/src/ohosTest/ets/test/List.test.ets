@@ -15,8 +15,10 @@
 
 import abilityTest from './Ability.test';
 import abilityTest2 from './Ability2.test';
+import actsterminateselfwithresulttest from './ActsTerminateSelfWithResultTest.test';
 
 export default function testsuite() {
   abilityTest();
   abilityTest2();
+  actsterminateselfwithresulttest();
 }
