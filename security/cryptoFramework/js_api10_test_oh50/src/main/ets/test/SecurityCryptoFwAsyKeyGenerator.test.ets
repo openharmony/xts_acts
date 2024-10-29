@@ -55,7 +55,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
           let primes: string[] = asyKeySpecs[1];
           for (let prime of primes) {
             let keyAlgName: string = algName + "|" + prime;
-            let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(keyAlgName);
+            let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(keyAlgName);
             let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
             let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
             let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(keyAlgName, pubKeyBlob, priKeyBlob);
@@ -85,7 +85,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_ECC_KEY_SPEC_1) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -114,7 +114,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_ECC_KEY_SPEC_2) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -143,7 +143,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_ECC_KEY_SPEC_3) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -172,7 +172,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DSA_KEY_SPEC_1) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -201,7 +201,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DSA_KEY_SPEC_2) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -230,7 +230,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_SM2_KEY_SPEC) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -259,7 +259,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_25519_KEY_SPEC) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -288,7 +288,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_1) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -317,7 +317,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_2) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -346,7 +346,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_3) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -375,7 +375,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_4) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
@@ -404,7 +404,7 @@ export default function SecurityCryptoFwAsyKeyGeneratorTestUnit() {
       try {
         for (let asyKeySpecs of asyKeySyncUtils.ASY_DH_KEY_SPEC_5) {
           let algName: string = asyKeySpecs;
-          let keyPair: cryptoFramework.KeyPair = asyKeySyncUtils.createAsyKeySync(algName);
+          let keyPair: cryptoFramework.KeyPair = await asyKeySyncUtils.createAsyKeySync(algName);
           let pubKeyBlob: cryptoFramework.DataBlob = keyPair.pubKey.getEncoded();
           let priKeyBlob: cryptoFramework.DataBlob = keyPair.priKey.getEncoded();
           let convKeyPair: cryptoFramework.KeyPair = asyKeySyncUtils.convertAsyKeySync(algName, pubKeyBlob, priKeyBlob);
