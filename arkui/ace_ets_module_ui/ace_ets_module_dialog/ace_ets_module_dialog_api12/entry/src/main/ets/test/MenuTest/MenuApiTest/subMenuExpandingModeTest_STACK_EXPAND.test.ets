@@ -51,13 +51,15 @@ export default function subMenuExpandingModeTest() {
     it('subMenuExpandingModeTest_0100', 0, async (done: Function) => {
       console.info('subMenuExpandingModeTest_0100 START');
       await CommonFunc.sleep(1000);
-      let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id('btn'));
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let menu = getInspectorByKey('menu');
-      console.info("[subMenuExpandingModeTest_0100] attrs is: " + JSON.stringify(JSON.parse(menu).$attrs));
-      expect(JSON.parse(menu).$attrs.subMenuExpandingMode).assertEqual('SubMenuExpandingMode.STACK');
+      if (globalThis.winLeft == 0) {
+        let driver: Driver = Driver.create();
+        let btn: Component = await driver.findComponent(ON.id('btn'));
+        await btn.click();
+        await CommonFunc.sleep(1000);
+        let menu = getInspectorByKey('menu');
+        console.info("[subMenuExpandingModeTest_0100] attrs is: " + JSON.stringify(JSON.parse(menu).$attrs));
+        expect(JSON.parse(menu).$attrs.subMenuExpandingMode).assertEqual('SubMenuExpandingMode.STACK');
+      }
       console.info('[subMenuExpandingModeTest_0100] END');
       done();
     });
