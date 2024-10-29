@@ -31,7 +31,12 @@ struct MovingPhotoView1 {
   @State error: string = "Init";
   @State play: string = "Init";
   @State stopPlay: string = "Init";
+  @State complete: string = "Init";
   @State flag: boolean = false;
+  @State autoPlayFlag: boolean = false;
+  @State repeatPlayFlag: boolean = false;
+  @State autoPlayPeriodStart: number = -1;
+  @State autoPlayPeriodEnd: number = -1;
 
   build() {
     NavDestination() {
@@ -61,6 +66,12 @@ struct MovingPhotoView1 {
             .onError(() => {
               this.error = "onError succ"
             })
+            .onComplete(() => {
+              this.complete = "onComplete succ"
+            })
+            .autoPlay(this.autoPlayFlag)
+            .autoPlayPeriod(this.autoPlayPeriodStart, this.autoPlayPeriodEnd)
+            .repeatPlay(this.repeatPlayFlag)
         }
 
         Button('Play').id('MovingPhotoView_playButton')
@@ -77,6 +88,16 @@ struct MovingPhotoView1 {
           .onClick(() => {
             this.flag = true
           })
+        Button('autoPlay').id('MovingPhotoView_autoPlay')
+          .onClick(() => {
+            this.autoPlayFlag = true
+            this.autoPlayPeriodStart = 100
+            this.autoPlayPeriodEnd = 500
+          })
+        Button('repeatPlay').id('MovingPhotoView_repeatPlay')
+          .onClick(() => {
+            this.repeatPlayFlag = true
+          })
         Text(this.start).id('MovingPhotoView_start')
         Text(this.stop).id('MovingPhotoView_stop')
         Text(this.pause).id('MovingPhotoView_pause')
@@ -84,6 +105,7 @@ struct MovingPhotoView1 {
         Text(this.error).id('MovingPhotoView_error')
         Text(this.play).id('MovingPhotoView_play')
         Text(this.stopPlay).id('MovingPhotoView_stopPlay')
+        Text(this.complete).id('MovingPhotoView_complete')
       }
     }
   }
