@@ -23,7 +23,8 @@
       "default",
       "tablet",
       "2in1",
-      "wearable"
+      "wearable",
+      "phone"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
