@@ -27,7 +27,6 @@
         {
             "type": "PushKit",
             "push": [
-                "./resource/audio/H264_AAC.mp4 -> /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files/",
                 "./resource/media/audioplayer/lbvc_1c_16000hz_6k.pcm -> /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files/"
             ]
         }
