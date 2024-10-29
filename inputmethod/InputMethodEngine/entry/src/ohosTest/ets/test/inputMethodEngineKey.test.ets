@@ -117,7 +117,8 @@ export default function inputMethodEngineKeyJSUnit() {
           JSON.stringify(err));
         } else {
           let t = setTimeout(async () => {
-            await driver.triggerKey(2045)
+            let result = await delegator.executeShellCommand(`uinput -K -d 2045 -u 2045`);
+            console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0010 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
           }, 200)
         }
@@ -195,7 +196,8 @@ export default function inputMethodEngineKeyJSUnit() {
           JSON.stringify(err));
         } else {
           let t = setTimeout(async () => {
-            await driver.triggerKey(2017)
+            let result = await delegator.executeShellCommand(`uinput -K -d 2017 -u 2017`);
+            console.info("====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0020 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t);
           }, 200)
         }

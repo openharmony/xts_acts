@@ -20,6 +20,7 @@ import commonEventManager from '@ohos.commonEventManager';
 import display from '@ohos.display';
 import { Driver, ON, MatchPattern, Component, Rect } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function inputMethodAbility() {
   describe('inputMethodAbility', () => {
@@ -38,6 +39,7 @@ export default function inputMethodAbility() {
     let dis = display.getDefaultDisplaySync();
     let inputDemoService: subtype;
     let inputMethodController = inputMethod.getController();
+    const delegator:AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
     beforeAll(async (done: Function) => {
       let inputM = inputMethod.getCurrentInputMethod()
@@ -2564,7 +2566,8 @@ export default function inputMethodAbility() {
           console.info("====>inputMethodAbility_test_073 publishCallback failed:" + JSON.stringify(err));
         } else {
           let t1 = setTimeout(async () => {
-            await driver.triggerKey(2000);
+            let result = await delegator.executeShellCommand(`uinput -K -d 2000 -u 2000`);
+            console.info("====>inputMethodAbility_test_073 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t1);
           }, 300);
         }

@@ -18,12 +18,14 @@ import inputMethod from '@ohos.inputMethod';
 import { Driver, ON, MatchPattern, Component, UiWindow, Rect } from '@ohos.UiTest'
 import deviceinfo from '@ohos.deviceInfo';
 import { BusinessError } from '@ohos.base'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function inputMethodEngineJSUnit() {
   describe('inputMethodEngine', () => {
     let driver = Driver.create();
     let textArea: Component;
     let rectInfo: Rect;
+    const delegator:AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
     beforeAll(async (done: Function) => {
       console.info('====>beforeAll inputMethod_enable start!')
@@ -1706,7 +1708,8 @@ export default function inputMethodEngineJSUnit() {
             clearTimeout(t);
           }, 200)
           let t1 = setTimeout(async () => {
-            await driver.triggerKey(2000)
+            let result = await delegator.executeShellCommand(`uinput -K -d 2000 -u 2000`);
+            console.info("====>inputMethodEngine_test_073 executeShellCommand success: " + JSON.stringify(result));
             clearTimeout(t1);
           }, 400)
         }
