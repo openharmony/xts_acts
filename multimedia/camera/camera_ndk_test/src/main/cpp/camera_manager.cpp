@@ -25,7 +25,9 @@
 
 CameraCallbackCode NDKCamera::cameraCallbackCode_ = NoReceived;
 
-Camera_Size SecureSize = {640, 680};
+Camera_Size SecureSize = {640, 480};
+Camera_Profile PhotoOutputWithoutSurface = {CAMERA_FORMAT_JPEG, {1920, 1080}};
+Camera_Profile PreviewOutputSample = {CAMERA_FORMAT_YUV_420_SP, {1920, 1080}};
 static OH_NativeBuffer_ColorSpace oHNativeBufferColorSpace[15]
     = {OH_NativeBuffer_ColorSpace::OH_COLORSPACE_NONE,
        OH_NativeBuffer_ColorSpace::OH_COLORSPACE_P3_FULL,
@@ -51,9 +53,9 @@ NDKCamera::NDKCamera(char* str)
       videoFrameRatesSize_(0), colorSpacesSize_(0), colorSpace_(nullptr), activeColorSpace_(OH_COLORSPACE_P3_PQ_LIMIT),
       setcolorSpace_(OH_COLORSPACE_NONE),
       frameRateRange_(nullptr), activeFrameRateRange_({0, 0}), videoFrameRateRange_(0),
-      videoActiveFrameRateRange_({0, 0}),
+      videoActiveFrameRateRange_({0, 0}), isCreatePhotoOutputWithoutSurface_(false),
       captureSession_(nullptr), size_(0),
-      profile_(nullptr), previewOutput_(nullptr), photoOutput_(nullptr), videoOutput_(nullptr),
+      profile_(nullptr), photoProfile_(nullptr), previewOutput_(nullptr), photoOutput_(nullptr), videoOutput_(nullptr),
       metaDataObjectType_(nullptr), metadataOutput_(nullptr), cameraInput_(nullptr),
       isCameraMuted_(nullptr), previewSurfaceId_(str),
       cameraProfile_(nullptr), videoActiveProfile_(nullptr),
@@ -121,8 +123,8 @@ Camera_ErrorCode NDKCamera::ReleaseCamera(void)
         PreviewOutputRelease();
     }
     if (cameraInput_) {
-        CameraInputClose();
         SessionRemoveInput();
+        CameraInputClose();
         CameraInputRelease();
     }
     if (captureSession_) {
@@ -291,7 +293,12 @@ Camera_ErrorCode NDKCamera::CreateCameraInput(void)
     } else if (cameras_ == nullptr) {
         LOG("ndkXTS cameras_ is NULL.");
     }
-    ret_ = OH_CameraManager_CreateCameraInput(cameraManager_, cameras_, &cameraInput_);
+    if (sceneMode_ == SECURE_PHOTO) {
+        ret_ = GetCameraFromCameras(cameras_, &camera_, FRONT_CAMERA);
+        ret_ = OH_CameraManager_CreateCameraInput(cameraManager_, camera_, &cameraInput_);
+    } else {
+        ret_ = OH_CameraManager_CreateCameraInput(cameraManager_, cameras_, &cameraInput_);
+    }
     if (cameraInput_ == nullptr || ret_ != CAMERA_OK) {
         LOG("ndkXTS CreateCameraInput failed = %d. cameraInput_ = %p", ret_, cameraInput_);
         return CAMERA_INVALID_ARGUMENT;
@@ -373,16 +380,26 @@ Camera_ErrorCode NDKCamera::GetSupportedOutputCapability(void)
 
 Camera_ErrorCode NDKCamera::CreatePreviewOutput(void)
 {
+    profile_ = cameraOutputCapability_->previewProfiles[0];
     if (sceneMode_ == SECURE_PHOTO) {
         for (decltype(cameraOutputCapability_ -> previewProfilesSize) i = 0;
              i< cameraOutputCapability_ -> previewProfilesSize; i++) {
             if (cameraOutputCapability_->previewProfiles[i]->size.width == SecureSize.width &&
                 cameraOutputCapability_->previewProfiles[i]->size.height == SecureSize.height) {
                 profile_ = cameraOutputCapability_->previewProfiles[i];
+                break;
             }
         }
-    } else {
-        profile_ = cameraOutputCapability_->previewProfiles[0];
+    } else if (isCreatePhotoOutputWithoutSurface_) {
+        for (decltype(cameraOutputCapability_ -> previewProfilesSize) i = 0;
+             i< cameraOutputCapability_ -> previewProfilesSize; i++) {
+            if (cameraOutputCapability_->previewProfiles[i]->size.width == PreviewOutputSample.size.width &&
+                cameraOutputCapability_->previewProfiles[i]->size.height == PreviewOutputSample.size.height &&
+                cameraOutputCapability_->previewProfiles[i]->format == PreviewOutputSample.format) {
+                profile_ = cameraOutputCapability_->previewProfiles[i];
+                break;
+            }
+        }
     }
     if (profile_ == nullptr) {
         LOG("ndkXTS Get previewProfiles failed.");
@@ -1498,9 +1515,9 @@ Camera_ErrorCode NDKCamera::CaptureSessionUnregisterCallbackOff(int useCaseCode)
 }
 
 
-Camera_ErrorCode NDKCamera::GetCameraFromCameras(Camera_Device* cameras, Camera_Device** camera)
+Camera_ErrorCode NDKCamera::GetCameraFromCameras(Camera_Device* cameras, Camera_Device** camera,
+    size_t cameraIndex)
 {
-    size_t cameraIndex = 0;
     if (cameras != nullptr) {
         LOG("supported cameras list is not null.");
         if (cameraIndex < this->size_) {
@@ -1554,6 +1571,9 @@ Camera_ErrorCode NDKCamera::GetSupportedSceneModes(int useCaseCode)
         ret_ = OH_CameraManager_GetSupportedSceneModes(camera_, &sceneModes_, nullptr);
     } else if (useCaseCode == PARAMETER2_ERROR) {
         ret_ = OH_CameraManager_GetSupportedSceneModes(camera_, nullptr, &sceneModesSize_);
+    } else if (useCaseCode == SET_CAMERA_FRONT_FOR_SECURE_PHOTO) {
+        ret_ = GetCameraFromCameras(cameras_, &camera_, FRONT_CAMERA);
+        ret_ = OH_CameraManager_GetSupportedSceneModes(camera_, &sceneModes_, &sceneModesSize_);
     } else {
         ret_ = OH_CameraManager_GetSupportedSceneModes(nullptr, &sceneModes_, &sceneModesSize_);
     }
@@ -1605,6 +1625,9 @@ Camera_ErrorCode NDKCamera::GetSupportedCameraOutputCapabilityWithSceneMode(int 
         ret_ = GetCameraFromCameras(cameras_, &camera_);
     }
     if (useCaseCode == PARAMETER_OK) {
+        if (sceneMode_ == SECURE_PHOTO) {
+        ret_ = GetCameraFromCameras(cameras_, &camera_, FRONT_CAMERA);
+        }
         ret_ = OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode(cameraManager_, camera_, sceneMode_,
         &cameraOutputCapability_);
     } else if (useCaseCode == PARAMETER4_ERROR) {
@@ -2084,15 +2107,26 @@ Camera_ErrorCode NDKCamera::PhotoNativeRelease(int useCaseCode)
 
 Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurface(int useCaseCode)
 {
-    profile_ = cameraOutputCapability_->photoProfiles[0];
+    for (decltype(cameraOutputCapability_->photoProfilesSize) i = 0;
+            i< cameraOutputCapability_->photoProfilesSize; i++) {
+        if (cameraOutputCapability_->photoProfiles[i]->size.width == PhotoOutputWithoutSurface.size.width &&
+            cameraOutputCapability_->photoProfiles[i]->size.height == PhotoOutputWithoutSurface.size.height &&
+            cameraOutputCapability_->photoProfiles[i]->format == PhotoOutputWithoutSurface.format) {
+            photoProfile_ = cameraOutputCapability_->photoProfiles[i];
+            break;
+        }
+    }
+    if (!photoProfile_) {
+        photoProfile_ = cameraOutputCapability_->photoProfiles[0];
+    }
     if (useCaseCode == PARAMETER_OK) {
-        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, profile_, &photoOutput_);
+        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, photoProfile_, &photoOutput_);
     } else if (useCaseCode == PARAMETER3_ERROR) {
-        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, profile_, nullptr);
+        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, photoProfile_, nullptr);
     } else if (useCaseCode == PARAMETER2_ERROR) {
         ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, nullptr, &photoOutput_);
     } else {
-        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(nullptr, profile_, &photoOutput_);
+        ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(nullptr, photoProfile_, &photoOutput_);
     }
     if (ret_ != CAMERA_OK || !photoOutput_) {
         ret_ = CAMERA_INVALID_ARGUMENT;
@@ -2257,26 +2291,27 @@ Camera_ErrorCode NDKCamera::GetActiveColorSpace(int useCaseCode)
 }
 int32_t NDKCamera::ColorSpace(void)
 {
-    int32_t len = sizeof(oHNativeBufferColorSpace)/sizeof(oHNativeBufferColorSpace[0]);
-    int32_t sum = 0;
+    int32_t nativeColorSpaceSize = sizeof(oHNativeBufferColorSpace)/sizeof(oHNativeBufferColorSpace[0]);
+    bool flag = false;
     ret_ = OH_CaptureSession_GetSupportedColorSpaces(captureSession_, &colorSpace_, &colorSpacesSize_);
     if (colorSpacesSize_ == 0) {
         setcolorSpace_ = oHNativeBufferColorSpace[SET_OH_COLORSPACE_SRGB_FULL];
-        return sum;
+        return COLOR_SPACE_NOT_SUPPORTED;
     }
-    for (uint32_t i = 0; i < colorSpacesSize_; i++) {
-        sum = 0;
-        for (int32_t j = 0; j < len; j++) {
-            if (colorSpace_[i] == oHNativeBufferColorSpace[j]) {
-            sum++;
+    for (uint32_t nativeIndex = 0; nativeIndex < nativeColorSpaceSize; nativeIndex++) {
+        flag = false;
+        for (int32_t supportedIndex = 0; supportedIndex < colorSpacesSize_; supportedIndex++) {
+            if (oHNativeBufferColorSpace[nativeIndex] == colorSpace_[supportedIndex]) {
+                flag = true;
+                break;
             }
         }
-        if (sum == 0) {
-            setcolorSpace_ = colorSpace_[i];
-            return sum;
+        if (!flag) {
+            setcolorSpace_ = oHNativeBufferColorSpace[nativeIndex];
+            return COLOR_SPACE_NOT_SUPPORTED;
         }
     }
-    return sum;
+    return colorSpacesSize_;
 }
 Camera_ErrorCode NDKCamera::SetColorSpace(int useCaseCode)
 {
@@ -2286,12 +2321,8 @@ Camera_ErrorCode NDKCamera::SetColorSpace(int useCaseCode)
         ret_ = OH_CaptureSession_SetActiveColorSpace(nullptr, activeColorSpace_);
     } else if (useCaseCode == PARAMETER2_ERROR) {
         ret_ = OH_CaptureSession_SetActiveColorSpace(captureSession_, static_cast<OH_NativeBuffer_ColorSpace>(-1));
-    } else if (useCaseCode == COLOR_SPACE_NOT_SUPPORTED) {
-        if (ColorSpace() == 0) {
-            ret_ = OH_CaptureSession_SetActiveColorSpace(captureSession_, setcolorSpace_);
-        } else {
-            return CAMERA_INVALID_ARGUMENT;
-        }
+    } else if (useCaseCode == COLOR_SPACE_NOT_SUPPORTED_MODE) {
+        ret_ = OH_CaptureSession_SetActiveColorSpace(captureSession_, setcolorSpace_);
     }
     if (ret_ != CAMERA_OK) {
         LOG("OH_CaptureSession_SetActiveColorSpace failed.");
@@ -2332,12 +2363,30 @@ Camera_ErrorCode NDKCamera::SetFrameRate(int useCaseCode)
 {
     int32_t minFps = activeFrameRateRange_.min;
     int32_t maxFps = activeFrameRateRange_.max;
+    bool flag = false;
+    for (uint32_t i = 0; i < frameRatesSize_; i++) {
+        if (frameRateRange_[i].min != activeFrameRateRange_.min ||
+            frameRateRange_[i].max != activeFrameRateRange_.max) {
+            minFps = frameRateRange_[i].min;
+            maxFps = frameRateRange_[i].max;
+            flag = true;
+            break;
+        }
+    }
+    if (!flag) {
+        if (maxFps > minFps) {
+            minFps++;
+        }
+    }
     if (useCaseCode == PARAMETER_OK) {
+        if (maxFps <= minFps + INVALID_MIN_FPS) {
+            return CAMERA_OK;
+        }
         ret_ = OH_PreviewOutput_SetFrameRate(previewOutput_, minFps, maxFps);
     } else if (useCaseCode == PARAMETER1_ERROR) {
         ret_ = OH_PreviewOutput_SetFrameRate(nullptr, minFps, maxFps);
     } else if (useCaseCode == PARAMETER2_ERROR) {
-        ret_ = OH_PreviewOutput_SetFrameRate(previewOutput_, minFps - INVALID_MIN_FPS, maxFps + INVALID_MAX_FPS);
+        ret_ = OH_PreviewOutput_SetFrameRate(previewOutput_, INVALID_MIN_FPS, maxFps + INVALID_MAX_FPS);
     }
     if (ret_ != CAMERA_OK) {
         LOG("OH_PreviewOutput_DeleteFrameRates failed.");
@@ -2392,12 +2441,30 @@ Camera_ErrorCode NDKCamera::VideoOutputSetFrameRate(int useCaseCode)
 {
     uint32_t minFps = videoActiveFrameRateRange_.min;
     uint32_t maxFps = videoActiveFrameRateRange_.max;
+    bool flag = false;
+    for (uint32_t i = 0; i < videoFrameRatesSize_; i++) {
+        if (videoFrameRateRange_[i].min != videoActiveFrameRateRange_.min ||
+            videoFrameRateRange_[i].max != videoActiveFrameRateRange_.max) {
+            minFps = videoFrameRateRange_[i].min;
+            maxFps = videoFrameRateRange_[i].max;
+            flag = true;
+            break;
+        }
+    }
+    if (!flag) {
+        if (maxFps > minFps) {
+            minFps++;
+        }
+    }
     if (useCaseCode == PARAMETER_OK) {
+        if (maxFps <= minFps + INVALID_MIN_FPS) {
+            return CAMERA_OK;
+        }
         ret_ = OH_VideoOutput_SetFrameRate(videoOutput_, minFps, maxFps);
     } else if (useCaseCode == PARAMETER1_ERROR) {
         ret_ = OH_VideoOutput_SetFrameRate(nullptr, minFps, maxFps);
     } else if (useCaseCode == PARAMETER2_ERROR) {
-        ret_ = OH_VideoOutput_SetFrameRate(videoOutput_, minFps - INVALID_MIN_FPS, maxFps + INVALID_MAX_FPS);
+        ret_ = OH_VideoOutput_SetFrameRate(videoOutput_, INVALID_MIN_FPS, maxFps + INVALID_MAX_FPS);
     }
     if (ret_ != CAMERA_OK) {
         LOG("OH_VideoOutput_SetFrameRate failed.");
@@ -2648,4 +2715,9 @@ Camera_ErrorCode NDKCamera::PhotoOutputUnregisterEstimatedCaptureDurationCallbac
         LOG("OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback failed.");
     }
     return ret_;
+}
+Camera_ErrorCode NDKCamera::ReadyCreatePhotoOutputWithoutSurface()
+{
+    isCreatePhotoOutputWithoutSurface_ = true;
+    return CAMERA_OK;
 }

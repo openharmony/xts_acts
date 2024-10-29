@@ -46,8 +46,8 @@ function getSupportedCamerasInstance() {
   }
 }
 
-function getSupportedSceneModes() {
-  let supportedSceneModes = cameraObj.oHCameraManagerGetSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+function getSupportedSceneModes(index: number) {
+  let supportedSceneModes = cameraObj.oHCameraManagerGetSupportedSceneModes(index);
   if (supportedSceneModes.errorCode != 0) {
     console.error(TAG + "getSupportedSceneModes FAILED");
     expect().assertFail();
@@ -310,7 +310,7 @@ export default function CameraManagerTest() {
     it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0100', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
+      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
       let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0100:"+ret);
@@ -327,7 +327,7 @@ export default function CameraManagerTest() {
     it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0200', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
+      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
       let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0200:"+ret);
@@ -344,7 +344,7 @@ export default function CameraManagerTest() {
     it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0300', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      let supportedSceneModes = getSupportedSceneModes();
+      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
         console.error(TAG+"SECURE_PHOTO is not supported");
@@ -369,7 +369,7 @@ export default function CameraManagerTest() {
     it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0400', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
+      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
       let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0400:"+ret);
@@ -387,7 +387,7 @@ export default function CameraManagerTest() {
     it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0500', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
+      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
       let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0500:"+ret);
@@ -405,7 +405,7 @@ export default function CameraManagerTest() {
     it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0600', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
+      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
       let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.THIRD_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0600:"+ret);
@@ -423,7 +423,7 @@ export default function CameraManagerTest() {
     it('testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0700', 0, () => {
       getCameraManagerInstance();
       getSupportedCamerasInstance();
-      getSupportedSceneModes();
+      getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
       let ret = cameraObj.oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode(Parameter_Setting.FOURTH_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode0700:"+ret);

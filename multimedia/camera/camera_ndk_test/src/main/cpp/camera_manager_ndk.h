@@ -37,15 +37,19 @@
 #include <string>
 #include <vector>
 
-#define COLOR_SPACE_NOT_SUPPORTED 3
+#define COLOR_SPACE_NOT_SUPPORTED_MODE 3
 #define TARGET_ZOOM 1.5
 #define ALL_CALLBACK_IS_NULL 1
 #define ONLY_ON_ERROR 2
 #define ONLY_ON_FOCUS_STATE_CHANGE 3
 #define INVALID_SURFACE_ID 4
 #define SET_OH_COLORSPACE_SRGB_FULL 2
-#define INVALID_MIN_FPS 1
+#define INVALID_MIN_FPS (-1)
 #define INVALID_MAX_FPS 5
+#define COLOR_SPACE_NOT_SUPPORTED 0
+#define SET_CAMERA_FRONT_FOR_SECURE_PHOTO 5
+#define BACK_CAMERA 0
+#define FRONT_CAMERA 1
 
 typedef enum CameraCallbackCode {
     CameraInput_Status = 1,
@@ -115,7 +119,6 @@ public:
     bool isMovingPhotoSupported_;
     OH_PhotoNative *photoNative_;
     OH_ImageNative *mainImage_;
-
     bool isTorchSupported_;
     bool isTorchSupportedByTorchMode_;
     Camera_TorchMode torchMode_;
@@ -129,9 +132,10 @@ public:
     Camera_FrameRateRange activeFrameRateRange_;
     Camera_FrameRateRange* videoFrameRateRange_;
     Camera_FrameRateRange videoActiveFrameRateRange_;
-
     Camera_ImageRotation imageRotation_;
     Camera_ImageRotation previewRotation_;
+    bool isCreatePhotoOutputWithoutSurface_;
+
     //callback
     static CameraCallbackCode cameraCallbackCode_;
 
@@ -327,9 +331,10 @@ public:
 
     // test aid
     Camera_ErrorCode SetSceneMode(int useCaseCode);
-    Camera_ErrorCode GetCameraFromCameras(Camera_Device* cameras,
-        Camera_Device** camera);
+    Camera_ErrorCode GetCameraFromCameras(Camera_Device* cameras, Camera_Device** camera,
+        size_t cameraIndex = BACK_CAMERA);
     Camera_ErrorCode ReleaseCamera(void);
+    Camera_ErrorCode ReadyCreatePhotoOutputWithoutSurface();
 
 private:
     NDKCamera(const NDKCamera&) = delete;
@@ -339,6 +344,7 @@ private:
     Camera_CaptureSession* captureSession_;
     uint32_t size_;
     const Camera_Profile* profile_;
+    const Camera_Profile* photoProfile_;
     const Camera_VideoProfile* videoProfile_;
     Camera_PreviewOutput* previewOutput_;
     Camera_PhotoOutput* photoOutput_;
