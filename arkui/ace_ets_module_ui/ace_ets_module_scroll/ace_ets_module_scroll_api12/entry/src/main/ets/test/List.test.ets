@@ -105,6 +105,8 @@ import repeatWaterFlow from './WaterFlowTest/repeatWaterFlow.test';
 import waterFlowScroll from './WaterFlowTest/waterFlowScroll.test';
 import waterFlowStart1 from './WaterFlowTest/waterFlowStart1.test';
 import waterFlowStart2 from './WaterFlowTest/waterFlowStart2.test';
+import waterFlowFling1 from './WaterFlowTest/waterFlowFling1.test';
+import waterFlowFling2 from './WaterFlowTest/waterFlowFling2.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -200,4 +202,6 @@ export default function testsuite() {
   waterFlowScroll()
   waterFlowStart1()
   waterFlowStart2()
+  waterFlowFling1()
+  waterFlowFling2()
 }

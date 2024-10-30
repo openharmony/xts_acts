@@ -93,6 +93,8 @@
         "MainAbility/pages/WaterFlow/repeatWaterFlow",
         "MainAbility/pages/WaterFlow/waterFlowScroll",
         "MainAbility/pages/WaterFlow/waterFlowStart1",
-        "MainAbility/pages/WaterFlow/waterFlowStart2"
+        "MainAbility/pages/WaterFlow/waterFlowStart2",
+        "MainAbility/pages/WaterFlow/waterFlowFling1",
+        "MainAbility/pages/WaterFlow/waterFlowFling2"
     ]
 }
