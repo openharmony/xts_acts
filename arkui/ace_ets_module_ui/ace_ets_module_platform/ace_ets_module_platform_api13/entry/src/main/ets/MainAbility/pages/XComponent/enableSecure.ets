@@ -19,21 +19,19 @@ import image from '@ohos.multimedia.image'
 
 @Entry
 @Component
-struct Surface {
+struct SurfaceComponent {
   private xComponentContext:XComponentContext | undefined = undefined;
   @State isSecure_:boolean = false;
-  @State a:boolean = false;
   @State pixmap:image.PixelMap | undefined = undefined
   // @State img:string = 'undefined';
   build() {
     Scroll(){
       Column({space:10}){
-        Text('xComponent Surface Type')
+        Text('xComponent 表面类型')
         Button(`${this.isSecure_?'关闭':'开启'}隐私图层`)
         .id('enableSecureTest_button1')
 		.onClick((event: ClickEvent) => {
           this.isSecure_ = !this.isSecure_;
-		  this.a = !this.a;
         })
 
         Column({space:10}){
