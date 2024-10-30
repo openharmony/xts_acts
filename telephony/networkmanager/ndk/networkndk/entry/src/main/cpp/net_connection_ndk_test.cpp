@@ -58,12 +58,12 @@ static napi_value OHNetConnGetAddrInfo(napi_env env, napi_callback_info info)
 
 // 释放DNS结果
 static napi_value OHNetConnFreeDnsResult(napi_env env, napi_callback_info info)
-{   
+{  
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int32_t index;
-    napi_get_value_int32(env, args[0], &index);
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
     struct addrinfo *res = nullptr;
     int ret = -1;
     char *host = const_cast<char*>("www.baidu.com");
@@ -456,7 +456,8 @@ static napi_value OHNetConnRegisterNetConnCallbackTimeout(napi_env env, napi_cal
         OH_NetConn_UnregisterNetConnCallback(callbackId);
     } else if (index == CASE_INDEX_6) {
         specifier.caps.bearerTypes[0] = NETCONN_BEARER_WIFI;
-        specifier.bearerPrivateIdentifier = "wifi";
+        char *wifi = const_cast<char*>("wifi");
+        specifier.bearerPrivateIdentifier = wifi;
         ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, UINT32_MAX, &callbackId);
         OH_NetConn_UnregisterNetConnCallback(callbackId);
     }
