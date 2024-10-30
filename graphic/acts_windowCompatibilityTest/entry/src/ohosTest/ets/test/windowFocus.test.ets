@@ -286,23 +286,25 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
       expect(!!tempWnd).assertTrue();
       let isFocusable: boolean = true;
       try {
-        (tempWnd as window.Window).setWindowFocusable(isFocusable, (err: BusinessError) => {
+        (tempWnd as window.Window).setWindowFocusable(isFocusable, async (err: BusinessError) => {
           const errCode: number = err.code;
           if (errCode) {
             console.error(msgStr + `Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
+            await (tempWnd as window.Window).destroyWindow();
             expect().assertFail();
             done();
             return;
           }
           console.info(msgStr + 'Succeeded in setting the window to be focusable.');
+          await (tempWnd as window.Window).destroyWindow();
           done();
         });
       } catch (exception) {
         console.error(msgStr + `Failed to set the window to be focusable. out Cause code: ${exception.code}, message: ${exception.message}`);
+        await (tempWnd as window.Window).destroyWindow();
         expect().assertFail();
         done();
       }
-      await (tempWnd as window.Window).destroyWindow();
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5010
@@ -452,7 +454,7 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
       let caseName = 'testSetWindowFocusable_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      subWin = await windowStage.createSubWindow('testSetWindowFocusable_SubWindow_Callback')
+      subWin = await windowStage.createSubWindow('testSetWindowFocusable_SubWindow_Promise')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
           expect().assertFail();
