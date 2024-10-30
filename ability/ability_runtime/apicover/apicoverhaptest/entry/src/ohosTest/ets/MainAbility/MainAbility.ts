@@ -22,7 +22,7 @@ import window from '@ohos.window';
 export default class MainAbility extends Ability {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.log("[Demo] MainAbility onCreate");
-    AppStorage.setOrCreate<common.ApplicationContext>("applicationContext", this.context.getApplicationContext());
+
   }
 
   onDestroy() {
@@ -32,7 +32,6 @@ export default class MainAbility extends Ability {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     console.log("[Demo] MainAbility onWindowStageCreate");
-    AppStorage.setOrCreate<common.UIAbilityContext>("abilityContext", this.context);
     windowStage.loadContent("MainAbility/pages/MainAbility_pages", null);
   }
 

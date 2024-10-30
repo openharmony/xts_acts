@@ -13,31 +13,25 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsApiCoverhapTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":apicoverhaptest_js_assets",
-    ":apicoverhaptest_resources",
+ohos_app_assist_suite("ActsApiCoverhapMain") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsApiCoverhapMain"
+  hap_list = [
+    "ActsApiCoverhapMain-module1-entry-default-unsigned:FormModule",
+    "ActsApiCoverhapMain-entry-default-unsigned:ActsApiCoverhapMain",
   ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsApiCoverhapTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
 
-ohos_app_scope("apicoverhaptest_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
+ohos_js_app_suite("ActsApiCoverhapTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsApiCoverhapTest"
 
-ohos_js_assets("apicoverhaptest_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("apicoverhaptest_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":apicoverhaptest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsApiCoverhapMain" ]
 }

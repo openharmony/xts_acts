@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "com.example.apicoverhaptest",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "300000",
         "testcase-timeout": 20000
     },
@@ -12,6 +12,7 @@
         {
             "test-file-name": [
                 "ActsApiCoverhapTest.hap",
+                "ActsApiCoverhapMain.hap",
                 "FaSupplement.hap",
                 "StageSupplement.hap",
                 "FormModule.hap"

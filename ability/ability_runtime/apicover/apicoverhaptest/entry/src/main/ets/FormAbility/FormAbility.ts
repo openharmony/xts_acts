@@ -84,7 +84,7 @@ export default class FormAbility extends FormExtension {
   }
 
   onConfigurationUpdate(config) {
-    console.log('[Demo] MainAbility onConfigurationUpdate: ' + this.context.config.language);
-    console.log('[Demo] MainAbility onConfigurationUpdate: ' + config.language);
+    console.log('[Demo] FormAbility onConfigurationUpdate: ' + this.context.config.language);
+    console.log('[Demo] FormAbility onConfigurationUpdate: ' + config.language);
   }
 }

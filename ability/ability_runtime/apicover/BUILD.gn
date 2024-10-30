@@ -19,7 +19,6 @@ group("apicover") {
     deps = [
       "apicoverhaptest:ActsApiCoverhapTest",
       "fasupplement:FaSupplement",
-      "formmodule:FormModule",
       "stagesupplement:StageSupplement",
       "wantconstanttest:WantConstantTest",
     ]

@@ -53,6 +53,7 @@ export default class MyAbilityStage extends AbilityStage {
   onConfigurationUpdate(config) {
     console.log('[Demo] AbilityMultiInstanceAppA onConfigurationUpdate: ' + this.context.config.language);
     console.log('[Demo] AbilityMultiInstanceAppA onConfigurationUpdate: ' + config.language);
+    AppStorage.setOrCreate<string>("UpdateConfiguration_0200", config.language);
   }
 
   onNewProcessRequest(want) {

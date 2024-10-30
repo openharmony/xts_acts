@@ -16,8 +16,6 @@
 @Component
 struct Index {
   @State message: string = 'MainAbility';
-
-
   build() {
     Row() {
       Column() {
