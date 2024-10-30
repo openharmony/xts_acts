@@ -159,7 +159,6 @@ export default function audioInterrupt() {
       console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
       let rlen = 0;
       let count = 0;
-      let countFlag = 0;
       while (rlen < totalSize) {
         if (activated == false && InterruptHint == 3) {
           console.info('audio was interrupt');
