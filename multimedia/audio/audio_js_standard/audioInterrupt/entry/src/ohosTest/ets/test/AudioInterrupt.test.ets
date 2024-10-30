@@ -22,6 +22,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
 import fs from '@ohos.file.fs';
 import { Want } from '@kit.AbilityKit';
+import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 
 
 export default function audioInterrupt() {
@@ -40,6 +41,12 @@ export default function audioInterrupt() {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    let driveFn = async () => {
+      let dr = Driver.create();
+      let power = await dr?.waitForComponent(ON.text('打开', MatchPattern.EQUALS), 500);
+      await power?.click();
+      await sleep(3000);
+    }
     let getcreateAVSession = async () => {
       let tag = "createNewSession";
       let type: avSession.AVSessionType = "audio";
@@ -152,6 +159,7 @@ export default function audioInterrupt() {
       console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
       let rlen = 0;
       let count = 0;
+      let countFlag = 0;
       while (rlen < totalSize) {
         if (activated == false && InterruptHint == 3) {
           console.info('audio was interrupt');
@@ -165,17 +173,18 @@ export default function audioInterrupt() {
           count++;
           let want: Want = {
             bundleName: 'com.example.audiorenderinterrupt',
-            abilityName: 'com.example.entry.MainAbility'
+            abilityName: 'EntryAbility'
           }
-          await testContext.startAbilityForResult(want).then((data) => {
+        
+          testContext.startAbilityForResult(want).then((data) => {
             console.info("==========================>startAbility Success=======================>" +
             JSON.stringify(data));
-
           })
-            .catch((err: BusinessError) => {
-              console.info("==========================>startAbility Fail=======================>" +
-              JSON.stringify(err));
-            });
+          .catch((err: BusinessError) => {
+            console.info("==========================>startAbility Fail=======================>" +
+            JSON.stringify(err));
+          });
+          await driveFn();
         }
         await audioRen.write(buf);
       }
