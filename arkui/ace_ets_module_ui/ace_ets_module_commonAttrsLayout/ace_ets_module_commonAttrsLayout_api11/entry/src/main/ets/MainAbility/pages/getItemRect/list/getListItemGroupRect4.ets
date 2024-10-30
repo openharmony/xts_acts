@@ -81,7 +81,7 @@ struct getListItemGroupRect4 {
               .backgroundColor('#3366CC')
           }
           .width('100%')
-          .height(100)
+          .height('25%')
           .visibility(this.visibility1)
           .key('getListItemGroupRect4_listItemGroup_0')
 
@@ -96,7 +96,7 @@ struct getListItemGroupRect4 {
                 .backgroundColor('#3366CC')
             }
             .width('100%')
-            .height(100)
+            .height('25%')
             .key('getListItemGroupRect4_listItemGroup_' + item)
           })
         }
@@ -107,7 +107,7 @@ struct getListItemGroupRect4 {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
       .width(300)
-      .height(500)
+      .height('60%')
 
       Button('点击获取信息').onClick((event: ClickEvent) => {
         this.x = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).x
