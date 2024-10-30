@@ -14,8 +14,8 @@
 group("ActsAceEtsModulePlatformTest") {
   testonly = true
   deps = [
-    #"ace_ets_module_platform_api11:ActsAceEtsModulePlatformApi11Test",
-    #"ace_ets_module_platform_api12:ActsAceEtsModulePlatformApi12Test",
+    "ace_ets_module_platform_api11:ActsAceEtsModulePlatformApi11Test",
+    "ace_ets_module_platform_api12:ActsAceEtsModulePlatformApi12Test",
     "ace_ets_module_platform_api13:ActsAceEtsModulePlatformApi13Test",
   ]
 }
