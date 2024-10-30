@@ -15,7 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 ohos_hap_assist_suite("ActsFormProviderGetFormsInfoModule1") {
   hap_name = "ActsFormProviderGetFormsInfoModule1"
-  hap_profile = "src/main/module.json"
+  hap_profile = "src/ohosTest/module.json"
   testonly = true
   deps = [
     ":actsformprovidergetformsinfomodule1_js_assets",
@@ -34,11 +34,11 @@ ohos_app_scope("actsformprovidergetformsinfomodule1_app_profile") {
 }
 
 ohos_js_assets("actsformprovidergetformsinfomodule1_js_assets") {
-  source_dir = "src/main/ets"
+  source_dir = "src/ohosTest/ets"
 }
 
 ohos_resources("actsformprovidergetformsinfomodule1_resources") {
-  sources = [ "src/main/resources" ]
+  sources = [ "src/ohosTest/resources" ]
   deps = [ ":actsformprovidergetformsinfomodule1_app_profile" ]
-  hap_profile = "src/main/module.json"
+  hap_profile = "src/ohosTest/module.json"
 }
