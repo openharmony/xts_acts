@@ -27,7 +27,6 @@ group("context") {
       "actsstageappcontext:actsstageappcontext",
       "actsstagecontext:actsstagecontext",
       "actsstagecontexttest:ActsStageContextTest",
-      "actsstagecontexttest/module1:ActsStageContextModule1",
       "scene/contextapp:ContextApp",
       "scene/defpermission:DefPermission",
       "scene/fa8app:Fa8App",

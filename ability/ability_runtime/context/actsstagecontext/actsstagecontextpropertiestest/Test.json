@@ -15,7 +15,8 @@
                 "ActsStageContextAssistOne.hap",
                 "ActsStageContextAssistTwo.hap",
                 "ReportDrawnCompletedManualTestRely.hap",
-                "ReportDrawnCompletedReply.hap"
+                "ReportDrawnCompletedReply.hap",
+                "ActsStageContextPropertiesMain.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

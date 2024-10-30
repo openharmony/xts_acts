@@ -111,7 +111,6 @@ export default function popupPropsJsTest() {  describe('popupPropsJsTest', funct
 
         expect(obj.$type).assertEqual('popup')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

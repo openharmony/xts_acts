@@ -25,7 +25,7 @@ struct SliderAttrsTest2 {
       Slider({ style: SliderStyle.InSet, value: 0, min: 0, max: 100 })
         .width('300vp')
         .id('SliderAttrs2_slider2')
-        .sliderInteractionMode(SliderInteraction.SLIDE_AND_CLICK_UP)
+        .sliderInteractionMode(SliderInteraction.SLIDE_AND_CLICK)
         .onChange((value: number, mode: SliderChangeMode) => {
           this.value2 = value
         })

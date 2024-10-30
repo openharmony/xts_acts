@@ -32,6 +32,8 @@ group("ActsAbilityAmsTest") {
       "appclonedemo:AppCloneDemo",
       "systemappa:SystemAppA",
       "systemappb:SystemAppB",
+      "terminalselfdelayhelper:TerminalSelfDelayHelper",
+      "terminateselfwithresulthelper:TerminateSelfWithResultHelper",
       "terminateselfwithresulttesthap:TerminateSelfWithResultTestHap",
       "terminateselfwithresulttesthap2:TerminateSelfWithResultTestHap2",
     ]

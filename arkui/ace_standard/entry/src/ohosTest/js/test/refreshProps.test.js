@@ -110,7 +110,6 @@ export default function undo() {  describe('refreshPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('refresh')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

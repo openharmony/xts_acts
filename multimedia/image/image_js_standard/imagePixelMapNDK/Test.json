@@ -5,40 +5,43 @@
         "test-timeout": "600000",
         "testcase-timeout": "300000",
         "bundle-name": "ohos.acts.multimedia.imagePixelMapNDK",
-        "package-name": "ohos.acts.multimedia.imagePixelMapNDK",
-        "shell-timeout": "600000"
+        "shell-timeout": "600000",
+        "module-name": "entry_test"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsImagePixelMapNdkJsTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    },
-    {
-        "type": "ShellKit",
-        "run-command": [
-            "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files/",
-            "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files/*"
-        ],
-        "teardown-command": []
-    },
-    {
-        "type": "PushKit",
-        "pre-push": [],
-        "push": [
-            "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files",
-            "./resource/image/test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files",
-            "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files",
-            "./resource/image/test.webp ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files",
-            "./resource/image/test.ico ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files",
-            "./resource/image/test.svg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files",
-            "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files",
-            "./resource/image/test.dng ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry/files"
-        ]
-    },
-    {
-        "type": "ShellKit",
-        "run-command": []
-    }]
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsImagePixelMapNdkJsTestMain.hap",
+                "ActsImagePixelMapNdkJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files/",
+                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files/*"
+            ],
+            "teardown-command": []
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": [
+                "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test.webp ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test.ico ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test.svg ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files",
+                "./resource/image/test.dng ->/data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/files"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": []
+        }
+    ]
 }

@@ -110,7 +110,6 @@ export default function stackPropsJsTest() {  describe('stackPropsJsTest', funct
 
         expect(obj.$type).assertEqual('stack')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

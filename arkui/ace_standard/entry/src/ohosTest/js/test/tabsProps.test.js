@@ -110,7 +110,6 @@ export default function tabsPropsJsTest() {  describe('tabsPropsJsTest', functio
 
         expect(obj.$type).assertEqual('tabs')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

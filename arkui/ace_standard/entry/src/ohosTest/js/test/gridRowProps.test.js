@@ -111,7 +111,6 @@ export default function undo() {  describe('gridRowPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('grid-row')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

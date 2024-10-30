@@ -13,10 +13,6 @@
       "value": "stage_app"
     },
     {
-      "name": "stage",
-      "value": "stage_name"
-    },
-    {
       "name": "form_FormAbility_desc",
       "value": "form_description"
     },

@@ -61,8 +61,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1000
-     * @tc.name      : TerminateSelf startup ability after terminating split screen startup
-     * @tc.desc      : Use startAbility when WindowMode is 100, then old abbility terminateSelf
+     * @tc.name      : Launch multiple applications with specific type ability for different instances
+     * @tc.desc      : Launch multiple applications with specific type ability for different instances
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -236,8 +236,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0800
-     * @tc.name      : TerminateSelf startup ability after terminating split screen startup
-     * @tc.desc      : Use startAbility when WindowMode is 100, then old abbility terminateSelf
+     * @tc.name      : When there are multiple abilities within a mission, different instances of non stack top specific abilities can be initiated across different missions
+     * @tc.desc      : When there are multiple abilities within a mission, different instances of non stack top specific abilities can be initiated across different missions
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -402,8 +402,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1700
-     * @tc.name      : TerminateSelf startup ability after terminating split screen startup
-     * @tc.desc      : Use startAbility when WindowMode is 100, then old abbility terminateSelf
+     * @tc.name      : Verify that when launching the specified type Ability, the onAcceptWant key value of AbilityStage is set to undefined
+     * @tc.desc      : Verify that when launching the specified type Ability, the onAcceptWant key value of AbilityStage is set to undefined
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -470,8 +470,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1300
-     * @tc.name      : TerminateSelf startup ability after terminating split screen startup
-     * @tc.desc      : Use startAbility when WindowMode is 100, then old abbility terminateSelf
+     * @tc.name      : Verify that non specific type Ability is launched, and the onAcceptWant of AbilityStage does not callback
+     * @tc.desc      : Verify that non specific type Ability is launched, and the onAcceptWant of AbilityStage does not callback
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -571,8 +571,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0200
-     * @tc.name      : TerminateSelf startup ability after terminating split screen startup
-     * @tc.desc      : Use startAbility when WindowMode is 100, then old abbility terminateSelf
+     * @tc.name      : Initiate a new specific type of ability in the same mission
+     * @tc.desc      : Initiate a new specific type of ability in the same mission
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -711,8 +711,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_1200
-     * @tc.name      : TerminateSelf startup ability after terminating split screen startup
-     * @tc.desc      : Use startAbility when WindowMode is 100, then old abbility terminateSelf
+     * @tc.name      : Launching specific types of ability instances in multiple ability scenarios of the same application
+     * @tc.desc      : Launching specific types of ability instances in multiple ability scenarios of the same application
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -856,6 +856,13 @@ export default function abilityTest() {
               instanceKey: '1'
             }
           }
+          await context.startAbility(want4).then(async () => {
+            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
+          }).catch((err: BusinessError) => {
+            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
+            expect().assertFail();
+            done();
+          });
           await sleep(1000);
           let allowed4 = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
           hilog.info(0x0000, TAG, '%{public}s',
@@ -866,13 +873,6 @@ export default function abilityTest() {
               buttons[buttons.length - 1].click();
             }
           }
-          await context.startAbility(want4).then(async () => {
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
-          }).catch((err: BusinessError) => {
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-            expect().assertFail();
-            done();
-          });
         } catch (error) {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start fail : ${error}`);
           expect().assertFail();
@@ -883,8 +883,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0600
-     * @tc.name      : TerminateSelf startup ability after terminating split screen startup
-     * @tc.desc      : Use startAbility when WindowMode is 100, then old abbility terminateSelf
+     * @tc.name      : Continuously starting different instances of specified type ability
+     * @tc.desc      : Continuously starting different instances of specified type ability
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -989,8 +989,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_LaunchType_AbilityMultiInstance_0400
-     * @tc.name      : TerminateSelf startup ability after terminating split screen startup
-     * @tc.desc      : Use startAbility when WindowMode is 100, then old abbility terminateSelf
+     * @tc.name      : Launch specific UIAbilities for different applications
+     * @tc.desc      : Launch specific UIAbilities for different applications
      * @tc.level     : Level 3
      * @tc.size      : MediumTest
      * @tc.type      : Function

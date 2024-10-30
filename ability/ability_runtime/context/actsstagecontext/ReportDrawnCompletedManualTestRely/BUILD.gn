@@ -13,31 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ReportDrawnCompletedManualTestRely") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":reportdrawncompletedmanualtestrely_js_assets",
-    ":reportdrawncompletedmanualtestrely_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("ReportDrawnCompletedManualTestRely") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ReportDrawnCompletedManualTestRely"
   subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-
-ohos_app_scope("reportdrawncompletedmanualtestrely_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("reportdrawncompletedmanualtestrely_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("reportdrawncompletedmanualtestrely_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":reportdrawncompletedmanualtestrely_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }

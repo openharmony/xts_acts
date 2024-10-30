@@ -13,31 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("StartupManualHelp1") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":startupmanualhelp1_js_assets",
-    ":startupmanualhelp1_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_app_assist_suite("StartupManualHelp1") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "StartupManualHelp1"
   subsystem_name = "ability"
   part_name = "ability_runtime"
-}
-
-ohos_app_scope("startupmanualhelp1_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("startupmanualhelp1_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("startupmanualhelp1_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":startupmanualhelp1_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }

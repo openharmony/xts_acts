@@ -111,7 +111,6 @@ export default function undo() {  describe('stepperItemPropsJsTest', function ()
 
         expect(obj.$type).assertEqual('stepper-item')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

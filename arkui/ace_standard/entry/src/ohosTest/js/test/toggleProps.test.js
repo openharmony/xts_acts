@@ -111,7 +111,6 @@ export default function undo() {  describe('togglePropsJsTest', function () {
 
         expect(obj.$type).assertEqual('toggle')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

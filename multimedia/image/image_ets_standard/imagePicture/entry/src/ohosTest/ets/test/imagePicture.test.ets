@@ -55,7 +55,14 @@ export default function imagePicture() {
   let undefinedTypeList: Array<image.AuxiliaryPictureType> = [];
   const EXIF_METADATA = image.MetadataType.EXIF_METADATA;
   const FRAGMENT_METADATA = image.MetadataType.FRAGMENT_METADATA;
+  const X_IN_ORIGINAL = "XInOriginal";
+  const Y_IN_ORIGINAL = "YInOriginal";
+  const WIDTH = "FragmentImageWidth";
+  const HEIGHT = "FragmentImageHeight";
   let exifRecords: Record<string, string|null> = {"ImageWidth": "512", "ImageLength": "512"};
+  let fragmentRecords: Record<string, string|null> = {
+    "XInOriginal" : "0", "YInOriginal" : "0", "FragmentImageWidth": "512", "FragmentImageHeight": "512"
+  };
   let isSupportHEIFDecode: boolean;
   let isSupportHdr: Boolean;
 
@@ -615,7 +622,10 @@ export default function imagePicture() {
       }
       globalPicture = await imageSource.createPicture();
       let metadata = await globalPicture.getMetadata(EXIF_METADATA);
-      let auxType = globalPicture.getAuxiliaryPicture(type)?.getType();
+      let auxType: image.AuxiliaryPictureType | undefined;
+      if (type != undefined) {
+        auxType = globalPicture.getAuxiliaryPicture(type)?.getType();
+      }
       let imageInfo = imageSource.getImageInfoSync();
       logger.log(`properties: ${JSON.stringify(properties)}, isHdr: ${imageInfo.isHdr}, mimeType: ${imageInfo.mimeType}, auxType: ${auxType}`);
       await imageSource.release();
@@ -1065,6 +1075,74 @@ export default function imagePicture() {
           await testMetadataProperty(done, logger, exifRecords, picture, EXIF_METADATA);
         }
       });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_METADATA_API_JPEG_0100
+     * @tc.name      : test auxiliary picture metadata API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.get auxiliary picture
+     *                 3.set fragment message of metadata
+     *                 4.get fragment message of metadata
+     *                 5.check fragment message info
+     *                 6.get all message of metadata
+     *                 7.clone metadata
+     *                 8.check that all information after cloning is consistent
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_METADATA_API_JPEG_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_METADATA_API_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("test_fragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        await testMetadataProperty(done, logger, fragmentRecords, auxPicture, FRAGMENT_METADATA);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_METADATA_API_JPEG_0200
+     * @tc.name      : test auxiliary picture metadata API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.get auxiliary picture
+     *                 3.set fragment message of metadata
+     *                 4.get fragment message of metadata
+     *                 5.check fragment message info
+     *                 6.get all message of metadata
+     *                 7.clone metadata
+     *                 8.check that all information after cloning is consistent
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_METADATA_API_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_METADATA_API_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("test_fragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        if (auxPicture != undefined) {
+          let metadata = await auxPicture.getMetadata(FRAGMENT_METADATA);
+          logger.log(`get metadata success: ` + metadata);
+          let fragmentkeys: string[] = [X_IN_ORIGINAL, Y_IN_ORIGINAL, WIDTH, HEIGHT];
+          let properties = await metadata.getProperties(fragmentkeys);
+          logger.log(`getProperties success: ` + JSON.stringify(properties));
+          expect(properties != undefined).assertTrue();
+          done();
+        } else {
+          logger.log("auxiliaryPicture is undefined");
+          expect(false).assertEqual(true);
+          done();
+        }
+      }
+    });
 
       /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0100

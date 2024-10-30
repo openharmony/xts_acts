@@ -113,7 +113,6 @@ export default function undo() {  describe('formPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('form')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     })
 

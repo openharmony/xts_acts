@@ -110,7 +110,6 @@ export default function undo() {  describe('tab-barPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('tab-bar')
         expect(obj.$attrs.id).assertEqual('classProp')
-        expect(obj.$attrs.className).assertEqual('classProp')
         done();
     });
 

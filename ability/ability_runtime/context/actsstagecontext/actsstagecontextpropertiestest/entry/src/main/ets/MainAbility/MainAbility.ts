@@ -12,52 +12,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
-import { Hypium } from '@ohos/hypium'
-import testsuite from '../test/List.test'
-import window from '@ohos.window'
-import Want from '@ohos.app.ability.Want'
-import AbilityConstant from '@ohos.app.ability.AbilityConstant'
+import Ability from '@ohos.app.ability.UIAbility';
+import window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class MainAbility extends Ability {
     onCreate(want:Want, launchParam:AbilityConstant.LaunchParam) {
         // Ability is creating, initialize resources for this ability
-        console.log("ActsStageContextPropertiesTest  MainAbility onCreate")
-        globalThis.abilityWant = want;
-        globalThis.abilityContext = this.context
-        globalThis.abilityContextRes = this.context.createModuleContext('entry_test')
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        console.info('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        console.log("ActsStageContextPropertiesTest  MainAbility onCreate");
     }
 
     onDestroy() {
         // Ability is destroying, release resources for this ability
-        console.log("ActsStageContextPropertiesTest  MainAbility onDestroy")
+        console.log("ActsStageContextPropertiesTest  MainAbility onDestroy");
     }
 
     onWindowStageCreate(windowStage:window.WindowStage) {
         // Main window is created, set main page for this ability
-        console.log("ActsStageContextPropertiesTest  MainAbility onWindowStageCreate")
+        console.log("ActsStageContextPropertiesTest  MainAbility onWindowStageCreate");
 
-        windowStage.loadContent("pages/index/index")
-        console.log("ActsStageContextPropertiesTest  MainAbility onWindowStageCreate finish")
+        windowStage.loadContent("pages/index/index");
+        console.log("ActsStageContextPropertiesTest  MainAbility onWindowStageCreate finish");
     }
 
     onWindowStageDestroy() {
         // Main window is destroyed, release UI related resources
-        console.log("ActsStageContextPropertiesTest  MainAbility onWindowStageDestroy")
+        console.log("ActsStageContextPropertiesTest  MainAbility onWindowStageDestroy");
     }
 
     onForeground() {
         // Ability has brought to foreground
-        console.log("ActsStageContextPropertiesTest  MainAbility onForeground")
+        console.log("ActsStageContextPropertiesTest  MainAbility onForeground");
     }
 
     onBackground() {
         // Ability has back to background
-        console.log("ActsStageContextPropertiesTest  MainAbility onBackground")
+        console.log("ActsStageContextPropertiesTest  MainAbility onBackground");
     }
 };

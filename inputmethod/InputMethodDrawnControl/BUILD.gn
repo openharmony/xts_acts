@@ -13,31 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsInputMethodDrawnControlTest") {
-  hap_profile = "entry/src/main/module.json"
+ohos_js_app_suite("ActsInputMethodDrawnControlTest") {
+  test_hap = true
+  testonly = true
   js_build_mode = "debug"
-  deps = [
-    ":IMExtAbility_ets_assets",
-    ":IMExtAbility_resources",
-  ]
-  ets2abc = true
   certificate_profile = "signature/ActsInputMethodDrawnControlTest.p7b"
   hap_name = "ActsInputMethodDrawnControlTest"
   subsystem_name = "inputmethod"
   part_name = "imf"
-}
-
-ohos_app_scope("IMExtAbility_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("IMExtAbility_ets_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("IMExtAbility_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":IMExtAbility_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }
