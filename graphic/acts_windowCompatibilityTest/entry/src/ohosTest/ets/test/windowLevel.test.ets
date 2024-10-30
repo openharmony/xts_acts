@@ -80,6 +80,8 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      await sleep(500);
+      await sleep(500);
       let lastWindow: window.Window | void = await window.getLastWindow(context).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
@@ -131,6 +133,8 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         expect().assertFail();
         done();
       });
+      await sleep(500);
+      await sleep(500);
       window.getLastWindow(context, async (err: BusinessError, data) => {
         const errCode: number = err.code;
         if (errCode) {
@@ -184,6 +188,8 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      await sleep(500);
+      await sleep(500);
       subWindowTwo = await windowStage.createSubWindow('testGetLastWindow_SubWindowTwo')
         .catch((err: BusinessError) => {
           expect().assertFail();
@@ -206,6 +212,8 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      await sleep(500);
+      await sleep(500);
       let lastWindow: window.Window | void = await window.getLastWindow(context).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
@@ -258,6 +266,8 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         expect().assertFail();
         done();
       });
+      await sleep(500);
+      await sleep(500);
       subWindowTwo = await windowStage.createSubWindow('testGetLastWindow_TwoSubWindow_CallbackTwo')
         .catch((err: BusinessError) => {
           expect().assertFail();
@@ -285,6 +295,8 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         expect().assertFail();
         done();
       });
+      await sleep(500);
+      await sleep(500);
       window.getLastWindow(context, async (err: BusinessError, data) => {
         const errCode: number = err.code;
         if (errCode) {
@@ -343,6 +355,8 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
       });
+      await sleep(500);
+      await sleep(500);
       let lastWindow: window.Window | void = await window.getLastWindow(context).catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
         expect().assertFail();
@@ -401,6 +415,8 @@ export default function windowLevelTest(context: common.UIAbilityContext, window
         expect().assertFail();
         done();
       });
+      await sleep(500);
+      await sleep(500);
       window.getLastWindow(context, async (err: BusinessError, data) => {
         const errCode: number = err.code;
         if (errCode) {

@@ -973,7 +973,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
           await (tempWnd as window.Window).resize(500, 500);
           await (tempWnd as window.Window).setUIContent("testability/pages/second/second");
           await (tempWnd as window.Window).showWindow();
-          await (tempWnd as window.Window).moveWindowTo(900, 900);
+          await (tempWnd as window.Window).moveWindowToAsync(900, 900);
           try {
             (tempWnd as window.Window).on('dialogTargetTouch', async () => {
               console.info(msgStr + 'touch dialog target');
@@ -1034,7 +1034,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
           await (subWin as window.Window).resize(500, 500);
           await (subWin as window.Window).setUIContent("testability/pages/second/pageOne");
           await (subWin as window.Window).showWindow();
-          await (subWin as window.Window).moveWindowTo(10, 10);
+          await (subWin as window.Window).moveWindowToAsync(10, 10);
           try {
             (subWin as window.Window).on('noInteractionDetected', 1, async () => {
               console.info(msgStr + 'no interaction in 10s');
@@ -1095,7 +1095,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
           await (subWin as window.Window).resize(500, 500);
           await (subWin as window.Window).setUIContent("testability/pages/second/second");
           await (subWin as window.Window).showWindow();
-          await (subWin as window.Window).moveWindowTo(10, 10);
+          await (subWin as window.Window).moveWindowToAsync(10, 10);
           let isTouchable: boolean = true;
           try {
             await (subWin as window.Window).setWindowTouchable(isTouchable).then(() => {
@@ -1151,7 +1151,7 @@ export default function windowEventTest(context: common.UIAbilityContext, window
           await (subWin as window.Window).resize(500, 500);
           await (subWin as window.Window).setUIContent("testability/pages/second/second");
           await (subWin as window.Window).showWindow();
-          await (subWin as window.Window).moveWindowTo(10, 10);
+          await (subWin as window.Window).moveWindowToAsync(10, 10);
           let isTouchable: boolean = true;
           try {
             (subWin as window.Window).setWindowTouchable(isTouchable, async (err: BusinessError) => {
