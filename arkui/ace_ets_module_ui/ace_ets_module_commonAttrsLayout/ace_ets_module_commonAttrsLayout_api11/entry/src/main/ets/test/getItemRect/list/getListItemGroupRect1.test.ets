@@ -179,8 +179,8 @@ export default function getListItemGroupRect1() {
       console.log('height' + height)
 
       console.log('assert position')
-      //expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
-      //expect(Math.abs(Math.round(y) - Math.round(150)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(150)) <= 1).assertTrue();
 
       console.log('assert size')
       console.log('listItemGroup_1.right - listItemGroup_1.left' + (listItemGroup_1.right - listItemGroup_1.left))
@@ -487,8 +487,8 @@ export default function getListItemGroupRect1() {
       console.log('height' + height)
 
       console.log('assert position')
-      //expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
-      //expect(Math.abs(Math.round(y) - Math.round(170)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(170)) <= 1).assertTrue();
 
       console.log('assert size')
       console.log('listItemGroup_1.right - listItemGroup_1.left' + (listItemGroup_1.right - listItemGroup_1.left))
