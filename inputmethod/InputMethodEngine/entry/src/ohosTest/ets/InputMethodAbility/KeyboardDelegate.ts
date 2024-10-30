@@ -1009,7 +1009,7 @@ export class KeyboardDelegate {
       }
       commoneventmanager.publish("inputMethodAbility_test_073", commonEventPublishData, this.publishCallback);
       clearTimeout(t);
-    }, 500);
+    }, 800);
   }
 
   async inputMethodAbility_test_074() {
