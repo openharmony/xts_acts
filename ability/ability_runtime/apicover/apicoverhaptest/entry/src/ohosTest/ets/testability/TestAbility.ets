@@ -66,6 +66,6 @@ export default class TestAbility extends UIAbility {
       console.log('[Demo] TestAbility onConfigurationUpdate: ' + this.context.config.language);
       console.log('[Demo] TestAbility onConfigurationUpdate: ' + config.language);
       AppStorage.setOrCreate<string>("UpdateConfigurationTest_0200", config.language);
-      console.log('[Demo] TestAbility onConfigurationUpdate: ' + AppStorage.get<string>("UpdateConfigurationTest_0200"));
+      console.log('[Demo] TestAbility onConfigurationUpdate: ' + AppStorage.get<string>('UpdateConfigurationTest_0200'));
     }
 }
