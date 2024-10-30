@@ -3355,6 +3355,40 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200
+         * @tc.name      : get session outputDevice - callback
+         * @tc.desc      : Testing call getOutputDevice(callback)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200', 0, async function (done) {
+            try {
+                session.getOutputDevice((err, value) => {
+                    if (err) {
+                        console.info(`Get device information BusinessError: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else if (!value.isRemote) {
+                        console.info('Get device information successfully');
+                        let deviceInfo = value.devices[0]
+                        console.info(`manufacturer:${deviceInfo.manufacturer},modelName:${deviceInfo.modelName}`);
+                        if (deviceInfo.manufacturer == null || deviceInfo.modelName == null || deviceInfo.manufacturer == undefined || deviceInfo.modelName == undefined) {
+                            expect(false).assertTrue();
+                        }
+                    } else {
+                        console.info('Get device information failed');
+                        expect(false).assertTrue();
+                    }
+                    done();
+                });
+            } catch (err) {
+                console.info(`Get device information unknownError: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+            } 
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0100
          * @tc.name      : get session controller - promise
          * @tc.desc      : Testing call getController(promise)
