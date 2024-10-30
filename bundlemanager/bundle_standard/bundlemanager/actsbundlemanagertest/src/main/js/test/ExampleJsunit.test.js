@@ -1619,6 +1619,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.moduleName).assertEqual("entry");
                 expect(datainfo.bundleName).assertEqual(NAME3);
                 expect(datainfo.type).assertEqual(demo.AbilityType.PAGE);
+                expect(demo.AbilityType.DATA).assertEqual(3);
                 expect(datainfo.applicationInfo.name).assertEqual(NAME3);
                 expect(datainfo.applicationInfo.description).assertEqual(APPLICATION_DESCRIPTION);
                 expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue();
