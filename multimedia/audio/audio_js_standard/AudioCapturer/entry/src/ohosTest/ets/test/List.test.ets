@@ -12,18 +12,62 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import audioInterrupterTest from './AudioInterrupterTest.test'
 import audioCapturer from './AudioCapturer.test'
 import AudioPlaybackCapturer from './AudioPlaybackCapturer.test'
 import AudioCapturerInterruptUnitTest from './AudioCapturerInterrupt.test'
 import AudioRenderCapturerInterruptUnitTest from './AudioRenderCapturerInterrupt.test'
 import AudioVoiceMessageCapturer from './AudioVoiceMessageCapturer.test'
+import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityDelegatorRegistry, BY, UiDriver } from '@kit.TestKit';
+
+function getPermission() {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let testContext:ESObject = AppStorage.get('testContext');
+  let permissions: Array<Permissions> =
+    ["ohos.permission.MANAGE_AUDIO_CONFIG", "ohos.permission.MICROPHONE"];
+  atManager.requestPermissionsFromUser(testContext, permissions,
+    (err: BusinessError, data: PermissionRequestResult) => {
+      console.info("request success permissions" + JSON.stringify(data));
+      console.info("getPermissionRequestResult err", JSON.stringify(err));
+    })
+}
+export function sleep(ms: number): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('');
+    }, ms);
+  });
+}
+
+async function driveFn() {
+  console.info(`come in driveFn`);
+  let driver = await UiDriver.create();
+  console.info(`driver is ${JSON.stringify(driver)}`);
+  await sleep(100);
+  console.info(`UiDriver start`);
+  let button = await driver.findComponent(BY.text('允许'));
+  if (button == null) {
+    let delegator = abilityDelegatorRegistry.getAbilityDelegator();
+    let cmd = "hidumper -s WindowManagerService -a'-a'"
+    await delegator.executeShellCommand(cmd);
+  }
+  console.info(`button is ${JSON.stringify(button)}`);
+  await sleep(100);
+  await button.click();
+}
 
  export default function testsuite() {
-   audioCapturer()
-   AudioRenderCapturerInterruptUnitTest()
-   AudioVoiceMessageCapturer()
-   AudioCapturerInterruptUnitTest()
-   AudioPlaybackCapturer()
+   getPermission();
+   driveFn();
+   audioCapturer();
+   audioInterrupterTest();
+   //注释具体焦点策略相关用例，上架焦点策略相关接口用例
+   //AudioRenderCapturerInterruptUnitTest()
+   //AudioVoiceMessageCapturer()
+   //AudioCapturerInterruptUnitTest()()
+   AudioPlaybackCapturer();
  }
 
 
