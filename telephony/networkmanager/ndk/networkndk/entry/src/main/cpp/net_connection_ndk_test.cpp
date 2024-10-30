@@ -63,7 +63,7 @@ static napi_value OHNetConnFreeDnsResult(napi_env env, napi_callback_info info)
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int32_t index;
-    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+    napi_get_value_int32(env, args[0], &index);
     struct addrinfo *res = nullptr;
     int ret = -1;
     char *host = const_cast<char*>("www.baidu.com");
