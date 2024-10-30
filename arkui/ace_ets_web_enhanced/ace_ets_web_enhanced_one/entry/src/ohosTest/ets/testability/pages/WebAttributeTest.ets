@@ -562,8 +562,8 @@ struct WebAttributeTest {
               case "emitBlockNetWork003": {
                 try {
                   this.blockNetwork = true
-                  this.errorReceive = ''
                   await Utils.sleep(1000)
+                  this.errorReceive = ''
                   this.controller.loadUrl($rawfile('second.html'))
                   await Utils.sleep(2000)
                   this.blockNetwork = false
