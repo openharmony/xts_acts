@@ -13,8 +13,30 @@
  * limitations under the License.
  */
 {
-  "hvigorVersion": "4.0.5",
-  "dependencies": {
-    "@ohos/hvigor-ohos-plugin": "4.0.5"
-  }
+  "apiType": "stageMode",
+  "buildOption": {
+  },
+  "buildOptionSet": [
+    {
+      "name": "release",
+      "arkOptions": {
+        "obfuscation": {
+          "ruleOptions": {
+            "enable": true,
+            "files": [
+              "./obfuscation-rules.txt"
+            ]
+          }
+        }
+      }
+    },
+  ],
+  "targets": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "ohosTest",
+    }
+  ]
 }
