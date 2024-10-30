@@ -115,10 +115,6 @@ struct cameraOrientation {
 
   onPageShow() {
     Logger.info(this.tag, `takePicture end, assetUri`)
-    this.surfaceId = Number(this.mXComponentController.getXComponentSurfaceId())
-    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
-      this.cameraListFn()
-    })
   }
 
   async cameraInit(obj?: ESObject) {
@@ -229,7 +225,7 @@ struct cameraOrientation {
             }.size({ width: this.XWidth, height: this.XHeight })
 
             Column() {
-              Image(this.assetUri || '')
+              Image('file://' + this.assetUri)
                 .size({ width: '100%', height: '100%' })
                 .objectFit(ImageFit.Fill)
               Text('图片')
@@ -262,7 +258,9 @@ struct cameraOrientation {
                       height: objH
                     }
                   }
-                  CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj)
+                  CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+                    this.cameraListFn()
+                  })
                   Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
                 })
                 .backgroundColor(Color.Black)
