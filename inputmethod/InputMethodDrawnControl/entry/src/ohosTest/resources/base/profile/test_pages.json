@@ -1,6 +1,6 @@
 {
   "src": [
-    "pages/index",
-    "pages/second"
+    "testability/pages/index",
+    "testability/pages/second"
   ]
 }

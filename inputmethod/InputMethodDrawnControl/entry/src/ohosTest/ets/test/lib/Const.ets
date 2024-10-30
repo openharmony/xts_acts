@@ -1,7 +1,5 @@
-//ts-nocheck
-//public invalid
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -30,7 +28,6 @@ export const INVALID_ENUM_N1: ESObject = -1;
 
 export const INVALID_ENUM_2: ESObject = 2;
 
-//----------------------------------------
 export const INVALID_INPUT_PARAMETER = 401;
 
 export const INVALID_INPUT_METHOD_CLIENT_DETACHED = 12800009;
