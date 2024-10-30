@@ -21,6 +21,7 @@
 
 #include <native_interface_xcomponent.h>
 #include <napi/native_api.h>
+#include <native_interface_accessibility.h>
 
 #include "egl_core.h"
 
@@ -44,6 +45,15 @@ public:
     static napi_value NapiChangeColorWorker(napi_env env, napi_callback_info info);
 
     // xts interfaces
+    static napi_value TestXComponentFindAccessibilityNodeInfosById(napi_env env, napi_callback_info info);
+    static napi_value TestXComponentFindAccessibilityNodeInfosByText(napi_env env, napi_callback_info info);
+    static napi_value TestXComponentFindFocusedAccessibilityNode(napi_env env, napi_callback_info info);
+    static napi_value TestXComponentFindNextFocusAccessibilityNode(napi_env env, napi_callback_info info);
+    static napi_value TestXComponentSendAccessibilityAsyncEvent(napi_env env, napi_callback_info info);
+    static napi_value TestXComponentExecuteAccessibilityAction(napi_env env, napi_callback_info info);
+    static napi_value TestXComponentClearFocusedFocusAccessibilityNode(napi_env env, napi_callback_info info);
+    static napi_value TestXComponentGetAccessibilityNodeCursorPosition(napi_env env, napi_callback_info info);
+    
     static napi_value TestGetXComponentId(napi_env env, napi_callback_info info);
     static napi_value TestOnSurfaceCreated(napi_env env, napi_callback_info info);
     static napi_value TestGetXComponentSize_Height(napi_env env, napi_callback_info info);
@@ -66,6 +76,8 @@ public:
     void DispatchTouchEvent(OH_NativeXComponent* component, void* window);
 
     void DispatchMouseEvent(OH_NativeXComponent* component, void* window);
+    
+    void InterfaceDesignTest(OH_NativeXComponent* nativeXComponent);
 
 public:
     static std::unordered_map<std::string, PluginRender*> instance_;
@@ -95,6 +107,8 @@ public:
     double y_;
     OH_NativeXComponent_TouchEvent touchEvent_;
     OH_NativeXComponent_MouseEvent mouseEvent_;
+    
+    ArkUI_AccessibilityProviderCallbacks* accessibilityProviderCallbacks_;
 };
 
 #endif // _PLUGIN_RENDER_H_
