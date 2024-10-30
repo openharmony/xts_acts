@@ -16,6 +16,10 @@ import("//build/ohos_var.gni")
 group("usb_ndk") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "usb_ndk:ActsDriversExternalUsbNdkTest" ]
+    deps = [
+      "usb_ndk:ActsDriversExternalUsbNdkTest",
+      "usb_nopermission_ndk:ActsDriversExternalUsbNoPerNdkTest",
+      "emit_event_nopermission_test:ActsDriversExternalHidEmitEventNoPerTest",
+    ]
   }
 }

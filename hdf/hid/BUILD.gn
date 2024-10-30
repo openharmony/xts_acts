@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("emit_event_test") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "emit_event_test:ActsDriversExternalHidEmitEventTest" ]
+    deps = [
+      "emit_event_test:ActsDriversExternalHidEmitEventTest",
+      "usb_nopermission_ndk:ActsDriversExternalUsbNoPerNdkTest",
+    ]
   }
 }
