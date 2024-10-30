@@ -20,9 +20,11 @@
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "phone"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
