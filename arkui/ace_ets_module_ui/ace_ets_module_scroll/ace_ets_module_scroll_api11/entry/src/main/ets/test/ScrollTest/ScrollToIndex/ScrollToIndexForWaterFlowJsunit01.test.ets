@@ -64,15 +64,15 @@ export default function ScrollToIndexForWaterFlowJsunit01() {
     });
 
     /**
-     * @tc.number ScrollToIndexForWaterFlow02_0100
+     * @tc.number ScrollToIndexForWaterFlow01_0200
      * @tc.name scenario testing
      * @tc.desc set index to 66,set the smooth to True
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForWaterFlow02_0100', 0, async (done: Function) => {
-      console.info('[ScrollToIndexForWaterFlow02_0100] START');
+    it('ScrollToIndexForWaterFlow01_0200', 0, async (done: Function) => {
+      console.info('[ScrollToIndexForWaterFlow01_0200] START');
       let driver = Driver.create();
       await driver.delayMs(1000);
 
@@ -89,19 +89,19 @@ export default function ScrollToIndexForWaterFlowJsunit01() {
       expect(isSmoothText).assertInstanceOf("Object");
       expect(currentItemID).assertEqual("ItemTextWaterFlow01_66");
 
-      console.info('[ScrollToIndexForWaterFlow02_0100] END');
+      console.info('[ScrollToIndexForWaterFlow01_0200] END');
       done();
     });
 
     /**
-     * @tc.number ScrollToIndexForWaterFlow02_0300
+     * @tc.number ScrollToIndexForWaterFlow01_0300
      * @tc.name scenario testing
      * @tc.desc set index to 99,set the smooth to false
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForWaterFlow02_0300', 0, async (done: Function) => {
+    it('ScrollToIndexForWaterFlow01_0300', 0, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0100] START');
       let driver = Driver.create();
 
@@ -117,7 +117,7 @@ export default function ScrollToIndexForWaterFlowJsunit01() {
       await driver.delayMs(2000);
       expect(currentItemID).assertEqual("ItemTextWaterFlow01_99");
 
-      console.info('[ScrollToIndexForWaterFlow02_0300] END');
+      console.info('[ScrollToIndexForWaterFlow01_0300] END');
       done();
     });
   })
