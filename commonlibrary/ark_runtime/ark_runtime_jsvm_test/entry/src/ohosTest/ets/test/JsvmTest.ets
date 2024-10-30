@@ -6117,7 +6117,7 @@ export default function JsvmJsunit() {
     it('JsvmTest0480', 0, () => {
       let rst: number = napitest.testWasmOperator();
       console.info('JsvmTest0480 testString result is:' + JSON.stringify(rst));
-      expect(value).assertEqual(0);
+      expect(rst).assertEqual(0);
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0481
@@ -6130,7 +6130,7 @@ export default function JsvmJsunit() {
     it('JsvmTest0481', 0, () => {
       let rst: number = napitest.wasmTest();
       console.info('JsvmTest0481 testString result is:' + JSON.stringify(rst));
-      expect(value).assertEqual(0);
+      expect(rst).assertEqual(0);
     });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0482
@@ -6143,7 +6143,7 @@ export default function JsvmJsunit() {
     it('JsvmTest0482', 0, () => {
       let rst: number = napitest.arrayBufferBackingStoreTest();
       console.info('JsvmTest0482 testString result is:' + JSON.stringify(rst));
-      expect(value).assertEqual(0);
+      expect(rst).assertEqual(0);
     });
   });
 }
