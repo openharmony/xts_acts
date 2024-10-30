@@ -3371,7 +3371,7 @@ export default function AVSession() {
                     } else if (!value.isRemote) {
                         console.info('Get device information successfully');
                         let deviceInfo = value.devices[0]
-                        console.info(`manufacturer:${deviceInfo.manufacturer},manufacturer:${deviceInfo.manufacturer}`);
+                        console.info(`manufacturer:${deviceInfo.manufacturer},modelName:${deviceInfo.modelName}`);
                         if (deviceInfo.manufacturer == null && deviceInfo.modelName == null) {
                             expect(false).assertTrue();
                         }
