@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct Index {
-  @State message: string = '播放音乐'
+  @State message: string = 'Hello World'
 
   build() {
     Row() {
@@ -23,20 +23,6 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Row() {
-          // Button() {
-          //   Text('播放')
-          //     .fontSize(20)
-          //     .fontWeight(FontWeight.Bold)
-          // }.type(ButtonType.Capsule)
-          // .margin({
-          //   top: 20
-          // })
-          // .backgroundColor('#0D9FFB')
-          // .width('30%')
-          // .height('5%')
-          // .onClick(()=>{})
-        }
       }
       .width('100%')
     }
