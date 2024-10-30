@@ -43,7 +43,7 @@ export default function SwiperVisibility() {
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0270
+     * @tc.number    SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0520
      * @tc.desc      set loop to false and set autoPlay to false
      * @tc.level     Level 3
      * @tc.type
