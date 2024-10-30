@@ -3372,7 +3372,7 @@ export default function AVSession() {
                         console.info('Get device information successfully');
                         let deviceInfo = value.devices[0]
                         console.info(`manufacturer:${deviceInfo.manufacturer},modelName:${deviceInfo.modelName}`);
-                        if (deviceInfo.manufacturer == null && deviceInfo.modelName == null) {
+                        if (deviceInfo.manufacturer == null || deviceInfo.modelName == null || deviceInfo.manufacturer == undefined || deviceInfo.modelName == undefined) {
                             expect(false).assertTrue();
                         }
                     } else {
