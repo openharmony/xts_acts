@@ -10,8 +10,8 @@ let readPath: string;
 let fdPath: string;
 let filePath: string;
 let TAG = 'InterruptHap:';
-let TAG1 = "Fa:SupportFunctionThree:MainAbility:";
-let listPush1 = "Fa_SupportFunctionThree_MainAbility_";
+let TAG1 = 'Fa:SupportFunctionThree:MainAbility:';
+let listPush1 = 'Fa_SupportFunctionThree_MainAbility_';
 let lifeList = [];
 
 function sleep(ms: number): Promise<AsyncCallback<number>> {
@@ -43,7 +43,7 @@ export default class EntryAbility extends UIAbility {
     console.log(TAG1 + '=============================================================================>               onCreate');
 
     readPath = 'StarWars10s-2C-48000-4SW.wav';
-    console.info(TAG + "case0 context is  " + this.context);
+    console.info(TAG + 'case0 context is  ' + this.context);
     filePath = this.context.filesDir + '/' + readPath;
     fdPath = 'fd://';
     console.info('filePath is: ' + filePath)
@@ -101,7 +101,7 @@ export default class EntryAbility extends UIAbility {
       await audioRen!.write(buf);
     }
     let activated:boolean | undefined = false;
-    let InterruptHint:number | undefined = 0;
+    let interruptHint:number | undefined = 0;
     let audioManager = audio.getAudioManager();
     let interAudioInterrupt: audio.AudioInterrupt = {
       streamUsage: 1,
@@ -114,9 +114,9 @@ export default class EntryAbility extends UIAbility {
         console.info(TAG + 'InterruptHap An event to gain the audio focus ========================= starts.');
         console.info(TAG + `Focus gain event: ${InterruptAction} `);
         activated = InterruptAction.activated;
-        InterruptHint = InterruptAction.hint
+        interruptHint = InterruptAction.hint
         console.info(TAG + 'activated ============ is :' + activated);
-        console.info(TAG + 'InterruptHint ================ is :' + InterruptHint);
+        console.info(TAG + 'interruptHint ================ is :' + interruptHint);
         console.info(TAG + 'InterruptAction.actionType ============ is :' + InterruptAction.actionType);
       }
     });
