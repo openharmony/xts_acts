@@ -31,7 +31,10 @@ export default class TestAbility extends UIAbility {
         let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
         abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
         hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        application.createModuleContext(this.context, "entry_test").then((newContext) => {
+            GlobalContext.getContext().setObject('yq', newContext);
+            Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
+        });
     }
 
     onDestroy() {
@@ -40,9 +43,6 @@ export default class TestAbility extends UIAbility {
 
     onWindowStageCreate(windowStage: window.WindowStage) {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
-        application.createModuleContext(this.context, "entry_test").then((newContext) => {
-            GlobalContext.getContext().setObject('yq', newContext);
-        });
         windowStage.loadContent('TestAbility/pages/Index', (err, data) => {
             if (err.code) {
                 hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');

@@ -499,7 +499,7 @@ static napi_value GetBoolByName(napi_env env, napi_callback_info info)
     bool result = false;
     uint32_t id = 0;
     napi_get_value_uint32(env, argv[1], &id);
-    const char *name = "boolean_1";
+    const char *name = "boolean_one";
     ResourceManager_ErrorCode code = OH_ResourceManager_GetBoolByName(mNativeResMgr, name, &result);
 
     bool flag = (code == 0 && result == true);
@@ -571,7 +571,7 @@ static napi_value GetColorByName(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     uint32_t result;
-    const char *name = "start_window_background_jjq";
+    const char *name = "start_window_background_test";
     OH_ResourceManager_GetColorByName(mNativeResMgr, name, &result);
 
     napi_value jsValue = nullptr;
@@ -602,7 +602,7 @@ static napi_value GetIntByName(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     int result;
-    const char *name = "integer_1";
+    const char *name = "integer_one";
     ResourceManager_ErrorCode code = OH_ResourceManager_GetIntByName(mNativeResMgr, name, &result);
 
     bool flag = (code == 0 && result == 100);
@@ -635,7 +635,7 @@ static napi_value GetFloatByName(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     float result;
-    const char *name = "float_1";
+    const char *name = "float_one";
     ResourceManager_ErrorCode code = OH_ResourceManager_GetFloatByName(mNativeResMgr, name, &result);
 
     bool flag = (code == 0 && (fabs(result - 30.6) >= 1e-9));
