@@ -44,18 +44,12 @@ interface renderInfoChild {
 
 interface renderInfoType {
   MUSIC: renderInfoChild,
-  VOICE_CALL: renderInfoChild,
   RINGTONE: renderInfoChild,
   VOICE_ASSISTANT: renderInfoChild,
   ALARM: renderInfoChild,
   ACCESSIBILITY: renderInfoChild,
-  SPEECH: renderInfoChild,
   MOVIE: renderInfoChild,
-  UNKNOW: renderInfoChild,
-  VOICE_MESSAGE: renderInfoChild,
   GAME: renderInfoChild,
-  NAVIGATION: renderInfoChild,
-  NOTIFICATION: renderInfoChild,
 }
 
 interface streamInfoChild {
@@ -218,7 +212,7 @@ export default function audioInterrupterTest() {
           console.log("TEST_0100 come in render2.on：" + JSON.stringify(interruptEvent))
           listeningFlag02 = true;
         })
-        expect(listeningFlag01 == false && listeningFlag02 = false).assertTrue()
+        expect(listeningFlag01 == false && listeningFlag02 == false).assertTrue()
       } catch (err) {
         console.log("INTERRUPTER_TEST err:" + JSON.stringify(err))
         expect(false).assertTrue()
