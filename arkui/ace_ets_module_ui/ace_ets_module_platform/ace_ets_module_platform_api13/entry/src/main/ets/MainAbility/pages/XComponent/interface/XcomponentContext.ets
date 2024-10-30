@@ -19,6 +19,6 @@ export default interface XComponentContext {
   grtStatus() : XComponentContextStatus;
 };
 class XComponentContextStatus {
-  hasDraw : boolean = false;
-  hasChangeColor : boolean = false;
+  private hasDraw : boolean = false;
+  private hasChangeColor : boolean = false;
 };
