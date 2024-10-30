@@ -18,22 +18,22 @@ function sleep(ms: number): Promise<AsyncCallback<number>> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let AudioStreamInfo:audio.AudioStreamInfo = {
+let audioStreamInfo:audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
   channels: audio.AudioChannel.CHANNEL_2,
   sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
   encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
 }
 
-let AudioRendererInfo: audio.AudioRendererInfo = {
+let audioRendererInfo: audio.AudioRendererInfo = {
   content: audio.ContentType.CONTENT_TYPE_RINGTONE,
   usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
   rendererFlags: 0
 }
 
-let AudioRendererOptions: audio.AudioRendererOptions = {
-  streamInfo: AudioStreamInfo,
-  rendererInfo: AudioRendererInfo
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
 }
 
 export default class EntryAbility extends UIAbility {
@@ -59,7 +59,7 @@ export default class EntryAbility extends UIAbility {
       console.info(TAG + '[fileIO]case catch open fd failed');
     });
     let audioRen: audio.AudioRenderer;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async (data) => {
+    await audio.createAudioRenderer(audioRendererOptions).then(async (data) => {
       audioRen = data;
       console.info(TAG + 'AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS' + audioRen);
     }).catch((err: BusinessError) => {
@@ -108,16 +108,16 @@ export default class EntryAbility extends UIAbility {
       contentType: 0,
       pauseWhenDucked: true
     };
-    audioManager.on('interrupt', interAudioInterrupt, (InterruptAction) => {
+    audioManager.on('interrupt', interAudioInterrupt, (interruptAction) => {
       console.info(TAG + 'come in FuZhuHap interrupt');
-      if (InterruptAction.actionType != undefined && InterruptAction.actionType != null) {
+      if (interruptAction.actionType != undefined && interruptAction.actionType != null) {
         console.info(TAG + 'InterruptHap An event to gain the audio focus ========================= starts.');
-        console.info(TAG + `Focus gain event: ${InterruptAction} `);
-        activated = InterruptAction.activated;
-        interruptHint = InterruptAction.hint
+        console.info(TAG + `Focus gain event: ${interruptAction} `);
+        activated = interruptAction.activated;
+        interruptHint = interruptAction.hint
         console.info(TAG + 'activated ============ is :' + activated);
         console.info(TAG + 'interruptHint ================ is :' + interruptHint);
-        console.info(TAG + 'InterruptAction.actionType ============ is :' + InterruptAction.actionType);
+        console.info(TAG + 'interruptAction.actionType ============ is :' + interruptAction.actionType);
       }
     });
     console.info(TAG + 'AudioFrameworkRenderLog: Renderer after read');
