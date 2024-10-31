@@ -471,14 +471,13 @@ static napi_value Add(napi_env env, napi_callback_info info)
     return sum;
 }
 
-static napi_value NAPI_Global_add(napi_env env, napi_callback_info info)
-{
+static napi_value NAPI_Global_add(napi_env env, napi_callback_info info) {
 }
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] =
-     {
+    {
         {"oHHiAppEventWrite", nullptr, OHHiAppEventWrite, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHHiAppEventConfigure", nullptr, OHHiAppEventConfigure, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHHiAppEventAddBoolParam", nullptr, OHHiAppEventAddBoolParam, nullptr, nullptr, nullptr, napi_default,
