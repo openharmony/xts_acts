@@ -90,12 +90,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.level Level 2
      */
     it('testSendablePreferencesPutString0100', 0, async (done: Function) => {
-      let promise = mPreferences.put(KEY_STRING, value_string);
-      promise.then(() => {
-        console.info(TAG + "Succeeded in putting value of KEY_STRING.");
-      }).catch((err: BusinessError) => {
-        console.error(TAG + `Failed to put value of KEY_STRING. code: ${err.code}, message: ${err.message}`);
-      })
+      await mPreferences.put(KEY_STRING, value_string);
       await mPreferences.get(KEY_STRING, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_STRING. Data: ${data}`);
         expect(data === value_string).assertTrue()
@@ -116,12 +111,7 @@ export default function sendablePreferencesPromiseTest() {
      */
 
     it('testSendablePreferencesPutBool0100', 0, async (done: Function) => {
-      let promise = mPreferences.put(KEY_BOOLEAN, value_boolen);
-      promise.then(() => {
-        console.info(TAG + "Succeeded in putting value of KEY_BOOLEAN.");
-      }).catch((err: BusinessError) => {
-        console.error(TAG + `Failed to put value of KEY_BOOLEAN. code: ${err.code}, message: ${err.message}`);
-      })
+      await mPreferences.put(KEY_BOOLEAN, value_boolen);
       await mPreferences.get(KEY_BOOLEAN, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_BOOLEAN. Data: ${data}`);
         expect(data === value_boolen).assertTrue()
@@ -141,12 +131,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.level Level 2
      */
     it('testSendablePreferencesPutBigint0100', 0, async (done: Function) => {
-      let promise = mPreferences.put(KEY_BIGINT, value_bigint);
-      promise.then(() => {
-        console.info(TAG + "Succeeded in putting value of KEY_BIGINT.");
-      }).catch((err: BusinessError) => {
-        console.error(TAG + `Failed to put value of KEY_BIGINT. code: ${err.code}, message: ${err.message}`);
-      })
+      await mPreferences.put(KEY_BIGINT, value_bigint);
       await mPreferences.get(KEY_BIGINT, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_BIGINT. Data: ${data}`);
         expect(data === value_bigint).assertTrue()
@@ -166,12 +151,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.level Level 2
      */
     it('testSendablePreferencesPutLong0100', 0, async (done: Function) => {
-      let promise = mPreferences.put(KEY_LONG, value_long);
-      promise.then(() => {
-        console.info(TAG + "Succeeded in putting value of KEY_LONG.");
-      }).catch((err: BusinessError) => {
-        console.error(TAG + `Failed to put value of KEY_LONG. code: ${err.code}, message: ${err.message}`);
-      })
+      await mPreferences.put(KEY_LONG, value_long);
       await mPreferences.get(KEY_LONG, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_LONG. Data: ${data}`);
         expect(data === value_long).assertTrue()
@@ -192,12 +172,7 @@ export default function sendablePreferencesPromiseTest() {
      */
     it('testSendablePreferencesPutArrNumber0100', 0, async (done: Function) => {
       let arrNumber: collections.Array<number> = new collections.Array<number>(123, 456, 789)
-      let promise = mPreferences.put(KEY_ARRAY_NUMBER, arrNumber);
-      promise.then(() => {
-        console.info(TAG + "Succeeded in putting value of KEY_ARRAY_NUMBER.");
-      }).catch((err: BusinessError) => {
-        console.error(TAG + `Failed to put value of KEY_ARRAY_NUMBER. code: ${err.code}, message: ${err.message}`);
-      })
+      await mPreferences.put(KEY_ARRAY_NUMBER, arrNumber);
       await mPreferences.get(KEY_ARRAY_NUMBER, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_ARRAY_NUMBER. Data: ${data}`);
         let dataStr = data as collections.Array<string>
@@ -246,12 +221,7 @@ export default function sendablePreferencesPromiseTest() {
      */
     it('testSendablePreferencesPutArrBoolen0100', 0, async (done: Function) => {
       let ArrBool: collections.Array<boolean> = new collections.Array<boolean>(true, false, true)
-      let promise = mPreferences.put(KEY_ARRAY_BOOL, ArrBool);
-      promise.then(() => {
-        console.info(TAG + "Succeeded in putting value of KEY_ARRAY_BOOL.");
-      }).catch((err: BusinessError) => {
-        console.error(TAG + `Failed to put value of KEY_ARRAY_BOOL. code: ${err.code}, message: ${err.message}`);
-      })
+      await mPreferences.put(KEY_ARRAY_BOOL, ArrBool);
       await mPreferences.get(KEY_ARRAY_BOOL, 'default').then((data: lang.ISendable) => {
         console.info(TAG + `Succeeded in getting value of KEY_ARRAY_BOOL. Data: ${data}`);
         let dataStr = data as collections.Array<boolean>;
@@ -274,12 +244,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.level Level 2
      */
     it('testSendablePreferencesGetAll0100', 0, async (done: Function) => {
-      let promise = mPreferences.put(KEY_BIGINT, 1452687651565);
-      promise.then(() => {
-        console.info(TAG + "Succeeded in putting value of KEY_ARRAY_BOOL.");
-      }).catch((err: BusinessError) => {
-        console.error(TAG + `Failed to put value of KEY_ARRAY_BOOL. code: ${err.code}, message: ${err.message}`);
-      })
+      await mPreferences.put(KEY_BIGINT, 1452687651565);
       await mPreferences.getAll().then((keyValues: lang.ISendable) => {
         for (let value of Object.keys(keyValues)) {
           console.info(TAG + "getAll " + JSON.stringify(value));
@@ -302,12 +267,7 @@ export default function sendablePreferencesPromiseTest() {
      */
     it('testSendablePreferencesHas0100', 0, async (done: Function) => {
       await mPreferences.clear();
-      let promise = mPreferences.put(KEY_BIGINT, 1452687651565);
-      promise.then(() => {
-        console.info(TAG + "Succeeded in putting value of KEY_ARRAY_BOOL.");
-      }).catch((err: BusinessError) => {
-        console.error(TAG + `Failed to put value of KEY_ARRAY_BOOL. code: ${err.code}, message: ${err.message}`);
-      })
+      await mPreferences.put(KEY_BIGINT, 1452687651565);
       await mPreferences.has(KEY_BIGINT).then((val: boolean) => {
         if (val) {
           expect(true).assertEqual(val)
