@@ -62,7 +62,7 @@ export default function DatePickerDialog() {
       let row: Component = await driver.findComponent(ON.id('row'));
       let point = await row.getBoundsCenter();
       await CommonFunc.sleep(1000);
-      await driver.click(point.x+globalThis.winLeft, point.y+globalThis.winTop)
+      await driver.click(point.x+globalThis.winLeft, Math.round(point.y/2)+globalThis.winTop)
       await CommonFunc.sleep(2000);
       let text = getInspectorByKey('AppearText');
       expect(JSON.parse(text).$attrs.content).assertEqual('onWillAppear_onDidAppear_onWillDisappear_onDidDisappear');
