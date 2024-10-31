@@ -5,14 +5,11 @@
     "version": {
       "code": 1,
       "name": "1.0"
-    },
-    "apiVersion": {
-      "compatible": 4,
-      "target": 5,
-      "releaseType": "Beta1"
     }
   },
-  "deviceConfig": {},
+  "deviceConfig": {
+    "default": {}
+  },
   "module": {
     "package": "com.example.third6",
     "name": ".MyApplication",
@@ -23,9 +20,10 @@
       "wearable"
     ],
     "distro": {
+      "moduleType": "entry",
+      "installationFree": false,
       "deliveryWithInstall": true,
-      "moduleName": "entry",
-      "moduleType": "entry"
+      "moduleName": "entry"
     },
     "abilities": [
       {
@@ -43,12 +41,15 @@
           "dataTransfer"
         ],
         "name": ".MainAbility",
+        "srcLanguage": "js",
         "visible": true,
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbility"
+
       },
       {
         "skills": [
@@ -65,12 +66,14 @@
           "audioPlayback"
         ],
         "name": ".MainAbilityA",
+        "srcLanguage": "js",
         "visible": true,
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbilityA"
       },
       {
         "skills": [
@@ -87,12 +90,14 @@
           "audioRecording"
         ],
         "name": ".MainAbilityB",
+        "srcLanguage": "js",
         "visible": true,
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbilityB"
       },
       {
         "skills": [
@@ -114,7 +119,8 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbilityC"
       },
       {
         "skills": [
@@ -136,7 +142,8 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbilityD"
       },
       {
         "skills": [
@@ -158,7 +165,8 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbilityE"
       },
       {
         "skills": [
@@ -180,7 +188,8 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbilityF"
       },
       {
         "skills": [
@@ -202,7 +211,8 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbilityG"
       },
       {
         "skills": [
@@ -224,19 +234,75 @@
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
-        "launchType": "standard"
+        "launchType": "standard",
+        "srcPath": "MainAbilityH"
       }
+
     ],
     "js": [
       {
         "pages": [
           "pages/index/index"
         ],
-        "name": "default",
+        "name": ".MainAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
         }
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": "com.example.third2.MainAbility"
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".MainAbilityA"
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".MainAbilityB"
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".MainAbilityC"
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".MainAbilityD"
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".MainAbilityE"
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".MainAbilityF"
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".MainAbilityG"
+      },
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": ".MainAbilityH"
       }
     ]
   }

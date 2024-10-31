@@ -21,5 +21,5 @@ export default {
     },
     onInit() {
         this.title = this.$t('strings.world');
-    },
+    }
 }
