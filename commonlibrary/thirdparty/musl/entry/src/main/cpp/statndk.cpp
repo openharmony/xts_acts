@@ -336,7 +336,9 @@ static napi_value MkNodAt(napi_env env, napi_callback_info info)
         errno = 0;
         ret = stat(path, &newFifo);
         OH_LOG_INFO(LOG_APP, "MUSL stat ret %{public}d errno : %{public}d", ret, errno);
-        if (errno == EACCES) ret = 0;
+        if (errno == EACCES) {
+            ret = 0;
+        }
     }
     napi_value result;
     napi_create_int32(env, ret, &result);
