@@ -24,7 +24,7 @@
 #include <multimedia/image_effect/image_effect_errors.h>
 #include <multimedia/image_effect/image_effect_filter.h>
 #include <multimedia/image_framework/image_pixel_map_mdk.h>
-#include <multimedia/image_framework/picture_native.h>
+#include <multimedia/image_framework/image/picture_native.h>
 #include <native_window/external_window.h>
 #include <string>
 
