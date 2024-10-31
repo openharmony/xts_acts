@@ -97,19 +97,19 @@ export default function MovingPhotoViewTest() {
       await CommonFunc.sleep(500);
       let button1 = await driver.findComponent(ON.id('MovingPhotoView_autoPlay'));
       await button1.click();
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(5000);
       let strJson = getInspectorByKey('MovingPhotoView_start');
       let strJson1 = getInspectorByKey('MovingPhotoView_pause');
       let strJson2 = getInspectorByKey('MovingPhotoView_finish');
-      let strJson3 = getInspectorByKey('MovingPhotoView');
-      console.log('MovingPhotoViewTest_0020', JSON.parse(strJson).$attrs)
-      console.log('MovingPhotoViewTest_0020-1', JSON.parse(strJson1).$attrs)
-      console.log('MovingPhotoViewTest_0020-2', JSON.parse(strJson2).$attrs)
-      console.log('MovingPhotoViewTest_0020-3', JSON.parse(strJson3).$attrs.autoPlay)
+      let strJson3 = getInspectorByKey('MovingPhotoView_autoPlay1');
+      console.log('MovingPhotoViewTest_0020', JSON.parse(strJson).$attrs.content)
+      console.log('MovingPhotoViewTest_0020-1', JSON.parse(strJson1).$attrs.content)
+      console.log('MovingPhotoViewTest_0020-2', JSON.parse(strJson2).$attrs.content)
+      console.log('MovingPhotoViewTest_0020-3', JSON.parse(strJson3).$attrs.content)
       expect(JSON.parse(strJson).$attrs.content).assertEqual("onStart succ");
       expect(JSON.parse(strJson1).$attrs.content).assertEqual("onPause succ");
       expect(JSON.parse(strJson2).$attrs.content).assertEqual("onFinish succ");
-      expect(JSON.parse(strJson3).$attrs.autoPlay).assertEqual("true");
+      expect(JSON.parse(strJson3).$attrs.content).assertEqual("true");
       console.info('MovingPhotoViewTest_0020 END');
       done();
     });
@@ -148,11 +148,11 @@ export default function MovingPhotoViewTest() {
       console.info('MovingPhotoViewTest_0040 stopPlayback');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button2 = await driver.findComponent(ON.id('MovingPhotoView_stopPlayButton'));
+      let button2 = await driver.findComponent(ON.id('MovingPhotoView_stopPlay'));
       await button2.click();
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('MovingPhotoView_stopPlay');
-      console.log('MovingPhotoViewTest_0040', JSON.parse(strJson).$attrs)
+      let strJson = getInspectorByKey('MovingPhotoView_stopPlay1');
+      console.log('MovingPhotoViewTest_0040', JSON.parse(strJson).$attrs.content)
       expect(JSON.parse(strJson).$attrs.content).assertEqual("stopPlayback succ");
       console.info('MovingPhotoViewTest_0040 END');
       done();
@@ -190,9 +190,9 @@ export default function MovingPhotoViewTest() {
      */
     it('MovingPhotoViewTest_0060', 0, async (done: Function) => {
       console.info('MovingPhotoViewTest_0060 muted');
-      let strJson = getInspectorByKey('MovingPhotoView');
-      console.log('MovingPhotoViewTest_0060', JSON.parse(strJson).$attrs.muted)
-      expect(JSON.parse(strJson).$attrs.muted).assertEqual("false");
+      let strJson = getInspectorByKey('MovingPhotoView_mute');
+      console.log('MovingPhotoViewTest_0060', JSON.parse(strJson).$attrs.content)
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("false");
       console.info('MovingPhotoViewTest_0060 END');
       done();
     });
@@ -200,16 +200,21 @@ export default function MovingPhotoViewTest() {
     /**
      * @tc.number MovingPhotoViewTest_0070
      * @tc.name MovingPhotoViewTest_0070
-     * @tc.desc test the api of MovingPhotoView: objectFit
+     * @tc.desc test the api of MovingPhotoView: muted
      * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
     it('MovingPhotoViewTest_0070', 0, async (done: Function) => {
       console.info('MovingPhotoViewTest_0070 START');
-      let strJson = getInspectorByKey('MovingPhotoView');
-      console.log('MovingPhotoViewTest_0070', JSON.parse(strJson).$attrs)
-      expect(JSON.parse(strJson).$attrs.objectFit).assertEqual("ImageFit.Contain");
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button1 = await driver.findComponent(ON.id('MovingPhotoView_true'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('MovingPhotoView_mute');
+      console.log('MovingPhotoViewTest_0070', JSON.parse(strJson).$attrs.content)
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("true");
       console.info('MovingPhotoViewTest_0070 END');
       done();
     });
@@ -248,12 +253,12 @@ export default function MovingPhotoViewTest() {
       console.info('MovingPhotoViewTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button1 = await driver.findComponent(ON.id('MovingPhotoView_mute'));
+      let button1 = await driver.findComponent(ON.id('MovingPhotoView_playButton'));
       await button1.click();
-      await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('MovingPhotoView');
-      console.log('MovingPhotoViewTest_0090', JSON.parse(strJson).$attrs.muted)
-      expect(JSON.parse(strJson).$attrs.muted).assertEqual("true");
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('MovingPhotoView_complete');
+      console.log('MovingPhotoViewTest_0090', JSON.parse(strJson).$attrs)
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("onComplete succ");
       console.info('MovingPhotoViewTest_0090 END');
       done();
     });
@@ -268,14 +273,9 @@ export default function MovingPhotoViewTest() {
      */
     it('MovingPhotoViewTest_0100', 0, async (done: Function) => {
       console.info('MovingPhotoViewTest_0100 START');
-      let driver = await Driver.create()
-      await CommonFunc.sleep(500);
-      let button2 = await driver.findComponent(ON.id('MovingPhotoView_repeatPlay_true'));
-      await button2.click();
-      await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('MovingPhotoView');
-      console.log('MovingPhotoViewTest_0100', JSON.parse(strJson).$attrs.repeatPlay)
-      expect(JSON.parse(strJson).$attrs.repeatPlay).assertEqual("true");
+      let strJson = getInspectorByKey('MovingPhotoView_repeatPlay');
+      console.log('MovingPhotoViewTest_0100', JSON.parse(strJson).$attrs.content)
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("false");
       console.info('MovingPhotoViewTest_0100 END');
       done();
     });
@@ -292,12 +292,12 @@ export default function MovingPhotoViewTest() {
       console.info('MovingPhotoViewTest_0110 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button2 = await driver.findComponent(ON.id('MovingPhotoView_repeatPlay_false'));
-      await button2.click();
+      let button = await driver.findComponent(ON.id('MovingPhotoView_repeatPlay_true'));
+      await button.click();
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('MovingPhotoView');
-      console.log('MovingPhotoViewTest_0110', JSON.parse(strJson).$attrs.repeatPlay)
-      expect(JSON.parse(strJson).$attrs.repeatPlay).assertEqual("false");
+      let strJson = getInspectorByKey('MovingPhotoView_repeatPlay');
+      console.log('MovingPhotoViewTest_0110', JSON.parse(strJson).$attrs.content)
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("true");
       console.info('MovingPhotoViewTest_0110 END');
       done();
     });
