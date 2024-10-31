@@ -54,7 +54,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility1_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility2",
@@ -63,7 +64,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility2_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility3",
@@ -72,7 +74,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility3_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility4",
@@ -81,7 +84,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility4_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility5",
@@ -90,7 +94,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility5_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility6",
@@ -99,7 +104,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility6_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility7",
@@ -109,7 +115,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility7_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility8",
@@ -119,7 +126,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility8_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility9",
@@ -128,7 +136,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility9_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "Hap1MainAbility1",
@@ -138,7 +147,8 @@
         "label": "$string:Hap1MainAbility1_label",
         "launchType": "singleton",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "Hap1MainAbility2",
@@ -148,7 +158,8 @@
         "label": "$string:Hap1MainAbility2_label",
         "launchType": "standard",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility10",
@@ -157,7 +168,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility10_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility11",
@@ -167,7 +179,8 @@
         "label": "$string:MainAbility11_label",
         "launchType": "standard",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility12",
@@ -176,7 +189,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility12_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility13",
@@ -185,7 +199,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility12_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MainAbility14",
@@ -194,7 +209,8 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility12_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       },
       {
         "name": "MultiMainability1",
@@ -204,7 +220,8 @@
         "launchType": "standard",
         "label": "$string:MultiMainability1_label",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background"
+        "startWindowBackground": "$color:start_window_background",
+        "removeMissionAfterTerminate": true
       }
     ],
     "requestPermissions": [
