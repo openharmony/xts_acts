@@ -561,27 +561,9 @@ export default function audioCapturer() {
       dirPath = testContext.filesDir + '/' + fileName;
       console.info(`${Tag} case2 dirPath is  ${JSON.stringify(dirPath)}`);
     }
-    let getPermission = () => {
-      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-      let permissions: Array<Permissions> = ['ohos.permission.MICROPHONE'];
-      atManager.requestPermissionsFromUser(testContext, permissions).then((data: PermissionRequestResult) => {
-        console.info('datassss:' + JSON.stringify(data))
-        console.info('data permissions:' + data.permissions)
-      }).catch((err: BusinessError) => {
-        console.info('data:' + JSON.stringify(err))
-      })
-    }
-    let driveFn = async () => {
-      let dr = Driver.create();
-      await sleep(1000);
-      let power = await dr?.waitForComponent(ON.text('允许', MatchPattern.EQUALS), 500);
-      await sleep(1000);
-      await power?.click();
-      await sleep(2000);
-    }
+
     beforeAll(async () => {
       testContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext
-      await driveFn();
       console.info('beforeAll called')
     })
     afterAll(() => {
@@ -4013,6 +3995,46 @@ export default function audioCapturer() {
         console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
         expect(false).assertTrue();
       }
+      done();
+    })
+        /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_REC_VOICE_MESSAGE_0100
+     * @tc.name      : test[AudioCapturer function with voice message sourcetype]
+     * @tc.desc      : AudioCapturer with parameter set
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_REC_VOICE_MESSAGE_0100', 2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_VOICE_MESSAGE,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let AudioRendererInfo: audio.AudioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+      let AudioPrivacyType: ESObject = {
+        privacyType: audio.AudioPrivacyType.PRIVACY_TYPE_PUBLIC
+      }
+      let AudioRendererOptions: audio.AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo,
+        privacyType: AudioPrivacyType
+      }
+      await getFd("capture_js-44100-2C-16B_voice_message.pcm");
+      await recPromise(AudioCapturerOptions, AudioRendererOptions, done);
+      expect(true).assertTrue();
       done();
     })
   })
