@@ -86,10 +86,6 @@ struct cameraFormat {
 
   onPageShow() {
     Logger.info(this.tag, `takePicture end, assetUri`)
-    this.surfaceId = Number(this.mXComponentController.getXComponentSurfaceId());
-    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
-      this.cameraListFn()
-    })
   }
 
   nextClickFn() {
@@ -215,7 +211,9 @@ struct cameraFormat {
                         height: objH
                       }
                     }
-                    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj)
+                    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj).then(() => {
+                      this.cameraListFn()
+                    })
                     Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
                   })
                   .backgroundColor(Color.Black)
