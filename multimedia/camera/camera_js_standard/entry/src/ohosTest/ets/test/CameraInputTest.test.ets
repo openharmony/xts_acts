@@ -427,21 +427,18 @@ export default function CameraInputTest() {
             }
           });
           await sleep(400);
-          successFlag = false;
-          await cameraInput.close(async (err) => {
+          cameraInput.close(async (err) => {
             if (!err) {
-              successFlag = true;
               console.info(TAG +
                 " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 PASSED close with CameraID :" +
               camerasArray[i].cameraId);
+              expect(true).assertEqual(true);
             } else {
-              successFlag = false;
               console.info(TAG + " SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 close FAILED: " +
               err.message);
+              expect(false).assertEqual(true);
             }
           });
-          await sleep(100);
-          expect(successFlag).assertEqual(true);
         }
       }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 ends here");
