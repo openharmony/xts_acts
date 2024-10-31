@@ -74,3 +74,5 @@ export const OHImageEffectSetOutputSurface: (a: number) => number;
 export const OHImageEffectSetOutputUri: (a: number) => number;
 export const OHImageEffectStart: () => number;
 export const OHImageEffectStop: () => number;
+export const OHImageEffectSetInputPicture: () => number;
+export const OHImageEffectSetOutputPicture: () => number;
