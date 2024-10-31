@@ -18,7 +18,9 @@ import commonEventManager from '@ohos.commonEventManager'
 import SubServiceExtStub from '../IdlServiceExt/SubService/sub_service_ext_stub';
 import { subCallback } from '../IdlServiceExt/SubService/sub_service_ext';
 import Logger from '../util/Logger';
-
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 class ServiceExtStub extends SubServiceExtStub{
 
   sub(num1: number, num2: number, callback: subCallback): void{
@@ -47,8 +49,9 @@ export default class SubServiceExtAbilityEvent extends ServiceExtension {
     Logger.info(`SubServiceExtAbilityEvent___onDisconnect, want: ${want.abilityName}`)
   }
 
-  onDestroy() {
+ async onDestroy() {
     commonEventManager.publish(subServiceDestroyEvent, (err) => { });
+    await sleep(1000);
     Logger.info(`SubServiceExtAbilityEvent___onDestroy`)
   }
 }
