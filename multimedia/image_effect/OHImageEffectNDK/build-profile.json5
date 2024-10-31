@@ -2,7 +2,7 @@
  * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * You may obtain a copy o3f the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -21,8 +21,8 @@
         "name": "default",
         "signingConfig": "default",
         "compileSdkVersion": 14,
-        "compatibleSdkVersion": 14,
-        "targetSdkVersion": 14,
+        "compatibleSdkVersion": 13,
+        "targetSdkVersion": 13,
         "runtimeOS": "OpenHarmony",
       }
     ],
