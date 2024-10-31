@@ -25,6 +25,12 @@ const valueBucket2 : data_relationalStore.ValuesBucket = {
   "salary": 100.5,
   "blobType": u8,
 }
+const valueBucket3 : data_relationalStore.ValuesBucket = {
+  "name": "zhoubiao",
+  "age": 28,
+  "salary": 100.5,
+  "blobType": u8,
+}
 export default function rdbDecryptTest() {
   describe('rdbDecryptTest', () => {
     beforeAll(async () => {
@@ -68,12 +74,10 @@ export default function rdbDecryptTest() {
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, default_config)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet2.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "default.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -130,7 +134,6 @@ export default function rdbDecryptTest() {
         let resultSet = await rdbStore2.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet2.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "default.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -177,12 +180,10 @@ export default function rdbDecryptTest() {
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -229,12 +230,10 @@ export default function rdbDecryptTest() {
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -275,12 +274,10 @@ export default function rdbDecryptTest() {
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -327,12 +324,10 @@ export default function rdbDecryptTest() {
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -376,12 +371,10 @@ export default function rdbDecryptTest() {
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -427,12 +420,10 @@ export default function rdbDecryptTest() {
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
         console.log(TAG + "insert success")
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -477,12 +468,10 @@ export default function rdbDecryptTest() {
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
         console.log(TAG + "insert success")
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -523,12 +512,10 @@ export default function rdbDecryptTest() {
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
         console.log(TAG + "insert success")
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -569,12 +556,10 @@ export default function rdbDecryptTest() {
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
         console.log(TAG + "insert success")
-        rdbStore = undefined;
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -621,14 +606,12 @@ export default function rdbDecryptTest() {
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
         console.log(TAG + "insert success")
-        rdbStore = undefined;
         console.log(TAG+"rdbstore2:"+rdbStore)
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         console.log(TAG+"rdbstore3:"+rdbStore)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -675,14 +658,12 @@ export default function rdbDecryptTest() {
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
         console.log(TAG + "insert success")
-        rdbStore = undefined;
         console.log(TAG+"rdbstore2:"+rdbStore)
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         console.log(TAG+"rdbstore3:"+rdbStore)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -727,14 +708,12 @@ export default function rdbDecryptTest() {
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
         console.log(TAG + "insert success")
-        rdbStore = undefined;
         console.log(TAG+"rdbstore2:"+rdbStore)
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         console.log(TAG+"rdbstore3:"+rdbStore)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -782,14 +761,12 @@ export default function rdbDecryptTest() {
         await rdbStore.insert("test", valueBucket1)
         await rdbStore.insert("test", valueBucket2)
         console.log(TAG + "insert success")
-        rdbStore = undefined;
         console.log(TAG+"rdbstore2:"+rdbStore)
         rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG_NO_DEFAULT)
         console.log(TAG+"rdbstore3:"+rdbStore)
         let resultSet = await rdbStore.querySql("select * from test");
         console.log(TAG + "query" + resultSet + "resultSet.rowCount"+ resultSet.rowCount);
         expect(resultSet.rowCount==2).assertTrue()
-        rdbStore = undefined;
         await data_relationalStore.deleteRdbStore(context, "nodefault.db");
         console.log(TAG + "Delete rdbstore success")
         done()
@@ -1120,6 +1097,308 @@ export default function rdbDecryptTest() {
         done()
       }
       console.log(TAG + "************* rdbDecryptTest2400 end *************");
+    })
+        /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CryptoParamJsAPITest_2500
+     * @tc.name no encrpy attach encrpy,cryptoParam is default
+     * @tc.desc no encrpy attach encrpy,cryptoParam is default
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('rdbDecryptTest2500', 0, async (done: Function) => {
+      console.log(TAG + "************* rdbDecryptTest2500 start *************");
+      let default_config1 : data_relationalStore.StoreConfig = {
+        name: "rdbstore1.db",
+        encrypt: true,
+        securityLevel: data_relationalStore.SecurityLevel.S1,
+        cryptoParam: {
+          encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6, 7])
+        }
+      }
+      let attachStore: data_relationalStore.RdbStore | undefined = undefined;
+      attachStore = await data_relationalStore.getRdbStore(context, default_config1);
+      await attachStore.executeSql(CREATE_TABLE_TEST, null)
+      await attachStore.insert("test", valueBucket1)
+      await attachStore.insert("test", valueBucket2)
+      await attachStore.close()
+      let default_config2 : data_relationalStore.StoreConfig = {
+        name: "rdbstore2.db",
+        securityLevel: data_relationalStore.SecurityLevel.S1
+      }
+      try {
+        let  rdbStore:data_relationalStore.RdbStore | undefined = undefined;
+        rdbStore = await data_relationalStore.getRdbStore(context, default_config2);
+        await rdbStore.executeSql(CREATE_TABLE_TEST,null);
+        await rdbStore.insert("test", valueBucket3)
+        let number = await rdbStore.attach(context, default_config1, "attachDB");
+        console.log(TAG+"attach success,number:"+number)
+        expect(1).assertEqual(number);
+        rdbStore = await data_relationalStore.getRdbStore(context, default_config2)
+        let resultSet = await rdbStore.querySql("select * from attachDB.test");
+        console.log(TAG + "query" + resultSet + "resultSet2.rowCount"+ resultSet.rowCount);
+        expect(resultSet.rowCount==2).assertTrue()
+        await data_relationalStore.deleteRdbStore(context, "rdbstore1.db");
+        await data_relationalStore.deleteRdbStore(context, "rdbstore2.db");
+        console.log(TAG + "Delete rdbstore success")
+        done()
+      } catch (err) {
+        console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
+        expect().assertFail()
+        done()
+      }
+      console.log(TAG + "************* rdbDecryptTest2500 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CryptoParamJsAPITest_2600
+     * @tc.name no encrpy attach encrpy,cryptoParam is no default
+     * @tc.desc no encrpy attach encrpy,cryptoParam is no default
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('rdbDecryptTest2600', 0, async (done: Function) => {
+      console.log(TAG + "************* rdbDecryptTest2600 start *************");
+      let default_config1 : data_relationalStore.StoreConfig = {
+        name: "rdbstore1.db",
+        encrypt: true,
+        securityLevel: data_relationalStore.SecurityLevel.S1,
+        cryptoParam: {
+          encryptionKey: new Uint8Array([1,2,3,4,5,6,7]),
+          iterationCount: 25000,
+          encryptionAlgo: data_relationalStore.EncryptionAlgo.AES_256_CBC,
+          hmacAlgo: data_relationalStore.HmacAlgo.SHA512,
+          kdfAlgo: data_relationalStore.KdfAlgo.KDF_SHA512,
+          cryptoPageSize: 2048
+        }
+      }
+      let attachStore: data_relationalStore.RdbStore | undefined = undefined;
+      attachStore = await data_relationalStore.getRdbStore(context, default_config1);
+      await attachStore.executeSql(CREATE_TABLE_TEST, null)
+      await attachStore.insert("test", valueBucket1)
+      await attachStore.insert("test", valueBucket2)
+      await attachStore.close()
+      let default_config2 : data_relationalStore.StoreConfig = {
+        name: "rdbstore2.db",
+        securityLevel: data_relationalStore.SecurityLevel.S1
+      }
+      try {
+        let  rdbStore:data_relationalStore.RdbStore | undefined = undefined;
+        rdbStore = await data_relationalStore.getRdbStore(context, default_config2);
+        await rdbStore.executeSql(CREATE_TABLE_TEST,null);
+        await rdbStore.insert("test", valueBucket3)
+        let number = await rdbStore.attach(context, default_config1, "attachDB");
+        console.log(TAG+"attach success,number:"+number)
+        expect(1).assertEqual(number);
+        rdbStore = await data_relationalStore.getRdbStore(context, default_config2)
+        let resultSet = await rdbStore.querySql("select * from attachDB.test");
+        console.log(TAG + "query" + resultSet + "resultSet2.rowCount"+ resultSet.rowCount);
+        expect(resultSet.rowCount==2).assertTrue()
+        await data_relationalStore.deleteRdbStore(context, "rdbstore1.db");
+        await data_relationalStore.deleteRdbStore(context, "rdbstore2.db");
+        console.log(TAG + "Delete rdbstore success")
+        done()
+      } catch (err) {
+        console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
+        expect().assertFail()
+        done()
+      }
+      console.log(TAG + "************* rdbDecryptTest2600 end *************");
+    })
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CryptoParamJsAPITest_2700
+     * @tc.name no encrpy attach encrpy,cryptoParam is invalid params
+     * @tc.desc no encrpy attach encrpy,cryptoParam is invalid params
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('rdbDecryptTest2700', 0, async (done: Function) => {
+      console.log(TAG + "************* rdbDecryptTest2700 start *************");
+      let default_config1 : data_relationalStore.StoreConfig = {
+        name: "rdbstore1.db",
+        encrypt: true,
+        securityLevel: data_relationalStore.SecurityLevel.S1,
+        cryptoParam: {
+          encryptionKey: new Uint8Array([1,2,3,4,5,6,7]),
+          iterationCount: 25000,
+          encryptionAlgo: 1,
+          hmacAlgo: 1,
+          kdfAlgo: 1,
+          cryptoPageSize: 65536.7
+        }
+      }
+      let attachStore: data_relationalStore.RdbStore | undefined = undefined;
+      attachStore = await data_relationalStore.getRdbStore(context, default_config1);
+      await attachStore.executeSql(CREATE_TABLE_TEST, null)
+      await attachStore.insert("test", valueBucket1)
+      await attachStore.insert("test", valueBucket2)
+      await attachStore.close()
+      let default_config2 : data_relationalStore.StoreConfig = {
+        name: "rdbstore2.db",
+        securityLevel: data_relationalStore.SecurityLevel.S1
+      }
+      let  rdbStore:data_relationalStore.RdbStore | undefined = undefined;
+      rdbStore = await data_relationalStore.getRdbStore(context, default_config2);
+      await rdbStore.executeSql(CREATE_TABLE_TEST,null);
+      await rdbStore.insert("test", valueBucket3)
+      console.log(TAG+"insert success")
+      let default_config3 : data_relationalStore.StoreConfig = {
+        name: "rdbstore1.db",
+        encrypt: true,
+        securityLevel: data_relationalStore.SecurityLevel.S1,
+        cryptoParam: {
+          encryptionKey: new Uint8Array([1,2,3,4,5,6,7]),
+          iterationCount: 25000,
+          encryptionAlgo: 4,
+          hmacAlgo: 5,
+          kdfAlgo: 6,
+          cryptoPageSize: 65536.7
+        }
+      }
+
+      try {
+        await rdbStore.attach(context, default_config3, "attachDB");
+        expect(null).assertFail()
+        done()
+      } catch (err) {
+        console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
+        expect(err.code).assertEqual(14800000)
+        await data_relationalStore.deleteRdbStore(context, "rdbstore1.db");
+        await data_relationalStore.deleteRdbStore(context, "rdbstore2.db");
+        done()
+      }
+      console.log(TAG + "************* rdbDecryptTest2700 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CryptoParamJsAPITest_2800
+     * @tc.name encrpy attach encrpy,cryptoParam is no default
+     * @tc.desc encrpy attach encrpy,cryptoParam is no default
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('rdbDecryptTest2800', 0, async (done: Function) => {
+      console.log(TAG + "************* rdbDecryptTest2800 start *************");
+      let default_config1 : data_relationalStore.StoreConfig = {
+        name: "rdbstore1.db",
+        encrypt: true,
+        securityLevel: data_relationalStore.SecurityLevel.S1,
+        cryptoParam: {
+          encryptionKey: new Uint8Array([1,2,3,4,5,6,7]),
+          iterationCount: 25000,
+          encryptionAlgo: data_relationalStore.EncryptionAlgo.AES_256_GCM,
+          hmacAlgo: data_relationalStore.HmacAlgo.SHA512,
+          kdfAlgo: data_relationalStore.KdfAlgo.KDF_SHA512,
+          cryptoPageSize: 2048
+        }
+      }
+      let attachStore: data_relationalStore.RdbStore | undefined = undefined;
+      attachStore = await data_relationalStore.getRdbStore(context, default_config1);
+      await attachStore.executeSql(CREATE_TABLE_TEST, null)
+      await attachStore.insert("test", valueBucket1)
+      await attachStore.insert("test", valueBucket2)
+      await attachStore.close()
+      let default_config2 : data_relationalStore.StoreConfig = {
+        name: "rdbstore2.db",
+        encrypt: true,
+        securityLevel: data_relationalStore.SecurityLevel.S1,
+        cryptoParam: {
+          encryptionKey: new Uint8Array([1,2,3,4,5,6,7]),
+          iterationCount: 25000,
+          encryptionAlgo: 1,
+          hmacAlgo: 1,
+          kdfAlgo: 1,
+          cryptoPageSize: 65536.7
+        }
+      }
+      try {
+        let  rdbStore:data_relationalStore.RdbStore | undefined = undefined;
+        rdbStore = await data_relationalStore.getRdbStore(context, default_config2);
+        await rdbStore.executeSql(CREATE_TABLE_TEST,null);
+        await rdbStore.insert("test", valueBucket3)
+        let number = await rdbStore.attach(context, default_config1, "attachDB");
+        console.log(TAG+"attach success,number:"+number)
+        expect(1).assertEqual(number);
+        rdbStore = await data_relationalStore.getRdbStore(context, default_config2)
+        let resultSet = await rdbStore.querySql("select * from attachDB.test");
+        console.log(TAG + "query" + resultSet + "resultSet2.rowCount"+ resultSet.rowCount);
+        expect(resultSet.rowCount==2).assertTrue()
+        await data_relationalStore.deleteRdbStore(context, "rdbstore1.db");
+        await data_relationalStore.deleteRdbStore(context, "rdbstore2.db");
+        console.log(TAG + "Delete rdbstore success")
+        done()
+      } catch (err) {
+        console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
+        expect().assertFail()
+        done()
+      }
+      console.log(TAG + "************* rdbDecryptTest2800 end *************");
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_CryptoParamJsAPITest_2900
+     * @tc.name no encrpy attach encrpy,cryptoParam is no default
+     * @tc.desc no encrpy attach encrpy,insert data from encrpy to noencrpy
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('rdbDecryptTest2900', 0, async (done: Function) => {
+      console.log(TAG + "************* rdbDecryptTest2900 start *************");
+      let default_config1 : data_relationalStore.StoreConfig = {
+        name: "rdbstore1.db",
+        encrypt: true,
+        securityLevel: data_relationalStore.SecurityLevel.S1,
+        cryptoParam: {
+          encryptionKey: new Uint8Array([1,2,3,4,5,6,7]),
+          iterationCount: 25000,
+          encryptionAlgo: data_relationalStore.EncryptionAlgo.AES_256_GCM,
+          hmacAlgo: data_relationalStore.HmacAlgo.SHA512,
+          kdfAlgo: data_relationalStore.KdfAlgo.KDF_SHA512,
+          cryptoPageSize: 2048
+        }
+      }
+      let attachStore: data_relationalStore.RdbStore | undefined = undefined;
+      attachStore = await data_relationalStore.getRdbStore(context, default_config1);
+      await attachStore.executeSql(CREATE_TABLE_TEST, null)
+      await attachStore.insert("test", valueBucket1)
+      await attachStore.insert("test", valueBucket2)
+      await attachStore.close()
+      let default_config2 : data_relationalStore.StoreConfig = {
+        name: "rdbstore2.db",
+        securityLevel: data_relationalStore.SecurityLevel.S1
+      }
+      try {
+        let  rdbStore:data_relationalStore.RdbStore | undefined = undefined;
+        rdbStore = await data_relationalStore.getRdbStore(context, default_config2);
+        await rdbStore.executeSql(CREATE_TABLE_TEST,null);
+        let number = await rdbStore.attach(context, default_config1, "attachDB");
+        console.log(TAG+"attach success,number:"+number)
+        expect(1).assertEqual(number);
+        let resultSet = await rdbStore.querySql("select * from attachDB.test");
+        console.log(TAG + "query" + resultSet + "resultSet2.rowCount"+ resultSet.rowCount);
+        expect(resultSet.rowCount==2).assertTrue()
+        resultSet.close()
+        await rdbStore.insert("test", valueBucket3)
+        let resultSet1 = await rdbStore.querySql("select * from test");
+        console.log(TAG + "query" + resultSet + "resultSet2.rowCount"+ resultSet1.rowCount);
+        expect(resultSet1.rowCount==1).assertTrue()
+        resultSet1.close()
+        let number1 = await rdbStore.detach("attachDB")
+        expect(0).assertEqual(number1);
+        await data_relationalStore.deleteRdbStore(context, "rdbstore1.db");
+        await data_relationalStore.deleteRdbStore(context, "rdbstore2.db");
+        console.log(TAG + "Delete rdbstore success")
+        done()
+      } catch (err) {
+        console.log(TAG +"failed, error code: "+err.code, "err message:"+ err.message);
+        expect().assertFail()
+        done()
+      }
+      console.log(TAG + "************* rdbDecryptTest2900 end *************");
     })
   })
 }
