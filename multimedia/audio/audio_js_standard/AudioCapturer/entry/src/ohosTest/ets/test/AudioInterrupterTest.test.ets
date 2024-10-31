@@ -322,6 +322,7 @@ export default function audioInterrupterTest() {
     it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0400', 0, async (done: Function) => {
       try{
         let listeningFlag01 = false;
+        let listeningFlag02 = false;
         render1 = await createAudioRenderer(renderInfo.MOVIE, streamInfo.A44100, done)
         await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
         await render1.start()
@@ -332,7 +333,7 @@ export default function audioInterrupterTest() {
             expect(interruptEvent.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK);
           } else if (interruptEvent.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
             console.log("TEST_0400 come in INTERRUPT_TYPE_END" + JSON.stringify(interruptEvent))
-            listeningFlag01 = true
+            listeningFlag02 = true
             expect(interruptEvent.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK);
           } else {
             console.log("TEST_0400 come in fail" + JSON.stringify(interruptEvent))
@@ -349,8 +350,9 @@ export default function audioInterrupterTest() {
         await sleep(500)
         //先释放触发render2 触发render1.on返回参数INTERRUPT_HINT_UNDUCK
         await renderRelease(render2, done)
+        await sleep(500)
         await renderRelease(render1, done)
-        expect(listeningFlag01).assertTrue()
+        expect(listeningFlag01 && listeningFlag02).assertTrue()
       } catch (err) {
         console.log("INTERRUPTER_TEST err:" + JSON.stringify(err))
         expect(false).assertTrue()
