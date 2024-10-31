@@ -14,7 +14,6 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import sendablePhotoAccessHelper from '@kit.MediaLibraryKit'
 import { describe, it, expect, beforeAll } from '@ohos/hypium'
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import {
