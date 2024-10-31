@@ -7,5 +7,5 @@ set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(bundlendk SHARED bundlendk1.cpp)
+add_library(bundlendk SHARED bundlendk.cpp)
 target_link_libraries(bundlendk PUBLIC libace_napi.z.so libc++.a libbundle_ndk.z.so )
