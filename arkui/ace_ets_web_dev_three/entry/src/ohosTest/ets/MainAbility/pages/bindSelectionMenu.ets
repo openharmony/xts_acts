@@ -96,8 +96,9 @@ struct WebComponent {
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('bindSelectionMenuType'));
               await button.longClick();
-              await Utils.sleep(1000);
-              await driver.click(0,0);
+              await Utils.sleep(2000);
+              let buttonOne = await driver.findComponent(ON.text('复制'));
+              await buttonOne.click()
               await Utils.sleep(1000);
               break;
             }
