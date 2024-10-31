@@ -30,7 +30,17 @@ async function sleep(time: number) {
 export default function windowFocusTest(context: common.UIAbilityContext, windowStage: window.WindowStage) {
   describe('window_focus_test', () => {
     console.log('describe window_focus_test start!!!')
+    let tempWnd: window.Window | void;
+    let subWin: window.Window | void;
 
+    afterEach(async ()=>{
+      if(tempWnd !== null && tempWnd !== undefined){
+        await (tempWnd as window.Window).destroyWindow();
+      }
+      if(subWin !== null && subWin !== undefined){
+        await (subWin as window.Window).destroyWindow();
+      }
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4960
      * @tc.name      : testShiftAppWindowFocus_DialogWindow_SourceWinFocus
@@ -48,7 +58,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -106,7 +115,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -159,7 +167,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
       let caseName = 'testShiftAppWindowFocus_SubWindow_SourceWinFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testShiftAppWindowFocus_SubWindow_SourceWinFocus')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -212,7 +219,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
       let caseName = 'testShiftAppWindowFocus_SubWindow_SourceWinNotFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testShiftAppWindowFocus_SubWindow_SourceWinNotFocus')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -272,7 +278,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -316,7 +321,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context,
       };
-      let tempWnd: window.Window | void;
       tempWnd = await window.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'window.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -408,7 +412,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
       let caseName = 'testSetWindowFocusable_SubWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetWindowFocusable_SubWindow_Callback')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -449,7 +452,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
       let caseName = 'testSetWindowFocusable_SubWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       subWin = await windowStage.createSubWindow('testSetWindowFocusable_SubWindow_Callback')
         .catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
@@ -482,7 +484,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
       let caseName = 'testShiftAppWindowFocus_SubWindowWithOptions_SourceWinFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'SetPreOrie_SubWinOpt',
         decorEnabled: true
@@ -548,7 +549,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
       let caseName = 'testShiftAppWindowFocus_SubWindowWithOptions_SourceWinNotFocus';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWin: window.Window | void;
       let options: window.SubWindowOptions = {
         title: 'SetPreOrie_SubWinOptTwo',
         decorEnabled: true
@@ -620,7 +620,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
         title: 'testSetWindowFocusable_SubWindowWithOps_Callback',
         decorEnabled: true
       };
-      let subWin: window.Window | void;
       await windowStage.createSubWindowWithOptions('testSetWindowFocusable_SubWindowWithOps_Callback', options)
         .then(async (data) => {
           subWin = data;
@@ -676,7 +675,6 @@ export default function windowFocusTest(context: common.UIAbilityContext, window
         title: 'testSetWindowFocusable_SubWindowWithOps_Promise',
         decorEnabled: true
       };
-      let subWin: window.Window | void;
       await windowStage.createSubWindowWithOptions('testSetWindowFocusable_SubWindowWithOps_Promise', options)
         .then(async (data) => {
           subWin = data;
