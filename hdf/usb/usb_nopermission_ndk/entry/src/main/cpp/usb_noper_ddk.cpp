@@ -58,7 +58,8 @@ static std::tuple<bool, uint8_t, uint8_t, uint16_t> FindForEachInterface(const U
         uint32_t numEp = intDesc[setIdx].interfaceDescriptor.bNumEndpoints;
         struct UsbDdkEndpointDescriptor *epDesc = intDesc[setIdx].endPoint;
         for (uint32_t epIdx = PARAM_0; epIdx < numEp; ++epIdx) {
-            if (IsInterruptInEndpoint(epDesc[epIdx].endpointDescriptor)) {
+            UsbEndpointDescriptor epDesc = epDesc[epIdx].endpointDescriptor;
+            if (IsInterruptInEndpoint(epDesc)) {
                 return {true, intDesc[setIdx].interfaceDescriptor.bInterfaceNumber,
                         epDesc[epIdx].endpointDescriptor.bEndpointAddress,
                         epDesc[epIdx].endpointDescriptor.wMaxPacketSize};
