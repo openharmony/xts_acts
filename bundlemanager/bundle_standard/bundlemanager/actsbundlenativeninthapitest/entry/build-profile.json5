@@ -12,25 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-@Entry
-@Component
-struct MyComponent {
-  aboutToAppear() {
-  }
-
-  build() {
-    Flex({
-      direction: FlexDirection.Column,
-      alignItems: ItemAlign.Center,
-      justifyContent: FlexAlign.Center
-    }) {
-      Text('BMS ETS TEST')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
+{
+  "apiType": 'faMode',
+  "buildOption": {
+    "externalNativeOptions": {
+      "path": "./src/main/cpp/CMakeLists.txt",
+      "arguments": "",
+      "cppFlags": "",
+	  "abiFilters": ["arm64-v8a", "armeabi-v7a", "x86_64"],
     }
-    .width('100%')
-    .height('100%')
-  }
+  },
+  "targets": [
+    {
+      "name": "default",
+    },
+    {
+      "name": "ohosTest",
+    }
+  ]
 }
-

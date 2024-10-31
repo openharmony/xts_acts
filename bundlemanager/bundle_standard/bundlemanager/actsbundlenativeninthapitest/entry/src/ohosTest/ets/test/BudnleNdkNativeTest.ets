@@ -14,8 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-// @ts-ignore
-import bundlendk from 'libbundlendk1.so'
+import bundlendk from 'libbundlendk.so'
 
 const BUNDLE_NAME = "com.actsbundle.napitest"
 const FINGER_PRINT = "8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"
@@ -23,21 +22,19 @@ const APP_ID = "com.actsbundle.napitest_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QOiwVEh
 const APP_IDENTIFIER = "test-app-identifier"
 
 export default function budnleNdkNativeTest() {
-    describe('BundleNdkTest', function () {
+    describe('BundleNdkTest', () => {
 
       /**
       * @tc.number    SUB_BMS_BASIC_ETS_NATIVE_0200
       * @tc.name      budnleNdkNativeTest002
       * @tc.desc      budnleNdkNativeTest
       */
-      it('BundleNdkTest002', 0, async function (done) {
-          let data = bundlendk.getCurrentApplicationInfo();
-          console.info("Test NAPI data= " + JSON.stringify(data));
-          expect(data.bundleName).assertEqual(BUNDLE_NAME);
-          expect(data.fingerprint).assertEqual(FINGER_PRINT);
-          expect(data.appId).assertEqual(APP_ID);
-          expect(data.appIdentifier).assertEqual(APP_IDENTIFIER);
-          done()
+      it('BundleNdkTest002', 0 , () =>  {
+          console.info("Test NAPI data= " + JSON.stringify(bundlendk.getCurrentApplicationInfo()));
+          expect(bundlendk.getCurrentApplicationInfo().bundleName).assertEqual(BUNDLE_NAME);
+          expect(bundlendk.getCurrentApplicationInfo().fingerprint).assertEqual(FINGER_PRINT);
+          expect(bundlendk.getCurrentApplicationInfo().appId).assertEqual(APP_ID);
+          expect(bundlendk.getCurrentApplicationInfo().appIdentifier).assertEqual(APP_IDENTIFIER);
       });
 
     })

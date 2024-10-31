@@ -14,7 +14,7 @@
  */
 
 #include "napi/native_api.h"
-#include "native_interface_bundle.h"
+#include "bundle/native_interface_bundle.h"
 
 #include <cstdlib>
 #include <js_native_api_types.h>
@@ -65,7 +65,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "libbundlendk1",
+    .nm_modname = "libbundlendk",
     .nm_priv = ((void*)0),
     .reserved = { 0 },
 };

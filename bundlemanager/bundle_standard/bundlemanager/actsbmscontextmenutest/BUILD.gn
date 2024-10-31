@@ -26,4 +26,5 @@ ohos_js_app_suite("ActsBmsContextmenuTest") {
   hap_name = "ActsBmsContextmenuTest"
   subsystem_name = "bundlemanager"
   part_name = "bundle_framework"
+  deps = [ ":ActsBmsContextmenuTest_Entry" ]
 }
