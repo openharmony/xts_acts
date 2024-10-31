@@ -41,8 +41,8 @@ export function sleep(ms: number): Promise<string> {
   });
 }
 
-async function driveFn() {
-  console.info(`come in driveFn`);
+async function permissionClick() {
+  console.info(`come in permissionClick`);
   let driver = await UiDriver.create();
   console.info(`driver is ${JSON.stringify(driver)}`);
   await sleep(100);
@@ -61,7 +61,7 @@ async function driveFn() {
 
  export default function testsuite() {
    getPermission();
-   driveFn();
+   permissionClick();
    audioInterrupterTest();
    audioCapturer();
    //注释具体焦点策略相关用例，上架焦点策略相关接口用例
