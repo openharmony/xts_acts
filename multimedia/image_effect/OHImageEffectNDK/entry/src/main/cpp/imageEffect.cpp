@@ -28,10 +28,9 @@
 #include <native_window/external_window.h>
 #include <string>
 
-#undef LOG_DOMAIN
-#undef LOG_TAG
-#define LOG_DOMAIN 0x3200  // 全局domain宏，标识业务领域
-#define LOG_TAG "ImageEffectNDK"   // 全局tag宏，标识模块日志tag
+#define MY_LOG_DOMAIN 0x0000
+#define MY_LOG_TAG "ImageEffectNDK"
+#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_DEBUG, MY_LOG_DOMAIN, MY_LOG_TAG, fmt, ##__VA_ARGS__)
 
 #define OH_EFFECT_BRIGHTNESS_FILTER "Brightness"
 #define OH_EFFECT_CONTRAST_FILTER "Contrast"
@@ -1203,7 +1202,7 @@ napi_value OHImageEffectSetInputPicture(napi_env env, napi_callback_info info)
 
     OH_PictureNative  *nativePicture = nullptr;
     ImageEffect_ErrorCode code = OH_ImageEffect_SetInputPicture(imageEffect, nativePicture);
-    OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputPicture code:%{public}d.", code);
+    LOG("OH_ImageEffect_SetInputPicture code value: %d", code);
     napi_value ret;
     napi_create_int32(env, code, &ret);
     return ret;
@@ -1216,7 +1215,7 @@ napi_value OHImageEffectSetOutputPicture(napi_env env, napi_callback_info info)
     
     OH_PictureNative *outNativePicture = nullptr;
     ImageEffect_ErrorCode code = OH_ImageEffect_SetOutputPicture(imageEffect, nullptr);
-    OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputPicture code:%{public}d.", code);
+    LOG("OH_ImageEffect_SetInputPicture code value: %d", code);
     
     napi_value ret;
     napi_create_int32(env, code, &ret);
