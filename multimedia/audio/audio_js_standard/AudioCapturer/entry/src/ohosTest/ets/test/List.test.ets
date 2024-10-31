@@ -56,13 +56,14 @@ async function driveFn() {
   console.info(`button is ${JSON.stringify(button)}`);
   await sleep(100);
   await button.click();
+  await sleep(2000);
 }
 
  export default function testsuite() {
    getPermission();
    driveFn();
-   audioCapturer();
    audioInterrupterTest();
+   audioCapturer();
    //注释具体焦点策略相关用例，上架焦点策略相关接口用例
    //AudioRenderCapturerInterruptUnitTest()
    //AudioVoiceMessageCapturer()
