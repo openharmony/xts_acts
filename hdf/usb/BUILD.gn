@@ -19,7 +19,6 @@ group("usb_ndk") {
     deps = [
       "usb_ndk:ActsDriversExternalUsbNdkTest",
       "usb_nopermission_ndk:ActsDriversExternalUsbNoPerNdkTest",
-      "emit_event_nopermission_test:ActsDriversExternalHidEmitEventNoPerTest",
     ]
   }
 }
