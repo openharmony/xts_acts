@@ -15,8 +15,41 @@
 
 import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@ohos.multimedia.movingphotoview';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
+import fs from '@ohos.file.fs'
 
+let context = getContext(this)
 let data: photoAccessHelper.MovingPhoto
+function delay(milliseconds: number) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, milliseconds);
+  });
+}
+function checkResourceFile(context: Context) {
+  try {
+    const sandboxPath = context.filesDir;
+    let resourcePath = context.resourceDir;
+    let resourcePathArray = fs.listFileSync(resourcePath);
+    for (let index = 0; index < resourcePathArray.length; index++) {
+      fs.copyFileSync((resourcePath + '/' + resourcePathArray[index]), (sandboxPath + '/' + resourcePathArray[index]))
+      delay(2000)
+    }
+    let sandboxFileArray = fs.listFileSync(sandboxPath)
+  } catch (error) {
+    console.error(`checkResourceFile failed.err is ${error}`);
+  }
+}
+async function example() {
+  try {
+    let imageFileUri = 'file://com.arkui.ace.commonAttrsVisual.api12/data/storage/el2/base/haps/entry/files/test_mov_1.jpg';
+    let videoFileUri = 'file://com.arkui.ace.commonAttrsVisual.api12/data/storage/el2/base/haps/entry/files/test_mov_1.mp4';
+    let movingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
+    console.info('load moving photo successfully');
+  } catch (err) {
+    console.error(`load moving photo failed with error: ${err.code}, ${err.message}`);
+  }
+}
 
 @Entry
 @Component
@@ -37,6 +70,10 @@ struct MovingPhotoView1 {
   @State repeatPlayFlag: boolean = false;
   @State autoPlayPeriodStart: number = -1;
   @State autoPlayPeriodEnd: number = -1;
+  aboutToAppear(): void {
+    checkResourceFile(context)
+    example()
+  }
 
   build() {
     NavDestination() {
@@ -79,25 +116,37 @@ struct MovingPhotoView1 {
             this.controller.startPlayback()
             this.play = "startPlayback succ"
           })
-        Button('Stop').id('MovingPhotoView_stopButton')
+          Button('Stop').id('MovingPhotoView_stopButton')
+          .onClick(() => {
+            this.stop = "onStop succ"
+          })
+        Button('StopPlay').id('MovingPhotoView_stopPlayButton')
           .onClick(() => {
             this.controller.stopPlayback()
             this.stopPlay = "stopPlayback succ"
           })
-        Button('true').id('MovingPhotoView_true')
+        Button('mute').id('MovingPhotoView_mute')
           .onClick(() => {
             this.flag = true
           })
+        Button('setAutoPlayPeriod').id('MovingPhotoView_setAutoPlayPeriod')
+        .onClick(() => {
+          this.autoPlayPeriodStart = 100
+          this.autoPlayPeriodEnd = 500
+        })
         Button('autoPlay').id('MovingPhotoView_autoPlay')
           .onClick(() => {
             this.autoPlayFlag = true
-            this.autoPlayPeriodStart = 100
-            this.autoPlayPeriodEnd = 500
           })
-        Button('repeatPlay').id('MovingPhotoView_repeatPlay')
+        Button('repeatPlay').id('MovingPhotoView_repeatPlay_true')
           .onClick(() => {
             this.repeatPlayFlag = true
           })
+        Button('repeatPlay').id('MovingPhotoView_repeatPlay_false')
+          .onClick(() => {
+            this.repeatPlayFlag = true
+          })
+        Text(this.flag + '').id('MovingPhotoView_mute')
         Text(this.start).id('MovingPhotoView_start')
         Text(this.stop).id('MovingPhotoView_stop')
         Text(this.pause).id('MovingPhotoView_pause')
@@ -106,6 +155,10 @@ struct MovingPhotoView1 {
         Text(this.play).id('MovingPhotoView_play')
         Text(this.stopPlay).id('MovingPhotoView_stopPlay')
         Text(this.complete).id('MovingPhotoView_complete')
+        Text(this.autoPlayPeriodStart + '').id('MovingPhotoView_autoPlayPeriodStart')
+        Text(this.autoPlayPeriodEnd + '').id('MovingPhotoView_autoPlayPeriodEnd')
+        Text(this.autoPlay + '').id('MovingPhotoView_autoPlay')
+        Text(this.repeatPlay + '').id('MovingPhotoView_repeatPlay')
       }
     }
   }
