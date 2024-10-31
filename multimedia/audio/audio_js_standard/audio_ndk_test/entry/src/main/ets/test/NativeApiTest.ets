@@ -2271,7 +2271,37 @@ export default function audioNDK() {
       expect(a).assertEqual(0)
       done()
     })
-
+        
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004
+     * @tc.name      : Set Renderer Privacy with Internal Recording
+     * @tc.desc      : test Renderer Privacy with Internal Recording
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004', 0, async function (done) {
+      let a = myaudioNdk.audioAudioInternalRecordingSuccess02();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004 audioAudioInternalRecordingSuccess: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+ 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005
+     * @tc.name      : Set Renderer Privacy with Internal Recording
+     * @tc.desc      : test Renderer Privacy with Internal Recording
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005', 0, async function (done) {
+      let a = myaudioNdk.audioAudioInternalRecordingFalse();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005 audioAudioInternalRecordingFalse: ${a}`);
+      expect(a).assertEqual(1)
+      done()
+    })
+    
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100
      * @tc.name      : set rendererWriteDataCallback with VALID result after create audioStreamBuilder
