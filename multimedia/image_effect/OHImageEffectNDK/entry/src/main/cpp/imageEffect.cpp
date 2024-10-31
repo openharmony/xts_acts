@@ -1215,7 +1215,7 @@ napi_value OHImageEffectSetOutputPicture(napi_env env, napi_callback_info info)
     
     OH_PictureNative *outNativePicture = nullptr;
     ImageEffect_ErrorCode code = OH_ImageEffect_SetOutputPicture(imageEffect, nullptr);
-    LOG("OH_ImageEffect_SetInputPicture code value: %d", code);
+    LOG("OH_ImageEffect_SetOutputPicture code value: %d", code);
     
     napi_value ret;
     napi_create_int32(env, code, &ret);
