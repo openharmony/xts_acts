@@ -141,9 +141,10 @@ export default function signNormalAccessBiometricExecute() {
           authTrustLevel: userAuth.AuthTrustLevel.ATL4
         }
       ];
-      await userAuthPromise(notSupportTLParams[0], widgetParamDefault,
+      console.info("Security_IAM_getUserAuthInstance_Func_0043 authParams: " + JSON.stringify(authParams[0]));
+      await userAuthPromiseFace(notSupportTLParams[0], widgetParamDefault,
                             'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
-                            userAuth.UserAuthResultCode.NOT_ENROLLED);
+                            userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT);
       stepIndex++;
       const notSupportTLParams1  = [
         {
@@ -152,6 +153,7 @@ export default function signNormalAccessBiometricExecute() {
           authTrustLevel: userAuth.AuthTrustLevel.ATL4
         }
       ];
+      console.info("Security_IAM_getUserAuthInstance_Func_0043 authParams: " + JSON.stringify(authParams[0]));
       await userAuthPromiseFace(notSupportTLParams1[0], widgetParamDefault,
                                 'Security_IAM_getUserAuthInstance_Func_0043 step' + stepIndex,
                                 userAuth.UserAuthResultCode.NOT_ENROLLED, userAuth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)
