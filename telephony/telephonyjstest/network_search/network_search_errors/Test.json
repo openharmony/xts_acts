@@ -12,10 +12,16 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsNetworkSearchTest.hap"
+                "$module.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

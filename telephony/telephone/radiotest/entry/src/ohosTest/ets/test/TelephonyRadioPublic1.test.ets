@@ -357,7 +357,7 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetNetworkSelectionModeAsync0100', 0, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkSelectionModeAsync0100';
       console.info(`${caseName} test start`);
-      if (!isSim0Active) {
+      if (isSim0Active) {
         ExpectFail();
         console.info(`${caseName} test end`);
         done();
@@ -390,7 +390,7 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetNetworkSelectionModePromise0100', 0, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkSelectionModePromise0100';
       console.info(`${caseName} test start`);
-      if (!isSim0Active) {
+      if (isSim0Active) {
         ExpectFail();
         console.info(`${caseName} test end`);
         done();
@@ -420,7 +420,7 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetISOCountryCodeForNetworkAsync0100', 0, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkAsync0100';
       console.info(`${caseName} test start`);
-      if (!isSim0Active) {
+      if (isSim0Active) {
         ExpectFail();
         console.info(`${caseName} test end`);
         done();
@@ -453,7 +453,7 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetISOCountryCodeForNetworkPromise0100', 0, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkPromise0100';
       console.info(`${caseName} test start`);
-      if (!isSim0Active) {
+      if (isSim0Active) {
         ExpectFail();
         console.info(`${caseName} test end`);
         done();
@@ -483,7 +483,7 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetISOCountryCodeForNetworkSync0100', 0, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetISOCountryCodeForNetworkSync0100';
       console.info(`${caseName} test start`);
-      if (!isSim0Active) {
+      if (isSim0Active) {
         ExpectFail();
         console.info(`${caseName} test end`);
         done();
