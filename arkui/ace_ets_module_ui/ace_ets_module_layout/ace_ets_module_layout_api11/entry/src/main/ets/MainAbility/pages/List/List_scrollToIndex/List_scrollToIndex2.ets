@@ -20,7 +20,7 @@ struct List_scrollToIndex2 {
   private scroller: Scroller = new Scroller();
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 2 }) {
       List({ space: 10, initialIndex: 0, scroller: this.scroller }) {
         ForEach(this.arr, (item: number, index?: number) => {
           ListItem() {
@@ -40,8 +40,8 @@ struct List_scrollToIndex2 {
       .edgeEffect(EdgeEffect.None)
       .scrollBar(BarState.On)
 
-      Column({ space: 5 }) {
-        Row({ space: 5 }) {
+      Column({ space: 2 }) {
+        Row({ space: 2 }) {
           Button('scrollToIndex 20')
             .fontSize(14)
             .id('List_scrollToIndex2_to20')
@@ -57,7 +57,7 @@ struct List_scrollToIndex2 {
             })
         }
 
-        Row({ space: 5 }) {
+        Row({ space: 2 }) {
           Button('scrollToIndex 0')
             .fontSize(14)
             .id('List_scrollToIndex2_to0')
@@ -74,10 +74,10 @@ struct List_scrollToIndex2 {
         }
       }
 
-      Column({ space: 10 }) {
+      Column({ space: 2 }) {
         Column() {
           Text('ScrollAlign.START')
-          Row({ space: 5 }) {
+          Row({ space: 2 }) {
             Button('scrollToIndex 5')
               .id('List_scrollToIndex2_START5')
               .fontSize(14)
@@ -89,7 +89,7 @@ struct List_scrollToIndex2 {
 
         Column() {
           Text('ScrollAlign.CENTER')
-          Row({ space: 5 }) {
+          Row({ space: 2 }) {
             Button('scrollToIndex 5')
               .id('List_scrollToIndex2_CENTER5')
               .fontSize(14)
@@ -101,7 +101,7 @@ struct List_scrollToIndex2 {
 
         Column() {
           Text('ScrollAlign.END')
-          Row({ space: 5 }) {
+          Row({ space: 2 }) {
             Button('scrollToIndex 5')
               .id('List_scrollToIndex2_END5')
               .fontSize(14)
@@ -111,9 +111,9 @@ struct List_scrollToIndex2 {
           }
         }
 
-        Column({ space: 5 }) {
+        Column({ space: 2 }) {
           Text('ScrollAlign.AUTO')
-          Row({ space: 5 }) {
+          Row({ space: 2 }) {
             Button('scrollToIndex 1')
               .id('List_scrollToIndex2_AUTO1')
               .fontSize(14)
@@ -129,7 +129,7 @@ struct List_scrollToIndex2 {
               })
           }
 
-          Row({ space: 5 }) {
+          Row({ space: 2 }) {
             Button('scrollToIndex 5')
               .id('List_scrollToIndex2_AUTO5')
               .fontSize(14)

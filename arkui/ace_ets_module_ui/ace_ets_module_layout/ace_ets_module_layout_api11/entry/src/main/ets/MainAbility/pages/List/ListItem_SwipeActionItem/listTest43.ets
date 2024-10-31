@@ -42,12 +42,12 @@ struct ListItemExample43 {
 
   build() {
     Column() {
-      List({ space: 10, scroller: this.listScroller }) {
+      List({ space: 2, scroller: this.listScroller }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text("item" + item)
               .width('100%')
-              .height(100)
+              .height('10%')
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .borderRadius(10)
