@@ -157,8 +157,8 @@ struct MovingPhotoView1 {
         Text(this.complete).id('MovingPhotoView_complete')
         Text(this.autoPlayPeriodStart + '').id('MovingPhotoView_autoPlayPeriodStart')
         Text(this.autoPlayPeriodEnd + '').id('MovingPhotoView_autoPlayPeriodEnd')
-        Text(this.autoPlay + '').id('MovingPhotoView_autoPlay')
-        Text(this.repeatPlay + '').id('MovingPhotoView_repeatPlay')
+        Text(this.autoPlayFlag + '').id('MovingPhotoView_autoPlay')
+        Text(this.repeatPlayFlag + '').id('MovingPhotoView_repeatPlay')
       }
     }
   }
