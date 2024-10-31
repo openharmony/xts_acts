@@ -96,6 +96,7 @@ group("ability_runtime") {
       "startup:startup",
       "stopserviceextension:stopserviceextension",
       "want:want",
+      "wantagent:wantagent",
       "workercontextcover:workercontextcover",
     ]
   }
