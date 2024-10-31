@@ -1202,7 +1202,7 @@ napi_value OHImageEffectSetInputPicture(napi_env env, napi_callback_info info)
     OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
 
     OH_PictureNative  *nativePicture = nullptr;
-    code = OH_ImageEffect_SetInputPicture(imageEffect, nativePicture);
+    ImageEffect_ErrorCode code = OH_ImageEffect_SetInputPicture(imageEffect, nativePicture);
     OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputPicture code:%{public}d.", code);
     napi_value ret;
     napi_create_int32(env, code, &ret);
@@ -1215,7 +1215,7 @@ napi_value OHImageEffectSetOutputPicture(napi_env env, napi_callback_info info)
     OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
     
     OH_PictureNative *outNativePicture = nullptr;
-    code = OH_ImageEffect_SetOutputPicture(imageEffect, nullptr);
+    ImageEffect_ErrorCode code = OH_ImageEffect_SetOutputPicture(imageEffect, nullptr);
     OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputPicture code:%{public}d.", code);
     
     napi_value ret;
