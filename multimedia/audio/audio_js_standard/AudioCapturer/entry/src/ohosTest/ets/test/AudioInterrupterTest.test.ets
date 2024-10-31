@@ -90,6 +90,7 @@ export default function audioInterrupterTest() {
         await render2.release()
         console.info(`${Tag} AudioFrameworkTest: afterEach: render2 release success`);
       }
+      await sleep(1000)
       console.info(`${Tag} AudioFrameworkTest: afterEach: Test case-level clearance conditions`);
     })
 
@@ -231,6 +232,7 @@ export default function audioInterrupterTest() {
     it('SUB_MULTIMEDIA_AUDIO_INTERRUPTER_TEST_0200', 0, async (done: Function) => {
       try{
         let listeningFlag01 = false;
+        let listeningFlag02 = false;
         render1 = await createAudioRenderer(renderInfo.MOVIE, streamInfo.A44100, done)
         await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
         await render1.start()
@@ -241,7 +243,7 @@ export default function audioInterrupterTest() {
             expect(interruptEvent.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE);
           } else if (interruptEvent.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
             console.log("TEST_0200 come in INTERRUPT_TYPE_END：" + JSON.stringify(interruptEvent))
-            listeningFlag01 = true
+            listeningFlag02 = true
             expect(interruptEvent.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_RESUME);
           } else {
             console.log("TEST_0200 come in Fail：" + JSON.stringify(interruptEvent))
@@ -258,8 +260,9 @@ export default function audioInterrupterTest() {
         await sleep(500)
         //先释放触发render2 触发render1.on返回参数INTERRUPT_HINT_RESUME
         await renderRelease(render2, done)
+        await sleep(500)
         await renderRelease(render1, done)
-        expect(listeningFlag01).assertTrue()
+        expect(listeningFlag01 && listeningFlag02).assertTrue()
       } catch (err) {
         console.log("INTERRUPTER_TEST err:" + JSON.stringify(err))
         expect(false).assertTrue();
@@ -297,6 +300,10 @@ export default function audioInterrupterTest() {
           console.log("TEST_0300 come in render2.on：" + JSON.stringify(interruptEvent))
           expect(false).assertTrue();
         })
+        await sleep(500)
+        await renderRelease(render2, done)
+        await sleep(500)
+        await renderRelease(render1, done)
         expect(listeningFlag01).assertTrue()
       } catch (err) {
         console.log("INTERRUPTER_TEST err:" + JSON.stringify(err))
