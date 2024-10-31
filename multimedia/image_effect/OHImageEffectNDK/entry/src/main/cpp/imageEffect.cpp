@@ -24,12 +24,14 @@
 #include <multimedia/image_effect/image_effect_errors.h>
 #include <multimedia/image_effect/image_effect_filter.h>
 #include <multimedia/image_framework/image_pixel_map_mdk.h>
+#include <multimedia/image_framework/picture_native.h>
 #include <native_window/external_window.h>
 #include <string>
 
-#define MY_LOG_DOMAIN 0x0000
-#define MY_LOG_TAG "ImageEffectNDK"
-#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_DEBUG, MY_LOG_DOMAIN, MY_LOG_TAG, fmt, ##__VA_ARGS__)
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0x3200  // 全局domain宏，标识业务领域
+#define LOG_TAG "ImageEffectNDK"   // 全局tag宏，标识模块日志tag
 
 #define OH_EFFECT_BRIGHTNESS_FILTER "Brightness"
 #define OH_EFFECT_CONTRAST_FILTER "Contrast"
@@ -1191,5 +1193,32 @@ napi_value OHImageEffectStop(napi_env env, napi_callback_info info)
 
     napi_value ret;
     napi_create_int32(env, errorCode, &ret);
+    return ret;
+}
+
+napi_value OHImageEffectSetInputPicture(napi_env env, napi_callback_info info)
+{
+    OH_ImageEffect *imageEffect = OH_ImageEffect_Create(IMAGE_EFFECT_NAME);
+    OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
+
+    OH_PictureNative  *nativePicture = nullptr;
+    code = OH_ImageEffect_SetInputPicture(imageEffect, nativePicture);
+    OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputPicture code:%{public}d.", code);
+    napi_value ret;
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+napi_value OHImageEffectSetOutputPicture(napi_env env, napi_callback_info info)
+{
+    OH_ImageEffect *imageEffect = OH_ImageEffect_Create(IMAGE_EFFECT_NAME);
+    OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
+    
+    OH_PictureNative *outNativePicture = nullptr;
+    code = OH_ImageEffect_SetOutputPicture(imageEffect, nullptr);
+    OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputPicture code:%{public}d.", code);
+    
+    napi_value ret;
+    napi_create_int32(env, code, &ret);
     return ret;
 }

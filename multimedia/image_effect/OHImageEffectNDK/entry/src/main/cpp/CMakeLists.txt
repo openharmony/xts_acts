@@ -30,5 +30,5 @@ target_link_libraries(imageEffect PUBLIC
     libnative_buffer.so
     libpixelmap_ndk.z.so
     libimage_packer.so
-    libimage_source.so
+    libimage_source.so libpicture.so
 )

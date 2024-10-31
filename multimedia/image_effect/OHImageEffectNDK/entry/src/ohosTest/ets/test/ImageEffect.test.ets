@@ -2567,5 +2567,31 @@ export default function imageEffectTest() {
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
 
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHImageEffectSetInputPicture_0100
+     * @tc.name   : testOHImageEffectSetInputPicture001
+     * @tc.desc   : Start the Effector.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectSetInputPicture001', 0, () => {
+      let result: number = testNapi.OHImageEffectSetInputPicture();
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+    
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHImageEffectSetOutputPicture_0100
+     * @tc.name   : testOHImageEffectSetOutputPicture001
+     * @tc.desc   : Start the Effector.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHImageEffectSetOutputPicture001', 0, () => {
+      let result: number = testNapi.OHImageEffectSetOutputPicture();
+      expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
   });
 }
