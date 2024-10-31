@@ -1212,7 +1212,7 @@ export default function rdbDecryptTest() {
      * @tc.desc no encrpy attach encrpy,cryptoParam is invalid params
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 3
      */
     it('rdbDecryptTest2700', 0, async (done: Function) => {
       console.log(TAG + "************* rdbDecryptTest2700 start *************");
