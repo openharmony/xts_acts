@@ -19,7 +19,7 @@ import testNapi from 'libentry.so';
 export default function HarNapiLoadTest() {
   let TAG = '';
   let HarProject: ESObject = testNapi.loadModuleWithInfo('harOne', 'com.acts.arttsnapiloadtest/entry_test');
-  describe('ActsAbilityTest', () => {
+  describe('HarNapiLoadTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
         

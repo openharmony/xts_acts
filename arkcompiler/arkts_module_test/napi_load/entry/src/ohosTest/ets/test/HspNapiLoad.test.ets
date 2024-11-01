@@ -16,10 +16,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import testNapi from 'libentry.so';
 
-export default function HarNapiLoadTest() {
+export default function HspNapiLoadTest() {
   let TAG = '';
   let HspProject: ESObject = testNapi.loadModuleWithInfo('hspOne', 'com.acts.arttsnapiloadtest/entry_test');
-  describe('ActsAbilityTest', () => {
+  describe('HspNapiLoadTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
         
