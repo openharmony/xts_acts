@@ -58,13 +58,16 @@ include_directories(${NATIVERENDER_ROOT_PATH}
                     ${OPENHARMONY_ROOT_PATH}/third_party/node/src
                     jsvmtest
                     jsvmtest/unittests/wasm-def)
+add_library(entry2 SHARED ${src_sec}
+    napi/napi_string_test.cpp)
+target_link_libraries(entry2 PUBLIC libace_napi.z.so libjsvm.so)
+target_link_directories(entry2 PUBLIC ${OPENHARMONY_ROOT_PATH}/out/generic_generic_arm_64only/general_all_phone_standard/gen/foundation/arkui/napi/jsvm/)
 
 add_library(entry SHARED napi/napi_test.cpp
     jsvmtest/jsvm_utils.cpp
     jsvmtest/jsvmtest.cpp
     jsvmtest/unittests/test_array_buffer_backing_store.cpp
-    jsvmtest/unittests/test_wasm.cpp
-    ${src_sec})
-target_link_libraries(entry PUBLIC libace_napi.z.so libjsvm.so)
+    jsvmtest/unittests/test_wasm.cpp)
+target_link_libraries(entry PUBLIC libace_napi.z.so libjsvm.so entry2)
 target_link_directories(entry PUBLIC ${OPENHARMONY_ROOT_PATH}/out/generic_generic_arm_64only/general_all_phone_standard/gen/foundation/arkui/napi/jsvm/)
 
