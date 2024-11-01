@@ -932,7 +932,7 @@ static napi_value GetKeyboardType3(napi_env env, napi_callback_info info)
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
 
-    int32_t deviceId = outSize;
+    int32_t deviceId = outSize + 10000;
     int32_t KeyboardType = -1;
     retResult = OH_Input_GetKeyboardType(deviceId, &KeyboardType);
     napi_create_int32(env, retResult == INPUT_PARAMETER_ERROR ? 1 : 0, &result);
@@ -979,7 +979,7 @@ static napi_value GetDevice2(napi_env env, napi_callback_info info)
     int32_t deviceIds[inSize] = { 0 };
     Input_Result retResult = OH_Input_GetDeviceIds(deviceIds, inSize, &outSize);
 
-    int32_t deviceId = outSize;
+    int32_t deviceId = outSize + 10000;
     Input_DeviceInfo *deviceInfo = OH_Input_CreateDeviceInfo();
     retResult = OH_Input_GetDevice(deviceId, &deviceInfo);
     napi_create_int32(env, retResult == INPUT_PARAMETER_ERROR ? 1 : 0, &result);
