@@ -20,6 +20,6 @@ export default {
         title: ""
     },
     onInit() {
-        this.title = 'Third5 Ability A';
+        this.title = this.$t('strings.world');
     }
 }
