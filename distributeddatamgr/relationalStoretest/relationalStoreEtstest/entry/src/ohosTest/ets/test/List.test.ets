@@ -37,7 +37,7 @@ import RdbStoreDataChangeTest from './RdbStoreDataChange.test';
 import SqlExecutionTimeTest from './RelationStoreSqlExecTimeTest.test';
 import RdbStoreReadOnlyTest from './RelationalStoreReadOnlyJsunit.test';
 import rdbStorePluginLibsTest from './RelationalStorePluginLibsJsunit.test';
-import rdbDecryptTest from './decrpt.test';
+import rdbDecryptTest from './RelationalStoreDecrpy.test';
 
 export default function testsuite() {
   relationalStoreEncryptTest()
