@@ -6170,7 +6170,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0483', 0, () => {
       let script: string = `
-      testGetValueStringUtf8test1("Hello world")
+      testGetValueStringUtf8Test1("Hello world")
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6184,7 +6184,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0484', 0, () => {
       let script: string = `
-      testGetValueStringUtf8test2()
+      testGetValueStringUtf8Test2()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6198,7 +6198,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0485', 0, () => {
       let script: string = `
-      testGetValueStringUtf8test3()
+      testGetValueStringUtf8Test3()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6212,7 +6212,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0486', 0, () => {
       let script: string = `
-      testGetValueStringUtf8test4()
+      testGetValueStringUtf8Test4()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6226,7 +6226,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0487', 0, () => {
       let script: string = `
-      testGetValueStringUtf8test5()
+      testGetValueStringUtf8Test5()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6240,7 +6240,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0488', 0, () => {
       let script: string = `
-      testGetValueStringUtf8test6()
+      testGetValueStringUtf8Test6()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6254,7 +6254,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0489', 0, () => {
       let script: string = `
-      testCreateStringUtf8test1()
+      testCreateStringUtf8Test1()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6268,7 +6268,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0490', 0, () => {
       let script: string = `
-      testCreateStringUtf8test2()
+      testCreateStringUtf8Test2()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6282,7 +6282,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0491', 0, () => {
       let script: string = `
-      testCreateStringUtf8test3()
+      testCreateStringUtf8Test3()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6296,7 +6296,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0492', 0, () => {
       let script: string = `
-      testCreateStringUtf8test4()
+      testCreateStringUtf8Test4()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6310,7 +6310,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0493', 0, () => {
       let script: string = `
-      testCreateStringUtf16test1()
+      testCreateStringUtf16Test1()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6324,7 +6324,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0494', 0, () => {
       let script: string = `
-      testCreateStringUtf16test2()
+      testCreateStringUtf16Test2()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6338,7 +6338,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0495', 0, () => {
       let script: string = `
-      testCreateStringUtf16test3()
+      testCreateStringUtf16Test3()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6352,7 +6352,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0496', 0, () => {
       let script: string = `
-      testCreateStringUtf16test4()
+      testCreateStringUtf16Test4()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6366,7 +6366,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0497', 0, () => {
       let script: string = `
-      testGetValueStringUtf16test1("create UTF16")
+      testGetValueStringUtf16Test1("create UTF16")
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6380,7 +6380,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0498', 0, () => {
       let script: string = `
-      testGetValueStringUtf16test2()
+      testGetValueStringUtf16Test2()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6394,7 +6394,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0499', 0, () => {
       let script: string = `
-      testGetValueStringUtf16test3()
+      testGetValueStringUtf16Test3()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6408,7 +6408,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0500', 0, () => {
       let script: string = `
-      testGetValueStringUtf16test4()
+      testGetValueStringUtf16Test4()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6422,7 +6422,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0501', 0, () => {
       let script: string = `
-      testGetValueStringUtf16test5()
+      testGetValueStringUtf16Test5()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6436,7 +6436,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0502', 0, () => {
       let script: string = `
-      testGetValueStringUtf16test6()
+      testGetValueStringUtf16Test6()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6450,7 +6450,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0503', 0, () => {
       let script: string = `
-      testCreateStringLatin1test1()
+      testCreateStringLatin1Test1()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6464,7 +6464,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0504', 0, () => {
       let script: string = `
-      testCreateStringLatin1test2()
+      testCreateStringLatin1Test2()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6478,7 +6478,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0505', 0, () => {
       let script: string = `
-      testCreateStringLatin1test3()
+      testCreateStringLatin1Test3()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6492,7 +6492,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0506', 0, () => {
       let script: string = `
-      testCreateStringLatin1test4()
+      testCreateStringLatin1Test4()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6506,7 +6506,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0507', 0, () => {
       let script: string = `
-      testGetValueStringLatin1test1("create Latin1 string")
+      testGetValueStringLatin1Test1("create Latin1 string")
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6520,7 +6520,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0508', 0, () => {
       let script: string = `
-      testGetValueStringLatin1test2()
+      testGetValueStringLatin1Test2()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6534,7 +6534,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0509', 0, () => {
       let script: string = `
-      testGetValueStringLatin1test3()
+      testGetValueStringLatin1Test3()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6548,7 +6548,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0510', 0, () => {
       let script: string = `
-      testGetValueStringLatin1test4()
+      testGetValueStringLatin1Test4()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6562,7 +6562,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0511', 0, () => {
       let script: string = `
-      testGetValueStringLatin1test5()
+      testGetValueStringLatin1Test5()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6576,7 +6576,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0512', 0, () => {
       let script: string = `
-      testGetValueStringLatin1test6()
+      testGetValueStringLatin1Test6()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6590,7 +6590,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0513', 0, () => {
       let script: string = `
-      testIsStringtest1()
+      testIsStringTest1()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6604,7 +6604,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0514', 0, () => {
       let script: string = `
-      testIsStringtest2()
+      testIsStringTest2()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6618,7 +6618,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0515', 0, () => {
       let script: string = `
-      testIsStringtest3()
+      testIsStringTest3()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
@@ -6632,7 +6632,7 @@ export default function JsvmJsunit() {
      */
     it('JsvmTest0516', 0, () => {
       let script: string = `
-      testOthertest1()
+      testOtherTest1()
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });

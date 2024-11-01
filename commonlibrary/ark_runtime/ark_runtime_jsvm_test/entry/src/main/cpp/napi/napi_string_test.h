@@ -35,57 +35,59 @@
 using namespace std;
 #endif //JSVM_XTS_NAPI_STRING_TEST_H
 
-const size_t BUF_SIZE_MAX = 128;
-const size_t BUF_SIZE_20 = 20;
-const size_t BUF_SIZE_10 = 10;
-const size_t BUF_SIZE_5 = 5;
+const size_t BufSizeMax = 128;
+const size_t BufSize50 = 50;
+const size_t BufSize20 = 20;
+const size_t BufSize10 = 10;
+const size_t BufSize5 = 5;
+const size_t BufSize3 = 3;
 
 // OH_JSVM_GetValueStringUtf8 interface
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test1(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test2(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test3(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test4(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test5(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test6(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test1( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test2( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test3( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test4( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test5( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test6( JSVM_Env env, JSVM_CallbackInfo info );
 
 // OH_JSVM_CreateStringUtf8 interface
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8test1(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8test2(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8test3(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8test4(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test1( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test2( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test3( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test4( JSVM_Env env, JSVM_CallbackInfo info );
 
 // OH_JSVM_CreateStringUtf16 interface
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16test1(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16test2(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16test3(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16test4(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test1( JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test2( JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test3( JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test4( JSVM_Env env, JSVM_CallbackInfo info);
 
 //OH_JSVM_GetValueStringUtf16 interface
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test1(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test2(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test3(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test4(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test5(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test6(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test1( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test2( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test3( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test4( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test5( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test6( JSVM_Env env, JSVM_CallbackInfo info );
 
 // OH_JSVM_CreateStringLatin1 interface
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1test1(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1test2(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1test3(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1test4(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test1( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test2( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test3( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test4( JSVM_Env env, JSVM_CallbackInfo info );
 
 // OH_JSVM_GetValueStringLatin1 interface
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test1(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test2(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test3(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test4(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test5(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test6(JSVM_Env env, JSVM_CallbackInfo info); 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test1( JSVM_Env env, JSVM_CallbackInfo info ); 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test2( JSVM_Env env, JSVM_CallbackInfo info ); 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test3( JSVM_Env env, JSVM_CallbackInfo info ); 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test4( JSVM_Env env, JSVM_CallbackInfo info ); 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test5( JSVM_Env env, JSVM_CallbackInfo info ); 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test6( JSVM_Env env, JSVM_CallbackInfo info ); 
 
 // OH_JSVM_IsString interface
-[[maybe_unused]] JSVM_Value TestIsStringtest1(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestIsStringtest2(JSVM_Env env, JSVM_CallbackInfo info);
-[[maybe_unused]] JSVM_Value TestIsStringtest3(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestIsStringTest1( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestIsStringTest2( JSVM_Env env, JSVM_CallbackInfo info );
+[[maybe_unused]] JSVM_Value TestIsStringTest3( JSVM_Env env, JSVM_CallbackInfo info );
 
 // combination interface
-[[maybe_unused]] JSVM_Value TestOthertest1(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestOtherTest1( JSVM_Env env, JSVM_CallbackInfo info );

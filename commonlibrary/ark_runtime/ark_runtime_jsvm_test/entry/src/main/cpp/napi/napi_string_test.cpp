@@ -17,14 +17,14 @@
 #include "napi_string_test.h"
 
 ///js生成代码
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test1( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value thisVar = nullptr;
     OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
         
-    char resultStr[BUF_SIZE_MAX] = {0};
+    char resultStr[BufSizeMax] = {0};
     size_t size = 0;
     JSVM_Status status = OH_JSVM_GetValueStringUtf8(env, args[0], resultStr, 128, &size);
     if (status != JSVM_OK) {
@@ -37,12 +37,12 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test2( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    const size_t strBufsize = BUF_SIZE_MAX;
+    const size_t strBufsize = BufSizeMax;
     char resultStr[strBufsize];
     size_t size = 0;
     const char *testStr = "Hello world";
@@ -67,7 +67,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test3( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -100,13 +100,13 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test4( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    const size_t strBufsize = 20;
+    const size_t strBufsize = BufSize20;
     char resultStr[strBufsize];
     size_t size = 0;
     char *testStr = "Hello world";
@@ -133,13 +133,13 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test5(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test5( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    const size_t strBufsize = 50;
+    const size_t strBufsize = BufSize50;
     char resultStr[strBufsize];
     size_t size = 0;
     char *testStr = "Helloworld";
@@ -150,7 +150,7 @@
         OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf8test5: CreateStringUtf8 Failed");
         return nullptr;
     }
-    size_t strLen = strlen(testStr) - 3; 
+    size_t strLen = strlen(testStr) - BufSize3; 
     JSVM_Status status = OH_JSVM_GetValueStringUtf8(env, setValueName, resultStr, strLen, &size);
     if (size != strlen(resultStr)) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf8test5: GetValueStringUtf8 size Failed");
@@ -165,13 +165,13 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8test6(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test6( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    const size_t strBufsize = 50;
+    const size_t strBufsize = BufSize50;
     char resultStr[strBufsize] = {0};
     size_t size = 0;
     char *testStr = "Helloworld";
@@ -200,14 +200,14 @@
     return value;
 }
 // OH_JSVM_CreateStringUtf8 interface
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8test1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test1( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    size_t size = BUF_SIZE_20;
-    char strInput[BUF_SIZE_20] = {0}; 
+    size_t size = BufSize20;
+    char strInput[BufSize20] = {0}; 
     JSVM_Value strRstName = nullptr;
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf8(env, nullptr, size, &strRstName);
     
@@ -221,13 +221,13 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8test2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test2( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    size_t size = 5;
+    size_t size = BufSize5;
     const char* strInput = "Create String"; 
     JSVM_Value strRstValue = nullptr;
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf8(env, strInput, size, &strRstValue);
@@ -237,8 +237,8 @@
         return nullptr;
     }
     
-    size_t getSize = BUF_SIZE_20;
-    char resultStr[BUF_SIZE_20] = {0};
+    size_t getSize = BufSize20;
+    char resultStr[BufSize20] = {0};
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf8(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -257,7 +257,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8test3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test3( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -273,8 +273,8 @@
         return nullptr;
     }
     
-    size_t getSize = BUF_SIZE_MAX;
-    char resultStr[BUF_SIZE_MAX] = {0};
+    size_t getSize = BufSizeMax;
+    char resultStr[BufSizeMax] = {0};
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf8(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -293,7 +293,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8test4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test4( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -309,8 +309,8 @@
         return nullptr;
     }
     
-    size_t getSize = BUF_SIZE_MAX;
-    char resultStr[BUF_SIZE_MAX] = {0};
+    size_t getSize = BufSizeMax;
+    char resultStr[BufSizeMax] = {0};
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf8(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -333,14 +333,14 @@
     return value;
 }
 //OH_JSVM_CreateStringUtf16
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16test1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test1( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    size_t size = BUF_SIZE_20;
-    const char16_t strInput[BUF_SIZE_20] = {0};
+    size_t size = BufSize20;
+    const char16_t strInput[BufSize20] = {0};
     JSVM_Value strRstName = nullptr;
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, nullptr, size, &strRstName);
     
@@ -354,13 +354,13 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16test2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test2( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    size_t size = BUF_SIZE_10;
+    size_t size = BufSize10;
     const char16_t* strInput = u"Create UTF16 String"; 
     JSVM_Value strRstValue = nullptr;
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
@@ -370,8 +370,8 @@
         return nullptr;
     }
     
-    size_t getSize = BUF_SIZE_MAX;
-    char16_t resultStr[BUF_SIZE_MAX] = {0};
+    size_t getSize = BufSizeMax;
+    char16_t resultStr[BufSizeMax] = {0};
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -395,7 +395,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16test3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test3( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -435,7 +435,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16test4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test4( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -446,7 +446,7 @@
     while (strInput[size] != u'\0') {
         ++size;
     }
-    size = size + 3;
+    size = size + BufSize3;
     JSVM_Value strRstValue = nullptr;
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
     
@@ -455,8 +455,8 @@
         return nullptr;
     }
     
-    size_t getSize = BUF_SIZE_MAX;
-    char16_t resultStr[BUF_SIZE_MAX];
+    size_t getSize = BufSizeMax;
+    char16_t resultStr[BufSizeMax];
     memset_s(resultStr, getSize, 0x00, getSize);
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
@@ -488,14 +488,14 @@
     return value;
 }
 //OH_JSVM_GetValueStringUtf16
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test1( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value thisVar = nullptr;
     OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
     
-    char16_t resultStr[128];
+    char16_t resultStr[BufSizeMax];
     size_t size = 0;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, args[0], resultStr, sizeof(resultStr), &size);
     if (status != JSVM_OK) {
@@ -508,7 +508,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test2( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -549,7 +549,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test3( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -569,7 +569,7 @@
         return nullptr;
     }
     
-    size_t getSize = size - 3;
+    size_t getSize = size - BufSize3;
     char16_t resultStr[getSize];
     memset_s(resultStr, getSize, 0x00, getSize);
     size_t rstSize = 0 ;
@@ -590,7 +590,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test4( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -610,7 +610,7 @@
         return nullptr;
     }
     
-    size_t getSize = size + 3;
+    size_t getSize = size + BufSize3;
     char16_t resultStr[getSize];
     memset_s(resultStr, getSize, 0x00, getSize);
     size_t rstSize = 0 ;
@@ -631,7 +631,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test5(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test5(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -655,7 +655,7 @@
     char16_t resultStr[getSize];
     memset_s(resultStr, getSize, 0x00, getSize);
     size_t rstSize = 0 ;
-    JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize - 3, &rstSize);
+    JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize - BufSize3, &rstSize);
     
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test5: GetValueStringUtf16 status Failed");
@@ -672,7 +672,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16test6(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test6(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -717,7 +717,7 @@
     return value;
 }
 // OH_JSVM_CreateStringLatin1 interface
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1test1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test1( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -737,13 +737,13 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1test2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test2( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    size_t stLength = 5;
+    size_t stLength = BufSize5;
     const char* strInput = "Create Latin-1 String"; 
     JSVM_Value strRstValue = nullptr;
     JSVM_Status rstStatus = OH_JSVM_CreateStringLatin1(env, strInput, stLength, &strRstValue);
@@ -753,8 +753,8 @@
         return nullptr;
     }
     
-    size_t getSize = BUF_SIZE_MAX;
-    char resultStr[BUF_SIZE_MAX] = {0};
+    size_t getSize = BufSizeMax;
+    char resultStr[BufSizeMax] = {0};
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -773,7 +773,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1test3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test3( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -789,8 +789,8 @@
         return nullptr;
     }
     
-    size_t getSize = BUF_SIZE_MAX;
-    char resultStr[BUF_SIZE_MAX] = {0};
+    size_t getSize = BufSizeMax;
+    char resultStr[BufSizeMax] = {0};
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -809,7 +809,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1test4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test4( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -825,8 +825,8 @@
         return nullptr;
     }
     
-    size_t getSize = BUF_SIZE_MAX;
-    char resultStr[BUF_SIZE_MAX] = {0};
+    size_t getSize = BufSizeMax;
+    char resultStr[BufSizeMax] = {0};
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -849,16 +849,16 @@
     return value;
 }
 //// OH_JSVM_GetValueStringLatin1 interface
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test1( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value thisVar = nullptr;
     OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
         
-    char resultStr[128] = {0};
+    char resultStr[BufSizeMax] = {0};
     size_t size = 0;
-    JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, args[0], resultStr, 128, &size);
+    JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, args[0], resultStr, BufSizeMax, &size);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test1: OH_JSVM_GetValueStringLatin1 Failed");
     }
@@ -869,13 +869,13 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test2( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    const size_t strBufsize = 128;
-    char resultStr[strBufsize];
+    const size_t strBufsize = BufSizeMax;
+    char resultStr[strBufsize] = {0};
     size_t size = 0;
     const char *testStr = "create Latin1 string";
     JSVM_Value setValueName = nullptr;
@@ -899,7 +899,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test3( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -914,7 +914,7 @@
         return nullptr;
     }
     
-    const size_t strBufsize = 5;
+    const size_t strBufsize = BufSize5;
     char resultStr[strBufsize] = {0};
     size_t size = 0;
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, setValueName, resultStr, sizeof(resultStr), &size);
@@ -932,15 +932,15 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test4( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     
-    const size_t strBufsize = 128;
+    const size_t strBufsize = BufSizeMax;
     char resultStr[strBufsize];
-    memset_s(resultStr, strBufsize, 0x00, strBufsize);
+    memset_s(resultStr, sizeof(resultStr), 0x00, sizeof(resultStr));
     size_t size = 0;
     const char *testStr = "create Latin1 string";
     JSVM_Value setValueName = nullptr;
@@ -966,7 +966,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test5(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test5(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -983,8 +983,8 @@
     
     size_t strLen = strlen(testStr) - 3;
     size_t size = 0;
-    size_t strBufsize = BUF_SIZE_MAX;
-    char resultStr[BUF_SIZE_MAX] = {0};
+    size_t strBufsize = BufSizeMax;
+    char resultStr[BufSizeMax] = {0};
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, setValueName, resultStr, strLen, &size);
     if (size != strlen(resultStr)) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test5: OH_JSVM_GetValueStringLatin1 size Failed");
@@ -999,7 +999,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test6(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test6( JSVM_Env env, JSVM_CallbackInfo info )
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -1039,9 +1039,9 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestIsStringtest1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestIsStringTest1( JSVM_Env env, JSVM_CallbackInfo info )
 {
-    const size_t strBufsize = 128;
+    const size_t strBufsize = BufSizeMax;
     char resultStr[strBufsize];
     size_t size = 0;
     const char *testStr = "create UTF8";
@@ -1067,7 +1067,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestIsStringtest2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestIsStringTest2( JSVM_Env env, JSVM_CallbackInfo info )
 {
     const char16_t* strInput = u"Create UT16 String";
     size_t size = 0;
@@ -1100,7 +1100,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestIsStringtest3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestIsStringTest3( JSVM_Env env, JSVM_CallbackInfo info )
 {
     const char *testStr = "create Latin1 string";
     JSVM_Value setValueName = nullptr;
@@ -1125,9 +1125,9 @@
     return value;
 }
 //使用create接口创建utf8字符串，用get utf16接口获取，预期返回乱码
-[[maybe_unused]] JSVM_Value TestOthertest1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestOtherTest1( JSVM_Env env, JSVM_CallbackInfo info )
 {
-    const size_t strBufsize = 128;
+    const size_t strBufsize = BufSizeMax;
     char16_t resultStr[strBufsize] = {0};
     size_t size = 0;
     const char *testStr = "create UTF8";
