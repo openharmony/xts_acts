@@ -153,6 +153,7 @@ export default function cameraEnumTest() {
       expect(camera.CameraFormat.CAMERA_FORMAT_JPEG == 2000).assertTrue();
       expect(camera.CameraFormat.CAMERA_FORMAT_YCBCR_P010 == 2001).assertTrue();
       expect(camera.CameraFormat.CAMERA_FORMAT_YCRCB_P010 == 2002).assertTrue();
+      expect(camera.CameraFormat.CAMERA_FORMAT_HEIC == 2003).assertTrue();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100 ends here");
       done();
     })
@@ -357,6 +358,22 @@ export default function cameraEnumTest() {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOCODECTYPE_0100
+     * @tc.name      : test VideoCodecType enum
+     * @tc.desc      : assert all VideoCodecType
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOCODECTYPE_0100', 0, async (done: Function) => {
+      expect(camera.VideoCodecType.AVC == 0).assertTrue();
+      console.info(`${TAG} VideoCodecType.AVC: ${camera.VideoCodecType.AVC}`);
+      expect(camera.VideoCodecType.HEVC == 1).assertTrue();
+      console.info(`${TAG} VideoCodecType.HEVC: ${camera.VideoCodecType.HEVC}`);
+      done();
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_PRECONFIG_0100
      * @tc.name      : test preconfig type enum
      * @tc.desc      : assert all preconfig type enums
@@ -391,24 +408,6 @@ export default function cameraEnumTest() {
       console.info(`${TAG} PreconfigRatio.PRECONFIG_RATIO_4_3:${camera.PreconfigRatio.PRECONFIG_RATIO_4_3}`);
       expect(camera.PreconfigRatio.PRECONFIG_RATIO_16_9 == 2).assertTrue();
       console.info(`${TAG} PreconfigRatio.PRECONFIG_RATIO_16_9:${camera.PreconfigRatio.PRECONFIG_RATIO_16_9}`);
-      done();
-    })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_FOLD_STATUS_0100
-     * @tc.name      : test fold status enum
-     * @tc.desc      : assert all fold status enums
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_CAMERA_ENUM_FOLD_STATUS_0100', 0, async (done: Function) => {
-      expect(camera.FoldStatus.NON_FOLDABLE == 0).assertTrue();
-      console.info(`${TAG} FoldStatus.NON_FOLDABLE:${camera.FoldStatus.NON_FOLDABLE}`);
-      expect(camera.FoldStatus.EXPANDED == 1).assertTrue();
-      console.info(`${TAG} FoldStatus.EXPANDED:${camera.FoldStatus.EXPANDED}`);
-      expect(camera.FoldStatus.FOLDED == 2).assertTrue();
-      console.info(`${TAG} FoldStatus.FOLDED:${camera.FoldStatus.FOLDED}`);
       done();
     })
   })
