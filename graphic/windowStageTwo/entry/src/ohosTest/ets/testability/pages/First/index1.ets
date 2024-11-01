@@ -18,7 +18,7 @@ export const entryName: string = 'Index1';
 @Entry({ routeName: entryName })
 @Component
 struct SubIndex {
-  @State message: string = 'SubIndex';
+  @State message: string = 'Hello World';
   build() {
     Row() {
       Column() {
