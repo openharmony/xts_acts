@@ -111,7 +111,7 @@ interface frameRatesSize {
 
 interface videoFrameRatesSize {
   errorCode: number;
-  frameRatesSize: number;
+  videoFrameRatesSize: number;
 }
 
 interface FrameRateRange {
@@ -128,6 +128,12 @@ interface colorSpacesSize {
 interface activeColorSpace {
   errorCode: number;
   activeColorSpace: number;
+}
+
+interface colorSpace {
+  colorSpaceSupportSize: number;
+  setcolorSpace: number;
+  colorSpacesSize: number;
 }
 
 export const initCamera: (surfaceId: string) => number;
@@ -330,7 +336,7 @@ export const oHPhotoOutputUnregisterPhotoAssetAvailableCallback: (index:number) 
 
 export const oHPhotoOutputIsMovingPhotoSupported: (index:number) => movingPhoto;
 
-export const oHPhotoOutputEnableMovingPhoto: (index:number) => number;
+export const oHPhotoOutputEnableMovingPhoto: (index:number, enable:boolean) => number;
 
 export const oHPhotoNativeGetMainImage: (index:number) => number;
 
@@ -359,6 +365,8 @@ export const oHCaptureSessionGetSupportedColorSpaces: (index:number) => colorSpa
 export const oHCaptureSessionDeleteColorSpaces: (index:number) => number;
 
 export const oHCaptureSessionGetActiveColorSpace: (index:number) => activeColorSpace;
+
+export const oHNativeBufferColorSpace: () => colorSpace;
 
 export const oHCaptureSessionSetActiveColorSpace: (index:number) => number;
 
