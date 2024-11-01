@@ -113,7 +113,7 @@ export default function handleCameraPhotoTest() {
             fetchColumns: [],
             predicates: predicates
         };
-        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(fetchOptions);
         count = fetchResult.getCount();
         fetchResult.close();
         return count;
