@@ -13,8 +13,12 @@
  * limitations under the License.
  */
 {
-  "hvigorVersion": "4.0.5",
-  "dependencies": {
-    "@ohos/hvigor-ohos-plugin": "4.0.5"
+  "app": {
+    "bundleName": "com.example.extensionzerotest",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
   }
 }
