@@ -229,5 +229,47 @@ export default function requestImageTest() {
         done();
       }
     });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_QUICK_REQUEST_IMAGE_0001
+     * @tc.name      : quick_request_image_001
+     * @tc.desc      : quick request image with HIGH_QUALITY_MODE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('quick_request_image_001', 0, async (done: Function) => {
+      let testNum = 'quick_request_image_001';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        class MediaHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
+          onDataPrepared(data: image.Picture, imageSource: image.ImageSource) {
+            if (data === undefined && imageSource === undefined) {
+              console.error(`${testNum} :: Error occurred when preparing data !`);
+              expect(false).assertTrue();
+              done();
+            }
+            console.info(`${testNum} :: on image data prepared success`);
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+        }
+        const handler = new MediaHandler();
+        let requestId: string = await photoAccessHelper.MediaAssetManager.quickRequestImage(globalThis.abilityContext, photoAsset, requestOptions, handler);
+        console.log(`${testNum} :: quick request success, requestId = ${requestId}`);
+        if (requestId === undefined) {
+          console.log(`${testNum} :: requestId is undefined !`)
+          expect(false).assertTrue();
+        }
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
   });
 }

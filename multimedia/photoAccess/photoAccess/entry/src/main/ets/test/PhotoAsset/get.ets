@@ -90,7 +90,7 @@ export default function getTest () {
           const uri = asset.get(key).toString();
           const isIncludes = uri.includes(expectUri);
           expect(isIncludes).assertTrue();
-        } else if (key === 'date_added' || key === 'date_modified' || key === 'date_taken' || key === 'date_added_ms' || key === 'date_modified_ms') {
+        } else if (key === 'date_added' || key === 'date_modified' || key === 'date_taken' || key === 'date_added_ms' || key === 'date_modified_ms' || 'date_taken_ms') {
           expect(isNum(asset.get(key))).assertTrue();
         } else {
           expect(asset.get(key)).assertEqual(value);
@@ -946,5 +946,122 @@ export default function getTest () {
       const value = "622:350";
       await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DETAIL_TIME_001
+     * @tc.name      : get_image_detail_time_001
+     * @tc.desc      : image get photoKeys.DETAIL_TIME
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_image_detail_time_001', 1, async (done: Function) => {
+      const testNum = 'get_image_detail_time_001';
+      const displayName = 'getTest.jpg';
+      try {
+        const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+        await checkProvisionAsset(done, testNum, displayName);
+        const key = photoKeys.DETAIL_TIME;
+        console.log(`${testNum} :: get key success, DETAIL_TIME is ${key}`);
+        let asset = await getFileAsset(testNum, fetchOps);
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day: string = date.getDate() > 9 ? date.getDate().toString() : ('0' + date.getDate());
+        let value = asset?.get(key);
+        let detailTimeStr = year + ":" + month + ":" + day;
+        console.log(`${testNum} :: expect Date is ${detailTimeStr}, actual is ${value}`);
+        expect(value).assertContain(detailTimeStr)
+        done();
+      } catch(error) {
+        console.error(`${testNum} :: get photoKeys.DETAIL_TIME failed , error is ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DETAIL_TIME_002
+     * @tc.name      : get_video_detail_time_001
+     * @tc.desc      : video get photoKeys.DETAIL_TIME
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_video_detail_time_001', 1, async (done: Function) => {
+      const testNum = 'get_video_detail_time_00';
+      const displayName = 'getTest.mp4';
+      try {
+        const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+        await checkProvisionAsset(done, testNum, displayName);
+        const key = photoKeys.DETAIL_TIME;
+        console.log(`${testNum} :: get key success, DETAIL_TIME is ${key}`);
+        let asset = await getFileAsset(testNum, fetchOps);
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day: string = date.getDate() > 9 ? date.getDate().toString() : ('0' + date.getDate());
+        let value = asset?.get(key);
+        let detailTimeStr = year + ":" + month + ":" + day;
+        console.log(`${testNum} :: expect Date is ${detailTimeStr}, actual is ${value}`);
+        expect(value).assertContain(detailTimeStr)
+        done();
+      } catch(error) {
+        console.error(`${testNum} :: get photoKeys.DETAIL_TIME failed , error is ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DATE_TAKEN_MS_001
+     * @tc.name      : get_image_date_taken_ms_001
+     * @tc.desc      : image get photoKeys.DATE_TAKEN_MS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_image_date_taken_ms_001', 1, async (done: Function) => {
+      const testNum = 'get_image_date_taken_ms_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      let asset = await getFileAsset(testNum, fetchOps);
+      const dateTaken = asset.get(photoKeys.DATE_TAKEN);
+      console.log(`${testNum} :: asset photoKeys.DATE_TAKEN is ${dateTaken}`);
+      const key = photoKeys.DATE_TAKEN_MS;
+      const value = 1;
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+      const dateTakenMs = asset.get(key);
+      console.log(`${testNum} :: asset photoKeys.DATE_TAKEN_MS is ${dateTakenMs}`);
+      await checkPhotoKeysDateTime(done, testNum, (dateTaken * 1000), dateTakenMs);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_DATE_TAKEN_MS_002
+     * @tc.name      : get_video_date_taken_ms_001
+     * @tc.desc      : video get photoKeys.DATE_TAKEN_MS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_video_date_taken_ms_001', 1, async (done: Function) => {
+      const testNum = 'get_video_date_taken_ms_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      let asset = await getFileAsset(testNum, fetchOps);
+      const dateTaken = asset.get(photoKeys.DATE_TAKEN);
+      console.log(`${testNum} :: asset photoKeys.DATE_TAKEN is ${dateTaken}`);
+      const key = photoKeys.DATE_TAKEN_MS;
+      const value = 1;
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+      const dateTakenMs = asset.get(key);
+      console.log(`${testNum} :: asset photoKeys.DATE_TAKEN_MS is ${dateTakenMs}`);
+      await checkPhotoKeysDateTime(done, testNum, (dateTaken * 1000), dateTakenMs);
+      done();
+    });
+
   })
 }

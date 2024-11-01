@@ -132,7 +132,7 @@ export default function handleCameraPhotoTest() {
         let date_modified_before: number = photoAsset.get(photoKeys.DATE_MODIFIED);
         let size_before: number = photoAsset.get(photoKeys.SIZE);
         let count_before = await getAssetsCount(testNum)
-        console.log(`${testNum} :: before :: date_added is ${date_added_before}, date_modified is ${date_modified_before}, size is ${size_before}, assetCount is ${count}`);
+        console.log(`${testNum} :: before :: date_added is ${date_added_before}, date_modified is ${date_modified_before}, size is ${size_before}, assetCount is ${count_before}`);
 
         // saveCameraPhoto
         let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
