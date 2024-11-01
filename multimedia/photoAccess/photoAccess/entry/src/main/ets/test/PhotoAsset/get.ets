@@ -90,7 +90,7 @@ export default function getTest () {
           const uri = asset.get(key).toString();
           const isIncludes = uri.includes(expectUri);
           expect(isIncludes).assertTrue();
-        } else if (key === 'date_added' || key === 'date_modified' || key === 'date_taken' || key === 'date_added_ms' || key === 'date_modified_ms' || 'date_taken_ms') {
+        } else if (key === 'date_added' || key === 'date_modified' || key === 'date_taken' || key === 'date_added_ms' || key === 'date_modified_ms' || key === 'date_taken_ms') {
           expect(isNum(asset.get(key))).assertTrue();
         } else {
           expect(asset.get(key)).assertEqual(value);
