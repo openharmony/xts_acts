@@ -18,7 +18,7 @@ import testNapi from 'libentry.so';
 
 export default function HapNapiLoadTest() {
   let TAG = '';
-  describe('ActsAbilityTest', () => {
+  describe('HapNapiLoadTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
     })
