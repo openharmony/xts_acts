@@ -84,11 +84,11 @@ public:
 
     //mediaAssetManager
     MediaLibrary_ErrorCode ManagerRequestImage(int useCaseCode);
+    
+    MediaLibrary_ErrorCode MediaAccessHelperApplyChanges(int useCaseCode);
     MediaLibrary_ErrorCode ManagerRequestMovingPhoto(int useCaseCode);
     MediaLibrary_ErrorCode ManagerRelease(int useCaseCode);
-
-    MediaLibrary_ErrorCode MediaAccessHelperApplyChanges(int useCaseCode);
-
+    
     //moving photo
     MediaLibrary_ErrorCode MovingPhotoGetUri(int useCaseCode);
     MediaLibrary_ErrorCode MovingPhotoRequestContentWithUris(int useCaseCode);
@@ -132,5 +132,4 @@ private:
     MediaLibrary_RequestId requestId_; //request id
     MediaLibrary_ErrorCode ret_; // error code
 };
-
 #endif

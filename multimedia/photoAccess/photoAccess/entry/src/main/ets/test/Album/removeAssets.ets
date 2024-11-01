@@ -14,38 +14,49 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import {
   photoKeys,
   fetchOption,
   fetchAllOption,
   getFileAsset,
+  sleep,
+  getPermission
 } from '../../../../../../../common'
 
 export default function removeAssetsTest () {
   describe('removeAssetsTest', function () {
+
+    beforeAll(async () => {
+      console.info('beforeAll case');
+      await getPermission();
+      await sleep();
+    });
+
     const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
 
     //callback
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0000
-      * @tc.name      : removeAssets_callback_000
-      * @tc.desc      : user album remove image asset
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0000
+     * @tc.name      : removeAssets_callback_000
+     * @tc.desc      : user album remove image asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('removeAssets_callback_000', 0, async function (done) {
       const testNum = 'removeAssets_callback_000';
       try {
         const album = await helper.createAlbum(testNum);
         const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'removeCb01.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
+        // add asset to album will create a new asset
         await album.addAssets([asset]);
-        const fetchResult = await album.getAssets(fetchOps);
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOps);
         expect(fetchResult.getCount()).assertEqual(1);
-        fetchResult.close()
-        album.removeAssets([asset], async (err) => {
+        let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+        fetchResult.close();
+        album.removeAssets([newAsset], async (err) => {
           try {
             if (err) {
               console.info(`${testNum} err: ${err}`);
@@ -69,13 +80,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0200
-      * @tc.name      : removeAssets_callback_002
-      * @tc.desc      : user album remove image&video asset
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0200
+     * @tc.name      : removeAssets_callback_002
+     * @tc.desc      : user album remove image&video asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
     it('removeAssets_callback_002', 2, async function (done) {
       const testNum = 'removeAssets_callback_002';
       try {
@@ -90,8 +101,10 @@ export default function removeAssetsTest () {
         await album.addAssets(assetList);
         const fetchResult = await album.getAssets(fetchAllOption());
         expect(fetchResult.getCount()).assertEqual(2);
-        fetchResult.close()
-        album.removeAssets(assetList, async (err) => {
+        let albumAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+        fetchResult.close();
+        // remove video & image
+        album.removeAssets(albumAssetList, async (err) => {
           try {
             if (err) {
               console.info(`${testNum} err: ${err}`);
@@ -115,13 +128,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0300
-      * @tc.name      : removeAssets_callback_003
-      * @tc.desc      : user album remove empty array
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0300
+     * @tc.name      : removeAssets_callback_003
+     * @tc.desc      : user album remove empty array
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
     it('removeAssets_callback_003', 2, async function (done) {
       const testNum = 'removeAssets_callback_003';
       try {
@@ -145,13 +158,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0400
-      * @tc.name      : removeAssets_callback_004
-      * @tc.desc      : user album remove undefined array
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0400
+     * @tc.name      : removeAssets_callback_004
+     * @tc.desc      : user album remove undefined array
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
     it('removeAssets_callback_004', 2, async function (done) {
       const testNum = 'removeAssets_callback_004';
       try {
@@ -171,13 +184,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0500
-      * @tc.name      : removeAssets_callback_005
-      * @tc.desc      : user album image asset twice
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0500
+     * @tc.name      : removeAssets_callback_005
+     * @tc.desc      : user album image asset twice
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
     it('removeAssets_callback_005', 2, async function (done) {
       const testNum = 'removeAssets_callback_005';
       try {
@@ -186,8 +199,10 @@ export default function removeAssetsTest () {
         const asset = await getFileAsset(testNum, fetchOps);
 
         await album.addAssets([asset]);
-        await album.removeAssets([asset]);
-        album.removeAssets([asset], async (err) => {
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchAllOption());
+        let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+        await album.removeAssets([newAsset]);
+        album.removeAssets([newAsset], async (err) => {
           if (err) {
             console.info(`${testNum} err: ${err}`);
             expect(false).assertTrue();
@@ -203,13 +218,13 @@ export default function removeAssetsTest () {
 
     //promise
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0000
-      * @tc.name      : removeAssets_promise_000
-      * @tc.desc      : user album remove image asset
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0000
+     * @tc.name      : removeAssets_promise_000
+     * @tc.desc      : user album remove image asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('removeAssets_promise_000', 0, async function (done) {
       const testNum = 'removeAssets_promise_000';
       try {
@@ -221,7 +236,8 @@ export default function removeAssetsTest () {
         let fetchResult = await album.getAssets(fetchOps);
         console.info(`${testNum} count: ${fetchResult.getCount()}`);
         expect(fetchResult.getCount()).assertEqual(1);
-        await album.removeAssets([asset]);
+        let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+        await album.removeAssets([newAsset]);
         fetchResult = await album.getAssets(fetchOps);
         console.info(`${testNum} count: ${fetchResult.getCount()}`);
         expect(fetchResult.getCount()).assertEqual(0);
@@ -235,13 +251,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0200
-      * @tc.name      : removeAssets_promise_002
-      * @tc.desc      : user album remove image&video asset
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0200
+     * @tc.name      : removeAssets_promise_002
+     * @tc.desc      : user album remove image&video asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
     it('removeAssets_promise_002', 2, async function (done) {
       const testNum = 'removeAssets_promise_002';
       try {
@@ -257,7 +273,8 @@ export default function removeAssetsTest () {
         await album.addAssets(assetList);
         let fetchResult = await album.getAssets(fetchAllOption());
         expect(fetchResult.getCount()).assertEqual(2);
-        await album.removeAssets(assetList);
+        let albumAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+        await album.removeAssets(albumAssetList);
         fetchResult = await album.getAssets(fetchAllOption());
         expect(fetchResult.getCount()).assertEqual(0);
         fetchResult.close();
@@ -270,13 +287,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0300
-      * @tc.name      : removeAssets_promise_003
-      * @tc.desc      : user album remove empty array
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0300
+     * @tc.name      : removeAssets_promise_003
+     * @tc.desc      : user album remove empty array
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
     it('removeAssets_promise_003', 2, async function (done) {
       const testNum = 'removeAssets_promise_003';
       try {
@@ -291,13 +308,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0400
-      * @tc.name      : removeAssets_promise_004
-      * @tc.desc      : user album remove undefined array
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0400
+     * @tc.name      : removeAssets_promise_004
+     * @tc.desc      : user album remove undefined array
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
     it('removeAssets_promise_004', 2, async function (done) {
       const testNum = 'removeAssets_promise_004';
       try {
@@ -312,13 +329,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0500
-      * @tc.name      : removeAssets_promise_005
-      * @tc.desc      : remove image asset twice
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0500
+     * @tc.name      : removeAssets_promise_005
+     * @tc.desc      : remove image asset twice
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
     it('removeAssets_promise_005', 2, async function (done) {
       const testNum = 'removeAssets_promise_005';
       try {
@@ -327,8 +344,10 @@ export default function removeAssetsTest () {
         const asset = await getFileAsset(testNum, fetchOps);
 
         await album.addAssets([asset]);
-        await album.removeAssets([asset]);
-        await album.removeAssets([asset]);
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchAllOption());
+        let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+        await album.removeAssets([newAsset]);
+        await album.removeAssets([newAsset]);
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);

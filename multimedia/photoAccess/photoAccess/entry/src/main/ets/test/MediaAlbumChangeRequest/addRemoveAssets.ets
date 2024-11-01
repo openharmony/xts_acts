@@ -14,11 +14,18 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
-import { photoKeys, fetchOption, getFileAsset } from '../../../../../../../common'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { photoKeys, fetchOption, getFileAsset, sleep, getPermission } from '../../../../../../../common'
 
 export default function addRemoveAssetsChangeRequestTest() {
   describe('addRemoveAssetsChangeRequestTest', function () {
+
+    beforeAll(async () => {
+      console.info('beforeAll case');
+      await getPermission();
+      await sleep();
+    });
+
     let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
 
     /**
@@ -69,10 +76,11 @@ export default function addRemoveAssetsChangeRequestTest() {
         await helper.applyChanges(albumChangeRequest);
 
         let fetchResult = await album.getAssets(fetchOps);
+        let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
         expect(fetchResult.getCount()).assertEqual(1);
         fetchResult.close();
 
-        albumChangeRequest.removeAssets([asset]);
+        albumChangeRequest.removeAssets([newAsset]);
         await helper.applyChanges(albumChangeRequest);
         fetchResult = await album.getAssets(fetchOps);
         expect(fetchResult.getCount()).assertEqual(0);

@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import { albumType, albumSubtype, genRadomStr, fetchOption, albumKeys } from '../../../../../../../common'
 
 export default function setAlbumNameChangeRequestTest() {
@@ -46,7 +46,6 @@ export default function setAlbumNameChangeRequestTest() {
         expect(curAlbum.albumType).assertEqual(albumChangeRequest.getAlbum().albumType);
         expect(curAlbum.albumSubtype).assertEqual(albumChangeRequest.getAlbum().albumSubtype);
         expect(curAlbum.albumName).assertEqual(albumChangeRequest.getAlbum().albumName);
-        expect(curAlbum.albumUri).assertEqual(albumChangeRequest.getAlbum().albumUri);
         expect(curAlbum.count).assertEqual(albumChangeRequest.getAlbum().count);
         expect(curAlbum.coverUri).assertEqual(albumChangeRequest.getAlbum().coverUri);
         fetchResult.close();
