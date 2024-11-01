@@ -356,6 +356,7 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onBackground) {
+            await sleep(500);
             let cmd = "uinput -K -d 18 -u 18";
             await executeShellCommand(cmd, TAG);
             await slideScreen(TAG);
