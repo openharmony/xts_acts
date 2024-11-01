@@ -12797,7 +12797,7 @@ export default function audioRendererTest() {
         console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
       }).catch((err) => {
         console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
-        except(false).assertTrue();
+        expect(false).assertTrue();
       });
       await sleep(1000);
 
@@ -12945,14 +12945,14 @@ export default function audioRendererTest() {
         let data = audioRenderer.getSilentModeAndMixWithOthers();
         expect(data).assertEqual(true);
       } catch (err) {
-          console.info(`AudioRenderer setSilentModeAndMixWithOthers or getSilentModeAndMixWithOthers : ERROR: ${err.code}`);
-          expect(false).assertTrue();
+        console.info(`AudioRenderer setSilentModeAndMixWithOthers or getSilentModeAndMixWithOthers : ERROR: ${err.code}`);
+        expect(false).assertTrue();
       }
       audioRenderer.release().then(() => {
         console.info(`AudioRenderer release : SUCCESS`);
       }).catch((err) => {
         console.info(`AudioRenderer release :ERROR : ${err.message}`);
-        except(false).assertTrue();
+        expect(false).assertTrue();
       });
       console.info('afterAll called')
       done();
@@ -12994,14 +12994,14 @@ export default function audioRendererTest() {
         let data = audioRenderer.getSilentModeAndMixWithOthers();
         expect(data).assertEqual(false);
       } catch (err) {
-          console.info(`AudioRenderer setSilentModeAndMixWithOthers or getSilentModeAndMixWithOthers : ERROR: ${err.code}`);
-          expect(false).assertTrue();
+        console.info(`AudioRenderer setSilentModeAndMixWithOthers or getSilentModeAndMixWithOthers : ERROR: ${err.code}`);
+        expect(false).assertTrue();
       }
       audioRenderer.release().then(() => {
         console.info(`AudioRenderer release : SUCCESS`);
       }).catch((err) => {
         console.info(`AudioRenderer release :ERROR : ${err.message}`);
-        except(false).assertTrue();
+        expect(false).assertTrue();
       });
       console.info('afterAll called')
       done();
