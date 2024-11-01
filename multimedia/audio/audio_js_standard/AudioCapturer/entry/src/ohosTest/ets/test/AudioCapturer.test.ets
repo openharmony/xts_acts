@@ -599,7 +599,6 @@ export default function audioCapturer() {
       async (AudioCapturerOptions: audio.AudioCapturerOptions, AudioRendererOptions: audio.AudioRendererOptions,
         done: Function) => {
         let audioCap: audio.AudioCapturer;
-        ;
         try {
           audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
           console.info(`${Tag} AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: success`);
