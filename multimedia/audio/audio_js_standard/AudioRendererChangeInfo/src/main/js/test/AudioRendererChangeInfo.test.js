@@ -94,6 +94,8 @@ describe('audioRendererChange', function () {
                     console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
                     console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
                     console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+                    expect(AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType).assertEqual(audio.DeviceType.INVALID);
+                    expect(AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
                     console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
                     console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
                     console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
