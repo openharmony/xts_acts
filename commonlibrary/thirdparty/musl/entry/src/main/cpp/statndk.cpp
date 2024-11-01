@@ -326,20 +326,18 @@ static napi_value MkNodAt(napi_env env, napi_callback_info info)
     dev_t st_dev = PARAM_0;
     errno = 0;
     ret = mknodat(dirfd, path, mode, st_dev);
-    int mkret = ret;
-    int mkerrno = errno;
     if (ret != 0) {
         OH_LOG_INFO(LOG_APP, "MUSL mknodat ret %{public}d errno : %{public}d", ret, errno);
-        if (ret == -1 && (errno == EACCES || errno == EPERM)) {
+        if (ret == -1 && (errno == EACCES || errno == EPERM || errno == EEXIST)) {
             ret = 0;
         }
-    }
-    struct stat newFifo = {PARAM_0};
-    errno = 0;
-    if (mkret == 0 || mkerrno == EEXIST) {
+    } else {
+        struct stat newFifo = {PARAM_0};
+        errno = 0;
         ret = stat(path, &newFifo);
-        if (ret != 0) {
-            OH_LOG_INFO(LOG_APP, "MUSL stat ret %{public}d errno : %{public}d", ret, errno);
+        OH_LOG_INFO(LOG_APP, "MUSL stat ret %{public}d errno : %{public}d", ret, errno);
+        if (errno == EACCES) {
+            ret = 0;
         }
     }
     napi_value result;
