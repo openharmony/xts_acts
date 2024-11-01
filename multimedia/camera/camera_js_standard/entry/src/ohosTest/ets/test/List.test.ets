@@ -30,6 +30,7 @@ import cameraTorchTest from './CameraTorchTest.test.ets'
 import cameraSecureSessionTest from './CameraSecureSessionTest.test.ets'
 import CameraSessionCameraRotationTest from './CameraSessionCameraRotationTest.test.ets'
 import CameraVideoCodecTypeTest from './CameraVideoCodecTypeTest.test.ets'
+import cameraSessionAutoDeviceSwitchTest from './CameraSessionAutoDeviceSwitchTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
@@ -52,4 +53,5 @@ export default function cameraKit() {
   cameraSecureSessionTest()
   CameraSessionCameraRotationTest()
   CameraVideoCodecTypeTest()
+  cameraSessionAutoDeviceSwitchTest()
 }

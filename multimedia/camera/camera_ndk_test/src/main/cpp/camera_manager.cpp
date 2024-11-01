@@ -2721,3 +2721,89 @@ Camera_ErrorCode NDKCamera::ReadyCreatePhotoOutputWithoutSurface()
     isCreatePhotoOutputWithoutSurface_ = true;
     return CAMERA_OK;
 }
+
+Camera_ErrorCode NDKCamera::IsAutoDeviceSwitchSupported(bool* isSupported)
+{
+    ret_ = OH_CaptureSession_IsAutoDeviceSwitchSupported(captureSession_, isSupported);
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CaptureSession_IsAutoDeviceSwitchSupported failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::EnableAutoDeviceSwitch(bool isEnable)
+{
+    ret_ = OH_CaptureSession_EnableAutoDeviceSwitch(captureSession_, isEnable);
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback failed.");
+    }
+    return ret_;
+}
+
+void CameraAutoDeviceSwitchStatusInfoCallback(Camera_CaptureSession* session,
+    Camera_AutoDeviceSwitchStatusInfo* autoDeviceSwitchStatusInfo)
+{
+    LOG("CameraAutoDeviceSwitchStatusInfoCallback is called.");
+}
+Camera_ErrorCode NDKCamera::RegisterAutoDeviceSwitchStatusCallback(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback(captureSession_,
+            CameraAutoDeviceSwitchStatusInfoCallback);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        ret_ = OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback(nullptr,
+            CameraAutoDeviceSwitchStatusInfoCallback);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback(captureSession_, nullptr);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::UnegisterAutoDeviceSwitchStatusCallback(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback(captureSession_,
+            CameraAutoDeviceSwitchStatusInfoCallback);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        ret_ = OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback(nullptr,
+            CameraAutoDeviceSwitchStatusInfoCallback);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback(captureSession_, nullptr);
+    }
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback failed.");
+    }
+    return ret_;
+}
+
+void CameraFoldStatusInfoCallback(Camera_Manager *cameraManager, Camera_FoldStatusInfo *foldStatusInfo)
+{
+    LOG("CameraFoldStatusInfoCallback is called.");
+}
+
+Camera_ErrorCode NDKCamera::CameraManagerRegisterFoldStatusCallback(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_CameraManager_RegisterFoldStatusInfoCallback(cameraManager_, CameraFoldStatusInfoCallback);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        ret_ = OH_CameraManager_RegisterFoldStatusInfoCallback(nullptr, CameraFoldStatusInfoCallback);
+    } else {
+        ret_ = OH_CameraManager_RegisterFoldStatusInfoCallback(cameraManager_, nullptr);
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::CameraManagerUnregisterFoldStatusCallback(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_CameraManager_UnregisterFoldStatusInfoCallback(cameraManager_, CameraFoldStatusInfoCallback);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        ret_ = OH_CameraManager_UnregisterFoldStatusInfoCallback(nullptr, CameraFoldStatusInfoCallback);
+    } else {
+        ret_ = OH_CameraManager_UnregisterFoldStatusInfoCallback(cameraManager_, nullptr);
+    }
+    return ret_;
+}

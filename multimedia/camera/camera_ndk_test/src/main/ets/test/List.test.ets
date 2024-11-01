@@ -30,6 +30,7 @@ import SessionTest from './Session.test';
 import SecureCameraTest from './SecureCamera.test';
 import PhotoTest from './PhotoTest.test';
 import CameraSessionCameraRotationTest from './CameraSessionCameraRotationTest.test';
+import CameraSessionAutoDeviceSwitchTest from './CameraSessionAutoDeviceSwitchTest.test';
 
 let voice = call.hasVoiceCapability()
 
@@ -45,6 +46,7 @@ export default function testsuite() {
           CameraErrorCodeUsecaseTest();
           cameraJSUnitOutput();
           CameraSessionCameraRotationTest();
+          CameraSessionAutoDeviceSwitchTest();
     }else{
           CameraFunctionTest();
           CameraInputTest();
