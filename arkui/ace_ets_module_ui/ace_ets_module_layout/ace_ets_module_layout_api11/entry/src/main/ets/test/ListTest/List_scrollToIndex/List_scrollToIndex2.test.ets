@@ -239,6 +239,7 @@ export default function List_scrollToIndex2() {
       let List: RectValue = CommonFunc.getComponentRect('List_scrollToIndex2_List');
       let ListItem: RectValue = CommonFunc.getComponentRect('List_scrollToIndex2_ListItem5');
       expect(Math.abs(ListItem.top - List.top) <= 1).assertTrue();
+	  console.info('value1000' + ListItem.bottom +  List.top)
       expect(Math.abs(Math.round(ListItem.bottom) - Math.round(List.top + vp2px(40))) <= 1).assertTrue();
       console.info('[List_scrollToIndex2_1000] END');
       done();
