@@ -5,7 +5,7 @@
         "test-timeout": "180000",
         "shell-timeout": "600000",
         "testcase-timeout": "6000",
-        "bundle-name": "com.netstack.websocketndk",
+        "bundle-name": "com.network.websocket.napitest",
         "module-name": "entry_test"
     },
     "kits": [
