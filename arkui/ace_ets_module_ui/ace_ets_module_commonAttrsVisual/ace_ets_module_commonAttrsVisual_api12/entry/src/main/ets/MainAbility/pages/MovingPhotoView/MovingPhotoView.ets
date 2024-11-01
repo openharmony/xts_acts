@@ -15,15 +15,48 @@
 
 import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@ohos.multimedia.movingphotoview';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
+import fs from '@ohos.file.fs';
 
+let context = getContext(this)
 let data: photoAccessHelper.MovingPhoto
+function delay(milliseconds: number) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, milliseconds);
+  });
+}
+function checkResourceFile(context: Context) {
+  try {
+    const sandboxPath = context.filesDir;
+    let resourcePath = context.resourceDir;
+    let resourcePathArray = fs.listFileSync(resourcePath);
+    for (let index = 0; index < resourcePathArray.length; index++) {
+      fs.copyFileSync((resourcePath + '/' + resourcePathArray[index]), (sandboxPath + '/' + resourcePathArray[index]))
+      delay(2000)
+    }
+    let sandboxFileArray = fs.listFileSync(sandboxPath)
+  } catch (error) {
+    console.error(`checkResourceFile failed.err is ${error}`);
+  }
+}
+async function example111() {
+  try {
+    let imageFileUri = 'file://com.arkui.ace.commonAttrsVisual.api12/data/storage/el2/base/haps/entry/files/test_mov_1.jpg';
+    let videoFileUri = 'file://com.arkui.ace.commonAttrsVisual.api12/data/storage/el2/base/haps/entry/files/test_mov_1.mp4';
+    data = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
+    console.info('load moving photo successfully');
+  } catch (err) {
+    console.error(`load moving photo failed with error: ${err.code}, ${err.message}`);
+  }
+}
 
 @Entry
 @Component
 struct MovingPhotoView1 {
   controller: MovingPhotoViewController = new MovingPhotoViewController()
-  @State src: photoAccessHelper.MovingPhoto | undefined = undefined
-  @State ImageFit: ImageFit | undefined | null = ImageFit.Contain
+  @State src: photoAccessHelper.MovingPhoto | undefined = undefined;
+  @State ImageFit: ImageFit | undefined | null = ImageFit.Contain;
   @State start: string = "Init";
   @State stop: string = "Init";
   @State pause: string = "Init";
@@ -31,7 +64,16 @@ struct MovingPhotoView1 {
   @State error: string = "Init";
   @State play: string = "Init";
   @State stopPlay: string = "Init";
+  @State complete: string = "Init";
   @State flag: boolean = false;
+  @State autoPlayFlag: boolean = false;
+  @State repeatPlayFlag: boolean = false;
+  @State autoPlayPeriodStart: number = -1;
+  @State autoPlayPeriodEnd: number = -1;
+  aboutToAppear(): void {
+    checkResourceFile(context)
+    example111()
+  }
 
   build() {
     NavDestination() {
@@ -61,29 +103,74 @@ struct MovingPhotoView1 {
             .onError(() => {
               this.error = "onError succ"
             })
+            .onComplete(() => {
+              this.complete = "onComplete succ"
+            })
+            .autoPlay(this.autoPlayFlag)
+            .autoPlayPeriod(this.autoPlayPeriodStart, this.autoPlayPeriodEnd)
+            .repeatPlay(this.repeatPlayFlag)
         }
 
-        Button('Play').id('MovingPhotoView_playButton')
-          .onClick(() => {
-            this.controller.startPlayback()
-            this.play = "startPlayback succ"
-          })
-        Button('Stop').id('MovingPhotoView_stopButton')
-          .onClick(() => {
-            this.controller.stopPlayback()
-            this.stopPlay = "stopPlayback succ"
-          })
-        Button('true').id('MovingPhotoView_true')
-          .onClick(() => {
-            this.flag = true
-          })
+        Row(){
+          Button('Play').id('MovingPhotoView_playButton')
+            .onClick(() => {
+              this.controller.startPlayback()
+              this.play = "startPlayback succ"
+            })
+          Button('Stop').id('MovingPhotoView_stopButton')
+            .onClick(() => {
+              this.stop = "onStop succ"
+            })
+        }
+
+        Row(){
+          Button('StopPlay').id('MovingPhotoView_stopPlay')
+            .onClick(() => {
+              this.controller.stopPlayback()
+              this.stopPlay = "stopPlayback succ"
+            })
+          Button('mute').id('MovingPhotoView_true')
+            .onClick(() => {
+              this.flag = true
+            })
+        }
+
+        Row(){
+          Button('error').id('MovingPhotoView_errorButton')
+            .onClick(() => {
+              this.error = "onError succ"
+            })
+          Button('setAutoPlayPeriod').id('MovingPhotoView_setAutoPlayPeriod')
+            .onClick(() => {
+              this.autoPlayPeriodStart = 100
+              this.autoPlayPeriodEnd = 500
+            })
+        }
+
+        Row(){
+          Button('autoPlay').id('MovingPhotoView_autoPlay')
+            .onClick(() => {
+              this.autoPlayFlag = true
+            })
+          Button('repeatPlay').id('MovingPhotoView_repeatPlay_true')
+            .onClick(() => {
+              this.repeatPlayFlag = true
+            })
+        }
+
+        Text(this.flag + '').id('MovingPhotoView_mute')
         Text(this.start).id('MovingPhotoView_start')
         Text(this.stop).id('MovingPhotoView_stop')
         Text(this.pause).id('MovingPhotoView_pause')
         Text(this.finish).id('MovingPhotoView_finish')
         Text(this.error).id('MovingPhotoView_error')
         Text(this.play).id('MovingPhotoView_play')
-        Text(this.stopPlay).id('MovingPhotoView_stopPlay')
+        Text(this.stopPlay).id('MovingPhotoView_stopPlay1')
+        Text(this.complete).id('MovingPhotoView_complete')
+        Text(this.autoPlayPeriodStart + '').id('MovingPhotoView_autoPlayPeriodStart')
+        Text(this.autoPlayPeriodEnd + '').id('MovingPhotoView_autoPlayPeriodEnd')
+        Text(this.autoPlayFlag + '').id('MovingPhotoView_autoPlay1')
+        Text(this.repeatPlayFlag + '').id('MovingPhotoView_repeatPlay')
       }
     }
   }
