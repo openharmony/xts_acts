@@ -16,11 +16,15 @@
 import enableScrollJsunit from './ScrollBarTest/enableScrollJsunit.test';
 import getListVisible from './ListTest/getListVisible.test'; 
 import headerListJsunit from './ListTest/headerListJsunit.test'; 
-import waterFlowFad from './WaterFlowTest/waterFlowFad.test'; 
+import waterFlowFad from './WaterFlowTest/waterFlowFad.test';
+import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
+import bindTabsScroll from './TabsTest/bindTabsScroll.test';
 
 export default function testsuite() {
   enableScrollJsunit()
   getListVisible()
   headerListJsunit()
   waterFlowFad()
+  tabsOpacityJsunit()
+  bindTabsScroll()
 }

@@ -4,6 +4,8 @@
         "MainAbility/pages/ScrollBar/enableScroll",
         "MainAbility/pages/List/getListVisible",
         "MainAbility/pages/List/headerList",
-        "MainAbility/pages/WaterFlow/waterFlowFad"
+        "MainAbility/pages/WaterFlow/waterFlowFad",
+        "MainAbility/pages/Tabs/tabsOpacity",
+        "MainAbility/pages/Tabs/bindTabsScroll"
     ]
 }
