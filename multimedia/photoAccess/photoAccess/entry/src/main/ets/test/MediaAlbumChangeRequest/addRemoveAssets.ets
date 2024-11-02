@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, it, expect, beforeAll } from 'deccjsunit/index';
 import { photoKeys, fetchOption, getFileAsset, sleep, getPermission } from '../../../../../../../common'
 
 export default function addRemoveAssetsChangeRequestTest() {

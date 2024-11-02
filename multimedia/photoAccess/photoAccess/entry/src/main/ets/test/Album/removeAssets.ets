@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, it, expect, beforeAll } from 'deccjsunit/index';
 import {
   photoKeys,
   fetchOption,
@@ -37,13 +37,13 @@ export default function removeAssetsTest () {
 
     //callback
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0000
-     * @tc.name      : removeAssets_callback_000
-     * @tc.desc      : user album remove image asset
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0000
+      * @tc.name      : removeAssets_callback_000
+      * @tc.desc      : user album remove image asset
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
     it('removeAssets_callback_000', 0, async function (done) {
       const testNum = 'removeAssets_callback_000';
       try {
@@ -80,13 +80,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0200
-     * @tc.name      : removeAssets_callback_002
-     * @tc.desc      : user album remove image&video asset
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0200
+      * @tc.name      : removeAssets_callback_002
+      * @tc.desc      : user album remove image&video asset
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('removeAssets_callback_002', 2, async function (done) {
       const testNum = 'removeAssets_callback_002';
       try {
@@ -128,13 +128,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0300
-     * @tc.name      : removeAssets_callback_003
-     * @tc.desc      : user album remove empty array
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0300
+      * @tc.name      : removeAssets_callback_003
+      * @tc.desc      : user album remove empty array
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('removeAssets_callback_003', 2, async function (done) {
       const testNum = 'removeAssets_callback_003';
       try {
@@ -158,13 +158,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0400
-     * @tc.name      : removeAssets_callback_004
-     * @tc.desc      : user album remove undefined array
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0400
+      * @tc.name      : removeAssets_callback_004
+      * @tc.desc      : user album remove undefined array
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('removeAssets_callback_004', 2, async function (done) {
       const testNum = 'removeAssets_callback_004';
       try {
@@ -184,13 +184,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0500
-     * @tc.name      : removeAssets_callback_005
-     * @tc.desc      : user album image asset twice
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0500
+      * @tc.name      : removeAssets_callback_005
+      * @tc.desc      : user album image asset twice
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('removeAssets_callback_005', 2, async function (done) {
       const testNum = 'removeAssets_callback_005';
       try {
@@ -218,13 +218,13 @@ export default function removeAssetsTest () {
 
     //promise
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0000
-     * @tc.name      : removeAssets_promise_000
-     * @tc.desc      : user album remove image asset
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0000
+      * @tc.name      : removeAssets_promise_000
+      * @tc.desc      : user album remove image asset
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
     it('removeAssets_promise_000', 0, async function (done) {
       const testNum = 'removeAssets_promise_000';
       try {
@@ -251,13 +251,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0200
-     * @tc.name      : removeAssets_promise_002
-     * @tc.desc      : user album remove image&video asset
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0200
+      * @tc.name      : removeAssets_promise_002
+      * @tc.desc      : user album remove image&video asset
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('removeAssets_promise_002', 2, async function (done) {
       const testNum = 'removeAssets_promise_002';
       try {
@@ -287,13 +287,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0300
-     * @tc.name      : removeAssets_promise_003
-     * @tc.desc      : user album remove empty array
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0300
+      * @tc.name      : removeAssets_promise_003
+      * @tc.desc      : user album remove empty array
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('removeAssets_promise_003', 2, async function (done) {
       const testNum = 'removeAssets_promise_003';
       try {
@@ -308,13 +308,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0400
-     * @tc.name      : removeAssets_promise_004
-     * @tc.desc      : user album remove undefined array
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0400
+      * @tc.name      : removeAssets_promise_004
+      * @tc.desc      : user album remove undefined array
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('removeAssets_promise_004', 2, async function (done) {
       const testNum = 'removeAssets_promise_004';
       try {
@@ -329,13 +329,13 @@ export default function removeAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0500
-     * @tc.name      : removeAssets_promise_005
-     * @tc.desc      : remove image asset twice
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_REMOVE_ASSETS_0500
+      * @tc.name      : removeAssets_promise_005
+      * @tc.desc      : remove image asset twice
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('removeAssets_promise_005', 2, async function (done) {
       const testNum = 'removeAssets_promise_005';
       try {

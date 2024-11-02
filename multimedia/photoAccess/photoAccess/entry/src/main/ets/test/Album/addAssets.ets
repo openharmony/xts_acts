@@ -15,7 +15,7 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, it, expect, beforeAll } from 'deccjsunit/index';
 import {
   photoKeys,
   fetchOption,
@@ -38,13 +38,13 @@ export default function addAssetsTest () {
 
     //callback
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0100
-     * @tc.name      : addAssets_callback_001
-     * @tc.desc      : add image asset to user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0100
+      * @tc.name      : addAssets_callback_001
+      * @tc.desc      : add image asset to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
     it('addAssets_callback_001', 0, async function (done) {
       const testNum = 'addAssets_callback_001';
       try {
@@ -83,13 +83,13 @@ export default function addAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0300
-     * @tc.name      : addAssets_callback_003
-     * @tc.desc      : add image&video asset to user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0300
+      * @tc.name      : addAssets_callback_003
+      * @tc.desc      : add image&video asset to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('addAssets_callback_003', 2, async function (done) {
       const testNum = 'addAssets_callback_003';
       try {
@@ -128,13 +128,13 @@ export default function addAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0400
-     * @tc.name      : addAssets_callback_004
-     * @tc.desc      : add empty array to user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0400
+      * @tc.name      : addAssets_callback_004
+      * @tc.desc      : add empty array to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('addAssets_callback_004', 2, async function (done) {
       const testNum = 'addAssets_callback_004';
       try {
@@ -159,13 +159,13 @@ export default function addAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0500
-     * @tc.name      : addAssets_callback_005
-     * @tc.desc      : add undefined array to user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0500
+      * @tc.name      : addAssets_callback_005
+      * @tc.desc      : add undefined array to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('addAssets_callback_005', 2, async function (done) {
       const testNum = 'addAssets_callback_005';
       try {
@@ -187,13 +187,13 @@ export default function addAssetsTest () {
 
     //promise
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0100
-     * @tc.name      : addAssets_promise_001
-     * @tc.desc      : add image asset to user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0100
+      * @tc.name      : addAssets_promise_001
+      * @tc.desc      : add image asset to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
     it('addAssets_promise_001', 0, async function (done) {
       const testNum = 'addAssets_promise_001';
       try {
@@ -214,13 +214,13 @@ export default function addAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0300
-     * @tc.name      : addAssets_promise_003
-     * @tc.desc      : add image&video asset to user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0300
+      * @tc.name      : addAssets_promise_003
+      * @tc.desc      : add image&video asset to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('addAssets_promise_003', 2, async function (done) {
       const testNum = 'addAssets_promise_003';
       try {
@@ -248,13 +248,13 @@ export default function addAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0400
-     * @tc.name      : addAssets_promise_004
-     * @tc.desc      : add empty array to user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0400
+      * @tc.name      : addAssets_promise_004
+      * @tc.desc      : add empty array to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('addAssets_promise_004', 2, async function (done) {
       const testNum = 'addAssets_promise_004';
       try {
@@ -269,13 +269,13 @@ export default function addAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0500
-     * @tc.name      : addAssets_promise_005
-     * @tc.desc      : add undefined array to user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ADD_ASSETS_0500
+      * @tc.name      : addAssets_promise_005
+      * @tc.desc      : add undefined array to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
     it('addAssets_promise_005', 2, async function (done) {
       const testNum = 'addAssets_promise_005';
       try {

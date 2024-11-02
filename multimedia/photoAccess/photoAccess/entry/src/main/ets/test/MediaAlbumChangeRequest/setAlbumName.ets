@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, it, expect } from 'deccjsunit/index';
 import { albumType, albumSubtype, genRadomStr, fetchOption, albumKeys } from '../../../../../../../common'
 
 export default function setAlbumNameChangeRequestTest() {

@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, it, expect, beforeAll } from 'deccjsunit/index';
 import {
   albumType,
   albumSubtype,
@@ -85,26 +85,26 @@ export default function checkAlbumAttrTest () {
     }
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_0000
-     * @tc.name      : album_000
-     * @tc.desc      : chech album attr
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_0000
+      * @tc.name      : album_000
+      * @tc.desc      : chech album attr
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
     it('album_000', 0, async function (done) {
       const testNum = 'album_000';
       await checkAssetAttr(done, testNum);
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_0100
-     * @tc.name      : album_001
-     * @tc.desc      : check album attribute - count, image count and video count - user album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_0100
+      * @tc.name      : album_001
+      * @tc.desc      : check album attribute - count, image count and video count - user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
     it('album_001', 0, async function (done) {
       const testNum = 'album_001';
       try {
@@ -142,13 +142,13 @@ export default function checkAlbumAttrTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_0200
-     * @tc.name      : album_002
-     * @tc.desc      : check album attribute - count, image count and video count - system album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_0200
+      * @tc.name      : album_002
+      * @tc.desc      : check album attribute - count, image count and video count - system album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
     it('album_002', 0, async function (done) {
       const testNum = 'album_002';
       try {
