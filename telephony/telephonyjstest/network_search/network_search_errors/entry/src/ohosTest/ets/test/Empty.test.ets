@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function EmptyTest() {
-    describe('EmptyTest', function () {
+    describe('EmptyTest',() => {
     /*
       * @tc.number: testTheDevicesNotSupportSyscap001
       * @tc.name  : testTheDevicesNotSupportSyscap001
@@ -25,7 +25,7 @@ export default function EmptyTest() {
       * @tc.type  : Function
       * @tc.level : Level 3
       */
-    it('testTheDevicesNotSupportSyscap001', 0, async function(done) {
+    it('testTheDevicesNotSupportSyscap001', 0, async (done: Function) => {
       let a = 1;
       let b = 2;
       expect(a+b).assertEqual(3);
