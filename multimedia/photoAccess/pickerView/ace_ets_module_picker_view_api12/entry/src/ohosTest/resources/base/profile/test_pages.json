@@ -1,0 +1,7 @@
+{
+  "src": [
+    "testability/pages/Index",
+    "MainAbility/pages/PickerComponent",
+    "MainAbility/pages/RecentPhotoDemo"
+  ]
+}
