@@ -1,35 +1,16 @@
 {
   "app": {
-    "bundleName": "com.example.third1",
     "vendor": "example",
+    "bundleName": "com.example.third1",
     "version": {
       "code": 1,
       "name": "1.0"
-    },
-    "apiVersion": {
-      "compatible": 4,
-      "target": 5,
-      "releaseType": "Beta1"
     }
   },
   "deviceConfig": {
     "default": {}
   },
   "module": {
-    "package": "com.example.third3",
-    "name": ".BmsThirdBundle3",
-    "colorMode": "auto",
-    "deviceType": [
-      "default",
-      "tablet",
-      "2in1",
-      "wearable"
-    ],
-    "distro": {
-      "deliveryWithInstall": true,
-      "moduleName": "bmsThirdBundle3",
-      "moduleType": "feature"
-    },
     "abilities": [
       {
         "skills": [
@@ -42,22 +23,14 @@
             ]
           }
         ],
-        "name": "com.example.third3.MainAbility",
         "icon": "$media:icon",
+        "name": "com.example.third3.MainAbility",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "visible": true,
-        "form": {
-          "formEntity": [
-            "homeScreen",
-            "searchbox"
-          ],
-          "defaultHeight": 100,
-          "defaultWidth": 200,
-          "minHeight": 50,
-          "minWidth": 100
-        },
+        "launchType": "standard",
+        "srcPath": "default",
+        "srcLanguage": "js",
         "forms": [
           {
             "colorMode": "light",
@@ -78,15 +51,13 @@
               ]
             },
             "isDefault": true,
-            "deepLink": "ability://com.example.myapplication.fa/.MainAbility",
             "defaultDimension": "1*2",
             "name": "Form_JS3",
-            "scheduledUpateTime": "21:55",
+            "scheduledUpdateTime": "21:55",
             "updateEnabled": true,
             "updateDuration": 1
           }
         ],
-        "launchType": "standard",
         "metaData": {
           "customizeData": [
             {
@@ -121,23 +92,26 @@
         ],
         "name": "com.example.third3.MainAbilityA",
         "icon": "$media:icon",
-        "form": {
-          "formEntity": [
-            "homeScreen",
-            "searchbox"
-          ],
-          "defaultHeight": 100,
-          "defaultWidth": 200,
-          "minHeight": 50,
-          "minWidth": 100
-        },
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "service",
         "launchType": "standard",
-        "visible": true
+        "srcPath": "MainAbilityA"
       }
     ],
+    "deviceType": [
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
+    ],
+    "mainAbility": "com.example.third3.MainAbility",
+    "distro": {
+      "moduleType": "feature",
+      "installationFree": false,
+      "deliveryWithInstall": true,
+      "moduleName": "bmsThirdBundle3"
+    },
     "shortcuts": [
       {
         "icon": "$media:icon",
@@ -151,12 +125,14 @@
         ]
       }
     ],
+    "package": "com.example.third3",
+    "name": ".BmsThirdBundle3",
     "js": [
       {
         "pages": [
           "pages/index/index"
         ],
-        "name": "default",
+        "name": "com.example.third3.MainAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
