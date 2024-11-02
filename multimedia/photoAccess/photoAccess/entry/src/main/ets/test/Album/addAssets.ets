@@ -15,7 +15,7 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from 'deccjsunit/index';
+import { describe, it, expect, beforeAll } from 'deccjsunit/index'
 import {
   photoKeys,
   fetchOption,

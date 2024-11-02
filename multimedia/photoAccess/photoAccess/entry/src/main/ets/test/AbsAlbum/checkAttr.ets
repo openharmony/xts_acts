@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
-import { describe, it, expect, beforeAll } from 'deccjsunit/index';
+import { describe, it, expect, beforeAll } from 'deccjsunit/index'
 import {
   albumType,
   albumSubtype,
