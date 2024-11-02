@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, beforeAll, afterAll, it } from '@ohos/hypium'
 import hidEmitEvent from 'libhidemiteventndk.so'
+
 
 const TAG: string = "[HidEmitEventTest]";
 const DEVICE_NOSUPPORT_ERRINFO: string = "The device does not support or cannot find hid_ddk_service;";
@@ -28,6 +29,14 @@ function IsDevcieSupport(errCode: number, caseName: string) {
 
 export default function HidEmitEventTest() {
   describe('HidEmitEventTest', () => {
+
+    beforeAll(async () => {
+      console.log(TAG, '*************hid Unit HidEmitEventTest start*************');
+    })
+
+    afterAll(async () => {
+      console.log(TAG, '*************hid Unit HidEmitEventTest end*************');
+    })
 
     /**
      * @tc.number     : SUB_Driver_Ext_HIDDDK_0100

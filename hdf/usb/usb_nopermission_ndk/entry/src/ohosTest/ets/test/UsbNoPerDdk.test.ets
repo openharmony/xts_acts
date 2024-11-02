@@ -13,21 +13,21 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, it, expect } from "@ohos/hypium"
+import { beforeAll, afterAll, describe, it, expect } from "@ohos/hypium"
 import usbNoPerDdk from 'libusbddkndk.so'
 import deviceManager from "@ohos.driver.deviceManager";
 
 
 export default function usbNoPerDdkTest() {
-  let deviceId: number = -1;
-
   describe('usbNoPerDdkTest', () => {
 
     const TAG: string = "[usbNoPerDdkTest]";
     const DDK_ERR_NOPERM: number = -19;
     const USB_DDK_FAILED: number = -1;
+    let deviceId: number = -1;
 
     beforeAll(async () => {
+      console.log(TAG, '*************hid Unit usbNoPerDdkTest start*************');
       try {
         let devices: Array<deviceManager.Device> = deviceManager.queryDevices(deviceManager.BusType.USB);
         for (let item of devices) {
@@ -38,6 +38,10 @@ export default function usbNoPerDdkTest() {
       } catch (error) {
         console.error(TAG, `Failed to query device. Code is ${error.code}, message is ${error.message}`);
       }
+    })
+
+    afterAll(async () => {
+      console.log(TAG, '*************hid Unit usbNoPerDdkTest end*************');
     })
 
     /**
