@@ -104,6 +104,8 @@ export function photoFetchOption(testNum, key, value) : photoAccessHelper.FetchO
       photoKeys.BURST_KEY,
       photoKeys.LCD_SIZE,
       photoKeys.THM_SIZE,
+      photoKeys.DETAIL_TIME,
+      photoKeys.DATE_TAKEN_MS,
       'all_exif',
     ],
     predicates: predicates

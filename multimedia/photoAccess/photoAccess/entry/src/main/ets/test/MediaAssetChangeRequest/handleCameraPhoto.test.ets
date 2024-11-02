@@ -30,6 +30,12 @@ export default function handleCameraPhotoTest() {
     beforeAll(async () => {
       console.info('handleCameraPhotoTest beforeAll case');
       await getPermission();
+      // prepare jpg file
+      const testNum: string = 'handleCameraPhotoTest';
+      const fileNames: Array<string> = [
+        "testSaveCameraPhoto02.jpg", "testSaveCameraPhoto03.jpg",
+      ];
+      await pushCreateAsset(fileNames);
       await sleep()
     });
 
@@ -99,6 +105,61 @@ export default function handleCameraPhotoTest() {
       }
     }
 
+    const getAssetsCount = async function (testNum): number {
+      let count = -1;
+      try {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+            fetchColumns: [],
+            predicates: predicates
+        };
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(fetchOptions);
+        count = fetchResult.getCount();
+        fetchResult.close();
+        return count;
+      } catch(error) {
+        console.info(`${testNum} getAssets count failed, error: ${error}`)
+        return count;
+      }
+    }
+
+    const saveCameraPhotoException = async (done: Function, testNum: string, type: photoAccessHelper.ImageFileType, ops: photoAccessHelper.FetchOptions) => {
+      try {
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(ops)
+        let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+        // before
+        let date_added_before: number = photoAsset.get(photoKeys.DATE_ADDED);
+        let date_modified_before: number = photoAsset.get(photoKeys.DATE_MODIFIED);
+        let size_before: number = photoAsset.get(photoKeys.SIZE);
+        let count_before = await getAssetsCount(testNum)
+        console.log(`${testNum} :: before :: date_added is ${date_added_before}, date_modified is ${date_modified_before}, size is ${size_before}, assetCount is ${count_before}`);
+
+        // saveCameraPhoto
+        let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+        assetChangeRequest.saveCameraPhoto(type);
+        await helper.applyChanges(assetChangeRequest);
+
+        // after
+        let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(ops)
+        let photoAsset2: photoAccessHelper.PhotoAsset = await fetchResult2.getFirstObject();
+        let date_added_after: number = photoAsset.get(photoKeys.DATE_ADDED);
+        let date_modified_after: number = photoAsset.get(photoKeys.DATE_MODIFIED);
+        let size_after: number = photoAsset.get(photoKeys.SIZE);
+        let count_after = await getAssetsCount(testNum)
+        console.log(`${testNum} :: after :: date_added is ${date_added_after}, date_modified is ${date_modified_after}, size is ${size_after}, assetCount is ${count_after}`);
+
+        expect(date_added_before).assertEqual(date_added_after);
+        expect(date_modified_before).assertEqual(date_modified_after);
+        expect(size_before).assertEqual(size_after);
+        expect(count_before).assertEqual(count_after);
+        done()
+      } catch(error) {
+        console.error(`${testNum} :: saveCameraPhotoException failed with error: ${error.code}, ${error.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
     /**
      * @tc.number : Sub_PhotoAccess_Helper_Save_Camera_Photo_001
      * @tc.name : save_camera_photo_by_exist_photo_asset_001
@@ -123,6 +184,44 @@ export default function handleCameraPhotoTest() {
     it('discard_camera_photo_by_exist_photo_asset_001', 0, async (done) => {
       let testNum = 'discard_camera_photo_by_exist_photo_asset_001';
       handleCameraPhotoByExistPhotoAsset(done, testNum, false);
+    })
+
+    /**
+     * @tc.number : Sub_PhotoAccess_Helper_Save_Camera_Photo_002
+     * @tc.name : save_camera_photo_by_exist_photo_asset_002
+     * @tc.desc : add existing photoAsset as param to saveCameraPhoto interface using JPEG
+     * @tc.size : MEDIUM
+     * @tc.type : Function
+     * @tc.level : Level 0
+     */
+    it('save_camera_photo_by_exist_photo_asset_002', 0, async (done) => {
+      let testNum: string = 'save_camera_photo_by_exist_photo_asset_002';
+      let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'testSaveCameraPhoto02.jpg')
+      let fetchOptions: photoAccessHelper.FetchOptions = {
+        fetchColumns: ['date_added', 'date_modified', 'size'],
+        predicates: predicates
+      };
+      await saveCameraPhotoException(done, testNum, photoAccessHelper.ImageFileType.JPEG, fetchOptions)
+    })
+
+    /**
+     * @tc.number : Sub_PhotoAccess_Helper_Save_Camera_Photo_003
+     * @tc.name : save_camera_photo_by_exist_photo_asset_003
+     * @tc.desc : add existing photoAsset as param to saveCameraPhoto interface using HEIF
+     * @tc.size : MEDIUM
+     * @tc.type : Function
+     * @tc.level : Level 0
+     */
+    it('save_camera_photo_by_exist_photo_asset_003', 0, async (done) => {
+      let testNum: string = 'save_camera_photo_by_exist_photo_asset_003';
+      let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'testSaveCameraPhoto03.jpg')
+      let fetchOptions: photoAccessHelper.FetchOptions = {
+        fetchColumns: ['date_added', 'date_modified', 'size'],
+        predicates: predicates
+      };
+      await saveCameraPhotoException(done, testNum, photoAccessHelper.ImageFileType.HEIF, fetchOptions)
     })
 
   })
