@@ -39,17 +39,12 @@ function generateKey(srcKeyAlies, HuksOptions) {
 function init(srcKeyAlies, HuksOptions) {
   return new Promise((resolve, reject) => {
     huks.init(srcKeyAlies, HuksOptions, function (err, data) {
-      try {
-        if (err.code !== 0) {
-          console.log("test init err information: " + JSON.stringify(err));
-          reject(err);
-        } else {
-          handle = data.handle;
-          resolve(data);
-        }
-      } catch (e) {
-        console.log("test init err information: " + JSON.stringify(e));
-        reject(e);
+      if (err.code !== 0) {
+        console.log("test init err information: " + JSON.stringify(err));
+        reject(err);
+      } else {
+        handle = data.handle;
+        resolve(data);
       }
     });
   });
@@ -58,16 +53,11 @@ function init(srcKeyAlies, HuksOptions) {
 function update(handle, HuksOptions) {
   return new Promise((resolve, reject) => {
     huks.update(handle, HuksOptions, function (err, data) {
-      try {
-        if (err.code !== 0) {
-          console.log("test update err information: " + JSON.stringify(err));
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      } catch (e) {
-        console.log("test update err information: " + JSON.stringify(e));
-        reject(e);
+      if (err.code !== 0) {
+        console.log("test update err information: " + JSON.stringify(err));
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
@@ -76,16 +66,11 @@ function update(handle, HuksOptions) {
 function finish(handle, HuksOptions) {
   return new Promise((resolve, reject) => {
     huks.finish(handle, HuksOptions, function (err, data) {
-      try {
-        if (err.code !== 0) {
-          console.log("test finish err information: " + JSON.stringify(err));
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      } catch (e) {
-        console.log("test finish err information: " + JSON.stringify(e));
-        reject(e);
+      if (err.code !== 0) {
+        console.log("test finish err information: " + JSON.stringify(err));
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
@@ -94,16 +79,11 @@ function finish(handle, HuksOptions) {
 function abort(handle, HuksOptions) {
   return new Promise((resolve, reject) => {
     huks.abort(handle, HuksOptions, function (err, data) {
-      try {
-        if (err.code !== 0) {
-          console.log("test abort err information: " + JSON.stringify(err));
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      } catch (e) {
-        console.log("test abort err information: " + JSON.stringify(e));
-        reject(e);
+      if (err.code !== 0) {
+        console.log("test abort err information: " + JSON.stringify(err));
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
@@ -112,16 +92,11 @@ function abort(handle, HuksOptions) {
 function deleteKey(srcKeyAlies, HuksOptions) {
   return new Promise((resolve, reject) => {
     huks.deleteKey(srcKeyAlies, HuksOptions, function (err, data) {
-      try {
-        if (err.code !== 0) {
-          console.log("test deleteKey err information: " + JSON.stringify(err));
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      } catch (e) {
-        console.log("test deleteKey err information: " + JSON.stringify(e));
-        reject(e);
+      if (err.code !== 0) {
+        console.log("test deleteKey err information: " + JSON.stringify(err));
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
