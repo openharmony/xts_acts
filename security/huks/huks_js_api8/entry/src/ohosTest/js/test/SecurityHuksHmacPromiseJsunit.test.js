@@ -84,20 +84,13 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
 function getKeyProperties(srcKeyAlies, HuksOptions) {
   return new Promise((resolve, reject) => {
     huks.getKeyProperties(srcKeyAlies, HuksOptions, function (err, data) {
-      try {
-        if (err.code != 0) {
-          console.error(
-            "test generateKey err information: " + JSON.stringify(err)
-          );
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      } catch (e) {
+      if (err.code != 0) {
         console.error(
-          "test generateKey err information:: " + JSON.stringify(e)
+          "test generateKey err information: " + JSON.stringify(err)
         );
-        reject(e);
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
@@ -106,18 +99,13 @@ function getKeyProperties(srcKeyAlies, HuksOptions) {
 function isKeyExist(srcKeyAlies, emptyOptions) {
   return new Promise((resolve, reject) => {
     huks.isKeyExist(srcKeyAlies, emptyOptions, function (err, data) {
-      try {
-        if (err.code != 0) {
-          console.error(
-            "test isKeyExist err information: " + JSON.stringify(err)
-          );
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      } catch (e) {
-        console.error("test isKeyExist err information: " + JSON.stringify(e));
-        reject(e);
+      if (err.code != 0) {
+        console.error(
+          "test isKeyExist err information: " + JSON.stringify(err)
+        );
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
