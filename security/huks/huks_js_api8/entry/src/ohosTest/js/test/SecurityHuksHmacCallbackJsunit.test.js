@@ -26,18 +26,11 @@ let srcData65Kb = Data.Date65KB;
 function generateKey(srcKeyAlies, HuksOptions) {
   return new Promise((resolve, reject) => {
     huks.generateKey(srcKeyAlies, HuksOptions, function (err, data) {
-      try {
-        if (err.code !== 0) {
-          console.log(
-            "test generateKey err information: " + JSON.stringify(err)
-          );
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      } catch (e) {
-        console.log("test generateKey err information: " + JSON.stringify(e));
-        reject(e);
+      if (err.code !== 0) {
+        console.log("test generateKey err information: " + JSON.stringify(err));
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
