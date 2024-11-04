@@ -12,9 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import ActsNetworkSearchTest from './NetworkSearchErrors.test'
+import ActsNetworkSearchTest from './NetworkSearchErrors.test';
+import sim from '@ohos.telephony.sim';
+import EmptyTest from './Empty.test';
 
 export default function testsuite() {
-    ActsNetworkSearchTest()
+  if (sim.getMaxSimCount()!=0){
+    ActsNetworkSearchTest();
+  }else{
+    EmptyTest();
+  }
 }
