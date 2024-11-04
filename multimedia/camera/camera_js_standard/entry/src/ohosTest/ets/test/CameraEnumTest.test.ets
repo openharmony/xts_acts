@@ -153,6 +153,7 @@ export default function cameraEnumTest() {
       expect(camera.CameraFormat.CAMERA_FORMAT_JPEG == 2000).assertTrue();
       expect(camera.CameraFormat.CAMERA_FORMAT_YCBCR_P010 == 2001).assertTrue();
       expect(camera.CameraFormat.CAMERA_FORMAT_YCRCB_P010 == 2002).assertTrue();
+      expect(camera.CameraFormat.CAMERA_FORMAT_HEIC == 2003).assertTrue();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100 ends here");
       done();
     })
@@ -353,6 +354,22 @@ export default function cameraEnumTest() {
       console.info(`${TAG} TorchMode.ON: ${camera.TorchMode.ON}`);
       expect(camera.TorchMode.AUTO == 2).assertTrue();
       console.info(`${TAG} TorchMode.AUTO: ${camera.TorchMode.AUTO}`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOCODECTYPE_0100
+     * @tc.name      : test VideoCodecType enum
+     * @tc.desc      : assert all VideoCodecType
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOCODECTYPE_0100', 0, async (done: Function) => {
+      expect(camera.VideoCodecType.AVC == 0).assertTrue();
+      console.info(`${TAG} VideoCodecType.AVC: ${camera.VideoCodecType.AVC}`);
+      expect(camera.VideoCodecType.HEVC == 1).assertTrue();
+      console.info(`${TAG} VideoCodecType.HEVC: ${camera.VideoCodecType.HEVC}`);
       done();
     })
 
