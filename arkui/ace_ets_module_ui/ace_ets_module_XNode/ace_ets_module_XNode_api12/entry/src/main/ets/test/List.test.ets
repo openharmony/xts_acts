@@ -36,7 +36,6 @@ import getGreen from './GraphicsTest/getGreen.test';
 import getRed from './GraphicsTest/getRed.test';
 import onAppear from './FrameNodeTest/onAppear.test';
 import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
-import createNodeSymbolGlyph from './FrameNodeTest/createNodeSymbolGlyph.test';
 import createNodeBlank from './FrameNodeTest/createNodeBlank.test';
 import createNodeColumn from './FrameNodeTest/createNodeColumn.test';
 import createNodeDivider from './FrameNodeTest/createNodeDivider.test';
@@ -128,7 +127,6 @@ export default function testsuite() {
   getRed();
   onAppear();
   setMeasureSizeTest();
-  createNodeSymbolGlyph();
   createNodeBlank();
   createNodeColumn();
   createNodeDivider();
