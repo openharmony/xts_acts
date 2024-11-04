@@ -273,6 +273,81 @@ export default function packPictureNdkTest() {
       return writeFileName;
     }
 
+    const testCheckResult = async (imageSource: image.ImageSource, packOpt: image.PackingOption, auxTypes?: Array<image.AuxiliaryPictureType>) => {
+      await imageSource.createPicture().then((picture: image.Picture)=> {
+        if (auxTypes && packOpt.desiredDynamicRange == 0) {
+            for (let i = 0; i < auxTypes.length; i++) {
+              let auxPic = picture.getAuxiliaryPicture(auxTypes[i]);
+              console.info(`${testTag} PackResult: getAuxiliaryPicture:${auxTypes[i]} ${auxPic != undefined} `)
+              expect(auxPic != undefined).assertTrue();
+              if (auxTypes[i] == GAINMAP) {
+                let isHdr = imageSource.getImageInfoSync().isHdr;
+                console.info(`${testTag} PackResult: isHdr:${isHdr} `)
+                expect(isHdr).assertEqual(true);
+              }
+            }
+          }
+          expect(picture.getMainPixelmap() != undefined).assertTrue();
+      })
+    }
+
+    const testPackPicture = async (logger: Logger, done: Function, fileName: string, type: string,
+    packOpt: image.PackingOption, interfaceName: string, auxTypes?: Array<image.AuxiliaryPictureType>) => {
+      logger.log('begin');
+      try {
+        if (type == "PictureFromPixelMap") {
+          testCreatePictureByPixelMap(logger, fileName);
+          if (auxTypes) {
+            for (let i = 0; i < auxTypes.length; i++) {
+              addAuxiliaryPicture(auxTypes[i])
+            }
+          }
+        } else {
+          testCreatePictureByImageSource(logger, fileName, auxTypes);
+        }
+        if (auxTypes) {
+          for (let i = 0; i < auxTypes.length; i++) {
+            expect(ndkTest.GetAuxiliaryPicture(auxTypes[i]) != undefined).assertTrue();
+          }
+        }
+        createPicturePackingOption(packOpt);
+        if (interfaceName == "PackToDataFromPicture") {
+          let size: image.Size = ndkTest.GetImageSourceInfoSize();
+          logger.log(`GetImageSourceInfoSize: { width: ${size.width}, height: ${size.height} }`);
+          let buffer = new ArrayBuffer(size.width * size.height * 4);
+          expect(ndkTest.PackToDataFromPicture(buffer)).assertEqual(0);
+          let imageSource = image.createImageSource(buffer);
+          await testCheckResult(imageSource, packOpt, auxTypes);
+        } else if (interfaceName == "PackToFileFromPicture") {
+          let writeFileName = getWtriteFileName(fileName, type, packOpt, auxTypes);
+          let writeFile = getCachePath(writeFileName);
+          logger.log(`write image filePath ` + writeFile);
+          let file = fs.openSync(writeFile, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+          expect(ndkTest.PackToFileFromPicture(file.fd)).assertEqual(0);
+          fs.closeSync(file.fd);
+          let readFile = fs.openSync(writeFile);
+          let imageSource = image.createImageSource(readFile.fd);
+          await testCheckResult(imageSource, packOpt, auxTypes);
+        } else if (interfaceName == "PackToDataFromPictureError") {
+          let size: image.Size = ndkTest.GetImageSourceInfoSize();
+          logger.log(`GetImageSourceInfoSize: { width: ${size.width}, height: ${size.height} }`);
+          let buffer = new ArrayBuffer(size.width * size.height * 4);
+          expect(ndkTest.PackToDataFromPicture(buffer)).assertEqual(0);
+        } else if (interfaceName == "PackToFileFromPictureError") {
+          let writeFileName = getWtriteFileName(fileName, type, packOpt, auxTypes);
+          let writeFile = getCachePath(writeFileName);
+          logger.log(`write image filePath ` + writeFile);
+          let file = fs.openSync(writeFile, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+          expect(ndkTest.PackToFileFromPicture(file.fd)).assertEqual(0);
+        }
+        done();
+      } catch (error) {
+        logger.log(`Test exception: ${JSON.stringify(error)}`);
+        expect().assertFail();
+        done();
+      }
+    }
+
     /*
      * @tc.number    : SUB_MULTIMEDIA_PICTURE_NDK_CONVERT_PNG_TO_DATA_0100
      * @tc.name      : PackToFileFromPicture
