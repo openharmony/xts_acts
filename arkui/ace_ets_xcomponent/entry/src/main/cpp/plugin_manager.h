@@ -13,104 +13,68 @@
  * limitations under the License.
  */
 
-#ifndef _PLUGIN_RENDER_H_
-#define _PLUGIN_RENDER_H_
+#ifndef _PLUGIN_MANAGER_H_
+#define _PLUGIN_MANAGER_H_
 
 #include <string>
 #include <unordered_map>
 
-#include <native_interface_xcomponent.h>
+#include <ace/xcomponent/native_interface_xcomponent.h>
 #include <napi/native_api.h>
-#include <native_interface_accessibility.h>
+#include <uv.h>
 
-#include "egl_core.h"
+#include "common/native_common.h"
+#include "render/plugin_render.h"
 
-class PluginRender {
+class PluginManager {
 public:
-    explicit PluginRender(std::string& id);
-    static PluginRender* GetInstance(std::string& id);
-    static OH_NativeXComponent_Callback* GetNXComponentCallback();
-    static OH_NativeXComponent_MouseEvent_Callback* GetNXComponentMouseEventCallback();
+    ~PluginManager() {}
 
-    void SetNativeXComponent(OH_NativeXComponent* component);
+    static PluginManager* GetInstance()
+    {
+        return &PluginManager::manager_;
+    }
 
-public:
-    // NAPI interface
-    napi_value Export(napi_env env, napi_value exports);
+    static napi_value GetContext(napi_env env, napi_callback_info info);
 
-    // Exposed to JS developers by NAPI
-    static napi_value NapiChangeShape(napi_env env, napi_callback_info info);
-    static napi_value NapiDrawTriangle(napi_env env, napi_callback_info info);
-    static napi_value NapiChangeColor(napi_env env, napi_callback_info info);
-    static napi_value NapiChangeColorWorker(napi_env env, napi_callback_info info);
+    /******************************APP Lifecycle******************************/
+    static napi_value NapiOnCreate(napi_env env, napi_callback_info info);
+    static napi_value NapiOnShow(napi_env env, napi_callback_info info);
+    static napi_value NapiOnHide(napi_env env, napi_callback_info info);
+    static napi_value NapiOnDestroy(napi_env env, napi_callback_info info);
 
-    // xts interfaces
-    static napi_value TestXComponentFindAccessibilityNodeInfosById(napi_env env, napi_callback_info info);
-    static napi_value TestXComponentFindAccessibilityNodeInfosByText(napi_env env, napi_callback_info info);
-    static napi_value TestXComponentFindFocusedAccessibilityNode(napi_env env, napi_callback_info info);
-    static napi_value TestXComponentFindNextFocusAccessibilityNode(napi_env env, napi_callback_info info);
-    static napi_value TestXComponentSendAccessibilityAsyncEvent(napi_env env, napi_callback_info info);
-    static napi_value TestXComponentExecuteAccessibilityAction(napi_env env, napi_callback_info info);
-    static napi_value TestXComponentClearFocusedFocusAccessibilityNode(napi_env env, napi_callback_info info);
-    static napi_value TestXComponentGetAccessibilityNodeCursorPosition(napi_env env, napi_callback_info info);
-    
-    static napi_value TestGetXComponentId(napi_env env, napi_callback_info info);
-    static napi_value TestOnSurfaceCreated(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponentSize_Height(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponentSize_Width(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponentOffset_x(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponentOffset_y(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponent_TouchEvent(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponent_MouseEvent(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponentpointtool_tiltx(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponentpointtool_tilty(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponentpointtool_type(napi_env env, napi_callback_info info);
-    static napi_value TestGetXComponent_RegisterMouseEventCallback(napi_env env, napi_callback_info info);
-    // Callback, called by ACE XComponent
-    void OnSurfaceCreated(OH_NativeXComponent* component, void* window);
+    void OnCreateNative(napi_env env, uv_loop_t* loop);
+    void OnShowNative();
+    void OnHideNative();
+    void OnDestroyNative();
 
-    void OnSurfaceChanged(OH_NativeXComponent* component, void* window);
+    /******************************声明式范式******************************/
+    /**                      JS Page : Lifecycle                        **/
+    static napi_value NapiOnPageShow(napi_env env, napi_callback_info info);
+    static napi_value NapiOnPageHide(napi_env env, napi_callback_info info);
+    void OnPageShowNative();
+    void OnPageHideNative();
 
-    void OnSurfaceDestroyed(OH_NativeXComponent* component, void* window);
-
-    void DispatchTouchEvent(OH_NativeXComponent* component, void* window);
-
-    void DispatchMouseEvent(OH_NativeXComponent* component, void* window);
-    
-    void InterfaceDesignTest(OH_NativeXComponent* nativeXComponent);
-    
-    void setElementInfo(ArkUI_AccessibilityElementInfo* elementInfo, int32_t i);
+    OH_NativeXComponent* GetNativeXComponent(std::string& id);
+    void SetNativeXComponent(std::string& id, OH_NativeXComponent* nativeXComponent);
+    PluginRender* GetRender(std::string& id);
 
 public:
-    static std::unordered_map<std::string, PluginRender*> instance_;
-    static OH_NativeXComponent_Callback callback_;
-    static uint32_t isCreated_;
-    static uint32_t xcHeight_;
-    static uint32_t xcWidth_;
-    static uint32_t toolType_;
-    static float tiltX_;
-    static float tiltY_;
-    static uint32_t mousecallback_;
-    static double off_x;
-    static double off_y;
-    static uint32_t touchType;
-    static OH_NativeXComponent_TouchEvent testTouchEvent_;
-    static OH_NativeXComponent_MouseEvent testMouseEvent_;
-    static OH_NativeXComponent_MouseEvent_Callback mouseEventcallback_;
+    // Napi export
+    bool Export(napi_env env, napi_value exports);
 
-    OH_NativeXComponent* component_;
-    EGLCore* eglCore_;
+public:
+    napi_env mainEnv_ = nullptr;
+    uv_loop_t* mainLoop_ = nullptr;
+    uv_async_t mainOnMessageSignal_ {};
+
+private:
+    static void MainOnMessage(const uv_async_t* req);
+    static PluginManager manager_;
 
     std::string id_;
-    uint64_t width_;
-    uint64_t height_;
-
-    double x_;
-    double y_;
-    OH_NativeXComponent_TouchEvent touchEvent_;
-    OH_NativeXComponent_MouseEvent mouseEvent_;
-    
-    ArkUI_AccessibilityProviderCallbacks* accessibilityProviderCallbacks_;
+    std::unordered_map<std::string, OH_NativeXComponent*> nativeXComponentMap_;
+    std::unordered_map<std::string, PluginRender*> pluginRenderMap_;
 };
 
-#endif // _PLUGIN_RENDER_H_
+#endif // _PLUGIN_MANAGER_H_
