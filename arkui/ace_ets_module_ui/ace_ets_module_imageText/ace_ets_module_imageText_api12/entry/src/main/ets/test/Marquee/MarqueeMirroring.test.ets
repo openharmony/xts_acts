@@ -42,7 +42,7 @@ export default function MarqueeMirroringTest() {
 
     afterEach(async () => {
       router.clear();
-      await CommonFunc.sleep(2000);      
+      await CommonFunc.sleep(1000);   
       console.info("MarqueeMirroringTest after each called");
     });
 
