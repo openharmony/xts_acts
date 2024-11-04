@@ -98,6 +98,8 @@ def check_hvigorw_bat(acts_root_dir, hvigor_prj_list):
 def get_hvigor_prject_list(directory):
     hvigor_prj_list = []
     for root, dirs, files in os.walk(directory):
+        if '.cxx' in dirs:
+            dirs.remove('.cxx')
         for dir in dirs:
             if dir == 'hvigor':
                 hvigor_prj_list.append(root)

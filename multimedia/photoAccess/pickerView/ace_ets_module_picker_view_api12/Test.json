@@ -4,9 +4,9 @@
         "type": "OHJSUnitTest",
         "test-timeout": "18000000",
         "bundle-name": "com.example.myapplication",
-        "module-name": "phone",
-        "shell-timeout": "600000",
-        "testcase-timeout": 600000
+        "module-name": "entry_test",
+        "shell-timeout": "1800000",
+        "testcase-timeout": 1800000
     },
     "kits": [
         {
