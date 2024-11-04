@@ -63,8 +63,8 @@ export default function ButtonStyle() {
       let obj2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
       await CommonFunc.sleep(1000);
       console.info("[ButtonStyle_001] obj2 is: " + JSON.stringify(obj2));
-      console.info("[ButtonStyle_001] obj2.$children[1].$children[0].$children[0].$children[2].$children[0] is: " + JSON.stringify(obj2.$children[1].$children[0].$children[0].$children[2].$children[0]));
-      expect(obj2.$children[1].$children[0].$children[0].$children[2].$children[0].$attrs.type).assertEqual("ButtonType.Normal");
+      console.info("[ButtonStyle_001] obj2.$children[1].$children[0].$children[0].$children[3].$children[0] is: " + JSON.stringify(obj2.$children[1].$children[0].$children[0].$children[3].$children[0]));
+      expect(obj2.$children[1].$children[0].$children[0].$children[3].$children[0].$attrs.type).assertEqual("ButtonType.Normal");
 
       await CommonFunc.sleep(1000);
       await driver.triggerKey(2070);
