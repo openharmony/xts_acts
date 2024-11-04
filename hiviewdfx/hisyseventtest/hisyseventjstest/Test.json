@@ -21,7 +21,7 @@
             "run-command": [
                 "power-shell wakeup",
                 "power-shell setmode 602",
-                "service_control stop hiview && rm -rf /data/log/hiview/sys_event_db && service_control start hiview"
+                "service_control stop hiview && rm -rf /data/log/hiview/sys_event_db && rm -rf /log/hiview/backup/ && service_control start hiview"
             ]
         }
     ]
