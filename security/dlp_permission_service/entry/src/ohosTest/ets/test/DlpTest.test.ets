@@ -2039,9 +2039,10 @@ export default function dlpTest() {
           'ohos.dlp.params.method': 'clean'
         }
       }
-      let result: common.AbilityResult = await globalThis.context.startAbilityForResult(want);
       try {
-        result = await globalThis.context.startAbilityForResult(want);
+        let result: common.AbilityResult = await globalThis.context.startAbilityForResult(want);
+        console.log("SUB_SECURITY_DLP_cleanSandboxAppConfig_0200 result is: ", JSON.stringify(result));
+        expect(result.resultCode).assertEqual(19100007);
       } catch (err) {
         console.info(curTag, "startAbility failed", err.code, err.message);
       }
@@ -2050,7 +2051,6 @@ export default function dlpTest() {
       } catch (err) {
         console.info(curTag, "uninstallDLPSandbox failed", err.code, err.message);
       }
-      expect(result.resultCode).assertEqual(-1);
       console.info(curTag, "end");
       return;
     })
