@@ -24,6 +24,7 @@
 #include <multimedia/image_effect/image_effect_errors.h>
 #include <multimedia/image_effect/image_effect_filter.h>
 #include <multimedia/image_framework/image_pixel_map_mdk.h>
+#include <multimedia/image_framework/image/picture_native.h>
 #include <native_window/external_window.h>
 #include <string>
 
@@ -1191,5 +1192,32 @@ napi_value OHImageEffectStop(napi_env env, napi_callback_info info)
 
     napi_value ret;
     napi_create_int32(env, errorCode, &ret);
+    return ret;
+}
+
+napi_value OHImageEffectSetInputPicture(napi_env env, napi_callback_info info)
+{
+    OH_ImageEffect *imageEffect = OH_ImageEffect_Create(IMAGE_EFFECT_NAME);
+    OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
+
+    OH_PictureNative  *nativePicture = nullptr;
+    ImageEffect_ErrorCode code = OH_ImageEffect_SetInputPicture(imageEffect, nativePicture);
+    LOG("OH_ImageEffect_SetInputPicture code value: %d", code);
+    napi_value ret;
+    napi_create_int32(env, code, &ret);
+    return ret;
+}
+
+napi_value OHImageEffectSetOutputPicture(napi_env env, napi_callback_info info)
+{
+    OH_ImageEffect *imageEffect = OH_ImageEffect_Create(IMAGE_EFFECT_NAME);
+    OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
+    
+    OH_PictureNative *outNativePicture = nullptr;
+    ImageEffect_ErrorCode code = OH_ImageEffect_SetOutputPicture(imageEffect, nullptr);
+    LOG("OH_ImageEffect_SetOutputPicture code value: %d", code);
+    
+    napi_value ret;
+    napi_create_int32(env, code, &ret);
     return ret;
 }
