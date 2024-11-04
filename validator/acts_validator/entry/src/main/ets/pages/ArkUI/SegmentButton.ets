@@ -34,56 +34,98 @@ const TAG = '[SegmentButtonTest]';
 @Component
 struct SegmentButtonTest {
   @State name: string = 'SegmentButtonTest';
-  @State StepTips: string = '操作步骤：1、在系统设置中打开屏幕朗读功能\n' +
-    '2、进入页面后分别点击两组分段按钮的选中项和未选中项，确认朗读内容，'+'\n'+'点击Button替换第二组分段按钮内容后，再次点击被替换按钮，确认朗读内容' + '\n' + '预期结果：朗读内容和对应点击的按钮一致则通过';
-  @State Vue: boolean = false;
+  @State stepTips: string = '操作步骤：1、在系统设置中打开屏幕朗读功能\n' +
+    '2、进入页面后分别点击两组分段按钮的选中项和未选中项，确认朗读内容，' + '\n' +
+    '点击Button替换第二组分段按钮内容后，再次点击被替换按钮，确认朗读内容' + '\n' +
+    '预期结果：朗读内容和对应点击的按钮一致则通过';
+  @State isVue: boolean = false;
   @State intervalNum: number = 0;
-  @State time: string = '';
- 
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
-      { icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: '未选中图标1',
-        selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: '选中图标1',
-      accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonIconItem'},
-      { icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: '未选中图标2',
-        selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: '选中图标2',
-        accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonIconItem'},
-      { icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: '未选中图标3',
-        selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: '选中图标3',
-        accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonIconItem'},
-      { icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: '未选中图标4',
-        selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: '选中图标4',
-        accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonIconItem'}
+      {
+        icon: $r('sys.media.ohos_ic_public_email'),
+        iconAccessibilityText: '未选中图标1',
+        selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+        selectedIconAccessibilityText: '选中图标1',
+        accessibilityLevel: 'yes',
+        accessibilityDescription: 'SegmentButtonIconItem'
+      },
+      {
+        icon: $r('sys.media.ohos_ic_public_email'),
+        iconAccessibilityText: '未选中图标2',
+        selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+        selectedIconAccessibilityText: '选中图标2',
+        accessibilityLevel: 'yes',
+        accessibilityDescription: 'SegmentButtonIconItem'
+      },
+      {
+        icon: $r('sys.media.ohos_ic_public_email'),
+        iconAccessibilityText: '未选中图标3',
+        selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+        selectedIconAccessibilityText: '选中图标3',
+        accessibilityLevel: 'yes',
+        accessibilityDescription: 'SegmentButtonIconItem'
+      },
+      {
+        icon: $r('sys.media.ohos_ic_public_email'),
+        iconAccessibilityText: '未选中图标4',
+        selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+        selectedIconAccessibilityText: '选中图标4',
+        accessibilityLevel: 'yes',
+        accessibilityDescription: 'SegmentButtonIconItem'
+      }
     ] as SegmentButtonItemTuple,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   })
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
-      { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: '未选中图标1',
-        selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: '选中图标1',
-        accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonIconTextItem'},
-      { text: '图标2', icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: '未选中图标2',
-        selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: '选中图标2',
-        accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonIconTextItem'},
-      { text: '图标3', icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: '未选中图标3',
-        selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: '选中图标3',
-        accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonIconTextItem'},
-      { text: '图标4', icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: '未选中图标4',
-        selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: '选中图标4',
-        accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonIconTextItem'}
+      {
+        text: '图标1',
+        icon: $r('sys.media.ohos_ic_public_email'),
+        iconAccessibilityText: '未选中图标1',
+        selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+        selectedIconAccessibilityText: '选中图标1',
+        accessibilityLevel: 'yes',
+        accessibilityDescription: 'SegmentButtonIconTextItem'
+      },
+      {
+        text: '图标2',
+        icon: $r('sys.media.ohos_ic_public_email'),
+        iconAccessibilityText: '未选中图标2',
+        selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+        selectedIconAccessibilityText: '选中图标2',
+        accessibilityLevel: 'yes',
+        accessibilityDescription: 'SegmentButtonIconTextItem'
+      },
+      {
+        text: '图标3',
+        icon: $r('sys.media.ohos_ic_public_email'),
+        iconAccessibilityText: '未选中图标3',
+        selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+        selectedIconAccessibilityText: '选中图标3',
+        accessibilityLevel: 'yes',
+        accessibilityDescription: 'SegmentButtonIconTextItem'
+      },
+      {
+        text: '图标4',
+        icon: $r('sys.media.ohos_ic_public_email'),
+        iconAccessibilityText: '未选中图标4',
+        selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+        selectedIconAccessibilityText: '选中图标4',
+        accessibilityLevel: 'yes',
+        accessibilityDescription: 'SegmentButtonIconTextItem'
+      }
     ] as SegmentButtonItemTuple,
     multiply: true
   })
-  
   @State singleSelectIconCapsuleSelectedIndexes: number[] = [3]
   @State multiplySelectIconTextCapsuleSelectedIndexes: number[] = [1, 2]
 
-
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
-    if (this.Vue == false) {
-      Button({ stateEffect: this.Vue }) {
+    if (this.isVue == false) {
+      Button({ stateEffect: this.isVue }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -95,9 +137,8 @@ struct SegmentButtonTest {
       .onClick(() => {
 
       })
-    }
-    else {
-      Button({ stateEffect: this.Vue }) {
+    } else {
+      Button({ stateEffect: this.isVue }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -142,12 +183,12 @@ struct SegmentButtonTest {
   }
 
   aboutToAppear() {
-    FirstDialog.ChooseDialog(this.StepTips, this.name);
+    FirstDialog.ChooseDialog(this.stepTips, this.name);
   }
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-        this.Vue = true;
+      this.isVue = true;
     }, 500)
   }
 
@@ -192,24 +233,36 @@ struct SegmentButtonTest {
 
       Column() {
         Column({ space: 25 }) {
-          Column(){
-            Text('朗读内容包含:').margin({left:12,right:12})
-            Text('选中按钮朗读内容:未选中 + 未选中图标1/2/3/4 + (按钮文本)+按钮+SegmentButtonIconItem/SegmentButtonIconTextItem/SegmentButtonItemOptions/SegmentButtonIconTextItem2').margin({left:12,right:12})
-            Text('选中按钮朗读内容:已选中 + 选中图标1/2/3/4 + (按钮文本)+按钮+SegmentButtonIconItem/SegmentButtonIconTextItem/SegmentButtonItemOptions/SegmentButtonIconTextItem2').margin({left:12,right:12})
+          Column() {
+            Text('朗读内容包含:').margin({ left: 12, right: 12 })
+            Text('选中按钮朗读内容:未选中 + 未选中图标1/2/3/4 + (按钮文本)+按钮+SegmentButtonIconItem/SegmentButtonIconTextItem/SegmentButtonItemOptions/SegmentButtonIconTextItem2')
+              .margin({ left: 12, right: 12 })
+            Text('选中按钮朗读内容:已选中 + 选中图标1/2/3/4 + (按钮文本)+按钮+SegmentButtonIconItem/SegmentButtonIconTextItem/SegmentButtonItemOptions/SegmentButtonIconTextItem2')
+              .margin({ left: 12, right: 12 })
           }
-          SegmentButton({ options: this.iconCapsuleOptions,
-            selectedIndexes: $singleSelectIconCapsuleSelectedIndexes })
 
-          SegmentButton({ options: this.iconTextCapsuleOptions,
-            selectedIndexes: $multiplySelectIconTextCapsuleSelectedIndexes })
-          Button("将按钮2、3替换为splice1、splice2")
+          SegmentButton({
+            options: this.iconCapsuleOptions,
+            selectedIndexes: $singleSelectIconCapsuleSelectedIndexes
+          })
+
+          SegmentButton({
+            options: this.iconTextCapsuleOptions,
+            selectedIndexes: $multiplySelectIconTextCapsuleSelectedIndexes
+          })
+          Button('将按钮2、3替换为splice1、splice2')
             .onClick(() => {
               this.iconTextCapsuleOptions.buttons.splice(1, 2, new SegmentButtonItemOptions({
                 text: 'splice1', accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonItemOptions '
-              }), new SegmentButtonItemOptions({ text: 'splice2', icon: $r('sys.media.ohos_ic_public_email'),
-                iconAccessibilityText: '未选中splice2', selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-                selectedIconAccessibilityText: '选中splice2', accessibilityLevel: 'yes',
-                accessibilityDescription: 'SegmentButtonIconTextItem2' }))
+              }), new SegmentButtonItemOptions({
+                text: 'splice2',
+                icon: $r('sys.media.ohos_ic_public_email'),
+                iconAccessibilityText: '未选中splice2',
+                selectedIcon: $r('sys.media.ohos_ic_public_clock'),
+                selectedIconAccessibilityText: '选中splice2',
+                accessibilityLevel: 'yes',
+                accessibilityDescription: 'SegmentButtonIconTextItem2'
+              }))
             })
         }.width('90%')
       }
@@ -231,7 +284,7 @@ struct SegmentButtonTest {
           AlertDialog.show(
             {
               title: '操作提示',
-              message: this.StepTips,
+              message: this.stepTips,
               confirm: {
                 value: 'OK',
                 action: () => {
@@ -253,4 +306,3 @@ struct SegmentButtonTest {
     .backgroundColor('#F1F3F5')
   }
 }
-
