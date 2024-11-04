@@ -20,11 +20,11 @@ import FirstDialog from '../model/FirstDialog';
 @Component
 struct NavigationEnableHoverMode {
   @State name: string = 'NavigationEnableHoverMode';
-  @State StepTips: string = '操作步骤：1、使用折叠屏手机运行测试\n2、手动折叠手机屏幕' +
+  @State stepTips: string = '操作步骤：1、使用折叠屏手机运行测试\n2、手动折叠手机屏幕' +
     '\n' + '预期结果：MainTitle悬浮在下屏的上方位置';
 
   aboutToAppear() {
-    FirstDialog.ChooseDialog(this.StepTips, this.name);
+    FirstDialog.ChooseDialog(this.stepTips, this.name);
   }
 
   build() {
@@ -59,7 +59,7 @@ struct NavigationEnableHoverMode {
           AlertDialog.show(
             {
               title: '操作提示',
-              message: this.StepTips,
+              message: this.stepTips,
               confirm: {
                 value: 'OK',
                 action: () => {
