@@ -21,6 +21,7 @@ export default function DeviceManagerNoPermissionJsTest() {
     describe("NoPermissionJsTest", function () {
         const TAG = "[NoPermissionJsTest]";
         const PERMISSION_DENIED_CODE = 201;
+        const PERMISSION_DENIED_NOSYSTEM_CODE = 202;
         const TEST_DEVICE_ID = 0;
         const TEST_DRIVER_UID = 'testDriverUid'
         const TEST_FUNCTION = (data) => {
@@ -254,7 +255,7 @@ export default function DeviceManagerNoPermissionJsTest() {
             } catch (err) {
                 console.info(TAG, 'testNoPermissionQueryDeviceInfo001 catch err code: ',
                     err.code, ', message: ', err.message);
-                expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+                expect(err.code).assertEqual(PERMISSION_DENIED_NOSYSTEM_CODE);
                 done();
             }
         });
@@ -279,7 +280,7 @@ export default function DeviceManagerNoPermissionJsTest() {
             } catch (err) {
                 console.info(TAG, 'testNoPermissionQueryDriverInfo001 catch err code: ',
                     err.code, ', message: ', err.message);
-                expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+                expect(err.code).assertEqual(PERMISSION_DENIED_NOSYSTEM_CODE);
                 done();
             }
         });
