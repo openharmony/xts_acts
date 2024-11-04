@@ -81,13 +81,14 @@ struct IndexPage {
     { title: 'ImageAnimator', uri: 'pages/ArkUI/ImageAnimator' },
     { title: 'TextPickerDialog', uri: 'pages/ArkUI/TextPickerDialog' },
     { title: 'Refresh', uri: 'pages/ArkUI/Refresh' },
-    { title: 'onAccessibilityHover', uri: 'pages/ArkUI/AccessBilityHover' }
+    { title: 'onAccessibilityHover', uri: 'pages/ArkUI/AccessBilityHover' },
+    { title: 'NavigationEnableHoverMode', uri: 'pages/ArkUI/NavigationEnableHoverMode' }
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];
   @State ColorTrue2: number[] = [];
 
-  async onPageShow() {
+  async onPageShow(){
     let Test : data_preferences.Preferences | number = 0;
     let context: Context | null;
     context = globalThis.getContext();
@@ -118,7 +119,7 @@ struct IndexPage {
     });
     promise = preferences.flush();
     promise.then(() => {
-      console.info("Succeeded in flushing.");
+      console.info('Succeeded in flushing.');
     });
     this.TEST = Test;
 
@@ -129,7 +130,7 @@ struct IndexPage {
     let ColorBack: string = String.fromCharCode(...uint8Array);
     let TestList: string[] = ColorBack.split(';');
     for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
-      letColor[i] = TestList[i * 2+1];
+      letColor[i] = TestList[i * 2 + 1];
     }
     fs.closeSync(opt);
 
@@ -156,8 +157,7 @@ struct IndexPage {
         let Fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         fs.writeSync(Fd.fd, Report);
         filewrite(name1, results, titles);
-      }
-      else if (this.result === 'false') {
+      } else if (this.result === 'false') {
         this.ColorObject[this.current] = 'false';
         let Log = (titles + ';' + 'false' + ';');
         let key = ColorBack.substring(Index, Index + number);
@@ -170,8 +170,7 @@ struct IndexPage {
         let Fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         fs.writeSync(Fd.fd, Report);
         filewrite(name1, results, titles);
-      }
-      else {
+      } else {
         this.ColorObject[this.current] = this.ColorObject[this.current];
       }
     }
@@ -180,12 +179,10 @@ struct IndexPage {
         this.ColorTrue[i] = 0x263526
         this.ColorTrue2[i] = 0x0CB60C
 
-      }
-      else if (this.ColorObject[i] === 'false') {
+      } else if (this.ColorObject[i] === 'false') {
         this.ColorTrue[i] = 0x380303
         this.ColorTrue2[i] = 0xd60a0a
-      }
-      else {
+      } else {
         this.ColorTrue[i] = 0x000000
         this.ColorTrue2[i] = 0x000000
       }
@@ -193,7 +190,7 @@ struct IndexPage {
 
   }
 
-  build() {
+  build(){
     Column() {
       Row() {
         Button() {
@@ -224,7 +221,7 @@ struct IndexPage {
           .onClick(() => {
             AlertDialog.show(
               {
-                message: "是否删除所有记录",
+                message: '是否删除所有记录',
                 primaryButton: {
                   value: 'Yes',
                   action: () => {
@@ -322,7 +319,7 @@ struct IndexPage {
     .backgroundColor(Color.Black)
   }
 
-  ClearText() {
+  ClearText(){
     fs.rmdirSync(path1);
     fs.mkdirSync(path1);
     let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -332,23 +329,23 @@ struct IndexPage {
     }
   }
 
-  ReadTextParseXml() {
+  ReadTextParseXml(){
     let ReportPath = path1 + '/ArkUIReport.txt';
     let dir = fs.listFileSync(path1);
-    console.info("ssssss" + dir);
+    console.info('ssssss' + dir);
     while (dir) {
       let OP = fs.openSync(ReportPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       let buf = new ArrayBuffer(40960);
       let RD = fs.readSync(OP.fd, buf);
-      console.info("ddddd" + RD);
+      console.info('ddddd' + RD);
       let report: string = String.fromCharCode(...new Uint8Array(buf));
 
-      let str1: string[] = report.split(";");
+      let str1: string[] = report.split(';');
       let title: string[] = [];
       let result: string[] = [];
       for (let i = 0; i < Math.floor(str1.length / 2); i++) {
-        title[i] = str1[i*2];
-        result[i] = str1[i * 2+1];
+        title[i] = str1[i * 2];
+        result[i] = str1[i * 2 + 1];
       }
       let FailIndex: number = report.indexOf('false');
       let FailNum = 0;
@@ -371,25 +368,25 @@ struct IndexPage {
       let bufView = new DataView(arrayBuffer);
       let serializer = new xml.XmlSerializer(bufView);
       serializer.setDeclaration();
-      serializer.startElement("testsuite");
-      serializer.setAttributes("name", "ActsArkUITest");
-      serializer.setAttributes("time", "*");
-      serializer.setAttributes("errors", "0");
-      serializer.setAttributes("disabled", "0");
-      serializer.setAttributes("failures", failNum);
-      serializer.setAttributes("ignored", "0");
-      serializer.setAttributes("tests", testNum);
-      serializer.setAttributes("message", "*");
-      serializer.setAttributes("modulename", "ActsArkUITest");
+      serializer.startElement('testsuite');
+      serializer.setAttributes('name', 'ActsArkUITest');
+      serializer.setAttributes('time', '*');
+      serializer.setAttributes('errors', '0');
+      serializer.setAttributes('disabled', '0');
+      serializer.setAttributes('failures', failNum);
+      serializer.setAttributes('ignored', '0');
+      serializer.setAttributes('tests', testNum);
+      serializer.setAttributes('message', '*');
+      serializer.setAttributes('modulename', 'ActsArkUITest');
       for (let i = 0; i < title.length; i++) {
-        serializer.startElement("testcase");
-        serializer.setAttributes("name", String(title[i]));
-        serializer.setAttributes("status", "run");
-        serializer.setAttributes("time", "*");
-        serializer.setAttributes("classname", "ActsArkUITest");
-        serializer.setAttributes("result", String(result[i]));
-        serializer.setAttributes("level", "*");
-        serializer.setAttributes("message", "*");
+        serializer.startElement('testcase');
+        serializer.setAttributes('name', String(title[i]));
+        serializer.setAttributes('status', 'run');
+        serializer.setAttributes('time', '*');
+        serializer.setAttributes('classname', 'ActsArkUITest');
+        serializer.setAttributes('result', String(result[i]));
+        serializer.setAttributes('level', '*');
+        serializer.setAttributes('message', '*');
         serializer.endElement();
       }
       serializer.endElement();
@@ -400,11 +397,11 @@ struct IndexPage {
       console.info(xmlPath);
       let xmlfd: fs.File | null = null;
       try {
-        console.error(TAG, "write xmlPath =" + xmlPath);
+        console.error(TAG, 'write xmlPath =' + xmlPath);
         xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         fs.writeSync(xmlfd.fd, serializerStr);
       } catch (err) {
-        console.error(TAG, "read xmlPath =" + xmlPath + "error:" + err);
+        console.error(TAG, 'read xmlPath =' + xmlPath + 'error:' + err);
       } finally {
         if (xmlfd !== null) {
           fs.closeSync(xmlfd)
@@ -415,22 +412,21 @@ struct IndexPage {
   }
 }
 
-function filewrite(name1: string, results: string, titles: string) {
+function filewrite(name1: string, results: string, titles: string){
   let fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   let buf = new ArrayBuffer(4096);
   let RD = fs.readSync(fd.fd, buf);
   let uint8Array = new Uint8Array(buf, 0, RD);
-  console.info("RRRRRRRRRRd" + RD);
+  console.info('RRRRRRRRRRd' + RD);
   let report: ESObject = String.fromCharCode(...uint8Array);
   let WriteTitle = (titles).toString();
   let WriteResult = (results).toString();
   let number = WriteTitle.length + WriteResult.length + 2;
   let Index: number = report.indexOf(WriteTitle);
-  let Log = (titles + ";" + results + ";").toString();
+  let Log = (titles + ';' + results + ';').toString();
   if (Index == -1) {
     fs.writeSync(fd.fd, Log);
-  }
-  else if (Index != -1) {
+  } else if (Index != -1) {
     let key: string = report.substring(Index, Index + number);
     let FD = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     report = report.replace(key, Log);
