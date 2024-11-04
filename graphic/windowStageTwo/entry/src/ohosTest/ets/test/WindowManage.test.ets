@@ -120,9 +120,10 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
@@ -157,9 +158,10 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
@@ -193,9 +195,10 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
@@ -229,9 +232,10 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
@@ -265,9 +269,10 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
@@ -301,9 +306,10 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
@@ -322,10 +328,12 @@ export default function windowManageTest() {
      */
     it('testGetWindowsByCoordinateWithTwoSubWindow', 0, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithTwoSubWindow';
+      let subWindowClass: window.Window;
+      let sysSubWindowClass: window.Window;
       createSysSubWindow(context, caseName).then((data) => {
-        let sysSubWindowClass = data;
+        sysSubWindowClass = data;
         createSubWindow(windowStage, caseName).then(async (data) => {
-          let subWindowClass = data;
+          subWindowClass = data;
           await sleep(1000);
           window.getWindowsByCoordinate(displayId).then(async (data) => {
             await subWindowClass.destroyWindow();
@@ -340,9 +348,11 @@ export default function windowManageTest() {
             done();
           });
         })
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
+          await sysSubWindowClass.destroyWindow();
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
@@ -409,6 +419,7 @@ export default function windowManageTest() {
       } catch (exception) {
         if (exception.code === 801) {
           console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          windowStage.off('windowStageClose');
           done();
         } else {
           console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -453,6 +464,7 @@ export default function windowManageTest() {
       } catch (exception) {
         if (exception.code === 801) {
           console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          windowStage.off('windowStageClose')
           done();
         } else {
           console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -498,6 +510,7 @@ export default function windowManageTest() {
       } catch (exception) {
         if (exception.code === 801) {
           console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          windowStage.off('windowStageClose');
           done();
         } else {
           console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -561,9 +574,10 @@ export default function windowManageTest() {
             done();
           }
         });
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow()
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
@@ -604,6 +618,7 @@ export default function windowManageTest() {
       }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow()
           done();
         } else {
           console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
@@ -637,6 +652,7 @@ export default function windowManageTest() {
       } catch (exception) {
         if (exception.code === 801) {
           console.info(`${caseName} The current device type does not support to set whether to display the maximize buttons of main window.`);
+          windowClass.off('windowTitleButtonRectChange');
           done();
         } else {
           console.error(`${caseName} Failed to set whether to display the maximize buttons of main window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -696,11 +712,12 @@ export default function windowManageTest() {
       }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow()
           done();
         } else {
           console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
           expect(1300004).assertEqual(err.code);
-          await subWindowClass.destroyWindow()
+          await subWindowClass.destroyWindow();
           done();
         }
       });
@@ -729,9 +746,10 @@ export default function windowManageTest() {
           await subWindowClass.destroyWindow();
           done();
         });
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         if (err.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);

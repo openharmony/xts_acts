@@ -23,6 +23,6 @@ export default function testsuite() {
   windowPromiseTest();
   windowMaximizeTest();
   windowImmersiveTest();
-  windowPropertiesTest();
   windowManageTest();
+  windowPropertiesTest();
 }
