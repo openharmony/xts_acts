@@ -71,6 +71,6 @@ struct NavigationEnableHoverMode {
       }
     }
     .title('MainTitle', { enableHoverMode: true })
-    .titleMode(NavigationTitleModel.Full)
+    .titleMode(NavigationTitleMode.Full)
   }
 }
