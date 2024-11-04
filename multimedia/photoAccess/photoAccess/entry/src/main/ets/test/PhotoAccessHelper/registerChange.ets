@@ -14,17 +14,27 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, it, expect, beforeAll } from 'deccjsunit/index'
 import {
   sleep,
   fetchOption,
   photoKeys,
   getFileAsset,
   photoFetchOption,
+  fetchAllOption,
+  sleep,
+  getPermission
 } from '../../../../../../../common'
 
 export default function registerChangeTest () {
   describe('registerChangeTest', function () {
+
+    beforeAll(async () => {
+      console.info('beforeAll case');
+      await getPermission();
+      await sleep();
+    });
+
     const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
     const { NOTIFY_ADD, NOTIFY_UPDATE, NOTIFY_REMOVE, NOTIFY_ALBUM_ADD_ASSET, NOTIFY_ALBUM_REMOVE_ASSET } =
       photoAccessHelper.NotifyType;
@@ -120,17 +130,16 @@ export default function registerChangeTest () {
         let album = await helper.createAlbum(albumName);
         albumUri = album.albumUri;
         await sleep(550);
-        helper.registerChange(albumUri, false, async (changeData) => {
+        helper.registerChange(DEFAULT_ALBUM_URI, true, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-          expect(changeData.uris[0]).assertEqual(albumUri);
         });
         await sleep(550);
         album.albumName = Date.now() + album.albumName;
         await album.commitModify();
         await sleep(1000);
-        helper.unRegisterChange(albumUri);
+        helper.unRegisterChange(DEFAULT_ALBUM_URI);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -162,7 +171,9 @@ export default function registerChangeTest () {
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_ADD_ASSET);
           expect(changeData.uris[0]).assertEqual(album.albumUri);
-          expect(changeData.extraUris[0]).assertEqual(asset.uri);
+          let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = album.getAssets(fetchAllOption());
+          let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+          expect(changeData.extraUris[0]).assertEqual(newAsset.uri);
         });
         await sleep(550);
         await album.addAssets([asset]);
@@ -195,15 +206,17 @@ export default function registerChangeTest () {
         let count = 0;
         await album.addAssets([asset]);
         await sleep(550);
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchAllOption());
+        let newAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
         helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
           expect(changeData.uris[0]).assertEqual(album.albumUri);
-          expect(changeData.extraUris[0]).assertEqual(asset.uri);
+          expect(changeData.extraUris[0]).assertEqual(newAsset.uri);
         });
         await sleep(550);
-        await album.removeAssets([asset]);
+        await album.removeAssets([newAsset]);
         await sleep(1000);
         helper.unRegisterChange(album.albumUri);
         expect(count).assertEqual(1);

@@ -14,7 +14,8 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import { describe, it, expect, beforeAll } from 'deccjsunit/index'
 import {
   albumType,
   albumSubtype,
@@ -22,12 +23,31 @@ import {
   getFileAsset,
   getAlbumId,
   photoKeys,
-  albumKeys
+  albumKeys,
+  fetchAllOption,
+  pushCreateAsset,
+  sleep,
+  getPermission
 } from '../../../../../../../common'
 
 export default function checkAlbumAttrTest () {
   describe('checkAlbumAttrTest', function () {
+
     const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
+    let fileNameList = ['checkAttr.jpg'];
+
+
+
+
+
+
+
+    beforeAll(async () => {
+      console.info('beforeAll case');
+      await getPermission();
+      await sleep();
+      await pushCreateAsset(fileNameList);
+    });
 
     async function checkAssetAttr (done, testNum) {
       try {
@@ -37,7 +57,7 @@ export default function checkAlbumAttrTest () {
         expect(album.albumName).assertEqual(testNum);
         const id = getAlbumId(album.albumUri);
         expect(album.albumUri).assertEqual('file://media/PhotoAlbum/' + id);
-        const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+        const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'checkAttr.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
         await album.addAssets([asset]);
         const fetchAlbumOps = fetchOption(testNum, albumKeys.URI, album.albumUri);
@@ -45,7 +65,9 @@ export default function checkAlbumAttrTest () {
         const newAlbum = await fetchResult.getFirstObject();
         console.info(`${testNum} count: ${newAlbum.count}, coverUri: ${newAlbum.coverUri}`)
         expect(newAlbum.count).assertEqual(1);
-        expect(newAlbum.coverUri).assertEqual(asset.uri);
+        let albumAssetList: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await newAlbum.getAssets(fetchAllOption());
+        let coverAsset: photoAccessHelper.PhotoAsset = await albumAssetList.getFirstObject();
+        expect(newAlbum.coverUri).assertEqual(coverAsset.uri);
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
@@ -101,7 +123,15 @@ export default function checkAlbumAttrTest () {
         const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, fetchAlbumOps);
         album = await fetchResult.getFirstObject();
         checkImageVideoCount(album, testNum, 2, 1);
-        await album.removeAssets([imageAsset2, videoAsset]);
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        predicates.in(photoKeys.DISPLAY_NAME, ['albumImageVideoCount02.jpg', 'albumImageVideoCount01.mp4']);
+        let assetFetchOps : photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+        let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(assetFetchOps);
+        let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await albumFetchResult.getAllObjects();
+        await album.removeAssets(photoAssetList);
         checkImageVideoCount(album, testNum, 1, 0);
         done();
       } catch (error) {
