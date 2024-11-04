@@ -9422,7 +9422,7 @@ static JSVM_CallbackStruct param[] = {
     {.callback = TestGetValueStringUtf8Test4, .data = nullptr},
     {.callback = TestGetValueStringUtf8Test5, .data = nullptr},
     {.callback = TestGetValueStringUtf8Test6, .data = nullptr},
-    {.callback = TestCreatestringUtf8Test1, .data = nullptr},
+    {.callback = TestCreateStringUtf8Test1, .data = nullptr},
     {.callback = TestCreateStringUtf8Test2, .data = nullptr},
     {.callback = TestCreateStringUtf8Test3, .data = nullptr},
     {.callback = TestCreateStringUtf8Test4, .data = nullptr},

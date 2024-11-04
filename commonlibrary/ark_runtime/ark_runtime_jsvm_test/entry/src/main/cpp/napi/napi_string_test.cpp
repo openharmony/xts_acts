@@ -212,7 +212,7 @@
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf8(env, nullptr, size, &strRstName);
     
     if (rstStatus == JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf8test1: CreateStringUtf8 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf8Test1: CreateStringUtf8 Failed");
     }
     
     bool result = true;
@@ -966,7 +966,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test5(JSVM_Env env, JSVM_CallbackInfo info)
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test5(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -977,7 +977,7 @@
     JSVM_Status creatStatus = OH_JSVM_CreateStringLatin1(env, testStr, strlen(testStr), &setValueName);
     if (creatStatus != JSVM_OK) {
         printf("OH_JSVM_CreateStringLatin1 Failed");
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test5: OH_JSVM_CreateStringLatin1 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1Test5: OH_JSVM_CreateStringLatin1 Failed");
         return nullptr;
     }
     
@@ -987,10 +987,10 @@
     char resultStr[BufSizeMax] = {0};
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, setValueName, resultStr, strLen, &size);
     if (size != strlen(resultStr)) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test5: OH_JSVM_GetValueStringLatin1 size Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1Test5: OH_JSVM_GetValueStringLatin1 size Failed");
     }
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test5: OH_JSVM_GetValueStringLatin1 status Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1Test5: OH_JSVM_GetValueStringLatin1 status Failed");
     }
     
     bool result = true;
