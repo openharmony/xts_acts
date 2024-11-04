@@ -44,7 +44,7 @@ struct MarqueeMirroring {
         step: this.step,
         loop: this.loop,
         fromStart: this.fromStart,
-        src: this.marqueeText + this.src
+        src: this.marqueeText + ' Hello'
       })
         .id('MarqueeMirroring_id')
         .marqueeUpdateStrategy(MarqueeUpdateStrategy.PRESERVE_POSITION)

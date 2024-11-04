@@ -41,7 +41,8 @@ export default function MarqueeMirroringTest() {
     });
 
     afterEach(async () => {
-      await CommonFunc.sleep(1000);
+      router.clear();
+      await CommonFunc.sleep(1000);   
       console.info("MarqueeMirroringTest after each called");
     });
 
@@ -81,7 +82,7 @@ export default function MarqueeMirroringTest() {
       let button1 = await driver.findComponent(ON.id('MarqueeMirroring_Start'));
       await CommonFunc.sleep(1000);
       await button1.click();
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(8000);      
       let strJson = getInspectorByKey('MarqueeMirroring_onBounce');
       await CommonFunc.sleep(1000);
       let obj: ESObject = JSON.parse(strJson);
@@ -104,12 +105,12 @@ export default function MarqueeMirroringTest() {
       await CommonFunc.sleep(1000);
       let button1 = await driver.findComponent(ON.id('MarqueeMirroring_Start'));
       await button1.click();
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(6000);
       let strJson = getInspectorByKey('MarqueeMirroring_onFinish');
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(1000);
       let obj: ESObject = JSON.parse(strJson);
       console.info("[MarqueeMirroringTest_003] component obj is: " + JSON.stringify(obj));
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('onFinish succ');
       console.info('[MarqueeMirroringTest_003] END');
       done();
