@@ -63,14 +63,17 @@ static napi_value OHNetConnFreeDnsResult(napi_env env, napi_callback_info info)
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int32_t index;
-    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+    napi_get_value_int32(env, args[0], &index);
     struct addrinfo *res = nullptr;
     int ret = -1;
+    char *host = const_cast<char*>("www.baidu.com");
+    char *serv = const_cast<char*>("https");
+    char *noHost = const_cast<char*>("");
     if (index == CASE_INDEX_1) {
-        OH_NetConn_GetAddrInfo("www.baidu.com", "https", nullptr, &res, 0);
+        OH_NetConn_GetAddrInfo(host, serv, nullptr, &res, 0);
         ret = OH_NetConn_FreeDnsResult(res);
     } else if (index == CASE_INDEX_2) {
-        OH_NetConn_GetAddrInfo("", "https", nullptr, &res, 0);
+        OH_NetConn_GetAddrInfo(noHost, serv, nullptr, &res, 0);
         ret = OH_NetConn_FreeDnsResult(res);
     } else if (index == CASE_INDEX_3) {
         ret = OH_NetConn_FreeDnsResult(nullptr);
@@ -272,6 +275,27 @@ static napi_value OHOSNetConnRegisterDnsResolver(napi_env env, napi_callback_inf
     return result;
 }
 
+// 注册自定义 DNS 解析器
+static napi_value OHNetConnRegisterDnsResolver(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        OH_NetConn_CustomDnsResolver customResolver = MyCustomDnsResolver;
+        ret = OH_NetConn_RegisterDnsResolver(customResolver);
+    } else if (index == CASE_INDEX_2) {
+        ret = OH_NetConn_RegisterDnsResolver(nullptr);
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
 // 取消注册自定义 DNS 解析器。
 static napi_value OHOSNetConnUnregisterDnsResolver(napi_env env, napi_callback_info info)
 {
@@ -291,6 +315,31 @@ static napi_value OHOSNetConnUnregisterDnsResolver(napi_env env, napi_callback_i
         ret = OHOS_NetConn_UnregisterDnsResolver();
     } else if (index == CASE_INDEX_3) {
         ret = OHOS_NetConn_UnregisterDnsResolver();
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+// 取消注册自定义 DNS 解析器。
+static napi_value OHNetConnUnregisterDnsResolver(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        OH_NetConn_CustomDnsResolver customResolver = MyCustomDnsResolver;
+        ret = OH_NetConn_RegisterDnsResolver(customResolver);
+        ret = OH_NetConn_UnregisterDnsResolver();
+    } else if (index == CASE_INDEX_2) {
+        ret = OH_NetConn_RegisterDnsResolver(nullptr);
+        ret = OH_NetConn_UnregisterDnsResolver();
+    } else if (index == CASE_INDEX_3) {
+        ret = OH_NetConn_UnregisterDnsResolver();
     }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
@@ -407,7 +456,8 @@ static napi_value OHNetConnRegisterNetConnCallbackTimeout(napi_env env, napi_cal
         OH_NetConn_UnregisterNetConnCallback(callbackId);
     } else if (index == CASE_INDEX_6) {
         specifier.caps.bearerTypes[0] = NETCONN_BEARER_WIFI;
-        specifier.bearerPrivateIdentifier = "wifi";
+        char *wifi = const_cast<char*>("wifi");
+        specifier.bearerPrivateIdentifier = wifi;
         ret = OH_NetConn_RegisterNetConnCallback(&specifier, &netConnCallback, UINT32_MAX, &callbackId);
         OH_NetConn_UnregisterNetConnCallback(callbackId);
     }
@@ -533,7 +583,7 @@ void HandleHttpProxyChange(NetConn_HttpProxy *proxy)
 }
 
 // 注册自定义 代理配置信息变化 回调。
-static napi_value OHOSNetConnRegisterAppHttpProxyCallback(napi_env env, napi_callback_info info)
+static napi_value OHNetConnRegisterAppHttpProxyCallback(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -569,7 +619,7 @@ static napi_value OHOSNetConnRegisterAppHttpProxyCallback(napi_env env, napi_cal
 }
 
 // 注销自定义 代理配置信息变化 回调。
-static napi_value OHOSNetConnUnregisterAppHttpProxyCallback(napi_env env, napi_callback_info info)
+static napi_value OHNetConnUnregisterAppHttpProxyCallback(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -632,12 +682,16 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"OHOSNetConnUnregisterDnsResolver", nullptr, OHOSNetConnUnregisterDnsResolver, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"OHNetConnRegisterDnsResolver", nullptr, OHNetConnRegisterDnsResolver, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OHNetConnUnregisterDnsResolver", nullptr, OHNetConnUnregisterDnsResolver, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"OHNetConnBindSocket", nullptr, OHNetConnBindSocket, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OHNetConnSetAppHttpProxy", nullptr, OHNetConnSetAppHttpProxy, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"OHOSNetConnRegisterAppHttpProxyCallback", nullptr, OHOSNetConnRegisterAppHttpProxyCallback, nullptr,
+        {"OHNetConnRegisterAppHttpProxyCallback", nullptr, OHNetConnRegisterAppHttpProxyCallback, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-        {"OHOSNetConnUnregisterAppHttpProxyCallback", nullptr, OHOSNetConnUnregisterAppHttpProxyCallback, nullptr,
+        {"OHNetConnUnregisterAppHttpProxyCallback", nullptr, OHNetConnUnregisterAppHttpProxyCallback, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OHNetConnRegisterNetConnCallback", nullptr, OHNetConnRegisterNetConnCallback, nullptr, nullptr, nullptr,
          napi_default, nullptr},
@@ -667,3 +721,4 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 {
     napi_module_register(&demoModule);
 }
+
