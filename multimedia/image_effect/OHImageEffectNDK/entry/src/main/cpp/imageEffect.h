@@ -50,6 +50,8 @@ napi_value OHImageEffectSetOutputSurface(napi_env env, napi_callback_info info);
 napi_value OHImageEffectSetOutputUri(napi_env env, napi_callback_info info);
 napi_value OHImageEffectStart(napi_env env, napi_callback_info info);
 napi_value OHImageEffectStop(napi_env env, napi_callback_info info);
+napi_value OHImageEffectSetInputPicture(napi_env env, napi_callback_info info);
+napi_value OHImageEffectSetOutputPicture(napi_env env, napi_callback_info info);
 
 #ifdef __cplusplus
 }

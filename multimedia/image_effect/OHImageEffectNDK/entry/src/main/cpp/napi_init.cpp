@@ -85,6 +85,8 @@ napi_property_descriptor desc3[] = {
     DESCRIPTOR("OHImageEffectSetOutputUri", OHImageEffectSetOutputUri),
     DESCRIPTOR("OHImageEffectStart", OHImageEffectStart),
     DESCRIPTOR("OHImageEffectStop", OHImageEffectStop),
+    DESCRIPTOR("OHImageEffectSetInputPicture", OHImageEffectSetInputPicture),
+    DESCRIPTOR("OHImageEffectSetOutputPicture", OHImageEffectSetOutputPicture),
 };
 
 EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
