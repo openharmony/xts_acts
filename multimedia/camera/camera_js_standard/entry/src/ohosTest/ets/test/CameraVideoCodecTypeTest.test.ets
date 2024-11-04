@@ -474,6 +474,10 @@ export default function CameraVideoCodecTypeTest() {
                   "Enter SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100 is: " +
                 videoCodecTypesArray[i]);
               }
+            } else {
+                console.info(TAG +
+                    "Enter SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100 FAILED");
+                expect().assertFail(); 
             }
             await sleep(1000);
             await stopCameraSession();
@@ -511,16 +515,16 @@ export default function CameraVideoCodecTypeTest() {
 
           await startCameraSession(i);
 
-          let videoCodecType = mPhotoOutput.setMovingPhotoVideoCodecType(cameraObj.VideoCodecType.AVC);
-          if (videoCodecType != null || videoCodecType != undefined) {
-            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 is: " +
-              videoCodecType);
-          } else {
+          try {
+            mPhotoOutput.setMovingPhotoVideoCodecType(cameraObj.VideoCodecType.AVC);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 finsh");
+          } catch {
             console.info(TAG +
-              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 FAILED with VideoCodecType is: " +
-              videoCodecType);
+                "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 FAILED with VideoCodecType is: " +
+                 cameraObj.VideoCodecType.AVC);
             expect().assertFail();
           }
+
           await sleep(1000);
           await stopCameraSession();
           console.info(TAG +
@@ -556,16 +560,16 @@ export default function CameraVideoCodecTypeTest() {
 
           await startCameraSession(i);
 
-          let videoCodecType = mPhotoOutput.setMovingPhotoVideoCodecType(cameraObj.VideoCodecType.HEVC);
-          if (videoCodecType != null || videoCodecType != undefined) {
-            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 is: " +
-              videoCodecType);
-          } else {
+          try {
+            mPhotoOutput.setMovingPhotoVideoCodecType(cameraObj.VideoCodecType.HEVC);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 finsh");
+          } catch {
             console.info(TAG +
-              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 FAILED with VideoCodecType is: " +
-              videoCodecType);
+                "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 FAILED with VideoCodecType is: " +
+                 cameraObj.VideoCodecType.HEVC);
             expect().assertFail();
           }
+          
           await sleep(1000);
           await stopCameraSession();
           console.info(TAG +
