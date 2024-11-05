@@ -14,7 +14,7 @@
  */
 
 {
-  "name": "libtestNetConnectionNDK.so",
+  "name": "testNetConnectionNdk.so",
   "types": "./index.d.ts",
   "version": "",
   "description": "Please describe the basic information."
