@@ -2,11 +2,11 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-        "bundle-name": "com.example.getformsinfotest",
-        "module-name": "entry",
+        "test-timeout": "300000",
+        "bundle-name": "com.ohos.st.formszerotest",
+        "package-name": "com.ohos.st.formszerotest",
         "shell-timeout": "600000",
-        "testcase-timeout": 20000
+        "testcase-timeout":"30000"
     },
     "kits": [
         {
@@ -18,5 +18,5 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ] 
+    ]
 }
