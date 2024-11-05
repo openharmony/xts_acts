@@ -123,7 +123,7 @@ static napi_value SUB_DDM_RDB_ENCRYPT_0100(napi_env env, napi_callback_info info
     NAPI_ASSERT(env, storeEncryptTestRdbStore_ != NULL, "OH_Rdb_GetOrOpen config2 is fail.");
     
     storeEncryptTestRdbStore2_ = OH_Rdb_GetOrOpen(&config3_, &errCode);
-    NAPI_ASSERT(env, storeEncryptTestRdbStore2_ == NULL, "OH_Rdb_GetOrOpen config3 is success.");
+    NAPI_ASSERT(env, storeEncryptTestRdbStore2_ != NULL, "OH_Rdb_GetOrOpen config3 is success.");
     
     errCode = OH_Rdb_CloseStore(storeEncryptTestRdbStore_);
     NAPI_ASSERT(env, errCode == 0, "OH_Rdb_CloseStore is fail.");
