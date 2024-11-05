@@ -39,6 +39,7 @@ export const auxiliaryMetadataGetProperty: (metadataType: image.MetadataType, ke
 export const GetPixelmapBuffer: (src: ArrayBuffer) => ArrayBuffer;
 export const setNeedsPackPropertiesToTestPackingOptions: (needpackExif: boolean) => void;
 export const compareArrayBuffer: (arrayBuffer1: ArrayBuffer, arrayBuffer2: ArrayBuffer) => boolean;
+export const getTempAuxiliaryPicture: (uri: string, auxType: image.AuxiliaryPictureType) => image.AuxiliaryPicture;
 
 // Metadata
 export const MetadataCreate: (metadataType: image.MetadataType) => image.Metadata;
@@ -59,6 +60,9 @@ export const SetDesiredAuxiliaryPictures: (arraySize: number, auxTypes: Array<im
 export const ReleasePictureDecodingOptions: () => number;
 export const CreateSinglePictureByImageSource: () => number;
 export const GetImageSourceInfoSize: () => image.Size;
+export const CreateImageSourceFromFd: (fd: number) => void;
+export const CreateImageSourceFromData: (buf: ArrayBufferLike) => void;
+export const GetImageSourceDynamicRange: () => number;
 
 // Picture
 export const CreatePictureByPixelmap: () => number;
@@ -116,7 +120,15 @@ export const AuxiliaryPictureReadPixelsErrorCode: (dst: ArrayBuffer) => number;
 export const SetAuxiliaryPictureErrorCode: (auxType: image.AuxiliaryPictureType,
   auxPicture: image.AuxiliaryPicture) => number;
 export const MetadataSetPropertyErrorCode: (key: string, value: string) => number;
-export const PictureGetMetadataErrorCode: (metadataType: image.MetadataType) => image.Metadata;
+export const PictureGetMetadataErrorCode: (metadataType: image.MetadataType) => number;
 export const PictureSetMetadataErrorCode: (metadataType: image.MetadataType, metadata: image.Metadata) => number;
 export const GetAuxiliaryPictureErrorCode: (auxType: image.AuxiliaryPictureType) => number;
 export const AuxiliaryPictureWritePixelsErrorCode: (src: ArrayBuffer) => number;
+export const GetHdrComposedPixelmapErrorCode: () => number;
+export const CreatePictureByImageSourceWithDecodingOptionIsNull: () => number;
+export const CreatePictureByImageSourceErrorCode: () => number;
+export const testPackPictureToFile: (uri: string, arraySize: number, auxTypes: Array<image.AuxiliaryPictureType>,
+  dynamicRange: number, needpackExif: boolean, fd: number, format: string, mode: number) => number;
+export const testPackPictureToData: (uri: string, arraySize: number, auxTypes: Array<image.AuxiliaryPictureType>,
+    dynamicRange: number, needpackExif: boolean, src: ArrayBuffer, format: string, mode: number) => number;
+export const setAllExifKey: (keySize: number, keys: Array<string>) => number;
