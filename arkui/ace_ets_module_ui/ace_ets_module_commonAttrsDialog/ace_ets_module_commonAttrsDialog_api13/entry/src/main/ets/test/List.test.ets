@@ -14,8 +14,12 @@
  */
 import bindContextMenuMargin from './bindContextMenuTest/bindContextMenuMargin.test'
 import bindSheetKeyboardAvoidMode from './bindSheetTest/bindSheetKeyboardAvoidMode.test'
+import followTransformOfTargetPopup from './PopupTest/followTransformOfTargetPopup.test.ets';
+import followTransformOfTargetCustomPopup from './PopupTest/followTransformOfTargetCustomPopup.test.ets';
 
 export default function testsuite() {
   bindContextMenuMargin()
   bindSheetKeyboardAvoidMode()
+  followTransformOfTargetPopup();
+  followTransformOfTargetCustomPopup()
 }
