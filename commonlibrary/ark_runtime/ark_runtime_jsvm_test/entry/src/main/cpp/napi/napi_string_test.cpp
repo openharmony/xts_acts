@@ -416,7 +416,7 @@
     
     size_t getSize = 100;
     char16_t  resultStr[getSize];
-    memset_s(resultStr, getSize, 0x00, getSize);
+    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -457,7 +457,7 @@
     
     size_t getSize = BufSizeMax;
     char16_t resultStr[BufSizeMax];
-    memset_s(resultStr, getSize, 0x00, getSize);
+    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -530,7 +530,7 @@
     
     size_t getSize = 100;
     char16_t resultStr[getSize];
-    memset_s(resultStr, getSize, 0x00, getSize);
+    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -571,7 +571,7 @@
     
     size_t getSize = size - BufSize3;
     char16_t resultStr[getSize];
-    memset_s(resultStr, getSize, 0x00, getSize);
+    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -612,7 +612,7 @@
     
     size_t getSize = size + BufSize3;
     char16_t resultStr[getSize];
-    memset_s(resultStr, getSize, 0x00, getSize);
+    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -653,7 +653,7 @@
     
     size_t getSize = size;
     char16_t resultStr[getSize];
-    memset_s(resultStr, getSize, 0x00, getSize);
+    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize - BufSize3, &rstSize);
     
@@ -694,7 +694,7 @@
     
     size_t getSize = size;
     char16_t resultStr[getSize];
-    memset_s(resultStr, getSize, 0x00, getSize);
+    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
@@ -940,7 +940,7 @@
     
     const size_t strBufsize = BufSizeMax;
     char resultStr[strBufsize];
-    memset_s(resultStr, sizeof(resultStr), 0x00, sizeof(resultStr));
+    memset_s(resultStr, sizeof(resultStr), 0x00, strBufsize);
     size_t size = 0;
     const char *testStr = "create Latin1 string";
     JSVM_Value setValueName = nullptr;
@@ -1015,8 +1015,7 @@
     }
     
     size_t strLength = strlen(testStr) + 1;
-    char resultStr[strLength];
-    memset_s(resultStr, strLength, 0x00, strLength);
+    char resultStr[strLength] = {0};
     size_t size = 0;
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, setValueName, resultStr, strLength, &size);
   
