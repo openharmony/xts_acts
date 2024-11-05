@@ -327,6 +327,13 @@ public:
     Camera_ErrorCode PhotoOutputUnregisterCaptureReadyCallback(int useCaseCode);
     Camera_ErrorCode PhotoOutputRegisterEstimatedCaptureDurationCallback(int useCaseCode);
     Camera_ErrorCode PhotoOutputUnregisterEstimatedCaptureDurationCallback(int useCaseCode);
+
+    Camera_ErrorCode IsAutoDeviceSwitchSupported(bool* isSupported);
+    Camera_ErrorCode EnableAutoDeviceSwitch(bool isEnable);
+    Camera_ErrorCode RegisterAutoDeviceSwitchStatusCallback(int useCaseCode);
+    Camera_ErrorCode UnegisterAutoDeviceSwitchStatusCallback(int useCaseCode);
+    Camera_ErrorCode CameraManagerRegisterFoldStatusCallback(int useCaseCode);
+    Camera_ErrorCode CameraManagerUnregisterFoldStatusCallback(int useCaseCode);
     int32_t ColorSpace(void);
 
     // test aid
