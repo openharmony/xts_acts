@@ -190,7 +190,8 @@ static napi_value Init(napi_env env, napi_value exports)
           nullptr},
         {"OHHasDefaultNet", nullptr, OHHasDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OHisDefaultNetMetered", nullptr, OHisDefaultNetMetered, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHGetDefaultHttpProxy", nullptr, OHetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default, nullptr}};
+        {"OHGetDefaultHttpProxy", nullptr, OHetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default, nullptr}
+    };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
