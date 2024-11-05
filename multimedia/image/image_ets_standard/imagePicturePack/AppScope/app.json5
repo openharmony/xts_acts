@@ -12,9 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import imagePicture from './imagePicture.test';
-
-export default function testsuite() {
-  imagePicture();
+{
+  "app": {
+    "bundleName": "ohos.acts.multimedia.image.imagePicturePack",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
 }
