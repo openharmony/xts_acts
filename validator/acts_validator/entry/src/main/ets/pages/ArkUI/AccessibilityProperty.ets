@@ -18,22 +18,22 @@
 struct AccessibilityHoverDemo {
   build() {
     Column({ space: 20 }) {
-      Text("checkable测试(true)").accessibilityChecked(true);
-      Text("checkable测试(false)").accessibilityChecked(false);
-      Text("checkable测试(undefined)").accessibilityChecked(undefined);
+      Text('checkable测试(true)').accessibilityChecked(true);
+      Text('checkable测试(false)').accessibilityChecked(false);
+      Text('checkable测试(undefined)').accessibilityChecked(undefined);
 
       Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-        Text("accessibilitySelected true")
+        Text('accessibilitySelected true')
           .accessibilitySelected(true)
       }
 
       Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-        Text("accessibilitySelected false")
+        Text('accessibilitySelected false')
           .accessibilitySelected(false)
       }
 
       Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-        Text("accessibilitySelected undefined")
+        Text('accessibilitySelected undefined')
           .accessibilitySelected(undefined)
       }
 
@@ -48,7 +48,7 @@ struct AccessibilityHoverDemo {
           .height(30)
           .accessibilityChecked(true)
           .accessibilitySelected(undefined)
-        Text("accessbilityChecked true Select undefined")
+        Text('accessibilityChecked true Select undefined')
       }
 
       Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -62,7 +62,7 @@ struct AccessibilityHoverDemo {
           .height(30)
           .accessibilityChecked(false)
           .accessibilitySelected(undefined)
-        Text("accessbilityChecked false Select undefined")
+        Text('accessibilityChecked false Select undefined')
       }
 
       Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -76,17 +76,17 @@ struct AccessibilityHoverDemo {
           .height(30)
           .accessibilityChecked(undefined)
           .accessibilitySelected(undefined)
-        Text("accessbilityChecked undefined Select undefined")
+        Text('accessibilityChecked undefined Select undefined')
       }
 
       Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-        Text("accessibilitySelected true Checked undefined")
+        Text('accessibilitySelected true Checked undefined')
           .accessibilitySelected(true)
           .accessibilityChecked(undefined)
       }
 
       Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-        Text("accessibilitySelected false Checked undefined")
+        Text('accessibilitySelected false Checked undefined')
           .accessibilitySelected(false)
           .accessibilityChecked(undefined)
       }
