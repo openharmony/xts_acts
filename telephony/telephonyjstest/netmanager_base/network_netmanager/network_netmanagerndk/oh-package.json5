@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 {
-  "name": "networkndk",
+  "name": "network_managerndk",
   "version": "1.0.0",
   "description": "Please describe the basic information.",
   "main": "",

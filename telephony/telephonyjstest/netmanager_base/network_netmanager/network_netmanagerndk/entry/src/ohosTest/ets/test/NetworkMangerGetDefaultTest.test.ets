@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import testNapi from 'libconnectionndktest.so'
+import testNapi from 'libtestNetconnectionNDK.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 function expectFalse() {
@@ -50,16 +50,16 @@ export default function abilityTest() {
     let success_number = 11111111;
 
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_GETDEFAULTNET_0100
-     * @tc.name    Test_getDefaultNet_0100
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetDefaultNet_0100
+     * @tc.name    Test_OHGetDefaultNet_0100
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getDefaultNet_0100', 0, async (done: Function) => {
-      let caseName = "Test_getDefaultNet_0100";
-      let codeNumber = testNapi.getDefaultNet(error_number);
+    it('Test_OHGetDefaultNet_0100', 0, async (done: Function) => {
+      let caseName = "Test_OHGetDefaultNet_0100";
+      let codeNumber = testNapi.OHGetDefaultNet(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -72,16 +72,16 @@ export default function abilityTest() {
     })
 
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_GETDEFAULTNET_0200
-     * @tc.name    Test_getDefaultNet_0200
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetDefaultNet_0200
+     * @tc.name    Test_OHGetDefaultNet_0200
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getDefaultNet_0200', 0, async (done: Function) => {
-      let caseName = "Test_getDefaultNet_0200";
-      let codeNumber = testNapi.getDefaultNet(success_number);
+    it('Test_OHGetDefaultNet_0200', 0, async (done: Function) => {
+      let caseName = "Test_OHGetDefaultNet_0200";
+      let codeNumber = testNapi.OHGetDefaultNet(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();

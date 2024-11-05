@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import testNapi from 'libconnectionndktest.so'
+import testNapi from 'libtestNetconnectionNDK.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 function expectFalse() {
@@ -50,16 +50,16 @@ export default function abilityTest() {
     let success_number = 11111111;
 
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_GETNETCAPABILITIES_0100
-     * @tc.name    Test_getNetCapabilities_0100
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetNetCapabilities_0100
+     * @tc.name    Test_OHGetNetCapabilities_0100
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getNetCapabilities_0100', 0, async (done:Function) => {
-      let caseName = "Test_getNetCapabilities_0100";
-      let codeNumber = testNapi.getNetCapabilities(error_number);
+    it('Test_OHGetNetCapabilities_0100', 0, async (done:Function) => {
+      let caseName = "Test_OHGetNetCapabilities_0100";
+      let codeNumber = testNapi.OHGetNetCapabilities(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -71,16 +71,16 @@ export default function abilityTest() {
       }
     })
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_GETNETCAPABILITIES_0200
-     * @tc.name    Test_getNetCapabilities_0200
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetNetCapabilities_0200
+     * @tc.name    Test_OHGetNetCapabilities_0200
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getNetCapabilities_0200', 0, async (done: Function) => {
-      let caseName = "Test_getNetCapabilities_0200";
-      let codeNumber = testNapi.getNetCapabilities(success_number);
+    it('Test_OHGetNetCapabilities_0200', 0, async (done: Function) => {
+      let caseName = "Test_OHGetNetCapabilities_0200";
+      let codeNumber = testNapi.OHGetNetCapabilities(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -92,16 +92,16 @@ export default function abilityTest() {
       }
     })
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_GETNETCAPABILITIES_0300
-     * @tc.name    Test_getNetCapabilities_0300
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetNetCapabilities_0300
+     * @tc.name    Test_OHGetNetCapabilities_0300
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getNetCapabilities_0300', 0, async (done: Function) => {
-      let caseName = "Test_getNetCapabilities_0300";
-      let codeNumber = testNapi.getNetCapabilities(success_number);
+    it('Test_OHGetNetCapabilities_0300', 0, async (done: Function) => {
+      let caseName = "Test_OHGetNetCapabilities_0300";
+      let codeNumber = testNapi.OHGetNetCapabilities(success_number);
       if (codeNumber != 2101013) {
         console.log(`${caseName} The network is connected: ${JSON.stringify(codeNumber)}`)
         expect(codeNumber).assertEqual(0)

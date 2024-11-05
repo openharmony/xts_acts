@@ -14,10 +14,10 @@
  */
 
 #include "napi/native_api.h"
-#include "net_connection.h"
-#include "net_connection_type.h"
+#include <network/netmanager/net_connection.h>
+#include <network/netmanager/net_connection_type.h>
 
-static napi_value getNetCapabilities(napi_env env, napi_callback_info info)
+static napi_value OHGetNetCapabilities(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -41,7 +41,7 @@ static napi_value getNetCapabilities(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value getAllNets(napi_env env, napi_callback_info info)
+static napi_value OHGetAllNets(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -63,7 +63,7 @@ static napi_value getAllNets(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value getConnectionProperties(napi_env env, napi_callback_info info)
+static napi_value OHGetConnectionProperties(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -87,7 +87,7 @@ static napi_value getConnectionProperties(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value getDefaultNet(napi_env env, napi_callback_info info)
+static napi_value OHGetDefaultNet(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -109,7 +109,7 @@ static napi_value getDefaultNet(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value hasDefaultNet(napi_env env, napi_callback_info info)
+static napi_value OHHasDefaultNet(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -131,7 +131,7 @@ static napi_value hasDefaultNet(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value isDefaultNetMetered(napi_env env, napi_callback_info info)
+static napi_value OHIsDefaultNetMetered(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -153,7 +153,7 @@ static napi_value isDefaultNetMetered(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value getDefaultHttpProxy(napi_env env, napi_callback_info info)
+static napi_value OHGetDefaultHttpProxy(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -183,13 +183,13 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"getDefaultNet", nullptr, getDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"getAllNets", nullptr, getAllNets, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"getNetCapabilities", nullptr, getNetCapabilities, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"getConnectionProperties", nullptr, getConnectionProperties, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"hasDefaultNet", nullptr, hasDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"isDefaultNetMetered", nullptr, isDefaultNetMetered, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"getDefaultHttpProxy", nullptr, getDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default, nullptr}};
+        {"OHGetDefaultNet", nullptr, OHGetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHGetAllNets", nullptr, OHGetAllNets, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHGetNetCapabilities", nullptr, OHGetNetCapabilities, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHGetConnectionProperties", nullptr, OHGetConnectionProperties, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHHasDefaultNet", nullptr, OHHasDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHisDefaultNetMetered", nullptr, OHisDefaultNetMetered, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHGetDefaultHttpProxy", nullptr, OHetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

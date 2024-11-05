@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import testNapi from 'libconnectionndktest.so'
+import testNapi from 'libtestNetconnectionNDK.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 function expectFalse() {
@@ -57,9 +57,9 @@ export default function abilityTest() {
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getConnectionProperties_0100', 0, async (done: Function) => {
-      let caseName = "Test_getConnectionProperties_0100";
-      let codeNumber = testNapi.getConnectionProperties(error_number);
+    it('Test_OHGetConnectionProperties_0100', 0, async (done: Function) => {
+      let caseName = "Test_OHGetConnectionProperties_0100";
+      let codeNumber = testNapi.OHGetConnectionProperties(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -78,9 +78,9 @@ export default function abilityTest() {
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getConnectionProperties_0200', 0, async (done: Function) => {
-      let caseName = "Test_getConnectionProperties_0200";
-      let codeNumber = testNapi.getConnectionProperties(success_number);
+    it('Test_OHGetConnectionProperties_0200', 0, async (done: Function) => {
+      let caseName = "Test_OHGetConnectionProperties_0200";
+      let codeNumber = testNapi.OHGetConnectionProperties(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -99,9 +99,9 @@ export default function abilityTest() {
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_getConnectionProperties_0300', 0, async (done: Function) => {
-      let caseName = "Test_getConnectionProperties_0300";
-      let codeNumber = testNapi.getConnectionProperties(success_number);
+    it('Test_OHGetConnectionProperties_0300', 0, async (done: Function) => {
+      let caseName = "Test_OHGetConnectionProperties_0300";
+      let codeNumber = testNapi.OHGetConnectionProperties(success_number);
       if (codeNumber != 2101013) {
         console.log(`${caseName} The network is connected: ${JSON.stringify(codeNumber)}`)
         expect(codeNumber).assertEqual(0)

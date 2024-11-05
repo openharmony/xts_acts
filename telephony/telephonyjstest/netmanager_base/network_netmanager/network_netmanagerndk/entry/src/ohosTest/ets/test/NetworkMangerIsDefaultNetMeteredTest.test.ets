@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import testNapi from 'libconnectionndktest.so'
+import testNapi from 'libtestNetconnectionNDK.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 function expectFalse() {
@@ -51,15 +51,15 @@ export default function abilityTest() {
 
     /**
      * @tc.number  NETWORKMANAGER_CONNECTION_ISDEFALTNETMETERED_0100
-     * @tc.name    Test_isDefaultNetMetered_0100
+     * @tc.name    Test_OHIsDefaultNetMetered_0100
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_isDefaultNetMetered_0100', 0, async (done: Function) => {
-      let caseName = "Test_isDefaultNetMetered_0100";
-      let codeNumber = testNapi.isDefaultNetMetered(error_number);
+    it('Test_OHIsDefaultNetMetered_0100', 0, async (done: Function) => {
+      let caseName = "Test_OHIsDefaultNetMetered_0100";
+      let codeNumber = testNapi.OHIsDefaultNetMetered(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -73,15 +73,15 @@ export default function abilityTest() {
 
     /**
      * @tc.number  NETWORKMANAGER_CONNECTION_ISDEFALTNETMETERED_0200
-     * @tc.name    Test_isDefaultNetMetered_0200
+     * @tc.name    Test_OHIsDefaultNetMetered_0200
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_isDefaultNetMetered_0200', 0, async (done: Function) => {
-      let caseName = "Test_isDefaultNetMetered_0200";
-      let codeNumber = testNapi.isDefaultNetMetered(success_number);
+    it('Test_OHIsDefaultNetMetered_0200', 0, async (done: Function) => {
+      let caseName = "Test_OHIsDefaultNetMetered_0200";
+      let codeNumber = testNapi.OHIsDefaultNetMetered(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();

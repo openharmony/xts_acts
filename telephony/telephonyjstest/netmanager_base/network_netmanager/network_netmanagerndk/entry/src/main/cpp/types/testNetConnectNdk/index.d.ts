@@ -13,22 +13,11 @@
  * limitations under the License.
  */
 
-export const OHNetConnGetAddrInfo: (a: string, b: string, c: number) => number;
-export const OHNetConnFreeDnsResult: (a: number) => number;
-export const OHNetConnGetAllNets: (a: number) => number;
-export const OHNetConnHasDefaultNet: (a: number) => number;
-export const OHNetConnIsDefaultNetMetered: (a: number) => number;
+export const OHGetDefaultNet: (a: number) => number;
+export const OHGetAllNets: (a: number) => number;
+export const OHGetNetCapabilities: (a: number) => number;
+export const OHGetConnectionProperties: (a: number) => number;
+export const OHHasDefaultNet: (a: number) => number;
 export const OHNetConnGetDefaultNet: (a: number) => number;
-export const OHNetConnGetConnectionProperties: (a: number) => number;
-export const OHNetConnGetNetCapabilities: (a: number) => number;
-export const OHNetConnGetDefaultHttpProxy: (a: number) => number;
-export const OHOSNetConnRegisterDnsResolver: (a: number) => number;
-export const OHOSNetConnUnregisterDnsResolver: (a: number) => number;
-export const OHNetConnBindSocket: (a: number) => number;
-export const OHNetConnSetAppHttpProxy: (a: number) => number;
-export const OHOSNetConnRegisterAppHttpProxyCallback: (a: number) => number;
-export const OHOSNetConnUnregisterAppHttpProxyCallback: (a: number) => number;
-export const OHNetConnRegisterNetConnCallback: (a: number) => number;
-export const OHNetConnRegisterNetConnCallbackTimeout: (a: number) => number;
-export const OHNetConnRegisterDefaultNetConnCallback: (a: number) => number;
-export const OHNetConnUnregisterNetConnCallback: (a: number) => number;
+export const OHisDefaultNetMetered: (a: number) => number;
+export const OHGetDefaultHttpProxy: (a: number) => number;
