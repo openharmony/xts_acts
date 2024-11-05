@@ -3455,6 +3455,7 @@ static napi_value queue_parallel_0002(napi_env env, napi_callback_info info)
         ffrt_task_attr_set_queue_priority(&task_attr[i], pri);
     }
     ffrt_task_attr_t task_attr_tmp;
+    (void)ffrt_task_attr_init(&task_attr_tmp);
     ffrt_task_attr_set_queue_priority(&task_attr_tmp, ffrt_queue_priority_immediate);
     ffrt_queue_submit(queue_handle, create_function_wrapper(SleepFunc, ffrt_function_kind_queue), &task_attr_tmp);
     ffrt_queue_submit(queue_handle, create_function_wrapper(TwoSubFunc, ffrt_function_kind_queue), &task_attr[0]);
