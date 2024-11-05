@@ -593,7 +593,7 @@ export default function globalStageTest() {
     it('getRawFileContentSync_stagetest_0100', 0, async (done: Function) => {
       try {
         let value: Uint8Array =
-          res.resourceManager.getRawFileContentSync('rawfiletest.xml');
+        res.resourceManager.getRawFileContentSync('rawfiletest.xml');
         console.log('getRawFileContentSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
       } catch (e) {
@@ -746,7 +746,7 @@ export default function globalStageTest() {
     it('getStringArrayValueSync_stagetest_0100', 0, async (done: Function) => {
       try {
         let value: Array<string> =
-          res.resourceManager.getStringArrayValueSync($r('app.strarray.sizeList').id);
+        res.resourceManager.getStringArrayValueSync($r('app.strarray.sizeList').id);
         console.log('getStringArrayValueSync_stagetest_0100 1' + value);
         expect(value !== null).assertTrue();
       } catch (e) {
@@ -997,7 +997,7 @@ export default function globalStageTest() {
         }
 
         let value =
-          res.resourceManager.getOverrideResourceManager(completeOverrideConfiguration);
+        res.resourceManager.getOverrideResourceManager(completeOverrideConfiguration);
         console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_value' + value.getOverrideConfiguration().mcc);
         expect(value.getOverrideConfiguration().mcc == 460).assertTrue();
       } catch (e) {
@@ -1070,6 +1070,902 @@ export default function globalStageTest() {
       }
     })
 
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0100
+     * @tc.name      : resourceManager_test_getStringSync_0010
+     * @tc.desc      : %2$d(The second parameter is an integer)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0010', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringOne').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringOne').id, "format string", 10);
+        console.log('resourceManager_test_getStringSync_0010 value_one:' + value_one);
+        expect(value_one).assertEqual('10');
+        let value_two = resMgr.getStringSync(resource, "format string", 10);
+        console.log('resourceManager_test_getStringSync_0010 value_two:' + value_two);
+        expect(value_two).assertEqual('10');
+        let value_three = resMgr.getStringByNameSync('test_stringOne', "format string", 10);
+        console.log('resourceManager_test_getStringSync_0010 value_three:' + value_three);
+        expect(value_three).assertEqual('10');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0010 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0200
+     * @tc.name      : resourceManager_test_getStringSync_0020
+     * @tc.desc      : %2$d(The second parameter is an integer in scientific notation)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0020', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwo').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringTwo').id, "format string", 1.234568E+16);
+        console.log('resourceManager_test_getStringSync_0020 value_one:' + value_one);
+        expect(value_one).assertEqual('12345680000000000');
+        let value_two = resMgr.getStringSync(resource, "format string", 1.234568E+16);
+        console.log('resourceManager_test_getStringSync_0020 value_two:' + value_two);
+        expect(value_two).assertEqual('12345680000000000');
+        let value_three = resMgr.getStringByNameSync('test_stringTwo', "format string", 1.234568E+16);
+        console.log('resourceManager_test_getStringSync_0020 value_three:' + value_three);
+        expect(value_three).assertEqual('12345680000000000');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0020 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0300
+     * @tc.name      : resourceManager_test_getStringSync_0030
+     * @tc.desc      : %2$d(The second parameter is a decimal)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0030', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringThree').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringThree').id, "format string", 10.01);
+        console.log('resourceManager_test_getStringSync_0030 value_one:' + value_one);
+        expect(value_one).assertEqual('10');
+        let value_two = resMgr.getStringSync(resource, "format string", 10.01);
+        console.log('resourceManager_test_getStringSync_0030 value_two:' + value_two);
+        expect(value_two).assertEqual('10');
+        let value_three = resMgr.getStringByNameSync('test_stringThree', "format string", 10.01);
+        console.log('resourceManager_test_getStringSync_0030 value_three:' + value_three);
+        expect(value_three).assertEqual('10');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0030 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0400
+     * @tc.name      : resourceManager_test_getStringSync_0040
+     * @tc.desc      : %2$d(The second parameter is a decimal number in scientific notation)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0040', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringFour').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringFour').id, "format string", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0040 value_one:' + value_one);
+        expect(value_one).assertEqual('0');
+        let value_two = resMgr.getStringSync(resource, "format string", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0040 value_two:' + value_two);
+        expect(value_two).assertEqual('0');
+        let value_three = resMgr.getStringByNameSync('test_stringFour', "format string", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0040 value_three:' + value_three);
+        expect(value_three).assertEqual('0');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0040 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0500
+     * @tc.name      : resourceManager_test_getStringSync_0050
+     * @tc.desc      : %3$s(The third parameter is a Chinese string)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0050', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringFive').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringFive').id, "format string", 12, "测试测试");
+        console.log('resourceManager_test_getStringSync_0050 value_one:' + value_one);
+        expect(value_one).assertEqual('测试测试');
+        let value_two = resMgr.getStringSync(resource, "format string", 12, "测试测试");
+        console.log('resourceManager_test_getStringSync_0050 value_two:' + value_two);
+        expect(value_two).assertEqual('测试测试');
+        let value_three = resMgr.getStringByNameSync('test_stringFive', "format string", 12, "测试测试");
+        console.log('resourceManager_test_getStringSync_0050 value_three:' + value_three);
+        expect(value_three).assertEqual('测试测试');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0050 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0600
+     * @tc.name      : resourceManager_test_getStringSync_0060
+     * @tc.desc      : %3$s(The third parameter is an English string)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0060', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringSix').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringSix').id, "format string", 12, "TestTest");
+        console.log('resourceManager_test_getStringSync_0060 value_one:' + value_one);
+        expect(value_one).assertEqual('TestTest');
+        let value_two = resMgr.getStringSync(resource, "format string", 12, "TestTest");
+        console.log('resourceManager_test_getStringSync_0060 value_two:' + value_two);
+        expect(value_two).assertEqual('TestTest');
+        let value_three = resMgr.getStringByNameSync('test_stringSix', "format string", 12, "TestTest");
+        console.log('resourceManager_test_getStringSync_0060 value_three:' + value_three);
+        expect(value_three).assertEqual('TestTest');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0060 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0700
+     * @tc.name      : resourceManager_test_getStringSync_0070
+     * @tc.desc      : %4$f(The fourth parameter is an integer)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0070', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringSeven').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringSeven').id, "format string", 12, "TestTest", 20);
+        console.log('resourceManager_test_getStringSync_0070 value_one:' + value_one);
+        expect(value_one).assertEqual(20);
+        let value_two = resMgr.getStringSync(resource, "format string", 12, "TestTest", 20);
+        console.log('resourceManager_test_getStringSync_0070 value_two:' + value_two);
+        expect(value_two).assertEqual(20);
+        let value_three = resMgr.getStringByNameSync('test_stringSeven', "format string", 12, "TestTest", 20);
+        console.log('resourceManager_test_getStringSync_0070 value_three:' + value_three);
+        expect(value_three).assertEqual(20);
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0070 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0800
+     * @tc.name      : resourceManager_test_getStringSync_0080
+     * @tc.desc      : %4$f(The fourth parameter is an integer in scientific notation)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0080', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringEight').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringEight')
+          .id, "format string", 12, "TestTest", 1.234568E+16);
+        console.log('resourceManager_test_getStringSync_0080 value_one:' + value_one);
+        expect(value_one).assertEqual('12345680000000000');
+        let value_two = resMgr.getStringSync(resource, "format string", 12, "TestTest", 1.234568E+16);
+        console.log('resourceManager_test_getStringSync_0080 value_two:' + value_two);
+        expect(value_two).assertEqual('12345680000000000');
+        let value_three = resMgr.getStringByNameSync('test_stringEight', "format string", 12, "TestTest", 1.234568E+16);
+        console.log('resourceManager_test_getStringSync_0080 value_three:' + value_three);
+        expect(value_three).assertEqual('12345680000000000');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0080 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_0900
+     * @tc.name      : resourceManager_test_getStringSync_0090
+     * @tc.desc      : %4$f(The fourth parameter is a decimal)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0090', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringNine').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringNine')
+          .id, "format string", 12, "TestTest", 20.01);
+        console.log('resourceManager_test_getStringSync_0090 value_one:' + value_one);
+        expect(value_one).assertEqual('20.01');
+        let value_two = resMgr.getStringSync(resource, "format string", 12, "TestTest", 20.01);
+        console.log('resourceManager_test_getStringSync_0090 value_two:' + value_two);
+        expect(value_two).assertEqual('20.01');
+        let value_three = resMgr.getStringByNameSync('test_stringNine', "format string", 12, "TestTest", 20.01);
+        console.log('resourceManager_test_getStringSync_0090 value_three:' + value_three);
+        expect(value_three).assertEqual('20.01');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0090 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1000
+     * @tc.name      : resourceManager_test_getStringSync_0100
+     * @tc.desc      : %4$f(The fourth parameter is a decimal number in scientific notation)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0100', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTen').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringTen')
+          .id, "format string", 12, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0100 value_one:' + value_one);
+        expect(value_one).assertEqual('0');
+        let value_two = resMgr.getStringSync(resource, "format string", 12, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0100 value_two:' + value_two);
+        expect(value_two).assertEqual('0');
+        let value_three = resMgr.getStringByNameSync('test_stringTen', "format string", 12, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0100 value_three:' + value_three);
+        expect(value_three).assertEqual('0');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0100 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1100
+     * @tc.name      : resourceManager_test_getStringSync_0110
+     * @tc.desc      : %%d
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0110', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringEleven').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringEleven').id, 12);
+        console.log('resourceManager_test_getStringSync_0110 value_one:' + value_one);
+        expect(value_one).assertEqual('%d');
+        let value_two = resMgr.getStringSync(resource, 12);
+        console.log('resourceManager_test_getStringSync_0110 value_two:' + value_two);
+        expect(value_two).assertEqual('%d');
+        let value_three = resMgr.getStringByNameSync('test_stringEleven', 12);
+        console.log('resourceManager_test_getStringSync_0110 value_three:' + value_three);
+        expect(value_three).assertEqual('%d');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0110 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1200
+     * @tc.name      : resourceManager_test_getStringSync_0120
+     * @tc.desc      : %%%s
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0120', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwelve').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringTwelve')
+          .id, "format string", 12, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0120 value_one:' + value_one);
+        expect(value_one).assertEqual('%format string');
+        let value_two = resMgr.getStringSync(resource, "format string", 12, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0120 value_two:' + value_two);
+        expect(value_two).assertEqual('%format string');
+        let value_three = resMgr.getStringByNameSync('test_stringTwelve', "format string", 12, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0120 value_three:' + value_three);
+        expect(value_three).assertEqual('%format string');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0120 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1300
+     * @tc.name      : resourceManager_test_getStringSync_0130
+     * @tc.desc      : %%%%f
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0130', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringThirteen').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringThirteen').id, 12.01);
+        console.log('resourceManager_test_getStringSync_0130 value_one:' + value_one);
+        expect(value_one).assertEqual('%%f');
+        let value_two = resMgr.getStringSync(resource, 12.01);
+        console.log('resourceManager_test_getStringSync_0130 value_two:' + value_two);
+        expect(value_two).assertEqual('%%f');
+        let value_three = resMgr.getStringByNameSync('test_stringThirteen', 12.01);
+        console.log('resourceManager_test_getStringSync_0130 value_three:' + value_three);
+        expect(value_three).assertEqual('%%f');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0130 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1400
+     * @tc.name      : resourceManager_test_getStringSync_0140
+     * @tc.desc      : %2$d %3$s %4$f(The second parameter is integer, the third is Chinese, the fourth is decimal)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0140', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringFourteen').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringFourteen').id,
+          "format string", 10, "测试测试", 98.78);
+        console.log('resourceManager_test_getStringSync_0140 value_one:' + value_one);
+        expect(value_one).assertEqual('10 测试测试 98.78');
+        let value_two = resMgr.getStringSync(resource, "format string", 10, "测试测试", 98.78);
+        console.log('resourceManager_test_getStringSync_0140 value_two:' + value_two);
+        expect(value_two).assertEqual('10 测试测试 98.78');
+        let value_three = resMgr.getStringByNameSync('test_stringFourteen', "format string", 10, "测试测试", 98.78);
+        console.log('resourceManager_test_getStringSync_0140 value_three:' + value_three);
+        expect(value_three).assertEqual('10 测试测试 98.78');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0140 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1500
+     * @tc.name      : resourceManager_test_getStringSync_0150
+     * @tc.desc      : %2$d %3$s %4$f(The second parameter is integer in scientific notation,
+     * the third is English, the fourth is decimal in scientific notation)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0150', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringFifteen').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringFifteen').id,
+          "format string", 1.234568E+16, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0150 value_one:' + value_one);
+        expect(value_one).assertEqual('12345680000000000 TestTest 0');
+        let value_two = resMgr.getStringSync(resource, "format string", 1.234568E+16, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0150 value_two:' + value_two);
+        expect(value_two).assertEqual('12345680000000000 TestTest 0');
+        let value_three = resMgr.getStringByNameSync('test_stringFifteen',
+          "format string", 1.234568E+16, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0150 value_three:' + value_three);
+        expect(value_three).assertEqual('12345680000000000 TestTest 0');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0150 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1600
+     * @tc.name      : resourceManager_test_getStringSync_0160
+     * @tc.desc      : %2$d %3$s %4$f %%d(The parameter is null)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0160', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringSixteen').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringSixteen').id);
+        console.log('resourceManager_test_getStringSync_0160 value_one:' + value_one);
+        expect(value_one).assertEqual('%2$d %3$s %4$f %d');
+        let value_two = resMgr.getStringSync(resource);
+        console.log('resourceManager_test_getStringSync_0160 value_two:' + value_two);
+        expect(value_two).assertEqual('%2$d %3$s %4$f %d');
+        let value_three = resMgr.getStringByNameSync('test_stringSixteen');
+        console.log('resourceManager_test_getStringSync_0160 value_three:' + value_three);
+        expect(value_three).assertEqual('%2$d %3$s %4$f %d');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0160 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1700
+     * @tc.name      : resourceManager_test_getStringSync_0170
+     * @tc.desc      : %d %1$d(The parameter is null)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0170', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringSeventeen').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringSeventeen').id);
+        console.log('resourceManager_test_getStringSync_0170 value_one:' + value_one);
+        expect(value_one).assertEqual('%d %1$d');
+        let value_two = resMgr.getStringSync(resource);
+        console.log('resourceManager_test_getStringSync_0170 value_two:' + value_two);
+        expect(value_two).assertEqual('%d %1$d');
+        let value_three = resMgr.getStringByNameSync('test_stringSeventeen');
+        console.log('resourceManager_test_getStringSync_0170 value_three:' + value_three);
+        expect(value_three).assertEqual('%d %1$d');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0170 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1800
+     * @tc.name      : resourceManager_test_getStringSync_0180
+     * @tc.desc      : %2$d %3$s %4$f(There are more parameters than placeholder indexes)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0180', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringEighteen').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringEighteen')
+          .id, "format string", 30, "测试测试", 98.78, 1.234568E+16, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0180 value_one:' + value_one);
+        expect(value_one).assertEqual('30 测试测试 98.78');
+        let value_two = resMgr.getStringSync(resource, "format string",
+          30, "测试测试", 98.78, 1.234568E+16, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0180 value_two:' + value_two);
+        expect(value_two).assertEqual('30 测试测试 98.78');
+        let value_three = resMgr.getStringByNameSync('test_stringEighteen',
+          "format string", 30, "测试测试", 98.78, 1.234568E+16, "TestTest", 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0180 value_three:' + value_three);
+        expect(value_three).assertEqual('30 测试测试 98.78');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0180 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_1900
+     * @tc.name      : resourceManager_test_getStringSync_0190
+     * @tc.desc      : %d %1$d(Inconsistent placeholder styles)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0190', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringNineteen').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringNineteen').id, 40);
+        console.log('resourceManager_test_getStringSync_0190 value_one:' + value_one);
+        expect(value_one).assertEqual('40 40');
+        let value_two = resMgr.getStringSync(resource, 40);
+        console.log('resourceManager_test_getStringSync_0190 value_two:' + value_two);
+        expect(value_two).assertEqual('40 40');
+        let value_three = resMgr.getStringByNameSync('test_stringNineteen', 40);
+        console.log('resourceManager_test_getStringSync_0190 value_three:' + value_three);
+        expect(value_three).assertEqual('40 40');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0190 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2000
+     * @tc.name      : resourceManager_test_getStringSync_0200
+     * @tc.desc      : %%%d %1$d(Inconsistent placeholder styles)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0200', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwenty').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringTwenty').id, 40);
+        console.log('resourceManager_test_getStringSync_0200 value_one:' + value_one);
+        expect(value_one).assertEqual('%40 40');
+        let value_two = resMgr.getStringSync(resource, 40);
+        console.log('resourceManager_test_getStringSync_0200 value_two:' + value_two);
+        expect(value_two).assertEqual('%40 40');
+        let value_three = resMgr.getStringByNameSync('test_stringTwenty', 40);
+        console.log('resourceManager_test_getStringSync_0200 value_three:' + value_three);
+        expect(value_three).assertEqual('%40 40');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0190 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2100
+     * @tc.name      : resourceManager_test_getStringSync_0210
+     * @tc.desc      : %d %d %s %s %f %f(Arguments and placeholder match and equal in number)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0210', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwentyOne').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringTwentyOne')
+          .id, 50, 1.234568E+16, "测试测试", "TestTest", 98.78, 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0210 value_one:' + value_one);
+        expect(value_one).assertEqual('50 12345680000000000 测试测试 TestTest 98.78 0');
+        let value_two = resMgr.getStringSync(resource, 50, 1.234568E+16, "测试测试", "TestTest", 98.78, 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0210 value_two:' + value_two);
+        expect(value_two).assertEqual('50 12345680000000000 测试测试 TestTest 98.78 0');
+        let value_three = resMgr.getStringByNameSync('test_stringTwentyOne', 50,
+          1.234568E+16, "测试测试", "TestTest", 98.78, 1.234568e-08);
+        console.log('resourceManager_test_getStringSync_0210 value_three:' + value_three);
+        expect(value_three).assertEqual('50 12345680000000000 测试测试 TestTest 98.78 0');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0210 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2200
+     * @tc.name      : resourceManager_test_getStringSync_0220
+     * @tc.desc      : %d %d %s %s %f %f(The parameters is more than required)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0220', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwentyTwo').id
+      };
+      try {
+        let value_one = resMgr.getStringSync($r('app.string.test_stringTwentyTwo')
+          .id, 50, 1.234568E+16, "测试测试", "TestTest", 98.78, 1.234568e-08, 15, "format string", 15.01);
+        console.log('resourceManager_test_getStringSync_0220 value_one:' + value_one);
+        expect(value_one).assertEqual('50 12345680000000000 测试测试 TestTest 98.78 0');
+        let value_two = resMgr.getStringSync(resource, 50, 1.234568E+16, "测试测试",
+          "TestTest", 98.78, 1.234568e-0815, 15, "format string", 15.01);
+        console.log('resourceManager_test_getStringSync_0220 value_two:' + value_two);
+        expect(value_two).assertEqual('50 12345680000000000 测试测试 TestTest 98.78 0');
+        let value_three = resMgr.getStringByNameSync('test_stringTwentyTwo', 50, 1.234568E+16,
+          "测试测试", "TestTest", 98.78, 1.234568e-08, 15, "format string", 15.01);
+        console.log('resourceManager_test_getStringSync_0220 value_three:' + value_three);
+        expect(value_three).assertEqual('50 12345680000000000 测试测试 TestTest 98.78 0');
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error('resourceManager_test_getStringSync_0220 failed, error code: ${code}, message: ${message}.');
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2300
+     * @tc.name      : resourceManager_test_getStringSync_0230
+     * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0230', 0, () => {
+      let resMgr = res.resourceManager;
+      try {
+        resMgr.getStringSync($r('app.string.test_stringTwentyThree').id);
+      } catch (error) {
+        console.log('resourceManager_test_getStringSync_0230'+error.code+error.message);
+        expect(error.code).assertEqual(9001007);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2400
+     * @tc.name      : resourceManager_test_getStringSync_0240
+     * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0240', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwentyThree').id
+      };
+      try {
+        resMgr.getStringSync(resource, 50);
+      } catch (error) {
+        console.log('resourceManager_test_getStringSync_0240'+error.code+error.message);
+        expect(error.code).assertEqual(9001007);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2500
+     * @tc.name      : resourceManager_test_getStringByNameSync_0250
+     * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringByNameSync_0250', 0, () => {
+      let resMgr = res.resourceManager;
+      try {
+        resMgr.getStringByNameSync($r('app.string.test_stringTwentyThree').id);
+      } catch (error) {
+        console.log('resourceManager_test_getStringByNameSync_0250'+error.code+error.message);
+        expect(error.code).assertEqual(9001008);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2600
+     * @tc.name      : resourceManager_test_getStringSync_0260
+     * @tc.desc      : The wrong parameter type
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0260', 0, () => {
+      let resMgr = res.resourceManager;
+      try {
+        resMgr.getStringSync($r('app.string.test_stringTwentyFour').id, "format string", "format", "1.5", "string");
+      } catch (error) {
+        console.log('resourceManager_test_getStringSync_0260'+error.code+error.message);
+        expect(error.code).assertEqual(9001007);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2700
+     * @tc.name      : resourceManager_test_getStringSync_0270
+     * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0270', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwentyFour').id
+      };
+      try {
+        resMgr.getStringSync(resource, "format string", "format", "1.5", "string");
+      } catch (error) {
+        console.log('resourceManager_test_getStringSync_0270'+error.code+error.message);
+        expect(error.code).assertEqual(9001007);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2800
+     * @tc.name      : resourceManager_test_getStringByNameSync_0280
+     * @tc.desc      : Parameter out of index
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringByNameSync_0280', 0, () => {
+      let resMgr = res.resourceManager;
+      try {
+        resMgr.getStringByNameSync('test_stringTwentyFour', "format string", "format", "1.5", "string");
+      } catch (error) {
+        console.log('resourceManager_test_getStringByNameSync_0280'+error.code+error.message);
+        expect(error.code).assertEqual(9001008);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_2900
+     * @tc.name      : resourceManager_test_getStringSync_0290
+     * @tc.desc      : Parameters less than required
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0290', 0, () => {
+      let resMgr = res.resourceManager;
+      try {
+        resMgr.getStringSync($r('app.string.test_stringTwentyFive').id);
+      } catch (error) {
+        console.log('resourceManager_test_getStringSync_0290'+error.code+error.message);
+        expect(error.code).assertEqual(9001007);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_3000
+     * @tc.name      : resourceManager_test_getStringSync_0300
+     * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringSync_0300', 0, () => {
+      let resMgr = res.resourceManager;
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwentyFive').id
+      };
+      try {
+        resMgr.getStringSync(resource, 50);
+      } catch (error) {
+        console.log('resourceManager_test_getStringSync_0300'+error.code+error.message);
+        expect(error.code).assertEqual(9001007);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_FormatStringIndex_3100
+     * @tc.name      : resourceManager_test_getStringByNameSync_0310
+     * @tc.desc      : %2$d %3$s %4$f(Get failed because of parameters is less than required)
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getStringByNameSync_0310', 0, () => {
+      let resMgr = res.resourceManager;
+      try {
+        resMgr.getStringByNameSync('test_stringTwentyFive');
+      } catch (error) {
+        console.log('resourceManager_test_getStringByNameSync_0310'+error.code+error.message);
+        expect(error.code).assertEqual(9001008);
+      }
+    })
     console.log('*************end globalStageTest*************');
   })
 }
