@@ -120,7 +120,7 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
           done();
@@ -157,7 +157,7 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
           done();
@@ -193,7 +193,7 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
           done();
@@ -229,7 +229,7 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
           done();
@@ -265,7 +265,7 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
           done();
@@ -301,7 +301,7 @@ export default function windowManageTest() {
           expect().assertFail();
           done();
         });
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
           done();
@@ -342,7 +342,7 @@ export default function windowManageTest() {
             done();
           });
         })
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.info(`${caseName} The current device type does not support to resize.`);
           done();
@@ -566,7 +566,7 @@ export default function windowManageTest() {
             done();
           }
         });
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
           done();
@@ -613,6 +613,7 @@ export default function windowManageTest() {
         } else {
           console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
           expect(1300004).assertEqual(err.code);
+          await subWindowClass.destroyWindow();
           done();
         }
       });
@@ -705,6 +706,7 @@ export default function windowManageTest() {
         } else {
           console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
           expect(1300004).assertEqual(err.code);
+          await subWindowClass.destroyWindow();
           done();
         }
       });
@@ -733,7 +735,7 @@ export default function windowManageTest() {
           await subWindowClass.destroyWindow();
           done();
         });
-      }).catch(async (err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         if (err.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
           done();
