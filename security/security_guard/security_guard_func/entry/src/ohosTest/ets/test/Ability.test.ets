@@ -170,7 +170,8 @@ export default function SecurityGuardFunctionTest() {
       console.info('SUB_Security_SecurityGuard_JsApi_Func_0201 start');
       try {
         let rule: securityGuard.SecurityEventRule = {
-          eventId: 1011015001
+          eventId: 1011015001,
+          param: '{"infoType": 1, "inputMsg": [1352]}'
         }
         let querier: securityGuard.Querier = {
           onQuery(events: Array<securityGuard.SecurityEvent>) {
@@ -326,7 +327,8 @@ export default function SecurityGuardFunctionTest() {
       console.info('SUB_Security_SecurityGuard_JsApi_Func_0501 start');
       try {
         let rule: securityGuard.ModelRule = {
-          modelName: 'SecurityGuard_JailbreakCheck'
+          modelName: 'SecurityGuard_JailbreakCheck',
+          param: '{"lastOOBE": "300"}'
         }
         let result: securityGuard.ModelResult;
         result = await securityGuard.getModelResult(null);
