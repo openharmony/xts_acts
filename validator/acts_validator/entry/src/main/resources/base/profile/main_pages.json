@@ -42,6 +42,7 @@
     "pages/ArkUI/TextPickerDialog",
     "pages/ArkUI/Refresh",
     "pages/ArkUI/AccessBilityHover",
+    "pages/ArkUI/NavigationEnableHoverMode",
     "pages/Camera/Camera_index",
     "pages/Camera/CameraPreviewFormat",
     "pages/Camera/CameraPhotoFormat",
