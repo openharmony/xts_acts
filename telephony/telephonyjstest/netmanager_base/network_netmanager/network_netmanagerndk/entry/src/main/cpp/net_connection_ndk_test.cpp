@@ -186,7 +186,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OHGetDefaultNet", nullptr, OHGetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OHGetAllNets", nullptr, OHGetAllNets, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OHGetNetCapabilities", nullptr, OHGetNetCapabilities, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHGetConnectionProperties", nullptr, OHGetConnectionProperties, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHGetConnectionProperties", nullptr, OHGetConnectionProperties, nullptr, nullptr, nullptr, napi_default,
+          nullptr},
         {"OHHasDefaultNet", nullptr, OHHasDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OHisDefaultNetMetered", nullptr, OHisDefaultNetMetered, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OHGetDefaultHttpProxy", nullptr, OHetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default, nullptr}};
