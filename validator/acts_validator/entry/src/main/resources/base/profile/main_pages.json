@@ -108,7 +108,8 @@
     "pages/PCS/SubscribeCommonEvent",
     "pages/PCS/UninstallHap",
     "pages/PCS/SecureScreenLock",
-    "pages/PCS/RebootScreenUnlock"
+    "pages/PCS/RebootScreenUnlock",
+    "pages/ArkUI/AccessibilityProperty"
   ]
 }
 
