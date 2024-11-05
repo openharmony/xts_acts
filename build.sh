@@ -45,8 +45,7 @@ parse_cmdline() {
     PRODUCT_NAME=""
     PR_PARTH_LIST=""
     USE_MUSL=false
-    export PATH=${BASE_HOME}/prebuilts/python/linux-x86/3.8.3/bin:$PATH
-
+    export PATH=${BASE_HOME}/prebuilts/python/linux-x86/3.11.4/bin:$PATH
 
     system_build_params="build_xts=true"
 
@@ -97,8 +96,9 @@ do_make() {
     echo "BUILD_TARGET: $BUILD_TARGET"
     cd $BASE_HOME
     ACTS_ROOT="$BASE_HOME/test/xts/acts"
+    static_check_dir="${BASE_HOME}/test/xts/tools/standard_check"
 
-    ${BASE_HOME}/prebuilts/python/linux-x86/current/bin/python3 -B ${ACTS_ROOT}/check_hvigor.py
+    python3 -B ${static_check_dir}/check_hvigor.py acts
     if [ "$?" != 0 ]; then
         exit 1
     fi
