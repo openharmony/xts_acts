@@ -92,7 +92,7 @@ struct AccessibilityHoverDemo {
       }
 
       Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-        Text("accessibilitySelected undefined Checked undefined")
+        Text('accessibilitySelected undefined Checked undefined')
           .accessibilitySelected(undefined)
           .accessibilityChecked(undefined)
       }
