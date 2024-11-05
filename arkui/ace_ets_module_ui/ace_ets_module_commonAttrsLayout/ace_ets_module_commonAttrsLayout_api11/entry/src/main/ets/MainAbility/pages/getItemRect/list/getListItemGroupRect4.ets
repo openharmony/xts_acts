@@ -81,7 +81,7 @@ struct getListItemGroupRect4 {
               .backgroundColor('#3366CC')
           }
           .width('100%')
-          .height('25%')
+          .height(100)
           .visibility(this.visibility1)
           .key('getListItemGroupRect4_listItemGroup_0')
 
@@ -96,7 +96,7 @@ struct getListItemGroupRect4 {
                 .backgroundColor('#3366CC')
             }
             .width('100%')
-            .height('25%')
+            .height(100)
             .key('getListItemGroupRect4_listItemGroup_' + item)
           })
         }
