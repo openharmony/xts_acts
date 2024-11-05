@@ -266,6 +266,17 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
         expect().assertFail();
       }
+      await (win as window.Window).maximize(window.MaximizePresentation.ENTER_IMMERSIVE).then(() => {
+        console.info(msgStr + 'Succeeded in maximizing the main window.');
+      }).catch((err: BusinessError) => {
+        if (err.code == 801) {
+          console.log(msgStr + `The current device type does not support calling maximize Cause code: ${err.code}, message: ${err.message}`)
+          expect(err.code).assertEqual(801);
+        } else {
+          console.error(msgStr + `Failed to maximize the main window. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+        }
+      });
       await (win as window.Window).resize(707, 707).then(() => {
         console.info(msgStr + 'Succeeded in changing the window size.');
         expect().assertFail();
@@ -315,6 +326,19 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         expect().assertFail();
         done();
       }
+      await (win as window.Window).maximize(window.MaximizePresentation.ENTER_IMMERSIVE).then(() => {
+        console.info(msgStr + 'Succeeded in maximizing the main window.');
+      }).catch((err: BusinessError) => {
+        if (err.code == 801) {
+          console.log(msgStr + `The current device type does not support calling maximize Cause code: ${err.code}, message: ${err.message}`)
+          expect(err.code).assertEqual(801);
+          done();
+        } else {
+          console.error(msgStr + `Failed to maximize the main window. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      });
       (win as window.Window).resize(500, 1000, (err: BusinessError) => {
         const errCode: number = err.code;
         if (errCode) {
