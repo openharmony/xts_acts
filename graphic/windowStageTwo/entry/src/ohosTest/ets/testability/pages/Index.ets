@@ -20,7 +20,7 @@ struct Index {
   aboutToAppear() {
     console.info('TestAbility index aboutToAppear')
   }
-  @State message: string = 'Index'
+  @State message: string = 'Hello World'
   build() {
     Row() {
       Column() {

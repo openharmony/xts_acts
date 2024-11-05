@@ -2556,6 +2556,63 @@ export default function windowPropertiesTest() {
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7800
+     * @tc.name      : testmoveWindowToGlobal_401
+     * @tc.desc      : get the global rect.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testmoveWindowToGlobal_401', 0, async (done: Function) => {
+      let caseName = 'TestmoveWindowToGlobal_401';
+      try {
+        const windowClass = await windowStage.createSubWindow('testmoveWindowToGlobal_401');
+        windowClass.moveWindowToGlobal(null, null).then(() => {
+          console.info(`${caseName} Succeeded in moving the window`);
+          let rect = windowClass.getWindowProperties().windowRect;
+          console.info(`${caseName} Get window rect: ${JSON.stringify(rect)}`);
+          expect(false).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(`${caseName} Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_7900
+     * @tc.name      : testgetGlobalRect
+     * @tc.desc      : get the global rect.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testgetGlobalRect', 0, async (done: Function) => {
+      let caseName = 'testgetGlobalRect';
+      try {
+        const windowClass = windowStage.getMainWindowSync();
+        let rect = windowClass.getGlobalRect();
+        console.info(`${caseName} Succeeded in getting global rect: ${JSON.stringify(rect)}`);
+        expect(rect.width).assertLarger(0);
+        expect(rect.height).assertLarger(0);
+        done();
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.error(`${caseName} The current device type does not support to getting the global rect.`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
   })
 }
 
