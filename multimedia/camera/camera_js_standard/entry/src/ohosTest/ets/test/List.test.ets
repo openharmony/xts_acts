@@ -35,6 +35,7 @@ let TAG = 'CameraModuleTest: '
 
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
+  cameraTorchTest()
   cameraInputTest()
   cameraVideoSuperStabilizationTest()
   cameraJSUnitOutput()
@@ -48,7 +49,6 @@ export default function cameraKit() {
   cameraManagerTest()
   cameraPreconfigTest()
   cameraEnumTest()
-  cameraTorchTest()
   cameraSecureSessionTest()
   CameraSessionCameraRotationTest()
   CameraVideoCodecTypeTest()
