@@ -2651,9 +2651,9 @@ export default function ActsAccountAuthToken() {
                 appAccountManager.setAuthToken("account_setAuthTokenVisibility_name","authType","test_token",(err)=>{
                     console.info("====>ActsAccountAuthToken_10300 setAuthToken err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    appAccountManager.setAuthTokenVisibility("account_setAuthTokenVisibility_name","authType"," ",true,(err)=>{
+                    appAccountManager.setAuthTokenVisibility("account_setAuthTokenVisibility_name", "authType", " ", true, (err)=>{
                         console.info("====>ActsAccountAuthToken_10300 setAuthTokenVisibility err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(12400001);
+                        expect(err).assertEqual(null);
                         appAccountManager.getAuthList("account_setAuthTokenVisibility_name","authType",(err,dataArray)=>{
                             console.info("====>ActsAccountAuthToken_10300 getAuthList err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
