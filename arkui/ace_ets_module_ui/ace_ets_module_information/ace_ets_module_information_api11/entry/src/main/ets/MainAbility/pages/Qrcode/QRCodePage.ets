@@ -62,8 +62,8 @@ struct QRCodePage {
       QRCode(this.value).width(200).height(200).backgroundColor(this.backColor).key('qr2')
 
       QRCode(this.value).width(200).height(200)
-        .color($r('sys.color.ohos_id_color_foreground'))
-        .backgroundColor($r('sys.color.ohos_id_color_background'))
+        .color(0xFF000000)
+        .backgroundColor(0xFFFFFFFF)
         .key('qrDefault')
     }.width('100%').margin({ top: 5 })
   }
