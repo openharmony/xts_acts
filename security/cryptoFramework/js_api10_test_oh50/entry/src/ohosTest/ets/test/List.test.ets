@@ -28,6 +28,7 @@ import SecurityCryptoFwSignVerifySyncTestUnit from './SecurityCryptoFwSignVerify
 import SecurityCryptoFwPkcs1ToPkcs8TestUnit from './SecurityCryptoFwPkcs1ToPkcs8.test'
 import SecurityCryptoFwVectorTestUnit from './SecurityCryptoFwVector.test'
 import SecurityCryptoFwDataBlobToPemTestUnit from './SecurityCryptoFwExternalPemDataBlobToKeyPair.test'
+import SecurityCryptoFwSECP256K1TestUnit from './SecurityCryptoFwSecp256k1.test'
 
 
 export default function testsuite() {
@@ -46,4 +47,5 @@ export default function testsuite() {
   SecurityCryptoFwPkcs1ToPkcs8TestUnit();
   SecurityCryptoFwVectorTestUnit();
   SecurityCryptoFwDataBlobToPemTestUnit();
+  SecurityCryptoFwSECP256K1TestUnit();
 }
