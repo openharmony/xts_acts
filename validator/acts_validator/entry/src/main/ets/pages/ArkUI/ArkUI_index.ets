@@ -83,6 +83,7 @@ struct IndexPage {
     { title: 'TextPickerDialog', uri: 'pages/ArkUI/TextPickerDialog' },
     { title: 'Refresh', uri: 'pages/ArkUI/Refresh' },
     { title: 'onAccessibilityHover', uri: 'pages/ArkUI/AccessBilityHover' },
+    { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' },
     { title: 'NavigationEnableHoverMode', uri: 'pages/ArkUI/NavigationEnableHoverMode' }
   ]
   @State ColorObject: Object[] = letColor;
