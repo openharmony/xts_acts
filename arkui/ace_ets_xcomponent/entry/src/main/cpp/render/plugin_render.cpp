@@ -544,7 +544,7 @@ void FillEvent(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityEleme
 
 void SendAccessibilityAsyncEvent(int64_t elementId, bool accessibilityFocus)
 {
-    LOGI("OH_ArkUI_SendAccessibilityAsyncEvent SendAccessibilityAsyncEvent elementId: %{public}ld", elementId);
+    LOGI("OH_ArkUI_SendAccessibilityAsyncEvent SendAccessibilityAsyncEvent elementId: %{public}lld", elementId);
     if (provider_ == nullptr) {
         LOGI("OH_ArkUI_SendAccessibilityAsyncEvent provider is null");
         return;
@@ -609,7 +609,7 @@ int32_t ClearFocusedFocusAccessibilityNode()
 
 int32_t GetAccessibilityNodeCursorPosition(int64_t elementId, int32_t requestId, int32_t* index)
 {
-    LOGI("GetAccessibilityNodeCursorPosition start, %{public}ld, %{public}d", elementId, requestId);
+    LOGI("GetAccessibilityNodeCursorPosition start, %{public}lld, %{public}d", elementId, requestId);
 
     const int32_t cursorPosition = 17805;
     *index = cursorPosition;
