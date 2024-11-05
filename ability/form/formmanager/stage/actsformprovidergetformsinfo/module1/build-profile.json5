@@ -28,8 +28,8 @@
   },
   "modules": [
     {
-      "name": "src",
-      "srcPath": "./src",
+      "name": "module1",
+      "srcPath": "./entry",
       "targets": [
         {
           "name": "default",

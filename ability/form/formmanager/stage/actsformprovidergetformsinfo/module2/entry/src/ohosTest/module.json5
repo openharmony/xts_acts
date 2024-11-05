@@ -1,0 +1,57 @@
+{
+  "module": {
+    "name": "module2",
+    "type": "feature",
+    "srcEntry": "./ets/Application/AbilityStage.ts",
+    "description": "$string:module2_desc",
+    "mainElement": "MainAbility",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "uiSyntax": "ets",
+    "abilities": [
+      {
+        "name": "MainAbility",
+        "srcEntry": "./ets/MainAbility/MainAbility.ts",
+        "description": "$string:MainAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:MainAbility_label",
+        "visible": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:white"
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "FormAbility",
+        "srcEntry": "./ets/FormAbility/FormAbility.ts",
+        "label": "$string:form_FormAbility_label",
+        "description": "$string:form_FormAbility_desc",
+        "type": "form",
+        "metadata": [
+          {
+            "name": "ohos.extension.form",
+            "resource": "$profile:form_config"
+          }
+        ]
+      }
+    ],
+    "definePermissions": [
+      {
+        "grantMode": "system_grant",
+        "name": "FMS_FormSupply_commonEvent"
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "FMS_FormSupply_commonEvent"
+      }
+    ]
+  }
+}
