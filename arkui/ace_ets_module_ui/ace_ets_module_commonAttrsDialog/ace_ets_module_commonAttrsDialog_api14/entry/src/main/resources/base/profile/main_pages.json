@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/bindSheetTest/bindSheetKeyboardAvoidMode"
+        "MainAbility/pages/bindSheetTest/bindSheetKeyboardAvoidMode",
+		"MainAbility/pages/Popup/followTransformOfTargetPopup","MainAbility/pages/Popup/followTransformOfTargetCustomPopup"
     ]
 }
