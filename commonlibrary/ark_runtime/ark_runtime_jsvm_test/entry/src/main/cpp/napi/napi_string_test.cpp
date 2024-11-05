@@ -182,7 +182,7 @@
         OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf8test6: CreateStringUtf8 Failed");
         return nullptr;
     }
-    size_t strLength = strlen(testStr); 
+    size_t strLength = strlen( testStr ); 
     JSVM_Status status = OH_JSVM_GetValueStringUtf8(env, setValueName, resultStr, strLength, &size);
   
     if (status != JSVM_OK) {
@@ -323,7 +323,7 @@
         OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf8test4: CreateStringUtf8 size Failed");
     }
     
-    if (0 != strcmp(resultStr, strInput)) {
+    if (strcmp(resultStr, strInput) != 0) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf8test4: CreateStringUtf8 size Failed");
     }
     
@@ -410,23 +410,28 @@
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
     
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16test3: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test3: CreateStringUtf16 Failed");
         return nullptr;
     }
     
-    size_t getSize = 100;
+    size_t getSize = BufSizeMax;
     char16_t  resultStr[getSize];
-    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
+    errno_t memsetRst = memset_s(resultStr, getSize * sizeof(char16_t), 0x00, getSize * sizeof(char16_t));
+    if (memsetRst != EOK) {
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test3: memset_s Failed");
+        return nullptr;
+    }
+    
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16test3: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test3: CreateStringUtf16 Failed");
         return nullptr;
     }
     
     if (rstSize != size) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16test3: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test3: CreateStringUtf16 Failed");
     }
     
     bool result = true;
@@ -451,18 +456,22 @@
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
     
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16test4: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test4: CreateStringUtf16 Failed");
         return nullptr;
     }
     
     size_t getSize = BufSizeMax;
     char16_t resultStr[BufSizeMax];
-    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
+    errno_t memsetRst = memset_s(resultStr, getSize * sizeof(char16_t), 0x00, getSize * sizeof(char16_t));
+    if (memsetRst != EOK) {
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test4: memset_s Failed");
+        return nullptr;
+    }
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16test4: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test4: CreateStringUtf16 Failed");
         return nullptr;
     }
     size_t i = 0;
@@ -475,11 +484,11 @@
         }
     }
     if (!bCmpString) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16test4: CreateStringUtf16 string Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test4: CreateStringUtf16 string Failed");
     }
     
     if (rstSize != size) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16test4: CreateStringUtf16 size Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCreateStringUtf16Test4: CreateStringUtf16 size Failed");
     }
     
     bool result = true;
@@ -524,23 +533,28 @@
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
     
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test2: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test2: CreateStringUtf16 Failed");
         return nullptr;
     }
     
-    size_t getSize = 100;
+    size_t getSize = BufSizeMax;
     char16_t resultStr[getSize];
-    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
+    errno_t memsetRst = memset_s(resultStr, getSize * sizeof(char16_t), 0x00, getSize * sizeof(char16_t));
+    if (memsetRst != EOK) {
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test2: memset_s Failed");
+        return nullptr;
+    }
+
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test2: GetValueStringUtf16 status Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test2: GetValueStringUtf16 status Failed");
         return nullptr;
     }
     
     if (rstSize != size) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test2: GetValueStringUtf16 size Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test2: GetValueStringUtf16 size Failed");
     }
     
     bool result = true;
@@ -565,23 +579,27 @@
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
     
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test3: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test3: CreateStringUtf16 Failed");
         return nullptr;
     }
     
     size_t getSize = size - BufSize3;
     char16_t resultStr[getSize];
-    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
+    errno_t memsetRst = memset_s(resultStr, getSize * sizeof(char16_t), 0x00, getSize * sizeof(char16_t));
+    if (memsetRst != EOK) {
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test3: memset_s Failed");
+        return nullptr;
+    }
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test3: GetValueStringUtf16 status Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test3: GetValueStringUtf16 status Failed");
         return nullptr;
     }
     
     if (rstSize > getSize) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test3: GetValueStringUtf16 size Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test3: GetValueStringUtf16 size Failed");
     }
     
     bool result = true;
@@ -606,23 +624,27 @@
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
     
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test4: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test4: CreateStringUtf16 Failed");
         return nullptr;
     }
     
     size_t getSize = size + BufSize3;
     char16_t resultStr[getSize];
-    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
+    errno_t memsetRst = memset_s(resultStr, getSize * sizeof(char16_t), 0x00, getSize * sizeof(char16_t));
+    if (memsetRst != EOK) {
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test4: memset_s Failed");
+        return nullptr;
+    }
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test4: GetValueStringUtf16 status Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test4: GetValueStringUtf16 status Failed");
         return nullptr;
     }
     
     if (rstSize != size) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test4: GetValueStringUtf16 size Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test4: GetValueStringUtf16 size Failed");
     }
     
     bool result = true;
@@ -647,23 +669,27 @@
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
     
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test5: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test5: CreateStringUtf16 Failed");
         return nullptr;
     }
     
     size_t getSize = size;
     char16_t resultStr[getSize];
-    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
+    errno_t memsetRst = memset_s(resultStr, getSize * sizeof(char16_t), 0x00, getSize * sizeof(char16_t));
+    if (memsetRst != EOK) {
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test5: memset_s Failed");
+        return nullptr;
+    }
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize - BufSize3, &rstSize);
     
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test5: GetValueStringUtf16 status Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test5: GetValueStringUtf16 status Failed");
         return nullptr;
     }
     
     if (rstSize >= getSize) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test5: GetValueStringUtf16 size Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test5: GetValueStringUtf16 size Failed");
     }
     
     bool result = true;
@@ -688,18 +714,22 @@
     JSVM_Status rstStatus = OH_JSVM_CreateStringUtf16(env, strInput, size, &strRstValue);
     
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test6: CreateStringUtf16 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test6: CreateStringUtf16 Failed");
         return nullptr;
     }
     
     size_t getSize = size;
     char16_t resultStr[getSize];
-    memset_s(resultStr, sizeof(resultStr), 0x00, getSize);
+    errno_t memsetRst = memset_s(resultStr, getSize * sizeof(char16_t), 0x00, getSize * sizeof(char16_t));
+    if (memsetRst != EOK) {
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test6: memset_s Failed");
+        return nullptr;
+    }
     size_t rstSize = 0 ;
     JSVM_Status status = OH_JSVM_GetValueStringUtf16(env, strRstValue, resultStr, getSize, &rstSize);
     
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test6: GetValueStringUtf16 status Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test6: GetValueStringUtf16 status Failed");
         return nullptr;
     }
     
@@ -708,7 +738,7 @@
         ++rstLength;
     }
     if (rstSize != rstLength) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16test6: GetValueStringUtf16 size Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf16Test6: GetValueStringUtf16 size Failed");
     }
     
     bool result = true;
@@ -835,7 +865,7 @@
         return nullptr;
     }
     
-    if (0 != strcmp(resultStr, strInput)) {
+    if (strcmp(resultStr, strInput) != 0) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateStringLatin1test4: GetValueStringLatin1 string Failed");
     }
     
@@ -940,24 +970,28 @@
     
     const size_t strBufsize = BufSizeMax;
     char resultStr[strBufsize];
-    memset_s(resultStr, sizeof(resultStr), 0x00, strBufsize);
+    errno_t memsetRst = memset_s(resultStr, strBufsize * sizeof(char), 0x00, strBufsize * sizeof(char));
+    if (memsetRst != EOK) {
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1Test4: memset_s Failed");
+        return nullptr;
+    }
     size_t size = 0;
     const char *testStr = "create Latin1 string";
     JSVM_Value setValueName = nullptr;
     JSVM_Status creatStatus = OH_JSVM_CreateStringLatin1(env, testStr, strlen(testStr), &setValueName);
     if (creatStatus != JSVM_OK) {
         printf("OH_JSVM_CreateStringLatin1 Failed");
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test4: OH_JSVM_CreateStringLatin1 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1Test4: OH_JSVM_CreateStringLatin1 Failed");
         return nullptr;
     }
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, setValueName, resultStr, strBufsize, &size);
     
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test4: OH_JSVM_GetValueStringLatin1 status Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1Test4: OH_JSVM_GetValueStringLatin1 status Failed");
     }
     
     if (size < strlen(testStr)) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test4: OH_JSVM_GetValueStringLatin1 size Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1Test4: OH_JSVM_GetValueStringLatin1 size Failed");
     }
     
     bool result = true;
@@ -966,7 +1000,7 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1test5(JSVM_Env env, JSVM_CallbackInfo info)
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test5(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
@@ -1015,7 +1049,7 @@
     }
     
     size_t strLength = strlen(testStr) + 1;
-    char resultStr[strLength] = {0};
+    char resultStr[BufSizeMax] = {0};
     size_t size = 0;
     JSVM_Status status = OH_JSVM_GetValueStringLatin1(env, setValueName, resultStr, strLength, &size);
   
@@ -1024,7 +1058,7 @@
         return nullptr;
     }
     
-    if (0 != strcmp(resultStr, testStr)) {
+    if (strcmp(resultStr, testStr) != 0) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringLatin1test6: OH_JSVM_GetValueStringLatin1 string Failed");
     }
     
@@ -1142,8 +1176,6 @@
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestOthertest1: OH_JSVM_GetValueStringUtf16 status Failed");
     }
-    // printf err code 
-    printf("resultStr : %s", resultStr);
     
     bool result = true;
     JSVM_Value value = nullptr;

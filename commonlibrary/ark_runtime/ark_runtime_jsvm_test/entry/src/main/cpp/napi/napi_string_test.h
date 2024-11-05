@@ -1,3 +1,5 @@
+#ifndef JSVM_XTS_NAPI_STRING_TEST_H
+#define JSVM_XTS_NAPI_STRING_TEST_H
 /*
 * Copyright (c) 2024 SwanLink (Jiangsu) Technology Development Co., LTD.
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +15,6 @@
 * limitations under the License.
 */
 
-#ifndef JSVM_XTS_NAPI_STRING_TEST_H
-#define JSVM_XTS_NAPI_STRING_TEST_H
 #include "jsvm.h"
 #include "jsvm_common.h"
 #include "native_common.h"
