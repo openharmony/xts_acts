@@ -53,7 +53,7 @@ export default function counterJsunit() {
       console.info('[testCounter01] START');
       let strJson = getInspectorByKey('Counter');
       console.info("[testCounter01] obj is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      expect(JSON.parse(strJson).$attrs.enableInc).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.enableInc).assertEqual("true");
       console.info('[testCounter01] END');
       done();
     });
@@ -70,7 +70,7 @@ export default function counterJsunit() {
       console.info('[testCounter02] START');
       let strJson = getInspectorByKey('Counter');
       console.info("[testCounter02] obj is : " + JSON.stringify(JSON.parse(strJson).$attrs));
-      expect(JSON.parse(strJson).$attrs.enableDec).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.enableDec).assertEqual("true");
       console.info('[testCounter02] END');
       done();
     });
@@ -92,7 +92,7 @@ export default function counterJsunit() {
 
       let strJsonNew = getInspectorByKey('Counter');
       console.info("testCounter03 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
-      expect(JSON.parse(strJsonNew).$attrs.enableDec).assertEqual(undefined);
+      expect(JSON.parse(strJsonNew).$attrs.enableDec).assertEqual("true");
       console.info('testCounter03 END');
       done();
     });
