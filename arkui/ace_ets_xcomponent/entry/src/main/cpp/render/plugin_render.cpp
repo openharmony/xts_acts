@@ -304,6 +304,52 @@ void FillElementInfo1(ArkUI_AccessibilityElementInfo* elementInfo)
     OH_ArkUI_AccessibilityElementInfoSetChecked(elementInfo, true);
 }
 
+
+void setElementInfo(ArkUI_AccessibilityElementInfo* elementInfo, int32_t i)
+{
+    int32_t x = 0;
+    int32_t y = (i < 4)?(x + (i -1) * 500) : (x + (i -4) * 100);
+    double min = 0.0;
+    double max = 100.0;
+    double current = 50.0;
+    int32_t rowCount = 10;
+    int32_t columnCount = 10;
+    int32_t selectionMode = 0;
+    int32_t columnIndex = 0;
+    int32_t rowIndex = 0;
+    int32_t columnSpan = 0;
+    int32_t rowSpan = 0;
+    ArkUI_AccessibleRangeInfo rangeInfo = { min, max, current };
+    ArkUI_AccessibleGridInfo gridInfo = { rowCount, columnCount, selectionMode };
+    ArkUI_AccessibleGridItemInfo gridItemInfo = { false, false, columnIndex, rowIndex, columnSpan, rowSpan};
+    OH_ArkUI_AccessibilityElementInfoSetHintText(elementInfo, "hinttext");
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(elementInfo, "AccessibilityDescription");
+    OH_ArkUI_AccessibilityElementInfoSetFocused(elementInfo, false);
+    OH_ArkUI_AccessibilityElementInfoSetSelected(elementInfo, false);
+    OH_ArkUI_AccessibilityElementInfoSetLongClickable(elementInfo, false);
+    OH_ArkUI_AccessibilityElementInfoSetIsPassword(elementInfo, false);
+    OH_ArkUI_AccessibilityElementInfoSetScrollable(elementInfo, false);
+    OH_ArkUI_AccessibilityElementInfoSetEditable(elementInfo, false);
+    OH_ArkUI_AccessibilityElementInfoSetIsHint(elementInfo, false);
+    OH_ArkUI_AccessibilityElementInfoSetRangeInfo(elementInfo, &rangeInfo);
+    OH_ArkUI_AccessibilityElementInfoSetGridInfo(elementInfo, &gridInfo);
+    OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(elementInfo, &gridItemInfo);
+    OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(elementInfo, x);
+    OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(elementInfo, y);
+    OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(elementInfo, x);
+    OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(elementInfo, x);
+    OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(elementInfo, y);
+    OH_ArkUI_AccessibilityElementInfoSetItemCount(elementInfo, rowCount * columnCount);
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(elementInfo, rowCount);
+    OH_ArkUI_AccessibilityElementInfoSetZIndex(elementInfo, x);
+    OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(elementInfo, min);
+    OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(elementInfo, "red");
+    OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(elementInfo, "app.media.icon");
+    OH_ArkUI_AccessibilityElementInfoSetBlur(elementInfo, "blur");
+    OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(elementInfo, "default");
+    return;
+}
+
 void FillElementInfo2(ArkUI_AccessibilityElementInfo* elementInfo, int32_t i)
 {
     if (elementInfo == nullptr) {
@@ -330,6 +376,7 @@ void FillElementInfo2(ArkUI_AccessibilityElementInfo* elementInfo, int32_t i)
     actions[second].actionType =
         ArkUI_Accessibility_ActionType::ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK;
     actions[second].description = "ace";
+    setElementInfo(elementInfo, i);
     OH_ArkUI_AccessibilityElementInfoSetOperationActions(elementInfo, size, actions);
     //3.
     OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(elementInfo, "yes");
@@ -457,6 +504,7 @@ int32_t FindFocusedAccessibilityNode(int64_t elementId, ArkUI_AccessibilityFocus
         return OH_NATIVEXCOMPONENT_RESULT_FAILED;
     }
     const int32_t four = 4;
+    OH_ArkUI_DestoryAccessibilityElementInfo(elementInfo);
     FillElementInfo2(elementInfo, four);
 
     LOGI("FindFocusedAccessibilityNode end");
@@ -485,7 +533,9 @@ void FillEvent(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityEleme
         LOGI("FillEvent eventInfo is null");
         return;
     }
-    
+    int32_t x = 0;
+    OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, x);
+    OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, "TextAnnounced");
     OH_ArkUI_AccessibilityEventSetEventType(eventInfo,
         ArkUI_AccessibilityEventType::ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED);
     
@@ -494,7 +544,7 @@ void FillEvent(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityEleme
 
 void SendAccessibilityAsyncEvent(int64_t elementId, bool accessibilityFocus)
 {
-    LOGI("OH_ArkUI_SendAccessibilityAsyncEvent SendAccessibilityAsyncEvent elementId: %{public}lld", elementId);
+    LOGI("OH_ArkUI_SendAccessibilityAsyncEvent SendAccessibilityAsyncEvent elementId: %{public}ld", elementId);
     if (provider_ == nullptr) {
         LOGI("OH_ArkUI_SendAccessibilityAsyncEvent provider is null");
         return;
@@ -559,7 +609,7 @@ int32_t ClearFocusedFocusAccessibilityNode()
 
 int32_t GetAccessibilityNodeCursorPosition(int64_t elementId, int32_t requestId, int32_t* index)
 {
-    LOGI("GetAccessibilityNodeCursorPosition start, %{public}lld, %{public}d", elementId, requestId);
+    LOGI("GetAccessibilityNodeCursorPosition start, %{public}ld, %{public}d", elementId, requestId);
 
     const int32_t cursorPosition = 17805;
     *index = cursorPosition;

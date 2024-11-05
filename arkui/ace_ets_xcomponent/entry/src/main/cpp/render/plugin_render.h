@@ -78,6 +78,8 @@ public:
     void DispatchMouseEvent(OH_NativeXComponent* component, void* window);
     
     void InterfaceDesignTest(OH_NativeXComponent* nativeXComponent);
+    
+    void setElementInfo(ArkUI_AccessibilityElementInfo* elementInfo, int32_t i);
 
 public:
     static std::unordered_map<std::string, PluginRender*> instance_;
