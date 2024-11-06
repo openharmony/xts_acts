@@ -47,11 +47,11 @@ export default function scroll_ScrollFrictionTest() {
     });
     /**
      * @tc.number SUB_ACE_SCROLL_SCROLLFRICTION_001
-     * @tc.name testScrollFriction
+     * @tc.name testScrollFriction_0100
      * @tc.desc set friction to -1
      */
-    it('testScrollFriction', 0, async (done: Function) => {
-      console.info('[testScrollFriction] START');
+    it('testScrollFriction_0100', 0, async (done: Function) => {
+      console.info('[testScrollFriction_0100] START');
       globalThis.value.message.notify({
         name: 'friction', value: -1
       })
@@ -59,17 +59,17 @@ export default function scroll_ScrollFrictionTest() {
       let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
       expect(JSON.parse(scrollContainerStrJson).$type).assertEqual('Scroll');
       expect(JSON.parse(scrollContainerStrJson).$attrs.friction).assertEqual(0.7);
-      console.info('[testScrollFriction] END');
+      console.info('[testScrollFriction_0100] END');
       done();
     });
 
     /**
      * @tc.number SUB_ACE_SCROLL_SCROLLFRICTION_002
-     * @tc.name testScrollFriction
+     * @tc.name testScrollFriction_0200
      * @tc.desc set friction to 10
      */
-    it('testScrollFriction', 0, async (done: Function) => {
-      console.info('[testScrollFriction] START');
+    it('testScrollFriction_0200', 0, async (done: Function) => {
+      console.info('[testScrollFriction_0200] START');
       globalThis.value.message.notify({
         name: 'friction', value: 10
       })
@@ -77,7 +77,7 @@ export default function scroll_ScrollFrictionTest() {
       let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
       expect(JSON.parse(scrollContainerStrJson).$type).assertEqual('Scroll');
       expect(JSON.parse(scrollContainerStrJson).$attrs.friction).assertEqual(10);
-      console.info('[testScrollFriction] END');
+      console.info('[testScrollFriction_0200] END');
       done();
     });
   })

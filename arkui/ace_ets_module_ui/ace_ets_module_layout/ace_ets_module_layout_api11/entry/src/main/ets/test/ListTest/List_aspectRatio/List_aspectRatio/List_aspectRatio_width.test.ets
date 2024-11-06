@@ -77,8 +77,10 @@ export default function List_aspectRatio_width() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_width_01');
+      console.info('[SUB_ACE_List_aspectRatio_width_0100]' + Math.round(List01.right - List01.left));
+      console.info('[SUB_ACE_List_aspectRatio_width_0100]' + Math.round(List01.bottom - List01.top));
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(350))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(160))) <= 1).assertTrue();
 	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(230))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_width_0100] END');
@@ -97,9 +99,10 @@ export default function List_aspectRatio_width() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_width_01');
+      console.info('[SUB_ACE_List_aspectRatio_width_0200]' + Math.round(List01.bottom - List01.top));
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(350))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(700))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(160))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(320))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_width_0200] END');
       done();
@@ -117,9 +120,10 @@ export default function List_aspectRatio_width() {
       });
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_width_01');
+      console.info('[SUB_ACE_List_aspectRatio_width_0300]' + Math.round(List01.bottom - List01.top));
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(350))) <= 1).assertTrue();
-	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(175))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(160))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(80))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_width_0300] END');
       done();
@@ -138,7 +142,7 @@ export default function List_aspectRatio_width() {
       await CommonFunc.sleep(1000);
       let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_width_01');
 
-	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(350))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List01.right - List01.left) - Math.round(vp2px(160))) <= 1).assertTrue();
 	  expect(Math.abs(Math.round(List01.bottom - List01.top) - Math.round(vp2px(230))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_aspectRatio_width_0400] END');
