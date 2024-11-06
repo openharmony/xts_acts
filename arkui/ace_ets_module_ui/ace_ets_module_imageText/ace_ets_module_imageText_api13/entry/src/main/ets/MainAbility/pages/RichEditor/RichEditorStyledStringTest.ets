@@ -18,7 +18,7 @@ import promptAction from '@ohos.promptAction';
 
 @Entry
 @Component
-struct RichEditorStyledStringTest3 {
+struct RichEditorStyledStringTest {
   fontStyleAttr1: TextStyle = new TextStyle({ fontColor: Color.Blue });
   clickGestureAttr: GestureStyle = new GestureStyle({
     onClick: () => {
