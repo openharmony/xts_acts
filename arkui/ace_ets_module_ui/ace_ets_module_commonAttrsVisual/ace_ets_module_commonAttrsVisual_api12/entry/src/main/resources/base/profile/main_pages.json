@@ -8,7 +8,6 @@
         "MainAbility/pages/ImageEffect/fractionStops",
         "MainAbility/pages/backgroundImage/backgroundBrightness",
         "MainAbility/pages/visualEffect/visualEffect",
-        "MainAbility/pages/visualEffect/motionBlur",
-        "MainAbility/pages/MovingPhotoView/MovingPhotoView"
+        "MainAbility/pages/visualEffect/motionBlur"
     ]
 }
