@@ -1280,13 +1280,13 @@ export default function globalStageTest() {
       try {
         let value_one = resMgr.getStringSync($r('app.string.test_stringSeven').id, "format string", 12, "TestTest", 20);
         console.log('resourceManager_test_getStringSync_0070 value_one:' + value_one);
-        expect(value_one).assertEqual(20);
+        expect(value_one).assertEqual('20');
         let value_two = resMgr.getStringSync(resource, "format string", 12, "TestTest", 20);
         console.log('resourceManager_test_getStringSync_0070 value_two:' + value_two);
-        expect(value_two).assertEqual(20);
+        expect(value_two).assertEqual('20');
         let value_three = resMgr.getStringByNameSync('test_stringSeven', "format string", 12, "TestTest", 20);
         console.log('resourceManager_test_getStringSync_0070 value_three:' + value_three);
-        expect(value_three).assertEqual(20);
+        expect(value_three).assertEqual('20');
       } catch (error) {
         let code = (error as BusinessError).code;
         let message = (error as BusinessError).message;
@@ -1827,7 +1827,7 @@ export default function globalStageTest() {
         resMgr.getStringSync(resource, 50);
       } catch (error) {
         console.log('resourceManager_test_getStringSync_0240'+error.code+error.message);
-        expect(error.code).assertEqual(9001007);
+        expect(error.code).assertEqual('9001007');
       }
     })
 
@@ -1863,7 +1863,7 @@ export default function globalStageTest() {
         resMgr.getStringSync($r('app.string.test_stringTwentyFour').id, "format string", "format", "1.5", "string");
       } catch (error) {
         console.log('resourceManager_test_getStringSync_0260'+error.code+error.message);
-        expect(error.code).assertEqual(9001007);
+        expect(error.code).assertEqual('9001007');
       }
     })
 
@@ -1886,7 +1886,7 @@ export default function globalStageTest() {
         resMgr.getStringSync(resource, "format string", "format", "1.5", "string");
       } catch (error) {
         console.log('resourceManager_test_getStringSync_0270'+error.code+error.message);
-        expect(error.code).assertEqual(9001007);
+        expect(error.code).assertEqual('9001007');
       }
     })
 
@@ -1904,7 +1904,7 @@ export default function globalStageTest() {
         resMgr.getStringByNameSync('test_stringTwentyFour', "format string", "format", "1.5", "string");
       } catch (error) {
         console.log('resourceManager_test_getStringByNameSync_0280'+error.code+error.message);
-        expect(error.code).assertEqual(9001008);
+        expect(error.code).assertEqual('9001008');
       }
     })
 
@@ -1945,7 +1945,7 @@ export default function globalStageTest() {
         resMgr.getStringSync(resource, 50);
       } catch (error) {
         console.log('resourceManager_test_getStringSync_0300'+error.code+error.message);
-        expect(error.code).assertEqual(9001007);
+        expect(error.code).assertEqual('9001007');
       }
     })
 
