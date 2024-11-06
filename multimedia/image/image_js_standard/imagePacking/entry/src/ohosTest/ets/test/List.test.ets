@@ -14,6 +14,8 @@
  */
 
 import imagePacking from './packing.test'
+import imagePackToData from './packToData.test'
 export default function testsuite() {
     imagePacking()
+    imagePackToData()
 }
