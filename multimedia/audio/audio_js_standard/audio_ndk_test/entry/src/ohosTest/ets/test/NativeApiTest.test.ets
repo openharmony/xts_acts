@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
+import myaudioNdk from 'libentry.so'
 import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { abilityAccessCtrl, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import myaudioNdk from "libentry.so"
 
 const Tag = 'audio_ndk_test:'
 const TEST_PASS = 0; // success result
@@ -39,20 +39,18 @@ let getPermission = () => {
 
 let driveFn = async () => {
   let dr = Driver.create();
-  await sleep(1000);
+  await sleep(500);
   let power = await dr?.waitForComponent(ON.text('允许', MatchPattern.EQUALS), 500);
-  await sleep(1000);
+  await sleep(500);
   await power?.click();
-  await sleep(2000);
+  await sleep(500);
 }
 
 export default function audioNDK() {
   describe('audioNDKTest', () => {
     beforeAll(async () => {
       await getPermission();
-      await sleep(100);
       await driveFn();
-      await sleep(1000);
       console.info('beforeAll case');
     })
 
@@ -77,8 +75,8 @@ export default function audioNDK() {
         * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100', 0, async (done: Function) => {
-      let result = myaudioNdk.createAudioStreamBuilder();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100 createa: ${result}`);
+      let result: number = myaudioNdk.createAudioStreamBuilder();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100 createAudioStreamBuilder: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
@@ -1625,7 +1623,7 @@ export default function audioNDK() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0200
-     * @tc.name      : setMicBlockStatusCallback with none callback
+     * @tc.name      : setMicBlockStatusCallback without audioRoutingManager
      * @tc.desc      : test OH_AudioRoutingManager_SetMicBlockStatusCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1640,7 +1638,7 @@ export default function audioNDK() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0300
-     * @tc.name      : setMicBlockStatusCallback with callback and none callback
+     * @tc.name      : setMicBlockStatusCallback without  callback
      * @tc.desc      : test OH_AudioRoutingManager_SetMicBlockStatusCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
