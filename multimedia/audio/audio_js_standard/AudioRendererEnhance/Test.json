@@ -3,10 +3,10 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "3000000",
-        "bundle-name":"com.example.xts_test_case",
-        "package-name": "com.example.xts_test_case",
+        "bundle-name": "com.example.xts_test_case",
         "shell-timeout": "600000",
-		"testcase-timeout": "100000"
+        "testcase-timeout": "100000",
+        "module-name": "entry_test"
     },
     "kits": [
         {
