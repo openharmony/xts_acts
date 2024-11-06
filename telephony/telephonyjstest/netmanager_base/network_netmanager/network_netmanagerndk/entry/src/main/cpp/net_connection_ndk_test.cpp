@@ -17,7 +17,7 @@
 #include <network/netmanager/net_connection.h>
 #include <network/netmanager/net_connection_type.h>
 
-static napi_value OHGetNetCapabilities(napi_env env, napi_callback_info info)
+static napi_value OHNetConnGetNetCapabilities(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -41,7 +41,7 @@ static napi_value OHGetNetCapabilities(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value OHGetAllNets(napi_env env, napi_callback_info info)
+static napi_value OHNetConnGetAllNets(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -63,7 +63,7 @@ static napi_value OHGetAllNets(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value OHGetConnectionProperties(napi_env env, napi_callback_info info)
+static napi_value OHNetConnGetConnectionProperties(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -87,7 +87,7 @@ static napi_value OHGetConnectionProperties(napi_env env, napi_callback_info inf
     }
 }
 
-static napi_value OHGetDefaultNet(napi_env env, napi_callback_info info)
+static napi_value OHNetConnGetDefaultNet(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -109,7 +109,7 @@ static napi_value OHGetDefaultNet(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value OHHasDefaultNet(napi_env env, napi_callback_info info)
+static napi_value OHNetConnHasDefaultNet(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -131,7 +131,7 @@ static napi_value OHHasDefaultNet(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value OHIsDefaultNetMetered(napi_env env, napi_callback_info info)
+static napi_value OHNetConnIsDefaultNetMetered(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -153,7 +153,7 @@ static napi_value OHIsDefaultNetMetered(napi_env env, napi_callback_info info)
     }
 }
 
-static napi_value OHGetDefaultHttpProxy(napi_env env, napi_callback_info info)
+static napi_value OHNetConnGetDefaultHttpProxy(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -183,14 +183,14 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"OHGetDefaultNet", nullptr, OHGetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHGetAllNets", nullptr, OHGetAllNets, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHGetNetCapabilities", nullptr, OHGetNetCapabilities, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHGetConnectionProperties", nullptr, OHGetConnectionProperties, nullptr, nullptr, nullptr, napi_default,
+        {"OHNetConnGetDefaultNet", nullptr, OHNetConnGetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnGetAllNets", nullptr, OHNetConnGetAllNets, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnGetNetCapabilities", nullptr, OHNetConnGetNetCapabilities, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnGetConnectionProperties", nullptr, OHNetConnGetConnectionProperties, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"OHHasDefaultNet", nullptr, OHHasDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHisDefaultNetMetered", nullptr, OHisDefaultNetMetered, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OHGetDefaultHttpProxy", nullptr, OHetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnHasDefaultNet", nullptr, OHNetConnHasDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnisDefaultNetMetered", nullptr, OHNetConnisDefaultNetMetered, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHNetConnGetDefaultHttpProxy", nullptr, OHNetConnGetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
