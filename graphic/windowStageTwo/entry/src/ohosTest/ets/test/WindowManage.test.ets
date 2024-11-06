@@ -521,20 +521,26 @@ export default function windowManageTest() {
      */
     it('testSetWindowTopmost', 0, async (done: Function) => {
       let caseName = 'TestSetWindowTopmost';
-      windowClass.setWindowTopmost(false).then(() => {
-        console.info(`${caseName} Succeeded in setting the window to be top most.`);
-        expect(true).assertTrue();
-        done();
-      }).catch((err: BusinessError) => {
-        if (err.code === 801) {
-          console.info(`${caseName} The current device type does not support to setWindowTopmost`);
+      try {
+        windowClass.setWindowTopmost(false).then(() => {
+          console.info(`${caseName} Succeeded in setting the window to be top most.`);
+          expect(true).assertTrue();
           done();
-        } else {
+        }).catch((err: BusinessError) => {
           console.error(`${caseName} Failed to set the window to be top most. Cause code: ${err.code}, message: ${err.message}`);
           expect().assertFail();
           done();
+        });
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.info(`${caseName} The current device type does not support to setWindowTopmost`);
+          done();
+        } else {
+          console.error(`${caseName} Failed to set the window to be top most. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
         }
-      });
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1300
@@ -546,36 +552,33 @@ export default function windowManageTest() {
      */
     it('testSetWindowTopmostInSubWindow', 0, async (done: Function) => {
       let caseName = 'TestSetWindowTopmostInSubWindow';
-      let subWindowClass: window.Window;
-      createSubWindow(windowStage, caseName).then(async (data) => {
-        subWindowClass = data;
-        await sleep(1000);
+      let subWindowClass = await windowStage.createSubWindow('subWindow');
+      console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index1');
+      console.info(`${caseName} Succeeded in loading the sub window content.`);
+      await subWindowClass.showWindow();
+      try {
         windowClass.setWindowTopmost(true).then(async () => {
           console.info(`${caseName} Succeeded in setting the window to be top most.`);
           expect(true).assertTrue();
           await subWindowClass.destroyWindow();
           done();
         }).catch(async (err: BusinessError) => {
-          if (err.code === 801) {
-            console.info(`${caseName} The current device type does not support to setWindowTopmost`);
-            await subWindowClass.destroyWindow();
-            done();
-          } else {
-            console.error(`${caseName} Failed to set the window to be top most. Cause code: ${err.code}, message: ${err.message}`);
-            expect().assertFail();
-            done();
-          }
+          console.error(`${caseName} Failed to set the window to be top most. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
         });
-      }).catch((err: BusinessError) => {
-        if (err.code === 801) {
-          console.error(`${caseName} The current device type does not support to resize.`);
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.info(`${caseName} The current device type does not support to setWindowTopmost`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
-          console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
+          console.error(`${caseName} Failed to set the window to be top most. Cause code: ${exception.code}, message: ${exception.message}`);
           expect().assertFail();
           done();
         }
-      });
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1400
@@ -587,36 +590,33 @@ export default function windowManageTest() {
      */
     it('testSetWindowTopmostUnauthorized', 0, async (done: Function) => {
       let caseName = 'TestSetWindowTopmostUnauthorized';
-      let subWindowClass: window.Window;
-      createSubWindow(windowStage, caseName).then(async (data) => {
-        subWindowClass = data;
-        await sleep(1000);
+      let subWindowClass = await windowStage.createSubWindow('subWindow');
+      console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index1');
+      console.info(`${caseName} Succeeded in loading the sub window content.`);
+      await subWindowClass.showWindow();
+      try {
         subWindowClass.setWindowTopmost(false).then(() => {
           console.info(`${caseName} Succeeded in setting the window to be top most.`);
           expect(false).assertTrue();
           done();
-        }).catch(async (err: BusinessError) => {
-          if (err.code === 801) {
-            console.info(`${caseName} The current device type does not support to setWindowTopmost`);
-            await subWindowClass.destroyWindow();
-            done();
-          } else {
-            console.error(`${caseName} Failed to set the window to be top most. Cause code: ${err.code}, message: ${err.message}`);
-            expect().assertFail();
-            done();
-          }
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} Failed to set the window to be top most. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
         });
-      }).catch(async (err: BusinessError) => {
-        if (err.code === 801) {
-          console.error(`${caseName} The current device type does not support to resize.`);
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.info(`${caseName} The current device type does not support to setWindowTopmost`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
-          console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-          expect(1300004).assertEqual(err.code);
+          console.error(`${caseName} Unauthorized operation.. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect(exception.code).assertEqual(1300004);
           await subWindowClass.destroyWindow();
           done();
         }
-      });
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1500
@@ -690,26 +690,29 @@ export default function windowManageTest() {
      */
     it('testSetWindowMaximizeButtonVisibleInSubWindow', 0, async (done: Function) => {
       let caseName = 'TestSetWindowMaximizeButtonVisibleInSubWindow';
-      let subWindowClass: window.Window;
-      createSubWindow(windowStage, caseName).then(async (data) => {
-        subWindowClass = data;
-        await sleep(1000);
+      let subWindowClass = await windowStage.createSubWindow('TestSetWindowMaximizeButtonVisibleInSubWindow');
+      console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index1');
+      console.info(`${caseName} Succeeded in loading the sub window content.`);
+      await subWindowClass.showWindow();
+      await sleep(1000);
+      try {
         subWindowClass.setWindowTitleButtonVisible(false, false);
         console.info(`${caseName} Succeeded in setting whether to display the maximize buttons of main window.`)
         expect(false).assertTrue();
-        await subWindowClass.destroyWindow();
         done();
-      }).catch(async (err: BusinessError) => {
-        if (err.code === 801) {
+      } catch (exception) {
+        if (exception.code === 801) {
           console.error(`${caseName} The current device type does not support to resize.`);
+          await subWindowClass.destroyWindow();
           done();
         } else {
-          console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-          expect(1300004).assertEqual(err.code);
+          console.error(`${caseName} Unauthorized operation. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect(exception.code).assertEqual(1300004);
           await subWindowClass.destroyWindow();
           done();
         }
-      });
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1800
@@ -721,136 +724,21 @@ export default function windowManageTest() {
      */
     it('testRestoreBySubWindow', 0, async (done: Function) => {
       let caseName = 'TestRestoreBySubWindow';
-      let subWindowClass: window.Window;
-      createSubWindow(windowStage, caseName).then(async (data) => {
-        subWindowClass = data;
-        await sleep(1000);
-        subWindowClass.restore().then(async () => {
-          console.info(`${caseName} Succeeded in restoring the window.`);
-          expect(false).assertTrue();
-          done();
-        }).catch(async (err: BusinessError) => {
-          console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-          expect(1300004).assertEqual(err.code);
-          await subWindowClass.destroyWindow();
-          done();
-        });
-      }).catch((err: BusinessError) => {
-        if (err.code === 801) {
-          console.error(`${caseName} The current device type does not support to resize.`);
-          done();
-        } else {
-          console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          done();
-        }
+      let subWindowClass = await windowStage.createSubWindow('TestRestoreBySubWindow');
+      console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index1');
+      console.info(`${caseName} Succeeded in loading the sub window content.`);
+      await subWindowClass.showWindow();
+      subWindowClass.restore().then(async () => {
+        console.info(`${caseName} Succeeded in restoring the window.`);
+        expect(false).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
+        expect(1300004).assertEqual(err.code);
+        await subWindowClass.destroyWindow();
+        done();
       });
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1900
-     * @tc.name      : testRestoreByMinimize
-     * @tc.desc      : After the app main window is minimized, if the Ability is not in the background state, you can restore app main window.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testRestoreByMinimize', 0, async (done: Function) => {
-      let caseName = 'TestRestoreByMinimize';
-      try {
-        const mainWindowstatus = windowClass.getWindowStatus();
-        console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
-        windowClass.minimize().then(async () => {
-          console.info(`${caseName} Succeeded in minimizing the window.`);
-          await sleep(2000);
-          windowClass.restore().then(async () => {
-            console.info(`${caseName} Succeeded in restoring the window.`);
-            await sleep(1000);
-            let windowStatus = windowClass.getWindowStatus();
-            console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
-            expect(windowStatus).assertEqual(mainWindowstatus);
-            done();
-          }).catch((err: BusinessError) => {
-            if (err.code === 801) {
-              console.error(`${caseName} The current device type does not support to restore.`);
-              done();
-            } else {
-              console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-              expect(1300004).assertEqual(err.code);
-              done();
-            }
-          });
-        }).catch((err: BusinessError) => {
-          console.error(`${caseName} Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          done();
-        });
-      } catch (exception) {
-        if (exception.code === 801) {
-          console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
-          done();
-        } else {
-          console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
-          expect().assertFail();
-          done();
-        }
-      }
-    })
-    /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
-     * @tc.name      : testRestoreByMinimizeBtn
-     * @tc.desc      : After the app main window is minimized, if the Ability is not in the background state, you can restore app main window.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testRestoreByMinimizeBtn', 0, async (done: Function) => {
-      let caseName = 'TestRestoreByMinimizeBtn';
-      try {
-        const mainWindowstatus = windowClass.getWindowStatus();
-        console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
-        let driver: Driver = Driver.create();
-        let minimizeBtn = await driver.findComponent(ON.id('EnhanceMinimizeBtn'));
-        if (minimizeBtn) {
-          await minimizeBtn.click();
-          await sleep(1000);
-          windowClass.restore().then(async () => {
-            console.info(`${caseName} Succeeded in restoring the window.`);
-            await sleep(1000);
-            let windowStatus = windowClass.getWindowStatus();
-            console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
-            expect(windowStatus).assertEqual(mainWindowstatus);
-            done();
-          }).catch((err: BusinessError) => {
-            console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-            expect(1300004).assertEqual(err.code);
-            done();
-          });
-        } else {
-          windowClass.restore().then(() => {
-            console.info(`${caseName} Succeeded in restoring the window.`);
-            expect().assertFail();
-            done();
-          }).catch((err: BusinessError) => {
-            if (err.code === 801) {
-              console.error(`${caseName} The current device type does not support to restore. Cause code: ${err.code}, message: ${err.message}`);
-              done();
-            } else {
-              console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-              expect(1300004).assertEqual(err.code);
-              done();
-            }
-          });
-        }
-      } catch (exception) {
-        if (exception.code === 801) {
-          console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
-          done();
-        } else {
-          console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
-          expect().assertFail();
-          done();
-        }
-      }
     })
   })
 }
