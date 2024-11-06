@@ -75,6 +75,7 @@ struct IndexPage {
     { title: 'Progress', uri: 'pages/ArkUI/Progress' },
     { title: 'Rating', uri: 'pages/ArkUI/Rating' },
     { title: 'Search', uri: 'pages/ArkUI/Search' },
+    { title: 'SegmentButton', uri: 'pages/ArkUI/SegmentButton' },
     { title: 'SharedTransition', uri: 'pages/ArkUI/SharedTransition' },
     { title: 'Swiper', uri: 'pages/ArkUI/Swiper' },
     { title: 'Gauge', uri: 'pages/ArkUI/Gauge' },
@@ -82,7 +83,8 @@ struct IndexPage {
     { title: 'TextPickerDialog', uri: 'pages/ArkUI/TextPickerDialog' },
     { title: 'Refresh', uri: 'pages/ArkUI/Refresh' },
     { title: 'onAccessibilityHover', uri: 'pages/ArkUI/AccessBilityHover' },
-    { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' }
+    { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' },
+    { title: 'NavigationEnableHoverMode', uri: 'pages/ArkUI/NavigationEnableHoverMode' }
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];

@@ -57,9 +57,11 @@ export default function getListItemRect1() {
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      router.back({
-        url: 'MainAbility/pages/index/index'
-      })
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);
+      let btn3 = await driver.findComponent(ON.id('getListItemRect1_button3'));
+      await btn3.click();
+      await CommonFunc.sleep(3000);
       console.info("BadgeFocus after each called");
     });
 

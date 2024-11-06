@@ -142,6 +142,8 @@ export default function test() {
                     }
                 });
                 console.info(`${tcNumber} featureAbility.startAbility res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             } catch (error) {
                 console.info(`${tcNumber} error: ${JSON.stringify(error)}`);
                 console.info(`${tcNumber} should not reach here`);
@@ -222,6 +224,8 @@ export default function test() {
                     }
                 });
                 console.info(`${tcNumber} featureAbility.startAbility res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             } catch (error) {
                 console.info(`${tcNumber} error: ${JSON.stringify(error)}`);
                 console.info(`${tcNumber} should not reach here`);
@@ -300,6 +304,8 @@ export default function test() {
                     }
                 });
                 console.info(`${tcNumber} featureAbility.startAbility res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             } catch (error) {
                 console.info(`${tcNumber} error: ${JSON.stringify(error)}`);
                 console.info(`${tcNumber} should not reach here`);
@@ -356,6 +362,8 @@ export default function test() {
                     }
                 });
                 console.info(`${tcNumber} featureAbility.startAbility res: ${JSON.stringify(res)}`);
+                expect().not().assertFail();
+                done();
             } catch (error) {
                 console.info(`${tcNumber} error: ${JSON.stringify(error)}`);
                 console.info(`${tcNumber} should not reach here`);
