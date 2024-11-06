@@ -15,7 +15,8 @@
 #include "napi/native_api.h"
 #include "napi_string_test.h"
 /// js生成代码
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test1(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test1(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value thisVar = nullptr;
@@ -34,7 +35,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test2(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test2(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -63,7 +65,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test3(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test3(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -93,7 +96,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test4(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test4(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -123,7 +127,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test5(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test5(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -154,7 +159,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test6(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test6(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -186,7 +192,8 @@
     return value;
 }
 // OH_JSVM_CreateStringUtf8 interface
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test1(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test1(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -205,7 +212,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test2(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test2(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -237,7 +245,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test3(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test3(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -269,7 +278,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test4(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringUtf8Test4(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -304,7 +314,8 @@
     return value;
 }
 // OH_JSVM_CreateStringUtf16
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test1(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test1(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -323,7 +334,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test2(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test2(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -359,7 +371,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test3(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test3(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -400,7 +413,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test4(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringUtf16Test4(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -454,7 +468,8 @@
     return value;
 }
 // OH_JSVM_GetValueStringUtf16
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test1(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test1(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value thisVar = nullptr;
@@ -473,7 +488,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test2(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test2(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -514,7 +530,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test3(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test3(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -554,7 +571,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test4(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test4(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -595,7 +613,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test5(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test5(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -635,7 +654,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test6(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringUtf16Test6(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -679,7 +699,8 @@
     return value;
 }
 // OH_JSVM_CreateStringLatin1 interface
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test1(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test1(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -697,7 +718,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test2(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test2(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -729,7 +751,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test3(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test3(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -761,7 +784,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test4(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestCreateStringLatin1Test4(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -796,7 +820,8 @@
     return value;
 }
 //// OH_JSVM_GetValueStringLatin1 interface
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test1(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test1(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value thisVar = nullptr;
@@ -815,7 +840,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test2(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test2(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -845,7 +871,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test3(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test3(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -876,7 +903,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test4(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test4(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -911,7 +939,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test5(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test5(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -943,7 +972,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test6(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test6(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -978,7 +1008,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestIsStringTest1(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestIsStringTest1(JSVM_Env env, JSVM_CallbackInfo info)
+{
     const size_t strBufsize = BUF_SIZE_MAX;
     char resultStr[strBufsize];
     size_t size = 0;
@@ -1005,7 +1036,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestIsStringTest2(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestIsStringTest2(JSVM_Env env, JSVM_CallbackInfo info)
+{
     const char16_t *strInput = u"Create UT16 String";
     size_t size = 0;
     while (strInput[size] != u'\0') {
@@ -1034,7 +1066,8 @@
     return value;
 }
 
-[[maybe_unused]] JSVM_Value TestIsStringTest3(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestIsStringTest3(JSVM_Env env, JSVM_CallbackInfo info)
+{
     const char *testStr = "create Latin1 string";
     JSVM_Value setValueName = nullptr;
     JSVM_Status creatStatus = OH_JSVM_CreateStringLatin1(env, testStr, strlen(testStr), &setValueName);
@@ -1058,7 +1091,8 @@
     return value;
 }
 // 使用create接口创建utf8字符串，用get utf16接口获取，预期返回乱码
-[[maybe_unused]] JSVM_Value TestOtherTest1(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value TestOtherTest1(JSVM_Env env, JSVM_CallbackInfo info)
+{
     const size_t strBufsize = BUF_SIZE_MAX;
     char16_t resultStr[strBufsize] = {0};
     size_t size = 0;
