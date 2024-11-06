@@ -18,6 +18,7 @@ import HasCard2PublicTest from './TelephonyCallHasCard2Public.test';
 import HasCard2PublicNeedCardTest from './TelephonyCallHasCard3Public.test';
 import EmptyTest from './Empty.test'
 import sim from '@ohos.telephony.sim';
+import TelephoneCallTest from "./TelephoneCall.test"
 
 export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
@@ -28,6 +29,7 @@ export default function testsuite() {
     } else {
       HasCard1PublicTest();
       HasCard2PublicTest();
+      TelephoneCallTest();
     }
   }else{
     EmptyTest()
