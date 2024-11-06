@@ -560,7 +560,7 @@ export default function AudioRoutingManagerTest() {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
         audioRoutingManager.off('micBlockStatusChanged')
         console.info(`${Tag}: off_micBlockStatusChanged02: SUCCESS`);
-        expect(Number(error.code)).assertEqual(6800101);
+        expect(Number(error.code)).assertEqual(401);
       }
       done();
     });
