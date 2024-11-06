@@ -51,15 +51,15 @@ export default function abilityTest() {
 
     /**
      * @tc.number  NETWORKMANAGER_CONNECTION_ISDEFALTNETMETERED_0100
-     * @tc.name    Test_OHIsDefaultNetMetered_0100
+     * @tc.name    Test_OHNetConnIsDefaultNetMetered_0100
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_OHIsDefaultNetMetered_0100', 0, async (done: Function) => {
-      let caseName = "Test_OHIsDefaultNetMetered_0100";
-      let codeNumber = testNapi.OHIsDefaultNetMetered(error_number);
+    it('Test_OHNetConnIsDefaultNetMetered_0100', 0, async (done: Function) => {
+      let caseName = "Test_OHNetConnIsDefaultNetMetered_0100";
+      let codeNumber = testNapi.OHNetConnIsDefaultNetMetered(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -73,15 +73,15 @@ export default function abilityTest() {
 
     /**
      * @tc.number  NETWORKMANAGER_CONNECTION_ISDEFALTNETMETERED_0200
-     * @tc.name    Test_OHIsDefaultNetMetered_0200
+     * @tc.name    Test_OHNetConnIsDefaultNetMetered_0200
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_OHIsDefaultNetMetered_0200', 0, async (done: Function) => {
-      let caseName = "Test_OHIsDefaultNetMetered_0200";
-      let codeNumber = testNapi.OHIsDefaultNetMetered(success_number);
+    it('Test_OHNetConnIsDefaultNetMetered_0200', 0, async (done: Function) => {
+      let caseName = "Test_OHNetConnIsDefaultNetMetered_0200";
+      let codeNumber = testNapi.OHNetConnIsDefaultNetMetered(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();

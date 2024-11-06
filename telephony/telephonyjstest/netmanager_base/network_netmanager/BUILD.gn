@@ -10,12 +10,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
 group("network_netmanager") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "network_netmanagerndk:ActsNetConnTest" ]
+    deps = [ "network_netmanagerndk:ActsNetworkConnectionNdkTest" ]
   }
 }

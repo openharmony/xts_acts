@@ -57,9 +57,9 @@ export default function abilityTest() {
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_OHGetConnectionProperties_0100', 0, async (done: Function) => {
-      let caseName = "Test_OHGetConnectionProperties_0100";
-      let codeNumber = testNapi.OHGetConnectionProperties(error_number);
+    it('Test_OHNetConnGetConnectionProperties_0100', 0, async (done: Function) => {
+      let caseName = "Test_OHNetConnGetConnectionProperties_0100";
+      let codeNumber = testNapi.OHNetConnGetConnectionProperties(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -78,9 +78,9 @@ export default function abilityTest() {
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_OHGetConnectionProperties_0200', 0, async (done: Function) => {
-      let caseName = "Test_OHGetConnectionProperties_0200";
-      let codeNumber = testNapi.OHGetConnectionProperties(success_number);
+    it('Test_OHNetConnGetConnectionProperties_0200', 0, async (done: Function) => {
+      let caseName = "Test_OHNetConnGetConnectionProperties_0200";
+      let codeNumber = testNapi.OHNetConnGetConnectionProperties(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -99,9 +99,9 @@ export default function abilityTest() {
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('Test_OHGetConnectionProperties_0300', 0, async (done: Function) => {
-      let caseName = "Test_OHGetConnectionProperties_0300";
-      let codeNumber = testNapi.OHGetConnectionProperties(success_number);
+    it('Test_OHNetConnGetConnectionProperties_0300', 0, async (done: Function) => {
+      let caseName = "Test_OHNetConnGetConnectionProperties_0300";
+      let codeNumber = testNapi.OHNetConnGetConnectionProperties(success_number);
       if (codeNumber != 2101013) {
         console.log(`${caseName} The network is connected: ${JSON.stringify(codeNumber)}`)
         expect(codeNumber).assertEqual(0)

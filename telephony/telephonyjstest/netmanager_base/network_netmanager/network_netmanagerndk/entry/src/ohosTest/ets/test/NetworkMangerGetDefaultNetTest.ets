@@ -38,31 +38,31 @@ export default function abilityTest() {
       // This API supports only one parameter: clear action function.
     });
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetDefaultNet_0100
-     * @tc.name    test_OHGetDefaultNet401
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHNetConnGetDefaultNet_0100
+     * @tc.name    test_OHNetConnGetDefaultNet401
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_OHGetDefaultNet401', 0, () => {
+    it('test_OHNetConnGetDefaultNet401', 0, () => {
       let testNumber = -1;
-      let codeNumber = testNapi.OHGetDefaultNet(testNumber);
+      let codeNumber = testNapi.OHNetConnGetDefaultNet(testNumber);
       expect(codeNumber).assertEqual(401)
       console.log("Test testNumber 401(param error)" + codeNumber);
     })
 
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetDefaultNet_0200
-     * @tc.name    test_OHGetDefaultNet0
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHNetConnGetDefaultNet_0200
+     * @tc.name    test_OHNetConnGetDefaultNet0
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_OHGetDefaultNet0', 0, () => {
+    it('test_OHNetConnGetDefaultNet0', 0, () => {
       let testNumber = 111111111;
-      let codeNumber = testNapi.OHGetDefaultNet(testNumber);
+      let codeNumber = testNapi.OHNetConnGetDefaultNet(testNumber);
       expect(codeNumber).assertEqual(0)
       console.log("Test testNumber 0(SUCCESS)" + codeNumber);
     })

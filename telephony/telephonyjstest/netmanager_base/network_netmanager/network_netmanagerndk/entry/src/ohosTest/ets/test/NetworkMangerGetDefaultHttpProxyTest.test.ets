@@ -50,16 +50,16 @@ export default function abilityTest() {
     let success_number = 11111111;
 
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetDefaultHttpProxy_0100
-     * @tc.name    test_OHGetDefaultHttpProxy401
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHNetConnNetConnGetDefaultHttpProxy_0100
+     * @tc.name    test_OHNetConnNetConnGetDefaultHttpProxy401
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_OHGetDefaultHttpProxy_0100', 0, async (done: Function) => {
-      let caseName = "Test_OHGetDefaultHttpProxy_0100";
-      let codeNumber = testNapi.OHGetDefaultHttpProxy(error_number);
+    it('test_OHNetConnNetConnGetDefaultHttpProxy_0100', 0, async (done: Function) => {
+      let caseName = "Test_OHNetConnNetConnGetDefaultHttpProxy_0100";
+      let codeNumber = testNapi.OHNetConnNetConnGetDefaultHttpProxy(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -72,16 +72,16 @@ export default function abilityTest() {
     })
 
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_OHGetDefaultHttpProxy_0200
-     * @tc.name    test_OHGetDefaultHttpProxy0
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHNetConnNetConnGetDefaultHttpProxy_0200
+     * @tc.name    test_OHNetConnNetConnGetDefaultHttpProxy0
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_OHGetDefaultHttpProxy_0200', 0, async (done: Function) => {
-      let caseName = "test_OHGetDefaultHttpProxy_0200";
-      let codeNumber = testNapi.OHGetDefaultHttpProxy(success_number);
+    it('test_OHNetConnNetConnGetDefaultHttpProxy_0200', 0, async (done: Function) => {
+      let caseName = "test_OHNetConnNetConnGetDefaultHttpProxy_0200";
+      let codeNumber = testNapi.OHNetConnNetConnGetDefaultHttpProxy(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
