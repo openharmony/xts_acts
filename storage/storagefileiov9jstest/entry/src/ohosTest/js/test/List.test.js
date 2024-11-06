@@ -63,6 +63,7 @@ import fscreateReadStream from './class_stream/createReadStream.test.js'
 import fileIOGetxattr from './members/getxattr.test.js'
 import fileIOSetxattr from './members/setxattr.test.js'
 import cloudSynctest from './class_cloudsync/cloudSync.test.js'
+import atomicFileTest from './class_atomicFile/atomicFile.test.js'
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
@@ -114,4 +115,5 @@ export default function testsuite() {
     fileIOGetxattr()
     fileIOSetxattr()
     cloudSynctest()
+    atomicFileTest()
 }
