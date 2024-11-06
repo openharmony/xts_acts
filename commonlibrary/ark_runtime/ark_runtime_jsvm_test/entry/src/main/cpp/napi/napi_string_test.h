@@ -1,5 +1,3 @@
-#ifndef JSVM_XTS_NAPI_STRING_TEST_H
-#define JSVM_XTS_NAPI_STRING_TEST_H
 /*
 * Copyright (c) 2024 SwanLink (Jiangsu) Technology Development Co., LTD.
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +12,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
+#ifndef JSVM_XTS_NAPI_STRING_TEST_H
+#define JSVM_XTS_NAPI_STRING_TEST_H
 #include "jsvm.h"
 #include "jsvm_common.h"
 #include "native_common.h"
@@ -33,14 +32,13 @@
 #include <string>
 #include <vector>
 using namespace std;
-#endif //JSVM_XTS_NAPI_STRING_TEST_H
 
-const size_t BufSizeMax = 128;
-const size_t BufSize50 = 50;
-const size_t BufSize20 = 20;
-const size_t BufSize10 = 10;
-const size_t BufSize5 = 5;
-const size_t BufSize3 = 3;
+const size_t BUF_SIZE_MAX = 128;
+const size_t BUF_SIZE_50 = 50;
+const size_t BUF_SIZE_20 = 20;
+const size_t BUF_SIZE_10 = 10;
+const size_t BUF_SIZE_5 = 5;
+const size_t BUF_SIZE_3 = 3;
 
 // OH_JSVM_GetValueStringUtf8 interface
 [[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test1(JSVM_Env env, JSVM_CallbackInfo info);
@@ -91,3 +89,4 @@ const size_t BufSize3 = 3;
 
 // combination interface
 [[maybe_unused]] JSVM_Value TestOtherTest1(JSVM_Env env, JSVM_CallbackInfo info);
+#endif //JSVM_XTS_NAPI_STRING_TEST_H
