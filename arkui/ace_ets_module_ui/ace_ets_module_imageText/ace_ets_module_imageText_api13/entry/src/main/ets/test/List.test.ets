@@ -17,6 +17,7 @@ import TextMenuType from './TextTest/TextMenuType.test';
 import RichEditorMenuType from './RichEditorTest/RichEditorMenuType.test';
 import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 import editMenuIdAIWriterTest from './TextTest/editMenuIdAIWriter.test';
+import StyledStringUrl from './TextTest/StyledStringTest.test';
 
 
 export default function testsuite() {
@@ -24,4 +25,5 @@ export default function testsuite() {
   RichEditorMenuType();
   SetFrameRateRangeTest();
   editMenuIdAIWriterTest();
+  StyledStringUrl();
 }
