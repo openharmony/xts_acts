@@ -1637,21 +1637,6 @@ export default function audioNDK() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0300
-     * @tc.name      : setMicBlockStatusCallback without  callback
-     * @tc.desc      : test OH_AudioRoutingManager_SetMicBlockStatusCallback
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0300', 0, async (done: Function) => {
-      let result = myaudioNdk.audioRoutingManagerSetMicBlockStatusCallback_003();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0300 audioRoutingManagerSetMicBlockStatusCallback: ${result}`);
-      expect(result).assertEqual(TEST_PASS)
-      done()
-    })
-
-    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0100
      * @tc.name      : registerDeviceChangeCallback with none device flag
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback

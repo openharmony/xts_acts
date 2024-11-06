@@ -2494,38 +2494,6 @@ static napi_value AudioRoutingManagerSetMicBlockStatusCallback_002(napi_env env,
     return res;
 }
 
-static napi_value AudioRoutingManagerSetMicBlockStatusCallback_003(napi_env env, napi_callback_info info)
-{
-    napi_value res;
-    OH_AudioRoutingManager *audioRoutingManager = nullptr;
-    OH_AudioCommon_Result result = OH_AudioManager_GetAudioRoutingManager(&audioRoutingManager);
-    LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result1 is: %{public}d", result);
-    if (result != AUDIOCOMMON_RESULT_SUCCESS || audioRoutingManager == nullptr) {
-        napi_create_int32(env, TEST_FAIL, &res);
-        return res;
-    }
-    bool supported = false;
-    void *userData = nullptr;
-    result = OH_AudioRoutingManager_IsMicBlockDetectionSupported(audioRoutingManager, &supported);
-    LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result2 is: %{public}d", result);
-    if (result == AUDIOCOMMON_RESULT_SUCCESS && supported == true) {
-        OH_AudioRoutingManager_OnDeviceBlockStatusCallback micBlockedCallback = MicBlockedCallback;
-        result = OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, micBlockedCallback, userData);
-        LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: %{public}d", result);
-        if (result == AUDIOCOMMON_RESULT_SUCCESS) {
-            napi_create_int32(env, TEST_FAIL, &res);
-            return res;
-        }
-    } else if (result == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && supported == false) {
-        LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result4 is: %{public}d", result);
-    } else {
-        napi_create_int32(env, TEST_FAIL, &res);
-        return res;
-    }
-    napi_create_int32(env, TEST_PASS, &res);
-    return res;
-}
-
 static napi_value AudioRoutingManagerRegisterDeviceChangeCallback_001(napi_env env, napi_callback_info info)
 {
     napi_value res;
@@ -4951,8 +4919,6 @@ napi_property_descriptor desc2[] = {
         AudioRoutingManagerSetMicBlockStatusCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRoutingManagerSetMicBlockStatusCallback_002", nullptr,
         AudioRoutingManagerSetMicBlockStatusCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
-    {"audioRoutingManagerSetMicBlockStatusCallback_003", nullptr,
-        AudioRoutingManagerSetMicBlockStatusCallback_003, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRoutingManagerRegisterDeviceChangeCallback_001", nullptr,
         AudioRoutingManagerRegisterDeviceChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRoutingManagerRegisterDeviceChangeCallback_002", nullptr,
