@@ -1466,7 +1466,7 @@ export default function imagePacking() {
           loopCount: 5
         };
         packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0200", {
-          width: 472, height: 75
+          width: 6016, height: 3384
         })
       }
     });
@@ -1519,7 +1519,7 @@ export default function imagePacking() {
           frameCount: 1, delayTimeList: [10], loopCount: 2
         };
         packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0400", {
-          width: 472, height: 75
+          width: 6016, height: 3384
         })
       }
     });
