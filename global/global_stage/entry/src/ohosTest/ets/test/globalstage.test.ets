@@ -1842,7 +1842,7 @@ export default function globalStageTest() {
     it('resourceManager_test_getStringByNameSync_0250', 0, () => {
       let resMgr = res.resourceManager;
       try {
-        resMgr.getStringByNameSync($r('app.string.test_stringTwentyThree').id);
+        resMgr.getStringByNameSync('test_stringTwentyThree');
       } catch (error) {
         console.log('resourceManager_test_getStringByNameSync_0250'+error.code+error.message);
         expect(error.code).assertEqual(9001008);
