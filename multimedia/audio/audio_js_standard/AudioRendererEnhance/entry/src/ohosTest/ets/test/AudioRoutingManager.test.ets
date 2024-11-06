@@ -455,7 +455,7 @@ export default function AudioRoutingManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
-        expect(Number(error.cod)).assertEqual(401);
+        expect(Number(error.code)).assertEqual(401);
       }
       done();
     });
@@ -475,7 +475,7 @@ export default function AudioRoutingManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
-        expect(Number(error.cod)).assertEqual(6800101);
+        expect(Number(error.code)).assertEqual(6800101);
       }
       done();
     });
@@ -494,7 +494,7 @@ export default function AudioRoutingManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
-        expect(Number(error.cod)).assertEqual(401);
+        expect(Number(error.code)).assertEqual(401);
       }
       done();
     });
@@ -515,7 +515,7 @@ export default function AudioRoutingManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
-        expect(Number(error.cod)).assertEqual(6800101);
+        expect(Number(error.code)).assertEqual(6800101);
       }
       done();
     });
@@ -536,7 +536,7 @@ export default function AudioRoutingManagerTest() {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
         audioRoutingManager.off('micBlockStatusChanged')
         console.info(`${Tag}: off_micBlockStatusChanged02: SUCCESS`);
-        expect(Number(error.cod)).assertEqual(6800101);
+        expect(Number(error.code)).assertEqual(6800101);
       }
       done();
     });
@@ -560,7 +560,7 @@ export default function AudioRoutingManagerTest() {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
         audioRoutingManager.off('micBlockStatusChanged')
         console.info(`${Tag}: off_micBlockStatusChanged02: SUCCESS`);
-        expect(Number(error.cod)).assertEqual(6800101);
+        expect(Number(error.code)).assertEqual(6800101);
       }
       done();
     });
