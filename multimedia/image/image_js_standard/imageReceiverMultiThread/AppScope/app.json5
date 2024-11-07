@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.myapplication",
+    "bundleName": "ohos.acts.multimedia.image.receiverMultiThread",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
