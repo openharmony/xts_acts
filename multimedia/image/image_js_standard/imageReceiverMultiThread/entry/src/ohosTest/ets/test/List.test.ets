@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import multiThreadTest from './imageMultiThread.test.ets'
+import multiThreadTest from './imageMultiThread.test'
 
 export default function List() {
     multiThreadTest()
