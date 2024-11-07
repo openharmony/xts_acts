@@ -34,6 +34,16 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.CAMERA",
+        "reason": "$string:TestAbility_desc"
+      },
+      {
+        "name": "ohos.permission.READ_MEDIA",
+        "reason": "$string:TestAbility_desc"
+      }
     ]
   }
 }
