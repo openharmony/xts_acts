@@ -27,6 +27,7 @@ const LABEL_MIC = "microphone";
 const LABEL_FINGER_PRINT = "fingerprint";
 const LABEL_USB = "usb";
 const LABEL_WIFI = "wifi";
+const LABEL_CAMERA = "camera";
 const LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT = "snapshotSkip";
 
 export default function restrictionsTest() {
@@ -286,6 +287,27 @@ function testSetDisallowedPolicy() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0110
+   * @tc.name      : test_set_disallowed_policy_0110
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+   it("test_set_disallowed_policy_0112", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_CAMERA, false);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_CAMERA)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
