@@ -75,12 +75,12 @@ const size_t BUF_SIZE_3 = 3;
 [[maybe_unused]] JSVM_Value TestCreateStringLatin1Test4(JSVM_Env env, JSVM_CallbackInfo info);
 
 // OH_JSVM_GetValueStringLatin1 interface
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test1(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test2(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test3(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test4(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test5(JSVM_Env env, JSVM_CallbackInfo info); 
-[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test6(JSVM_Env env, JSVM_CallbackInfo info); 
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test1(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test2(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test3(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test4(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test5(JSVM_Env env, JSVM_CallbackInfo info);
+[[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test6(JSVM_Env env, JSVM_CallbackInfo info);
 
 // OH_JSVM_IsString interface
 [[maybe_unused]] JSVM_Value TestIsStringTest1(JSVM_Env env, JSVM_CallbackInfo info);
