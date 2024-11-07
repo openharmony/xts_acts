@@ -19,6 +19,7 @@ import headerListJsunit from './ListTest/headerListJsunit.test';
 import waterFlowFad from './WaterFlowTest/waterFlowFad.test';
 import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
 import bindTabsScroll from './TabsTest/bindTabsScroll.test';
+import listItemGroupComponent from './ListTest/listItemGroupComponent.test'; 
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -27,4 +28,5 @@ export default function testsuite() {
   waterFlowFad()
   tabsOpacityJsunit()
   bindTabsScroll()
+  listItemGroupComponent()
 }
