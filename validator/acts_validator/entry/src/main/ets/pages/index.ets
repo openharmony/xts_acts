@@ -729,8 +729,8 @@ struct IndexPage {
      */
     let ScreenFailIndex = ScreenReport.indexOf('false');
     let ScreenFailNum = 0;
-    while (SensorFailIndex != -1) {
-      console.log(SensorFailIndex);
+    while (ScreenFailIndex != -1) {
+      console.log(ScreenFailIndex);
       ScreenFailNum++;
       ScreenFailIndex = ScreenReport.indexOf('false', ScreenFailIndex + 1);
     }
