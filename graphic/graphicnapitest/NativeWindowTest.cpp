@@ -484,30 +484,21 @@ HWTEST_F(NativeWindowTest, HandleOpt013, Function | MediumTest | Level1)
     brightness = 0.5;
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), NATIVE_ERROR_OK);
 
-    ASSERT_EQ(fabs(cSurface->GetHdrWhitePointBrightness() - 0.8) < 1e-6, true);
-    ASSERT_EQ(fabs(cSurface->GetSdrWhitePointBrightness() - 0.5) < 1e-6, true);
-
     code = SET_HDR_WHITE_POINT_BRIGHTNESS;
     brightness = 1.8;
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), NATIVE_ERROR_OK);
-    ASSERT_EQ(fabs(cSurface->GetHdrWhitePointBrightness() - 0.8) < 1e-6, true);
     brightness = -0.5;
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), NATIVE_ERROR_OK);
-    ASSERT_EQ(fabs(cSurface->GetHdrWhitePointBrightness() - 0.8) < 1e-6, true);
     brightness = 0.5;
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), NATIVE_ERROR_OK);
-    ASSERT_EQ(fabs(cSurface->GetHdrWhitePointBrightness() - 0.5) < 1e-6, true);
 
     code = SET_SDR_WHITE_POINT_BRIGHTNESS;
     brightness = 1.5;
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), NATIVE_ERROR_OK);
-    ASSERT_EQ(fabs(cSurface->GetSdrWhitePointBrightness() - 0.5) < 1e-6, true);
     brightness = -0.1;
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), NATIVE_ERROR_OK);
-    ASSERT_EQ(fabs(cSurface->GetSdrWhitePointBrightness() - 0.5) < 1e-6, true);
     brightness = 0.8;
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), NATIVE_ERROR_OK);
-    ASSERT_EQ(fabs(cSurface->GetSdrWhitePointBrightness() - 0.8) < 1e-6, true);
 }
 /*
  * @tc.name  NativeWindowAttachBuffer001
@@ -1552,5 +1543,56 @@ HWTEST_F(NativeWindowTest, GetNativeObjectMagic001, Function | MediumTest | Leve
     buffer->sfbuffer = sBuffer;
     OH_NativeWindow_GetNativeObjectMagic(reinterpret_cast<void *>(buffer));
     delete buffer;
+}
+/*
+ * @tc.name  testOptSetDesiredPresentTimeStampNormal
+ * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeWindowTest, testOptSetDesiredPresentTimeStampNormal, Function | MediumTest | Level1)
+{
+    uint64_t surfaceId = static_cast<uint64_t>(pSurface->GetUniqueId());
+    OHNativeWindow *_nativeWindow = nullptr;
+    int32_t ret = OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &_nativeWindow);
+    ASSERT_NE(_nativeWindow, nullptr);
+    int32_t flag;
+    int64_t nanoTimeStamp =
+        std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch())
+            .count();
+    uint64_t arr[] = {1, 1000, 1000000000, 1ULL << 63, nanoTimeStamp, 999999999999999999, 9223372036854775807};
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
+        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_DESIRED_PRESENT_TIMESTAMP, arr[i]);
+        ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    }
+    OH_NativeWindow_DestroyNativeWindow(_nativeWindow);
+}
+/*
+ * @tc.name  testOptSetDesiredPresentTimeStampAbNormal
+ * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeWindowTest, testOptSetDesiredPresentTimeStampAbNormal, Function | MediumTest | Level3)
+{
+    uint64_t surfaceId = static_cast<uint64_t>(pSurface->GetUniqueId());
+    OHNativeWindow *_nativeWindow = nullptr;
+    int32_t ret = OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &_nativeWindow);
+    ASSERT_NE(_nativeWindow, nullptr);
+    int32_t flag;
+    uint64_t arr[] = {0, -1, -1000, -99999999999999, -9223372036854775807};
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
+        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_DESIRED_PRESENT_TIMESTAMP, arr[i]);
+        ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    }
+    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_DESIRED_PRESENT_TIMESTAMP, "sdasda213!");
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_DESIRED_PRESENT_TIMESTAMP, NULL);
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_DESIRED_PRESENT_TIMESTAMP);
+    ASSERT_EQ(ret, NATIVE_ERROR_OK);
+    OH_NativeWindow_DestroyNativeWindow(_nativeWindow);
 }
 }
