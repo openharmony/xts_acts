@@ -18,6 +18,7 @@
 
 #include <ohcamera/camera.h>
 #include <ohcamera/camera_manager.h>
+#include <ohcamera/photo_output.h>
 #include "hilog/log.h"
 
 #define CAMERA_LOG_TAG "CAMERA_TAGLOG"
@@ -54,6 +55,7 @@ public:
     ~NDKCamera(void);
 
     bool isMirror_;         // 是否支持镜像拍照
+    bool isEnableMirror_;   // 是否启用镜像拍照
     bool hasFlash_;         // 检测是否有闪关灯
     bool isFlashMode_;      // 检测闪光灯模式是否支持
     bool isExposureMode_;   // 是否支持曝光模式的结果。
@@ -136,6 +138,7 @@ public:
     Camera_ErrorCode PreviewOutputStop(int useCaseCode);                                       // 停止预览输出
     Camera_ErrorCode PreviewOutputRelease(int useCaseCode);                                    // 停止预览输出
     Camera_ErrorCode IsMirrorSupported(int useCaseCode);  // 检查是否支持镜像拍照
+    Camera_ErrorCode EnableMirror(int useCaseCode);   // 是否启用镜像拍照
     Camera_ErrorCode PhotoOutputCapture(int useCaseCode); // 拍摄照片
     Camera_ErrorCode PhotoOutputRelease(int useCaseCode); // 释放拍照输出
     Camera_ErrorCode TakePictureWithPhotoSettings(Camera_PhotoCaptureSetting photoSetting,

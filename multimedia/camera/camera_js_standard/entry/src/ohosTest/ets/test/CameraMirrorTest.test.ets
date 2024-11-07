@@ -13,41 +13,39 @@
  * limitations under the License.
  */
 
+
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { Driver, MatchPattern, ON } from '@ohos.UiTest';
-import { surfaceIds } from '../testability/pages/Index';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
+import { Driver, MatchPattern, ON } from '@ohos.UiTest';
+import { surfaceIds } from '../testability/pages/Index';
 
-const TAG = "CameraVideoCodecTypeTest";
+const TAG = "CameraMirrorTest: ";
 
 let mCameraManager: cameraObj.CameraManager;
 let mCameraDevicesArray: Array<cameraObj.CameraDevice>;
-let mCameraSession: cameraObj.PhotoSession;
+let mCameraSession: cameraObj.VideoSession;
 
 let mPhotoSurface: string;
 let mVideoRecorder: media.AVRecorder | null;
 let mVideoSurface: string;
 let mFdPath: string;
 
+// CAMERA-0 letiables
 let mCameraNum: number;
 
 let mCameraInput: cameraObj.CameraInput;
 let mPreviewOutput: cameraObj.PreviewOutput;
 let mPhotoOutput: cameraObj.PhotoOutput;
-let mVideoOutput: cameraObj.VideoOutput;
 
-let surfaceId: string;
-let AVRecorder: media.AVRecorder;
+let mIsMirrorSupportedArray: Array<boolean>;
+let isMirrorSupport: boolean;
 
-let receiver: image.ImageReceiver;
 let context = getContext();
-let mIsVideoCodecTypeModeSupportedArray: Array<boolean>;
-
 let mVideoProfileCfg: ESObject = {
   audioBitrate: 48000,
   audioChannels: 2,
@@ -66,13 +64,16 @@ let mVideoConfig: ESObject = {
   audioSourceType: 1,
   videoSourceType: 0,
   profile: mVideoProfileCfg,
-  url: 'file:///data/media/CameraVideoCodecType.mp4',
+  url: 'file:///data/media/CameraMirrorTest.mp4',
   orientationHint: 0,
   location: { latitude: 30, longitude: 130 } as cameraObj.Location,
   maxSize: 100,
   maxDuration: 500
 }
 
+let mPicWidthMax = 8192;
+let mPicHeightMax = 8192;
+let receiver: image.ImageReceiver;
 
 let sleep = (ms: number = 66): Promise<string> => {
   return new Promise((resolve) => {
@@ -107,7 +108,7 @@ let ability = async () => {
   await sleep(1000)
 }
 
-export default function CameraVideoCodecTypeTest() {
+export default function CameraMirrorTest() {
 
   let isEmpty = (data: ESObject) => {
     if (data == null || data == undefined) {
@@ -122,7 +123,6 @@ export default function CameraVideoCodecTypeTest() {
   let getFd = async (pathName: string) => {
     let fileDir: ESObject = await await AppStorage.get('pathDir');
     pathName = fileDir + '/' + pathName;
-
     file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let fileAsset: ESObject = file;
     fdNumber = file.fd;
@@ -155,7 +155,7 @@ export default function CameraVideoCodecTypeTest() {
 
   let getVideoReceiveSurface = async () => {
     console.log(TAG + 'Entering getVideoReceiveSurface')
-    await getFd('CameraVideoCodecType.mp4');
+    await getFd('CameraMirrorTest.mp4');
     mVideoConfig.url = mFdPath;
     media.createAVRecorder((err, recorder) => {
       if (!err) {
@@ -189,6 +189,7 @@ export default function CameraVideoCodecTypeTest() {
   let releaseVideoReceiveSurface = async () => {
     console.log(TAG + 'Entering releaseVideoReceiveSurface')
     await mVideoRecorder!.release()
+    mVideoRecorder = null
     await closeFd();
 
     await sleep(100);
@@ -203,7 +204,7 @@ export default function CameraVideoCodecTypeTest() {
       console.info(TAG + "getCameraManager FAILED");
       return false;
     }
-    mCameraDevicesArray = mCameraManager.getSupportedCameras();
+
     console.info('Exit getCameraManagerInstance');
 
     return true;
@@ -211,18 +212,38 @@ export default function CameraVideoCodecTypeTest() {
 
   let getCameraSupportDevicesArray = () => {
     console.info('Enter getCameraSupportDevicesArray');
+
     mCameraDevicesArray = mCameraManager.getSupportedCameras();
+    /*
+    mCameraManager.getSupportedCameras(async (err, data) => {
+        console.info(TAG + "Entering getCameraSupportDevicesArray callback");
+        if (!err) {
+            if (data != null || data != undefined) {
+                mCameraDevicesArray = data;
+                console.info(TAG + "Entering getCameraSupportDevicesArray PASSED with CameraDevicesArray is: " + data);
+            } else {
+                console.info(TAG + "Entering getCameraSupportDevicesArray FAILED with CameraDevicesArray is: " + data);
+            }
+        } else {
+            console.info(TAG + "Entering getCameraSupportDevicesArray FAILED : " + err.message);
+        }
+    })
+    await sleep(3000);
+    */
     if (isEmpty(mCameraDevicesArray)) {
       console.info(TAG + "getSupportedCameras FAILED");
       return false;
     }
 
+
     mCameraNum = mCameraDevicesArray.length;
 
     console.info(TAG + "getCameraSupportDevicesArray is: " + mCameraNum);
 
-    mIsVideoCodecTypeModeSupportedArray = new Array(mCameraNum);
+    mIsMirrorSupportedArray = new Array(mCameraNum);
+
     console.info('Exit getCameraSupportDevicesArray');
+
     return true;
   }
 
@@ -327,6 +348,28 @@ export default function CameraVideoCodecTypeTest() {
 
         console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
       }
+      /*
+      if (!isEmpty(cameraOutputCap.videoProfiles)) {
+          console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length);
+          for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
+              try {
+                  mVideoOutput = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
+                  if (!isEmpty(mVideoOutput)) {
+                      break;
+                  }
+              }
+              catch {
+                  console.info(TAG + "createVideoOutput FAILED");
+              }
+          }
+
+          if (isEmpty(mVideoOutput)) {
+              console.info(TAG + "createVideoOutput FAILED");
+          }
+
+          console.info(TAG + "createVideoOutput: " + mVideoOutput);
+      }
+      */
     }
 
     console.info('Exit createOutputs');
@@ -344,6 +387,12 @@ export default function CameraVideoCodecTypeTest() {
     if (!isEmpty(mPhotoOutput)) {
       await mPhotoOutput.release();
     }
+    /*
+    if (!isEmpty(mVideoOutput)) {
+        await mVideoOutput.stop();
+        await mVideoOutput.release();
+    }
+    */
     console.info('Exit releaseOutput');
 
     return true;
@@ -371,10 +420,28 @@ export default function CameraVideoCodecTypeTest() {
       console.info(TAG + "Start to addOutput mPhotoOutput");
       mCameraSession.addOutput(mPhotoOutput);
     }
+    /*
+    if (!isEmpty(mVideoOutput)) {
+        console.info(TAG + "Start to addOutput mVideoOutput");
+        await mCameraSession.addOutput(mVideoOutput);
+    }
+    */
     await sleep(1);
 
     await mCameraSession.commitConfig();
 
+    /*
+    await mCameraSession.start(async (err) => {
+        console.info(TAG + "Entering mCameraSession start callback");
+        if (!err) {
+            console.info(TAG + "Entering mCameraSession start PASSED ");
+        } else {
+            console.info(TAG + "Entering mCameraSession start FAILED : " + err.message);
+        }
+    })
+
+    await sleep(100);
+    */
     console.info(TAG + "Exit startCameraSession");
 
     return true;
@@ -384,6 +451,18 @@ export default function CameraVideoCodecTypeTest() {
     console.info(TAG + "Enter stopCameraSession");
 
     mCameraSession.beginConfig();
+    /*
+    mCameraSession.stop(async (err) => {
+        console.info(TAG + "Entering mCameraSession stop callback");
+        if (!err) {
+            console.info(TAG + "Entering mCameraSession stop PASSED ");
+        } else {
+            console.info(TAG + "Entering mCameraSession stop FAILED : " + err.message);
+        }
+    })
+
+    await sleep(100);
+    */
 
     if (!isEmpty(mCameraInput)) {
       console.info(TAG + "Start to removeInput input");
@@ -399,6 +478,12 @@ export default function CameraVideoCodecTypeTest() {
       console.info(TAG + "Start to removeOutput mPhotoOutput");
       await mCameraSession.removeOutput(mPhotoOutput);
     }
+    /*
+    if (!isEmpty(mVideoOutput)) {
+        console.info(TAG + "Start to removeOutput mVideoOutput");
+        await mCameraSession.removeOutput(mVideoOutput);
+    }
+    */
     await releaseInput();
     await releaseOutput();
 
@@ -407,15 +492,16 @@ export default function CameraVideoCodecTypeTest() {
     return true;
   }
 
-  describe('CameraVideoCodecTypeTest', () => {
-    console.info(TAG + '----------CameraVideoCodecTypeTest--------------')
-
+  describe('CameraMirrorTest', () => {
+    console.info(TAG + '----------CameraMirrorTest--------------')
+    let dr = Driver.create();
     beforeAll(async () => {
-      let dr = Driver.create();
       sleep(100);
+      await getPhotoReceiverSurface();
+      await getVideoReceiveSurface();
       getCameraManagerInstance();
+      getCameraSupportDevicesArray();
       createCameraSessionInstance();
-      console.info('beforeAll case');
       await ability();
       await sleep(500);
       for (let i = 0; i < permission.length; i++) {
@@ -424,6 +510,8 @@ export default function CameraVideoCodecTypeTest() {
         power = null;
         await sleep(500);
       }
+
+      console.info('beforeAll case');
     })
 
     beforeEach(() => {
@@ -435,148 +523,107 @@ export default function CameraVideoCodecTypeTest() {
       console.info('afterEach case');
     })
 
-    afterAll(() => {
+    afterAll(async () => {
+      await releaseVideoReceiveSurface();
       releaseCameraSessionInstance();
       sleep(1000);
       console.info('afterAll case');
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100
-     * @tc.name      : Check capture session get supported moving photo video codec types with promise or not
-     * @tc.desc      : Check capture session get supported moving photo video codec types with promise or not
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100
+     * @tc.name      : Check photo output is mirror supported with promise or not
+     * @tc.desc      : Check photo output is mirror supported with promise or not
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100', 2,
-      async (done: Function) => {
-        console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100--------------");
-
-        if (mCameraNum == 0) {
-          console.info(TAG +
-            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100 FAILED with NoCamera");
-          expect().assertFail();
-          done();
-        } else {
-          for (let i = 0; i < mCameraNum; i++) {
-            console.info(TAG +
-              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100 start for camera[" +
-              i + "]");
-
-            await startCameraSession(i);
-
-            let videoCodecTypesArray: Array<number> = await mPhotoOutput.getSupportedMovingPhotoVideoCodecTypes();
-            let videoCodecTypesNum: number = videoCodecTypesArray.length;
-            if (videoCodecTypesNum != 0) {
-              for (let i = 0; i < videoCodecTypesNum; i++) {
-                console.info(TAG +
-                  "Enter SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100 is: " +
-                videoCodecTypesArray[i]);
-              }
-            } else {
-                console.info(TAG +
-                    "Enter SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100 FAILED");
-                expect().assertFail(); 
-            }
-            await sleep(1000);
-            await stopCameraSession();
-            console.info(TAG +
-              "Enter SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100 end for camera[" +
-              i + "]");
-          }
-          console.info(TAG +
-            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_SUPPOERTED_MOVING_PHOTO_VIDEO_CODEC_TYPES_0100 ends here");
-          done();
-        }
-      })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100
-     * @tc.name      : Check capture session set moving photo video codec type with promise
-     * @tc.desc      : Check capture session set moving photo video codec type with promise
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100', 2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100--------------");
 
       if (mCameraNum == 0) {
         console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 FAILED with NoCamera");
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 FAILED with NoCamera");
         expect().assertFail();
         done();
       } else {
         for (let i = 0; i < mCameraNum; i++) {
           console.info(TAG +
-            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 start for camera[" +
+            "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 start for camera[" +
             i + "]");
 
           await startCameraSession(i);
 
-          try {
-            mPhotoOutput.setMovingPhotoVideoCodecType(cameraObj.VideoCodecType.AVC);
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 finish");
-          } catch {
+          let isMirrorSupport = mPhotoOutput.isMirrorSupported();
+          mIsMirrorSupportedArray[i] = isMirrorSupport;
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 finish");
+          if (isMirrorSupport != null || isMirrorSupport != undefined) {
             console.info(TAG +
-                "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 FAILED with VideoCodecType is: " +
-                 cameraObj.VideoCodecType.AVC);
+              "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 PASSED with mirrorSupported is: " +
+              isMirrorSupport);
+          } else {
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 FAILED with mirrorSupported is: " +
+              isMirrorSupport);
             expect().assertFail();
           }
 
           await sleep(1000);
           await stopCameraSession();
           console.info(TAG +
-            "Enter SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 end for camera[" + i + "]");
+            "Enter SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 end for camera[" + i + "]");
         }
         console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 ends here");
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 ends here");
         done();
       }
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200
-     * @tc.name      : Check capture session set moving photo video codec type with promise
-     * @tc.desc      : Check capture session set moving photo video codec type with promise
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100
+     * @tc.name      : Check photo output enable mirror with promise
+     * @tc.desc      : Check photo output enable mirror with promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200', 2, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100', 2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100--------------");
 
       if (mCameraNum == 0) {
         console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 FAILED with NoCamera");
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 FAILED with NoCamera");
         expect().assertFail();
         done();
       } else {
         for (let i = 0; i < mCameraNum; i++) {
           console.info(TAG +
-            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 start for camera[" +
+            "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 start for camera[" +
             i + "]");
 
           await startCameraSession(i);
 
-          try {
-            mPhotoOutput.setMovingPhotoVideoCodecType(cameraObj.VideoCodecType.HEVC);
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 finish");
-          } catch {
-            console.info(TAG +
-                "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 FAILED with VideoCodecType is: " +
-                 cameraObj.VideoCodecType.HEVC);
-            expect().assertFail();
+          if (mIsMirrorSupportedArray[i] == true) {
+            try {
+              mPhotoOutput.enableMirror(true);
+              console.info(TAG + "Enter SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 finish");
+            } catch (err) {
+              console.info(TAG +
+                "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 FAILED err : " + JSON.stringify(err));
+              expect().assertFail();
+            }
+          } else {
+              console.info(TAG +
+                "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 FAILED with mirror not support");
           }
-          
+
           await sleep(1000);
           await stopCameraSession();
           console.info(TAG +
-            "Enter SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 end for camera[" + i + "]");
+            "Enter SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 end for camera[" + i + "]");
         }
         console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 ends here");
+          "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MIRROR_0100 ends here");
         done();
       }
     })
