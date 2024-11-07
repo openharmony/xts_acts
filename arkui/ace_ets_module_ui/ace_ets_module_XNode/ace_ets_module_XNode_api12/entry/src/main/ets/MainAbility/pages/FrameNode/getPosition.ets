@@ -14,6 +14,8 @@
  */
 import { FrameNode, NodeController } from "@ohos.arkui.node"
 import { BusinessError } from '@ohos.base';
+import {UIContext, window} from '@kit.ArkUI';
+
 const TEST_TAG : string = "FrameNode"
 class MyNodeController extends NodeController {
   public frameNode: FrameNode | null = null;
@@ -156,6 +158,7 @@ struct getPositionExample {
   @State getPositionToParentWithTransform : string | undefined = 'getPositionToParentWithTransform';
   @State getPositionToWindowWithTransform : string | undefined = 'getPositionToWindowWithTransform';
   @State getPositionToScreenWithTransform : string | undefined = 'getPositionToScreenWithTransform';
+  @State windowLeftVP : string = 'hello';
 
   build() {
     Column(){
@@ -169,7 +172,7 @@ struct getPositionExample {
         .width(300)
         .onClick(()=>{
           this.myNodeController.getPositionToScreen();
-          this.getPositionToScreen = this.myNodeController.frameNode?.getPositionToScreen().x.toString()
+          this.getPositionToScreen = this.myNodeController.frameNode?.getPositionToScreen().x.toString().split('.')[0];
         })
       Button("getPositionToParentWithTransform")
         .id("getPositionToParentWithTransform")
@@ -190,8 +193,21 @@ struct getPositionExample {
         .width(300)
         .onClick(()=>{
           this.myNodeController.getPositionToScreenWithTransform();
-          this.getPositionToScreenWithTransform = this.myNodeController.frameNode?.getPositionToScreenWithTransform().x.toString()
+          this.getPositionToScreenWithTransform = this.myNodeController.frameNode?.getPositionToScreenWithTransform().x.toString().split('.')[0];
         })
+
+      Button('getWindowLeftVP').key('getWindowLeftVP')
+        .id('getWindowLeftVP')
+        .width(300)
+        .onClick(()=>{
+          let uiContext:UIContext = this.getUIContext();
+          let  promise = window.getLastWindow(getContext(this));
+          promise.then((mainWindow:window.Window) => {
+            let windowRect:window.Rect = mainWindow.getWindowProperties().windowRect;
+            this.windowLeftVP = uiContext.px2vp(windowRect.left).toString().split('.')[0];
+          })
+        })
+
 
       Text(this.getPositionToScreen)
         .id("getPositionToScreenValue")
@@ -210,6 +226,11 @@ struct getPositionExample {
 
       Text(this.getPositionToScreenWithTransform)
         .id("getPositionToScreenWithTransformValue")
+        .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+        .width('100%').fontSize(16)
+
+      Text(this.windowLeftVP)
+        .id("getWindowLeftVPValue")
         .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
         .width('100%').fontSize(16)
     }

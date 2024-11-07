@@ -56,10 +56,17 @@ export default function getPosition() {
       let button = await driver.findComponent(ON.id('getPositionToScreen'));
       await button.click();
       await CommonFunc.sleep(1000);
+      let button1 = await driver.findComponent(ON.id('getWindowLeftVP'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('getPositionToScreenValue');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
+      let strJson1 = getInspectorByKey('getWindowLeftVPValue');
+      let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       console.info("[getPosition_0100] component obj is: " + JSON.stringify(obj));
-      expect(Math.floor(obj.$attrs.content)).assertEqual(0);
+      console.info("[getPosition_0100] component obj1 is: " + JSON.stringify(obj1));
+
+      expect(obj.$attrs.content).assertEqual(obj1.$attrs.content);
       console.info('[getPosition_0100] END');
       done();
     });
@@ -125,15 +132,19 @@ export default function getPosition() {
       let button = await driver.findComponent(ON.id('getPositionToScreenWithTransform'));
       await button.click();
       await CommonFunc.sleep(1000);
+      let button1 = await driver.findComponent(ON.id('getWindowLeftVP'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('getPositionToScreenWithTransformValue');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
+      let strJson1 = getInspectorByKey('getWindowLeftVPValue');
+      let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       console.info("[getPosition_0400] component obj is: " + JSON.stringify(obj));
-      expect(Math.floor(obj.$attrs.content)).assertEqual(0);
+      console.info("[getPosition_0400] component obj1 is: " + JSON.stringify(obj1));
+      expect(obj.$attrs.content).assertEqual(obj1.$attrs.content);
       console.info('[getPosition_0400] END');
       done();
     });
 
-
   })
 }
-
