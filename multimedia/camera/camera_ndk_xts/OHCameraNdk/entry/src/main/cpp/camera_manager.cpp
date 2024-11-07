@@ -1053,11 +1053,22 @@ Camera_ErrorCode NDKCamera::PhotoOutputUnRegisterCallback(int useCaseCode)
 Camera_ErrorCode NDKCamera::IsMirrorSupported(int useCaseCode)
 {
     if (useCaseCode == PARAMETER_OK) {
-        ret_ =OH_PhotoOutput_IsMirrorSupported(photoOutput_, &isMirror_);
+        ret_ = OH_PhotoOutput_IsMirrorSupported(photoOutput_, &isMirror_);
     } else if (useCaseCode == PARAMETER2_ERROR) {
         ret_ = OH_PhotoOutput_IsMirrorSupported(photoOutput_, nullptr);
     } else {
         ret_ = OH_PhotoOutput_IsMirrorSupported(nullptr, &isMirror_);
+    }
+    return ret_;
+}
+Camera_ErrorCode NDKCamera::EnableMirror(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        ret_ = OH_PhotoOutput_EnableMirror(photoOutput_, isEnableMirror_);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        ret_ = OH_PhotoOutput_EnableMirror(photoOutput_, 0);
+    } else {
+        ret_ = OH_PhotoOutput_EnableMirror(nullptr, isEnableMirror_);
     }
     return ret_;
 }
