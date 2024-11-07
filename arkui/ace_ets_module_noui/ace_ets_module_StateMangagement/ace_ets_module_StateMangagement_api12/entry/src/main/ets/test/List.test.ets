@@ -111,6 +111,9 @@ import Monitor0300Test from './MonitorTest/Monitor0300Test.test';
 import LinkTest0090 from './link/LinkTest0090.test';
 import RepeatTest0040 from './RepeatTest/RepeatTest0040.test';
 import LocalTest0140 from './local/LocalTest0140.test';
+import MakeObservedTest0090 from './makeObservedTest/MakeObservedTest0090.test';
+import ParamTest0020 from './ParamTest/ParamTest0020.test';
+import ForEachTest010 from './foreachTest/ForEachTest010.test';
 
 export default function testsuite() {
   ExtendTrackTest();
@@ -211,4 +214,7 @@ export default function testsuite() {
   LinkTest0090();
   RepeatTest0040();
   LocalTest0140();
+  MakeObservedTest0090();
+  ParamTest0020();
+  ForEachTest010();
 }
