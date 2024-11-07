@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/List/headerList",
         "MainAbility/pages/Tabs/tabsOpacity",
         "MainAbility/pages/Tabs/bindTabsScroll"
     ]
