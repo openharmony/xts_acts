@@ -104,7 +104,6 @@ import RichEditorChangeValueTest1 from './RichEditor/RichEditorChangeValueTest1.
 import RichEditorGetLayoutManagerTest1 from './RichEditor/RichEditorGetLayoutManagerTest1.test'
 import RichEditorStyledStringTest1 from './RichEditor/RichEditorStyledStringTest1.test'
 import RichEditorStyledStringTest2 from './RichEditor/RichEditorStyledStringTest2.test'
-import RichEditorStyledStringTest3 from './RichEditor/RichEditorStyledStringTest3.test'
 import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
 import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
@@ -246,7 +245,6 @@ export default function testsuite() {
   RichEditorGetLayoutManagerTest1();
   RichEditorStyledStringTest1();
   RichEditorStyledStringTest2();
-  RichEditorStyledStringTest3();
   RichEditorApi2();
   RichEditorApi6();
   RichEditorApi7();

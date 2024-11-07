@@ -17,6 +17,7 @@ import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
+import { Driver, ON } from '@ohos.UiTest';
 
 export default function windowPropertiesTest() {
   describe('windowProperties_test', () => {
@@ -41,6 +42,197 @@ export default function windowPropertiesTest() {
     afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8000
+     * @tc.name      : testSetGestureBackEnabledTrue
+     * @tc.desc      : Set whether to disable the gesture back function.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetGestureBackEnabledTrue', 0, async (done: Function) => {
+      let caseName = 'TestSetGestureBackEnabledTrue';
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.setGestureBackEnabled(true).then(() => {
+        console.info(`${caseName} Succeeded in setting gesture back enabled true.`);
+        const isGestureBackEnabled = windowClass.isGestureBackEnabled();
+        console.info(`${caseName} Succeeded in getting gesture back enabled. Data: ${isGestureBackEnabled}`);
+        expect(isGestureBackEnabled).assertTrue();
+        done();
+      }).catch((err: BusinessError) => {
+        if (err.code == 801) {
+          console.info(`${caseName} The current device type does not support to setGestureBackEnabled`);
+          done();
+        } else {
+          console.error(`${caseName} Failed to set gesture back enabled. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8100
+     * @tc.name      : testSetGestureBackEnabledFalse
+     * @tc.desc      : Set whether to disable the gesture back function.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetGestureBackEnabledFalse', 0, async (done: Function) => {
+      let caseName = 'TestSetGestureBackEnabledFalse';
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.setGestureBackEnabled(false).then(async () => {
+        console.info(`${caseName} Succeeded in setting gesture back enabled false.`);
+        const isGestureBackEnabled = windowClass.isGestureBackEnabled();
+        console.info(`${caseName} Succeeded in getting gesture back enabled. Data: ${isGestureBackEnabled}`);
+        expect(isGestureBackEnabled).assertFalse();
+        done();
+      }).catch((err: BusinessError) => {
+        if (err.code == 801) {
+          console.info(`${caseName} The current device type does not support to setGestureBackEnabled`);
+          done();
+        } else {
+          console.error(`${caseName} Failed to set gesture back enabled. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8200
+     * @tc.name      : testSetGestureBackEnabledInSubWindow
+     * @tc.desc      : Set whether to disable the gesture back function.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetGestureBackEnabledInSubWindow', 0, async (done: Function) => {
+      let caseName = 'TestSetGestureBackEnabledInSubWindow';
+      let subWindowClass = await windowStage.createSubWindow('subWindow');
+      console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      console.info(`${caseName} Succeeded in loading the sub window content.`);
+      await subWindowClass.showWindow();
+      console.info(`${caseName} Succeeded in showing the sub window.`);
+      subWindowClass.setGestureBackEnabled(true).then(() => {
+        console.info(`${caseName} Succeeded in setting gesture back enabled.`);
+        expect(false).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        if (err.code == 801) {
+          console.info(`${caseName} The current device type does not support to setGestureBackEnabled.`);
+          await subWindowClass.destroyWindow();
+          done();
+        } else {
+          console.error(`${caseName} Unauthorized operation.`);
+          expect(err.code).assertEqual(1300004);
+          await subWindowClass.destroyWindow();
+          done();
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8300
+     * @tc.name      : testSetGestureBackEnabledInSysSubWindow
+     * @tc.desc      : Set whether to disable the gesture back function.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetGestureBackEnabledInSysSubWindow', 0, async (done: Function) => {
+      let caseName = 'TestSetGestureBackEnabledInSysSubWindow';
+      let config: window.Configuration = {
+        name: "systemWindow",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let subWindowClass = await window.createWindow(config);
+      console.info(`${caseName} Succeeded in creating the system sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      console.info(`${caseName} Succeeded in loading the system sub window content.`);
+      await subWindowClass.showWindow();
+      console.info(`${caseName} Succeeded in showing the system sub window.`);
+      subWindowClass.setGestureBackEnabled(true).then(() => {
+        console.info(`${caseName} Succeeded in setting gesture back enabled.`);
+        expect(false).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        if (err.code == 801) {
+          console.info(`${caseName} The current device type does not support to setGestureBackEnabled.`);
+          await subWindowClass.destroyWindow();
+          done();
+        } else {
+          console.error(`${caseName} Unauthorized operation.`);
+          expect(err.code).assertEqual(1300004);
+          await subWindowClass.destroyWindow();
+          done();
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8400
+     * @tc.name      : testSetGestureBackEnabledInDestroyWindow
+     * @tc.desc      : Set whether to disable the gesture back function.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetGestureBackEnabledInDestroyWindow', 0, async (done: Function) => {
+      let caseName = 'TestSetGestureBackEnabledInDestroyWindow';
+      let subWindowClass = await windowStage.createSubWindow('subWindow');
+      console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      console.info(`${caseName} Succeeded in loading the sub window content.`);
+      await subWindowClass.showWindow();
+      console.info(`${caseName} Succeeded in showing the sub window.`);
+      await subWindowClass.destroyWindow();
+      subWindowClass.setGestureBackEnabled(true).then(() => {
+        console.info(`${caseName} Succeeded in setting gesture back enabled.`);
+        expect(false).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        if (err.code == 801) {
+          console.info(`${caseName} The current device type does not support to setGestureBackEnabled.`);
+          done();
+        } else {
+          console.error(`${caseName} This window state is abnormal.`);
+          expect(err.code).assertEqual(1300002);
+          done();
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8500
+     * @tc.name      : testGetGestureBackEnabledInSubWindow
+     * @tc.desc      : get whether to disable the gesture back function.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetGestureBackEnabledInSubWindow', 0, async (done: Function) => {
+      let caseName = 'TestGetGestureBackEnabledInSubWindow';
+      let subWindowClass = await windowStage.createSubWindow('subWindow');
+      console.info(`${caseName} Succeeded in creating the sub window.`);
+      try {
+        await subWindowClass.setUIContent('testability/pages/First/index2');
+        console.info(`${caseName} Succeeded in loading the sub window content.`);
+        await subWindowClass.showWindow();
+        console.info(`${caseName} Succeeded in showing the sub window.`);
+        subWindowClass.isGestureBackEnabled();
+        expect(false).assertTrue();
+        done();
+      } catch (exception) {
+        if (exception.code == 801) {
+          console.info(`${caseName} The current device type does not support to getGestureBackEnabled.`);
+          done();
+        } else {
+          console.error(`${caseName} Unauthorized operation.`);
+          expect(exception.code).assertEqual(1300004);
+          await subWindowClass.destroyWindow();
+          done();
+        }
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
@@ -2608,6 +2800,114 @@ export default function windowPropertiesTest() {
           done();
         } else {
           console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8000
+     * @tc.name      : testRestoreByMinimize
+     * @tc.desc      : After the app main window is minimized, if the Ability is not in the background state, you can restore app main window.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testRestoreByMinimize', 0, async (done: Function) => {
+      let caseName = 'TestRestoreByMinimize';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        const mainWindowstatus = windowClass.getWindowStatus();
+        console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
+        windowClass.minimize().then(async () => {
+          console.info(`${caseName} Succeeded in minimizing the window.`);
+          await sleep(2000);
+          windowClass.restore().then(async () => {
+            console.info(`${caseName} Succeeded in restoring the window.`);
+            await sleep(1000);
+            let windowStatus = windowClass.getWindowStatus();
+            console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
+            expect(windowStatus).assertEqual(mainWindowstatus);
+            done();
+          }).catch((err: BusinessError) => {
+            if (err.code === 801) {
+              console.error(`${caseName} The current device type does not support to restore.`);
+              done();
+            } else {
+              console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
+              expect(1300004).assertEqual(err.code);
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
+          done();
+        } else {
+          console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8100
+     * @tc.name      : testRestoreByMinimizeBtn
+     * @tc.desc      : After the app main window is minimized, if the Ability is not in the background state, you can restore app main window.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testRestoreByMinimizeBtn', 0, async (done: Function) => {
+      let caseName = 'TestRestoreByMinimizeBtn';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        const mainWindowstatus = windowClass.getWindowStatus();
+        console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
+        let driver: Driver = Driver.create();
+        let minimizeBtn = await driver.findComponent(ON.id('EnhanceMinimizeBtn'));
+        if (minimizeBtn) {
+          await minimizeBtn.click();
+          await sleep(1000);
+          windowClass.restore().then(async () => {
+            console.info(`${caseName} Succeeded in restoring the window.`);
+            await sleep(1000);
+            let windowStatus = windowClass.getWindowStatus();
+            console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
+            expect(windowStatus).assertEqual(mainWindowstatus);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
+            expect(1300004).assertEqual(err.code);
+            done();
+          });
+        } else {
+          windowClass.restore().then(() => {
+            console.info(`${caseName} Succeeded in restoring the window.`);
+            expect().assertFail();
+            done();
+          }).catch((err: BusinessError) => {
+            if (err.code === 801) {
+              console.error(`${caseName} The current device type does not support to restore. Cause code: ${err.code}, message: ${err.message}`);
+              done();
+            } else {
+              console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
+              expect(1300004).assertEqual(err.code);
+              done();
+            }
+          });
+        }
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
+          done();
+        } else {
+          console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
           expect().assertFail();
           done();
         }
