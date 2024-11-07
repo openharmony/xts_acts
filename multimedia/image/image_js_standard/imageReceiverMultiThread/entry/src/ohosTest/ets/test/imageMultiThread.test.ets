@@ -184,11 +184,13 @@ async function doTestForReceiver(done: Function, cameraManager: camera.CameraMan
     while (threadExitFlags != THREAD_COUNT) {
       await promiseCase();
     }
+    expect(true).assertTrue()
     done();
   } catch (error) {
     console.info('Case error, ' + JSON.stringify(error.message));
     await terminateThreads(threadWorks, THREAD_COUNT);
     done();
+    expect(false).assertTrue()
   }
 }
 
@@ -223,11 +225,13 @@ async function doTestForCreator(done: Function, name: string, runner: string) {
     while (threadExitFlags != THREAD_COUNT) {
       await promiseCase();
     }
+    expect(true).assertTrue();
     done();
   } catch (error) {
     console.info('Case error, ' + JSON.stringify(error.message));
     await terminateThreads(threadWorks, THREAD_COUNT);
     done();
+    expect(false).assertTrue()
   }
 }
 
