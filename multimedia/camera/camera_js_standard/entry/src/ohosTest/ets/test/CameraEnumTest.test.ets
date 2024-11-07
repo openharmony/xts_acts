@@ -428,5 +428,19 @@ export default function cameraEnumTest() {
       console.info(`${TAG} FoldStatus.FOLDED:${camera.FoldStatus.FOLDED}`);
       done();
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_SMOOTH_ZOOM_MODE_0100
+     * @tc.name      : test smooth zoom mode enum
+     * @tc.desc      : assert all smooth zoom mode enums
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_SMOOTH_ZOOM_MODE_0100', 0, async (done: Function) => {
+      expect(camera.SmoothZoomMode.NORMAL == 0).assertTrue();
+      console.info(`${TAG} SmoothZoomMode.NORMAL:${camera.SmoothZoomMode.NORMAL}`);
+      done();
+    })
   })
 }

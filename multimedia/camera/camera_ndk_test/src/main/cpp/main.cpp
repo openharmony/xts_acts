@@ -2341,6 +2341,95 @@ static napi_value ReadyCreatePhotoOutputWithoutSurface(napi_env env, napi_callba
     napi_create_int32(env, code, &result);
     return result;
 }
+static napi_value SessionIsAutoDeviceSwitchSupported(napi_env env, napi_callback_info info)
+{
+    napi_value obj = nullptr;
+    napi_create_object(env, &obj);
+    bool isSupported = false;
+    Camera_ErrorCode code = ndkCamera_->IsAutoDeviceSwitchSupported(&isSupported);
+    napi_value jsValue = nullptr;
+    napi_create_int32(env, code, &jsValue);
+    napi_set_named_property(env, obj, "errorCode", jsValue);
+    napi_get_boolean(env, isSupported, &jsValue);
+    napi_set_named_property(env, obj, "isSupported", jsValue);
+    return obj;
+}
+static napi_value SessionEnableAutoDeviceSwitch(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    bool isEnable;
+    napi_get_value_bool(env, args[0], &isEnable);
+    Camera_ErrorCode code = ndkCamera_->EnableAutoDeviceSwitch(isEnable);
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value SessionRegisterAutoDeviceSwitchStatusChange(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->RegisterAutoDeviceSwitchStatusCallback(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value SessionUnregisterAutoDeviceSwitchStatusChange(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->UnegisterAutoDeviceSwitchStatusCallback(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value CameraManagerRegisterFoldStatusChange(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->CameraManagerRegisterFoldStatusCallback(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value CameraManagerUnregisterFoldStatusChange(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->CameraManagerUnregisterFoldStatusCallback(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2443,6 +2532,18 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr },
         { "sessionSetPreviewRotation", nullptr, SessionSetPreviewRotation, nullptr, nullptr, nullptr,
             napi_default, nullptr },
+        { "sessionIsAutoDeviceSwitchSupported", nullptr, SessionIsAutoDeviceSwitchSupported, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "sessionEnableAutoDeviceSwitch", nullptr, SessionEnableAutoDeviceSwitch, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "sessionRegisterAutoDeviceSwitchStatusChange", nullptr, SessionRegisterAutoDeviceSwitchStatusChange,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "sessionUnregisterAutoDeviceSwitchStatusChange", nullptr, SessionUnregisterAutoDeviceSwitchStatusChange,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "cameraManagerRegisterFoldStatusChange", nullptr, CameraManagerRegisterFoldStatusChange,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "cameraManagerUnregisterFoldStatusChange", nullptr, CameraManagerUnregisterFoldStatusChange,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_property_descriptor desc1[] = {
         {"oHCaptureSessionRegisterCallback", nullptr, OHCaptureSessionRegisterCallback, nullptr, nullptr, nullptr,

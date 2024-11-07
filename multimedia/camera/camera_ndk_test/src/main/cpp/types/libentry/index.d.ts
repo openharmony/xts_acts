@@ -136,6 +136,11 @@ interface colorSpace {
   colorSpacesSize: number;
 }
 
+interface autoDeviceSwitchSupportInfo {
+  errorCode: number;
+  isSupported: boolean;
+}
+
 export const initCamera: (surfaceId: string) => number;
 
 export const getSupportedCameras: () => cameraInfo;
@@ -413,3 +418,15 @@ export const oHPhotoOutputUnregisterCaptureReadyCallback: (index:number) => numb
 export const oHPhotoOutputRegisterEstimatedCaptureDurationCallback: (index:number) => number;
 
 export const oHPhotoOutputUnregisterEstimatedCaptureDurationCallback: (index:number) => number;
+
+export const sessionIsAutoDeviceSwitchSupported: () => autoDeviceSwitchSupportInfo;
+
+export const sessionEnableAutoDeviceSwitch: (enable:boolean) => number;
+
+export const sessionRegisterAutoDeviceSwitchStatusChange: (index:number) => number;
+
+export const sessionUnregisterAutoDeviceSwitchStatusChange: (index:number) => number;
+
+export const cameraManagerRegisterFoldStatusChange: (index:number) => number;
+
+export const cameraManagerUnregisterFoldStatusChange: (index:number) => number;

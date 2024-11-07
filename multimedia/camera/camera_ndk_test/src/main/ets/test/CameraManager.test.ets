@@ -928,5 +928,94 @@ export default function CameraManagerTest() {
       console.info(TAG+"testOHCameraManagerUnregisterTorchStatusCallback0300:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
     })
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerRegisterFoldStatusCallback0100
+     * @tc.name       : testOHCameraManagerRegisterFoldStatusCallback0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_RegisterFoldStatusInfoCallback in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerRegisterFoldStatusCallback0100', 0, () => {
+      getCameraManagerInstance();
+      let ret = cameraObj.cameraManagerRegisterFoldStatusChange(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"testOHCameraManagerRegisterFoldStatusCallback0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerRegisterFoldStatusCallback0200
+     * @tc.name       : testOHCameraManagerRegisterFoldStatusCallback0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_RegisterFoldStatusInfoCallback in abnormal condition,
+     *                  the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerRegisterFoldStatusCallback0200', 0, () => {
+      getCameraManagerInstance();
+      let ret = cameraObj.cameraManagerRegisterFoldStatusChange(Parameter_Setting.FIRST_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerRegisterFoldStatusCallback0200:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerRegisterFoldStatusCallback0300
+     * @tc.name       : testOHCameraManagerRegisterFoldStatusCallback0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_RegisterFoldStatusInfoCallback in abnormal condition,
+     *                  the second parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerRegisterFoldStatusCallback0300', 0, () => {
+      getCameraManagerInstance();
+      let ret = cameraObj.cameraManagerRegisterFoldStatusChange(Parameter_Setting.SECOND_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerRegisterFoldStatusCallback0300:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerUnregisterFoldStatusCallback0100
+     * @tc.name       : testOHCameraManagerUnregisterFoldStatusCallback0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : test OH_CameraManager_UnregisterFoldStatusInfoCallback in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerUnregisterFoldStatusCallback0100', 0, () => {
+      getCameraManagerInstance();
+      let ret = cameraObj.cameraManagerUnregisterFoldStatusChange(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"testOHCameraManagerUnregisterFoldStatusCallback0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerUnregisterFoldStatusCallback0200
+     * @tc.name       : testOHCameraManagerUnregisterFoldStatusCallback0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_UnregisterFoldStatusInfoCallback in abnormal condition,
+     *                  the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerUnregisterFoldStatusCallback0200', 0, () => {
+      getCameraManagerInstance();
+      let ret = cameraObj.cameraManagerUnregisterFoldStatusChange(Parameter_Setting.FIRST_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerUnregisterFoldStatusCallback0200:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerUnregisterFoldStatusCallback0300
+     * @tc.name       : testOHCameraManagerUnregisterFoldStatusCallback0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraManager_UnregisterFoldStatusInfoCallback in abnormal condition,
+     *                  the second parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerUnregisterFoldStatusCallback0300', 0, () => {
+      getCameraManagerInstance();
+      let ret = cameraObj.cameraManagerUnregisterFoldStatusChange(Parameter_Setting.SECOND_PARAMETER_ERROR);
+      console.info(TAG+"testOHCameraManagerUnregisterFoldStatusCallback0300:"+ret);
+      expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
   })
 }
