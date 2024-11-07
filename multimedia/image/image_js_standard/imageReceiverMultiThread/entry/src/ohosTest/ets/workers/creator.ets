@@ -14,10 +14,10 @@
  */
 
 import worker from '@ohos.worker';
-import imageApi from "@ohos.multimedia.image";
+import imageApi from '@ohos.multimedia.image';
 
 const parentPort = worker.workerPort;
-console.info("worker:: new version")
+console.info('worker:: new version')
 
 const WIDTH = 8192;
 const HEIGHT = 8;
@@ -30,8 +30,8 @@ function createCreator(threadId: Object) {
   if (creator == undefined) {
     return creator
   }
-  creator.on("imageRelease", () => {
-    console.info("worker::creator imageRelease IN");
+  creator.on('imageRelease', () => {
+    console.info('worker::creator imageRelease IN');
   })
   creator.dequeueImage((err1, img) => {
     try {
@@ -55,23 +55,20 @@ function createCreator(threadId: Object) {
   return creator;
 }
 
-// parentPort.onclose = () => {
-//   console.info("worker::worker.js onclose");
-// }
 
 parentPort.onmessage = (e) => {
-  let data: ESObject = e.data;
-  console.info("worker:: worker2 thread worker data is " + data);
+  let data: number = e.data;
+  console.info('worker:: worker2 thread worker data is ' + data);
   let dummy = createCreator(data);
 }
 
 // Deserialization error
 parentPort.onmessageerror = () => {
-  console.info("worker:: worker.js onmessageerror");
+  console.info('worker:: worker.js onmessageerror');
 }
 
 // js execution error
 parentPort.onerror = (data) => {
-  console.info("worker:: worker.js onerror " + data.lineno + ", msg = " + data.message + ", filename = " +
-  data.filename + ", colno = " + data.colno);
+  console.info('worker:: worker.js onerror ' + data.lineno + ', msg = ' + data.message + ', filename = ' +
+  data.filename + ', colno = ' + data.colno);
 }

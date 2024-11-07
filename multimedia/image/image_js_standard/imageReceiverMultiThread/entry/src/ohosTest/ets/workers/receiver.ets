@@ -14,7 +14,7 @@
  */
 
 import worker, { MessageEvents } from '@ohos.worker';
-import imageApi from "@ohos.multimedia.image";
+import imageApi from '@ohos.multimedia.image';
 import image from '@ohos.multimedia.image';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -31,18 +31,18 @@ async function createRecriver() {
   }
   let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, CAPACITY);
   let imageReceiverSurfaceId: string = await receiver.getReceivingSurfaceId();
-  console.info("imageReceiverSurfaceId is: " + imageReceiverSurfaceId);
+  console.info('imageReceiverSurfaceId is: ' + imageReceiverSurfaceId);
 
-  receiver.on("imageArrival", () => {
-    console.info("worker::on in " + numID);
+  receiver.on('imageArrival', () => {
+    console.info('worker::on in ' + numID);
     if (isFirstlisten) {
       return
     }
 
-    console.info("worker::on in in  " + imageReceiverSurfaceId);
+    console.info('worker::on in in  ' + imageReceiverSurfaceId);
     isFirstlisten = true;
     receiver.readLatestImage((err, img) => {
-      console.info("worker::readLatestImage " + imageReceiverSurfaceId);
+      console.info('worker::readLatestImage ' + imageReceiverSurfaceId);
       img.getComponent(JPEG, (err: BusinessError, component: image.Component) => {
         if (err) {
           console.error(`Failed to get the component.code ${err.code},message is ${err.message}`);
@@ -64,11 +64,11 @@ parentPort.onmessage = async (e: MessageEvents) => {
 
 // Deserialization error
 parentPort.onmessageerror = () => {
-  console.info("worker:: worker.js onmessageerror");
+  console.info('worker:: worker.js onmessageerror');
 }
 
 // js execution error
 parentPort.onerror = (data) => {
-  console.info("worker:: worker.js onerror " + data.lineno + ", msg = " + data.message + ", filename = " +
-  data.filename + ", colno = " + data.colno);
+  console.info('worker:: worker.js onerror ' + data.lineno + ', msg = ' + data.message + ', filename = ' +
+  data.filename + ', colno = ' + data.colno);
 }
