@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import {
   photoKeys,
   fetchOption,

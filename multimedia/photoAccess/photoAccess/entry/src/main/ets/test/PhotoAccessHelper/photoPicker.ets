@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect } from "deccjsunit/index";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { sleep, startAbility, stopAbility } from "../../../../../../../common"
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { CustomTheme, CustomColors } from '@ohos.arkui.theme';
