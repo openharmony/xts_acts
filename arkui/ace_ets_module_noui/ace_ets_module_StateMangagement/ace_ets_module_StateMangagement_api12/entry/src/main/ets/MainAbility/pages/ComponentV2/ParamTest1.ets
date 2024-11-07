@@ -29,12 +29,14 @@ struct ChildArrParam {
   @Param childSet: Set<number> = new Set()
   @Param childMap: Map<string, string> = new Map()
   @Param childDate: Date = new Date('2000/01/01')
+  @Param chilArr: (number | boolean | ESObject)[] = []
 
   build() {
     Column({ space: 3 }) {
       Text(Array.from(this.childSet).toString()).id('tvChildSet')
       Text(this.childMap.get('map')).id('tvChildMap')
       Text(this.childDate.toTimeString()).id('tvChildDate')
+      Text(JSON.stringify(this.chilArr)).id('tvChildArr')
     }
   }
 }
@@ -63,6 +65,17 @@ struct ChildUnionParm {
 }
 
 @ComponentV2
+struct ChildArrParm {
+  @Param childArr: (number | boolean | ESObject)[] = []
+
+  build() {
+    Row() {
+      Text(JSON.stringify(this.childArr)).id('tvChildArr')
+    }
+  }
+}
+
+@ComponentV2
 export struct ChildParam {
   @Param childMsg: string = ''
   @Event changeChildMsg: () => void = () => {
@@ -86,6 +99,7 @@ export struct ParamTest {
   @Local map: Map<string, string> = new Map()
   @Local date: Date = new Date('2024/07/15')
   @Local unionType: number | null | undefined = null
+  @Local arr: (number | boolean | ESObject)[] = [2, false, {gender: 'boy'}]
 
   aboutToAppear(): void {
     this.map.set('map', 'Map')
@@ -103,8 +117,17 @@ export struct ParamTest {
               this.set.add(5)
               this.map.set('map', 'value0')
               this.date.setTime(this.date.getTime() + 1000)
+              this.arr=[]
+              this.arr.push(0,true,{gender: 'girl'})
             })
-          ChildArrParam({ childSet: this.set, childMap: this.map, childDate: this.date })
+          ChildArrParam({ childSet: this.set, childMap: this.map, childDate: this.date, chilArr: this.arr })
+        }
+        Column({ space: 3 }) {
+          Text(JSON.stringify(this.arr)).id('tvArr')
+            .onClick(()=>{
+              this.arr = [0,true,{gender: 'girl'}]
+            })
+          ChildArrParm({ childArr: this.arr })
         }
 
         Column({ space: 3 }) {
@@ -141,3 +164,5 @@ export struct ParamTest {
     .scrollBar(BarState.Off)
   }
 }
+
+

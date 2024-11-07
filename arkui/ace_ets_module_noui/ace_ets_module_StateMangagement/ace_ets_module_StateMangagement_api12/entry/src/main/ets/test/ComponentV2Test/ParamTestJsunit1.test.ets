@@ -199,5 +199,44 @@ export default function ParamTestJsunit1() {
       console.info('[ParamTestJsunit1_005] END');
       done();
     });
+    
+    it('ParamTestJsunit1_006', 0, async (done: Function) => {
+      console.info('[ParamTestJsunit1_006] START');
+      await CommonFunc.sleep(1000);
+      let driver: Driver = Driver.create();
+      let btn: Component = await driver.findComponent(ON.id("btnChangeArrParam"));
+      await CommonFunc.sleep(1000);
+      await btn.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('tvArr');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ParamTestJsunit1_006] component obj is: " + JSON.stringify(obj));
+      console.info("[ParamTestJsunit1_006] component obj is: " + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('[0,true,{"gender":"girl"}]');
+      await CommonFunc.sleep(1000);
+      console.info('[ParamTestJsunit1_006] END');
+      done();
+    });
+
+    it('ParamTestJsunit1_007', 0, async (done: Function) => {
+      console.info('[ParamTestJsunit1_007] START');
+      await CommonFunc.sleep(1000);
+      let driver: Driver = Driver.create();
+      let btn: Component = await driver.findComponent(ON.id("tvArr"));
+      await CommonFunc.sleep(1000);
+      await btn.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('tvArr');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[ParamTestJsunit1_007] component obj is: " + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('[0,true,{"gender":"girl"}]');
+      await CommonFunc.sleep(1000);
+      let strJson1 = getInspectorByKey('tvChildArr');
+      let obj1: ESObject = JSON.parse(strJson1);
+      console.info("[ParamTestJsunit1_007] component obj1 is: " + obj1.$attrs.content);
+      expect(obj1.$attrs.content).assertEqual('[0,true,{"gender":"girl"}]');
+      console.info('[ParamTestJsunit1_007] END');
+      done();
+    });
   })
 }

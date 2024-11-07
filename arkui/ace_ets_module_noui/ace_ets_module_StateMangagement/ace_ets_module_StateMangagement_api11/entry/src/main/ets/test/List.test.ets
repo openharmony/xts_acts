@@ -14,6 +14,9 @@
  */
 import allowOverride from './allowOverrideTest/allowOverride.test';
 import appStorageJsunit from './AppStorage/AppStorageJsunit.test';
+import FreezeV1Test from './FreezeV1/Freeze001.test';
+import FreezeV1Test02 from './FreezeV1/Freeze002.test';
+import FreezeV1Test03 from './FreezeV1/Freeze003.test';
 import linkJsunit from './Link/LinkJsunit.test';
 import provideBrother1 from './ProvideTest/provideBrother1.test.ets'
 import provideBrother2 from './ProvideTest/provideBrother2.test.ets'
@@ -116,12 +119,24 @@ import StateTrackTest from './Track/StateTrackTest.test.ets';
 import nestTrackTest from './Track/nestTrackTest.test.ets';
 import storageTrackTest from './Track/storageTrackTest.test.ets';
 
+import StateArrayBoolean from './stateMangagementTest/StateArrayBoolean.test';
+import StateArrayNumber from './stateMangagementTest/StateArrayNumber.test';
+import StateArrayObject from './stateMangagementTest/StateArrayObject.test';
 import StateMap from './stateMangagementTest/StateMap.test';
 import StateSet from './stateMangagementTest/StateSet.test';
+import PropArrayBoolean from './stateMangagementTest/PropArrayBoolean.test';
+import PropArrayNumber from './stateMangagementTest/PropArrayNumber.test';
+import PropArrayObject from './stateMangagementTest/PropArrayObject.test';
 import PropMap from './stateMangagementTest/PropMap.test';
 import PropSet from './stateMangagementTest/PropSet.test';
+import ProvideArrayBoolean from './stateMangagementTest/ProvideArrayBoolean.test';
+import ProvideArrayNumber from './stateMangagementTest/ProvideArrayNumber.test';
+import ProvideArrayObject from './stateMangagementTest/ProvideArrayObject.test';
 import ProvideMap from './stateMangagementTest/ProvideMap.test';
 import ProvideSet from './stateMangagementTest/ProvideSet.test';
+import LinkArrayBoolean from './stateMangagementTest/LinkArrayBoolean.test';
+import LinkArrayNumber from './stateMangagementTest/LinkArrayNumber.test';
+import LinkArrayObject from './stateMangagementTest/LinkArrayObject.test';
 import LinkMap from './stateMangagementTest/LinkMap.test';
 import LinkSet from './stateMangagementTest/LinkSet.test';
 import ObjectLinkMap from './stateMangagementTest/ObjectLinkMap.test';

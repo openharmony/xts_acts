@@ -105,6 +105,29 @@ export default function Monitor6Test() {
       expect(obj.$attrs.label).assertEqual('测试3：fail');
       console.info('[Monitor6Test_0300] END');
       done();
+
+    /**
+     * @tc.number    Monitor6
+     * @tc.name      Monitor6Test_0400
+     * @tc.desc      api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('Monitor6Test_0400', 0, async (done: Function) => {
+      console.info('Monitor6Test_0400 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('Monitor6_4'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('Monitor6_4');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[Monitor6Test_0400] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.label).assertEqual('测试4：fail');
+      console.info('[Monitor6Test_0400] END');
+      done();
+    });
     });
   })
 }
