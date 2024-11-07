@@ -69,7 +69,7 @@ export default function OnAndOffScreenTest() {
       if (deviceType === '2in1') {
         cmd = 'uinput -T -d 1070 1070 -u 1070 1070';
       } else {
-        cmd = 'uinput -T -m 300 2700 280 200';
+        cmd = 'uinput -T -m 400 1400 400 800';
       }
       await executeShellCommand(cmd, TAG);
       await sleep(500)
