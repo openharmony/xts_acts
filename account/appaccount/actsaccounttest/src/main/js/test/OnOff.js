@@ -61,13 +61,14 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.addAccount("changeonoff_extra");
             console.info("====>enableAppAccess ActsAccountChangeOnOff_0100 start");
             await appAccountManager.enableAppAccess("changeonoff_extra", "com.example.actsaccountsceneonoff");
-            function deleteAccountCallback(err){
+            async function deleteAccountCallback(err){
                 console.info("====>delete account 0100 err:" + JSON.stringify(err));
                 try {
                     expect(err).assertEqual(null);
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
+                await sleep(500);
                 done();
             }
             function disCallback(err){
@@ -137,13 +138,14 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.addAccount("onoff_associatedata");
             console.info("====>enableAppAccess ActsAccountChangeOnOff_0200 start");
             await appAccountManager.enableAppAccess("onoff_associatedata", "com.example.actsaccountsceneonoff");
-            function deleteAccountCallback(err){
+            async function deleteAccountCallback(err){
                 console.info("====>delete account 0200 err:" + JSON.stringify(err));
                 try {
                     expect(err).assertEqual(null);
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
+                await sleep(500);
                 done();
             }
             function unSubscriberCallback(err){
@@ -204,13 +206,14 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.addAccount("onoff_credential");
             console.info("====>enableAppAccess ActsAccountChangeOnOff_0300 start");
             await appAccountManager.enableAppAccess("onoff_credential", "com.example.actsaccountsceneonoff");
-            function deleteAccountCallback(err){
+            async function deleteAccountCallback(err){
                 console.info("====>delete account 0300 err:" + JSON.stringify(err));
                 try {
                     expect(err).assertEqual(null);
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
+                await sleep(500);
                 done();
             }
             function unSubscriberCallback(err){
@@ -275,13 +278,14 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.enableAppAccess("onoff_deleteFir", "com.example.actsaccountsceneonoff");
             console.info("====>enableAppAccess second ActsAccountChangeOnOff_0400 start");
             await appAccountManager.enableAppAccess("onoff_deleteSec", "com.example.actsaccountsceneonoff");
-            function deleteAccountCallback(err){
+            async function deleteAccountCallback(err){
                 console.info("====>delete account 0400 err:" + JSON.stringify(err));
                 try {
                     expect(err).assertEqual(null);
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
+                await sleep(500);
                 done();
             }
             function unSubscriberCallback(err){
@@ -342,8 +346,9 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.addAccount("onoff_delete");
             console.info("====>enableAppAccess ActsAccountChangeOnOff_0500 start");
             await appAccountManager.enableAppAccess("onoff_delete", "com.example.actsaccountsceneonoff");
-            function deleteAccountCallback(err){
+            async function deleteAccountCallback(err){
                 console.info("====>delete account 0500 err:" + JSON.stringify(err));
+                await sleep(500);
                 done();
             }
             function unSubscriberCallback(err){
@@ -415,13 +420,14 @@ export default function ActsAccountChangeOnOff() {
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
-                appAccountManager.deleteAccount("onoff_enableSec", (err)=>{
+                appAccountManager.deleteAccount("onoff_enableSec", async (err)=>{
                     console.info("====>delete second account 0600 err:" + JSON.stringify(err));
                     try {
                         expect(err).assertEqual(null);
                     } catch (err) {
                         console.info('====>Assert err: ' + JSON.stringify(err));
                     }
+                    await sleep(500);
                     done();
                 });
             }
@@ -483,13 +489,14 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.addAccount("onoff_disable");
             console.info("====>enableAppAccess ActsAccountChangeOnOff_0700 start");
             await appAccountManager.enableAppAccess("onoff_disable", "com.example.actsaccountsceneonoff");
-            function deleteAccountCallback(err){
+            async function deleteAccountCallback(err){
                 console.info("====>delete account 0700 err:" + JSON.stringify(err));
                 try {
                     expect(err).assertEqual(null);
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
+                await sleep(500);
                 done();
             }
             function unSubscriberCallback(err){
@@ -561,7 +568,7 @@ export default function ActsAccountChangeOnOff() {
                 }
                 appAccountManager.off('change', function (){
                     console.info("====>off ActsAccountChangeOnOff_0800 finish====");
-                    appAccountManager.deleteAccount("onoff_self", (err)=>{
+                    appAccountManager.deleteAccount("onoff_self", async (err)=>{
                         console.info("====>delete account ActsAccountChangeOnOff_0800 err:" + JSON.stringify(err));
                         try {
                             expect(err).assertEqual(null);
@@ -569,6 +576,7 @@ export default function ActsAccountChangeOnOff() {
                             console.info('====>Assert err: ' + JSON.stringify(err));
                         }
                         console.info("====>ActsAccountChangeOnOff_0800 end====");
+                        await sleep(500);
                         done();
                     });
                 });
@@ -635,7 +643,7 @@ export default function ActsAccountChangeOnOff() {
                         } catch (err) {
                             console.info('====>Assert err: ' + JSON.stringify(err));
                         }
-                        appAccountManager.deleteAccount("onoff_self_second", (err)=>{
+                        appAccountManager.deleteAccount("onoff_self_second", async (err)=>{
                             console.info("====>delete second account 0900 err:" + JSON.stringify(err));
                             try {
                                 expect(err).assertEqual(null);
@@ -643,6 +651,7 @@ export default function ActsAccountChangeOnOff() {
                                 console.info('====>Assert err: ' + JSON.stringify(err));
                             }
                             console.info("====>ActsAccountChangeOnOff_0900 end====");
+                            await sleep(500);
                             done();
                         });
                     });
@@ -725,7 +734,7 @@ export default function ActsAccountChangeOnOff() {
                 console.info("====>off start====");
                 appAccountManager.off('change', function (){
                     console.info("====>off ActsAccountChangeOnOff_1000 finish====");
-                    appAccountManager.deleteAccount("onoff_twice", (err)=>{
+                    appAccountManager.deleteAccount("onoff_twice", async (err)=>{
                         console.info("====>delete account ActsAccountChangeOnOff_1000 err:" + JSON.stringify(err));
                         try {
                             expect(err).assertEqual(null);
@@ -734,6 +743,7 @@ export default function ActsAccountChangeOnOff() {
                             console.info('====>Assert err: ' + JSON.stringify(err));
                         }
                         console.info("====>ActsAccountChangeOnOff_1000 end====");
+                        await sleep(500);
                         done();
                     })
                 })
@@ -788,7 +798,7 @@ export default function ActsAccountChangeOnOff() {
                 console.info("====>off 1100 start====");
                 appAccountManager.off('change', function (){
                     console.info("====>off ActsAccountChangeOnOff_1100 finish====");
-                    appAccountManager.deleteAccount("onoff_same", (err)=>{
+                    appAccountManager.deleteAccount("onoff_same", async (err)=>{
                         console.info("====>delete account ActsAccountChangeOnOff_1100 err:" + JSON.stringify(err));
                         try {
                             expect(err).assertEqual(null);
@@ -797,6 +807,7 @@ export default function ActsAccountChangeOnOff() {
                             console.info('====>Assert err: ' + JSON.stringify(err));
                         }
                         console.info("====>ActsAccountChangeOnOff_1100 end====");
+                        await sleep(500);
                         done();
                     });
                 });
@@ -851,7 +862,7 @@ export default function ActsAccountChangeOnOff() {
                     appAccountManager.off('change', function (){
                         console.info("====>second off ActsAccountChangeOnOff_1200 finish====");
                         console.info("====>delete account 1200 start====");
-                        appAccountManager.deleteAccount("onoff_repeatoff", (err)=>{
+                        appAccountManager.deleteAccount("onoff_repeatoff", async (err)=>{
                             console.info("====>delete account ActsAccountChangeOnOff_1200 err:" + JSON.stringify(err));
                             try {
                                 expect(err).assertEqual(null);
@@ -859,6 +870,7 @@ export default function ActsAccountChangeOnOff() {
                                 console.info('====>Assert err: ' + JSON.stringify(err));
                             }
                             console.info("====>ActsAccountChangeOnOff_1200 end====");
+                            await sleep(500);
                             done();
                         })
                     })
@@ -900,7 +912,7 @@ export default function ActsAccountChangeOnOff() {
                 await appAccountManager.setAccountExtraInfo("onoff_same", "change_extra");
                 await sleep(500)
                 console.info("====>delete account 1300 start====");
-                appAccountManager.deleteAccount("onoff_same", (err)=>{
+                appAccountManager.deleteAccount("onoff_same", async (err)=>{
                     console.info("====>delete account ActsAccountChangeOnOff_1300 err:" + JSON.stringify(err));
                     try {
                         expect(err).assertEqual(null);
@@ -908,6 +920,7 @@ export default function ActsAccountChangeOnOff() {
                         console.info('====>Assert err: ' + JSON.stringify(err));
                     }
                     console.info("====>ActsAccountChangeOnOff_1300 end====");
+                    await sleep(500);
                     done();
                 });
             } catch(err){
@@ -946,7 +959,7 @@ export default function ActsAccountChangeOnOff() {
                 await appAccountManager.setAccountExtraInfo("onoff_same", "change_extra");
                 await sleep(500)
                 console.info("====>delete account 1400 start====");
-                appAccountManager.deleteAccount("onoff_same", (err)=>{
+                appAccountManager.deleteAccount("onoff_same", async (err)=>{
                     console.info("====>delete account ActsAccountChangeOnOff_1400 err:" + JSON.stringify(err));
                     try {
                         expect(err).assertEqual(null);
@@ -954,6 +967,7 @@ export default function ActsAccountChangeOnOff() {
                         console.info('====>Assert err: ' + JSON.stringify(err));
                     }
                     console.info("====>ActsAccountChangeOnOff_1400 end====");
+                    await sleep(500);
                     done();
                 });
             } catch(err){
