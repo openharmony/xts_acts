@@ -3,16 +3,24 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "ohos.acts.UDMF",
-        "module-name": "entry",
         "shell-timeout": "600000",
+        "bundle-name": "ohos.acts.UDMF",
+        "module-name": "entry_test",
         "testcase-timeout": 70000
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsUDMFTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    }]
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsUDMFTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }

@@ -4518,5 +4518,373 @@ export default function UtdfMimeTypeTest() {
       console.log("typeId:" + result);
       expect(result).assertEqual("com.microsoft.bmp");
     });
+
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3460
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3460
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-flv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3460', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3460 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/x-flv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.adobe.flash");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3470
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3470
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/mp4"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3470', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3470 start');
+      let result = UTD.getUniformDataTypesByMIMEType("video/mp4");
+      console.log("typeId:" + result);
+      expect(result.toString()).assertEqual("general.mpeg-4,com.adobe.f4v");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3480
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3480
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/mp2t"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3480', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3480 start');
+      let result = UTD.getUniformDataTypesByMIMEType("video/mp2t");
+      console.log("typeId:" + result);
+      expect(result.toString()).assertEqual("general.ts,general.mp2t");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3490
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/vnd.youtube.yt"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3490', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3490 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/vnd.youtube.yt");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.youtube.video");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3500
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-webex"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3500', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3500 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/x-webex");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.cisco.webex-video");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3510
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3510
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/mpeg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3510', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3510 start');
+      let result = UTD.getUniformDataTypesByMIMEType("video/mpeg");
+      console.log("typeId:" + result);
+      expect(result.toString()).assertEqual("general.mpeg,general.vob,general.mpeg-2,general.mpeg-1");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520
+     * @tc.desc      : getUniformDataTypeByMIMEType parameter is "application/vnd.rn-realmedia-vbr"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3520 start');
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.rn-realmedia-vbr");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.real.realmedia-vbr");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3530
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3530
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-pn-realvideo"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3530', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3530 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/x-pn-realvideo");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.real.realvideo");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3540
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3540
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/divx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3540', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3540 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/divx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.divx-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3550
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3550
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/annodex"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3550', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3550 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/annodex");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.csiro.annodex");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3560
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3560
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/ogg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3560', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3560 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/ogg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ogv");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3570
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3570
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "video/x-la-asf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3570', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3570 start');
+      let result = UTD.getUniformDataTypeByMIMEType("video/x-la-asf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.lsf-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3580
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3580
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/jp2"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3580', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3580 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/jp2");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jpeg-2000");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3590
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3590
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/jpx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3590', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3590 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/jpx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jpeg-2000");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3600
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3600
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/jpm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3600', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3600 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/jpm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jpeg-2000");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3610
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3610
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-fuji-raf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3610', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3610 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-fuji-raf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.fujifilm.raf-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3620
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3620
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-nikon-nrw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3620', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3620 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-nikon-nrw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.nikon.nrw-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3630
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3630
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-panasonic-raw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3630', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3630 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-panasonic-raw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.panasonic.rw2-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3640
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3640
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-pentax-pef"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3640', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3640 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-pentax-pef");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.pentax.pef-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3650
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3650
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-samsung-srw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3650', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3650 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-samsung-srw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.sumsung.srw-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3660
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3660
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-epson-erf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3660', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3660 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-epson-erf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.epson.erf-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3670
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3670
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-olympus-orf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3670', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3670 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-olympus-orf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.olympus.orf-raw-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3680
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3680
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/ief"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3680', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3680 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/ief");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ief-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-jg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3690 start');
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-jg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.aol.art-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3700
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3700
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/mp4"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3700', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3700 start');
+      let result = UTD.getUniformDataTypeByMIMEType("audio/mp4");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.apple.m4p-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3710
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3710
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/ac3"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3710', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_3710 start');
+      let result = UTD.getUniformDataTypeByMIMEType("audio/ac3");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ac3-audio");
+    });
   });
 }
