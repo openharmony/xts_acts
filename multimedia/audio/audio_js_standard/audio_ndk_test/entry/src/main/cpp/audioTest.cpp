@@ -525,7 +525,7 @@ static napi_value AudioSetRendererOutputDeviceChangeCallback(napi_env env, napi_
 static void MicBlockedCallback(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray,
     OH_AudioDevice_BlockStatus status, void *userData)
 {    
-    switch(status) {
+    switch (status) {
         case AUDIO_DEVICE_UNBLOCKED:
         // 麦克风未被堵住
             LOG("MyAudioSessionDeactivatedCallback, event is %{public}d", status);
@@ -2042,11 +2042,9 @@ static napi_value AudioRendererSetInterruptMode_02(napi_env env, napi_callback_i
     } else {
         napi_create_int32(env, TEST_PASS, &res);
     }
-    if(g_mark)
-    {
+    if(g_mark) {
         LOG("AudioRendererSetInterruptMode_02 g_mark is : %{public}d", 1);
-    }
-    else {
+    } else {
         LOG("AudioRendererSetInterruptMode_02 g_mark is : %{public}d", 0);
     }
     // 5. stop and release client
