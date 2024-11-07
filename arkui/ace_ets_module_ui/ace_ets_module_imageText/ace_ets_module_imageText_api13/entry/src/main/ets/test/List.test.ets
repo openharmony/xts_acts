@@ -17,8 +17,8 @@ import TextMenuType from './TextTest/TextMenuType.test';
 import RichEditorMenuType from './RichEditorTest/RichEditorMenuType.test';
 import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 import editMenuIdAIWriterTest from './TextTest/editMenuIdAIWriter.test';
-import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test'
-
+import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
+import RichEditorStyledStringTest from './RichEditorTest/RichEditorStyledStringTest.test'
 
 export default function testsuite() {
   TextMenuType();
@@ -26,4 +26,5 @@ export default function testsuite() {
   SetFrameRateRangeTest();
   editMenuIdAIWriterTest();
   MovingPhotoViewTest();
+  RichEditorStyledStringTest();
 }

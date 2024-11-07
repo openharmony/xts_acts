@@ -18,43 +18,43 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
-export default function RichEditorStyledStringTest3() {
-  describe('RichEditorStyledStringTest3', () => {
+export default function RichEditorStyledStringTest() {
+  describe('RichEditorStyledStringTest', () => {
     beforeEach(async (done: Function) => {
-      console.info("RichEditorStyledStringTest2 beforeEach start");
+      console.info("RichEditorStyledStringTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/RichEditor/RichEditorStyledStringTest3',
+        url: 'MainAbility/pages/RichEditor/RichEditorStyledStringTest',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get RichEditorStyledStringTest3 state pages:" + JSON.stringify(pages));
-        if (!("RichEditorStyledStringTest3" == pages.name)) {
-          console.info("get RichEditorStyledStringTest3 pages.name:" + JSON.stringify(pages.name));
+        console.info("get RichEditorStyledStringTest state pages:" + JSON.stringify(pages));
+        if (!("RichEditorStyledStringTest" == pages.name)) {
+          console.info("get RichEditorStyledStringTest pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push RichEditorStyledStringTest3 page result:" + JSON.stringify(result));
+          console.info("push RichEditorStyledStringTest page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push RichEditorStyledStringTest3 page error:" + err);
+        console.error("push RichEditorStyledStringTest page error:" + err);
       }
-      console.info("RichEditorStyledStringTest3 beforeEach end");
+      console.info("RichEditorStyledStringTest beforeEach end");
       done();
     });
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("RichEditorStyledStringTest3 after each called");
+      console.info("RichEditorStyledStringTest after each called");
     });
 
     /**
-     * @tc.number    RichEditorStyledStringTest3_0100
-     * @tc.name      RichEditorStyledStringTest3_0100
+     * @tc.number    RichEditorStyledStringTest_0100
+     * @tc.name      RichEditorStyledStringTest_0100
      * @tc.desc      Test RichEditor StyledStringKey
      * @tc.level     Level 2
      */
-    it('RichEditorStyledStringTest3_0100', 0, async (done: Function) => {
-      console.info('RichEditorStyledStringTest3_0100 START');
+    it('RichEditorStyledStringTest_0100', 0, async (done: Function) => {
+      console.info('RichEditorStyledStringTest_0100 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let button1 = await driver.findComponent(ON.id('searchStyle'));
@@ -90,7 +90,7 @@ export default function RichEditorStyledStringTest3() {
       let Obj6: ESObject = JSON.parse(text6);
       expect(Obj6.$attrs.content).assertEqual('7');
       await CommonFunc.sleep(500);
-      console.info('RichEditorStyledStringTest3_0100 END');    
+      console.info('RichEditorStyledStringTest_0100 END');    
       done();
     });
   })
