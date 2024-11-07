@@ -17,11 +17,11 @@ group("codeparsingtest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"actscodeparsingtest:ActsCodeParsingTest",
-      #"baselibtest:ActsBaseLibTest",
+      "actscodeparsingtest:ActsCodeParsingTest",
+      "baselibtest:ActsBaseLibTest",
       "builtinstest:ActsBuiltinsTest",
-      #"concurrentlibtest:ActsConcurrentLibTest",
-      #"decimallibtest:ActsDecimalLibTest",
+      "concurrentlibtest:ActsConcurrentLibTest",
+      "decimallibtest:ActsDecimalLibTest",
     ]
   }
 }
