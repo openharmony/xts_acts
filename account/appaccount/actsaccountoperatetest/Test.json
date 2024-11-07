@@ -5,7 +5,8 @@
         "test-timeout": "3000000",
         "bundle-name": "com.example.actsaccountoperatetest",
         "package-name": "com.example.actsaccountoperatetest",
-        "shell-timeout": "3000000"
+        "shell-timeout": "3000000",
+        "testcase-timeout": 1000000
     },
     "kits": [
         {
