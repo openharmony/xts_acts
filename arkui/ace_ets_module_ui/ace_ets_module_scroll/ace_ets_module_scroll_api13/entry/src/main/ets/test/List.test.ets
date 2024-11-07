@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
+import headerListJsunit from './ListTest/headerListJsunit.test'; 
 import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
 import bindTabsScroll from './TabsTest/bindTabsScroll.test';
 
 export default function testsuite() {
+  headerListJsunit()
   tabsOpacityJsunit()
   bindTabsScroll()
 }
