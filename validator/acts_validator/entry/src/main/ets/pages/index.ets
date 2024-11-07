@@ -730,7 +730,7 @@ struct IndexPage {
     let ScreenFailIndex = ScreenReport.indexOf('false');
     let ScreenFailNum = 0;
     while (ScreenFailIndex != -1) {
-      console.log(ScreenFailIndex);
+      console.log(ScreenFailIndex.toString());
       ScreenFailNum++;
       ScreenFailIndex = ScreenReport.indexOf('false', ScreenFailIndex + 1);
     }
