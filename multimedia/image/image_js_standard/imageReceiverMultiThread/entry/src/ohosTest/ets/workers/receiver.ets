@@ -13,54 +13,53 @@
  * limitations under the License.
  */
 
-import worker from '@ohos.worker';
+import worker, { MessageEvents } from '@ohos.worker';
 import imageApi from "@ohos.multimedia.image";
+import image from '@ohos.multimedia.image';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const parentPort = worker.workerPort;
-console.info("worker:: new version")
-
-const WIDTH = 8192;
-const HEIGHT = 8;
 const CAPACITY = 8;
-const FORMATJPEG = imageApi.ImageFormat.JPEG;
 const JPEG = imageApi.ComponentType.JPEG;
 let isFirstlisten = false;
+let numID: number;
 
-function createRecriver(threadId: Object) {
-  const id = threadId
-  const receiver = imageApi.createImageReceiver(WIDTH, HEIGHT, FORMATJPEG, CAPACITY);
-  if (receiver == undefined) {
-    return receiver
+async function createRecriver() {
+  let size: image.Size = {
+    width: 640,
+    height: 480
   }
+  let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, CAPACITY);
+  let imageReceiverSurfaceId: string = await receiver.getReceivingSurfaceId();
+  console.info("imageReceiverSurfaceId is: " + imageReceiverSurfaceId);
+
   receiver.on("imageArrival", () => {
-    console.info("worker::on in " + id);
+    console.info("worker::on in " + numID);
     if (isFirstlisten) {
       return
     }
-    console.info("worker::on in in  " + id);
+
+    console.info("worker::on in in  " + imageReceiverSurfaceId);
     isFirstlisten = true;
     receiver.readLatestImage((err, img) => {
-      console.info("worker::readLatestImage " + id);
-      img.getComponent(JPEG, (err2, component) => {
-        console.info("worker::getComponent err " + JSON.stringify(err2));
-        parentPort.postMessage(id);
+      console.info("worker::readLatestImage " + imageReceiverSurfaceId);
+      img.getComponent(JPEG, (err: BusinessError, component: image.Component) => {
+        if (err) {
+          console.error(`Failed to get the component.code ${err.code},message is ${err.message}`);
+        } else {
+          console.info('Succeeded in getting component.');
+          parentPort.postMessage(numID);
+        }
       });
     });
   })
-  return receiver;
+  parentPort.postMessage(imageReceiverSurfaceId);
+
 }
 
-// parentPort.onclose = () => {
-//   console.info("worker::worker.js onclose");
-// }
-
-parentPort.onmessage = (e) => {
-  let data: ESObject = e.data;
-  console.info("worker:: worker thread worker data is " + data);
-  let receiver = createRecriver(data);
-  if (receiver != undefined) {
-    // let dummy = receiver.test;
-  }
+parentPort.onmessage = async (e: MessageEvents) => {
+    createRecriver();
+    numID = e.data;
 }
 
 // Deserialization error
