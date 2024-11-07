@@ -148,6 +148,9 @@ class CameraService {
       }
       await img.release();
       Logger.info(this.tag, 'save image done');
+      if (this.handleTakePicture) {
+        this.handleTakePicture(path)
+      }
     } catch (err) {
       Logger.info(this.tag, `save picture err ${err.message}`);
     }
