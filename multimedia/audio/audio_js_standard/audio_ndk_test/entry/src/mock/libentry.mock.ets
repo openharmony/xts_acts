@@ -12,17 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-{
-  "name": "napitest",
-  "version": "1.0.0",
-  "description": "Please describe the basic information.",
-  "main": "",
-  "author": "",
-  "license": "",
-  "dependencies": {
+const NativeMock: Record<string, Object> = {
+  'initAudio': (a: string) => {
+    return 0;
   },
-  "devDependencies": {
-    "@ohos/hypium": "1.0.15",
-    "@ohos/hamock": "1.0.0-rc"
-  }
-}
+};
+
+export default NativeMock;
