@@ -413,6 +413,34 @@ export default function PhotoTest() {
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
     })
     /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPhotoOutputEnableMirror0100
+     * @tc.name       : testOHPhotoOutputEnableMirror0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHPhotoOutputEnableMirror0100', 0, () => {
+      
+      let ret = cameras.oHPhotoOutputEnableMirror(0);
+      console.log(TAG+"testOHPhotoOutputEnableMirror0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPhotoOutputEnableMirror0200
+     * @tc.name       : testOHPhotoOutputEnableMirror0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHPhotoOutputEnableMirror0200', 0, () => {
+      
+      let ret = cameras.oHPhotoOutputEnableMirror(1);
+      console.log(TAG+"testOHPhotoOutputEnableMirror0200:"+ret);
+      expect(ret).assertEqual(CAMERA_ERROR_7400101);
+    })
+    /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPhotoOutputCapture0100
      * @tc.name       : testOHPhotoOutputCapture0100
      * @tc.size       : MediumTest
