@@ -35,15 +35,15 @@ export default function MultimodalInputNdkTest() {
     }
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_CreateKeyState_0100
-     * @tc.name: SUB_MMI_Api_Input_CreateKeyState_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_CreateKeyState_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_CreateKeyState_0100
      * @tc.desc: OH_Input_CreateKeyState Interface testing, verify the create of key states.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_CreateKeyState_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_CreateKeyState_0100';
+    it('SUB_MMI_Input_Api_Ndk_CreateKeyState_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_CreateKeyState_0100';
       console.info(`${caseName} start to test OH_Input_CreateKeyState`);
       try {
         let data = input.CreateKeyState();
@@ -66,15 +66,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_DestroyKeyState_0100
-     * @tc.name: SUB_MMI_Api_Input_DestroyKeyState_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_DestroyKeyState_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_DestroyKeyState_0100
      * @tc.desc: OH_Input_DestroyKeyState Interface testing, verify the destroy of key states.
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_DestroyKeyState_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_DestroyKeyState_0100';
+    it('SUB_MMI_Input_Api_Ndk_DestroyKeyState_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_DestroyKeyState_0100';
       console.info(`${caseName} start to test OH_Input_DestroyKeyState`);
       try {
         let data = input.DestroyKeyState();
@@ -97,15 +97,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_SetKeyCode_0100
-     * @tc.name: SUB_MMI_Api_Input_SetKeyCode_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_SetKeyCode_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_SetKeyCode_0100
      * @tc.desc: OH_Input_SetKeyCode Interface testing, verify the set and get of key states.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_SetKeyCode_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_SetKeyCode_0100';
+    it('SUB_MMI_Input_Api_Ndk_SetKeyCode_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_SetKeyCode_0100';
       console.info(`${caseName} start to test OH_Input_SetKeyCode`);
       try {
         let data = input.SetKeyCode(2000);
@@ -128,15 +128,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_SetKeyPressed_0100
-     * @tc.name: SUB_MMI_Api_Input_SetKeyPressed_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_SetKeyPressed_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_SetKeyPressed_0100
      * @tc.desc: OH_Input_SetKeyPressed Interface testing, verify the set and get of key states.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_SetKeyPressed_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_SetKeyPressed_0100';
+    it('SUB_MMI_Input_Api_Ndk_SetKeyPressed_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_SetKeyPressed_0100';
       console.info(`${caseName} start to test OH_Input_SetKeyPressed`);
       try {
         let data = input.SetKeyPressed(0);
@@ -159,15 +159,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_SetKeySwitch_0100
-     * @tc.name: SUB_MMI_Api_Input_SetKeySwitch_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_SetKeySwitch_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_SetKeySwitch_0100
      * @tc.desc: OH_Input_SetKeySwitch Interface testing, verify the set and get of key switch.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_SetKeySwitch_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_SetKeySwitch_0100';
+    it('SUB_MMI_Input_Api_Ndk_SetKeySwitch_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_SetKeySwitch_0100';
       console.info(`${caseName} start to test OH_Input_SetKeySwitch`);
       try {
         let data = input.SetKeySwitch(2);
@@ -190,15 +190,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyPressed_0100
-     * @tc.name: SUB_MMI_Api_Input_GetKeyPressed_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyPressed_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyPressed_0100
      * @tc.desc: OH_Input_GetKeyPressed Interface testing, verify the set and get of key pressed.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyPressed_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyPressed_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyPressed_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyPressed_0100';
       console.info(`${caseName} start to test OH_Input_GetKeyPressed`);
       try {
         let data = input.GetKeyPressed(2012);
@@ -221,15 +221,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeySwitch_0100
-     * @tc.name: SUB_MMI_Api_Input_GetKeySwitch_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeySwitch_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeySwitch_0100
      * @tc.desc: OH_Input_GetKeySwitch Interface testing, verify the set and get of key switch.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeySwitch_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeySwitch_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetKeySwitch_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeySwitch_0100';
       console.info(`${caseName} start to test OH_Input_GetKeySwitch`);
       try {
         let data = input.GetKeySwitch(2012);
@@ -252,15 +252,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyState_0100
-     * @tc.name: SUB_MMI_Api_Input_GetKeyState_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyState_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyState_0100
      * @tc.desc: OH_Input_GetKeyState Interface testing, verify the get of key state.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyState_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyState_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyState_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyState_0100';
       console.info(`${caseName} start to test OH_Input_GetKeyState`);
       try {
         let data = input.GetKeyState(2012);
@@ -283,15 +283,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_CreateKeyEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_CreateKeyEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_CreateKeyEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_CreateKeyEvent_0100
      * @tc.desc: OH_Input_CreateKeyEvent Interface testing, verify the create of key event.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_CreateKeyEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_CreateKeyEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_CreateKeyEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_CreateKeyEvent_0100';
       console.info(`${caseName} start to test OH_Input_CreateKeyEvent`);
       try {
         let data = input.CreateKeyEvent();
@@ -314,15 +314,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_InjectKeyEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_InjectKeyEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_InjectKeyEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_InjectKeyEvent_0100
      * @tc.desc: OH_Input_InjectKeyEvent Interface testing, verify the inject of key event.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_InjectKeyEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_InjectKeyEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_InjectKeyEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_InjectKeyEvent_0100';
       console.info(`${caseName} start to test OH_Input_InjectKeyEvent`);
       try {
         let data = input.InjectKeyEvent();
@@ -345,15 +345,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_DestroyKeyEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_DestroyKeyEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_DestroyKeyEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_DestroyKeyEvent_0100
      * @tc.desc: OH_Input_DestroyKeyEvent Interface testing, verify the destroy of key event.
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_DestroyKeyEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_DestroyKeyEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_DestroyKeyEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_DestroyKeyEvent_0100';
       console.info(`${caseName} start to test OH_Input_DestroyKeyEvent`);
       try {
         let data = input.DestroyKeyEvent();
@@ -376,15 +376,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyEventAction_0100
-     * @tc.name: SUB_MMI_Api_Input_GetKeyEventAction_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyEventAction_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyEventAction_0100
      * @tc.desc: OH_Input_GetKeyEventAction Interface testing, verify the set and get of keyEvent action.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyEventAction_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyEventAction_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyEventAction_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyEventAction_0100';
       console.info(`${caseName} start to test OH_Input_GetKeyEventAction`);
       try {
         let data = input.GetKeyEventAction();
@@ -407,15 +407,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyEventAction_0200
-     * @tc.name: SUB_MMI_Api_Input_GetKeyEventAction_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyEventAction_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyEventAction_0200
      * @tc.desc: OH_Input_GetKeyEventAction Interface testing, verify the destroy of keyEvent action.
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyEventAction_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyEventAction_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyEventAction_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyEventAction_0200';
       console.info(`${caseName} start to test OH_Input_GetKeyEventAction`);
       try {
         let data = input.GetKeyEventActionDestroy();
@@ -439,15 +439,15 @@ export default function MultimodalInputNdkTest() {
 
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyEventKeyCode_0100
-     * @tc.name: SUB_MMI_Api_Input_GetKeyEventKeyCode_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyEventKeyCode_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyEventKeyCode_0100
      * @tc.desc: OH_Input_GetKeyEventKeyCode Interface testing, verify the set and get of keyEvent code.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyEventKeyCode_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyEventKeyCode_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyEventKeyCode_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyEventKeyCode_0100';
       console.info(`${caseName} start to test OH_Input_GetKeyEventKeyCode`);
       try {
         let data = input.GetKeyEventKeyCode();
@@ -470,15 +470,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyEventKeyCode_0200
-     * @tc.name: SUB_MMI_Api_Input_GetKeyEventKeyCode_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyEventKeyCode_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyEventKeyCode_0200
      * @tc.desc: OH_Input_GetKeyEventKeyCode Interface testing, verify the destroy of keyEvent code.
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyEventKeyCode_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyEventKeyCode_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyEventKeyCode_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyEventKeyCode_0200';
       console.info(`${caseName} start to test OH_Input_GetKeyEventKeyCode`);
       try {
         let data = input.GetKeyEventKeyCodeDestroy();
@@ -501,15 +501,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyEventActionTime_0100
-     * @tc.name: SUB_MMI_Api_Input_GetKeyEventActionTime_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyEventActionTime_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyEventActionTime_0100
      * @tc.desc: OH_Input_GetKeyEventActionTime Interface testing, verify the set and get of keyEvent time.
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyEventActionTime_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyEventActionTime_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyEventActionTime_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyEventActionTime_0100';
       console.info(`${caseName} start to test OH_Input_GetKeyEventActionTime`);
       try {
         let data = input.GetKeyEventActionTime(200);
@@ -532,15 +532,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyEventActionTime_0200
-     * @tc.name: SUB_MMI_Api_Input_GetKeyEventActionTime_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyEventActionTime_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyEventActionTime_0200
      * @tc.desc: OH_Input_GetKeyEventActionTime Interface testing, verify the destroy of keyEvent time.
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyEventActionTime_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyEventActionTime_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyEventActionTime_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyEventActionTime_0200';
       console.info(`${caseName} start to test OH_Input_GetKeyEventActionTime`);
       try {
         let data = input.GetKeyEventActionTimeDestroy(200);
@@ -563,15 +563,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_CreateTouchEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_CreateTouchEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_CreateTouchEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_CreateTouchEvent_0100
      * @tc.desc: OH_Input_CreateTouchEvent Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_CreateTouchEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_CreateTouchEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_CreateTouchEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_CreateTouchEvent_0100';
       console.info(`${caseName} start to test OH_Input_CreateTouchEvent`);
       try {
         let data = input.createTouchEvent();
@@ -594,15 +594,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_DestroyTouchEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_DestroyTouchEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_DestroyTouchEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_DestroyTouchEvent_0100
      * @tc.desc: OH_Input_DestroyTouchEvent Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_DestroyTouchEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_DestroyTouchEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_DestroyTouchEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_DestroyTouchEvent_0100';
       console.info(`${caseName} start to test OH_Input_DestroyTouchEvent`);
       try {
         let data = input.destroyTouchEvent();
@@ -625,15 +625,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_TouchEventAction_0100
-     * @tc.name: SUB_MMI_Api_Input_TouchEventAction_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_TouchEventAction_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_TouchEventAction_0100
      * @tc.desc: OH_Input_GetTouchEventAction Interface testing, verify the set and get of touchEvent action
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_TouchEventAction_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_TouchEventAction_0100';
+    it('SUB_MMI_Input_Api_Ndk_TouchEventAction_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_TouchEventAction_0100';
       console.info(`${caseName} start to test OH_Input_GetTouchEventAction`);
       try {
         let data = input.touchEventAction(1);
@@ -656,15 +656,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_TouchEventFingerId_0100
-     * @tc.name: SUB_MMI_Api_Input_TouchEventFingerId_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_TouchEventFingerId_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_TouchEventFingerId_0100
      * @tc.desc: OH_Input_GetTouchEventFingerId Interface testing, verify the set and get of touchEvent id
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_TouchEventFingerId_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_TouchEventAction_0100';
+    it('SUB_MMI_Input_Api_Ndk_TouchEventFingerId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_TouchEventAction_0100';
       console.info(`${caseName} start to test OH_Input_GetTouchEventFingerId`);
       try {
         let data = input.touchEventFingerId(0);
@@ -687,15 +687,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_TouchEventDisplayX_0100
-     * @tc.name: SUB_MMI_Api_Input_TouchEventDisplayX_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_TouchEventDisplayX_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_TouchEventDisplayX_0100
      * @tc.desc: OH_Input_GetTouchEventDisplayX Interface testing, verify the set and get of touchEvent displayX
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_TouchEventDisplayX_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_TouchEventDisplayX_0100';
+    it('SUB_MMI_Input_Api_Ndk_TouchEventDisplayX_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_TouchEventDisplayX_0100';
       console.info(`${caseName} start to test OH_Input_GetTouchEventDisplayX`);
       try {
         let data = input.touchEventDisplayX(100);
@@ -718,15 +718,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_TouchEventDisplayY_0100
-     * @tc.name: SUB_MMI_Api_Input_TouchEventDisplayY_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_TouchEventDisplayY_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_TouchEventDisplayY_0100
      * @tc.desc: OH_Input_GetTouchEventDisplayY Interface testing, verify the set and get of touchEvent displayY
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_TouchEventDisplayY_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_TouchEventDisplayY_0100';
+    it('SUB_MMI_Input_Api_Ndk_TouchEventDisplayY_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_TouchEventDisplayY_0100';
       console.info(`${caseName} start to test OH_Input_GetTouchEventDisplayY`);
       try {
         let data = input.touchEventDisplayY(100);
@@ -749,15 +749,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_TouchEventActionTime_0100
-     * @tc.name: SUB_MMI_Api_Input_TouchEventActionTime_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_TouchEventActionTime_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_TouchEventActionTime_0100
      * @tc.desc: OH_Input_GetTouchEventActionTime Interface testing, verify the set and get of touchEvent actionTime
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_TouchEventActionTime_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_TouchEventActionTime_0100';
+    it('SUB_MMI_Input_Api_Ndk_TouchEventActionTime_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_TouchEventActionTime_0100';
       console.info(`${caseName} start to test OH_Input_GetTouchEventActionTime`);
       try {
         let data = input.touchEventActionTime(200);
@@ -780,15 +780,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_InjectTouchEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_InjectTouchEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_InjectTouchEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_InjectTouchEvent_0100
      * @tc.desc: OH_Input_InjectTouchEvent Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_InjectTouchEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_InjectTouchEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_InjectTouchEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_InjectTouchEvent_0100';
       console.info(`${caseName} start to test OH_Input_InjectTouchEvent`);
       try {
         let data = input.injectTouchEvent(-671, -10);
@@ -811,15 +811,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_CreateMouseEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_CreateMouseEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_CreateMouseEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_CreateMouseEvent_0100
      * @tc.desc: OH_Input_CreateMouseEvent Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_CreateMouseEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_CreateMouseEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_CreateMouseEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_CreateMouseEvent_0100';
       console.info(`${caseName} start to test OH_Input_CreateMouseEvent`);
       try {
         let data = input.createMouseEvent();
@@ -842,15 +842,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_DestroyMouseEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_DestroyMouseEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_DestroyMouseEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_DestroyMouseEvent_0100
      * @tc.desc: OH_Input_DestroyMouseEvent Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_DestroyMouseEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_DestroyMouseEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_DestroyMouseEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_DestroyMouseEvent_0100';
       console.info(`${caseName} start to test OH_Input_DestroyMouseEvent`);
       try {
         let data = input.destroyMouseEvent();
@@ -873,15 +873,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_MouseEventAction_0100
-     * @tc.name: SUB_MMI_Api_Input_MouseEventAction_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_MouseEventAction_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_MouseEventAction_0100
      * @tc.desc: OH_Input_GetMouseEventAction Interface testing, verify the set and get of mouseEvent action
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_MouseEventAction_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_MouseEventAction_0100';
+    it('SUB_MMI_Input_Api_Ndk_MouseEventAction_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_MouseEventAction_0100';
       console.info(`${caseName} start to test OH_Input_GetMouseEventAction`);
       try {
         let data = input.mouseEventAction(2);
@@ -904,15 +904,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_MouseEventDisplayX_0100
-     * @tc.name: SUB_MMI_Api_Input_MouseEventDisplayX_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_MouseEventDisplayX_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_MouseEventDisplayX_0100
      * @tc.desc: OH_Input_GetMouseEventDisplayX Interface testing, verify the set and get of mouseEvent displayX
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_MouseEventDisplayX_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_MouseEventDisplayX_0100';
+    it('SUB_MMI_Input_Api_Ndk_MouseEventDisplayX_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_MouseEventDisplayX_0100';
       console.info(`${caseName} start to test OH_Input_GetMouseEventDisplayX`);
       try {
         let data = input.mouseEventDisplayX(100);
@@ -935,15 +935,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_MouseEventDisplayY_0100
-     * @tc.name: SUB_MMI_Api_Input_MouseEventDisplayY_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_MouseEventDisplayY_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_MouseEventDisplayY_0100
      * @tc.desc: OH_Input_GetMouseEventDisplayY Interface testing, verify the set and get of mouseEvent displayY
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_MouseEventDisplayY_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_MouseEventDisplayY_0100';
+    it('SUB_MMI_Input_Api_Ndk_MouseEventDisplayY_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_MouseEventDisplayY_0100';
       console.info(`${caseName} start to test OH_Input_GetMouseEventDisplayY`);
       try {
         let data = input.mouseEventDisplayY(100);
@@ -966,15 +966,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_MouseEventButton_0100
-     * @tc.name: SUB_MMI_Api_Input_MouseEventButton_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_MouseEventButton_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_MouseEventButton_0100
      * @tc.desc: OH_Input_GetMouseEventButton Interface testing, verify the set and get of mouseEvent button
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_MouseEventButton_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_MouseEventButton_0100';
+    it('SUB_MMI_Input_Api_Ndk_MouseEventButton_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_MouseEventButton_0100';
       console.info(`${caseName} start to test OH_Input_GetMouseEventButton`);
       try {
         let data = input.mouseEventButton(0);
@@ -997,15 +997,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_MouseEventAxisType_0100
-     * @tc.name: SUB_MMI_Api_Input_MouseEventAxisType_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_MouseEventAxisType_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_MouseEventAxisType_0100
      * @tc.desc: OH_Input_GetMouseEventAxisType Interface testing, verify the set and get of mouseEvent axisType
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_MouseEventAxisType_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_MouseEventAxisType_0100';
+    it('SUB_MMI_Input_Api_Ndk_MouseEventAxisType_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_MouseEventAxisType_0100';
       console.info(`${caseName} start to test OH_Input_GetMouseEventAxisType`);
       try {
         let data = input.mouseEventAxisType(0);
@@ -1028,15 +1028,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_MouseEventAxisValue_0100
-     * @tc.name: SUB_MMI_Api_Input_MouseEventAxisValue_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_MouseEventAxisValue_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_MouseEventAxisValue_0100
      * @tc.desc: OH_Input_GetMouseEventAxisValue Interface testing, verify the set and get of mouseEvent axisValue
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_MouseEventAxisValue_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_MouseEventAxisValue_0100';
+    it('SUB_MMI_Input_Api_Ndk_MouseEventAxisValue_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_MouseEventAxisValue_0100';
       console.info(`${caseName} start to test OH_Input_GetMouseEventAxisValue`);
       try {
         let data = input.mouseEventAxisValue(15.0);
@@ -1059,15 +1059,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_MouseEventActionTime_0100
-     * @tc.name: SUB_MMI_Api_Input_MouseEventActionTime_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_MouseEventActionTime_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_MouseEventActionTime_0100
      * @tc.desc: OH_Input_GetMouseEventActionTime Interface testing, verify the set and get of mouseEvent actionTime
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_MouseEventActionTime_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_MouseEventActionTime_0100';
+    it('SUB_MMI_Input_Api_Ndk_MouseEventActionTime_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_MouseEventActionTime_0100';
       console.info(`${caseName} start to test OH_Input_GetMouseEventActionTime`);
       try {
         let data = input.mouseEventActionTime(200);
@@ -1090,15 +1090,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_InjectMouseEvent_0100
-     * @tc.name: SUB_MMI_Api_Input_InjectMouseEvent_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_InjectMouseEvent_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_InjectMouseEvent_0100
      * @tc.desc: OH_Input_InjectMouseEvent Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_InjectMouseEvent_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_InjectMouseEvent_0100';
+    it('SUB_MMI_Input_Api_Ndk_InjectMouseEvent_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_InjectMouseEvent_0100';
       console.info(`${caseName} start to test OH_Input_InjectMouseEvent`);
       try {
         let data = input.injectMouseEvent(350, -2);
@@ -1121,15 +1121,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0100
-     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0100
      * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_RegisterDeviceListener_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0100';
+    it('SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0100';
       console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
       try {
         let data = input.RegisterDeviceListener();
@@ -1152,15 +1152,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0100
-     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0100
      * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0100';
+    it('SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0100';
       console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
       try {
         let data = input.UnregisterDeviceListener();
@@ -1183,15 +1183,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0200
-     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0200
      * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_RegisterDeviceListener_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0200';
+    it('SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0200';
       console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
       try {
         let data = input.RegisterDeviceListener2();
@@ -1214,15 +1214,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0200
-     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0200
      * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0200';
+    it('SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0200';
       console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
       try {
         let data = input.UnregisterDeviceListener2();
@@ -1245,15 +1245,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListeners_0100
-     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListeners_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListeners_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListeners_0100
      * @tc.desc: OH_Input_UnregisterDeviceListeners Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_UnregisterDeviceListeners_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListeners_0100';
+    it('SUB_MMI_Input_Api_Ndk_UnregisterDeviceListeners_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_UnregisterDeviceListeners_0100';
       console.info(`${caseName} start to test OH_Input_UnregisterDeviceListeners`);
       try {
         let data = input.UnregisterDeviceListeners();
@@ -1276,15 +1276,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0300
-     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0300
      * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_RegisterDeviceListener_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0300';
+    it('SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0300';
       console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
       try {
         let data = input.RegisterDeviceListener3();
@@ -1307,15 +1307,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0300
-     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0300
      * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0300';
+    it('SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0300';
       console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
       try {
         let data = input.UnregisterDeviceListener3();
@@ -1338,15 +1338,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0400
-     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0400
      * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_RegisterDeviceListener_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0400';
+    it('SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0400';
       console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
       try {
         let data = input.RegisterDeviceListener4();
@@ -1369,15 +1369,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0400
-     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0400
      * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0400';
+    it('SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0400';
       console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
       try {
         let data = input.UnregisterDeviceListener4();
@@ -1400,15 +1400,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0500
-     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0500
+     * @tc.number: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0500
+     * @tc.name: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0500
      * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_RegisterDeviceListener_0500', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0500';
+    it('SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0500';
       console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
       try {
         let data = input.RegisterDeviceListener5();
@@ -1431,15 +1431,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0500
-     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0500
+     * @tc.number: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0500
+     * @tc.name: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0500
      * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0500', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0500';
+    it('SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0500';
       console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
       try {
         let data = input.UnregisterDeviceListener5();
@@ -1462,15 +1462,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_RegisterDeviceListener_0600
-     * @tc.name: SUB_MMI_Api_Input_RegisterDeviceListener_0600
+     * @tc.number: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0600
+     * @tc.name: SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0600
      * @tc.desc: OH_Input_RegisterDeviceListener Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_RegisterDeviceListener_0600', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_RegisterDeviceListener_0600';
+    it('SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_RegisterDeviceListener_0600';
       console.info(`${caseName} start to test OH_Input_RegisterDeviceListener`);
       try {
         let data = input.RegisterDeviceListener6();
@@ -1493,15 +1493,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_UnregisterDeviceListener_0600
-     * @tc.name: SUB_MMI_Api_Input_UnregisterDeviceListener_0600
+     * @tc.number: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0600
+     * @tc.name: SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0600
      * @tc.desc: OH_Input_UnregisterDeviceListener Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_UnregisterDeviceListener_0600', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_UnregisterDeviceListener_0600';
+    it('SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_UnregisterDeviceListener_0600';
       console.info(`${caseName} start to test OH_Input_UnregisterDeviceListener`);
       try {
         let data = input.UnregisterDeviceListener6();
@@ -1524,15 +1524,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0100
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0100
      * @tc.desc: OH_Input_GetDeviceIds Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceIds_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceIds_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceIds_0100';
       console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
       try {
         let data = input.GetDeviceIds();
@@ -1555,15 +1555,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0200
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0200
      * @tc.desc: OH_Input_GetDeviceIds Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceIds_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceIds_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceIds_0200';
       console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
       try {
         let data = input.GetDeviceIds2();
@@ -1586,15 +1586,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0300
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0300
      * @tc.desc: OH_Input_GetDeviceIds Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceIds_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceIds_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceIds_0300';
       console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
       try {
         let data = input.GetDeviceIds3();
@@ -1617,15 +1617,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0400
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0400
      * @tc.desc: OH_Input_GetDeviceIds Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceIds_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceIds_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceIds_0400';
       console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
       try {
         let data = input.GetDeviceIds4();
@@ -1648,15 +1648,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceIds_0500
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceIds_0500
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0500
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceIds_0500
      * @tc.desc: OH_Input_GetDeviceIds Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceIds_0500', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceIds_0500';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceIds_0500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceIds_0500';
       console.info(`${caseName} start to test OH_Input_GetDeviceIds`);
       try {
         let data = input.GetDeviceIds5();
@@ -1679,15 +1679,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyboardType_0100
-     * @tc.name: SUB_MMI_Api_Input_GetKeyboardType_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyboardType_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyboardType_0100
      * @tc.desc: OH_Input_GetKeyboardType Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyboardType_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyboardType_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyboardType_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyboardType_0100';
       console.info(`${caseName} start to test OH_Input_GetKeyboardType`);
       try {
         let data = input.GetKeyboardType();
@@ -1710,15 +1710,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyboardType_0200
-     * @tc.name: SUB_MMI_Api_Input_GetKeyboardType_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyboardType_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyboardType_0200
      * @tc.desc: OH_Input_GetKeyboardType Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyboardType_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyboardType_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyboardType_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyboardType_0200';
       console.info(`${caseName} start to test OH_Input_GetKeyboardType`);
       try {
         let data = input.GetKeyboardType2();
@@ -1741,15 +1741,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyboardType_0300
-     * @tc.name: SUB_MMI_Api_Input_GetKeyboardType_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyboardType_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyboardType_0300
      * @tc.desc: OH_Input_GetKeyboardType Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyboardType_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyboardType_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyboardType_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyboardType_0300';
       console.info(`${caseName} start to test OH_Input_GetKeyboardType`);
       try {
         let data = input.GetKeyboardType3();
@@ -1772,15 +1772,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetKeyboardType_0400
-     * @tc.name: SUB_MMI_Api_Input_GetKeyboardType_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyboardType_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyboardType_0400
      * @tc.desc: OH_Input_GetKeyboardType Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetKeyboardType_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetKeyboardType_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetKeyboardType_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyboardType_0400';
       console.info(`${caseName} start to test OH_Input_GetKeyboardType`);
       try {
         let data = input.GetKeyboardType4();
@@ -1803,15 +1803,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDevice_0100
-     * @tc.name: SUB_MMI_Api_Input_GetDevice_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDevice_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDevice_0100
      * @tc.desc: OH_Input_GetDevice Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDevice_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDevice_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetDevice_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDevice_0100';
       console.info(`${caseName} start to test OH_Input_GetDevice`);
       try {
         let data = input.GetDevice();
@@ -1834,15 +1834,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDevice_0200
-     * @tc.name: SUB_MMI_Api_Input_GetDevice_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDevice_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDevice_0200
      * @tc.desc: OH_Input_GetDevice Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDevice_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDevice_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetDevice_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDevice_0200';
       console.info(`${caseName} start to test OH_Input_GetDevice`);
       try {
         let data = input.GetDevice2();
@@ -1865,15 +1865,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDevice_0300
-     * @tc.name: SUB_MMI_Api_Input_GetDevice_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDevice_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDevice_0300
      * @tc.desc: OH_Input_GetDevice Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDevice_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDevice_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetDevice_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDevice_0300';
       console.info(`${caseName} start to test OH_Input_GetDevice`);
       try {
         let data = input.GetDevice3();
@@ -1896,15 +1896,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDevice_0400
-     * @tc.name: SUB_MMI_Api_Input_GetDevice_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDevice_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDevice_0400
      * @tc.desc: OH_Input_GetDevice Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDevice_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDevice_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetDevice_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDevice_0400';
       console.info(`${caseName} start to test OH_Input_GetDevice`);
       try {
         let data = input.GetDevice4();
@@ -1927,15 +1927,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceName_0100
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceName_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceName_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceName_0100
      * @tc.desc: OH_Input_GetDeviceName Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceName_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceName_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceName_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceName_0100';
       console.info(`${caseName} start to test OH_Input_GetDeviceName`);
       try {
         let data = input.GetDeviceName();
@@ -1958,15 +1958,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceName_0200
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceName_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceName_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceName_0200
      * @tc.desc: OH_Input_GetDeviceName Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceName_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceName_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceName_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceName_0200';
       console.info(`${caseName} start to test OH_Input_GetDeviceName`);
       try {
         let data = input.GetDeviceName2();
@@ -1989,15 +1989,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceName_0300
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceName_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceName_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceName_0300
      * @tc.desc: OH_Input_GetDeviceName Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceName_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceName_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceName_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceName_0300';
       console.info(`${caseName} start to test OH_Input_GetDeviceName`);
       try {
         let data = input.GetDeviceName3();
@@ -2020,15 +2020,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceName_0400
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceName_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceName_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceName_0400
      * @tc.desc: OH_Input_GetDeviceName Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceName_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceName_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceName_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceName_0400';
       console.info(`${caseName} start to test OH_Input_GetDeviceName`);
       try {
         let data = input.GetDeviceName4();
@@ -2051,15 +2051,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceAddress_0100
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceAddress_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0100
      * @tc.desc: OH_Input_GetDeviceAddress Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceAddress_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceAddress_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0100';
       console.info(`${caseName} start to test OH_Input_GetDeviceAddress`);
       try {
         let data = input.GetDeviceAddress();
@@ -2082,15 +2082,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceAddress_0200
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceAddress_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0200
      * @tc.desc: OH_Input_GetDeviceAddress Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceAddress_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceAddress_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0200';
       console.info(`${caseName} start to test OH_Input_GetDeviceAddress`);
       try {
         let data = input.GetDeviceAddress2();
@@ -2113,15 +2113,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceAddress_0300
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceAddress_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0300
      * @tc.desc: OH_Input_GetDeviceAddress Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceAddress_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceAddress_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0300';
       console.info(`${caseName} start to test OH_Input_GetDeviceAddress`);
       try {
         let data = input.GetDeviceAddress3();
@@ -2144,15 +2144,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceAddress_0400
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceAddress_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0400
      * @tc.desc: OH_Input_GetDeviceAddress Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceAddress_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceAddress_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceAddress_0400';
       console.info(`${caseName} start to test OH_Input_GetDeviceAddress`);
       try {
         let data = input.GetDeviceAddress4();
@@ -2175,15 +2175,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceId_0100
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceId_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceId_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceId_0100
      * @tc.desc: OH_Input_GetDeviceId Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceId_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceId_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceId_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceId_0100';
       console.info(`${caseName} start to test OH_Input_GetDeviceId`);
       try {
         let data = input.GetDeviceId();
@@ -2206,15 +2206,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceId_0200
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceId_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceId_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceId_0200
      * @tc.desc: OH_Input_GetDeviceId Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceId_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceId_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceId_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceId_0200';
       console.info(`${caseName} start to test OH_Input_GetDeviceId`);
       try {
         let data = input.GetDeviceId2();
@@ -2237,15 +2237,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceId_0300
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceId_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceId_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceId_0300
      * @tc.desc: OH_Input_GetDeviceId Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceId_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceId_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceId_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceId_0300';
       console.info(`${caseName} start to test OH_Input_GetDeviceId`);
       try {
         let data = input.GetDeviceId3();
@@ -2268,15 +2268,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetCapabilities_0100
-     * @tc.name: SUB_MMI_Api_Input_GetCapabilities_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetCapabilities_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetCapabilities_0100
      * @tc.desc: OH_Input_GetCapabilities Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetCapabilities_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetCapabilities_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetCapabilities_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetCapabilities_0100';
       console.info(`${caseName} start to test OH_Input_GetCapabilities`);
       try {
         let data = input.GetCapabilities();
@@ -2299,15 +2299,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetCapabilities_0200
-     * @tc.name: SUB_MMI_Api_Input_GetCapabilities_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetCapabilities_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetCapabilities_0200
      * @tc.desc: OH_Input_GetCapabilities Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetCapabilities_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetCapabilities_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetCapabilities_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetCapabilities_0200';
       console.info(`${caseName} start to test OH_Input_GetCapabilities`);
       try {
         let data = input.GetCapabilities2();
@@ -2330,15 +2330,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetCapabilities_0300
-     * @tc.name: SUB_MMI_Api_Input_GetCapabilities_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetCapabilities_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetCapabilities_0300
      * @tc.desc: OH_Input_GetCapabilities Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetCapabilities_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetCapabilities_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetCapabilities_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetCapabilities_0300';
       console.info(`${caseName} start to test OH_Input_GetCapabilities`);
       try {
         let data = input.GetCapabilities3();
@@ -2361,15 +2361,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetCapabilities_0400
-     * @tc.name: SUB_MMI_Api_Input_GetCapabilities_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetCapabilities_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetCapabilities_0400
      * @tc.desc: OH_Input_GetCapabilities Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetCapabilities_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetCapabilities_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetCapabilities_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetCapabilities_0400';
       console.info(`${caseName} start to test OH_Input_GetCapabilities`);
       try {
         let data = input.GetCapabilities4();
@@ -2392,15 +2392,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceVersion_0100
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceVersion_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0100
      * @tc.desc: OH_Input_GetDeviceVersion Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceVersion_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceVersion_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0100';
       console.info(`${caseName} start to test OH_Input_GetDeviceVersion`);
       try {
         let data = input.GetDeviceVersion();
@@ -2423,15 +2423,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceVersion_0200
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceVersion_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0200
      * @tc.desc: OH_Input_GetDeviceVersion Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceVersion_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceVersion_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0200';
       console.info(`${caseName} start to test OH_Input_GetDeviceVersion`);
       try {
         let data = input.GetDeviceVersion2();
@@ -2454,15 +2454,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceVersion_0300
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceVersion_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0300
      * @tc.desc: OH_Input_GetDeviceVersion Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceVersion_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceVersion_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0300';
       console.info(`${caseName} start to test OH_Input_GetDeviceVersion`);
       try {
         let data = input.GetDeviceVersion3();
@@ -2485,15 +2485,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceVersion_0400
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceVersion_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0400
      * @tc.desc: OH_Input_GetDeviceVersion Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceVersion_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceVersion_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceVersion_0400';
       console.info(`${caseName} start to test OH_Input_GetDeviceVersion`);
       try {
         let data = input.GetDeviceVersion4();
@@ -2516,15 +2516,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceProduct_0100
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceProduct_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0100
      * @tc.desc: OH_Input_GetDeviceProduct Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceProduct_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceProduct_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0100';
       console.info(`${caseName} start to test OH_Input_GetDeviceProduct`);
       try {
         let data = input.GetDeviceProduct();
@@ -2547,15 +2547,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceProduct_0200
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceProduct_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0200
      * @tc.desc: OH_Input_GetDeviceProduct Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceProduct_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceProduct_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0200';
       console.info(`${caseName} start to test OH_Input_GetDeviceProduct`);
       try {
         let data = input.GetDeviceProduct2();
@@ -2578,15 +2578,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceProduct_0300
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceProduct_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0300
      * @tc.desc: OH_Input_GetDeviceProduct Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceProduct_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceProduct_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0300';
       console.info(`${caseName} start to test OH_Input_GetDeviceProduct`);
       try {
         let data = input.GetDeviceProduct3();
@@ -2609,15 +2609,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceProduct_0400
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceProduct_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0400
      * @tc.desc: OH_Input_GetDeviceProduct Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceProduct_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceProduct_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceProduct_0400';
       console.info(`${caseName} start to test OH_Input_GetDeviceProduct`);
       try {
         let data = input.GetDeviceProduct4();
@@ -2640,15 +2640,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceVendor_0100
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceVendor_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0100
      * @tc.desc: OH_Input_GetDeviceVendor Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceVendor_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceVendor_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0100';
       console.info(`${caseName} start to test OH_Input_GetDeviceVendor`);
       try {
         let data = input.GetDeviceVendor();
@@ -2671,15 +2671,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceVendor_0200
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceVendor_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0200
      * @tc.desc: OH_Input_GetDeviceVendor Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceVendor_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceVendor_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0200';
       console.info(`${caseName} start to test OH_Input_GetDeviceVendor`);
       try {
         let data = input.GetDeviceVendor2();
@@ -2702,15 +2702,15 @@ export default function MultimodalInputNdkTest() {
     });
 
         /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceVendor_0300
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceVendor_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0300
      * @tc.desc: OH_Input_GetDeviceVendor Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceVendor_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceVendor_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0300';
       console.info(`${caseName} start to test OH_Input_GetDeviceVendor`);
       try {
         let data = input.GetDeviceVendor3();
@@ -2733,15 +2733,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetDeviceVendor_0400
-     * @tc.name: SUB_MMI_Api_Input_GetDeviceVendor_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0400
      * @tc.desc: OH_Input_GetDeviceVendor Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetDeviceVendor_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetDeviceVendor_0400';
+    it('SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetDeviceVendor_0400';
       console.info(`${caseName} start to test OH_Input_GetDeviceVendor`);
       try {
         let data = input.GetDeviceVendor4();
@@ -2764,15 +2764,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_DestroyDeviceInfo_0100
-     * @tc.name: SUB_MMI_Api_Input_DestroyDeviceInfo_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_DestroyDeviceInfo_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_DestroyDeviceInfo_0100
      * @tc.desc: OH_Input_DestroyDeviceInfo Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_DestroyDeviceInfo_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_DestroyDeviceInfo_0100';
+    it('SUB_MMI_Input_Api_Ndk_DestroyDeviceInfo_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_DestroyDeviceInfo_0100';
       console.info(`${caseName} start to test OH_Input_DestroyDeviceInfo`);
       try {
         let data = input.DestroyDeviceInfo();
@@ -2795,15 +2795,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetAllSystemHotkeys_0100
-     * @tc.name: SUB_MMI_Api_Input_GetAllSystemHotkeys_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0100
      * @tc.desc: OH_Input_GetAllSystemHotkeys Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetAllSystemHotkeys_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetAllSystemHotkeys_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0100';
       console.info(`${caseName} start to test OH_Input_GetAllSystemHotkeys`);
       try {
         let data = input.GetAllSystemHotkeys();
@@ -2826,15 +2826,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_CreateAllSystemHotkeys_0100
-     * @tc.name: SUB_MMI_Api_Input_CreateAllSystemHotkeys_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0100
      * @tc.desc: OH_Input_CreateAllSystemHotkeys Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_CreateAllSystemHotkeys_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_CreateAllSystemHotkeys_0100';
+    it('SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0100';
       console.info(`${caseName} start to test OH_Input_CreateAllSystemHotkeys`);
       try {
         let data = input.CreateAllSystemHotkeys();
@@ -2857,15 +2857,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetAllSystemHotkeys_0200
-     * @tc.name: SUB_MMI_Api_Input_GetAllSystemHotkeys_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0200
      * @tc.desc: OH_Input_GetAllSystemHotkeys Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetAllSystemHotkeys_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetAllSystemHotkeys_0200';
+    it('SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0200';
       console.info(`${caseName} start to test OH_Input_GetAllSystemHotkeys`);
       try {
         let data = input.GetAllSystemHotkeys2();
@@ -2888,15 +2888,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetAllSystemHotkeys_0300
-     * @tc.name: SUB_MMI_Api_Input_GetAllSystemHotkeys_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0300
      * @tc.desc: OH_Input_GetAllSystemHotkeys Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetAllSystemHotkeys_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetAllSystemHotkeys_0300';
+    it('SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetAllSystemHotkeys_0300';
       console.info(`${caseName} start to test OH_Input_GetAllSystemHotkeys`);
       try {
         let data = input.GetAllSystemHotkeys3();
@@ -2919,15 +2919,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_CreateAllSystemHotkeys_0200
-     * @tc.name: SUB_MMI_Api_Input_CreateAllSystemHotkeys_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0200
      * @tc.desc: OH_Input_CreateAllSystemHotkeys Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_CreateAllSystemHotkeys_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_CreateAllSystemHotkeys_0200';
+    it('SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_CreateAllSystemHotkeys_0200';
       console.info(`${caseName} start to test OH_Input_CreateAllSystemHotkeys`);
       try {
         let data = input.CreateAllSystemHotkeys2();
@@ -2950,15 +2950,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_GetIntervalSinceLastInput_0100
-     * @tc.name: SUB_MMI_Api_Input_GetIntervalSinceLastInput_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetIntervalSinceLastInput_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetIntervalSinceLastInput_0100
      * @tc.desc: OH_Input_GetIntervalSinceLastInput Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_GetIntervalSinceLastInput_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_GetIntervalSinceLastInput_0100';
+    it('SUB_MMI_Input_Api_Ndk_GetIntervalSinceLastInput_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetIntervalSinceLastInput_0100';
       console.info(`${caseName} start to test OH_Input_GetIntervalSinceLastInput`);
       try {
         let data = input.GetIntervalSinceLastInput();
@@ -2981,15 +2981,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_CreateHotkey_0100
-     * @tc.name: SUB_MMI_Api_Input_CreateHotkey_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_CreateHotkey_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_CreateHotkey_0100
      * @tc.desc: OH_Input_CreateHotkey Interface testing 
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_CreateHotkey_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_CreateHotkey_0100';
+    it('SUB_MMI_Input_Api_Ndk_CreateHotkey_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_CreateHotkey_0100';
       console.info(`${caseName} start to test OH_Input_CreateHotkey`);
       try {
         let data = input.CreateHotkey();
@@ -3012,15 +3012,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0100
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0100
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Z
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0100';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0100';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor();
@@ -3043,15 +3043,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0200
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0200
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Alt + Z
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0200';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0200';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor2();
@@ -3074,15 +3074,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0300
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0300
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Shift + Alt + Z
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0300';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0300';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor3();
@@ -3105,15 +3105,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0400
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0400
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Alt + Z
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0400';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0400';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor4();
@@ -3136,15 +3136,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0500
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0500
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0500
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0500
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Shift + C
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0500', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0500';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0500';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor5();
@@ -3167,15 +3167,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0600
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0600
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0600
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0600
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + 9
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0600', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0600';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0600';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor6();
@@ -3198,14 +3198,14 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0700
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0700
-     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + â†?     * @tc.level 2
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0700
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0700
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + ï¿½?     * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0700', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0700';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0700', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0700';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor7();
@@ -3228,14 +3228,14 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0800
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0800
-     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + â†?     * @tc.level 2
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0800
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0800
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + ï¿½?     * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0800', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0800';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0800', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0800';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor8();
@@ -3258,15 +3258,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_0900
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_0900
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0900
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0900
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + F1
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_0900', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_0900';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0900', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_0900';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor9();
@@ -3289,15 +3289,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1000
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1000
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1000
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1000
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Home
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1000', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1000';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1000', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1000';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor10();
@@ -3320,15 +3320,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1100
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1100
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Enter
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1100';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1100';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor11();
@@ -3351,15 +3351,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1200
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1200
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + P
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1200';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1200';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor12();
@@ -3382,15 +3382,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1300
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1300
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Alt + D + C
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1300';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1300';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor13();
@@ -3413,15 +3413,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1400
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1400
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1400
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Alt + D + C
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1400', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1400';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1400';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor14();
@@ -3444,15 +3444,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1500
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1500
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1500
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1500
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe 9 + D
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1500', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1500';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1500';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor15();
@@ -3475,15 +3475,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1600
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1600
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1600
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1600
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe F + D
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1600', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1600';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1600';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor16();
@@ -3506,15 +3506,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1700
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1700
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1700
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1700
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Meta
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1700', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1700';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1700', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1700';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor17();
@@ -3537,15 +3537,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1800
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1800
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1800
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1800
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Right_Ctrl
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1800', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1800';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1800', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1800';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor18();
@@ -3568,15 +3568,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_1900
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_1900
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1900
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1900
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Scroll Lock
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_1900', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_1900';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1900', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_1900';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor19();
@@ -3599,15 +3599,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_2000
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_2000
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2000
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2000
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_2000', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_2000';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2000', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2000';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor20();
@@ -3630,15 +3630,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_2100
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_2100
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2100
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2100
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_2100', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_2100';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2100', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2100';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor21();
@@ -3661,15 +3661,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_2200
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_2200
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2200
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Ctrl + Table
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_2200', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_2200';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2200';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor22();
@@ -3692,15 +3692,15 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
-     * @tc.number: SUB_MMI_Api_Input_AddHotkeyMonitor_2300
-     * @tc.name: SUB_MMI_Api_Input_AddHotkeyMonitor_2300
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2300
      * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Alt + Table
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Api_Input_AddHotkeyMonitor_2300', 0, async (done: Function) => {
-      let caseName = 'SUB_MMI_Api_Input_AddHotkeyMonitor_2300';
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2300';
       console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
       try {
         let data = input.AddHotkeyMonitor23();
