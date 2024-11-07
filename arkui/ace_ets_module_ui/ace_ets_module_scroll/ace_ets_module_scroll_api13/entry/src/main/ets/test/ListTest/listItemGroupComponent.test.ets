@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import {Driver} from '@ohos.UiTest';
-import CommonFunc from '../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import hilog from '@ohos.hilog';
 
@@ -30,7 +30,7 @@ export default function listItemGroupComponent() {
     beforeEach(async (done: Function) => {
       console.info("listItemGroupComponent beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/listItemGroup',
+        url: 'MainAbility/pages/List/listItemGroup',
       }
       try {
         router.clear();

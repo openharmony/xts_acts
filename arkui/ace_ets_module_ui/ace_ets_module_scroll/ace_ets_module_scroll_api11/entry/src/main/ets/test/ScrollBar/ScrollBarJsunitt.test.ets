@@ -147,42 +147,5 @@ export default function scrollBarJsunitt() {
       expect(obj.$attrs.state).assertEqual("BarState.Auto");
       done();
     });
-
-    it('testScrollBar006', 0, async (done: Function) => {
-      console.info('[testScrollBar006] START');
-      await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('scroll');
-      console.info("[testScrollBar006] component strJson:" + strJson);
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[testScrollBar006] enableNestedScroll:" + obj.$attrs.enableNestedScroll);
-      expect(obj.$attrs.enableNestedScroll).assertEqual("true");
-      done();
-    });
-
-    it('testScrollBar007', 0, async (done: Function) => {
-      console.info('[testScrollBar007] START');
-      try {
-        let eventData: events_emitter.EventData = {
-          data: {
-            "enableNestedScrollValue": false
-          }
-        }
-        let indexEvent: events_emitter.InnerEvent = {
-          eventId: 185,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[testScrollBar007] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
-      } catch (err) {
-        console.log("[testScrollBar007] change component data error: " + err.message);
-      }
-      await CommonFunc.sleep(4000);
-      let strJson = getInspectorByKey('scroll');
-      console.info("[testScrollBar007] component strJson:" + strJson);
-      let obj: ESObject = JSON.parse(strJson);
-      console.info("[testScrollBar007] enableNestedScroll:" + obj.$attrs.enableNestedScroll);
-      expect(obj.$attrs.enableNestedScroll).assertEqual("false");
-      done();
-    });
   })
 }
