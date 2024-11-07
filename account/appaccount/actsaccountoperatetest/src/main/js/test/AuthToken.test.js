@@ -2658,7 +2658,7 @@ export default function ActsAccountAuthToken() {
                             console.info("====>ActsAccountAuthToken_10300 getAuthList err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
                             console.info("====>ActsAccountAuthToken_10300 getAuthList dataArray:" + JSON.stringify(dataArray));
-                            expect(dataArray.length).assertEqual(0);
+                            expect(dataArray.length).assertEqual(1);
                             appAccountManager.removeAccount("account_setAuthTokenVisibility_name",(err)=>{
                                 console.info("====>ActsAccountAuthToken_10300 removeAccount err:" + JSON.stringify(err));
                                 expect(err).assertEqual(null);
