@@ -5,6 +5,8 @@ import numberTest from './Number/Number.test';
 import stringTest from './String/String.test';
 import weakMapTest from './WeakMap/WeakMap.test';
 import nativeJSONTest from './NativeJSON/NativeJSON.test';
+import bigIntTest from './BigInt/BigInt.test';
+import dateTest from './Date/Date.test';
 
 export default function testsuite() {
   booleanTest();
@@ -14,4 +16,6 @@ export default function testsuite() {
   stringTest();
   weakMapTest();
   nativeJSONTest();
+  bigIntTest();
+  dateTest();
 }
