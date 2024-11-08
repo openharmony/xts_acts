@@ -41,10 +41,16 @@ static napi_value GetCurrentApplicationInfo(napi_env env, napi_callback_info inf
     napi_create_string_utf8(env, appIdentifier, NAPI_AUTO_LENGTH, &napi_appIdentifier);
     napi_set_named_property(env, result, "appIdentifier", napi_appIdentifier);
 
+    char* deviceType = OH_NativeBundle_GetCompatibleDeviceType();
+    napi_value napi_device_type;
+    napi_create_string_utf8(env, deviceType, NAPI_AUTO_LENGTH, &napi_device_type);
+    napi_set_named_property(env, result, "compatibleDeviceType", napi_device_type);
+
     free(nativeApplicationInfo.bundleName);
     free(nativeApplicationInfo.fingerprint);
     free(appId);
     free(appIdentifier);
+    free(deviceType);
     return result;
 }
 
