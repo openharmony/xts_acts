@@ -387,28 +387,5 @@ napi_value ImageReceiverNDKTest::JsImageGetComponent(napi_env env, napi_callback
     setInt32NamedProperty(env, result, "pixelStride", component.pixelStride);
     return result;
 }
-
-// EXTERN_C_START
-// napi_value ModuleRegister(napi_env env, napi_value exports)
-// {
-//     ImageReceiverNDKTest::Init(env, exports);
-//     return exports;
-// }
-//
-// static napi_module demoModule = {
-//     .nm_version =1,
-//     .nm_flags = 0,
-//     .nm_filename = nullptr,
-//     .nm_register_func = ModuleRegister,
-//     .nm_modname = "entry",
-//     .nm_priv = ((void*)0),
-//     .reserved = { 0 },
-// };
-//
-// __attribute__((constructor)) void RegisterModule(void)
-// {
-//     napi_module_register(&demoModule);
-// }
-// EXTERN_C_END
 }
 }

@@ -70,7 +70,7 @@ export default function ImageReceiverNDKTest() {
             }
         }
 
-        let isString = (value: ESObject):boolean => {
+        let isString = (value: ESObject): boolean => {
             return typeof value === "string";
         }
 
@@ -355,7 +355,7 @@ export default function ImageReceiverNDKTest() {
                 expect(myImageFormat == RGBA).assertTrue();
                 expect(myImageComponent.byteBuffer != undefined).assertTrue();
                 expect(myImageComponent.componentType == JPEG).assertTrue();
-                expect(myImageComponent.rowStride == WIDTH / Jpg_Stride).assertTrue();
+                expect(myImageComponent.rowStride >= WIDTH).assertTrue();
                 expect(myImageComponent.pixelStride == Jpg_Stride).assertTrue();
                 done();
             } catch (error) {

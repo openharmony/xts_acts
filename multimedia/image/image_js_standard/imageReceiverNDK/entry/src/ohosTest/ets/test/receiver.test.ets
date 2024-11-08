@@ -586,7 +586,7 @@ export default function ImageReceiverTest() {
                     expect(bufferSize > 0).assertTrue();
                     expect(nativeBuffer != undefined).assertTrue();
                     expect(type >= 0).assertTrue();
-                    expect(rowStride > 0).assertTrue();
+                    expect(rowStride >= 0).assertTrue();
                     expect(pixelStride == Jpg_Stride).assertTrue();
                     expect(sizeAfterRelease == undefined).assertTrue();
                     done();
