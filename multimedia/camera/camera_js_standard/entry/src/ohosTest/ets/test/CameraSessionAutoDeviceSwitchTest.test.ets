@@ -218,7 +218,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
           }
           mCameraSession.addOutput(mPreviewOutput);
           await mCameraSession.commitConfig();
-          let isSupported = mCameraSession.isAutoDeviceSwitchSupported();
+          let isSupported: boolean = mCameraSession.isAutoDeviceSwitchSupported();
           if (isSupported != isFoldable) {
             expect().assertFail();
           }
@@ -275,7 +275,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
           }
           mCameraSession.addOutput(mPreviewOutput);
           await mCameraSession.commitConfig();
-          let isSupported = mCameraSession.isAutoDeviceSwitchSupported();
+          let isSupported: boolean = mCameraSession.isAutoDeviceSwitchSupported();
           if (isSupported) {
             try {
               mCameraSession.enableAutoDeviceSwitch(true);
@@ -338,17 +338,20 @@ export default function cameraSessionAutoDeviceSwitchTest() {
           }
           mCameraSession.addOutput(mPreviewOutput);
           await mCameraSession.commitConfig();
-          let isSupported = mCameraSession.isAutoDeviceSwitchSupported();
+          let isSupported: boolean = mCameraSession.isAutoDeviceSwitchSupported();
           if (isSupported) {
             try {
               mCameraSession.enableAutoDeviceSwitch(true);
             } catch (e) {
               expect().assertFail();
             }
-            mCameraSession.on('autoDeviceSwitchStatusChange', (error, autoDeviceSwitchStatus) => {
+            mCameraSession.on('autoDeviceSwitchStatusChange', (error: BusinessError, autoDeviceSwitchStatus: cameraObj.AutoDeviceSwitchStatus) => {
               if (error !== undefined && error.code !== 0) {
                 expect().assertFail();
               }
+              let isDeviceSwitched: boolean = autoDeviceSwitchStatus.isDeviceSwitched;
+              let isDeviceCapabilityChanged: boolean = autoDeviceSwitchStatus.isDeviceCapabilityChanged;
+              console.info(TAG + `Entering SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_ON_0100 isDeviceSwitched ${isDeviceSwitched} isDeviceCapabilityChanged ${isDeviceCapabilityChanged}`);
               done();
             })
           }
@@ -406,7 +409,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
           }
           mCameraSession.addOutput(mPreviewOutput);
           await mCameraSession.commitConfig();
-          let isSupported = mCameraSession.isAutoDeviceSwitchSupported();
+          let isSupported: boolean = mCameraSession.isAutoDeviceSwitchSupported();
           if (isSupported) {
             try {
               mCameraSession.enableAutoDeviceSwitch(true);
