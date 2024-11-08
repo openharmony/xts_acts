@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import { Driver } from '@ohos.UiTest';
