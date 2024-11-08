@@ -18,9 +18,7 @@
 
 #define IMAGE_LOG_TAG "IMAGE_RECEIVER_TAGLOG"
 #define IMAGE_LOG_DOMAIN 0x3200
-
 #define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, IMAGE_LOG_DOMAIN, IMAGE_LOG_TAG, fmt, ##__VA_ARGS__)
-
 
 ImageReceiverModuleTest::ImageReceiverModuleTest()
 {
