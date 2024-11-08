@@ -420,8 +420,8 @@ export default function AudioRoutingManagerTest() {
         let blockMic: boolean = audioRoutingManager.isMicBlockDetectionSupported()
         if (blockMic == true) {
           audioRoutingManager.on('micBlockStatusChanged', async(deviceBlockStatusInfo: ESObject) =>{
-            if (deviceBlockStatusInfo.DeviceBlockStatus == audioRoutingManager.blocksStatus.Blocked ||
-            deviceBlockStatusInfo.DeviceBlockStatus == audioRoutingManager.blocksStatus.UNBlocked) {
+            if (deviceBlockStatusInfo.DeviceBlockStatus == audioRoutingManager.blockStatus.BLOCKED ||
+            deviceBlockStatusInfo.DeviceBlockStatus == audioRoutingManager.blockStatus.UNBLOCKED) {
               console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
               expect(true).assertTrue();
             } else {
