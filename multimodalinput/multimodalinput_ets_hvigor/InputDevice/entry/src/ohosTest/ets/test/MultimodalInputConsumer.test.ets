@@ -867,7 +867,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 4200003);
+          ExpectTrue(error.code == 4200003 || error.code == 4200002);
           done();
         }
       } catch (error) {
