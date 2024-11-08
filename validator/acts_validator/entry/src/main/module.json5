@@ -36,6 +36,7 @@
         "label": "$string:MainAbility_label",
         "startWindowIcon": "$media:image",
         "startWindowBackground": "$color:white",
+        "orientation": "auto_rotation",
         "exported": true,
         "skills": [
           {
