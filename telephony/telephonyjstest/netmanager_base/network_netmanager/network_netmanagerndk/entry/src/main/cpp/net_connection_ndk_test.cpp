@@ -194,6 +194,7 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"OHNetConnGetDefaultHttpProxy", nullptr, OHNetConnGetDefaultHttpProxy, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+    };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
@@ -206,10 +207,11 @@ static napi_module demoModule = {
     .nm_register_func = Init,
     .nm_modname = "entry",
     .nm_priv = ((void*)0),
-    .reserved = { 0 },
+    .reserved = {0},
 };
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 {
     napi_module_register(&demoModule);
 }
+
