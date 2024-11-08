@@ -347,7 +347,8 @@ struct WebComponent {
             this.url = event.url
           })
           .onControllerAttached(() => {
-            this.controller.loadUrl('www.baidu.com')
+            this.controller.loadUrl('https:' +
+              '//www.baidu.com')
           })
           .onErrorReceive((event) => {
             if (event) {
@@ -405,7 +406,8 @@ struct WebComponent {
 
       Web({ src: '', controller: this.controller1 })
         .onControllerAttached(() => {
-          this.controller.loadUrl('www.baidu.com')
+          this.controller.loadUrl('https:' +
+            '//www.baidu.com')
         })
         .onLoadIntercept((event) => {
           if (event) {
