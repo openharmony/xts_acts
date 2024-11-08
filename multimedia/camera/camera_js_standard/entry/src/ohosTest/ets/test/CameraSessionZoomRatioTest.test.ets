@@ -28,7 +28,7 @@ const TAG = "CameraSessionZoomRatioTest: ";
 
 let mCameraManager: cameraObj.CameraManager;
 let mCameraDevicesArray: Array<cameraObj.CameraDevice>;
-let mCameraSession: cameraObj.CaptureSession;
+let mCameraSession: cameraObj.PhotoSession;
 
 let mPhotoSurface: string;
 let mVideoRecorder: media.AVRecorder;
@@ -252,11 +252,11 @@ export default function cameraSessionZoomRatioTest() {
   let createCameraSessionInstance = () => {
     console.info('Enter createCameraSessionInstance');
 
-    // try {
-    //   mCameraSession = mCameraManager.createCaptureSession();
-    // } catch {
-    //   console.info('createCaptureSession FAILED');
-    // }
+     try {
+       mCameraSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
+     } catch {
+       console.info('createCaptureSession FAILED');
+     }
 
     if (isEmpty(mCameraSession)) {
       console.info(TAG + "createCaptureSession FAILED");
@@ -919,7 +919,7 @@ export default function cameraSessionZoomRatioTest() {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 setZoomRatio: " +
               (mZoomRatioMinArray[i] + 0.1));
 
-            // mCameraSession.setSmoothZoom(mZoomRatioMaxArray[i] - 0.1, cameraObj.SmoothZoomMode.NORMAL);
+            mCameraSession.setSmoothZoom(mZoomRatioMaxArray[i] - 0.1, cameraObj.SmoothZoomMode.NORMAL);
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 targetZoomRatio: " +
               (mZoomRatioMaxArray[i] - 0.1));
             await sleep(2000);
