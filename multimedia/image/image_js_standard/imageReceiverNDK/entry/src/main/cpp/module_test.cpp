@@ -31,7 +31,6 @@ static constexpr uint32_t NUM_4 = 4;
 static NDKCamera* ndkCamera_ = nullptr;
 static ImageReceiverModuleTest* imageReceiverTest_ = nullptr;
 
-#define STATIC_FUNCTION(n, f) { (n), nullptr, (f), nullptr, nullptr, nullptr, napi_static, nullptr }
 
 struct Capture_Setting {
     int32_t quality;
