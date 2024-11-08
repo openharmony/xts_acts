@@ -20,7 +20,9 @@
 #include <queue>
 #include <utility>
 
-#define LOG(fmt, ...) (void)printf(fmt, ##__VA_ARGS__);
+#define CAMERA_LOG_TAG "CAMERA_MANAGER_TAGLOG"
+#define CAMERA_LOG_DOMAIN 0x3200
+#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, CAMERA_LOG_DOMAIN, CAMERA_LOG_TAG, fmt, ##__VA_ARGS__)
 
 CameraCallbackCode NDKCamera::cameraCallbackCode_ = NoReceived;
 
