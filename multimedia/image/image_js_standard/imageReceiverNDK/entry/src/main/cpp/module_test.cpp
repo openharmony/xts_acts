@@ -1049,7 +1049,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {
             "JsImageReceiverOptionsGetCapacity", nullptr,
             OHOS::Media::ImageReceiverTest::JsImageReceiverOptionsGetCapacity,
-            nullptr, nullptr, nullptr, napi_static, nullptr 
+            nullptr, nullptr, nullptr, napi_static, nullptr
         },
         {
             "JsImageReceiverOptionsSetCapacity", nullptr,
