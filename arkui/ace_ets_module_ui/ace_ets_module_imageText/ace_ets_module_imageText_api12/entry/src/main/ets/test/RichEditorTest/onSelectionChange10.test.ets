@@ -71,6 +71,7 @@ export default function onSelectionChange10() {
       expect(Obj1.$attrs.content).assertEqual('2');
 
       await driver.triggerKey(2017);
+	  await driver.triggerKey(2047)
       await CommonFunc.sleep(1000);
       let text2 = getInspectorByKey('onSelectionChange10_text1');
       let Obj2: ESObject = JSON.parse(text2);
