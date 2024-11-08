@@ -18,13 +18,16 @@ import RichEditorMenuType from './RichEditorTest/RichEditorMenuType.test';
 import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 import editMenuIdAIWriterTest from './TextTest/editMenuIdAIWriter.test';
 import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
-import RichEditorStyledStringTest from './RichEditorTest/RichEditorStyledStringTest.test'
+import RichEditorStyledStringTest from './RichEditorTest/RichEditorStyledStringTest.test';
+import StyledStringUrl from './TextTest/StyledStringTest.test';
+
 
 export default function testsuite() {
   TextMenuType();
   RichEditorMenuType();
   SetFrameRateRangeTest();
   editMenuIdAIWriterTest();
+  StyledStringUrl();
   MovingPhotoViewTest();
   RichEditorStyledStringTest();
 }
