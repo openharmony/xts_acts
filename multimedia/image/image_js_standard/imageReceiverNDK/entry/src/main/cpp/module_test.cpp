@@ -31,7 +31,6 @@ static constexpr uint32_t NUM_4 = 4;
 static NDKCamera* ndkCamera_ = nullptr;
 static ImageReceiverModuleTest* imageReceiverTest_ = nullptr;
 
-
 struct Capture_Setting {
     int32_t quality;
     int32_t rotation;
@@ -1047,10 +1046,16 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_static, nullptr },
         { "JsImageReceiverOptionsSetSize", nullptr, OHOS::Media::ImageReceiverTest::JsImageReceiverOptionsSetSize,
             nullptr, nullptr, nullptr, napi_static, nullptr },
-        { "JsImageReceiverOptionsGetCapacity", nullptr, OHOS::Media::ImageReceiverTest::JsImageReceiverOptionsGetCapacity,
-            nullptr, nullptr, nullptr, napi_static, nullptr },
-        { "JsImageReceiverOptionsSetCapacity", nullptr, OHOS::Media::ImageReceiverTest::JsImageReceiverOptionsSetCapacity,
-            nullptr, nullptr, nullptr, napi_static, nullptr },
+        {
+            "JsImageReceiverOptionsGetCapacity", nullptr,
+            OHOS::Media::ImageReceiverTest::JsImageReceiverOptionsGetCapacity,
+            nullptr, nullptr, nullptr, napi_static, nullptr 
+        },
+        {
+            "JsImageReceiverOptionsSetCapacity", nullptr,
+            OHOS::Media::ImageReceiverTest::JsImageReceiverOptionsSetCapacity,
+            nullptr, nullptr, nullptr, napi_static, nullptr 
+        },
         { "JsReleaseImageReceiverOptions", nullptr, OHOS::Media::ImageReceiverTest::JsReleaseImageReceiverOptions,
             nullptr, nullptr, nullptr, napi_static, nullptr },
         { "JsCreateImageReceiver", nullptr, OHOS::Media::ImageReceiverTest::JsCreateImageReceiver,
