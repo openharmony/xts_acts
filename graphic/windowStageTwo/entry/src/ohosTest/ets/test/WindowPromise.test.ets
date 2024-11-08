@@ -925,8 +925,13 @@ export default function windowPromiseTest() {
           });
       } catch (error) {
         console.log(msgStr + ',error code:' + error.code);
-        expect(false).assertTrue();
-        done();
+        if(error.code==801){
+          console.log(msgStr + 'The device not support APPLICATION_MODALITY');
+          done();
+        }else{
+          expect(false).assertTrue();
+          done();
+        }
       }
 
     })
