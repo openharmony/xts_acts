@@ -147,7 +147,7 @@ function stopContinuousTaskUseApi8Promise() {
             } else {
                 console.info(TAG + 'Publish succeed');
             }
-        })
+        });
     });
 }
 
