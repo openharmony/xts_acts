@@ -50,16 +50,16 @@ export default function abilityTest() {
     let success_number = 11111111;
 
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_OHNetConnNetConnGetDefaultHttpProxy_0100
-     * @tc.name    test_OHNetConnNetConnGetDefaultHttpProxy401
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHNetConnGetDefaultHttpProxy_0100
+     * @tc.name    test_OHNetConnGetDefaultHttpProxy401
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_OHNetConnNetConnGetDefaultHttpProxy_0100', 0, async (done: Function) => {
-      let caseName = "Test_OHNetConnNetConnGetDefaultHttpProxy_0100";
-      let codeNumber = testNapi.OHNetConnNetConnGetDefaultHttpProxy(error_number);
+    it('Test_OHNetConnGetDefaultHttpProxy_0100', 0, async (done: Function) => {
+      let caseName = "Test_OHNetConnGetDefaultHttpProxy_0100";
+      let codeNumber = testNapi.OHNetConnGetDefaultHttpProxy(error_number);
       if (codeNumber != 401) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
@@ -72,16 +72,16 @@ export default function abilityTest() {
     })
 
     /**
-     * @tc.number  NETWORKMANAGER_CONNECTION_OHNetConnNetConnGetDefaultHttpProxy_0200
-     * @tc.name    test_OHNetConnNetConnGetDefaultHttpProxy0
+     * @tc.number  NETWORKMANAGER_CONNECTION_OHNetConnGetDefaultHttpProxy_0200
+     * @tc.name    test_OHNetConnGetDefaultHttpProxy0
      * @tc.desc    check netConnection result
      * @tc.size    MediumTest
      * @tc.type    Function
      * @tc.level   Level 2
      */
-    it('test_OHNetConnNetConnGetDefaultHttpProxy_0200', 0, async (done: Function) => {
-      let caseName = "test_OHNetConnNetConnGetDefaultHttpProxy_0200";
-      let codeNumber = testNapi.OHNetConnNetConnGetDefaultHttpProxy(success_number);
+    it('test_OHNetConnGetDefaultHttpProxy_0200', 0, async (done: Function) => {
+      let caseName = "test_OHNetConnGetDefaultHttpProxy_0200";
+      let codeNumber = testNapi.OHNetConnGetDefaultHttpProxy(success_number);
       if (codeNumber != 0) {
         console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
         expectFalse();
