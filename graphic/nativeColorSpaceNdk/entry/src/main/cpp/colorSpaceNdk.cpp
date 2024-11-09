@@ -20,17 +20,25 @@
 
 #define SUCCESS 0
 #define FAIL (-1)
+#define RED_X 1.1f
+#define RED_Y 1.2f
+#define GREEN_X 1.3f
+#define GREEN_Y 1.4f
+#define BLUE_X 1.5f
+#define BLUE_Y 1.6f
+#define WHITE_X 1.7f
+#define WHITE_Y 1.8f
  
 static napi_value OHCreateColorSpaceFromName(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     OH_NativeColorSpaceManager *nativeColorSpace = nullptr;
-    ColorSpaceName colorSpaceName = ADOBE_RGB;
+    ColorSpaceName colorSpaceName = ColorSpaceName::SRGB;
     nativeColorSpace = OH_NativeColorSpaceManager_CreateFromName(colorSpaceName);
-    if (nativeColorSpace == nullptr) {
-        napi_create_int32(env, FAIL, &result);
-    } else {
+    if (nativeColorSpace != nullptr) {
         napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
     }
     OH_NativeColorSpaceManager_Destroy(nativeColorSpace);
     return result;
@@ -40,13 +48,13 @@ static napi_value OHCreateFromPrimariesAndGamma(napi_env env, napi_callback_info
 {
     napi_value result = nullptr;
     OH_NativeColorSpaceManager *nativeColorSpace = nullptr;
-    ColorSpacePrimaries primaries = {0.1, 1.1, 2.1, 3.1, 4.1, 5.1, 6.1, 7.1};
-    float gamma = 1.2;
+    ColorSpacePrimaries primaries = {RED_X, RED_Y, GREEN_X, GREEN_Y, BLUE_X, BLUE_Y, WHITE_X, WHITE_Y};
+    float gamma = 1.f;
     nativeColorSpace = OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(primaries, gamma);
-    if (nativeColorSpace == nullptr) {
-        napi_create_int32(env, FAIL, &result);
-    } else {
+    if (nativeColorSpace != nullptr) {
         napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
     }
     OH_NativeColorSpaceManager_Destroy(nativeColorSpace);
     return result;
@@ -55,13 +63,13 @@ static napi_value OHCreateFromPrimariesAndGamma(napi_env env, napi_callback_info
 static napi_value OHDestroy(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    ColorSpaceName colorSpaceName = ADOBE_RGB;
+    ColorSpaceName colorSpaceName = ColorSpaceName::SRGB;
     OH_NativeColorSpaceManager *nativeColorSpace = nullptr;
     nativeColorSpace = OH_NativeColorSpaceManager_CreateFromName(colorSpaceName);
-    if (nativeColorSpace == nullptr) {
-        napi_create_int32(env, FAIL, &result);
-    } else {
+    if (nativeColorSpace != nullptr) {
         napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
     }
     OH_NativeColorSpaceManager_Destroy(nativeColorSpace);
     return result;
@@ -75,7 +83,25 @@ static napi_value OHGetColorSpaceName(napi_env env, napi_callback_info info)
         static_cast<ColorSpaceName>(OH_NativeColorSpaceManager_GetColorSpaceName(nativeColorSpace));
     if (colorSpaceName == ColorSpaceName::NONE) {
         napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
     }
+    return result;
+}
+
+static napi_value OHGetColorSpaceName001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_NativeColorSpaceManager *nativeColorSpace = nullptr;
+    ColorSpaceName colorSpaceName = ColorSpaceName::SRGB;
+    nativeColorSpace = OH_NativeColorSpaceManager_CreateFromName(colorSpaceName);
+    colorSpaceName = static_cast<ColorSpaceName>(OH_NativeColorSpaceManager_GetColorSpaceName(nativeColorSpace));
+    if (colorSpaceName == ColorSpaceName::SRGB) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeColorSpaceManager_Destroy(nativeColorSpace);
     return result;
 }
 
@@ -84,9 +110,28 @@ static napi_value OHGetWhitePoint(napi_env env, napi_callback_info info)
     OH_NativeColorSpaceManager *nativeColorSpace = nullptr;
     napi_value result = nullptr;
     WhitePointArray array = OH_NativeColorSpaceManager_GetWhitePoint(nativeColorSpace);
-    if (array.arr[0] == 0.f) {
+    if (array.arr[0] == 0.f || array.arr[1] == 0.f) {
         napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
     }
+    return result;
+}
+
+static napi_value OHGetWhitePoint001(napi_env env, napi_callback_info info)
+{
+    OH_NativeColorSpaceManager *nativeColorSpace = nullptr;
+    napi_value result = nullptr;
+    ColorSpacePrimaries primaries = {RED_X, RED_Y, GREEN_X, GREEN_Y, BLUE_X, BLUE_Y, WHITE_X, WHITE_Y};
+    float gamma = 1.f;
+    nativeColorSpace = OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(primaries, gamma);
+    WhitePointArray array = OH_NativeColorSpaceManager_GetWhitePoint(nativeColorSpace);
+    if (array.arr[0] == WHITE_X || array.arr[1] == WHITE_Y) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeColorSpaceManager_Destroy(nativeColorSpace);
     return result;
 }
 
@@ -97,7 +142,25 @@ static napi_value OHGetGamma(napi_env env, napi_callback_info info)
     float gamma = OH_NativeColorSpaceManager_GetGamma(nativeColorSpace);
     if (gamma == 0.f) {
         napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
     }
+    return result;
+}
+
+static napi_value OHGetGamma001(napi_env env, napi_callback_info info)
+{
+    OH_NativeColorSpaceManager *nativeColorSpace = nullptr;
+    napi_value result = nullptr;
+    ColorSpacePrimaries primaries = {RED_X, RED_Y, GREEN_X, GREEN_Y, BLUE_X, BLUE_Y, WHITE_X, WHITE_Y};
+    float gamma = 1.f;
+    nativeColorSpace = OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(primaries, gamma);
+    if (OH_NativeColorSpaceManager_GetGamma(nativeColorSpace) == 1.f) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeColorSpaceManager_Destroy(nativeColorSpace);
     return result;
 }
 
@@ -113,9 +176,15 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHGetColorSpaceName", nullptr, OHGetColorSpaceName, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"oHGetColorSpaceName001", nullptr, OHGetColorSpaceName001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"oHGetWhitePoint", nullptr, OHGetWhitePoint, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"oHGetWhitePoint001", nullptr, OHGetWhitePoint001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"oHGetGamma", nullptr, OHGetGamma, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHGetGamma001", nullptr, OHGetGamma001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

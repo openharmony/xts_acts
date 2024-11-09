@@ -75,6 +75,20 @@ export default function nativeColorSpaceTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_COLOR_SPACE_OH_GetColorSpaceName001
+     * @tc.name       : testOHGetColorSpaceName001
+     * @tc.desc       : test OH_GetColorSpaceName001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHGetColorSpaceName001', 0, async (done: Function) => {
+      let result: number = nativeColorSpaceNdk.oHGetColorSpaceName001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_COLOR_SPACE_OH_GetWhitePoint
      * @tc.name       : testOHGetWhitePoint
      * @tc.desc       : test OH_Get_White_Point
@@ -89,6 +103,20 @@ export default function nativeColorSpaceTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_COLOR_SPACE_OH_GetWhitePoint001
+     * @tc.name       : testOHGetWhitePoint001
+     * @tc.desc       : test OH_Get_White_Point001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHGetWhitePoint001', 0, async (done: Function) => {
+      let result: number = nativeColorSpaceNdk.oHGetWhitePoint001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_COLOR_SPACE_OH_GetGamma
      * @tc.name       : testOHGetGamma
      * @tc.desc       : test OH_Get_Gamma
@@ -98,6 +126,20 @@ export default function nativeColorSpaceTest() {
      */
     it('testOHGetGamma', 0, async (done: Function) => {
       let result: number = nativeColorSpaceNdk.oHGetGamma();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_COLOR_SPACE_OH_GetGamma001
+     * @tc.name       : testOHGetGamma001
+     * @tc.desc       : test OH_Get_Gamma001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHGetGamma001', 0, async (done: Function) => {
+      let result: number = nativeColorSpaceNdk.oHGetGamma001();
       expect(result).assertEqual(0);
       done();
     });
