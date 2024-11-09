@@ -14,9 +14,22 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
+
 export default function LocalStorageProp0320TestJsunit() {
   describe('LocalStorageProp0320TestJsunit', () => {
     beforeEach(async (done: Function) => {
@@ -46,10 +59,10 @@ export default function LocalStorageProp0320TestJsunit() {
     });
 
     /**
-     * @tc.number    LocalStorageProp0320TestJsunit_001
-     * @tc.name      LocalStorageProp0320TestJsunit_001
-     * @tc.desc      Frequently updating and modifying the values of parent components
-     * @tc.level     Level 0
+     * @tc.number LocalStorageProp0320TestJsunit_001
+     * @tc.name LocalStorageProp0320TestJsunit_001
+     * @tc.desc Frequently updating and modifying the values of parent components
+     * @tc.level Level 0
      * @tc.type
      * @tc.size
      */
@@ -101,6 +114,30 @@ export default function LocalStorageProp0320TestJsunit() {
       console.info("[LocalStorageProp0320TestJsunit_001] component obj9 is: " + JSON.stringify(obj9));
       expect(obj9.$attrs.content).assertEqual('Hellonull');
       console.info('[LocalStorageProp0320TestJsunit_001] END');
+      done();
+    });
+    /**
+     * @tc.number LocalStorageLink0320TestJsunit_002
+     * @tc.name LocalStorageLink0320TestJsunit_002
+     * @tc.desc Frequently updating and modifying the values of parent components
+     * @tc.level Level 0
+     * @tc.type
+     * @tc.size
+     */
+    it('LocalStorageLink0320TestJsunit_002', 0, async (done: Function) => {
+      console.info('[LocalStorageLink0320TestJsunit_002] START');
+      await CommonFunc.sleep(2000);
+      let driver: Driver = Driver.create();
+      let btn: Component = await driver.findComponent(ON.id("btnLocalStorageProp0320"));
+      await CommonFunc.sleep(1000);
+      await btn.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(getInspectorByKey('tv0320ParentArr'));
+      console.info("[LocalStorageLink0320TestJsunit_002] component obj is: " + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('Arr[1,true,{"propB":48}]');
+      await CommonFunc.sleep(1000);
+
+      console.info('[LocalStorageLink0310TestJsunit_001] END');
       done();
     });
   })

@@ -14,7 +14,7 @@
  */
 import { TestSample, Info } from './Monitor1'
 
-let testSample = new TestSample()
+let testSample: TestSample = new TestSample()
 const t2Str: string = 't2'
 
 enum ENUM {
@@ -24,29 +24,35 @@ enum ENUM {
 @ObservedV2
 class DMS {
   @Trace selectedDate: Date = new Date('2021-08-08');
-  @Trace messageMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]);
+  @Trace messageMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
   @Trace memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
+  @Trace arr: (number | boolean | ESObject)[] = [0, false];
 
   @Monitor('selectedDate')
   onDateChange(monitor: IMonitor) {
-    testSample.res1 = "测试1：Success"
+    testSample.res1 = '测试1：Success'
   }
 
   @Monitor('messageMap')
   onMapChange(monitor: IMonitor) {
-    testSample.res2 = "测试2：Success"
+    testSample.res2 = '测试2：Success'
   }
 
   @Monitor('memberSet')
   onSetChange(monitor: IMonitor) {
-    testSample.res3 = "测试3：Success"
+    testSample.res3 = '测试3：Success'
+  }
+
+  @Monitor('memberArr')
+  onArrChange(monitor: IMonitor) {
+    testSample.res4 = '测试4：Success'
   }
 }
 
 @Entry
 @Component
 struct Monitor6 {
-  @State message: string = "Hello World"
+  @State message: string = 'Hello World'
   DMS: DMS = new DMS()
 
   build() {
@@ -66,6 +72,12 @@ struct Monitor6 {
           .id('Monitor6_3')
           .onClick(() => {
             this.DMS.memberSet.add(5);
+          })
+        Button(testSample.res4)
+          .id('Monitor6_4')
+          .onClick(() => {
+            this.DMS.arr.push({ 'propA': 47 });
+            console.log('new arr: ' + JSON.stringify(this.DMS.arr))
           })
       }
       .width('100%')
