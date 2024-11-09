@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import testNapi from 'libtestNetconnectionNDK.so'
+import testNapi from 'libtestNetConnectionNdk.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function abilityTest() {
