@@ -234,7 +234,8 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider10'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(70,224,128,224,600)
+      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider10');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -259,7 +260,8 @@ export default function SliderInterfaceTest() {
       let slider = await driver.findComponent(ON.id('Slider11'));
       let rect = await slider.getBounds();
       console.info(`rect is: ` + JSON.stringify(rect))
-      await driver.drag(70,224,128,224,600)
+      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider11');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -320,7 +322,11 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.drag(70,224,128,224,600)
+      let slider = await driver.findComponent(ON.id('Slider14'));
+      let rect = await slider.getBounds();
+      console.info(`rect is: ` + JSON.stringify(rect))
+      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider14');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -341,7 +347,11 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.drag(70,224,120,224,600)
+      let slider = await driver.findComponent(ON.id('Slider15'));
+      let rect = await slider.getBounds();
+      console.info(`rect is: ` + JSON.stringify(rect))
+      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/10),Math.round((rect.top+rect.bottom)/2),600)
+      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/10),Math.round((rect.top+rect.bottom)/2),600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider15');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -383,7 +393,11 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.click(125,224)
+      let slider = await driver.findComponent(ON.id('Slider17'));
+      let rect = await slider.getBounds();
+      console.info(`rect is: ` + JSON.stringify(rect))
+      await driver.click(rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2))
+      console.info(`click is: `+rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2))
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider17');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -446,7 +460,11 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.drag(70,224,128,224,600)
+      let slider = await driver.findComponent(ON.id('Slider20'));
+      let rect = await slider.getBounds();
+      console.info(`rect is: ` + JSON.stringify(rect))
+      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider20');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -467,7 +485,11 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.click(128,224)
+      let slider = await driver.findComponent(ON.id('Slider20'));
+      let rect = await slider.getBounds();
+      console.info(`rect is: ` + JSON.stringify(rect))
+      await driver.click(rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2))
+      console.info(`click is: `+rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2))
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider20');
       let obj1: ESObject = JSON.parse(strJson1);
@@ -488,7 +510,11 @@ export default function SliderInterfaceTest() {
       await Utils.sleep(2000);
       let driver = Driver.create();
       await Utils.sleep(1000);
-      await driver.drag(70,224,125,224,600)
+      let slider = await driver.findComponent(ON.id('Slider21'));
+      let rect = await slider.getBounds();
+      console.info(`rect is: ` + JSON.stringify(rect))
+      await driver.drag(rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
+      console.info(`drag is: `+rect.left,Math.round((rect.top+rect.bottom)/2),rect.left+Math.round((rect.right-rect.left)/5),Math.round((rect.top+rect.bottom)/2),600)
       await Utils.sleep(1000);
       let strJson1 = getInspectorByKey('Slider21');
       let obj1: ESObject = JSON.parse(strJson1);
