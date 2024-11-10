@@ -67,14 +67,14 @@ export default function chipDirectionTest() {
       await buttonAuto.click();
       await driver.delayMs(1000);
       console.log("[testChipDirection_0100] click Auto");
-      const lable = await driver.findComponent(ON.text("操作块"));
+      const lable = await driver.findComponent(ON.text("操作块").type('Text'));
       const rect1 = await lable.getBounds();
       console.log("[testChipDirection_0100]", " lable rect1:" + JSON.stringify(rect1));
       let buttonRtl = await driver.findComponent(ON.id("Rtl"));
       await buttonRtl.click();
       console.log("[testChipDirection_0100]", "click Rtl");
       await driver.delayMs(1000);
-      let lable2 = await driver.findComponent(ON.text("操作块"));
+      let lable2 = await driver.findComponent(ON.text("操作块").type('Text'));
       const rect2 = await lable2.getBounds();
       console.log("[testChipDirection_0100]", " lable2 rect:" + JSON.stringify(rect2));
       expect(rect1.left == rect2.left).assertFalse();
