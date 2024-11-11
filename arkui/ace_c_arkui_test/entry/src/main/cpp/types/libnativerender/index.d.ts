@@ -293,8 +293,3 @@ export const testAnimatorRegisterOnCancel: (a: string) => void;
 
 export const testAnimatorRegisterOnRepeat: (a: string) => void;
 
-export const customPropertyTest: (a: string) => void;
-
-export const testAddCustomProperty: (a: string) => void;
-
-export const testRemoveCustomProperty: (a: string) => void;
