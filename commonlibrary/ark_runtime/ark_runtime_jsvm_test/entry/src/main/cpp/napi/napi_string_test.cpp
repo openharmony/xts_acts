@@ -14,7 +14,6 @@
  */
 #include "napi/native_api.h"
 #include "napi_string_test.h"
-/// js生成代码
 [[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
