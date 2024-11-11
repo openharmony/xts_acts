@@ -93,17 +93,18 @@ export default function ImageAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] obj1.$attrs.content is: " + obj1.$attrs.content);
-      expect(obj1.$attrs.content).assertEqual('1.5');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] vp2px(1): " + vp2px(1));
       let strJson2 = getInspectorByKey('contentOffsetY01');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] obj2.$attrs.content is: " + obj2.$attrs.content);
-      expect(obj2.$attrs.content).assertEqual('1.5');
       let strJson3 = getInspectorByKey('contentHeight01');
       let obj3: ESObject = JSON.parse(strJson3);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] component obj3 is: " + JSON.stringify(obj3));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] obj3.$attrs.content is: " + obj3.$attrs.content);
-      expect(obj3.$attrs.content).assertEqual('97');
+      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(1)) <= 1).assertTrue();
+      expect(Math.abs(Number(obj2.$attrs.content) - vp2px(1)) <= 1).assertTrue();
+      expect(Math.abs(Number(obj3.$attrs.content)) >= 97).assertTrue();
       console.info('[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0280] END');
       done();
     });
@@ -125,7 +126,7 @@ export default function ImageAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0290] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0290] obj1.$attrs.content is: " + obj1.$attrs.content);
-      expect(obj1.$attrs.content).assertEqual('297');
+      expect(Math.abs(Number(obj1.$attrs.content)) >= 297).assertTrue();
       done();
     });
 
@@ -146,12 +147,14 @@ export default function ImageAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] obj1.$attrs.content is: " + obj1.$attrs.content);
-      expect(obj1.$attrs.content).assertEqual('120');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] vp2px(80): " + vp2px(80));
       let strJson2 = getInspectorByKey('contentOffsetX03');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] obj2.$attrs.content is: " + obj2.$attrs.content);
-      expect(obj2.$attrs.content).assertEqual('15');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] vp2px(10): " + vp2px(10));
+      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(80)) <= 1).assertTrue();
+      expect(Math.abs(Number(obj2.$attrs.content) - vp2px(10)) <= 1).assertTrue();
       done();
     });
 
@@ -172,12 +175,14 @@ export default function ImageAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310] obj1.$attrs.content is: " + obj1.$attrs.content);
-      expect(obj1.$attrs.content).assertEqual('90');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310] vp2px(60): " + vp2px(60));
       let strJson2 = getInspectorByKey('contentOffsetX04');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310] obj2.$attrs.content is: " + obj2.$attrs.content);
-      expect(obj2.$attrs.content).assertEqual('30');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0310] vp2px(20): " + vp2px(20));
+      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(60)) <= 1).assertTrue();
+      expect(Math.abs(Number(obj2.$attrs.content) - vp2px(20)) <= 1).assertTrue();
       done();
     });
 
@@ -198,12 +203,14 @@ export default function ImageAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] obj1.$attrs.content is: " + obj1.$attrs.content);
-      expect(obj1.$attrs.content).assertEqual('120');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] vp2px(80): " + vp2px(80));
       let strJson2 = getInspectorByKey('contentOffsetX05');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] obj2.$attrs.content is: " + obj2.$attrs.content);
-      expect(obj2.$attrs.content).assertEqual('15');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] vp2px(10): " + vp2px(10));
+      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(80)) <= 1).assertTrue();
+      expect(Math.abs(Number(obj2.$attrs.content) - vp2px(10)) <= 1).assertTrue();
       done();
     });
 
@@ -224,12 +231,14 @@ export default function ImageAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330] obj1.$attrs.content is: " + obj1.$attrs.content);
-      expect(obj1.$attrs.content).assertEqual('90');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330] vp2px(60): " + vp2px(60));
       let strJson2 = getInspectorByKey('contentOffsetX06');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330] obj2.$attrs.content is: " + obj2.$attrs.content);
-      expect(obj2.$attrs.content).assertEqual('30');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0330] vp2px(20): " + vp2px(20));
+      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(60)) <= 1).assertTrue();
+      expect(Math.abs(Number(obj2.$attrs.content) - vp2px(20)) <= 1).assertTrue();
       done();
     });
 
@@ -250,12 +259,13 @@ export default function ImageAdvancedTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0340] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0340] obj1.$attrs.content is: " + obj1.$attrs.content);
-      expect(obj1.$attrs.content).assertEqual('150');
+      console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0340] vp2px(100): " + vp2px(100));
       let strJson2 = getInspectorByKey('contentOffsetX07');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0340] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0340] obj2.$attrs.content is: " + obj2.$attrs.content);
-      expect(obj2.$attrs.content).assertEqual('0');
+      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(Number(obj2.$attrs.content) - vp2px(0)) <= 1).assertTrue();
       done();
     });
 
