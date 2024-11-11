@@ -288,7 +288,7 @@ static napi_value HttpBodyStreamReadCallback(napi_env env, napi_callback_info in
 static napi_value GetNativeApiFalse(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    ArkWeb_AnyNativeAPI* api = OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind(5));
+    ArkWeb_AnyNativeAPI* api = OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind(-1111));
     if (!api) {
         OH_LOG_INFO(LOG_APP, "OH_ArkWeb_GetNativeAPI nullptr");
         napi_create_int32(env, 0, &result);
