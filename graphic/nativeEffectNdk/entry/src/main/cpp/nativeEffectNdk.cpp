@@ -87,7 +87,7 @@ static napi_value OHFilterInvert(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -106,7 +106,7 @@ static napi_value OHFilterInvert001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -126,7 +126,7 @@ static napi_value OHFilterBlur(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -146,7 +146,7 @@ static napi_value OHFilterBlur001(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -166,7 +166,7 @@ static napi_value OHFilterGrayScale(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -186,7 +186,7 @@ static napi_value OHFilterGrayScale001(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -206,7 +206,7 @@ static napi_value OHFilterBrighten(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -226,7 +226,7 @@ static napi_value OHFilterBrighten001(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -246,7 +246,7 @@ static napi_value OHFilterSetColorMatrix(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -272,7 +272,7 @@ static napi_value OHFilterSetColorMatrix001(napi_env env, napi_callback_info inf
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -298,7 +298,7 @@ static napi_value OHFilterGetEffectPixelMap(napi_env env, napi_callback_info inf
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -321,7 +321,7 @@ static napi_value OHFilterRelease(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
@@ -341,7 +341,7 @@ static napi_value OHFilterRelease001(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_PixelmapNative *pixmap = nullptr;
     /** pixmap is necessary, otherwize can not create pixelmap*/
-    OH_PixelmapNative ** pixMap = &pixmap;
+    OH_PixelmapNative **pixMap = &pixmap;
     CreatePixelMap(&pixMap);
     OH_Filter *filter = nullptr;
     OH_Filter_CreateEffect(*pixMap, &filter);
