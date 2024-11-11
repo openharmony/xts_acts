@@ -117,14 +117,14 @@ class XtsBuild:
         return accurate_target
 
     def do_make(self):
+        os.environ['XTS_SUITENAME'] = 'acts'
         # 精准编译重新计算要编译的目标
         self._build_target = self.get_accurate_targets()
         if len(self._build_target) == 0:
             print("Info: accurate targets list is null, no need to compile")
             return 0
+        print(f"_build_target = {self._build_target}")
         self._build_target.append('deploy_testtools')
-
-        os.environ['XTS_SUITENAME'] = 'acts'
 
         autogen_apiobjs_dir = "{}/test/xts/autogen_apiobjs".format(self._code_root_dir)
         if os.path.exists(autogen_apiobjs_dir):
