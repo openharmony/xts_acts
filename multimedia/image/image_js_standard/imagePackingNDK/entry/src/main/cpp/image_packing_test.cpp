@@ -77,6 +77,21 @@ void SetUpImage(int type)
     }
 }
 
+int memcpy_s(void *nativePtr, unsigned long srcLen, void *src, unsigned long length) {
+    if (srcLen == 0) {
+        return 0;
+    }
+    if (length > srcLen) {
+        length = srcLen;
+    }
+    unsigned char *nativePtrChar = (unsigned char *)nativePtr;
+    unsigned char *srcChar = (unsigned char *)src;
+    for (unsigned long i = 0; i < length; ++i) {
+        nativePtrChar[i] = srcChar[i];
+    }
+    return 0;
+}
+
 bool CreateArrayBuffer(napi_env env, void* src, size_t srcLen, napi_value *res)
 {
     if (src == nullptr || srcLen == 0) {
@@ -86,7 +101,7 @@ bool CreateArrayBuffer(napi_env env, void* src, size_t srcLen, napi_value *res)
     if (napi_create_arraybuffer(env, srcLen, &nativePtr, res) != napi_ok || nativePtr == nullptr) {
         return false;
     }
-    if (memcpy(nativePtr, src, srcLen) != src) {
+    if (memcpy_s(nativePtr, srcLen, src, srcLen) != 0) {
         return false;
     }
     return true;
