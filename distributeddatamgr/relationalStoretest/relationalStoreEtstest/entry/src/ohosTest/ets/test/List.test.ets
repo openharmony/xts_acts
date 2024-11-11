@@ -38,6 +38,7 @@ import SqlExecutionTimeTest from './RelationStoreSqlExecTimeTest.test';
 import RdbStoreReadOnlyTest from './RelationalStoreReadOnlyJsunit.test';
 import rdbStorePluginLibsTest from './RelationalStorePluginLibsJsunit.test';
 import rdbDecryptTest from './RelationalStoreDecrpy.test';
+import relationalStoreMultiTransTest from './relationalStoreMultiTest.test'
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -66,5 +67,6 @@ export default function testsuite() {
   RdbStoreReadOnlyTest()
   rdbStorePluginLibsTest()
   rdbDecryptTest()
+  relationalStoreMultiTransTest();
 }
 
