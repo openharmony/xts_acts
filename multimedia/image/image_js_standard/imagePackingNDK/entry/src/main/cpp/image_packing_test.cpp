@@ -22,6 +22,7 @@
 #include "image_packer_module_test.h"
 #include "multimedia/image_framework/image_pixel_map_napi.h"
 #include <cstring>
+#include <securec.h>
 
 #define CAMERA_LOG_TAG "CAMERA_TAGLOG"
 #define CAMERA_LOG_DOMAIN 0x32000
@@ -85,7 +86,7 @@ bool CreateArrayBuffer(napi_env env, void* src, size_t srcLen, napi_value *res)
     if (napi_create_arraybuffer(env, srcLen, &nativePtr, res) != napi_ok || nativePtr == nullptr) {
         return false;
     }
-    if (memmove(nativePtr, src, srcLen) != src) {
+    if (memcpy_s(nativePtr, srcLen, src, srcLen) != 0) {
         return false;
     }
     return true;
@@ -564,13 +565,14 @@ napi_value ImagePackingNDKTest::Release(napi_env env, napi_callback_info info)
         LOG("argValue check failed");
         return createResultValue(env, IMAGE_RESULT_INVALID_PARAMETER);
     }
-    int32_t res = OH_ImagePacker_Release(native);    
+    int32_t res = OH_ImagePacker_Release( native );    
     return createResultValue(env, res);
 }
 }
 }
 EXTERN_C_START
-static napi_value ModuleRegister(napi_env env, napi_value exports) {
+static napi_value ModuleRegister(napi_env env, napi_value exports)
+{
     napi_property_descriptor props [] = {
         {"create", nullptr, OHOS::Media::ImagePackingNDKTest::Create, nullptr, nullptr, nullptr, napi_static, nullptr},
         {"initNative", nullptr, OHOS::Media::ImagePackingNDKTest::InitNative, nullptr, nullptr, nullptr, napi_static,
