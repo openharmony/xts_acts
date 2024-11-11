@@ -28,7 +28,7 @@
 #define CAMERA_LOG_DOMAIN 0x32000
 #define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, CAMERA_LOG_DOMAIN, CAMERA_LOG_TAG, fmt, ##__VA_ARGS__)
 using namespace std;
-namespace{
+namespace {
     static constexpr uint32_t NUM_0 = 0;
     static constexpr uint32_t NUM_1 = 1;
     static constexpr uint32_t NUM_2 = 2;
