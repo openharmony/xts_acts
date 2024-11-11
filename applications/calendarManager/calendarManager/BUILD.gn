@@ -18,5 +18,5 @@ ohos_js_app_suite("CalendarManagerEtsTest") {
   testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsCalendarManagerEtsTest"
-  part_name = "calendarManager"
+  part_name = "calendar"
 }
