@@ -22,7 +22,7 @@
 #include "image_packer_module_test.h"
 #include "multimedia/image_framework/image_pixel_map_napi.h"
 #include <cstring>
-#include <securec.h>
+
 
 #define CAMERA_LOG_TAG "CAMERA_TAGLOG"
 #define CAMERA_LOG_DOMAIN 0x32000
@@ -86,7 +86,7 @@ bool CreateArrayBuffer(napi_env env, void* src, size_t srcLen, napi_value *res)
     if (napi_create_arraybuffer(env, srcLen, &nativePtr, res) != napi_ok || nativePtr == nullptr) {
         return false;
     }
-    if (memcpy_s(nativePtr, srcLen, src, srcLen) != 0) {
+    if (memcpy(nativePtr, src, srcLen) != src) {
         return false;
     }
     return true;
