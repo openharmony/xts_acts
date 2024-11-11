@@ -1694,6 +1694,21 @@ export default function globalStageTest() {
         expect(error.code).assertEqual(9001008);
       }
     })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0020
+     * @tc.name      : resourceManager_test_getSymbol_0020
+     * @tc.desc      : getSymbol resource by reference
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0020', 0, () => {
+      let value = res.resourceManager.getSymbol($r('app.string.test_stringTwentyFive').id);
+      console.log('resourceManager_test_getSymbol_0020:' + value);
+      expect(value == 983043).assertTrue();
+    })
+
     console.log('*************end globalStageTest*************');
   })
 }
