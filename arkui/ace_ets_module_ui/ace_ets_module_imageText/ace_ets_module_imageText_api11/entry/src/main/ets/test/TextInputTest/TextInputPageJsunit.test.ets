@@ -160,6 +160,7 @@ export default function TextInputPageJsunit() {
       await textComponent.click()
       await CommonFunc.sleep(500);
       await textComponent.inputText("hello")
+	  await driver.triggerKey(2047)
       await CommonFunc.sleep(1000);
       let component = await driver.findComponent(BY.key('text'));
       let text = await component.getText();

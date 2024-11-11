@@ -133,6 +133,7 @@ export default function SearchJsunit() {
       let driver = await UiDriver.create()
       let textComponent1 = await driver.findComponent(BY.key('search'));
       await textComponent1.inputText("hello")
+	  await driver.triggerKey(2047)
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('change');
       let obj1: ESObject = JSON.parse(strJson1);

@@ -27,7 +27,7 @@ export default function MarqueeMirroringTest() {
         console.info("get MarqueeMirroringTest state pages:" + JSON.stringify(pages));
         if (!("MarqueeMirroringTest" == pages.name)) {
           console.info("get  MarqueeMirroringTest pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({
+          let result = await router.replaceUrl({
             url:"MainAbility/pages/Marquee/MarqueeMirroring"
             })
           await CommonFunc.sleep(2000);
@@ -41,7 +41,6 @@ export default function MarqueeMirroringTest() {
     });
 
     afterEach(async () => {
-      router.clear();
       await CommonFunc.sleep(1000);   
       console.info("MarqueeMirroringTest after each called");
     });
