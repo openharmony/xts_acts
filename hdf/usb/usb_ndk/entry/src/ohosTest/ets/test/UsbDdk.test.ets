@@ -26,8 +26,8 @@ export default function usbDdkTest() {
     const TAG: string = "[usbDdkNdkJsTest]";
     const USB_DDK_SUCCESS: number = 0;
     const USB_DDK_FAILED: number = -1;
-    const USB_DDK_INVALID_PARAMETER: number = -2;
-    const USB_DDK_INVALID_OPERATION: number = -4;
+    const USB_DDK_INVALID_PARAMETER: number = 401;
+    const USB_DDK_INVALID_OPERATION: number = 27400002;
 
     beforeAll(async () => {
       try {
@@ -152,7 +152,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbGetConfigDescriptorTwo();
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(USB_DDK_FAILED);
+        expect(data).assertEqual(USB_DDK_INVALID_OPERATION);
         done()
       }
     });
@@ -236,7 +236,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbClaimInterfaceTwo();
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-1);
+        expect(data).assertEqual(USB_DDK_INVALID_OPERATION);
         done()
       }
     });
