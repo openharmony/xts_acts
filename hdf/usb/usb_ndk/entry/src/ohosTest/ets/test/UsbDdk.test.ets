@@ -53,7 +53,7 @@ export default function usbDdkTest() {
     it('testUsbInit001', 0, async (done: Function) => {
       let data = usbDdk.usbInit();
       console.info("Test USB data Result = " + data);
-      expect(data).assertEqual(0);
+      expect(data).assertEqual(USB_DDK_SUCCESS);
       done()
     });
 
@@ -89,7 +89,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbGetDeviceDescriptorOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -110,7 +110,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbGetDeviceDescriptorTwo(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -131,7 +131,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbGetConfigDescriptorOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -173,7 +173,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbGetConfigDescriptorThree(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -215,7 +215,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbClaimInterfaceOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -257,7 +257,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbClaimInterfaceThree(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -278,7 +278,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbReleaseInterface(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -299,7 +299,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSelectInterfaceSettingOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -320,7 +320,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSelectInterfaceSettingTwo(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-4);
+        expect(data).assertEqual(USB_DDK_INVALID_OPERATION);
         done()
       }
     });
@@ -341,7 +341,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbGetCurrentInterfaceSettingOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -362,7 +362,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbGetCurrentInterfaceSettingTwo(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-4);
+        expect(data).assertEqual(USB_DDK_INVALID_OPERATION);
         done()
       }
     });
@@ -383,7 +383,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbGetCurrentInterfaceSettingThree(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -404,7 +404,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlReadRequestOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -425,7 +425,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlReadRequestTwo(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-4);
+        expect(data).assertEqual(USB_DDK_INVALID_OPERATION);
         done()
       }
     });
@@ -446,7 +446,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlReadRequestThree(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -467,7 +467,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlReadRequestFour(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -488,7 +488,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlReadRequestFive(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -509,7 +509,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlWriteRequestOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -530,7 +530,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlWriteRequestTwo(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-4);
+        expect(data).assertEqual(USB_DDK_INVALID_OPERATION);
         done()
       }
     });
@@ -551,7 +551,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlWriteRequestThree(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -572,7 +572,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendControlWriteRequestFour(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -593,7 +593,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendPipeRequestOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -614,7 +614,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendPipeRequestTwo(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-4);
+        expect(data).assertEqual(USB_DDK_INVALID_OPERATION);
         done()
       }
     });
@@ -635,7 +635,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendPipeRequestThree(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -656,7 +656,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbSendPipeRequestFour(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
@@ -677,7 +677,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbCreateDeviceMemMapOne(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(0);
+        expect(data).assertEqual(USB_DDK_SUCCESS);
         done()
       }
     });
@@ -698,7 +698,7 @@ export default function usbDdkTest() {
       } else {
         let data = usbDdk.usbCreateDeviceMemMapTwo(dev);
         console.info("Test USB data Result = " + data);
-        expect(data).assertEqual(-2);
+        expect(data).assertEqual(USB_DDK_INVALID_PARAMETER);
         done()
       }
     });
