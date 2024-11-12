@@ -818,7 +818,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//// OH_JSVM_GetValueStringLatin1 interface
+// OH_JSVM_GetValueStringLatin1 interface
 [[maybe_unused]] JSVM_Value TestGetValueStringLatin1Test1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -1089,7 +1089,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-// 使用create接口创建utf8字符串，用get utf16接口获取，预期返回乱码
+
 [[maybe_unused]] JSVM_Value TestOtherTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     const size_t strBufsize = BUF_SIZE_MAX;

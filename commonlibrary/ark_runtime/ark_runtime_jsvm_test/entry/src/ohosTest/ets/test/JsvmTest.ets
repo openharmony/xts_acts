@@ -6143,23 +6143,8 @@ export default function JsvmJsunit() {
     it('JsvmTest0482', 0, () => {
       let rst: number = napitest.arrayBufferBackingStoreTest();
       console.info('JsvmTest0482 testString result is:' + JSON.stringify(rst));
-      expect(value).assertEqual(0);
+      expect(rst).assertEqual(0);
     });
-    /**
-     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0483
-     * @tc.name      JsvmTest0483
-     * @tc.desc      Test that when JSVM_Value is null, return 'not ok'.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 0
-     */
-   //  it('JsvmTest0483', 0, () => {
-   //    let script: string = `
-   //     let obj = {data: 0, message: "hello world"};
-   //     setNamedProperty(obj, "message", "strValue");
-   // `;
-   //    expect(napitest.runJsVm(script).message).assertEqual('strValue');
-   //  });
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0483
      * @tc.name      JsvmTest0483
