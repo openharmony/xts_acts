@@ -2,11 +2,7 @@
   "string": [
     {
       "name": "app_name",
-      "value": "ActsZlibNativeTest"
-    },
-    {
-      "name": "description_application",
-      "value": "ActsZlibNativeTest"
+      "value": "MyApplication"
     }
   ]
 }
