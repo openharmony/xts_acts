@@ -1,0 +1,55 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/tang_lizhen/.ohos/config/openharmony/default_actsconnectservicetest_epWw7d6eQyICpKXODRQBgnhoBsV4uOpRun3NTOOWwfQ=.cer",
+          "storePassword": "0000001B9BA7934A6BE6C03CB3F00BAA2C4F3BB9F5B92AA19532AD7265293E5BFB6F38E8E6CFC726CA6A76",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B7B1BDF0C4FEB02B3D40BEF14D7CE8F6774C50594D46A9C540B14717C15C9F03726FC793223B604",
+          "profile": "C:/Users/tang_lizhen/.ohos/config/openharmony/default_actsconnectservicetest_epWw7d6eQyICpKXODRQBgnhoBsV4uOpRun3NTOOWwfQ=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/tang_lizhen/.ohos/config/openharmony/default_actsconnectservicetest_epWw7d6eQyICpKXODRQBgnhoBsV4uOpRun3NTOOWwfQ=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": 12,
+        "compileSdkVersion": 12,
+        "targetSdkVersion": 12,
+        "runtimeOS": "OpenHarmony",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
