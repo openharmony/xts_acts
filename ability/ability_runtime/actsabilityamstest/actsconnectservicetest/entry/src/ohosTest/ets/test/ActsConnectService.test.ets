@@ -38,15 +38,15 @@ export default function actsConnectServiceTest() {
     })
 
     /**
-     * @tc.number SUB_Ability_AbilityRuntime_AMS_Context_AbilityContext_1600
+     * @tc.number SUB_Ability_AbilityRuntime_Context_AbilityContext_1600
      * @tc.name test connectServiceExtension function
      * @tc.desc test want as undefined
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_AbilityContext_1600', 0, async (done: Function) => {
-      const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AMS_Context_AbilityContext_1600';
+    it('SUB_Ability_AbilityRuntime_Context_AbilityContext_1600', 0, async (done: Function) => {
+      const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_Context_AbilityContext_1600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let connection: number;
       let options: common.ConnectOptions = {
@@ -80,15 +80,15 @@ export default function actsConnectServiceTest() {
     });
 
     /**
-     * @tc.number SUB_Ability_AbilityRuntime_AMS_Context_AbilityContext_1700
+     * @tc.number SUB_Ability_AbilityRuntime_Context_AbilityContext_1700
      * @tc.name test connectServiceExtension function
      * @tc.desc test want as empty
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_AbilityContext_1700', 0, async (done: Function) => {
-      const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AMS_Context_AbilityContext_1700';
+    it('SUB_Ability_AbilityRuntime_Context_AbilityContext_1700', 0, async (done: Function) => {
+      const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_Context_AbilityContext_1700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       let options: common.ConnectOptions = {
         onConnect(elementName, remote) {
