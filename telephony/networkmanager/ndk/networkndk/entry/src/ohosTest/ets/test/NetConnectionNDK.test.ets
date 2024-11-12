@@ -447,20 +447,6 @@ export default function NetConnectionNDKTest() {
     });
 
     /**
-     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNREGISTERDNSRESOLVER_0100
-     * @tc.name   ：TestOHNetConnRegisterDnsResolver_0100
-     * @tc.desc   ：Register a custom DNS parser.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 1
-     */
-    it('testOHNetConnRegisterDnsResolver_0100', 0, async (done: Function) => {
-      let re: number = ncAPI.OHNetConnRegisterDnsResolver(CASE_INDEX_1);
-      expect(re).assertEqual(NETCONNECTION_OK);
-      done();
-    });
-
-    /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNREGISTERDNSRESOLVER_0200
      * @tc.name   ：TestOHOSNetConnRegisterDnsResolver_0200
      * @tc.desc   ：Register a custom DNS parser.
@@ -470,20 +456,6 @@ export default function NetConnectionNDKTest() {
      */
     it('testOHOSNetConnRegisterDnsResolver_0200', 0, async (done: Function) => {
       let re: number = ncAPI.OHOSNetConnRegisterDnsResolver(CASE_INDEX_2);
-      expect(re).assertEqual(ERROR_CODE_401);
-      done();
-    });
-
-    /**
-     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNREGISTERDNSRESOLVER_0200
-     * @tc.name   ：TestOHNetConnRegisterDnsResolver_0200
-     * @tc.desc   ：Register a custom DNS parser.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 1
-     */
-    it('testOHNetConnRegisterDnsResolver_0200', 0, async (done: Function) => {
-      let re: number = ncAPI.OHNetConnRegisterDnsResolver(CASE_INDEX_2);
       expect(re).assertEqual(ERROR_CODE_401);
       done();
     });
@@ -503,20 +475,6 @@ export default function NetConnectionNDKTest() {
     });
 
     /**
-     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNUNREGISTERDNSRESOLVER_0100
-     * @tc.name   ：TestOHNetConnUnregisterDnsResolver_0100
-     * @tc.desc   ：Unregister custom DNS parser.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 1
-     */
-    it('testOHNetConnUnregisterDnsResolver_0100', 0, async (done: Function) => {
-      let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_1);
-      expect(re).assertEqual(NETCONNECTION_OK);
-      done();
-    });
-
-    /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNUNREGISTERDNSRESOLVER_0200
      * @tc.name   ：TestOHOSNetConnUnregisterDnsResolver_0200
      * @tc.desc   ：Unregister custom DNS parser.
@@ -531,20 +489,6 @@ export default function NetConnectionNDKTest() {
     });
 
     /**
-     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNUNREGISTERDNSRESOLVER_0200
-     * @tc.name   ：TestOHNetConnUnregisterDnsResolver_0200
-     * @tc.desc   ：Unregister custom DNS parser.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 1
-     */
-    it('testOHNetConnUnregisterDnsResolver_0200', 0, async (done: Function) => {
-      let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_2);
-      expect(re).assertEqual(NETCONNECTION_OK);
-      done();
-    });
-
-    /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHOSNETCONNUNREGISTERDNSRESOLVER_0300
      * @tc.name   ：TestOHOSNetConnUnregisterDnsResolver_0300
      * @tc.desc   ：Unregister custom DNS parser.
@@ -554,20 +498,6 @@ export default function NetConnectionNDKTest() {
      */
     it('testOHOSNetConnUnregisterDnsResolver_0300', 0, async (done: Function) => {
       let re: number = ncAPI.OHOSNetConnUnregisterDnsResolver(CASE_INDEX_3);
-      expect(re).assertEqual(NETCONNECTION_OK);
-      done();
-    });
-
-    /**
-     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNUNREGISTERDNSRESOLVER_0300
-     * @tc.name   ：TestOHNetConnUnregisterDnsResolver_0300
-     * @tc.desc   ：Unregister custom DNS parser.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 1
-     */
-    it('testOHNetConnUnregisterDnsResolver_0300', 0, async (done: Function) => {
-      let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_3);
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
@@ -949,7 +879,7 @@ export default function NetConnectionNDKTest() {
       expect(re).assertEqual(NETCONNECTION_OK);
       done();
     });
-    
+
     /**
      * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNREGISTERAPPHTTPPROXYCALLBACK_0100
      * @tc.name   ：OHNetConnRegisterAppHttpProxyCallback_0100
@@ -1090,5 +1020,76 @@ export default function NetConnectionNDKTest() {
       done();
     });
 
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNREGISTERDNSRESOLVER_0100
+     * @tc.name   ：TestOHNetConnRegisterDnsResolver_0100
+     * @tc.desc   ：Register a custom DNS parser.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterDnsResolver_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterDnsResolver(CASE_INDEX_1);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNREGISTERDNSRESOLVER_0200
+     * @tc.name   ：TestOHNetConnRegisterDnsResolver_0200
+     * @tc.desc   ：Register a custom DNS parser.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnRegisterDnsResolver_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnRegisterDnsResolver(CASE_INDEX_2);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNUNREGISTERDNSRESOLVER_0100
+     * @tc.name   ：TestOHNetConnUnregisterDnsResolver_0100
+     * @tc.desc   ：Unregister custom DNS parser.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterDnsResolver_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_1);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNUNREGISTERDNSRESOLVER_0200
+     * @tc.name   ：TestOHNetConnUnregisterDnsResolver_0200
+     * @tc.desc   ：Unregister custom DNS parser.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterDnsResolver_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_2);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNUNREGISTERDNSRESOLVER_0300
+     * @tc.name   ：TestOHNetConnUnregisterDnsResolver_0300
+     * @tc.desc   ：Unregister custom DNS parser.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnUnregisterDnsResolver_0300', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnUnregisterDnsResolver(CASE_INDEX_3);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
   });
 }
+
