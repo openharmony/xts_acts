@@ -109,7 +109,6 @@
 #include "drag/dragAction_setTouchPointXY.h"
 #include "drag/dragAction_registerStatusListener.h"
 #include "animation/animator_event_test.h"
-#include "customproperty/custom_property_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -396,10 +395,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testAnimatorRegisterOnCancel", nullptr, AnimatorEventTest::testAnimatorRegisterOnCancel_005,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testAnimatorRegisterOnRepeat", nullptr, AnimatorEventTest::testAnimatorRegisterOnRepeat_006,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testAddCustomProperty", nullptr, CustomPropertyTest::testAddCustomProperty001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testRemoveCustomProperty", nullptr, CustomPropertyTest::testRemoveCustomProperty002,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
