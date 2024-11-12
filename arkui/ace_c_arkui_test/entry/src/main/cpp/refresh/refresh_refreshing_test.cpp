@@ -48,4 +48,13 @@ static napi_value TestRefreshRefreshing003(napi_env env, napi_callback_info info
     ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_REFRESHING)->value[PARAM_0].i32, 0);
     NAPI_END;
 }
+static napi_value TestRefreshRefreshing004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_REFRESHING, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

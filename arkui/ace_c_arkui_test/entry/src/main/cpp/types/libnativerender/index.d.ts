@@ -211,6 +211,8 @@ export const customComponentIdTest: (a: string) => void;
 
 export const refreshOnStateChangeTest: (a: string) => void;
 
+export const refreshOnOffsetChangeTest: (a: string) => void;
+
 export const refreshOnRefreshingTest: (a: string) => void;
 
 export const textAreaOnFocusTest: (a: string) => void;
@@ -334,3 +336,5 @@ export const swiperAdapterTest: (a: string) => void;
 export const swiperOnContentDidScrollTest: (a: string) => void;
 
 export const swiperOnGestureSwipeTest: (a: string) => void;
+
+export const radioOnChangeTest: (a: string) => void;

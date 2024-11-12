@@ -4231,6 +4231,28 @@ export const testColumnPadding003: () => number;
 
 export const testColumnPadding004: () => number;
 
+export const testColumnJustifyContent001: () => number;
+
+export const testColumnJustifyContent002: () => number;
+
+export const testColumnJustifyContent003: () => number;
+
+export const testColumnJustifyContent004: () => number;
+
+export const testColumnJustifyContent005: () => number;
+
+export const testColumnJustifyContent006: () => number;
+
+export const testColumnJustifyContent007: () => number;
+
+export const testColumnAlignItems001: () => number;
+
+export const testColumnAlignItems002: () => number;
+
+export const testColumnAlignItems003: () => number;
+
+export const testColumnAlignItems004: () => number;
+
 export const testColumnForegroundBlurStyle001: () => number;
 
 export const testColumnForegroundBlurStyle002: () => number;
@@ -4539,6 +4561,8 @@ export const testFlexOption021: () => number;
 
 export const testFlexOption022: () => number;
 
+export const testFlexOption023: () => number;
+
 export const testXComponentWidth001: () => number;
 
 export const testXComponentWidth002: () => number;
@@ -4556,6 +4580,28 @@ export const testRowHeight001: () => number;
 export const testRowHeight002: () => number;
 
 export const testRowHeight003: () => number;
+
+export const testRowJustifyContent001: () => number;
+
+export const testRowJustifyContent002: () => number;
+
+export const testRowJustifyContent003: () => number;
+
+export const testRowJustifyContent004: () => number;
+
+export const testRowJustifyContent005: () => number;
+
+export const testRowJustifyContent006: () => number;
+
+export const testRowJustifyContent007: () => number;
+
+export const testRowAlignItems001: () => number;
+
+export const testRowAlignItems002: () => number;
+
+export const testRowAlignItems003: () => number;
+
+export const testRowAlignItems004: () => number;
 
 export const testSliderWidth001: () => number;
 
@@ -4609,11 +4655,21 @@ export const testRefreshOffset002: () => number;
 
 export const testRefreshOffset003: () => number;
 
+export const testRefreshOffset004: () => number;
+
 export const testRefreshPullDownRatio001: () => number;
 
 export const testRefreshPullDownRatio002: () => number;
 
 export const testRefreshPullDownRatio003: () => number;
+
+export const testRefreshPullDownRatio004: () => number;
+
+export const testRefreshPullDownRatio005: () => number;
+
+export const testRefreshPullDownRatio006: () => number;
+
+export const testRefreshPullDownRatio007: () => number;
 
 export const testRefreshPullToRefresh001: () => number;
 
@@ -4621,11 +4677,19 @@ export const testRefreshPullToRefresh002: () => number;
 
 export const testRefreshPullToRefresh003: () => number;
 
+export const testRefreshPullToRefresh004: () => number;
+
+export const testRefreshPullToRefresh005: () => number;
+
+export const testRefreshPullToRefresh006: () => number;
+
 export const testRefreshRefreshing001: () => number;
 
 export const testRefreshRefreshing002: () => number;
 
 export const testRefreshRefreshing003: () => number;
+
+export const testRefreshRefreshing004: () => number;
 
 export const testTextAreaBackgroundColor001: () => number;
 
@@ -5689,6 +5753,44 @@ export const gestureTestParaMeter006: () => number;
 export const gestureTestParaMeter007: () => number;
 export const gestureTestParaMeter008: () => number;
 export const gestureTestParaMeter009: () => number;
+
+export const testGridColumnsGap001: () => number;
+export const testGridColumnsGap002: () => number;
+export const testGridColumnsGap003: () => number;
+export const testGridColumnsGap004: () => number;
+export const testGridRowsTemplate001: () => number;
+export const testGridRowsTemplate002: () => number;
+export const testGridRowsTemplate003: () => number;
+export const testGridColumnTemplate001: () => number;
+export const testGridColumnTemplate002: () => number;
+export const testGridColumnTemplate003: () => number;
+export const testGridRowsGap001: () => number;
+export const testGridRowsGap002: () => number;
+export const testGridRowsGap003: () => number;
+export const testGridRowsGap004: () => number;
+export const testGridCachedCount001: () => number;
+export const testGridCachedCount002: () => number;
+export const testGridCachedCount003: () => number;
+export const testGridCachedCount004: () => number;
+export const testGridCachedCount005: () => number;
+export const testGridNodeAdapter001: () => number;
+export const testGridNodeAdapter002: () => number;
+export const testGridNodeAdapter003: () => number;
+
+export const testRadioValue001: () => number;
+export const testRadioValue002: () => number;
+export const testRadioValue003: () => number;
+export const testRadioGroup001: () => number;
+export const testRadioGroup002: () => number;
+export const testRadioGroup003: () => number;
+export const testRadioRadioStyle001: () => number;
+export const testRadioRadioStyle002: () => number;
+export const testRadioRadioStyle003: () => number;
+export const testRadioChecked001: () => number;
+export const testRadioChecked002: () => number;
+export const testRadioChecked003: () => number;
+export const testRadioChecked004: () => number;
+export const testRadioChecked005: () => number;
 export const drag_setDragEventStrictReportWidthNode_001: () => number;
 export const drag_setDragEventStrictReportWidthNode_002: () => number;
 export const drag_setDragEventStrictReportWidthContext_003: () => number;

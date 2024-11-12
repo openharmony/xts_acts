@@ -415,6 +415,10 @@
 #include "imagespan/imagespan_verticalalign_test.cpp"
 #include "imagespan/imagespan_padding_test.cpp"
 #include "column/column_foregroundblurstyle_test.cpp"
+#include "radio/radio_value_test.cpp"
+#include "radio/radio_group_test.cpp"
+#include "radio/radio_radioStyle_test.cpp"
+#include "radio/radio_checked_test.cpp"
 #include "textarea/textarea_bluronsubmit_test.cpp"
 #include "textarea/textarea_selectionmenuhidden_test.cpp"
 #include "textarea/textarea_showcounter_test.cpp"
@@ -449,11 +453,21 @@
 #include "xcomponent/xcomponent_width_test.cpp"
 #include "xcomponent/xcomponent_height_test.cpp"
 #include "row/row_height_test.cpp"
+#include "row/row_justifyContent_test.cpp"
+#include "row/row_alignItems_test.cpp"
 #include "slider/slider_width_test.cpp"
 #include "slider/slider_height_test.cpp"
 #include "column/column_width_test.cpp"
 #include "column/column_height_test.cpp"
 #include "column/column_padding_test.cpp"
+#include "column/column_justifyContent_test.cpp"
+#include "column/column_alignItems_test.cpp"
+#include "grid/grid_columnsGap_test.cpp"
+#include "grid/grid_rowsTemplate_test.cpp"
+#include "grid/grid_columnTemplate_test.cpp"
+#include "grid/grid_rowsGap_test.cpp"
+#include "grid/grid_cachedCount_test.cpp"
+#include "grid/grid_nodeadapter_test.cpp"
 #include "span/span_decoration_test.cpp"
 #include "span/span_textcase_test.cpp"
 #include "span/span_letterspacing_test.cpp"
@@ -3966,6 +3980,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testFlexOption020", nullptr, TestFlexOption020, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testFlexOption021", nullptr, TestFlexOption021, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testFlexOption022", nullptr, TestFlexOption022, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexOption023", nullptr, TestFlexOption023, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentHeight001", nullptr, TestXComponentHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentHeight002", nullptr, TestXComponentHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentHeight003", nullptr, TestXComponentHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -4034,6 +4049,24 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testRowHeight001", nullptr, TestRowHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRowHeight002", nullptr, TestRowHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRowHeight003", nullptr, TestRowHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRowJustifyContent001", nullptr, TestRowJustifyContent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRowJustifyContent002", nullptr, TestRowJustifyContent002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRowJustifyContent003", nullptr, TestRowJustifyContent003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRowJustifyContent004", nullptr, TestRowJustifyContent004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRowJustifyContent005", nullptr, TestRowJustifyContent005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRowJustifyContent006", nullptr, TestRowJustifyContent006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRowJustifyContent007", nullptr, TestRowJustifyContent007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRowAlignItems001", nullptr, TestRowAlignItems001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRowAlignItems002", nullptr, TestRowAlignItems002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRowAlignItems003", nullptr, TestRowAlignItems003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRowAlignItems004", nullptr, TestRowAlignItems004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderHeight001", nullptr, TestSliderHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderHeight002", nullptr, TestSliderHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderHeight003", nullptr, TestSliderHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -4044,6 +4077,28 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testColumnPadding002", nullptr, TestColumnPadding002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testColumnPadding003", nullptr, TestColumnPadding003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testColumnPadding004", nullptr, TestColumnPadding004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnJustifyContent001", nullptr, TestColumnJustifyContent001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnJustifyContent002", nullptr, TestColumnJustifyContent002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnJustifyContent003", nullptr, TestColumnJustifyContent003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnJustifyContent004", nullptr, TestColumnJustifyContent004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnJustifyContent005", nullptr, TestColumnJustifyContent005, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnJustifyContent006", nullptr, TestColumnJustifyContent006, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnJustifyContent007", nullptr, TestColumnJustifyContent007, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnAlignItems001", nullptr, TestColumnAlignItems001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnAlignItems002", nullptr, TestColumnAlignItems002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnAlignItems003", nullptr, TestColumnAlignItems003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testColumnAlignItems004", nullptr, TestColumnAlignItems004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"testColumnForegroundBlurStyle001", nullptr, TestColumnForegroundBlurStyle001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testColumnForegroundBlurStyle002", nullptr, TestColumnForegroundBlurStyle002, nullptr, nullptr, nullptr,
@@ -4254,11 +4309,20 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testRefreshOffset001", nullptr, TestRefreshOffset001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRefreshOffset002", nullptr, TestRefreshOffset002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRefreshOffset003", nullptr, TestRefreshOffset003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRefreshOffset004", nullptr, TestRefreshOffset004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRefreshPullDownRatio001", nullptr, TestRefreshPullDownRatio001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshPullDownRatio002", nullptr, TestRefreshPullDownRatio002, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshPullDownRatio003", nullptr, TestRefreshPullDownRatio003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullDownRatio004", nullptr, TestRefreshPullDownRatio004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullDownRatio005", nullptr, TestRefreshPullDownRatio005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullDownRatio006", nullptr, TestRefreshPullDownRatio006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullDownRatio007", nullptr, TestRefreshPullDownRatio007, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshPullToRefresh001", nullptr, TestRefreshPullToRefresh001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
@@ -4266,11 +4330,19 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testRefreshPullToRefresh003", nullptr, TestRefreshPullToRefresh003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"testRefreshPullToRefresh004", nullptr, TestRefreshPullToRefresh004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullToRefresh005", nullptr, TestRefreshPullToRefresh005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshPullToRefresh006", nullptr, TestRefreshPullToRefresh006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"testRefreshRefreshing001", nullptr, TestRefreshRefreshing001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshRefreshing002", nullptr, TestRefreshRefreshing002, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshRefreshing003", nullptr, TestRefreshRefreshing003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshRefreshing004", nullptr, TestRefreshRefreshing004, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextAreaBackgroundColor001", nullptr, TestTextAreaBackGroundColor001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
@@ -5127,6 +5199,50 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSetGestureInterrupterToNode001", nullptr, TestSetGestureInterrupterToNode001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testDisposeToNode001", nullptr, TestDisposeToNode001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridColumnsGap001", nullptr, TestGridColumnsGap001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridColumnsGap002", nullptr, TestGridColumnsGap002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridColumnsGap003", nullptr, TestGridColumnsGap003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridColumnsGap004", nullptr, TestGridColumnsGap004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridRowsTemplate001", nullptr, TestGridRowsTemplate001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testGridRowsTemplate002", nullptr, TestGridRowsTemplate002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testGridRowsTemplate003", nullptr, TestGridRowsTemplate003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testGridColumnTemplate001", nullptr, TestGridColumnTemplate001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testGridColumnTemplate002", nullptr, TestGridColumnTemplate002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testGridColumnTemplate003", nullptr, TestGridColumnTemplate003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testGridRowsGap001", nullptr, TestGridRowsGap001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridRowsGap002", nullptr, TestGridRowsGap002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridRowsGap003", nullptr, TestGridRowsGap003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridRowsGap004", nullptr, TestGridRowsGap004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridCachedCount001", nullptr, TestGridCachedCount001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridCachedCount002", nullptr, TestGridCachedCount002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridCachedCount003", nullptr, TestGridCachedCount003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridCachedCount004", nullptr, TestGridCachedCount004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridCachedCount005", nullptr, TestGridCachedCount005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridNodeAdapter001", nullptr, TestGridNodeAdapter001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridNodeAdapter002", nullptr, TestGridNodeAdapter002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGridNodeAdapter003", nullptr, TestGridNodeAdapter003, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testRadioValue001", nullptr, TestRadioValue001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioValue002", nullptr, TestRadioValue002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioValue003", nullptr, TestRadioValue003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioGroup001", nullptr, TestRadioGroup001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioGroup002", nullptr, TestRadioGroup002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioGroup003", nullptr, TestRadioGroup003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioRadioStyle001", nullptr, TestRadioRadioStyle001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioRadioStyle002", nullptr, TestRadioRadioStyle002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioRadioStyle003", nullptr, TestRadioRadioStyle003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioChecked001", nullptr, TestRadioChecked001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioChecked002", nullptr, TestRadioChecked002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioChecked003", nullptr, TestRadioChecked003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioChecked004", nullptr, TestRadioChecked004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioChecked005", nullptr, TestRadioChecked005, nullptr, nullptr, nullptr, napi_default, nullptr},
+
         {"drag_setDragEventStrictReportWidthNode_001", nullptr, drag_setDragEventStrictReportWidthNode_001, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"drag_setDragEventStrictReportWidthNode_002", nullptr, drag_setDragEventStrictReportWidthNode_002, nullptr,

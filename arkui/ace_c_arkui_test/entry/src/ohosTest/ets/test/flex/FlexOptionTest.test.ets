@@ -312,5 +312,18 @@ export default function FlexOptionTest() {
       done()
     })
 
+    /*
+     * @tc.number: SUB_ARKUI_CAPI_FLEX_OPTION_2300
+     * @tc.name: testFlexOption023
+     * @tc.desc: testing option for flex with abnormal value of "ArkUI_ItemAlignment"
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testFlexOption023', 0, async (done: Function) => {
+      expect(nativeFunc.testFlexOption023()).assertEqual(0)
+      done()
+    })
+
   })
 }
