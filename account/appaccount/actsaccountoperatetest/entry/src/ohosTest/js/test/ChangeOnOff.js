@@ -61,7 +61,7 @@ export default function ActsAccountOnOff() {
             await appAccountManager.createAccount("onoff_setcredential");
             console.info("====>enableAppAccess ActsAccountOnOff_0300 start");
             await appAccountManager.setAppAccess("onoff_setcredential", "com.example.actsaccountsceneonoff", true);
-            function removeAccountCallback(err){
+            async function removeAccountCallback(err){
                 console.info("====>subscribe ActsAccountOnOff_0300 finish====")
                 console.info("====>delete account 0300 err:" + JSON.stringify(err));
                 try {
@@ -69,6 +69,7 @@ export default function ActsAccountOnOff() {
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
+                await sleep(500);
                 done();
             }
             function unSubscriberCallback(err){
@@ -133,13 +134,14 @@ export default function ActsAccountOnOff() {
             await appAccountManager.setAppAccess("onoff_removeFir", "com.example.actsaccountsceneonoff", true);
             console.info("====>enableAppAccess second ActsAccountOnOff_0400 start");
             await appAccountManager.setAppAccess("onoff_removeSec", "com.example.actsaccountsceneonoff", true);
-            function removeAccountCallback(err){
+            async function removeAccountCallback(err){
                 console.info("====>remove account 0400 err:" + JSON.stringify(err));
                 try {
                     expect(err).assertEqual(null);
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
+                await sleep(500);
                 done();
             }
             function unSubscriberCallback(err){
@@ -201,9 +203,10 @@ export default function ActsAccountOnOff() {
             await appAccountManager.createAccount("onoff_remove");
             console.info("====>enableAppAccess ActsAccountOnOff_0500 start");
             await appAccountManager.setAppAccess("onoff_remove", "com.example.actsaccountsceneonoff", true);
-            function removeAccountCallback(err){
+            async function removeAccountCallback(err){
                 console.info("====>remove account 0500 err:" + JSON.stringify(err));
                 console.info("====>subscribe ActsAccountOnOff_0500 finish====")
+                await sleep(500);
                 done();
             }
             function unSubscriberCallback(err){
@@ -275,7 +278,7 @@ export default function ActsAccountOnOff() {
                 } catch (err) {
                     console.info('====>Assert err: ' + JSON.stringify(err));
                 }
-                appAccountManager.removeAccount("onoff_disableSec", (err)=>{
+                appAccountManager.removeAccount("onoff_disableSec", async (err)=>{
                     console.info("====>remove second account 0600 err:" + JSON.stringify(err));
                     console.info("====>subscribe ActsAccountOnOff_0600 finish====")
                     try {
@@ -283,6 +286,7 @@ export default function ActsAccountOnOff() {
                     } catch (err) {
                         console.info('====>Assert err: ' + JSON.stringify(err));
                     }
+                    await sleep(500);
                     done();
                 });
             }

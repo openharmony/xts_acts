@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -34,7 +34,7 @@ export default function ActsAccountSetAppAccess() {
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccess("AppAccess_callback_itself", "com.example.actsaccountappaccess", true, (err)=>{
                     console.info("====>enableAppAccess err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(12400001);
+                    expect(err).assertEqual(null);
                     appAccountManager.removeAccount("AppAccess_callback_itself", (err)=>{
                         console.info("====>delete Account ActsAccountSetAppAccess_0100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -59,13 +59,16 @@ export default function ActsAccountSetAppAccess() {
             console.info("====>enableAppAccess ActsAccountSetAppAccess_0200 start====");
             try{
                 await appAccountManager.setAppAccess("AppAccess_promise_itself", "com.example.actsaccountappaccess", true);
-            }
-            catch(err){
-                console.info("====>enableAppAccess 0200 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(12400001);
                 console.info("====>delete account ActsAccountSetAppAccess_0200 start====");
                 await appAccountManager.removeAccount("AppAccess_promise_itself");
                 console.info("====>ActsAccountSetAppAccess_0200 end====");
+                done();
+            } catch(err){
+                console.info("====>enableAppAccess 0200 err:" + JSON.stringify(err));
+                console.info("====>delete account ActsAccountSetAppAccess_0200 start====");
+                await appAccountManager.removeAccount("AppAccess_promise_itself");
+                console.info("====>ActsAccountSetAppAccess_0200 end====");
+                expect().assertFail();
                 done();
             }
         });
@@ -85,7 +88,7 @@ export default function ActsAccountSetAppAccess() {
                 expect(err).assertEqual(null);
                 appAccountManager.setAppAccess("AppAccess_callback_NotExistBundle", nonExistBundle, true, (err)=>{
                     console.info("====>enableAppAccess 0300 err:" + JSON.stringify(err));
-                    expect(err.code == 12400001).assertEqual(true);
+                    expect(err).assertEqual(null);
                     appAccountManager.removeAccount("AppAccess_callback_NotExistBundle", (err)=>{
                         console.info("====>delete Account ActsAccountSetAppAccess_0300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -111,13 +114,16 @@ export default function ActsAccountSetAppAccess() {
             console.info("====>enableAppAccess ActsAccountSetAppAccess_0400 start====");
             try{
                 await appAccountManager.setAppAccess("AppAccess_promise_NotExistBundle", nonExistBundle, true);
-            }
-            catch(err){
-                console.error("====>enableAppAccess ActsAccountSetAppAccess_0400 err:" + JSON.stringify(err));
-                expect(err.code == 12400001).assertEqual(true);
                 console.info("====>delete account ActsAccountSetAppAccess_0400 start====");
                 await appAccountManager.removeAccount("AppAccess_promise_NotExistBundle");
                 console.info("====>ActsAccountSetAppAccess_0400 end====");
+                done();
+            } catch (err) {
+                console.error("====>enableAppAccess ActsAccountSetAppAccess_0400 err:" + JSON.stringify(err));
+                console.info("====>delete account ActsAccountSetAppAccess_0400 start====");
+                await appAccountManager.removeAccount("AppAccess_promise_NotExistBundle");
+                console.info("====>ActsAccountSetAppAccess_0400 end====");
+                expect().assertFail();
                 done();
             }
         });
@@ -499,7 +505,7 @@ export default function ActsAccountSetAppAccess() {
             await appAccountManager.removeAccount("AppAccess_promise_notExistBundle");
             console.info("====>ActsAccountSetAppAccess_1600 end====");
             done();
-    });
+        });
 
         /*
         * @tc.number    : ActsAccountSetAppAccess_1900
@@ -540,6 +546,146 @@ export default function ActsAccountSetAppAccess() {
                 console.info("====>disableAppAccess ActsAccountSetAppAccess_2000 err:" + JSON.stringify(err));
                 expect(err.code == 12300003).assertEqual(true);
                 console.info("====>ActsAccountSetAppAccess_2000 end====");
+                done();
+            }
+        });
+        
+        /*
+        * @tc.number    : ActsAccountSetAppAccess_2100
+        * @tc.name      : setAppAccess callback
+        * @tc.desc      : Test errcode 12400005
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('ActsAccountSetAppAccess_2100', 0, async function (done) {
+            console.info("====>ActsAccountSetAppAccess_2100 start====");
+            let appAccountManager = account.createAppAccountManager();
+            console.info("====>createAppAccountManager finish====");
+            let appName = "setAppAccess2100";
+            console.info("====>createAccount ActsAccountSetAppAccess_2100 start====");
+            await appAccountManager.createAccount(appName, createAccountOptions);
+            let enableBundle = "com.example.actsaccountsceneappaccess";
+            console.info("====>ActsAccountSetAppAccess_2100 start setAppAccess");
+            for (let i = 1; i < 1025 -1; i++) {
+                await appAccountManager.setAppAccess(appName, enableBundle + String(i), true);
+                console.info("====>setAppAccess i: " + JSON.stringify(i));
+            }
+            appAccountManager.setAppAccess(appName, enableBundle + '1024', true, async (err) => {
+                console.info("====>ActsAccountSetAppAccess_2100 setAppAccess err: " + JSON.stringify(err));
+                await appAccountManager.removeAccount(appName);
+                try {
+                    expect(err).assertEqual(null);
+                } catch(err) {
+                    console.info("====>Assert Fail!");
+                }
+                console.info("====>ActsAccountSetAppAccess_2100 end====");
+                done();
+            })
+        });
+
+        /*
+        * @tc.number    : ActsAccountSetAppAccess_2200
+        * @tc.name      : setAppAccess callback
+        * @tc.desc      : Test errcode 12400005
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('ActsAccountSetAppAccess_2200', 0, async function (done) {
+            console.info("====>ActsAccountSetAppAccess_2200 start====");
+            let appAccountManager = account.createAppAccountManager();
+            console.info("====>createAppAccountManager finish====");
+            let appName = "setAppAccess2200";
+            console.info("====>createAccount ActsAccountSetAppAccess_2200 start====");
+            await appAccountManager.createAccount(appName, createAccountOptions);
+            let enableBundle = "com.example.actsaccountsceneappaccess";
+            console.info("====>ActsAccountSetAppAccess_2200 start setAppAccess");
+            for (let i = 1; i < 1025; i++) {
+                await appAccountManager.setAppAccess(appName, enableBundle + String(i), true);
+                console.info("====>setAppAccess i: " + JSON.stringify(i));
+            }
+            appAccountManager.setAppAccess(appName, enableBundle + '1025', true, async (err) => {
+                console.info("====>ActsAccountSetAppAccess_2200 setAppAccess err: " + JSON.stringify(err));
+                await appAccountManager.removeAccount(appName);
+                try {
+                    expect(err.code == 12400005).assertEqual(true);
+                } catch(err) {
+                    console.info("====>Assert Fail!");
+                }
+                console.info("====>ActsAccountSetAppAccess_2200 end====");
+                done();
+            })
+        });
+
+        /*
+        * @tc.number    : ActsAccountSetAppAccess_2300
+        * @tc.name      : setAppAccess promise
+        * @tc.desc      : Test errcode 12400005
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('ActsAccountSetAppAccess_2300', 0, async function (done) {
+            console.info("====>ActsAccountSetAppAccess_2300 start====");
+            let appAccountManager = account.createAppAccountManager();
+            console.info("====>createAppAccountManager finish====");
+            let appName = "setAppAccess2300";
+            console.info("====>createAccount ActsAccountSetAppAccess_2300 start====");
+            await appAccountManager.createAccount(appName, createAccountOptions);
+            let enableBundle = "com.example.actsaccountsceneappaccess";
+            console.info("====>ActsAccountSetAppAccess_2300 start setAppAccess");
+            try {
+                let appName = "setAppAccess2300";
+                for (let i = 1; i < 1025; i++) {
+                    await appAccountManager.setAppAccess(appName, enableBundle + String(i), true);
+                    console.info("====>setAppAccess i: " + JSON.stringify(i));
+                }
+                console.info("====>removeAccount ActsAccountSetAppAccess_2300 start====");
+                await appAccountManager.removeAccount(appName);
+                console.info("====>ActsAccountSetAppAccess_2300 end====");
+                done();
+            } catch(err){
+                console.info("====>ActsAccountSetAppAccess_2300 err: " + JSON.stringify(err));
+                await appAccountManager.removeAccount(appName);
+                console.info("====>ActsAccountSetAppAccess_2300 fail");
+                expect().assertFail();
+                done();
+            }
+        });
+
+        /*
+        * @tc.number    : ActsAccountSetAppAccess_2400
+        * @tc.name      : setAppAccess promise
+        * @tc.desc      : Test errcode 12400005
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        */
+        it('ActsAccountSetAppAccess_2400', 0, async function (done) {
+            console.info("====>ActsAccountSetAppAccess_2400 start====");
+            let appAccountManager = account.createAppAccountManager();
+            console.info("====>createAppAccountManager finish====");
+            let appName = "setAppAccess2400";
+            console.info("====>createAccount ActsAccountSetAppAccess_2400 start====");
+            await appAccountManager.createAccount(appName, createAccountOptions);
+            let enableBundle = "com.example.actsaccountsceneappaccess";
+            console.info("====>ActsAccountSetAppAccess_2400 start setAppAccess");
+            try {
+                for (let i = 1; i < 1025 + 1; i++) {
+                    await appAccountManager.setAppAccess(appName, enableBundle + String(i), true);
+                    console.info("====>setAppAccess i: " + JSON.stringify(i));
+                }
+                console.info("====>removeAccount ActsAccountSetAppAccess_2400 start====");
+                await appAccountManager.removeAccount(appName);
+                console.info("====>ActsAccountSetAppAccess_2400 fail");
+                expect().assertFail();
+                done();
+            } catch(err){
+                console.info("====>disableAppAccess ActsAccountSetAppAccess_2400 err:" + JSON.stringify(err));
+                await appAccountManager.removeAccount(appName);
+                expect(err.code == 12400005).assertEqual(true);
+                console.info("====>ActsAccountSetAppAccess_2400 end====");
                 done();
             }
         });
