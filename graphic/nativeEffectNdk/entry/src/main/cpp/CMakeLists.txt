@@ -12,4 +12,4 @@ include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
 add_library(nativeEffectNdk SHARED nativeEffectNdk.cpp)
-target_link_libraries(nativeEffectNdk PUBLIC libace_napi.z.so libnative_effect.so libhilog_ndk.z.so)
+target_link_libraries(nativeEffectNdk PUBLIC libace_napi.z.so libnative_effect.so libhilog_ndk.z.so libpixelmap.so)
