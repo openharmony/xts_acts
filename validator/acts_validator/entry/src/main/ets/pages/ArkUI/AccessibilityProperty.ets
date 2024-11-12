@@ -15,7 +15,9 @@
 
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
+import fs from '@ohos.file.fs';
 import FirstDialog from '../model/FirstDialog';
+import { BusinessError } from '@ohos.base';
 
 const TAG = '[onAccessibilityHover]';
 
@@ -23,21 +25,20 @@ const TAG = '[onAccessibilityHover]';
 @Component
 struct AccessibilityHoverDemo {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'AccessibilityProperty';
-  @State StepTips: string =
-    '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、从上到下依次滑动观察屏幕朗读情况\n'+'\n'+
-	  '预期结果：1、绿框绘制在组件上，屏幕朗读朗读”已选中checkable测试(true)“\n' +
-          '2、绿框绘制在组件上，屏幕朗读朗读“未选中checkable测试(false)”\n' +
-          '3、绿框绘制在组件上，屏幕朗读朗读“checkable测试(undefined)”\n' +
-          '4、绿框绘制在组件上，屏幕朗读朗读“已选中accessibilitySelected true”\n' +
-          '5、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected false”\n' +
-          '6、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected undefined”\n' +
-          '7、勾选不勾选Checkbox，屏幕朗读的都是“已选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked true Select undefined”\n' +
-          '8、勾选不勾选Checkbox，屏幕朗读的都是“未选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked false Select undefined”\n' +
-          '9、勾选Checkbox，屏幕朗读的都是“已选中”，不勾选的时候朗读的是“未选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked undefined Select undefined”\n' +
-          '10、绿框绘制在组件上，屏幕朗读朗读“已选中accessibilitySelected true Checked undefined”\n' +
-          '11、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected false Checked undefined”\n' +
-          '12、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected undefined Checked undefined”';
+  @State name: string = 'onAccessibilityHover';
+  @State StepTips: string =  '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、从上到下依次滑动观察屏幕朗读情况\n'+'\n'+
+    '预期结果：1、绿框绘制在组件上，屏幕朗读朗读”已选中checkable测试(true)“\n' +
+    '2、绿框绘制在组件上，屏幕朗读朗读“未选中checkable测试(false)”\n' +
+    '3、绿框绘制在组件上，屏幕朗读朗读“checkable测试(undefined)”\n' +
+    '4、绿框绘制在组件上，屏幕朗读朗读“已选中accessibilitySelected true”\n' +
+    '5、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected false”\n' +
+    '6、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected undefined”\n' +
+    '7、勾选不勾选Checkbox，屏幕朗读的都是“已选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked true Select undefined”\n' +
+    '8、勾选不勾选Checkbox，屏幕朗读的都是“未选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked false Select undefined”\n' +
+    '9、勾选Checkbox，屏幕朗读的都是“已选中”，不勾选的时候朗读的是“未选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked undefined Select undefined”\n' +
+    '10、绿框绘制在组件上，屏幕朗读朗读“已选中accessibilitySelected true Checked undefined”\n' +
+    '11、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected false Checked undefined”\n' +
+    '12、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected undefined Checked undefined”';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -117,8 +118,7 @@ struct AccessibilityHoverDemo {
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-      if (this.text1 === 'HOVER_ENTER' && this.text2 === 'HOVER_MOVE' && this.text3 === 'HOVER_EXIT' &&
-        this.text4 === 'HOVER_CANCEL') {
+      if (this.text1 === 'HOVER_ENTER' && this.text2 === 'HOVER_MOVE' && this.text3 === 'HOVER_EXIT' &&this.text4 === 'HOVER_CANCEL') {
         this.Vue = true;
       }
     }, 500)
@@ -163,8 +163,35 @@ struct AccessibilityHoverDemo {
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
 
-      Column({ space: 20 }) {
-        Text('checkable测试(true)').accessibilityChecked(true).margin({ top: '20vp' });
+      Column({ space: 12 }) {
+        Row() {
+          Text(`是否设备支持屏幕朗读`).fontColor(Color.Green).fontSize('18fp').margin({top:20})
+        }
+        Row() {
+          Column() {
+            Button(`不支持`)
+              .borderRadius(8)
+              .backgroundColor(0x317aff)
+              .width('30%')
+              .enabled(!this.yesEnable)
+              .opacity(!this.yesEnable ? 1 : 0.4)
+              .onClick(async () => {
+                this.Vue = true
+              })
+          }
+
+          Column() {
+            Button(`支持`)
+              .borderRadius(8)
+              .backgroundColor(0x317aff)
+              .width('30%')
+              .onClick(async () => {
+                this.yesEnable = true
+                this.onAccessibilityHoverEnable = true
+              })
+          }
+        }
+        Text('checkable测试(true)').accessibilityChecked(true);
         Text('checkable测试(false)').accessibilityChecked(false);
         Text('checkable测试(undefined)').accessibilityChecked(undefined);
 
@@ -245,7 +272,6 @@ struct AccessibilityHoverDemo {
       }.height('80%')
       .width('100%')
       .backgroundColor(Color.White)
-
 
       Row() {
         this.PassBtn($r('app.string.btn_fullscreen'), true);
