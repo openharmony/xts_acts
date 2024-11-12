@@ -25,7 +25,7 @@ struct RecentPhotoDemo {
     info: RecentPhotoInfo): void => this.onCheckInfoCallback(recentPhotoExists, info);
   private eventId: number = 0;
 
-  sendEvent(message: Object, eventId: number){
+  sendEvent(message: Object, eventId: number) {
     let eventData: events_emitter.EventData = {
       data: {
         'msg': message,
@@ -39,7 +39,7 @@ struct RecentPhotoDemo {
     events_emitter.emit(event, eventData)
   }
 
-  aboutToAppear(){
+  aboutToAppear() {
     let parameter: object = router.getParams();
     if (parameter['eventId'] != undefined) {
       this.eventId = parameter['eventId'];
@@ -50,11 +50,11 @@ struct RecentPhotoDemo {
     console.info('eventId=' + this.eventId);
   }
 
-  private onRecentPhotoCheckResult(recentPhotoExists: boolean): void{
+  private onRecentPhotoCheckResult(recentPhotoExists: boolean): void {
     console.info('Check photo, recentPhotoExists = ' + recentPhotoExists);
   }
 
-  private onRecentPhotoClick(recentPhotoInfo: BaseItemInfo): boolean{
+  private onRecentPhotoClick(recentPhotoInfo: BaseItemInfo): boolean {
     this.sendEvent(recentPhotoInfo, EventType.RECENT_PHOTO_INFO);
     console.info('onRecentPhotoClick  recentPhotoInfo = ' + JSON.stringify(recentPhotoInfo));
     return true;
@@ -65,7 +65,7 @@ struct RecentPhotoDemo {
     console.info('onCheckInfoCallback recentPhotoInfo identifier ' + info.identifier);
   }
 
-  build(){
+  build() {
     Column() {
       RecentPhotoComponent({
         recentPhotoOptions: this.recentPhotoOptions,
