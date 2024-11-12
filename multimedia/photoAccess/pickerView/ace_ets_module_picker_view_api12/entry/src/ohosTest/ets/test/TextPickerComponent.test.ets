@@ -713,8 +713,6 @@ export default function TextPicker() {
       let checkBoxs: Array<Component> = await driver.findComponents(ON.type('Checkbox'));
       if (checkBoxs === null || checkBoxs.length <= 0) {
         console.info("testPicker14 findComponent checkbox fail");
-        done();
-        return;
       } else {
         console.info("testPicker14 findComponent checkbox success");
         await checkBoxs[0].click();
@@ -764,8 +762,6 @@ export default function TextPicker() {
       let checkBoxs: Array<Component> = await driver.findComponents(ON.type('Checkbox'));
       if (checkBoxs === null || checkBoxs.length <= 0) {
         console.info("testPicker15 findComponent checkbox fail");
-        done();
-        return;
       } else {
         console.info("testPicker15 findComponent checkbox success");
         let selectNum = Math.min(checkBoxs.length, 3);
@@ -773,11 +769,11 @@ export default function TextPicker() {
           await checkBoxs[index].click();
         }
         await CommonFunc.sleep(1000);
+		expect(selectCount).assertLessOrEqual(1);
         console.info("testPicker15 btn click finish");
       }
 
       router.back();
-      expect(selectCount).assertLessOrEqual(1);
       console.info("testPicer15 finish");
       events_emitter.off(event.eventId);
       done();
@@ -912,16 +908,15 @@ export default function TextPicker() {
       let btn: Component = await driver.findComponent(ON.type('GridItem'));
       if (btn === null) {
         console.info('testPicker18 no GridItem');
-        done();
-        return;
-      }
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      clicked = !clicked;
-      await CommonFunc.sleep(1000);
-      await btn.click();
-      await CommonFunc.sleep(1000);
-
+      } else {
+	    await btn.click();
+        await CommonFunc.sleep(1000);
+        clicked = !clicked;
+        await CommonFunc.sleep(1000);
+        await btn.click();
+        await CommonFunc.sleep(1000);
+	  }
+      
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
       console.info("testPicker18 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
@@ -976,11 +971,10 @@ export default function TextPicker() {
       let component: Component = await driver.findComponent(ON.id('recentPhoto'));
 	  if (component === null) {
         console.info('testPicker19 no recentPhoto');
-        done();
-        return;
-      }
-      await component.click();
-      await CommonFunc.sleep(2000);
+      } else {
+	    await component.click();
+        await CommonFunc.sleep(2000);
+	  }
       router.back();
       console.info("testPicer19 finish");
       events_emitter.off(event.eventId);
@@ -1030,11 +1024,10 @@ export default function TextPicker() {
       let component: Component = await driver.findComponent(ON.id('recentPhoto'));
 	  if (component === null) {
         console.info('testPicker20 no recentPhoto');
-        done();
-        return;
-      }
-      await component.click();
-      await CommonFunc.sleep(2000);
+      } else {
+	    await component.click();
+        await CommonFunc.sleep(2000);
+	  }
       router.back();
       console.info("testPicer20 finish");
       events_emitter.off(event.eventId);
@@ -1084,11 +1077,10 @@ export default function TextPicker() {
       let component: Component = await driver.findComponent(ON.id('recentPhoto'));
 	  if (component === null) {
         console.info('testPicker21 no recentPhoto');
-        done();
-        return;
-      }
-      await component.click();
-      await CommonFunc.sleep(2000);
+      } else {
+	    await component.click();
+        await CommonFunc.sleep(2000);
+	  }
       router.back();
       console.info("testPicer21 finish");
       events_emitter.off(event.eventId);
