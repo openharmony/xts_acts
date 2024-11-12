@@ -5,6 +5,8 @@
     "MainAbility/pages/RichEditor/RichEditorMenuType",
     "MainAbility/pages/Marquee/marqueeFrame",
     "MainAbility/pages/Text/editMenuIdAIWriter",
-    "MainAbility/pages/MovingPhotoView/MovingPhotoView"
+    "MainAbility/pages/MovingPhotoView/MovingPhotoView",
+    "MainAbility/pages/Text/StyledString",
+    "MainAbility/pages/RichEditor/RichEditorStyledStringTest"
   ]
 }

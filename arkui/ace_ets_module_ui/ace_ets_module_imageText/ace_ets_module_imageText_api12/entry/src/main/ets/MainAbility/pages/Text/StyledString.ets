@@ -57,12 +57,6 @@ struct styled_string_StyleString {
       length: 5,
       styledKey: StyledStringKey.LETTER_SPACING,
       styledValue: new LetterSpacingStyle(new LengthMetrics(10, LengthUnit.VP))
-    },
-    {
-      start: 0,
-      length: 5,
-      styledKey: StyledStringKey.URL,
-      styledValue: new UrlStyle('xxx.cn')
     }
     ]);
   @State fontColor1: ResourceColor = Color.Red;
@@ -75,7 +69,6 @@ struct styled_string_StyleString {
   @State styledKey3: StyledStringKey = StyledStringKey.DECORATION
   @State styledKey4: StyledStringKey = StyledStringKey.DECORATION
   @State styledKey5: StyledStringKey = StyledStringKey.DECORATION
-  @State styledKey6: StyledStringKey = StyledStringKey.DECORATION
 
   async onPageShow() {
     this.controller2.setStyledString(this.mutableStyledString2)
@@ -90,7 +83,6 @@ struct styled_string_StyleString {
         Text(this.styledKey3 + '').fontSize(12).id('textShadowId')
         Text(this.styledKey4 + '').fontSize(12).id('baselineOffsetId')
         Text(this.styledKey5 + '').fontSize(12).id('letterSpacingId')
-        Text(this.styledKey6 + '').fontSize(12).id('urlId')
         Text(undefined, this.options)
           .fontColor(this.fontColor1)
           .font({ size: 20, weight: 500, style: FontStyle.Normal })
@@ -116,7 +108,6 @@ struct styled_string_StyleString {
             this.styledKey3 = styles[2].styledKey
             this.styledKey4 = styles[3].styledKey
             this.styledKey5 = styles[4].styledKey
-            this.styledKey6 = styles[5].styledKey
           })
           .margin({ top: 10 })
 

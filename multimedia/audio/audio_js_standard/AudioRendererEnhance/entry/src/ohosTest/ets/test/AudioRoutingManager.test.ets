@@ -31,6 +31,10 @@ let sleep = (ms: number): Promise<string> => {
     }, ms)
   })
 }
+let capturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_CAMCORDER,
+  capturerFlags: 0
+}
 
 export default function AudioRoutingManagerTest() {
   describe('AudioRoutingManagerTest', () => {
@@ -72,13 +76,6 @@ export default function AudioRoutingManagerTest() {
     afterAll(async () => {
       console.info(`${Tag}: afterAll: Test suite-level cleanup condition`);
     });
-
-    let callback1 = (): void => {
-        console.info(`TestLog: micBlockStatusChange command callback1 success`);
-    }
-    let callback2 = (): void => {
-        console.info(`TestLog: micBlockStatusChange command callback2 success`);
-    }
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETAVAILABLEDEVICES_0100
@@ -411,76 +408,161 @@ export default function AudioRoutingManagerTest() {
       }
     });
      /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_MICBLOCKSTATUSCHANGE_0100
-     * @tc.name      : on - micBlockStatusChanged
-     * @tc.desc      : on - micBlockStatusChanged
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0100
+     * @tc.name      : on -off- micBlockStatusChanged
+     * @tc.desc      : on -off- micBlockStatusChanged
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_MICBLOCKSTATUSCHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0100', 2, (done: Function) => {
       try {
-        audioRoutingManager.on('micBlockStatusChanged', callback1, (data: ESObject) => {
-          console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
-        });
+        let blockMic: boolean = audioRoutingManager.isMicBlockDetectionSupported()
+        if (blockMic == true) {
+          audioRoutingManager.on('micBlockStatusChanged', async(deviceBlockStatusInfo: ESObject) =>{
+            if (deviceBlockStatusInfo.DeviceBlockStatus == audioRoutingManager.blockStatus.BLOCKED ||
+            deviceBlockStatusInfo.DeviceBlockStatus == audioRoutingManager.blockStatus.UNBLOCKED) {
+              console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
+              expect(true).assertTrue();
+            } else {
+              console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
+              expect(false).assertTrue();
+            }
+          })
+          audioRoutingManager.off('micBlockStatusChanged')
+        }
         expect(true).assertTrue();
-        done();
       } catch (error) {
         console.error(`${Tag}: on_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
         expect(false).assertTrue();
-        done();
       }
+      done();
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_OFF_MICBLOCKSTATUSCHANGE_0100
-     * @tc.name      : on - off - micBlockStatusChanged
-     * @tc.desc      : on - off - micBlockStatusChanged
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0200
+     * @tc.name      : on - micBlockStatusChanged - errorParameter(null) - 401
+     * @tc.desc      : on - micBlockStatusChanged - errorParameter(null) - 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_OFF_MICBLOCKSTATUSCHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0200', 2, (done: Function) => {
       try {
-        audioRoutingManager.on('micBlockStatusChanged', callback1, (data: ESObject) => {
-          console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
-        });
-        audioRoutingManager.off('micBlockStatusChanged', callback1, (data: ESObject) => {
-          console.info(`${Tag}: off_micBlockStatusChanged 'micBlockStatusChanged': SUCCESS`);
-        });
-        expect(true).assertTrue();
-        done();
+        let onName: ESObject = null
+        audioRoutingManager.on(onName, async(deviceBlockStatusInfo: ESObject) =>{
+          console.info(`${Tag}: on_micBlockStatusChanged ERROR`);
+        })
+        expect(false).assertTrue();
       } catch (error) {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
-        expect(false).assertTrue();
-        done();
+        expect(Number(error.code)).assertEqual(401);
       }
+      done();
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_OFF_MICBLOCKSTATUSCHANGE_0200
-     * @tc.name      : on - off - micBlockStatusChanged
-     * @tc.desc      : on - off - micBlockStatusChanged
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0300
+     * @tc.name      : on - micBlockStatusChanged - errorParameter("123") - 6800101
+     * @tc.desc      : on - micBlockStatusChanged - errorParameter("123") - 6800101
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_OFF_MICBLOCKSTATUSCHANGE_0200', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0300', 2, (done: Function) => {
       try {
-        audioRoutingManager.on('micBlockStatusChanged', callback1, (data: ESObject) => {
-          console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
-        });
-        audioRoutingManager.on('micBlockStatusChanged', callback2, (data: ESObject) => {
-          console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
-        });
-        audioRoutingManager.off('micBlockStatusChanged', (data: ESObject) => {
-          console.info(`${Tag}: off_micBlockStatusChanged 'micBlockStatusChanged': SUCCESS`);
-        });
-        expect(true).assertTrue();
-        done();
+        audioRoutingManager.on("123", async(deviceBlockStatusInfo: ESObject) =>{
+          console.info(`${Tag}: on_micBlockStatusChanged ERROR`);
+        })
+        expect(false).assertTrue();
       } catch (error) {
         console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
-        expect(false).assertTrue();
-        done();
+        expect(Number(error.code)).assertEqual(6800101);
       }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0400
+     * @tc.name      : on - micBlockStatusChanged - errorParameter(null) - 401
+     * @tc.desc      : on - micBlockStatusChanged - errorParameter(null) - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0400', 2, (done: Function) => {
+      try {
+        audioRoutingManager.on('micBlockStatusChanged')
+        console.info(`${Tag}: on_micBlockStatusChanged ERROR`);
+        expect(false).assertTrue();
+      } catch (error) {
+        console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0500
+     * @tc.name      : on - off - micBlockStatusChanged - errorParameter("123") - 6800101
+     * @tc.desc      : on - off - micBlockStatusChanged - errorParameter("123") - 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0500', 2, (done: Function) => {
+      try {
+        audioRoutingManager.on('micBlockStatusChanged', "123", ()=> {
+          console.info(`${Tag}: on_micBlockStatusChanged ERROR`);
+        })
+        console.info(`${Tag}: on_micBlockStatusChanged ERROR`);
+        expect(false).assertTrue();
+      } catch (error) {
+        console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
+        expect(Number(error.code)).assertEqual(6800101);
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0600
+     * @tc.name      : off - micBlockStatusChanged - errorParameter("123") - 6800101
+     * @tc.desc      : off - micBlockStatusChanged - errorParameter("123") - 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0600', 2, (done: Function) => {
+      try {
+        audioRoutingManager.off('123')
+        console.info(`${Tag}: off_micBlockStatusChanged01: SUCCESS`);
+        expect(false).assertTrue();
+      } catch (error) {
+        console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
+        audioRoutingManager.off('micBlockStatusChanged')
+        console.info(`${Tag}: off_micBlockStatusChanged02: SUCCESS`);
+        expect(Number(error.code)).assertEqual(6800101);
+      }
+      done();
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0700
+     * @tc.name      : on - off - micBlockStatusChanged - errorParameter("123") - 6800101
+     * @tc.desc      : on - off - micBlockStatusChanged - errorParameter("123") - 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0700', 2, (done: Function) => {
+      try {
+        audioRoutingManager.on('micBlockStatusChanged', async(deviceBlockStatusInfo: ESObject) =>{
+          console.info(`${Tag}: on_micBlockStatusChanged: SUCCESS`);
+        })
+        audioRoutingManager.off('micBlockStatusChanged', "123")
+        console.info(`${Tag}: off_micBlockStatusChanged01: SUCCESS`);
+        expect(false).assertTrue();
+      } catch (error) {
+        console.error(`${Tag}: off_micBlockStatusChanged ERROR: ${error.message}, ${error.code}`);
+        audioRoutingManager.off('micBlockStatusChanged')
+        console.info(`${Tag}: off_micBlockStatusChanged02: SUCCESS`);
+        expect(Number(error.code)).assertEqual(401);
+      }
+      done();
     });
   })
 }

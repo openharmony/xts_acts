@@ -16,19 +16,20 @@
 class MyRatingStyle10 implements ContentModifier<RatingConfiguration> {
   private name: string = ''
   private style: number = 0
-  constructor(value1: string, value2: number) {
+  constructor(value1: string, value2: number){
     this.name = value1
     this.style = value2
   }
-  applyContent() : WrappedBuilder<[RatingConfiguration]> {
+  applyContent() : WrappedBuilder<[RatingConfiguration]>{
     return wrapBuilder(buildRating10)
   }
 }
 
-@Builder function buildRating10(config: RatingConfiguration) {
+@Builder function buildRating10(config: RatingConfiguration){
   Column() {
     Row() {
       Circle({ width: 25, height: 25 })
+        .id('circle10')
         .fill(config.rating >= 0.4 ? Color.Black : Color.Red)
         .onClick((event: ClickEvent) => {
           if (!config.indicator) {
@@ -147,7 +148,7 @@ struct rating10 {
   @State ratingStepsize: number = 0.5;
   @State ratingEnabled: boolean = true;
   @State ratingClick:string = "can't click rating"
-  build() {
+  build(){
     Row() {
       Column() {
         Text(this.ratingClick)
@@ -167,7 +168,7 @@ struct rating10 {
           .width('100%')
           .height(50)
           .onChange((value: number) => {
-            console.info('Rating change is'+ value);
+            console.info('Rating change is' + value);
             this.rating = value
           })
           .contentModifier(new MyRatingStyle10('hello', 3))

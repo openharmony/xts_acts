@@ -1850,7 +1850,29 @@ export default function DeviceInfoTest() {
                 console.info('the value of the deviceinfo distributionOSApiName is :' + distributionOSApiName);
                 expect(distributionOSApiName).assertInstanceOf('String');
             }
-            console.info('device_info_test_071 : end');
+            console.info('device_info_test_072 : end');
+        })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_073
+         * @tc.name      testGetProductModeAlias
+         * @tc.desc      Get a string representing the certified model which has at least one characters.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_073', 0, function () {
+            console.info('device_info_test_073 start');
+            let ret = false;
+            let productModelInfo = deviceinfo.productModelAlias;
+            console.info('the value of the deviceinfo productModelAlias is :' + productModelInfo);
+
+            expect(productModelInfo).assertInstanceOf('String');
+            if (productModelInfo != "" && productModelInfo != null && productModelInfo != undefined) {
+                ret = true;
+            }
+            expect(ret).assertTrue();
+            console.info('device_info_test_073 : end');
         })
     })
 }

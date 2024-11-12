@@ -11,9 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/config/ohos/config.gni")
-import("//build/ohos.gni")
-import("//foundation/arkui/napi/napi.gni")
 import("//test/xts/tools/build/suite.gni")
 
 ohos_app_assist_suite("audioDemo_ndk_hap_main") {

@@ -14,9 +14,22 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
+
 export default function LocalStorageLink0310TestJsunit() {
   describe('LocalStorageLink0310TestJsunit', () => {
     beforeEach(async (done: Function) => {
@@ -46,10 +59,10 @@ export default function LocalStorageLink0310TestJsunit() {
     });
 
     /**
-     * @tc.number    LocalStorageLink0310TestJsunit_001
-     * @tc.name      LocalStorageLink0310TestJsunit_001
-     * @tc.desc      Frequently updating and modifying the values of parent components
-     * @tc.level     Level 0
+     * @tc.number LocalStorageLink0310TestJsunit_001
+     * @tc.name LocalStorageLink0310TestJsunit_001
+     * @tc.desc Frequently updating and modifying the values of parent components
+     * @tc.level Level 0
      * @tc.type
      * @tc.size
      */
@@ -100,6 +113,35 @@ export default function LocalStorageLink0310TestJsunit() {
       let obj9: ESObject = JSON.parse(getInspectorByKey('tv0310ChildNull'));
       console.info("[LocalStorageLink0310TestJsunit_001] component obj9 is: " + JSON.stringify(obj9));
       expect(obj9.$attrs.content).assertEqual('Hellonull');
+      console.info('[LocalStorageLink0310TestJsunit_001] END');
+      done();
+    });
+    /**
+     * @tc.number LocalStorageLink0310TestJsunit_002
+     * @tc.name LocalStorageLink0310TestJsunit_002
+     * @tc.desc Frequently updating and modifying the values of parent components
+     * @tc.level Level 0
+     * @tc.type
+     * @tc.size
+     */
+    it('LocalStorageLink0310TestJsunit_002', 0, async (done: Function) => {
+      console.info('[LocalStorageLink0310TestJsunit_002] START');
+      await CommonFunc.sleep(2000);
+      let driver: Driver = Driver.create();
+      let btn: Component = await driver.findComponent(ON.id("btnLocalStorageLink0310"));
+      await CommonFunc.sleep(1000);
+      await btn.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(getInspectorByKey('tv0310ParentArr'));
+      console.info("[LocalStorageLink0310TestJsunit_002] component obj is: " + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('Arr[1,true,{"propB":48}]');
+      await CommonFunc.sleep(1000);
+
+      let obj5: ESObject = JSON.parse(getInspectorByKey('tv0310ChildArr'));
+      console.info("[LocalStorageLink0310TestJsunit_002] component obj1 is: " + obj5.$attrs.content);
+      expect(obj5.$attrs.content).assertEqual('Arr[1,true,{"propB":48}]');
+      await CommonFunc.sleep(1000);
+
       console.info('[LocalStorageLink0310TestJsunit_001] END');
       done();
     });

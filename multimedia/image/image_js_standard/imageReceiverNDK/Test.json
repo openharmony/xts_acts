@@ -5,12 +5,13 @@
         "test-timeout": "600000",
         "testcase-timeout": "300000",
         "bundle-name": "ohos.acts.multimedia.image.ReceiverNdk",
-        "package-name": "ohos.acts.multimedia.image.ReceiverNdk",
-        "shell-timeout": "600000"
+        "shell-timeout": "600000",
+        "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
+                "ActsImageReceiverNdkJsTestMain.hap",
                 "ActsImageReceiverNdkJsTest.hap"
             ],
             "type": "AppInstallKit",
