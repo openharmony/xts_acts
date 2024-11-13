@@ -2531,5 +2531,1778 @@ export default function relationalStoreMultiTransTest() {
       console.log(TAG + "************* testRdbTransQuery0600 end *************");
       done();
     })
+	
+	
+	
+	
+	/**
+     * @tc.name testRdbTransSameThreadInsert0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_5500
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+
+    it('testRdbTransSameThreadInsert0100', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0100 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await insertInThread(context, options, 10);
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0100 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0100 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0100 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadInsert0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_5600
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransSameThreadInsert0200', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0200 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await insertInThread(context, options, 10);
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0200 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0200 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0200 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadInsert0300
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_5700
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadInsert0300', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0300 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await insertInThread(context, options, 10);
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0300 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0300 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0300 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadInsert0400
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_5800
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadInsert0400', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0400 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        console.log(TAG + "before second trans create");
+        const errCode = await insertInThread(context, options, 10);
+        console.log(TAG + "after second trans create");
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        console.log(TAG + "before query predicates create");
+        let predicates = new relationalStore.RdbPredicates("test");
+        console.log(TAG + "after query predicates create");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0400 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0400 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0400 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadInsert0500
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_5900
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransSameThreadInsert0500', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0500 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await insertInThread(context, options, 10);
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0005 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0500 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0500 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadInsert0600
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6000
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransSameThreadInsert0600', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0600 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await insertInThread(context, options, 10);
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0600 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0600 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0600 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadInsert0700
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6100
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransSameThreadInsert0700', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0700 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await insertInThread(context, options, 10);
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0700 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0700 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0700 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadInsert0800
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6200
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransSameThreadInsert0800', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0800 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await insertInThread(context, options3, 10);
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0800 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0800 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0800 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadInsert0900
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6300
+     * @tc.desc RelationalStore TransSameThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransSameThreadInsert0900', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadInsert0900 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await insertInThread(context, options3, 10);
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadInsert0900 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadInsert0900 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadInsert0900 end *************");
+      done();
+    })
+
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6400
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadInsert0100', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0100 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0100 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0100 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0100 end *************");
+      done();
+    })
+
+
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6500
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransDiffThreadInsert0200', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0200 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0200 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0200 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0200 end *************");
+      done();
+    })
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0300
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6600
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadInsert0300', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0300 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0300 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0300 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0300 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0400
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6700
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadInsert0400', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0400 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options2, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0400 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0400 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0400 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0500
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6800
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadInsert0500', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0500 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options2, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0500 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0500 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0500 end *************");
+      done();
+    })
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0600
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_6900
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadInsert0600', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0600 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options2, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0600 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0600 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0600 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0700
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7000
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadInsert0700', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0700 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options3, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0700 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0700 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0700 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0800
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7100
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadInsert0800', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0800 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options3, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0800 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0800 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0800 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadInsert0900
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7200
+     * @tc.desc RelationalStore TransDiffThreadInsert
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadInsert0900', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0900 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(insertInThread, context, options3, 10)
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadInsert0900 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadInsert0900 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadInsert0900 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7300
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0100', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0100 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const rowCount = await queryInThread(context, options, 'select * from test');
+        expect(rowCount).assertEqual(0);
+
+        await rdbTrans.commit();
+
+        {
+          const rowCount = await queryInThread(context, options, 'select * from test');
+          expect(rowCount).assertEqual(10);
+        }
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0100 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0100 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0100 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7400
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0200', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0200 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const rowCount = await queryInThread(context, options, 'select * from test');
+        expect(rowCount).assertEqual(0);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0200 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0200 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0200 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0300
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7500
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0300', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0300 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+
+        await rdbStore.batchInsert('test', valueBuckets);
+
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const rowCount = await queryInThread(context, options, 'select * from test');
+        expect(rowCount).assertEqual(10);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0300 result count " + resultSet.rowCount);
+        expect(20).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0300 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0300 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0400
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7600
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0400', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0400 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction();
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await queryInThread(context, options2, 'select * from test');
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0400 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0400 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0400 end *************");
+      done();
+    })
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0500
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7700
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0500', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0500 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await queryInThread(context, options2, 'select * from test');
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0500 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0500 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0500 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0600
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7800
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0600', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0600 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await queryInThread(context, options2, 'select * from test');
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0600 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0600 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0600 end *************");
+      done();
+    })
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0700
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_7900
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0700', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0700 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await queryInThread(context, options3, 'select * from test');
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0700 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0700 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0700 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0800
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8000
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0800', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0800 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await queryInThread(context, options3, 'select * from test');
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0800 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0800 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0800 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransSameThreadQuery0900
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8100
+     * @tc.desc RelationalStore TransSameThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransSameThreadQuery0900', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransSameThreadQuery0900 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const errCode = await queryInThread(context, options3, 'select * from test');
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransSameThreadQuery0900 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransSameThreadQuery0900 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransSameThreadQuery0900 end *************");
+      done();
+    })
+
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadQuery0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8200
+     * @tc.desc RelationalStore TransDiffThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransDiffThreadQuery0100', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0100 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(queryInThread, context, options, 'select * from test')
+        const queryCount = await taskpool.execute(task)
+        expect(queryCount).assertEqual(0);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadQuery0100 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadQuery0100 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0100 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadQuery0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8300
+     * @tc.desc RelationalStore TransDiffThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadQuery0200', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0200 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+        const task = new taskpool.Task(queryInThread, context, options, 'select * from test')
+        const threadInsertCount = await taskpool.execute(task)
+        expect(threadInsertCount).assertEqual(0);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadQuery0200 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadQuery0200 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0200 end *************");
+      done();
+    })
+
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadQuery0300
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8400
+     * @tc.desc RelationalStore TransDiffThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+    it('testRdbTransDiffThreadQuery0300', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0300 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(queryInThread, context, options, 'select * from test')
+        const threadInsertCount = await taskpool.execute(task)
+        expect(threadInsertCount).assertEqual(0);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadQuery0300 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadQuery0300 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0300 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadQuery0400
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8500
+     * @tc.desc RelationalStore TransDiffThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadQuery0400', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0400 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+
+        const task = new taskpool.Task(queryInThread, context, options2, 'select * from test')
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadQuery0400 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadQuery0400 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0400 end *************");
+      done();
+    })
+
+
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadQuery0500
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8600
+     * @tc.desc RelationalStore TransDiffThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadQuery0500', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0500 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(queryInThread, context, options2, 'select * from test')
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadQuery0500 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadQuery0500 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0500 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadQuery0600
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8700
+     * @tc.desc RelationalStore TransDiffThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadQuery0600', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0600 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options3);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(queryInThread, context, options2, 'select * from test')
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadQuery0600 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadQuery0600 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0600 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadQuery0700
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8800
+     * @tc.desc RelationalStore TransDiffThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadQuery0700', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0700 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(queryInThread, context, options3, 'select * from test')
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadQuery0700 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadQuery0700 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0700 end *************");
+      done();
+    })
+
+
+
+
+    /**
+     * @tc.name testRdbTransDiffThreadQuery0800
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionAPITest_8900
+     * @tc.desc RelationalStore TransDiffThreadQuery
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+
+
+    it('testRdbTransDiffThreadQuery0800', TestType.FUNCTION, async (done: () => void) => {
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0800 start *************");
+      try {
+        const u8 = new Uint8Array([1, 2, 3]);
+        const valueBuckets = new Array(10).fill(0).map<relationalStore.ValuesBucket>(() => {
+          return {
+            "name": "lisi",
+            "age": 18,
+            "salary": 100.5,
+            "blobType": u8,
+          };
+        })
+        const rdbTrans = await rdbStore.createTransaction(options2);
+
+        const insertCount = await rdbTrans.batchInsert('test', valueBuckets);
+        expect(insertCount).assertEqual(10);
+
+        const task = new taskpool.Task(queryInThread, context, options3, 'select * from test')
+        const errCode = await taskpool.execute(task)
+        expect(errCode).assertEqual(14800024);
+
+        await rdbTrans.commit();
+
+        let predicates = new relationalStore.RdbPredicates("test");
+        let resultSet = rdbStore.querySync(predicates);
+        console.log(TAG + "testRdbTransDiffThreadQuery0800 result count " + resultSet.rowCount);
+        expect(10).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      } catch (e) {
+        console.log(TAG + e);
+        expect(null).assertFail();
+        console.log(TAG + "testRdbTransDiffThreadQuery0800 failed");
+      }
+
+      console.log(TAG + "************* testRdbTransDiffThreadQuery0800 end *************");
+      done();
+    })
   })
 }
