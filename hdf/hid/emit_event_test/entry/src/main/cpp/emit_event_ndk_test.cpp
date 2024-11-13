@@ -97,7 +97,13 @@ static napi_value HidCreateDeviceThree(napi_env env, napi_callback_info info)
 
 static napi_value HidEmitEventOne(napi_env env, napi_callback_info info)
 {
-    Hid_EmitItem event = {.type = HID_EV_MSC, .code = HID_MSC_SCAN, .value = 0x000d0042};
+    deviceId = CreateTestDevice(DEVICE_NAME);
+    NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
+    Hid_EmitItem event = {
+        .type = HID_EV_MSC,
+        .code = HID_MSC_SCAN,
+        .value = 0x000d0042
+    };
     std::vector<Hid_EmitItem> items;
     items.push_back(event);
     int32_t returnValue = OH_Hid_EmitEvent(deviceId, items.data(), (uint16_t)items.size());
@@ -108,6 +114,8 @@ static napi_value HidEmitEventOne(napi_env env, napi_callback_info info)
 
 static napi_value HidEmitEventTwo(napi_env env, napi_callback_info info)
 {
+    deviceId = CreateTestDevice(DEVICE_NAME);
+    NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     const uint16_t len = 21;
     std::vector<Hid_EmitItem> items;
     for (uint16_t i = 0; i < len; ++i) {
@@ -122,6 +130,8 @@ static napi_value HidEmitEventTwo(napi_env env, napi_callback_info info)
 
 static napi_value HidEmitEventThree(napi_env env, napi_callback_info info)
 {
+    deviceId = CreateTestDevice(DEVICE_NAME);
+    NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     const uint16_t len = 20;
     std::vector<Hid_EmitItem> items;
     for (uint16_t i = 0; i < len; ++i) {
@@ -136,6 +146,8 @@ static napi_value HidEmitEventThree(napi_env env, napi_callback_info info)
 
 static napi_value HidDestroyDeviceOne(napi_env env, napi_callback_info info)
 {
+    deviceId = CreateTestDevice(DEVICE_NAME);
+    NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     int32_t returnValue = OH_Hid_DestroyDevice(deviceId);
     napi_value result = nullptr;
     napi_create_int32(env, returnValue, &result);
