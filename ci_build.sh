@@ -135,17 +135,6 @@ for element in "${pr_array[@]}"; do
     fi
 done
 
-echo "print pr_list @@@@@@@@@@@@@@@@@@@"
-for item in "${pr_array[@]}"; do
-    echo $item
-done
-echo "print new_ci_repo_array @@@@@@@@@@@@@@@@@@@"
-for item in "${new_ci_repo_array[@]}"; do
-    echo $item
-done
-echo $all_exist
-echo "print end"
-
 if [ "$all_exist" == true ]; then
     echo "使用新精准方案"
     parse_args $@
