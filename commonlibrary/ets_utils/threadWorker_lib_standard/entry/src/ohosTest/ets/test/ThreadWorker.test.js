@@ -3042,6 +3042,93 @@ describe('threadWorkerTest', function () {
         done();
     })
 
+    // Serialization support primitive.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0010
+     * @tc.name: threadWorker_primitive_serialization_test_001
+     * @tc.desc: Serialization support primitive.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_primitive_serialization_test_001', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_039.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+        ss.postMessage(new String("primitive_string"));
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res.toString()).assertEqual("serialization_string");
+        done();
+    })
+
+    // Serialization support primitive.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0011
+     * @tc.name: threadWorker_primitive_serialization_test_002
+     * @tc.desc: Serialization support primitive.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_primitive_serialization_test_002', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_040.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+        ss.postMessage(new Number(94));
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(Number(res)).assertEqual(83);
+        done();
+    })
+
+    // Serialization support primitive.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0012
+     * @tc.name: threadWorker_primitive_serialization_test_003
+     * @tc.desc: Serialization support primitive.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_primitive_serialization_test_003', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_041.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+        ss.postMessage(new Boolean(false));
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(Boolean(res)).assertEqual(true);
+        done();
+    })
+
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0009
      * @tc.name: threadWorker_finally_test_001
