@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 export const hidCreateDevice: () => number;
+export const hidCreateDeviceTwo: () => number;
+export const hidCreateDeviceThree: () => number;
 export const hidEmitEventOne: () => number;
 export const hidEmitEventTwo: () => number;
 export const hidEmitEventThree: () => number;

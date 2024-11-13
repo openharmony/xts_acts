@@ -62,6 +62,21 @@ static napi_value HidCreateDevice(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value HidCreateDeviceTwo(napi_env env, napi_callback_info info)
+{
+    int32_t deviceId = CreateTestDevice(nullptr);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, deviceId, &result));
+    return result;
+}
+
+static napi_value HidCreateDeviceThree(napi_env env, napi_callback_info info)
+{
+    int32_t deviceId = CreateTestDevice("");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, deviceId, &result));
+    return result;
+}
 
 static napi_value HidEmitEventOne(napi_env env, napi_callback_info info)
 {
@@ -133,6 +148,8 @@ static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"hidCreateDevice", nullptr, HidCreateDevice, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"hidCreateDeviceTwo", nullptr, HidCreateDeviceTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"hidCreateDeviceThree", nullptr, HidCreateDeviceThree, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidEmitEventOne", nullptr, HidEmitEventOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidEmitEventTwo", nullptr, HidEmitEventTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidEmitEventThree", nullptr, HidEmitEventThree, nullptr, nullptr, nullptr, napi_default, nullptr},
