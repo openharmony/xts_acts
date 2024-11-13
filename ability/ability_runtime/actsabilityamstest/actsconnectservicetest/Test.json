@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsConnectServiceTest.hap",
+                "ActsConnectServiceTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
