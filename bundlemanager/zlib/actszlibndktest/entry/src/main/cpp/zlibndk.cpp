@@ -372,7 +372,7 @@ static napi_value ZLibVersion(napi_env env, napi_callback_info info)
     static const char *myVersion = ZLIB_VERSION;
     static const char *err;
     err = zlibVersion();
-    NAPI_ASSERT(env, err == myVersion, "zlibVersion error");
+    NAPI_ASSERT(env, strcmp(err, myVersion) == 0, "zlibVersion error");
     napi_value result = nullptr;
     napi_create_int32(env, SUCCESS, &result);
     return result;

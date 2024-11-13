@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it } from '@ohos/hypium'
-import zLib from 'libzlibndk.so'
+import zLib from 'libentry.so'
 
 const Z_OK: number = 0;
 const Z_NULL: number = 0;
