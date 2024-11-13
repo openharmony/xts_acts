@@ -54,7 +54,7 @@ export default function fontJsunit() {
         let strJson = getInspectorByKey('fontlist');
         let obj: ESObject = JSON.parse(strJson);
         console.info("[GridColOffsetJsunit_0100] component  strJson:" + JSON.stringify(obj.$attrs.content));
-        expect(obj.$attrs.content).assertEqual("");
+        expect(obj.$attrs.content).assertEqual("书宋-简");
       }
       done();
     });
