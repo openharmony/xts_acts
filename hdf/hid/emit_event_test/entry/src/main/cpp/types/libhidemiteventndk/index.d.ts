@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const hidCreateDevice: () => number;
+export const hidCreateDeviceOne: () => number;
 export const hidCreateDeviceTwo: () => number;
 export const hidCreateDeviceThree: () => number;
 export const hidEmitEventOne: () => number;

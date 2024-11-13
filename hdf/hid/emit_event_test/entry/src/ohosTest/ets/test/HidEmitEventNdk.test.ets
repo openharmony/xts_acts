@@ -48,7 +48,7 @@ export default function HidEmitEventTest() {
      * @tc.level      : Level 2
      */
     it('testHidCreateDevice0100', 0, async (done: Function) => {
-      let ret = hidEmitEvent.hidCreateDevice();
+      let ret = hidEmitEvent.hidCreateDeviceOne();
       console.info(TAG, "Test result testHidCreateDevice0100 : " + ret);
       IsDevcieSupport(ret, 'testHidCreateDevice0100');
       expect(ret >= 0).assertTrue();
