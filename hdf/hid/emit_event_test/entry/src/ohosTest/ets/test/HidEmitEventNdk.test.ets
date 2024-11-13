@@ -64,7 +64,7 @@ export default function HidEmitEventTest() {
      * @tc.level      : Level 2
      */
     it('testHidCreateDevice0200', 0, async (done: Function) => {
-      let ret = hidEmitEvent.hidCreateDeviceOne();
+      let ret = hidEmitEvent.hidCreateDeviceTwo();
       console.info(TAG, "Test result testHidCreateDevice0200 : " + ret);
       IsDevcieSupport(ret, 'testHidCreateDevice0100');
       expect(ret == HID_DDK_INVALID_PARAMETER).assertTrue();
@@ -80,7 +80,7 @@ export default function HidEmitEventTest() {
      * @tc.level      : Level 2
      */
     it('testHidCreateDevice0300', 0, async (done: Function) => {
-      let ret = hidEmitEvent.hidCreateDevice();
+      let ret = hidEmitEvent.hidCreateDeviceThree();
       console.info(TAG, "Test result testHidCreateDevice0300 : " + ret);
       IsDevcieSupport(ret, 'testHidCreateDevice0100');
       expect(ret == HID_DDK_INVALID_PARAMETER).assertTrue();
