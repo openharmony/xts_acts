@@ -121,7 +121,7 @@ IFS=','
 read -r -a pr_array <<< "$pr_list"
 IFS=$OLDIFS
 all_exist=true
-for element in "${pr_list[@]}"; do
+for element in "${pr_array[@]}"; do
     found=false
     for item in "${new_ci_repo_array[@]}"; do
         if [ "$element" == "$item" ]; then
@@ -136,7 +136,7 @@ for element in "${pr_list[@]}"; do
 done
 
 echo "print pr_list @@@@@@@@@@@@@@@@@@@"
-for item in "${pr_list[@]}"; do
+for item in "${pr_array[@]}"; do
     echo $item
 done
 echo "print new_ci_repo_array @@@@@@@@@@@@@@@@@@@"
@@ -149,7 +149,7 @@ echo "print end"
 if [ "$all_exist" == true ]; then
     echo "使用新精准方案"
     parse_args $@
-    # new_ci_do_make
+    new_ci_do_make
 else
     echo "使用原精准方案"
     parse_target_subsystem $pr_list
@@ -158,7 +158,7 @@ else
     else    
         parse_args $@
     fi
-    # do_make
+    do_make
     exit 0
 fi
 
