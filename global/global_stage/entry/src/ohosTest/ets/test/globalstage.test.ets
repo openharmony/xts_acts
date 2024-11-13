@@ -1704,11 +1704,319 @@ export default function globalStageTest() {
      * @tc.level     : Level 2
      */
     it('resourceManager_test_getSymbol_0020', 0, () => {
-      let value = res.resourceManager.getSymbol($r('app.string.test_stringTwentyFive').id);
+      let value = res.resourceManager.getSymbol($r('app.symbol.symbolTestReference').id);
       console.log('resourceManager_test_getSymbol_0020:' + value);
       expect(value == 983043).assertTrue();
     })
 
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0040
+     * @tc.name      : resourceManager_test_getSymbol_0040
+     * @tc.desc      : getSymbol resource resId invalid
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0040', 0, () => {
+      try {
+        let value = res.resourceManager.getSymbol(0x01234567);
+        console.log('resourceManager_test_getSymbol_0040:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getSymbol_0040_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_0040_errorMessage' + e.message);
+        expect(e.code == '9001001').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0050
+     * @tc.name      : resourceManager_test_getSymbol_0050
+     * @tc.desc      : getSymbol resource resId invalid
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0050', 0, () => {
+      try {
+        let value = res.resourceManager.getSymbol($r('app.string.test_stringTwo').id);
+        console.log('resourceManager_test_getSymbol_0050:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getSymbol_0050_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_0050_errorMessage' + e.message);
+        expect(e.code == '9001002').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0060
+     * @tc.name      : resourceManager_test_getSymbol_0060
+     * @tc.desc      : getSymbol resource resource re-ref too much by resId
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0060', 0, () => {
+      try {
+        let value = res.resourceManager.getSymbol($r('app.symbol.symbolTestA').id);
+        console.log('resourceManager_test_getSymbol_0060:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getSymbol_0060_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_0060_errorMessage' + e.message);
+        expect(e.code == '9001006').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0070
+     * @tc.name      : resourceManager_test_getSymbol_0070
+     * @tc.desc      : getSymbol normal resource object
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0070', 0, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.symbol.symbolTest1').id
+      };
+      let value = res.resourceManager.getSymbol(resource);
+      console.log('resourceManager_test_getSymbol_0070:' + value);
+      expect(value == 983043).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0080
+     * @tc.name      : resourceManager_test_getSymbol_0080
+     * @tc.desc      : getSymbol normal reference resource
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0080', 0, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.symbol.symbolTestReference').id
+      };
+      let value = res.resourceManager.getSymbol(resource);
+      console.log('resourceManager_test_getSymbol_0080:' + value);
+      expect(value == 983043).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0100
+     * @tc.name      : resourceManager_test_getSymbol_0100
+     * @tc.desc      : getSymbol resId invalid by resource object
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0100', 0, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      };
+      try {
+        let value = res.resourceManager.getSymbol(resource);
+        console.log('resourceManager_test_getSymbol_0100:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getSymbol_0100_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_0100_errorMessage' + e.message);
+        expect(e.code == '9001001').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0110
+     * @tc.name      : resourceManager_test_getSymbol_0110
+     * @tc.desc      : getSymbol resource not found by resource object
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0110', 0, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.string.test_stringTwo').id
+      };
+      try {
+        let value = res.resourceManager.getSymbol(resource);
+        console.log('resourceManager_test_getSymbol_0110:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getSymbol_0110_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_0110_errorMessage' + e.message);
+        expect(e.code == '9001002').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0120
+     * @tc.name      : resourceManager_test_getSymbol_0120
+     * @tc.desc      : getSymbol resource re-ref too much by resource object
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0120', 0, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.symbol.symbolTestA').id
+      };
+      try {
+        let value = res.resourceManager.getSymbol(resource);
+        console.log('resourceManager_test_getSymbol_0120:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getSymbol_0120_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_0120_errorMessage' + e.message);
+        expect(e.code == '9001006').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0140
+     * @tc.name      : resourceManager_test_getSymbol_0140
+     * @tc.desc      : getSymbolByName reference resource
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0140', 0, () => {
+      let value = res.resourceManager.getSymbolByName('symbolTestReference');
+      console.log('resourceManager_test_getSymbol_0140:' + value);
+      expect(value == 983043).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0160
+     * @tc.name      : resourceManager_test_getSymbol_0160
+     * @tc.desc      : getSymbolByName resName invalid
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0160', 0, () => {
+      try {
+        let value = res.resourceManager.getSymbolByName('invalidName');
+        console.log('resourceManager_test_getSymbol_0160:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getSymbol_0160_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_0160_errorMessage' + e.message);
+        expect(e.code == '9001003').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0180
+     * @tc.name      : resourceManager_test_getSymbol_0180
+     * @tc.desc      : getSymbolByName resource re-ref too much
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0180', 0, () => {
+      try {
+        let value = res.resourceManager.getSymbolByName('symbolTestB');
+        console.log('resourceManager_test_getSymbol_0180:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getSymbol_0180_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_0180_errorMessage' + e.message);
+        expect(e.code == '9001006').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0190
+     * @tc.name      : resourceManager_test_getSymbol_0190
+     * @tc.desc      : getSymbol normal resource by resId in Chinese
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0190', 0, () => {
+      let value = res.resourceManager.getSymbol($r('app.symbol.symbolTest2').id);
+      console.log('resourceManager_test_getSymbol_0190:' + value);
+      expect(value == 983041).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0200
+     * @tc.name      : resourceManager_test_getSymbol_0200
+     * @tc.desc      : getSymbol normal resource by resId in Chinese
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0200', 0, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: $r('app.symbol.symbolTest2').id
+      };
+      let value = res.resourceManager.getSymbol(resource);
+      console.log('resourceManager_test_getSymbol_0200:' + value);
+      expect(value == 983041).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_0210
+     * @tc.name      : resourceManager_test_getSymbol_0210
+     * @tc.desc      : getSymbolByName normal name ZH
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_0210', 0, () => {
+      let value = res.resourceManager.getSymbolByName('symbolTest2');
+      console.log('resourceManager_test_getSymbol_0210:' + value);
+      expect(value == 983041).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_getDrawable_1400
+     * @tc.name      : resourceManager_test_getDrawable_1400
+     * @tc.desc      : getDrawableDescriptor with resource Object not exist resource id
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getDrawable_1400', 0, () => {
+      let resource: resourceManager.Resource = {
+        bundleName: "ohos.acts.globalstage",
+        moduleName: "entry_test",
+        id: 0x01234567
+      };
+      try {
+        let value = res.resourceManager.getDrawableDescriptor(resource);
+        console.log('resourceManager_test_getDrawable_1400:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getDrawable_1400_errorCode' + e.code);
+        console.log('resourceManager_test_getDrawable_1400_errorMessage' + e.message);
+        expect(e.code == '9001001').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_getDrawable_0900
+     * @tc.name      : resourceManager_test_getDrawable_0900
+     * @tc.desc      : getDrawableDescriptorByName with not exist pic name
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getDrawable_0900', 0, () => {
+      try {
+        let value = res.resourceManager.getDrawableDescriptorByName('symbolTest2');
+        console.log('resourceManager_test_getDrawable_0900:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getDrawable_0900_errorCode' + e.code);
+        console.log('resourceManager_test_getDrawable_0900_errorMessage' + e.message);
+        expect(e.code == '9001003').assertTrue();
+      }
+    })
     console.log('*************end globalStageTest*************');
   })
 }
