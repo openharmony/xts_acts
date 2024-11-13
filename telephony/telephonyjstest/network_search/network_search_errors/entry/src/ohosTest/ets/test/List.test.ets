@@ -12,6 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import ActsNetworkSearchTest from './NetworkSearchErrors.test';
+import sim from '@ohos.telephony.sim';
+import EmptyTest from './Empty.test';
 
-// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
-export { appTasks } from '@ohos/hvigor-ohos-plugin';
+export default function testsuite() {
+  if (sim.getMaxSimCount()!=0){
+    ActsNetworkSearchTest();
+  }else{
+    EmptyTest();
+  }
+}
