@@ -109,6 +109,7 @@
 #include "drag/dragAction_setTouchPointXY.h"
 #include "drag/dragAction_registerStatusListener.h"
 #include "animation/animator_event_test.h"
+#include "inputevent/input_event_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -399,6 +400,24 @@ static napi_value Init(napi_env env, napi_value exports)
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
+        return nullptr;
+    }
+
+    // Input Event
+    napi_property_descriptor inputEvent_desc[] = {
+        // testInputEvent001,testInputEvent002
+        { "inputEventTest", nullptr, InputEventTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+            nullptr },
+        // testInputEvent011,testInputEvent012,testInputEvent013,testInputEvent014
+        { "inputEventMouseTest", nullptr, InputEventTest::CreateNativeNodeForMouse, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        // testInputEvent017
+        { "inputEventAxisTest", nullptr, InputEventTest::CreateNativeNodeForAxis, nullptr, nullptr, nullptr,
+            napi_default, nullptr }
+    };
+    if (napi_define_properties(env, exports, sizeof(inputEvent_desc) / sizeof(inputEvent_desc[0]), inputEvent_desc) !=
+        napi_ok) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties inputEvent_desc failed");
         return nullptr;
     }
 

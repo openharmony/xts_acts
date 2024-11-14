@@ -616,6 +616,7 @@ import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
 import animatorEventTest from "./animation/AnimatorEventTest.test"
 import textCustomSpanTest from "./text/TextCustomSpan.test"
 import textImageSpanTest from "./text/TextImageSpan.test"
+import inputEvent from "./inputevent/InputEventTest.test"
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1221,4 +1222,5 @@ export default function testsuite() {
   animatorEventTest()
   textCustomSpanTest()
   textImageSpanTest()
+  inputEvent()
 }

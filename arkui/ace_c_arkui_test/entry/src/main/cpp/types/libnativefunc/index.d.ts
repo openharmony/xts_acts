@@ -5571,3 +5571,13 @@ export const testUnregisterSystemFontStyleChangeEvent_004: () => number;
 export const testSystemFontStyleEvent_GetFontSizeScale_005: () => number;
 export const testSystemFontStyleEvent_GetFontWeightScale_006: () => number;
 export const textImageSpanTest001: () => number;
+
+export const testInputEvent003: () => number;
+export const testInputEvent004: () => number;
+export const testInputEvent005: () => number;
+export const testInputEvent006: () => number;
+export const testInputEvent008: () => number;
+export const testInputEvent009: () => number;
+export const testInputEvent010: () => number;
+export const testInputEvent015: () => number;
+export const testInputEvent016: () => number;

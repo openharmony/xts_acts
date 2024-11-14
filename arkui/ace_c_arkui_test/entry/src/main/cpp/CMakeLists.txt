@@ -8,6 +8,7 @@ add_definitions(-DOHOS_PLATFORM)
 include_directories(
     ${NATIVERENDER_ROOT_PATH}
     ${NATIVERENDER_ROOT_PATH}/include
+    PUBLIC component
 )
 
 add_library(nativerender SHARED
@@ -112,6 +113,10 @@ add_library(nativerender SHARED
     system/system_ColorFontChange_test.cpp
     text/text_imageSpan_test.cpp
     animation/animator_event_test.cpp
+    component/button_component.cpp
+    component/component.cpp    
+    component/text_component.cpp
+    inputevent/input_event_test.cpp
 )
 
 add_library(nativefunc SHARED
