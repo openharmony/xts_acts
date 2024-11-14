@@ -97,19 +97,12 @@ do_make()
 new_ci_do_make()
 {
     cd $BASE_HOME
-    if [[ "${match_status}" == false || "$xts_targets" =~ "xts_acts" ]];then
-        if [ -z "$CACHE_TYPE" ]; then
-	        python ./test/xts/acts/build.py product_name=rk3568 system_size=standard $remaining_params
-        else
-            python ./test/xts/acts/build.py product_name=rk3568 system_size=standard $remaining_params cache_type=$CACHE_TYPE
-        fi
+    if [ -z "$CACHE_TYPE" ]; then
+        python ./test/xts/acts/build.py product_name=rk3568 system_size=standard $remaining_params
     else
-        if [ -z "$CACHE_TYPE" ]; then
-            python ./test/xts/acts/build.py product_name=rk3568 system_size=standard suite=${xts_targets} $remaining_params
-        else
-            python ./test/xts/acts/build.py product_name=rk3568 system_size=standard suite=${xts_targets} $remaining_params cache_type=$CACHE_TYPE
-        fi
+        python ./test/xts/acts/build.py product_name=rk3568 system_size=standard $remaining_params cache_type=$CACHE_TYPE
     fi
+
 }
 
 echo $@
