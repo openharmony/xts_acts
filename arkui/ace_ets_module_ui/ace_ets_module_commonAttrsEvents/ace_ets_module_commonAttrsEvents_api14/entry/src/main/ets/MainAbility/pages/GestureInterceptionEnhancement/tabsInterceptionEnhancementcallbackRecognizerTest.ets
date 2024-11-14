@@ -13,36 +13,30 @@
  * limitations under the License.
  */
 
-import { MessageManager, Callback, Message } from '../../common/MessageManager';
+interface testRecognizer {
+
+  type:number;
+  tag: string;
+  isBuildIn:boolean;
+  isEnabled:boolean;
+  getState:number;
+  getId:string;
+  isValid:boolean;
+}
 
 @Entry
 @Component
-struct GestureTest {
+struct GestureTest5 {
   @State currentIndex: number = 0
   @State selectedIndex: number = 0
   @State fontColor: string = '#182431'
   @State selectedFontColor: string = '#007DFF'
   controller?: TabsController = new TabsController();
   @State exposeInnerGesture: boolean = true;
-  @State callBackString: string = "";
+  @State timestamp: number = 0
+  @State eventString:string = "ceshi";
+  @State eventStringArray:string = "ceshiArray";
 
-  messageManager: MessageManager<boolean> = new MessageManager();
-
-   onPageShow() {
-    console.info('tabsInterceptionEnhancement pages onPageShow');
-    globalThis.value = {
-      name: 'messageManager',
-      message: this.messageManager
-    };
-    let callback: Callback<boolean> = (message: Message<boolean>) => {
-      console.error('message = ' + message.name + "--" + message.value);
-      if (message.name == 'exposeInnerGesture') {
-        this.exposeInnerGesture = message.value;
-      }
-      
-    };
-    this.messageManager.registerCallback(callback);
-  }
   @Builder
   tabBuilder(index: number, name: string) {
     Column() {
@@ -60,14 +54,16 @@ struct GestureTest {
   }
   build() {
     Column() {
-      Text(this.callBackString).key("callBackS");
+       Text(this.eventString).key("eventceshi");
+       Text(this.eventStringArray).key("eventArray");
       Tabs({ barPosition: BarPosition.Start, index: this.currentIndex, controller: this.controller }) {
         TabContent() {
           Column(){
             Text(`GreenTest`).fontSize(16)
-          }.width('100%').height('100%').backgroundColor(Color.Green).key("firstTabsContent")
+          }.width('100%').height('100%').backgroundColor(Color.Green).key("firstTabsContentR")
 
         }.tabBar(this.tabBuilder(0, 'green'))
+
         TabContent() {
           Tabs() {
             TabContent() {
@@ -83,8 +79,37 @@ struct GestureTest {
           }
           .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
                                           others: Array<GestureRecognizer>): GestureJudgeResult => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
-            console.info('ets onGestureRecognizerJudgeBegin child')
-            this.callBackString = "接口触发"
+            console.info('enhance ets onGestureRecognizerJudgeBegin child')
+
+            console.info("enhance tag = " + current.getTag() + " type = " + current.getType() + " isBuildIn = " + current.isBuiltIn()
+             + " isEnable = " + current.isEnabled() + " getState " + current.getState() + " EventTargetInfo = " +  current.getEventTargetInfo().getId() + " isValid =" + current.isValid());
+            let currentData :testRecognizer = {
+               tag:current.getTag(),
+               type:current.getType(),
+              isBuildIn:current.isBuiltIn(),
+              isEnabled: current.isEnabled(),
+              getState: current.getState(),
+              getId:current.getEventTargetInfo().getId(),
+              isValid:current.isValid()
+            }
+
+           this.eventString = JSON.stringify(currentData);
+            console.info("recognizer "  + this.eventString);
+            let ArrayData:testRecognizer[] = [];
+
+            for (let i = 0; i < others.length; i++) {
+              ArrayData.push({tag:others[i].getTag(),
+                type:others[i].getType(),
+                isBuildIn:others[i].isBuiltIn(),
+                isEnabled: others[i].isEnabled(),
+                getState: others[i].getState(),
+                getId: others[i].getEventTargetInfo().getId(),
+                isValid:others[i].isValid()})
+              console.info("others tag = " + others[i].getTag() + " type = " + others[i].getType() + " isBuildIn = " + others[i].isBuiltIn()
+              + " isEnable = " + others[i].isEnabled() + " getState " + others[i].getState() + " EventTargetInfo = " +  others[i].getEventTargetInfo().getId() + " isValid =" + others[i].isValid());
+            }
+
+            this.eventStringArray = JSON.stringify(ArrayData);
             if (current) {
               let target = current.getEventTargetInfo();
               if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
@@ -109,7 +134,8 @@ struct GestureTest {
               }
             }
             return GestureJudgeResult.CONTINUE;
-          }, this.exposeInnerGesture)
+          }, true)
+          .id("gestureId")
         }.tabBar(this.tabBuilder(1, 'blue and pink'))
         TabContent() {
           Column(){
