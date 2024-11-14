@@ -20,7 +20,6 @@ import { testAVPlayerFun, setSource, setSubtitle, PlayTest } from './AVPlayerTes
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
-import { sleep } from './NewAVPlayerTestBase';
 
 const VIDEO_SOURCE = 'H264_AAC.mp4';
 const AUDIO_SOURCE = '01.mp3';
