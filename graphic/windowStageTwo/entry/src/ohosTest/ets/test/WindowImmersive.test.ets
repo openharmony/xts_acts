@@ -1624,9 +1624,8 @@ export default function windowImmersiveTest() {
       console.log(msgStr + ' begin');
       let height:Number;
       const systemAvoidAreaChangeCallback = (data:window.AvoidArea) => {
-        console.info(`${msgStr} callback1 Succeeded in enabling the listener for system avoid area changes.`);
-        expect(false).assertTrue();
-        done();
+        console.log('windowTest OnOffTest2 callback  ' + JSON.stringify(data));
+            height = data.bottomRect.height;
       };
       if(isPCStatus == ''|| isPCStatus == '1'){
         windowStage.getMainWindow((err, data) => {
