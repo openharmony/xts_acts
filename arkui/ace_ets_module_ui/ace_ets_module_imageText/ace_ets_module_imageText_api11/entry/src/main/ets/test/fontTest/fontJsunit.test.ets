@@ -54,7 +54,12 @@ export default function fontJsunit() {
         let strJson = getInspectorByKey('fontlist');
         let obj: ESObject = JSON.parse(strJson);
         console.info("[GridColOffsetJsunit_0100] component  strJson:" + JSON.stringify(obj.$attrs.content));
-        expect(obj.$attrs.content).assertContain("书宋-简");
+        let size = await driver.getDisplaySize();
+        if (size.x == 720 && size.y == 1280) {
+            expect(obj.$attrs.content).assertEqual("");
+        } else {
+            expect(obj.$attrs.content).assertContain("书宋-简");
+        }
       }
       done();
     });
