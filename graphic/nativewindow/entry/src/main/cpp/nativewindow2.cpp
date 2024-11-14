@@ -90,32 +90,18 @@ OH_NativeBuffer_Format bufferFormatType[] = {
     NATIVEBUFFER_PIXEL_FMT_BUTT};
 
 int32_t TransformType[] = {
-    NATIVEBUFFER_ROTATE_NONE, /**< No rotation */
-    NATIVEBUFFER_ROTATE_90, /**< Rotation by 90 degrees */
-    NATIVEBUFFER_ROTATE_180, /**< Rotation by 180 degrees */
-    NATIVEBUFFER_ROTATE_270, /**< Rotation by 270 degrees */
-    NATIVEBUFFER_FLIP_H, /**< Flip horizontally */
-    NATIVEBUFFER_FLIP_V, /**< Flip vertically */
-    NATIVEBUFFER_FLIP_H_ROT90, /**< Flip horizontally and rotate 90 degrees */
-    NATIVEBUFFER_FLIP_V_ROT90, /**< Flip vertically and rotate 90 degrees */
-    NATIVEBUFFER_FLIP_H_ROT180, /**< Flip horizontally and rotate 180 degrees */
-    NATIVEBUFFER_FLIP_V_ROT180, /**< Flip vertically and rotate 180 degrees */
-    NATIVEBUFFER_FLIP_H_ROT270, /**< Flip horizontally and rotate 270 degrees */
-    NATIVEBUFFER_FLIP_V_ROT270,
+    NATIVEBUFFER_ROTATE_NONE,   NATIVEBUFFER_ROTATE_90,     NATIVEBUFFER_ROTATE_180,    NATIVEBUFFER_ROTATE_270,
+    NATIVEBUFFER_FLIP_H,        NATIVEBUFFER_FLIP_V,        NATIVEBUFFER_FLIP_H_ROT90,  NATIVEBUFFER_FLIP_V_ROT90,
+    NATIVEBUFFER_FLIP_H_ROT180, NATIVEBUFFER_FLIP_V_ROT180, NATIVEBUFFER_FLIP_H_ROT270, NATIVEBUFFER_FLIP_V_ROT270,
 };
 
 int32_t ColorGamut[] = {
-	NATIVEBUFFER_COLOR_GAMUT_NATIVE, /**< Native or default */
-	NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601, /**< Standard BT601 */
-	NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709, /**< Standard BT709 */
-	NATIVEBUFFER_COLOR_GAMUT_DCI_P3, /**< DCI P3 */
-	NATIVEBUFFER_COLOR_GAMUT_SRGB, /**< SRGB */
-	NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB, /**< Adobe RGB */
-	NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3, /**< Display P3 */
-	NATIVEBUFFER_COLOR_GAMUT_BT2020, /**< BT2020 */
-	NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ, /**< BT2100 PQ */
-	NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG, /**< BT2100 HLG */
-	NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020,
+    NATIVEBUFFER_COLOR_GAMUT_NATIVE,         NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601,
+    NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709, NATIVEBUFFER_COLOR_GAMUT_DCI_P3,
+    NATIVEBUFFER_COLOR_GAMUT_SRGB,           NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB,
+    NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3,     NATIVEBUFFER_COLOR_GAMUT_BT2020,
+    NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ,      NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG,
+    NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020,
 };
 
 uint64_t usageType[] = {
@@ -153,7 +139,7 @@ public:
         _nativeWindow = nullptr;
     }
     OHNativeWindow *returnNativeWindow() {
-        if(_nativeWindow == nullptr) {
+        if (_nativeWindow == nullptr) {
             return nullptr;
         } else {
             return _nativeWindow;
@@ -226,25 +212,25 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal(napi_env en
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 1, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_1, &result);
             return result;
         }
         int32_t format;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_FORMAT, &format);
         if (flag != 0) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 2, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_2, &result);
             return result;
         }
         if (format != arr[i]) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 3, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_3, &result);
             return result;
         }
     }
 
     int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, "ab%^！#8c");
-	int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, CONSTANT_999999999999999999);
-	int32_t flag3 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, NULL);
-	int32_t flag4 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT);
+    int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, CONSTANT_999999999999999999);
+    int32_t flag3 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, NULL);
+    int32_t flag4 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT);
     if (flag1 != 0 || flag2 != 0 || flag3 != 0 || flag4 != 0) {
         napi_create_int32(env, CONSTANT_10000 + 4, &result);
         return result;
@@ -274,11 +260,11 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageNormal(napi_env env, 
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, usageType[i]);
         int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &getUsage);
         if (flag1 != 0 || flag2 != 0) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 2, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_2, &result);
             return result;
         }
         if (getUsage != usageType[i]) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 3, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_3, &result);
             return result;
         }
     }
@@ -288,11 +274,11 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageNormal(napi_env env, 
         uint64_t  usage;
         int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &usage);
         if (flag1 != 0 || flag2 != 0) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 5, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_5, &result);
             return result;
         }
         if (usage != arr2[i]) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 6, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_6, &result);
             return result;
         }
     }
@@ -370,16 +356,16 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetStrideNormal(napi_env env,
         int32_t stride;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_STRIDE, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 1, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
             return result;
         }
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_STRIDE, &stride);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
         if (arr[i] != stride) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
     }
@@ -456,12 +442,12 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalNormal(napi_en
         int32_t interval;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SWAP_INTERVAL, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 1, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
             return result;
         }
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SWAP_INTERVAL, &interval);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
     }
@@ -533,30 +519,30 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal(napi_env 
     OH_NativeImage *iamge = initNative->returnNativeImage();
 
     for (int i = 0; i < sizeof(ColorGamut)/sizeof(ColorGamut[0]); ++i) {
-		int32_t getColorGamut;
+	    int32_t getColorGamut;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, ColorGamut[i]);
-		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &getColorGamut);
+	    int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &getColorGamut);
         if (flag1 != 0 || flag2 != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 1, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
             return result;
         }
         if (getColorGamut != ColorGamut[i]) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
-    }	
+    }
     int32_t arr[] = {-CONSTANT_2147483647, -CONSTANT_1000, -CONSTANT_1,        CONSTANT_0,
                      CONSTANT_1,           CONSTANT_1000,  CONSTANT_2147483647};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t gamut;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, arr[i]);
-		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &gamut);
+        int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &gamut);
         if (flag1 != 0 || flag2 != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
         if (arr[i] != gamut) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 4, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_4, &result);
             return result;
         }
     }
@@ -628,28 +614,28 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformNormal(napi_env e
     for (int i = 0; i < sizeof(TransformType)/sizeof(TransformType[0]); ++i) {
         int32_t getTransformType;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, TransformType[i]);
-		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &getTransformType);
+	    int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &getTransformType);
         if (flag1 != 0 || flag2 != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
         if (TransformType[i] != getTransformType) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
-    }	
+    }
     int32_t arr[] = {-CONSTANT_2147483647, -CONSTANT_1000, -CONSTANT_1,        CONSTANT_0,
                      CONSTANT_1,           CONSTANT_1000,  CONSTANT_2147483647};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t transform;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, arr[i]);
-		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &transform);
+	    int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &transform);
         if (flag1 != 0 || flag2 != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 4, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_4, &result);
             return result;
         }
         if (arr[i] != transform) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 5, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_5, &result);
             return result;
         }
     }
@@ -721,7 +707,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampNormal(napi_env en
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
-    uint64_t arr[] = {CONSTANT_0, CONSTANT_1, CONSTANT_1000, 1ULL << 63, CONSTANT_999999999999999999, 18446744073709551615};
+    uint64_t arr[] = {CONSTANT_0,          CONSTANT_1, CONSTANT_1000, 1ULL << 63, CONSTANT_999999999999999999,
+                      18446744073709551615};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_UI_TIMESTAMP, arr[i]);
         if (flag != 0) {
@@ -825,7 +812,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessNormal
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_HDR_WHITE_POINT_BRIGHTNESS, brightness);
         if (flag != 0) {
-            napi_create_int32(env, i + 1, &result);
+            napi_create_int32(env, i + CONSTANT_1, &result);
             return result;
         }
     }
@@ -854,7 +841,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessAbnorm
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_HDR_WHITE_POINT_BRIGHTNESS, brightness);
         if (flag != 0) {
-            napi_create_int32(env, i + 1, &result);
+            napi_create_int32(env, i +CONSTANT_1, &result);
             return result;
         }
     }
@@ -893,7 +880,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessNormal
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SDR_WHITE_POINT_BRIGHTNESS, brightness);
         if (flag != 0) {
-            napi_create_int32(env, i + 1, &result);
+            napi_create_int32(env, i + CONSTANT_1, &result);
             return result;
         }
     }
@@ -922,7 +909,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessAbnorm
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SDR_WHITE_POINT_BRIGHTNESS, brightness);
         if (flag != 0) {
-            napi_create_int32(env, i + 1, &result);
+            napi_create_int32(env, i + CONSTANT_1, &result);
             return result;
         }
     }
@@ -959,29 +946,29 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeNormal(napi_env 
         OH_SURFACE_SOURCE_CAMERA,  OH_SURFACE_SOURCE_VIDEO,
     };
     for (int i = 0; i < sizeof(SourceType)/sizeof(SourceType[i]); ++i) {
-		int32_t getSourceType;
+	    int32_t getSourceType;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, SourceType[i]);
 		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &getSourceType);
         if (flag1 != 0 || flag2 != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 1, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
             return result;
         }
         if (getSourceType != SourceType[i]) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
     }
     int32_t arr[] = {-2147483647, -1000, -1, 0, 1, 1000, 2147483647};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, arr[i]);
-		int32_t sourceType;
+	    int32_t sourceType;
         int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &sourceType);
         if (flag1 != 0 || flag2 != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
         if (sourceType != arr[i]) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 4, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_4, &result);
             return result;
         }
     }
@@ -1069,8 +1056,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal(nap
             return result;
         }
     }
-
-
+    
     delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -1137,7 +1123,6 @@ napi_value testNativeWindowNativeWindowSetSetScalingModeV2Nullptr(napi_env env, 
         return result;
     }
 
-
     delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -1163,7 +1148,7 @@ napi_value testNativeWindowNativeWindowSetScalingModeV2ScalingMode(napi_env env,
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowSetScalingModeV2(nativeWindow, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, i + 1, &result);
+            napi_create_int32(env, i + CONSTANT_1, &result);
             return result;
         }
     }
@@ -2174,12 +2159,12 @@ napi_value testNativeWindowSetMetadataValue_metadata_type(napi_env env, napi_cal
         uint8_t val = hdr_type[i];
         int32_t flag = OH_NativeWindow_SetMetadataValue(nativeWindow, OH_HDR_METADATA_TYPE, sizeof(uint8_t), &val);
         if (flag != SUCCESS) {
-            napi_create_int32(env, CONSTANT_1000 * i + 1, &result);
+            napi_create_int32(env, CONSTANT_1000 * i + CONSTANT_1, &result);
             return result;
         }
         flag = OH_NativeWindow_GetMetadataValue(nativeWindow, OH_HDR_METADATA_TYPE, &bufferSize, &buffer);
         if (*buffer != val) {
-            napi_create_int32(env, CONSTANT_1000 * i + 2, &result);
+            napi_create_int32(env, CONSTANT_1000 * i + CONSTANT_2, &result);
             return result;
         }
     }
