@@ -245,7 +245,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal(napi_env en
 	int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, CONSTANT_999999999999999999);
 	int32_t flag3 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, NULL);
 	int32_t flag4 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT);
-    if (flag1 != 0 || flag2 !=0 || flag3 !=0 || flag4 !=0) {
+    if (flag1 != 0 || flag2 != 0 || flag3 != 0 || flag4 != 0) {
         napi_create_int32(env, CONSTANT_10000 + 4, &result);
         return result;
     }
@@ -1021,24 +1021,12 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeAbnormal(napi_en
             return result;
         }
     }
-    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, CONSTANT_999999999999999999);
-    if (flag != 0) {
-        napi_create_int32(env, CONSTANT_100000 + CONSTANT_1, &result);
-        return result;
-    }
-    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, "sdasda213!");
-    if (flag != 0) {
-        napi_create_int32(env, CONSTANT_100000 + CONSTANT_2, &result);
-        return result;
-    }
-    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, NULL);
-    if (flag != 0) {
+    int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, CONSTANT_999999999999999999);
+    int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, "sdasda213!");
+    int32_t flag3 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, NULL);
+    int32_t flag4 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE);
+    if (flag1 != 0 || flag2 != 0 || flag3 != 0 || flag4 != 0) {
         napi_create_int32(env, CONSTANT_100000 + CONSTANT_3, &result);
-        return result;
-    }
-    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE);
-    if (flag != 0) {
-        napi_create_int32(env, CONSTANT_100000 + CONSTANT_4, &result);
         return result;
     }
 
