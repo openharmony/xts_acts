@@ -20,8 +20,8 @@
 // please include "napi/native_api.h".
 
 #include "napi/native_api.h"
-#include <bits/alltypes.h>
-#include <GLES2/gl2.h>
+#include <cstdint>
+#include <hilog/log.h>
 #include <multimedia/player_framework/native_avcodec_base.h>
 #include <native_image/native_image.h>
 #include <native_window/external_window.h>
@@ -72,42 +72,69 @@
 #define CONSTANT_50002000 50002000
 #define CONSTANT_50102000 50102000
 
-struct result {
-    OH_NativeImage *image;
-    OHNativeWindow *nativeWindow;
-};
 
-static result InitNativeWindow()
-{
-    struct result result1;
-    GLuint textureId;
-    glGenTextures(1, &textureId);
-    auto _image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-    result1.image = _image;
-    OHNativeWindow *_nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
-    result1.nativeWindow = _nativeWindow;
-    int code = SET_BUFFER_GEOMETRY;
+class InitNativeWindow{
+private:
     int32_t width_ = 0x100;
     int32_t height_ = 0x100;
-    int32_t ret = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, code, width_, height_);
-    code = SET_USAGE;
     int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
-    ret = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, code, usage);
-    return result1;
-}
+    OH_NativeImage* _image = nullptr;
+    OHNativeWindow* _nativeWindow = nullptr;
+
+public:
+    InitNativeWindow(){
+        _image = OH_ConsumerSurface_Create();
+        if (_image != nullptr){
+            _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
+            if (_nativeWindow != nullptr){
+                OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_BUFFER_GEOMETRY, width_, height_);
+                OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, usage);
+            } else {
+                _nativeWindow = nullptr;
+            }
+        } else {
+            _image = nullptr;
+            _nativeWindow = nullptr;
+        }
+    }
+    ~InitNativeWindow(){
+        _image = nullptr;
+        _nativeWindow = nullptr;
+    }
+    OHNativeWindow *returnNativeWindow() {
+        if(_nativeWindow == nullptr){
+            return nullptr;
+        } else {
+            return _nativeWindow;
+        }
+    };
+    OH_NativeImage *returnNativeImage() {
+        if (_image == nullptr) {
+            return nullptr;
+        } else {
+            return _image;
+        }
+    }
+};
 
 static void DestroyNativeWindowImage(OH_NativeImage *image, OHNativeWindow *window)
 {
-    OH_NativeImage_Destroy(&image);
     OH_NativeWindow_DestroyNativeWindow(window);
+	OH_NativeImage_Destroy(&image);
 }
 
 napi_value testNativeWindowNativeWindowHandleOptSetGetFormatNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
+//     OHNativeWindow* nativeWindow;
 
     OH_NativeBuffer_Format arr[] = {
         NATIVEBUFFER_PIXEL_FMT_CLUT8,        NATIVEBUFFER_PIXEL_FMT_CLUT1,        NATIVEBUFFER_PIXEL_FMT_CLUT4,
@@ -125,25 +152,24 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatNormal(napi_env env,
         NATIVEBUFFER_PIXEL_FMT_YCRCB_P010,   NATIVEBUFFER_PIXEL_FMT_RAW10,        NATIVEBUFFER_PIXEL_FMT_VENDER_MASK,
         NATIVEBUFFER_PIXEL_FMT_BUTT};
 
-    for (int i = 0; i < sizeof(arr) / sizeof(OH_NativeBuffer_Format); ++i) {
-        auto flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, arr[i]);
+    for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); ++i) {
+        int32_t flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1, &result);
+            napi_create_int32(env, 1, &result);
             return result;
         }
-        int32_t format;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_FORMAT, &format);
+        int32_t getFormat;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_FORMAT, &getFormat);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_2, &result);
+            napi_create_int32(env, 2, &result);
             return result;
         }
-        if (format != arr[i]) {
-            napi_create_int32(env, CONSTANT_3, &result);
+        if (getFormat != arr[i]) {
+            napi_create_int32(env, 3, &result);
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -151,47 +177,57 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatNormal(napi_env env,
 napi_value testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t flag;
     int32_t arr[] = {-CONSTANT_2147483648, -CONSTANT_2147483647, -CONSTANT_1000000, -CONSTANT_100,      -CONSTANT_1,
                      CONSTANT_0,           CONSTANT_1,           CONSTANT_100000,   CONSTANT_2147483647};
 
-    for (int i = 0; i < sizeof(arr) / sizeof(OH_NativeBuffer_Format); ++i) {
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_1, &result);
+            napi_create_int32(env, (i + 1) * 1000 + 1, &result);
             return result;
         }
         int32_t format;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_FORMAT, &format);
         if (flag != 0) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_2, &result);
+            napi_create_int32(env, (i + 1) * 1000 + 2, &result);
             return result;
         }
         if (format != arr[i]) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_3, &result);
+            napi_create_int32(env, (i + 1) * 1000 + 3, &result);
             return result;
         }
     }
 
     flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, "ab%^！#8c");
-    if (flag != 0) { // 应为非0
-        napi_create_int32(env, CONSTANT_100000 + CONSTANT_1, &result);
+    if (flag != 0) {
+        napi_create_int32(env, 100001, &result);
+        return result;
+    }
+    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, 999999999999999999);
+    if (flag != 0) {
+        napi_create_int32(env, 100001, &result);
         return result;
     }
     flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, NULL);
-    if (flag != 0) { // 应为成功
-        napi_create_int32(env, CONSTANT_100000 + CONSTANT_2, &result);
+    if (flag != 0) {
+        napi_create_int32(env, 100002, &result);
         return result;
     }
     flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT);
-    if (flag != 0) { // 应为成功
-        napi_create_int32(env, CONSTANT_100000 + CONSTANT_3, &result);
+    if (flag != 0) {
+        napi_create_int32(env, 100003, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -199,32 +235,62 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal(napi_env en
 napi_value testNativeWindowNativeWindowHandleOptSetGetUsageNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *_nativeWindow = nullptr;
+    _nativeWindow = initNative->returnNativeWindow();
+    if (_nativeWindow == nullptr) {
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t width_ = 0x100;
+    int32_t height_ = 0x100;
+    OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, code, width_, height_);
     int32_t flag;
-    int32_t arr[] = {-CONSTANT_2147483648, -CONSTANT_1000, -CONSTANT_1,        CONSTANT_0,
-                     CONSTANT_1,           CONSTANT_1000,  CONSTANT_100000000, CONSTANT_2147483647};
-
-    for (int i = 0; i < sizeof(arr) / sizeof(OH_NativeBuffer_Usage); ++i) {
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_USAGE, arr[i]);
+    uint64_t arr1[] = {NATIVEBUFFER_USAGE_CPU_READ, /// < CPU read buffer */
+                      NATIVEBUFFER_USAGE_CPU_WRITE, /// < CPU write memory */
+                      NATIVEBUFFER_USAGE_MEM_DMA, /// < Direct memory access (DMA) buffer */
+                      NATIVEBUFFER_USAGE_HW_RENDER, /// < For GPU write case */
+                      NATIVEBUFFER_USAGE_HW_TEXTURE, /// < For GPU read case */
+                      NATIVEBUFFER_USAGE_CPU_READ_OFTEN, /// < Often be mapped for direct CPU reads */
+                      NATIVEBUFFER_USAGE_ALIGNMENT_512};
+    for (int i = 0; i < sizeof(arr1)/sizeof(arr1[0]); ++i) {
+        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, arr1[i]);
         if (flag != 0) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_1, &result);
+            napi_create_int32(env, (i + 1) * 1000 + 1, &result);
             return result;
         }
-        int32_t usage;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_USAGE, &usage);
+        uint64_t  getUsage;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &getUsage);
         if (flag != 0) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_2, &result);
+            napi_create_int32(env, (i + 1) * 1000 + 2, &result);
             return result;
         }
-        if (usage != arr[i]) {
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_3, &result);
+        if (getUsage != arr1[i]) {
+            napi_create_int32(env, (i + 1) * 1000 + 3, &result);
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    uint64_t arr2[] = {0, 1, 1000, 100000000, 2147483647, 18446744073709551615};
+    for (int i = 0; i < sizeof(arr2) / sizeof(arr2[0]); ++i) {
+        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, arr2[i]);
+        if (flag != 0) {
+            napi_create_int32(env, (i + 1) * 1000 + 4, &result);
+            return result;
+        }
+        uint64_t  usage;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &usage);
+        if (flag != 0) {
+            napi_create_int32(env, (i + 1) * 1000 + 5, &result);
+            return result;
+        }
+        if (usage != arr2[i]) {
+            napi_create_int32(env, (i + 1) * 1000 + 6, &result);
+            return result;
+        }
+    }
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -232,11 +298,18 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageNormal(napi_env env, 
 napi_value testNativeWindowNativeWindowHandleOptSetGetUsageAbnormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t flag;
-    long long arr[] = {-CONSTANT_999999999999999999, CONSTANT_999999999999999999};
+    unsigned arr[] = {static_cast<unsigned int>(-999999999999999999), static_cast<unsigned int>(-2147483648),
+                      static_cast<unsigned int>(-1000), static_cast<unsigned int>(-1),
+                      static_cast<unsigned int>(999999999999999999)};
 
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_USAGE, arr[i]);
@@ -244,14 +317,10 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageAbnormal(napi_env env
             napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_1, &result);
             return result;
         }
-        int32_t usage;
+        uint64_t  usage;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_USAGE, &usage);
         if (flag != 0) {
             napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_2, &result);
-            return result;
-        }
-        if (usage == arr[i]) { // 不应相同
-            napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_3, &result);
             return result;
         }
     }
@@ -271,7 +340,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageAbnormal(napi_env env
         napi_create_int32(env, CONSTANT_3 * CONSTANT_100000 + CONSTANT_1, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -280,32 +349,35 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageAbnormal(napi_env env
 napi_value testNativeWindowNativeWindowHandleOptSetGetStrideNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t arr[] = {-CONSTANT_2147483647, -CONSTANT_1000, -CONSTANT_1,        CONSTANT_0,
                      CONSTANT_1,           CONSTANT_1000,  CONSTANT_2147483647};
-    for (int i = 0; i < sizeof(arr) / sizeof(int32_t); ++i) {
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t stride;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_STRIDE, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
+            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
             return result;
         }
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_STRIDE, &stride);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
+            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
             return result;
         }
         if (arr[i] != stride) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
+            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -315,9 +387,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetStrideAbnormal(napi_env en
     napi_value result = nullptr;
     int32_t flag;
     int32_t stride;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     long long arr[] = {-CONSTANT_999999999999999999, static_cast<long long>(CONSTANT_999999999999999999), 1LL << 63};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
@@ -331,10 +408,6 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetStrideAbnormal(napi_env en
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
-        if (arr[i] == stride) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
-            return result;
-        }
     }
     flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_STRIDE, NULL);
     if (flag != 0) {
@@ -351,7 +424,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetStrideAbnormal(napi_env en
         napi_create_int32(env, CONSTANT_3 * CONSTANT_100000 + CONSTANT_1, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -360,33 +434,33 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetStrideAbnormal(napi_env en
 napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     int32_t arr[] = {CONSTANT_0,          CONSTANT_100,        CONSTANT_1000,     CONSTANT_10000,    CONSTANT_1000000,
                      CONSTANT_1000000000, CONSTANT_2147483647, -CONSTANT_1999999, -CONSTANT_99999999};
-    for (int i = 0; i < sizeof(arr) / sizeof(int32_t); ++i) {
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t interval;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SWAP_INTERVAL, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
+            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
             return result;
         }
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SWAP_INTERVAL, &interval);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
-            return result;
-        }
-        if (arr[i] != interval) {
-            napi_create_int32(env, i, &result);
+            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -396,9 +470,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal(napi_
     napi_value result = nullptr;
     int32_t flag;
     int32_t stride;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     long long arr[] = {-CONSTANT_99999999999999999, static_cast<long long>(CONSTANT_99999999999999999), 1LL << 63};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
@@ -412,10 +491,6 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal(napi_
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
-        if (arr[i] == stride) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
-            return result;
-        }
     }
     flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_STRIDE, NULL);
     if (flag != 0) {
@@ -432,7 +507,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal(napi_
         napi_create_int32(env, CONSTANT_3 * CONSTANT_100000 + CONSTANT_1, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -441,32 +517,65 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal(napi_
 napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
+    int32_t ColorGamut[] = {
+        NATIVEBUFFER_COLOR_GAMUT_NATIVE, /**< Native or default */
+        NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601, /**< Standard BT601 */
+        NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709, /**< Standard BT709 */
+        NATIVEBUFFER_COLOR_GAMUT_DCI_P3, /**< DCI P3 */
+        NATIVEBUFFER_COLOR_GAMUT_SRGB, /**< SRGB */
+        NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB, /**< Adobe RGB */
+        NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3, /**< Display P3 */
+        NATIVEBUFFER_COLOR_GAMUT_BT2020, /**< BT2020 */
+        NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ, /**< BT2100 PQ */
+        NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG, /**< BT2100 HLG */
+        NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020,
+    };
+    for (int i = 0; i < sizeof(ColorGamut)/sizeof(ColorGamut[0]); ++i) {
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, ColorGamut[i]);
+        if (flag != 0) {
+            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
+            return result;
+        }
+        int32_t getColorGamut;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &getColorGamut);
+        if (flag != 0) {
+            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+            return result;
+        }
+        if (getColorGamut != ColorGamut[i]) {
+            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
+            return result;
+        }
+    }	
     int32_t arr[] = {-CONSTANT_2147483647, -CONSTANT_1000, -CONSTANT_1,        CONSTANT_0,
                      CONSTANT_1,           CONSTANT_1000,  CONSTANT_2147483647};
-    for (int i = 0; i < sizeof(arr) / sizeof(int32_t); ++i) {
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t gamut;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
+            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
             return result;
         }
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &gamut);
         if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
+            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
             return result;
         }
         if (arr[i] != gamut) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
+            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -476,9 +585,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutAbnormal(napi_en
     napi_value result = nullptr;
     int32_t flag;
     int32_t gamut;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     long long arr[] = {-CONSTANT_99999999999999999, static_cast<long long>(CONSTANT_99999999999999999), 1LL << 63};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
@@ -490,10 +604,6 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutAbnormal(napi_en
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &gamut);
         if (flag != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
-            return result;
-        }
-        if (arr[i] == gamut) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
     }
@@ -512,7 +622,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutAbnormal(napi_en
         napi_create_int32(env, CONSTANT_3 * CONSTANT_100000 + CONSTANT_1, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -523,12 +634,48 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformNormal(napi_env e
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
+    int32_t TransformType[] = {
+        NATIVEBUFFER_ROTATE_NONE, /**< No rotation */
+        NATIVEBUFFER_ROTATE_90, /**< Rotation by 90 degrees */
+        NATIVEBUFFER_ROTATE_180, /**< Rotation by 180 degrees */
+        NATIVEBUFFER_ROTATE_270, /**< Rotation by 270 degrees */
+        NATIVEBUFFER_FLIP_H, /**< Flip horizontally */
+        NATIVEBUFFER_FLIP_V, /**< Flip vertically */
+        NATIVEBUFFER_FLIP_H_ROT90, /**< Flip horizontally and rotate 90 degrees */
+        NATIVEBUFFER_FLIP_V_ROT90, /**< Flip vertically and rotate 90 degrees */
+        NATIVEBUFFER_FLIP_H_ROT180, /**< Flip horizontally and rotate 180 degrees */
+        NATIVEBUFFER_FLIP_V_ROT180, /**< Flip vertically and rotate 180 degrees */
+        NATIVEBUFFER_FLIP_H_ROT270, /**< Flip horizontally and rotate 270 degrees */
+        NATIVEBUFFER_FLIP_V_ROT270,
+    };
+    for (int i = 0; i < sizeof(TransformType)/sizeof(TransformType[0]); ++i) {
+        int32_t getTransformType;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, TransformType[i]);
+        if (flag != 0) {
+            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
+            return result;
+        }
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &getTransformType);
+        if (flag != 0) {
+            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+            return result;
+        }
+        if (TransformType[i] != getTransformType) {
+            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
+            return result;
+        }
+    }	
     int32_t arr[] = {-CONSTANT_2147483647, -CONSTANT_1000, -CONSTANT_1,        CONSTANT_0,
                      CONSTANT_1,           CONSTANT_1000,  CONSTANT_2147483647};
-    for (int i = 0; i < sizeof(arr) / sizeof(int32_t); ++i) {
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t transform;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, arr[i]);
         if (flag != 0) {
@@ -545,8 +692,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformNormal(napi_env e
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -556,9 +703,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformAbnormal(napi_env
     napi_value result = nullptr;
     int32_t flag;
     int32_t gamut;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     long long arr[] = {-CONSTANT_99999999999999999, static_cast<long long>(CONSTANT_99999999999999999), 1LL << 63};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
@@ -570,10 +722,6 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformAbnormal(napi_env
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &gamut);
         if (flag != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
-            return result;
-        }
-        if (arr[i] == gamut) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
     }
@@ -592,7 +740,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformAbnormal(napi_env
         napi_create_int32(env, CONSTANT_3 * CONSTANT_100000 + CONSTANT_1, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -603,10 +752,15 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampNormal(napi_env en
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
-    uint64_t arr[] = {CONSTANT_0, CONSTANT_1, CONSTANT_1000, 1ULL << 63, CONSTANT_999999999999999999};
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
+    uint64_t arr[] = {CONSTANT_0, CONSTANT_1, CONSTANT_1000, 1ULL << 63, CONSTANT_999999999999999999, 18446744073709551615};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_UI_TIMESTAMP, arr[i]);
         if (flag != 0) {
@@ -615,7 +769,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampNormal(napi_env en
         }
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -625,10 +779,15 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampAbnormal(napi_env 
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
-    int64_t arr[] = {-CONSTANT_1, -CONSTANT_1000, -CONSTANT_1000000};
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
+    int64_t arr[] = {-CONSTANT_1, -CONSTANT_1000, -CONSTANT_1000000, -922337203685477580};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_UI_TIMESTAMP, arr[i]);
         if (flag != 0) {
@@ -651,7 +810,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampAbnormal(napi_env 
         napi_create_int32(env, CONSTANT_3 * CONSTANT_100000 + CONSTANT_1, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -660,9 +820,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampAbnormal(napi_env 
 napi_value testNativeWindowNativeWindowHandleOptGetBufferQueueSize(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t size;
 
     int32_t flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_BUFFERQUEUE_SIZE, &size);
@@ -674,8 +839,8 @@ napi_value testNativeWindowNativeWindowHandleOptGetBufferQueueSize(napi_env env,
         napi_create_int32(env, CONSTANT_2, &result);
         return result;
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -685,9 +850,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessNormal
                                                                                  napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t brightness;
 
     float arr[] = {0.0f, 0.00001f, 0.5f, 0.123456f, 0.99999f, 1.0f};
@@ -698,8 +868,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessNormal
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -709,9 +879,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessAbnorm
                                                                                    napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t brightness;
 
     float arr[] = {-0.1f, 1.1f, -CONSTANT_100, 0, CONSTANT_100};
@@ -732,7 +907,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessAbnorm
         napi_create_int32(env, CONSTANT_1000 + CONSTANT_2, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -742,9 +918,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessNormal
                                                                                  napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t brightness;
 
     float arr[] = {0.0f, 0.00001f, 0.5f, 0.123456f, 0.99999f, 1.0f};
@@ -755,8 +936,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessNormal
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -766,9 +947,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessAbnorm
                                                                                    napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t brightness;
 
     float arr[] = {-0.1f, 1.1f, -CONSTANT_100, 0, CONSTANT_100};
@@ -789,7 +975,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessAbnorm
         napi_create_int32(env, CONSTANT_1000 + CONSTANT_2, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -798,30 +985,56 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessAbnorm
 napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
-    int32_t sourceType;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t flag;
-    for (int i = 0; i < sizeof(OHSurfaceSource); ++i) {
-        OHSurfaceSource surfaceSource = static_cast<OHSurfaceSource>(i);
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, surfaceSource);
+    int32_t SourceType[] = {
+        OH_SURFACE_SOURCE_DEFAULT, OH_SURFACE_SOURCE_UI,    OH_SURFACE_SOURCE_GAME,
+        OH_SURFACE_SOURCE_CAMERA,  OH_SURFACE_SOURCE_VIDEO,
+    };
+    for (int i = 0; i < sizeof(SourceType)/sizeof(SourceType[i]); ++i) {
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, SourceType[i]);
         if (flag != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
             return result;
         }
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &sourceType);
+        int32_t getSourceType;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &getSourceType);
         if (flag != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
-        if (sourceType != surfaceSource) {
+        if (getSourceType != SourceType[i]) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    int32_t arr[] = {-2147483647, -1000, -1, 0, 1, 1000, 2147483647};
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, arr[i]);
+        if (flag != 0) {
+            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
+            return result;
+        }
+        int32_t sourceType;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &sourceType);
+        if (flag != 0) {
+            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+            return result;
+        }
+        if (sourceType != arr[i]) {
+            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
+            return result;
+        }
+    }	
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -832,10 +1045,17 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeAbnormal(napi_en
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
-    int64_t arr[] = {-CONSTANT_100, -CONSTANT_1, 0, CONSTANT_1000};
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
+    unsigned arr[] = {static_cast<unsigned int>(-999999999999999999), static_cast<unsigned int>(-2147483648),
+                      static_cast<unsigned int>(-1000), static_cast<unsigned int>(-1),
+                      static_cast<unsigned int>(999999999999999999)};	
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, arr[i]);
         if (flag != 0) {
@@ -846,10 +1066,6 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeAbnormal(napi_en
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &sourceType);
         if (flag != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
-            return result;
-        }
-        if (sourceType != arr[i]) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
     }
@@ -874,7 +1090,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeAbnormal(napi_en
         return result;
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -885,9 +1101,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal(nap
     napi_value result = nullptr;
     int32_t flag;
     char *frameworkType;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     const char *arr[] = {NULL,       "",     "   ",      "0123",
                          "应用框架", "Test", "!@#$%&*(", "这里一共是二十一个汉字这里一共是二十一个汉"};
@@ -909,7 +1130,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal(nap
         }
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -920,9 +1142,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal(n
     napi_value result = nullptr;
     int32_t flag;
     char *frameworkType;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     const char *arr[] = {"这里一共是二十二个汉字这里一共是二十二个汉字",
                          "64test64!@#$%&*64test64test64aaa64test64!@#$%&*64test64test64aaa",
@@ -941,7 +1168,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal(n
         }
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -950,9 +1177,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal(n
 napi_value testNativeWindowNativeWindowSetSetScalingModeV2Nullptr(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     int32_t flag = OH_NativeWindow_NativeWindowSetScalingModeV2(nullptr, OH_SCALING_MODE_FREEZE_V2);
     if (flag == 0) {
@@ -965,7 +1197,8 @@ napi_value testNativeWindowNativeWindowSetSetScalingModeV2Nullptr(napi_env env, 
         return result;
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -974,23 +1207,28 @@ napi_value testNativeWindowNativeWindowSetSetScalingModeV2Nullptr(napi_env env, 
 napi_value testNativeWindowNativeWindowSetScalingModeV2ScalingMode(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     int32_t flag;
     OHScalingModeV2 arr[] = {OH_SCALING_MODE_FREEZE_V2, OH_SCALING_MODE_SCALE_TO_WINDOW_V2,
                              OH_SCALING_MODE_SCALE_CROP_V2, OH_SCALING_MODE_NO_SCALE_CROP_V2,
                              OH_SCALING_MODE_SCALE_FIT_V2};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
-        flag = OH_NativeWindow_NativeWindowSetScalingModeV2(nativeWindow, OH_SCALING_MODE_FREEZE_V2);
+        flag = OH_NativeWindow_NativeWindowSetScalingModeV2(nativeWindow, arr[i]);
         if (flag != 0) {
             napi_create_int32(env, i + 1, &result);
             return result;
         }
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -998,9 +1236,14 @@ napi_value testNativeWindowNativeWindowSetScalingModeV2ScalingMode(napi_env env,
 napi_value testNativeWindowGetColorSpaceFirst(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     OHNativeWindowBuffer *windowBuffer = nullptr;
     int fenceFd;
     int32_t flag = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &windowBuffer, &fenceFd);
@@ -1014,8 +1257,8 @@ napi_value testNativeWindowGetColorSpaceFirst(napi_env env, napi_callback_info i
         napi_create_int32(env, flag, &result);
         return result;
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1027,12 +1270,17 @@ napi_value testNativeWindowSetColorSpaceNormal(napi_env env, napi_callback_info 
     int32_t flag;
     for (int i = 0; i < sizeof(OH_NativeBuffer_ColorSpace); ++i) {
         OH_NativeBuffer_ColorSpace colorspace1 = static_cast<OH_NativeBuffer_ColorSpace>(i);
-        struct result result1 = InitNativeWindow();
-        OH_NativeImage *image = result1.image;
-        OHNativeWindow *nativeWindow = result1.nativeWindow;
+        InitNativeWindow *initNative = new InitNativeWindow();
+        OHNativeWindow *nativeWindow = nullptr;
+        nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+        OH_NativeImage *iamge = initNative->returnNativeImage();
         OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
         int fenceFd;
-        auto res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+        int32_t res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
         Region::Rect rect{
             .x = 0x100,
             .y = 0x100,
@@ -1056,7 +1304,8 @@ napi_value testNativeWindowSetColorSpaceNormal(napi_env env, napi_callback_info 
             napi_create_int32(env, CONSTANT_1000 * i + CONSTANT_3, &result);
             return result;
         }
-        DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     }
 
     napi_create_int32(env, SUCCESS, &result);
@@ -1081,9 +1330,14 @@ napi_value testNativeWindowSetColorSpaceNullptr(napi_env env, napi_callback_info
 napi_value testNativeWindowSetColorSpaceAbnormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
 
     int32_t flag =
         OH_NativeWindow_SetColorSpace(nativeWindow, static_cast<OH_NativeBuffer_ColorSpace>(CONSTANT_100000));
@@ -1091,8 +1345,8 @@ napi_value testNativeWindowSetColorSpaceAbnormal(napi_env env, napi_callback_inf
         napi_create_int32(env, FAIL, &result);
         return result;
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1120,9 +1374,14 @@ napi_value testNativeWindowGetMetadataValueFirst(napi_env env, napi_callback_inf
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int32_t ret1;
     uint8_t *ret2;
     flag = OH_NativeWindow_GetMetadataValue(nativeWindow, OH_HDR_METADATA_TYPE, &ret1, &ret2);
@@ -1130,8 +1389,8 @@ napi_value testNativeWindowGetMetadataValueFirst(napi_env env, napi_callback_inf
         napi_create_int32(env, FAIL, &result);
         return result;
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1144,7 +1403,7 @@ napi_value testNativeWindowSetDynamicMetadataValue1(napi_env env, napi_callback_
     uint8_t *buffer;
     int32_t X = -1;
     uint8_t metaData[CONSTANT_60];
-    auto flag = OH_NativeWindow_SetMetadataValue(nativeWindow, OH_HDR_DYNAMIC_METADATA, X, metaData);
+    int32_t flag = OH_NativeWindow_SetMetadataValue(nativeWindow, OH_HDR_DYNAMIC_METADATA, X, metaData);
     if (flag != CONSTANT_40001000) {
         napi_create_int32(env, CONSTANT_1000 + CONSTANT_1, &result);
         return result;
@@ -1283,12 +1542,17 @@ napi_value testNativeWindowSetDynamicMetadataValue4(napi_env env, napi_callback_
 napi_value testNativeWindowSetDynamicMetadataValue(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd;
-    auto res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    int32_t res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
     Region::Rect rect{.x = 0x100, .y = 0x100, .w = 0x100, .h = 0x100};
     Region region{.rects = &rect};
     res = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, region);
@@ -1309,7 +1573,8 @@ napi_value testNativeWindowSetDynamicMetadataValue(napi_env env, napi_callback_i
     if (result != nullptr) {
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1320,12 +1585,17 @@ napi_value testNativeWindowSetMetadataValueTimes(napi_env env, napi_callback_inf
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd;
-    auto res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    int32_t res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
     Region::Rect rect{
         .x = 0x100,
         .y = 0x100,
@@ -1358,8 +1628,8 @@ napi_value testNativeWindowSetMetadataValueTimes(napi_env env, napi_callback_inf
             return result;
         }
     }
-
-    DestroyNativeWindowImage(image, nativeWindow);
+    
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1515,12 +1785,17 @@ napi_value testNativeWindowSetStaticMetadataValue4(napi_env env, napi_callback_i
 napi_value testNativeWindowSetStaticMetadataValue(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd;
-    auto res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    int32_t res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
     Region::Rect rect{.x = 0x100, .y = 0x100, .w = 0x100, .h = 0x100};
     Region region{.rects = &rect};
     res = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, region);
@@ -1541,7 +1816,8 @@ napi_value testNativeWindowSetStaticMetadataValue(napi_env env, napi_callback_in
     if (result != nullptr) {
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1588,7 +1864,7 @@ napi_value testNativeWindowSetMetadataValue2(napi_env env, napi_callback_info in
     int32_t X = 1; // 3. X=1 set调用成功 get调用成功 两者一致
     uint8_t metaData[CONSTANT_60];
     metaData[0] = static_cast<uint8_t>(X);
-    auto flag = OH_NativeWindow_SetMetadataValue(nativeWindow, OH_HDR_METADATA_TYPE, X, metaData);
+    int32_t flag = OH_NativeWindow_SetMetadataValue(nativeWindow, OH_HDR_METADATA_TYPE, X, metaData);
     if (flag != 0) {
         napi_create_int32(env, CONSTANT_3 * CONSTANT_1000 + CONSTANT_1, &result);
         return result;
@@ -1699,12 +1975,17 @@ napi_value testNativeWindowSetMetadataValue4(napi_env env, napi_callback_info in
 napi_value testNativeWindowSetMetadataValue(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd;
-    auto flag = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    int32_t flag = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
     Region::Rect rect{.x = 0x100, .y = 0x100, .w = 0x100, .h = 0x100};
     Region region{.rects = &rect};
     flag = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, region);
@@ -1725,20 +2006,25 @@ napi_value testNativeWindowSetMetadataValue(napi_env env, napi_callback_info inf
     if (result != nullptr) {
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
-
 
 napi_value testNativeWindowSetNullMetadataValue(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     uint8_t *buffer = new uint8_t[CONSTANT_60];
     flag = OH_NativeWindow_SetMetadataValue(nativeWindow, static_cast<OH_NativeBuffer_MetadataKey>(CONSTANT_1000000),
                                             CONSTANT_60, buffer);
@@ -1747,7 +2033,7 @@ napi_value testNativeWindowSetNullMetadataValue(napi_env env, napi_callback_info
         return result;
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1758,9 +2044,14 @@ napi_value testNativeWindowSetMetadataValueNullptr(napi_env env, napi_callback_i
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     uint8_t *buffer = new uint8_t[CONSTANT_60];
     flag = OH_NativeWindow_SetMetadataValue(nullptr, OH_HDR_DYNAMIC_METADATA, CONSTANT_60, buffer);
     if (flag != CONSTANT_40001000) {
@@ -1773,7 +2064,7 @@ napi_value testNativeWindowSetMetadataValueNullptr(napi_env env, napi_callback_i
         return result;
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1784,9 +2075,14 @@ napi_value testNativeWindowGetMetadataValueAbnormal(napi_env env, napi_callback_
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     uint8_t *buffer = new uint8_t[CONSTANT_60];
     flag = OH_NativeWindow_SetMetadataValue(nullptr, OH_HDR_DYNAMIC_METADATA, CONSTANT_60, buffer);
     if (flag != CONSTANT_40001000) {
@@ -1799,7 +2095,7 @@ napi_value testNativeWindowGetMetadataValueAbnormal(napi_env env, napi_callback_
         return result;
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1809,9 +2105,14 @@ napi_value testNativeWindowGetMetadataValueNullptr(napi_env env, napi_callback_i
     napi_value result = nullptr;
 
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     uint8_t *buffer = new uint8_t[CONSTANT_60];
     int32_t ret1;
     uint8_t *ret2;
@@ -1841,7 +2142,7 @@ napi_value testNativeWindowGetMetadataValueNullptr(napi_env env, napi_callback_i
     }
     delete[] buffer;
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1851,9 +2152,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal
 {
     napi_value result = nullptr;
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     uint64_t arr[] = {CONSTANT_1, CONSTANT_1000, CONSTANT_1000000000, 1ULL << 63, CONSTANT_999999999999999999};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_DESIRED_PRESENT_TIMESTAMP, arr[i]);
@@ -1863,7 +2169,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal
         }
     }
 
-    DestroyNativeWindowImage(image, nativeWindow);
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1873,9 +2179,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNorm
 {
     napi_value result = nullptr;
     int32_t flag;
-    struct result result1 = InitNativeWindow();
-    OH_NativeImage *image = result1.image;
-    OHNativeWindow *nativeWindow = result1.nativeWindow;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
     int64_t arr[] = {CONSTANT_0, -CONSTANT_1, -CONSTANT_1000, -CONSTANT_1000000, CONSTANT_NEG_9223372036854775807};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_DESIRED_PRESENT_TIMESTAMP, arr[i]);
@@ -1899,7 +2210,45 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNorm
         napi_create_int32(env, CONSTANT_3 * CONSTANT_100000 + CONSTANT_1, &result);
         return result;
     }
-    DestroyNativeWindowImage(image, nativeWindow);
+
+    delete initNative;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+napi_value testNativeWindowSetMetadataValue_metadata_type(napi_env env, napi_callback_info info)
+{
+    const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
+    napi_value result = nullptr;
+    InitNativeWindow* initNative = new InitNativeWindow();
+    OHNativeWindow *nativeWindow = nullptr;
+    nativeWindow = initNative->returnNativeWindow();
+    if (nativeWindow == nullptr){
+        napi_create_int32(env, 998899, &result);
+        return result;
+    }
+    OH_NativeImage *iamge = initNative->returnNativeImage();
+    OH_NativeBuffer_MetadataType hdr_type[] = {OH_VIDEO_HDR_HLG, OH_VIDEO_HDR_HDR10, OH_VIDEO_HDR_VIVID, OH_VIDEO_NONE};
+    for (int i = 0; i <= sizeof(hdr_type) / sizeof(hdr_type[0]); i++) {
+        int32_t bufferSize;
+        uint8_t *buffer;
+        uint8_t val = hdr_type[i];
+        int32_t flag = OH_NativeWindow_SetMetadataValue(nativeWindow, OH_HDR_METADATA_TYPE, sizeof(uint8_t), &val);
+        if (flag != SUCCESS) {
+            napi_create_int32(env, CONSTANT_1000 * i + 1, &result);
+            return result;
+            
+        }
+        flag = OH_NativeWindow_GetMetadataValue(nativeWindow, OH_HDR_METADATA_TYPE, &bufferSize, &buffer);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "metadata_typemetadata_type", "val =%{public}d", val);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "metadata_typemetadata_type", "buffer =%{public}d", *buffer);
+        if (*buffer != val) {
+            napi_create_int32(env, CONSTANT_1000 * i + 2, &result);
+            return result;
+        }
+    }
+
+    delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }

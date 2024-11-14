@@ -1380,5 +1380,20 @@ export default function nativeWindowTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_WINDOW_1516
+     * @tc.name       : testNativeWindowSetMetadataValue_metadata_type
+     * @tc.desc       : testNativeWindowSetMetadataValue_metadata_type
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowSetMetadataValue_metadata_type', 3, async (done: Function) => {
+      let result: number = nativeWindow.testNativeWindowSetMetadataValue_metadata_type();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }
