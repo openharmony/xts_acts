@@ -68,7 +68,7 @@ private:
 
 public:
     InitNativeWindow()
-	{
+    {
         _image = OH_ConsumerSurface_Create();
         if (_image != nullptr) {
             _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);

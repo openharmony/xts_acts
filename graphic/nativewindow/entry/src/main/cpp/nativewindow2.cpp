@@ -119,7 +119,8 @@ private:
     OHNativeWindow* _nativeWindow = nullptr;
 
 public:
-    InitNativeWindow() {
+    InitNativeWindow()
+    {
         _image = OH_ConsumerSurface_Create();
         if (_image != nullptr) {
             _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
@@ -134,18 +135,21 @@ public:
             _nativeWindow = nullptr;
         }
     }
-    ~InitNativeWindow() {
+    ~InitNativeWindow()
+    {
         _image = nullptr;
         _nativeWindow = nullptr;
     }
-    OHNativeWindow *returnNativeWindow() {
+    OHNativeWindow *returnNativeWindow()
+    {
         if (_nativeWindow == nullptr) {
             return nullptr;
         } else {
             return _nativeWindow;
         }
     };
-    OH_NativeImage *returnNativeImage() {
+    OH_NativeImage *returnNativeImage()
+    {
         if (_image == nullptr) {
             return nullptr;
         } else {
@@ -232,7 +236,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal(napi_env en
     int32_t flag3 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, NULL);
     int32_t flag4 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT);
     if (flag1 != 0 || flag2 != 0 || flag3 != 0 || flag4 != 0) {
-        napi_create_int32(env, CONSTANT_10000 + 4, &result);
+        napi_create_int32(env, CONSTANT_10000 + CONSTANT_4, &result);
         return result;
     }
     delete initNative;
@@ -256,7 +260,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageNormal(napi_env env, 
     int32_t height_ = 0x100;
     OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, code, width_, height_);
     for (int i = 0; i < sizeof(usageType)/sizeof(usageType[0]); ++i) {
-		uint64_t  getUsage;
+	    uint64_t getUsage;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, usageType[i]);
         int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &getUsage);
         if (flag1 != 0 || flag2 != 0) {
@@ -518,10 +522,10 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal(napi_env 
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
 
-    for (int i = 0; i < sizeof(ColorGamut)/sizeof(ColorGamut[0]); ++i) {
-	    int32_t getColorGamut;
+    for (int i = 0; i < sizeof(ColorGamut) / sizeof(ColorGamut[0]); ++i) {
+        int32_t getColorGamut;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, ColorGamut[i]);
-	    int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &getColorGamut);
+        int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &getColorGamut);
         if (flag1 != 0 || flag2 != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
             return result;
@@ -629,7 +633,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformNormal(napi_env e
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t transform;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, arr[i]);
-	    int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &transform);
+        int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &transform);
         if (flag1 != 0 || flag2 != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_4, &result);
             return result;
@@ -946,9 +950,9 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeNormal(napi_env 
         OH_SURFACE_SOURCE_CAMERA,  OH_SURFACE_SOURCE_VIDEO,
     };
     for (int i = 0; i < sizeof(SourceType)/sizeof(SourceType[i]); ++i) {
-	    int32_t getSourceType;
+        int32_t getSourceType;
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, SourceType[i]);
-		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &getSourceType);
+        int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &getSourceType);
         if (flag1 != 0 || flag2 != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
             return result;
@@ -961,7 +965,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeNormal(napi_env 
     int32_t arr[] = {-2147483647, -1000, -1, 0, 1, 1000, 2147483647};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, arr[i]);
-	    int32_t sourceType;
+        int32_t sourceType;
         int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &sourceType);
         if (flag1 != 0 || flag2 != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
