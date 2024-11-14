@@ -110,7 +110,7 @@ async function queryInThread(
     }
 
     const rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
-    rdbTrans = await rdbStore.createTransaction();
+    rdbTrans = await rdbStore.createTransaction(options);
 
     const resultSet = await rdbTrans.querySql(querySql);
     const rowCount = resultSet.rowCount;
