@@ -19,6 +19,7 @@ import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import { Context } from '@ohos.abilityAccessCtrl';
 import common from '@ohos.app.ability.common';
+import settings from '@ohos.settings';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -59,6 +60,8 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
     console.log('describe testets start!!')
     const TRUE_FLAG = true;
     console.log('describe window_api_test start!!!');
+    let isPCStatus:string = settings.getValueSync(context,'isStatusBarExist','',settings.domainName.USER_PROPERTY);
+    console.info(`beforeAll isPCStatus: ${isPCStatus}`);
     let commonRGBColorArr: Array<string> = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
     let commonNUMBERColorArr: Array<string> = ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
     let commonKEYColorArr: Array<string> = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
@@ -816,7 +819,8 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let listenerOnFlag = false;
       console.log(msgStr + 'begin');
       let tempWnd: ohosWindow.Window | void;
-      tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
+      if(isPCStatus == ''|| isPCStatus == '1'){
+          tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
         expect().assertFail()
       });
@@ -873,6 +877,12 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
         }
       })
+        }
+        else{
+          console.info(`${caseName} not support, isPCStatus: ${isPCStatus}`);
+          done();
+        }
+      
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0790
