@@ -27,7 +27,7 @@ export default function textInputEnableKeyboardOnFocusTest() {
     });
 
     /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_ENABLEKEYBOARDONFOCUS_0100
+     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_ENABLEKEYBOARDONFOCUS_0001
      * @tc.name: testTextInputEnableKeyboardOnFocus001
      * @tc.desc: testing enableKeyboardOnFocus for textInput with normal value
      * @tc.size: MediumTest
@@ -40,7 +40,7 @@ export default function textInputEnableKeyboardOnFocusTest() {
     })
 
     /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_ENABLEKEYBOARDONFOCUS_0200
+     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_ENABLEKEYBOARDONFOCUS_0002
      * @tc.name: testTextInputEnableKeyboardOnFocus002
      * @tc.desc: testing enableKeyboardOnFocus for textInput with normal value
      * @tc.size: MediumTest
@@ -53,7 +53,7 @@ export default function textInputEnableKeyboardOnFocusTest() {
     })
 
     /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_ENABLEKEYBOARDONFOCUS_0300
+     * @tc.number: SUB_ARKUI_CAPI_TEXTINPUT_ENABLEKEYBOARDONFOCUS_0003
      * @tc.name: testTextInputEnableKeyboardOnFocus003
      * @tc.desc: testing enableKeyboardOnFocus for textInput with abnormal value
      * @tc.size: MediumTest
@@ -64,6 +64,5 @@ export default function textInputEnableKeyboardOnFocusTest() {
       expect(nativeFunc.testTextInputEnableKeyboardOnFocus003()).assertEqual(0)
       done()
     })
-
   })
 }

@@ -129,6 +129,12 @@
 #include "textarea/textarea_oninsert_test.h"
 #include "textarea/textarea_ondelete_test.h"
 #include "textarea/textarea_onsubmit_test.h"
+#include "textinput/textinput_ontextselectionchange_test.h"
+#include "textinput/textinput_oncontentscroll_test.h"
+#include "textinput/textinput_oncontentdidchange_test.h"
+#include "textinput/textinput_oneditchange_test.h"
+#include "textinput/textinput_oninsert_test.h"
+#include "textinput/textinput_ondelete_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -482,6 +488,28 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"getTextAreaSubmitData", nullptr, TextAreaOnSubmitTest::GetTextAreaSubmitData, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"textInputOnTextSelectionChangeTest", nullptr, TextInputOnTextSelectionChangeTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"getTextInputData", nullptr, TextInputOnTextSelectionChangeTest::GetTextInputData,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textInputOnContentScrollTest", nullptr, TextInputOnContentScrollTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr },
+        {"textInputOnContentDidChangeTest", nullptr, TextInputOnContentDidChangeTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr },
+        {"getTextInputContentDidData", nullptr, TextInputOnContentDidChangeTest::GetTextInputContentDidData, nullptr,
+         nullptr, nullptr, napi_default, nullptr },
+        {"textInputOnEditChangeTest", nullptr, TextInputOnEditChangeTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr },
+        {"getTextInputEditChangeData", nullptr, TextInputOnEditChangeTest::GetTextInputEditChangeData,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textInputOnInsertTest", nullptr, TextInputOnInsertTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"getTextInputInsertData", nullptr, TextInputOnInsertTest::GetTextInputInsertData, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"textInputOnDeleteTest", nullptr, TextInputOnDeleteTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"getTextInputDeleteData", nullptr, TextInputOnDeleteTest::GetTextInputDeleteData, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

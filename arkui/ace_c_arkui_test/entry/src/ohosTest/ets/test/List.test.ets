@@ -657,7 +657,6 @@ import imageAnimatorFillModeTest from './imageAnimator/ImageAnimatorFillModeTest
 import imageAnimatorIterationsTest from './imageAnimator/ImageAnimatorIterationsTest.test'
 import imageAnimatorEventTest from "./imageAnimator/ImageAnimatorEventTest.test"
 import radioOnChangeTest from "./radio/RadioOnChangeTest.test"
-
 import textAreaTextTest from "./textarea/TextAreaTextTest.test"
 import textAreaFontFeatureTest from "./textarea/TextAreaFontFeatureTest.test"
 import textAreaMaxLinesTest from "./textarea/TextAreaMaxLinesTest.test"
@@ -678,6 +677,33 @@ import textAreaOnDeleteTest from "./textarea/TextAreaOnDeleteTest.test"
 import textAreaNumberOfLinesTest from "./textarea/TextAreaNumberOfLinesTest.test"
 import textAreaContentTypeTest from "./textarea/TextAreaContentTypeTest.test"
 import textAreaOnSubmitTest from "./textarea/TextAreaOnSubmitTest.test"
+import textInputCancelButtonTest from "./textinput/TextInputCancelButtonTest.test"
+import textInputTextTest from "./textinput/TextInputTextTest.test"
+import textInputTextSelectionTest from "./textinput/TextInputTextSelectionTest.test"
+import textInputUnderlineColorTest from "./textinput/TextInputUnderlineColorTest.test"
+import textInputFontFeatureTest from "./textinput/TextInputFontFeatureTest.test"
+import textInputWordBreakTest from "./textinput/TextInputWordBreakTest.test"
+import textInputStyleTest from "./textinput/TextInputStyleTest.test"
+import textInputEnableAutoFillTest from "./textinput/TextInputEnableAutoFillTest.test"
+import textInputContentTypeTest from "./textinput/TextInputContentTypeTest.test"
+import textInputMinFontSizeTest from "./textinput/TextInputMinFontSizeTest.test"
+import textInputMaxFontSizeTest from "./textinput/TextInputMaxFontSizeTest.test"
+import textInputPasswordRulesTest from "./textinput/TextInputPasswordRulesTest.test"
+import textInputCustomKeyboardTest from "./textinput/TextInputCustomKeyboardTest.test"
+import textInputSelectAllTest from "./textinput/TextInputSelectAllTest.test"
+import textInputMaxLinesTest from "./textinput/TextInputMaxLinesTest.test"
+import textInputNumberOfLinesTest from "./textinput/TextInputNumberOfLinesTest.test"
+import textInputInputFilterTest from "./textinput/TextInputInputFilterTest.test"
+import textInputShowKeyboardOnFocusTest from "./textinput/TextInputShowKeyboardOnFocusTest.test"
+import textInputCaretOffsetTest from "./textinput/TextInputCaretOffsetTest.test"
+import textInputContentLineCountTest from "./textinput/TextInputContentLineCountTest.test"
+import textInputOnTextSelectionChangeTest from "./textinput/TextInputOnTextSelectionChangeTest.test"
+import textInputOnContentScrollTest from "./textinput/TextInputOnContentScrollTest.test"
+import textInputOnContentDidChangeTest from "./textinput/TextInputOnContentDidChangeTest.test"
+import textInputOnEditChangeTest from "./textinput/TextInputOnEditChangeTest.test"
+import textInputOnInsertTest from "./textinput/TextInputOnInsertTest.test"
+import textInputOnDeleteTest from "./textinput/TextInputOnDeleteTest.test"
+import textInputGetTextContentRect from "./textinput/TextInputGetTextContentRectTest.test"
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1325,4 +1351,31 @@ export default function testsuite() {
   textAreaNumberOfLinesTest()
   textAreaContentTypeTest()
   textAreaOnSubmitTest()
+  textInputCancelButtonTest()
+  textInputTextTest()
+  textInputTextSelectionTest()
+  textInputUnderlineColorTest()
+  textInputFontFeatureTest()
+  textInputWordBreakTest()
+  textInputStyleTest()
+  textInputEnableAutoFillTest()
+  textInputContentTypeTest()
+  textInputMinFontSizeTest()
+  textInputMaxFontSizeTest()
+  textInputPasswordRulesTest()
+  textInputCustomKeyboardTest()
+  textInputSelectAllTest()
+  textInputMaxLinesTest()
+  textInputNumberOfLinesTest()
+  textInputInputFilterTest()
+  textInputShowKeyboardOnFocusTest()
+  textInputCaretOffsetTest()
+  textInputContentLineCountTest()
+  textInputOnTextSelectionChangeTest()
+  textInputOnContentScrollTest()
+  textInputOnEditChangeTest()
+  textInputOnInsertTest()
+  textInputOnDeleteTest()
+  textInputGetTextContentRect()
+  textInputOnContentDidChangeTest()
 }
