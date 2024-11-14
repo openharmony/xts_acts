@@ -144,6 +144,7 @@ import toggleHeightTest from './toggle/ToggleHeightTest.test'
 import toggleMarginTest from './toggle/ToggleMarginTest.test'
 import togglePositionTest from './toggle/TogglePositionTest.test'
 import toggleSelectedColorTest from './toggle/ToggleSelectedColorTest.test'
+import toggleUnSelectedColorTest from './toggle/ToggleUnSelectedColorTest.test'
 import toggleSwitchPointColorTest from './toggle/ToggleSwitchPointColorTest.test'
 import toggleWidthTest from './toggle/ToggleWidthTest.test'
 import toggleSwitchTest from './toggle/ToggleSwitchTest.test'
@@ -632,6 +633,15 @@ import animatorEventTest from "./animation/AnimatorEventTest.test"
 import textCustomSpanTest from "./text/TextCustomSpan.test"
 import textImageSpanTest from "./text/TextImageSpan.test"
 import inputEvent from "./inputevent/InputEventTest.test"
+import imageAnimatorImageFrameInfoTest from './imageAnimator/ImageAnimatorImageFrameInfoTest.test'
+import imageAnimatorImagesTest from './imageAnimator/ImageAnimatorImagesTest.test'
+import imageAnimatorStateTest from './imageAnimator/ImageAnimatorStateTest.test'
+import imageAnimatorDurationTest from './imageAnimator/ImageAnimatorDurationTest.test'
+import imageAnimatorReverseTest from './imageAnimator/ImageAnimatorReverseTest.test'
+import imageAnimatorFixedSizeTest from './imageAnimator/ImageAnimatorFixedSizeTest.test'
+import imageAnimatorFillModeTest from './imageAnimator/ImageAnimatorFillModeTest.test'
+import imageAnimatorIterationsTest from './imageAnimator/ImageAnimatorIterationsTest.test'
+import imageAnimatorEventTest from "./imageAnimator/ImageAnimatorEventTest.test"
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1253,4 +1263,14 @@ export default function testsuite() {
   swiperAdapterTest()
   swiperOnContentDidScrollTest()
   swiperOnGestureSwipeTest()
+  imageAnimatorImageFrameInfoTest()
+  imageAnimatorImagesTest()
+  imageAnimatorStateTest()
+  imageAnimatorDurationTest()
+  imageAnimatorReverseTest()
+  imageAnimatorFixedSizeTest()
+  imageAnimatorFillModeTest()
+  imageAnimatorIterationsTest()
+  imageAnimatorEventTest()
+  toggleUnSelectedColorTest()
 }
