@@ -13,8 +13,14 @@
  * limitations under the License.
  */
 import gestureInterceptionEnhancementTest from './GestureInterceptionEnhancement/gestureInterceptionEnhancement.test'
-
+import gestureInterceptionEnhancementCallbackTest from './GestureInterceptionEnhancement/gestureInterceptionEnhancementCallback.test'
+import gestureInterceptionEnhancementCallbackRecognizerTest from './GestureInterceptionEnhancement/gestureInterceptionEnhancementCallbackRecognizer.test'
+import gestureInterceptionEnhancementCallbackSwiperTest from './GestureInterceptionEnhancement/gestureInterceptionEnhancementCallbackSwiper.test'
 
 export default function testsuite() {
   gestureInterceptionEnhancementTest();
+  gestureInterceptionEnhancementCallbackTest();
+  gestureInterceptionEnhancementCallbackRecognizerTest();
+  gestureInterceptionEnhancementCallbackSwiperTest();
+  
 }

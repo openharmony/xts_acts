@@ -13,36 +13,20 @@
  * limitations under the License.
  */
 
-import { MessageManager, Callback, Message } from '../../common/MessageManager';
+
 
 @Entry
 @Component
-struct GestureTest {
+struct GestureTest2 {
   @State currentIndex: number = 0
   @State selectedIndex: number = 0
   @State fontColor: string = '#182431'
   @State selectedFontColor: string = '#007DFF'
   controller?: TabsController = new TabsController();
   @State exposeInnerGesture: boolean = true;
-  @State callBackString: string = "";
+  @State eventString:string = "ceshi"; 
+  @State timestamp: number = 0
 
-  messageManager: MessageManager<boolean> = new MessageManager();
-
-   onPageShow() {
-    console.info('tabsInterceptionEnhancement pages onPageShow');
-    globalThis.value = {
-      name: 'messageManager',
-      message: this.messageManager
-    };
-    let callback: Callback<boolean> = (message: Message<boolean>) => {
-      console.error('message = ' + message.name + "--" + message.value);
-      if (message.name == 'exposeInnerGesture') {
-        this.exposeInnerGesture = message.value;
-      }
-      
-    };
-    this.messageManager.registerCallback(callback);
-  }
   @Builder
   tabBuilder(index: number, name: string) {
     Column() {
@@ -60,7 +44,9 @@ struct GestureTest {
   }
   build() {
     Column() {
-      Text(this.callBackString).key("callBackS");
+        
+      Text(this.eventString).key("eventtest");
+      Text(this.timestamp + "").key("timestamp");
       Tabs({ barPosition: BarPosition.Start, index: this.currentIndex, controller: this.controller }) {
         TabContent() {
           Column(){
@@ -83,8 +69,19 @@ struct GestureTest {
           }
           .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
                                           others: Array<GestureRecognizer>): GestureJudgeResult => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
-            console.info('ets onGestureRecognizerJudgeBegin child')
-            this.callBackString = "接口触发"
+            console.info('enhance ets onGestureRecognizerJudgeBegin child')
+
+            console.info("enhance" + JSON.stringify(event));
+            this.eventString = JSON.stringify(event);
+
+            console.info("enhance tag = " + current.getTag() + " type = " + current.getType() + " isBuildIn = " + current.isBuiltIn()
+             + " isEnable = " + current.isEnabled() + " getState " + current.getState() + " EventTargetInfo = " +  current.getEventTargetInfo().getId() + " isValid =" + current.isValid());
+
+            for (let i = 0; i < others.length; i++) {
+              console.info("others tag = " + others[i].getTag() + " type = " + others[i].getType() + " isBuildIn = " + others[i].isBuiltIn()
+              + " isEnable = " + others[i].isEnabled() + " getState " + others[i].getState() + " EventTargetInfo = " +  others[i].getEventTargetInfo().getId() + " isValid =" + others[i].isValid());
+            }
+
             if (current) {
               let target = current.getEventTargetInfo();
               if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
