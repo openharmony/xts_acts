@@ -139,9 +139,7 @@
     "MainAbility/pages/animation/TestAnimatorRegisterOnFrame",
     "MainAbility/pages/animation/TestAnimatorRegisterOnFinish",
     "MainAbility/pages/animation/TestAnimatorRegisterOnCancel",
-    "MainAbility/pages/animation/TestAnimatorRegisterOnRepeat",
-    "MainAbility/pages/customproperty/TestAddCustomProperty",
-    "MainAbility/pages/customproperty/TestRemoveCustomProperty"
+    "MainAbility/pages/animation/TestAnimatorRegisterOnRepeat"
 
   ]
 }

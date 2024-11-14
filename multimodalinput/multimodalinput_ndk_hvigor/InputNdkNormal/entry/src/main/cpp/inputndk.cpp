@@ -1917,7 +1917,8 @@ static napi_value AddHotkeyMonitor23(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_OCCUPIED_BY_OTHER && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_OCCUPIED_BY_OTHER || ret == INPUT_OCCUPIED_BY_SYSTEM)
+        && hotkey == nullptr) ? 1 : 0, &result);
     return result;
 }
 

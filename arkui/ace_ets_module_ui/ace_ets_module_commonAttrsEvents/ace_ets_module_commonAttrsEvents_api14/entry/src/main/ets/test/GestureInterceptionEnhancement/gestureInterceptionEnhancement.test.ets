@@ -137,6 +137,46 @@ export default function gestureInterceptionEnhancementTest() {
         done();
     });
 
+     /**
+     * @tc.number    gestureInterceptionEnhancementTest_0030
+     * @tc.name      gestureInterceptionEnhancementTest
+     * @tc.desc      check the callback trigger when invoke gesture Interception Enhancement interface (exposeInnerGesture value false)
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('gestureInterceptionEnhancementTest_0030', 0, async (done: Function) => {
+        console.info('gestureInterceptionEnhancementTest_0030 START');
+    
+        globalThis.value.message.notify({
+             name: 'exposeInnerGesture', value: false
+        });
+        await CommonFunc.sleep(1000);
+        let driver: Driver = await Driver.create()
+        await CommonFunc.sleep(1000);
+        let firstTabs = CommonFunc.getComponentRectOnScreen('firstTabsContent');
+        let top = firstTabs.top;
+        let right = firstTabs.right;
+        let left = firstTabs.left;
+        let bottom = firstTabs.bottom;
+        console.info("gestureInterceptionEnhancementTest_0030 value is" + left + " --" + right + "--" + top + "--" + bottom);
+        let height = bottom -top;
+        let width = right - left;
+        await CommonFunc.sleep(1000);
+        // tabs nest scroll
+        await driver.swipe(Math.round(left + width*0.8),Math.round(top + height/2),Math.round(left),Math.round(top + height/2));
+        await CommonFunc.sleep(2500);
+        await driver.swipe(Math.round(left + width*0.8),Math.round(top + height/2),Math.round(left),Math.round(top + height/2));
+        await CommonFunc.sleep(2500);
+        await driver.swipe(Math.round(left + width*0.8),Math.round(top + height/2),Math.round(left),Math.round(top + height/2));
+        await CommonFunc.sleep(2500);
+        let strJson = getInspectorByKey('callBackS');
+        let obj: ESObject = JSON.parse(strJson);
+        console.info("[gestureInterceptionEnhancementTest_0030] content: " + JSON.stringify(obj.$attrs.content));
+        expect(obj.$attrs.content).assertEqual("");
+        done();
+    });
+
 
 
   })

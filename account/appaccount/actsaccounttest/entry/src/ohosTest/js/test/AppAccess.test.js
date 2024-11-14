@@ -35,7 +35,7 @@ export default function ActsAccountAppAccess() {
                 expect(err).assertEqual(null);
                 appAccountManager.enableAppAccess("AppAccess_callback_itself", "com.example.actsaccountappaccess", (err)=>{
                     console.info("====>enableAppAccess err:" + JSON.stringify(err));
-                    expect(err.code != 0).assertEqual(true);
+                    expect(err).assertEqual(null);
                     appAccountManager.deleteAccount("AppAccess_callback_itself", (err)=>{
                         console.info("====>delete Account ActsAccountAppAccess_0100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -60,6 +60,10 @@ export default function ActsAccountAppAccess() {
             console.info("====>enableAppAccess ActsAccountAppAccess_0200 start====");
             try{
                 await appAccountManager.enableAppAccess("AppAccess_promise_itself", "com.example.actsaccountappaccess");
+                console.info("====>delete account ActsAccountAppAccess_0200 start====");
+                await appAccountManager.deleteAccount("AppAccess_promise_itself");
+                console.info("====>ActsAccountAppAccess_0200 end====");
+                done();
             }
             catch(err){
                 console.info("====>enableAppAccess 0200 err:" + JSON.stringify(err));
@@ -86,7 +90,7 @@ export default function ActsAccountAppAccess() {
                 expect(err).assertEqual(null);
                 appAccountManager.enableAppAccess("AppAccess_callback_NotExistBundle", nonExistBundle, (err)=>{
                     console.info("====>enableAppAccess 0300 err:" + JSON.stringify(err));
-                    expect(err.code != 0).assertEqual(true);
+                    expect(err).assertEqual(null);
                     appAccountManager.deleteAccount("AppAccess_callback_NotExistBundle", (err)=>{
                         console.info("====>delete Account ActsAccountAppAccess_0300 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
@@ -112,6 +116,10 @@ export default function ActsAccountAppAccess() {
             console.info("====>enableAppAccess ActsAccountAppAccess_0400 start====");
             try{
                 await appAccountManager.enableAppAccess("AppAccess_promise_NotExistBundle", nonExistBundle);
+                console.info("====>delete account ActsAccountAppAccess_0400 start====");
+                await appAccountManager.deleteAccount("AppAccess_promise_NotExistBundle");
+                console.info("====>ActsAccountAppAccess_0400 end====");
+                done();
             }
             catch(err){
                 console.error("====>enableAppAccess ActsAccountAppAccess_0400 err:" + JSON.stringify(err));

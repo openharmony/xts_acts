@@ -22,7 +22,7 @@ struct TextDrag {
       Text('test drag event draggable设为true, 有onDragStart')
         .key('DraggedText')
         .draggable(true)
-        .width('90%')
+        .width('60%')
         .margin(20)
         .copyOption(CopyOptions.LocalDevice)
         .onDragStart(() => {

@@ -128,7 +128,7 @@ export default function search_gesture() {
         console.info(`[search_gesture_002] caretOffsetX is:${obj1.$attrs.content}`);
         let caretRelativeX = parseInt(obj1.$attrs.content);
         let searchRect = CommonFunc.getComponentRectOnScreen('SearchGesture');
-        let clickX = Math.round(searchRect.left + caretRelativeX + relativeContentRectLeftWidth - vp2px(6));
+        let clickX = Math.round(searchRect.left + caretRelativeX + relativeContentRectLeftWidth - vp2px(10));
         let clickY =  Math.round((searchRect.bottom + searchRect.top)/2);
         await driver.longClick(clickX, clickY);
         await CommonFunc.sleep(1000);
@@ -155,13 +155,14 @@ export default function search_gesture() {
         let search: Component = await driver.findComponent(ON.text('这是预置文本', MatchPattern.CONTAINS));
         await search.clearText();
         await CommonFunc.sleep(500);
-        let point = await search.getBoundsCenter();
-        await CommonFunc.sleep(500);
-        await driver.longClick(point.x, point.y);
         let strJson2 = getInspectorByKey('SearchGesture');
         let obj2: ESObject = JSON.parse(strJson2);
         console.info(`[search_gesture_002] after clear text, obj2 is:${strJson2}`);
         expect(obj2.$attrs.value).assertEqual('');
+        let point = await search.getBoundsCenter();
+        await CommonFunc.sleep(500);
+        await driver.longClick(point.x, point.y);
+        await CommonFunc.sleep(500);
         let strJson4 = getInspectorByKey('SearchGesture');
         let obj4: ESObject = JSON.parse(strJson4);
         console.info(`[search_gesture_002] third step Search selectOverlay obj is:${strJson4}`);

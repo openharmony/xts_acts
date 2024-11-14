@@ -6145,5 +6145,481 @@ export default function JsvmJsunit() {
       console.info('JsvmTest0482 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0483
+     * @tc.name      JsvmTest0483
+     * @tc.desc      Test that when JSVM_Value is js code, return 'ok'.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0483', 0, () => {
+      let script: string = `
+      testGetValueStringUtf8Test1("Hello world")
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0484
+     * @tc.name      JsvmTest0484
+     * @tc.desc      Test that when JSVM_Value is create code, return 'ok'.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0484', 0, () => {
+      let script: string = `
+      testGetValueStringUtf8Test2()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0485
+     * @tc.name      JsvmTest0485
+     * @tc.desc      Test that when bufsize less than (char*) buf, return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0485', 0, () => {
+      let script: string = `
+      testGetValueStringUtf8Test3()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0486
+     * @tc.name      JsvmTest0486
+     * @tc.desc      Test that when bufsize greater than or equal (char*) buf, return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0486', 0, () => {
+      let script: string = `
+      testGetValueStringUtf8Test4()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0487
+     * @tc.name      JsvmTest0487
+     * @tc.desc      Test that when bufsize less than buf, return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0487', 0, () => {
+      let script: string = `
+      testGetValueStringUtf8Test5()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0488
+     * @tc.name      JsvmTest0488
+     * @tc.desc      Test that when (char*) buf equal to bufsize, return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0488', 0, () => {
+      let script: string = `
+      testGetValueStringUtf8Test6()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0489
+     * @tc.name      JsvmTest0489
+     * @tc.desc      Test that when str is null, return 'not ok'.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0489', 0, () => {
+      let script: string = `
+      testCreateStringUtf8Test1()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0490
+     * @tc.name      JsvmTest0490
+     * @tc.desc      Test that when length less than str, return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0490', 0, () => {
+      let script: string = `
+      testCreateStringUtf8Test2()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0491
+     * @tc.name      JsvmTest0491
+     * @tc.desc      Test that when length equal to str, return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0491', 0, () => {
+      let script: string = `
+      testCreateStringUtf8Test3()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0492
+     * @tc.name      JsvmTest0492
+     * @tc.desc      Test that when length greate than str, return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0492', 0, () => {
+      let script: string = `
+      testCreateStringUtf8Test4()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0493
+     * @tc.name      JsvmTest0493
+     * @tc.desc      Test that when str(UTF16) is null, return 'not ok'.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0493', 0, () => {
+      let script: string = `
+      testCreateStringUtf16Test1()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0494
+     * @tc.name      JsvmTest0494
+     * @tc.desc      Test that when length less than str(UTF16), return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0494', 0, () => {
+      let script: string = `
+      testCreateStringUtf16Test2()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0495
+     * @tc.name      JsvmTest0495
+     * @tc.desc      Test that when length equal to str(UTF16), return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0495', 0, () => {
+      let script: string = `
+      testCreateStringUtf16Test3()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0496
+     * @tc.name      JsvmTest0496
+     * @tc.desc      Test that when length greate than str(UTF16), return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0496', 0, () => {
+      let script: string = `
+      testCreateStringUtf16Test4()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0497
+     * @tc.name      JsvmTest0497
+     * @tc.desc      Test that when JSVM_Value is js code, return 'ok'.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0497', 0, () => {
+      let script: string = `
+      testGetValueStringUtf16Test1("create UTF16")
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0498
+     * @tc.name      JsvmTest0498
+     * @tc.desc      Test that when JSVM_Value is create code, return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0498', 0, () => {
+      let script: string = `
+      testGetValueStringUtf16Test2()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0499
+     * @tc.name      JsvmTest0499
+     * @tc.desc      Test that when buf(UTF16) less than str(UTF16), return size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0499', 0, () => {
+      let script: string = `
+      testGetValueStringUtf16Test3()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0500
+     * @tc.name      JsvmTest0500
+     * @tc.desc      Test that when buf(UTF16) greater than or equal str(UTF16), return ‘ok’ and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0500', 0, () => {
+      let script: string = `
+      testGetValueStringUtf16Test4()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0501
+     * @tc.name      JsvmTest0501
+     * @tc.desc      Test that when bufsize less than buf, return size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0501', 0, () => {
+      let script: string = `
+      testGetValueStringUtf16Test5()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0502
+     * @tc.name      JsvmTest0502
+     * @tc.desc      Test that when bufsize equal buf, return ‘ok’ and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0502', 0, () => {
+      let script: string = `
+      testGetValueStringUtf16Test6()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0503
+     * @tc.name      JsvmTest0503
+     * @tc.desc      Test that when str is null, return 'not ok'.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0503', 0, () => {
+      let script: string = `
+      testCreateStringLatin1Test1()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0504
+     * @tc.name      JsvmTest0504
+     * @tc.desc      Test that when length less than str(Latin1), return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0504', 0, () => {
+      let script: string = `
+      testCreateStringLatin1Test2()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0505
+     * @tc.name      JsvmTest0505
+     * @tc.desc      Test that when length equal to str(Latinl), return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0505', 0, () => {
+      let script: string = `
+      testCreateStringLatin1Test3()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0506
+     * @tc.name      JsvmTest0506
+     * @tc.desc      Test that when length greate than str(Latin1), return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0506', 0, () => {
+      let script: string = `
+      testCreateStringLatin1Test4()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0507
+     * @tc.name      JsvmTest0507
+     * @tc.desc      Test that when JSVM_Value is js code(Latin1), return 'ok'.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0507', 0, () => {
+      let script: string = `
+      testGetValueStringLatin1Test1("create Latin1 string")
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0508
+     * @tc.name      JsvmTest0508
+     * @tc.desc      Test that when JSVM_Value is create code(Latin1), return 'ok' and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0508', 0, () => {
+      let script: string = `
+      testGetValueStringLatin1Test2()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0509
+     * @tc.name      JsvmTest0509
+     * @tc.desc      Test that when buf(Latin1) less than str(Latin1), return size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0509', 0, () => {
+      let script: string = `
+      testGetValueStringLatin1Test3()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0510
+     * @tc.name      JsvmTest0510
+     * @tc.desc      Test that when buf(Latin1) greater than or equal str(Latin1), return ‘ok’ and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0510', 0, () => {
+      let script: string = `
+      testGetValueStringLatin1Test4()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0511
+     * @tc.name      JsvmTest0511
+     * @tc.desc      Test that when bufsize less than buf(Latin1), return size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0511', 0, () => {
+      let script: string = `
+      testGetValueStringLatin1Test5()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0512
+     * @tc.name      JsvmTest0512
+     * @tc.desc      Test that when bufsize equal buf(Latin1), return ‘ok’ and size.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0512', 0, () => {
+      let script: string = `
+      testGetValueStringLatin1Test6()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0513
+     * @tc.name      JsvmTest0513
+     * @tc.desc      Test that when create utf8 string, return string is true.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0513', 0, () => {
+      let script: string = `
+      testIsStringTest1()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0514
+     * @tc.name      JsvmTest0514
+     * @tc.desc      Test that when create utf16 string, return string is true.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0514', 0, () => {
+      let script: string = `
+      testIsStringTest2()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0515
+     * @tc.name      JsvmTest0515
+     * @tc.desc      Test that when create Latin1 string, return string is true.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0515', 0, () => {
+      let script: string = `
+      testIsStringTest3()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0516
+     * @tc.name      JsvmTest0516
+     * @tc.desc      Test that when create utf8 string, receive utf16, return err code.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0516', 0, () => {
+      let script: string = `
+      testOtherTest1()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
   });
 }

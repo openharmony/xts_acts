@@ -24,6 +24,7 @@ struct GestureTest {
   @State selectedFontColor: string = '#007DFF'
   controller?: TabsController = new TabsController();
   @State exposeInnerGesture: boolean = true;
+  @State callBackString: string = "";
 
   messageManager: MessageManager<boolean> = new MessageManager();
 
@@ -59,6 +60,7 @@ struct GestureTest {
   }
   build() {
     Column() {
+      Text(this.callBackString).key("callBackS");
       Tabs({ barPosition: BarPosition.Start, index: this.currentIndex, controller: this.controller }) {
         TabContent() {
           Column(){
@@ -82,6 +84,7 @@ struct GestureTest {
           .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
                                           others: Array<GestureRecognizer>): GestureJudgeResult => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
             console.info('ets onGestureRecognizerJudgeBegin child')
+            this.callBackString = "接口触发"
             if (current) {
               let target = current.getEventTargetInfo();
               if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {

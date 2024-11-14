@@ -7,6 +7,9 @@
         "MainAbility/pages/WaterFlow/waterFlowFad",
         "MainAbility/pages/Tabs/tabsOpacity",
         "MainAbility/pages/Tabs/bindTabsScroll",
-        "MainAbility/pages/List/listItemGroup"
+        "MainAbility/pages/List/listItemGroup",
+        "MainAbility/pages/List/itemIndexList",
+        "MainAbility/pages/List/groupAnimation",
+        "MainAbility/pages/List/animationCallback"
     ]
 }

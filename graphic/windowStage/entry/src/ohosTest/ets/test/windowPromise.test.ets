@@ -17,6 +17,7 @@ import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import settings from '@ohos.settings';
 
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function,
@@ -53,6 +54,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     console.log('describe window_api_test start!!!')
     let WindowStage: ohosWindow.WindowStage;
     const TRUE_FLAG: boolean = true;
+    let isPCStatus:string = settings.getValueSync(context,'isStatusBarExist','',settings.domainName.USER_PROPERTY);
+    console.info(`beforeAll isPCStatus: ${isPCStatus}`);
     let commonRGBColorArr: Array<string> =
       ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)',
         'rgb(102,102,102)', 'rgb(255,247,0)'];
@@ -75,56 +78,63 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let listenerOnFlag: boolean = false;
       console.log(msgStr + 'begin');
       let tempWnd: ohosWindow.Window | void;
-      tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
-      });
-      expect(!!tempWnd).assertTrue();
-      console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
-      await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      (tempWnd as ohosWindow.Window).on('systemAvoidAreaChange', (avoidAreaData: ohosWindow.AvoidArea) => {
-        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, avoidAreaData : ' + JSON.stringify(avoidAreaData));
-        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + JSON.stringify(listenerOnFlag));
-        if (listenerOnFlag) {
-          expect(!!avoidAreaData).assertTrue();
-          (tempWnd as ohosWindow.Window).off('systemAvoidAreaChange');
+      if(isPCStatus == ''|| isPCStatus == '1'){
+        tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
+        });
+        expect(!!tempWnd).assertTrue();
+        console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+        await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          expect().assertFail();
           done();
-        }
-      })
-
-      await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.show', done);
-      });
-      console.log(msgStr + 'tempWnd.show success');
-      await (tempWnd as ohosWindow.Window).setFullScreen(true).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setFullScreen(true)', done);
-      });
-      console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-      await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
+        });
+        (tempWnd as ohosWindow.Window).on('systemAvoidAreaChange', (avoidAreaData: ohosWindow.AvoidArea) => {
+          console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, avoidAreaData : ' + JSON.stringify(avoidAreaData));
+          console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + JSON.stringify(listenerOnFlag));
+          if (listenerOnFlag) {
+            expect(!!avoidAreaData).assertTrue();
+            (tempWnd as ohosWindow.Window).off('systemAvoidAreaChange');
+            done();
+          }
+        })
+  
+        await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.show', done);
+        });
+        console.log(msgStr + 'tempWnd.show success');
+        await (tempWnd as ohosWindow.Window).setFullScreen(true).catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setFullScreen(true)', done);
+        });
+        console.log(msgStr + 'tempWnd.setFullScreen(true) success');
+        await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
+        console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
+        await (tempWnd as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
+        });
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
+        listenerOnFlag = true;
+        await sleep(800);
+        await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
+        console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
+        await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+        });
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+      }
+      else{
+        console.info(`${caseName} not support, isPCStatus: ${isPCStatus}`);
         done();
-      });
-      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
-      await (tempWnd as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
-      });
-      console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      listenerOnFlag = true;
-      await sleep(800);
-      await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
-      await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
-      });
-      console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+      }
+      
     })
 
     /**
@@ -185,52 +195,60 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin 1');
       let tempWnd: ohosWindow.Window | void;
-      tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
-      });
-      console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
-      expect(!!tempWnd).assertTrue();
-      await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
+
+      if(isPCStatus == ''|| isPCStatus == '1'){
+        tempWnd = await windowStage.getMainWindow().catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
+        });
+        console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+        expect(!!tempWnd).assertTrue();
+        await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
+        (tempWnd as ohosWindow.Window).on('systemAvoidAreaChange', (avoidAreaData) => {
+          console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData : ' + JSON.stringify(avoidAreaData));
+          (tempWnd as ohosWindow.Window).off('systemAvoidAreaChange');
+          done();
+        })
+        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
+        await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.show', done);
+        });
+        console.log(msgStr + 'tempWnd.show success');
+        await (tempWnd as ohosWindow.Window).setFullScreen(true).catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setFullScreen(true)', done);
+        });
+        console.log(msgStr + 'tempWnd.setFullScreen(true) success');
+        await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
+        console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
+        await (tempWnd as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
+        });
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
+        await sleep(500);
+        await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
+        console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
+        await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
+          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+        });
+        await sleep(500);
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+      }
+      else{
+        console.info(`${caseName} not support, isPCStatus: ${isPCStatus}`);
         done();
-      });
-      (tempWnd as ohosWindow.Window).on('systemAvoidAreaChange', (avoidAreaData) => {
-        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData : ' + JSON.stringify(avoidAreaData));
-        (tempWnd as ohosWindow.Window).off('systemAvoidAreaChange');
-        done();
-      })
-      console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
-      await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.show', done);
-      });
-      console.log(msgStr + 'tempWnd.show success');
-      await (tempWnd as ohosWindow.Window).setFullScreen(true).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setFullScreen(true)', done);
-      });
-      console.log(msgStr + 'tempWnd.setFullScreen(true) success');
-      await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
-      await (tempWnd as ohosWindow.Window).setSystemBarEnable([]).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
-      });
-      console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      await sleep(500);
-      await (tempWnd as ohosWindow.Window).setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
-      await (tempWnd as ohosWindow.Window).setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
-      });
-      await sleep(500);
-      console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+      }
+      
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0780

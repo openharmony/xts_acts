@@ -20,6 +20,9 @@ import waterFlowFad from './WaterFlowTest/waterFlowFad.test';
 import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
 import bindTabsScroll from './TabsTest/bindTabsScroll.test';
 import listItemGroupComponent from './ListTest/listItemGroupComponent.test'; 
+import itemIndexList from './ListTest/itemIndexList.test'; 
+import groupAnimation from './ListTest/groupAnimation.test'; 
+import animationCallback from './ListTest/animationCallback.test'; 
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -29,4 +32,7 @@ export default function testsuite() {
   tabsOpacityJsunit()
   bindTabsScroll()
   listItemGroupComponent()
+  itemIndexList()
+  groupAnimation()
+  animationCallback()
 }
