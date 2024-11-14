@@ -53,6 +53,7 @@
 #define CONSTANT_2999 2999
 #define CONSTANT_3000 3000
 #define CONSTANT_3001 3001
+#define CONSTANT_998899 998899
 
 #define CONSTANT_100 100
 #define CONSTANT_1000 1000
@@ -72,8 +73,58 @@
 #define CONSTANT_50002000 50002000
 #define CONSTANT_50102000 50102000
 
+OH_NativeBuffer_Format bufferFormatType[] = {
+    NATIVEBUFFER_PIXEL_FMT_CLUT8,        NATIVEBUFFER_PIXEL_FMT_CLUT1,        NATIVEBUFFER_PIXEL_FMT_CLUT4,
+    NATIVEBUFFER_PIXEL_FMT_RGB_565,      NATIVEBUFFER_PIXEL_FMT_RGBA_5658,    NATIVEBUFFER_PIXEL_FMT_RGBX_4444,
+    NATIVEBUFFER_PIXEL_FMT_RGBA_4444,    NATIVEBUFFER_PIXEL_FMT_RGB_444,      NATIVEBUFFER_PIXEL_FMT_RGBX_5551,
+    NATIVEBUFFER_PIXEL_FMT_RGBA_5551,    NATIVEBUFFER_PIXEL_FMT_RGB_555,      NATIVEBUFFER_PIXEL_FMT_RGBX_8888,
+    NATIVEBUFFER_PIXEL_FMT_RGBA_8888,    NATIVEBUFFER_PIXEL_FMT_RGB_888,      NATIVEBUFFER_PIXEL_FMT_BGR_565,
+    NATIVEBUFFER_PIXEL_FMT_BGRX_4444,    NATIVEBUFFER_PIXEL_FMT_BGRA_4444,    NATIVEBUFFER_PIXEL_FMT_BGRX_5551,
+    NATIVEBUFFER_PIXEL_FMT_BGRA_5551,    NATIVEBUFFER_PIXEL_FMT_BGRX_8888,    NATIVEBUFFER_PIXEL_FMT_BGRA_8888,
+    NATIVEBUFFER_PIXEL_FMT_YUV_422_I,    NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP, NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP,
+    NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP, NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP, NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P,
+    NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P,  NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P,  NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P,
+    NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG, NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG, NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG,
+    NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG, NATIVEBUFFER_PIXEL_FMT_RGBA_1010102, NATIVEBUFFER_PIXEL_FMT_YCBCR_P010,
+    NATIVEBUFFER_PIXEL_FMT_YCRCB_P010,   NATIVEBUFFER_PIXEL_FMT_RAW10,        NATIVEBUFFER_PIXEL_FMT_VENDER_MASK,
+    NATIVEBUFFER_PIXEL_FMT_BUTT};
 
-class InitNativeWindow{
+int32_t TransformType[] = {
+    NATIVEBUFFER_ROTATE_NONE, /**< No rotation */
+    NATIVEBUFFER_ROTATE_90, /**< Rotation by 90 degrees */
+    NATIVEBUFFER_ROTATE_180, /**< Rotation by 180 degrees */
+    NATIVEBUFFER_ROTATE_270, /**< Rotation by 270 degrees */
+    NATIVEBUFFER_FLIP_H, /**< Flip horizontally */
+    NATIVEBUFFER_FLIP_V, /**< Flip vertically */
+    NATIVEBUFFER_FLIP_H_ROT90, /**< Flip horizontally and rotate 90 degrees */
+    NATIVEBUFFER_FLIP_V_ROT90, /**< Flip vertically and rotate 90 degrees */
+    NATIVEBUFFER_FLIP_H_ROT180, /**< Flip horizontally and rotate 180 degrees */
+    NATIVEBUFFER_FLIP_V_ROT180, /**< Flip vertically and rotate 180 degrees */
+    NATIVEBUFFER_FLIP_H_ROT270, /**< Flip horizontally and rotate 270 degrees */
+    NATIVEBUFFER_FLIP_V_ROT270,
+};
+
+int32_t ColorGamut[] = {
+	NATIVEBUFFER_COLOR_GAMUT_NATIVE, /**< Native or default */
+	NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601, /**< Standard BT601 */
+	NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709, /**< Standard BT709 */
+	NATIVEBUFFER_COLOR_GAMUT_DCI_P3, /**< DCI P3 */
+	NATIVEBUFFER_COLOR_GAMUT_SRGB, /**< SRGB */
+	NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB, /**< Adobe RGB */
+	NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3, /**< Display P3 */
+	NATIVEBUFFER_COLOR_GAMUT_BT2020, /**< BT2020 */
+	NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ, /**< BT2100 PQ */
+	NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG, /**< BT2100 HLG */
+	NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020,
+};
+
+uint64_t usageType[] = {
+    NATIVEBUFFER_USAGE_CPU_READ,      NATIVEBUFFER_USAGE_CPU_WRITE,  NATIVEBUFFER_USAGE_MEM_DMA,
+    NATIVEBUFFER_USAGE_HW_RENDER,     NATIVEBUFFER_USAGE_HW_TEXTURE, NATIVEBUFFER_USAGE_CPU_READ_OFTEN,
+    NATIVEBUFFER_USAGE_ALIGNMENT_512,
+};
+
+class InitNativeWindow {
 private:
     int32_t width_ = 0x100;
     int32_t height_ = 0x100;
@@ -82,11 +133,11 @@ private:
     OHNativeWindow* _nativeWindow = nullptr;
 
 public:
-    InitNativeWindow(){
+    InitNativeWindow() {
         _image = OH_ConsumerSurface_Create();
-        if (_image != nullptr){
+        if (_image != nullptr) {
             _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
-            if (_nativeWindow != nullptr){
+            if (_nativeWindow != nullptr) {
                 OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_BUFFER_GEOMETRY, width_, height_);
                 OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, usage);
             } else {
@@ -97,12 +148,12 @@ public:
             _nativeWindow = nullptr;
         }
     }
-    ~InitNativeWindow(){
+    ~InitNativeWindow() {
         _image = nullptr;
         _nativeWindow = nullptr;
     }
     OHNativeWindow *returnNativeWindow() {
-        if(_nativeWindow == nullptr){
+        if(_nativeWindow == nullptr) {
             return nullptr;
         } else {
             return _nativeWindow;
@@ -120,7 +171,7 @@ public:
 static void DestroyNativeWindowImage(OH_NativeImage *image, OHNativeWindow *window)
 {
     OH_NativeWindow_DestroyNativeWindow(window);
-	OH_NativeImage_Destroy(&image);
+    OH_NativeImage_Destroy(&image);
 }
 
 napi_value testNativeWindowNativeWindowHandleOptSetGetFormatNormal(napi_env env, napi_callback_info info)
@@ -129,43 +180,26 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatNormal(napi_env env,
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
 //     OHNativeWindow* nativeWindow;
-
-    OH_NativeBuffer_Format arr[] = {
-        NATIVEBUFFER_PIXEL_FMT_CLUT8,        NATIVEBUFFER_PIXEL_FMT_CLUT1,        NATIVEBUFFER_PIXEL_FMT_CLUT4,
-        NATIVEBUFFER_PIXEL_FMT_RGB_565,      NATIVEBUFFER_PIXEL_FMT_RGBA_5658,    NATIVEBUFFER_PIXEL_FMT_RGBX_4444,
-        NATIVEBUFFER_PIXEL_FMT_RGBA_4444,    NATIVEBUFFER_PIXEL_FMT_RGB_444,      NATIVEBUFFER_PIXEL_FMT_RGBX_5551,
-        NATIVEBUFFER_PIXEL_FMT_RGBA_5551,    NATIVEBUFFER_PIXEL_FMT_RGB_555,      NATIVEBUFFER_PIXEL_FMT_RGBX_8888,
-        NATIVEBUFFER_PIXEL_FMT_RGBA_8888,    NATIVEBUFFER_PIXEL_FMT_RGB_888,      NATIVEBUFFER_PIXEL_FMT_BGR_565,
-        NATIVEBUFFER_PIXEL_FMT_BGRX_4444,    NATIVEBUFFER_PIXEL_FMT_BGRA_4444,    NATIVEBUFFER_PIXEL_FMT_BGRX_5551,
-        NATIVEBUFFER_PIXEL_FMT_BGRA_5551,    NATIVEBUFFER_PIXEL_FMT_BGRX_8888,    NATIVEBUFFER_PIXEL_FMT_BGRA_8888,
-        NATIVEBUFFER_PIXEL_FMT_YUV_422_I,    NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP, NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP,
-        NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP, NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP, NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P,
-        NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P,  NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P,  NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P,
-        NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG, NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG, NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG,
-        NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG, NATIVEBUFFER_PIXEL_FMT_RGBA_1010102, NATIVEBUFFER_PIXEL_FMT_YCBCR_P010,
-        NATIVEBUFFER_PIXEL_FMT_YCRCB_P010,   NATIVEBUFFER_PIXEL_FMT_RAW10,        NATIVEBUFFER_PIXEL_FMT_VENDER_MASK,
-        NATIVEBUFFER_PIXEL_FMT_BUTT};
-
-    for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); ++i) {
-        int32_t flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, arr[i]);
+    for (int i = 0; i < sizeof(bufferFormatType)/sizeof(bufferFormatType[0]); ++i) {
+        int32_t flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, bufferFormatType[i]);
         if (flag != 0) {
-            napi_create_int32(env, 1, &result);
+            napi_create_int32(env, CONSTANT_1, &result);
             return result;
         }
         int32_t getFormat;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_FORMAT, &getFormat);
         if (flag != 0) {
-            napi_create_int32(env, 2, &result);
+            napi_create_int32(env, CONSTANT_2, &result);
             return result;
         }
-        if (getFormat != arr[i]) {
-            napi_create_int32(env, 3, &result);
+        if (getFormat != bufferFormatType[i]) {
+            napi_create_int32(env, CONSTANT_3, &result);
             return result;
         }
     }
@@ -180,8 +214,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal(napi_env en
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -192,39 +226,27 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal(napi_env en
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, (i + 1) * 1000 + 1, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 1, &result);
             return result;
         }
         int32_t format;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_FORMAT, &format);
         if (flag != 0) {
-            napi_create_int32(env, (i + 1) * 1000 + 2, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 2, &result);
             return result;
         }
         if (format != arr[i]) {
-            napi_create_int32(env, (i + 1) * 1000 + 3, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 3, &result);
             return result;
         }
     }
 
-    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, "ab%^！#8c");
-    if (flag != 0) {
-        napi_create_int32(env, 100001, &result);
-        return result;
-    }
-    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, 999999999999999999);
-    if (flag != 0) {
-        napi_create_int32(env, 100001, &result);
-        return result;
-    }
-    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, NULL);
-    if (flag != 0) {
-        napi_create_int32(env, 100002, &result);
-        return result;
-    }
-    flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT);
-    if (flag != 0) {
-        napi_create_int32(env, 100003, &result);
+    int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, "ab%^！#8c");
+	int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, CONSTANT_999999999999999999);
+	int32_t flag3 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, NULL);
+	int32_t flag4 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT);
+    if (flag1 != 0 || flag2 !=0 || flag3 !=0 || flag4 !=0) {
+        napi_create_int32(env, CONSTANT_10000 + 4, &result);
         return result;
     }
     delete initNative;
@@ -239,7 +261,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageNormal(napi_env env, 
     OHNativeWindow *_nativeWindow = nullptr;
     _nativeWindow = initNative->returnNativeWindow();
     if (_nativeWindow == nullptr) {
-        napi_create_int32(env, 998899, &result);
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -247,46 +269,30 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageNormal(napi_env env, 
     int32_t width_ = 0x100;
     int32_t height_ = 0x100;
     OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, code, width_, height_);
-    int32_t flag;
-    uint64_t arr1[] = {NATIVEBUFFER_USAGE_CPU_READ, /// < CPU read buffer */
-                      NATIVEBUFFER_USAGE_CPU_WRITE, /// < CPU write memory */
-                      NATIVEBUFFER_USAGE_MEM_DMA, /// < Direct memory access (DMA) buffer */
-                      NATIVEBUFFER_USAGE_HW_RENDER, /// < For GPU write case */
-                      NATIVEBUFFER_USAGE_HW_TEXTURE, /// < For GPU read case */
-                      NATIVEBUFFER_USAGE_CPU_READ_OFTEN, /// < Often be mapped for direct CPU reads */
-                      NATIVEBUFFER_USAGE_ALIGNMENT_512};
-    for (int i = 0; i < sizeof(arr1)/sizeof(arr1[0]); ++i) {
-        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, arr1[i]);
-        if (flag != 0) {
-            napi_create_int32(env, (i + 1) * 1000 + 1, &result);
+    for (int i = 0; i < sizeof(usageType)/sizeof(usageType[0]); ++i) {
+		uint64_t  getUsage;
+        int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, usageType[i]);
+        int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &getUsage);
+        if (flag1 != 0 || flag2 != 0) {
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 2, &result);
             return result;
         }
-        uint64_t  getUsage;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &getUsage);
-        if (flag != 0) {
-            napi_create_int32(env, (i + 1) * 1000 + 2, &result);
-            return result;
-        }
-        if (getUsage != arr1[i]) {
-            napi_create_int32(env, (i + 1) * 1000 + 3, &result);
+        if (getUsage != usageType[i]) {
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 3, &result);
             return result;
         }
     }
     uint64_t arr2[] = {0, 1, 1000, 100000000, 2147483647, 18446744073709551615};
     for (int i = 0; i < sizeof(arr2) / sizeof(arr2[0]); ++i) {
-        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, arr2[i]);
-        if (flag != 0) {
-            napi_create_int32(env, (i + 1) * 1000 + 4, &result);
-            return result;
-        }
+        int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, arr2[i]);
         uint64_t  usage;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &usage);
-        if (flag != 0) {
-            napi_create_int32(env, (i + 1) * 1000 + 5, &result);
+        int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, GET_USAGE, &usage);
+        if (flag1 != 0 || flag2 != 0) {
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 5, &result);
             return result;
         }
         if (usage != arr2[i]) {
-            napi_create_int32(env, (i + 1) * 1000 + 6, &result);
+            napi_create_int32(env, (i + 1) * CONSTANT_1000 + 6, &result);
             return result;
         }
     }
@@ -301,8 +307,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageAbnormal(napi_env env
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -353,8 +359,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetStrideNormal(napi_env env,
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -364,16 +370,16 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetStrideNormal(napi_env env,
         int32_t stride;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_STRIDE, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 1, &result);
             return result;
         }
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_STRIDE, &stride);
         if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
             return result;
         }
         if (arr[i] != stride) {
-            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 3, &result);
             return result;
         }
     }
@@ -390,8 +396,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetStrideAbnormal(napi_env en
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -438,8 +444,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalNormal(napi_en
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -450,12 +456,12 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalNormal(napi_en
         int32_t interval;
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SWAP_INTERVAL, arr[i]);
         if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 1, &result);
             return result;
         }
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SWAP_INTERVAL, &interval);
         if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
             return result;
         }
     }
@@ -473,8 +479,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal(napi_
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -517,42 +523,25 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal(napi_
 napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    int32_t flag;
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
-    int32_t ColorGamut[] = {
-        NATIVEBUFFER_COLOR_GAMUT_NATIVE, /**< Native or default */
-        NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT601, /**< Standard BT601 */
-        NATIVEBUFFER_COLOR_GAMUT_STANDARD_BT709, /**< Standard BT709 */
-        NATIVEBUFFER_COLOR_GAMUT_DCI_P3, /**< DCI P3 */
-        NATIVEBUFFER_COLOR_GAMUT_SRGB, /**< SRGB */
-        NATIVEBUFFER_COLOR_GAMUT_ADOBE_RGB, /**< Adobe RGB */
-        NATIVEBUFFER_COLOR_GAMUT_DISPLAY_P3, /**< Display P3 */
-        NATIVEBUFFER_COLOR_GAMUT_BT2020, /**< BT2020 */
-        NATIVEBUFFER_COLOR_GAMUT_BT2100_PQ, /**< BT2100 PQ */
-        NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG, /**< BT2100 HLG */
-        NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020,
-    };
+
     for (int i = 0; i < sizeof(ColorGamut)/sizeof(ColorGamut[0]); ++i) {
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, ColorGamut[i]);
-        if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
-            return result;
-        }
-        int32_t getColorGamut;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &getColorGamut);
-        if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+		int32_t getColorGamut;
+        int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, ColorGamut[i]);
+		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &getColorGamut);
+        if (flag1 != 0 || flag2 != 0) {
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 1, &result);
             return result;
         }
         if (getColorGamut != ColorGamut[i]) {
-            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
             return result;
         }
     }	
@@ -560,18 +549,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal(napi_env 
                      CONSTANT_1,           CONSTANT_1000,  CONSTANT_2147483647};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t gamut;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, arr[i]);
-        if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
-            return result;
-        }
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &gamut);
-        if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+        int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_COLOR_GAMUT, arr[i]);
+		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_COLOR_GAMUT, &gamut);
+        if (flag1 != 0 || flag2 != 0) {
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 3, &result);
             return result;
         }
         if (arr[i] != gamut) {
-            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 4, &result);
             return result;
         }
     }
@@ -588,8 +573,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutAbnormal(napi_en
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -632,44 +617,24 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetColorGamutAbnormal(napi_en
 napi_value testNativeWindowNativeWindowHandleOptSetGetTransformNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-
-    int32_t flag;
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
-    int32_t TransformType[] = {
-        NATIVEBUFFER_ROTATE_NONE, /**< No rotation */
-        NATIVEBUFFER_ROTATE_90, /**< Rotation by 90 degrees */
-        NATIVEBUFFER_ROTATE_180, /**< Rotation by 180 degrees */
-        NATIVEBUFFER_ROTATE_270, /**< Rotation by 270 degrees */
-        NATIVEBUFFER_FLIP_H, /**< Flip horizontally */
-        NATIVEBUFFER_FLIP_V, /**< Flip vertically */
-        NATIVEBUFFER_FLIP_H_ROT90, /**< Flip horizontally and rotate 90 degrees */
-        NATIVEBUFFER_FLIP_V_ROT90, /**< Flip vertically and rotate 90 degrees */
-        NATIVEBUFFER_FLIP_H_ROT180, /**< Flip horizontally and rotate 180 degrees */
-        NATIVEBUFFER_FLIP_V_ROT180, /**< Flip vertically and rotate 180 degrees */
-        NATIVEBUFFER_FLIP_H_ROT270, /**< Flip horizontally and rotate 270 degrees */
-        NATIVEBUFFER_FLIP_V_ROT270,
-    };
     for (int i = 0; i < sizeof(TransformType)/sizeof(TransformType[0]); ++i) {
         int32_t getTransformType;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, TransformType[i]);
-        if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
-            return result;
-        }
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &getTransformType);
-        if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+        int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, TransformType[i]);
+		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &getTransformType);
+        if (flag1 != 0 || flag2 != 0) {
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
             return result;
         }
         if (TransformType[i] != getTransformType) {
-            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 3, &result);
             return result;
         }
     }	
@@ -677,18 +642,14 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformNormal(napi_env e
                      CONSTANT_1,           CONSTANT_1000,  CONSTANT_2147483647};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         int32_t transform;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, arr[i]);
-        if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
-            return result;
-        }
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &transform);
-        if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
+        int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, arr[i]);
+		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_TRANSFORM, &transform);
+        if (flag1 != 0 || flag2 != 0) {
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 4, &result);
             return result;
         }
         if (arr[i] != transform) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 5, &result);
             return result;
         }
     }
@@ -706,8 +667,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetTransformAbnormal(napi_env
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -755,8 +716,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampNormal(napi_env en
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -782,8 +743,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampAbnormal(napi_env 
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -823,8 +784,8 @@ napi_value testNativeWindowNativeWindowHandleOptGetBufferQueueSize(napi_env env,
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -853,8 +814,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessNormal
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -882,8 +843,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessAbnorm
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -921,8 +882,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessNormal
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -950,8 +911,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessAbnorm
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -988,52 +949,43 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeNormal(napi_env 
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
-    int32_t flag;
     int32_t SourceType[] = {
         OH_SURFACE_SOURCE_DEFAULT, OH_SURFACE_SOURCE_UI,    OH_SURFACE_SOURCE_GAME,
         OH_SURFACE_SOURCE_CAMERA,  OH_SURFACE_SOURCE_VIDEO,
     };
     for (int i = 0; i < sizeof(SourceType)/sizeof(SourceType[i]); ++i) {
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, SourceType[i]);
-        if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
-            return result;
-        }
-        int32_t getSourceType;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &getSourceType);
-        if (flag != 0) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
+		int32_t getSourceType;
+        int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, SourceType[i]);
+		int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &getSourceType);
+        if (flag1 != 0 || flag2 != 0) {
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 1, &result);
             return result;
         }
         if (getSourceType != SourceType[i]) {
-            napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 2, &result);
             return result;
         }
     }
     int32_t arr[] = {-2147483647, -1000, -1, 0, 1, 1000, 2147483647};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, arr[i]);
-        if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 1, &result);
-            return result;
-        }
-        int32_t sourceType;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &sourceType);
-        if (flag != 0) {
-            napi_create_int32(env, 1000 * (i + 1) + 2, &result);
+        int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_SOURCE_TYPE, arr[i]);
+		int32_t sourceType;
+        int32_t flag2 = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_SOURCE_TYPE, &sourceType);
+        if (flag1 != 0 || flag2 != 0) {
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 3, &result);
             return result;
         }
         if (sourceType != arr[i]) {
-            napi_create_int32(env, 1000 * (i + 1) + 3, &result);
+            napi_create_int32(env, CONSTANT_1000 * (i + 1) + 4, &result);
             return result;
         }
-    }	
-    
+    }
+
     delete initNative;
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -1048,8 +1000,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetSourceTypeAbnormal(napi_en
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1104,8 +1056,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal(nap
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1145,8 +1097,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal(n
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1180,8 +1132,8 @@ napi_value testNativeWindowNativeWindowSetSetScalingModeV2Nullptr(napi_env env, 
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1210,8 +1162,8 @@ napi_value testNativeWindowNativeWindowSetScalingModeV2ScalingMode(napi_env env,
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1239,8 +1191,8 @@ napi_value testNativeWindowGetColorSpaceFirst(napi_env env, napi_callback_info i
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1273,8 +1225,8 @@ napi_value testNativeWindowSetColorSpaceNormal(napi_env env, napi_callback_info 
         InitNativeWindow *initNative = new InitNativeWindow();
         OHNativeWindow *nativeWindow = nullptr;
         nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
         OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1333,8 +1285,8 @@ napi_value testNativeWindowSetColorSpaceAbnormal(napi_env env, napi_callback_inf
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1377,8 +1329,8 @@ napi_value testNativeWindowGetMetadataValueFirst(napi_env env, napi_callback_inf
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1545,8 +1497,8 @@ napi_value testNativeWindowSetDynamicMetadataValue(napi_env env, napi_callback_i
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1588,8 +1540,8 @@ napi_value testNativeWindowSetMetadataValueTimes(napi_env env, napi_callback_inf
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1788,8 +1740,8 @@ napi_value testNativeWindowSetStaticMetadataValue(napi_env env, napi_callback_in
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -1978,8 +1930,8 @@ napi_value testNativeWindowSetMetadataValue(napi_env env, napi_callback_info inf
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -2020,8 +1972,8 @@ napi_value testNativeWindowSetNullMetadataValue(napi_env env, napi_callback_info
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -2047,8 +1999,8 @@ napi_value testNativeWindowSetMetadataValueNullptr(napi_env env, napi_callback_i
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -2078,8 +2030,8 @@ napi_value testNativeWindowGetMetadataValueAbnormal(napi_env env, napi_callback_
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -2108,8 +2060,8 @@ napi_value testNativeWindowGetMetadataValueNullptr(napi_env env, napi_callback_i
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -2155,8 +2107,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -2182,8 +2134,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNorm
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -2218,13 +2170,12 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNorm
 
 napi_value testNativeWindowSetMetadataValue_metadata_type(napi_env env, napi_callback_info info)
 {
-    const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
     napi_value result = nullptr;
     InitNativeWindow* initNative = new InitNativeWindow();
     OHNativeWindow *nativeWindow = nullptr;
     nativeWindow = initNative->returnNativeWindow();
-    if (nativeWindow == nullptr){
-        napi_create_int32(env, 998899, &result);
+    if (nativeWindow == nullptr) {
+        napi_create_int32(env, CONSTANT_998899, &result);
         return result;
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
@@ -2237,11 +2188,8 @@ napi_value testNativeWindowSetMetadataValue_metadata_type(napi_env env, napi_cal
         if (flag != SUCCESS) {
             napi_create_int32(env, CONSTANT_1000 * i + 1, &result);
             return result;
-            
         }
         flag = OH_NativeWindow_GetMetadataValue(nativeWindow, OH_HDR_METADATA_TYPE, &bufferSize, &buffer);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "metadata_typemetadata_type", "val =%{public}d", val);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "metadata_typemetadata_type", "buffer =%{public}d", *buffer);
         if (*buffer != val) {
             napi_create_int32(env, CONSTANT_1000 * i + 2, &result);
             return result;
