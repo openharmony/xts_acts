@@ -122,6 +122,13 @@
 #include "swiper/swiper_onGestureSwipe_test.h"
 #include "imageAnimator/imageAnimator_event_test.h"
 #include "radio/radio_onChange_test.h"
+#include "textarea/textarea_ontextselectionchange_test.h"
+#include "textarea/textarea_oncontentscroll_test.h"
+#include "textarea/textarea_oncontentdidchange_test.h"
+#include "textarea/textarea_oneditchange_test.h"
+#include "textarea/textarea_oninsert_test.h"
+#include "textarea/textarea_ondelete_test.h"
+#include "textarea/textarea_onsubmit_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -448,6 +455,20 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
 
         {"radioOnChangeTest", nullptr, RadioOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnTextSelectionChangeTest", nullptr, TextAreaOnTextSelectionChangeTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"textAreaOnContentScrollTest", nullptr, TextAreaOnContentScrollTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"textAreaOnContentDidChangeTest", nullptr, TextAreaOnContentDidChangeTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"textAreaOnEditChangeTest", nullptr, TextAreaOnEditChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnInsertTest", nullptr, TextAreaOnInsertTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnDeleteTest", nullptr, TextAreaOnDeleteTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnSubmitTest", nullptr, TextAreaOnSubmitTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
