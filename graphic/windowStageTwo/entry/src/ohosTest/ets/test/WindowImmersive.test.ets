@@ -495,7 +495,6 @@ export default function windowImmersiveTest() {
           windowClass.on('systemAvoidAreaChange', (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for system avoid area changes. Data: ${JSON.stringify(data)}`);
           windowClass.off('systemAvoidAreaChange');
-          expect(true).assertTrue();
           done();
         });
         await windowClass.setWindowLayoutFullScreen(true);
