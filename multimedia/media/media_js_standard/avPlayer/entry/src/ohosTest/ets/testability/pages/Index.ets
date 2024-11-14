@@ -27,6 +27,7 @@ struct Index {
         controller: this.xComponentController
       })
         .onLoad(() => {
+          console.log("load surface")
           this.xComponentController.setXComponentSurfaceSize({ surfaceWidth: 1920, surfaceHeight: 1080 })
           this.surfaceId = this.xComponentController.getXComponentSurfaceId()
           this.xComponentContext = this.xComponentController.getXComponentContext() as Record<string, () => void>
