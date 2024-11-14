@@ -35,6 +35,8 @@ const ExpectTrue: (n: boolean) => void = (n: boolean) => {
 };
 
 
+
+
 export default function ConnectionPublicTest() {
   describe('ConnectionPublicTest', () => {
 
@@ -139,7 +141,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0100";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.reportNetConnected(netHandle, (error: BusinessError) => {
             if (error) {
               console.info(`${caseName} reportNetConnected: BusinessError>${JSON.stringify(error)}`);
@@ -212,7 +214,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0500";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.reportNetConnected(netHandle, (error: BusinessError) => {
             if (error) {
@@ -248,7 +250,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0600";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 50;
           connection.reportNetConnected(netHandle, (error: BusinessError) => {
             if (error) {
@@ -284,7 +286,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0700";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.reportNetConnected(netHandle, (error: BusinessError) => {
             if (error) {
               console.info(`${caseName} reportNetConnected: BusinessError>${JSON.stringify(error)}`);
@@ -319,7 +321,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected0800";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 9999;
           connection.reportNetConnected(netHandle, (error: BusinessError) => {
             if (error) {
@@ -355,7 +357,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1000";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.reportNetConnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetConnected: success`);
             ExpectTrue(true);
@@ -486,7 +488,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1400";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.reportNetConnected(netHandle).then(() => {
             ExpectFail();
@@ -524,9 +526,9 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1500";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then(async (netHandle: connection.NetHandle) => {
           netHandle.netId = 50;
-          connection.reportNetConnected(netHandle).then(() => {
+          await connection.reportNetConnected(netHandle).then(() => {
             ExpectFail();
             console.info(`${caseName}---End`);
             done();
@@ -562,9 +564,9 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1600";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then(async (netHandle: connection.NetHandle) => {
           netHandle.netId = 100;
-          connection.reportNetConnected(netHandle).then(() => {
+          await connection.reportNetConnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetConnected: success`);
             ExpectTrue(true);
             console.info(`${caseName}---End`);
@@ -603,9 +605,9 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetConnected1700";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then(async (netHandle: connection.NetHandle) => {
           netHandle.netId = 9999;
-          connection.reportNetConnected(netHandle).then(() => {
+          await connection.reportNetConnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetConnected: success`);
             ExpectFail();
             console.info(`${caseName}---End`);
@@ -644,16 +646,17 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0100";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-          connection.reportNetDisconnected(netHandle, (error: BusinessError) => {
-            if (error) {
-              console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(error)}`);
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+          connection.reportNetDisconnected(netHandle, (err: BusinessError) => {
+            if (err) {
+              console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(NetHandle)}`);
               ExpectFail();
               console.info(`${caseName}---End`);
               done();
             } else {
               console.info(`${caseName}: reportNetDisconnected: success`);
-              ExpectTrue(error == undefined);
+			  console.info(`${caseName} error1111>${JSON.stringify(err)}`)
+              ExpectTrue(err == undefined);
               console.info(`${caseName}---End`);
               done();
             }
@@ -687,7 +690,7 @@ export default function ConnectionPublicTest() {
         connection.reportNetDisconnected(undefined, (error: BusinessError) => {
           if (error) {
             console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(error)}`);
-            ExpectTrue(error.code == 401);
+			except(error.code).assertEqual(401);
             console.info(`${caseName}---End`);
             done();
           } else {
@@ -751,7 +754,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0500";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.reportNetDisconnected(netHandle, (error: BusinessError) => {
             if (error) {
@@ -792,7 +795,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0600";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 50;
           connection.reportNetDisconnected(netHandle, (error: BusinessError) => {
             if (error) {
@@ -833,7 +836,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0700";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.reportNetDisconnected(netHandle, (error: BusinessError) => {
             if (error) {
               console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(error)}`);
@@ -873,7 +876,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0800";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 9999;
           connection.reportNetDisconnected(netHandle, (error: BusinessError) => {
             if (error) {
@@ -914,7 +917,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1000";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.reportNetDisconnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetDisconnected: success`);
             ExpectTrue(true);
@@ -1012,7 +1015,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1400";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.reportNetDisconnected(netHandle).then(() => {
             ExpectFail();
@@ -1050,7 +1053,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1500";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 50;
           connection.reportNetDisconnected(netHandle).then(() => {
             ExpectFail();
@@ -1088,7 +1091,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1600";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.reportNetDisconnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetDisconnected: success`);
             ExpectTrue(true);
@@ -1126,7 +1129,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected1700";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 9999;
           connection.reportNetDisconnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetDisconnected: success`);
@@ -1637,7 +1640,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetDefaultNetCallback0100";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet((err: BusinessError<void>, data: connection.NetHandle) => {
+        await connection.getDefaultNet((err: BusinessError<void>, data: connection.NetHandle) => {
           console.info(`${caseName} getDefaultNet callback: err->${JSON.stringify(err)} data->${JSON.stringify(data)}`);
           if (err == undefined) {
             ExpectTrue(true);
@@ -1669,7 +1672,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetDefaultNetPromise0100";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet().then((data: connection.NetHandle) => {
+        await connection.getDefaultNet().then((data: connection.NetHandle) => {
           console.info(`${caseName} getDefaultNet: data->${JSON.stringify(data)}`);
           ExpectTrue(typeof data.netId == 'number');
           console.info(`${caseName}---End`);
@@ -1700,7 +1703,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetDefaultNetSync0100";
       console.info(`${caseName} test start`);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         ExpectTrue(typeof netHandle.netId == 'number');
         console.info(`${caseName}---End`);
         done();
@@ -1843,7 +1846,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetDefaultHttpProxyCallback0200";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet((err: BusinessError, netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet((err: BusinessError, netHandle: connection.NetHandle) => {
           console.info(`${caseName} getDefaultNet callback: err->${JSON.stringify(err)} data->${JSON.stringify(netHandle)}`);
           if (err != undefined) {
             ExpectFail();
@@ -1916,7 +1919,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetDefaultHttpProxyPromise0200";
       console.info(`${caseName} test start`);
       try {
-        connection.getDefaultNet((err: BusinessError, netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet((err: BusinessError, netHandle: connection.NetHandle) => {
           console.info(`${caseName} getDefaultHttpProxy promise: err->${JSON.stringify(err)} data->${JSON.stringify(netHandle)}`);
           if (err != undefined) {
             ExpectFail();
@@ -2052,7 +2055,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0100";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
           if (error) {
             ExpectFail();
             console.info(`${caseName}---End`);
@@ -2159,7 +2162,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0600";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
           netHandle.netId = 200;
           if (error) {
             ExpectFail();
@@ -2201,7 +2204,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0700";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           if (error) {
             ExpectFail();
@@ -2243,7 +2246,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0800";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
           netHandle.netId = 23;
           if (error) {
             ExpectFail();
@@ -2285,7 +2288,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1700";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
           netHandle.netId = 99999999;
           if (error) {
             ExpectFail();
@@ -2327,7 +2330,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet0900";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.setAppNet(netHandle).then(() => {
             console.info(`${caseName} SetAppNet: success data->${JSON.stringify(netHandle)}`);
             ExpectTrue(true);
@@ -2466,7 +2469,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1500";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.setAppNet(netHandle).then(() => {
             console.info(`${caseName} SetAppNet: success data->${JSON.stringify(netHandle)}`);
@@ -2504,7 +2507,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1600";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 23;
           connection.setAppNet(netHandle).then(() => {
             console.info(`${caseName} SetAppNet: success data->${JSON.stringify(netHandle)}`);
@@ -2542,7 +2545,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1800";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 99999999;
           connection.setAppNet(netHandle).then(() => {
             console.info(`${caseName} SetAppNet: success data->${JSON.stringify(netHandle)}`);
@@ -2670,7 +2673,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0100";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.getConnectionProperties(netHandle, (error: BusinessError, data: connection.ConnectionProperties) => {
             if (error == undefined) {
               console.info(`${caseName} getConnectionProperties: data->${JSON.stringify(data)}`);
@@ -2776,7 +2779,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0600";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 200;
           connection.getConnectionProperties(netHandle, (error: BusinessError, data: connection.ConnectionProperties) => {
             if (error) {
@@ -2817,7 +2820,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0700";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.getConnectionProperties(netHandle, (error: BusinessError, data: connection.ConnectionProperties) => {
             if (error) {
@@ -2858,7 +2861,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0800";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 23;
           connection.getConnectionProperties(netHandle, (error: BusinessError, data: connection.ConnectionProperties) => {
             if (error) {
@@ -2899,7 +2902,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1700";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 9999999;
           connection.getConnectionProperties(netHandle, (error: BusinessError, data: connection.ConnectionProperties) => {
             if (error) {
@@ -2940,7 +2943,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties0900";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
             console.info(`${caseName} getConnectionProperties: success data->${JSON.stringify(data)}`);
             ExpectTrue(data != undefined);
@@ -3040,7 +3043,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1400";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 200;
           connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
             console.info(`${caseName} getConnectionProperties: success data->${JSON.stringify(data)}`);
@@ -3079,7 +3082,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1500";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
             console.info(`${caseName} getConnectionProperties: success data->${JSON.stringify(data)}`);
@@ -3118,7 +3121,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1600";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 23;
           connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
             console.info(`${caseName} getConnectionProperties: success data->${JSON.stringify(data)}`);
@@ -3157,7 +3160,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionProperties1800";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 999999;
           connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
             console.info(`${caseName} getConnectionProperties: success data->${JSON.stringify(data)}`);
@@ -3196,7 +3199,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0100";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         let connectionProperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
         console.info(`${caseName} GetConnectionPropertiesSync: success data->${JSON.stringify(connectionProperties)}`);
         ExpectTrue(connectionProperties != undefined);
@@ -3272,7 +3275,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0600";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         netHandle.netId = 200;
         let connectionProperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
         console.info(`${caseName} GetConnectionPropertiesSync: success data->${JSON.stringify(connectionProperties)}`);
@@ -3299,7 +3302,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0700";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         netHandle.netId = 0;
         let connectionProperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
         console.info(`${caseName} GetConnectionPropertiesSync: success data->${JSON.stringify(connectionProperties)}`);
@@ -3326,7 +3329,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0800";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         netHandle.netId = 23;
         let connectionProperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
         console.info(`${caseName} GetConnectionPropertiesSync: success data->${JSON.stringify(connectionProperties)}`);
@@ -3353,7 +3356,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0900";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         netHandle.netId = 999999;
         let connectionProperties: connection.ConnectionProperties = connection.getConnectionPropertiesSync(netHandle);
         console.info(`${caseName} GetConnectionPropertiesSync: success data->${JSON.stringify(connectionProperties)}`);
@@ -3380,7 +3383,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0100";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.getNetCapabilities(netHandle, (error: BusinessError, data: connection.NetCapabilities) => {
             if (error == undefined) {
               console.info(`${caseName} callback: err->${JSON.stringify(error)}`);
@@ -3486,7 +3489,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0600";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 200;
           connection.getNetCapabilities(netHandle, (error: BusinessError, data: connection.NetCapabilities) => {
             if (error) {
@@ -3527,7 +3530,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0700";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.getNetCapabilities(netHandle, (error: BusinessError, data: connection.NetCapabilities) => {
             if (error) {
@@ -3568,7 +3571,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0800";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 23;
           connection.getNetCapabilities(netHandle, (error: BusinessError, data: connection.NetCapabilities) => {
             if (error) {
@@ -3609,7 +3612,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1700";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 9999999;
           connection.getNetCapabilities(netHandle, (error: BusinessError, data: connection.NetCapabilities) => {
             if (error) {
@@ -3650,7 +3653,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities0900";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
             console.info(`${caseName} GetNetCapabilities: success data->${JSON.stringify(data)}`);
             ExpectTrue(data != undefined);
@@ -3750,7 +3753,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1400";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 200;
           connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
             console.info(`${caseName} GetNetCapabilities: success data->${JSON.stringify(data)}`);
@@ -3789,7 +3792,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1500";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 0;
           connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
             console.info(`${caseName} GetNetCapabilities: success data->${JSON.stringify(data)}`);
@@ -3828,7 +3831,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1600";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 23;
           connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
             console.info(`${caseName} GetNetCapabilities: success data->${JSON.stringify(data)}`);
@@ -3867,7 +3870,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilities1800";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 999999;
           connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
             console.info(`${caseName} GetNetCapabilities: success data->${JSON.stringify(data)}`);
@@ -3906,7 +3909,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetConnectionPropertiesSync0100";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         let getNetCapAbilitiesSync: connection.NetCapabilities = connection.getNetCapabilitiesSync(netHandle);
         console.info(`${caseName} getNetCapabilitiesSync: success data->${JSON.stringify(getNetCapAbilitiesSync)}`);
         ExpectTrue(getNetCapAbilitiesSync != undefined);
@@ -3982,7 +3985,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0600";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         netHandle.netId = 200;
         let getNetCapAbilitiesSync: connection.NetCapabilities = connection.getNetCapabilitiesSync(netHandle);
         console.info(`${caseName} getNetCapabilitiesSync: success data->${JSON.stringify(getNetCapAbilitiesSync)}`);
@@ -4009,7 +4012,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0700";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         netHandle.netId = 0;
         let getNetCapAbilitiesSync: connection.NetCapabilities = connection.getNetCapabilitiesSync(netHandle);
         console.info(`${caseName} getNetCapabilitiesSync: success data->${JSON.stringify(getNetCapAbilitiesSync)}`);
@@ -4036,7 +4039,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0800";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         netHandle.netId = 23;
         let getNetCapAbilitiesSync: connection.NetCapabilities = connection.getNetCapabilitiesSync(netHandle);
         console.info(`${caseName} getNetCapabilitiesSync: success data->${JSON.stringify(getNetCapAbilitiesSync)}`);
@@ -4063,7 +4066,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionGetNetCapabilitiesSync0900";
       console.info(`${caseName} test start `);
       try {
-        let netHandle: connection.NetHandle = connection.getDefaultNetSync();
+        let netHandle: connection.NetHandle = await connection.getDefaultNetSync();
         netHandle.netId = 9999999;
         let getNetCapAbilitiesSync: connection.NetCapabilities = connection.getNetCapabilitiesSync(netHandle);
         console.info(`${caseName} getNetCapabilitiesSync: success data->${JSON.stringify(getNetCapAbilitiesSync)}`);
@@ -4090,7 +4093,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0100';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4133,7 +4136,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0200';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
           udp.bind({
             address: "127.0.0.1",
@@ -4176,7 +4179,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0300';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.bindSocket(undefined, (error: BusinessError, data: void) => {
             if (error) {
               console.info(`${caseName} bindSocket error: ${JSON.stringify(error)}`);
@@ -4211,7 +4214,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0400';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.bindSocket(null, (error: BusinessError, data: void) => {
             if (error) {
               console.info(`${caseName} bindSocket error: ${JSON.stringify(error)}`);
@@ -4246,7 +4249,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0500';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4286,7 +4289,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0600';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
           udp.bind({
             address: "127.0.0.1",
@@ -4326,7 +4329,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0700';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.bindSocket(undefined).then().catch((error: BusinessError) => {
             console.info(`${caseName} bindSocket error: ${JSON.stringify(error)}`);
             ExpectTrue(error.code == 401);
@@ -4359,7 +4362,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0800';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.bindSocket(null).then().catch((error: BusinessError) => {
             console.info(`${caseName} bindSocket error: ${JSON.stringify(error)}`);
             ExpectTrue(error.code == 401);
@@ -4392,7 +4395,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket0900';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4436,7 +4439,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1000';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4480,7 +4483,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1100';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4523,7 +4526,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1200';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4566,7 +4569,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1300';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4608,7 +4611,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1400';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4650,7 +4653,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1500';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4692,7 +4695,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleBindSocket1600';
       console.info(`${caseName}---test Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
           tcp.bind({
             address: "127.0.0.1",
@@ -4734,7 +4737,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0100';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "192.168.1.1";
           netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
             if (error == undefined) {
@@ -4770,7 +4773,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0200';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "xxxx";
           netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
             if (error) {
@@ -4806,7 +4809,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0300';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.getAddressByName(null, (error: BusinessError, data: connection.NetAddress) => {
             if (error) {
               console.info(`${caseName} Failed to get addresses. error:${JSON.stringify(error)}`);
@@ -4841,7 +4844,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0400';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.getAddressByName(undefined, (error: BusinessError, data: connection.NetAddress) => {
             if (error) {
               console.info(`${caseName} Failed to get addresses. error:${JSON.stringify(error)}`);
@@ -4876,7 +4879,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0500';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "192.168.1.1";
           netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
             console.info(`${caseName} data: ${JSON.stringify(data)}`);
@@ -4910,7 +4913,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0600';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "xxxx";
           netHandle.getAddressByName(host).then().catch((error: BusinessError) => {
             console.info(`${caseName} Failed to get addresses. error:${JSON.stringify(error)}`);
@@ -4939,7 +4942,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0700';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.getAddressByName(null).then().catch((error: BusinessError) => {
             console.info(`${caseName} Failed to get addresses. error:${JSON.stringify(error)}`);
             ExpectTrue(error.code == 401);
@@ -4967,7 +4970,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0800';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.getAddressByName(undefined).then().catch((error: BusinessError) => {
             console.info(`${caseName} Failed to get addresses. error:${JSON.stringify(error)}`);
             ExpectTrue(error.code == 401);
@@ -4995,7 +4998,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName0900';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
             if (error == undefined) {
@@ -5031,7 +5034,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1000';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
             console.info(`${caseName} data: ${JSON.stringify(data)}`);
@@ -5065,7 +5068,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1100';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.netId = 0;
           netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
@@ -5101,7 +5104,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1200';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.netId = 23;
           netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
@@ -5137,7 +5140,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1300';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.netId = 200;
           netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
@@ -5173,7 +5176,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1400';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.netId = 999999;
           netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
@@ -5209,7 +5212,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1500';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.netId = 0;
           netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
@@ -5244,7 +5247,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1600';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.netId = 23;
           netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
@@ -5279,7 +5282,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1700';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.netId = 200;
           netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
@@ -5314,7 +5317,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = 'testNetworkMgrConnectionNetHandleGetAddressByName1800';
       console.info(`${caseName}---Start`);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           let host: string = "127.0.0.1";
           netHandle.netId = 999999;
           netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
