@@ -55,3 +55,4 @@ export const getDrawableDescriptorData: (resmgr: resourceManager.ResourceManager
 export const getDrawableDescriptorDataByName: (resmgr: resourceManager.ResourceManager, name: string) => Boolean;
 export const addResource: (resmgr: resourceManager.ResourceManager) => number;
 export const removeResource: (resmgr: resourceManager.ResourceManager) => Boolean;
+export const getRawFileContentTwo: (resmgr: resourceManager.ResourceManager, path: string) => Uint8Array;

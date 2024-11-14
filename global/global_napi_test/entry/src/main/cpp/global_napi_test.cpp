@@ -1015,6 +1015,33 @@ static napi_value RemoveResource(napi_env env, napi_callback_info info)
     return value;
 }
 
+static napi_value GetRawFileContentTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    napi_valuetype valueType;
+    napi_typeof(env, argv[0], &valueType);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    size_t strSize;
+    char strBuf[256];
+
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string filename(strBuf, strSize);
+    RawFile *rawFile = OH_ResourceManager_OpenRawFile(mNativeResMgr, filename.c_str());
+    long len = OH_ResourceManager_GetRawFileSize(rawFile);
+    std::unique_ptr<uint8_t[]> data = std::make_unique<uint8_t[]>(len);
+    OH_ResourceManager_SeekRawFile(rawFile, 0, SEEK_SET);
+    OH_ResourceManager_ReadRawFile(rawFile, data.get() , 3);
+    OH_ResourceManager_SeekRawFile(rawFile, -5, SEEK_END);
+    OH_ResourceManager_ReadRawFile(rawFile, data.get() + 3 , 5);
+    OH_ResourceManager_SeekRawFile(rawFile, 1, SEEK_SET);
+    OH_ResourceManager_ReadRawFile(rawFile, data.get() + 8 , 8);
+    OH_ResourceManager_CloseRawFile(rawFile);
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    return CreateJsArrayValue(env, data, 16);
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1066,6 +1093,7 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, napi_default, nullptr},
         {"addResource", nullptr, AddResource, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"removeResource", nullptr, RemoveResource, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getRawFileContentTwo", nullptr, GetRawFileContentTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
