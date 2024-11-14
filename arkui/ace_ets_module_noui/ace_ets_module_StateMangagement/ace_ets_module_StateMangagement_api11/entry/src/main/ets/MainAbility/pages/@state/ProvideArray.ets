@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_AI {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
   @Consume Array: Array<Number> | Array<boolean> | Boolean | Array<Resource>;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
 
 
 
@@ -38,11 +40,11 @@ struct Ancestors_AI {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + JSON.stringify(this.Array))
-        .fontSize(20).margin(30).key('ProvideArray')
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + JSON.stringify(this.Array))
+        .fontSize(20).margin(10).key('ProvideArray')
 
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(30).key('ProvideArrayNew')
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+        .fontSize(20).margin(10).key('ProvideArrayNew')
       Text("设置变量Array<Number>类型[1]-->[10]")
       Button('change')
         .onClick(() => {
@@ -72,6 +74,6 @@ struct Ancestors_AI {
         .key('state4')
 
       Child_AI()
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }
