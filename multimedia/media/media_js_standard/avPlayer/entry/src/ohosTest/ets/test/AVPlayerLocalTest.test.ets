@@ -20,6 +20,7 @@ import { testAVPlayerFun, setSource, setSubtitle, PlayTest } from './AVPlayerTes
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+import { sleep } from './NewAVPlayerTestBase';
 
 const VIDEO_SOURCE = 'H264_AAC.mp4';
 const AUDIO_SOURCE = '01.mp3';
@@ -674,6 +675,16 @@ export default function AVPlayerLocalTest() {
     beforeAll(async () => {
       console.info('beforeAll case');
       // await mediaTestBase.toNewPage(PAGE_PATH, PAGE_PATH, 0)
+      console.log("check surfaceId is " + globalThis.value)
+      for (let i =0; i < 10; i++) {
+        if (!globalThis.value) {
+          console.log("surfaceId is undefined")
+          await mediaTestBase.msleepAsync(500);
+        } else {
+          console.log("surfaceId is " + globalThis.value)
+          break;
+        }
+      }
       await mediaTestBase.getFileDescriptorFromFileDir(VIDEO_SOURCE, openFileFailed).then((res) => {
         fileDescriptor = res;
       });
