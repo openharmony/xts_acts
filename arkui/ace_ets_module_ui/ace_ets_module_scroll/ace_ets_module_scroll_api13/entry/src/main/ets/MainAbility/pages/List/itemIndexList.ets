@@ -61,8 +61,8 @@ struct ListIndexExample {
       .gesture(
         LongPressGesture()
           .onAction((event: GestureEvent) => {
-            if (event.fingerList[0] != undefined && event.fingerList[0].localX != 
-            undefined && event.fingerList[0].localY != undefined) {
+            if (event.fingerList[0] != undefined && event.fingerList[0].localX != undefined 
+            && event.fingerList[0].localY != undefined) {
               this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY)
               this.itemBackgroundColorArr[this.listIndex] = true;
             }
