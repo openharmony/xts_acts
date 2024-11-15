@@ -1023,7 +1023,8 @@ static napi_value GetRawFileContentTwo(napi_env env, napi_callback_info info)
     napi_valuetype valueType;
     napi_typeof(env, argv[0], &valueType);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-    size_t strSize;
+    size_t strSize, lenghtOne = 3, lenghtTwo = 5, lenghtThree = 8;
+    long offsetOne = 0, offsetTwo = -5, offsetThree = 1;
     char strBuf[256];
 
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
@@ -1031,15 +1032,15 @@ static napi_value GetRawFileContentTwo(napi_env env, napi_callback_info info)
     RawFile *rawFile = OH_ResourceManager_OpenRawFile(mNativeResMgr, filename.c_str());
     long len = OH_ResourceManager_GetRawFileSize(rawFile);
     std::unique_ptr<uint8_t[]> data = std::make_unique<uint8_t[]>(len);
-    OH_ResourceManager_SeekRawFile(rawFile, 0, SEEK_SET);
-    OH_ResourceManager_ReadRawFile(rawFile, data.get() , 3);
-    OH_ResourceManager_SeekRawFile(rawFile, -5, SEEK_END);
-    OH_ResourceManager_ReadRawFile(rawFile, data.get() + 3 , 5);
-    OH_ResourceManager_SeekRawFile(rawFile, 1, SEEK_SET);
-    OH_ResourceManager_ReadRawFile(rawFile, data.get() + 8 , 8);
+    OH_ResourceManager_SeekRawFile(rawFile, offsetOne, SEEK_SET);
+    OH_ResourceManager_ReadRawFile(rawFile, data.get(), lenghtOne);
+    OH_ResourceManager_SeekRawFile(rawFile, offsetTwo, SEEK_END);
+    OH_ResourceManager_ReadRawFile(rawFile, data.get() + lenghtOne, lenghtTwo);
+    OH_ResourceManager_SeekRawFile(rawFile, offsetThree, SEEK_SET);
+    OH_ResourceManager_ReadRawFile(rawFile, data.get() + lenghtThree, lenghtThree);
     OH_ResourceManager_CloseRawFile(rawFile);
     OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
-    return CreateJsArrayValue(env, data, 16);
+    return CreateJsArrayValue(env, data, lenghtOne + lenghtTwo + lenghtThree);
 }
 
 EXTERN_C_START
