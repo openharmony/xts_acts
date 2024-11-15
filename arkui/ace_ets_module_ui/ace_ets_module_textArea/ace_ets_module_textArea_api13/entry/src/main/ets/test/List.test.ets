@@ -13,18 +13,8 @@
  * limitations under the License.
  */
 
-import textAreaHeightAdaptivePolicyTest from "./component/textAreaHeightAdaptivePolicy.test";
-import textAreaMaxFontSize from "./component/textAreaMaxFontSize.test";
-import textAreaMinFontSize from "./component/textAreaMinFontSize.test";
-import textAreaDecoration from "./component/textAreaDecoration.test";
-import textAreaLineHeight from "./component/textAreaLineHeight.test";
-import textAreaLetterSpacing from "./component/textAreaLetterSpacing.test";
+import textAreaNode from "./component/textAreaNode.test";
 
 export default function testsuite() {
-  textAreaHeightAdaptivePolicyTest();
-  textAreaMinFontSize();
-  textAreaMaxFontSize();
-  textAreaLineHeight();
-  textAreaDecoration();
-  textAreaLetterSpacing();
+  textAreaNode();
 }

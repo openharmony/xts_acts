@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleTextAreaTest") {
   testonly = true
-  deps = [ "ace_ets_module_textArea_api12:ActsAceEtsModuleTextAreaApi12Test" ]
+  deps = [
+    "ace_ets_module_textArea_api12:ActsAceEtsModuleTextAreaApi12Test",
+    "ace_ets_module_textArea_api13:ActsAceEtsModuleTextAreaApi13Test",
+  ]
 }

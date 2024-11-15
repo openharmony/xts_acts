@@ -21,7 +21,6 @@ export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     beforeEach(async (done: Function) => {
       console.info("textAreaNodeTest beforeEach start");
-      console.info("textAreaNodeTest beforeEach start 11111111111111");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/component/textAreaNode',
       }
@@ -59,7 +58,7 @@ export default function abilityTest() {
     it('textAreaNode0100', 0, async (done: Function) => {
 
       let tagName = 'textAreaNode0100';
-      console.info('[' + tagName + '] START123============================');
+      console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_textArea_Node_001');
       console.info('[' + tagName + '] Search fontSize is: ' + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs
@@ -83,7 +82,7 @@ export default function abilityTest() {
   
     it('textAreaNode0200', 0, async (done: Function) => {
       let tagName = 'textAreaNode0200';
-      console.info('[' + tagName + '] START123============================');
+      console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_textArea_Node_001');
       console.info('[' + tagName + '] Search fontStyle is: ' + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs
@@ -104,7 +103,7 @@ export default function abilityTest() {
     
     it('textAreaNode0300', 0, async (done: Function) => {
       let tagName = 'textAreaNode0300';
-      console.info('[' + tagName + '] START123============================');
+      console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_textArea_Node_001');
       console.info('[' + tagName + '] Search textAlign is: ' + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs
