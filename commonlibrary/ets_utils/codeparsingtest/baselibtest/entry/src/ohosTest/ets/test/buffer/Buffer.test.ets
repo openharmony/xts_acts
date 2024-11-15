@@ -6185,8 +6185,8 @@ export default function BufferTest() {
       TAG = "testLastIndexOf0007"
       let buf = buffer.from("123");
       try {
-        let index = buf.lastIndexOf("1");
-        expect(index).assertEqual(0);
+        let index = buf.lastIndexOf("");
+        expect(index).assertEqual(3);
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
         expect().assertFail();
