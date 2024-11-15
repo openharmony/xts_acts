@@ -23,25 +23,25 @@ import { Data1kb } from './utils/data.json';
 let gInData32 = 'RSA_32_ttttttttttttttttttttttttt';
 let gInData256 =
     'RSA_512_tttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
 let gInData384 =
     'RSA_512_tttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
 let gInData512 =
     'RSA_512_tttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
-        'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' +
+    'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
 let gInData32Array = stringToUint8Array(gInData32);
 let gInData256Array = stringToUint8Array(gInData256);
 let gInData384Array = stringToUint8Array(gInData384);
@@ -550,7 +550,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     .then((data) => {
                         console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
                         handle = data.handle;
-                        // expect(data.challenge == undefined).assertTrue();
                         expect(null).assertFail();
                     })
                     .catch(error => {
@@ -617,7 +616,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     .then((data) => {
                         console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
                         handle = data.handle;
-                        // expect(data.challenge == undefined).assertTrue();
                         expect(null).assertFail();
                     })
                     .catch(error => {
@@ -679,7 +677,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     .then((data) => {
                         console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
                         handle = data.handle;
-                        // expect(data.challenge == undefined).assertTrue();
                         expect(null).assertFail();
                     })
                     .catch(error => {
@@ -721,7 +718,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             //init
             encryptedResult = new Array();
             decryptedResult = new Array();
-            // plainData = HuksOptions.inData;
 
             await publicGenerateKeyFunc(srcKeyAlies, genHuksOptions);
             await publicExportKeyFunc(srcKeyAlies, genHuksOptions);
@@ -844,17 +840,12 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             //init
             encryptedResult = new Array();
             decryptedResult = new Array();
-            // plainData = HuksOptions.inData;
 
             await publicGenerateKeyFunc(srcKeyAlies, genHuksOptions);
             await publicExportKeyFunc(srcKeyAlies, genHuksOptions);
             //public Key, purpose should change, cause there is noly one key
             await publicImportKeyFunc(newSrcKeyAlies, HuksOptions); //这里修改了huksOptions的.indata
-            // HuksOptions.inData = plainData;
-
-            // console.info('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
             delete HuksOptions.inData;
-            // HuksOptions.splice(1, 1); // delete inData.
             //Encrypt
             await publicInitFunc(newSrcKeyAlies, HuksOptions);
             let isEncrypt = true;
@@ -1093,7 +1084,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     })
                     .catch(error => {
                         console.error(`promise: doFinish failed, code: ${error.code}, msg: ${error.message}`);
-                        // expect(error.code == 12000006).assertTrue();
 
                     });
             } catch (error) {
@@ -1101,7 +1091,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
 
             }
             //check
-            // expect(arrayEqual(plainData, encryptedResult)).assertTrue();
             //delete
             await publicDeleteKeyFunc(srcKeyAlies, genHuksOptions);
             await publicDeleteKeyFunc(newSrcKeyAlies, genHuksOptions);
@@ -1170,12 +1159,9 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     .then((data) => {
                         console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
                         handle = data.handle;
-                        // expect(data.challenge == undefined).assertTrue();
-                        // expect(null).assertFail();
                     })
                     .catch(error => {
                         console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);
-                        // expect(error.code == 401).assertTrue();
                     });
             } catch (error) {
                 console.error(`promise: doInit input arg invalid, code: ${error.code}, msg: ${error.message}`);
@@ -1249,7 +1235,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     .then((data) => {
                         console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
                         handle = data.handle;
-                        // expect(data.challenge == undefined).assertTrue();
                         expect(null).assertFail();
                     })
                     .catch(error => {
@@ -1323,7 +1308,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     .then((data) => {
                         console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
                         handle = data.handle;
-                        // expect(data.challenge == undefined).assertTrue();
                         expect(null).assertFail();
                     })
                     .catch(error => {
@@ -1369,7 +1353,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             //init
             encryptedResult = new Array();
             decryptedResult = new Array();
-            // plainData = HuksOptions.inData;
 
             await publicGenerateKeyFunc(srcKeyAlies, genHuksOptions);
             await publicExportKeyFunc(srcKeyAlies, genHuksOptions);
@@ -1411,7 +1394,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     });
             } catch (error) {
                 console.error(`promise: doFinish input arg invalid, code: ${error.code}, msg: ${error.message}`);
-                // expect(null).assertFail();
             }
 
             //delete
@@ -1523,7 +1505,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             //init
             encryptedResult = new Array();
             decryptedResult = new Array();
-            // plainData = HuksOptions.inData;
 
             await publicGenerateKeyFunc(srcKeyAlies, genHuksOptions);
             await publicExportKeyFunc(srcKeyAlies, genHuksOptions);
@@ -1566,7 +1547,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     });
             } catch (error) {
                 console.error(`promise: doFinish input arg invalid, code: ${error.code}, msg: ${error.message}`);
-                // expect(null).assertFail();
             }
 
             //delete
@@ -1624,7 +1604,6 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
                     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
                     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
                 },);
-            // HuksOptions.inData = stringToUint8Array(new Array());
             delete HuksOptions.inData;
             await publicInitFunc(srcKeyAlies, HuksOptions);
             console.info(`enter promise doUpdate`);

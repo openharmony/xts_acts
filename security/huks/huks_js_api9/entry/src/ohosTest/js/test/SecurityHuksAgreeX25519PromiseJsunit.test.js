@@ -29,11 +29,7 @@ let HuksOptions63kb = {
         HuksKeyAlgX25519.HuksKeyAlgX25519,
         HuksKeyAlgX25519.HuksKeyPurposeAGREE,
         HuksKeyAlgX25519.HuksKeyCURVE25519Size256,
-        // HuksKeyAlgX25519.HuksKeyDIGEST,
-        // HuksKeyAlgX25519.HuksKeyPADDING,
-        // HuksKeyAlgX25519.HuksKeyBLOCKMODE
     ),
-    // inData: srcData63Kb,
 };
 
 export default function SecurityHuksAgreeX25519PromiseJsunit() {
@@ -56,7 +52,6 @@ export default function SecurityHuksAgreeX25519PromiseJsunit() {
                     HuksKeyAlgX25519.HuksKeyPADDINGNONE,
                     HuksKeyAlgX25519.HuksKeyBLOCKMODECBC
                 ),
-                // inData: srcData63Kb,
             };
             await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish');
             //AES/256/ECB/NoPadding/
@@ -74,12 +69,8 @@ export default function SecurityHuksAgreeX25519PromiseJsunit() {
                         tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV)
                     },
                 ),
-                // inData: srcData63Kb,
             };
-            // let res = await checkAESChiper(srcKeyAliesFirst+ 'final', srcKeyAliesSecond + 'final',huksOptionsCipher);
-            // expect(res == true).assertTrue();
             let res = await checkAESChiper(srcKeyAliesFirst + 'final', srcKeyAliesSecond + 'final', huksOptionsCipher);
-            // console.log('res is' + res);
             expect(res).assertTrue();
             done();
         });
@@ -103,7 +94,6 @@ export default function SecurityHuksAgreeX25519PromiseJsunit() {
                     HuksKeyAlgX25519.HuksKeyPADDINGNONE,
                     HuksKeyAlgX25519.HuksKeyBLOCKMODEECB
                 ),
-                // inData: srcData63Kb,
             };
             await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort',
                 true);

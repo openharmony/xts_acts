@@ -175,7 +175,6 @@ async function publicCipherFunc(srcKeyAlies, HuksOptions, thirdInderfaceName, is
   try {
     updateResult = new Array();
     if (isEncrypt) {
-      // await publicGenerateKeyFunc(srcKeyAlies);
       dataBeforeEncrypt = HuksOptions.inData; //原始数据
     }
     await publicInitFunc(srcKeyAlies, HuksOptions);
@@ -192,21 +191,18 @@ async function checkAESChiper(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions) 
   updateResult = new Array();
   HuksOptions.inData = srcData64Kb;
   HuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyPurposeDECRYPT);
-  
+
   //加密
   await publicCipherFunc(srcKeyAliesFirst, HuksOptions, 'finish', true);
   //解密
   HuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyPurposeENCRYPT);
   HuksOptions.inData = new Uint8Array(updateResult);
   await publicCipherFunc(srcKeyAliesSecond, HuksOptions, 'finish', false);
-  // let arrayEqualRes = false;
   let arrayEqualRes = arrayEqual(Array.from(updateResult), Array.from(srcData64Kb))
-  // console.info('arrayEqualRes is ' + arrayEqualRes);
   if (!arrayEqualRes) { // if not success then res comes to false
     res = false;
   }
 
-  // console.info('res before return is ' + res);
   return res;
 }
 

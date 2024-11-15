@@ -206,7 +206,6 @@ async function publicAgreeFunc(srcKeyAliesFirst,
     await publicAgreeDeleteFunc(srcKeyAliesSecond, HuksOptions);
     // do not delete this one
     if (thirdInderfaceName == 'finish' && isDeleteFinalKeys) {
-      //   console.info('come to there');
       await publicAgreeDeleteFunc(srcKeyAliesFirst + 'final', HuksOptions);
       await publicAgreeDeleteFunc(srcKeyAliesSecond + 'final', HuksOptions);
     }
