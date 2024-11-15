@@ -38,4 +38,41 @@ static napi_value TestScrollPageEnable002(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_PAGING)->value[PARAM_0].i32, true);
     NAPI_END;
 }
+
+static napi_value TestScrollPageEnable003(napi_env env, napi_callback_info info)
+{
+    NAPI_START(scroll, ARKUI_NODE_SCROLL);
+    ArkUI_NumberValue value[] = {{.i32 = PARAM_NEGATIVE_1}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_ENABLE_PAGING, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_PAGING) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_PAGING)->value[PARAM_0].i32, PARAM_NEGATIVE_1);
+    }
+    NAPI_END;
+}
+
+static napi_value TestScrollPageEnable004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(scroll, ARKUI_NODE_SCROLL);
+    ArkUI_AttributeItem value_item = {};
+    auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_ENABLE_PAGING, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_PAGING) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_PAGING)->value[PARAM_0].i32, true);
+    }
+    NAPI_END;
+}
+
+static napi_value TestScrollPageEnable005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(scroll, ARKUI_NODE_SCROLL);
+    ArkUI_NumberValue value[] = {{.i32 = true}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(scroll, NODE_SCROLL_ENABLE_PAGING, &value_item);
+    auto ret = nodeAPI->resetAttribute(scroll, NODE_SCROLL_ENABLE_PAGING);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_PAGING)->value[PARAM_0].i32, false);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

@@ -26,6 +26,9 @@ class ScrollScrollEdgeTest {
 public:
     ~ScrollScrollEdgeTest();
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollEdge001(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollEdge002(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollEdge003(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_XTS_SCROLL_SCROLLEDGE_TEST_H

@@ -38,6 +38,15 @@ public:
     static napi_value CreateNativeNodeRhythm(napi_env env, napi_callback_info info);
     static napi_value CreateNativeNodeSharp(napi_env env, napi_callback_info info);
     static napi_value CreateNativeNodeSmooth(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeCanOverScroll(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeCanOverScrollOff(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollTo001(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollTo002(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollTo003(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollTo004(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollTo005(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollTo006(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeScrollTo007(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_XTS_SCROLL_SCROLLTO_TEST_H

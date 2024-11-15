@@ -48,4 +48,36 @@ static napi_value TestProgressTotal003(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(progress, NODE_PROGRESS_TOTAL)->value[PARAM_0].f32, PARAM_200);
     NAPI_END;
 }
+
+static napi_value TestProgressTotal004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(progress, ARKUI_NODE_PROGRESS);
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_NEGATIVE_1}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(progress, NODE_PROGRESS_TOTAL, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(nodeAPI->getAttribute(progress, NODE_PROGRESS_TOTAL)->value[PARAM_0].f32, PARAM_100);
+    NAPI_END;
+}
+
+static napi_value TestProgressTotal005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(progress, ARKUI_NODE_PROGRESS);
+    ArkUI_AttributeItem value_item = {};
+    auto ret = nodeAPI->setAttribute(progress, NODE_PROGRESS_TOTAL, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    NAPI_END;
+}
+
+static napi_value TestProgressTotal006(napi_env env, napi_callback_info info)
+{
+    NAPI_START(progress, ARKUI_NODE_PROGRESS);
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_200}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(progress, NODE_PROGRESS_TOTAL, &value_item);
+    auto ret = nodeAPI->resetAttribute(progress, NODE_PROGRESS_TOTAL);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(progress, NODE_PROGRESS_TOTAL)->value[PARAM_0].f32, PARAM_100);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

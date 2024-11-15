@@ -42,13 +42,39 @@ export default function xComponentSourceIdTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_XCOMPONENT_SOURCEID_0200
      * @tc.name       : testXComponentSourceId002
-     * @tc.desc       : testing sourceId for XComponent with abnormal value
+     * @tc.desc       : testing sourceId for XComponent with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
     it('testXComponentSourceId002', 0, async (done: Function) => {
       expect(nativeFunc.testXComponentSourceId002()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_XCOMPONENT_SOURCEID_0300
+     * @tc.name       : testXComponentSourceId003
+     * @tc.desc       : testing sourceId for XComponent with null value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testXComponentSourceId003', 0, async (done: Function) => {
+      expect(nativeFunc.testXComponentSourceId003()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_XCOMPONENT_SOURCEID_0400
+     * @tc.name       : testXComponentSourceId004
+     * @tc.desc       : testing sourceId for XComponent with NULL
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testXComponentSourceId004', 0, async (done: Function) => {
+      expect(nativeFunc.testXComponentSourceId004()).assertEqual(0)
       done()
     })
     

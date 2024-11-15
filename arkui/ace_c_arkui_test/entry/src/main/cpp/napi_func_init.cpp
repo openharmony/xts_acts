@@ -79,7 +79,6 @@
 #include "button/button_fontcolor_test.cpp"
 #include "button/button_fontweight_test.cpp"
 #include "button/button_backgroundcolor_test.cpp"
-#include "button/button_label_test.cpp"
 #include "button/button_type_test.cpp"
 #include "checkbox/checkbox_mark_test.cpp"
 #include "checkbox/checkbox_select_test.cpp"
@@ -295,6 +294,7 @@
 #include "listitem/listitem_translate_test.cpp"
 #include "listitem/listitem_width_test.cpp"
 #include "scroll/scroll_backgroundcolor_test.cpp"
+#include "scroll/scroll_barwidth_test.cpp"
 #include "scroll/scroll_blur_test.cpp"
 #include "scroll/scroll_bordercolor_test.cpp"
 #include "scroll/scroll_borderradius_test.cpp"
@@ -489,6 +489,7 @@
 #include "textinput/textinput_enablekeyboardonfocus_test.cpp"
 #include "calendarpicker/calendarpicker_width_test.cpp"
 #include "calendarpicker/calendarpicker_hintradius_test.cpp"
+#include "calendarpicker/calendarpicker_selecteddate_test.cpp"
 #include "datepicker/datepicker_width_test.cpp"
 #include "checkbox/checkbox_width_test.cpp"
 #include "checkbox/checkbox_height_test.cpp"
@@ -530,6 +531,7 @@
 #include "progress/progress_style_test.cpp"
 #include "progress/progress_total_test.cpp"
 #include "progress/progress_value_test.cpp"
+#include "progress/progress_type_test.cpp"
 #include "refresh/refresh_offset_test.cpp"
 #include "refresh/refresh_pulldownratio_test.cpp"
 #include "refresh/refresh_pulltorefresh_test.cpp"
@@ -760,11 +762,13 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testButtonFontWeight014", nullptr, TestButtonFontWeight014, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonFontWeight015", nullptr, TestButtonFontWeight015, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonFontWeight016", nullptr, TestButtonFontWeight016, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testButtonLabel001", nullptr, TestButtonLabel001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonType001", nullptr, TestButtonType001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonType002", nullptr, TestButtonType002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonType003", nullptr, TestButtonType003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testButtonType004", nullptr, TestButtonType004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonType005", nullptr, TestButtonType005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonType006", nullptr, TestButtonType006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonType007", nullptr, TestButtonType007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark001", nullptr, TestCheckboxMark001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark002", nullptr, TestCheckboxMark002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxMark003", nullptr, TestCheckboxMark003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1457,6 +1461,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackAlign008", nullptr, TestStackAlign008, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackAlign009", nullptr, TestStackAlign009, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackAlign010", nullptr, TestStackAlign010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testStackAlign011", nullptr, TestStackAlign011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testStackAlign012", nullptr, TestStackAlign012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testStackAlign013", nullptr, TestStackAlign013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBackgroundBlurStyle001", nullptr, TestStackBackgroundBlurStyle001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testStackBackgroundBlurStyle002", nullptr, TestStackBackgroundBlurStyle002, nullptr, nullptr, nullptr,
@@ -2895,11 +2902,22 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testScrollFriction002", nullptr, TestScrollFriction001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable001", nullptr, TestScrollPageEnable001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable002", nullptr, TestScrollPageEnable002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testScrollPageEnable003", nullptr, TestScrollPageEnable003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testScrollPageEnable004", nullptr, TestScrollPageEnable004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testScrollPageEnable005", nullptr, TestScrollPageEnable005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCalendarPickerHintRadius001", nullptr, TestCalendarPickerHintRadius001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testCalendarPickerHintRadius002", nullptr, TestCalendarPickerHintRadius002, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testCalendarPickerHintRadius003", nullptr, TestCalendarPickerHintRadius003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerHintRadius004", nullptr, TestCalendarPickerHintRadius004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerHintRadius005", nullptr, TestCalendarPickerHintRadius005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerHintRadius006", nullptr, TestCalendarPickerHintRadius006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerHintRadius007", nullptr, TestCalendarPickerHintRadius007, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testCalendarPickerEdgeAlign001", nullptr, TestCalendarPickerEdgeAlign001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
@@ -3061,6 +3079,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testXComponentSourceId001", nullptr, TestXComponentSourceId001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testXComponentSourceId002", nullptr, TestXComponentSourceId002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testXComponentSourceId003", nullptr, TestXComponentSourceId003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testXComponentSourceId004", nullptr, TestXComponentSourceId004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testXComponentType001", nullptr, TestXComponentType001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testXComponentType002", nullptr, TestXComponentType002, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -4450,9 +4472,16 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testProgressTotal001", nullptr, TestProgressTotal001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressTotal002", nullptr, TestProgressTotal002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressTotal003", nullptr, TestProgressTotal003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressTotal004", nullptr, TestProgressTotal004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressTotal005", nullptr, TestProgressTotal005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressTotal006", nullptr, TestProgressTotal006, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressValue001", nullptr, TestProgressValue001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressValue002", nullptr, TestProgressValue002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testProgressValue003", nullptr, TestProgressValue003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressValue004", nullptr, TestProgressValue004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressValue005", nullptr, TestProgressValue005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressValue006", nullptr, TestProgressValue006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressValue007", nullptr, TestProgressValue007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRefreshOffset001", nullptr, TestRefreshOffset001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRefreshOffset002", nullptr, TestRefreshOffset002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRefreshOffset003", nullptr, TestRefreshOffset003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -4786,6 +4815,28 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSliderTrackThickness003", nullptr, TestSliderTrackThickness003, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSliderTrackThickness004", nullptr, TestSliderTrackThickness004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness005", nullptr, TestSliderTrackThickness005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness006", nullptr, TestSliderTrackThickness006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness007", nullptr, TestSliderTrackThickness007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness008", nullptr, TestSliderTrackThickness008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness009", nullptr, TestSliderTrackThickness009, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness010", nullptr, TestSliderTrackThickness010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness011", nullptr, TestSliderTrackThickness011, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness012", nullptr, TestSliderTrackThickness012, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness013", nullptr, TestSliderTrackThickness013, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness014", nullptr, TestSliderTrackThickness014, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderTrackThickness015", nullptr, TestSliderTrackThickness015, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSliderValue001", nullptr, TestSliderValue001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderValue002", nullptr, TestSliderValue002, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -7400,6 +7451,31 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"testLazyForEachUnregisterEventReceiver003", nullptr, TestLazyForEachUnregisterEventReceiver003, nullptr,
          nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType001", nullptr, TestProgressType001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType002", nullptr, TestProgressType002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType003", nullptr, TestProgressType003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType004", nullptr, TestProgressType004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType005", nullptr, TestProgressType005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType006", nullptr, TestProgressType006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType007", nullptr, TestProgressType007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType008", nullptr, TestProgressType008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressType009", nullptr, TestProgressType009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCalendarPickerSelectedDate001", nullptr, TestCalendarPickerSelectedDate001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerSelectedDate002", nullptr, TestCalendarPickerSelectedDate002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerSelectedDate003", nullptr, TestCalendarPickerSelectedDate003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerSelectedDate004", nullptr, TestCalendarPickerSelectedDate004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerSelectedDate005", nullptr, TestCalendarPickerSelectedDate005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollBarWidth001", nullptr, TestScrollBarWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testScrollBarWidth002", nullptr, TestScrollBarWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testScrollBarWidth003", nullptr, TestScrollBarWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testScrollBarWidth004", nullptr, TestScrollBarWidth004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testScrollBarWidth005", nullptr, TestScrollBarWidth005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testScrollBarWidth006", nullptr, TestScrollBarWidth006, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

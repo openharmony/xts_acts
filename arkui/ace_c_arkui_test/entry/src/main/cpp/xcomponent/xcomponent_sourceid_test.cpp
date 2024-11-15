@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 #include "common/common.h"
+#define STR_OVERLENGTH "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong"\
+                       "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong"
+#define STR_NULL ""
 
 namespace ArkUICapiTest {
 
@@ -28,6 +31,28 @@ static napi_value TestXComponentSourceId001(napi_env env, napi_callback_info inf
 }
 
 static napi_value TestXComponentSourceId002(napi_env env, napi_callback_info info)
+{
+    NAPI_START(xComponent, ARKUI_NODE_XCOMPONENT);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = STR_OVERLENGTH;
+    auto ret = nodeAPI->setAttribute(xComponent, NODE_XCOMPONENT_ID, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(xComponent, NODE_XCOMPONENT_ID)->string, STR_OVERLENGTH);
+    NAPI_END;
+}
+
+static napi_value TestXComponentSourceId003(napi_env env, napi_callback_info info)
+{
+    NAPI_START(xComponent, ARKUI_NODE_XCOMPONENT);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = STR_NULL;
+    auto ret = nodeAPI->setAttribute(xComponent, NODE_XCOMPONENT_ID, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(xComponent, NODE_XCOMPONENT_ID)->string, STR_NULL);
+    NAPI_END;
+}
+
+static napi_value TestXComponentSourceId004(napi_env env, napi_callback_info info)
 {
     NAPI_START(xComponent, ARKUI_NODE_XCOMPONENT);
     ArkUI_AttributeItem value_item = {};

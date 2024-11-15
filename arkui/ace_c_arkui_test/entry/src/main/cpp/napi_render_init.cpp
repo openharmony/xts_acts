@@ -46,6 +46,7 @@
 #include "scroll/scroll_onscrolledge_test.h"
 #include "scroll/scroll_onscrollframebegin_test.h"
 #include "scroll/scroll_onscrollstart_test.h"
+#include "scroll/scroll_page_test.h"
 #include "scroll/scroll_onscrollstop_test.h"
 #include "scroll/scroll_scrolledge_test.h"
 #include "scroll/scroll_scrollto_test.h"
@@ -156,6 +157,9 @@
 #include "customcomponent/customcomponent_registernodecustomevent_test.h"
 #include "customcomponent/customcomponent_unregisternodecustomevent_test.h"
 #include "lazyforeach/lazyforeach_test.h"
+#include "scroll/scroll_scroll_event_test.h"
+#include "button/button_label_test.h"
+#include "xcomponent/xcomponent_id_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -245,6 +249,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"scrollOnScrollStopTest", nullptr, ScrollOnScrollStopTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"scrollOnScrollStartTest", nullptr, ScrollOnScrollStartTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollPageTest", nullptr, ScrollPageTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"scrollHitTestBehaviorDefaultTest", nullptr, ScrollHitTestBehaviorTest::CreateNativeNodeDefault, nullptr,
          nullptr, nullptr, napi_default, nullptr},
@@ -360,6 +366,10 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"scrollScrollToSmoothTest", nullptr, ScrollScrollToTest::CreateNativeNodeSmooth, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"scrollScrollToCanOverScrollTest", nullptr, ScrollScrollToTest::CreateNativeNodeCanOverScroll, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollToCanOverScrollOffTest", nullptr, ScrollScrollToTest::CreateNativeNodeCanOverScrollOff, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
         {"scrollCurrentOffsetLinearTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"scrollCurrentOffsetEaseTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeEase, nullptr, nullptr,
@@ -672,6 +682,66 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"lazyForEachSetItemTest", nullptr, LazyForEachTest::CreateNativeNodeSetItem, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"scrollScrollEventOnWillScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnWillScroll,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventOnDidScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnDidScroll,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventOnWillDidScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnWillDidScroll,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventOnReachStartTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnReachStart,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventOnReachEndTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnReachEnd,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventScrollBy001Test", nullptr, ScrollScrollEventTest::CreateNativeNodeScrollBy001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventScrollBy002Test", nullptr, ScrollScrollEventTest::CreateNativeNodeScrollBy002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventScrollBy003Test", nullptr, ScrollScrollEventTest::CreateNativeNodeScrollBy003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventScrollBy004Test", nullptr, ScrollScrollEventTest::CreateNativeNodeScrollBy004,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventScrollBy005Test", nullptr, ScrollScrollEventTest::CreateNativeNodeScrollBy005,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEventScrollBy006Test", nullptr, ScrollScrollEventTest::CreateNativeNodeScrollBy006,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getOnWillDidDataTest", nullptr, ScrollScrollEventTest::GetOnWillDidData,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollTo001Test", nullptr, ScrollScrollToTest::CreateNativeNodeScrollTo001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollTo002Test", nullptr, ScrollScrollToTest::CreateNativeNodeScrollTo002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollTo003Test", nullptr, ScrollScrollToTest::CreateNativeNodeScrollTo003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollTo004Test", nullptr, ScrollScrollToTest::CreateNativeNodeScrollTo004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollTo005Test", nullptr, ScrollScrollToTest::CreateNativeNodeScrollTo005, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollTo006Test", nullptr, ScrollScrollToTest::CreateNativeNodeScrollTo006, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollTo007Test", nullptr, ScrollScrollToTest::CreateNativeNodeScrollTo007, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"buttonLabel001Test", nullptr, ButtonLabelTest::CreateNativeNodeButtonLabel001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"buttonLabel002Test", nullptr, ButtonLabelTest::CreateNativeNodeButtonLabel002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"buttonLabel003Test", nullptr, ButtonLabelTest::CreateNativeNodeButtonLabel003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"buttonLabel004Test", nullptr, ButtonLabelTest::CreateNativeNodeButtonLabel004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"xComponentId001Test", nullptr, XComponentIdTest::CreateNativeNodeXComponentId001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"xComponentId002Test", nullptr, XComponentIdTest::CreateNativeNodeXComponentId002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"xComponentId003Test", nullptr, XComponentIdTest::CreateNativeNodeXComponentId003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"xComponentId004Test", nullptr, XComponentIdTest::CreateNativeNodeXComponentId004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEdge001Test", nullptr, ScrollScrollEdgeTest::CreateNativeNodeScrollEdge001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEdge002Test", nullptr, ScrollScrollEdgeTest::CreateNativeNodeScrollEdge002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollEdge003Test", nullptr, ScrollScrollEdgeTest::CreateNativeNodeScrollEdge003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
