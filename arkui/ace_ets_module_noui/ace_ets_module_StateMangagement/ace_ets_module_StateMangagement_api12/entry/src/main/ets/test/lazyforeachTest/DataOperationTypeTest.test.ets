@@ -27,13 +27,13 @@ export default function DataOperationTypeTest() {
     beforeEach(async (done: Function) => {
       console.info("DataOperationTypeTest beforeEach start");
       let options: optionsObj = {
-        uri: 'MainAbility/pages/Lazyforeach/DataOperationType',
+        uri: 'MainAbility/pages/Lazyforeach/LazyForEachDataOperationType',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get DataOperationTypeTest state pages: " + JSON.stringify(pages));
-        if (!("DataOperationType" == pages.name)) {
+        if (!("LazyForEachDataOperationType" == pages.name)) {
           console.info("get DataOperationTypeTest state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);

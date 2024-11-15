@@ -158,7 +158,7 @@
         "MainAbility/pages/foreach/ForEach010",
         "MainAbility/pages/V1V2Mix/V1ToV2",
         "MainAbility/pages/V1V2Mix/V2ToV1",
-        "MainAbility/pages/Lazyforeach/DataOperationType",
+        "MainAbility/pages/Lazyforeach/LazyForEachDataOperationType",
         "MainAbility/pages/Lazyforeach/lazyChange",
         "MainAbility/pages/Lazyforeach/lazyReload",
         "MainAbility/pages/Lazyforeach/Prefetcher1",

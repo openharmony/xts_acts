@@ -80,7 +80,7 @@ class MyDataSource extends BasicDataSource {
 
 @Entry
 @Component
-struct MyComponent {
+struct LazyForEachDataOperationType {
   private data: MyDataSource = new MyDataSource();
   @State message:string=''
   @State message1:string=''
