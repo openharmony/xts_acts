@@ -2017,6 +2017,139 @@ export default function globalStageTest() {
         expect(e.code == '9001003').assertTrue();
       }
     })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0020
+     * @tc.name      : resourceManager_test_getRawFdSync_0020
+     * @tc.desc      : getRawFdSync with subdirectory non-empty file
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getRawFdSync_0020', 0, () => {
+      let value = res.resourceManager.getRawFdSync('A/test.txt');
+      console.log('resourceManager_test_getRawFdSync_0020_fd' + value.fd);
+      console.log('resourceManager_test_getRawFdSync_0020_offset' + value.offset);
+      console.log('resourceManager_test_getRawFdSync_0020_length' + value.length);
+      expect(value != null && value.length == 4).assertTrue();
+      res.resourceManager.closeRawFdSync('A/test.txt');
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0030
+     * @tc.name      : resourceManager_test_getRawFdSync_0030
+     * @tc.desc      : getRawFdSync with subdirectory empty file
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getRawFdSync_0030', 0, () => {
+      let value = res.resourceManager.getRawFdSync('A/none.xml');
+      console.log('resourceManager_test_getRawFdSync_0030_fd' + value.fd);
+      console.log('resourceManager_test_getRawFdSync_0030_offset' + value.offset);
+      console.log('resourceManager_test_getRawFdSync_0030_length' + value.length);
+      expect(value != null && value.length == 0).assertTrue();
+      res.resourceManager.closeRawFdSync('A/none.xml');
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0050
+     * @tc.name      : resourceManager_test_getRawFdSync_0050
+     * @tc.desc      : getRawFdSync with error path
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getRawFdSync_0050', 0, () => {
+      try {
+        let value = res.resourceManager.getRawFdSync('error_path.xml');
+        console.log('resourceManager_test_getRawFdSync_0050:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getRawFdSync_0050_errorCode' + e.code);
+        console.log('resourceManager_test_getRawFdSync_0050_errorMessage' + e.message);
+        expect(e.code == '9001005').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0170
+     * @tc.name      : resourceManager_test_getRawFileContentSync_0170
+     * @tc.desc      : getRawFileContentSync with subdirectory empty file
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getRawFileContentSync_0170', 0, () => {
+      let value = res.resourceManager.getRawFileContentSync('A/none.xml');
+      console.log('resourceManager_test_getRawFileContentSync_0170:' + value);
+      expect(value.length == 0).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0160
+     * @tc.name      : resourceManager_test_getRawFileContentSync_0160
+     * @tc.desc      : getRawFileContentSync with subdirectory non-empty file
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getRawFileContentSync_0160', 0, () => {
+      let value = res.resourceManager.getRawFileContentSync('A/test.txt');
+      console.log('resourceManager_test_getRawFileContentSync_0160:' + value);
+      expect(value.length == 4).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0190
+     * @tc.name      : resourceManager_test_getRawFileContentSync_0190
+     * @tc.desc      : getRawFileContentSync with error path
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getRawFileContentSync_0190', 0, () => {
+      try {
+        let value = res.resourceManager.getRawFileContentSync('error_path.xml');
+        console.log('resourceManager_test_getRawFileContentSync_0190:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getRawFileContentSync_0190_errorCode' + e.code);
+        console.log('resourceManager_test_getRawFileContentSync_0190_errorMessage' + e.message);
+        expect(e.code == '9001005').assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0120
+     * @tc.name      : resourceManager_test_getRawFileListSync_0120
+     * @tc.desc      : getRawFileListSync with subdirectory
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getRawFileListSync_0120', 0, () => {
+      let value = res.resourceManager.getRawFileListSync('A');
+      console.log('resourceManager_test_getRawFileListSync_0120:' + value);
+      expect(value.length >= 102).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0140
+     * @tc.name      : resourceManager_test_getRawFileListSync_0140
+     * @tc.desc      : getRawFileListSync with error path
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getRawFileListSync_0140', 0, () => {
+      try {
+        let value = res.resourceManager.getRawFileListSync('error_path');
+        console.log('resourceManager_test_getRawFileListSync_0140:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_getRawFileListSync_0140_errorCode' + e.code);
+        console.log('resourceManager_test_getRawFileListSync_0140_errorMessage' + e.message);
+        expect(e.code == '9001005').assertTrue();
+      }
+    })
     console.log('*************end globalStageTest*************');
   })
 }
