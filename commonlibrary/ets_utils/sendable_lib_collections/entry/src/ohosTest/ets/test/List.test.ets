@@ -17,9 +17,12 @@ import collectionsArrayTest from './CollectionsArray.test';
 import collectionsMapTest from './CollectionsMap.test';
 import collectionsSetTest from './CollectionsSet.test';
 import collectionsOtherTest from './CollectionOther.test';
+import collectionsBitVectorTest from './CollectionBitVector.test';
+
 export default function testsuite() {
   collectionsArrayTest();
   collectionsMapTest();
   collectionsSetTest();
   collectionsOtherTest();
+  collectionsBitVectorTest();
 }
