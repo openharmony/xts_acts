@@ -230,7 +230,9 @@ napi_property_descriptor desc[] = {
      nullptr},
     {"testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal", nullptr,
      testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal, nullptr, nullptr, nullptr, napi_default,
-     nullptr}};
+     nullptr},
+    {"testNativeWindowSetMetadataValue_metadata_type", nullptr, testNativeWindowSetMetadataValue_metadata_type, nullptr,
+     nullptr, nullptr, napi_default, nullptr}};
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
