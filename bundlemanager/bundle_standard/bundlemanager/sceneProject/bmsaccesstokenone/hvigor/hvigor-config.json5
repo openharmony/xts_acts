@@ -16,5 +16,8 @@
   "hvigorVersion": "4.0.5",
   "dependencies": {
     "@ohos/hvigor-ohos-plugin": "4.0.5"
+  },
+  "execution": {
+    "parallel": false
   }
 }
