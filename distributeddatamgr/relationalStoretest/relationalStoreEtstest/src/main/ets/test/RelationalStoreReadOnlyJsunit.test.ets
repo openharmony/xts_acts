@@ -75,8 +75,8 @@ export default function RdbStoreReadOnlyTest() {
         await rdbStore.insert('test', valueBucket);
         await rdbStore.insert('test', valueBucket2);
 
-        rdbStore.backup(STORE_CONFIG2.name);
-        rdbStore.backup(STORE_CONFIG3.name);
+        await rdbStore.backup(STORE_CONFIG2.name);
+        await rdbStore.backup(STORE_CONFIG3.name);
 
         await relationalStore.deleteRdbStore(context, STORE_CONFIG);
 
