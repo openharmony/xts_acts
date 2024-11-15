@@ -646,10 +646,10 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0100";
       console.info(`${caseName} test start`);
       try {
-        await connection.getDefaultNet().then((netHandle: connection.netHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.reportNetDisconnected(netHandle, (err: BusinessError) => {
             if (err) {
-              console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(NetHandle)}`);
+              console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(netHandle)}`);
               ExpectFail();
               console.info(`${caseName}---End`);
               done();
