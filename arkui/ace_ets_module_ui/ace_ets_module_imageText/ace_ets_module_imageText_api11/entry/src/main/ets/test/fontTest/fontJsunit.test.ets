@@ -54,7 +54,6 @@ export default function fontJsunit() {
         let strJson = getInspectorByKey('fontlist');
         let obj: ESObject = JSON.parse(strJson);
         console.info("[GridColOffsetJsunit_0100] component  strJson:" + JSON.stringify(obj.$attrs.content));
-        let size = await driver.getDisplaySize();
         if (obj.$attrs.content == "") {
             expect(obj.$attrs.content).assertEqual("");
         } else {
