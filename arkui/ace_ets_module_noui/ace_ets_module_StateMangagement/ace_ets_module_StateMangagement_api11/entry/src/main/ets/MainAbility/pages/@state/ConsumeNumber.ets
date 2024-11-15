@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 class Num5 {
   public pages:number;
   constructor(pages: number) {
@@ -37,7 +39,7 @@ struct Child_CN {
       Text("切换变量赋值Object")
       Button('change')
         .onClick(() => {
-          this.count = { pages: 20 };
+          this.count = new Num5(20);
         })
         .key('state2')
 
@@ -75,12 +77,12 @@ struct Ancestors_CN {
   @Provide count: number | Object | String | Date | Boolean = 0;
 
   build() {
-    Column({ space: 20 }) {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.count)) + " number is " + JSON.stringify(this.count))
-        .fontSize(20).margin(30).key('ConsumeNumber')
+    Column({ space: 10 }) {
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.count)) + " number is " + JSON.stringify(this.count))
+        .fontSize(20).margin(10).key('ConsumeNumber')
 
       Child_CN()
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

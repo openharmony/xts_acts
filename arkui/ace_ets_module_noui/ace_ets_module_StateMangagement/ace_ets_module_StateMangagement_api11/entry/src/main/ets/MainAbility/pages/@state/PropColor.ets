@@ -12,14 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Component
 struct Child_AA {
   @Prop color: undefined | null | ResourceColor;
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.color)) + " number is " + JSON.stringify(this.color))
-        .fontSize(20).margin(30).key('PropColor')
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.color)) + " number is " + JSON.stringify(this.color))
+        .fontSize(20).margin(10).key('PropColor')
       Text("设置变量color类型pink-->Orange")
       Button('change')
         .backgroundColor(this.color)
@@ -78,9 +80,9 @@ struct Library_AA {
   @State color: undefined | null | ResourceColor = Color.Pink;
 
   build() {
-    Column({ space: 20 }) {
+    Column({ space: 10 }) {
       Child_AA({color: this.color})
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }

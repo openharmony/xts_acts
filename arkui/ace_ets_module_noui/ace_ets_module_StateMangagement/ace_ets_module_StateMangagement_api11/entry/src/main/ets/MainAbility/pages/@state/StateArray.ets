@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import CommonFunc from '../../../MainAbility/common/Common';
+
 @Entry
 @Component
 struct MyComponent_AE {
@@ -19,11 +21,11 @@ struct MyComponent_AE {
 
 
   build() {
-    Column({ space: 20 }) {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + JSON.stringify(this.Array))
-        .fontSize(20).margin(30).key('StateArray')
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
-        .fontSize(20).margin(30).key('StateArrayNew')
+    Column({ space: 10 }) {
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + JSON.stringify(this.Array))
+        .fontSize(20).margin(10).key('StateArray')
+      Text("count type of " + JSON.stringify(CommonFunc.getType(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+        .fontSize(20).margin(10).key('StateArrayNew')
       Text("设置变量Array<Number>类型[1]-->[10]")
       Button('change')
         .onClick(() => {
@@ -53,6 +55,6 @@ struct MyComponent_AE {
         .key('state4')
 
 
-    }.width('100%').margin({top:10})
+    }.width('100%').margin({top:5})
   }
 }
