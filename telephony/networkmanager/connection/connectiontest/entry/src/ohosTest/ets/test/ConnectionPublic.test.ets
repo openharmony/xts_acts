@@ -646,7 +646,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionReportNetDisconnected0100";
       console.info(`${caseName} test start`);
       try {
-        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.netHandle) => {
           connection.reportNetDisconnected(netHandle, (err: BusinessError) => {
             if (err) {
               console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(NetHandle)}`);
@@ -655,7 +655,7 @@ export default function ConnectionPublicTest() {
               done();
             } else {
               console.info(`${caseName}: reportNetDisconnected: success`);
-			  console.info(`${caseName} error1111>${JSON.stringify(err)}`)
+              console.info(`${caseName} error1111>${JSON.stringify(err)}`);
               ExpectTrue(err == undefined);
               console.info(`${caseName}---End`);
               done();
@@ -690,7 +690,7 @@ export default function ConnectionPublicTest() {
         connection.reportNetDisconnected(undefined, (error: BusinessError) => {
           if (error) {
             console.info(`${caseName} reportNetDisconnected: BusinessError>${JSON.stringify(error)}`);
-			except(error.code).assertEqual(401);
+			expect(error.code).assertEqual(401);
             console.info(`${caseName}---End`);
             done();
           } else {
@@ -2430,7 +2430,7 @@ export default function ConnectionPublicTest() {
       const caseName: string = "testNetworkMgrConnectionSetAppNet1400";
       console.info(`${caseName} test start `);
       try {
-        connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+        await connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           netHandle.netId = 200;
           connection.setAppNet(netHandle).then(() => {
             console.info(`${caseName} SetAppNet: success data->${JSON.stringify(netHandle)}`);
