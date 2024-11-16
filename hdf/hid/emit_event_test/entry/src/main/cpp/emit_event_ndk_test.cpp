@@ -25,12 +25,13 @@
 #include <vector>
 
 static int32_t deviceId = 0;
+constexpr const char* DEVICE_NAME = "VSoC_keyboard";
 
-static napi_value HidCreateDevice(napi_env env, napi_callback_info info)
+static int32_t CreateTestDevice(const char* str)
 {
-    std::vector<Hid_DeviceProp> deviceProp = {HID_PROP_DIRECT};
+    std::vector<Hid_DeviceProp> deviceProp = { HID_PROP_DIRECT };
     Hid_Device hidDevice = {
-        .deviceName = "VSoC keyboard",
+        .deviceName = str,
         .vendorId = 0x6006,
         .productId = 0x6006,
         .version = 1,
@@ -39,15 +40,27 @@ static napi_value HidCreateDevice(napi_env env, napi_callback_info info)
         .propLength = (uint16_t)deviceProp.size()
     };
 
-    std::vector<Hid_EventType> eventType = {HID_EV_ABS, HID_EV_KEY, HID_EV_SYN, HID_EV_MSC};
-    Hid_EventTypeArray eventTypeArray = {.hidEventType = eventType.data(), .length = (uint16_t)eventType.size()};
+    std::vector<Hid_EventType> eventType = { HID_EV_ABS, HID_EV_KEY, HID_EV_SYN, HID_EV_MSC };
+    Hid_EventTypeArray eventTypeArray = {
+        .hidEventType = eventType.data(),
+        .length = (uint16_t)eventType.size()
+    };
     std::vector<Hid_KeyCode> keyCode = {
-        HID_BTN_TOOL_PEN, HID_BTN_TOOL_RUBBER, HID_BTN_TOUCH, HID_BTN_STYLUS, HID_BTN_RIGHT};
-    Hid_KeyCodeArray keyCodeArray = {.hidKeyCode = keyCode.data(), .length = (uint16_t)keyCode.size()};
-    std::vector<Hid_MscEvent> mscEvent = {HID_MSC_SCAN};
-    Hid_MscEventArray mscEventArray = {.hidMscEvent = mscEvent.data(), .length = (uint16_t)mscEvent.size()};
-    std::vector<Hid_AbsAxes> absAxes = {HID_ABS_X, HID_ABS_Y, HID_ABS_PRESSURE};
-    Hid_AbsAxesArray absAxesArray = {.hidAbsAxes = absAxes.data(), .length = (uint16_t)absAxes.size()};
+        HID_BTN_TOOL_PEN, HID_BTN_TOOL_RUBBER, HID_BTN_TOUCH, HID_BTN_STYLUS, HID_BTN_RIGHT };
+    Hid_KeyCodeArray keyCodeArray = {
+        .hidKeyCode = keyCode.data(),
+        .length = (uint16_t)keyCode.size()
+    };
+    std::vector<Hid_MscEvent> mscEvent = { HID_MSC_SCAN };
+    Hid_MscEventArray mscEventArray = {
+        .hidMscEvent = mscEvent.data(),
+        .length = (uint16_t)mscEvent.size()
+    };
+    std::vector<Hid_AbsAxes> absAxes = { HID_ABS_X, HID_ABS_Y, HID_ABS_PRESSURE };
+    Hid_AbsAxesArray absAxesArray = {
+        .hidAbsAxes = absAxes.data(),
+        .length = (uint16_t)absAxes.size()
+    };
     Hid_EventProperties hidEventProp = {
         .hidEventTypes = eventTypeArray,
         .hidKeys = keyCodeArray,
@@ -55,17 +68,42 @@ static napi_value HidCreateDevice(napi_env env, napi_callback_info info)
         .hidMiscellaneous=mscEventArray
     };
 
-    int32_t returnValue = OH_Hid_CreateDevice(&hidDevice, &hidEventProp);
-    deviceId = returnValue;
+    return OH_Hid_CreateDevice(&hidDevice, &hidEventProp);
+}
+
+static napi_value HidCreateDeviceOne(napi_env env, napi_callback_info info)
+{
+    deviceId = CreateTestDevice(DEVICE_NAME);
     napi_value result = nullptr;
-    napi_create_int32(env, returnValue, &result);
+    NAPI_CALL(env, napi_create_int32(env, deviceId, &result));
     return result;
 }
 
+static napi_value HidCreateDeviceTwo(napi_env env, napi_callback_info info)
+{
+    deviceId = CreateTestDevice(nullptr);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, deviceId, &result));
+    return result;
+}
+
+static napi_value HidCreateDeviceThree(napi_env env, napi_callback_info info)
+{
+    deviceId = CreateTestDevice("");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, deviceId, &result));
+    return result;
+}
 
 static napi_value HidEmitEventOne(napi_env env, napi_callback_info info)
 {
-    Hid_EmitItem event = {.type = HID_EV_MSC, .code = HID_MSC_SCAN, .value = 0x000d0042};
+    deviceId = CreateTestDevice(DEVICE_NAME);
+    NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
+    Hid_EmitItem event = {
+        .type = HID_EV_MSC,
+        .code = HID_MSC_SCAN,
+        .value = 0x000d0042
+    };
     std::vector<Hid_EmitItem> items;
     items.push_back(event);
     int32_t returnValue = OH_Hid_EmitEvent(deviceId, items.data(), (uint16_t)items.size());
@@ -76,6 +114,8 @@ static napi_value HidEmitEventOne(napi_env env, napi_callback_info info)
 
 static napi_value HidEmitEventTwo(napi_env env, napi_callback_info info)
 {
+    deviceId = CreateTestDevice(DEVICE_NAME);
+    NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     const uint16_t len = 21;
     std::vector<Hid_EmitItem> items;
     for (uint16_t i = 0; i < len; ++i) {
@@ -90,6 +130,8 @@ static napi_value HidEmitEventTwo(napi_env env, napi_callback_info info)
 
 static napi_value HidEmitEventThree(napi_env env, napi_callback_info info)
 {
+    deviceId = CreateTestDevice(DEVICE_NAME);
+    NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     const uint16_t len = 20;
     std::vector<Hid_EmitItem> items;
     for (uint16_t i = 0; i < len; ++i) {
@@ -104,6 +146,8 @@ static napi_value HidEmitEventThree(napi_env env, napi_callback_info info)
 
 static napi_value HidDestroyDeviceOne(napi_env env, napi_callback_info info)
 {
+    deviceId = CreateTestDevice(DEVICE_NAME);
+    NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     int32_t returnValue = OH_Hid_DestroyDevice(deviceId);
     napi_value result = nullptr;
     napi_create_int32(env, returnValue, &result);
@@ -132,7 +176,9 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"hidCreateDevice", nullptr, HidCreateDevice, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"hidCreateDeviceOne", nullptr, HidCreateDeviceOne, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"hidCreateDeviceTwo", nullptr, HidCreateDeviceTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"hidCreateDeviceThree", nullptr, HidCreateDeviceThree, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidEmitEventOne", nullptr, HidEmitEventOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidEmitEventTwo", nullptr, HidEmitEventTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hidEmitEventThree", nullptr, HidEmitEventThree, nullptr, nullptr, nullptr, napi_default, nullptr},
