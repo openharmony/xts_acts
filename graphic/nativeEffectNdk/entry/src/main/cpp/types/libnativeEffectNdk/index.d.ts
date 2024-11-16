@@ -14,10 +14,17 @@
  */
  
 export const oHFilterCreateEffect: () => number;
+export const oHFilterCreateEffect001: () => number;
 export const oHFilterInvert: () => number;
+export const oHFilterInvert001: () => number;
 export const oHFilterBlur: () => number;
+export const oHFilterBlur001: () => number;
 export const oHFilterGrayScale: () => number;
+export const oHFilterGrayScale001: () => number;
 export const oHFilterBrighten: () => number;
+export const oHFilterBrighten001: () => number;
 export const oHFilterSetColorMatrix: () => number;
+export const oHFilterSetColorMatrix001: () => number;
 export const oHFilterGetEffectPixelMap: () => number;
 export const oHFilterRelease: () => number;
+export const oHFilterRelease001: () => number;
