@@ -992,40 +992,6 @@ export default function ErrTest() {
     });
 
     /**
-     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1600
-     * @tc.name       : testTelephonyContactQueryContactsByEmail1600
-     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testTelephonyContactQueryContactsByEmail1600', 0, async (done: Function) => {
-      const caseName: string = "testTelephonyContactQueryContactsByEmail1600";
-      console.info(`${caseName} test start `);
-      try {
-        let context: Context = AppStorage.get('context') as Context;
-        contact.queryContactsByEmail(context, '13800000000@email.com', {
-          attributes: []
-        }, (err: BusinessError, data) => {
-          if (err) {
-            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectTrue(err.code === 401);
-            done();
-          } else {
-            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-            ExpectTrue(data.length > 0);
-            done();
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectFail();
-        done();
-      }
-      console.info(`${caseName} test end `);
-    });
-
-    /**
      * @tc.number     : SUB_Telephony_Contact_UpdateContact_0300
      * @tc.name       : testTelephonyContactUpdateContact0300
      * @tc.desc       : Update a contacts and useing the callback10 method as an asynchronous method
@@ -1465,6 +1431,40 @@ export default function ErrTest() {
         const ee: BusinessError = err as BusinessError;
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectTrue(ee.code === 401);
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1600
+     * @tc.name       : testTelephonyContactQueryContactsByEmail1600
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1600', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1600";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, '13800000000@email.com', {
+          attributes: []
+        }, (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length > 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
         done();
       }
       console.info(`${caseName} test end `);
