@@ -22,7 +22,14 @@ import bindTabsScroll from './TabsTest/bindTabsScroll.test';
 import listItemGroupComponent from './ListTest/listItemGroupComponent.test'; 
 import itemIndexList from './ListTest/itemIndexList.test'; 
 import groupAnimation from './ListTest/groupAnimation.test'; 
-import animationCallback from './ListTest/animationCallback.test'; 
+import animationCallback from './ListTest/animationCallback.test';
+import scrollAniFalse from './ScrollTest/scrollAniFalse.test';
+import scrollAniUn from './ScrollTest/scrollAniUn.test';
+import scrollAniTrue from './ScrollTest/scrollAniTrue.test'; 
+import gridAniTrue from './GridTest/gridAniTrue.test'; 
+import irregularAniGrid from './GridTest/irregularAniGrid.test'; 
+import repeatAniGrid from './GridTest/repeatAniGrid.test'; 
+import waterFlowAniTrue from './WaterFlowTest/waterFlowAniTrue.test'; 
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -35,4 +42,11 @@ export default function testsuite() {
   itemIndexList()
   groupAnimation()
   animationCallback()
+  scrollAniFalse()
+  scrollAniUn()
+  scrollAniTrue()
+  gridAniTrue()
+  irregularAniGrid()
+  repeatAniGrid()
+  waterFlowAniTrue()
 }
