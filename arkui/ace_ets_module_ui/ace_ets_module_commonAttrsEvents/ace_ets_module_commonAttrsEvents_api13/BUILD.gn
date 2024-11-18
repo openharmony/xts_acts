@@ -13,20 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsAceEtsModuleCommonAttrsEventsApi14TestMain") {
+ohos_app_assist_suite("ActsAceEtsModuleCommonAttrsEventsApi13TestMain") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsModuleCommonAttrsEventsApi14TestMain"
+  hap_name = "ActsAceEtsModuleCommonAttrsEventsApi13TestMain"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }
 
-ohos_js_app_suite("ActsAceEtsModuleCommonAttrsEventsApi14Test") {
+ohos_js_app_suite("ActsAceEtsModuleCommonAttrsEventsApi13Test") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsModuleCommonAttrsEventsApi14Test"
+  hap_name = "ActsAceEtsModuleCommonAttrsEventsApi13Test"
   part_name = "ace_engine"
   subsystem_name = "arkui"
-  deps = [ ":ActsAceEtsModuleCommonAttrsEventsApi14TestMain" ]
+  deps = [ ":ActsAceEtsModuleCommonAttrsEventsApi13TestMain" ]
 }

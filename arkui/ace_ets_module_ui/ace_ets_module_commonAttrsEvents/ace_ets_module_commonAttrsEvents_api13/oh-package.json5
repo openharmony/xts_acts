@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,33 +14,14 @@
  */
 
 {
-  "app": {
-    "signingConfigs": [
-
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 14,
-        "compatibleSdkVersion": 14,
-        "targetSdkVersion": 14,
-        "runtimeOS": "OpenHarmony"
-      }
-    ]
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
   },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
-    }
-  ]
+  "author": "",
+  "name": "com.arkui.ace.commonAttrsEvents.api13",
+  "description": "XTS",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }

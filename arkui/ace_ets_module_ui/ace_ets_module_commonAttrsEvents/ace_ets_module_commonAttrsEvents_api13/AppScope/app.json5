@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.arkui.ace.commonAttrsEvents.api14",
+    "bundleName": "com.arkui.ace.commonAttrsEvents.api13",
     "vendor": "huawei",
     "versionCode": 1000000,
     "versionName": "1.0.0",
