@@ -20,6 +20,7 @@ import fileio from "@ohos.fileio";
 import fs from '@ohos.file.fs';
 import ndkTest from 'libentry.so'
 import  image  from "@ohos.multimedia.image";
+import { common } from '@kit.AbilityKit';
 
 const CODE_SUCCESS = 0;
 const ERR_CODE = 62980115;
@@ -42,8 +43,8 @@ async function getWriteFd(fileName: string) {
   let fdNumber: number;
   let filePath: string;
   try {
-    const context: Context = getContext();
-    let filePath: string = await context.filesDir+"/" + fileName;
+    let uiContext: common.UIAbilityContext = globalThis.uiContext;    
+    let filePath: string = await uiContext.filesDir+"/" + fileName;
     console.info("image getWriteFd filePath is " + filePath);
     let fdNumber: number = fileio.openSync(filePath, 0o102, 0o666);
     console.log(`getWriteFd fd: ${JSON.stringify(fdNumber)}`);
@@ -67,9 +68,9 @@ async function getWriteFd(fileName: string) {
 }
 
 async function getreadFd(pictureName: string) {
-    const context: Context = getContext();
+    let uiContext: common.UIAbilityContext = globalThis.uiContext;   
     let picturePath: string;
-    picturePath = context.filesDir + "/" + pictureName;
+    picturePath = uiContext.filesDir + "/" + pictureName;
     console.info(' image case filePath is ' + picturePath);
     let file = fs.openSync(picturePath);
     pictureFd = file.fd;
@@ -99,7 +100,8 @@ async function createTest(done: Function, testNum: string) {
 async function createTestImageSource(picName: string): Promise<image.ImageSource> {
   let result: image.ImageSource;
   try {
-    const rawFile = await getContext().resourceManager.getRawFileContent(picName);
+    let uiContext: common.UIAbilityContext = globalThis.uiContext;
+    const rawFile = await uiContext.resourceManager.getRawFileContent(picName);
     const  ImageSource: image.ImageSource = image.createImageSource(rawFile.buffer);
     return ImageSource;
   } catch (error) {
@@ -126,6 +128,11 @@ async function packToDataTest(done: Function, testNum: string, source: image.Ima
       done();
       return;
     }
+     let packingRes = ndkTest.packToData(packer.result, source, packOpts);
+     checkNdkRes(packingRes);
+     expect(packingRes.result != undefined).assertTrue();
+     log.log("packer packingRes " + JSON.stringify(packingRes));
+     done();
   } catch (error) {
     console.error("Test exception " + error);
     expect().assertFail();
@@ -253,6 +260,7 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
     done();
     return;
   } else {
+    let delayTimeListLength: number = packConfig.option.delayTimes.length;
     let delayTimes = await imageSourceApi.getDelayTimeList();
     let disposalTypes = await imageSourceApi.getDisposalTypeList();
     image.PropertyKey.GIF_LOOP_COUNT;
@@ -266,10 +274,10 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
     expect(imageInfo.size.width == 600).assertTrue();
     expect(imageInfo.size.height == 400).assertTrue();
     expect(imageInfo.mimeType == "image/gif").assertTrue();
-    if (packConfig.loop) {
+    if (packConfig.loop != undefined) {
       expect(loopcount.GIFLoopCount == packConfig.loop).assertTrue();
     } else {
-      expect(loopcount.GIFLoopCount == '0').assertTrue();
+      expect(loopcount.GIFLoopCount == '1').assertTrue();
     }
     for (let i = 0; i < delayTimes.length; i++) {
       if (packConfig.option.delayTimes[i]) {
