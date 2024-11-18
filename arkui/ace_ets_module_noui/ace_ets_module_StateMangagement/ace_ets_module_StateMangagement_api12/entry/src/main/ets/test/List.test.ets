@@ -168,6 +168,14 @@ import ForEachTest010 from './foreachTest/ForEachTest010.test';
 import stateArr from './state/stateArr.test';
 import V1ToV2 from './V1V2Mix/V1ToV2.test';
 import  V2ToV1 from './V1V2Mix/V2ToV1.test';
+import DataOperationTypeTest from './LazyForEach/DataOperationTypeTest.test';
+import lazyChangeJsunit from './LazyForEach/lazyChangeJsunit.test';
+import lazyReloadJsunit from './LazyForEach/lazyReloadJsunit.test';
+import Prefetcher1 from './LazyForEach/Prefetcher1.test';
+import Prefetcher2 from './LazyForEach/Prefetcher2.test';
+import appStorageV2 from './StorageTest/appStorageV2.test';
+import persistenceV2 from './StorageTest/persistenceV2.test';
+import ForEachTest030 from './foreachTest/ForEachTest030.test';
 
 export default function testsuite() {
 
@@ -326,4 +334,12 @@ export default function testsuite() {
   ForEachTest010();
   V1ToV2();
   V2ToV1();
+  DataOperationTypeTest();
+  lazyChangeJsunit();
+  lazyReloadJsunit();
+  Prefetcher1();
+  Prefetcher2();
+  appStorageV2();
+  persistenceV2();
+  ForEachTest030();
 }
