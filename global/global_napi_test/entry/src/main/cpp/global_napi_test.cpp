@@ -782,16 +782,17 @@ static napi_value ReleaseConfiguration(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     ResourceManager_ErrorCode code;
-    char *temp = static_cast<char *>(malloc(10 * sizeof(char)));
+    char *temp = static_cast<char *>(malloc(20 * sizeof(char)));
     OH_ResourceManager_GetConfiguration(mNativeResMgr, &config);
     static const int MAX_LENGTH = 20;
     strncpy(temp, config.locale, MAX_LENGTH);
-    temp[MAX_LENGTH] = '\0';
+    temp[MAX_LENGTH - 1] = '\0';
     code = OH_ResourceManager_ReleaseConfiguration(&config);
 
     bool flag = (code == 0 && strcmp(temp, "zh_Hans_CN") == 0 && config.locale == nullptr);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
+    delete temp;
     return value;
 }
 
