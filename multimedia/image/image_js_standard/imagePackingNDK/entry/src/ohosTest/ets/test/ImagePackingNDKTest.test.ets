@@ -263,7 +263,6 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
     let delayTimeListLength: number = packConfig.option.delayTimes.length;
     let delayTimes = await imageSourceApi.getDelayTimeList();
     let disposalTypes = await imageSourceApi.getDisposalTypeList();
-    image.PropertyKey.GIF_LOOP_COUNT;
     let loopcount = await imageSourceApi.getImageProperties([image.PropertyKey.GIF_LOOP_COUNT]);
     let imageInfo = imageSourceApi.getImageInfoSync();
     console.info(`checkPackingMultiFrames delayTimes ${delayTimes}`);
