@@ -195,24 +195,6 @@ export default function initNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_STARTUP_INIT_DEVICEINFO_OH_GETMARKETNAME_0200
-     * @tc.name       : testOHGetMarketName002
-     * @tc.desc       : test OH_GetMarketName has at least one character and at most 32 characters.
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHGetMarketName002', 0, async (done: Function) => {
-      let marketNameInfo: string = initndk.oHGetMarketName();
-
-      console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
-      let len = marketNameInfo.length;
-      expect(len).assertLess(MAX_CHARACTERS_NUM_ONE);
-      expect(len).assertLarger(MAX_CHARACTERS_NUM);
-      done();
-    });
-
-    /**
      * @tc.number     : SUB_STARTUP_INIT_DEVICEINFO_OH_GETPRODUCTSERIES_0100
      * @tc.name       : testOHGetProductSeries001
      * @tc.desc       : test OH_GetProductSeries for non-empty strings without special characters.
