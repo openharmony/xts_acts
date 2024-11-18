@@ -13,5 +13,5 @@
 
 group("ActsAceEtsModuleTextClockTest") {
   testonly = true
-  deps = [ "ace_ets_module_textclock_api12:ActsAceEtsModuleTextClockApi12Test" ]
+  deps = [ "ace_ets_module_textclock_api14:ActsAceEtsModuleTextClockApi14Test" ]
 }
