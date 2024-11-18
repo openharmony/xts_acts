@@ -27,7 +27,7 @@ export default function DataOperationTypeTest() {
     beforeEach(async (done: Function) => {
       console.info("DataOperationTypeTest beforeEach start");
       let options: optionsObj = {
-        uri: 'MainAbility/pages/Lazyforeach/LazyForEachDataOperationType',
+        uri: 'MainAbility/pages/LazyForEach/LazyForEachDataOperationType',
       }
       try {
         router.clear();

@@ -23,7 +23,7 @@ export default function lazyChangeJsunit() {
     beforeEach(async (done: Function) => {
       console.info("lazyChangeJsunit beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Lazyforeach/lazyChange',
+        url: 'MainAbility/pages/LazyForEach/lazyChange',
       }
       try {
         router.clear();

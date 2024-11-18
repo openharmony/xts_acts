@@ -18,59 +18,57 @@ import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayR
 import CommonFunc from '../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../MainAbility/common/MessageManager';
 
-export default function lazyReloadJsunit() {
-  describe('lazyReloadJsunit', () => {
+export default function Prefetcher1() {
+  describe('Prefetcher1', () => {
     beforeEach(async (done: Function) => {
-      console.info("lazyReloadJsunit beforeEach start");
+      console.info("Prefetcher1 beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Lazyforeach/lazyReload',
+        url: 'MainAbility/pages/LazyForEach/Prefetcher1',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get lazyReloadJsunit state pages: " + JSON.stringify(pages));
-        if (!("lazyReload" == pages.name)) {
-          console.info("get lazyReloadJsunit state pages.name: " + JSON.stringify(pages.name));
+        console.info("get Prefetcher1 state pages: " + JSON.stringify(pages));
+        if (!("Prefetcher1" == pages.name)) {
+          console.info("get Prefetcher1 state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push lazyReloadJsunit success: " + JSON.stringify(result));
+          console.info("push Prefetcher1 success: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push lazyReloadJsunit page error: " + err);
-        expect().assertFail();
+        console.error("push Prefetcher1 page error: " + err);
       }
       done();
     });
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("lazyReloadJsunit after each called");
+      console.info("Prefetcher1 after each called");
     });
 
     /* *
-    * @tc.number: SUB_ACE_SWIPER_lazyReloadJsunit_0100
-    * @tc.name  : lazyReloadJsunit_0100
-    * @tc.desc  : Reload all data.
+    * @tc.number: Prefetcher1_0100
+    * @tc.name  : Prefetcher1_0100
+    * @tc.desc  : Test lazyforeach
     * @tc.level : Level 2
-    * @tc.type :
-    * @tc.size :
     */
-    it('lazyReloadJsunit_0100', 0, async (done: Function) => {
-      console.info('lazyReloadJsunit_0100 START');
+    it('Prefetcher1_0100', 0, async (done: Function) => {
+      console.info('Prefetcher1_0100 START');
       await CommonFunc.sleep(1000);
 
       let driver = await Driver.create();
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('reload_Type'));
-      await button.click();
-      await CommonFunc.sleep(1000);
-      console.info("[RepeatEachJsunit_0100] lazyReload success");
 
-      let strJson: string = getInspectorByKey('reload_Data');
+      let text = await driver.findComponent(ON.id('Prefetcher1_add'));
+      await text.click();
+      console.info("[Prefetcher1_0100] text click");
+      await CommonFunc.sleep(1000);
+
+      let strJson: string = getInspectorByKey('Prefetcher1_add');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[lazyReloadJsunit_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('reload: Hello 10');
-      console.info('[lazyReloadJsunit_0100] END');
+      console.info("[Prefetcher1_0100] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.content).assertEqual('add22');
+      console.info('[Prefetcher1_0100] END');
       done();
     });
 

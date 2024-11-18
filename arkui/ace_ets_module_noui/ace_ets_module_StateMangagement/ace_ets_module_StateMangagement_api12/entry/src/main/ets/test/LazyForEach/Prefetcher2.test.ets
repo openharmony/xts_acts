@@ -18,57 +18,57 @@ import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayR
 import CommonFunc from '../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../MainAbility/common/MessageManager';
 
-export default function Prefetcher1() {
-  describe('Prefetcher1', () => {
+export default function Prefetcher2() {
+  describe('Prefetcher2', () => {
     beforeEach(async (done: Function) => {
-      console.info("Prefetcher1 beforeEach start");
+      console.info("Prefetcher2 beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Lazyforeach/Prefetcher1',
+        url: 'MainAbility/pages/LazyForEach/Prefetcher2',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get Prefetcher1 state pages: " + JSON.stringify(pages));
-        if (!("Prefetcher1" == pages.name)) {
-          console.info("get Prefetcher1 state pages.name: " + JSON.stringify(pages.name));
+        console.info("get Prefetcher2 state pages: " + JSON.stringify(pages));
+        if (!("Prefetcher2" == pages.name)) {
+          console.info("get Prefetcher2 state pages.name: " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push Prefetcher1 success: " + JSON.stringify(result));
+          console.info("push Prefetcher2 success: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Prefetcher1 page error: " + err);
+        console.error("push Prefetcher2 page error: " + err);
       }
       done();
     });
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("Prefetcher1 after each called");
+      console.info("Prefetcher2 after each called");
     });
 
     /* *
-    * @tc.number: Prefetcher1_0100
-    * @tc.name  : Prefetcher1_0100
+    * @tc.number: Prefetcher2_0100
+    * @tc.name  : Prefetcher2_0100
     * @tc.desc  : Test lazyforeach
     * @tc.level : Level 2
     */
-    it('Prefetcher1_0100', 0, async (done: Function) => {
-      console.info('Prefetcher1_0100 START');
+    it('Prefetcher2_0100', 0, async (done: Function) => {
+      console.info('Prefetcher2_0100 START');
       await CommonFunc.sleep(1000);
 
       let driver = await Driver.create();
       await CommonFunc.sleep(1000);
 
-      let text = await driver.findComponent(ON.id('Prefetcher1_add'));
+      let text = await driver.findComponent(ON.id('Prefetcher2_add'));
       await text.click();
-      console.info("[Prefetcher1_0100] text click");
+      console.info("[Prefetcher2_0100] text click");
       await CommonFunc.sleep(1000);
 
-      let strJson: string = getInspectorByKey('Prefetcher1_add');
+      let strJson: string = getInspectorByKey('Prefetcher2_add');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[Prefetcher1_0100] component obj is: " + JSON.stringify(obj));
+      console.info("[Prefetcher2_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('add22');
-      console.info('[Prefetcher1_0100] END');
+      console.info('[Prefetcher2_0100] END');
       done();
     });
 
