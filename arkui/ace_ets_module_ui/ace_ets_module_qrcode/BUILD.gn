@@ -13,5 +13,5 @@
 
 group("ActsAceEtsModuleQRCodeTest") {
   testonly = true
-  deps = [ "ace_ets_module_qrcode_api12:ActsAceEtsModuleQRCodeApi12Test" ]
+  deps = [ "ace_ets_module_qrcode_api14:ActsAceEtsModuleQRCodeApi14Test" ]
 }
