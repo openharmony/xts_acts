@@ -29,6 +29,13 @@ import listAnVisible from './ListTest/listAnVisible.test';
 import listHeight from './ListTest/listHeight.test'; 
 import groupAnVisible from './ListTest/groupAnVisible.test'; 
 import groupHeight from './ListTest/groupHeight.test';   
+import scrollAniFalse from './ScrollTest/scrollAniFalse.test';
+import scrollAniUn from './ScrollTest/scrollAniUn.test';
+import scrollAniTrue from './ScrollTest/scrollAniTrue.test'; 
+import gridAniTrue from './GridTest/gridAniTrue.test'; 
+import irregularAniGrid from './GridTest/irregularAniGrid.test'; 
+import repeatAniGrid from './GridTest/repeatAniGrid.test'; 
+import waterFlowAniTrue from './WaterFlowTest/waterFlowAniTrue.test'; 
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -47,4 +54,11 @@ export default function testsuite() {
   listHeight()
   groupAnVisible()
   groupHeight()
+  scrollAniFalse()
+  scrollAniUn()
+  scrollAniTrue()
+  gridAniTrue()
+  irregularAniGrid()
+  repeatAniGrid()
+  waterFlowAniTrue()
 }

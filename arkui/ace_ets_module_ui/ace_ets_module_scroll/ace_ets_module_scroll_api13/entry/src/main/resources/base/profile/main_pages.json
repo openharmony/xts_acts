@@ -16,6 +16,13 @@
         "MainAbility/pages/List/listAnVisible",
         "MainAbility/pages/List/listHeight",
         "MainAbility/pages/List/groupAnVisible",
-        "MainAbility/pages/List/groupHeight"
+        "MainAbility/pages/List/groupHeight",
+        "MainAbility/pages/Scroll/scrollAniFalse",
+        "MainAbility/pages/Scroll/scrollAniUn",
+        "MainAbility/pages/Scroll/scrollAniTrue",
+        "MainAbility/pages/Grid/gridAniTrue",
+        "MainAbility/pages/Grid/irregularAniGrid",
+        "MainAbility/pages/Grid/repeatAniGrid",
+        "MainAbility/pages/WaterFlow/waterFlowAniTrue"
     ]
 }
