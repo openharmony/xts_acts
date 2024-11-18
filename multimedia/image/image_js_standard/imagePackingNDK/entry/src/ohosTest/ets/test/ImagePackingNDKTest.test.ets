@@ -273,10 +273,10 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
     expect(imageInfo.size.width == 600).assertTrue();
     expect(imageInfo.size.height == 400).assertTrue();
     expect(imageInfo.mimeType == "image/gif").assertTrue();
-    if (packConfig.loop != undefined) {
+    if (packConfig.loop) {
       expect(loopcount.GIFLoopCount == packConfig.loop).assertTrue();
     } else {
-      expect(loopcount.GIFLoopCount == '1').assertTrue();
+      expect(loopcount.GIFLoopCount == '0').assertTrue();
     }
     for (let i = 0; i < delayTimes.length; i++) {
       if (packConfig.option.delayTimes[i]) {
