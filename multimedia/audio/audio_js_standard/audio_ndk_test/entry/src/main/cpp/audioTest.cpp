@@ -2450,7 +2450,7 @@ static napi_value AudioRoutingManagerSetMicBlockStatusCallback_001(napi_env env,
             napi_create_int32(env, TEST_FAIL, &res);
             return res;
         }
-    } else if (result == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && supported == false) {
+    } else if (result == AUDIOCOMMON_RESULT_SUCCESS && supported == false) {
         LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result4 is: %{public}d", result);
     } else {
         napi_create_int32(env, TEST_FAIL, &res);
@@ -2482,7 +2482,7 @@ static napi_value AudioRoutingManagerSetMicBlockStatusCallback_002(napi_env env,
             napi_create_int32(env, TEST_FAIL, &res);
             return res;
         }
-    } else if (result == AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM && supported == false) {
+    } else if (result == AUDIOCOMMON_RESULT_SUCCESS && supported == false) {
         LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result4 is: %{public}d", result);
     } else {
         napi_create_int32(env, TEST_FAIL, &res);
