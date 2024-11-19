@@ -21,7 +21,7 @@ import FirstDialog from '../model/FirstDialog';
 struct TapGestureExample {
   @State value: string = '';
   @State name: string = 'TapGesture';
-  @State StepTips: string = '操作步骤：手指连续双击图像' + '\n' + '预期结果：双击图片后文本提示正常弹出';
+  @State StepTips: string = '操作步骤：手指连续双击图像' + '\n' + '预期结果：双击图像后文本提示正常弹出';
   @State Vue: boolean = false;
 
   async aboutToAppear() {

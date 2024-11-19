@@ -23,7 +23,7 @@ struct SetCircle {
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasTextBaseline';
-  @State StepTips: string = '操作步骤：点击不同的水平对齐方式' + '\n' + '预期结果：原本默认水平对齐方式会随点击变化';
+  @State StepTips: string = '操作步骤：点击不同的水平对齐方式' + '\n' + '预期结果：水平对齐方式会随点击变化';
   @State Vue: boolean = false;
   @State num1: number = 0;
   @State num2: number = 0;

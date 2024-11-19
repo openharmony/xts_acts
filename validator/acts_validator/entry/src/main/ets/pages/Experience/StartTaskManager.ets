@@ -19,6 +19,7 @@ import context from '@ohos.app.ability.common';
 import { AppInfoItem } from '../model/LocalConfigEntity';
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
+import promptAction from '@ohos.promptAction';
 
 let AppNameList = ['图库'];
 let AppBundleNameList = ["com.ohos.photos"];
@@ -108,7 +109,13 @@ struct CustomContainerUser {
                   .backgroundColor(0x317aff)
                   .width('30%')
                   .onClick(() => {
-                    this.Vue = true;
+                    promptAction.showToast({
+                      message: '无可测试应用'
+                    })
+                    router.back({
+                      url: 'pages/Experience/Experience_index',
+                      params: { result: 'false', title: this.name }
+                    })
                   })
               }
             }
@@ -123,7 +130,8 @@ struct CustomContainerUser {
               Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入桌面` + '\n' + '\n' + '2.点击悬浮球开始测试' + '\n' + '\n' +
                 `3.点击右下角方框开启任务管理器` + '\n' + '\n' + '4.待悬浮球倒计时结束显示为done后返回validator应用' + '\n' + '\n' + `5.点击结束观察测试结果` + '\n' + '\n' +
                 `6.若启动任务管理器时延小于1000ms则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
-                `※1.若悬浮球显示连接失败，需重启设备并在run.bat中输入run validator拉起测试` + '\n' + '\n' + `※2.双击悬浮球中断测试，长按悬浮球提前结束测试` + '\n' + '\n')
+                `※1.若悬浮球显示连接失败，需重启设备并在run.bat中输入run validator拉起测试` + '\n' + '\n' + `※2.双击悬浮球中断测试，长按悬浮球提前结束测试` + '\n' + '\n' +
+                `※3.若无可测试应用，点击无可测试应用按钮`)
                 .fontColor(Color.White)
                 .fontSize('20fp')
             }

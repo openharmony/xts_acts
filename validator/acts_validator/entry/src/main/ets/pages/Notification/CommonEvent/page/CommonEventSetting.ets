@@ -39,7 +39,7 @@ struct CommonEventSetting {
     { event: commonEvent.Support.COMMON_EVENT_SCREEN_UNLOCKED, title: '是否记录解锁屏事件' }
   ];
   @State name: string = 'CommonEventSetting'
-  @State StepTips: string = '操作步骤：\n请选择不同事件的监听状态\n点击进入监听页按钮'
+  @State StepTips: string = '操作步骤：\n1.请选择不同事件的监听状态\n2.点击进入监听页按钮'
 
   @Builder
   FailBtn(text: Resource, isFullScreen: boolean) {

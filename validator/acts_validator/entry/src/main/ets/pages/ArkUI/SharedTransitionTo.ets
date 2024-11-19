@@ -28,7 +28,7 @@ struct SharedTransitionTo {
   @State rating: number = 0;
   @State FillColor: string = '#FF000000';
   @State name: string = 'SharedTransitionTo';
-  @State StepTips: string = '操作步骤：点击左上角的返回键' + '\n' + '预期结果：商品图片进行了转场';
+  @State StepTips: string = '操作步骤：点击返回键' + '\n' + '预期结果：商品图片进行了转场';
   @State Vue: boolean = false;
   @State active: boolean = false;
 
