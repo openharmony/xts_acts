@@ -66,6 +66,7 @@ export default function search_gesture() {
         console.info('search_gesture_001 click success');
         //first step: input hello
         await searchComponent.inputText('hello');
+		await driver.triggerKey(2047)
         await CommonFunc.sleep(1000);
 
         //second step: get caret position and click caret
@@ -191,6 +192,7 @@ export default function search_gesture() {
       console.info('[search_gesture_003] click success');
       //first step: input long text
       await searchComponent.inputText('helloWORLD!helloWORLD!helloWORLD!helloWORLD!helloWORLD!helloWORLD!');
+	  await driver.triggerKey(2047)
       await CommonFunc.sleep(1000);
 
       //second step: trigger enter and check focus state
@@ -257,6 +259,7 @@ export default function search_gesture() {
       console.info('[search_gesture_005] click success');
       //first step: input hello and click the head of line,check caret position
       await searchComponent.inputText('hello');
+	  await driver.triggerKey(2047)
       await CommonFunc.sleep(500);
       let searchRect = await searchComponent.getBounds();
       let clickX = Math.round(searchRect.left + relativeContentRectLeftWidth);
