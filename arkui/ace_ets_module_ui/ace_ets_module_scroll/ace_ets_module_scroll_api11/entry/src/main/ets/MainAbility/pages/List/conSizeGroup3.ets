@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+// ListItemGroup_constraintSize_设置了width、minWidth、maxWidth
 @Entry
 @Component
 struct constraintSizeListItemGroup3 {
@@ -56,8 +57,6 @@ struct constraintSizeListItemGroup3 {
             }, (item: string) => item)
           }
           .id('group_constraintSize_3')
-          // ListItemGroup_constraintSize_设置了width、minWidth、maxWidth,
-          // MAX(minWidth,MIN(maxWidth,width))
           .width(200)
           .constraintSize({minWidth:100, maxWidth:300})
           .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
