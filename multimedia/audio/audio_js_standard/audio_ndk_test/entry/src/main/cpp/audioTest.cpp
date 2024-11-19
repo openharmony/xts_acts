@@ -1582,7 +1582,7 @@ static napi_value AudioRendererSetOnMarkReached_03(napi_env env, napi_callback_i
     }
     const int waitTime = 2;
     OH_AudioRenderer_Start(audioRenderer);
-    Delay(waitTime); // 2:sleep 2 seconds
+    sleep(waitTime); // 2:sleep 2 seconds
     OH_AudioRenderer_Stop(audioRenderer);
     if (!g_flag) {
         napi_create_int32(env, TEST_FAIL, &res);
@@ -1820,7 +1820,7 @@ static napi_value AudioRendererCancelMark_01(napi_env env, napi_callback_info in
         return res;
     }
     const int waitTime = 2;
-    Delay(waitTime); // 2:sleep 2 seconds
+    sleep(waitTime); // 2:sleep 2 seconds
     // CancelMark
     result = OH_AudioRenderer_CancelMark(audioRenderer);
     LOG("OH_AudioRenderer_CancelMark result is %{public}d", result);
