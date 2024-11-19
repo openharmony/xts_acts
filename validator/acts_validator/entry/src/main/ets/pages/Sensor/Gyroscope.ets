@@ -28,9 +28,8 @@ const TAG = '[Gyroscope]';
 struct Gyroscope {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Gyroscope';
-  @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有校准的陀螺仪' +
-    '传感器' + '\n-点击开启按钮打开传感器,' +
-    '如果有传感器，请将设备放手上旋转观察旋转角速度变化，否则返回上一级' + '\n-预期结果：观察显示数值,跟随移动变化';
+  @State StepTips: string = '测试目的：用于测试本机传感器,确定是否有校准的陀螺仪传感器' + '\n操作步骤：\n1.确定设备是否有校准的陀螺仪传感器\n2.如果有该传感器，点击开启并将设备放手上旋转，观察数值是否发生变化\n(若点击开启直接返回上一级，则表示设备无该传感器)'
+    + '\n预期结果：观察显示数值,跟随移动变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State sensorChange: boolean = false;
@@ -75,9 +74,9 @@ struct Gyroscope {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {
           this.isHave = false;
-          this.Vue = true;
+          this.Vue = false;
           promptAction.showToast({
-            message: '当前设备暂无校准的陀螺仪'
+            message: '当前设备暂无校准的陀螺仪传感器'
           })
           router.back({
             url: 'pages/Sensor/Sensor_index',
@@ -239,7 +238,7 @@ struct Gyroscope {
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start, direction: FlexDirection.Column }) {
         Scroll() {
           Column() {
-            Text('提示：如果设备存在校准的陀螺仪传感器，选择开启，否则选择无传感器')
+            Text('提示：点击开启按钮，若无该传感器，则自动返回上一级')
               .fontSize('16fp')
               .fontColor(Color.White)
               .margin('20fp')
@@ -247,11 +246,6 @@ struct Gyroscope {
               Button(this.sensorChange ? '关闭' : '开启')
                 .onClick(() => {
                   this.openAccelerometer();
-                })
-              Button('无校准的陀螺仪传感器')
-                .onClick(() => {
-                  Logger.info(TAG, 'entry onClick');
-                  this.Vue = true;
                 })
             }
             .justifyContent(FlexAlign.SpaceEvenly)

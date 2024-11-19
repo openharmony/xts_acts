@@ -23,7 +23,7 @@ struct SetCircle {
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   @State FillColor: string = '#FF000000';
   @State name: string = 'CanvasFont';
-  @State StepTips: string = '操作步骤：点击不同的字体控件' + '\n' + '预期结果：原本默认字体会改变';
+  @State StepTips: string = '操作步骤：点击不同的字体控件' + '\n' + '预期结果：弹出字体会跟随字体控件变化';
   @State Vue: boolean = false;
   @State num1: number = 0;
   @State num2: number = 0;
