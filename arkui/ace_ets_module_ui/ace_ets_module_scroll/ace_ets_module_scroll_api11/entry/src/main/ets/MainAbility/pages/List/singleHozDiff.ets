@@ -18,7 +18,7 @@ struct singleListHorizontalDiffHeight {
   scroller: ListScroller = new ListScroller()
   @State arr: number[] = [1,2]
   @State arr2: number[] = [1,2,3,4,5]
-  @State mheight: string[] = ["45%", '80%']
+  @State mheight: string[] = ['45%', '80%']
   @State mheightIndex: number = 0
 
   build() {
