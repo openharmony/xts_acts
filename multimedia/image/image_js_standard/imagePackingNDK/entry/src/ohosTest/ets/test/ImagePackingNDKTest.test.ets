@@ -260,7 +260,6 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
     done();
     return;
   } else {
-    let delayTimeListLength: number = packConfig.option.delayTimes.length;
     let delayTimes = await imageSourceApi.getDelayTimeList();
     let disposalTypes = await imageSourceApi.getDisposalTypeList();
     let loopcount = await imageSourceApi.getImageProperties([image.PropertyKey.GIF_LOOP_COUNT]);
