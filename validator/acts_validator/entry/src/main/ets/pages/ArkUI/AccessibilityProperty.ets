@@ -19,13 +19,13 @@ import fs from '@ohos.file.fs';
 import FirstDialog from '../model/FirstDialog';
 import { BusinessError } from '@ohos.base';
 
-const TAG = '[onAccessibilityHover]';
+const TAG = '[AccessibilityProperty]';
 
 @Entry
 @Component
-struct AccessibilityHoverDemo {
+struct AccessibilityProperty {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'onAccessibilityHover';
+  @State name: string = 'AccessibilityProperty';
   @State StepTips: string =  '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、从上到下依次滑动观察屏幕朗读情况\n'+'\n'+
     '预期结果：1、绿框绘制在组件上，屏幕朗读朗读”已选中checkable测试(true)“\n' +
     '2、绿框绘制在组件上，屏幕朗读朗读“未选中checkable测试(false)”\n' +
