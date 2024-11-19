@@ -525,7 +525,7 @@ static napi_value AudioSetRendererOutputDeviceChangeCallback(napi_env env, napi_
 static void MicBlockedCallback(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray,
     OH_AudioDevice_BlockStatus status, void *userData)
 {    
-    switch (status) {
+    switch(status) {
         case AUDIO_DEVICE_UNBLOCKED:
         // 麦克风未被堵住
             LOG("MyAudioSessionDeactivatedCallback, event is %{public}d", status);
@@ -1582,7 +1582,7 @@ static napi_value AudioRendererSetOnMarkReached_03(napi_env env, napi_callback_i
     }
     const int waitTime = 2;
     OH_AudioRenderer_Start(audioRenderer);
-    Delay(waitTime); // 2:sleep 2 seconds
+    sleep(waitTime); // 2:sleep 2 seconds
     OH_AudioRenderer_Stop(audioRenderer);
     if (!g_flag) {
         napi_create_int32(env, TEST_FAIL, &res);
@@ -1820,7 +1820,7 @@ static napi_value AudioRendererCancelMark_01(napi_env env, napi_callback_info in
         return res;
     }
     const int waitTime = 2;
-    Delay(waitTime); // 2:sleep 2 seconds
+    sleep(waitTime); // 2:sleep 2 seconds
     // CancelMark
     result = OH_AudioRenderer_CancelMark(audioRenderer);
     LOG("OH_AudioRenderer_CancelMark result is %{public}d", result);
@@ -2042,9 +2042,11 @@ static napi_value AudioRendererSetInterruptMode_02(napi_env env, napi_callback_i
     } else {
         napi_create_int32(env, TEST_PASS, &res);
     }
-    if(g_mark) {
+    if(g_mark)
+    {
         LOG("AudioRendererSetInterruptMode_02 g_mark is : %{public}d", 1);
-    } else {
+    }
+    else {
         LOG("AudioRendererSetInterruptMode_02 g_mark is : %{public}d", 0);
     }
     // 5. stop and release client
@@ -4723,7 +4725,7 @@ static napi_value Add(napi_env env, napi_callback_info info)
 EXTERN_C_START
 napi_property_descriptor desc1[] = {
     {"createAudioStreamBuilder", nullptr, CreateAudioStreamBuilder, nullptr, nullptr, nullptr, napi_default, nullptr},
-    {"audioCaptureGenerate", nullptr, AudioCaptureGenerate, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioCaptureGenerate", nullptr, AudioCaptureGenerate, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioCaptureGenerateErr", nullptr, AudioCaptureGenerateErr,
         nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioCaptureStart", nullptr, AudioCaptureStart, nullptr, nullptr, nullptr, napi_default, nullptr},
