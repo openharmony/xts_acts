@@ -19,6 +19,9 @@ import os
 import sys
 import subprocess
 import shutil
+import logging 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 usage_info = """
 USAGE
@@ -44,6 +47,7 @@ class XtsBuild:
         self._commandline = commandline
         self._args = {}
         self._gn_args = {}
+        self._other_args = {}
         self._build_target = []
 
     def usage(self):
@@ -73,8 +77,8 @@ class XtsBuild:
         self._gn_args['build_xts'] = 'true'
         if cmdline.get('system_size') == 'standard':
             build_target = cmdline['suite'] if cmdline.get('suite') else "test/xts/acts:xts_acts"
-            self._args['product_name'] = cmdline['product_name'] if cmdline.get('product_name') else "Hi3516DV300"
-            if self._args['product_name'] == 'm40' and cmdline.get('use_musl') == 'false':
+            self._args['product-name'] = cmdline['product_name'] if cmdline.get('product_name') else "Hi3516DV300"
+            if self._args['product-name'] == 'm40' and cmdline.get('use_musl') == 'false':
                 self._gn_args['use_musl'] = 'false'
                 self._gn_args['use_custom_libcxx'] = 'true'
                 self._gn_args['use_custom_clang'] = 'true'
@@ -86,16 +90,16 @@ class XtsBuild:
             if cmdline.get('pr_path_list'):
                 self._gn_args['pr_path_list'] = cmdline.get('pr_path_list')
 
-            self._args['target_cpu'] = cmdline.get('target_arch')
-            self._args['get-warning-list'] = 'false'
-            self._args['stat-ccache'] = 'true'
-            self._args['compute-overlap-rate'] = 'false'
+            self._args['target-cpu'] = cmdline.get('target_arch')
+            self._other_args['get-warning-list'] = 'false'
+            self._other_args['stat-ccache'] = 'true'
+            self._other_args['compute-overlap-rate'] = 'false'
             self._args['deps-guard'] = 'false'
-            self._args['skip_generate_module_list_file'] = 'true'
+            self._gn_args['skip_generate_module_list_file'] = 'true'
             self._gn_args['is_standard_system'] = 'true'
         else:
             build_target = cmdline['suite'] if cmdline.get('suite') else "acts acts_ivi acts_intellitv acts_wearable"
-            self._args['product_name'] = cmdline['product_name'] if cmdline.get('product_name') else "arm64"
+            self._args['product-name'] = cmdline['product_name'] if cmdline.get('product_name') else "arm64"
 
         self._build_target = build_target.replace(',', ' ').split()
 
@@ -117,14 +121,14 @@ class XtsBuild:
         return accurate_target
 
     def do_make(self):
+        os.environ['XTS_SUITENAME'] = 'acts'
         # 精准编译重新计算要编译的目标
         self._build_target = self.get_accurate_targets()
         if len(self._build_target) == 0:
-            print("Info: accurate targets list is null, no need to compile")
+            logging.info("Info: accurate targets list is null, no need to compile")
             return 0
+        logging.info(f"_build_target = {self._build_target}")
         self._build_target.append('deploy_testtools')
-
-        os.environ['XTS_SUITENAME'] = 'acts'
 
         autogen_apiobjs_dir = "{}/test/xts/autogen_apiobjs".format(self._code_root_dir)
         if os.path.exists(autogen_apiobjs_dir):
@@ -138,13 +142,15 @@ class XtsBuild:
             build_command = "{} --gn-args {}={}".format(build_command, i, self._gn_args.get(i))
         for i in self._build_target:
             build_command = "{} --build-target {}".format(build_command, i)
-        print("build_command: {}".format(build_command))
+        for i in self._other_args:
+            build_command = "{} --{}={}".format(build_command, i, self._other_args.get(i))
+        logging.info("build_command: {}".format(build_command))
 
         # 执行编译命令
         os.chdir(self._code_root_dir)
         ret = subprocess.run(build_command.split())
         if ret.returncode:
-            print("subprocess.run ret={}".format(ret))
+            logging.info("subprocess.run ret={}".format(ret))
 
         if os.path.exists(autogen_apiobjs_dir):
             shutil.rmtree(autogen_apiobjs_dir)
@@ -161,13 +167,12 @@ class XtsBuild:
 
 
 def main():
-    print(">>> Execute command: {}".format(" ".join(sys.argv)))
+    logging.info(">>> Execute command: {}".format(" ".join(sys.argv)))
     obj = XtsBuild(sys.argv[1:])
 
     retcode = obj.build()
 
     return retcode
-
 
 if __name__ == "__main__":
     sys.exit(main())
