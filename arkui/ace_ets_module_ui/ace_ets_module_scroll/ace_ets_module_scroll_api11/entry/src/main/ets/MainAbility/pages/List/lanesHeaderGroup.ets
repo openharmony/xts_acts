@@ -25,7 +25,7 @@ struct lanesHeaderGroupExample {
       .id('group_ver_list_head')
       .fontSize(20)
       .backgroundColor(0xAABBCC)
-      .width("100%")
+      .width('100%')
       .padding(10)
   }
 
