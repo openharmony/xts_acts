@@ -485,7 +485,7 @@ export default function PhotoAccessHelperTest() {
                         if (fd != undefined) {
                             console.info('File fd' + fd);
                             checkReadAndWrite(fd)
-                            await sleep(10)
+                            await sleep(100)
                             photoAsset.close(fd);
                             releaseHelperCallback(phAccessHelper,done)
                         } else {
@@ -510,7 +510,7 @@ export default function PhotoAccessHelperTest() {
                 if (fd != undefined) {
                     console.info('File fd' + fd);
                     await checkReadAndWrite(fd)
-                    await sleep(10)
+                    await sleep(100)
                     photoAsset.close(fd);
                     releaseHelperPromise(phAccessHelper,done)
                 } else {
