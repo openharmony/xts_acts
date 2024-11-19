@@ -17,11 +17,12 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { Hypium } from '@ohos/hypium';
+import { GlobalContext } from '../GlobalContext';
 import testsuite from '../test/List.test';
 
 export default class TestAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        globalThis.context = this.context;
+        GlobalContext.getContext().getObject('value');
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onCreate');
         hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
         hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:'+ JSON.stringify(launchParam) ?? '');
