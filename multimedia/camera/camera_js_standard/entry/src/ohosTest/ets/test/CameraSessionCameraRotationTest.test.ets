@@ -590,10 +590,10 @@ export default function CameraSessionCameraRotationTest() {
           await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
           let cameraVideoRotation = mVideoOutput.getVideoRotation(cameraObj.ImageRotation.ROTATION_0);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 finish");
-          if (cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_90 ||
-            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_270 ||
-            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_0 ||
-            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_180) {
+          if (cameraVideoRotation == cameraObj.ImageRotation.ROTATION_90 ||
+            cameraVideoRotation == cameraObj.ImageRotation.ROTATION_270 ||
+            cameraVideoRotation == cameraObj.ImageRotation.ROTATION_0 ||
+            cameraVideoRotation == cameraObj.ImageRotation.ROTATION_180) {
             console.info(TAG +
               "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 PASSED with cameraVideoRotation is: " +
               cameraVideoRotation);
@@ -640,10 +640,10 @@ export default function CameraSessionCameraRotationTest() {
           await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
           let cameraPreviewRotation = mPreviewOutput.getPreviewRotation(cameraObj.ImageRotation.ROTATION_0);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 finish");
-          if (cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_90 ||
-            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_270 ||
-            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_0 ||
-            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_180) {
+          if (cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_90 ||
+            cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_270 ||
+            cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_0 ||
+            cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_180) {
             console.info(TAG +
               "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 PASSED with cameraPreviewRotation is: " +
               cameraPreviewRotation);
