@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import textAreaInputTest from './TextArea/textAreaInputTest.test';
 import onSelectionChange1 from './RichEditorTest/onSelectionChange1.test'
 import onSelectionChange2 from './RichEditorTest/onSelectionChange2.test'
 import onSelectionChange3 from './RichEditorTest/onSelectionChange3.test'
@@ -156,6 +157,7 @@ import spanTest from './spanTest/SpanJsunit1.test'
 import textAreaAutoFillTest from './TextArea/TextAreaAutoFillJsUnit.test'
 
 export default function testsuite() {
+  textAreaInputTest();
   APIContentTypeTest();
   APIUnderlineColorTest();
   TextInputAddApi();
