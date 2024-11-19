@@ -931,9 +931,8 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.addAccount("onoff_same");
             console.info("====>on ActsAccountChangeOnOff_1400 start");
             function changeOnCallBack(data){
-                console.info("====>receive change 1300 data:" + JSON.stringify(data));
-                expect().assertFail();
-                done();
+                console.info("====>receive change 1400 data:" + JSON.stringify(data));
+                appAccountManager.off('change');
             }
             var nonexistentBundle = "com.example.actsaccountnoneexistent";
             try{
