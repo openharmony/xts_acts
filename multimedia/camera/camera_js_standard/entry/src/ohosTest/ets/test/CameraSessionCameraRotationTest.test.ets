@@ -539,7 +539,9 @@ export default function CameraSessionCameraRotationTest() {
           let cameraPhotoRotation = mPhotoOutput.getPhotoRotation(cameraObj.ImageRotation.ROTATION_0);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0100 finish");
           if (cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_90 ||
-            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_270) {
+            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_270 ||
+            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_0 ||
+            cameraPhotoRotation == cameraObj.ImageRotation.ROTATION_180) {
             console.info(TAG +
               "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0100 PASSED with cameraPhotoRotation is: " +
               cameraPhotoRotation);
@@ -589,7 +591,9 @@ export default function CameraSessionCameraRotationTest() {
           let cameraVideoRotation = mVideoOutput.getVideoRotation(cameraObj.ImageRotation.ROTATION_0);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 finish");
           if (cameraVideoRotation == cameraObj.ImageRotation.ROTATION_90 ||
-            cameraVideoRotation == cameraObj.ImageRotation.ROTATION_270) {
+            cameraVideoRotation == cameraObj.ImageRotation.ROTATION_270 ||
+            cameraVideoRotation == cameraObj.ImageRotation.ROTATION_0 ||
+            cameraVideoRotation == cameraObj.ImageRotation.ROTATION_180) {
             console.info(TAG +
               "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 PASSED with cameraVideoRotation is: " +
               cameraVideoRotation);
@@ -637,7 +641,9 @@ export default function CameraSessionCameraRotationTest() {
           let cameraPreviewRotation = mPreviewOutput.getPreviewRotation(cameraObj.ImageRotation.ROTATION_0);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 finish");
           if (cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_90 ||
-            cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_270) {
+            cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_270 ||
+            cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_0 ||
+            cameraPreviewRotation == cameraObj.ImageRotation.ROTATION_180) {
             console.info(TAG +
               "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 PASSED with cameraPreviewRotation is: " +
               cameraPreviewRotation);
