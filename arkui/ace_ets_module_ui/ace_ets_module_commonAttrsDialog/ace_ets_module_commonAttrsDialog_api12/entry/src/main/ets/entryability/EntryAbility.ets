@@ -57,6 +57,13 @@ export default class EntryAbility extends UIAbility {
             }
             console.info('Succeeded in setting the window layout to full-screen mode.');
           });
+
+          let promise = windowClass.maximize(window.MaximizePresentation.EXIT_IMMERSIVE);
+          promise.then(() => {
+            console.info('Succeeded in maximizing the window.');
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+          });
         } catch (exception) {
           console.error(`Failed to set the window layout to full-screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
         }
