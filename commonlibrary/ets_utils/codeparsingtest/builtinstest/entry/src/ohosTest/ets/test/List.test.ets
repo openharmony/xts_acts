@@ -7,6 +7,10 @@ import weakMapTest from './WeakMap/WeakMap.test';
 import nativeJSONTest from './NativeJSON/NativeJSON.test';
 import bigIntTest from './BigInt/BigInt.test';
 import dateTest from './Date/Date.test';
+import reflectTest from './Reflect/Reflect.test';
+import localeTest from './Locale/Locale.test';
+import objectTest from './Object/Object.test';
+import intlTest from './Intl/Intl.test';
 
 export default function testsuite() {
   booleanTest();
@@ -18,4 +22,8 @@ export default function testsuite() {
   nativeJSONTest();
   bigIntTest();
   dateTest();
+  reflectTest();
+  localeTest();
+  objectTest();
+  intlTest();
 }
