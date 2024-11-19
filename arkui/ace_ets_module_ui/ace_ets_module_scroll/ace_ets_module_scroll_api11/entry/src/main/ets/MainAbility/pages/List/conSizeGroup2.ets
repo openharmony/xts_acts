@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+// ListItemGroup_constraintSize_设置了height、minHeight、maxHeight
 @Entry
 @Component
 struct constraintSizeListItemGroup2 {
@@ -56,8 +57,6 @@ struct constraintSizeListItemGroup2 {
             }, (item: string) => item)
           }
           .id('group_constraintSize_2')
-          // ListItemGroup_constraintSize_设置了height、minHeight、maxHeight,
-          // MAX(minHeight,MIN(maxHeight,height))
           .height(200)
           .constraintSize({minHeight:100, maxHeight:300})
           .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
