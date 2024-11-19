@@ -19,7 +19,7 @@ import audioRoutingManager from './AudioRoutingManager.test';
 import getAudioSceneApi12 from './GetAudioScene.test';
 import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { abilityDelegatorRegistry,Driver, ON } from '@kit.TestKit';
+import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 
 function getPermission() {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
