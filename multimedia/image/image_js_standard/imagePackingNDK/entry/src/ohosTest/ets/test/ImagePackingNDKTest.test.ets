@@ -253,9 +253,9 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
     done();
     return;
   } else {
+    let delayTimeListLength: number = packConfig.option.delayTimes.length;
     let delayTimes = await imageSourceApi.getDelayTimeList();
     let disposalTypes = await imageSourceApi.getDisposalTypeList();
-    image.PropertyKey.GIF_LOOP_COUNT;
     let loopcount = await imageSourceApi.getImageProperties([image.PropertyKey.GIF_LOOP_COUNT]);
     let imageInfo = imageSourceApi.getImageInfoSync();
     console.info(`checkPackingMultiFrames delayTimes ${delayTimes}`);
@@ -266,24 +266,36 @@ async function checkPackingMultiFrames(done: Function, imageSourceApi: image.Ima
     expect(imageInfo.size.width == 600).assertTrue();
     expect(imageInfo.size.height == 400).assertTrue();
     expect(imageInfo.mimeType == "image/gif").assertTrue();
-    if (packConfig.loop) {
+    //对比编码前后的 loopCount
+    //GIF编码中设定输出图片循环播放次数的参数，取值范围为[0，65535]。0表示无限循环, 如果没有此字段, 则设置为默认值1；
+    if (packConfig.loop != undefined) {
       expect(loopcount.GIFLoopCount == packConfig.loop).assertTrue();
     } else {
-      expect(loopcount.GIFLoopCount == '0').assertTrue();
+      expect(loopcount.GIFLoopCount == '1').assertTrue();
     }
-    for (let i = 0; i < delayTimes.length; i++) {
-      if (packConfig.option.delayTimes[i]) {
-        // delayTimes 的值编码和解码的单位差10倍
+    //对比编码前后的 delayTimesList。delayTimes 的值编码和解码的单位差10倍
+    //GIF编码中设定输出图片每一帧的延迟时间。如果不是0，则此字段指定等待时间为参数值*0.01秒。
+    //如果长度小于frameCount，则缺失的部分将用delayTimeList最后一个值填充。
+    for (let i = 0; i < packConfig.frameCount; i++) {
+      if (i < delayTimeListLength) {
         expect(delayTimes[i] == packConfig.option.delayTimes[i] * 10).assertTrue();
       } else {
-        // delayTimes 的默认值1000
-        expect(delayTimes[i] == 1000).assertTrue();
+        expect(delayTimes[i] == packConfig.option.delayTimes[delayTimeListLength -1] * 10).assertTrue();
       }
     }
-    // disposalTypes的有效值是0～3，大于3变成0，解码的时候0会变成1
+    //对比编码前后的 disposalTypes。disposalTypes的有效值是0～3，解码的时候0会变成1。
+    //0：不需要任何操作  1：保持图形不变  2：恢复背景色  3：恢复到之前的状态。
     if (packConfig.option.disposalTypes != undefined) {
-      for (let i = 0; i < packConfig.option.disposalTypes.length; i++) {
-        expect(disposalTypes[i] == packConfig.option.disposalTypes[i]).assertTrue();
+      for (let i = 0; i < packConfig.frameCount; i++) {
+        if (i < packConfig.option.disposalTypes.length) {
+          if (packConfig.option.disposalTypes[i] == 0) {
+            expect(disposalTypes[i] == 1).assertTrue;
+          } else {
+            expect(disposalTypes[i] == packConfig.option.disposalTypes[i]).assertTrue;
+          }
+        } else {
+          expect(disposalTypes[i] == 1).assertTrue;
+        }
       }
     }
     await imageSourceApi.release();

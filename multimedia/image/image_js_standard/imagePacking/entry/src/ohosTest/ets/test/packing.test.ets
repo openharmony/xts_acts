@@ -354,6 +354,7 @@ export default function imagePacking() {
         console.log(`imgSource create failed.`);
         expect(false).assertTrue();
       } else {
+        let delayTimeListLength: ESObject = packingOptions.delayTimeList.length;
         let delayTimes = await imgSource.getDelayTimeList();
         let disposalTypes = await imgSource.getDisposalTypeList();
         let loopcount: ESObject = await imgSource.getImageProperties([image.PropertyKey.GIF_LOOP_COUNT]);
@@ -369,29 +370,37 @@ export default function imagePacking() {
         expect(imageInfo.mimeType == "image/gif").assertTrue();
         console.log(`packingMultiFramesPromise loopcount1 ${JSON.stringify(loopcount)}`);
         console.log(`packingMultiFramesPromise loopcount2 ${JSON.stringify(packingOptions.loopCount)}`);
-        if (packingOptions.loopCount) {
+        //对比编码前后的 loopCount
+        //GIF编码中设定输出图片循环播放次数的参数，取值范围为[0，65535]。0表示无限循环, 如果没有此字段, 则设置为默认值1；
+        if (packingOptions.loopCount != undefined) {
           expect(loopcount.GIFLoopCount == packingOptions.loopCount).assertTrue();
         } else {
-          expect(loopcount.GIFLoopCount == 0).assertTrue();
+          expect(loopcount.GIFLoopCount == 1).assertTrue();
         }
+        //对比编码前后的 delayTimesList。delayTimes 的值编码和解码的单位差10倍
+        //GIF编码中设定输出图片每一帧的延迟时间。如果不是0，则此字段指定等待时间为参数值*0.01秒。
+        //如果长度小于frameCount，则缺失的部分将用delayTimeList最后一个值填充。
         console.log(`packingMultiFramesPromise loopcount ${packingOptions.delayTimeList}`);
-        for (let i = 0; i < delayTimes.length; i++) {
-          if (packingOptions.delayTimeList[i]) {
-            // delayTimes 的值编码和解码的单位差10倍
+        for (let i = 0; i < packingOptions.frameCount; i++) {
+          if (i < delayTimeListLength) {
             expect(delayTimes[i] == packingOptions.delayTimeList[i] * 10).assertTrue();
           } else {
-            // delayTimes 的默认值1000
-            expect(delayTimes[i] == 1000).assertTrue();
+            expect(delayTimes[i] == packingOptions.delayTimeList[delayTimeListLength -1] * 10).assertTrue();
           }
         }
         console.log(`packingMultiFramesPromise loopcount ${packingOptions.disposalTypes}`);
-        // disposalTypes的有效值是0～3，大于3变成0，解码的时候0会变成1
+        //对比编码前后的 disposalTypes。disposalTypes的有效值是0～3，解码的时候0会变成1。
+        //0：不需要任何操作  1：保持图形不变  2：恢复背景色  3：恢复到之前的状态。
         if (packingOptions.disposalTypes != undefined) {
-          for (let i = 0; i < packingOptions.disposalTypes.length; i++) {
-            if (packingOptions.disposalTypes[i] > 3 || packingOptions.disposalTypes[i] == 0) {
-              expect(disposalTypes[i] == 1).assertTrue();
+          for (let i = 0; i < packingOptions.frameCount; i++) {
+            if (i < packingOptions.disposalTypes.length) {
+              if (packingOptions.disposalTypes[i] == 0) {
+                expect(disposalTypes[i] == 1).assertTrue();
+              } else {
+                expect(disposalTypes[i] == packingOptions.disposalTypes[i]).assertTrue();
+              }
             } else {
-              expect(disposalTypes[i] == packingOptions.disposalTypes[i]).assertTrue();
+              expect(disposalTypes[i] == 1).assertTrue();
             }
           }
         }
@@ -1433,7 +1442,7 @@ export default function imagePacking() {
         packingOptions = {
           frameCount: 3,
           delayTimeList: [10, 10, 10],
-          disposalTypes: [4, 1, 0],
+          disposalTypes: [3, 1, 0],
           loopCount: 5
         };
         packingMultiFramesPromise(done, "SUB_MULTIMEDIA_IMAGE_PACKINGMULTIFRAMES_0100", {

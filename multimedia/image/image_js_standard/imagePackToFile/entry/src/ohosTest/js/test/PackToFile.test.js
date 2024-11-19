@@ -286,6 +286,7 @@ export default function imagePackToFile() {
         }
 
         async function checkPackMultiFramesResult(imageSource) {
+            let delayTimeListLength = packingOptions.delayTimeList.length;
             let delayTimes = await imageSource.getDelayTimeList();
             let disposalTypes = await imageSource.getDisposalTypeList();
             let loopCount = await imageSource.getImageProperties(image.PropertyKey.GIF_LOOP_COUNT);
@@ -298,27 +299,35 @@ export default function imagePackToFile() {
             expect(imageInfo.size.width == testFile.size.width).assertTrue();
             expect(imageInfo.size.height == testFile.size.height).assertTrue();
             expect(imageInfo.mimeType == "image/gif").assertTrue();
-            if (packingOptions.loopCount) {
+            //对比编码前后的 loopCount
+            //GIF编码中设定输出图片循环播放次数的参数，取值范围为[0，65535]。0表示无限循环, 如果没有此字段, 则设置为默认值1；
+            if (packingOptions.loopCount != undefined) {
                 expect(loopCount == packingOptions.loopCount).assertTrue();
             } else {
-                expect(loopCount == 0).assertTrue();
+                expect(loopCount == 1).assertTrue();
             }
-            for (let i = 0; i < delayTimes.length; i++) {
-                if (packingOptions.delayTimeList[i]) {
-                   // delayTimeList 的值编码和解码的单位差10倍
+            //对比编码前后的 delayTimesList。delayTimes 的值编码和解码的单位差10倍
+            //GIF编码中设定输出图片每一帧的延迟时间。如果不是0，则此字段指定等待时间为参数值*0.01秒。
+            //如果长度小于frameCount，则缺失的部分将用delayTimeList最后一个值填充。
+            for (let i = 0; i < packingOptions.frameCount; i++) {
+                if (i < delayTimeListLength) {
                     expect(delayTimes[i] == packingOptions.delayTimeList[i] * 10).assertTrue();
                 } else {
-                    // delayTimes 的默认值1000
-                    expect(delayTimes[i] == 1000).assertTrue();
+                    expect(delayTimes[i] == packingOptions.delayTimeList[delayTimeListLength -1] * 10).assertTrue();
                 }
             }
-            // disposalTypes的有效值是0～3，大于3变成0，解码的时候0会变成1
+            //对比编码前后的 disposalTypes。disposalTypes的有效值是0～3，解码的时候0会变成1。
+            //0：不需要任何操作  1：保持图形不变  2：恢复背景色  3：恢复到之前的状态。
             if (packingOptions.disposalTypes != undefined) {
-                for (let i = 0; i < packingOptions.disposalTypes.length; i++) {
-                    if (packingOptions.disposalTypes[i] > 3 || packingOptions.disposalTypes[i] == 0) {
-                        expect(disposalTypes[i] == 1).assertTrue();
+                for (let i = 0; i < packingOptions.frameCount; i++) {
+                    if (i < packingOptions.disposalTypes.length) {
+                        if (packingOptions.disposalTypes[i] == 0) {
+                            expect(disposalTypes[i] == 1).assertTrue();
+                        } else {
+                            expect(disposalTypes[i] == packingOptions.disposalTypes[i]).assertTrue();
+                        }
                     } else {
-                        expect(disposalTypes[i] == packingOptions.disposalTypes[i]).assertTrue();
+                        expect(disposalTypes[i] == 1).assertTrue();
                     }
                 }
             }
