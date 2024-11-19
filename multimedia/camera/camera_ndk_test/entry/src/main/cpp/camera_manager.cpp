@@ -15,11 +15,7 @@
 
 #include "camera_manager_ndk.h"
 #include <unistd.h>
-#include <ohcamera/camera_device.h>
-
-
-// #define LOG(fmt, ...)           \
-//         (void)printf(fmt, ##__VA_ARGS__);           
+#include <ohcamera/camera_device.h>   
 
 #define CAMERA_LOG_TAG "CAMERA_TAGLOG"
 #define CAMERA_LOG_DOMAIN 0x3200
