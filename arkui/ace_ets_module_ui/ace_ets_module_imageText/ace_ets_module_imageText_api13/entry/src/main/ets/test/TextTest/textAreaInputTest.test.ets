@@ -23,7 +23,7 @@ export default function textAreaInputTest() {
     beforeAll(async () => {
       console.info("flex beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/TextArea/textAreaInputTest',
+        url: 'MainAbility/pages/Text/textAreaInputTest',
       }
       try {
         router.clear();
