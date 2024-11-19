@@ -56,7 +56,9 @@ export default function textAreaInputTest() {
       await CommonFunc.sleep(1000);
       let textArea1 = await driver.findComponent(ON.id('textArea1'));
       await CommonFunc.sleep(500);
-      await textArea1.click()
+      let textArea2 = await driver.findComponent(ON.id('textArea2'));
+      await CommonFunc.sleep(500);
+      await textArea2.click()
       await CommonFunc.sleep(500);
       let button1 = await driver.findComponent(ON.text('下一步'));
       await CommonFunc.sleep(500);
@@ -70,8 +72,7 @@ export default function textAreaInputTest() {
       await button3?.click();
       console.info('textAreaInputTest0001 全选 success');
       await CommonFunc.sleep(500);
-      let textArea2 = await driver.findComponent(ON.id('textArea2'));
-      await CommonFunc.sleep(500);
+      
       await textArea1.dragTo(textArea2);
       await CommonFunc.sleep(500);
       console.info('textAreaInputTest0001 dragTo success');
