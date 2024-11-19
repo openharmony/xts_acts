@@ -29,7 +29,7 @@ function sleep(ms: number) {
 let getPermission = () => {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
   let permissions: Array<Permissions> = ['ohos.permission.MICROPHONE'];
-  let context: context = globalThis.context;
+  let context: Context = globalThis.context;
   atManager.requestPermissionsFromUser(context, permissions).then((data: PermissionRequestResult) => {
     console.info('datassss:' + JSON.stringify(data))
     console.info('data permissions:' + data.permissions)
