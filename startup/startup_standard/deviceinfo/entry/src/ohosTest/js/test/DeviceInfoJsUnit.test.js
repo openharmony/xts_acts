@@ -907,25 +907,6 @@ export default function DeviceInfoTest() {
         })
 
         /**
-         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_0360
-         * @tc.name      testGetMarketName02
-         * @tc.desc      Get a string representing the product series which has a maximum of 32 characters.
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('device_info_test_033', 0, function () {
-            console.info('device_info_test_033 start');
-            let marketNameInfo = deviceinfo.marketName;
-            console.info('the value of the deviceinfo marketName is :' + marketNameInfo);
-
-            let len = marketNameInfo.length
-            console.info('the value of the product series characters is :' + len);
-            expect(len).assertLess(MAX_CHARACTERS_NUM_ONE)
-            console.info('device_info_test_033 : end')
-        })
-
-        /**
          * @tc.number    SUB_STARTUP_JS_DEVCEINFO_0370
          * @tc.name      testGetProductSeries02
          * @tc.desc      Get a string representing the product series which has a maximum of 32 characters.

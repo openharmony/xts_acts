@@ -2,7 +2,7 @@
   "string": [
     {
       "name": "module_desc",
-      "value": "module description"
+      "value": "模块描述"
     },
     {
       "name": "EntryAbility_desc",
@@ -11,14 +11,6 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
-    },
-    {
-      "name": "reason_usb_ddk",
-      "value": "usb_ddk ndk test"
-    },
-    {
-      "name": "reason_device_driver",
-      "value": "device driver test"
     }
   ]
 }
