@@ -46,7 +46,7 @@ async function driveFn() {
   console.info(`driver is ${JSON.stringify(driver)}`);
   await sleep(100);
   console.info(`UiDriver start`);
-  let button = await driver.waitForComponent(BY.text('允许'), 5);
+  let button = await driver.waitForcomponent(BY.text('允许'), 5);
   if (button == null) {
     let delegator = abilityDelegatorRegistry.getAbilityDelegator();
     let cmd = "hidumper -s WindowManagerService -a'-a'"
