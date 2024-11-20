@@ -100,6 +100,6 @@ struct Index {
             this.prevMargin =  this.prevMargin - 5
           })
       }.margin({ top: 15 })
-    }.margin({ top: 50 }).width("100%")
+    }.margin({ top: 50 }).width('100%')
   }
 }
