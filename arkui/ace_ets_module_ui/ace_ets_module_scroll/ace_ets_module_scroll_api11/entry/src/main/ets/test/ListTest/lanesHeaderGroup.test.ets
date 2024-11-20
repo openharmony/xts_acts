@@ -56,14 +56,19 @@ export default function lanesHeaderGroup() {
     it('lanesHeaderGroup_0100', 0, async (done: Function) => {
       console.info('[lanesHeaderGroup_0100] START');
       await CommonFunc.sleep(1000);
+      let groupHeader = CommonFunc.getComponentRectOnScreen('group_ver_list_head');
+      let listItem = CommonFunc.getComponentRectOnScreen('group_ver_item_head');
+      console.info('[lanesHeaderGroup_0100] groupHeader.bottom: ' + groupHeader.bottom);
+      console.info('[lanesHeaderGroup_0100] listItem.top: ' + listItem.top);
+      expect(Math.abs(listItem.top - groupHeader.bottom) <= 1).assertTrue();
       let driver = Driver.create();
+      await CommonFunc.sleep(1000);
       let btn: Component = await driver.findComponent(ON.id('itemInGroup_ver_header'));
       await btn.click();
       await CommonFunc.sleep(2000);
-      let groupHeader = CommonFunc.getComponentRectOnScreen('group_ver_list_head');
-      let listItem = CommonFunc.getComponentRectOnScreen('group_ver_item_head');
-      await CommonFunc.sleep(1000);
-      expect(Math.abs(listItem.top - groupHeader.bottom) <= 1).assertEqual(true);
+      let text01 = await driver.findComponent(ON.text("Group:2, Item:3"))
+      let textContent = await text01.getText();
+      expect(textContent).assertEqual("Group:2, Item:3");
       console.info('[lanesHeaderGroup_0100] END');
       done();
     });
