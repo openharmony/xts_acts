@@ -18,13 +18,13 @@ import common from '@ohos.app.ability.common';
 import hilog from '@ohos.hilog';
 import Want from '@ohos.app.ability.Want';
 
-const TAG: string = 'IndexA';
+const TAG: string = 'IndexC';
 
 @Entry
 @Component
 struct Index {
   private context: common.UIAbilityContext = getContext(this) as common.UIAbilityContext;
-  @State message: string = 'RelyA Ability';
+  @State message: string = 'RelyC Ability';
 
   build() {
     Row() {
@@ -34,7 +34,7 @@ struct Index {
           .size({ width: '100%', height: '50' })
           .fontWeight(FontWeight.Bold)
         UIExtensionComponent({
-          bundleName: 'com.example.actsresponseglobalparamupdaterelya',
+          bundleName: 'com.example.actsresponseglobalparamupdaterelyc',
           abilityName: 'UIExtAbility',
           moduleName: 'entry',
           parameters: {
@@ -53,12 +53,12 @@ struct Index {
           .margin(10)
           .onClick(() => {
             let pickerWant: Want = {
-              bundleName: 'com.example.actsresponseglobalparamupdaterelya',
+              bundleName: 'com.example.actsresponseglobalparamupdaterelyc',
               moduleName: 'entry',
               abilityName: 'PopupUIExtAbility',
               type: 'sys/commonUI',
               parameters: {
-                bundleName: 'com.example.actsresponseglobalparamupdaterelya',
+                bundleName: 'com.example.actsresponseglobalparamupdaterelyc',
                 'ability.want.params.uiExtensionType': 'sys/commonUI',
               }
             };

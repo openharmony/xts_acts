@@ -22,7 +22,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import Want from '@ohos.app.ability.Want';
 import window from '@ohos.window';
 
-const TAG: string = 'AbilityA';
+const TAG: string = 'AbilityC';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -59,15 +59,6 @@ export default class EntryAbility extends UIAbility {
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, TAG, '%{public}s', 'onBackground');
-    commonEventManager.publish(
-      'RelyA_Ability_OnBackground', (err: BusinessError) => {
-      if (err) {
-        hilog.info(0x0000, TAG,
-          'RelyA_Ability_OnBackground publish failed, Cause: %{public}s', JSON.stringify(err) ?? '');
-      } else {
-        hilog.info(0x0000, TAG, '%{public}s', 'RelyA_Ability_OnBackground publish successful');
-      }
-    })
   }
 
   onConfigurationUpdate(newConfig: Configuration): void {
@@ -77,12 +68,12 @@ export default class EntryAbility extends UIAbility {
     };
     hilog.info(0x0000, TAG, 'publishData: %{public}s', JSON.stringify(publishData.parameters) ?? '');
     commonEventManager.publish(
-      'RelyA_Ability_ConfigurationUpdateEvent', publishData, (err: BusinessError) => {
+      'RelyC_Ability_ConfigurationUpdateEvent', publishData, (err: BusinessError) => {
       if (err) {
         hilog.info(0x0000, TAG,
-          'RelyA_Ability_ConfigurationUpdateEvent publish failed, Cause: %{public}s', JSON.stringify(err) ?? '');
+          'RelyC_Ability_ConfigurationUpdateEvent publish failed, Cause: %{public}s', JSON.stringify(err) ?? '');
       } else {
-        hilog.info(0x0000, TAG, '%{public}s', 'RelyA_Ability_ConfigurationUpdateEvent publish successful');
+        hilog.info(0x0000, TAG, '%{public}s', 'RelyC_Ability_ConfigurationUpdateEvent publish successful');
       }
     });
   }
