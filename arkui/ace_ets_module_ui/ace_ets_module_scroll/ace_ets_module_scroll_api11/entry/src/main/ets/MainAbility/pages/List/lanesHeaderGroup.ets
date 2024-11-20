@@ -46,9 +46,6 @@ struct lanesHeaderGroupExample {
               }
             }, (item: string) => item)
           }
-          .divider({ strokeWidth: 1, color: Color.Blue })
-          .borderColor(Color.Green)
-          .borderWidth(1)
         })
       }
       .width('90%')
