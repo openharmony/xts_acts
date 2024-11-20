@@ -22,7 +22,7 @@ struct TextAreaInputTestExample {
     Column({ space: 20 }) {
       Column(){
         Text('这是一段测试文本这是一段测试文本')
-          .id("textArea1")
+          .id('textArea1')
           .draggable(true)
           .width('90%')
           .margin(20)
@@ -35,7 +35,7 @@ struct TextAreaInputTestExample {
           })
 
         TextArea({ placeholder: this.text })
-          .id("textArea2")
+          .id('textArea2')
           .width(336)
           .height(56)
           .margin(20)
