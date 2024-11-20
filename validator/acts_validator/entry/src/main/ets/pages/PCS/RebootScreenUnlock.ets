@@ -37,11 +37,7 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 @Component
 struct RebootScreenUnlock {
   @State name: string = 'RebootScreenUnlock';
-  @State stepTips: string = '操作步骤：' + '\n' + '1.若设备除口令认证外，不支持其他认证方式，点击\'设备不支持其他认证方式\'按钮结束测试，测试通过' + '\n' +
-                '2.进入设置应用，生物识别和密码页面，设置锁屏密码，同时设置其他认证方式，如人脸认证、指纹认证等（若无法成功设置其他认证方式，则认为设置不支持其他认证方式，按步骤1处理）' + '\n' +
-                '3.返回validator，点击\'设置锁屏认证完成\'按钮，若\'重启设备\'可以点击则设置了多种认证方式，否则需检查设备是否支持多种认证方式以及当前是否设置了多种认证方式' + '\n' +
-                '4.点击\'重启设备\'按钮，重启后，解锁屏幕：若可以使用除口令外的其他认证方式，则测试失败；否则测试通过。进入validator，点击\'重启设备完成\'按钮，根据条件判断测试是否通过' + '\n' + '\n' +
-                '预期结果：重启后首次解锁只可以使用口令认证，不可以使用其他认证方式，如人脸、指纹等';
+  @State stepTips: string = '预期结果：重启后首次解锁只可以使用口令认证，不可以使用其他认证方式，如人脸、指纹等';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = 'UNDEFINED';
@@ -67,15 +63,6 @@ struct RebootScreenUnlock {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Scroll(this.scroller) {
           Column() {
-            Button(`设备不支持其他认证方式`)
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .width('50%')
-              .margin('10vp')
-              .onClick(async () => {
-                this.testResult = true
-              })
-
             Row() {
               Text('\n' + '\n' + `根据以下操作步骤完成测试` + '\n' + '\n')
                 .fontColor(Color.White)
@@ -83,10 +70,9 @@ struct RebootScreenUnlock {
             }
 
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.若设备除口令认证外，不支持其他认证方式，点击\'设备不支持其他认证方式\'按钮结束测试，测试通过` + '\n' + '\n' +
-                `2.进入设置应用，生物识别和密码页面，设置锁屏密码，同时设置其他认证方式，如人脸认证、指纹认证等（若无法成功设置其他认证方式，则认为设置不支持其他认证方式，按步骤1处理）` + '\n' + '\n' + 
-                `3.返回validator，点击\'设置锁屏认证完成\'按钮，若\'重启设备\'可以点击则设置了多种认证方式，否则需检查设备是否支持多种认证方式以及当前是否设置了多种认证方式` + '\n' + '\n' +
-                `4.点击\'重启设备\'按钮，重启后，解锁屏幕：若可以使用除口令外的其他认证方式，则测试失败；否则测试通过。进入validator，点击\'重启设备完成\'按钮，根据条件判断测试是否通过` + '\n' + '\n')
+              Text(`测试步骤:` + '\n' + '\n' + `1.进入设置应用，生物识别和密码页面，设置设备支持的各种认证方式，如锁屏密码、人脸认证、指纹认证等，若设备不支持多种认证方式，直接点击测试失败按钮` + '\n' + '\n' + 
+                `2.返回validator，点击\'设置锁屏认证完成\'按钮` + '\n' + '\n' +
+                `3.点击\'重启设备\'按钮，重启后，解锁屏幕：若可以使用除口令外的其他认证方式，则测试失败；否则测试通过。进入validator，点击\'重启设备完成\'按钮，根据条件判断测试是否通过` + '\n' + '\n')
                 .width('90%')
                 .fontColor(Color.White)
                 .fontSize('20fp')
@@ -100,30 +86,7 @@ struct RebootScreenUnlock {
                   .width('50%')
                   .margin('10vp')
                   .onClick(async () => {
-                    let hasPinAuth = false
-                    let authCount = 0
-                    try {
-                      let pinEnrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.PIN);
-                      if (pinEnrolledState.credentialCount > 0) {
-                        hasPinAuth = true
-                        authCount += 1
-                      }
-                    } catch (error) {}
-                    try {
-                      let faceEnrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
-                      if (faceEnrolledState.credentialCount > 0) {
-                        authCount += 1
-                      }
-                    } catch (error) {}
-                    try {
-                      let fingerprintEnrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FINGERPRINT);
-                      if (fingerprintEnrolledState.credentialCount > 0) {
-                        authCount += 1
-                      }
-                    } catch (error) {}
-                    if (hasPinAuth && authCount > 1) {
-                      this.startEnable = true
-                    }
+                    this.startEnable = true
                   })
                 Blank('10%')
                 Button(`重启设备`)
@@ -173,12 +136,6 @@ struct RebootScreenUnlock {
                     await preferences.deletePreferences(abilityContext.getApplicationContext(), options)
                   })
               }
-            }
-
-            Row() {
-              Text('\n' + '\n' + `重启口令验证测试结果：` + this.result)
-                .fontColor(Color.White)
-                .fontSize('24fp')
             }
           }
           .width('100%')
