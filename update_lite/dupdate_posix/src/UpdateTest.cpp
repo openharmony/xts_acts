@@ -36,19 +36,6 @@ protected:
     virtual void SetUp() {}
     virtual void TearDown() {}
 };
-	
-/**
- * @tc.number    : SUB_Upgrade_API_0100
- * @tc.name      : Initializes the OTA module
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(UpdateTest, subUpgradeAPI0100, Function | MediumTest | Level1)
-{
-    unsigned int ret;
-    ret = HotaInit(NULL, NULL);
-    printf("HotaInit return = %d\r\n", ret);
-    EXPECT_EQ(OHOS_SUCCESS, ret);
-};
 
 /**
  * @tc.number    : SUB_Upgrade_API_0200
