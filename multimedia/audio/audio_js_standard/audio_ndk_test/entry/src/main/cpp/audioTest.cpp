@@ -2442,16 +2442,18 @@ static napi_value AudioRoutingManagerSetMicBlockStatusCallback_001(napi_env env,
     void *userData = nullptr;
     result = OH_AudioRoutingManager_IsMicBlockDetectionSupported(audioRoutingManager, &supported);
     LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result2 is: %{public}d", result);
-    if (result == AUDIOCOMMON_RESULT_SUCCESS && supported == true) {
-        OH_AudioRoutingManager_OnDeviceBlockStatusCallback micBlockedCallback = MicBlockedCallback;
-        result = OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, micBlockedCallback, userData);
-        LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: %{public}d", result);
-        if (result != AUDIOCOMMON_RESULT_SUCCESS) {
-            napi_create_int32(env, TEST_FAIL, &res);
-            return res;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS) {
+        if (supported == true) {
+            OH_AudioRoutingManager_OnDeviceBlockStatusCallback micBlockedCallback = MicBlockedCallback;
+            result = OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, micBlockedCallback, userData);
+            LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: %{public}d", result);
+            if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+                napi_create_int32(env, TEST_FAIL, &res);
+                return res;
+            }
+        } else {
+            LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: false");
         }
-    } else if (result == AUDIOCOMMON_RESULT_SUCCESS && supported == false) {
-        LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result4 is: %{public}d", result);
     } else {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
@@ -2474,16 +2476,18 @@ static napi_value AudioRoutingManagerSetMicBlockStatusCallback_002(napi_env env,
     void *userData = nullptr;
     result = OH_AudioRoutingManager_IsMicBlockDetectionSupported(audioRoutingManager, &supported);
     LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result2 is: %{public}d", result);
-    if (result == AUDIOCOMMON_RESULT_SUCCESS && supported == true) {
-        OH_AudioRoutingManager_OnDeviceBlockStatusCallback micBlockedCallback = MicBlockedCallback;
-        result = OH_AudioRoutingManager_SetMicBlockStatusCallback(nullptr, micBlockedCallback, userData);
-        LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: %{public}d", result);
-        if (result == AUDIOCOMMON_RESULT_SUCCESS) {
-            napi_create_int32(env, TEST_FAIL, &res);
-            return res;
+    if (result == AUDIOCOMMON_RESULT_SUCCESS) {
+        if (supported == true) {
+            OH_AudioRoutingManager_OnDeviceBlockStatusCallback micBlockedCallback = MicBlockedCallback;
+            result = OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, micBlockedCallback, userData);
+            LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: %{public}d", result);
+            if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+                napi_create_int32(env, TEST_FAIL, &res);
+                return res;
+            }
+        } else {
+            LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: false");
         }
-    } else if (result == AUDIOCOMMON_RESULT_SUCCESS && supported == false) {
-        LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result4 is: %{public}d", result);
     } else {
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
