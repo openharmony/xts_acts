@@ -226,11 +226,11 @@ export default function ObjectInterfaceTest() {
     it("contactsApi_contactdata_test_300", 0, async (done:Function) => {
         if (cdata.emails!=undefined){
             let emails:contact.Email[]=cdata.emails;
-            expect(emails[0].email != null).assertFalse();
-            expect(emails[0].labelName != null).assertFalse();
+            expect(emails[0].email != null).assertTrue();
+            expect(emails[0].labelName != null).assertTrue();
             console.info("contactData.emails.labelId == 1" + emails[0].labelId);
             expect(emails[0].labelId != 0).assertTrue();
-            expect(emails[0].displayName != null).assertFalse();
+            expect(emails[0].displayName != null).assertTrue();
         }
         if (cdata.events!=undefined){
             let events:contact.Event[]=cdata.events;
@@ -440,6 +440,7 @@ export default function ObjectInterfaceTest() {
      */
     it("contactsApi_query_key_test_2300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       let rawContactId = await contact.addContact(context,contactData);
       expect(rawContactId > 0).assertTrue();
       try {
@@ -460,6 +461,7 @@ export default function ObjectInterfaceTest() {
      */
     it("contactsApi_query_key_test_2400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       let rawContactId = await contact.addContact(context,contactData);
       expect(rawContactId > 0).assertTrue();
       console.info("contactsApi_query_key_test_2400 : query gRawContactId = " + rawContactId);
@@ -483,6 +485,7 @@ export default function ObjectInterfaceTest() {
       let context: Context = AppStorage.get('context') as Context;
       let contactDataError:contact.Contact = {};
       try {
+        sleep(500);
         let rawContactId = await contact.addContact(context,contactDataError);
         console.info("abnormal_contactsApi_insert_test_2800 : rawContactId = " + rawContactId);
         expect(rawContactId == -1).assertTrue();
@@ -578,6 +581,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_addContact_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_addContact_test_100  err = " + JSON.stringify(err));
@@ -611,6 +615,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_addContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       let promise = contact.addContact(context,contactData);
       promise.then((data) => {
         console.info("contactsApi_addContact_test_200  data = " + JSON.stringify(data));
@@ -650,6 +655,7 @@ export default function ObjectInterfaceTest() {
       expect(holder.bundleName === null).assertFalse();
       expect(holder.displayName === null).assertFalse();
       expect(holder.holderId != 0).assertTrue();
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContact_test_100  err = " + JSON.stringify(err));
@@ -691,6 +697,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContact_test_200  err = " + JSON.stringify(err));
@@ -724,6 +731,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContact_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContact_test_300  err = " + JSON.stringify(err));
@@ -765,6 +773,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContact_test_400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContact_test_400  err = " + JSON.stringify(err));
@@ -798,6 +807,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContact_test_500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContact_test_500  err = " + JSON.stringify(err));
@@ -831,6 +841,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContacts_test_100  err = " + JSON.stringify(err));
@@ -856,6 +867,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContacts_test_200  err = " + JSON.stringify(err));
@@ -881,6 +893,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContacts_test_300  err = " + JSON.stringify(err));
@@ -906,6 +919,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContacts_test_400  err = " + JSON.stringify(err));
@@ -931,6 +945,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContacts_test_500  err = " + JSON.stringify(err));
@@ -956,6 +971,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_000", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_000  err = " + JSON.stringify(err));
@@ -981,6 +997,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_100  err = " + JSON.stringify(err));
@@ -1006,6 +1023,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_200  err = " + JSON.stringify(err));
@@ -1031,6 +1049,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_300  err = " + JSON.stringify(err));
@@ -1056,6 +1075,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_400  err = " + JSON.stringify(err));
@@ -1081,6 +1101,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_100  err = " + JSON.stringify(err));
@@ -1106,6 +1127,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_200  err = " + JSON.stringify(err));
@@ -1131,6 +1153,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_300  err = " + JSON.stringify(err));
@@ -1156,6 +1179,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_400  err = " + JSON.stringify(err));
@@ -1181,6 +1205,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_500  err = " + JSON.stringify(err));
@@ -1206,6 +1231,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryGroups_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryGroups_test_100  err = " + JSON.stringify(err));
@@ -1231,6 +1257,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryGroups_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryGroups_test_200  err = " + JSON.stringify(err));
@@ -1256,6 +1283,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryGroups_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryGroups_test_300  err = " + JSON.stringify(err));
@@ -1311,6 +1339,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryKey_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryKey_test_100  err = " + JSON.stringify(err));
@@ -1336,6 +1365,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryKey_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_queryKey_test_200  err = " + JSON.stringify(err));
@@ -1360,6 +1390,7 @@ export default function ObjectInterfaceTest() {
       sleep(500);
     });
     it("contactsApi_queryKey_test_300", 0, async (done:Function) => {
+      sleep(500);
       let context: Context = AppStorage.get('context') as Context;
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
@@ -1428,6 +1459,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_updateContact_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_updateContact_test_100  err = " + JSON.stringify(err));
@@ -1496,6 +1528,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_updateContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
@@ -1564,6 +1597,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_updateContact_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
@@ -1632,6 +1666,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_isLocalContact_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_isLocalContact_test_100  err = " + JSON.stringify(err));
@@ -1656,6 +1691,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_isLocalContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_isLocalContact_test_200  err = " + JSON.stringify(err));
@@ -1680,6 +1716,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_isMyCard_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
@@ -1704,6 +1741,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_isMyCard_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (err) {
           console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
@@ -1758,6 +1796,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_selectContact_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (!err) {
           console.info("contactsApi_selectContact_test_100  data = " + JSON.stringify(data));
@@ -1779,6 +1818,7 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_selectContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context,contactData, (err, data) => {
         if (!err) {
           console.info("contactsApi_selectContact_test_200  data = " + JSON.stringify(data));
