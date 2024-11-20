@@ -113,9 +113,9 @@ static napi_value OHWebSocketClientClose(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHWebsocketClientDestroy(napi_env env, napi_callback_info info)
+static napi_value OHWebSocketClientDestroy(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "OHWebsocketClientDestroy start");
+    OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "OHWebSocketClientDestroy start");
     napi_value result = nullptr;
     struct WebSocket *client = new WebSocket();
     struct WebSocket_CloseOption CloseOption;
