@@ -74,7 +74,7 @@ export default function SwiperMargin_4() {
       await CommonFunc.sleep(1000);
       const newPrevMargin:number = newSwiper.right
 
-      console.info("[testSwiperPrevMargin_0100] click prevMarginAdd");
+      console.info("[testSwiperPrevMargin_0100] prevMarginAdd");
       expect(oldPrevMargin !== newPrevMargin).assertTrue();
       console.info("[testChipDirection_0100] END");
       done();
@@ -104,7 +104,7 @@ export default function SwiperMargin_4() {
       await CommonFunc.sleep(1000);
       const newPrevMargin:number = newSwiper.left
 
-      console.info("[testSwiperPrevMargin_0200] click prevMarginDec");
+      console.info("[testSwiperPrevMargin_0200] prevMarginDec");
       expect(oldPrevMargin !== newPrevMargin).assertTrue();
       console.info("[testSwiperPrevMargin_0200] END");
       done();
@@ -128,12 +128,13 @@ export default function SwiperMargin_4() {
 
       let buttonAdd = await driver.findComponent(ON.id("nextMarginAdd"));
       await buttonAdd.doubleClick();
-      await driver.delayMs(1000);
+      await CommonFunc.sleep(1000);
+
       const newSwiper = CommonFunc.getComponentRectOnScreen('swiper');
       await CommonFunc.sleep(1000);
       const newNextMarginAdd:number = newSwiper.right
 
-      console.info("[testSwiperNextMargin_0100] click nextMarginAdd");
+      console.info("[testSwiperNextMargin_0100] nextMarginAdd");
       expect(oldNextMarginAdd !== newNextMarginAdd).assertTrue();
       console.info("[testSwiperNextMargin_0100] END");
       done();
@@ -165,7 +166,7 @@ export default function SwiperMargin_4() {
       await CommonFunc.sleep(1000);
       const newPrevMargin:number = newSwiper.left
 
-      console.info("[testSwiperNextMargin_0200] click nextMarginDec");
+      console.info("[testSwiperNextMargin_0200] nextMarginDec");
       expect(oldPrevMargin !== newPrevMargin).assertTrue();
       console.info("[testSwiperNextMargin_0200] END");
       done();

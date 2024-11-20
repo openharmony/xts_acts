@@ -52,6 +52,7 @@ struct Index {
         }.width(50).height(50).backgroundColor(0xD2B48C).id('swiperAttribute_806')
       }
       .cachedCount(2)
+      .id('swiper')
       .index(this.curIndex - 1)
       .autoPlay(false)
       .interval(2000)
@@ -60,6 +61,8 @@ struct Index {
       .duration(1000)
       .itemSpace(0)
       .curve(Curve.Linear)
+      .prevMargin(this.prevMargin)
+      .nextMargin(this.nextMargin)
       .onChange((index: number) => {
         this.curIndex = index + 1
       })
