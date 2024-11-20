@@ -381,8 +381,8 @@ export default function animateToTest() {
         console.info("animateTest_1300 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1300 click result is: " + JSON.stringify(sendEventByKey('button8', 10, "")));
-      console.info('animateTest_1300 END');
       await CommonFunc.sleep(500);
+      console.info('animateTest_1300 END');
       done();
     });
 
