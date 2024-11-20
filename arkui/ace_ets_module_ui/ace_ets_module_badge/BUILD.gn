@@ -13,5 +13,5 @@
 
 group("ActsAceEtsModuleBadgeTest") {
   testonly = true
-  deps = [ "ace_ets_module_badge_api14:ActsAceEtsModuleBadgeApi14Test" ]
+  deps = [ "ace_ets_module_badge_api12:ActsAceEtsModuleBadgeApi12Test" ]
 }

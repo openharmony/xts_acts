@@ -13,5 +13,5 @@
 
 group("ActsAceEtsModuleTextTimerTest") {
   testonly = true
-  deps = [ "ace_ets_module_texttimer_api14:ActsAceEtsModuleTextTimerApi14Test" ]
+  deps = [ "ace_ets_module_texttimer_api12:ActsAceEtsModuleTextTimerApi12Test" ]
 }

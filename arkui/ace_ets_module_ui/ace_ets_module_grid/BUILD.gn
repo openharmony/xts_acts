@@ -13,5 +13,5 @@
 
 group("ActsAceEtsModuleGridTest") {
   testonly = true
-  deps = [ "ace_ets_module_grid_api14:ActsAceEtsModuleGridApi14Test" ]
+  deps = [ "ace_ets_module_grid_api12:ActsAceEtsModuleGridApi12Test" ]
 }
