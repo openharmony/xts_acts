@@ -18,7 +18,7 @@ import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes,getPhotoAssetAttrs,
     fetchOptions_allocate_file} from './common.ets'
 import { BusinessError } from '@ohos.base';
-import { getPermission, photoKeys } from '../../../../../../../common'
+import { getPermission, photoKeys, sleep } from '../../../../../../../common'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function PhotoAccessHelperTest() {
@@ -481,11 +481,11 @@ export default function PhotoAccessHelperTest() {
             phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
                 if (fetchResult != undefined) {
                     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-                    photoAsset.getReadOnlyFd((err, fd) => {
+                    photoAsset.getReadOnlyFd(async (err, fd) => {
                         if (fd != undefined) {
                             console.info('File fd' + fd);
                             checkReadAndWrite(fd)
-                            photoAsset.close(fd);
+                            await sleep(100)
                             releaseHelperCallback(phAccessHelper,done)
                         } else {
                             console.error('File err' + err);
@@ -509,6 +509,7 @@ export default function PhotoAccessHelperTest() {
                 if (fd != undefined) {
                     console.info('File fd' + fd);
                     await checkReadAndWrite(fd)
+                    await sleep(100)
                     photoAsset.close(fd);
                     releaseHelperPromise(phAccessHelper,done)
                 } else {
