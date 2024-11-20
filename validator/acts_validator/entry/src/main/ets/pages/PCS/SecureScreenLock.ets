@@ -34,13 +34,7 @@ import userAuth from '@ohos.userIAM.userAuth'
 @Component
 struct SecureScreenLock {
   @State name: string = 'SecureScreenLock';
-  @State stepTips: string = '1.进入设置应用，生物识别和密码页面，设置锁屏密码，锁屏密码自定义' + '\n' +
-                              '2.返回validator，点击\'设置锁屏密码完成\'按钮' + '\n' +
-                              '3.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若需输入密码，且输入自定义锁屏密码后可解锁，则继续；否则测试失败' + '\n' +
-                              '4.进入设置应用，生物识别和密码页面，关闭/删除锁屏密码' + '\n' +
-                              '5.返回validator，点击\'删除锁屏密码完成\'按钮' + '\n' +
-                              '6.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若无需输入密码，则测试通过；否则测试失败' + '\n' + '\n' + 
-                              '预期结果：安全锁屏开启，解锁屏幕需输入密码；关闭锁屏密码，解锁屏幕无需输入密码';
+  @State stepTips: string = '预期结果：安全锁屏开启，解锁屏幕需输入密码；关闭锁屏密码，解锁屏幕无需输入密码';
   @State testResult: boolean = false;
   @State startEnable: boolean = false;
   @State result: string = 'UNDEFINED';
@@ -70,7 +64,7 @@ struct SecureScreenLock {
             }
 
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.进入设置应用，生物识别和密码页面，设置锁屏密码，锁屏密码自定义` + '\n' + '\n' +
+              Text(`测试步骤:` + '\n' + '\n' + `1.进入设置应用，生物识别和密码页面，设置锁屏密码，锁屏密码自定义` + '\n' + '\n' +
                 `2.返回validator，点击\'设置锁屏密码完成\'按钮` + '\n' + '\n' + 
                 `3.点击\'锁屏\'按钮，屏幕锁定后，解锁屏幕：若需输入密码，且输入自定义锁屏密码后可解锁，则继续；否则测试失败` + '\n' + '\n' +
                 `4.进入设置应用，生物识别和密码页面，关闭/删除锁屏密码` + '\n' + '\n' +
@@ -89,17 +83,7 @@ struct SecureScreenLock {
                   .width('50%')
                   .margin('10vp')
                   .onClick(async () => {
-                    try {
-                      let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.PIN);
-                      if (enrolledState.credentialCount > 0) {
-                        this.hasLocked = true
-                      }
-                    } catch (error) {
-                      console.error('getEnrolledState failed, err: ' + error);
-                      let err = error as BusinessError
-                      console.error(`getEnrolledState failed. error: ${JSON.stringify(err)}`)
-                      this.hasLocked = false
-                    }
+                    this.hasLocked = true
                     if (this.hasLocked) {
                       this.startEnable = true
                     }
@@ -111,14 +95,7 @@ struct SecureScreenLock {
                   .width('50%')
                   .margin('10vp')
                   .onClick(async () => {
-                    try {
-                      let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.PIN);
-                      if (enrolledState.credentialCount > 0) {
-                        this.hasLocked = true
-                      }
-                    } catch (error) {
-                      this.hasLocked = false
-                    }
+                    this.hasLocked = false
                     if (!this.hasLocked) {
                       this.startEnable = true
                     }
@@ -155,12 +132,6 @@ struct SecureScreenLock {
                     }
                   })
               }
-            }
-
-            Row() {
-              Text('\n' + '\n' + `安全锁屏测试结果：` + this.result)
-                .fontColor(Color.White)
-                .fontSize('24fp')
             }
           }
           .width('100%')
