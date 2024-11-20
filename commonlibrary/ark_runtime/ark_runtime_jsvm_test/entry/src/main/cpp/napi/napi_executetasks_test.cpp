@@ -13,7 +13,9 @@
 * limitations under the License.
 */
 #include "napi_executetasks_test.h"
-//JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop (JSVM_VM vm, bool * result )
+const size_t BUF_SIZE_255 = 255;
+const size_t NUM_SIZE_3 = 3;
+//OH_JSVM_PumpMessageLoop
 [[maybe_unused]] JSVM_Value TestPumpMessageLoopTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -36,7 +38,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint (JSVM_VM vm)
+//OH_JSVM_PerformMicrotaskCheckpoint
 //vm is null
 [[maybe_unused]] JSVM_Value TestPerformMicrotaskCheckpointTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -73,7 +75,7 @@
     OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL);
 
     OH_JSVM_GetValueStringUtf8(env, args[0], log, 255, &logLength);
-    log[255] = 0;
+    log[BUF_SIZE_255] = 0;
     printf("JSVM API TEST: %s", log);
     return nullptr;
 }
@@ -152,12 +154,12 @@
         return nullptr;
     }
     bool rst = false;
-    for (int i = 0; i < 3; i++) { // 3: cycles
+    for (int i = 0; i < NUM_SIZE_3; i++) { // 3: cycles
         //如果消息队列中没有任务启动，则rst设置为false。
         JSVM_Status flag1 = OH_JSVM_PumpMessageLoop(vm, &rst);
         JSVM_Status flag2 = OH_JSVM_PerformMicrotaskCheckpoint(vm);
         if (rst && (flag1 == JSVM_OK) && (flag2 == JSVM_OK)) {
-               sleep(3);
+               sleep(NUM_SIZE_3);
                break;
         }
     }

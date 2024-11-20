@@ -21,8 +21,8 @@
 #include "test_entry.h"
 #include "securec.h"
 #include <stdint.h>
-#include <stdio.h>
-#include <malloc.h>
+#include <cstdio>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -34,11 +34,11 @@
 #include <vector>
 using namespace std;
 
-//JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate (JSVM_Env env, double time, JSVM_Value * result )
+// OH_JSVM_CreateDate
 JSVM_Value TestCreateDateTest1(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue (JSVM_Env env, JSVM_Value value, double * result )
+// OH_JSVM_GetDateValue
 JSVM_Value TestGetDateValueTest1(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_IsDate (JSVM_Env env, JSVM_Value value, bool * isDate )
+// OH_JSVM_IsDate 
 JSVM_Value TestIsDateTest1(JSVM_Env env, JSVM_CallbackInfo info);
 //Combination: create -- is-- get
 JSVM_Value TestDateCombinationTest1(JSVM_Env env, JSVM_CallbackInfo info);

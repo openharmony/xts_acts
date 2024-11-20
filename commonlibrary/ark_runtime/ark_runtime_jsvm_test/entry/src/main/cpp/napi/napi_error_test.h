@@ -21,8 +21,8 @@
 #include "test_entry.h"
 #include "securec.h"
 #include <stdint.h>
-#include <stdio.h>
-#include <malloc.h>
+#include <cstdio>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -70,41 +70,41 @@ JSVM_Value TestThrowTest4(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowTest5(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowTest6(JSVM_Env env, JSVM_CallbackInfo info);
 
-// JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env, const char* code, const char* msg) interface
+//OH_JSVM_ThrowError interface
 JSVM_Value TestThrowErrorTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowErrorTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowErrorTest3(JSVM_Env env, JSVM_CallbackInfo info);
 
-// JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env, const char* code, const char* msg) interface
+//OH_JSVM_ThrowTypeError interface
 JSVM_Value TestThrowTypeErrorTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowTypeErrorTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowTypeErrorTest3(JSVM_Env env, JSVM_CallbackInfo info);
 
-// JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env, const char* code, const char* msg) interface
+//OH_JSVM_ThrowRangeError interface
 JSVM_Value TestThrowRangeErrorTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowRangeErrorTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowRangeErrorTest3(JSVM_Env env, JSVM_CallbackInfo info);
 
-// JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env, const char* code, const char* msg) interface
+//OH_JSVM_ThrowSyntaxError interface
 JSVM_Value TestThrowSyntaxErrorTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowSyntaxErrorTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestThrowSyntaxErrorTest3(JSVM_Env env, JSVM_CallbackInfo info);
 
-// JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env, JSVM_Value value, bool* result);
+//OH_JSVM_IsError
 JSVM_Value TestIsErrorTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestIsErrorTest2(JSVM_Env env, JSVM_CallbackInfo info);
 
-// JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env, JSVM_Value* result)
+//OH_JSVM_GetAndClearLastException
 JSVM_Value TestGetAndClearLastExceptionTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestGetAndClearLastExceptionTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestGetAndClearLastExceptionTest3(JSVM_Env env, JSVM_CallbackInfo info);
 
-// JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env, bool* result);
+//OH_JSVM_IsExceptionPending
 JSVM_Value TestIsExceptionPendingTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestIsExceptionPendingTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestIsExceptionPendingTest3(JSVM_Env env, JSVM_CallbackInfo info);
 
-// JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env, const JSVM_ExtendedErrorInfo** result);
+//OH_JSVM_GetLastErrorInfo
 JSVM_Value TestGetLastErrorInfoTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestGetLastErrorInfoTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestGetLastErrorInfoTest3(JSVM_Env env, JSVM_CallbackInfo info);

@@ -21,7 +21,7 @@ const JSVM_TypeTag tagsData[] = {
         {0x6a971439f5b2e5d7, 0x531dc28a7e5317c0},
     };
 
-//OH_JSVM_CreateObject(JSVM_Env env, JSVM_Value* result);
+//OH_JSVM_CreateObject
 //result is null
 [[maybe_unused]] JSVM_Value TestCreateObjectTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -59,7 +59,7 @@ const JSVM_TypeTag tagsData[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_Typeof(JSVM_Env env, JSVM_Value value, JSVM_ValueType* result);
+//OH_JSVM_Typeof
 //value is null
 [[maybe_unused]] JSVM_Value TestTypeofTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -331,7 +331,7 @@ const JSVM_TypeTag tagsData[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_TypeTagObject(JSVM_Env env, JSVM_Value value, const JSVM_TypeTag* typeTag);
+//OH_JSVM_TypeTagObject
 //value is null
 [[maybe_unused]] JSVM_Value TestTypeTagObjectTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -430,7 +430,7 @@ const JSVM_TypeTag tagsData[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_CheckObjectTypeTag(JSVM_Env env, JSVM_Value value, const JSVM_TypeTag* typeTag, bool* result);
+//OH_JSVM_CheckObjectTypeTag
 //value is null
 [[maybe_unused]] JSVM_Value TestCheckObjectTypeTagTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {

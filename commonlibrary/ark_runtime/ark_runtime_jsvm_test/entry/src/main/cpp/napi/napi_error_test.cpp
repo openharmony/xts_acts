@@ -22,7 +22,6 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     JSVM_Value errorCode = nullptr;
-    //OH_JSVM_CreateInt32(env, 0, &errorCode);
     OH_JSVM_CreateStringUtf8(env, "0", JSVM_AUTO_LENGTH, &errorCode);
     
     JSVM_Value errorMsg = nullptr;
@@ -94,14 +93,13 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 // code is “0”， msg is not null，result is nullptr
-[[maybe_unused]] JSVM_Value TestCreateErrorTest4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateErrorTest4(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     JSVM_Value errorCode = nullptr;
-    //OH_JSVM_CreateInt32(env, 0, &errorCode);
     OH_JSVM_CreateStringUtf8(env, "0", JSVM_AUTO_LENGTH, &errorCode);
     
     JSVM_Value errorMsg = nullptr;
@@ -154,7 +152,6 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     JSVM_Value errorCode = nullptr;
-    //OH_JSVM_CreateInt32(env, 0, &errorCode);
     OH_JSVM_CreateStringUtf8(env, "0", JSVM_AUTO_LENGTH, &errorCode);
     
     JSVM_Value errorMsg = nullptr;
@@ -181,7 +178,6 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     JSVM_Value errorCode = nullptr;
-    //OH_JSVM_CreateInt32(env, -3, &errorCode);
     OH_JSVM_CreateStringUtf8(env, "-3", JSVM_AUTO_LENGTH, &errorCode);
     
     JSVM_Value errorMsg = nullptr;
@@ -228,14 +224,13 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 // code is “0”， msg is not null，result is nullptr
-[[maybe_unused]] JSVM_Value TestCreateTypeErrorTest4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateTypeErrorTest4(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     JSVM_Value errorCode = nullptr;
-    //OH_JSVM_CreateInt32(env, 0, &errorCode);
     OH_JSVM_CreateStringUtf8(env, "0", JSVM_AUTO_LENGTH, &errorCode);
     
     JSVM_Value errorMsg = nullptr;
@@ -254,7 +249,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 //code is string，msg is not null，result is not null
-[[maybe_unused]] JSVM_Value TestCreateTypeErrorTest5(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateTypeErrorTest5(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -281,14 +276,13 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
 }
 ///OH_JSVM_CreateRangeError interface
 //code is "0"， msg is not null，result is not null
-[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     JSVM_Value errorCode = nullptr;
-    //OH_JSVM_CreateInt32(env, 0, &errorCode);
     OH_JSVM_CreateStringUtf8(env, "0", JSVM_AUTO_LENGTH, &errorCode);
     
     JSVM_Value errorMsg = nullptr;
@@ -308,7 +302,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 // code is "-3"，msg is not null，result is not null
-[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -335,7 +329,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 // code is null，msg is not null，result is not null
-[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest3(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -362,14 +356,13 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 // code is "0"， msg is not null，result is nullptr
-[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest4(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     JSVM_Value errorCode = nullptr;
-    //OH_JSVM_CreateInt32(env, 0, &errorCode);
     OH_JSVM_CreateStringUtf8(env, "3", JSVM_AUTO_LENGTH, &errorCode);
     
     JSVM_Value errorMsg = nullptr;
@@ -388,7 +381,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 //code is string，msg is not null，result is not null
-[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest5(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateRangeErrorTest5(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -415,7 +408,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
 }
 ///OH_JSVM_CreateSyntaxError interface
 //code is "0"， msg is not null，result is not null
-[[maybe_unused]] JSVM_Value TestCreateSyntaxErrorTest1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateSyntaxErrorTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -441,7 +434,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 // code is "-3"，msg is not null，result is not null
-[[maybe_unused]] JSVM_Value TestCreateSyntaxErrorTest2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateSyntaxErrorTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -494,14 +487,13 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 // code is "0"， msg is not null，result is nullptr
-[[maybe_unused]] JSVM_Value TestCreateSyntaxErrorTest4(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateSyntaxErrorTest4(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     JSVM_Value errorCode = nullptr;
-    //OH_JSVM_CreateInt32(env, 0, &errorCode);
     OH_JSVM_CreateStringUtf8(env, "0", JSVM_AUTO_LENGTH, &errorCode);
     
     JSVM_Value errorMsg = nullptr;
@@ -520,7 +512,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 //code is string，msg is not null，result is not null
-[[maybe_unused]] JSVM_Value TestCreateSyntaxErrorTest5(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestCreateSyntaxErrorTest5(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -545,9 +537,9 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_Throw(JSVM_Env env, JSVM_Value error) interface
+//OH_JSVM_Throw interface
 //error is not javascript error
-[[maybe_unused]] JSVM_Value TestThrowTest1(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestThrowTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -579,7 +571,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 //error is CreateError js error
-[[maybe_unused]] JSVM_Value TestThrowTest2(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestThrowTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -618,7 +610,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     return value;
 }
 //error is CreateTypeError js error
-[[maybe_unused]] JSVM_Value TestThrowTest3(JSVM_Env env, JSVM_CallbackInfo info) 
+[[maybe_unused]] JSVM_Value TestThrowTest3(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
@@ -757,7 +749,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env, const char* code, const char* msg);
+//OH_JSVM_ThrowError
 //code is not null，msg is nullptr
 [[maybe_unused]] JSVM_Value TestThrowErrorTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -834,7 +826,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env, const char* code, const char* msg);
+//OH_JSVM_ThrowTypeError
 //code is not null，msg is nullptr
 [[maybe_unused]] JSVM_Value TestThrowTypeErrorTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -911,7 +903,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env, const char* code, const char* msg);
+//OH_JSVM_ThrowRangeError
 //code is not null，msg is nullptr
 [[maybe_unused]] JSVM_Value TestThrowRangeErrorTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -988,7 +980,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env, const char* code, const char* msg);
+//OH_JSVM_ThrowSyntaxError
 //code is not null，msg is nullptr
 [[maybe_unused]] JSVM_Value TestThrowSyntaxErrorTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -1065,7 +1057,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env, JSVM_Value value, bool* result);
+//OH_JSVM_IsError
 //value is error object，result is nullptr
 [[maybe_unused]] JSVM_Value TestIsErrorTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -1119,7 +1111,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env, JSVM_Value* result)
+//OH_JSVM_GetAndClearLastException
 //result is not null，exist error
 [[maybe_unused]] JSVM_Value TestGetAndClearLastExceptionTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -1131,7 +1123,8 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     JSVM_Value rstValue = nullptr;
     JSVM_Status rstStatus = OH_JSVM_GetAndClearLastException(env, &rstValue);
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetAndClearLastExceptionTest1: OH_JSVM_GetAndClearLastException status Failed");
+        OH_JSVM_ThrowError(env, nullptr
+        , "TestGetAndClearLastExceptionTest1: OH_JSVM_GetAndClearLastException status Failed");
         return nullptr;
     }
 
@@ -1150,7 +1143,8 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     JSVM_Value rstValue = nullptr;
     JSVM_Status rstStatus = OH_JSVM_GetAndClearLastException(env, &rstValue);
     if (rstStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetAndClearLastExceptionTest2: OH_JSVM_GetAndClearLastException status Failed");
+        OH_JSVM_ThrowError(env, nullptr
+        , "TestGetAndClearLastExceptionTest2: OH_JSVM_GetAndClearLastException status Failed");
         return nullptr;
     }
 
@@ -1168,7 +1162,8 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     
     JSVM_Status rstStatus = OH_JSVM_GetAndClearLastException(env, nullptr);
     if (rstStatus == JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestGetAndClearLastExceptionTest3: OH_JSVM_GetAndClearLastException status Failed");
+        OH_JSVM_ThrowError(env, nullptr
+        , "TestGetAndClearLastExceptionTest3: OH_JSVM_GetAndClearLastException status Failed");
         return nullptr;
     }
 
@@ -1177,7 +1172,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env, bool* result);
+//OH_JSVM_IsExceptionPending
 //result is not null，
 [[maybe_unused]] JSVM_Value TestIsExceptionPendingTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -1256,7 +1251,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env, const JSVM_ExtendedErrorInfo** result);
+//OH_JSVM_GetLastErrorInfo
 //result is not null
 [[maybe_unused]] JSVM_Value TestGetLastErrorInfoTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -1840,13 +1835,15 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
         return nullptr;
     }
     char strGetErrMsg[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringMsgStatus = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringMsgStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringMsgStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest9: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
     }
     char strGetErrCode[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringCodeStatus = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringCodeStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringCodeStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest9: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
@@ -1942,13 +1939,15 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
         return nullptr;
     }
     char strGetErrMsg[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringMsgStatus = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringMsgStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringMsgStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest10: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
     }
     char strGetErrCode[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringCodeStatus = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringCodeStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringCodeStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest10: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
@@ -2044,13 +2043,15 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
         return nullptr;
     }
     char strGetErrMsg[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringMsgStatus = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringMsgStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringMsgStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest11: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
     }
     char strGetErrCode[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringCodeStatus = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringCodeStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringCodeStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest11: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
@@ -2146,13 +2147,15 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
         return nullptr;
     }
     char strGetErrMsg[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringMsgStatus = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringMsgStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringMsgStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest12: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
     }
     char strGetErrCode[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringCodeStatus = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringCodeStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringCodeStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest12: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
@@ -2240,13 +2243,15 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
         return nullptr;
     }
     char strGetErrMsg[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringMsgStatus = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringMsgStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringMsgStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest13: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
     }
     char strGetErrCode[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringCodeStatus = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringCodeStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringCodeStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest13: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
@@ -2334,13 +2339,15 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
         return nullptr;
     }
     char strGetErrMsg[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringMsgStatus = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringMsgStatus
+                = OH_JSVM_GetValueStringUtf8(env, getErrorMsg, strGetErrMsg, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringMsgStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest14: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;
     }
     char strGetErrCode[ERROR_BUF_SIZE_MAX] = {0};
-    JSVM_Status getStringCodeStatus = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
+    JSVM_Status getStringCodeStatus 
+                = OH_JSVM_GetValueStringUtf8(env, getErrorCode, strGetErrCode, ERROR_BUF_SIZE_MAX, nullptr);
     if (getStringCodeStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest14: OH_JSVM_GetValueStringUtf8 status Failed");
         return nullptr;

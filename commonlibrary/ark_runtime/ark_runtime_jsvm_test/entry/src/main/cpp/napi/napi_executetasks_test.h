@@ -22,7 +22,7 @@
 #include "securec.h"
 #include <cstdint>
 #include <cstdio>
-#include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -33,12 +33,10 @@
 #include <string>
 #include <vector>
 using namespace std;
-//JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop (JSVM_VM vm, bool * result )
-//vm为空，预期接口返回not
+//OH_JSVM_PumpMessageLoop
 JSVM_Value TestPumpMessageLoopTest1(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint (JSVM_VM vm)
-//vm为空，预期接口返回not ok
+//OH_JSVM_PerformMicrotaskCheckpoint 
 JSVM_Value TestPerformMicrotaskCheckpointTest1(JSVM_Env env, JSVM_CallbackInfo info);
-// pump -- perform 预期正常
+// pump -- perform
 JSVM_Value TestExecuteTasksCombinationTest1(JSVM_Env env, JSVM_CallbackInfo info);
 #endif //JSVM_XTS_NAPI_EXECUTETASKS_TEST_H

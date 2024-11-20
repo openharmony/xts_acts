@@ -22,7 +22,7 @@
 #include "securec.h"
 #include <cstdint>
 #include <cstdio>
-#include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -33,32 +33,31 @@
 #include <string>
 #include <vector>
 using namespace std;
-//JSVM_Status OH_JSVM_Init (const JSVM_InitOptions * options)
+//OH_JSVM_Init
 JSVM_Value TestInitTest1(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM (const JSVM_CreateVMOptions * options, JSVM_VM * result )
+//OH_JSVM_CreateVM 
 JSVM_Value TestCreateVMTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCreateVMTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM (JSVM_VM vm)
+//OH_JSVM_DestroyVM 
 JSVM_Value TestDestroyVMTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDestroyVMTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope (JSVM_VM vm, JSVM_VMScope * result )
+//OH_JSVM_OpenVMScope 
 JSVM_Value TestOpenVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenVMScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope (JSVM_VM vm, JSVM_VMScope scope)
+//OH_JSVM_CloseVMScope
 JSVM_Value TestCloseVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCloseVMScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv (JSVM_VM vm, size_t propertyCount, 
-//                                const JSVM_PropertyDescriptor * properties, JSVM_Env * result )
+//OH_JSVM_CreateEnv
 JSVM_Value TestCreateEnvTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCreateEnvTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv (JSVM_Env env)
+//OH_JSVM_DestroyEnv
 JSVM_Value TestDestroyEnvTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDestroyEnvTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope (JSVM_Env env, JSVM_EnvScope * result )
+//OH_JSVM_OpenEnvScope 
 JSVM_Value TestOpenEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenEnvScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenEnvScopeTest3(JSVM_Env env, JSVM_CallbackInfo info);
-//JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env, JSVM_EnvScope scope)
+//OH_JSVM_CloseEnvScope
 JSVM_Value TestCloseEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCloseEnvScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
 //Combination：OH_JSVM_Init -- create vm -- open vm scope -- create env -- open env scope -- open handlescope

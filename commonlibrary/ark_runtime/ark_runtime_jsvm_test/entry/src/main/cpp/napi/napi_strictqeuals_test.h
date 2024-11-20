@@ -22,7 +22,7 @@
 #include "securec.h"
 #include <cstdint>
 #include <cstdio>
-#include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -33,7 +33,7 @@
 #include <string>
 #include <vector>
 using namespace std;
-//JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env, JSVM_Value lhs, JSVM_Value rhs, bool* result);
+//OH_JSVM_StrictEquals
 JSVM_Value TestStrictEqualsTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestStrictEqualsTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestStrictEqualsTest3(JSVM_Env env, JSVM_CallbackInfo info);

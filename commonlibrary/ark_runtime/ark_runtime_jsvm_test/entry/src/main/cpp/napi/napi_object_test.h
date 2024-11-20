@@ -22,7 +22,7 @@
 #include "securec.h"
 #include <cstdint>
 #include <cstdio>
-#include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -33,11 +33,11 @@
 #include <string>
 #include <vector>
 using namespace std;
-//OH_JSVM_CreateObject(JSVM_Env env, JSVM_Value* result);
+//OH_JSVM_CreateObject
 JSVM_Value TestCreateObjectTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCreateObjectTest2(JSVM_Env env, JSVM_CallbackInfo info);
 
-//OH_JSVM_Typeof(JSVM_Env env, JSVM_Value value, JSVM_ValueType* result);
+//OH_JSVM_Typeof
 JSVM_Value TestTypeofTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestTypeofTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestTypeofTest3(JSVM_Env env, JSVM_CallbackInfo info);
@@ -51,13 +51,13 @@ JSVM_Value TestTypeofTest10(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestTypeofTest11(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestTypeofTest12(JSVM_Env env, JSVM_CallbackInfo info);
 
-//OH_JSVM_TypeTagObject(JSVM_Env env, JSVM_Value value, const JSVM_TypeTag* typeTag);
+//OH_JSVM_TypeTagObject
 JSVM_Value TestTypeTagObjectTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestTypeTagObjectTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestTypeTagObjectTest3(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestTypeTagObjectTest4(JSVM_Env env, JSVM_CallbackInfo info);
 
-//OH_JSVM_CheckObjectTypeTag(JSVM_Env env, JSVM_Value value, const JSVM_TypeTag* typeTag, bool* result);
+//OH_JSVM_CheckObjectTypeTag
 JSVM_Value TestCheckObjectTypeTagTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCheckObjectTypeTagTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCheckObjectTypeTagTest3(JSVM_Env env, JSVM_CallbackInfo info);

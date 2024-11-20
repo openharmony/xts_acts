@@ -21,7 +21,7 @@
 #include "securec.h"
 #include <cstdint>
 #include <cstdio>
-#include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>

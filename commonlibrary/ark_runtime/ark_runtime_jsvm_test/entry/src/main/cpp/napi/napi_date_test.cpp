@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 #include "napi_error_test.h"
-//JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate (JSVM_Env env, double time, JSVM_Value * result )
+//OH_JSVM_CreateDate
 //return not ok
 [[maybe_unused]] JSVM_Value TestCreateDateTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -34,7 +34,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue (JSVM_Env env, JSVM_Value value, double * result )
+//OH_JSVM_GetDateValue
 //OK
 [[maybe_unused]] JSVM_Value TestGetDateValueTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -65,7 +65,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_IsDate (JSVM_Env env, JSVM_Value value, bool * isDate )
+//OH_JSVM_IsDate 
 //value is null ， return n-OK
 [[maybe_unused]] JSVM_Value TestIsDateTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {

@@ -15,7 +15,7 @@
 #include "napi/native_api.h"
 #include "napi_property_test.h"
 const size_t BUF_SIZE_MAX = 128;
-//OH_JSVM_HasProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)
+//OH_JSVM_HasProperty
 //obj is null，key is not null  status is not JSVM_OK
 [[maybe_unused]] JSVM_Value TestHasPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -58,7 +58,7 @@ const size_t BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_DeleteProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)
+//OH_JSVM_DeleteProperty
 //obj is null，key is not null  status is not JSVM_OK
 [[maybe_unused]] JSVM_Value TestDeletePropertyTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -101,7 +101,7 @@ const size_t BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_HasOwnProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)
+//OH_JSVM_HasOwnProperty
 //Object is nullptr,key is not null status is not JSVM_OK
 [[maybe_unused]] JSVM_Value TestHasOwnPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -217,7 +217,7 @@ const size_t BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_GetNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, JSVM_Value* result)
+//OH_JSVM_GetNamedProperty
 //Object is nullptr,key is not null status is not JSVM_OK
 [[maybe_unused]] JSVM_Value TestGetNamedPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -298,7 +298,7 @@ const size_t BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_HasNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, bool* result)
+//OH_JSVM_HasNamedProperty
 //obj is null，utf8name is not null  status is not JSVM_OK
 [[maybe_unused]] JSVM_Value TestHasNamedPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -411,7 +411,7 @@ const size_t BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_DefineProperties(JSVM_Env env, JSVM_Value object, size_t propertyCount, const JSVM_PropertyDescriptor* properties);
+//OH_JSVM_DefineProperties
 //Object is nullptr  status is not JSVM_OK
 [[maybe_unused]] JSVM_Value TestDefinePropertiesTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -426,7 +426,8 @@ const size_t BUF_SIZE_MAX = 128;
     bool bRstValue = false;
     size_t proCount = 1;
     JSVM_Value stringValue = nullptr;
-    const JSVM_PropertyDescriptor arrPro[] = {{"defineStringProperties", nullptr, nullptr, nullptr, nullptr, stringValue, JSVM_DEFAULT}};
+    const JSVM_PropertyDescriptor arrPro[] = {{"defineStringProperties"
+        , nullptr, nullptr, nullptr, nullptr, stringValue, JSVM_DEFAULT}};
     JSVM_Value objPro = nullptr;
     status = OH_JSVM_DefineProperties(env, objPro, proCount, arrPro);
     if (status == JSVM_OK) {
@@ -453,7 +454,8 @@ const size_t BUF_SIZE_MAX = 128;
     bool bRstValue = false;
     size_t proCount = 0;
     JSVM_Value stringValue = nullptr;
-    const JSVM_PropertyDescriptor arrPro[] = {{"defineStringPropertiesExample", nullptr, nullptr, nullptr, nullptr, stringValue, JSVM_DEFAULT}};
+    const JSVM_PropertyDescriptor arrPro[] = {{"defineStringPropertiesExample"
+        , nullptr, nullptr, nullptr, nullptr, stringValue, JSVM_DEFAULT}};
     status = OH_JSVM_DefineProperties(env, args[0], proCount, arrPro);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestDefinePropertiesTest2: OH_JSVM_DefineProperties status Failed");
@@ -510,7 +512,8 @@ const size_t BUF_SIZE_MAX = 128;
         OH_JSVM_ThrowError(env, nullptr, "TestDefinePropertiesTest4: OH_JSVM_CreateStringUtf8 Failed");
         return nullptr;
     }
-    const JSVM_PropertyDescriptor arrPro[] = {{"defineStringPropertiesExample", nullptr, nullptr, nullptr, nullptr, stringValue, JSVM_DEFAULT}};;
+    const JSVM_PropertyDescriptor arrPro[] = {{"defineStringPropertiesExample"
+        , nullptr, nullptr, nullptr, nullptr, stringValue, JSVM_DEFAULT}};;
     status = OH_JSVM_DefineProperties(env, args[0], proCount, arrPro);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestDefinePropertiesTest4: OH_JSVM_DefineProperties status Failed");
@@ -966,18 +969,10 @@ const size_t BUF_SIZE_MAX = 128;
     // Call OH_JSVM_SetProperty again
     JSVM_Value stringValue = nullptr;
     const char* strKeyValue = "setKeyValue1";
-    status = OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &stringValue);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest4: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &stringValue);
     JSVM_Value stringKey = nullptr;
     const char* strKey = "setkey1";
-    status = OH_JSVM_CreateStringUtf8(env, strKey, JSVM_AUTO_LENGTH, &stringKey);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest4: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKey, JSVM_AUTO_LENGTH, &stringKey);
     status = OH_JSVM_SetProperty(env, args[0], stringKey, stringValue);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest4: OH_JSVM_SetProperty again Failed");
@@ -996,11 +991,7 @@ const size_t BUF_SIZE_MAX = 128;
     }
     // call OH_JSVM_HasProperty again
     bool bHasRst1 = false;
-    status = OH_JSVM_HasProperty(env, args[0], stringKey, &bHasRst1);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest4: OH_JSVM_HasProperty1 Failed");
-        return nullptr;
-    }
+    OH_JSVM_HasProperty(env, args[0], stringKey, &bHasRst1);
     if (!bHasRst1) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest4: OH_JSVM_HasProperty result1 is false");
         return nullptr;
@@ -1014,18 +1005,10 @@ const size_t BUF_SIZE_MAX = 128;
     }
     char strGetKeyValue[BUF_SIZE_MAX] = {0};
     size_t rstLength = 0;
-    status = OH_JSVM_GetValueStringUtf8(env, rstValue, strGetKeyValue, BUF_SIZE_MAX, &rstLength);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest4: OH_JSVM_GetValueStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_GetValueStringUtf8(env, rstValue, strGetKeyValue, BUF_SIZE_MAX, &rstLength);
     char strGetKeyValueFirst[BUF_SIZE_MAX] = {0};
     size_t rstFirstLength = 0;
-    status = OH_JSVM_GetValueStringUtf8(env, args[2], strGetKeyValueFirst, BUF_SIZE_MAX, &rstFirstLength);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest4: OH_JSVM_GetValueStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_GetValueStringUtf8(env, args[2], strGetKeyValueFirst, BUF_SIZE_MAX, &rstFirstLength);
     if (strcmp(strGetKeyValueFirst, strGetKeyValue) != 0) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest4: GetProperty keyvalue!=getkeyvalue Failed");
         return nullptr;
@@ -1156,7 +1139,7 @@ const size_t BUF_SIZE_MAX = 128;
         return nullptr;
     }
     if (strcmp(strKeyValue, strGetKeyValue) != 0) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationNamedPropertyTest1: GetProperty keyvalue!=getkeyvalue1 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCombinationNamedPropertyTest1: GetProperty keyvalue!=getkeyvalue1");
         return nullptr;
     }
     // OH_JSVM_GetNamedProperty again
@@ -1174,7 +1157,7 @@ const size_t BUF_SIZE_MAX = 128;
         return nullptr;
     }
     if (strcmp(strKeyValue, strGetKeyValue1) != 0) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationNamedPropertyTest1: GetProperty keyvalue!=getkeyvalue1 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCombinationNamedPropertyTest1:GetProperty keyvalue!=getkeyvalue1");
         return nullptr;
     }
     // call OH_JSVM_HasNamedProperty
@@ -1289,7 +1272,7 @@ const size_t BUF_SIZE_MAX = 128;
         return nullptr;
     }
     if (strcmp(strKeyValue, strGetKeyValue) != 0) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationNamedPropertyTest2: GetProperty keyvalue!=getkeyvalue1 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCombinationNamedPropertyTest2: GetProperty keyvalue!=getkeyvalue1");
         return nullptr;
     }
     // second OH_JSVM_GetNamedProperty
@@ -1307,7 +1290,7 @@ const size_t BUF_SIZE_MAX = 128;
         return nullptr;
     }
     if (strcmp(strKeyValue1, strGetKeyValue1) != 0) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationNamedPropertyTest2: GetProperty keyvalue!=getkeyvalue1 Failed");
+        OH_JSVM_ThrowError(env, nullptr, "TestCombinationNamedPropertyTest2: GetProperty keyvalue!=getkeyvalue1");
         return nullptr;
     }
     

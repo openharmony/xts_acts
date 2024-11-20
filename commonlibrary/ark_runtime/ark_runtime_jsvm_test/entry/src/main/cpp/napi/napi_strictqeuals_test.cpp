@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 #include "napi_strictqeuals_test.h"
-//JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env, JSVM_Value lhs, JSVM_Value rhs, bool* result);
+//OH_JSVM_StrictEquals
 //lhs is int，rhs is int，same value，result is nullptr
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -241,7 +241,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//lhs is bigint ，rhs分别 is bigint ，两个参数初始化的值相同，result is  not null，result is true
+//lhs is bigint ，rhs is bigint ，same value，result is  not null，result is true
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest10(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 2;
@@ -264,7 +264,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//lhs is regexp ，rhs分别 is regexp ，两个参数初始化的值相同，result is  not null，result is true--待确认
+//lhs is regexp ，rhs is regexp ，same value，result is  not null，result is true--待确认
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest11(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 2;
@@ -287,7 +287,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//lhs is set ，rhs分别 is set ，different value，result is  not null，result is false
+//lhs is set ，rhs is set ，different value，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest12(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 2;
@@ -310,7 +310,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//lhs is boolean ，rhs分别 is boolean ，different value，result is  not null，result is false
+//lhs is boolean ，rhs is boolean ，different value，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest13(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 2;
@@ -333,7 +333,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//lhs is string ，rhs分别 is string ，different value，result is  not null. result is false
+//lhs is string ，rhs is string ，different value，result is  not null. result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest14(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 2;
@@ -379,7 +379,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//lhs is function ，rhs分别 is function ，different value，result is  not null，result is false
+//lhs is function ，rhs is function ，different value，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest16(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 2;
@@ -402,7 +402,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//lhs is bigint ，rhs分别 is bigint ，different value同，result is  not null，result is false
+//lhs is bigint ，rhs is bigint ，different value同，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest17(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 2;
@@ -425,7 +425,7 @@
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//lhs is regexp ，rhs分别 is regexp ，different value，result is  not null, result is false
+//lhs is regexp ，rhs is regexp ，different value，result is  not null, result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest18(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 2;

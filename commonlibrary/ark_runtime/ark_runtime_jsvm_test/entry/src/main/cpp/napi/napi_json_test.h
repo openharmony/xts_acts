@@ -22,7 +22,7 @@
 #include "securec.h"
 #include <cstdint>
 #include <cstdio>
-#include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -33,12 +33,12 @@
 #include <string>
 #include <vector>
 using namespace std;
-//JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse (JSVM_Env env, JSVM_Value jsonString, JSVM_Value * result )
+//OH_JSVM_JsonParse
 JSVM_Value TestJsonParseTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestJsonParseTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestJsonParseTest3(JSVM_Env env, JSVM_CallbackInfo info);
 
-//JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify (JSVM_Env env, JSVM_Value jsonObject, JSVM_Value * result )
+//OH_JSVM_JsonStringify
 JSVM_Value TestJsonStringifyTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestJsonStringifyTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestJsonStringifyTest3(JSVM_Env env, JSVM_CallbackInfo info);

@@ -15,7 +15,7 @@
 #include "napi_json_test.h"
 #include "napi/napi_json_test.h"
 const size_t BUF_SIZE_MAX = 128;
-//JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse (JSVM_Env env, JSVM_Value jsonString, JSVM_Value * result )
+//OH_JSVM_JsonParse
 //null string
 [[maybe_unused]] JSVM_Value TestJsonParseTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -106,7 +106,7 @@ const size_t BUF_SIZE_MAX = 128;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify (JSVM_Env env, JSVM_Value jsonObject, JSVM_Value * result )
+//OH_JSVM_JsonStringify
 //jsonObject is nullptr，return n-ok
 [[maybe_unused]] JSVM_Value TestJsonStringifyTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {

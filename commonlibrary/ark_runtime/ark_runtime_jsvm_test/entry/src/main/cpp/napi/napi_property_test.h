@@ -22,7 +22,7 @@
 #include "securec.h"
 #include <cstdint>
 #include <cstdio>
-#include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -34,26 +34,26 @@
 #include <vector>
 using namespace std;
 
-//OH_JSVM_HasProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)
+//OH_JSVM_HasProperty
 JSVM_Value TestHasPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestHasPropertyTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_DeleteProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)
+//OH_JSVM_DeleteProperty
 JSVM_Value TestDeletePropertyTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDeletePropertyTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_HasOwnProperty(JSVM_Env env, JSVM_Value object, JSVM_Value key, bool* result)
+//OH_JSVM_HasOwnProperty
 JSVM_Value TestHasOwnPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestHasOwnPropertyTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestHasOwnPropertyTest3(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_GetNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, JSVM_Value* result)
+//OH_JSVM_GetNamedProperty
 JSVM_Value TestGetNamedPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestGetNamedPropertyTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestGetNamedPropertyTest3(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_HasNamedProperty(JSVM_Env env, JSVM_Value object, const char* utf8name, bool* result)
+//OH_JSVM_HasNamedProperty
 JSVM_Value TestHasNamedPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestHasNamedPropertyTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestHasNamedPropertyTest3(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestHasNamedPropertyTest4(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_DefineProperties(JSVM_Env env, JSVM_Value object, size_t propertyCount, const JSVM_PropertyDescriptor* properties);
+//OH_JSVM_DefineProperties
 JSVM_Value TestDefinePropertiesTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDefinePropertiesTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDefinePropertiesTest3(JSVM_Env env, JSVM_CallbackInfo info);

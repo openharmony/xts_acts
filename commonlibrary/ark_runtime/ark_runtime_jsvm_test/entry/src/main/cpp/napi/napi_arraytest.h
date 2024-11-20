@@ -21,8 +21,8 @@
 #include "native_common.h"
 #include "test_entry.h"
 #include <stdint.h>
-#include <stdio.h>
-#include <malloc.h>
+#include <cstdio>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
