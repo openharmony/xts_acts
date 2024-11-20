@@ -2479,14 +2479,14 @@ static napi_value AudioRoutingManagerSetMicBlockStatusCallback_002(napi_env env,
     if (result == AUDIOCOMMON_RESULT_SUCCESS) {
         if (supported == true) {
             OH_AudioRoutingManager_OnDeviceBlockStatusCallback micBlockedCallback = MicBlockedCallback;
-            result = OH_AudioRoutingManager_SetMicBlockStatusCallback(audioRoutingManager, micBlockedCallback, userData);
+            result = OH_AudioRoutingManager_SetMicBlockStatusCallback(nullptr, micBlockedCallback, userData);
             LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: %{public}d", result);
-            if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+            if (result == AUDIOCOMMON_RESULT_SUCCESS) {
                 napi_create_int32(env, TEST_FAIL, &res);
                 return res;
             }
         } else {
-            LOG("AudioRoutingManagerSetMicBlockStatusCallback_Test, result3 is: false");
+            LOG("OH_AudioRoutingManager_IsMicBlockDetectionSupported_Test, supported is: false");
         }
     } else {
         napi_create_int32(env, TEST_FAIL, &res);
