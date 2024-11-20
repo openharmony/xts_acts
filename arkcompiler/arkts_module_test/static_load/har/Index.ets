@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-import stringify from '@wolfx/json5/src/main/ets/json5/stringify';
+import validator from 'validator';
+import validator2 from 'validator/validator';
+
+export let npmRes: boolean = validator.isEmail('foo@bar.com');
+
+export let npmRes2: boolean = validator2.isEmail('foo@bar.com');
 
 export { MainPage } from './src/main/ets/components/MainPage'
 
@@ -35,11 +40,9 @@ export { addTest as addTest2 } from '@test/library';
 
 export { getHarName as getHarName2 } from '@test/library/src/main/ets/getHarNameTest';
 
-export { OHUtils } from 'ohutils';
+export { expect as expect2 } from '@ohos/hypium';
 
-export { OHUtils as SrcOHUtils } from 'ohutils/src/main/ets/utils/OHUtils';
-
-export { JSON5 } from '@wolfx/json5';
+export { TAG as ConstantTAG } from '@ohos/hypium/src/main/Constant';
 
 export { add as hspAdd } from 'loadHsp';
 
@@ -48,6 +51,3 @@ export { add as hspAdd2 } from '@test/library1';
 export { subtract as hspSubtract } from 'loadHsp/src/test/testSubtract';
 
 export { subtract as hspSubtract2 } from '@test/library1/src/test/testSubtract';
-
-export { stringify };
-

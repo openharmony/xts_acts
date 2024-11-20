@@ -1,3 +1,7 @@
+import validator from 'validator';
+
+export let npmRes: boolean = validator.isEmail('foo@bar.com');
+
 export { add as hspAdd } from './testAdd';
 
 export { subtract as hspSubtract } from './src/test';

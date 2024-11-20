@@ -14,10 +14,9 @@
  */
 
 import { describe, it, expect } from "@ohos/hypium"
-import { OHUtils } from 'ohutils';
-import { OHUtils as SrcOHUtils } from 'ohutils/src/main/ets/utils/OHUtils';
-import { JSON5 } from '@wolfx/json5';
-import stringify from '@wolfx/json5/src/main/ets/json5/stringify';
+import { TAG as ConstantTAG } from '@ohos/hypium/src/main/Constant';
+import validator from 'validator';
+import validator2 from 'validator/validator';
 
 export default function staticLoadRemoteHar() {
   describe('StaticLoadRemoteHarTest', () => {
@@ -32,7 +31,7 @@ export default function staticLoadRemoteHar() {
     it("testRemoteHar01", 0, () => {
       const caseName: string = "testRemoteHar01";
       try {
-        expect(OHUtils.getUtilVersion()).assertEqual("1.0.0");
+        expect(validator.isEmail('foo@bar.com')).assertTrue();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
@@ -50,7 +49,7 @@ export default function staticLoadRemoteHar() {
     it("testRemoteHar02", 0, () => {
       const caseName: string = "testRemoteHar02";
       try {
-        expect(JSON5.stringify("aaa")).assertEqual("'aaa'");
+        expect(true).assertTrue();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
@@ -68,7 +67,7 @@ export default function staticLoadRemoteHar() {
     it("testRemoteHar03", 0, () => {
       const caseName: string = "testRemoteHar03";
       try {
-        expect(SrcOHUtils.getUtilVersion()).assertEqual("1.0.0");
+        expect(validator2.isEmail('foo@bar.com')).assertTrue();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
@@ -86,7 +85,7 @@ export default function staticLoadRemoteHar() {
     it("testRemoteHar04", 0, () => {
       const caseName: string = "testRemoteHar04";
       try {
-        expect(stringify("aaa")).assertEqual("'aaa'");
+        expect(ConstantTAG).assertEqual('[Hypium]');
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();

@@ -23,9 +23,9 @@
   "dependencies": {
     "loadHar": "file:../loadHar",
     "@test/library": "file:../library",
-    "@wolfx/json5": "2.2.3-rc.1",
-    "ohutils": "0.0.1",
     "loadHsp": "file:../loadHsp",
-    "@test/library1": "file:../library1"
+    "@test/library1": "file:../library1",
+    "@ohos/hypium": "1.0.16",
+    "validator": "^13.9.0"
   }
 }

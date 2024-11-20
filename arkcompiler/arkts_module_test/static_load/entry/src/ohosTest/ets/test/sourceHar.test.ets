@@ -23,10 +23,10 @@ import {
   getHarName,
   addTest2,
   getHarName2,
-  OHUtils,
-  SrcOHUtils,
-  JSON5,
-  stringify,
+  npmRes,
+  npmRes2,
+  expect2,
+  ConstantTAG,
   hspAdd,
   hspAdd2,
   hspSubtract,
@@ -191,7 +191,7 @@ export default function staticLoadSourceHar() {
     it("testSourceHar09", 0, () => {
       const caseName: string = "testSourceHar09";
       try {
-        expect(OHUtils.getUtilVersion()).assertEqual("1.0.0");
+        expect(npmRes).assertTrue();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
@@ -209,7 +209,7 @@ export default function staticLoadSourceHar() {
     it("testSourceHar10", 0, () => {
       const caseName: string = "testSourceHar10";
       try {
-        expect(JSON5.stringify("aaa")).assertEqual("'aaa'");
+        expect2(true).assertTrue();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
@@ -227,7 +227,7 @@ export default function staticLoadSourceHar() {
     it("testSourceHar11", 0, () => {
       const caseName: string = "testSourceHar11";
       try {
-        expect(SrcOHUtils.getUtilVersion()).assertEqual("1.0.0");
+        expect(npmRes2).assertTrue();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
@@ -245,7 +245,7 @@ export default function staticLoadSourceHar() {
     it("testSourceHar12", 0, () => {
       const caseName: string = "testSourceHar12";
       try {
-        expect(stringify("aaa")).assertEqual("'aaa'");
+        expect(ConstantTAG).assertEqual('[Hypium]');
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();

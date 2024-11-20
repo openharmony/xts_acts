@@ -23,6 +23,7 @@
   "packageType": "InterfaceHar",
   "dependencies": {
     "loadHar": "file:../loadHar",
-    "@test/library": "file:../library"
+    "@test/library": "file:../library",
+    "validator": "^13.9.0"
   }
 }

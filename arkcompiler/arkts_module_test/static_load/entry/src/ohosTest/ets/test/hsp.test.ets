@@ -22,9 +22,9 @@ import {
   harAdd,
   harSubtract,
   harMultiply,
-  harGetCNInfo
+  harGetCNInfo,
+  npmRes
 } from "hsp"
-import { OHUtils } from "ohutils";
 
 export default function staticLoadHsp() {
   describe('HspTest', () => {
@@ -184,7 +184,7 @@ export default function staticLoadHsp() {
     it("testStaticLoadHsp09", 0, () => {
       const caseName: string = "testStaticLoadHsp09";
       try {
-        expect(OHUtils.getUtilVersion()).assertEqual("1.0.0");
+        expect(npmRes).assertTrue();
       } catch (error) {
         console.error(`${caseName} catch error: ${error}`);
         expect().assertFail();
