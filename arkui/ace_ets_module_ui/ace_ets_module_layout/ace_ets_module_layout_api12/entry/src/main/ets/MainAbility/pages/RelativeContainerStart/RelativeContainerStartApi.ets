@@ -20,29 +20,29 @@ struct RelativeContainerStartApi {
     Row() {
       RelativeContainer() {
         Row().width(100).height(100)
-          .backgroundColor("#FF3333")
+          .backgroundColor('#FF3333')
           .key('row1')
 
         Row().width(100).height(100)
-          .backgroundColor("#FFCC00")
+          .backgroundColor('#FFCC00')
           .alignRules({
-            start: {anchor: "row1", align: HorizontalAlign.End},
-            top: {anchor: "row1", align: VerticalAlign.Bottom}
+            start: {anchor: 'row1', align: HorizontalAlign.End},
+            top: {anchor: 'row1', align: VerticalAlign.Bottom}
           })
           .key('row2')
 
         Row().width(100).height(100)
-          .backgroundColor("#FF6633")
+          .backgroundColor('#FF6633')
           .alignRules({
-            start: {anchor: "barrier1", align: HorizontalAlign.End},
-            top: {anchor: "row1", align: VerticalAlign.Top}
+            start: {anchor: 'barrier1', align: HorizontalAlign.End},
+            top: {anchor: 'row1', align: VerticalAlign.Top}
           })
           .key('row3')
 
       }
       .width(300).height(300)
       .margin({left: 50})
-      .border({width:2, color: "#6699FF"})
+      .border({width:2, color: '#6699FF'})
       .barrier([{id: 'barrier1', direction: BarrierDirection.RIGHT, referencedId:['row1', 'row2']}])
 
     }
