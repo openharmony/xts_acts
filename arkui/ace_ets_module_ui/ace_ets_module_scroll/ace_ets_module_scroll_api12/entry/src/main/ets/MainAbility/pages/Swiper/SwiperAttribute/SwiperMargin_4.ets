@@ -16,7 +16,6 @@
 @Entry
 @Component
 struct Index {
-  private indicatorController = new IndicatorComponentController()
   private swiperController = new SwiperController()
   @State curIndex: number = 2
   @State nextMargin: number = 0
@@ -56,38 +55,23 @@ struct Index {
       .index(this.curIndex - 1)
       .autoPlay(false)
       .interval(2000)
-      .indicator(false)
+      .indicator(true)
       .loop(true)
       .duration(1000)
       .itemSpace(0)
       .curve(Curve.Linear)
       .onChange((index: number) => {
-        console.info(index.toString())
+        this.curIndex = index + 1
       })
-      IndicatorComponent(this.indicatorController)
-        .initialIndex(this.curIndex - 1)
-        .style(Indicator.digit()
-          .fontColor(Color.Gray)
-          .selectedFontColor(Color.Gray)
-          .digitFont({ size: 20, weight: FontWeight.Bold })
-          .selectedDigitFont({ size: 20, weight: FontWeight.Normal }))
-        .loop(true)
-        .count(6)
-        .vertical(true)
-        .onChange((index: number) => {
-          this.curIndex = index + 1
-        })
       Row() {
         Button('showNext')
-          id('showNext')
+          .id('showNext')
           .onClick(() => {
-            this.indicatorController.showNext()
             this.swiperController.showNext()
           })
         Button('showPrevious')
           .id('showPrevious')
           .onClick(() => {
-            this.indicatorController.showPrevious()
             this.swiperController.showPrevious()
           })
       }.margin({ top: 15 })

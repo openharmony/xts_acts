@@ -183,7 +183,7 @@ export default function SwiperMargin_4() {
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
 
-      const oldSwiper = CommonFunc.getComponentRectOnScreen('showNext');
+      const oldSwiper = await driver.findComponent(ON.id('showNext'));
       await CommonFunc.sleep(1000);
       await oldSwiper.click()
 
@@ -209,7 +209,7 @@ export default function SwiperMargin_4() {
       const driver = await Driver.create();
       await CommonFunc.sleep(1000);
 
-      const oldSwiper = CommonFunc.getComponentRectOnScreen('showPrevious');
+      const oldSwiper = await driver.findComponent(ON.id('showPrevious'));
       await CommonFunc.sleep(1000);
       await oldSwiper.click()
 
