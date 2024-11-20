@@ -28,15 +28,15 @@ export default function textAreaInputTest() {
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get textArea state success " + JSON.stringify(pages));
-        if (!("textArea" == pages.name)) {
-          console.info("get textArea state success " + JSON.stringify(pages.name));
+        console.info("get textAreaInputTest state success " + JSON.stringify(pages));
+        if (!("textAreaInputTest" == pages.name)) {
+          console.info("get textAreaInputTest state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push textArea page success " + JSON.stringify(result));
+          console.info("push textAreaInputTest page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push textArea page error: " + err);
+        console.error("push textAreaInputTest page error: " + err);
       }
     });
 
