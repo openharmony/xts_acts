@@ -486,6 +486,7 @@ export default function PhotoAccessHelperTest() {
                             console.info('File fd' + fd);
                             checkReadAndWrite(fd)
                             await sleep(100)
+                            photoAsset.close(fd);
                             releaseHelperCallback(phAccessHelper,done)
                         } else {
                             console.error('File err' + err);
