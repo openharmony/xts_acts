@@ -1,0 +1,67 @@
+/*
+ * Copyright (c) 2024 SwanLink (Jiangsu) Technology Development Co., LTD.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#ifndef JSVM_XTS_NAPI_DATATYPE_TEST_H
+#define JSVM_XTS_NAPI_DATATYPE_TEST_H
+#include "jsvm.h"
+#include "jsvm_common.h"
+#include "native_common.h"
+#include "test_entry.h"
+#include "securec.h"
+#include <cstdint>
+#include <cstdio>
+#include <malloc.h>
+#include <ctime>
+#include <thread>
+#include <uv.h>
+#include <bits/alltypes.h>
+#include <unistd.h>
+#include <cstring>
+#include <fstream>
+#include <string>
+#include <vector>
+using namespace std;
+//JSVM_Status OH_JSVM_Init (const JSVM_InitOptions * options)
+JSVM_Value TestInitTest1(JSVM_Env env, JSVM_CallbackInfo info);
+//JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM (const JSVM_CreateVMOptions * options, JSVM_VM * result )
+JSVM_Value TestCreateVMTest1(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestCreateVMTest2(JSVM_Env env, JSVM_CallbackInfo info);
+//JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM (JSVM_VM vm)
+JSVM_Value TestDestroyVMTest1(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestDestroyVMTest2(JSVM_Env env, JSVM_CallbackInfo info);
+//JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope (JSVM_VM vm, JSVM_VMScope * result )
+JSVM_Value TestOpenVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestOpenVMScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
+//JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope (JSVM_VM vm, JSVM_VMScope scope)
+JSVM_Value TestCloseVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestCloseVMScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
+//JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv (JSVM_VM vm, size_t propertyCount, 
+//                                const JSVM_PropertyDescriptor * properties, JSVM_Env * result )
+JSVM_Value TestCreateEnvTest1(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestCreateEnvTest2(JSVM_Env env, JSVM_CallbackInfo info);
+//JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv (JSVM_Env env)
+JSVM_Value TestDestroyEnvTest1(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestDestroyEnvTest2(JSVM_Env env, JSVM_CallbackInfo info);
+//JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope (JSVM_Env env, JSVM_EnvScope * result )
+JSVM_Value TestOpenEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestOpenEnvScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestOpenEnvScopeTest3(JSVM_Env env, JSVM_CallbackInfo info);
+//JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env, JSVM_EnvScope scope)
+JSVM_Value TestCloseEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
+JSVM_Value TestCloseEnvScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
+//Combination：OH_JSVM_Init -- create vm -- open vm scope -- create env -- open env scope -- open handlescope
+//-- close handlescope -- close env scope -- destroy env -- close vm scope -- destroy vm
+JSVM_Value TestDataTypeCombinationTest1(JSVM_Env env, JSVM_CallbackInfo info);
+#endif //JSVM_XTS_NAPI_DATATYPE_TEST_H

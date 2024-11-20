@@ -14,6 +14,14 @@
  */
 #include "napi/native_api.h"
 #include "napi_string_test.h"
+
+const size_t BUF_SIZE_MAX = 128;
+const size_t BUF_SIZE_50 = 50;
+const size_t BUF_SIZE_20 = 20;
+const size_t BUF_SIZE_10 = 10;
+const size_t BUF_SIZE_5 = 5;
+const size_t BUF_SIZE_3 = 3;
+
 [[maybe_unused]] JSVM_Value TestGetValueStringUtf8Test1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -46,7 +54,6 @@
     JSVM_Value setValueName = nullptr;
     JSVM_Status creatStatus = OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &setValueName);
     if (creatStatus != JSVM_OK) {
-        printf("OH_JSVM_CreateStringUtf8 Failed");
         OH_JSVM_ThrowError(env, nullptr, "TestGetValueStringUtf8test2: CreateStringUtf8 Failed");
         return nullptr;
     }
