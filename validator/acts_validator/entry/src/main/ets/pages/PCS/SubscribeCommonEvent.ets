@@ -33,10 +33,7 @@ import CommonEventManager from '@ohos.commonEventManager';
 @Component
 struct SubscribeCommonEvent {
   @State name: string = 'SubscribeCommonEvent';
-  @State stepTips: string = '操作步骤: ' + '\n' + '1.点击订阅屏幕关闭公共事件按钮' + '\n' +
-                '2.点击息屏按钮关闭屏幕并等待5s' + '\n' + '3.开启屏幕进入应用' + '\n' +
-                '4.观察测试结果是否为TRUE' + '\n' + '\n' + 
-                '预期结果：获取系统公共事件通知';
+  @State stepTips: string = '预期结果：获取系统公共事件通知';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = "FLASE";
@@ -64,7 +61,7 @@ struct SubscribeCommonEvent {
             }
 
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击订阅屏幕关闭公共事件按钮` + '\n' + '\n' +
+              Text(`测试步骤:` + '\n' + '\n' + `1.点击订阅屏幕关闭公共事件按钮` + '\n' + '\n' +
                 `2.点击息屏按钮关闭屏幕并等待5s` + '\n' + '\n' + '3.开启屏幕进入应用' + '\n' + '\n' +
                 '4.观察测试结果是否为TRUE' + '\n' + '\n')
                 .width('90%')
