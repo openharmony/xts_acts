@@ -19,8 +19,8 @@
     "@ohos/hypium": "1.0.6"
   },
   "author": "",
-  "name": "myapplication",
-  "description": "Please describe the basic information.",
+  "name": "com.example.actsresponseglobalparamupdatetest",
+  "description": "XTS",
   "main": "",
   "version": "1.0.0",
   "dependencies": {}
