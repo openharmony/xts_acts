@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import textAreaInputTest from './TextAreaTest/textAreaInputTest.test';
 import marqueeJsunit from './marqueeTest/MarqueeJsunit.test';
 import textStyleJsunit from './textTest/TextStyleJsunit.test';
 import TextStateJsunit from './textTest/TextStateJsunit.test';
@@ -228,6 +229,7 @@ import ImageAdvancedTest from './imageTest/ImageAdvancedTest.test.ets'
 import ImageAnimatorAdvancedTest from './ImageAnimator/imageAnimatorAdvancedTest.test.ets'
 
 export default function testsuite() {
+  textAreaInputTest()
   ImageAdvancedTest()
   ImageAnimatorAdvancedTest()
   ToggleJsunit();

@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import TextMenuType from './TextTest/TextMenuType.test';
 import RichEditorMenuType from './RichEditorTest/RichEditorMenuType.test';
 import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
@@ -23,6 +24,7 @@ import StyledStringUrl from './TextTest/StyledStringTest.test';
 
 
 export default function testsuite() {
+  textAreaInputTest();
   TextMenuType();
   RichEditorMenuType();
   SetFrameRateRangeTest();
