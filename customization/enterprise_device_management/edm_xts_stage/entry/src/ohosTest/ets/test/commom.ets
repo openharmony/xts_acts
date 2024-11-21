@@ -51,6 +51,8 @@ const DESCRIPTION2 = "edm demo2"
 const NOT_EXIST_BUNDLE = "bundle.not.exist"
 const PARAM_EDM_MIC_DISABLE = "persist.edm.mic_disable";
 
+const TEST_BUNDLENAME: string = "com.test.bundlename";
+
 const ENTINFO2: adminManager.EnterpriseInfo = {
   name: "company2",
   description: "edm demo2"
@@ -155,5 +157,5 @@ export {
   isMultipleUserEnabled, SetIsMultipleUserEnabled, SetTestUserId, appIdsInit, EDM_INSTALL_PARAM, APP_IDS_1,
   APP_IDS_200, APP_IDS_201, TEST_APP_ID_1, TEST_APP_ID_2, TEST_POLICIES, TEST_POLICY_NAME, TEST_POLICY_VALUE,
   INVALID_WANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY, UPDATE_VERSION, INVALID_UPDATE_VERSION, getPixelMap,
-  PIXEL_MAP, WATERMARK_BUNDLE_NAME
+  PIXEL_MAP, WATERMARK_BUNDLE_NAME, TEST_BUNDLENAME
 }
