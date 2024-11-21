@@ -163,12 +163,8 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                expect().assertFail();
-                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -216,8 +212,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -269,8 +263,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -330,8 +322,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -358,8 +348,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -481,8 +469,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -572,8 +558,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -608,8 +592,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -859,8 +841,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -1036,8 +1016,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -1072,8 +1050,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();

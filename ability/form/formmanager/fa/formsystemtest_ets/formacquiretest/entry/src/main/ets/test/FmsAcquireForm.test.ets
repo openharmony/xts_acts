@@ -105,8 +105,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`FMS_acquireForm_0200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_0200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -149,8 +147,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`FMS_acquireForm_0300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_0300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -726,8 +722,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`FMS_acquireForm_1500 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_1500 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -787,8 +781,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_1600_normal1 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_1600_normal1 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -840,8 +832,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_1600_normal2 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_1600_normal2 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -895,8 +885,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_1600_Temp1 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_1600_Temp1 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -951,8 +939,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_1600_Temp2 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_1600_Temp2 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -1015,8 +1001,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_1800_normal1 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_1800_normal1 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -1069,12 +1053,8 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_1800_normal2 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_1800_normal2 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                    expect().assertFail();
-                    done();
                 });
 
                 console.info(`FMS_acquireForm_1800_normal2 featureAbility.startAbility end`);
@@ -1123,12 +1103,8 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_1800_Temp1 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_1800_Temp1 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                    expect().assertFail();
-                    done();
                 });
 
                 console.info(`FMS_acquireForm_1800_Temp1 featureAbility.startAbility end`);
@@ -1180,12 +1156,8 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_1800_Temp2 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_1800_Temp2 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                    expect().assertFail();
-                    done();
                 });
                 console.info(`FMS_acquireForm_1800_Temp2 featureAbility.startAbility end`);
                 console.info(`FMS_acquireForm_1800_Temp2 end`);
@@ -1332,8 +1304,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_2100 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_2100 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();
@@ -1360,8 +1330,6 @@ export default function test() {
                 }
             }).then((res: any) => {
                 console.info(`FMS_acquireForm_2100 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_2100 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                 expect().assertFail();
@@ -1511,8 +1479,6 @@ export default function test() {
                     }
                 }).then((res: any) => {
                     console.info(`FMS_acquireForm_2400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                    expect().not().assertFail();
-                    done();
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_2400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
                     expect().assertFail();

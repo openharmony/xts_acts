@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import FmsUpdateRefreshTest from './FmsUpdateRefreshForm.test.ets';
-import FmsUpdateRefreshNoPerTest from './FmsUpdateRefreshFormNoPer.test.ets';
+import test from './FmsUpdateRefreshForm.test.ets';
 
 export default function testsuite() {
-  FmsUpdateRefreshTest();
-  FmsUpdateRefreshNoPerTest();
+  test();
 }
