@@ -213,6 +213,14 @@
         "MainAbility/pages/List/singleHozList",
         "MainAbility/pages/List/singleHozDiff",
         "MainAbility/pages/List/lanesHeaderGroup",
-        "MainAbility/pages/List/lanesItemGroup"
+        "MainAbility/pages/List/lanesItemGroup",
+        "MainAbility/pages/List/listScrollTo",
+        "MainAbility/pages/List/contentOffset/paddingStartOffset",
+        "MainAbility/pages/List/contentOffset/headerStartOffset",
+        "MainAbility/pages/List/contentOffset/toIndexStartOffset",
+        "MainAbility/pages/List/contentOffset/offsetEdgeBtm",
+        "MainAbility/pages/List/contentOffset/offsetEdgeTop",
+        "MainAbility/pages/List/contentOffset/offsetAlignEnd",
+        "MainAbility/pages/List/contentOffset/offsetAlignStart"
     ]
 }
