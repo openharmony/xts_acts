@@ -15,17 +15,19 @@
 #include "jsvm.h"
 #include "jsvm_types.h"
 #include "napi_datatype_test.h"
-JSVM_Value hello(JSVM_Env env, JSVM_CallbackInfo info) {
+const size_t NUM_SIZE_2 = 2;
+JSVM_Value TestFunction(JSVM_Env env, JSVM_CallbackInfo info) {
     JSVM_Value output;
     void *data = nullptr;
     OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, nullptr, &data);
     OH_JSVM_CreateStringUtf8(env, (char *)data, strlen((char *)data), &output);
     return output;
 }
-JSVM_CallbackStruct hello_cb = {hello, (void *)"Hello"};
+JSVM_CallbackStruct hello_cb = {TestFunction, (void *)"Hello"};
+int iFlag = 0;
 intptr_t externals[] = {
     (intptr_t)&hello_cb,
-    0,
+    (intptr_t)&iFlag,
 };
 //JSVM_Status OH_JSVM_Init
 [[maybe_unused]] JSVM_Value TestInitTest1(JSVM_Env env, JSVM_CallbackInfo info)
@@ -48,7 +50,7 @@ intptr_t externals[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_CreateVM
+//CreateVM
 [[maybe_unused]] JSVM_Value TestCreateVMTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -118,7 +120,7 @@ intptr_t externals[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_DestroyVM
+//DestroyVM
 [[maybe_unused]] JSVM_Value TestDestroyVMTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -179,7 +181,7 @@ intptr_t externals[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_OpenVMScope
+//OpenVMScope
 [[maybe_unused]] JSVM_Value TestOpenVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -291,7 +293,7 @@ intptr_t externals[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_CloseVMScope
+//CloseVMScope
 [[maybe_unused]] JSVM_Value TestCloseVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -380,10 +382,10 @@ intptr_t externals[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-// OH_JSVM_CreateEnv 
+// CreateEnv 
 JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
-    size_t argc = 2;
-    JSVM_Value args[2];
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value args[NUM_SIZE_2];
     JSVM_CALL(env, OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
 
     bool isStrictEquals = false;
@@ -456,10 +458,6 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
 }
 [[maybe_unused]] JSVM_Value TestCreateEnvTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value args[1] = {nullptr};
-    JSVM_Value thisVar = nullptr;
-    OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
     // create vm
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
@@ -488,7 +486,6 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
     JSVM_PropertyDescriptor descriptor[] = {
         {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
     };
-    // propertycount is length
     status = OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &envTest);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateEnvTest2: OH_JSVM_CreateEnv Failed");
@@ -512,13 +509,13 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateEnvTest2: OH_JSVM_DestroyVM Failed");
         return nullptr;
     }
-
+    
     bool result = true;
     JSVM_Value value = nullptr;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_DestroyEnv
+//DestroyEnv
 [[maybe_unused]] JSVM_Value TestDestroyEnvTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -628,7 +625,7 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_OpenEnvScope 
+//OpenEnvScope 
 [[maybe_unused]] JSVM_Value TestOpenEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -840,7 +837,7 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-// OH_JSVM_CloseEnvScope
+// CloseEnvScope
 [[maybe_unused]] JSVM_Value TestCloseEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -993,7 +990,7 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OH_JSVM_Init-- create vm -- open vm scope -- create env -- open env scope -- open handlescope
+//Init-- create vm -- open vm scope -- create env -- open env scope -- open handlescope
 //   -- close handlescope -- close env scope -- destroy env -- close vm scope -- destroy vm
 [[maybe_unused]] JSVM_Value TestDataTypeCombinationTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {

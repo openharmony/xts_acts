@@ -33,31 +33,31 @@
 #include <string>
 #include <vector>
 using namespace std;
-//OH_JSVM_Init
+//Init
 JSVM_Value TestInitTest1(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_CreateVM 
+//CreateVM 
 JSVM_Value TestCreateVMTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCreateVMTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_DestroyVM 
+//DestroyVM 
 JSVM_Value TestDestroyVMTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDestroyVMTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_OpenVMScope 
+//OpenVMScope 
 JSVM_Value TestOpenVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenVMScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_CloseVMScope
+//CloseVMScope
 JSVM_Value TestCloseVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCloseVMScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_CreateEnv
+//CreateEnv
 JSVM_Value TestCreateEnvTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCreateEnvTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_DestroyEnv
+//DestroyEnv
 JSVM_Value TestDestroyEnvTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDestroyEnvTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_OpenEnvScope 
+//OpenEnvScope 
 JSVM_Value TestOpenEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenEnvScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenEnvScopeTest3(JSVM_Env env, JSVM_CallbackInfo info);
-//OH_JSVM_CloseEnvScope
+//CloseEnvScope
 JSVM_Value TestCloseEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCloseEnvScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
 //Combination：OH_JSVM_Init -- create vm -- open vm scope -- create env -- open env scope -- open handlescope

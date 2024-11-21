@@ -20,7 +20,7 @@
 #include "native_common.h"
 #include "test_entry.h"
 #include "securec.h"
-#include <stdint.h>
+#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
@@ -34,11 +34,11 @@
 #include <vector>
 using namespace std;
 
-// OH_JSVM_CreateDate
+//CreateDate
 JSVM_Value TestCreateDateTest1(JSVM_Env env, JSVM_CallbackInfo info);
-// OH_JSVM_GetDateValue
+//GetDateValue
 JSVM_Value TestGetDateValueTest1(JSVM_Env env, JSVM_CallbackInfo info);
-// OH_JSVM_IsDate 
+//IsDate 
 JSVM_Value TestIsDateTest1(JSVM_Env env, JSVM_CallbackInfo info);
 //Combination: create -- is-- get
 JSVM_Value TestDateCombinationTest1(JSVM_Env env, JSVM_CallbackInfo info);

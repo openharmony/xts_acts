@@ -52,12 +52,14 @@ const size_t NUM_SIZE_3 = 3;
     memset_s(&optionVm, sizeof(optionVm), 0, sizeof(optionVm));
     JSVM_Status status = OH_JSVM_CreateVM(&optionVm, &vm);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestPerformMicrotaskCheckpointTest1: OH_JSVM_PerformMicrotaskCheckpoint Failed");
+        OH_JSVM_ThrowError(env, nullptr,
+            "TestPerformMicrotaskCheckpointTest1: OH_JSVM_PerformMicrotaskCheckpoint Failed");
         return nullptr;
     }
     status = OH_JSVM_PerformMicrotaskCheckpoint(vm);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestPerformMicrotaskCheckpointTest1: OH_JSVM_PerformMicrotaskCheckpoint Failed");
+        OH_JSVM_ThrowError(env, nullptr,
+            "TestPerformMicrotaskCheckpointTest1: OH_JSVM_PerformMicrotaskCheckpoint Failed");
         return nullptr;
     }
         
@@ -67,14 +69,15 @@ const size_t NUM_SIZE_3 = 3;
     return value;
 }
 // pump -- perform
-[[maybe_unused]] JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info) {
+[[maybe_unused]] JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1];
-    char log[256] = "";
+    char log[BUF_SIZE_255] = "";
     size_t logLength;
     OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL);
 
-    OH_JSVM_GetValueStringUtf8(env, args[0], log, 255, &logLength);
+    OH_JSVM_GetValueStringUtf8(env, args[0], log, BUF_SIZE_255, &logLength);
     log[BUF_SIZE_255] = 0;
     printf("JSVM API TEST: %s", log);
     return nullptr;
@@ -126,7 +129,7 @@ const size_t NUM_SIZE_3 = 3;
         return nullptr;
     }
     const char *strTask = R"JS(
-    new Promise((resolve,reject) => {
+    new Promise((resolve, reject) => {
         resolve(1)
     })
     .then(function(obj) {
@@ -159,8 +162,8 @@ const size_t NUM_SIZE_3 = 3;
         JSVM_Status flag1 = OH_JSVM_PumpMessageLoop(vm, &rst);
         JSVM_Status flag2 = OH_JSVM_PerformMicrotaskCheckpoint(vm);
         if (rst && (flag1 == JSVM_OK) && (flag2 == JSVM_OK)) {
-               sleep(NUM_SIZE_3);
-               break;
+            sleep(NUM_SIZE_3);
+            break;
         }
     }
     // close and destroy

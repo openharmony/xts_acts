@@ -20,7 +20,7 @@
 #include "native_common.h"
 #include "test_entry.h"
 #include "securec.h"
-#include <stdint.h>
+#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>

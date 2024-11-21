@@ -15,12 +15,11 @@
 #include "napi_object_test.h"
 const size_t BUF_SIZE_10 = 10;
 const JSVM_TypeTag tagsData[] = {
-        {0x9e4b2449547061b3, 0x33999f8a6516c499},
-        {0x1d55a794c53a726d, 0x43633f509f9c944e},
-        {0, 0}, // default tag
-        {0x6a971439f5b2e5d7, 0x531dc28a7e5317c0},
-    };
-
+    {0x9e4b2449547061b3, 0x33999f8a6516c499},
+    {0x1d55a794c53a726d, 0x43633f509f9c944e},
+    {0, 0}, // default tag
+    {0x6a971439f5b2e5d7, 0x531dc28a7e5317c0},
+};
 //OH_JSVM_CreateObject
 //result is null
 [[maybe_unused]] JSVM_Value TestCreateObjectTest1(JSVM_Env env, JSVM_CallbackInfo info)
@@ -668,7 +667,7 @@ const JSVM_TypeTag tagsData[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//object，set property，key为CreateSymbol create Symbol-> SymbolFor -> SymbolFor create new Symbol 
+//object，set property，key is CreateSymbol create Symbol-> SymbolFor -> SymbolFor create new Symbol 
 //-> Typeof -> GetPrototype-> TypeTagObject-> CheckObjectTypeTag -> ObjectSeal-> SetNamedProperty
 [[maybe_unused]] JSVM_Value TestObjectCombinationTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -810,10 +809,6 @@ const JSVM_TypeTag tagsData[] = {
 //-> CheckObjectTypeTag
 [[maybe_unused]] JSVM_Value TestObjectCombinationTest3(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value argv[1] = {nullptr};
-    OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-
     //CreateExternal
     void *ptrData = malloc(BUF_SIZE_10);
     memset_s(ptrData, BUF_SIZE_10, 0, BUF_SIZE_10);
@@ -867,7 +862,6 @@ const JSVM_TypeTag tagsData[] = {
         OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest3: OH_JSVM_CheckObjectTypeTag bRstTypeTag = false");
         return nullptr;
     }
-        
     bool result = true;
     JSVM_Value value = nullptr;
     OH_JSVM_GetBoolean(env, result, &value);

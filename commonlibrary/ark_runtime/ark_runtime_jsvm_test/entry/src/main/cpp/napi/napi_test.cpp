@@ -8535,9 +8535,7 @@ static napi_value testHandleMicrotasks(napi_env env1, napi_callback_info info)
     OH_JSVM_RunScript(env, script, &result);
     bool rst = false;
     for (int i = 0; i < 3; i++) { // 3: cycles
-        //sleep(3); // 3 seconds
         JSVM_Status flag1 = OH_JSVM_PumpMessageLoop(vm, &rst);
-        //sleep(3); // 3 sec onds
         JSVM_Status flag2 = OH_JSVM_PerformMicrotaskCheckpoint(vm);
         if (rst && flag1 == JSVM_Status::JSVM_OK && flag2 == JSVM_Status::JSVM_OK) {
             sleep(3);

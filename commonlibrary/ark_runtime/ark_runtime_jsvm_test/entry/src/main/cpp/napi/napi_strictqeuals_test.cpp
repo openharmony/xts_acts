@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 #include "napi_strictqeuals_test.h"
+const size_t NUM_SIZE_2 = 2;
 //OH_JSVM_StrictEquals
 //lhs is int，rhs is int，same value，result is nullptr
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest1(JSVM_Env env, JSVM_CallbackInfo info)
@@ -86,8 +87,8 @@
 //lhs is nullptr, rhs is nullptr, result is not null
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest3(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
 
     bool bEqualsRst = false;
@@ -105,8 +106,8 @@
 //lhs is undefined, undefined, result is not null
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest4(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
 
     bool bEqualsRst = false;
@@ -128,8 +129,8 @@
 //lhs is set object，rhs is set，same value，result is not null
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest5(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -151,8 +152,8 @@
 //lhs is boolean，rhs is boolean，same value，result is not null
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest6(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -174,8 +175,8 @@
 //lhs is string，rhs is string，same value，result is not null
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest7(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -197,8 +198,8 @@
 //lhs is symbol，rhs is symbol，same value，result is not null
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest8(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -221,8 +222,8 @@
 //lhs is function，rhs is function，same value，result is not null
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest9(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -244,8 +245,8 @@
 //lhs is bigint ，rhs is bigint ，same value，result is  not null，result is true
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest10(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -267,8 +268,8 @@
 //lhs is regexp ，rhs is regexp ，same value，result is  not null，result is true--待确认
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest11(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -290,8 +291,8 @@
 //lhs is set ，rhs is set ，different value，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest12(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -313,8 +314,8 @@
 //lhs is boolean ，rhs is boolean ，different value，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest13(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -336,8 +337,8 @@
 //lhs is string ，rhs is string ，different value，result is  not null. result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest14(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -359,8 +360,8 @@
 //lhs is symbol ，rhs分别 is symbol ，different value，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest15(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -382,8 +383,8 @@
 //lhs is function ，rhs is function ，different value，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest16(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -405,8 +406,8 @@
 //lhs is bigint ，rhs is bigint ，different value同，result is  not null，result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest17(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -428,8 +429,8 @@
 //lhs is regexp ，rhs is regexp ，different value，result is  not null, result is false
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest18(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     
     bool bEqualsRst = false;
@@ -451,8 +452,8 @@
 //lhs is null, rhs is null, result is  not null
 [[maybe_unused]] JSVM_Value TestStrictEqualsTest19(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 2;
-    JSVM_Value argv[2] = {nullptr};
+    size_t argc = NUM_SIZE_2;
+    JSVM_Value argv[NUM_SIZE_2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
 
     bool bEqualsRst = false;
