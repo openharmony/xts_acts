@@ -18,8 +18,9 @@
     {
         "type": "ShellKit",
         "run-command": [
-            "power-shell setmode 602",
-            "svc bluetooth enable"
+            "power-shell wakeup",
+            "uinput -T -m 300 2700 280 200",
+            "power-shell timeout -o 864000000"
         ]
     }]
 }
