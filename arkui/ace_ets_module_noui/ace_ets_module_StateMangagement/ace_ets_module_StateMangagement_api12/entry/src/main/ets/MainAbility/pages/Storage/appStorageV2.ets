@@ -48,6 +48,14 @@ struct AppStorageV2Page1 {
           AppStorageV2.remove(SampleApp);
         })
 
+      Button('Clear Create keys')
+        .id('btnAppStorageV2ClearKeys')
+        .onClick(()=>{
+          if (AppStorageV2.keys().includes('SampleApp')) {
+            AppStorageV2.remove('SampleApp')
+          }
+        })
+
       Text(`prop.p1: ${this.prop.p1}`)
         .id('appStorageV2_num')
         .fontSize(20)

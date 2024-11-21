@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,9 +13,25 @@
  * limitations under the License.
  */
 
-export default class RectValue {
-  left: number = 0;
-  top: number = 0;
-  right: number = 0;
-  bottom: number = 0;
+@Entry
+@Component
+struct State0040 {
+  @State private title: string = 'Hello'
+  @State private count: number = 0
+
+
+  build() {
+    Column({ space: 5 }) {
+      Text(this.title)
+        .id('tvState00401')
+        .onClick(()=>{
+          this.title = 'HelloWorld'
+        })
+      Text(this.count.toString())
+        .id('tvState00402')
+        .onClick(()=>{
+          this.count += 1
+        })
+    }
+  }
 }

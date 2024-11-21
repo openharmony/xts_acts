@@ -53,11 +53,21 @@ struct AppStorageV20010 {
         .id('btnPage1Remove')
         .onClick(() => {
           AppStorageV2.remove(AppStorageV2Sample)
+
           this.keys.clear()
           for (let index = 0; index < AppStorageV2.keys().length; index++) {
             this.keys.add(AppStorageV2.keys()[index])
           }
         })
+
+      Button('Clear Create keys')
+        .id('btnPage1ClearKeys')
+        .onClick(()=>{
+          if (AppStorageV2.keys().includes('AppStorageV2Sample')) {
+            AppStorageV2.remove('AppStorageV2Sample')
+          }
+        })
+
       Text(this.sample.age.toString())
         .id('tvPage1Age')
         .fontSize(30)

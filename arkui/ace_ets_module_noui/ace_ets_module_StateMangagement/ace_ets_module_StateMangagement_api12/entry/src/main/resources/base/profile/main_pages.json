@@ -165,6 +165,9 @@
         "MainAbility/pages/LazyForEach/Prefetcher2",
         "MainAbility/pages/Storage/appStorageV2",
         "MainAbility/pages/Storage/persistenceV2",
-        "MainAbility/pages/foreach/ForEach003"
+        "MainAbility/pages/foreach/ForEach003",
+        "MainAbility/pages/state/State0040",
+        "MainAbility/pages/state/State0080",
+        "MainAbility/pages/wrap_builder/WrapBuilder0020"
     ]
 }

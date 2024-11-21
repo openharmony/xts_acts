@@ -59,7 +59,7 @@ export default function appStorageV2() {
       let strJson = getInspectorByKey('appStorageV2_keys');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[appStorageV2_001] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('keys in AppStorage: SampleApp');
+      expect(obj.$attrs.content).assertContain('keys in AppStorage: SampleApp');
       console.info('[appStorageV2_001] END');
       done();
     });
@@ -98,6 +98,9 @@ export default function appStorageV2() {
       console.info("[appStorageV2_002] content2: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual('prop.p1: 0');
       console.info('[appStorageV2_002] END');
+      let btn6: Component = await driver.findComponent(ON.id("btnAppStorageV2ClearKeys"));
+      await CommonFunc.sleep(1000);
+      await btn6.click();
       done();
     });
   })
