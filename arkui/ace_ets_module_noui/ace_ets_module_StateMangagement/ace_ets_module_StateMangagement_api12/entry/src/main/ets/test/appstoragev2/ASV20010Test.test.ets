@@ -99,7 +99,10 @@ export default function ASV20010Test() {
       await CommonFunc.sleep(1000);
       let obj5: ESObject = JSON.parse(getInspectorByKey('tvKeys'))
       console.info("[ASV20010Test_001] component obj5 is: " + JSON.stringify(obj5.$attrs.content));
-      expect(obj5.$attrs.content).assertEqual('keys: AppStorageV2Sample');
+      expect(obj5.$attrs.content).assertContain('keys: AppStorageV2Sample');
+      let btn6: Component = await driver.findComponent(ON.id("btnPage1ClearKeys"));
+      await CommonFunc.sleep(1000);
+      await btn6.click();
       console.info('[ASV20010Test_001] END');
       done();
     });

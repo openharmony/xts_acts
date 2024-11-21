@@ -12,12 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import AbilityStage from "@ohos.app.ability.AbilityStage"
+import { ChildWrapBuilder0020 } from './ChildWrapBuilder0020'
 
-export default class MyAbilityStage extends AbilityStage {
-    onCreate() {
-        console.log("[Demo] MyAbilityStage onCreate")
-        globalThis.stageOnCreateRun = 1;
-        globalThis.stageContext = this.context;
+@Entry
+@ComponentV2
+
+struct WrapBuilder0020 {
+  globalBuilder: WrappedBuilder<[string, number]> = wrapBuilder(ChildWrapBuilder0020)
+
+  build() {
+    Column() {
+      this.globalBuilder.builder('HelloWorld', Color.Green)
     }
+  }
 }

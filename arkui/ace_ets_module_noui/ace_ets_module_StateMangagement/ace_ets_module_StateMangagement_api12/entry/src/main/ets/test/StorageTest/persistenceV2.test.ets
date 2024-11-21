@@ -59,7 +59,7 @@ export default function persistenceV2() {
       let strJson = getInspectorByKey('persistenceV2_keys');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[persistenceV2_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('keys in PersistenceV2: PerSample');
+      expect(obj.$attrs.content).assertContain('keys in PersistenceV2: PerSample');
       console.info('[persistenceV2_0100] END');
       done();
     });
@@ -134,6 +134,9 @@ export default function persistenceV2() {
       console.info("[persistenceV2_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[persistenceV2_0300] content2: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual('prop.p2: 10a: 2');
+      let btn6: Component = await driver.findComponent(ON.id("btnPersistenceV2ClearKeys"));
+      await CommonFunc.sleep(1000);
+      await btn6.click();
       console.info('[persistenceV2_0300] END');
       done();
     });

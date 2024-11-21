@@ -64,6 +64,14 @@ struct PersistenceV2Page1 {
           PersistenceV2.remove(PerSample);
         })
 
+      Button('Clear Create keys')
+        .id('btnPersistenceV2ClearKeys')
+        .onClick(()=>{
+          if (PersistenceV2.keys().includes('PerSample')) {
+            PersistenceV2.remove('PerSample')
+          }
+        })
+
       Button('save the key PerSample')
         .id('persistenceV2_save')
         .onClick(() => {
