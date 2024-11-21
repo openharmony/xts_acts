@@ -23,7 +23,7 @@ export default function RelativeContainerStartApi() {
     beforeEach(async (done: Function) => {
       console.info("RelativeContainerStartApi beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/RelativeContainer/RelativeContainerStartApi',
+        url: "MainAbility/pages/RelativeContainerStart/RelativeContainerStartApi",
       }
       try {
         router.clear();
