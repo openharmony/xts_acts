@@ -15,6 +15,7 @@
 
 #include <hilog/log.h>
 #include "image_packer_module_test.h"
+#include "multimedia/image_framework/image/image_packer_native.h"
 
 #define CAMERA_LOG_TAG "CAMERA_TAGLOG"
 #define CAMERA_LOG_DOMAIN 0x3200
@@ -53,6 +54,44 @@ Image_ErrorCode ImagePackerModuleTest::PackToDataMultiFrames(OH_PackingOptionsFo
     return IMAGE_SUCCESS;
 }
 
+Image_ErrorCode ImagePackerModuleTest::PackToDataMultiFramesError(
+    packMultiFramesOptions *opts, uint8_t* outData, size_t* outDataSize)
+{
+    LOG("PackToDataMultiFramesError enter.");
+
+    OH_ImagePackerNative *imagePacker = nullptr;
+    Image_ErrorCode ret = IMAGE_SUCCESS;
+    if (opts->mode != BAD_PARAMETER_IMAGEPACKER) {
+        ret = OH_ImagePackerNative_Create(&imagePacker);
+        if (ret != IMAGE_SUCCESS) {
+            OH_ImagePackerNative_Release(imagePacker);
+            LOG("Create Image Packer failed: err = %{public}d.", ret);
+            return ret;
+        }
+    }
+    if (opts->mode == BAD_PARAMETER_PACKINGOPTIONS) {
+        opts->options = nullptr;
+    }
+    if (opts->mode == BAD_PARAMETER_PIXELMAPS) {
+        opts->pixelmaps = nullptr;
+    }
+    if (opts->mode == BAD_PARAMETER_OUTDATA) {
+        ret = OH_ImagePackerNative_PackToDataFromPixelmapSequence(imagePacker, opts->options, opts->pixelmaps,
+        opts->mapSize, nullptr, outDataSize);
+    } else {
+        ret = OH_ImagePackerNative_PackToDataFromPixelmapSequence(imagePacker, opts->options, opts->pixelmaps,
+            opts->mapSize, outData, outDataSize);
+    }
+    if (ret != IMAGE_SUCCESS) {
+        OH_ImagePackerNative_Release(imagePacker);
+        LOG("PackToDataMultiFramesError failed: err = %{public}d.", ret);
+        return ret;
+    }
+    OH_ImagePackerNative_Release(imagePacker);
+    LOG("PackToDataMultiFramesError end.");
+    return IMAGE_SUCCESS;
+}
+
 Image_ErrorCode ImagePackerModuleTest::PackToFileMultiFrames(OH_PackingOptionsForSequence  *options,
     OH_PixelmapNative **pixelmaps, size_t mapSize, int32_t fd)
 {
@@ -74,5 +113,37 @@ Image_ErrorCode ImagePackerModuleTest::PackToFileMultiFrames(OH_PackingOptionsFo
     }
     OH_ImagePackerNative_Release(imagePacker);
     LOG("PackToFileMultiFrames end.");
+    return IMAGE_SUCCESS;
+}
+
+Image_ErrorCode ImagePackerModuleTest::PackToFileMultiFramesError(packMultiFramesOptions *opts, int32_t fd)
+{
+    LOG("PackToFileMultiFramesError enter.");
+
+    OH_ImagePackerNative *imagePacker = nullptr;
+    Image_ErrorCode ret = IMAGE_SUCCESS;
+    if (opts->mode != BAD_PARAMETER_IMAGEPACKER) {
+        ret = OH_ImagePackerNative_Create(&imagePacker);
+        if (ret != IMAGE_SUCCESS) {
+            OH_ImagePackerNative_Release(imagePacker);
+            LOG("Create Image Packer failed: err = %{public}d.", ret);
+            return ret;
+        }
+    }
+    if (opts->mode == BAD_PARAMETER_PACKINGOPTIONS) {
+        opts->options = nullptr;
+    }
+    if (opts->mode == BAD_PARAMETER_PIXELMAPS) {
+        opts->pixelmaps = nullptr;
+    }
+    ret = OH_ImagePackerNative_PackToFileFromPixelmapSequence(
+        imagePacker, opts->options, opts->pixelmaps, opts->mapSize, fd);
+    if (ret != IMAGE_SUCCESS) {
+        OH_ImagePackerNative_Release(imagePacker);
+        LOG("PackToFileMultiFramesError failed: err = %{public}d.", ret);
+        return ret;
+    }
+    OH_ImagePackerNative_Release(imagePacker);
+    LOG("PackToFileMultiFramesError end.");
     return IMAGE_SUCCESS;
 }
