@@ -16,6 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import data_Rdb from '@ohos.data.relationalStore';
 import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
 
 let context: common.UIAbilityContext;
 
@@ -1587,6 +1588,100 @@ export default function relationalStoreInsertTest() {
                 }
 
             console.log(TAG + "************* testRdbStoreInsert0006 end  *************");
+        })
+
+        /**
+         * @tc.name testRdbStorebatchInsertCallback0008
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertEtsAPITest_2800
+         * @tc.desc RelationalStore insert test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testRdbStorebatchInsertCallback0008', 0, async (done:Function) => {
+            console.info(TAG + "************* testRdbStorebatchInsertCallback0008 start *************");
+            let u8 = new Uint8Array([1, 2, 3])
+            const valueBucket1: data_Rdb.ValuesBucket = {
+                "name": "zhangsan",
+                "age": 18,
+                "salary": 100.5,
+                "blobType": u8,
+                "data": "data"
+            }
+            const valueBucket2: data_Rdb.ValuesBucket = {
+                "name": "lisi",
+                "age": 23,
+                "salary": 200,
+                "blobType": u8,
+            }
+            const valueBucket3: data_Rdb.ValuesBucket = {
+                "name": "wangwu",
+                "age": 20,
+                "salary": 100.5,
+                "blobType": u8,
+            }
+            const valueBuckets: data_Rdb.ValuesBucket[] = [valueBucket1, valueBucket2, valueBucket3]
+            await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_NAME + "Callback8" + CREATE_TABLE);
+            if (rdbStore != undefined) {
+                (rdbStore as data_Rdb.RdbStore).batchInsert("testCallback8", valueBuckets, (err, insertNum) => {
+                    if (err) {
+                        console.error(TAG + `batchInsert is failed, code is ${err.code},message is ${err.message}`);
+                        expect().assertFail();
+                        done();
+                    }
+                    console.info(TAG + `batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+                    expect(insertNum).assertEqual(-1);
+                    done();
+                });
+            }
+            console.info(TAG + "************* testRdbStorebatchInsertCallback0008 end *************");
+        });
+
+        /**
+         * @tc.name testRdbStorebatchInsertPromise0008
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertEtsAPITest_2900
+         * @tc.desc RelationalStore insert test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testRdbStorebatchInsertPromise0008', 0, async (done:Function) => {
+            console.info(TAG + "************* testRdbStorebatchInsertPromise0008 start *************");
+            await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_NAME + "6" + CREATE_TABLE);
+            let u8 = new Uint8Array([1, 2, 3]);
+            const valueBucket1: data_Rdb.ValuesBucket = {
+                "name": "zhangsan",
+                "age": 18,
+                "salary": 100.5,
+                "blobType": u8,
+                "data": "data"
+            };
+            const valueBucket2: data_Rdb.ValuesBucket = {
+                "name": "lisi",
+                "age": 23,
+                "salary": 200,
+                "blobType": u8,
+            };
+            const valueBucket3: data_Rdb.ValuesBucket = {
+                "name": "wangwu",
+                "age": 20,
+                "salary": 100.5,
+                "blobType": u8,
+            };
+            const valueBuckets: data_Rdb.ValuesBucket[] = [valueBucket1, valueBucket2, valueBucket3];
+            await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_NAME + "Promise8" + CREATE_TABLE);
+            if(rdbStore != undefined) {
+                (rdbStore as data_Rdb.RdbStore).batchInsert("testPromise8", valueBuckets).then((insertNum: number) => {
+                    console.info(TAG + `batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+                    expect(insertNum).assertEqual(-1);
+                    done();
+                }).catch((err: BusinessError) => {
+                    console.error(TAG + `batchInsert is failed, code is ${err.code},message is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                })
+            }
+            console.info(TAG + "************* testRdbStorebatchInsertPromise0008 end *************");
         })
 
         console.info(TAG + " *************Unit Test End*************");
