@@ -30,7 +30,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateArrayWithLength_01: CreateArrayWithLength Failed");
         return nullptr;
     }
-    
+
     bool setvalue = true;
     JSVM_Value retvalue = nullptr;
     OH_JSVM_GetBoolean(env, setvalue, &retvalue);
@@ -46,7 +46,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateArrayWithLength_02: CreateArrayWithLength Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -61,7 +61,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateArrayWithLength_03: CreateArrayWithLength Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -77,7 +77,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateArrayWithLength_04: CreateArrayWithLength Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -101,7 +101,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetArrayLength_01: GetArrayLength Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -114,18 +114,18 @@ const int DIFF_VALUE_TWELVE = 12;
     JSVM_Value value = nullptr;
     JSVM_Status status = OH_JSVM_CreateArrayWithLength(env, arrayLength, &value);
     bool isArray = false;
-    OH_JSVM_IsArray(env,value,&isArray);
+    OH_JSVM_IsArray(env, value, &isArray);
     if (!isArray) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetArrayLength_02: CreateArrayWithLength Failed");
         return nullptr;
-    }    
+    }
     uint32_t length;
     status = OH_JSVM_GetArrayLength(env, value, &length);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetArrayLength_02: GetArrayLength Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -142,7 +142,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetArrayLength_03: GetArrayLength Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -164,7 +164,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetArrayLength_04: GetArrayLength Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -186,23 +186,23 @@ const int DIFF_VALUE_TWELVE = 12;
         return nullptr;
     }
 
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_INT8_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      0, 
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_INT8_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      0,
                                       &value);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateTypedarray_01:OH_JSVM_CreateTypedarray Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-//type UINT8_ARRAY + length not 0 + arrayBuffer obj + "byteOffset + 
+//type UINT8_ARRAY + length not 0 + arrayBuffer obj + "byteOffset +
 //sizeof(type) * length <= sizeof(arraybuffer)" + nonnull
 [[maybe_unused]] JSVM_Value TestCreateTypedarray_02(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -218,40 +218,40 @@ const int DIFF_VALUE_TWELVE = 12;
         return nullptr;
     }
 
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_INT8_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      4, 
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_INT8_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      typedArrayLength,
                                       &value);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateTypedarray_02:OH_JSVM_CreateTypedarray Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-//type UINT8_CLAMPED_ARRAY + length not 0 + nullptr + "byteOffset + 
+//type UINT8_CLAMPED_ARRAY + length not 0 + nullptr + "byteOffset +
 //sizeof(type) * length <= sizeof(arraybuffer)" + nonnull
 [[maybe_unused]] JSVM_Value TestCreateTypedarray_03(JSVM_Env env, JSVM_CallbackInfo info)
 {
     const size_t typedArrayLength = 4;
     JSVM_Value value = nullptr;
 
-    JSVM_Status status = OH_JSVM_CreateTypedarray(env, 
-                                                  JSVM_TypedarrayType::JSVM_UINT8_CLAMPED_ARRAY, 
-                                                  typedArrayLength, 
-                                                  nullptr, 
-                                                  0, 
+    JSVM_Status status = OH_JSVM_CreateTypedarray(env,
+                                                  JSVM_TypedarrayType::JSVM_UINT8_CLAMPED_ARRAY,
+                                                  typedArrayLength,
+                                                  nullptr,
+                                                  0,
                                                   &value);
     if (status != JSVM_INVALID_ARG) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateTypedarray_03:OH_JSVM_CreateTypedarray Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -265,23 +265,24 @@ const int DIFF_VALUE_TWELVE = 12;
     JSVM_Value object;
     OH_JSVM_CreateObject(env, &object);
 
-    JSVM_Status status = OH_JSVM_CreateTypedarray(env, 
-                                                  JSVM_TypedarrayType::JSVM_INT16_ARRAY, 
-                                                  typedArrayLength, 
-                                                  object, 
-                                                  0, 
+    JSVM_Status status = OH_JSVM_CreateTypedarray(env,
+                                                  JSVM_TypedarrayType::JSVM_INT16_ARRAY,
+                                                  typedArrayLength,
+                                                  object,
+                                                  0,
                                                   &value);
     if (status != JSVM_INVALID_ARG) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateTypedarray_04:OH_JSVM_CreateTypedarray Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-//type UINT16_ARRAY + length not 0 + arraybuffer obj + "byteOffset + sizeof(type) * length > sizeof(arraybuffer)" + nonnull
+//type UINT16_ARRAY + length not 0 + arraybuffer obj + 
+//"byteOffset + sizeof(type) * length > sizeof(arraybuffer)" + nonnull
 [[maybe_unused]] JSVM_Value TestCreateTypedarray_05(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Value arrayBuffer = nullptr;
@@ -295,25 +296,25 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateTypedarray_05:OH_JSVM_Create array buffer Failed");
         return nullptr;
     }
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_UINT16_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      ArrayBufferSize, 
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_UINT16_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      arrayBufferSize,
                                       &value);
-    if (status != JSVM_GENERIC_FAILURE){
+    if (status != JSVM_GENERIC_FAILURE) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateTypedarray_05:OH_JSVM_Create type array buffer error.");
-        return nullptr;            
+        return nullptr;
     }
     JSVM_Value result = nullptr;
     status = OH_JSVM_GetAndClearLastException(env, &result);
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-//type INT32_ARRAY + length not 0 + arraybuffer obj + 
+//type INT32_ARRAY + length not 0 + arraybuffer obj +
 //"byteOffset + sizeof(type) * length <= sizeof(arraybuffer)" + NULL
 [[maybe_unused]] JSVM_Value TestCreateTypedarray_06(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -322,22 +323,25 @@ const int DIFF_VALUE_TWELVE = 12;
     const size_t arrayBufferSize = 16;
     const size_t typedArrayLength = 2;
 
-    JSVM_Status status = OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    JSVM_Status status = OH_JSVM_CreateArraybuffer(env,
+                                                   arrayBufferSize,
+                                                   &arrayBufferPtr,
+                                                   &arrayBuffer);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateTypedarray_06:OH_JSVM_Createarraybuffer Failed");
         return nullptr;
     }
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_INT32_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      0, 
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_INT32_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      0,
                                       nullptr);
     if (status != JSVM_INVALID_ARG) {
         OH_JSVM_ThrowError(env, nullptr, "TestCreateTypedarray_06:OH_JSVM_CreateTypedarray Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -362,11 +366,11 @@ const int DIFF_VALUE_TWELVE = 12;
         return nullptr;
     }
 
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_INT32_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      0, 
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_INT32_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      0,
                                       &_value);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetTypedarrayInfo_01:OH_JSVM_GetTypedarrayInfo Failed");
@@ -378,7 +382,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetTypedarrayInfo_01:OH_JSVM_GetTypedarrayInfo Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -400,7 +404,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "testGetTypedarrayInfo_02:OH_JSVM_GetTypedarrayInfo Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -409,7 +413,7 @@ const int DIFF_VALUE_TWELVE = 12;
 //OH_JSVM_CreateDataview
 //length 0 + arraybuffer obj + "byteOffset +  length <= sizeof(arraybuffer)" + nonnull
 [[maybe_unused]] JSVM_Value TestCreateDataview_01(JSVM_Env env, JSVM_CallbackInfo info)
-{    
+{
     JSVM_Value arrayBuffer = nullptr;
     void *arrayBufferPtr = nullptr;
     const size_t arrayBufferSize = 16;
@@ -431,7 +435,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateDataview_01:OH_JSVM_CreateDataview isn't DataView Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -455,7 +459,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateDataview_02:OH_JSVM_CreateDataview Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -479,7 +483,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateDataview_03:OH_JSVM_CreateDataview Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -505,7 +509,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateDataview_04:OH_JSVM_CreateDataview Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -555,7 +559,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestCreateDataview_06:OH_JSVM_CreateDataview Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -564,7 +568,7 @@ const int DIFF_VALUE_TWELVE = 12;
 //OH_JSVM_GetDataviewInfo
 //dataview obj
 [[maybe_unused]] JSVM_Value TestGetDataview_01(JSVM_Env env, JSVM_CallbackInfo info)
-{    
+{
     JSVM_Value arrayBuffer = nullptr;
     void *arrayBufferPtr = nullptr;
     const size_t arrayBufferSize = 16;
@@ -596,7 +600,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetDataview_01:OH_JSVM_CreateDataview GetDataviewInfo Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -604,7 +608,7 @@ const int DIFF_VALUE_TWELVE = 12;
 }
 //not dataview obj
 [[maybe_unused]] JSVM_Value TestGetDataview_02(JSVM_Env env, JSVM_CallbackInfo info)
-{    
+{
     JSVM_Value arrayBuffer = nullptr;
     void *arrayBufferPtr = nullptr;
     const size_t arrayBufferSize = 16;
@@ -623,7 +627,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetDataview_02:OH_JSVM_CreateDataview GetDataviewInfo abnormal");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -666,7 +670,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestSetElement_02:OH_JSVM_SetElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -688,11 +692,11 @@ const int DIFF_VALUE_TWELVE = 12;
 
     JSVM_Value index1 = nullptr;
     OH_JSVM_CreateUint32(env, 1, &index1);
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_UINT32_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      0, 
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_UINT32_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      0,
                                       &_value);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestSetElement_03:OH_JSVM_CreateTypedarray Failed");
@@ -703,7 +707,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestSetElement_03:OH_JSVM_SetElement 1 Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -723,7 +727,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestSetElement_04:OH_JSVM_SetElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -784,7 +788,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestSetElement_07:OH_JSVM_SetElement index 1 Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -806,7 +810,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetElement_01:OH_JSVM_GetElement 0 Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -836,7 +840,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetElement_02:OH_JSVM_GetElement 1 Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -859,7 +863,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetElement_03:OH_JSVM_GetElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -891,7 +895,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "testSetElement_04:OH_JSVM_GetElement 1 Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -910,14 +914,14 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetElement_05:OH_JSVM_SetElement index 0 Failed");
         return nullptr;
     }
-    
+
     JSVM_Value result = nullptr;
     status = OH_JSVM_GetElement(env, object, 1, &result);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetElement_05:OH_JSVM_GetElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -937,7 +941,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestGetElement_06:OH_JSVM_GetElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -950,11 +954,12 @@ const int DIFF_VALUE_TWELVE = 12;
     JSVM_Value testArray = nullptr;
     void *arrayBufferPtr = nullptr;
     const size_t arrayBufferSize = 4;
+    size_t eleIndex = 2;
     OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &testArray);
-    for (uint32_t i = 0; i < arrayBufferSize; i++){
-          JSVM_Value element;
-          OH_JSVM_CreateUint32(env, i * 2, &element);
-          OH_JSVM_SetElement(env, testArray, i, element);
+    for (uint32_t i = 0; i < arrayBufferSize; i++) {
+        JSVM_Value element;
+        OH_JSVM_CreateUint32(env, i * eleIndex, &element);
+        OH_JSVM_SetElement(env, testArray, i, element);
     }
 
     bool hasElement = false;
@@ -964,7 +969,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestHasElement_01:OH_JSVM_HasElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -982,11 +987,11 @@ const int DIFF_VALUE_TWELVE = 12;
     JSVM_Status status = OH_JSVM_SetElement(env, testArray, 0, name);
     bool hasElement = false;
     OH_JSVM_HasElement(env, testArray, 0, &hasElement);
-    if (!hasElement){
+    if (!hasElement) {
         OH_JSVM_ThrowError(env, nullptr, "TestHasElement_02:OH_JSVM_HasElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1010,7 +1015,7 @@ const int DIFF_VALUE_TWELVE = 12;
     }
 
     JSVM_Value recvMsg = nullptr;
-    status = OH_JSVM_GetAndClearLastException(env, &recvMsg);    
+    status = OH_JSVM_GetAndClearLastException(env, &recvMsg);
 
     bool hasElement = false;
     OH_JSVM_HasElement(env, result, 0, &hasElement);
@@ -1044,7 +1049,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestHasElement_04:OH_JSVM_HasElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1059,11 +1064,11 @@ const int DIFF_VALUE_TWELVE = 12;
     OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &testArray);
     bool hasElement = false;
     OH_JSVM_HasElement(env, testArray, 0, &hasElement);
-    if (hasElement){
+    if (hasElement) {
         OH_JSVM_ThrowError(env, nullptr, "TestHasElement_05:OH_JSVM_HasElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1082,7 +1087,7 @@ const int DIFF_VALUE_TWELVE = 12;
     }
 
     status = OH_JSVM_SetElement(env, arrayBuffer, 0, nullptr);
-    if(status != JSVM_INVALID_ARG) {
+    if (status != JSVM_INVALID_ARG) {
         OH_JSVM_ThrowError(env, nullptr, "TestHasElement_06:OH_JSVM_SetElement Failed");
         return nullptr;
     }
@@ -1093,7 +1098,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestHasElement_06:OH_JSVM_HasElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1122,7 +1127,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestDeleteElement_01:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1137,16 +1142,16 @@ const int DIFF_VALUE_TWELVE = 12;
     uint32_t data = 1;
     JSVM_Value value = nullptr;
     OH_JSVM_CreateUint32(env, data, &value);
-    JSVM_Status status = OH_JSVM_CreateTypedarray(env, 
-                                                  JSVM_TypedarrayType::JSVM_INT32_ARRAY, 
-                                                  arrayLen, 
-                                                  testArray, 
-                                                  0, 
+    JSVM_Status status = OH_JSVM_CreateTypedarray(env,
+                                                  JSVM_TypedarrayType::JSVM_INT32_ARRAY,
+                                                  arrayLen,
+                                                  testArray,
+                                                  0,
                                                   &value);
     OH_JSVM_SetElement(env, testArray, 0, value);
     bool hasElement = false;
     status = OH_JSVM_HasElement(env, testArray, 0, &hasElement);
-    if (!hasElement){
+    if (!hasElement) {
         OH_JSVM_ThrowError(env, nullptr, "TestDeleteElement_02:OH_JSVM_HasElement Failed");
         return nullptr;
     }
@@ -1157,7 +1162,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestDeleteElement_02:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1218,7 +1223,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestDeleteElement_04:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1238,7 +1243,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestDeleteElement_05:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1268,17 +1273,17 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestDeleteElement_06:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
 //API Combination Call Case
-//CreatArray/CreateArrayWithLength-> GetArrayLength，Check if it meets expectations ->  
-//IsArray Determine whether it is an array，
-//return true -> SetElement -> GetElement, Consistent with set -> HasElement Determine whether 
-//there are array elements present，
+//CreatArray/CreateArrayWithLength-> GetArrayLength，Check if it meets expectations ->
+//IsArray Determine whether it is an array,
+//return true -> SetElement -> GetElement, Consistent with set -> HasElement Determine whether
+//there are array elements present,
 //If set, return true; if not set, return false -> DeleteElement，If set, return true; if not set, return false
 //The following 01 case represents the situation of set, and 02 represents the situation of not set.
 [[maybe_unused]] JSVM_Value TestArrayProcessSteps_01(JSVM_Env env, JSVM_CallbackInfo info)
@@ -1286,29 +1291,19 @@ const int DIFF_VALUE_TWELVE = 12;
     const size_t arrayLength = 4;
     JSVM_Value testArray = nullptr;
     JSVM_Status status = OH_JSVM_CreateArrayWithLength(env, arrayLength, &testArray);
-    if(status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestArrayProcessSteps_01:OH_JSVM_CreateArrayWithLength Failed");
-        return nullptr;
-    }
-
     bool isArray = false;
     OH_JSVM_IsArray(env, testArray, &isArray);
     if (!isArray) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayProcessSteps_01: is_array Failed");
         return nullptr;
     }
-    uint32_t calcNum = 4; 
+    uint32_t calcNum = 4;
     uint32_t length;
     status = OH_JSVM_GetArrayLength(env, testArray, &length);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestArrayProcessSteps_01: GetArrayLength 01 Failed");
-        return nullptr;
-    }
     if (length != calcNum) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayProcessSteps_01: GetArrayLength 02 Failed");
         return nullptr;
     }
-
     for (uint32_t i = 0; i < calcNum; i++) {
         JSVM_Value element;
         OH_JSVM_CreateUint32(env, i, &element);
@@ -1321,11 +1316,6 @@ const int DIFF_VALUE_TWELVE = 12;
 
     JSVM_Value result = nullptr;
     status = OH_JSVM_GetElement(env, testArray, sizeof(testArray), &result);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestArrayProcessSteps_01:OH_JSVM_GetElement 1 Failed");
-        return nullptr;
-    }
-
     bool hasElement = false;
     OH_JSVM_HasElement(env, testArray, 0, &hasElement);
     if (!hasElement) {
@@ -1339,7 +1329,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestArrayProcessSteps_01:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1351,13 +1341,13 @@ const int DIFF_VALUE_TWELVE = 12;
     size_t arrayLength = 4;
     JSVM_Value testArray = nullptr;
     JSVM_Status status = OH_JSVM_CreateArrayWithLength(env, arrayLength, &testArray);
-    if(status != JSVM_OK) {
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "testArrayProcessSteps_02:OH_JSVM_CreateArrayWithLength Failed");
         return nullptr;
     }
 
     bool isArray = false;
-    OH_JSVM_IsArray(env,testArray,&isArray);
+    OH_JSVM_IsArray(env, testArray, &isArray);
     if (!isArray) {
         OH_JSVM_ThrowError(env, nullptr, "testArrayProcessSteps_02: is_array Failed");
         return nullptr;
@@ -1369,36 +1359,37 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "testArrayProcessSteps_02: GetArrayLength 01 Failed");
         return nullptr;
     }
-    if(length != arrayLength) {
+    if (length != arrayLength) {
         OH_JSVM_ThrowError(env, nullptr, "testArrayProcessSteps_02: GetArrayLength 02 Failed");
         return nullptr;
     }
 
     bool hasElement = true;
     OH_JSVM_HasElement(env, testArray, 0, &hasElement);
-    if(hasElement) {
+    if (hasElement) {
         OH_JSVM_ThrowError(env, nullptr, "testArrayProcessSteps_02:OH_JSVM_HasElement Failed");
         return nullptr;
     }
 
     bool rst = true;
     OH_JSVM_DeleteElement(env, testArray, 0, &rst);
-    if(!rst) {
+    if (!rst) {
         OH_JSVM_ThrowError(env, nullptr, "testArrayProcessSteps_02:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-//CreatArraybuffer -> createTypedarray -> GetTypedarrayInfo get Typedarray，
-//Consistent with creation -> IsTypedarray if it is a Typedarray, return true ->  IsArray，return false -> SetElement -> GetElement,
-//Consistent with set -> HasElement，
+//CreatArraybuffer -> createTypedarray -> GetTypedarrayInfo get Typedarray,
+//Consistent with creation -> IsTypedarray if it is a Typedarray, return true ->
+//IsArray，return false -> SetElement -> GetElement,
+//Consistent with set -> HasElement,
 //If set, return true; if not set, return false -> DeleteElement，If set, return true; if not set, return false.
 //The following 01 case represents the situation of set, and 02 represents the situation of not set.
-[[maybe_unused]] JSVM_Value TestTypedarrayProcessSteps_01(JSVM_Env env, JSVM_CallbackInfo info)
+[[maybe_unused]] JSVM_Value CreateTypedarrayDataAndCheck(JSVM_Env env, JSVM_CallbackInfo info)
 {
     void *data;
     JSVM_TypedarrayType type;
@@ -1414,11 +1405,11 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_01:OH_JSVM_CreateTypedarray Failed");
         return nullptr;
     }
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_INT32_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      0, 
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_INT32_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      0,
                                       &value);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_01:OH_JSVM_CreateTypedarray Failed");
@@ -1448,6 +1439,17 @@ const int DIFF_VALUE_TWELVE = 12;
         return nullptr;
     }
 
+    return value;
+}
+[[maybe_unused]] JSVM_Value TestTypedarrayProcessSteps_01(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    const size_t typedArrayLength = 4;
+    JSVM_Value value;
+    JSVM_Status status;
+    value = CreateTypedarrayDataAndCheck(env, info);
+    if (value == nullptr) {
+        return nullptr;
+    }
     uint32_t calcNum = 16;
     for (uint32_t i = 0; i < calcNum; i++) {
         JSVM_Value element;
@@ -1479,13 +1481,12 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_01:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-
 [[maybe_unused]] JSVM_Value TestTypedarrayProcessSteps_02(JSVM_Env env, JSVM_CallbackInfo info)
 {
     void *data;
@@ -1498,37 +1499,23 @@ const int DIFF_VALUE_TWELVE = 12;
     const size_t typedArrayLength = 4;
     JSVM_Value value;
     JSVM_Status status = OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_02:OH_JSVM_CreateTypedarray Failed");
-        return nullptr;
-    }
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_INT32_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      0, 
-                                      &_value);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_02:OH_JSVM_CreateTypedarray Failed");
-        return nullptr;
-    }
-    status = OH_JSVM_GetTypedarrayInfo(env, _value, &type, &length, &data, &arrayBuffer, &byteOffset);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_02:OH_JSVM_GetTypedarrayInfo Failed");
-        return nullptr;
-    }
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_INT32_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      0,
+                                      &value);
+    status = OH_JSVM_GetTypedarrayInfo(env, value, &type, &length, &data, &arrayBuffer, &byteOffset);
     if (length != typedArrayLength) {
         OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_02:OH_JSVM_GetTypedarrayInfo Failed");
         return nullptr;
     }
-
     bool isTypedArray = false;
     OH_JSVM_IsTypedarray(env, value, &isTypedArray);
     if (!isTypedArray) {
         OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_02:is not typed array Failed");
-        return nullptr;        
+        return nullptr;
     }
-
     bool hasElement = true;
     OH_JSVM_HasElement(env, value, 0, &hasElement);
     if (!hasElement) {
@@ -1542,7 +1529,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestTypedarrayProcessSteps_02:OH_JSVM_DeleteElement Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1561,7 +1548,7 @@ const int DIFF_VALUE_TWELVE = 12;
     JSVM_Status status = OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
     if (status != JSVM_OK || arrayBuffer == nullptr) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayDataviewProcessSteps_01:CreateArraybuffer Failed");
-        return nullptr;        
+        return nullptr;
     }
 
     JSVM_Value result = nullptr;
@@ -1574,8 +1561,8 @@ const int DIFF_VALUE_TWELVE = 12;
     bool isDataView = false;
     OH_JSVM_IsDataview(env, result, &isDataView);
     if (!isDataView) {
-        OH_JSVM_ThrowError(env, 
-                           nullptr, 
+        OH_JSVM_ThrowError(env,
+                           nullptr,
                            "TestArrayDataviewProcessSteps_01:OH_JSVM_CreateDataview isn't DataView Failed");
         return nullptr;
     }
@@ -1586,8 +1573,8 @@ const int DIFF_VALUE_TWELVE = 12;
     size_t byteOffset = -1;
     status = OH_JSVM_GetDataviewInfo(env, result, &byteLength, &data, &retArrayBuffer, &byteOffset);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, 
-                           nullptr, 
+        OH_JSVM_ThrowError(env,
+                           nullptr,
                            "TestArrayDataviewProcessSteps_01:OH_JSVM_CreateDataview GetDataviewInfo Failed");
         return nullptr;
     }
@@ -1640,67 +1627,53 @@ const int DIFF_VALUE_TWELVE = 12;
     void *arrayBufferPtr = nullptr;
     const size_t arrayBufferSize = 16;
     JSVM_Status status = OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
-    if (status != JSVM_OK || arrayBuffer == nullptr) {
-        OH_JSVM_ThrowError(env, nullptr, "TestArrayDataviewProcessSteps_02:CreateArraybuffer Failed");
-        return nullptr;
-    }
-
     JSVM_Value result = nullptr;
     status = OH_JSVM_CreateDataview(env, arrayBufferSize, arrayBuffer, 0, &result);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestArrayDataviewProcessSteps_02:OH_JSVM_CreateDataview Failed");
-        return nullptr;
-    }
-
     bool isDataView = false;
     OH_JSVM_IsDataview(env, result, &isDataView);
     if (!isDataView) {
-        OH_JSVM_ThrowError(env, 
-                           nullptr, 
+        OH_JSVM_ThrowError(env,
+                           nullptr,
                            "TestArrayDataviewProcessSteps_02:OH_JSVM_CreateDataview isn't DataView Failed");
         return nullptr;
     }
-
     JSVM_Value retArrayBuffer = nullptr;
     void *data = nullptr;
     size_t byteLength = 0;
     size_t byteOffset = -1;
     status = OH_JSVM_GetDataviewInfo(env, result, &byteLength, &data, &retArrayBuffer, &byteOffset);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, 
-                           nullptr, 
+        OH_JSVM_ThrowError(env,
+                           nullptr,
                            "TestArrayDataviewProcessSteps_02:OH_JSVM_CreateDataview GetDataviewInfo Failed");
         return nullptr;
     }
-
     bool isArray = true;
     OH_JSVM_IsArray(env, result, &isArray);
     if (isArray) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayDataviewProcessSteps_02: is array");
         return nullptr;
     }
-
     bool hasElement = true;
     OH_JSVM_HasElement(env, result, 0, &hasElement);
-    if(hasElement) {
+    if (hasElement) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayDataviewProcessSteps_02:OH_JSVM_HasElement");
         return nullptr;
     }
-
     bool rst = true;
     OH_JSVM_DeleteElement(env, result, 0, &rst);
     if (!rst) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayDataviewProcessSteps_02:OH_JSVM_DeleteElement Failed.");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-//CreatArraybuffer -> createTypedarray -> GetTypedarrayInfo，
-//Consistent with creation -> IsTypedarray if it is Typedarray, return true -> createDataview -> GetDataviewInfo，
+//CreatArraybuffer -> createTypedarray -> GetTypedarrayInfo,
+//Consistent with creation -> IsTypedarray if it is Typedarray, return true -> createDataview -> GetDataviewInfo,
 //Consistent with creation -> IsDataview if it is Dataview, return true
 [[maybe_unused]] JSVM_Value TestTypeArrayAndDataviewProcessSteps_01(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -1708,23 +1681,14 @@ const int DIFF_VALUE_TWELVE = 12;
     void *arrayBufferPtr = nullptr;
     size_t arrayBufferSize = 16;
     JSVM_Status status = OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
-    if (status != JSVM_OK || arrayBuffer == nullptr) {
-        OH_JSVM_ThrowError(env, nullptr, "TestTypeArrayAndDataviewProcessSteps_01:CreateArraybuffer Failed");
-        return nullptr;
-    }
-    
     JSVM_Value value = nullptr;
     size_t typedArrayLength = 0;
-    status = OH_JSVM_CreateTypedarray(env, 
-                                      JSVM_TypedarrayType::JSVM_INT16_ARRAY, 
-                                      typedArrayLength, 
-                                      arrayBuffer, 
-                                      0, 
+    status = OH_JSVM_CreateTypedarray(env,
+                                      JSVM_TypedarrayType::JSVM_INT16_ARRAY,
+                                      typedArrayLength,
+                                      arrayBuffer,
+                                      0,
                                       &value);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestTypeArrayAndDataviewProcessSteps_01:OH_JSVM_CreateTypedarray Failed");
-        return nullptr;
-    }
     JSVM_TypedarrayType type;
     size_t byteOffset = 0;
     void *data = nullptr;
@@ -1733,38 +1697,35 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestTypeArrayAndDataviewProcessSteps_01:OH_JSVM_GetTypedarrayInfo Failed");
         return nullptr;
     }
-
     bool isTypedArray = false;
     OH_JSVM_IsTypedarray(env, value, &isTypedArray);
     if (!isTypedArray) {
         OH_JSVM_ThrowError(env, nullptr, "TestTypeArrayAndDataviewProcessSteps_01:is not typed array Failed");
-        return nullptr;        
+        return nullptr;
     }
-
     JSVM_Value result = nullptr;
     status = OH_JSVM_CreateDataview(env, arrayBufferSize, arrayBuffer, 0, &result);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestTypeArrayAndDataviewProcessSteps_01:OH_JSVM_CreateDataview Failed");
         return nullptr;
     }
-
     bool isDataView = false;
     OH_JSVM_IsDataview(env, result, &isDataView);
     if (!isDataView) {
-        OH_JSVM_ThrowError(env, nullptr, 
+        OH_JSVM_ThrowError(env, nullptr,
                            "TestTypeArrayAndDataviewProcessSteps_01:OH_JSVM_CreateDataview isn't DataView Failed");
         return nullptr;
     }
 
     JSVM_Value retArrayBuffer = nullptr;
     size_t byteLength = 0;
-    size_t byteOffset = 0;
+    byteOffset = 0;
     status = OH_JSVM_GetDataviewInfo(env, result, &byteLength, &data, &retArrayBuffer, &byteOffset);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestTypeArrayAndDataviewProcessSteps_01:GetDataviewInfo Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1784,7 +1745,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestTypeArraySetMultipleTimes_01:OH_JSVM_SetElement 1 Failed");
         return nullptr;
     }
-    
+
     uint32_t tarNum = 2;
     for (uint32_t i = 0; i < tarNum; i++) {
         JSVM_Value element;
@@ -1795,21 +1756,21 @@ const int DIFF_VALUE_TWELVE = 12;
             return nullptr;
         }
     }
-    
+
     bool hasElement = false;
     OH_JSVM_HasElement(env, testArray, 0, &hasElement);
-    if(!hasElement) {
+    if (!hasElement) {
         OH_JSVM_ThrowError(env, nullptr, "TestTypeArraySetMultipleTimes_01:OH_JSVM_HasElement Failed");
         return nullptr;
     }
 
     JSVM_Value rst = nullptr;
     status = OH_JSVM_GetElement(env, testArray, 0, &rst);
-    if(status != JSVM_OK) {
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestTypeArraySetMultipleTimes_01:OH_JSVM_GetElement 1 Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1849,7 +1810,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestArraySetMultipleTimes_01:OH_JSVM_GetElement 1 Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1869,27 +1830,28 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestArrayGetMultipleTimes_01:OH_JSVM_SetElement Failed.");
         return nullptr;
     }
-    
+
+    uint32_t dataIndex = 2;
     bool hasElement = false;
-    OH_JSVM_HasElement(env, testArray, 2, &hasElement);
+    OH_JSVM_HasElement(env, testArray, dataIndex, &hasElement);
     if (hasElement) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayGetMultipleTimes_01:OH_JSVM_HasElement Abnormal.");
         return nullptr;
     }
-    
+
     JSVM_Value rst = nullptr;
-    status = OH_JSVM_GetElement(env, testArray, 2, &rst);
+    status = OH_JSVM_GetElement(env, testArray, dataIndex, &rst);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayGetMultipleTimes_01:OH_JSVM_GetElement 0 Abnormal.");
         return nullptr;
     }
- 
+
     status = OH_JSVM_GetElement(env, testArray, typedArrayLength, &rst);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestArrayGetMultipleTimes_01:OH_JSVM_GetElement 2 Failed");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1934,7 +1896,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestArrayDeleteMultipleTimes_01:OH_JSVM_DeleteElement 1 Failed.");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
@@ -1944,7 +1906,7 @@ const int DIFF_VALUE_TWELVE = 12;
 [[maybe_unused]] JSVM_Value TestArrayDeleteMultipleTimes_02(JSVM_Env env, JSVM_CallbackInfo info)
 {
     const size_t testLen0 = 2;
-    const size_t TestLen1 = 5;
+    const size_t testLen1 = 5;
     JSVM_Value testArray = nullptr;
     OH_JSVM_CreateArrayWithLength(env, testLen0, &testArray);
     JSVM_Value index1 = nullptr;
@@ -1978,7 +1940,7 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestArrayDeleteMultipleTimes_02:OH_JSVM_DeleteElement 1 Failed.");
         return nullptr;
     }
-    
+
     bool setValue = true;
     JSVM_Value retValue = nullptr;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
