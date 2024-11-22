@@ -71,7 +71,7 @@ export default function graphicTextCTest() {
       console.info(msg + ' begin ');
       try{
         let fontType:text.SystemFontType = text.SystemFontType.GENERIC
-        let promise = text.getFontDescriptorByFullName("HarmonyOS Sans", fontType)
+        let promise = text.getFontDescriptorByFullName("Noto Sans Pau Cin Hau Regular", fontType)
         promise.then((fontdecriptor) => {
           console.log(msg + ' Succeed in text.getFontDescriptorByFullName  ' + JSON.stringify(fontdecriptor) )
           console.log(msg + ' Succeed in text.getFontDescriptorByFullName  ' + fontdecriptor )
