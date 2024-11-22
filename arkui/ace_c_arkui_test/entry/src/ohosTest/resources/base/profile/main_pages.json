@@ -182,7 +182,9 @@
     "MainAbility/pages/imageAnimator/ImageAnimatorOnCancelTest",
     "MainAbility/pages/imageAnimator/ImageAnimatorOnPauseTest",
     "MainAbility/pages/imageAnimator/ImageAnimatorOnRepeatTest",
-    "MainAbility/pages/imageAnimator/ImageAnimatorOnFinishTest"
-    
+    "MainAbility/pages/imageAnimator/ImageAnimatorOnFinishTest",
+    "MainAbility/pages/commonattrs/CommonAttrsFocusStatusTest",
+    "MainAbility/pages/commonattrs/CommonAttrsFocusOnTouchTest",
+    "MainAbility/pages/commonattrs/CommonAttrsTouchableTest"
   ]
 }

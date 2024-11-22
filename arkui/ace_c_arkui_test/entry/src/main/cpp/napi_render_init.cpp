@@ -136,6 +136,9 @@
 #include "textinput/textinput_oneditchange_test.h"
 #include "textinput/textinput_oninsert_test.h"
 #include "textinput/textinput_ondelete_test.h"
+#include "commonattrs/commonattrs_focusstatus_test.h"
+#include "commonattrs/commonattrs_touchable_test.h"
+#include "commonattrs/commonattrs_focusontouch_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -527,6 +530,12 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr },
         {"getTextInputDeleteData", nullptr, TextInputOnDeleteTest::GetTextInputDeleteData, nullptr, nullptr, nullptr,
          napi_default, nullptr },
+        {"commonAttrsFocusStatusTest", nullptr, CommonAttrsFocusStatusTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonAttrsTouchableTest", nullptr, CommonAttrsTouchableTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonAttrsFocusOnTouchTest", nullptr, CommonAttrsFocusOnTouchTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

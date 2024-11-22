@@ -45,6 +45,7 @@ add_library(nativerender SHARED
 )
 
 add_library(nativefunc SHARED
+    manager/plugin_manager.cpp
     napi_func_init.cpp
 )
 
