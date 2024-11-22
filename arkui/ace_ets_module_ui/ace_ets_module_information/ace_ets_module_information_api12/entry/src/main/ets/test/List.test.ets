@@ -25,6 +25,11 @@ import itemSpaceTest from './ChipGroupTest/itemSpaceTest.test'
 import localizedLabelMarginTest from './ChipTest/localizedLabelMarginTest';
 import localizedButtonPaddingTest from './SegmentButtonTest/localizedButtonPaddingTest';
 import localizedTextPadding from './SegmentButtonTest/localizedTextPadding';
+import badgeNode from './BadgeTest/badgeNode.test';
+import qrcodeNode from './QrcodeTest/qrcodeNode.test';
+import textclockNode from './TextClockTest/textclockNode.test';
+import texttimerNode from './TextTimerTest/texttimerNode.test';
+
 export default function testsuite() {
     ProgressMask()
     BounceSymbolEffect_APITest();
@@ -39,4 +44,8 @@ export default function testsuite() {
     localizedLabelMarginTest();
     localizedButtonPaddingTest();
     localizedTextPadding();
+    badgeNode();
+    qrcodeNode();
+    textclockNode();
+    texttimerNode();
 }

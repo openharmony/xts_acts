@@ -109,6 +109,8 @@ import waterFlowStart2 from './WaterFlowTest/waterFlowStart2.test';
 import waterFlowFling1 from './WaterFlowTest/waterFlowFling1.test';
 import waterFlowFling2 from './WaterFlowTest/waterFlowFling2.test';
 import alphabetAlignStyle from './AlphabetIndexerTest/alphabetAlignStyle.test';
+import gridNode from './GridTest/gridNode.test';
+import griditemNode from './GridItemTest/griditemNode.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -208,4 +210,6 @@ export default function testsuite() {
   waterFlowFling1()
   waterFlowFling2()
   alphabetAlignStyle()
+  gridNode();
+  griditemNode();
 }
