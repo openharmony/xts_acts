@@ -224,6 +224,8 @@
     "MainAbility/pages/customcomponent/CustomComponentDrawContextGetSizeTest",
     "MainAbility/pages/customcomponent/CustomComponentEventOnDrawTest",
     "MainAbility/pages/customcomponent/CustomComponentRegisterNodeCustomEventTest",
-    "MainAbility/pages/customcomponent/CustomComponentUnRegisterNodeCustomEventTest"
+    "MainAbility/pages/customcomponent/CustomComponentUnRegisterNodeCustomEventTest",
+    "MainAbility/pages/customdialog/CustomDialogRegisterOnWillDismissTest",
+    "MainAbility/pages/customdialog/CustomDialogSetAutoCancelTest"
   ]
 }

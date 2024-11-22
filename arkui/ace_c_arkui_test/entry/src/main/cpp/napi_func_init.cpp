@@ -667,6 +667,20 @@
 #include "customcomponent/customcomponent_layoutconstraintdispose_test.cpp"
 #include "customcomponent/customcomponent_layoutconstraintcreate_test.cpp"
 #include "customcomponent/customcomponent_layoutconstraint_test.cpp"
+#include "customdialog/customdialog_enablecustomanimation_test.cpp"
+#include "customdialog/customdialog_registeronwilldismiss_test.cpp"
+#include "customdialog/customdialog_removecontent_test.cpp"
+#include "customdialog/customdialog_resetcontentalignment_test.cpp"
+#include "customdialog/customdialog_setautocancel_test.cpp"
+#include "customdialog/customdialog_setbackgroundcolor_test.cpp"
+#include "customdialog/customdialog_setcontent_test.cpp"
+#include "customdialog/customdialog_setcontentalignment_test.cpp"
+#include "customdialog/customdialog_setcornerradius_test.cpp"
+#include "customdialog/customdialog_setgridcolumncount_test.cpp"
+#include "customdialog/customdialog_setmask_test.cpp"
+#include "customdialog/customdialog_setmodalmode_test.cpp"
+#include "customdialog/customdialog_show_test.cpp"
+
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -7204,6 +7218,105 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr },
         {"testLayoutConstraintLayoutNode002", nullptr, TestLayoutConstraintLayoutNode002, nullptr, nullptr, nullptr,
          napi_default, nullptr },
+
+        {"testCustomDialogSetContent001", nullptr, TestCustomDialogSetContent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetContent002", nullptr, TestCustomDialogSetContent002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetContent003", nullptr, TestCustomDialogSetContent003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetContent004", nullptr, TestCustomDialogSetContent004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogRemoveContent001", nullptr, TestCustomDialogRemoveContent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogRemoveContent002", nullptr, TestCustomDialogRemoveContent002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetContentAlignment001", nullptr, TestCustomDialogSetContentAlignment001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetContentAlignment002", nullptr, TestCustomDialogSetContentAlignment002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetContentAlignment003", nullptr, TestCustomDialogSetContentAlignment003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetContentAlignment004", nullptr, TestCustomDialogSetContentAlignment004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetContentAlignment005", nullptr, TestCustomDialogSetContentAlignment005, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetContentAlignment006", nullptr, TestCustomDialogSetContentAlignment006, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogResetContentAlignment001", nullptr, TestCustomDialogResetContentAlignment001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogResetContentAlignment002", nullptr, TestCustomDialogResetContentAlignment002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogSetModalMode001", nullptr, TestCustomDialogSetModalMode001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetModalMode002", nullptr, TestCustomDialogSetModalMode002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetModalMode003", nullptr, TestCustomDialogSetModalMode003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetModalMode004", nullptr, TestCustomDialogSetModalMode004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetAutoCancel002", nullptr, TestCustomDialogSetAutoCancel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetAutoCancel003", nullptr, TestCustomDialogSetAutoCancel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetAutoCancel004", nullptr, TestCustomDialogSetAutoCancel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogSetMask001", nullptr, TestCustomDialogSetMask001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogSetMask002", nullptr, TestCustomDialogSetMask002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogSetMask003", nullptr, TestCustomDialogSetMask003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogSetMask004", nullptr, TestCustomDialogSetMask004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogSetBackgroundColor001", nullptr, TestCustomDialogSetBackgroundColor001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetBackgroundColor002", nullptr, TestCustomDialogSetBackgroundColor002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetBackgroundColor003", nullptr, TestCustomDialogSetBackgroundColor003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetBackgroundColor004", nullptr, TestCustomDialogSetBackgroundColor004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetCornerRadius001", nullptr, TestCustomDialogSetCornerRadius001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetCornerRadius002", nullptr, TestCustomDialogSetCornerRadius002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetCornerRadius003", nullptr, TestCustomDialogSetCornerRadius003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetCornerRadius004", nullptr, TestCustomDialogSetCornerRadius004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetCornerRadius005", nullptr, TestCustomDialogSetCornerRadius005, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetCornerRadius006", nullptr, TestCustomDialogSetCornerRadius006, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetGridColumnCount001", nullptr, TestCustomDialogSetGridColumnCount001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetGridColumnCount002", nullptr, TestCustomDialogSetGridColumnCount002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetGridColumnCount003", nullptr, TestCustomDialogSetGridColumnCount003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogSetGridColumnCount004", nullptr, TestCustomDialogSetGridColumnCount004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomDialogEnableCustomAnimation001", nullptr, TestCustomDialogEnableCustomAnimation001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogEnableCustomAnimation002", nullptr, TestCustomDialogEnableCustomAnimation002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogEnableCustomAnimation003", nullptr, TestCustomDialogEnableCustomAnimation003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogEnableCustomAnimation004", nullptr, TestCustomDialogEnableCustomAnimation004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogRegisterOnWillDismiss002", nullptr, TestCustomDialogRegisterOnWillDismiss002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogRegisterOnWillDismiss003", nullptr, TestCustomDialogRegisterOnWillDismiss003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogShow001", nullptr, TestCustomDialogShow001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogShow002", nullptr, TestCustomDialogShow002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogShow003", nullptr, TestCustomDialogShow003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogShow004", nullptr, TestCustomDialogShow004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

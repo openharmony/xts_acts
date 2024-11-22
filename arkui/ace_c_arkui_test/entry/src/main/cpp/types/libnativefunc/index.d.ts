@@ -7138,3 +7138,64 @@ export const testLayoutConstraintMeasureNode001: () => number;
 export const testLayoutConstraintMeasureNode002: () => number;
 export const testLayoutConstraintLayoutNode001: () => number;
 export const testLayoutConstraintLayoutNode002: () => number;
+export const testCustomDialogSetContent001: () => number;
+export const testCustomDialogSetContent002: () => number;
+export const testCustomDialogSetContent003: () => number;
+export const testCustomDialogSetContent004: () => number;
+
+export const testCustomDialogRemoveContent001: () => number;
+export const testCustomDialogRemoveContent002: () => number;
+
+export const testCustomDialogSetContentAlignment001: () => number;
+export const testCustomDialogSetContentAlignment002: () => number;
+export const testCustomDialogSetContentAlignment003: () => number;
+export const testCustomDialogSetContentAlignment004: () => number;
+export const testCustomDialogSetContentAlignment005: () => number;
+export const testCustomDialogSetContentAlignment006: () => number;
+
+export const testCustomDialogResetContentAlignment001: () => number;
+export const testCustomDialogResetContentAlignment002: () => number;
+
+export const testCustomDialogSetModalMode001: () => number;
+export const testCustomDialogSetModalMode002: () => number;
+export const testCustomDialogSetModalMode003: () => number;
+export const testCustomDialogSetModalMode004: () => number;
+
+export const testCustomDialogSetAutoCancel002: () => number;
+export const testCustomDialogSetAutoCancel003: () => number;
+export const testCustomDialogSetAutoCancel004: () => number;
+
+export const testCustomDialogSetMask001: () => number;
+export const testCustomDialogSetMask002: () => number;
+export const testCustomDialogSetMask003: () => number;
+export const testCustomDialogSetMask004: () => number;
+
+export const testCustomDialogSetBackgroundColor001: () => number;
+export const testCustomDialogSetBackgroundColor002: () => number;
+export const testCustomDialogSetBackgroundColor003: () => number;
+export const testCustomDialogSetBackgroundColor004: () => number;
+
+export const testCustomDialogSetCornerRadius001: () => number;
+export const testCustomDialogSetCornerRadius002: () => number;
+export const testCustomDialogSetCornerRadius003: () => number;
+export const testCustomDialogSetCornerRadius004: () => number;
+export const testCustomDialogSetCornerRadius005: () => number;
+export const testCustomDialogSetCornerRadius006: () => number;
+
+export const testCustomDialogSetGridColumnCount001: () => number;
+export const testCustomDialogSetGridColumnCount002: () => number;
+export const testCustomDialogSetGridColumnCount003: () => number;
+export const testCustomDialogSetGridColumnCount004: () => number;
+
+export const testCustomDialogEnableCustomAnimation001: () => number;
+export const testCustomDialogEnableCustomAnimation002: () => number;
+export const testCustomDialogEnableCustomAnimation003: () => number;
+export const testCustomDialogEnableCustomAnimation004: () => number;
+
+export const testCustomDialogRegisterOnWillDismiss002: () => number;
+export const testCustomDialogRegisterOnWillDismiss003: () => number;
+
+export const testCustomDialogShow001: () => number;
+export const testCustomDialogShow002: () => number;
+export const testCustomDialogShow003: () => number;
+export const testCustomDialogShow004: () => number;

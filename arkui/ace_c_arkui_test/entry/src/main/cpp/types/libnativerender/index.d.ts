@@ -491,3 +491,6 @@ export const customComponentEventOnDrawTest : (a : string) => void;
 export const customComponentRegisterNodeCustomEventTest : (a : string) => void;
 
 export const customComponentUnregisterNodeCustomEventTest : (a : string) => void;
+export const customDialogSetAutoCancelTest: (a: string) => void;
+
+export const customDialogRegisterOnWillDismissTest: (a: string) => void;

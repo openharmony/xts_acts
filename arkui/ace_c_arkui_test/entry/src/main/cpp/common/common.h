@@ -127,6 +127,7 @@ namespace ArkUICapiTest {
 #define SIZE_400 400
 #define SIZE_500 500
 #define SIZE_600 600
+#define SIZE_800 800
 #define SIZE_10000 10000
 #define SUCCESS 0
 #define INVALID_PARAM 401

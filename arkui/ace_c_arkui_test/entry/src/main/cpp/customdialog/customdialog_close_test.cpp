@@ -37,5 +37,4 @@ static napi_value TestCustomDialogClose002(napi_env env, napi_callback_info)
     ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;
 }
-
 } // namespace ArkUICapiTest
