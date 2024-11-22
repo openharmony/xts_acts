@@ -17,7 +17,7 @@ ohos_app_assist_suite("ActsAceWebViewTestMain") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAceWebViewTestMain"
-  part_name = "ace_engine"
+  part_name = "webview"
   subsystem_name = "arkui"
 }
 
@@ -26,7 +26,7 @@ ohos_js_app_suite("ActsAceWebViewTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAceWebViewTest"
-  part_name = "ace_engine"
+  part_name = "webview"
   subsystem_name = "arkui"
   deps = [ ":ActsAceWebViewTestMain" ]
 }
