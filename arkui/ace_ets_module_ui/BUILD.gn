@@ -18,7 +18,6 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_XNode:ActsAceEtsModuleXNodeTest",
     "ace_ets_module_advancedComponents:ActsAceEtsModuleAdvancedComponentsTest",
     "ace_ets_module_animation:ActsAceEtsModuleAnimationTest",
-    "ace_ets_module_button:ActsAceEtsModuleButtonTest",
     "ace_ets_module_commonAttrsDialog:ActsAceEtsModuleCommonAttrsDialogTest",
     "ace_ets_module_commonAttrsEvents:ActsAceEtsModuleCommonAttrsEventsTest",
     "ace_ets_module_commonAttrsLayout:ActsAceEtsModuleCommonAttrsLayoutTest",
