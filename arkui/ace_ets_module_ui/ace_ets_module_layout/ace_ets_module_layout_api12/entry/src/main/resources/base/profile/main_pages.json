@@ -7,6 +7,7 @@
         "MainAbility/pages/Flex/SpaceCross5AlignItems",
         "MainAbility/pages/Flex/SpaceMain5JustifyContent",
         "MainAbility/pages/RelativeContainer/RelativeContainerApi",
+        "MainAbility/pages/RelativeContainerStart/RelativeContainerStartApi",
         "MainAbility/pages/Chip/ChipApi1",
         "MainAbility/pages/ChipGroup/ChipGroupApi1",
         "MainAbility/pages/Flex/FlexSpaceTest",
