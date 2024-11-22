@@ -36,6 +36,8 @@ import gridAniTrue from './GridTest/gridAniTrue.test';
 import irregularAniGrid from './GridTest/irregularAniGrid.test'; 
 import repeatAniGrid from './GridTest/repeatAniGrid.test'; 
 import waterFlowAniTrue from './WaterFlowTest/waterFlowAniTrue.test'; 
+import gridNode from './GridTest/gridNode.test';
+import griditemNode from './GridItemTest/griditemNode.test';
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -61,4 +63,6 @@ export default function testsuite() {
   irregularAniGrid()
   repeatAniGrid()
   waterFlowAniTrue()
+  gridNode();
+  griditemNode();
 }

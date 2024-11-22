@@ -96,6 +96,8 @@
         "MainAbility/pages/WaterFlow/waterFlowStart2",
         "MainAbility/pages/WaterFlow/waterFlowFling1",
         "MainAbility/pages/WaterFlow/waterFlowFling2",
-        "MainAbility/pages/AlphabetIndexer/alphabetAlignStyle"
+        "MainAbility/pages/AlphabetIndexer/alphabetAlignStyle",
+        "MainAbility/pages/Grid/gridNode",
+        "MainAbility/pages/GridItem/griditemNode"
     ]
 }
