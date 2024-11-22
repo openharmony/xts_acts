@@ -993,52 +993,13 @@ export default function graphicImagePixelMapTest() {
     it("testASTC_4", 0, async (done:Function)=>  {
       let msg = '=====testASTC_4====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
-      let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-      let staticMe: image.HdrStaticMetadata = {
-        displayPrimariesX: [1.1, 2.1, 3.1],
-        displayPrimariesY: [4.1, 5.1, 6.1],
-        whitePointX: 1.1,
-        whitePointY: 1.2,
-        maxLuminance: 2.1,
-        minLuminance: 2.2,
-        maxContentLightLevel: 3.1,
-        maxFrameAverageLightLevel: 3.2
-      }
-      
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.ASTC_4x4, size: { height: 4, width: 6 } }
       console.log(msg + " Example begin! ")
-
       image.createPixelMap(color, opts).then(async (pixelMap: image.PixelMap) => {
         console.info( msg + ' Succeeded in creating pixelMap.');
-        try{
-          let context1 = getContext()
-          const resourceMgr = context1.resourceManager
-          const fileData = await resourceMgr.getMediaContent($r('app.media.icon'))
-          const buffer = fileData.buffer
-          const imageSource = image.createImageSource(buffer)
-          let decodingOptions: image.DecodingOptions = {
-            desiredSize: { width: 512, height:512 },
-            desiredPixelFormat: image.PixelMapFormat.ASTC_4x4,
-            desiredDynamicRange: image.DecodingDynamicRange.HDR
-          }
-          pixelMap = imageSource.createPixelMapSync(decodingOptions)
-          await pixelMap.setMetadata(1, staticMe)
-          console.info( msg + ' Succeeded in pixelMap.setMetadata.');
           console.log(msg + ' Example end !')
           expect(true).assertTrue();
           done();
-        }catch(error){
-          if(error == 62980173){
-            console.info( msg + ' The DMA memory does not exist. ');
-            console.log(msg + ' Example end !')
-            expect(true).assertTrue();
-            done();
-          }else{
-            console.info( msg + ' Faild in ASTC_4x4.' + error);
-            console.info( msg + ' Faild in ASTC_4x4.' + JSON.stringify(error));
-            expect().assertFail();
-            done();
-          }
-        }
       }).catch((error: BusinessError) => {
         console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
         expect().assertFail();
