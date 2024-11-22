@@ -21,7 +21,8 @@ import editMenuIdAIWriterTest from './TextTest/editMenuIdAIWriter.test';
 import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
 import RichEditorStyledStringTest from './RichEditorTest/RichEditorStyledStringTest.test';
 import StyledStringUrl from './TextTest/StyledStringTest.test';
-
+import marqueeNode from './Marquee/marqueeNode.test';
+import textAreaNode from "./TextAreaTest/textAreaNode.test";
 
 export default function testsuite() {
   textAreaInputTest();
@@ -32,4 +33,6 @@ export default function testsuite() {
   StyledStringUrl();
   MovingPhotoViewTest();
   RichEditorStyledStringTest();
+  marqueeNode();
+  textAreaNode();
 }

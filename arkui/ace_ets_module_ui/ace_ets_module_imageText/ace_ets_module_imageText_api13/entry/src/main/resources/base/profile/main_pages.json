@@ -8,6 +8,8 @@
     "MainAbility/pages/Text/editMenuIdAIWriter",
     "MainAbility/pages/MovingPhotoView/MovingPhotoView",
     "MainAbility/pages/Text/StyledString",
-    "MainAbility/pages/RichEditor/RichEditorStyledStringTest"
+    "MainAbility/pages/RichEditor/RichEditorStyledStringTest",
+    "MainAbility/pages/Marquee/marqueeNode",
+    "MainAbility/pages/TextArea/textAreaNode" 
   ]
 }
