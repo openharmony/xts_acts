@@ -59,6 +59,7 @@ namespace ArkUICapiTest {
 #define PARAM_90 90
 #define PARAM_100 100
 #define PARAM_200 200
+#define PARAM_1000 1000
 #define PARAM_10000 10000
 #define NULLPTR_ERROR (-1)
 #define PARAM_NEGATIVE_1 (-1)

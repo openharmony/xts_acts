@@ -589,6 +589,10 @@ import accessibilityStateTest from './accessibilityState/accessibilityStateTest.
 import relativecontaineAlignmentRuleOptionTest from './relativecontaine/RelativeContaineAlignmentRuleOptionTest.test'
 import relativecontaineBarrierOptionTest from './relativecontaine/RelativeContaineBarrierOptionTest.test'
 import testGesture from './gesture/GestureTest.test'
+import gestureGestureAttrsTest from './gesture/GestureGestureAttrsTest.test'
+import gestureGestureInterrupterTest from './gesture/GestureGestureInterrupterTest.test'
+import gestureCreateGestureTest from './gesture/GestureCreateGestureTest.test'
+import gestureGestureInfoTest from  './gesture/GestureGestureInfoTest.test'
 import gestureNestScrollTest from './gestureScroll/GestureNestScollTest.test'
 
 import customComponentEventTest from './customcomponent/CustomComponentEventTest.test'
@@ -1196,6 +1200,10 @@ export default function testsuite() {
   relativecontaineAlignmentRuleOptionTest()
   relativecontaineBarrierOptionTest()
   testGesture()
+  gestureGestureAttrsTest()
+  gestureCreateGestureTest()
+  gestureGestureInterrupterTest()
+  gestureGestureInfoTest()
   gestureNestScrollTest()
   customComponentEventTest()
   commonAttrsAnimateTest()
@@ -1245,5 +1253,4 @@ export default function testsuite() {
   swiperAdapterTest()
   swiperOnContentDidScrollTest()
   swiperOnGestureSwipeTest()
-
 }

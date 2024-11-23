@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,20 +13,21 @@
  * limitations under the License.
  */
 
-#ifndef ARKUI_CAPI_DEMO_BUTTON_COMPONENT_H
-#define ARKUI_CAPI_DEMO_BUTTON_COMPONENT_H
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-#include <cassert>
-#include <string>
+@Entry
+@Component
+struct GestureGestureInterrupterTest {
+  PAGE_TAG: string = 'GestureGestureInterrupterTest';
 
-#include "component.h"
-
-namespace ArkUICapiTest {
-class ButtonComponent : public Component {
-public:
-    explicit ButtonComponent() : Component(ARKUI_NODE_BUTTON) {}
-    explicit ButtonComponent(ArkUI_NodeHandle handle) : Component(handle) {}
-    void SetLable(const std::string& content);
-};
-} // namespace ArkUICapiTest
-#endif // ARKUI_CAPI_DEMO_BUTTON_COMPONENT_H
+  build() {
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.gestureGestureInterrupterTest(this.PAGE_TAG);
+      })
+    }
+  }
+}
