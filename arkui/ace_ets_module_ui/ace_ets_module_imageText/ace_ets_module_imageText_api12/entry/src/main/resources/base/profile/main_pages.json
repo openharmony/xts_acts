@@ -139,6 +139,20 @@
     "MainAbility/pages/RichEditor/getRectsForRange",
     "MainAbility/pages/TextInput/textInputEnterKeyType",
     "MainAbility/pages/span/spanPage",
-    "MainAbility/pages/TextArea/textAreaAutoFill"
+    "MainAbility/pages/TextArea/textAreaAutoFill",
+    "MainAbility/pages/TextArea/textAreaHeightAdaptivePolicy",
+    "MainAbility/pages/TextArea/textAreaMaxFontSize",
+    "MainAbility/pages/TextArea/textAreaMinFontSize",
+    "MainAbility/pages/TextArea/textAreaDecoration",
+    "MainAbility/pages/TextArea/textAreaLetterSpacing",
+    "MainAbility/pages/TextArea/textAreaLineHeight",
+    "MainAbility/pages/TextInput/textInputUnderlineColor",
+    "MainAbility/pages/TextInput/textInputMaxFontSize",
+    "MainAbility/pages/TextInput/textInputMinFontSize",
+    "MainAbility/pages/TextInput/textInputHeightAdaptivePolicy",
+    "MainAbility/pages/TextInput/textInputDecoration",
+    "MainAbility/pages/TextInput/textInputLetterSpacing",
+    "MainAbility/pages/TextInput/textInputLineHeight",
+    "MainAbility/pages/ImageSpan/imageSpan"
   ]
 }

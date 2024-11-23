@@ -155,6 +155,20 @@ import getRectsForRangeTest from './RichEditor/getRectsForRange.test'
 import textInputEnterKeyTypeTest from './TextInput/textInputEnterKeyType.test'
 import spanTest from './spanTest/SpanJsunit1.test'
 import textAreaAutoFillTest from './TextArea/TextAreaAutoFillJsUnit.test'
+import textAreaHeightAdaptivePolicyTest from "./TextArea/textAreaHeightAdaptivePolicy.test";
+import textAreaMaxFontSize from "./TextArea/textAreaMaxFontSize.test";
+import textAreaMinFontSize from "./TextArea/textAreaMinFontSize.test";
+import textAreaDecoration from "./TextArea/textAreaDecoration.test";
+import textAreaLineHeight from "./TextArea/textAreaLineHeight.test";
+import textAreaLetterSpacing from "./TextArea/textAreaLetterSpacing.test";
+import textInputUnderlineColorTest from "./TextInput/textInputUnderlineColor.test";
+import textInputMaxFontSize from "./TextInput/textInputMaxFontSize.test";
+import textInputMinFontSize from "./TextInput/textInputMinFontSize.test";
+import textInputHeightAdaptivePolicy from "./TextInput/textInputHeightAdaptivePolicy.test";
+import textInputDecoration from "./TextInput/textInputDecoration.test";
+import textInputLetterSpacing from "./TextInput/textInputLetterSpacing.test";
+import textInputLineHeight from "./TextInput/textInputLineHeight.test";
+import imageSpanJsunit from './ImageSpanTest/imageSpan.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -292,4 +306,18 @@ export default function testsuite() {
   textInputEnterKeyTypeTest();
   spanTest();
   textAreaAutoFillTest()
+  textAreaHeightAdaptivePolicyTest();
+  textAreaMinFontSize();
+  textAreaMaxFontSize();
+  textAreaLineHeight();
+  textAreaDecoration();
+  textAreaLetterSpacing();
+  textInputUnderlineColorTest();
+  textInputMaxFontSize();
+  textInputMinFontSize();
+  textInputHeightAdaptivePolicy();
+  textInputDecoration();
+  textInputLetterSpacing();
+  textInputLineHeight();
+  imageSpanJsunit();
 }
