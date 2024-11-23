@@ -1,0 +1,10 @@
+{
+  "src": [
+    "MainAbility/pages/index/index",
+    "MainAbility/pages/Text/textAreaInputTest",
+    "MainAbility/pages/UIContext/KeyboardAvoidMode",
+    "MainAbility/pages/styledString/StyledString",
+    "MainAbility/pages/RichEditor/onHover",
+    "MainAbility/pages/Search/autoDisable"
+  ]
+}
