@@ -150,6 +150,14 @@ import singleHozList from './ListTest/singleHozList.test'
 import singleHozDiff from './ListTest/singleHozDiff.test'
 import lanesHeaderGroup from './ListTest/lanesHeaderGroup.test'
 import lanesItemGroup from './ListTest/lanesItemGroup.test';
+import listScrollTo from './ListTest/listScrollTo.test';
+import paddingStartOffset from './ListTest/contentOffset/paddingStartOffset.test';
+import headerStartOffset from './ListTest/contentOffset/headerStartOffset.test';
+import toIndexStartOffset from './ListTest/contentOffset/toIndexStartOffset.test';
+import offsetEdgeBtm from './ListTest/contentOffset/offsetEdgeBtm.test';
+import offsetEdgeTop from './ListTest/contentOffset/offsetEdgeTop.test';
+import offsetAlignEnd from './ListTest/contentOffset/offsetAlignEnd.test';
+import offsetAlignStart from './ListTest/contentOffset/offsetAlignStart.test';
 
 export default function testsuite() {
   listUxTest()
@@ -288,4 +296,12 @@ export default function testsuite() {
   singleHozDiff();
   lanesHeaderGroup();
   lanesItemGroup();
+  listScrollTo();
+  paddingStartOffset();
+  headerStartOffset();
+  toIndexStartOffset();
+  offsetEdgeBtm();
+  offsetEdgeTop();
+  offsetAlignEnd();
+  offsetAlignStart();
 }
