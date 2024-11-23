@@ -37,6 +37,7 @@ group("ActsAceEtsModuleUITest") {
     "ace_ets_module_observer:ActsAceEtsModuleObserverTest",
     "ace_ets_module_picker:ActsAceEtsModulePickerTest",
     "ace_ets_module_platform:ActsAceEtsModulePlatformTest",
+    "ace_ets_module_richeditor:ActsAceEtsModuleRicheditorTest",
     "ace_ets_module_scroll:ActsAceEtsModuleScrollTest",
     "ace_ets_module_scrollEdge:ActsAceEtsModuleScrollEdgeTest",
     "ace_ets_module_scroll_fling_widget:ActsAceEtsModuleScrollFlingWidgetTest",
