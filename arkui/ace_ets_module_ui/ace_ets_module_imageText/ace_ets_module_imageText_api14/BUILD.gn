@@ -11,12 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsAceEtsModuleImageTextTest") {
+import("//test/xts/tools/build/suite.gni")
+
+ohos_app_assist_suite("ActsAceEtsModuleImageTextApi14TestMain") {
   testonly = true
-  deps = [
-    "ace_ets_module_imageText_api11:ActsAceEtsModuleImageTextApi11Test",
-    "ace_ets_module_imageText_api12:ActsAceEtsModuleImageTextApi12Test",
-    "ace_ets_module_imageText_api13:ActsAceEtsModuleImageTextApi13Test",
-    "ace_ets_module_imageText_api14:ActsAceEtsModuleImageTextApi14Test",
-  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceEtsModuleImageTextApi14TestMain"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+}
+
+ohos_js_app_suite("ActsAceEtsModuleImageTextApi14Test") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceEtsModuleImageTextApi14Test"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+  deps = [ ":ActsAceEtsModuleImageTextApi14TestMain" ]
 }
