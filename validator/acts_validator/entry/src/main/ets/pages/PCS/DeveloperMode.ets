@@ -33,10 +33,7 @@ import systemparameter from '@ohos.systemParameterEnhance';
 @Component
 struct DeveloperMode {
   @State name: string = 'DeveloperMode';
-  @State stepTips: string = '操作步骤：' + '\n' + '1.点击按钮获取设备调试/开发者模式状态，若为TRUE则测试通过' + '\n' +
-                '2.若为FALSE，进入设置应用，调试/开发者模式配置页面，打开调试/开发者模式并重启' + '\n' + '3.重启后再次进入validator此页面' + '\n' +
-                '4.点击完成设置按钮' + '\n' + '5.观察页面中调试/开发者模式状态为TRUE' + '\n' + '\n' + 
-                '预期结果：页面中调试/开发者模式状态为TRUE';
+  @State stepTips: string = '预期结果：页面中调试/开发者模式状态为TRUE';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = "UNDEFINED";
@@ -77,7 +74,7 @@ struct DeveloperMode {
               })
 
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击按钮获取设备调试/开发者模式状态，若为TRUE则测试通过` + '\n' + '\n' +
+              Text(`测试步骤:` + '\n' + '\n' + `1.点击按钮获取设备调试/开发者模式状态，若为TRUE则测试通过` + '\n' + '\n' +
                 `2.若为FALSE，进入设置应用，调试/开发者模式配置页面，打开调试/开发者模式并重启` + '\n' + '\n' + '3.重启后再次进入validator此页面' + '\n' + '\n' +
                 '4.点击完成设置按钮' + '\n' + '\n' +
                 '5.观察页面中调试/开发者模式状态为TRUE' + '\n' + '\n')
