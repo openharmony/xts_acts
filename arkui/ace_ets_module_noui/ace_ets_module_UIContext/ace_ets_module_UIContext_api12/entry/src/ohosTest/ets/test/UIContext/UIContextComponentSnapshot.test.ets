@@ -21,24 +21,24 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 export default function UIContextComponentSnapshot() {
   describe('UIContextComponentSnapshot', () => {
     beforeEach(async (done: Function) => {
-      console.info("UIContextComponentSnapshot beforeEach start");
+      console.info('UIContextComponentSnapshot beforeEach start');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/UIContext/UIContextComponentSnapshot',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get UIContextComponentSnapshot state pages:" + JSON.stringify(pages));
-        if (!("UIContextComponentSnapshot" == pages.name)) {
-          console.info("get UIContextComponentSnapshot pages.name:" + JSON.stringify(pages.name));
+        console.info('get UIContextComponentSnapshot state pages:' + JSON.stringify(pages));
+        if (!('UIContextComponentSnapshot' == pages.name)) {
+          console.info('get UIContextComponentSnapshot pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push UIContextComponentSnapshot page result:" + JSON.stringify(result));
+          console.info('push UIContextComponentSnapshot page result:' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push UIContextComponentSnapshot page error:" + err);
+        console.error('push UIContextComponentSnapshot page error:' + err);
       }
-      console.info("UIContextComponentSnapshot beforeEach end");
+      console.info('UIContextComponentSnapshot beforeEach end');
       done();
     });
     afterEach(async () => {
