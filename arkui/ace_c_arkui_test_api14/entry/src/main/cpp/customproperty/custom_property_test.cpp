@@ -163,7 +163,7 @@ static void OnEventReceive3(ArkUI_NodeEvent *event)
         if (OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo) == 0) {
             ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
             ArkUI_AttributeItem background_color_item = {background_color_value,
-                 sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+                sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
             auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
             nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
         }
