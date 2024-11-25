@@ -24,7 +24,7 @@ struct Dormancy {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'Dormancy';
-  @State StepTips: string = '操作步骤：点击熄屏按钮\n等待5秒打开设备' + '\n' + '预期结果：点击熄屏按钮，屏幕能正常熄屏';
+  @State StepTips: string = '操作步骤：点击测试页面内熄屏按钮,等待5秒打开设备' + '\n' + '预期结果：点击测试页面熄屏按钮，屏幕能正常熄屏，等待五秒后亮屏，pass按钮亮起';
   @State Vue: boolean = false;
 
   async aboutToAppear() {

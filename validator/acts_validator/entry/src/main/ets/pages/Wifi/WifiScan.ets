@@ -45,7 +45,7 @@ struct WifiScan {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'WifiScan';
-  @State StepTips: string = '操作步骤：\n1、请打开wifi' + '\n2、自己创建一个热点' + '\n3、应用是否扫描到自己创建的热点名称'
+  @State StepTips: string = '操作步骤：\n1、请打开Wlan' + '\n2、自己创建一个热点' + '\n3、查看应用是否扫描到自己创建的热点名称'
     + '\n4、选择连接热点，输入账号密码进行连接' + '\n预期结果：列表能扫描到自己的热点，能成功连接则通过';
   @State Vue: boolean = false;
   @State btnState: boolean = false;

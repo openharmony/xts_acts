@@ -22,7 +22,7 @@ struct SwipeGestureTest {
   @State X: number = 0;
   @State Y: number = 0;
   @State name: string = 'SwipeGesture';
-  @State StepTips: string = '操作步骤：手指上下滑动图像' + '\n' + '预期结果：图片正常滑动，手势滑动角度及速度显示正常';
+  @State StepTips: string = '操作步骤：手指以图片正向的上下为滑动方向进行操作' + '\n' + '预期结果：图片正常滑动，手势滑动角度及速度显示正常';
   @State Vue: boolean = false;
 
   async aboutToAppear() {

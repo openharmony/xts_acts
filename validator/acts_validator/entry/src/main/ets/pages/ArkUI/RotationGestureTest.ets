@@ -21,7 +21,7 @@ import FirstDialog from '../model/FirstDialog';
 struct RotationGuestureTest {
   @State X: number = 0;
   @State name: string = 'RotationGesture';
-  @State StepTips: string = '操作步骤：两根手指旋转图像' + '\n' + '预期结果：图片能够正常旋转且文本旋转角度显示正常';
+  @State StepTips: string = '操作步骤：两根手指旋转图像' + '\n' + '预期结果：图像能够正常旋转且文本旋转角度显示正常';
   @State Vue: boolean = false;
 
   async aboutToAppear() {

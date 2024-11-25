@@ -28,7 +28,7 @@ struct SharedTransition {
   @State rating: number = 0;
   @State FillColor: string = '#FF000000';
   @State name: string = 'SharedTransition';
-  @State StepTips: string = '操作步骤：点击商品图片跳转到详情页' + '\n' + '预期结果：商品图片进行了转场';
+  @State StepTips: string = '操作步骤：点击商品图片跳转到详情页,进入详情页后返回上一级页面' + '\n' + '预期结果：商品图片进行了转场';
   @State Vue: boolean = false;
   @State active: boolean = false;
 
@@ -134,18 +134,17 @@ struct SharedTransition {
             .width(50)
             .height(50)
             .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 })
-
+            .onClick(() => {
+              this.Vue = true;
+              router.pushUrl({
+                url: 'pages/ArkUI/SharedTransitionTo'
+              })
+            })
           Blank()
 
           Text('点击左侧钢笔图标查看详情')
             .fontSize(24)
         }
-        .onClick(() => {
-          this.Vue = true;
-          router.pushUrl({
-            url: 'pages/ArkUI/SharedTransitionTo'
-          })
-        })
         .margin({ top: 48 })
       }
       .height('80%')

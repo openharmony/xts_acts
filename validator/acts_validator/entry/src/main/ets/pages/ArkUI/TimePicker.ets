@@ -27,13 +27,14 @@ const TAG = '[TimePicker]';
 struct TextPickerDemo {
   @State FillColor: string = '#FF000000';
   @State name: string = 'TimePicker';
-  @State StepTips: string = '操作步骤：1、点击12小时制按钮，切换为24小时制\n' +
+  @State StepTips: string = '操作步骤：\n1、点击12小时制按钮，切换为24小时制\n' +
     '2、将时间选为11小时11分钟' + '\n' + '预期结果：选择器显示和展示文本一致则通过';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
   @State isMilitaryTime: boolean = false;
   @State time: string = '';
+  @State change: boolean = false;
   private selectedTime: Date = new Date('2023-12-1T08:00:00');
 
   @Builder
@@ -103,7 +104,7 @@ struct TextPickerDemo {
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-      if (this.time === '11小时 11分钟') {
+      if (this.change && this.time === '11小时 11分钟') {
         this.Vue = true;
       }
     }, 500)
@@ -153,6 +154,7 @@ struct TextPickerDemo {
           .margin({ top: 30 })
           .onClick(() => {
             this.isMilitaryTime = !this.isMilitaryTime
+            this.change = !this.change
           })
         TimePicker({
           selected: this.selectedTime,

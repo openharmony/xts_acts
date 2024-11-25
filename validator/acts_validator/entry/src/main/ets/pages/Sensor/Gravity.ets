@@ -28,9 +28,8 @@ const TAG = '[Gravity]';
 struct Gravity {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Gravity';
-  @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有重力' +
-    '传感器' + '\n-点击开启按钮打开传感器,' +
-    '如果有传感器，请各方向快速移动设备，否则返回上一级' + '\n-预期结果：观察显示数值,跟随移动变化';
+  @State StepTips: string = '测试目的：用于测试本机传感器,确定是否有重力传感器' + '\n操作步骤：\n1.确定设备是否有重力传感器\n2.如果有该传感器，点击开启并快速移动设备，观察数值是否发生变化\n(若点击开启直接返回上一级，则表示设备无该传感器)'
+    + '\n预期结果：观察显示数值,跟随移动变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State sensorChange: boolean = false;
@@ -81,7 +80,7 @@ struct Gravity {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {
           this.isHave = false;
-          this.Vue = true;
+          this.Vue = false;
           promptAction.showToast({
             message: '当前设备暂无重力传感器'
           })
@@ -242,7 +241,7 @@ struct Gravity {
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start, direction: FlexDirection.Column }) {
         Scroll() {
           Column() {
-            Text('提示：如果设备存在重力传感器，选择开启，否则选择无传感器')
+            Text('提示：点击开启按钮，若无该传感器，则自动返回上一级')
               .fontSize('16fp')
               .fontColor(Color.White)
               .margin('20fp')
@@ -250,11 +249,6 @@ struct Gravity {
               Button(this.sensorChange ? '关闭' : '开启')
                 .onClick(() => {
                   this.openAccelerometer();
-                })
-              Button('无加速度传感器')
-                .onClick(() => {
-                  Logger.info(TAG, 'entry onClick');
-                  this.Vue = true;
                 })
             }
             .justifyContent(FlexAlign.SpaceEvenly)
