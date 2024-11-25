@@ -2,6 +2,7 @@
     "src": [
       "MainAbility/pages/index/index",
       "MainAbility/pages/UIContext/UIContextApi1",
-      "MainAbility/pages/UIContext/UIcontextTestPage"
+      "MainAbility/pages/UIContext/UIcontextTestPage",
+      "MainAbility/pages/UIContext/UIContextComponentSnapshot"
     ]
 }
