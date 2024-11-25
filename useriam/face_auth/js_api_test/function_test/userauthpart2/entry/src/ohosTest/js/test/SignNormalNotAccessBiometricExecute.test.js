@@ -267,7 +267,7 @@ export default function signNormalNotAccessBiometricExecute() {
         title: '请输入密码',
       };
       await userAuthPromise(authParam, widgetParam, 
-        'SUB_Security_IAM_authWidget_API_0150 step' + stepIndex, 12500010);
+        'SUB_Security_IAM_authWidget_API_0120 step' + stepIndex, 12500010);
       done();
     });
 
@@ -281,7 +281,7 @@ export default function signNormalNotAccessBiometricExecute() {
     */
     it('SUB_Security_IAM_authWidget_API_0140', Level.LEVEL2, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0140 start");
-      let reuseMode1 = [-1, 0, 3];
+      let reuseMode1 = [-1, 0, 5];
       let reuseMode2 = [1, 2];
       const widgetParam = {
         title: '请输入密码',
@@ -326,7 +326,7 @@ export default function signNormalNotAccessBiometricExecute() {
         };
   
         await userAuthPromise(authParam1, widgetParam, 
-          'SUB_Security_IAM_authWidget_API_0150 step' + stepIndex, 12500010);
+          'SUB_Security_IAM_authWidget_API_0140 step' + stepIndex, 12500010);
         stepIndex++;
       }
       done();
