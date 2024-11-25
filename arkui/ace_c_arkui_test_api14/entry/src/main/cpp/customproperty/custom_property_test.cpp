@@ -60,7 +60,6 @@ napi_value CustomPropertyTest::testGetCustomProperty001(napi_env env, napi_callb
     ArkUI_CustomProperty* customP;
     auto result = OH_ArkUI_NodeUtils_GetCustomProperty(column, "CustomValueA", &customP);
     if (result == ARKUI_ERROR_CODE_NO_ERROR) {
-        
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
             sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
@@ -79,6 +78,26 @@ napi_value CustomPropertyTest::testGetCustomProperty001(napi_env env, napi_callb
         return nullptr;
     }
     return exports;
+}
+
+static void OnEventReceive2(ArkUI_NodeEvent *event)
+{
+    auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
+    if (targetId == 1) {
+        auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
+        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+            
+        ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
+        auto parent =  OH_ArkUI_NodeUtils_GetParentInPageTree(pageNode);
+        if (OH_ArkUI_NodeUtils_GetNodeType(parent) == 0) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+    }
 }
 
 napi_value CustomPropertyTest::testGetParentInPageTree002(napi_env env, napi_callback_info info)
@@ -114,27 +133,9 @@ napi_value CustomPropertyTest::testGetParentInPageTree002(napi_env env, napi_cal
     
     ArkUI_NodeHandle text1 = nodeAPI->createNode(ARKUI_NODE_TEXT);
     nodeAPI->addChild(column, text1);
-    
     nodeAPI->registerNodeEvent(text, NODE_ON_CLICK, 1, text1);
-    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
-        auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if (targetId == 1) {
-            auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
-            auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-            
-            ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
-            auto parent =  OH_ArkUI_NodeUtils_GetParentInPageTree(pageNode);
-            if (OH_ArkUI_NodeUtils_GetNodeType(parent) == 0) {
-                ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-                ArkUI_AttributeItem background_color_item = {background_color_value,
-                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-                auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-                nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-            }
-        }
-    });
-    
+    nodeAPI->registerNodeEventReceiver(&OnEventReceive2);
+
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
         INVALID_PARAM) {
@@ -147,6 +148,26 @@ napi_value CustomPropertyTest::testGetParentInPageTree002(napi_env env, napi_cal
         return nullptr;
     }
     return exports;
+}
+
+static void OnEventReceive3(ArkUI_NodeEvent *event)
+{
+    auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
+    if (targetId == 1) {
+        auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
+        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        
+        ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
+        ArkUI_ActiveChildrenInfo* activeChildrenInfo;
+        if (OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo) == 0) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                 sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+    }
 }
 
 napi_value CustomPropertyTest::testGetActiveChildrenInfo003(napi_env env, napi_callback_info info)
@@ -184,26 +205,8 @@ napi_value CustomPropertyTest::testGetActiveChildrenInfo003(napi_env env, napi_c
     
     ArkUI_NodeHandle text1 = nodeAPI->createNode(ARKUI_NODE_TEXT);
     nodeAPI->addChild(column, text1);
-    
     nodeAPI->registerNodeEvent(text, NODE_ON_CLICK, 1, text1);
-    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
-        auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if (targetId == 1) {
-            auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
-            auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-            
-            ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
-            ArkUI_ActiveChildrenInfo* activeChildrenInfo;
-            if (OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo) == 0) {
-                ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-                ArkUI_AttributeItem background_color_item = {background_color_value,
-                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-                auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-                nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-            }
-        }
-    });
+    nodeAPI->registerNodeEventReceiver(&OnEventReceive3);
 
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
@@ -217,6 +220,25 @@ napi_value CustomPropertyTest::testGetActiveChildrenInfo003(napi_env env, napi_c
         return nullptr;
     }
     return exports;
+}
+
+static void OnEventReceive4(ArkUI_NodeEvent *event)
+{
+    auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
+    if (targetId == 1) {
+        auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
+        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        
+        ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
+        if (OH_ArkUI_NodeUtils_GetNodeType(pageNode) == NUMBER_1006) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+    }
 }
 
 napi_value CustomPropertyTest::testGetCurrentPageRootNode004(napi_env env, napi_callback_info info)
@@ -253,25 +275,8 @@ napi_value CustomPropertyTest::testGetCurrentPageRootNode004(napi_env env, napi_
     ArkUI_NodeHandle text1 = nodeAPI->createNode(ARKUI_NODE_TEXT);
     nodeAPI->addChild(column, text1);
     nodeAPI->registerNodeEvent(text, NODE_ON_CLICK, 1, text1);
+    nodeAPI->registerNodeEventReceiver(&OnEventReceive4);
 
-    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
-        auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if (targetId == 1) {
-            auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
-            auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-            
-            ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
-            if (OH_ArkUI_NodeUtils_GetNodeType(pageNode) == NUMBER_1006) {
-                ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-                ArkUI_AttributeItem background_color_item = {background_color_value,
-                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-                auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-                nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-            }
-        }
-    });
-    
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
         INVALID_PARAM) {
@@ -508,6 +513,26 @@ napi_value CustomPropertyTest::testCustomPropertyGetStringValue008(napi_env env,
     return exports;
 }
 
+static void OnEventReceive9(ArkUI_NodeEvent *event)
+{
+    auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
+    if (targetId == 1) {
+        auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
+        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
+        ArkUI_ActiveChildrenInfo* activeChildrenInfo;
+        if (OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo) == 0) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+        OH_ArkUI_ActiveChildrenInfo_Destroy(activeChildrenInfo);
+    }
+}
+
 napi_value CustomPropertyTest::testActiveChildrenInfoDestroy009(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testRemoveCustomProperty002", "CreateNativeNode");
@@ -539,24 +564,7 @@ napi_value CustomPropertyTest::testActiveChildrenInfoDestroy009(napi_env env, na
     auto text1 = nodeAPI->createNode(ARKUI_NODE_TEXT);
     nodeAPI->addChild(column, text1);
     nodeAPI->registerNodeEvent(text, NODE_ON_CLICK, 1, text1);
-    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
-        auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if (targetId == 1) {
-            auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
-            auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-            ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
-            ArkUI_ActiveChildrenInfo* activeChildrenInfo;
-            if (OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo) == 0) {
-                ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-                ArkUI_AttributeItem background_color_item = {background_color_value,
-                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-                auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-                nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-            }
-            OH_ArkUI_ActiveChildrenInfo_Destroy(activeChildrenInfo);
-        }
-    });
+    nodeAPI->registerNodeEventReceiver(&OnEventReceive9);
 
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
@@ -570,6 +578,27 @@ napi_value CustomPropertyTest::testActiveChildrenInfoDestroy009(napi_env env, na
         return nullptr;
     }
     return exports;
+}
+
+static void OnEventReceive10(ArkUI_NodeEvent *event)
+{
+    auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
+    if (targetId == 1) {
+        auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
+        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
+        ArkUI_ActiveChildrenInfo* activeChildrenInfo;
+        OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo);
+        auto firstChild = OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(activeChildrenInfo, 1000);
+        if (OH_ArkUI_NodeUtils_GetNodeType(firstChild) == 0) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+    }
 }
 
 napi_value CustomPropertyTest::testActiveChildrenInfoGetNodeByIndex010(napi_env env, napi_callback_info info)
@@ -603,27 +632,8 @@ napi_value CustomPropertyTest::testActiveChildrenInfoGetNodeByIndex010(napi_env 
     nodeAPI->addChild(column, text);
     auto text1 = nodeAPI->createNode(ARKUI_NODE_TEXT);
     nodeAPI->addChild(column, text1);
-    
     nodeAPI->registerNodeEvent(text, NODE_ON_CLICK, 1, text1);
-    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
-        auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if (targetId == 1) {
-            auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
-            auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-            ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
-            ArkUI_ActiveChildrenInfo* activeChildrenInfo;
-            OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo);
-            auto firstChild = OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(activeChildrenInfo, 1000);
-            if (OH_ArkUI_NodeUtils_GetNodeType(firstChild) == 0) {
-                ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-                ArkUI_AttributeItem background_color_item = {background_color_value,
-                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-                auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-                nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-            }
-        }
-    });
+    nodeAPI->registerNodeEventReceiver(&OnEventReceive10);
 
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
@@ -637,6 +647,27 @@ napi_value CustomPropertyTest::testActiveChildrenInfoGetNodeByIndex010(napi_env 
         return nullptr;
     }
     return exports;
+}
+
+static void OnEventReceive11(ArkUI_NodeEvent *event)
+{
+    auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
+    if (targetId == 1) {
+        auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
+        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
+        ArkUI_ActiveChildrenInfo* activeChildrenInfo;
+        OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo);
+        
+        if (OH_ArkUI_ActiveChildrenInfo_GetCount(activeChildrenInfo) == NUMBER_2) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+    }
 }
 
 napi_value CustomPropertyTest::testActiveChildrenInfoGetCount011(napi_env env, napi_callback_info info)
@@ -670,28 +701,9 @@ napi_value CustomPropertyTest::testActiveChildrenInfoGetCount011(napi_env env, n
     nodeAPI->addChild(column, text);
     auto text1 = nodeAPI->createNode(ARKUI_NODE_TEXT);
     nodeAPI->addChild(column, text1);
-    
     nodeAPI->registerNodeEvent(text, NODE_ON_CLICK, 1, text1);
-    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
-        auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
-        if (targetId == 1) {
-            auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
-            auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-            ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
-            ArkUI_ActiveChildrenInfo* activeChildrenInfo;
-            OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo);
-            
-            if (OH_ArkUI_ActiveChildrenInfo_GetCount(activeChildrenInfo) == NUMBER_2) {
-                ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-                ArkUI_AttributeItem background_color_item = {background_color_value,
-                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-                auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-                nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-            }
-        }
-    });
-    
+    nodeAPI->registerNodeEventReceiver(&OnEventReceive10);
+
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
         INVALID_PARAM) {
