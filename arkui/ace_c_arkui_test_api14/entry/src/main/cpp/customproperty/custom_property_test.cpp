@@ -103,15 +103,9 @@ napi_value CustomPropertyTest::testGetParentInPageTree002(napi_env env, napi_cal
     id_item.string = "columnA";
     nodeAPI->setAttribute(column, NODE_ID, &id_item);
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
-//     nodeAPI->setAttribute(text, NODE_WIDTH, &item);
-//     nodeAPI->setAttribute(text, NODE_HEIGHT, &item1);
     nodeAPI->setAttribute(text, NODE_ID, &textId);
     nodeAPI->addChild(column, text);
     
@@ -178,15 +172,9 @@ napi_value CustomPropertyTest::testGetActiveChildrenInfo003(napi_env env, napi_c
     nodeAPI->setAttribute(column, NODE_ID, &id_item);
     
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
-//     nodeAPI->setAttribute(text, NODE_WIDTH, &item);
-//     nodeAPI->setAttribute(text, NODE_HEIGHT, &item1);
     nodeAPI->setAttribute(text, NODE_ID, &textId);
     
     nodeAPI->addChild(column, text);
@@ -254,15 +242,9 @@ napi_value CustomPropertyTest::testGetCurrentPageRootNode004(napi_env env, napi_
     nodeAPI->setAttribute(column, NODE_ID, &id_item);
     
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
-//     nodeAPI->setAttribute(text, NODE_WIDTH, &item);
-//     nodeAPI->setAttribute(text, NODE_HEIGHT, &item1);
     nodeAPI->setAttribute(text, NODE_ID, &textId);
     nodeAPI->addChild(column, text);
     
@@ -329,10 +311,6 @@ napi_value CustomPropertyTest::testIsCreatedByNDK005(napi_env env, napi_callback
     OH_ArkUI_NodeUtils_AddCustomProperty(column, "CustomValueA", "aaa");
 
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
@@ -390,10 +368,6 @@ napi_value CustomPropertyTest::testGetNodeType006(napi_env env, napi_callback_in
     OH_ArkUI_NodeUtils_AddCustomProperty(column, "CustomValueA", "aaa");
     
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
@@ -448,10 +422,6 @@ napi_value CustomPropertyTest::testCustomPropertyDestroy007(napi_env env, napi_c
     OH_ArkUI_NodeUtils_AddCustomProperty(column, "CustomValueA", "aaa");
     
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
@@ -514,10 +484,6 @@ napi_value CustomPropertyTest::testCustomPropertyGetStringValue008(napi_env env,
     OH_ArkUI_NodeUtils_AddCustomProperty(column, "CustomValueA", "aaa");
 
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
@@ -575,15 +541,9 @@ napi_value CustomPropertyTest::testActiveChildrenInfoDestroy009(napi_env env, na
     nodeAPI->setAttribute(column, NODE_ID, &id_item);
     
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
-//     nodeAPI->setAttribute(text, NODE_WIDTH, &item);
-//     nodeAPI->setAttribute(text, NODE_HEIGHT, &item1);
     nodeAPI->setAttribute(text, NODE_ID, &textId);
     
     nodeAPI->addChild(column, text);
@@ -657,15 +617,9 @@ napi_value CustomPropertyTest::testActiveChildrenInfoGetNodeByIndex010(napi_env 
     nodeAPI->setAttribute(column, NODE_ID, &id_item);
     
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
-//     nodeAPI->setAttribute(text, NODE_WIDTH, &item);
-//     nodeAPI->setAttribute(text, NODE_HEIGHT, &item1);
     nodeAPI->setAttribute(text, NODE_ID, &textId);
     
     nodeAPI->addChild(column, text);
@@ -738,15 +692,9 @@ napi_value CustomPropertyTest::testActiveChildrenInfoGetCount011(napi_env env, n
     nodeAPI->setAttribute(column, NODE_ID, &id_item);
     
     ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-//     ArkUI_NumberValue value[] = {300};
-//     ArkUI_AttributeItem item = {value, 1};
-//     ArkUI_NumberValue value1[] = {100};
-//     ArkUI_AttributeItem item1 = {value1, 1};
     id_item.string = "7";
     nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &id_item);
     ArkUI_AttributeItem textId = {.string = "onClick"};
-//     nodeAPI->setAttribute(text, NODE_WIDTH, &item);
-//     nodeAPI->setAttribute(text, NODE_HEIGHT, &item1);
     nodeAPI->setAttribute(text, NODE_ID, &textId);
     nodeAPI->addChild(column, text);
     
