@@ -16,7 +16,6 @@ import { typeNode, FrameNode, NodeController } from '@ohos.arkui.node';
 
 class MyNodeController extends NodeController {
   public rootNode: FrameNode | null = null;
-  scroller: Scroller = new Scroller()
 
   makeNode(uiContext: UIContext): FrameNode | null {
     let node = new FrameNode(uiContext);
@@ -31,7 +30,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col)
 
     let gridNode = typeNode.createNode(uiContext, 'Grid')
-    gridNode.initialize(this.scroller)
+    gridNode.initialize()
       .id('grid_node')
       .columnsTemplate('1fr 1fr 1fr')
       .columnsGap(10)
@@ -53,8 +52,7 @@ class MyNodeController extends NodeController {
     col.appendChild(gridNode)
     return node;
   }
-  getNodeType()
-  {
+  getNodeType() {
     let inspectorInfo = this.rootNode?.getFirstChild()?.getNodeType();
     console.info('inspectorInfo ' + JSON.stringify(inspectorInfo));
     return JSON.stringify(inspectorInfo)
