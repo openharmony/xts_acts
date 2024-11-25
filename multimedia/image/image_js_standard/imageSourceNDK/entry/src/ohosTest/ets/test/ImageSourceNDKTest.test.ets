@@ -20,8 +20,7 @@ import ndkTest from 'libentry.so';
 import mdkTest from 'libentryMDK.so';
 import { testJpg } from './testImg';
 import { BusinessError } from "@kit.BasicServicesKit";
-import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
+import { common } from '@kit.AbilityKit';
 
 const CODE_SUCCESS = 0;
 const CODE_ERROR = -1;
