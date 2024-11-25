@@ -35,13 +35,13 @@
 using namespace std;
 //Init
 JSVM_Value TestInitTest1(JSVM_Env env, JSVM_CallbackInfo info);
-//CreateVM 
+//CreateVM
 JSVM_Value TestCreateVMTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCreateVMTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//DestroyVM 
+//DestroyVM
 JSVM_Value TestDestroyVMTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDestroyVMTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OpenVMScope 
+//OpenVMScope
 JSVM_Value TestOpenVMScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenVMScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
 //CloseVMScope
@@ -53,7 +53,7 @@ JSVM_Value TestCreateEnvTest2(JSVM_Env env, JSVM_CallbackInfo info);
 //DestroyEnv
 JSVM_Value TestDestroyEnvTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestDestroyEnvTest2(JSVM_Env env, JSVM_CallbackInfo info);
-//OpenEnvScope 
+//OpenEnvScope
 JSVM_Value TestOpenEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenEnvScopeTest2(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenEnvScopeTest3(JSVM_Env env, JSVM_CallbackInfo info);

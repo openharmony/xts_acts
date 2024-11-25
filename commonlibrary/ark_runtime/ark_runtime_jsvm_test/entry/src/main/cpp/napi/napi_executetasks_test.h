@@ -35,7 +35,7 @@
 using namespace std;
 // PumpMessageLoop
 JSVM_Value TestPumpMessageLoopTest1(JSVM_Env env, JSVM_CallbackInfo info);
-// PerformMicrotaskCheckpoint 
+// PerformMicrotaskCheckpoint
 JSVM_Value TestPerformMicrotaskCheckpointTest1(JSVM_Env env, JSVM_CallbackInfo info);
 // pump -- perform
 JSVM_Value TestExecuteTasksCombinationTest1(JSVM_Env env, JSVM_CallbackInfo info);

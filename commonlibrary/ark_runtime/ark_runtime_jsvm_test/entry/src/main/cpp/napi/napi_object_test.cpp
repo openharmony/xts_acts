@@ -667,7 +667,7 @@ const JSVM_TypeTag tagsData[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//object，set property，key is CreateSymbol create Symbol-> SymbolFor -> SymbolFor create new Symbol 
+//object，set property，key is CreateSymbol create Symbol-> SymbolFor -> SymbolFor create new Symbol
 //-> Typeof -> GetPrototype-> TypeTagObject-> CheckObjectTypeTag -> ObjectSeal-> SetNamedProperty
 [[maybe_unused]] JSVM_Value TestObjectCombinationTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -862,6 +862,8 @@ const JSVM_TypeTag tagsData[] = {
         OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest3: OH_JSVM_CheckObjectTypeTag bRstTypeTag = false");
         return nullptr;
     }
+    free(ptrData);
+    ptrData = nullptr;
     bool result = true;
     JSVM_Value value = nullptr;
     OH_JSVM_GetBoolean(env, result, &value);

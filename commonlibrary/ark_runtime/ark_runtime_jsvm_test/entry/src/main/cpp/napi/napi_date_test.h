@@ -38,7 +38,7 @@ using namespace std;
 JSVM_Value TestCreateDateTest1(JSVM_Env env, JSVM_CallbackInfo info);
 //GetDateValue
 JSVM_Value TestGetDateValueTest1(JSVM_Env env, JSVM_CallbackInfo info);
-//IsDate 
+//IsDate
 JSVM_Value TestIsDateTest1(JSVM_Env env, JSVM_CallbackInfo info);
 //Combination: create -- is-- get
 JSVM_Value TestDateCombinationTest1(JSVM_Env env, JSVM_CallbackInfo info);

@@ -16,7 +16,8 @@
 #include "jsvm_types.h"
 #include "napi_datatype_test.h"
 const size_t NUM_SIZE_2 = 2;
-JSVM_Value TestFunction(JSVM_Env env, JSVM_CallbackInfo info) {
+JSVM_Value TestFunction(JSVM_Env env, JSVM_CallbackInfo info)
+{
     JSVM_Value output;
     void *data = nullptr;
     OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, nullptr, &data);
@@ -24,10 +25,10 @@ JSVM_Value TestFunction(JSVM_Env env, JSVM_CallbackInfo info) {
     return output;
 }
 JSVM_CallbackStruct hello_cb = {TestFunction, (void *)"Hello"};
-int iFlag = 0;
+int flag = 0;
 intptr_t externals[] = {
     (intptr_t)&hello_cb,
-    (intptr_t)&iFlag,
+    (intptr_t)&flag,
 };
 //JSVM_Status OH_JSVM_Init
 [[maybe_unused]] JSVM_Value TestInitTest1(JSVM_Env env, JSVM_CallbackInfo info)
@@ -382,8 +383,9 @@ intptr_t externals[] = {
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-// CreateEnv 
-JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
+// CreateEnv
+JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = NUM_SIZE_2;
     JSVM_Value args[NUM_SIZE_2];
     JSVM_CALL(env, OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
@@ -394,10 +396,6 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
 }
 [[maybe_unused]] JSVM_Value TestCreateEnvTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value args[1] = {nullptr};
-    JSVM_Value thisVar = nullptr;
-    OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
     // create vm
     JSVM_VM vm;
     JSVM_CreateVMOptions options;

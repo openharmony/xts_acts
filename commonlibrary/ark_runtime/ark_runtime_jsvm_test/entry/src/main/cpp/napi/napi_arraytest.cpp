@@ -281,7 +281,7 @@ const int DIFF_VALUE_TWELVE = 12;
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-//type UINT16_ARRAY + length not 0 + arraybuffer obj + 
+//type UINT16_ARRAY + length not 0 + arraybuffer obj +
 //"byteOffset + sizeof(type) * length > sizeof(arraybuffer)" + nonnull
 [[maybe_unused]] JSVM_Value TestCreateTypedarray_05(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -749,7 +749,6 @@ const int DIFF_VALUE_TWELVE = 12;
         OH_JSVM_ThrowError(env, nullptr, "TestSetElement_05:OH_JSVM_SetElement Failed");
         return nullptr;
     }
-
     JSVM_Value recvMsg = nullptr;
     status = OH_JSVM_GetAndClearLastException(env, &recvMsg);
 
@@ -1751,7 +1750,7 @@ const int DIFF_VALUE_TWELVE = 12;
         JSVM_Value element;
         OH_JSVM_CreateUint32(env, i + 1, &element);
         status = OH_JSVM_SetElement(env, testArray, i, element);
-        if(status != JSVM_OK) {
+        if (status != JSVM_OK) {
             OH_JSVM_ThrowError(env, nullptr, "TestTypeArraySetMultipleTimes_01:OH_JSVM_SetElement 2 Failed");
             return nullptr;
         }
