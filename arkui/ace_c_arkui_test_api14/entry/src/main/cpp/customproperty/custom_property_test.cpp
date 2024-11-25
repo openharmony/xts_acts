@@ -128,7 +128,7 @@ napi_value CustomPropertyTest::testGetParentInPageTree002(napi_env env, napi_cal
             if (OH_ArkUI_NodeUtils_GetNodeType(parent) == 0) {
                 ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
                 ArkUI_AttributeItem background_color_item = {background_color_value,
-                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
                 auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
@@ -265,7 +265,7 @@ napi_value CustomPropertyTest::testGetCurrentPageRootNode004(napi_env env, napi_
             if (OH_ArkUI_NodeUtils_GetNodeType(pageNode) == NUMBER_1006) {
                 ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
                 ArkUI_AttributeItem background_color_item = {background_color_value,
-                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+                    sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
                 auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
@@ -323,7 +323,7 @@ napi_value CustomPropertyTest::testIsCreatedByNDK005(napi_env env, napi_callback
     if (isCapi) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
-             sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(text, NODE_BACKGROUND_COLOR, &background_color_item);
     }
     
@@ -377,7 +377,7 @@ napi_value CustomPropertyTest::testGetNodeType006(napi_env env, napi_callback_in
     if (OH_ArkUI_NodeUtils_GetNodeType(text) == 1) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
-             sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(text, NODE_BACKGROUND_COLOR, &background_color_item);
     }
     
@@ -430,10 +430,10 @@ napi_value CustomPropertyTest::testCustomPropertyDestroy007(napi_env env, napi_c
     OH_ArkUI_NodeUtils_GetCustomProperty(column, "CustomValueA", &customP);
 
     auto result = OH_ArkUI_CustomProperty_GetStringValue(customP);
-    if (strcmp(result,"aaa") == 0) {
+    if (strcmp(result, "aaa") == 0) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
-             sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};    
+            sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(text, NODE_BACKGROUND_COLOR, &background_color_item);
     }
     
@@ -485,8 +485,8 @@ napi_value CustomPropertyTest::testCustomPropertyGetStringValue008(napi_env env,
     nodeAPI->addChild(column, text);
     ArkUI_CustomProperty* customP;
     OH_ArkUI_NodeUtils_GetCustomProperty(column, "CustomValueA", &customP);
+
     auto result = OH_ArkUI_CustomProperty_GetStringValue(customP);
-    
     if (strcmp(result, "aaa") == 0) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
@@ -678,7 +678,7 @@ napi_value CustomPropertyTest::testActiveChildrenInfoGetCount011(napi_env env, n
             auto node = (ArkUI_NodeHandle)OH_ArkUI_NodeEvent_GetUserData(event);
             auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-            ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node); 
+            ArkUI_NodeHandle pageNode = OH_ArkUI_NodeUtils_GetCurrentPageRootNode(node);
             ArkUI_ActiveChildrenInfo* activeChildrenInfo;
             OH_ArkUI_NodeUtils_GetActiveChildrenInfo(pageNode, &activeChildrenInfo);
             
