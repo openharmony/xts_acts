@@ -31,7 +31,6 @@ using namespace std;
 #define IMAGE_LOG_DOMAIN 0x3200
 
 #define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, IMAGE_LOG_DOMAIN, IMAGE_LOG_TAG, fmt, ##__VA_ARGS__)
-#define DEBUG_PTR(p) (((p) == nullptr)?"nullptr":"not nullptr")
 
 static constexpr uint32_t NUM_0 = 0;
 static constexpr uint32_t NUM_1 = 1;
@@ -80,7 +79,7 @@ napi_value ImageSourceTest::JsGetImageProperty(napi_env env, napi_callback_info 
     size_t argCount = NUM_2;
 
     if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok) {
-        LOG( "JsGetImageProperty failed to parse params");
+        LOG("JsGetImageProperty failed to parse params");
         return result;
     }
 

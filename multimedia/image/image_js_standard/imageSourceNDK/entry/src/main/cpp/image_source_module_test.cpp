@@ -15,7 +15,7 @@
 
 #include <hilog/log.h>
 #include "image_source_module_test.h"
-#include <string.h>
+#include <cstring>
 #ifdef _WIN32
 #include "memory.h"
 #endif
@@ -27,7 +27,6 @@
 #define IMAGE_LOG_DOMAIN 0x3200
 
 #define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, IMAGE_LOG_DOMAIN, IMAGE_LOG_TAG, fmt, ##__VA_ARGS__)
-#define DEBUG_PTR(p) (((p) == nullptr)?"nullptr":"not nullptr")constexpr OHOS::HiviewDFX::HiLogLabel LABEL = {LOG_CORE, 0xD002B05, "ImageSourceModuleTest"};
 
 ImageSourceModuleTest::ImageSourceModuleTest()
 {

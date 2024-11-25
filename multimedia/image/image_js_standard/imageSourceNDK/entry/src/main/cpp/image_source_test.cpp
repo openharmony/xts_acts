@@ -311,7 +311,7 @@ napi_value ImageSourceNDKTest::Create(napi_env env, napi_callback_info info)
     ops.size.width = 0;
     int32_t res = OH_ImageSource_Create(env, &src, &ops, &imageSource);
     LOG("OH_ImageSource_Create res is: %{public}d", res);
-    if(imageSource == nullptr) {
+    if (imageSource == nullptr) {
         LOG("imageSource is nullptr");
     }
     OhosImageSourceRelease(src);
@@ -559,11 +559,11 @@ napi_value ImageSourceNDKTest::CreatePixelMapList(napi_env env, napi_callback_in
     }
     LOG("argValue check Success");
     struct OhosImageDecodingOps ops;
-    if (!parseImageDecodingOps(env, argValue[ARGS_SECOND], ops)) {  
+    if (!parseImageDecodingOps(env, argValue[ARGS_SECOND], ops)) {
         LOG("parseImageDecodingOps failed");
         return createUndefine(env);
     }
-    if(native == nullptr) {
+    if (native == nullptr) {
         LOG("native is null");
     }
     napi_value pixelmapList = nullptr;
@@ -598,7 +598,7 @@ napi_value ImageSourceNDKTest::GetDelayTime(napi_env env, napi_callback_info inf
     int32_t res = OH_ImageSource_GetDelayTime(native, &timeList);
     LOG("timeList.size is %{public}d", timeList.size);
     LOG("OH_ImageSource_GetDelayTime res is %{public}d", res);
-    if(timeList.delayTimeList == nullptr) {
+    if (timeList.delayTimeList == nullptr) {
         LOG("after timeList.delayTimeList is nullptr");
     }
     if (timeList.size == SIZE_ZERO || res != OHOS_IMAGE_RESULT_SUCCESS) {
