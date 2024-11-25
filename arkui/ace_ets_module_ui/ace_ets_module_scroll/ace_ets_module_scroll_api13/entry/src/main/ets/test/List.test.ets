@@ -38,6 +38,9 @@ import repeatAniGrid from './GridTest/repeatAniGrid.test';
 import waterFlowAniTrue from './WaterFlowTest/waterFlowAniTrue.test'; 
 import gridNode from './GridTest/gridNode.test';
 import griditemNode from './GridItemTest/griditemNode.test';
+import offsetRemainScroll from './ScrollTest/offsetRemainScroll.test'; 
+import barBackEffect from './TabsTest/barBackEffect.test';
+import nodeTypeGrid from './GridTest/nodeTypeGrid.test'; 
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -65,4 +68,7 @@ export default function testsuite() {
   waterFlowAniTrue()
   gridNode();
   griditemNode();
+  offsetRemainScroll()
+  barBackEffect()
+  nodeTypeGrid()
 }

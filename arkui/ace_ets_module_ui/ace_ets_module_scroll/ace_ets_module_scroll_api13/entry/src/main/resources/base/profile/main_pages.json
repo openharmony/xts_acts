@@ -25,6 +25,9 @@
         "MainAbility/pages/Grid/repeatAniGrid",
         "MainAbility/pages/WaterFlow/waterFlowAniTrue",
         "MainAbility/pages/Grid/gridNode",
-        "MainAbility/pages/GridItem/griditemNode"
+        "MainAbility/pages/GridItem/griditemNode",
+        "MainAbility/pages/Scroll/offsetRemainScroll",
+        "MainAbility/pages/Tabs/barBackEffect",
+        "MainAbility/pages/Grid/nodeTypeGrid"
     ]
 }
