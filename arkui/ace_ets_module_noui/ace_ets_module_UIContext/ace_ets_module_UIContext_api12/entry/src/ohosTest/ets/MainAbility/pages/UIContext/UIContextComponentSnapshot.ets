@@ -24,23 +24,23 @@ struct UIContextComponentSnapshot{
 
   build() {
     Column({space:5}){
-      Text(""+this.code).key("ERRORcODE")
-      Text(""+this.code1).key("ERRORcODE1")
-      Text(""+this.code2).key("ERRORcODE2")
-      Text(""+this.code3).key("ERRORcODE3")
+      Text(''+this.code).key('ERRORcODE')
+      Text(''+this.code1).key('ERRORcODE1')
+      Text(''+this.code2).key('ERRORcODE2')
+      Text(''+this.code3).key('ERRORcODE3')
 
       Row({space:5}){
         Image(this.pixmap).width(190).height(190).border({color:Color.Black,width:2}).objectFit(ImageFit.None)
 
       }
       Row({space:5}){
-        Image($r('app.media.icon')).width(50).height(50).id("image1")
+        Image($r('app.media.icon')).width(50).height(50).id('image1')
         Column({space:10}){
           Button('UIcontext getSync-0.1')
             .id('gPromise')
             .onClick(()=>{
               try {
-                let pixelmap = this.getUIContext().getComponentSnapshot().getSync("-0.1",{scale:4,waitUntilRenderFinished:true});
+                let pixelmap = this.getUIContext().getComponentSnapshot().getSync('-0.1',{scale:4,waitUntilRenderFinished:true});
                 this.pixmap = pixelmap
               } catch (error) {
                 this.code = error.code
@@ -50,7 +50,7 @@ struct UIContextComponentSnapshot{
             .id('gPromise1')
             .onClick(()=>{
               try {
-                let pixelmap = this.getUIContext().getComponentSnapshot().getSync("1",{scale:1,waitUntilRenderFinished:true});
+                let pixelmap = this.getUIContext().getComponentSnapshot().getSync('1',{scale:1,waitUntilRenderFinished:true});
                 this.pixmap = pixelmap
               } catch (error) {
                 this.code1 = error.code
@@ -60,7 +60,7 @@ struct UIContextComponentSnapshot{
             .id('gPromise2')
             .onClick(()=>{
               try {
-                let pixelmap = this.getUIContext().getComponentSnapshot().getSync("-2",{scale:4,waitUntilRenderFinished:false});
+                let pixelmap = this.getUIContext().getComponentSnapshot().getSync('-2',{scale:4,waitUntilRenderFinished:false});
                 this.pixmap = pixelmap
               } catch (error) {
                 this.code2 = error.code
@@ -70,7 +70,7 @@ struct UIContextComponentSnapshot{
             .id('gPromise3')
             .onClick(()=>{
               try {
-                let pixelmap = this.getUIContext().getComponentSnapshot().getSync("ab",{scale:0.5,waitUntilRenderFinished:true});
+                let pixelmap = this.getUIContext().getComponentSnapshot().getSync('ab',{scale:0.5,waitUntilRenderFinished:true});
                 this.pixmap = pixelmap
               } catch (error) {
                 this.code3 = error.code
