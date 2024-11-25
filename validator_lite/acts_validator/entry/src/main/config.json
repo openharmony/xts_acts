@@ -29,29 +29,6 @@
         "type": "page"
       }
     ],
-    "reqPermissions": [
-      {
-        "name": "ohos.permission.VIBRATE"
-      },
-      {
-        "name": "ohos.permission.ACTIVITY_MOTION"
-      },
-      {
-        "name": "ohos.permission.READ_HEALTH_DATA"
-      },
-      {
-        "name": "ohos.permission.ACCELEROMETER"
-      },
-      {
-        "name": "ohos.permission.GYROSCOPE"
-      },
-      {
-        "name": "ohos.permission.LOCATION"
-      },
-      {
-        "name": "ohos.permission.NFC_CARD_EMULATION"
-      }
-    ],
     "js": [
       {
         "pages": [
