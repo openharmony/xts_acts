@@ -146,6 +146,9 @@
 
 #include "grid/grid_nodeadapter_test.h"
 #include "refresh/refresh_offsetEvent_test.h"
+#include "hybird/hybird_getnodehandle_test.h"
+#include "response/response_configupdate_test.h"
+#include "requirement/requirement_pangesture_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -609,6 +612,12 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"nodeTreeXComponentDetach401Test", nullptr, NodeTreeXComponentTest::CreateNativeNodeXComponentDetach401,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"hybirdGetNodeHandleTest", nullptr, HybirdGetNodeHandleTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseConfigUpdateTest", nullptr, ResponseConfigUpdateTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"requirementPanGestureTest", nullptr, RequirementPanGestureTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

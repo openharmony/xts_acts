@@ -770,7 +770,18 @@ import swiperSwipeToIndexTest from "./swiper/SwiperSwipeToIndexTest.test"
 import swiperNestedScrollEventTest from "./swiper/SwiperNestedScrollEventTest.test"
 import refreshOffsetEventTest from "./refresh/RefreshOffsetEventTest.test"
 import radioOnChangeCheckedTest from "./radio/RadioOnChangeCheckedTest.test"
+import unitLengthMetricsTest from "./unit/UnitLengthMetricsTest.test"
+import unitWidthPercentTest from "./unit/UnitWidthPercentTest.test"
+import unitHeightPercentTest from "./unit/UnitHeightPercentTest.test"
+import unitMarginPercentTest from "./unit/UnitMarginPercentTest.test"
+import unitPaddingPercentTest from "./unit/UnitPaddingPercentTest.test"
+import unitBorderRadiusPercentTest from "./unit/UnitBorderRadiusPercentTest.test"
+import toolsLayoutRectTest from "./tools/ToolsLayoutRectTest.test"
+import hybirdGetNodeHandleTest from "./hybird/HybirdGetNodeHandleTest.test"
+import responseConfigUpdateTest from "./response/ResponseConfigUpdateTest.test"
+import requirementPanGestureTest from './requirement/RequirementPanGestureTest.test'
 export default function testsuite() {
+
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
   datePickerAccessibilityLevelTest()
@@ -1519,4 +1530,13 @@ export default function testsuite() {
   gridAdapterTest()
   radioOnChangeCheckedTest()
   refreshOffsetEventTest()
+  unitLengthMetricsTest()
+  unitWidthPercentTest()
+  unitHeightPercentTest()
+  unitMarginPercentTest()
+  unitPaddingPercentTest()
+  unitBorderRadiusPercentTest()
+  toolsLayoutRectTest()
+  hybirdGetNodeHandleTest()
+  requirementPanGestureTest()
 }

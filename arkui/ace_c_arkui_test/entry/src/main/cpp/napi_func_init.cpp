@@ -611,7 +611,6 @@
 #include "system/system_ColorFontChange_test.cpp"
 #include "text/text_imageSpan_test.cpp"
 #include "inputevent/input_event_func_test.cpp"
-
 #include "textarea/textarea_text_test.cpp"
 #include "textarea/textarea_fontfeature_test.cpp"
 #include "textarea/textarea_maxlines_test.cpp"
@@ -650,6 +649,13 @@
 #include "attributesetting/attribute_setting_test.cpp"
 #include "nodetree/node_tree_test.cpp"
 
+#include "unit/unit_lengthmetrics_test.cpp"
+#include "unit/unit_widthpercent_test.cpp"
+#include "unit/unit_heightpercent_test.cpp"
+#include "unit/unit_marginpercent_test.cpp"
+#include "unit/unit_paddingpercent_test.cpp"
+#include "unit/unit_borderradiuspercent_test.cpp"
+#include "tools/tools_layoutrect_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -7034,6 +7040,66 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testNodeTree020", nullptr, TestNodeTree020, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testNodeTree021", nullptr, TestNodeTree021, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testNodeTree022", nullptr, TestNodeTree022, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testUnitLengthMetrics001", nullptr, TestUnitLengthMetrics001, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitLengthMetrics002", nullptr, TestUnitLengthMetrics002, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitLengthMetrics003", nullptr, TestUnitLengthMetrics003, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitLengthMetrics004", nullptr, TestUnitLengthMetrics004, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitWidthPercent001", nullptr, TestUnitWidthPercent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitWidthPercent002", nullptr, TestUnitWidthPercent002, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitWidthPercent003", nullptr, TestUnitWidthPercent003, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitWidthPercent004", nullptr, TestUnitWidthPercent004, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitWidthPercent005", nullptr, TestUnitWidthPercent005, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitHeightPercent001", nullptr, TestUnitHeightPercent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitHeightPercent002", nullptr, TestUnitHeightPercent002, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitHeightPercent003", nullptr, TestUnitHeightPercent003, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitHeightPercent004", nullptr, TestUnitHeightPercent004, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitHeightPercent005", nullptr, TestUnitHeightPercent005, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitMarginPercent001", nullptr, TestUnitMarginPercent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitMarginPercent002", nullptr, TestUnitMarginPercent002, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitMarginPercent003", nullptr, TestUnitMarginPercent003, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitMarginPercent004", nullptr, TestUnitMarginPercent004, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitMarginPercent005", nullptr, TestUnitMarginPercent005, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitPaddingPercent001", nullptr, TestUnitPaddingPercent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitPaddingPercent002", nullptr, TestUnitPaddingPercent002, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitPaddingPercent003", nullptr, TestUnitPaddingPercent003, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitPaddingPercent004", nullptr, TestUnitPaddingPercent004, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitPaddingPercent005", nullptr, TestUnitPaddingPercent005, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitBorderRadiusPercent001", nullptr, TestUnitBorderRadiusPercent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitBorderRadiusPercent002", nullptr, TestUnitBorderRadiusPercent002, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitBorderRadiusPercent003", nullptr, TestUnitBorderRadiusPercent003, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitBorderRadiusPercent004", nullptr, TestUnitBorderRadiusPercent004, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testUnitBorderRadiusPercent005", nullptr, TestUnitBorderRadiusPercent005, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+        {"testToolsLayoutRect001", nullptr, TestToolsLayoutRect001, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
