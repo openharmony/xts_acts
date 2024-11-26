@@ -57,13 +57,13 @@ struct WebSslErrorTest {
               this.controller.clearSslCache();
               await Utils.sleep(2000)
               this.controller.loadUrl('https://expired.badssl.com');
-              await Utils.sleep(4000);
+              await Utils.sleep(15000);
               Utils.emitEvent(Number(this.sslErrorType), 70892)
               break;
             }
             case "emitSslErrorUntrusted": {
-              this.controller.loadUrl('https://incomplete-chain.badssl.com');
-              await Utils.sleep(4000);
+              this.controller.loadUrl('https://untrusted-root.badssl.com/');
+              await Utils.sleep(15000);
               Utils.emitEvent(Number(this.sslErrorType), 70893)
               break;
             }
