@@ -15,7 +15,7 @@
 
 #include <hilog/log.h>
 #include "image_source_module_test.h"
-#include <string.h>
+#include <cstring>
 
 #undef LOG_TAG
 #define LOG_TAG "ImageSourceModuleTest"
