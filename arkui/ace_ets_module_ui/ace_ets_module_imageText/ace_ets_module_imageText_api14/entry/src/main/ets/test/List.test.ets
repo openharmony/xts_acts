@@ -18,6 +18,7 @@ import KeyboardAvoidModeTest from './UIContext/KeyboardAvoidMode.test';
 import StyledString from './styledString/StyledString.test';
 import RichEditorOnHoverTest from './RichEditorTest/onHover.test';
 import SearchAutoDisableTest from './SearchTest/autoDisable.test';
+import imageSpanJsunit from './imageSpanTest/imageSpan.test';
 
 
 export default function testsuite() {
@@ -26,4 +27,5 @@ export default function testsuite() {
   StyledString();
   RichEditorOnHoverTest();
   SearchAutoDisableTest();
+  imageSpanJsunit()
 }

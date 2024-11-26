@@ -152,7 +152,6 @@
     "MainAbility/pages/TextInput/textInputHeightAdaptivePolicy",
     "MainAbility/pages/TextInput/textInputDecoration",
     "MainAbility/pages/TextInput/textInputLetterSpacing",
-    "MainAbility/pages/TextInput/textInputLineHeight",
-    "MainAbility/pages/ImageSpan/imageSpan"
+    "MainAbility/pages/TextInput/textInputLineHeight"
   ]
 }
