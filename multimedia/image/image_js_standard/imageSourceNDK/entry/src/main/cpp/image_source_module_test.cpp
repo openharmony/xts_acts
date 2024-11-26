@@ -15,10 +15,7 @@
 
 #include <hilog/log.h>
 #include "image_source_module_test.h"
-#include <cstring>
-#ifdef _WIN32
-#include "memory.h"
-#endif
+#include <string.h>
 
 #undef LOG_TAG
 #define LOG_TAG "ImageSourceModuleTest"
