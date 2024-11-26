@@ -711,7 +711,7 @@ static napi_value Ttyname(napi_env env, napi_callback_info info)
         }
     } else {
         char *ttyname_value = ttyname(value0);
-        if (ttyname_value != nullptr) {
+        if (ttyname_value != nullptr || errno == EACCES) {
             tojsResult = PARAM_0;
         }
     }

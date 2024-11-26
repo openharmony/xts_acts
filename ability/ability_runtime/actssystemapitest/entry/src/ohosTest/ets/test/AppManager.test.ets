@@ -19,14 +19,16 @@ import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
 let ERROR_CODE = 202;
+let ERROR_PERMISSION_CODE = 201;
+let ERROR_INNER_ERROR = 16000050;
 
 export default function appManagerTest() {
   describe('appManagerTest', () => {
 
     /**
      * @tc.number: System_API_Test_App_Manager_0100
-     * @tc.name: appManager.on system interface interception test
-     * @tc.desc: Test the third-party application call appManager.on will be blocked
+     * @tc.name: appManager.on public interface interception test
+     * @tc.desc: Test the third-party application without permission call appManager.on will be blocked
      * @tc.level 3
      */
     it('System_API_Test_App_Manager_0100', 0, (done: Function) => {
@@ -59,15 +61,15 @@ export default function appManagerTest() {
         console.log('-------- observerCode: ---------', observerCode);
       } catch (err) {
         console.log(TAG + "  err.code: " + err.code);
-        expect(err.code).assertEqual(ERROR_CODE);
+        expect(err.code).assertEqual(ERROR_PERMISSION_CODE);
         done();
       }
     })
 
     /**
      * @tc.number: System_API_Test_App_Manager_0200
-     * @tc.name: Multi-parameter appManager.on system interface interception test
-     * @tc.desc: Test the third-party application call appManager.on will be blocked
+     * @tc.name: Multi-parameter appManager.on public interface interception test
+     * @tc.desc: Test the third-party application without permission call appManager.on will be blocked
      * @tc.level 3
      */
     it('System_API_Test_App_Manager_0200', 0, (done: Function) => {
@@ -101,7 +103,7 @@ export default function appManagerTest() {
         console.log('-------- observerCode: ---------', observerCode);
       } catch (err) {
         console.log(TAG + "  err.code: " + err.code);
-        expect(err.code).assertEqual(ERROR_CODE);
+        expect(err.code).assertEqual(ERROR_PERMISSION_CODE);
         done();
       }
     })
@@ -184,8 +186,8 @@ export default function appManagerTest() {
 
     /**
      * @tc.number: System_API_Test_App_Manager_0700
-     * @tc.name: callback form killProcessesByBundleName system interface interception test
-     * @tc.desc: Test the third-party application call killProcessesByBundleName will be blocked
+     * @tc.name: callback form killProcessesByBundleName public interface interception test
+     * @tc.desc: Test the third-party application without permission call killProcessesByBundleName will be blocked
      * @tc.level 3
      */
     it('System_API_Test_App_Manager_0700', 0, (done: Function) => {
@@ -193,15 +195,15 @@ export default function appManagerTest() {
       let bundleName = "com.ohos.application";
       appManager.killProcessesByBundleName(bundleName, (err) => {
         console.log(TAG + "  err.code: " + err.code);
-        expect(err.code).assertEqual(ERROR_CODE);
+        expect(err.code).assertEqual(ERROR_INNER_ERROR);
         done();
       });
     })
 
     /**
      * @tc.number: System_API_Test_App_Manager_0800
-     * @tc.name: promise form killProcessesByBundleName system interface interception test
-     * @tc.desc: Test the third-party application call killProcessesByBundleName will be blocked
+     * @tc.name: promise form killProcessesByBundleName public interface interception test
+     * @tc.desc: Test the third-party application without permission call killProcessesByBundleName will be blocked
      * @tc.level 3
      */
     it('System_API_Test_App_Manager_0800', 0, (done: Function) => {
@@ -215,7 +217,7 @@ export default function appManagerTest() {
         })
         .catch((err: BusinessError) => {
           console.log(TAG + "  err.code: " + err.code);
-          expect(err.code).assertEqual(ERROR_CODE);
+          expect(err.code).assertEqual(ERROR_INNER_ERROR);
           done();
         })
     })

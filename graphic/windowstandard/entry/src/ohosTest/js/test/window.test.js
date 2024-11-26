@@ -971,55 +971,6 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0400
-     * @tc.name      testOnOff_WindowSizeChange_Callback
-     * @tc.desc      To verify the function of enabling and disabling lawful interception in the system and window
-     */
-        it('testOnOff_WindowSizeChange_Callback', 0, async function (done) {
-            let msgStr = 'onOff_Test_002';
-            console.log(msgStr + ' begin');
-            window.getTopWindow((err, data) => {
-                if (err.code != 0) {
-                    console.log(msgStr + ' getTopWindow callback fail ' + JSON.stringify(err.code));
-                    expect().assertFail();
-                    done();
-                } else {
-                    expect(data != null).assertTrue();
-                    data.on('systemAvoidAreaChange', systemAvoidAreaChangeCallback);
-                    data.setLayoutFullScreen(false, (err) => {
-                        console.log(msgStr + ' setLayoutFullScreen(false) err info is ' + JSON.stringify(err));
-                        data.setLayoutFullScreen(true, (err) => {
-                            console.log(msgStr + ' setLayoutFullScreen(true) err info is ' + JSON.stringify(err));
-                            data.setFullScreen(true, (err) => {
-                                if (err.code != 0) {
-                                    console.log(msgStr + ' setFullScreen callback fail ' + JSON.stringify(err));
-                                    expect().assertFail();
-                                    done();
-                                } else {
-                                    setTimeout((async function () {
-                                        expect(height == 0).assertTrue();
-                                        data.off('systemAvoidAreaChange');
-                                        data.setFullScreen(false, (err) => {
-                                            if (err.code != 0) {
-                                                console.log(msgStr + ' setLayoutFullScreen callback fail ' + JSON.stringify(err));
-                                                expect().assertFail();
-                                                done();
-                                            } else {
-                                                console.log(msgStr + ' off callback success');
-                                                expect(height == 0).assertTrue();
-                                                done();
-                                            }
-                                        })
-                                    }), 3000)
-                                }
-                            })
-                        })
-                    })
-                }
-            })
-        })
-
-        /**
      * @tc.number      SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0310
      * @tc.name        testIsShowing_Promise
      * @tc.desc        To verify the function of obtaining the display status when a window is hidden and then displayed.

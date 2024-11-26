@@ -67,7 +67,7 @@ struct getGridItemRect2 {
       .rowsGap(this.rowsGap1)
       .width(300)
       .backgroundColor(0xFAEEE0)
-      .height(500)
+      .height('60%')
 
       Button('点击获取信息').onClick((event: ClickEvent) => {
         this.x = this.scroller.getItemRect(this.index).x

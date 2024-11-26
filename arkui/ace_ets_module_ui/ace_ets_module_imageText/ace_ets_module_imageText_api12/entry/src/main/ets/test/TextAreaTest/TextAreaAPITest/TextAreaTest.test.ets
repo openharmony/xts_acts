@@ -55,6 +55,7 @@ export default function TextAreaTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       await button.inputText("hello")
+	  await driver.triggerKey(2047)
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('TextArea_1');
       let obj: ESObject = JSON.parse(strJson);

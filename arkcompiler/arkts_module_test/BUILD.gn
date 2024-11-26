@@ -19,6 +19,7 @@ group("ActsArktsModuleTest") {
     deps = [
       "basic_scenario:ActsArktsModuleBasicScenarioTest",
       "napi_load:ActsArkTsNapiLoadTest",
+      "static_load:ActsArkTsStaticLoadTest",
     ]
   }
 }

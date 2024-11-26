@@ -58,10 +58,7 @@ function isLegalIP(ipStr : string) {
 @Component
 struct DHCPClientAndServer {
   @State name: string = 'DHCPClientAndServer';
-  @State stepTips: string = '操作步骤：1.若设备不支持WLAN，点击\'设备不支持WLAN\'按钮跳过测试，测试通过' + '\n' +
-                    '2.若支持WLAN，进入设置应用WLAN配置界面' + '\n' + '3.连接任意WLAN，本机IP获取方式设置为DHCP（若无此选项则默认为DHCP）' + '\n' +
-                    '4.返回validator，点击完成设置按钮' + '\n' + '5.查看输出IP校验结果，若显示\'合法IP\'则测试通过，否则测试失败' + '\n' + '\n' + 
-                    '预期结果：连接WLAN后读取到的DHCP IP信息合法';
+  @State stepTips: string = '预期结果：连接WLAN后读取到的DHCP IP信息合法';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = "UNDEFINED";
@@ -81,14 +78,6 @@ struct DHCPClientAndServer {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Scroll(this.scroller) {
           Column() {
-            Button(`设备不支持WLAN`)
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .width('50%')
-              .margin('10vp')
-              .onClick(async () => {
-                this.testResult = true
-              })
 
             Row() {
               Text('\n' + '\n' + `根据以下操作步骤完成测试` + '\n' + '\n')
@@ -97,7 +86,7 @@ struct DHCPClientAndServer {
             }
 
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.若设备不支持WLAN，点击\'设备不支持WLAN\'按钮跳过测试，测试通过` + '\n' + '\n' +
+              Text(`测试步骤:` + '\n' + '\n' + `1.若设备不支持WLAN，直接点击测试失败按钮` + '\n' + '\n' +
                 `2.若支持WLAN，进入设置应用WLAN配置界面` + '\n' + '\n' + '3.连接任意WLAN，本机IP获取方式设置为DHCP（若无此选项则默认为DHCP）' + '\n' + '\n' +
                 '4.返回validator，点击完成设置按钮' + '\n' + '\n' + '5.查看输出IP校验结果，若显示\'合法IP\'则测试通过，否则测试失败' + '\n' + '\n')
                 .width('90%')

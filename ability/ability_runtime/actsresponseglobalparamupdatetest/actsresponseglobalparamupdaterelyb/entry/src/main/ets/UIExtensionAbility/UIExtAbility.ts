@@ -20,7 +20,7 @@ import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 import Want from '@ohos.app.ability.Want';
 
-const TAG: string = 'UIExtAbilityA';
+const TAG: string = 'UIExtAbilityB';
 
 export default class UIExtAbility extends UIExtensionAbility {
   onForeground() {
@@ -45,12 +45,12 @@ export default class UIExtAbility extends UIExtensionAbility {
     };
     hilog.info(0x0000, TAG, 'publishData: %{public}s', JSON.stringify(publishData.parameters) ?? '');
     commonEventManager.publish(
-      'RelyA_UIExtAbility_ConfigurationUpdateEvent', publishData, (err) => {
+      'RelyB_UIExtAbility_ConfigurationUpdateEvent', publishData, (err) => {
       if (err) {
         hilog.info(0x0000, TAG,
-          'RelyA_UIExtAbility_ConfigurationUpdateEvent publish failed, Cause: %{public}s', JSON.stringify(err) ?? '');
+          'RelyB_UIExtAbility_ConfigurationUpdateEvent publish failed, Cause: %{public}s', JSON.stringify(err) ?? '');
       } else {
-        hilog.info(0x0000, TAG, '%{public}s', 'RelyA_UIExtAbility_ConfigurationUpdateEvent publish successful');
+        hilog.info(0x0000, TAG, '%{public}s', 'RelyB_UIExtAbility_ConfigurationUpdateEvent publish successful');
       }
     });
   }

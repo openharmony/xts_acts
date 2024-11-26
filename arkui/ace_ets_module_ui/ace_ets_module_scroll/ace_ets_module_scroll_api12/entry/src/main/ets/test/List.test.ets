@@ -62,6 +62,7 @@ import SwiperAttribute_9 from './SwiperTest/SwiperAttributeTest/SwiperAttribute_
 import SwiperMargin_1 from './SwiperTest/SwiperAttributeTest/SwiperMargin_1.test';
 import SwiperMargin_2 from './SwiperTest/SwiperAttributeTest/SwiperMargin_2.test';
 import SwiperMargin_3 from './SwiperTest/SwiperAttributeTest/SwiperMargin_3.test';
+import SwiperMargin_4 from './SwiperTest/SwiperAttributeTest/SwiperMargin_4.test';
 import SwiperAutoPlay_1 from './SwiperTest/SwiperAttributeTest/SwiperAutoPlay_1.test';
 import SwiperAutoPlay_2 from './SwiperTest/SwiperAttributeTest/SwiperAutoPlay_2.test';
 import SwiperDisplayCount from './SwiperTest/SwiperAttributeTest/SwiperDisplayCount.test';
@@ -107,6 +108,7 @@ import waterFlowStart1 from './WaterFlowTest/waterFlowStart1.test';
 import waterFlowStart2 from './WaterFlowTest/waterFlowStart2.test';
 import waterFlowFling1 from './WaterFlowTest/waterFlowFling1.test';
 import waterFlowFling2 from './WaterFlowTest/waterFlowFling2.test';
+import alphabetAlignStyle from './AlphabetIndexerTest/alphabetAlignStyle.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -159,6 +161,7 @@ export default function testsuite() {
   SwiperMargin_1()
   SwiperMargin_2()
   SwiperMargin_3()
+  SwiperMargin_4()
   SwiperAutoPlay_1()
   SwiperAutoPlay_2()
   SwiperDisplayCount()
@@ -204,4 +207,5 @@ export default function testsuite() {
   waterFlowStart2()
   waterFlowFling1()
   waterFlowFling2()
+  alphabetAlignStyle()
 }

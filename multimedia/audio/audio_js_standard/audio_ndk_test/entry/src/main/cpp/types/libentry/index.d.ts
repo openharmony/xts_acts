@@ -120,7 +120,6 @@ export const audioRoutingManagerGetPreferredOutputDevice001: () => number;
 export const audioRoutingManagerGetPreferredInputDevice001: () => number;
 export const audioRoutingManagerSetMicBlockStatusCallback_001: () => number;
 export const audioRoutingManagerSetMicBlockStatusCallback_002: () => number;
-export const audioRoutingManagerSetMicBlockStatusCallback_003: () => number;
 export const audioRoutingManagerRegisterDeviceChangeCallback_001: () => number;
 export const audioRoutingManagerRegisterDeviceChangeCallback_002: () => number;
 export const audioRoutingManagerRegisterDeviceChangeCallback_003: () => number;

@@ -25,6 +25,8 @@
 #define FRAME_RATE_90_HZ  90
 #define FRAME_RATE_120_HZ 120
 #define SLEEP_TIME_US     100000
+#define EXEC_SUCCESS      0
+#define SOLOIST_ERROR     (-1)
  
 static void OnVSync(long long timestamp, long long targetTimestamp, void* data)
 {
@@ -35,11 +37,12 @@ static napi_value OHDisplaySoloistCreate001(napi_env env, napi_callback_info inf
     napi_value result = nullptr;
     OH_DisplaySoloist *nativeDisplaySoloist = nullptr;
     nativeDisplaySoloist = OH_DisplaySoloist_Create(false);
-    if (nativeDisplaySoloist == nullptr) {
-        napi_create_int32(env, FAIL, &result);
-    } else {
+    if (nativeDisplaySoloist != nullptr) {
         napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
     }
+    OH_DisplaySoloist_Destroy(nativeDisplaySoloist);
     return result;
 }
 
@@ -48,7 +51,7 @@ static napi_value OHDisplaySoloistStart001(napi_env env, napi_callback_info info
     napi_value result = nullptr;
     OH_DisplaySoloist_FrameCallback callback = OnVSync;
     int32_t resultStart = OH_DisplaySoloist_Start(nullptr, callback, nullptr);
-    if (resultStart == FAIL) {
+    if (resultStart == SOLOIST_ERROR) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -61,12 +64,14 @@ static napi_value OHDisplaySoloistStart002(napi_env env, napi_callback_info info
     napi_value result = nullptr;
     OH_DisplaySoloist *nativeDisplaySoloist = nullptr;
     OH_DisplaySoloist_FrameCallback callback = OnVSync;
+    nativeDisplaySoloist = OH_DisplaySoloist_Create(false);
     int32_t resultStart = OH_DisplaySoloist_Start(nativeDisplaySoloist, callback, nullptr);
-    if (resultStart == FAIL) {
+    if (resultStart == EXEC_SUCCESS) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
     }
+    OH_DisplaySoloist_Destroy(nativeDisplaySoloist);
     return result;
 }
 
@@ -75,13 +80,14 @@ static napi_value OHDisplaySoloistSetExpectedFrameRateRange001(napi_env env, nap
     napi_value result = nullptr;
     OH_DisplaySoloist *nativeDisplaySoloist = nullptr;
     DisplaySoloist_ExpectedRateRange validRange = { FRAME_RATE_30_HZ, FRAME_RATE_120_HZ, FRAME_RATE_60_HZ };
-    int32_t result1 = OH_DisplaySoloist_SetExpectedFrameRateRange(nullptr, &validRange);
-    int32_t result2 = OH_DisplaySoloist_SetExpectedFrameRateRange(nativeDisplaySoloist, nullptr);
-    if (result1 == FAIL || result2 == FAIL) {
+    nativeDisplaySoloist = OH_DisplaySoloist_Create(false);
+    if ((OH_DisplaySoloist_SetExpectedFrameRateRange(nullptr, &validRange) == SOLOIST_ERROR) ||
+        (OH_DisplaySoloist_SetExpectedFrameRateRange(nativeDisplaySoloist, nullptr) == SOLOIST_ERROR)) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
     }
+    OH_DisplaySoloist_Destroy(nativeDisplaySoloist);
     return result;
 }
 
@@ -90,7 +96,7 @@ static napi_value OHDisplaySoloistSetExpectedFrameRateRange002(napi_env env, nap
     napi_value result = nullptr;
     DisplaySoloist_ExpectedRateRange invalidRange = { FRAME_RATE_30_HZ, FRAME_RATE_90_HZ, FRAME_RATE_120_HZ };
     int32_t resultRange = OH_DisplaySoloist_SetExpectedFrameRateRange(nullptr, &invalidRange);
-    if (resultRange == FAIL) {
+    if (resultRange == SOLOIST_ERROR) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -103,12 +109,14 @@ static napi_value OHDisplaySoloistSetExpectedFrameRateRange003(napi_env env, nap
     napi_value result = nullptr;
     OH_DisplaySoloist *nativeDisplaySoloist = nullptr;
     DisplaySoloist_ExpectedRateRange validRange = { FRAME_RATE_30_HZ, FRAME_RATE_120_HZ, FRAME_RATE_60_HZ };
+    nativeDisplaySoloist = OH_DisplaySoloist_Create(false);
     int32_t resultRange = OH_DisplaySoloist_SetExpectedFrameRateRange(nativeDisplaySoloist, &validRange);
-    if (resultRange == FAIL) {
+    if (resultRange == EXEC_SUCCESS) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
     }
+    OH_DisplaySoloist_Destroy(nativeDisplaySoloist);
     return result;
 }
 
@@ -116,7 +124,7 @@ static napi_value OHDisplaySoloistStop001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int32_t resultStop = OH_DisplaySoloist_Stop(nullptr);
-    if (resultStop == FAIL) {
+    if (resultStop == SOLOIST_ERROR) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -128,12 +136,14 @@ static napi_value OHDisplaySoloistStop002(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     OH_DisplaySoloist *nativeDisplaySoloist = nullptr;
+    nativeDisplaySoloist = OH_DisplaySoloist_Create(false);
     int32_t resultStop = OH_DisplaySoloist_Stop(nativeDisplaySoloist);
-    if (resultStop == FAIL) {
+    if (resultStop == EXEC_SUCCESS) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
     }
+    OH_DisplaySoloist_Destroy(nativeDisplaySoloist);
     return result;
 }
 
@@ -141,7 +151,7 @@ static napi_value OHDisplaySoloistDestroy001(napi_env env, napi_callback_info in
 {
     napi_value result = nullptr;
     int32_t resultDestroy = OH_DisplaySoloist_Destroy(nullptr);
-    if (resultDestroy == FAIL) {
+    if (resultDestroy == SOLOIST_ERROR) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -153,8 +163,9 @@ static napi_value OHDisplaySoloistDestroy002(napi_env env, napi_callback_info in
 {
     napi_value result = nullptr;
     OH_DisplaySoloist *nativeDisplaySoloist = nullptr;
+    nativeDisplaySoloist = OH_DisplaySoloist_Create(false);
     int32_t resultDestroy = OH_DisplaySoloist_Destroy(nativeDisplaySoloist);
-    if (resultDestroy == FAIL) {
+    if (resultDestroy == EXEC_SUCCESS) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);

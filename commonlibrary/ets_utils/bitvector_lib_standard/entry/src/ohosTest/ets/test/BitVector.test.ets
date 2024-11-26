@@ -39,11 +39,8 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_constructor_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         expect(bitVector.length).assertEqual(10);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_002
@@ -54,8 +51,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_push_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let res0 = bitVector.push(0);
         let res1 = bitVector.push(1);
@@ -68,7 +63,6 @@ export default function BitVectorTest() {
         expect(res3).assertEqual(true);
         expect(res4).assertEqual(true);
         expect(bitVector.length).assertEqual(5);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_003
@@ -79,8 +73,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_push_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -88,7 +80,6 @@ export default function BitVectorTest() {
           expect(res0).assertEqual(true);
         }
         expect(bitVector.length).assertEqual(64);
-      });
     });
     /**
      * @tc.number    : BITVECTOR_TEST_004
@@ -99,8 +90,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_push_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -108,7 +97,6 @@ export default function BitVectorTest() {
           expect(res0).assertEqual(true);
         }
         expect(bitVector.length).assertEqual(bitVectorLength + 10);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_005
@@ -119,8 +107,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_pop_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(0);
         bitVector.push(1);
@@ -138,7 +124,6 @@ export default function BitVectorTest() {
         expect(res3).assertEqual(1);
         expect(res4).assertEqual(0);
         expect(bitVector.length).assertEqual(0);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_006
@@ -149,8 +134,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_pop_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -163,7 +146,6 @@ export default function BitVectorTest() {
           expect(res1).assertEqual(0);
         }
         expect(bitVector.length).assertEqual(0);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_007
@@ -174,8 +156,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_pop_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -188,7 +168,6 @@ export default function BitVectorTest() {
           expect(res1).assertEqual(0);
         }
         expect(bitVector.length).assertEqual(10);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_008
@@ -199,8 +178,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_has_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(0);
         bitVector.push(0);
@@ -216,7 +193,6 @@ export default function BitVectorTest() {
         expect(res2).assertEqual(false);
         let res3 = bitVector.has(0, 0, 3);
         expect(res3).assertEqual(true);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_009
@@ -227,8 +203,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_has_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -247,7 +221,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_010
@@ -258,8 +231,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_has_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -277,7 +248,6 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 0.1`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_011
@@ -288,8 +258,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_has_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -308,7 +276,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_012
@@ -319,8 +286,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_has_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -339,7 +304,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 7. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_013
@@ -350,8 +314,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_has_Func_006", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -372,7 +334,6 @@ export default function BitVectorTest() {
         expect(res2).assertEqual(true);
         let res3 = bitVector.has(0, 32, 63);
         expect(res3).assertEqual(false);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_014
@@ -383,8 +344,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_has_Func_007", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -405,7 +364,6 @@ export default function BitVectorTest() {
         expect(res2).assertEqual(true);
         let res3 = bitVector.has(0, 42, (bitVectorLength + 10) - 1);
         expect(res3).assertEqual(false);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_015
@@ -416,8 +374,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_setBitsByRange_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(0);
         bitVector.push(1);
@@ -432,7 +388,6 @@ export default function BitVectorTest() {
         expect(bitVector[1]).assertEqual(1);
         expect(bitVector[2]).assertEqual(1);
         expect(bitVector[3]).assertEqual(1);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_016
@@ -443,8 +398,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_setBitsByRange_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -463,7 +416,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_017
@@ -474,8 +426,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_setBitsByRange_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -493,7 +443,6 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 0.1`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_018
@@ -504,8 +453,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_setBitsByRange_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -524,7 +471,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_019
@@ -535,8 +481,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_setBitsByRange_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -555,7 +499,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 7. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_020
@@ -566,8 +509,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_setBitsByRange_Func_006", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -588,7 +529,6 @@ export default function BitVectorTest() {
         for (let i = 32; i < 64; i++) {
           expect(bitVector[i]).assertEqual(0);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_021
@@ -599,8 +539,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_setBitsByRange_Func_007", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -621,7 +559,6 @@ export default function BitVectorTest() {
         for (let i = 42; i < 74; i++) {
           expect(bitVector[i]).assertEqual(0);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_022
@@ -632,8 +569,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_getBitsByRange_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -644,7 +579,6 @@ export default function BitVectorTest() {
         expect(bitVector[0]).assertEqual(1);
         expect(bitVector[1]).assertEqual(1);
         expect(bitVector[2]).assertEqual(0);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_023
@@ -655,8 +589,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getBitsByRange_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -675,7 +607,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_024
@@ -686,8 +617,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getBitsByRange_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -705,7 +634,6 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 0.1`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_025
@@ -716,8 +644,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getBitsByRange_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -736,7 +662,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_026
@@ -747,8 +672,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getBitsByRange_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -767,7 +690,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 7. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_027
@@ -778,8 +700,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_getBitsByRange_Func_006", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector_old = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -791,7 +711,6 @@ export default function BitVectorTest() {
         for (let i = 0; i < bitVectorLength; i++) {
           expect(bitVector_new[i]).assertEqual(0);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_028
@@ -802,8 +721,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_getBitsByRange_Func_007", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector_old = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -815,7 +732,6 @@ export default function BitVectorTest() {
         for (let i = 10; i < bitVectorLength + 10; i++) {
           expect(bitVector_new[i]).assertEqual(0);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_029
@@ -826,8 +742,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_resize_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -836,7 +750,6 @@ export default function BitVectorTest() {
         bitVector.push(1);
         bitVector.resize(4);
         expect(bitVector.length).assertEqual(4);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_030
@@ -847,8 +760,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_resize_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -861,7 +772,6 @@ export default function BitVectorTest() {
         expect(bitVector[2]).assertEqual(1);
         expect(bitVector[3]).assertEqual(1);
         expect(bitVector[4]).assertEqual(1);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_031
@@ -872,8 +782,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_resize_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -886,7 +794,6 @@ export default function BitVectorTest() {
         expect(bitVector[7]).assertEqual(0);
         expect(bitVector[8]).assertEqual(0);
         expect(bitVector[9]).assertEqual(0);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_032
@@ -897,8 +804,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_resize_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -917,7 +822,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "length" is out of range. It must be >= 0. Received value is: -4`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_033
@@ -928,8 +832,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_resize_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -947,7 +849,6 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "size" must be integer. Received value is: 6.1`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_034
@@ -958,8 +859,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_resize_Func_006", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -968,7 +867,6 @@ export default function BitVectorTest() {
         }
         bitVector.resize(63);
         expect(bitVector.length).assertEqual(63);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_035
@@ -979,8 +877,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_resize_Func_007", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -989,7 +885,6 @@ export default function BitVectorTest() {
         }
         bitVector.resize(64);
         expect(bitVector.length).assertEqual(64);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_036
@@ -1000,8 +895,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_resize_Func_008", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1012,7 +905,6 @@ export default function BitVectorTest() {
         for (let i = bitVectorLength; i < 100; i++) {
           expect(0).assertEqual(bitVector[i]);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_037
@@ -1023,8 +915,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_resize_Func_009", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1034,7 +924,6 @@ export default function BitVectorTest() {
         expect(bitVector.length).assertEqual(bitVectorLength + 10);
         bitVector.resize(64);
         expect(bitVector.length).assertEqual(bitVectorLength);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_038
@@ -1045,8 +934,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_getBitCountByRange_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(0);
         bitVector.push(1);
@@ -1057,7 +944,6 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(3);
         let res2 = bitVector.getBitCountByRange(1, 0, 5);
         expect(res2).assertEqual(2);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_039
@@ -1068,8 +954,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getBitCountByRange_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1088,9 +972,7 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_040
      * @tc.name      : BitVector_getBitCountByRange_Func_003
@@ -1100,8 +982,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getBitCountByRange_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1119,9 +999,7 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 0.1`);
         }
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_041
      * @tc.name      : BitVector_getBitCountByRange_Func_004
@@ -1131,8 +1009,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getBitCountByRange_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1151,9 +1027,7 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_042
      * @tc.name      : BitVector_getBitCountByRange_Func_005
@@ -1163,8 +1037,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getBitCountByRange_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1183,9 +1055,7 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 7. Received value is: -3`);
         }
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_043
      * @tc.name      : BitVector_getBitCountByRange_Func_006
@@ -1195,8 +1065,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_getBitCountByRange_Func_006", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1213,9 +1081,7 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(32);
         let res2 = bitVector.getBitCountByRange(1, 0, 64);
         expect(res2).assertEqual(32);
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_044
      * @tc.name      : BitVector_getBitCountByRange_Func_007
@@ -1225,8 +1091,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_getBitCountByRange_Func_007", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1243,9 +1107,7 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(32);
         let res2 = bitVector.getBitCountByRange(1, 10, bitVectorLength + 10);
         expect(res2).assertEqual(32);
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_045
      * @tc.name      : BitVector_getIndexOf_Func_001
@@ -1255,8 +1117,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_getIndexOf_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1267,9 +1127,7 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(2);
         let res2 = bitVector.getIndexOf(1, 0, 5);
         expect(res2).assertEqual(0);
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_046
      * @tc.name      : BitVector_getIndexOf_Func_002
@@ -1279,8 +1137,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getIndexOf_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1299,9 +1155,7 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_047
      * @tc.name      : BitVector_getIndexOf_Func_003
@@ -1311,8 +1165,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getIndexOf_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1331,9 +1183,7 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_048
      * @tc.name      : BitVector_getIndexOf_Func_004
@@ -1343,8 +1193,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getIndexOf_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1359,9 +1207,7 @@ export default function BitVectorTest() {
           expect(true).assertEqual(false);
         } catch (err) {
         }
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_049
      * @tc.name      : BitVector_getIndexOf_Func_005
@@ -1371,8 +1217,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getIndexOf_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1390,9 +1234,7 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 0.1`);
         }
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_050
      * @tc.name      : BitVector_getIndexOf_Func_006
@@ -1402,8 +1244,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_getIndexOf_Func_006", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1420,9 +1260,7 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(0);
         let res2 = bitVector.getIndexOf(1, 0, 64);
         expect(res2).assertEqual(32);
-      })
     });
-
     /**
      * @tc.number    : BITVECTOR_TEST_051
      * @tc.name      : BitVector_getIndexOf_Func_007
@@ -1432,8 +1270,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_getIndexOf_Func_007", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1450,7 +1286,6 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(10);
         let res2 = bitVector.getIndexOf(1, 10, bitVectorLength + 10);
         expect(res2).assertEqual(42);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_052
@@ -1461,8 +1296,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_getLastIndexOf_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1473,7 +1306,6 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(4);
         let res2 = bitVector.getLastIndexOf(1, 0, 5);
         expect(res2).assertEqual(3);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_053
@@ -1484,8 +1316,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getLastIndexOf_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1504,7 +1334,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_054
@@ -1515,8 +1344,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getLastIndexOf_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1535,7 +1362,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_055
@@ -1546,8 +1372,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getLastIndexOf_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1566,7 +1390,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 7. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_056
@@ -1577,8 +1400,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_getLastIndexOf_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1596,7 +1417,6 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 0.1`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_057
@@ -1607,8 +1427,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_getLastIndexOf_Func_006", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1625,7 +1443,6 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(31);
         let res2 = bitVector.getLastIndexOf(1, 0, 64);
         expect(res2).assertEqual(63);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_058
@@ -1636,8 +1453,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_getLastIndexOf_Func_007", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1654,7 +1469,6 @@ export default function BitVectorTest() {
         expect(res1).assertEqual(41);
         let res2 = bitVector.getLastIndexOf(1, 10, bitVectorLength + 10);
         expect(res2).assertEqual(73);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_059
@@ -1665,8 +1479,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_flipBitByIndex_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1683,7 +1495,6 @@ export default function BitVectorTest() {
         expect(bitVector[2]).assertEqual(0);
         expect(bitVector[3]).assertEqual(0);
         expect(bitVector[4]).assertEqual(1);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_060
@@ -1694,8 +1505,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_flipBitByIndex_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1714,7 +1523,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 7. Received value is: 20`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_061
@@ -1725,8 +1533,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_flipBitByIndex_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1744,7 +1550,6 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "index" must be integer. Received value is: 6.1`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_062
@@ -1755,8 +1560,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_flipBitByIndex_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1779,7 +1582,6 @@ export default function BitVectorTest() {
             expect(bitVector[i]).assertEqual(1);
           }
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_063
@@ -1790,8 +1592,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_flipBitByIndex_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1814,7 +1614,6 @@ export default function BitVectorTest() {
             expect(bitVector[i]).assertEqual(1);
           }
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_064
@@ -1825,8 +1624,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_flipBitsByRange_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1838,7 +1635,6 @@ export default function BitVectorTest() {
         expect(bitVector[1]).assertEqual(0);
         expect(bitVector[2]).assertEqual(1);
         expect(bitVector[3]).assertEqual(0);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_065
@@ -1849,8 +1645,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_flipBitsByRange_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1869,7 +1663,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_066
@@ -1880,8 +1673,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_flipBitsByRange_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1900,7 +1691,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_067
@@ -1911,8 +1701,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_flipBitsByRange_Func_004", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1931,7 +1719,6 @@ export default function BitVectorTest() {
           expect(err.message)
             .assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 7. Received value is: -3`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_068
@@ -1942,8 +1729,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 2
      */
     it("BitVector_flipBitsByRange_Func_005", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -1961,7 +1746,6 @@ export default function BitVectorTest() {
           expect(err.code).assertEqual(401);
           expect(err.message).assertEqual(`The type of "fromIndex" must be integer. Received value is: 3.11`);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_069
@@ -1972,8 +1756,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_flipBitsByRange_Func_006", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -1990,7 +1772,6 @@ export default function BitVectorTest() {
         for (let i = 0; i < bitVectorLength; i++) {
           expect(bitVector[i]).assertEqual(1);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_070
@@ -2001,8 +1782,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_flipBitsByRange_Func_007", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -2023,7 +1802,6 @@ export default function BitVectorTest() {
             expect(bitVector[i]).assertEqual(1);
           }
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_071
@@ -2034,8 +1812,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_Values_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -2054,7 +1830,6 @@ export default function BitVectorTest() {
         for (let i = 0; i < a.length; i++) {
           expect(vec[i]).assertEqual(a[i]);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_072
@@ -2065,8 +1840,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_Values_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -2085,7 +1858,6 @@ export default function BitVectorTest() {
         for (let i = 0; i < bitVectorLength; i++) {
           expect(vec[i]).assertEqual(0);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_073
@@ -2096,8 +1868,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_Values_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -2116,7 +1886,6 @@ export default function BitVectorTest() {
         for (let i = 10; i < bitVectorLength + 10; i++) {
           expect(vec[i]).assertEqual(0);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_074
@@ -2127,8 +1896,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 0
      */
     it("BitVector_setAllBits_Func_001", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         bitVector.push(1);
         bitVector.push(1);
@@ -2147,7 +1914,6 @@ export default function BitVectorTest() {
         expect(bitVector[2]).assertEqual(1);
         expect(bitVector[3]).assertEqual(1);
         expect(bitVector[4]).assertEqual(1);
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_075
@@ -2158,8 +1924,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_setAllBits_Func_002", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -2175,7 +1939,6 @@ export default function BitVectorTest() {
         for (let i = 0; i < bitVectorLength; i++) {
           expect(bitVector[i]).assertEqual(0);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_076
@@ -2186,8 +1949,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_setAllBits_Func_003", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(10);
         let bitVectorLength = 64;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -2203,7 +1964,6 @@ export default function BitVectorTest() {
         for (let i = 10; i < bitVectorLength + 10; i++) {
           expect(bitVector[i]).assertEqual(0);
         }
-      })
     });
     /**
      * @tc.number    : BITVECTOR_TEST_077
@@ -2214,8 +1974,6 @@ export default function BitVectorTest() {
      * @tc.level     : Level 1
      */
     it("BitVector_has_Func_008", 0, async () => {
-      let lock = new ArkTSUtils.locks.AsyncLock();
-      lock.lockAsync<void>(() => {
         let bitVector = new collections.BitVector(0);
         let bitVectorLength = 20;
         for (let i = 0; i < bitVectorLength; i++) {
@@ -2236,7 +1994,6 @@ export default function BitVectorTest() {
         expect(res2).assertEqual(false);
         let res3 = bitVector.has(0, 0, 19);
         expect(res3).assertEqual(true);
-      })
     });
   });
 }

@@ -169,7 +169,7 @@ export default function abilityTest() {
       for (let i = 0; i < bundleNameArray.length; ++i) {
         abilityDelegator.startAbility({
           bundleName: bundleNameArray[i],
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbility callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -206,7 +206,7 @@ export default function abilityTest() {
       }
       abilityDelegator.startAbility({
         bundleName: bundleNameArray[bundleNameArray.length-1],
-        abilityName: 'TestAbility',
+        abilityName: 'EntryAbility',
       }, (err, data) => {
         hilog.info(0x0000, TAG,
           'startAbilityE callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -272,7 +272,7 @@ export default function abilityTest() {
         }
         abilityDelegator.startAbility({
           bundleName: 'com.example.actsresponseglobalparamupdaterelyd',
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbilityD callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -335,7 +335,7 @@ export default function abilityTest() {
         }
         abilityDelegator.startAbility({
           bundleName: 'com.example.actsresponseglobalparamupdaterelyd',
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbilityD callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -399,7 +399,7 @@ export default function abilityTest() {
         }
         abilityDelegator.startAbility({
           bundleName: 'com.example.actsresponseglobalparamupdaterelyd',
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbilityD callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -463,7 +463,7 @@ export default function abilityTest() {
         }
         abilityDelegator.startAbility({
           bundleName: 'com.example.actsresponseglobalparamupdaterelyd',
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbilityD callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -579,7 +579,7 @@ export default function abilityTest() {
 
         abilityDelegator.startAbility({
           bundleName: 'com.example.actsresponseglobalparamupdaterelyd',
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbilityD callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -596,7 +596,7 @@ export default function abilityTest() {
 
         abilityDelegator.startAbility({
           bundleName: 'com.example.actsresponseglobalparamupdaterelyc',
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbilityC callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -613,7 +613,7 @@ export default function abilityTest() {
 
         abilityDelegator.startAbility({
           bundleName: 'com.example.actsresponseglobalparamupdaterelyb',
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbilityB callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));
@@ -630,7 +630,7 @@ export default function abilityTest() {
 
         abilityDelegator.startAbility({
           bundleName: 'com.example.actsresponseglobalparamupdaterelya',
-          abilityName: 'TestAbility',
+          abilityName: 'EntryAbility',
         }, (err, data) => {
           hilog.info(0x0000, TAG,
             'startAbilityA callback err: %{public}s; data: %{public}s', JSON.stringify(err), JSON.stringify(data));

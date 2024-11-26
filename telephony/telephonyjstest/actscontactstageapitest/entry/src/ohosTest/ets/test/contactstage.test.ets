@@ -195,6 +195,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_query_key_test_0100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       let rawContactId = await contact.addContact(context, contactData);
       expect(rawContactId > 0).assertTrue();
       try {
@@ -219,6 +220,7 @@ export default function ContactInterfaceStageTest() {
     it("SUB_Telephony_ContactsApi_query_key_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let caseName = "SUB_Telephony_ContactsApi_query_key_test_0200";
+	  sleep(500);
       contact.addContact(context,contactData,(err:BusinessError,rawContactId:number)=>{
         if (err) {
           console.log(`${caseName} add contact err>${JSON.stringify(err)}`)
@@ -253,6 +255,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       let contactDataError:contact.Contact = {};
       try {
+        sleep(500);
         let rawContactId = await contact.addContact(context, contactDataError);
         console.info("SUB_Telephony_ContactsApi_insert_test_0100 : rawContactId = " + rawContactId);
         expect(rawContactId == -1).assertTrue();
@@ -368,6 +371,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_addContact_test_0100", 0, async (done:Function) => {
+      sleep(500);
       let context: Context = AppStorage.get('context') as Context;
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
@@ -410,6 +414,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_addContact_test_0200", 0, async (done:Function) => {
+      sleep(500);
       let context: Context = AppStorage.get('context') as Context;
       let promise = contact.addContact(context, contactData);
       promise.then((data:number) => {
@@ -455,6 +460,7 @@ export default function ContactInterfaceStageTest() {
       expect(holder.bundleName === null).assertFalse();
       expect(holder.displayName === null).assertFalse();
       expect(holder.holderId != 0).assertTrue();
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContact_test_0100  err = " + JSON.stringify(err));
@@ -497,6 +503,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContact_test_0200  err = " + JSON.stringify(err));
@@ -538,6 +545,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContact_test_0300  err = " + JSON.stringify(err));
@@ -580,6 +588,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContact_test_0400  err = " + JSON.stringify(err));
@@ -621,6 +630,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContact_test_0500  err = " + JSON.stringify(err));
@@ -662,6 +672,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContacts_test_0100  err = " + JSON.stringify(err));
@@ -695,6 +706,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContacts_test_0200  err = " + JSON.stringify(err));
@@ -728,6 +740,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContacts_test_0300  err = " + JSON.stringify(err));
@@ -761,6 +774,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContacts_test_0400  err = " + JSON.stringify(err));
@@ -794,6 +808,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContacts_test_0500  err = " + JSON.stringify(err));
@@ -827,6 +842,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0100  err = " + JSON.stringify(err));
@@ -862,6 +878,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0200  err = " + JSON.stringify(err));
@@ -897,6 +914,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0300  err = " + JSON.stringify(err));
@@ -932,6 +950,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0400  err = " + JSON.stringify(err));
@@ -967,6 +986,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0500  err = " + JSON.stringify(err));
@@ -1001,6 +1021,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0100  err = " + JSON.stringify(err));
@@ -1034,6 +1055,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0200  err = " + JSON.stringify(err));
@@ -1067,6 +1089,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0300  err = " + JSON.stringify(err));
@@ -1100,6 +1123,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0400  err = " + JSON.stringify(err));
@@ -1133,6 +1157,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0500  err = " + JSON.stringify(err));
@@ -1166,6 +1191,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryGroups_test_0100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryGroups_test_0100  err = " + JSON.stringify(err));
@@ -1199,6 +1225,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryGroups_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryGroups_test_0200  err = " + JSON.stringify(err));
@@ -1232,6 +1259,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryGroups_test_0300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryGroups_test_0300  err = " + JSON.stringify(err));
@@ -1311,6 +1339,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryKey_test_0100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryKey_test_0100  err = " + JSON.stringify(err));
@@ -1344,6 +1373,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryKey_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryKey_test_0200  err = " + JSON.stringify(err));
@@ -1377,6 +1407,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_queryKey_test_0300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_queryKey_test_0300  err = " + JSON.stringify(err));
@@ -1478,6 +1509,7 @@ export default function ContactInterfaceStageTest() {
       const caseName: string = "SUB_Telephony_ContactsApi_updateContact_test_0100";
       console.info(`${caseName} test start`);
         let context: Context = AppStorage.get('context') as Context;
+		sleep(500);
         contact.addContact(context, contactData, (err:BusinessError, data:number) => {
           if (err) {
             console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  err = " + JSON.stringify(err));
@@ -1554,6 +1586,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_updateContact_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  err = " + JSON.stringify(err));
@@ -1630,6 +1663,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_updateContact_test_0300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
@@ -1705,6 +1739,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_updateContact_test_0400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0400  err = " + JSON.stringify(err));
@@ -1737,6 +1772,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_isLocalContact_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_isLocalContact_test_0200  err = " + JSON.stringify(err));
@@ -1769,6 +1805,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_isMyCard_test_0100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  err = " + JSON.stringify(err));
@@ -1801,6 +1838,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_isMyCard_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (err) {
           console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  err = " + JSON.stringify(err));
@@ -1833,6 +1871,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_selectContacts_test_0100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (!err) {
           console.info("SUB_Telephony_ContactsApi_selectContacts_test_0100  data = " + JSON.stringify(data));
@@ -1863,6 +1902,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_selectContacts_test_0200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (!err) {
           console.info("SUB_Telephony_ContactsApi_selectContacts_test_0200  data = " + JSON.stringify(data));
@@ -1892,6 +1932,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_selectContacts_test_0300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (!err) {
           console.info("SUB_Telephony_ContactsApi_selectContacts_test_0300  data = " + JSON.stringify(data));
@@ -1924,6 +1965,7 @@ export default function ContactInterfaceStageTest() {
      */
     it("SUB_Telephony_ContactsApi_selectContacts_test_0400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
+	  sleep(500);
       contact.addContact(context, contactData, (err, data) => {
         if (!err) {
           console.info("SUB_Telephony_ContactsApi_selectContacts_test_0400  data = " + JSON.stringify(data));

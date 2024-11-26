@@ -20,7 +20,7 @@ import AudioRenderCapturerInterruptUnitTest from './AudioRenderCapturerInterrupt
 import AudioVoiceMessageCapturer from './AudioVoiceMessageCapturer.test'
 import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { abilityDelegatorRegistry, BY, UiDriver } from '@kit.TestKit';
+import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 
 function getPermission() {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
@@ -43,11 +43,11 @@ export function sleep(ms: number): Promise<string> {
 
 async function permissionClick() {
   console.info(`come in permissionClick`);
-  let driver = await UiDriver.create();
+  let driver = await Driver.create();
   console.info(`driver is ${JSON.stringify(driver)}`);
   await sleep(100);
   console.info(`UiDriver start`);
-  let button = await driver.findComponent(BY.text('允许'));
+  let button = await driver.waitForComponent(ON.text('允许'), 5000);
   if (button == null) {
     let delegator = abilityDelegatorRegistry.getAbilityDelegator();
     let cmd = "hidumper -s WindowManagerService -a'-a'"

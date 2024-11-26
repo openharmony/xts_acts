@@ -13,7 +13,7 @@
             "value": "0xF0003"
         },
         {
-            "name": "symbolTest1_1",
+            "name": "symbolTestReference",
             "value": "$symbol:symbolTest1"
         },
         {

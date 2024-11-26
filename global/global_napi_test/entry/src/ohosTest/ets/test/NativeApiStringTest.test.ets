@@ -663,5 +663,25 @@ export default function abilityTest() {
       expect(value).assertTrue();
     })
 
+    /* *
+    * @tc.number    : SUB_GLOBAL_getRawFile_0020
+    * @tc.name      : getRawFileContent_nativeTest_0020
+    * @tc.desc      : getRawFileContent support seek
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('getRawFileContent_nativeTest_0020', 0, () => {
+      console.log("getRawFileContent_nativeTest_0020 1");
+      let value = nativeTest.getRawFileContentTwo(resManager.resourceManager, 'rawfileTest.txt');
+      console.log("getRawFileContent_nativeTest_0020 3");
+      let dataString = "";
+      for (let i = 0; i < value.length; i++) {
+        dataString += String.fromCharCode(value[i]);
+      }
+      console.log("getRawFileContent_nativeTest_0020 value:" + value);
+      console.log("getRawFileContent_nativeTest_0020 dataString:" + dataString);
+      expect(dataString == 'qwem7890weasd123').assertTrue();
+    })
   })
 }

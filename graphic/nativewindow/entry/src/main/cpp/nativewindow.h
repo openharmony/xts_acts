@@ -133,5 +133,5 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal
                                                                                  napi_callback_info info);
 napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal(napi_env env,
                                                                                    napi_callback_info info);
-
+napi_value testNativeWindowSetMetadataValue_metadata_type(napi_env env, napi_callback_info info);
 #endif // NATIVEWINDOW_USELESS_H

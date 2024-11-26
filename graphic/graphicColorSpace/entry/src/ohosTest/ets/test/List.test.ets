@@ -13,9 +13,11 @@
  * limitations under the License.
  */
 import colorSpaceManagerTest from './colorSpaceManager.test';
+import sendableColorSpaceManagerTest from './sendableColorSpaceManager.test';
 import common from '@ohos.app.ability.common';
 import ohosWindow from '@ohos.window';
 
 export default function testsuite(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
   colorSpaceManagerTest(context, windowStage, abilityStorage);
+  sendableColorSpaceManagerTest();
 }

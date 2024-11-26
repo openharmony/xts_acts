@@ -22,7 +22,6 @@ struct ScrollBarExampler {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   @State directionValue: ScrollBarDirection = ScrollBarDirection.Vertical;
   @State stateValue: BarState= BarState.Off;
-  @State enableNestedScrollValue: boolean= true;
 
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("scrollBar page state change called:" + JSON.stringify(eventData));
@@ -33,9 +32,6 @@ struct ScrollBarExampler {
       }
       if (eventData.data?.stateValue != null) {
         this.stateValue = eventData.data?.stateValue;
-      }
-      if (eventData.data?.enableNestedScrollValue != null) {
-        this.enableNestedScrollValue = eventData.data?.enableNestedScrollValue as boolean;
       }
     }
   }
@@ -53,12 +49,6 @@ struct ScrollBarExampler {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
-
-    let stateChangeEvent3: events_emitter.InnerEvent = {
-      eventId: 185,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
   }
 
   build() {
@@ -89,7 +79,7 @@ struct ScrollBarExampler {
             .height(100)
             .borderRadius(10)
             .backgroundColor('#C0C0C0')
-        }.key('scroll').width(30).backgroundColor('#ededed').enableNestedScroll(this.enableNestedScrollValue)
+        }.key('scroll').width(30).backgroundColor('#ededed')
       }
     }
   }

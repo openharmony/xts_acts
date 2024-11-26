@@ -78,6 +78,11 @@ struct SetCircle {
               .height('100%')
               .backgroundColor('#ffffffff')
               .onReady(() => {
+                this.context.setLineDash([20, 30]);
+                this.context.beginPath();
+                this.context.arc(180, 150, 50, 0, 6.28);
+                this.context.lineDashOffset = (this.X) * 0.4;
+                this.context.stroke();
               })
           }
           .width('100%')

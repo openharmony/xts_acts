@@ -14,6 +14,7 @@
  */
 import graphicTextATest from './graphicTextA.test'
 import graphicTextBTest from './graphicTextB.test'
+import graphicTextCTest from './graphicTextC.test'
 import graphicTextClass from './graphicTextClass.test'
 import graphicTextEnum from './graphicTextEnum.test'
 import graphicTextInterface from './graphicTextInterface.test'
@@ -24,6 +25,7 @@ import LineMetricsTwoTest from './LineMetricsTwoTest.test'
 export default function testsuite() {
   graphicTextATest()
   graphicTextBTest()
+  graphicTextCTest()
   graphicTextClass();
   graphicTextEnum();
   graphicTextInterface();

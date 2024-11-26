@@ -36,10 +36,7 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 @Component
 struct UninstallHap {
   @State name: string = 'UninstallHap';
-  @State stepTips: string = '操作步骤: ' + '\n' + '1.点击开始键进入系统桌面' + '\n' +
-              '2.卸载UninstallTest应用' + '\n' + '3.返回validator应用' + '\n' +
-              '4.点击结束按钮，观察卸载结果是否为TRUE' + '\n' + '\n' +
-              '预期结果：成功卸载应用';
+  @State stepTips: string = '预期结果：成功卸载应用';
   @State testResult: boolean = false;
   @State startEnable: boolean = true;
   @State result: string = "FLASE";
@@ -66,7 +63,7 @@ struct UninstallHap {
             }
 
             Row() {
-              Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入系统桌面` + '\n' + '\n' + 
+              Text(`测试步骤:` + '\n' + '\n' + `1.点击开始键进入系统桌面` + '\n' + '\n' + 
               '2.卸载UninstallTest应用' + '\n' + '\n' + '3.返回validator应用' + '\n' + '\n' +
               '4.点击结束按钮，观察卸载结果是否为TRUE' + '\n' + '\n')
                 .width('90%')

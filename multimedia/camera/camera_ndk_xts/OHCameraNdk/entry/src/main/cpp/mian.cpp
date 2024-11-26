@@ -1288,6 +1288,22 @@ static napi_value OHPhotoOutputIsMirrorSupported(napi_env env, napi_callback_inf
     napi_create_int32(env, code, &result);
     return result;
 }
+static napi_value OHPhotoOutputEnableMirror(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera->EnableMirror(index);
+
+    napi_create_int32(env, code, &result);
+    return result;
+}
 static napi_value OHPhotoOutputCapture(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -1519,6 +1535,8 @@ napi_property_descriptor desc3[] = {
     {"oHPhotoOutputUnregisterCallback", nullptr, OHPhotoOutputUnregisterCallback, nullptr, nullptr, nullptr,
      napi_default, nullptr},
     {"oHPhotoOutputIsMirrorSupported", nullptr, OHPhotoOutputIsMirrorSupported, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"oHPhotoOutputEnableMirror", nullptr, OHPhotoOutputEnableMirror, nullptr, nullptr, nullptr,
      napi_default, nullptr},
     {"oHPhotoOutputCapture", nullptr, OHPhotoOutputCapture, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"oHPhotoOutputCaptureWithCaptureSetting", nullptr, OHPhotoOutputCaptureWithCaptureSetting, nullptr, nullptr,

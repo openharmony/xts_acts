@@ -22,8 +22,8 @@
                 "power-shell wakeup",
                 "uinput -T -m 300 2700 280 200",
                 "power-shell setmode 602",
-                "mkdir -p /data/app/el2/100/base/ohos.audio.napitest/haps/entry/files",
-                "chmod 777 -R /data/app/el2/100/base/ohos.audio.napitest/haps/entry"
+                "mkdir -p /data/app/el2/100/base/ohos.audio.napitest/haps/entry_test/files",
+                "chmod 777 -R /data/app/el2/100/base/ohos.audio.napitest/haps/entry_test"
             ],
             "teardown-command": [
                 "power-shell setmode 600"
@@ -34,7 +34,7 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/audio/audioRenderer/test_44100_2.wav ->/data/app/el2/100/base/ohos.audio.napitest/haps/entry/files/"
+                "./resource/audio/audioRenderer/test_44100_2.wav ->/data/app/el2/100/base/ohos.audio.napitest/haps/entry_test/files/"
             ]
         }
     ]

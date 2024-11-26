@@ -66,6 +66,7 @@ export default function search_gesture() {
         console.info('search_gesture_001 click success');
         //first step: input hello
         await searchComponent.inputText('hello');
+		await driver.triggerKey(2047)
         await CommonFunc.sleep(1000);
 
         //second step: get caret position and click caret
@@ -128,7 +129,7 @@ export default function search_gesture() {
         console.info(`[search_gesture_002] caretOffsetX is:${obj1.$attrs.content}`);
         let caretRelativeX = parseInt(obj1.$attrs.content);
         let searchRect = CommonFunc.getComponentRectOnScreen('SearchGesture');
-        let clickX = Math.round(searchRect.left + caretRelativeX + relativeContentRectLeftWidth - vp2px(6));
+        let clickX = Math.round(searchRect.left + caretRelativeX + relativeContentRectLeftWidth - vp2px(10));
         let clickY =  Math.round((searchRect.bottom + searchRect.top)/2);
         await driver.longClick(clickX, clickY);
         await CommonFunc.sleep(1000);
@@ -155,13 +156,14 @@ export default function search_gesture() {
         let search: Component = await driver.findComponent(ON.text('这是预置文本', MatchPattern.CONTAINS));
         await search.clearText();
         await CommonFunc.sleep(500);
-        let point = await search.getBoundsCenter();
-        await CommonFunc.sleep(500);
-        await driver.longClick(point.x, point.y);
         let strJson2 = getInspectorByKey('SearchGesture');
         let obj2: ESObject = JSON.parse(strJson2);
         console.info(`[search_gesture_002] after clear text, obj2 is:${strJson2}`);
         expect(obj2.$attrs.value).assertEqual('');
+        let point = await search.getBoundsCenter();
+        await CommonFunc.sleep(500);
+        await driver.longClick(point.x, point.y);
+        await CommonFunc.sleep(500);
         let strJson4 = getInspectorByKey('SearchGesture');
         let obj4: ESObject = JSON.parse(strJson4);
         console.info(`[search_gesture_002] third step Search selectOverlay obj is:${strJson4}`);
@@ -190,6 +192,7 @@ export default function search_gesture() {
       console.info('[search_gesture_003] click success');
       //first step: input long text
       await searchComponent.inputText('helloWORLD!helloWORLD!helloWORLD!helloWORLD!helloWORLD!helloWORLD!');
+	  await driver.triggerKey(2047)
       await CommonFunc.sleep(1000);
 
       //second step: trigger enter and check focus state
@@ -256,6 +259,7 @@ export default function search_gesture() {
       console.info('[search_gesture_005] click success');
       //first step: input hello and click the head of line,check caret position
       await searchComponent.inputText('hello');
+	  await driver.triggerKey(2047)
       await CommonFunc.sleep(500);
       let searchRect = await searchComponent.getBounds();
       let clickX = Math.round(searchRect.left + relativeContentRectLeftWidth);

@@ -29,7 +29,7 @@ struct swiper {
   @State address: string = '';
   @State FillColor: string = '#FF000000';
   @State name: string = 'Swiper';
-  @State StepTips: string = '操作步骤：点击上一页、下一页按钮' + '\n' + '预期结果：轮播图能够正常翻页';
+  @State StepTips: string = '操作步骤：点击上一页或下一页按钮，可以正常翻页' + '\n' + '预期结果：轮播图能够正常翻页';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -37,7 +37,7 @@ struct swiper {
   @State itemSpace: number = 0;
   @State isVertical: boolean = false;
   @State duration: number = 400;
-  @State loop: boolean = false;
+  @State loop: boolean = true;
   @State autoPlay: boolean = false;
   @State interval: number = 1000;
   @State count: number = 0;

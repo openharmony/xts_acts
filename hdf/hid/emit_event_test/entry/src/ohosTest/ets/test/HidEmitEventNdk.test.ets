@@ -19,6 +19,7 @@ import hidEmitEvent from 'libhidemiteventndk.so'
 
 const TAG: string = "[HidEmitEventTest]";
 const DEVICE_NOSUPPORT_ERRINFO: string = "The device does not support or cannot find hid_ddk_service;";
+const HID_DDK_INVALID_PARAMETER: number = 401;
 
 function IsDevcieSupport(errCode: number, caseName: string) {
   if (errCode == -3) {
@@ -47,10 +48,42 @@ export default function HidEmitEventTest() {
      * @tc.level      : Level 2
      */
     it('testHidCreateDevice0100', 0, async (done: Function) => {
-      let ret = hidEmitEvent.hidCreateDevice();
+      let ret = hidEmitEvent.hidCreateDeviceOne();
       console.info(TAG, "Test result testHidCreateDevice0100 : " + ret);
       IsDevcieSupport(ret, 'testHidCreateDevice0100');
       expect(ret >= 0).assertTrue();
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_Driver_Ext_HIDDDK_0800
+     * @tc.name       : testHidCreateDevice0200
+     * @tc.desc       : OH_Hid_CreateDevice Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testHidCreateDevice0200', 0, async (done: Function) => {
+      let ret = hidEmitEvent.hidCreateDeviceTwo();
+      console.info(TAG, "Test result testHidCreateDevice0200 : " + ret);
+      IsDevcieSupport(ret, 'testHidCreateDevice0100');
+      expect(ret == HID_DDK_INVALID_PARAMETER).assertTrue();
+      done()
+    });
+
+    /**
+     * @tc.number     : SUB_Driver_Ext_HIDDDK_0900
+     * @tc.name       : testHidCreateDevice0300
+     * @tc.desc       : OH_Hid_CreateDevice Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testHidCreateDevice0300', 0, async (done: Function) => {
+      let ret = hidEmitEvent.hidCreateDeviceThree();
+      console.info(TAG, "Test result testHidCreateDevice0300 : " + ret);
+      IsDevcieSupport(ret, 'testHidCreateDevice0100');
+      expect(ret == HID_DDK_INVALID_PARAMETER).assertTrue();
       done()
     });
 

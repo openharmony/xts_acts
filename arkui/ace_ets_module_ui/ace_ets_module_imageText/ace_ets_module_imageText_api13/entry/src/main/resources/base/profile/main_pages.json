@@ -1,9 +1,16 @@
 {
   "src": [
     "MainAbility/pages/index/index",
+    "MainAbility/pages/Text/textAreaInputTest",
     "MainAbility/pages/Text/TextMenuType",
     "MainAbility/pages/RichEditor/RichEditorMenuType",
     "MainAbility/pages/Marquee/marqueeFrame",
-    "MainAbility/pages/Text/editMenuIdAIWriter"
+    "MainAbility/pages/Text/editMenuIdAIWriter",
+    "MainAbility/pages/MovingPhotoView/MovingPhotoView",
+    "MainAbility/pages/Text/StyledString",
+    "MainAbility/pages/RichEditor/RichEditorStyledStringTest",
+    "MainAbility/pages/Marquee/marqueeNode",
+    "MainAbility/pages/TextArea/textAreaNode",
+    "MainAbility/pages/SymbolGlyph/SymbolGlyphNode"
   ]
 }

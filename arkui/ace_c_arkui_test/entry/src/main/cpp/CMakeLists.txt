@@ -112,7 +112,6 @@ add_library(nativerender SHARED
     system/system_ColorFontChange_test.cpp
     text/text_imageSpan_test.cpp
     animation/animator_event_test.cpp
-    customproperty/custom_property_test.cpp
 )
 
 add_library(nativefunc SHARED

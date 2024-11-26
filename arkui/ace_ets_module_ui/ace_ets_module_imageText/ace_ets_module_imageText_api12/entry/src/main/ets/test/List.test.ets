@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import textAreaInputTest from './TextArea/textAreaInputTest.test';
 import onSelectionChange1 from './RichEditorTest/onSelectionChange1.test'
 import onSelectionChange2 from './RichEditorTest/onSelectionChange2.test'
 import onSelectionChange3 from './RichEditorTest/onSelectionChange3.test'
@@ -104,7 +105,6 @@ import RichEditorChangeValueTest1 from './RichEditor/RichEditorChangeValueTest1.
 import RichEditorGetLayoutManagerTest1 from './RichEditor/RichEditorGetLayoutManagerTest1.test'
 import RichEditorStyledStringTest1 from './RichEditor/RichEditorStyledStringTest1.test'
 import RichEditorStyledStringTest2 from './RichEditor/RichEditorStyledStringTest2.test'
-import RichEditorStyledStringTest3 from './RichEditor/RichEditorStyledStringTest3.test'
 import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
 import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
@@ -155,8 +155,23 @@ import getRectsForRangeTest from './RichEditor/getRectsForRange.test'
 import textInputEnterKeyTypeTest from './TextInput/textInputEnterKeyType.test'
 import spanTest from './spanTest/SpanJsunit1.test'
 import textAreaAutoFillTest from './TextArea/TextAreaAutoFillJsUnit.test'
+import textAreaHeightAdaptivePolicyTest from "./TextArea/textAreaHeightAdaptivePolicy.test";
+import textAreaMaxFontSize from "./TextArea/textAreaMaxFontSize.test";
+import textAreaMinFontSize from "./TextArea/textAreaMinFontSize.test";
+import textAreaDecoration from "./TextArea/textAreaDecoration.test";
+import textAreaLineHeight from "./TextArea/textAreaLineHeight.test";
+import textAreaLetterSpacing from "./TextArea/textAreaLetterSpacing.test";
+import textInputUnderlineColorTest from "./TextInput/textInputUnderlineColor.test";
+import textInputMaxFontSize from "./TextInput/textInputMaxFontSize.test";
+import textInputMinFontSize from "./TextInput/textInputMinFontSize.test";
+import textInputHeightAdaptivePolicy from "./TextInput/textInputHeightAdaptivePolicy.test";
+import textInputDecoration from "./TextInput/textInputDecoration.test";
+import textInputLetterSpacing from "./TextInput/textInputLetterSpacing.test";
+import textInputLineHeight from "./TextInput/textInputLineHeight.test";
+import imageSpanJsunit from './ImageSpanTest/imageSpan.test';
 
 export default function testsuite() {
+  textAreaInputTest();
   APIContentTypeTest();
   APIUnderlineColorTest();
   TextInputAddApi();
@@ -246,7 +261,6 @@ export default function testsuite() {
   RichEditorGetLayoutManagerTest1();
   RichEditorStyledStringTest1();
   RichEditorStyledStringTest2();
-  RichEditorStyledStringTest3();
   RichEditorApi2();
   RichEditorApi6();
   RichEditorApi7();
@@ -292,4 +306,18 @@ export default function testsuite() {
   textInputEnterKeyTypeTest();
   spanTest();
   textAreaAutoFillTest()
+  textAreaHeightAdaptivePolicyTest();
+  textAreaMinFontSize();
+  textAreaMaxFontSize();
+  textAreaLineHeight();
+  textAreaDecoration();
+  textAreaLetterSpacing();
+  textInputUnderlineColorTest();
+  textInputMaxFontSize();
+  textInputMinFontSize();
+  textInputHeightAdaptivePolicy();
+  textInputDecoration();
+  textInputLetterSpacing();
+  textInputLineHeight();
+  imageSpanJsunit();
 }

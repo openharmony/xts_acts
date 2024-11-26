@@ -46,9 +46,9 @@ static void OnClose(struct WebSocket *client, WebSocket_CloseResult closeResult)
     OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "OnClose");
 }
 
-static napi_value OHWebsocketClientConstruct(napi_env env, napi_callback_info)
+static napi_value OHWebSocketClientConstruct(napi_env env, napi_callback_info)
 {
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "OHWebsocketClientConstruct start");
+    OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "OHWebSocketClientConstruct start");
     int ret;
     struct WebSocket *client = new WebSocket();
     const char *url = "www.baidu.com";
@@ -113,9 +113,9 @@ static napi_value OHWebSocketClientClose(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHWebsocketClientDestroy(napi_env env, napi_callback_info info)
+static napi_value OHWebSocketClientDestroy(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "OHWebsocketClientDestroy start");
+    OH_LOG_Print(LOG_APP, LOG_DEBUG, WEBSOCKET_LOG_DOMAIN, WEBSOCKET_LOG_TAG, "OHWebSocketClientDestroy start");
     napi_value result = nullptr;
     struct WebSocket *client = new WebSocket();
     struct WebSocket_CloseOption CloseOption;
@@ -130,15 +130,15 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"oHWebsocketClientConstruct", nullptr, OHWebsocketClientConstruct, nullptr, nullptr, nullptr, napi_default,
+        {"OHWebSocketClientConstruct", nullptr, OHWebSocketClientConstruct, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"oHWebSocketClientAddHeader", nullptr, OHWebSocketClientAddHeader, nullptr, nullptr, nullptr, napi_default,
+        {"OHWebSocketClientAddHeader", nullptr, OHWebSocketClientAddHeader, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"oHWebSocketClientConnect", nullptr, OHWebSocketClientConnect, nullptr, nullptr, nullptr, napi_default,
+        {"OHWebSocketClientConnect", nullptr, OHWebSocketClientConnect, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"oHWebSocketClientSend", nullptr, OHWebSocketClientSend, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"oHWebSocketClientClose", nullptr, OHWebSocketClientClose, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"oHWebsocketClientDestroy", nullptr, OHWebsocketClientDestroy, nullptr, nullptr, nullptr, napi_default,
+        {"OHWebSocketClientSend", nullptr, OHWebSocketClientSend, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHWebSocketClientClose", nullptr, OHWebSocketClientClose, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHWebSocketClientDestroy", nullptr, OHWebSocketClientDestroy, nullptr, nullptr, nullptr, napi_default,
          nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -151,7 +151,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "entry",
+    .nm_modname = "testNetStackWebsocketNdk",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };

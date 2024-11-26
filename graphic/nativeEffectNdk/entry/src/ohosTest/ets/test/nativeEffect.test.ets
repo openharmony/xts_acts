@@ -33,6 +33,20 @@ export default function nativeEffectTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterCreateEffect001
+     * @tc.name       : testOHFilterCreateEffect001
+     * @tc.desc       : test OH_Filter_Create_Effect001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterCreateEffect001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterCreateEffect001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterInvert
      * @tc.name       : testOHFilterInvert
      * @tc.desc       : test OH_Filter_Invert
@@ -42,6 +56,20 @@ export default function nativeEffectTest() {
      */
     it('testOHFilterInvert', 0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterInvert();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterInvert001
+     * @tc.name       : testOHFilterInvert001
+     * @tc.desc       : test OH_Filter_Invert001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterInvert001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterInvert001();
       expect(result).assertEqual(0);
       done();
     });
@@ -61,6 +89,20 @@ export default function nativeEffectTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterBlur001
+     * @tc.name       : testOHFilterBlur001
+     * @tc.desc       : test OH_Filter_Blur001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterBlur001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterBlur001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterGrayScale
      * @tc.name       : testOHFilterGrayScale
      * @tc.desc       : test OH_Filter_Gray_Scale
@@ -70,6 +112,20 @@ export default function nativeEffectTest() {
      */
     it('testOHFilterGrayScale', 0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterGrayScale();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterGrayScale001
+     * @tc.name       : testOHFilterGrayScale001
+     * @tc.desc       : test OH_Filter_Gray_Scale001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterGrayScale001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterGrayScale001();
       expect(result).assertEqual(0);
       done();
     });
@@ -89,6 +145,20 @@ export default function nativeEffectTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterBrighten001
+     * @tc.name       : testOHFilterBrighten001
+     * @tc.desc       : test OH_Filter_Brighten001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterBrighten001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterBrighten001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterSetColorMatrix
      * @tc.name       : testOHFilterSetColorMatrix
      * @tc.desc       : test OH_Filter_Set_Color_Matrix
@@ -98,6 +168,20 @@ export default function nativeEffectTest() {
      */
     it('testOHFilterSetColorMatrix', 0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterSetColorMatrix();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterSetColorMatrix001
+     * @tc.name       : testOHFilterSetColorMatrix001
+     * @tc.desc       : test OH_Filter_Set_Color_Matrix001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterSetColorMatrix001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterSetColorMatrix001();
       expect(result).assertEqual(0);
       done();
     });
@@ -126,6 +210,20 @@ export default function nativeEffectTest() {
      */
     it('testOHFilterRelease', 0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterRelease();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_EFFECT_KIT_OH_FilterRelease001
+     * @tc.name       : testOHFilterRelease001
+     * @tc.desc       : test OH_Filter_Release001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHFilterRelease001', 0, async (done: Function) => {
+      let result: number = nativeEffectNdk.oHFilterRelease001();
       expect(result).assertEqual(0);
       done();
     });

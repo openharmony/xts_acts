@@ -18,9 +18,9 @@ group("huks") {
     deps = [
       "huks_ets_api12:ActsHuksEtsApi12FuncTest",
       "huks_js_api8:ActsHuksJsApi8FuncTest",
+      "huks_js_api9:ActsHuksJsApi9FuncTest",
       "huks_napi_BasicTest:ActsHuksNAPITest",
       "huks_ndk_Test:ActsHuksNdkTest",
-      "security_huks_reformed_test",
     ]
   }
 }

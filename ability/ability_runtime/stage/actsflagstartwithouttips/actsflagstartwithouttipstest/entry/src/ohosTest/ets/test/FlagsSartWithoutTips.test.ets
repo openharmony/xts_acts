@@ -127,15 +127,10 @@ export default function flagstartwithouttipstest() {
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
-      if (deviceType === '2in1') {
-        await driver.delayMs(2000);
-        await judgeDialog(done);
-      } else {
-        await driver.delayMs(2000);
-        let textComponent = await driver.findComponent(ON.id('TEST_PAGE_TEXT'));
-        expect(!!textComponent).assertTrue();
-        done();
-      }
+      await driver.delayMs(2000);
+      let textComponent = await driver.findComponent(ON.id('TEST_PAGE_TEXT'));
+      expect(!!textComponent).assertTrue();
+      done();
     })
 
     /**

@@ -84,7 +84,7 @@ export default function enableSecureTest() {
 	  console.info("[enableSecureTest_0010] img1_attrs: " + JSON.stringify(JSON.parse(strJson).$attrs));
 	  console.info("[enableSecureTest_0010] img1_attrs_enableSecure: " + JSON.stringify(JSON.parse(strJson).$attrs.enableSecure));
 	  console.info("[enableSecureTest_0010] img1_attrs_height: " + JSON.stringify(JSON.parse(strJson).$attrs.height));
-      expect(JSON.parse(strJson).$attrs.enableSecure).assertEqual(true);
+      expect(JSON.parse(strJson).$attrs.enableSecure).assertEqual('true');
 	  
       console.info('[enableSecureTest_0010] END'); 
       done();

@@ -1721,5 +1721,485 @@ export default function graphicTextClass() {
       }
     })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_051
+     * @tc.name      : Line CreateTruncatedLine
+     * @tc.desc      : To test Line CreateTruncatedLine interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextLine_CreateTruncatedLine', 51, async ()=> {
+      let msg = 'testTextLine_CreateTruncatedLine';
+      console.info(msg + 'begin');
+      let canvas = new drawing.Canvas(pixel)
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for (let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+
+        let truncatedTextLine = textLine.createTruncatedLine(100, text.EllipsisMode.START, "...");
+        try {
+          truncatedTextLine.paint(canvas, 0, 100);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(50, text.EllipsisMode.END, "...");
+        try {
+          truncatedTextLine.paint(canvas, 0, 100);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(50, text.EllipsisMode.MIDDLE, "...");
+        try {
+          expect(truncatedTextLine).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(-50, text.EllipsisMode.END, "...");
+        try {
+          expect(truncatedTextLine).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(null, text.EllipsisMode.START, "...");
+        try {
+          expect(truncatedTextLine).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(100, null, "...");
+        try {
+          expect(truncatedTextLine).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(100, text.EllipsisMode.START, null);
+        try {
+          expect(truncatedTextLine).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(undefined, text.EllipsisMode.END, "...");
+        try {
+          expect(truncatedTextLine).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(100, undefined, "...");
+        try {
+          expect(truncatedTextLine).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        truncatedTextLine = textLine.createTruncatedLine(100, text.EllipsisMode.START, undefined);
+        try {
+          expect(truncatedTextLine).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_052
+     * @tc.name      : Line GetTypographicBounds
+     * @tc.desc      : To test Line GetTypographicBounds interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextLine_GetTypographicBounds', 52, async ()=> {
+      let msg = 'testTextLine_GetTypographicBounds';
+      console.info(msg + 'begin');
+      let canvas = new drawing.Canvas(pixel)
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for (let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+
+        let bounds = textLine.getTypographicBounds();
+        try {
+          expect(bounds.ascent).assertLargerOrEqual(0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        try {
+          expect(bounds.descent).assertLargerOrEqual(0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        try {
+          expect(bounds.leading).assertLargerOrEqual(0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        try {
+          expect(bounds.width).assertLarger(0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_053
+     * @tc.name      : Line GetImageBounds
+     * @tc.desc      : To test Line GetImageBounds interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextLine_GetImageBounds', 53, async ()=> {
+      let msg = 'testTextLine_GetImageBounds';
+      console.info(msg + 'begin');
+      let canvas = new drawing.Canvas(pixel)
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for (let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+
+        let bounds = textLine.getImageBounds();
+        try {
+          expect(bounds.left).assertLargerOrEqual(0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        try {
+          expect(bounds.top).assertLargerOrEqual(0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        try {
+          expect(bounds.right).assertLarger(bounds.left);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        try {
+          expect(bounds.bottom).assertLarger(bounds.top);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_054
+     * @tc.name      : Line GetTrailingSpaceWidth
+     * @tc.desc      : To test Line GetTrailingSpaceWidth interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextLine_GetTrailingSpaceWidth', 54, async ()=> {
+      let msg = 'testTextLine_GetTrailingSpaceWidth';
+      console.info(msg + 'begin');
+      let canvas = new drawing.Canvas(pixel)
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for (let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+
+        let width = textLine.getTrailingSpaceWidth();
+        try {
+          expect(width).assertEqual(0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_055
+     * @tc.name      : Line GetStringIndexForPosition
+     * @tc.desc      : To test Line GetStringIndexForPosition interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextLine_GetStringIndexForPosition', 55, async ()=> {
+      let msg = 'testTextLine_GetStringIndexForPosition';
+      console.info(msg + 'begin');
+      let canvas = new drawing.Canvas(pixel)
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for (let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+
+        let point : common2D.Point = { x: 0.0, y: 2.0 };
+        let index = textLine.getStringIndexForPosition(point);
+        try {
+          expect(index).assertEqual(0.0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        point.x = 20.0;
+        index = textLine.getStringIndexForPosition(point);
+        try {
+          expect(index).assertEqual(2);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        point.x = -2.0;
+        index = textLine.getStringIndexForPosition(point);
+        try {
+          expect(index).assertEqual(0.0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        index = textLine.getStringIndexForPosition(null);
+        try {
+          expect(index).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        index = textLine.getStringIndexForPosition(undefined);
+        try {
+          expect(index).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_056
+     * @tc.name      : Line GetOffsetForStringIndex
+     * @tc.desc      : To test Line GetOffsetForStringIndex interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextLine_GetOffsetForStringIndex', 56, async ()=> {
+      let msg = 'testTextLine_GetOffsetForStringIndex';
+      console.info(msg + 'begin');
+      let canvas = new drawing.Canvas(pixel)
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for (let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+
+        let offset = textLine.getOffsetForStringIndex(0);
+        try {
+          expect(offset).assertEqual(0.0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getOffsetForStringIndex(1);
+        try {
+          expect(offset).assertEqual(12);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getOffsetForStringIndex(-2);
+        try {
+          expect(offset).assertEqual(0.0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getOffsetForStringIndex(null);
+        try {
+          expect(offset).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getOffsetForStringIndex(undefined);
+        try {
+          expect(offset).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_057
+     * @tc.name      : Line EnumerateCaretOffsets
+     * @tc.desc      : To test Line EnumerateCaretOffsets interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextLine_EnumerateCaretOffsets', 57, async ()=> {
+      let msg = 'testTextLine_EnumerateCaretOffsets';
+      console.info(msg + 'begin');
+      let canvas = new drawing.Canvas(pixel)
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for (let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+
+        textLine.enumerateCaretOffsets((offset: number, index: number, leadingEdge: boolean) : boolean => {
+          try {
+            expect(index).assertLessOrEqual(1);
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          try {
+            if (index == 0 && leadingEdge == true) {
+              expect(offset).assertEqual(0.0);
+            }
+
+            if (offset == 12 && index == 0) {
+              expect(leadingEdge).assertEqual(false);
+            }
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+          return index > 0;
+        });
+        try {
+          textLine.enumerateCaretOffsets(null);
+        } catch (err) {
+          try {
+            expect(err.message).assertEqual("Invalid params.");
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+        try {
+          textLine.enumerateCaretOffsets(undefined);
+        } catch (err) {
+          try {
+            expect(err.message).assertEqual("Invalid params.");
+          } catch (err) {
+            console.info(msg + JSON.stringify(err));
+            expect().assertFail();
+          }
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_058
+     * @tc.name      : Line GetAlignmentOffset
+     * @tc.desc      : To test Line GetAlignmentOffset interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextLine_GetAlignmentOffset', 58, async ()=> {
+      let msg = 'testTextLine_GetAlignmentOffset';
+      console.info(msg + 'begin');
+      let canvas = new drawing.Canvas(pixel)
+      let textTitle = "123";
+      let paragraph = buildParagraph();
+      paragraph.layoutSync(200);
+      let textLines : Array<text.TextLine> = paragraph.getTextLines();
+      let length = textLines.length;
+      for (let i = 0; i < length; i++) {
+        let textLine: text.TextLine = textLines[i];
+
+        let offset = textLine.getAlignmentOffset(0.0, 300);
+        try {
+          expect(offset).assertEqual(0.0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getAlignmentOffset(0.5, 300);
+        try {
+          expect(offset).assertLarger(0.0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getAlignmentOffset(2, 10);
+        try {
+          expect(offset).assertEqual(0.0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getAlignmentOffset(-2, 300);
+        try {
+          expect(offset).assertEqual(0.0);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getAlignmentOffset(null, 20);
+        try {
+          expect(offset).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getAlignmentOffset(2.0, null);
+        try {
+          expect(offset).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getAlignmentOffset(2.0, undefined);
+        try {
+          expect(offset).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+        offset = textLine.getAlignmentOffset(null, 20);
+        try {
+          expect(offset).assertEqual(undefined);
+        } catch (err) {
+          console.info(msg + JSON.stringify(err));
+          expect().assertFail();
+        }
+      }
+    })
   })
 }

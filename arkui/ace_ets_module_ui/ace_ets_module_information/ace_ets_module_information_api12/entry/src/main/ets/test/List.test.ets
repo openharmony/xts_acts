@@ -25,6 +25,7 @@ import itemSpaceTest from './ChipGroupTest/itemSpaceTest.test'
 import localizedLabelMarginTest from './ChipTest/localizedLabelMarginTest';
 import localizedButtonPaddingTest from './SegmentButtonTest/localizedButtonPaddingTest';
 import localizedTextPadding from './SegmentButtonTest/localizedTextPadding';
+
 export default function testsuite() {
     ProgressMask()
     BounceSymbolEffect_APITest();

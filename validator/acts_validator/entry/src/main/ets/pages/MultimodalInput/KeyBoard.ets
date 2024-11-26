@@ -23,7 +23,7 @@ struct KeyEvent {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'KeyBoard';
-  @State StepTips: string = '操作步骤：请通过外接键盘或者软键盘，在输入框中输入上面的字母' + '\n' + '预期结果：输入字母与实际一致则通过';
+  @State StepTips: string = '操作步骤：请通过外接键盘或者软键盘，在输入框中输入上面的字母' + '\n' + '预期结果：在输入框中能输入pass则通过';
   @State Vue: boolean = false;
   @State text: string = '';
 

@@ -9,7 +9,13 @@ import {
   ClickType,
   PickerColorMode,
   MaxSelected,
-  MaxCountType
+  MaxCountType,
+  BaseItemInfo,
+  PhotoBrowserRange,
+  PhotoBrowserUIElement,
+  ItemsDeletedCallback,
+  ExceedMaxSelectedCallback,
+  CurrentAlbumDeletedCallback
 } from '@ohos.file.PhotoPickerComponent';
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo } from '@ohos.file.AlbumPickerComponent';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
@@ -38,7 +44,15 @@ struct PickerComponent {
   @State selectedFontColor: string = '#007DFF';
   @State currentIndex: number = 0;
   private controller: TabsController = new TabsController();
-  eventId: number = 0;
+  private eventId: number = 0;
+  // 控制缩略图是否显示
+  @State private isBrowserShow: boolean = false;
+
+  private selectedItemsDeletedCallback: ItemsDeletedCallback =
+    (baseItemInfos: Array<BaseItemInfo>) => this.onSelectedItemsDeleted(baseItemInfos);
+  private exceedMaxSeletedCallback: ExceedMaxSelectedCallback =
+    (exceedMaxCountType: MaxCountType) => this.onExceedMaxSelected(exceedMaxCountType);
+  private currentAlbumDeletedCallback: CurrentAlbumDeletedCallback = () => this.onCurrentAlbumDeleted();
 
   sendEvent(message: Object, eventId: number) {
     let eventData: events_emitter.EventData = {
@@ -80,8 +94,31 @@ struct PickerComponent {
     return false;
   }
 
+  // 大图页图片切换回调事件处理
+  private onPhotoBrowserChanged(photoBrowserItemInfo: BaseItemInfo): boolean{
+    console.log('onPhotoBrowserChanged, item = ' + JSON.stringify(photoBrowserItemInfo));
+    return true;
+  }
+
   private onPickerControllerReady(): void {
     console.info('onPickerControllerReady');
+    let elements: number[] = [PhotoBrowserUIElement.CHECKBOX, PhotoBrowserUIElement.BACK_BUTTON];
+    this.pickerController.setPhotoBrowserUIElementVisibility(elements, false);
+  }
+
+  private onSelectedItemsDeleted(baseItemInfos: Array<BaseItemInfo>): void {
+    console.info('onSelectedItemsDeleted');
+    // 已勾选图片被删除时的回调
+  }
+
+  private onExceedMaxSelected(exceedMaxCountType: MaxCountType): void {
+    console.info('onExceedMaxSelected');
+    // 超过最大选择数量再次点击时的回调
+  }
+
+  private onCurrentAlbumDeleted(): void {
+    console.info('onCurrentAlbumDeleted');
+    // 当前相册被删除时的回调
   }
 
   private onAlbumClick(albumInfo: AlbumInfo): boolean {
@@ -186,31 +223,34 @@ struct PickerComponent {
   @Builder
   ButtonBar() {
     Row() {
-      Button('视频和图片').width('50%').height('10%')
+      Button('视频和图片').width('50%').height('5%')
         .onClick(() => {
           this.isShowAll = true;
           this.isShowVideo = false;
           this.isShowPhoto = false;
           this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
         })
-      Button('全部相册').width('50%').height('10%')
+      Button('全部相册').width('50%').height('5%')
         .onClick(() => {
           this.isShowAlbum = true;
         }).id('albumButton')
-    }
+    }.margin({ top: '10vp', bottom: '5vp' })
 
     Row() {
-      Button('返回测试结果').width('50%').height('8%').onClick(() => {
+      Button('返回测试结果').width('33%').height('5%').onClick(() => {
         console.info('testPicker setData');
         let result: PhotoPickerResult = this.getPhotoPickerResult();
         this.sendEvent(result, EventType.PHOTO_PICKER_INFO);
       }).id('resultButton')
-      Button('选择修改数量').width('50%').height('8%').onClick(() => {
+      Button('选择修改数量').width('33%').height('5%').onClick(() => {
         let maxSelect: MaxSelected = new MaxSelected();
         maxSelect.data = new Map<MaxCountType, number>([[MaxCountType.TOTAL_MAX_COUNT, 1],
           [MaxCountType.PHOTO_MAX_COUNT, 1], [MaxCountType.VIDEO_MAX_COUNT, 1]]);
         this.pickerController.setMaxSelected(maxSelect);
       }).id('changeNumButton')
+      Button('退出大图').width('33%').height('5%').onClick(() => {
+        this.pickerController.exitPhotoBrowser();
+      }).id('exitBrowser')
     }
   }
 
@@ -228,9 +268,12 @@ struct PickerComponent {
         onExitPhotoBrowser: (photoBrowserInfo: PhotoBrowserInfo): boolean =>
         this.onExitPhotoBrowser(photoBrowserInfo),
         onPickerControllerReady: (): void => this.onPickerControllerReady(),
+        onSelectedItemsDeleted: this.selectedItemsDeletedCallback,
+        onExceedMaxSelected: this.exceedMaxSeletedCallback,
+        onCurrentAlbumDeleted: this.currentAlbumDeletedCallback,
         pickerController: this.pickerController,
       })
-        .height('82%')
+        .height('70%')
         .width('100%')
         .visibility(this.isShowAll ? Visibility.Visible : Visibility.Hidden)
         .id('PhotoPickerComponent')
@@ -238,16 +281,58 @@ struct PickerComponent {
   }
 
   @Builder
+  buildFooter(){
+    // 缩略图
+    if (this.isBrowserShow) {
+      Row() {
+        ForEach(this.selectedUris, (uri: string) => {
+          Image(uri)
+            .height('10%')
+            .width('20%')
+            .backgroundColor(this.allBackGroundColor)
+            .onClick(() => {
+              console.log('uri: ' + uri + ' is click');
+              this.pickerController.setPhotoBrowserItem(uri, PhotoBrowserRange.ALL);
+            })
+            .id('smallImage')
+        })
+      }.offset({
+        y: 420
+      })
+    } else {
+      Button('预览')
+        .width('33%')
+        .height('5vp')
+        .onClick(() => {
+          if (this.selectedUris.length > 0) {
+            this.pickerController.setPhotoBrowserItem(this.selectedUris[0], PhotoBrowserRange.SELECTED_ONLY);
+            this.isBrowserShow = true;
+          }
+        })
+        .id('previewButton')
+        .offset({
+          x: -120,
+          y: 400
+        })
+    }
+  }
+
+  @Builder
+  buildImage(){
+    ForEach(this.selectedUris, (uri: string) => {
+      Image(uri).height('10%').width('20%').onClick(() => {
+        this.selectedUris = this.selectedUris.filter((item: string) => {
+          return uri != item;
+        })
+        this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
+      })
+    }, (uri: string) => JSON.stringify(uri))
+  }
+
+  @Builder
   buildAlbumPickerComponent() {
     Row() {
-      ForEach(this.selectedUris, (uri: string) => {
-        Image(uri).height('10%').width('20%').onClick(() => {
-          this.selectedUris = this.selectedUris.filter((item: string) => {
-            return uri != item;
-          })
-          this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
-        })
-      }, (uri: string) => JSON.stringify(uri))
+      this.buildImage();
     }
 
     if (this.isShowAlbum) {
@@ -263,6 +348,7 @@ struct PickerComponent {
       Column() {
         this.ButtonBar();
         this.buildPhotoPickerComponent();
+        this.buildFooter();
       }
 
       this.buildAlbumPickerComponent();

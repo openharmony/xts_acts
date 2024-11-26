@@ -43,15 +43,9 @@ export default function i18nStageTest() {
      * @tc.level     : Level 0
      */
     it('getTimePeriodName_stagetest_0100', 0, async (done: Function) => {
-      try {
-        let value = I18n.I18NUtil.getTimePeriodName(2, 'zh-CN');
-        console.log('getTimePeriodName_stagetest_0100 1' + value);
-        expect(value).assertEqual('凌晨');
-      }
-      catch (e) {
-        console.log('getTimePeriodName_stagetest_0100 2' + e.code);
-        console.log('getTimePeriodName_stagetest_0100 3' + e.message);
-      }
+      let value = I18n.I18NUtil.getTimePeriodName(2, 'zh-CN');
+      console.log('getTimePeriodName_stagetest_0100 1' + value);
+      expect(value).assertEqual('凌晨');
       done();
     })
 
@@ -117,77 +111,65 @@ export default function i18nStageTest() {
      * @tc.level     : Level 0
      */
     it('HolidayManager_stagetest_0100', 0, async (done: Function) => {
-      try {
-        let holiday = new I18n.HolidayManager('/system/lib/US.ics');
-        console.log('HolidayManager_stagetest_0100 1' + holiday);
-        expect(holiday !== null).assertTrue();
-        let isHoliday = holiday.isHoliday();
-        console.log('HolidayManager_stagetest_0100 1' + isHoliday);
-        expect(isHoliday).assertFalse();
-        let item = holiday.getHolidayInfoItemArray(2023);
-        console.log('HolidayManager_stagetest_0100 1' + item.length);
-        for (let i = 0; i < item.length; i++) {
-          console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].baseName));
-          console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].year));
-          console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].month));
-          console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].day));
-          for (let j = 0; j < item[i].localNames!.length; j++) {
-            console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].localNames![j].language));
-            console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].localNames![j].name));
-          }
+      let holiday = new I18n.HolidayManager('/system/lib/US.ics');
+      console.log('HolidayManager_stagetest_0100 1' + holiday);
+      expect(holiday !== null).assertTrue();
+      let isHoliday = holiday.isHoliday();
+      console.log('HolidayManager_stagetest_0100 1' + isHoliday);
+      expect(isHoliday).assertFalse();
+      let item = holiday.getHolidayInfoItemArray(2023);
+      console.log('HolidayManager_stagetest_0100 1' + item.length);
+      for (let i = 0; i < item.length; i++) {
+        console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].baseName));
+        console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].year));
+        console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].month));
+        console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].day));
+        for (let j = 0; j < item[i].localNames!.length; j++) {
+          console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].localNames![j].language));
+          console.log('HolidayManager_stagetest_0100 1' + JSON.stringify(item[i].localNames![j].name));
         }
-      }
-      catch (e) {
-        console.log('HolidayManager_stagetest_0100 2' + e.code);
-        console.log('HolidayManager_stagetest_0100 3' + e.message);
       }
       done();
     })
-    
+
     /**
-     *@tc.number   :i18n_test_getBestMatchLocale_0010
-     *@tc.name     :test the getBestMatchLocale interface
-     *@tc.desc     :resource list is empty
-     *@tc.size     :MEDIUM
-     *@tc.type     :Function
-     *@tc.level    :Level 0
-    */
-    it('i18n_test_getBestMatchLocale_0010',0,()=>{
-      console.log('i18n_test_getBestMatchLocale_0010'+'start');
-      try{
-        let matchedLocaledId:string = I18n.I18NUtil.getBestMatchLocale("en-US",[""]);
-      }catch(e){
-        console.log('i18n_test_getBestMatchLocale_0010'+e.code+e.message);
+     * @tc.number   :i18n_test_getBestMatchLocale_0010
+     * @tc.name     :test the getBestMatchLocale interface
+     * @tc.desc     :resource list is empty
+     * @tc.size     :MEDIUM
+     * @tc.type     :Function
+     * @tc.level    :Level 0
+     */
+    it('i18n_test_getBestMatchLocale_0010', 0, () => {
+      console.log('i18n_test_getBestMatchLocale_0010' + 'start');
+      try {
+        let matchedLocaledId: string = I18n.I18NUtil.getBestMatchLocale("en-US", [""]);
+      } catch (e) {
+        console.log('i18n_test_getBestMatchLocale_0010' + e.code + e.message);
         expect(e.code == 890001).assertTrue();
       }
     })
 
     /**
-     *@tc.number   :testgetThreeLetterRegion_0030
-     *@tc.name     :Get a three-letter abbreviation of the specified language
-     *@tc.desc     :transfer GB and return GBR
+     * @tc.number   :testgetThreeLetterRegion_0030
+     * @tc.name     :Get a three-letter abbreviation of the specified language
+     * @tc.desc     :transfer GB and return GBR
      */
-    it('testgetThreeLetterRegion_0030',0,()=>{
-      try{
-        let language:string = I18n.I18NUtil.getThreeLetterRegion('GB');
-        console.info('aaa+++',language);
-        expect('GBR').assertEqual(language);
-      }catch(e){
-      }
+    it('testgetThreeLetterRegion_0030', 0, () => {
+      let language: string = I18n.I18NUtil.getThreeLetterRegion('GB');
+      console.info('aaa+++', language);
+      expect('GBR').assertEqual(language);
     })
 
     /**
-     *@tc.number   :testgetThreeLetterLanguage_0030
-     *@tc.name     :Get a three-letter abbreviation of the specified language
-     *@tc.desc     :transfer en and return eng
+     * @tc.number   :testgetThreeLetterLanguage_0030
+     * @tc.name     :Get a three-letter abbreviation of the specified language
+     * @tc.desc     :transfer en and return eng
      */
-    it('testgetThreeLetterLanguage_0030',0,()=>{
-      try{
-        let language:string = I18n.I18NUtil.getThreeLetterLanguage('en');
-        console.info('aaa+++',language);
-        expect('eng').assertEqual(language);
-      }catch(e){
-      }
+    it('testgetThreeLetterLanguage_0030', 0, () => {
+      let language: string = I18n.I18NUtil.getThreeLetterLanguage('en');
+      console.info('aaa+++', language);
+      expect('eng').assertEqual(language);
     })
 
     console.log('*************end i18nStageTest*************');

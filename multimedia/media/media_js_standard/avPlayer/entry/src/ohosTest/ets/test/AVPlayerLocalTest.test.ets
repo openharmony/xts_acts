@@ -674,6 +674,16 @@ export default function AVPlayerLocalTest() {
     beforeAll(async () => {
       console.info('beforeAll case');
       // await mediaTestBase.toNewPage(PAGE_PATH, PAGE_PATH, 0)
+      console.log("check surfaceId is " + globalThis.value)
+      for (let i =0; i < 10; i++) {
+        if (!globalThis.value) {
+          console.log("surfaceId is undefined")
+          await mediaTestBase.msleepAsync(500);
+        } else {
+          console.log("surfaceId is " + globalThis.value)
+          break;
+        }
+      }
       await mediaTestBase.getFileDescriptorFromFileDir(VIDEO_SOURCE, openFileFailed).then((res) => {
         fileDescriptor = res;
       });

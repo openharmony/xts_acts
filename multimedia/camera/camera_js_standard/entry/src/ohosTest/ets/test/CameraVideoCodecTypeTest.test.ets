@@ -517,7 +517,7 @@ export default function CameraVideoCodecTypeTest() {
 
           try {
             mPhotoOutput.setMovingPhotoVideoCodecType(cameraObj.VideoCodecType.AVC);
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 finsh");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 finish");
           } catch {
             console.info(TAG +
                 "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0100 FAILED with VideoCodecType is: " +
@@ -562,7 +562,7 @@ export default function CameraVideoCodecTypeTest() {
 
           try {
             mPhotoOutput.setMovingPhotoVideoCodecType(cameraObj.VideoCodecType.HEVC);
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 finsh");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 finish");
           } catch {
             console.info(TAG +
                 "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_MOVING_PHOTO_VIDEO_CODEC_TYPE_0200 FAILED with VideoCodecType is: " +
@@ -582,6 +582,3 @@ export default function CameraVideoCodecTypeTest() {
     })
   })
 }
-
-
-

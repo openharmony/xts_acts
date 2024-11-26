@@ -22,7 +22,7 @@ export default function usbNoPerDdkTest() {
   describe('usbNoPerDdkTest', () => {
 
     const TAG: string = "[usbNoPerDdkTest]";
-    const DDK_ERR_NOPERM: number = -19;
+    const DDK_ERR_NOPERM: number = 201;
     const USB_DDK_FAILED: number = -1;
     let deviceId: number = -1;
 
