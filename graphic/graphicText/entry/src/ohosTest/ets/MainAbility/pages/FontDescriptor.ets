@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { text } from "@kit.ArkGraphics2D"
+import { text } from '@kit.ArkGraphics2D'
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -32,7 +32,7 @@ struct FontDescriptor {
         Text('italic:' + this.message2).key('FontDescriptor_3')
         Text('monoSpace:' + this.message3).key('FontDescriptor_4')
         Text('symbolic:' + this.message4).key('FontDescriptor_5')
-        Button("font descriptor")
+        Button('font descriptor')
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .width(300)
