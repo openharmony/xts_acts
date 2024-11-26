@@ -680,6 +680,26 @@
 #include "customdialog/customdialog_setmask_test.cpp"
 #include "customdialog/customdialog_setmodalmode_test.cpp"
 #include "customdialog/customdialog_show_test.cpp"
+#include "lazyforeach/lazyforeach_create_test.cpp"
+#include "lazyforeach/lazyforeach_dispose_test.cpp"
+#include "lazyforeach/lazyforeach_getallitems_test.cpp"
+#include "lazyforeach/lazyforeach_gethostnode_test.cpp"
+#include "lazyforeach/lazyforeach_getitemindex_test.cpp"
+#include "lazyforeach/lazyforeach_getremovednode_test.cpp"
+#include "lazyforeach/lazyforeach_gettotalnodecount_test.cpp"
+#include "lazyforeach/lazyforeach_gettype_test.cpp"
+#include "lazyforeach/lazyforeach_getuserdata_test.cpp"
+#include "lazyforeach/lazyforeach_insertitem_test.cpp"
+#include "lazyforeach/lazyforeach_moveitem_test.cpp"
+#include "lazyforeach/lazyforeach_registereventreceiver_test.cpp"
+#include "lazyforeach/lazyforeach_reloadallitems_test.cpp"
+#include "lazyforeach/lazyforeach_reloaditem_test.cpp"
+#include "lazyforeach/lazyforeach_removeitem_test.cpp"
+#include "lazyforeach/lazyforeach_setitem_test.cpp"
+#include "lazyforeach/lazyforeach_setnodeid_test.cpp"
+#include "lazyforeach/lazyforeach_settotalnodecount_test.cpp"
+#include "lazyforeach/lazyforeach_setuserdata_test.cpp"
+#include "lazyforeach/lazyforeach_unregistereventreceiver_test.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -7317,6 +7337,69 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testCustomDialogShow004", nullptr, TestCustomDialogShow004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+
+        {"testLazyForEachCreate001", nullptr, TestLazyForEachCreate001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testLazyForEachDispose001", nullptr, TestLazyForEachDispose001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testLazyForEachDispose002", nullptr, TestLazyForEachDispose002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testLazyForEachGetAllItems002", nullptr, TestLazyForEachGetAllItems002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachGetAllItems003", nullptr, TestLazyForEachGetAllItems003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachGetHostNode002", nullptr, TestLazyForEachGetHostNode002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachGetItemIndex002", nullptr, TestLazyForEachGetItemIndex002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachGetRemovedNode002", nullptr, TestLazyForEachGetRemovedNode002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachGetTotalNodeCount001", nullptr, TestLazyForEachGetTotalNodeCount001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testLazyForEachGetType002", nullptr, TestLazyForEachGetType002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachGetUserData002", nullptr, TestLazyForEachGetUserData002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachInsertItem002", nullptr, TestLazyForEachInsertItem002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachMoveItem002", nullptr, TestLazyForEachMoveItem002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachRegisterEventReceiver001", nullptr, TestLazyForEachRegisterEventReceiver001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachRegisterEventReceiver002", nullptr, TestLazyForEachRegisterEventReceiver002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachRegisterEventReceiver003", nullptr, TestLazyForEachRegisterEventReceiver003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachRegisterEventReceiver004", nullptr, TestLazyForEachRegisterEventReceiver004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachReloadAllItems002", nullptr, TestLazyForEachReloadAllItems002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachReloadItem002", nullptr, TestLazyForEachReloadItem002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachRemoveItem002", nullptr, TestLazyForEachRemoveItem002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachSetItem002", nullptr, TestLazyForEachSetItem002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachSetNodeId002", nullptr, TestLazyForEachSetNodeId002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLazyForEachSetTotalNodeCount001", nullptr, TestLazyForEachSetTotalNodeCount001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testLazyForEachSetTotalNodeCount002", nullptr, TestLazyForEachSetTotalNodeCount002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testLazyForEachSetTotalNodeCount003", nullptr, TestLazyForEachSetTotalNodeCount003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testLazyForEachSetUserData001", nullptr, TestLazyForEachSetUserData001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testLazyForEachSetUserData002", nullptr, TestLazyForEachSetUserData002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testLazyForEachSetUserData003", nullptr, TestLazyForEachSetUserData003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testLazyForEachUnregisterEventReceiver001", nullptr, TestLazyForEachUnregisterEventReceiver001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachUnregisterEventReceiver002", nullptr, TestLazyForEachUnregisterEventReceiver002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testLazyForEachUnregisterEventReceiver003", nullptr, TestLazyForEachUnregisterEventReceiver003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

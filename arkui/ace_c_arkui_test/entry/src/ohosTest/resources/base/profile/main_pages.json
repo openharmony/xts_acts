@@ -226,6 +226,19 @@
     "MainAbility/pages/customcomponent/CustomComponentRegisterNodeCustomEventTest",
     "MainAbility/pages/customcomponent/CustomComponentUnRegisterNodeCustomEventTest",
     "MainAbility/pages/customdialog/CustomDialogRegisterOnWillDismissTest",
-    "MainAbility/pages/customdialog/CustomDialogSetAutoCancelTest"
+    "MainAbility/pages/customdialog/CustomDialogSetAutoCancelTest",
+    "MainAbility/pages/lazyforeach/LazyForEachGetHostNodeTest",
+    "MainAbility/pages/lazyforeach/LazyForEachGetItemIndexTest",
+    "MainAbility/pages/lazyforeach/LazyForEachGetRemovedNodeTest",
+    "MainAbility/pages/lazyforeach/LazyForEachGetTypeTest",
+    "MainAbility/pages/lazyforeach/LazyForEachGetUserDataTest",
+    "MainAbility/pages/lazyforeach/LazyForEachInsertItemTest",
+    "MainAbility/pages/lazyforeach/LazyForEachMoveItemTest",
+    "MainAbility/pages/lazyforeach/LazyForEachReloadAllItemsTest",
+    "MainAbility/pages/lazyforeach/LazyForEachGetAllItemsTest",
+    "MainAbility/pages/lazyforeach/LazyForEachReloadItemTest",
+    "MainAbility/pages/lazyforeach/LazyForEachRemoveItemTest",
+    "MainAbility/pages/lazyforeach/LazyForEachSetItemTest",
+    "MainAbility/pages/lazyforeach/LazyForEachSetNodeIdTest"
   ]
 }
