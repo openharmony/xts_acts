@@ -33,6 +33,9 @@ export default {
 
     startInterval() {
         this.index = 0;
+        if (this.intervalID !== -1) {
+            clearInterval(this.intervalID);
+        }
         this.intervalID = setInterval(()=> {
             this.index = this.index + 1;
         }, 1000);
