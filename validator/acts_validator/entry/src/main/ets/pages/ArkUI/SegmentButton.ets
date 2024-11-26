@@ -33,7 +33,7 @@ const TAG = '[SegmentButtonTest]';
 @Entry
 @Component
 struct SegmentButtonTest {
-  @State name: string = 'SegmentButtonTest';
+  @State name: string = 'SegmentButton';
   @State stepTips: string = '操作步骤：1、在系统设置中打开屏幕朗读功能\n' +
     '2、进入页面后分别点击两组分段按钮的选中项和未选中项，确认朗读内容，' + '\n' +
     '点击Button替换第二组分段按钮内容后，再次点击被替换按钮，确认朗读内容' + '\n' +
