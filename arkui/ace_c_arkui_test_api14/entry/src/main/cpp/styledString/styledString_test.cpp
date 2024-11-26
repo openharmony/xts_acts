@@ -29,6 +29,7 @@
 #define STR_TEXT  "<div ><p style=\"text-align: start;word-break: break_word;text-overflow: clip;\"><span style=\"font-size: 40.00px;font-style: normal;font-weight: normal;color: #0000FFFF;font-family: HarmonyOS Sans;\">hello</span></p></div>"
 #define SIZE 10
 #define LENGTH 175
+#define MAX_RESULT_SIZE 10000
 
 namespace ArkUICapiTest {
 
@@ -52,7 +53,7 @@ napi_value testStyledString001(napi_env env, napi_callback_info info)
     uint8_t *buffer = (uint8_t *)malloc(size * sizeof(uint8_t));
     if (OH_ArkUI_MarshallStyledStringDescriptor(buffer, size, styledStringDescriber, &resultSize) != 0) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "resultSize is :[%{public}zu]", resultSize);
-        if(resultSize <= 0 || resultSize >= 10000) {
+        if(resultSize <= 0 || resultSize >= MAX_RESULT_SIZE) {
             return nullptr; 
         }
         uint8_t *buffer2 = (uint8_t *)malloc(resultSize * sizeof(uint8_t));
