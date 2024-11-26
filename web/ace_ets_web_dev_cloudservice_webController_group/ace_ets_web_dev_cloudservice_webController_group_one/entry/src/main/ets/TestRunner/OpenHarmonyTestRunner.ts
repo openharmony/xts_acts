@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import TestRunner from '@ohos.application.testRunner';
-import AbilityDelegatorRegistry from '@ohos.app.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 var abilityDelegator = undefined;
 var abilityDelegatorArguments = undefined;
@@ -58,8 +58,8 @@ export default class OpenHarmonyTestRunner implements TestRunner {
       abilityName: testAbilityName,
       onAbilityCreate: onAbilityCreateCallback,
     };
-    abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-    var cmd = 'aa start -d 0 -a com.example.myapplication.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
+    abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
+    var cmd = 'aa start -d 0 -a com.example.myapplication.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName;
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
     var debug = abilityDelegatorArguments.parameters["-D"];
     if (debug == 'true') {
