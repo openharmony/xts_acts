@@ -31,7 +31,7 @@ export default function FontDescriptorTest() {
         if (!("FontDescriptor" == pages.name)) {
           console.info("get FontDescriptorTest state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await CommonFunc.sleep(5000);
+          await CommonFunc.sleep(1000);
           console.info("push FontDescriptorTest success: " + JSON.stringify(result));
         }
       } catch (err) {
