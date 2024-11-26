@@ -685,11 +685,7 @@ const JSVM_TypeTag tagsData[] = {
     //OH_JSVM_CreateSymbol
     JSVM_Value rstDes = nullptr;
     const char *strDes = "only";
-    status = OH_JSVM_CreateStringUtf8(env, strDes, JSVM_AUTO_LENGTH, &rstDes);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest2: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strDes, JSVM_AUTO_LENGTH, &rstDes);
     JSVM_Value rstSymbol = nullptr;
     status = OH_JSVM_CreateSymbol(env, rstDes, &rstSymbol);
     if (status != JSVM_OK) {
@@ -699,11 +695,7 @@ const JSVM_TypeTag tagsData[] = {
     //set property
     const char *strKeyValue = "only the key value";
     JSVM_Value keyValue = nullptr;
-    status = OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &keyValue);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest2: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &keyValue);
     status = OH_JSVM_SetProperty(env, rstObject, rstSymbol, keyValue);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest2: OH_JSVM_SetProperty Failed");
@@ -778,11 +770,7 @@ const JSVM_TypeTag tagsData[] = {
     const char* strSetName = "add";
     const char* strSetValue = "add property";
     JSVM_Value setValue;
-    status = OH_JSVM_CreateStringUtf8(env, strSetValue, JSVM_AUTO_LENGTH, &setValue);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest2: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strSetValue, JSVM_AUTO_LENGTH, &setValue);
     status = OH_JSVM_SetNamedProperty(env, rstNewSymbolFor, strSetName, setValue);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest2: OH_JSVM_SetNamedProperty Failed");

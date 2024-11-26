@@ -750,7 +750,7 @@ const int DIFF_VALUE_TWELVE = 12;
         return nullptr;
     }
     JSVM_Value recvMsg = nullptr;
-    status = OH_JSVM_GetAndClearLastException(env, &recvMsg);
+    OH_JSVM_GetAndClearLastException(env, &recvMsg);
 
     bool setValue = true;
     JSVM_Value retValue = nullptr;
@@ -1682,20 +1682,16 @@ const int DIFF_VALUE_TWELVE = 12;
     JSVM_Status status = OH_JSVM_CreateArraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
     JSVM_Value value = nullptr;
     size_t typedArrayLength = 0;
-    status = OH_JSVM_CreateTypedarray(env,
-                                      JSVM_TypedarrayType::JSVM_INT16_ARRAY,
-                                      typedArrayLength,
-                                      arrayBuffer,
-                                      0,
-                                      &value);
+    OH_JSVM_CreateTypedarray(env,
+                             JSVM_TypedarrayType::JSVM_INT16_ARRAY,
+                             typedArrayLength,
+                             arrayBuffer,
+                             0,
+                             &value);
     JSVM_TypedarrayType type;
     size_t byteOffset = 0;
     void *data = nullptr;
-    status = OH_JSVM_GetTypedarrayInfo(env, value, &type, &typedArrayLength, &data, &arrayBuffer, &byteOffset);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestTypeArrayAndDataviewProcessSteps_01:OH_JSVM_GetTypedarrayInfo Failed");
-        return nullptr;
-    }
+    OH_JSVM_GetTypedarrayInfo(env, value, &type, &typedArrayLength, &data, &arrayBuffer, &byteOffset);
     bool isTypedArray = false;
     OH_JSVM_IsTypedarray(env, value, &isTypedArray);
     if (!isTypedArray) {

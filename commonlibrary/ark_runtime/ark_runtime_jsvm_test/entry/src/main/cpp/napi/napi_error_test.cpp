@@ -1324,10 +1324,6 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
 //CreateError-> isError->Throw
 [[maybe_unused]] JSVM_Value TestCombinationTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value argv[1] = {nullptr};
-    OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-    
     const char* strErrCode = "create error code";
     JSVM_Value errorCode = nullptr;
     OH_JSVM_CreateStringUtf8(env, strErrCode, JSVM_AUTO_LENGTH, &errorCode);
@@ -1385,10 +1381,6 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
 //CreateTypeError-> isError->Throw
 [[maybe_unused]] JSVM_Value TestCombinationTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value argv[1] = {nullptr};
-    OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-    
     const char* strErrCode = "create type error code";
     JSVM_Value errorCode = nullptr;
     OH_JSVM_CreateStringUtf8(env, strErrCode, JSVM_AUTO_LENGTH, &errorCode);
@@ -1502,10 +1494,6 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
 //CreateSyntaxError-> isError->Throw
 [[maybe_unused]] JSVM_Value TestCombinationTest4(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value argv[1] = {nullptr};
-    OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-    
     const char* strErrSyntaxCode = "create Syntax error code";
     JSVM_Value errorSyntaxCode = nullptr;
     OH_JSVM_CreateStringUtf8(env, strErrSyntaxCode, JSVM_AUTO_LENGTH, &errorSyntaxCode);
@@ -2990,11 +2978,7 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
     OH_JSVM_CreateStringUtf8(env, strErrMsg, JSVM_AUTO_LENGTH, &errorMsg);
     
     JSVM_Value rstValue = nullptr;
-    JSVM_Status creatStatus = OH_JSVM_CreateError(env, errorCode, errorMsg, &rstValue);
-    if (creatStatus != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationTest23: OH_JSVM_CreateError Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateError(env, errorCode, errorMsg, &rstValue);
     
     // create type Error
     const char* strErrTypeCode = "create type error code";

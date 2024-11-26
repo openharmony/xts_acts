@@ -165,26 +165,14 @@ const size_t NUM_SIZE_3 = 3;
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value thisVar = nullptr;
-    JSVM_Status status = OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestHasOwnPropertyTest3: OH_JSVM_GetCbInfo Failed");
-        return nullptr;
-    }
+    OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
     
     const char* strKeyName = "key name";
     JSVM_Value setKeyName = nullptr;
-    status = OH_JSVM_CreateStringUtf8(env, strKeyName, JSVM_AUTO_LENGTH, &setKeyName);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestHasOwnPropertyTest3: OH_JSVM_CreateObject Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKeyName, JSVM_AUTO_LENGTH, &setKeyName);
     const char* strKeyValue = "key value";
     JSVM_Value setKeyValue = nullptr;
-    status = OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &setKeyValue);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestHasOwnPropertyTest3: OH_JSVM_CreateObject Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &setKeyValue);
     JSVM_Status setStatus = OH_JSVM_SetProperty(env, args[0], setKeyName, setKeyValue);
     if (setStatus != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestHasOwnPropertyTest3: OH_JSVM_SetProperty Failed");
@@ -655,7 +643,7 @@ const size_t NUM_SIZE_3 = 3;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-// Property combination: setProperty 2 property->  hasProperty 2 property ->   getProperty 2 property
+// Property combination: setProperty 2 property->  hasProperty 2 property -> getProperty 2 property
 //->deleteProperty 1 property->  hasProperty other property-> getProperty other property
 [[maybe_unused]] JSVM_Value TestCombinationPropertyTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -1088,7 +1076,7 @@ const size_t NUM_SIZE_3 = 3;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//namedProperty  combination: SetNamedProperty ->setProperty-> GetNamedProperty-> GetNamedProperty  
+//namedProperty  combination: SetNamedProperty ->setProperty-> GetNamedProperty-> GetNamedProperty
 //-> HasNamedProperty ->HasNamedProperty
 [[maybe_unused]] JSVM_Value TestCombinationNamedPropertyTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {

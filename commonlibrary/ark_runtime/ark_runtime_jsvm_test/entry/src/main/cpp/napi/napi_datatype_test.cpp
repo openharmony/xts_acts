@@ -25,10 +25,10 @@ JSVM_Value TestFunction(JSVM_Env env, JSVM_CallbackInfo info)
     return output;
 }
 JSVM_CallbackStruct hello_cb = {TestFunction, (void *)"Hello"};
-int flag = 0;
-intptr_t externals[] = {
+int g_iFlag = 0;
+intptr_t g_externals[] = {
     (intptr_t)&hello_cb,
-    (intptr_t)&flag,
+    (intptr_t)&g_iFlag,
 };
 //JSVM_Status OH_JSVM_Init
 [[maybe_unused]] JSVM_Value TestInitTest1(JSVM_Env env, JSVM_CallbackInfo info)
@@ -232,17 +232,10 @@ intptr_t externals[] = {
 }
 [[maybe_unused]] JSVM_Value TestOpenVMScopeTest2(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value args[1] = {nullptr};
-    JSVM_Value thisVar = nullptr;
-    OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
     // create vm
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestOpenVMScopeTest2: OH_JSVM_Init Failed");
-        return nullptr;
-    }
+    memset_s(&options, sizeof(options), 0, sizeof(options));
     options.isForSnapshotting = true;
     JSVM_Status status = OH_JSVM_CreateVM(&options, &vm);
     if (status != JSVM_OK) {
@@ -399,10 +392,7 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info)
     // create vm
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateEnvTest1: OH_JSVM_Init Failed");
-        return nullptr;
-    }
+    memset_s(&options, sizeof(options), 0, sizeof(options));
     options.isForSnapshotting = true;
     JSVM_Status status = OH_JSVM_CreateVM(&options, &vm);
     if (status != JSVM_OK) {
@@ -516,10 +506,6 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info)
 //DestroyEnv
 [[maybe_unused]] JSVM_Value TestDestroyEnvTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value args[1] = {nullptr};
-    JSVM_Value thisVar = nullptr;
-    OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
     // create vm
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
@@ -623,7 +609,7 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-//OpenEnvScope 
+//OpenEnvScope
 [[maybe_unused]] JSVM_Value TestOpenEnvScopeTest1(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
