@@ -14,6 +14,9 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
+import media from '@ohos.multimedia.media';
+import common from '@ohos.app.ability.common';
+import { fileIo  } from '@ohos.file.fs';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 import {
@@ -24,7 +27,41 @@ import {
 
 export default function requestVideoTest() {
   describe('requestVideoTest', function (done) {
+    let AVFileDescriptor: media.AVFileDescriptor;
     let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
+    let TestHandler: photoAccessHelper.MediaAssetProgressHandler = {
+    onProgress(progress: number) {
+      console.info(`on video request onProgress: ${progress}`);
+    }
+  };
+
+  const createMovingPhoto = async (done: Function, testNum: string) => {
+    try {
+      let displayName: string = "hdr_moving_photo.jpeg";
+      let createOption: photoAccessHelper.PhotoCreateOptions = {
+        subtype: photoAccessHelper.PhotoSubtype.MOVING_PHOTO
+      };
+      let context: common.UIAbilityContext = globalThis.abilityContext;
+      let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+        photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, displayName, createOption);
+      let photoUri = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/test_mov_1.jpg";
+      let videoUri = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/test_mov_1.mp4";
+      assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, photoUri);
+      assetChangeRequest.addResource(photoAccessHelper.ResourceType.VIDEO_RESOURCE, videoUri);
+      await helper.applyChanges(assetChangeRequest);
+      let assertUri: string = assetChangeRequest.getAsset().uri;
+      if (assertUri == undefined || assertUri == "") {
+        console.error(`${testNum}::createMovingPhoto :: failed to create moving Photo !`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    } catch (err) {
+      console.error(`getMovingPhotoTest::${testNum}:: failed to createMovingPhoto::${err.code}, ${err.message} !`);
+      expect(false).assertTrue();
+      done();
+    }
+  }
 
     async function requestVideoRequestOptions(testNum, done, requestOptions) {
       try {
@@ -48,6 +85,30 @@ export default function requestVideoTest() {
       }
     }
 
+    async function requestVideoRequestOptionsHdr(testNum, done, requestOptions) {
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          async onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(data).assertTrue();
+            done();
+          }
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
     async function requestVideoRequestOptionsError(testNum, done, requestOptions) {
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
@@ -62,7 +123,31 @@ export default function requestVideoTest() {
           }
         }
         const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(globalThis.abilityContext, photoAsset, requestOptions, destUri, handler)
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    }
+
+    async function requestVideoRequestOptionsErrorHdr(testNum, done, requestOptions) {
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} failed`);
+            expect(data).assertTrue();
+            done();
+          }
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
         expect(error.code).assertEqual('401');
@@ -93,6 +178,59 @@ export default function requestVideoTest() {
       }
     }
 
+    async function requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset) {  //  Compatible
+      try {
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} failed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    }
+
+    async function requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset) { // CompatibleOnprogress
+      try {
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} failed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    }
+
     async function requestVideoDestUriError(testNum, done, destUri, errCode) {
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
@@ -115,6 +253,74 @@ export default function requestVideoTest() {
         console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
         expect(error.code).assertEqual(errCode);
         done();
+      }
+    }
+
+    async function requestVideoDestUriErrorCompatible(testNum, done, destUri, errCode) {
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} failed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
+        expect(error.code).assertEqual(errCode);
+        done();
+      }
+    }
+
+    async function requestVideoDestUriErrorCompatibleOnprogress(testNum, done, destUri, errCode) {
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} failed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code} ${error.message}`);
+        expect(error.code).assertEqual(errCode);
+        done();
+      }
+    }
+
+    async function isHdr(testNum, fileUri) {
+      try {
+        let avMetadataExtractor = await media.createAVMetadataExtractor();
+        avMetadataExtractor.fdSrc = fileIo.openSync(fileUri);
+        let metadata = await avMetadataExtractor.fetchMetadata();
+        expect(metadata.hdrType).assertEqual(0);
+      } catch (error) {
+          console.error(`handle ${testNum} err:`, error);
       }
     }
 
@@ -608,5 +814,1260 @@ export default function requestVideoTest() {
       let errCode = '401' 
       await requestVideoDestUriError(testNum, done, fileUri, errCode)
     });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_2700
+     * @tc.name      : request_video_000
+     * @tc.desc      : request video with deliveryMode: fastMode and sourceMode: originalMode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_fast_source_original_moving_photo', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_original_moving_photo';
+      await createMovingPhoto(done, testNum);
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+      }
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "hdr_moving_photo.jpeg");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} failed`);
+            expect(data).assertTrue();
+            done();
+          }
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_2800
+     * @tc.name      : request_video_delivery_fast_source_original_compatible
+     * @tc.desc      : request video with deliveryMode: fastMode and sourceMode: originalMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_fast_source_original_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_original_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_2900
+     * @tc.name      : request_video_delivery_fast_source_original_compatible_onprogress
+     * @tc.desc      : request video with deliveryMode: fastMode and sourceMode: originalMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and onProgress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_fast_source_original_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_original_compatible_onprogress';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3000
+     * @tc.name      : test requestVideo with hignQualityMode and sourceMode: originalMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE
+     * @tc.desc      : request video with deliveryMode: hignQualityMode and sourceMode: originalMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_high_source_original_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_high_source_original_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3100
+     * @tc.name      : test requestVideo with hignQualityMode and sourceMode: originalMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and onProgress
+     * @tc.desc      : request video with deliveryMode: hignQualityMode and sourceMode: originalMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and onProgress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_high_source_original_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_delivery_high_source_original_compatible_onprogress';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3200
+     * @tc.name      : test requestVideo with balancedMode and sourceMode: originalMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE
+     * @tc.desc      : request image with deliveryMode: balancedMode and sourceMode: originalMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_balance_source_original_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_balance_source_original_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3300
+     * @tc.name      : test requestVideo with balancedMode and sourceMode: originalMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and onProgress
+     * @tc.desc      : request image with deliveryMode: balancedMode and sourceMode: originalMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and onProgress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_balance_source_original_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_delivery_balance_source_original_compatible_onprogress';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3400
+     * @tc.name      : test requestVideo with fastMode and sourceMode: editedMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE
+     * @tc.desc      : request video with deliveryMode: fastMode and sourceMode: editedMode and transcoding
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_fast_source_edited_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_edited_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3500
+     * @tc.name      : test requestVideo with fastMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with deliveryMode: fastMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_fast_source_edited_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_edited_compatible_onprogress';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3600
+     * @tc.name      : test requestVideo with hignQualityMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with deliveryMode: hignQualityMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_high_source_edited_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_high_source_edited_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3700
+     * @tc.name      : test requestVideo with hignQualityMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with deliveryMode: hignQualityMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_high_source_edited_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_delivery_high_source_edited_compatible_onprogress';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3800
+     * @tc.name      : test requestVideo with balancedMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with deliveryMode: balancedMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_balance_source_edited_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_balance_source_edited_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_3900
+     * @tc.name      : test requestVideo with balancedMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with deliveryMode: balancedMode and sourceMode: editedMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_balance_source_edited_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_delivery_balance_source_edited_compatible_onprogress';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      await requestVideoRequestOptionsHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4000
+     * @tc.name      : request_video_delivery_fast_source_original_compatible_moving_photo and transcoding
+     * @tc.desc      : request video with deliveryMode: fastMode and sourceMode: originalMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_fast_source_original_compatible_moving_photo', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_original_compatible_moving_photo';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "hdr_moving_photo.jpeg");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} failed`);
+            expect(data).assertTrue();
+            done();
+          }
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4100
+     * @tc.name      : request_video_delivery_fast_source_original_compatible_onprogress_moving_photo
+     *               : and transcoding and progress
+     * @tc.desc      : request video with deliveryMode: fastMode and sourceMode: originalMode
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_fast_source_original_compatible_onprogress_moving_photo', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_original_compatible_onprogress_moving_photo';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "hdr_moving_photo.jpeg");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} failed`);
+            expect(data).assertTrue();
+            done();
+          }
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4200
+     * @tc.name      : test requestVideo with deliveryMode: balancedMode and sourceMode: -100
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with deliveryMode: balancedMode and sourceMode: -100
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_source_mode_100_compatible', 0, async function (done) {
+      let testNum = 'request_video_source_mode_100_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+        sourceMode: -100,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      await requestVideoRequestOptionsErrorHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4300
+     * @tc.name      : test requestVideo with deliveryMode: balancedMode and sourceMode: -100
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with deliveryMode: balancedMode and sourceMode: -100
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_source_mode_100_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_source_mode_100_compatible_onprogress';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+        sourceMode: -100,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      await requestVideoRequestOptionsErrorHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4400
+     * @tc.name      : test requestVideo with deliveryMode: -100 and sourceMode: EDITED_MODE
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with deliveryMode: -100 and sourceMode: EDITED_MODE
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_mode_100_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_mode_100_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: -100,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+      }
+      await requestVideoRequestOptionsErrorHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4500
+     * @tc.name      : test requestVideo with deliveryMode: -100 and sourceMode: EDITED_MODE
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with deliveryMode: -100 and sourceMode: EDITED_MODE
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_mode_100_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_delivery_mode_100_compatible_onprogress';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: -100,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        mediaAssetProgressHandler: TestHandler,
+      }
+      await requestVideoRequestOptionsErrorHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4600
+     * @tc.name      : test requestVideo with photoAsset = null
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with photoAsset = null
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_photo_asset_null_compatible', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_null_compatible';
+      let photoAsset = null
+      await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4700
+     * @tc.name      : test requestVideo with photoAsset = null
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with photoAsset = null
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_photo_asset_null_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_null_compatible_onprogress';
+      let photoAsset = null
+      await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4800
+     * @tc.name      : test requestVideo with photoAsset = undefined
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with photoAsset = undefined
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_photo_asset_undefined_compatible', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_undefined_compatible';
+      let photoAsset = undefined
+      await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_4900
+     * @tc.name      : test requestVideo with photoAsset = undefined
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with photoAsset = undefined
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_photo_asset_undefined_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_undefined_compatible_onprogress';
+      let photoAsset = undefined
+      await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5000
+     * @tc.name      : test requestVideo with photoAsset = 'test'
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with photoAsset = 'test'
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_photo_asset_test_string_compatible', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_test_string_compatible';
+      let photoAsset = 'test'
+      await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5100
+     * @tc.name      : test requestVideo with photoAsset = 'test'
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with photoAsset = 'test'
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_photo_asset_test_string_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_test_string_compatible_onprogress';
+      let photoAsset = 'test'
+      await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5200
+     * @tc.name      : test requestVideo with photoAsset = true
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with photoAsset = true
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_photo_asset_true_compatible', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_true_compatible';
+      let photoAsset = true
+      await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5300
+     * @tc.name      : test requestVideo with photoAsset = true
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with photoAsset = true
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_photo_asset_true_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_true_compatible_onprogress';
+      let photoAsset = true
+      await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5400
+     * @tc.name      : test requestVideo with photoAsset = {a: 10}
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with photoAsset = {a: 10}
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_photo_asset_object_compatible', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_object_compatible';
+      let photoAsset = {a: 10}
+      await requestVideoPhotoAssetErrorCompatible(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5500
+     * @tc.name      : test requestVideo with photoAsset = {a: 10}
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with photoAsset = {a: 10}
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_photo_asset_object_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_photo_asset_object_compatible_onprogress';
+      let photoAsset = {a: 10}
+      await requestVideoPhotoAssetErrorCompatibleOnprogress(testNum, done, photoAsset)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5600
+     * @tc.name      : test requestVideo with fileUri = null
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri = null
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_fileUri_null_compatible', 0, async function (done) {
+      let testNum = 'request_video_fileUri_null_compatible';
+      let fileUri = null
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatible(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5700
+     * @tc.name      : test requestVideo with fileUri = null
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri = null
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_fileUri_null_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_fileUri_null_compatible_onprogress';
+      let fileUri = null
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatibleOnprogress(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5800
+     * @tc.name      : test requestVideo with fileUri = undefined
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri = undefined
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_fileUri_undefined_compatible', 0, async function (done) {
+      let testNum = 'request_video_fileUri_undefined_compatible';
+      let fileUri = undefined
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatible(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_5900
+     * @tc.name      : test requestVideo with fileUri = undefined
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri = undefined
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_fileUri_undefined_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_fileUri_undefined_compatible_onprogress';
+      let fileUri = undefined
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatibleOnprogress(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6000
+     * @tc.name      : test requestVideo with fileUri = true
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri = true
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_fileUri_true_compatible', 0, async function (done) {
+      let testNum = 'request_video_fileUri_true_compatible';
+      let fileUri = true
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatible(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6100
+     * @tc.name      : test requestVideo with fileUri = true
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri = true
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_fileUri_true_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_fileUri_true_compatible_onprogress';
+      let fileUri = true
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatibleOnprogress(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6200
+     * @tc.name      : test requestVideo with fileUri = 'aaaaa.....mp4'(length = 384)
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri = 'aaaaa.....mp4'(length = 384)
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_fileUri_test_string_compatible', 0, async function (done) {
+      let testNum = 'request_video_fileUri_test_string_compatible';
+      let fileUri = ''
+      for (let i = 0; i < 380; i++) {
+        fileUri += 'a'
+      }
+      fileUri+= '.mp4'
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatible(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6300
+     * @tc.name      : test requestVideo with fileUri = 'aaaaa.....mp4'(length = 384)
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri = 'aaaaa.....mp4'(length = 384)
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_fileUri_test_string_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_fileUri_test_string_compatible_onprogress';
+      let fileUri = ''
+      for (let i = 0; i < 380; i++) {
+        fileUri += 'a'
+      }
+      fileUri+= '.mp4'
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatibleOnprogress(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6400
+     * @tc.name      : test requestVideo with fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_special_chat_compatible', 0, async function (done) {
+      let testNum = 'request_video_special_chat_compatible';
+      let fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatible(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6500
+     * @tc.name      : test requestVideo with fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_special_chat_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_special_chat_compatible_onprogress';
+      let fileUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatibleOnprogress(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6600
+     * @tc.name      : test requestVideo with fileUri = 'a...a'(length = 385)
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri = 'a...a'(length = 385)
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_fileUri_extr_long_string_compatible', 0, async function (done) {
+      let testNum = 'request_video_fileUri_extr_long_string_compatible';
+      let fileUri = ''
+      for (let i = 0; i < 385; i++) {
+        fileUri += 'a'
+      }
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatible(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6700
+     * @tc.name      : test requestVideo with fileUri = 'a...a'(length = 385)
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri = 'a...a'(length = 385)
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_fileUri_extr_long_string_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_fileUri_extr_long_string_compatible_onprogress';
+      let fileUri = ''
+      for (let i = 0; i < 385; i++) {
+        fileUri += 'a'
+      }
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatibleOnprogress(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6800
+     * @tc.name      : test requestVideo with photoAsset : imageAsset
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with photoAsset : imageAsset
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_photoAsset_imageAsset_compatible', 0, async function (done) {
+      let testNum = 'request_video_photoAsset_imageAsset_compatible';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_6900
+     * @tc.name      : test requestVideo with photoAsset : imageAsset
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with photoAsset : imageAsset
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_photoAsset_imageAsset_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_photoAsset_imageAsset_compatible_onprogress';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          mediaAssetProgressHandler: TestHandler,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7000
+     * @tc.name      : test requestVideo fileUri : ***.jpg
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri : ***.jpg
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_fileUri_image_compatible', 0, async function (done) {
+      let testNum = 'request_video_fileUri_image_compatible';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('jpg');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7100
+     * @tc.name      : test requestVideo fileUri : ***.jpg
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri : ***.jpg
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_fileUri_image_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_fileUri_image_compatible_onprogress';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('jpg');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          mediaAssetProgressHandler: TestHandler,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7200
+     * @tc.name      : test requestVideo with fileUri: ***.jpg, photoAsset: imageAsset
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri: ***.jpg, photoAsset: imageAsset
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_fileUri_imageUri_photoAsset_imageAsset_compatible', 0, async function (done) {
+      let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset_compatible';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('jpg');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7300
+     * @tc.name      : test requestVideo with fileUri: ***.jpg, photoAsset: imageAsset
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri: ***.jpg, photoAsset: imageAsset
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_fileUri_imageUri_photoAsset_imageAsset_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_fileUri_imageUri_photoAsset_imageAsset_compatible_onprogress';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image.jpg");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('jpg');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          mediaAssetProgressHandler: TestHandler,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(error.code).assertEqual('401');
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7400
+     * @tc.name      : test requestVideo with fileUri = 'test.mp4'
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.desc      : request video with fileUri = 'test.mp4'
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_fileUri_empty_string_compatible', 0, async function (done) {
+      let testNum = 'request_video_fileUri_empty_string_compatible';
+      let fileUri = ''
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatible(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7500
+     * @tc.name      : test requestVideo with fileUri = 'test.mp4'
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.desc      : request video with fileUri = 'test.mp4'
+     *-              : and compatibleMode: COMPATIBLE_FORMAT_MODE and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_fileUri_empty_string_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_video_fileUri_empty_string_compatible_onprogress';
+      let fileUri = ''
+      let errCode = '401'
+      await requestVideoDestUriErrorCompatibleOnprogress(testNum, done, fileUri, errCode)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7600
+     * @tc.name      : test requestVideo with compatibleMode -100 and deliveryMode: BALANCE_MODE
+     *               : and sourceMode: originalMode
+     * @tc.desc      : request video with deliveryMode: BALANCE_MODE and sourceMode: originalMode
+     *-              : and compatibleMode: -100 and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_fast_source_original_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_original_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+        sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+        compatibleMode: -100,
+      }
+      await requestVideoRequestOptionsErrorHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7700
+     * @tc.name      : test requestVideo with compatibleMode -100 and deliveryMode: BALANCE_MODE
+     *               : and sourceMode: EDITED_MODE
+     * @tc.desc      : request video with deliveryMode: BALANCE_MODE and sourceMode: EDITED_MODE
+     *-              : and compatibleMode: -100 and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_video_delivery_fast_source_original_compatible', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_source_original_compatible';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
+        sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+        compatibleMode: -100,
+      }
+      await requestVideoRequestOptionsErrorHdr(testNum, done, requestOptions)
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7800
+     * @tc.name      : test requestVideo with compatibleMode -100 and deliveryMode: BALANCE_MODE
+     *               : and sourceMode: EDITED_MODE
+     * @tc.desc      : request video with deliveryMode: BALANCE_MODE and sourceMode: EDITED_MODE
+     *-              : and compatibleMode: -100 and transcoding and progress
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('request_hdr_video_fileUri_imageUri_photoAsset_compatible_onprogress', 0, async function (done) {
+      let testNum = 'request_hdr_video_compatible_onprogress';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "test_hdr_1.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          mediaAssetProgressHandler: TestHandler,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(true).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_7900
+     * @tc.name      : test requestVideo with compatibleMode -100 and deliveryMode: BALANCE_MODE
+     *               : and sourceMode: EDITED_MODE
+     * @tc.desc      : request video with deliveryMode: BALANCE_MODE and sourceMode: EDITED_MODE
+     *-              : and compatibleMode: -100 and transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_hdr_video_fileUri_imageUri_photoAsset_compatible', 0, async function (done) {
+      let testNum = 'request_hdr_video_compatible';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "test_hdr_1.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(true).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_8000
+     * @tc.name      : test requestVideo with compatibleMode -100 and deliveryMode: BALANCE_MODE
+     *               : and sourceMode: EDITED_MODE
+     * @tc.desc      : request video with deliveryMode: BALANCE_MODE and sourceMode: EDITED_MODE
+     *-              : and compatibleMode: -100 and no transcoding
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_hdr_video_fileUri_imageUri_photoAsset_no_transcoding', 0, async function (done) {
+      let testNum = 'request_hdr_video_no_transcoding';
+      try {
+        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "test_hdr_1.mp4");
+        let fetchResult = await helper.getAssets(fetchOps);
+        let photoAsset = await fetchResult.getFirstObject();
+        let destUri = createSandboxFileUri('mp4');
+        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
+          onDataPrepared(data : boolean) {
+            console.info(`${testNum} succeed`);
+            expect(false).assertTrue();
+            done();
+          }
+        }
+        let requestOptions : photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.FAST_ORIGINAL_FORMAT_MODE,
+        }
+        const handler = new MediaHandler();
+        await photoAccessHelper.MediaAssetManager.requestVideoFile(
+          globalThis.abilityContext, photoAsset, requestOptions, destUri, handler);
+        await isHdr(testNum, destUri);
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(true).assertTrue();
+        done();
+      }
+    });
+
   });
 }
