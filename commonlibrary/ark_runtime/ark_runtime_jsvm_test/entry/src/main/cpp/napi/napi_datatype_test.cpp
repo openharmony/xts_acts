@@ -449,10 +449,7 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info)
     // create vm
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCreateEnvTest2: OH_JSVM_Init Failed");
-        return nullptr;
-    }
+    memset_s(&options, sizeof(options), 0, sizeof(options));
     options.isForSnapshotting = true;
     JSVM_Status status = OH_JSVM_CreateVM(&options, &vm);
     if (status != JSVM_OK) {
@@ -509,10 +506,7 @@ JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info)
     // create vm
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
-    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestDestroyEnvTest1: OH_JSVM_Init Failed");
-        return nullptr;
-    }
+    memset_s(&options, sizeof(options), 0, sizeof(options));
     options.isForSnapshotting = true;
     JSVM_Status status = OH_JSVM_CreateVM(&options, &vm);
     if (status != JSVM_OK) {

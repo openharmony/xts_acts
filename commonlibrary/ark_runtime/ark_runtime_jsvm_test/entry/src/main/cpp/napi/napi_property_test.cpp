@@ -650,13 +650,9 @@ const size_t NUM_SIZE_3 = 3;
     size_t argc = NUM_SIZE_3;
     JSVM_Value args[NUM_SIZE_3] = {nullptr};
     JSVM_Value thisVar = nullptr;
-    JSVM_Status status = OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest2: OH_JSVM_GetCbInfo Failed");
-        return nullptr;
-    }
+    OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
     // call OH_JSVM_SetProperty
-    status = OH_JSVM_SetProperty(env, args[0], args[1], args[NUM_SIZE_2]);
+    JSVM_Status status = OH_JSVM_SetProperty(env, args[0], args[1], args[NUM_SIZE_2]);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest2: OH_JSVM_SetProperty Failed");
         return nullptr;
@@ -664,18 +660,10 @@ const size_t NUM_SIZE_3 = 3;
     // Call OH_JSVM_SetProperty again
     JSVM_Value stringValue = nullptr;
     const char* strKeyValue = "setKeyValue1";
-    status = OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &stringValue);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest2: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &stringValue);
     JSVM_Value stringKey = nullptr;
     const char* strKey = "setkey1";
-    status = OH_JSVM_CreateStringUtf8(env, strKey, JSVM_AUTO_LENGTH, &stringKey);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest2: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKey, JSVM_AUTO_LENGTH, &stringKey);
     status = OH_JSVM_SetProperty(env, args[0], stringKey, stringValue);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest2: OH_JSVM_SetProperty again Failed");
@@ -712,11 +700,7 @@ const size_t NUM_SIZE_3 = 3;
     }
     char strGetKeyValue[BUF_SIZE_MAX] = {0};
     size_t rstLength = 0;
-    status = OH_JSVM_GetValueStringUtf8(env, rstValue, strGetKeyValue, BUF_SIZE_MAX, &rstLength);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest2: OH_JSVM_GetValueStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_GetValueStringUtf8(env, rstValue, strGetKeyValue, BUF_SIZE_MAX, &rstLength);
     char strGetKeyValueFirst[BUF_SIZE_MAX] = {0};
     size_t rstFirstLength = 0;
     status = OH_JSVM_GetValueStringUtf8(env, args[NUM_SIZE_2], strGetKeyValueFirst, BUF_SIZE_MAX, &rstFirstLength);
@@ -799,13 +783,9 @@ const size_t NUM_SIZE_3 = 3;
     size_t argc = NUM_SIZE_3;
     JSVM_Value args[NUM_SIZE_3] = {nullptr};
     JSVM_Value thisVar = nullptr;
-    JSVM_Status status = OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest3: OH_JSVM_GetCbInfo Failed");
-        return nullptr;
-    }
+    OH_JSVM_GetCbInfo(env, info, &argc, args, &thisVar, nullptr);
     // call OH_JSVM_SetProperty
-    status = OH_JSVM_SetProperty(env, args[0], args[1], args[NUM_SIZE_2]);
+    JSVM_Status status = OH_JSVM_SetProperty(env, args[0], args[1], args[NUM_SIZE_2]);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest3: OH_JSVM_SetProperty Failed");
         return nullptr;
@@ -813,18 +793,10 @@ const size_t NUM_SIZE_3 = 3;
     // Call OH_JSVM_SetProperty again
     JSVM_Value stringValue = nullptr;
     const char* strKeyValue = "setKeyValue1";
-    status = OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &stringValue);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest3: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKeyValue, JSVM_AUTO_LENGTH, &stringValue);
     JSVM_Value stringKey = nullptr;
     const char* strKey = "setkey1";
-    status = OH_JSVM_CreateStringUtf8(env, strKey, JSVM_AUTO_LENGTH, &stringKey);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest3: OH_JSVM_CreateStringUtf8 Failed");
-        return nullptr;
-    }
+    OH_JSVM_CreateStringUtf8(env, strKey, JSVM_AUTO_LENGTH, &stringKey);
     status = OH_JSVM_SetProperty(env, args[0], stringKey, stringValue);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCombinationPropertyTest3: OH_JSVM_SetProperty again Failed");
@@ -938,7 +910,7 @@ const size_t NUM_SIZE_3 = 3;
     OH_JSVM_GetBoolean(env, result, &value);
     return value;
 }
-// Property  combination: setPropert 2 property->  hasProperty 2 property-> getProperty 2 property 
+// Property  combination: setPropert 2 property->  hasProperty 2 property-> getProperty 2 property
 //-> deleteProperty 1 property-> setProperty 1 property->  hasProperty 1 property->  getProperty delete property
 [[maybe_unused]] JSVM_Value TestCombinationPropertyTest4(JSVM_Env env, JSVM_CallbackInfo info)
 {

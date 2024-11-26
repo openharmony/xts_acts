@@ -886,7 +886,7 @@ const int DIFF_VALUE_TWELVE = 12;
     }
 
     JSVM_Value recvMsg = nullptr;
-    status = OH_JSVM_GetAndClearLastException(env, &recvMsg);
+    OH_JSVM_GetAndClearLastException(env, &recvMsg);
 
     JSVM_Value rst = nullptr;
     status = OH_JSVM_GetElement(env, result, sizeof(result), &rst);
@@ -1014,7 +1014,7 @@ const int DIFF_VALUE_TWELVE = 12;
     }
 
     JSVM_Value recvMsg = nullptr;
-    status = OH_JSVM_GetAndClearLastException(env, &recvMsg);
+    OH_JSVM_GetAndClearLastException(env, &recvMsg);
 
     bool hasElement = false;
     OH_JSVM_HasElement(env, result, 0, &hasElement);
@@ -1185,7 +1185,7 @@ const int DIFF_VALUE_TWELVE = 12;
     }
 
     JSVM_Value recvMsg = nullptr;
-    status = OH_JSVM_GetAndClearLastException(env, &recvMsg);    
+    OH_JSVM_GetAndClearLastException(env, &recvMsg);    
     
     bool rst = false;
     OH_JSVM_DeleteElement(env, result, 0, &rst);
@@ -1195,7 +1195,7 @@ const int DIFF_VALUE_TWELVE = 12;
     }
 
     recvMsg = nullptr;
-    status = OH_JSVM_GetAndClearLastException(env, &recvMsg); 
+    OH_JSVM_GetAndClearLastException(env, &recvMsg); 
 
     bool setValue = true;
     JSVM_Value retValue = nullptr;

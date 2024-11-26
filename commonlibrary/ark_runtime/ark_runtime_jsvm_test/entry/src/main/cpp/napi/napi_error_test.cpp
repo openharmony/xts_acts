@@ -1438,10 +1438,6 @@ const size_t ERROR_BUF_SIZE_MAX = 128;
 //CreateRangeError-> isError->Throw
 [[maybe_unused]] JSVM_Value TestCombinationTest3(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = 1;
-    JSVM_Value argv[1] = {nullptr};
-    OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-    
     const char* strErrRangeCode = "create Range error code";
     JSVM_Value errorRangeCode = nullptr;
     OH_JSVM_CreateStringUtf8(env, strErrRangeCode, JSVM_AUTO_LENGTH, &errorRangeCode);

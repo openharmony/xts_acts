@@ -818,12 +818,8 @@ const JSVM_TypeTag tagsData[] = {
     // Typeof
     JSVM_ValueType rstValueType = JSVM_UNDEFINED;
     status = OH_JSVM_Typeof(env, externalValue, &rstValueType);
-    if (status != JSVM_OK) {
+    if ((status != JSVM_OK) || (rstValueType != JSVM_UNDEFINED)) {
         OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest3: OH_JSVM_Typeof Failed");
-        return nullptr;
-    }
-    if (rstValueType != JSVM_UNDEFINED) {
-        OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest3: type is not JSVM_UNDEFINED");
         return nullptr;
     }
     //GetPrototype
@@ -842,12 +838,8 @@ const JSVM_TypeTag tagsData[] = {
     //CheckObjectTypeTag true
     bool bRstTypeTag = false;
     status = OH_JSVM_CheckObjectTypeTag(env, externalValue, &tagsData[0], &bRstTypeTag);
-    if (status != JSVM_OK) {
+    if ((status != JSVM_OK) || (!bRstTypeTag)) {
         OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest3: OH_JSVM_CheckObjectTypeTag Failed");
-        return nullptr;
-    }
-    if (!bRstTypeTag) {
-        OH_JSVM_ThrowError(env, nullptr, "TestObjectCombinationTest3: OH_JSVM_CheckObjectTypeTag bRstTypeTag = false");
         return nullptr;
     }
     free(ptrData);
