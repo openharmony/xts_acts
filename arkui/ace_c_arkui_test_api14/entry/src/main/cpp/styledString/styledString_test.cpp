@@ -40,24 +40,27 @@ napi_value testStyledString001(napi_env env, napi_callback_info info)
     auto *styledStringDescriber = OH_ArkUI_StyledString_Descriptor_Create(); // ArkUI_StyledString_Descriptor {(C++) 属性字符串，html}
     // 反序列化接口，把data_byte信息写到styledStringDescriber。
     auto status = OH_ArkUI_UnmarshallStyledStringDescriptor(data_bytes, arraySize, styledStringDescriber);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "zyx", "UnmarshallingStyledStringDescriber status is %{public}d",status);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", "UnmarshallingStyledStringDescriber status is %{public}d",status);
     ASSERT_EQ(status, 0);
     // (c++)属性字符串 -> html
     auto html = OH_ArkUI_ConvertToHtml(styledStringDescriber);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "zyx", "html is: %{public}s", html);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", "html is: %{public}s", html);
     ASSERT_STREQ(html, STR_TEXT);
     // (c++)属性字符串 -> uint8_t,
     size_t resultSize;
     size_t size = SIZE;
     uint8_t *buffer = (uint8_t *)malloc(size * sizeof(uint8_t));
     if (OH_ArkUI_MarshallStyledStringDescriptor(buffer, size, styledStringDescriber, &resultSize) != 0) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "zyx", "resultSize is :[%{public}zu]", resultSize);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "resultSize is :[%{public}zu]", resultSize);
+        if(resultSize <= 0 || resultSize >= 10000) {
+            return nullptr; 
+        }
         uint8_t *buffer2 = (uint8_t *)malloc(resultSize * sizeof(uint8_t));
         size_t resultSize2;
         OH_ArkUI_MarshallStyledStringDescriptor(buffer2, resultSize, styledStringDescriber, &resultSize2);
 
         // 验证反序列化后的buffer2是否和data_bytes一致。
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "zyx",
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001",
                      "序列化前数组长度:[%{public}zu],序列化后数组长度：[%{public}zu]", arraySize, resultSize2);
         ASSERT_EQ(arraySize, resultSize2);
         if (arraySize == resultSize2) {
@@ -65,9 +68,10 @@ napi_value testStyledString001(napi_env env, napi_callback_info info)
             for (size_t i = 0; i < arraySize; i++) {
                 if (data_bytes[i] != buffer2[i]) {
                     isAllEqual = false;
+                    break;
                 }
             }
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "zyx", "序列化前后的数组是否完全一致：[%{public}d]",
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "序列化前后的数组是否完全一致：[%{public}d]",
                          isAllEqual);
         }
 
@@ -75,7 +79,7 @@ napi_value testStyledString001(napi_env env, napi_callback_info info)
         free(buffer2);
     }
     OH_ArkUI_StyledString_Descriptor_Destroy(styledStringDescriber);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "zyx", "testStyledString001 end succ");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "testStyledString001 end succ");
     napi_value result = nullptr;  
     napi_create_int32(env, 0, &result);                                                                                 
     return result;
