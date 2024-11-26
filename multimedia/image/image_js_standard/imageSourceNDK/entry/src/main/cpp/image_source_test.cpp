@@ -40,6 +40,7 @@ namespace OHOS {
 namespace Media {
 
 #define STATIC_FUNCTION(n, f) { (n), nullptr, (f), nullptr, nullptr, nullptr, napi_static, nullptr }
+#define DEBUG_PTR(p) (((p) == nullptr)?"nullptr":"not nullptr")
 
 napi_value ImageSourceNDKTest::Init(napi_env env, napi_value exports)
 {
