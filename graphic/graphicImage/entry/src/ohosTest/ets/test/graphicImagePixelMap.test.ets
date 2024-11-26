@@ -982,6 +982,31 @@ export default function graphicImagePixelMapTest() {
       })
     });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_043
+     * @tc.name      : testASTC_4
+     * @tc.desc      : ASTC_4x4
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testASTC_4", 0, async (done:Function)=>  {
+      let msg = '=====testASTC_4====='
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.ASTC_4x4, size: { height: 4, width: 6 } }
+      console.log(msg + " Example begin! ")
+      image.createPixelMap(color, opts).then(async (pixelMap: image.PixelMap) => {
+        console.info( msg + ' Succeeded in creating pixelMap.');
+          console.log(msg + ' Example end !')
+          expect(true).assertTrue();
+          done();
+      }).catch((error: BusinessError) => {
+        console.error( msg + ` Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+        done();
+      })
+    });
+
     
   })
 }
