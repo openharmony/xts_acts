@@ -1,0 +1,19 @@
+{
+    "devices": {
+        "general": [
+            "wearable",
+            "default",
+            "tablet",
+            "phone",
+            "2in1"
+        ],
+        "custom": [
+            {
+                "xts": [
+                    "SystemCapability.Account.AppAccount",
+                    "SystemCapability.Account.OsAccount"
+                ]
+            }
+        ]
+    }
+}
