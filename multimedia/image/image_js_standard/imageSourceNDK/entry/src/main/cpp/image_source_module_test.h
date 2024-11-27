@@ -23,6 +23,12 @@
 #include "multimedia/image_framework/image/image_source_native.h"
 #include "multimedia/image_framework/image/image_common.h"
 
+#define IMAGE_LOG_TAG "ImageSourceModuleTest"
+#define IMAGE_LOG_DOMAIN 0x3200
+
+#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, IMAGE_LOG_DOMAIN, IMAGE_LOG_TAG, fmt, ##__VA_ARGS__)
+
+
 class ImageSourceModuleTest {
 public:
     ImageSourceModuleTest();
