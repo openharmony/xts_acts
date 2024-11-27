@@ -20,5 +20,5 @@ ohos_js_app_suite("ActsNotificationEmitterTest") {
       "signature/auto_ohos_default_MyApplication_com.example.badge.p7b"
   hap_name = "ActsNotificationEmitterTest"
   subsystem_name = "notification"
-  part_name = "distributed_notification_service"
+  part_name = "eventhandler"
 }
