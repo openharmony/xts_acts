@@ -84,6 +84,7 @@ import utmpNdkTest from './UtmpNdk.test';
 import utsnameNdkTest from './UtsnameNdk.test';
 import wcTypeNdkTest from './WctypeNdk.test';
 import xattrNdkTest from './XattrNdk.test';
+import muslWaitNdkTest from './WaitNdk.test';
 import linkNdkTest from './LinkNdk.test';
 import dlfcnNdkTest from './DlfcnNdk.test';
 import stdioNdkText from './StdioNdk.test';
