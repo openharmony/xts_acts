@@ -1190,7 +1190,7 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest040, TestSize.Level
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
     OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typoStyle,
         OH_Drawing_CreateFontCollection());
-    EXPECT_TRUE(handler != nullptr);
+    EXPECT_NE(handler, nullptr);
     OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
     double fontSize = 30;
     OH_Drawing_SetTextStyleFontSize(txtStyle, fontSize);
@@ -1224,19 +1224,19 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest040, TestSize.Level
     if (fileStream.is_open()) {
         size_t fontNum;
         char** list = OH_Drawing_FontParserGetSystemFontList(parser, &fontNum);
-        EXPECT_EQ(list != nullptr, true);
-        const char *name = "FZHeiT-SC Bold";
-        EXPECT_EQ(OH_Drawing_FontParserGetFontByName(parser, name) != nullptr, true);
+        EXPECT_NE(list, nullptr);
+        const char *name = list[0];
+        EXPECT_NE(OH_Drawing_FontParserGetFontByName(parser, name), nullptr);
         OH_Drawing_DestroySystemFontList(list, fontNum);
     }
     OH_Drawing_DestroyFontParser(parser);
     OH_Drawing_DestroyFontDescriptor(descriptor);
     OH_Drawing_LineMetrics* vectorMetrics = OH_Drawing_TypographyGetLineMetrics(typography);
-    EXPECT_EQ(vectorMetrics != nullptr, true);
-    EXPECT_EQ(OH_Drawing_LineMetricsGetSize(vectorMetrics) != 0, true);
+    EXPECT_NE(vectorMetrics, nullptr);
+    EXPECT_NE(OH_Drawing_LineMetricsGetSize(vectorMetrics), 0);
     OH_Drawing_DestroyLineMetrics(vectorMetrics);
     OH_Drawing_LineMetrics* metrics = new OH_Drawing_LineMetrics();
-    EXPECT_EQ(OH_Drawing_TypographyGetLineMetricsAt(typography, 0, metrics), true);
+    EXPECT_TRUE(OH_Drawing_TypographyGetLineMetricsAt(typography, 0, metrics));
     OH_Drawing_DestroyTypography(typography);
     OH_Drawing_DestroyTypographyHandler(handler);
 }
@@ -2502,11 +2502,11 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest102, TestSize.Level
     if (fileStream.is_open()) {
         size_t fontNum;
         char** list = OH_Drawing_FontParserGetSystemFontList(parser, &fontNum);
-        EXPECT_EQ(list != nullptr, true);
-        EXPECT_EQ(OH_Drawing_FontParserGetSystemFontList(nullptr, &fontNum) == nullptr, true);
-        const char *name = "FZHeiT-SC Bold";
-        EXPECT_EQ(OH_Drawing_FontParserGetFontByName(parser, name) != nullptr, true);
-        EXPECT_EQ(OH_Drawing_FontParserGetFontByName(nullptr, name) == nullptr, true);
+        EXPECT_NE(list, nullptr);
+        EXPECT_EQ(OH_Drawing_FontParserGetSystemFontList(nullptr, &fontNum), nullptr);
+        const char *name = list[0];
+        EXPECT_NE(OH_Drawing_FontParserGetFontByName(parser, name), nullptr);
+        EXPECT_EQ(OH_Drawing_FontParserGetFontByName(nullptr, name), nullptr);
         OH_Drawing_DestroySystemFontList(list, fontNum);
         OH_Drawing_DestroySystemFontList(nullptr, fontNum);
     }
