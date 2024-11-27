@@ -168,7 +168,6 @@ import textInputHeightAdaptivePolicy from "./TextInput/textInputHeightAdaptivePo
 import textInputDecoration from "./TextInput/textInputDecoration.test";
 import textInputLetterSpacing from "./TextInput/textInputLetterSpacing.test";
 import textInputLineHeight from "./TextInput/textInputLineHeight.test";
-import imageSpanJsunit from './ImageSpanTest/imageSpan.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -319,5 +318,4 @@ export default function testsuite() {
   textInputDecoration();
   textInputLetterSpacing();
   textInputLineHeight();
-  imageSpanJsunit();
 }

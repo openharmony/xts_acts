@@ -25,7 +25,7 @@ export default function imageSpanJsunit() {
     beforeEach(async (done: Function) => {
       console.info("imageSpanJsunit beforeEach start");
       let options: optionsObj = {
-        uri: 'MainAbility/pages/ImageSpan/imageSpan',
+        uri: 'MainAbility/pages/imageSpan/imageSpan',
       }
       try {
         router.clear();
