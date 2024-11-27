@@ -527,6 +527,7 @@
 #include "drag/drag_dragAction.cpp"
 #include "system/system_ColorFontChange_test.cpp"
 #include "text/text_imageSpan_test.cpp"
+#include "inputevent/input_event_func_test.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -4986,6 +4987,17 @@ static napi_value Init(napi_env env, napi_value exports)
                 napi_default, nullptr},
 
 		{"textImageSpanTest001", nullptr, textImageSpanTest001, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        // InputEvent
+        { "testInputEvent003", nullptr, TestInputEvent003, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testInputEvent004", nullptr, TestInputEvent004, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testInputEvent005", nullptr, TestInputEvent005, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testInputEvent006", nullptr, TestInputEvent006, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testInputEvent008", nullptr, TestInputEvent008, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testInputEvent009", nullptr, TestInputEvent009, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testInputEvent010", nullptr, TestInputEvent010, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testInputEvent015", nullptr, TestInputEvent015, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testInputEvent016", nullptr, TestInputEvent016, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

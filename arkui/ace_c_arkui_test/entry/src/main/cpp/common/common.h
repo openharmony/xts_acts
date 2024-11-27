@@ -60,6 +60,7 @@ namespace ArkUICapiTest {
 #define PARAM_100 100
 #define PARAM_200 200
 #define PARAM_10000 10000
+#define NULLPTR_ERROR (-1)
 #define PARAM_NEGATIVE_1 (-1)
 #define PARAM_NEGATIVE_2 (-2)
 #define PARAM_NEGATIVE_10 (-10)
@@ -69,6 +70,7 @@ namespace ArkUICapiTest {
 #define PARAM_NEGATIVE_100 (-100)
 #define PARAM_64 64
 #define DEFAULT_MARGIN 10
+#define SIZE_5 5
 #define SIZE_10 10
 #define SIZE_20 20
 #define SIZE_30 30
@@ -95,6 +97,7 @@ namespace ArkUICapiTest {
 #define COLOR_BLACK 0xFF000000
 #define COLOR_RED 0xFFFF0000
 #define COLOR_GREEN 0xFF00FF00
+#define COLOR_PINK 0xFFFFC0CB
 #define COLOR_BLUE 0xFF0000FF
 #define COLOR_YELLOW 0xFFFFFF00
 #define COLOR_PURPLE 0xFFFF11FF
