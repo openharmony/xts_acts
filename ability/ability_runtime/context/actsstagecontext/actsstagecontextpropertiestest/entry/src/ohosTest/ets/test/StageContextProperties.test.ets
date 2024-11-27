@@ -417,7 +417,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
       console.log(TAG + " --- start " + JSON.stringify(globalThis.abilityContextRes));
       let result: string = await globalThis.abilityContextRes.resourceManager.getString(50331651);
       console.log(TAG + " : result = " + JSON.stringify(result));
-      expect(result).assertEqual("test label");
+      expect(result).assertEqual("entry_MainAbility");
       done();
     });
 
@@ -433,7 +433,7 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
       console.log(TAG + " : result = " + JSON.stringify(globalThis.abilityStageContextRes));
       let result: string = await globalThis.abilityStageContextRes.resourceManager.getString(50331651);
       console.log(TAG + " : result = " + JSON.stringify(result));
-      expect(result).assertEqual("test label");
+      expect(result).assertEqual("entry_MainAbility");
       done();
     });
 
