@@ -34,6 +34,7 @@
     "MainAbility/pages/subHeader/subHeaderButton",
     "MainAbility/pages/subHeader/subHeaderIconGroup",
     "MainAbility/pages/subHeader/subHeaderTextArrow",
+    "MainAbility/pages/subHeader/subHeaderTitleBuilder",
     "MainAbility/pages/chip/ChipDirection",
     "MainAbility/pages/counter/CounterDirection",
     "MainAbility/pages/popup/PopupDirection",

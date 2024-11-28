@@ -46,6 +46,7 @@ import editableTitleBarSafeAreaTypes from './editableTitleBar/editableTitleBarSa
 import subHeaderButton from './subHeader/subHeaderButton.test';
 import subHeaderIconGroup from './subHeader/subHeaderIconGroup.test';
 import subHeaderTextArrow from './subHeader/subHeaderTextArrow.test';
+import subheaderTitleBuilder from './subHeader/subheaderTitleBuilder.test';
 import chipDirectionTest from './chip/chipDirection.test';
 import counterDirectionTest from './counter/counterDirection.test';
 import popupDirectionTest from './popup/popupDirectionTest.test';
@@ -99,6 +100,7 @@ export default function testsuite() {
   subHeaderButton();
   subHeaderIconGroup();
   subHeaderTextArrow();
+  subheaderTitleBuilder();
 
   FileButtonContinueToReceiveTest();
   FileButtonDownloadTest();
