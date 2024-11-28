@@ -15,9 +15,11 @@
 import webJsunit from './WebJsunit.test';
 import webTwoJsunit from './WebTwoJsunit.test';
 import bindSelectionMenu from './bindSelectionMenu.test'
+import createPdf from './createPdfJsunit.test'
 
 export default function testsuite() {
   webJsunit();
   webTwoJsunit();
   bindSelectionMenu();
+  createPdf()
 }
