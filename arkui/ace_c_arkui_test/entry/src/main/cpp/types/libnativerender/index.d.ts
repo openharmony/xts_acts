@@ -411,3 +411,54 @@ export const commonAttrsFocusStatusTest: (a: string) => void;
 export const commonAttrsTouchableTest: (a: string) => void;
 
 export const commonAttrsFocusOnTouchTest: (a: string) => void;
+
+export const eventCallbackAddReceiverTest: (a: string) => void;
+
+export const eventCallbackRemoveReceiverTest: (a: string) => void;
+
+export const eventCallbackRegisterEventTest: (a: string) => void;
+
+export const eventCallbackUnregisterEventTest: (a: string) => void;
+
+export const eventCallbackRegisterReceiverTest: (a: string) => void;
+
+export const eventCallbackUnregisterReceiverTest: (a: string) => void;
+
+export const eventCallbackAddReceiver401Test: (a: string) => void;
+
+export const eventCallbackRemoveReceiver401Test: (a: string) => void;
+
+export const eventCallbackRegisterEvent401Test: (a: string) => void;
+
+export const eventCallbackRegisterEvent001Test: (a: string) => void;
+
+export const eventCallbackRegisterEvent002Test: (a: string) => void;
+
+export const commonEventOnHoverTest: (a: string) => void;
+
+export const commonEventOnMouseTest: (a: string) => void;
+
+export const commonEventOnDisappearTest: (a: string) => void;
+
+export const commonEventOnVisibleAreaChangeTest: (a: string) => void;
+
+export const commonEventOnTouchPropagationTest: (a: string) => void;
+
+export const commonEventOnTouchInterceptDefaultTest: (a: string) => void;
+
+export const commonEventOnTouchInterceptBlockTest: (a: string) => void;
+
+export const commonEventOnTouchInterceptTransparentTest: (a: string) => void;
+
+export const commonEventOnTouchInterceptNoneTest: (a: string) => void;
+
+export const nodeTreeXComponentTest: (a: string) => void;
+
+export const nodeTreeXComponentDetach002Test: (a: string) => void;
+
+export const nodeTreeXComponentDetach001Test: (a: string) => void;
+
+export const nodeTreeXComponent401Test: (a: string) => void;
+
+export const nodeTreeXComponentDetach401Test: (a: string) => void;
+

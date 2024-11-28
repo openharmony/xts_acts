@@ -645,6 +645,9 @@
 #include "textinput/textinput_caretoffset_test.cpp"
 #include "textinput/textinput_contentlinecount_test.cpp"
 #include "textinput/textinput_gettextcontentrect_test.cpp"
+#include "attributesetting/attribute_setting_test.cpp"
+#include "nodetree/node_tree_test.cpp"
+
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -6832,6 +6835,48 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testCommonAttrsAlign043", nullptr, TestCommonAttrsAlign043, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"testAttributeSetting001", nullptr, TestAttributeSetting001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting002", nullptr, TestAttributeSetting002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting003", nullptr, TestAttributeSetting003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting004", nullptr, TestAttributeSetting004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting005", nullptr, TestAttributeSetting005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting006", nullptr, TestAttributeSetting006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting007", nullptr, TestAttributeSetting007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting008", nullptr, TestAttributeSetting008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting009", nullptr, TestAttributeSetting009, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAttributeSetting010", nullptr, TestAttributeSetting010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testNodeTree001", nullptr, TestNodeTree001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree002", nullptr, TestNodeTree002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree003", nullptr, TestNodeTree003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree004", nullptr, TestNodeTree004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree005", nullptr, TestNodeTree005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree006", nullptr, TestNodeTree006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree007", nullptr, TestNodeTree007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree008", nullptr, TestNodeTree008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree009", nullptr, TestNodeTree009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree010", nullptr, TestNodeTree010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree011", nullptr, TestNodeTree011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree012", nullptr, TestNodeTree012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree013", nullptr, TestNodeTree013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree014", nullptr, TestNodeTree014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree015", nullptr, TestNodeTree015, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree016", nullptr, TestNodeTree016, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree017", nullptr, TestNodeTree017, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree018", nullptr, TestNodeTree018, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree019", nullptr, TestNodeTree019, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree020", nullptr, TestNodeTree020, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree021", nullptr, TestNodeTree021, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeTree022", nullptr, TestNodeTree022, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

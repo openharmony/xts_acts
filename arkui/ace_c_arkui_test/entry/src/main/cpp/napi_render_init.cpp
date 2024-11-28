@@ -139,6 +139,10 @@
 #include "commonattrs/commonattrs_focusstatus_test.h"
 #include "commonattrs/commonattrs_touchable_test.h"
 #include "commonattrs/commonattrs_focusontouch_test.h"
+#include "eventcallback/event_callback_test.h"
+#include "nodetree/node_tree_xcomponent_test.h"
+#include "commonevent/commonevent_event_test.h"
+
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -535,6 +539,58 @@ static napi_value Init(napi_env env, napi_value exports)
         {"commonAttrsTouchableTest", nullptr, CommonAttrsTouchableTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"commonAttrsFocusOnTouchTest", nullptr, CommonAttrsFocusOnTouchTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackAddReceiverTest", nullptr, EventCallbackTest::CreateNativeNodeAddReceiver,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackRemoveReceiverTest", nullptr, EventCallbackTest::CreateNativeNodeRemoveReceiver,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackRegisterEventTest", nullptr, EventCallbackTest::CreateNativeNodeRegisterEvent,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackUnregisterEventTest", nullptr, EventCallbackTest::CreateNativeNodeUnregisterEvent,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackRegisterReceiverTest", nullptr, EventCallbackTest::CreateNativeNodeRegisterReceiver,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackUnregisterReceiverTest", nullptr, EventCallbackTest::CreateNativeNodeUnregisterReceiver,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackAddReceiver401Test", nullptr, EventCallbackTest::CreateNativeNodeAddReceiver401,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackRemoveReceiver401Test", nullptr, EventCallbackTest::CreateNativeNodeRemoveReceiver401,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackRegisterEvent401Test", nullptr, EventCallbackTest::CreateNativeNodeRegisterEvent401,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackRegisterEvent001Test", nullptr, EventCallbackTest::CreateNativeNodeRegisterEvent001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"eventCallbackRegisterEvent002Test", nullptr, EventCallbackTest::CreateNativeNodeRegisterEvent002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonEventOnHoverTest", nullptr, CommonEventEventTest::CreateNativeNodeOnHover,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonEventOnMouseTest", nullptr, CommonEventEventTest::CreateNativeNodeOnMouse,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonEventOnDisappearTest", nullptr, CommonEventEventTest::CreateNativeNodeOnDisappear,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonEventOnVisibleAreaChangeTest", nullptr, CommonEventEventTest::CreateNativeNodeOnVisibleAreaChange,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonEventOnTouchPropagationTest", nullptr, CommonEventEventTest::CreateNativeNodeOnTouchPropagation,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonEventOnTouchInterceptDefaultTest", nullptr,
+         CommonEventEventTest::CreateNativeNodeOnTouchInterceptDefault, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"commonEventOnTouchInterceptBlockTest", nullptr, CommonEventEventTest::CreateNativeNodeOnTouchInterceptBlock,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"commonEventOnTouchInterceptTransparentTest", nullptr,
+         CommonEventEventTest::CreateNativeNodeOnTouchInterceptTransparent, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"commonEventOnTouchInterceptNoneTest", nullptr, CommonEventEventTest::CreateNativeNodeOnTouchInterceptNone,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"nodeTreeXComponentTest", nullptr, NodeTreeXComponentTest::CreateNativeNodeXComponent,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"nodeTreeXComponentDetach002Test", nullptr, NodeTreeXComponentTest::CreateNativeNodeXComponentDetach002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"nodeTreeXComponentDetach001Test", nullptr, NodeTreeXComponentTest::CreateNativeNodeXComponentDetach001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"nodeTreeXComponent401Test", nullptr, NodeTreeXComponentTest::CreateNativeNodeXComponent401,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"nodeTreeXComponentDetach401Test", nullptr, NodeTreeXComponentTest::CreateNativeNodeXComponentDetach401,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
