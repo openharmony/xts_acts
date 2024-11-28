@@ -40,6 +40,7 @@ import sliderThemeTest from './components/Slider.test';
 import swiperThemeTest from './components/Swiper.test';
 import textThemeTest from './components/Text.test';
 import textClockThemeTest from './components/TextClock.test';
+import textInputThemeTest from './components/TextInput.test';
 import textPickerThemeTest from './components/TextPicker.test';
 import timePickerThemeTest from './components/TimePicker.test';
 import toggleThemeTest from './components/Toggle.test'
@@ -73,6 +74,7 @@ export default function testsuite() {
   swiperThemeTest();
   textThemeTest();
   textClockThemeTest();
+  textInputThemeTest();
   textPickerThemeTest();
   timePickerThemeTest();
   toggleThemeTest();

@@ -25,6 +25,7 @@
           "MainAbility/pages/components/SwiperPage",
           "MainAbility/pages/components/TextPage",
           "MainAbility/pages/components/TextClockPage",
+          "MainAbility/pages/components/TextInputPage",
           "MainAbility/pages/components/TextPickerPage",
           "MainAbility/pages/components/TimePickerPage",
           "MainAbility/pages/components/TogglePage"
