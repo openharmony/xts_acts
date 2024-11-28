@@ -20,8 +20,8 @@ ohos_app_assist_suite("ActsStageContextMain") {
     "ActsStageContextMain-module1-entry-default-unsigned:ActsStageContextModule1",
     "ActsStageContextMain-entry-default-unsigned:ActsStageContextMain",
   ]
-  subsystem_name = "xts"
-  part_name = "device_attest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_js_app_suite("ActsStageContextTest") {
@@ -30,7 +30,7 @@ ohos_js_app_suite("ActsStageContextTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsStageContextTest"
 
-  subsystem_name = "xts"
-  part_name = "device_attest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
   deps = [ ":ActsStageContextMain" ]
 }

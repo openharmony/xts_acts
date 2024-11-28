@@ -17,5 +17,5 @@ ohos_js_app_suite("ActsRequestDialogTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsRequestDialogTest"
   part_name = "ability_runtime"
-  subsystem_name = "ability"
+  subsystem_name = "request"
 }
