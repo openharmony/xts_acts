@@ -1,0 +1,17 @@
+{
+    "devices": {
+        "general": [
+            "wearable",
+            "phone",
+            "tablet",
+            "2in1"
+        ],
+        "custom": [
+            {
+                "xts": [
+                    "SystemCapability.XTS.DeviceAttest"
+                ]
+            }
+        ]
+    }
+}
