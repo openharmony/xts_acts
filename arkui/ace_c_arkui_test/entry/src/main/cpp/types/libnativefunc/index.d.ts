@@ -5600,6 +5600,56 @@ export const drag_setDragEventStrictReportWidthNode_002: () => number;
 export const drag_setDragEventStrictReportWidthContext_003: () => number;
 export const drag_setDragEventStrictReportWidthContext_004: () => number;
 
+export const testAddChildGesture001: () => number;
+
+export const testAddChildGesture002: () => number;
+
+export const testAddChildGesture003: () => number;
+
+export const testAddChildGesture004: () => number;
+
+export const testAddChildGesture005: () => number;
+
+export const testAddChildGesture006: () => number;
+
+export const testRemoveChildGesture001: () => number;
+
+export const testRemoveChildGesture002: () => number;
+
+export const testRemoveChildGesture003: () => number;
+
+export const testRemoveChildGesture004: () => number;
+
+export const testRemoveChildGesture005: () => number;
+
+export const testRemoveChildGesture006: () => number;
+
+export const testSetGestureEventTarget001: () => number;
+
+export const testSetGestureEventTarget002: () => number;
+
+export const testSetGestureEventTarget003: () => number;
+
+export const testSetGestureEventTarget004: () => number;
+
+export const testAddGestureToNode001: () => number;
+
+export const testAddGestureToNode002: () => number;
+
+export const testAddGestureToNode003: () => number;
+
+export const testAddGestureToNode004: () => number;
+
+export const testAddGestureToNode005: () => number;
+
+export const testAddGestureToNode006: () => number;
+
+export const testRemoveGestureFromNode001: () => number;
+
+export const testSetGestureInterrupterToNode001: () => number;
+
+export const testDisposeToNode001: () => number;
+
 export const drag_setNodeAllowedDropDataTypes_001: () => number;
 export const drag_disallowNodeAnyDropDataTypes_002: () => number;
 export const drag_allowNodeAllDropDataTypes_003: () => number;

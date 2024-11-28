@@ -245,6 +245,22 @@ export const rotateGestureTest: (a: string) => void;
 export const pinchGestureTest: (a: string) => void;
 export const interruptGestureTest: (a: string) => void;
 
+export const gestureCreateGestureTest: (a: string) => void;
+
+export const gestureCreateGesture1Test: (a: string) => void;
+
+export const gestureCreateGesture2Test: (a: string) => void;
+
+export const gestureCreateGesture3Test: (a: string) => void;
+
+export const gestureCreateGesture4Test: (a: string) => void;
+
+export const gestureGestureInterrupterTest: (a: string) => void;
+
+export const gestureGestureInfoTest: (a: string) => void;
+
+export const getGestureData: () => number[][];
+
 export const dragTest: (a: string) => void;
 
 export const disableDefaultDropAnimationTest: (a: string) => void;
@@ -298,6 +314,7 @@ export const inputEventTest: (a: string) => void;
 export const inputEventMouseTest: (a: string) => void;
 
 export const inputEventAxisTest: (a: string) => void;
+
 export const swiperOnChangeTest: (a: string) => void;
 
 export const swiperOnAnimationStartTest: (a: string) => void;

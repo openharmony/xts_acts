@@ -19,6 +19,8 @@
 #include <arkui/native_gesture.h>
 #include <arkui/native_node_napi.h>
 #include <arkui/native_type.h>
+#include <arkui/native_gesture.h>
+#include <arkui/native_node_napi.h>
 #define res ((int)-2)
 #define res2 ((int)-1)
 #define res3 ((int)401)

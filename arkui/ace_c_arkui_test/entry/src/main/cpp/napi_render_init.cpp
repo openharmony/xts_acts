@@ -92,6 +92,9 @@
 #include "textinput/textinput_onpaste_test.h"
 #include "gesture/gesture_test.h"
 #include "gestureScroll/gesture_interfaceTest.h"
+#include "gesture/gesture_creategesture_test.h"
+#include "gesture/gesture_gestureinterrupter_test.h"
+#include "gesture/gesture_gestureinfo_test.h"
 #include "customcomponent/customcomponent_event_test.h"
 #include "drag/drag_setSuggestedDropOperation.h"
 #include "drag/drag_disableDefaultDropAnimation.h"
@@ -360,6 +363,22 @@ static napi_value Init(napi_env env, napi_value exports)
         {"customComponentEventTest", nullptr, CustomComponentEventTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"interruptGestureTest", nullptr, GestureTest::CreateInterruptNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"gestureCreateGestureTest", nullptr, GestureCreateGestureTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureCreateGesture1Test", nullptr, GestureCreateGestureTest::CreateNativeNode1, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureCreateGesture2Test", nullptr, GestureCreateGestureTest::CreateNativeNode2, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureCreateGesture3Test", nullptr, GestureCreateGestureTest::CreateNativeNode3, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureCreateGesture4Test", nullptr, GestureCreateGestureTest::CreateNativeNode4, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureGestureInterrupterTest", nullptr, GestureGestureInterrupterTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"gestureGestureInfoTest", nullptr, GestureGestureInfoTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"getGestureData", nullptr, GestureGestureInfoTest::GetGestureData, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"disableDefaultDropAnimationTest", nullptr, DisableDefaultDropAnimationTest::CreateNativeNode, nullptr,
          nullptr, nullptr, napi_default, nullptr},
