@@ -15,7 +15,8 @@
 import { afterAll, beforeAll, beforeEach, afterEach, describe, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
-import { textInputThemeProperty, textInputThemeSetProperty, textInputBackgroundColor, textInputPlaceholderColor } from '../../MainAbility/pages/components/TextInputPage'
+import { textInputThemeProperty, textInputThemeSetProperty, textInputBackgroundColor, 
+  textInputPlaceholderColor } from '../../MainAbility/pages/components/TextInputPage'
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme'
 import { frameTime, sleep } from '../Utils'
 
@@ -75,7 +76,8 @@ export default function textInputThemeTest() {
       } else {
         AppStorage.setOrCreate(textInputThemeSetProperty, false)
       }
-      localTheme = AppStorage.get<boolean>(textInputThemeSetProperty) ? AppStorage.get<Theme>(textInputThemeProperty) : undefined
+      localTheme = AppStorage.get<boolean>(textInputThemeSetProperty) ? 
+        AppStorage.get<Theme>(textInputThemeProperty) : undefined
     })
 
     afterEach(async () => {
@@ -165,15 +167,18 @@ export default function textInputThemeTest() {
   })
 }
 
-function checkWithTheme(localTheme: CustomTheme | undefined, key : string, customAttrs: boolean, colorValues: Map<string, string> | undefined) {
+function checkWithTheme(localTheme: CustomTheme | undefined, key : string, 
+  customAttrs: boolean, colorValues: Map<string, string> | undefined) {
   const TextInputJSON = getInspectorByKey(key)
   const attrsTextInput: TextInputAttribute = JSON.parse(TextInputJSON)?.$attrs
   const fontColor: ResourceColor = attrsTextInput?.fontColor?.toString()
   expect(fontColor).assertEqual(localTheme?.colors?.fontPrimary ?? colorValues?.get(`fontPrimary`))
   const placeholderColor: ResourceColor = attrsTextInput?.placeholderColor?.toString()
-  expect(placeholderColor).assertEqual(customAttrs ? textInputPlaceholderColor : localTheme?.colors?.fontSecondary ?? colorValues?.get(`fontSecondary`))
+  expect(placeholderColor).assertEqual(customAttrs ? 
+    textInputPlaceholderColor : localTheme?.colors?.fontSecondary ?? colorValues?.get(`fontSecondary`))
   const caretColor: ResourceColor = attrsTextInput?.caretColor?.toString()
   expect(caretColor).assertEqual(localTheme?.colors?.brand ?? colorValues?.get(`brand`))
   const backgroundColor: ResourceColor = attrsTextInput?.backgroundColor?.toString()
-  expect(backgroundColor).assertEqual(customAttrs ? textInputBackgroundColor : localTheme?.colors?.compBackgroundTertiary ?? colorValues?.get(`compBackgroundTertiary`))
+  expect(backgroundColor).assertEqual(customAttrs ? textInputBackgroundColor : 
+    localTheme?.colors?.compBackgroundTertiary ?? colorValues?.get(`compBackgroundTertiary`))
 }

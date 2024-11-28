@@ -21,18 +21,18 @@ export const textInputBackgroundColor: ResourceColor | undefined = brownCustomTh
 export const textInputPlaceholderColor: ResourceColor | undefined = brownCustomTheme.colors?.fontOnPrimary
 
 export class TextInputKeys {
-  static readonly textInputOthersSystem = 'TextInput_Others_System'
-  static readonly textInputPasswordSystem = `TextInput_Password_System`
-  static readonly textInputInlineSystem = `TextInput_Inline_System`
-  static readonly textInputOthersSystemCustomAttrs = 'TextInput_Others_System_CustomAttrs'
-  static readonly textInputPasswordSystemCustomAttrs = `TextInput_Password_System_CustomAttrs`
-  static readonly textInputInlineSystemCustomAttrs = `TextInput_Inline_System_CustomAttrs`
-  static readonly textInputOthersWithTheme = `TextInput_Others_WithTheme`
-  static readonly textInputPasswordWithTheme = `TextInput_Password_WithTheme`
-  static readonly textInputInlineWithTheme = `TextInput_Inline_WithTheme`
-  static readonly textInputOthersWithThemeCustomAttrs = `TextInput_Others_WithTheme_CustomAttrs`
-  static readonly textInputPasswordWithThemeCustomAttrs = `TextInput_Password_WithTheme_CustomAttrs`
-  static readonly textInputInlineWithThemeCustomAttrs = `TextInput_Inline_WithTheme_CustomAttrs`
+  public static readonly textInputOthersSystem = 'TextInput_Others_System'
+  public static readonly textInputPasswordSystem = `TextInput_Password_System`
+  public static readonly textInputInlineSystem = `TextInput_Inline_System`
+  public static readonly textInputOthersSystemCustomAttrs = 'TextInput_Others_System_CustomAttrs'
+  public static readonly textInputPasswordSystemCustomAttrs = `TextInput_Password_System_CustomAttrs`
+  public static readonly textInputInlineSystemCustomAttrs = `TextInput_Inline_System_CustomAttrs`
+  public static readonly textInputOthersWithTheme = `TextInput_Others_WithTheme`
+  public static readonly textInputPasswordWithTheme = `TextInput_Password_WithTheme`
+  public static readonly textInputInlineWithTheme = `TextInput_Inline_WithTheme`
+  public static readonly textInputOthersWithThemeCustomAttrs = `TextInput_Others_WithTheme_CustomAttrs`
+  public static readonly textInputPasswordWithThemeCustomAttrs = `TextInput_Password_WithTheme_CustomAttrs`
+  public static readonly textInputInlineWithThemeCustomAttrs = `TextInput_Inline_WithTheme_CustomAttrs`
 }
 
 @Entry
