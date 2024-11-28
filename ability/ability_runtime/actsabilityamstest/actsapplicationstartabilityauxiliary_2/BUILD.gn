@@ -15,6 +15,6 @@ ohos_app_assist_suite("ActsApplicationStartAbilityAuxiliary_2") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsApplicationStartAbilityAuxiliary_2"
-  part_name = "common_event_service"
+  part_name = "ability_runtime"
   subsystem_name = "ability"
 }
