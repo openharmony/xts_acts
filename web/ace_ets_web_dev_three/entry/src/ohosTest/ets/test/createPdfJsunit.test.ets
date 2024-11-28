@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2022~2023 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -68,9 +68,9 @@ export default function webJsunit() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_001
-     *tc.name LoadUrl
-     *tc.desic load contents from url
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_CREATEPDF_001
+     *tc.name createPdf
+     *tc.desic get createPdf
      */
     it('SavePDF', 0, async (done: Function) => {
       emitKey = "emitSavePDF1";
@@ -80,9 +80,9 @@ export default function webJsunit() {
 
 
         /*
-     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_001
-     *tc.name LoadUrl
-     *tc.desic load contents from url
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_PDFARRAYBUFFER_002
+     *tc.name pdfArrayBuffer
+     *tc.desic get pdfArrayBuffer
      */
     it('SavePDF1', 0, async (done: Function) => {
       emitKey = "emitSavePDF1";
