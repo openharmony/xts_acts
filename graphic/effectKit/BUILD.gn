@@ -16,6 +16,6 @@ ohos_js_app_suite("ActsEffectKitTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsEffectKitTest"
-  part_name = "graphic_2d"
-  subsystem_name = "graphic"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
 }
