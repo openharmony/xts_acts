@@ -89,6 +89,28 @@ export default function usbNoPerDdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_Driver_Ext_DDKNoPer_1600
+     * @tc.name       : testUsbReleaseResourceNoPer001
+     * @tc.desc       : OH_Usb_ReleaseResource Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbReleaseResourceNoPer001', 0, async (done: Function) => {
+      console.info(TAG, '----------------------testUsbReleaseResourceNoPer001---------------------------');
+      try {
+        const ret = usbNoPerDdk.usbReleaseResource();
+        console.info(TAG, "Test Result testUsbReleaseNoPer001 : " + ret);
+        expect(ret).assertEqual(DDK_ERR_NOPERM);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbReleaseResourceNoPer001 failed, message is ${err.message}`);
+        expect(err === null).assertTrue();
+        done();
+      }
+    });
+
+    /**
      * @tc.number     : SUB_Driver_Ext_DDKNoPer_0300
      * @tc.name       : testUsbGetDeviceDescriptorNoPer001
      * @tc.desc       : OH_Usb_GetDeviceDescriptor Interface testing
