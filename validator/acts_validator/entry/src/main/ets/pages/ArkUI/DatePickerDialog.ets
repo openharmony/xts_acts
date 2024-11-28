@@ -27,7 +27,7 @@ const TAG: string = '[DatePickerDialog]';
 struct datePickerDialog {
   @State FillColor: string = '#FF000000';
   @State name: string = 'DatePickerDialog';
-  @State StepTips: string = '操作步骤：1、点击日期选择弹窗\n' +
+  @State StepTips: string = '操作步骤：' + '\n' + '1、点击日期选择弹窗\n' +
     '2、将日期选为2023年12月12日' + '\n' + '预期结果：弹窗显示和文本展示一致则通过';
   @State Vue: boolean = false;
   @State active: boolean = false;

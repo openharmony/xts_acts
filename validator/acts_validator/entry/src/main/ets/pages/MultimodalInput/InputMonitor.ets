@@ -28,7 +28,7 @@ struct InputMonitor {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'InputMonitor';
-  @State StepTips: string = '操作步骤：请插入外接鼠标\n按顺序点击四个按钮' + '\n' + '预期结果：识别鼠标点击按钮都变成绿色，则通过';
+  @State StepTips: string = '操作步骤：请外接鼠标并按顺序点击四个按钮' + '\n' + '预期结果：使用鼠标按顺序点击4个按钮，且按钮都变成绿色，则通过';
   @State Vue: boolean = false;
   @State text: string = '';
   @State btnOne: boolean = false;
@@ -42,7 +42,7 @@ struct InputMonitor {
   }
 
   onPageShow() {
-    let callback = (mouseEvent: MouseEvent) => {
+    callback = (mouseEvent: MouseEvent) => {
       let btn1: RectValue = RangeFunc.getComponentRect('btn1')
       let btn2: RectValue = RangeFunc.getComponentRect('btn2')
       let btn3: RectValue = RangeFunc.getComponentRect('btn3')

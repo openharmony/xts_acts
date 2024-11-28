@@ -19,17 +19,19 @@ import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
 import sensor from '@ohos.sensor';
 import BusinessError from "@ohos.base";
+import promptAction from '@ohos.promptAction';
 
 @Entry
 @Component
 struct SensorAccelerometer {
   @State FillColor: string = '#FF000000';
   @State name: string = 'SensorAccelerometer';
-  @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有加速度传感器\n-点击开启按钮打开传感器\n-请各方向移动设备'
-    + '\n-预期结果：观察显示数值,跟随移动变化';
+  @State StepTips: string = '测试目的：用于测试本机传感器,确定是否有加速度传感器' + '\n操作步骤：\n1.确定设备是否有加速度传感器\n2.如果有该传感器，点击开启并各方向移动设备，观察数值是否发生变化\n(若点击开启直接返回上一级，则表示设备无该传感器)'
+    + '\n预期结果：观察显示数值,跟随移动变化';
   private tag: string = 'Sensor Accelerometer';
   @State Vue: boolean = false;
   @State isSensor: boolean = true;
+  @State isHave: boolean = true;
   @State sensorChange: boolean = false;
   @State dataX: string = '';
   @State dataY: string = '';
@@ -68,6 +70,17 @@ struct SensorAccelerometer {
       } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         Logger.error(this.tag, `Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+        if (e) {
+          this.isHave = false;
+          this.Vue = true;
+          promptAction.showToast({
+            message: '当前设备暂无加速度传感器'
+          })
+          router.back({
+            url: 'pages/Sensor/Sensor_index',
+            params: { result: 'true ', title: this.name }
+          })
+        }
       }
     } else {
       try {
@@ -148,14 +161,11 @@ struct SensorAccelerometer {
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start, direction: FlexDirection.Column }) {
         Scroll() {
           Column() {
-            Text('提示：如果设备存在加速度传感器，选择开启，否则选择无传感器')
+            Text('提示：点击开启按钮，若无该传感器，则自动返回上一级')
               .fontSize('16fp').fontColor(Color.White).margin('20fp')
             Row() {
               Button(this.sensorChange ? '关闭' : '开启').onClick(() => {
                 this.openAccelerometer();
-              })
-              Button('无加速度传感器').onClick(() => {
-                this.Vue = true;
               })
             }
             .justifyContent(FlexAlign.SpaceEvenly)

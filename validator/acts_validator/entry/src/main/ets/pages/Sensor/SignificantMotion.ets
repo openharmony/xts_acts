@@ -28,8 +28,8 @@ const TAG = '[SignificantMotion]';
 struct SignificantMotion {
   @State FillColor: string = '#FF000000';
   @State name: string = 'SignificantMotion';
-  @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有大幅动作检测传感器' + '\n-点击开启按钮打开传感器,' +
-    '如果有传感器，请大幅度甩动设备，观察各方向的数值是否为“1”，否则返回上一级' + '\n-预期结果：各方向的数值是为“1”';
+  @State StepTips: string = '测试目的：用于测试本机传感器,确定是否有大幅动作检测传感器' + '\n操作步骤：\n1.确定设备是否有大幅动作检测传感器\n2.如果有该传感器，点击开启并大幅度甩动设备，观察数值是否为“1”\n(若点击开启直接返回上一级，则表示设备无该传感器)\n'
+    + '\n预期结果：各方向的数值是为“1”';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State sensorChange: boolean = false;
@@ -44,7 +44,7 @@ struct SignificantMotion {
   openAccelerometer() {
     this.sensorChange = !this.sensorChange
     if (this.sensorChange) {
-      // 打开心率传感器
+      // 打开大幅动作检测传感器
       Logger.info(TAG, 'enter')
       try {
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data: sensor.SignificantMotionResponse) => {
@@ -68,7 +68,7 @@ struct SignificantMotion {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {
           this.isHave = false;
-          this.Vue = true;
+          this.Vue = false;
           promptAction.showToast({
             message: '当前设备暂无大幅动作检测传感器'
           })
@@ -217,7 +217,7 @@ struct SignificantMotion {
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start, direction: FlexDirection.Column }) {
         Scroll() {
           Column() {
-            Text('提示：如果设备存在大幅动作检测传感器，选择开启，否则选择无传感器')
+            Text('提示：点击开启按钮，若无该传感器，则自动返回上一级')
               .fontSize('16fp')
               .fontColor(Color.White)
               .margin('20fp')
@@ -225,11 +225,6 @@ struct SignificantMotion {
               Button(this.sensorChange ? '关闭' : '开启')
                 .onClick(() => {
                   this.openAccelerometer();
-                })
-              Button('无大幅动作检测传感器')
-                .onClick(() => {
-                  Logger.info(TAG, 'entry onClick');
-                  this.Vue = true;
                 })
             }
             .justifyContent(FlexAlign.SpaceEvenly)

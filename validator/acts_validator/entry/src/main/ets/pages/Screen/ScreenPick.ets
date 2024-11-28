@@ -25,7 +25,7 @@ struct ScreenShot {
   @State FillColor: string = '#FF000000';
   @State name: string = 'ScreenPick';
   @State resMessage : String = ' ';
-  @State StepTips: string = '测试目的：用于测试拉起截屏应用，只支持2in1设备\n-点击按钮，查看是否拉起截屏应用';
+  @State StepTips: string = '测试目的：用于测试拉起截屏应用，只支持PC设备\n操作步骤：点击按钮，查看是否拉起截屏应用，若不支持该功能则标记失败\n预期结果：PC设备可以拉起截屏应用，其他设备返回801错误码';
   @State Vue: boolean = false;
   @State isFlush: boolean = false;
   @State isPass: boolean = false;

@@ -159,18 +159,6 @@ struct AccessibilityHoverDemo {
           }
           Row() {
             Column() {
-              Button(`不支持`)
-                .borderRadius(8)
-                .backgroundColor(0x317aff)
-                .width('30%')
-                .enabled(!this.yesEnable)
-                .opacity(!this.yesEnable ? 1 : 0.4)
-                .onClick(async () => {
-                  this.Vue = true
-                })
-            }
-
-            Column() {
               Button(`支持`)
                 .borderRadius(8)
                 .backgroundColor(0x317aff)

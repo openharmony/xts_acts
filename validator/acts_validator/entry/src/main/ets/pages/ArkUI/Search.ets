@@ -28,7 +28,7 @@ struct search {
   @State submitValue: string = ''
   @State FillColor: string = '#FF000000';
   @State name: string = 'Search';
-  @State StepTips: string = '操作步骤：在搜索框中输入1-5中任意一个数字' + '\n' + '预期结果：内容会单独出现';
+  @State StepTips: string = '操作步骤：在搜索框中输入1-5中任意一个数字并点击搜索' + '\n' + '预期结果：输入的数字内容会单独出现';
   @State Vue: boolean = false;
   @State isSearch: boolean = false;
   private arrNum: Array<string> = ['1', '2', '3', '4', '5'];
