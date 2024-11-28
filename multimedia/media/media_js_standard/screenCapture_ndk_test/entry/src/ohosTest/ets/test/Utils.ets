@@ -37,7 +37,7 @@ export default class Utils {
     let index =1;
     while (index < 10) {
       Utils.sleep(800);
-      delegator.executeShellCommand(` uinput -T -c 880 1550 `).then(result => {
+      delegator.executeShellCommand(` uinput -T -c 900 1600 `).then(result => {
         console.info(`UiTestCase, touch abilityFinished: ${result}`)
       }).catch((err : BusinessError) => {
         console.error(`UiTestCase, touch abilityFailed: ${err}`)
@@ -62,5 +62,10 @@ export default class Utils {
     btn = await driver.waitForComponent(ON.text("允许"), 2000);
     await btn.click();
     console.info('OUT allowScreenCapture...')
+  }
+
+  static async btnTextScreenCapture() {
+    let button = await driver.waitForComponent(ON.text("允许"),1000)
+    await button.click();
   }
 }
