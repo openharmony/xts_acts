@@ -166,6 +166,17 @@ import swiperPositionTest from './swiper/SwiperPositionTest.test'
 import swiperVerticalTest from './swiper/SwiperVerticalTest.test'
 import swiperWidthTest from './swiper/SwiperWidthTest.test'
 import swiperCachedCountTest from './swiper/SwiperCachedCountTest.test'
+import swiperEffectModeTest from './swiper/SwiperEffectModeTest.test'
+import swiperPrevMarginTest from './swiper/SwiperPrevMarginTest.test'
+import swiperNextMarginTest from './swiper/SwiperNextMarginTest.test'
+import swiperNestedScrollTest from './swiper/SwiperNestedScrollTest.test'
+import swiperChangeIndexTest from './swiper/SwiperChangeIndexTest.test'
+import swiperOnChangeTest from './swiper/SwiperOnChangeTest.test'
+import swiperOnAnimationStartTest from './swiper/SwiperOnAnimationStartTest.test'
+import swiperOnAnimationEndTest from './swiper/SwiperOnAnimationEndTest.test'
+import swiperAdapterTest from './swiper/SwiperAdapterTest.test'
+import swiperOnContentDidScrollTest from './swiper/SwiperOnContentDidScrollTest.test'
+import swiperOnGestureSwipeTest from './swiper/SwiperOnGestureSwipeTest.test'
 import textWidthTest from './text/TextWidthTest.test'
 import textHeightTest from './text/TextHeightTest.test'
 import textPositionTest from './text/TextPositionTest.test'
@@ -1223,4 +1234,16 @@ export default function testsuite() {
   textCustomSpanTest()
   textImageSpanTest()
   inputEvent()
+  swiperEffectModeTest()
+  swiperPrevMarginTest()
+  swiperNextMarginTest()
+  swiperNestedScrollTest()
+  swiperChangeIndexTest()
+  swiperOnChangeTest()
+  swiperOnAnimationStartTest()
+  swiperOnAnimationEndTest()
+  swiperAdapterTest()
+  swiperOnContentDidScrollTest()
+  swiperOnGestureSwipeTest()
+
 }

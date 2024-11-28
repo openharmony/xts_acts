@@ -110,6 +110,12 @@
 #include "drag/dragAction_registerStatusListener.h"
 #include "animation/animator_event_test.h"
 #include "inputevent/input_event_test.h"
+#include "swiper/swiper_onChange_test.h"
+#include "swiper/swiper_onAnimationStart_test.h"
+#include "swiper/swiper_onAnimationEnd_test.h"
+#include "swiper/swiper_adapter_test.h"
+#include "swiper/swiper_onContentDidScroll_test.h"
+#include "swiper/swiper_onGestureSwipe_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -397,6 +403,18 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testAnimatorRegisterOnRepeat", nullptr, AnimatorEventTest::testAnimatorRegisterOnRepeat_006,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"swiperOnChangeTest", nullptr, SwiperOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"swiperOnAnimationStartTest", nullptr, SwiperOnAnimationStartTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"swiperOnAnimationEndTest", nullptr, SwiperOnAnimationEndTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"swiperAdapterTest", nullptr, SwiperAdapterTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"swiperOnContentDidScrollTest", nullptr, SwiperOnContentDidScrollTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"swiperOnGestureSwipeTest", nullptr, SwiperOnGestureSwipeTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

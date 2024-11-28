@@ -16,6 +16,8 @@
 #include "common/common.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #include <arkui/native_animate.h>
+#include <arkui/native_gesture.h>
+#include <arkui/native_node_napi.h>
 #include <arkui/native_type.h>
 #define res ((int)-2)
 #define res2 ((int)-1)

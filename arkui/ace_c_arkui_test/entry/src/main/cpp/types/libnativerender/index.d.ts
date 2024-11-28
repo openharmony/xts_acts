@@ -298,3 +298,14 @@ export const inputEventTest: (a: string) => void;
 export const inputEventMouseTest: (a: string) => void;
 
 export const inputEventAxisTest: (a: string) => void;
+export const swiperOnChangeTest: (a: string) => void;
+
+export const swiperOnAnimationStartTest: (a: string) => void;
+
+export const swiperOnAnimationEndTest: (a: string) => void;
+
+export const swiperAdapterTest: (a: string) => void;
+
+export const swiperOnContentDidScrollTest: (a: string) => void;
+
+export const swiperOnGestureSwipeTest: (a: string) => void;

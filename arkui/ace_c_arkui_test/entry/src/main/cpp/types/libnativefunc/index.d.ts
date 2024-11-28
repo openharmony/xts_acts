@@ -1195,6 +1195,14 @@ export const testSwiperIndicator006: () => number;
 
 export const testSwiperIndicator007: () => number;
 
+export const testSwiperIndicator008: () => number;
+
+export const testSwiperIndicator009: () => number;
+
+export const testSwiperIndicator010: () => number;
+
+export const testSwiperIndicator011: () => number;
+
 export const testSwiperInterval001: () => number;
 
 export const testSwiperInterval002: () => number;
@@ -1232,6 +1240,70 @@ export const testSwiperWidth003: () => number;
 export const testSwiperCachedCount001: () => number;
 
 export const testSwiperCachedCount002: () => number;
+
+export const testSwiperEffectMode001: () => number;
+
+export const testSwiperEffectMode002: () => number;
+
+export const testSwiperEffectMode003: () => number;
+
+export const testSwiperEffectMode004: () => number;
+
+export const testSwiperEffectMode005: () => number;
+
+export const testSwiperEffectMode006: () => number;
+
+export const testSwiperEffectMode007: () => number;
+
+export const testSwiperNextMargin001: () => number;
+
+export const testSwiperNextMargin002: () => number;
+
+export const testSwiperNextMargin003: () => number;
+
+export const testSwiperNextMargin004: () => number;
+
+export const testSwiperNextMargin005: () => number;
+
+export const testSwiperNextMargin006: () => number;
+
+export const testSwiperNextMargin007: () => number;
+
+export const testSwiperPrevMargin001: () => number;
+
+export const testSwiperPrevMargin002: () => number;
+
+export const testSwiperPrevMargin003: () => number;
+
+export const testSwiperPrevMargin004: () => number;
+
+export const testSwiperPrevMargin005: () => number;
+
+export const testSwiperPrevMargin006: () => number;
+
+export const testSwiperPrevMargin007: () => number;
+
+export const testSwiperNestedScroll001: () => number;
+
+export const testSwiperNestedScroll002: () => number;
+
+export const testSwiperNestedScroll003: () => number;
+
+export const testSwiperNestedScroll004: () => number;
+
+export const testSwiperNestedScroll005: () => number;
+
+export const testSwiperNestedScroll006: () => number;
+
+export const testSwiperChangeIndex001: () => number;
+
+export const testSwiperChangeIndex002: () => number;
+
+export const testSwiperChangeIndex003: () => number;
+
+export const testSwiperChangeIndex004: () => number;
+
+export const testSwiperChangeIndex005: () => number;
 
 export const testImageHeight001: () => number;
 
