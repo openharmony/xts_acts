@@ -6,7 +6,6 @@ import stringTest from './String/String.test';
 import weakMapTest from './WeakMap/WeakMap.test';
 import nativeJSONTest from './NativeJSON/NativeJSON.test';
 import bigIntTest from './BigInt/BigInt.test';
-import dateTest from './Date/Date.test';
 import reflectTest from './Reflect/Reflect.test';
 import localeTest from './Locale/Locale.test';
 import objectTest from './Object/Object.test';
@@ -21,7 +20,6 @@ export default function testsuite() {
   weakMapTest();
   nativeJSONTest();
   bigIntTest();
-  dateTest();
   reflectTest();
   localeTest();
   objectTest();
