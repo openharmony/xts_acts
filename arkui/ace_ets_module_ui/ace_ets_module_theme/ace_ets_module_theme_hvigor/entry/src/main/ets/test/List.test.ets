@@ -34,6 +34,7 @@ import menuItemThemeTest from './components/MenuItem.test';
 import patternLockThemeTest from './components/PatternLock.test';
 import qrCodeThemeTest from './components/QRCode.test';
 import radioThemeTest from './components/Radio.test';
+import scrollThemeTest from './components/Scroll.test';
 import searchThemeTest from './components/Search.test';
 import sliderThemeTest from './components/Slider.test';
 import swiperThemeTest from './components/Swiper.test';
@@ -66,6 +67,7 @@ export default function testsuite() {
   patternLockThemeTest();
   qrCodeThemeTest();
   radioThemeTest();
+  scrollThemeTest();
   searchThemeTest();
   sliderThemeTest();
   swiperThemeTest();

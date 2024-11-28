@@ -19,6 +19,7 @@
           "MainAbility/pages/components/PatternLockPage",
           "MainAbility/pages/components/QRCodePage",
           "MainAbility/pages/components/RadioPage",
+          "MainAbility/pages/components/ScrollPage",
           "MainAbility/pages/components/SearchPage",
           "MainAbility/pages/components/SliderPage",
           "MainAbility/pages/components/SwiperPage",
