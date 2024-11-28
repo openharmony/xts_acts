@@ -96,7 +96,6 @@ struct WebComponent {
                         let filePath = context.filesDir + "/test.pdf";
                         let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
                         fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                            console.info("createPDF write data to file succeed and size is:" + JSON.stringify(result.pdfArrayBuffer()).length,result.pdfArrayBuffer().length );
                            Utils.emitEvent(result.pdfArrayBuffer().length > 0, 20241128);
                         
                         }).catch((err: BusinessError) => {
