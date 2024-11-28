@@ -2,6 +2,7 @@
     "src": [
         "MainAbility/pages/web",
         "MainAbility/pages/webTwo",
-		"MainAbility/pages/bindSelectionMenu"
+		"MainAbility/pages/bindSelectionMenu",
+		"MainAbility/pages/createPdf"
     ]
 }
