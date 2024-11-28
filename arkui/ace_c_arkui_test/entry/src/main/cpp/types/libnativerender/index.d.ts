@@ -311,6 +311,22 @@ export const testAnimatorRegisterOnCancel: (a: string) => void;
 
 export const testAnimatorRegisterOnRepeat: (a: string) => void;
 
+export const animateToTest: (a: string) => void;
+
+export const keyframeRegisterOnFinishTest: (a: string) => void;
+
+export const keyframeRegisterOnEventTest: (a: string) => void;
+
+export const animatorRegisterOnFrameTest: (a: string) => void;
+
+export const animatorRegisterOnFinishTest: (a: string) => void;
+
+export const animatorRegisterOnCancelTest: (a: string) => void;
+
+export const animatorRegisterOnRepeatTest: (a: string) => void;
+
+export const animatorReverseTest: (a: string) => void;
+
 export const imageAnimatorOnCancelTest: (a: string) => void;
 
 export const imageAnimatorOnPauseTest: (a: string) => void;

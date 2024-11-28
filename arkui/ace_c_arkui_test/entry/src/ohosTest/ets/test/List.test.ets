@@ -644,6 +644,12 @@ import DragActionSetTouchPointXYTest from "./drag/DragActionSetTouchPointXY.test
 import DragActionRegisterStatusListenerTest from "./drag/DragActionRegisterStatusListener.test"
 import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
 import animatorEventTest from "./animation/AnimatorEventTest.test"
+import animationEventTest from './animation/AnimationEventTest.test'
+import animateOptionTest from "./animation/AnimateOptionTest.test"
+import keyframeAnimateOptionTest from "./animation/KeyframeAnimateOptionTest.test"
+import animateCurveTest from "./animation/AnimateCurveTest.test"
+import geometryTransitionTest from "./animation/GeometryTransitionTest.test"
+import animatorOptionTest from "./animation/AnimatorOptionTest.test"
 import textCustomSpanTest from "./text/TextCustomSpan.test"
 import textImageSpanTest from "./text/TextImageSpan.test"
 import inputEvent from "./inputevent/InputEventTest.test"
@@ -1280,6 +1286,12 @@ export default function testsuite() {
   DragActionRegisterStatusListenerTest()
   SystemColorFontChangeTest()
   animatorEventTest()
+  animationEventTest()
+  animateOptionTest()
+  keyframeAnimateOptionTest()
+  animateCurveTest()
+  geometryTransitionTest()
+  animatorOptionTest()
   textCustomSpanTest()
   textImageSpanTest()
   inputEvent()
