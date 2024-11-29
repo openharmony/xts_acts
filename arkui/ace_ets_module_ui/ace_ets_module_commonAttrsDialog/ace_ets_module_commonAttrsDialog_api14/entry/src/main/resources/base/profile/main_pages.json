@@ -1,7 +1,9 @@
 {
     "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/bindSheetTest/bindSheetKeyboardAvoidMode",
-		"MainAbility/pages/Popup/followTransformOfTargetPopup","MainAbility/pages/Popup/followTransformOfTargetCustomPopup"
+      "MainAbility/pages/index/index",
+      "MainAbility/pages/bindSheetTest/bindSheetKeyboardAvoidMode",
+      "MainAbility/pages/Popup/followTransformOfTargetPopup",
+      "MainAbility/pages/Popup/followTransformOfTargetCustomPopup",
+      "MainAbility/pages/UIContext/FocusController/activeTest"
     ]
 }

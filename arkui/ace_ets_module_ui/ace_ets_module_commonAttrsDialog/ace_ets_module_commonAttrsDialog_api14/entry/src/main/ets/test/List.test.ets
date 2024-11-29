@@ -15,9 +15,11 @@
 import bindSheetKeyboardAvoidMode from './bindSheetTest/bindSheetKeyboardAvoidMode.test'
 import followTransformOfTargetPopup from './PopupTest/followTransformOfTargetPopup.test.ets';
 import followTransformOfTargetCustomPopup from './PopupTest/followTransformOfTargetCustomPopup.test.ets';
+import activeTest from './UIContext/FocusController/activeTest.test.ets'
 
 export default function testsuite() {
   bindSheetKeyboardAvoidMode()
   followTransformOfTargetPopup();
   followTransformOfTargetCustomPopup()
+  activeTest()
 }
