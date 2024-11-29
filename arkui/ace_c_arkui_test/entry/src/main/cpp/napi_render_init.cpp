@@ -149,6 +149,12 @@
 #include "hybird/hybird_getnodehandle_test.h"
 #include "response/response_configupdate_test.h"
 #include "requirement/requirement_pangesture_test.h"
+#include "customcomponent/customcomponent_measurenode_test.h"
+#include "customcomponent/customcomponent_getcontextdrawcanvas_test.h"
+#include "customcomponent/customcomponent_drawcontextgetsize_test.h"
+#include "customcomponent/customcomponent_eventondraw_test.h"
+#include "customcomponent/customcomponent_registernodecustomevent_test.h"
+#include "customcomponent/customcomponent_unregisternodecustomevent_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -617,6 +623,22 @@ static napi_value Init(napi_env env, napi_value exports)
         {"responseConfigUpdateTest", nullptr, ResponseConfigUpdateTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"requirementPanGestureTest", nullptr, RequirementPanGestureTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"customComponentMeasureNodeTest", nullptr, CustomComponentMeasureNodeTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getMeasureNodeData", nullptr, CustomComponentMeasureNodeTest::GetMeasureNodeData,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentGetContextDrawCanvasTest", nullptr, CustomComponentGetContextDrawCanvasTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentDrawContextGetSizeTest", nullptr, CustomComponentDrawContextGetSizeTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentEventOnDrawTest", nullptr, CustomComponentEventOnDrawTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentRegisterNodeCustomEventTest", nullptr,
+         CustomComponentRegisterNodeCustomEventTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"customComponentUnregisterNodeCustomEventTest", nullptr,
+         CustomComponentUnregisterNodeCustomEventTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

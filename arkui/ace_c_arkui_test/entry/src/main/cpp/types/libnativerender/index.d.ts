@@ -477,3 +477,17 @@ export const hybirdGetNodeHandleTest : (a: string) => void;
 export const responseConfigUpdateTest : (a : string) =>void;
 
 export const requirementPanGestureTest: (a: string) => void;
+
+export const customComponentMeasureNodeTest : (a : string) => void;
+
+export const getMeasureNodeData : () => number[][];
+
+export const customComponentGetContextDrawCanvasTest : (a : string) => void;
+
+export const customComponentDrawContextGetSizeTest : (a : string) => void;
+
+export const customComponentEventOnDrawTest : (a : string) => void;
+
+export const customComponentRegisterNodeCustomEventTest : (a : string) => void;
+
+export const customComponentUnregisterNodeCustomEventTest : (a : string) => void;

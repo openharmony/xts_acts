@@ -218,6 +218,12 @@
     "MainAbility/pages/refresh/RefreshOverOffsetTest",
     "MainAbility/pages/radio/RadioOnChangeCheckedTest",
     "MainAbility/pages/hybird/HybirdGetNodeHandleTest",
-    "MainAbility/pages/requirement/RequirementPanGestureTest"
+    "MainAbility/pages/requirement/RequirementPanGestureTest",
+    "MainAbility/pages/customcomponent/CustomComponentMeasureNodeTest",
+    "MainAbility/pages/customcomponent/CustomComponentGetContextDrawCanvasTest",
+    "MainAbility/pages/customcomponent/CustomComponentDrawContextGetSizeTest",
+    "MainAbility/pages/customcomponent/CustomComponentEventOnDrawTest",
+    "MainAbility/pages/customcomponent/CustomComponentRegisterNodeCustomEventTest",
+    "MainAbility/pages/customcomponent/CustomComponentUnRegisterNodeCustomEventTest"
   ]
 }

@@ -655,6 +655,21 @@ import geometryTransitionTest from "./animation/GeometryTransitionTest.test"
 import animatorOptionTest from "./animation/AnimatorOptionTest.test"
 import textCustomSpanTest from "./text/TextCustomSpan.test"
 import textImageSpanTest from "./text/TextImageSpan.test"
+import customComponentGetChildAtTest from "./customcomponent/CustomComponentGetChildAtTest.test"
+import customComponentGetChildTotalCountTest from "./customcomponent/CustomComponentGetChildTotalCountTest.test"
+import customComponentGetFirstChildTest from "./customcomponent/CustomComponentGetFirstChildTest.test"
+import customComponentGetLastChildTest from "./customcomponent/CustomComponentGetLastChildTest.test"
+import customComponentGetPreviousSiblingTest from "./customcomponent/CustomComponentGetPreviousSiblingTest.test"
+import customComponentGetNextSiblingTest from "./customcomponent/CustomComponentGetNextSiblingTest.test"
+import customComponentMeasuredSizeTest from "./customcomponent/CustomComponentMeasuredSizeTest.test"
+import customComponentLayoutPositionTest from "./customcomponent/CustomComponentLayoutPositionTest.test"
+import customComponentMeasureNodeTest from "./customcomponent/CustomComponentMeasureNodeTest.test"
+import customComponentGetContextDrawCanvasTest from "./customcomponent/CustomComponentGetContextDrawCanvasTest.test"
+import customComponentDrawContextGetSizeTest from "./customcomponent/CustomComponentDrawContextGetSizeTest.test"
+import customComponentEventOnDrawTest from "./customcomponent/CustomComponentEventOnDrawTest.test"
+import customComponentRegisterNodeCustomEventTest from "./customcomponent/CustomComponentRegisterNodeCustomEventTest.test"
+import customComponentUnRegisterNodeCustomEventTest from "./customcomponent/CustomComponentUnRegisterNodeCustomEventTest.test"
+import customComponentLayoutConstraintDisposeTest from "./customcomponent/CustomComponentLayoutconstraintDisposeTest.test"
 import inputEvent from "./inputevent/InputEventTest.test"
 import imageAnimatorImageFrameInfoTest from './imageAnimator/ImageAnimatorImageFrameInfoTest.test'
 import imageAnimatorImagesTest from './imageAnimator/ImageAnimatorImagesTest.test'
@@ -780,6 +795,8 @@ import toolsLayoutRectTest from "./tools/ToolsLayoutRectTest.test"
 import hybirdGetNodeHandleTest from "./hybird/HybirdGetNodeHandleTest.test"
 import responseConfigUpdateTest from "./response/ResponseConfigUpdateTest.test"
 import requirementPanGestureTest from './requirement/RequirementPanGestureTest.test'
+import customComponentLayoutConstraintTest from './customcomponent/CustomComponentLayoutConstraintTest.test'
+
 export default function testsuite() {
 
   datePickerAccessibilityDescriptionTest()
@@ -1539,4 +1556,20 @@ export default function testsuite() {
   toolsLayoutRectTest()
   hybirdGetNodeHandleTest()
   requirementPanGestureTest()
+  customComponentGetChildAtTest()
+  customComponentGetChildTotalCountTest()
+  customComponentGetFirstChildTest()
+  customComponentGetLastChildTest()
+  customComponentGetPreviousSiblingTest()
+  customComponentGetNextSiblingTest()
+  customComponentMeasuredSizeTest()
+  customComponentLayoutPositionTest()
+  customComponentMeasureNodeTest()
+  customComponentGetContextDrawCanvasTest()
+  customComponentDrawContextGetSizeTest()
+  customComponentEventOnDrawTest()
+  customComponentRegisterNodeCustomEventTest()
+  customComponentUnRegisterNodeCustomEventTest()
+  customComponentLayoutConstraintDisposeTest()
+  customComponentLayoutConstraintTest()
 }
