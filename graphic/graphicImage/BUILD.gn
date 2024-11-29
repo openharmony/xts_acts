@@ -18,6 +18,6 @@ ohos_js_app_suite("ActsGraphicImageTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsGraphicImageTest"
-  subsystem_name = "graphic"
-  part_name = "graphic_2d"
+  subsystem_name = "arkui"
+  part_name = "ace_engine"
 }

@@ -24,10 +24,10 @@ ohos_app_assist_suite("ActsGraphicGles3Test_main") {
   hap_name = "ActsGraphicGles3TestMain"
 
   # 部件名称，真实数据，需要子系统对应
-  part_name = "graphic_2d"
+  part_name = "window_manager"
 
   # 子系统名称，真实数据，需要部件对应
-  subsystem_name = "graphic"
+  subsystem_name = "window"
 }
 
 ohos_js_app_suite("ActsGraphicGles3Test") {
@@ -37,9 +37,9 @@ ohos_js_app_suite("ActsGraphicGles3Test") {
   hap_name = "ActsGraphicGles3Test"
 
   # 部件名称，真实数据，需要子系统对应
-  part_name = "graphic_2d"
+  part_name = "window_manager"
 
   # 子系统名称，真实数据，需要部件对应
-  subsystem_name = "graphic"
+  subsystem_name = "window"
   deps = [ ":ActsGraphicGles3Test_main" ]
 }
