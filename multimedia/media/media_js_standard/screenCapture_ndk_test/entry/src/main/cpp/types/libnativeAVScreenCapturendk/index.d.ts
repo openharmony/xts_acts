@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 export const normalAVScreenCaptureTest: () => number;
+export const normalAVScreenCaptureTestStop: () => number;
 export const normalAVScreenRecordTest: () => number;
+export const normalAVScreenRecordTestStop: () => number;
 export const normalAVScreenCaptureSurfaceTest: () => number;
+export const normalAVScreenCaptureSurfaceTestStop: () => number;
 export const originAVScreenCaptureTest: () => number;
 
