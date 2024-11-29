@@ -19,7 +19,7 @@
 #define COLOR_RED 0xFFFF0000
 #define INVALID_PARAM 401
 #define ON_REFRESH_EVENT_ID 1212
-#define PARAM_LENGTH 300
+#define PARAM_LENGTH 600
 
 namespace ArkUICapiTest {
 static ArkUI_NodeHandle refresh;
