@@ -29,51 +29,18 @@ struct audioOutputRouting {
   private tag: string = 'qlw';
   private audioRoutingManager: audio.AudioRoutingManager | undefined = undefined;
   @State yesEnable: boolean = false;
+  @State yesEnable1: boolean = false;
   @State playEnable: boolean = false;
   @State stopEnable: boolean = false;
   @State outputDevice: string = '';
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
-    await this.onDeviceChange();
-    await this.getDevices();
   }
 
   onPageHide() {
     AudioRenderer.releaseRenderer();
     Logger.info(this.tag, `onPageHide releaseRenderer end`);
-  }
-
-  async onDeviceChange() {
-    this.audioRoutingManager = audio.getAudioManager().getRoutingManager()
-    this.audioRoutingManager.on('deviceChange', audio.DeviceFlag.ALL_DEVICES_FLAG, async (DeviceChangeAction) => {
-      Logger.info(this.tag, `deviceChange: ` + JSON.stringify(DeviceChangeAction))
-      await this.getDevices()
-    })
-  }
-
-  async getDevices() {
-    let deviceDescriptors : audio.AudioDeviceDescriptors | undefined = undefined
-    await this.audioRoutingManager?.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
-      deviceDescriptors = data
-      switch (deviceDescriptors[0].deviceType) {
-        case 2:
-          this.outputDevice = "Speaker"
-          break
-        case 3:
-          this.outputDevice = "3.5mm有线耳机"
-          break
-        case 8:
-          this.outputDevice = "蓝牙耳机"
-          break
-        case 22:
-          this.outputDevice = "Type C耳机"
-          break
-        default:
-          break
-      }
-      Logger.info(this.tag, `OutputDeviceList: ${this.outputDevice}`)
-    })
   }
 
   build() {
@@ -130,7 +97,8 @@ struct audioOutputRouting {
                     .enabled(!this.yesEnable)
                     .opacity(!this.yesEnable ? 1 : 0.4)
                     .onClick(async () => {
-                      this.Vue = true
+                      this.Vue = false
+                      this.yesEnable1 = true
                     })
                 }
 
@@ -139,6 +107,8 @@ struct audioOutputRouting {
                     .borderRadius(8)
                     .backgroundColor(0x317aff)
                     .width('30%')
+                    .enabled(!this.yesEnable1)
+                    .opacity(!this.yesEnable1 ? 1 : 0.4)
                     .onClick(async () => {
                       this.yesEnable = true
                       this.playEnable = true
@@ -148,16 +118,10 @@ struct audioOutputRouting {
               }
 
               Row() {
-                Text('测试目的:\n当设备连接蓝牙耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持蓝牙外设\n2. 按下播放按钮\n3. 连接蓝牙耳机\n4. 断开蓝牙耳机\n5. 按下停止按钮\n测试标准：\n如果设备不支持蓝牙耳机连接或者连接蓝牙耳机后接收到路由通知、路由显示正确，且连接蓝牙后音频通过蓝牙耳机播放，则用例pass')
+                Text('测试目的:\n当设备连接蓝牙耳机时，是否能够正常播放音频\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 若设备支持蓝牙耳机，点击支持按钮\n2. 连接蓝牙耳机\n3. 按下播放按钮\n4. 按下停止按钮\n5. 断开蓝牙耳机\n测试标准：\n连接蓝牙耳机后音频通过蓝牙耳机播放，则用例pass\n如果设备不支持蓝牙耳机则点击不支持按钮并点击失败按钮')
                   .fontColor(Color.White)
                   .fontSize('18fp')
 
-              }
-
-              Row() {
-                Text(`Audio输出路由：${this.outputDevice}`)
-                  .fontColor(Color.White)
-                  .fontSize('18fp')
               }
 
               Row() {

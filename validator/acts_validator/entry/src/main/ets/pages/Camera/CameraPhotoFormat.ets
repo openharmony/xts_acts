@@ -193,10 +193,10 @@ struct cameraOrientation {
                 .backgroundColor(0x317aff)
                 .width('50%')
                 .onClick(()=>{
-                  this.Vue = true;
+                  this.Vue = false;
                   router.back({
                     url: 'pages/Camera/Camera_index',
-                    params: { result: 'true ', title: this.name }
+                    params: { result: 'false', title: this.name }
                   });
                   promptAction.showToast({
                     message: '当前设备无相机', duration: 1000

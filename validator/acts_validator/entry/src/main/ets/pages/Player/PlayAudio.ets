@@ -23,7 +23,7 @@ struct playAudio {
   @State routers: Record<string, string | number> = router.getParams() as Record<string, string | number>;
   @State FillColor: string = '#FF000000';
   @State name: string = this.routers.audioTitle as string;
-  @State StepTips: string = '测试目的：用于测试音频播放暂停seek\n预期结果：音频播放暂停seek功能正常';
+  @State StepTips: string = '测试目的：用于测试音频播放暂停、拖动滚动条功能\n预期结果：音频播放暂停、拖动滚动条功能正常';
   private tag: string = 'qlw';
   @State Vue: boolean = false;
   @State audioSrc: string = this.routers.audioUrl as string;

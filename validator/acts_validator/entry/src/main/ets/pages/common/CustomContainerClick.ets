@@ -216,25 +216,6 @@ export struct CustomContainerClick {
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
 
-      Column() {
-        Button(`不支持外接鼠标`)
-          .borderRadius(8)
-          .backgroundColor(0x317aff)
-          .width('50%')
-          .margin('5vp')
-          .height('30vp')
-          .onClick(()=>{
-            this.Vue = true;
-            router.back({
-              url: 'pages/MultimodalInput/MultimodalInput_index',
-              params: { result: 'true ', title: this.name }
-            });
-            promptAction.showToast({
-              message: '当前设备不支持外接鼠标', duration: 1000
-            });
-          })
-      }
-
       specificNoParam({ paramA1: this.btnOne, paramA2: this.btnTwo, paramA3: this.btnThree, paramA4: this.btnFour })
       Blank()
 

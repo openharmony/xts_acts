@@ -25,7 +25,7 @@ struct playVideo {
   @State FillColor: string = '#FF000000';
   @State routers: Record<string, string | number> = router.getParams() as Record<string, string | number>
   @State name: string = this.routers.title as string;
-  @State StepTips: string = '测试目的：用于测试网络视频播放暂停seek\n预期结果：视频播放暂停seek功能正常，视频清晰度/流畅度正常，能正常播放完视频则通过。';
+  @State StepTips: string = '测试目的：用于测试网络视频播放暂停、拖动滚动条功能\n预期结果：视频播放暂停、拖动滚动条功能正常，视频清晰度/流畅度正常，能正常播放完视频则通过。';
   @State netWorkStepTips: string = '请检查网络是否连接/网络是否可用！';
   @State isNetWork: boolean = false;
   private tag: string = 'qlw';

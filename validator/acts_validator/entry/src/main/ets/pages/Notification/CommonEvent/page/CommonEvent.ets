@@ -33,7 +33,7 @@ struct CommonEvent {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'CommonEvent';
-  @State StepTips: string = '操作步骤：\n1、打开监听' + '\n2、将设备灭屏' + '\n3、停止监听' + '\n预期结果：监听状态和实际一致';
+  @State StepTips: string = '操作步骤：\n1、点击开始监听按钮' + '\n2、将设备灭屏' + '\n3、亮屏后查看当前监听状态是否与记录事件设置的相同' +'\n4、点击停止监听按钮' + '\n5、查看本次监控时长与监控期间干扰次数是否一致' + '\n预期结果：监听状态和实际一致';
   @State Vue: boolean = false;
   @State btnState: boolean = false;
   @State startTime: number = 0;

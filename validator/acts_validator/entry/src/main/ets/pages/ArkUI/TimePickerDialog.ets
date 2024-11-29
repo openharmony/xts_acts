@@ -27,8 +27,8 @@ const TAG = '[TimePickerDialog]';
 struct timePickerDialog {
   @State FillColor: string = '#FF000000';
   @State name: string = 'TimePickerDialog';
-  @State StepTips: string = '操作步骤：1、点击时间选择弹窗\n' +
-    '2、将日期选为12时12分' + '\n' + '预期结果：弹窗显示和文本展示一致则通过';
+  @State StepTips: string = '操作步骤：\n1、点击时间弹窗按钮\n' +
+    '2、将时间选为12时12分' + '\n' + '预期结果：弹窗显示和文本展示一致则通过';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;

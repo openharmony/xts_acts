@@ -21,7 +21,7 @@ import FirstDialog from '../model/FirstDialog';
 struct LongPressGestureExample {
   @State X: number = 0;
   @State name: string = 'LongPressGesture';
-  @State StepTips: string = '操作步骤：手指长按图像' + '\n' + '预期结果：长按动作触发计数增加，显示计数可大于10';
+  @State StepTips: string = '操作步骤：手指长按图像' + '\n' + '预期结果：长按动作触发计数增加，显示计数可大于等于10';
   @State Vue: boolean = false;
 
   async aboutToAppear() {

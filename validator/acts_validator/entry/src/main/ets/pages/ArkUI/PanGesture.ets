@@ -22,7 +22,7 @@ struct PanGestureExample {
   @State X: number = 0;
   @State Y: number = 0;
   @State name: string = 'PanGesture';
-  @State StepTips: string = '操作步骤：手指拖动图像' + '\n' + '预期结果：图片正常拖动，偏移坐标显示正常';
+  @State StepTips: string = '操作步骤：手指拖动图像' + '\n' + '预期结果：图像正常拖动，偏移坐标显示正常';
   @State Vue: boolean = false;
 
   async aboutToAppear() {
