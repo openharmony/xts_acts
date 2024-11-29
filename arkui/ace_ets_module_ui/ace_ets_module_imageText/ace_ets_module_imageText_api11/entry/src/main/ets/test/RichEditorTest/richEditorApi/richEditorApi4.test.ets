@@ -67,7 +67,7 @@ export default function richEditorApi4() {
      */
     it('richEditorApi4_0100', 0, async (done: Function) => {
       console.info('[richEditorApi4_0100] START');
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(500);
 
       let driver = Driver.create();
       await CommonFunc.sleep(300);
@@ -81,7 +81,17 @@ export default function richEditorApi4() {
 
       let text1 = getInspectorByKey('richEditorApi4_text1');
       let Obj1: ESObject = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('{"fontSize":50,"fontColor":"#FF182431","fontFeature":"","decoration":{"type":0,"color":"#FF182431"}}');
+      let content : ESObject = JSON.parse(Obj1.$attrs.content);
+      console.info('[richEditorApi4_0100] content:' + content.fontSize);
+      console.info('[richEditorApi4_0100] content:' + content.fontColor);
+      console.info('[richEditorApi4_0100] content:' + content.fontFeature);
+      console.info('[richEditorApi4_0100] content:' + content.decoration.type);
+      console.info('[richEditorApi4_0100] content:' + content.decoration.color);
+      expect('' + content.fontSize).assertEqual('50');
+      expect('' + content.fontColor).assertEqual('#FF182431');
+      expect('' + content.fontFeature).assertEqual('');
+      expect('' + content.decoration.type).assertEqual('0');
+      expect('' + content.decoration.color).assertEqual('#FF182431');
 
       console.info('[testRichEditor_0100] END');
       done();

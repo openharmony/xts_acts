@@ -20,9 +20,14 @@ import { LengthMetrics } from '@kit.ArkUI'
 struct StyledStringDemo {
   imagePixelMap: image.PixelMap | undefined = undefined
   @State html : string | undefined = undefined
+  @State text : string | undefined = undefined
   @State styledString : StyledString | undefined = undefined
+  @State styledString2 : StyledString | undefined = undefined
   controller1 : TextController = new TextController
   controller2 : TextController = new TextController
+  controller3 : TextController = new TextController
+  mutableStyledString1: MutableStyledString = new MutableStyledString('这是一段测试文字', [{start:0, length:8, styledKey:StyledStringKey.BACKGROUND_COLOR, styledValue: new BackgroundColorStyle({color:Color.Blue, radius: 0}) }]);
+
 
   async aboutToAppear() {
     console.info('aboutToAppear initial imagePixelMap')
@@ -43,9 +48,14 @@ struct StyledStringDemo {
     return createPixelMap
   }
 
+  async onPageShow() {
+    this.controller3.setStyledString(this.mutableStyledString1)
+  }
+
   build() {
     Column(){
       Text(undefined, { controller: this.controller1 }).height(100)
+      Text(undefined, { controller: this.controller3 }).height(100)
       Row(){
         Button('添加属性字符串').onClick(() => {
           let mutableStyledString1: MutableStyledString = new MutableStyledString('属性字符串', [{
@@ -72,8 +82,17 @@ struct StyledStringDemo {
           this.controller2.setStyledString(styledString)
         }).margin(5)
       }
+      Row(){
+        Button('getStyles')
+          .width('40%')
+          .onClick(() => {
+            this.text = JSON.stringify(this.mutableStyledString1
+			  .getStyles(0, 8,StyledStringKey.BACKGROUND_COLOR)[0].styledKey)
+          }).margin(5).id('but3')
+      }
       Text(undefined, { controller: this.controller2 }).height(100)
       Text(this.html).id('text')
+      Text(this.text).id('text2')
     }.width('100%')
   }
 }
