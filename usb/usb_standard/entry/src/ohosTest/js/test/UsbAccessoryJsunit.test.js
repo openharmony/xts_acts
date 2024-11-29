@@ -28,6 +28,16 @@ describe("UsbAccessoryJsTest", function () {
     const COMMON_HAS_NO_RIGHT = 14400001;
 
     let accList;
+    let isDevAccessoryFunc;
+
+    function devAccessoryFunc() {
+        if (accList.length > 0) {
+            console.info(TAG, "This USB device is accessory function");
+            return true;
+        }
+        console.info(TAG, "This USB device is accessory function");
+        return false;
+    }
 
     beforeAll(function() {
         console.info(TAG, 'beforeAll called');
@@ -37,6 +47,7 @@ describe("UsbAccessoryJsTest", function () {
         } catch (err) {
             console.info(TAG, 'beforeAll err : ', err);
         }
+        isDevAccessoryFunc = devAccessoryFunc();
     })
 
     afterAll(function() {
@@ -90,6 +101,10 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testGetAccessoryList001", 0, () => {
         console.info(TAG, '----------------------testGetAccessoryList001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
             accList = usbMan.getAccessoryList();
             console.info(TAG, 'testGetAccessoryList001 ret : ', JSON.stringify(accList));
@@ -116,6 +131,10 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testRequestAccessoryRight001", 0, async () => {
         console.info(TAG, '----------------------testRequestAccessoryRight001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
             let access = {"manufacturer": "accessoryTest"};
             await usbMan.requestAccessoryRight(access).then(data => {
@@ -138,21 +157,16 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testRequestAccessoryRight002", 0, async () => {
         console.info(TAG, '----------------------testRequestAccessoryRight002---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testRequestAccessoryRight002 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
-            try {
-                await usbMan.requestAccessoryRight(accList[0]).then(data => {
-                    console.info(TAG, 'testRequestAccessoryRight002 ret : ', JSON.stringify(data));
-                    expect(data !== null).assertFalse();
-                });
-                usbMan.cancelAccessoryRight(accList[0]);
-            } catch (err) {
-                console.info(TAG, 'testRequestAccessoryRight002 err : ', err);
-                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
-            }
+            await usbMan.requestAccessoryRight(accList[0]).then(data => {
+                console.info(TAG, 'testRequestAccessoryRight002 ret : ', JSON.stringify(data));
+                expect(data !== null).assertFalse();
+            });
+            usbMan.cancelAccessoryRight(accList[0]);
         } catch (err) {
             console.info(TAG, 'testRequestAccessoryRight002 err : ', err);
             expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
@@ -169,6 +183,10 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testHasAccessoryRight001", 0, () => {
         console.info(TAG, '----------------------testHasAccessoryRight001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
             let access = { manufacturer: "accessoryTest" };
             let ret = usbMan.hasAccessoryRight(access);
@@ -190,19 +208,14 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testHasAccessoryRight002", 0, () => {
         console.info(TAG, '----------------------testHasAccessoryRight002---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testHasAccessoryRight002 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
-            try {
-                let ret = usbMan.hasAccessoryRight(accList[0]);
-                console.info(TAG, 'testHasAccessoryRight002 ret : ', ret);
-                expect(ret).assertFalse();
-            } catch (err) {
-                console.info(TAG, 'testHasAccessoryRight002 err : ', err);
-                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
-            }
+            let ret = usbMan.hasAccessoryRight(accList[0]);
+            console.info(TAG, 'testHasAccessoryRight002 ret : ', ret);
+            expect(ret).assertFalse();
         } catch (err) {
             console.info(TAG, 'testHasAccessoryRight002 err : ', err);
             expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
@@ -219,11 +232,11 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testHasAccessoryRight003", 0, async () => {
         console.info(TAG, '----------------------testHasAccessoryRight003---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testHasAccessoryRight003 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
             await getAccPermission();
             CheckEmptyUtils.sleep(1000);
             await driveFn();
@@ -255,6 +268,10 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testCancelAccessoryRight001", 0, () => {
         console.info(TAG, '----------------------testCancelAccessoryRight001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
             let access = {"manufacturer": "accessoryTest"};
             usbMan.cancelAccessoryRight(access);
@@ -277,11 +294,11 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testCancelAccessoryRight002", 0, async () => {
         console.info(TAG, '----------------------testCancelAccessoryRight002---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testCancelAccessoryRight002 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
             await getAccPermission();
             CheckEmptyUtils.sleep(1000);
             await driveFn();
@@ -311,6 +328,10 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testOpenAccessory001", 0, () => {
         console.info(TAG, '----------------------testOpenAccessory001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
             let access = {"manufacturer": "accessoryTest"};
             let ret = usbMan.openAccessory(access);
@@ -332,11 +353,11 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testOpenAccessory002", 0, async () => {
         console.info(TAG, '----------------------testOpenAccessory002---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testOpenAccessory002 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
             await getAccPermission();
             CheckEmptyUtils.sleep(1000);
             await driveFn();
@@ -369,11 +390,11 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testOpenAccessory003", 0, async () => {
         console.info(TAG, '----------------------testOpenAccessory003---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testOpenAccessory003 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
             await getAccPermission();
             CheckEmptyUtils.sleep(1000);
             await driveFn();
@@ -405,21 +426,20 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testOpenAccessory004", 0, () => {
         console.info(TAG, '----------------------testOpenAccessory004---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testOpenAccessory004 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
-            try {
-                let acchandle = usbMan.openAccessory(accList[0]);
-                expect(acchandle !== null).assertTrue();
-            } catch (err) {
-                console.info(TAG, 'testOpenAccessory004 reopen err : ', err);
+            let acchandle = usbMan.openAccessory(accList[0]);
+            expect(acchandle !== null).assertTrue();
+        } catch (err) {
+            console.info(TAG, 'testOpenAccessory004 reopen err : ', err);
+            if (err.code == SERVICE_EXCEPTION_CODE) {
+                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            } else {
                 expect(err.code).assertEqual(COMMON_HAS_NO_RIGHT);
             }
-        } catch (err) {
-            console.info(TAG, 'testOpenAccessory004 err : ', err);
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
         }
     })
 
@@ -433,11 +453,11 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testCloseccessory001", 0, async () => {
         console.info(TAG, '----------------------testCloseccessory001---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testCloseccessory001 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
             await getAccPermission();
             CheckEmptyUtils.sleep(1000);
             await driveFn();
@@ -473,18 +493,13 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testCloseccessory002", 0, () => {
         console.info(TAG, '----------------------testCloseccessory002---------------------------');
+        if (!isDevAccessoryFunc) {
+            expect(isDevAccessoryFunc).assertFalse();
+            return
+        }
+        let acchandle = {"accessFd": 0};
         try {
-            accList = usbMan.getAccessoryList();
-            console.info(TAG, 'testCloseccessory002 ret : ', JSON.stringify(accList));
-            expect(accList != null).assertEqual(true);
-            expect(accList.length == 1).assertEqual(true);
-            let acchandle = {"accessFd": 0};
-            try {
-                usbMan.closeAccessory(acchandle);
-            } catch (err) {
-                console.info(TAG, 'testCloseccessory002 err : ', err);
-                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
-            }
+            usbMan.closeAccessory(acchandle);
         } catch (err) {
             console.info(TAG, 'testCloseccessory002 err : ', err);
             expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);

@@ -31,5 +31,5 @@ UsbDevicePipeJsFunctionsTestEx()
 UsbApiParamExceJsunitTest()
 UsbApiTransferCompatJsunitTest()
 UsbApiParamErrJsunitTest()
-// UsbAccessoryJsTest()
+UsbAccessoryJsTest()
 }
