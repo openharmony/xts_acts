@@ -309,6 +309,14 @@ export const testAnimatorRegisterOnCancel: (a: string) => void;
 
 export const testAnimatorRegisterOnRepeat: (a: string) => void;
 
+export const imageAnimatorOnCancelTest: (a: string) => void;
+
+export const imageAnimatorOnPauseTest: (a: string) => void;
+
+export const imageAnimatorOnRepeatTest: (a: string) => void;
+
+export const imageAnimatorOnFinishTest: (a: string) => void;
+
 export const inputEventTest: (a: string) => void;
 
 export const inputEventMouseTest: (a: string) => void;

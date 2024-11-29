@@ -2053,6 +2053,92 @@ export const testImageAniMator010: () => number;
 
 export const testImageAniMator011: () => number;
 
+export const testImageAniMatorImageFramelnfo001: () => number;
+
+export const testImageAniMatorImageFramelnfo002: () => number;
+
+export const testImageAniMatorImageFramelnfo003: () => number;
+
+export const testImageAniMatorImageFramelnfo004: () => number;
+
+export const testImageAnimatorImages001: () => number;
+
+export const testImageAnimatorImages002: () => number;
+
+export const testImageAnimatorImages003: () => number;
+
+export const testImageAnimatorImages004: () => number;
+
+export const testImageAnimatorState001: () => number;
+
+export const testImageAnimatorState002: () => number;
+
+export const testImageAnimatorState003: () => number;
+
+export const testImageAnimatorState004: () => number;
+
+export const testImageAnimatorState005: () => number;
+
+export const testImageAnimatorState006: () => number;
+
+export const testImageAnimatorState007: () => number;
+
+export const testImageAnimatorState008: () => number;
+
+export const testImageAnimatorDuration001: () => number;
+
+export const testImageAnimatorDuration002: () => number;
+
+export const testImageAnimatorDuration003: () => number;
+
+export const testImageAnimatorDuration004: () => number;
+
+export const testImageAnimatorDuration005: () => number;
+
+export const testImageAnimatorReverse001: () => number;
+
+export const testImageAnimatorReverse002: () => number;
+
+export const testImageAnimatorReverse003: () => number;
+
+export const testImageAnimatorReverse004: () => number;
+
+export const testImageAnimatorFixedSize001: () => number;
+
+export const testImageAnimatorFixedSize002: () => number;
+
+export const testImageAnimatorFixedSize003: () => number;
+
+export const testImageAnimatorFixedSize004: () => number;
+
+export const testImageAnimatorFillMode001: () => number;
+
+export const testImageAnimatorFillMode002: () => number;
+
+export const testImageAnimatorFillMode003: () => number;
+
+export const testImageAnimatorFillMode004: () => number;
+
+export const testImageAnimatorFillMode005: () => number;
+
+export const testImageAnimatorFillMode006: () => number;
+
+export const testImageAnimatorFillMode007: () => number;
+
+export const testImageAnimatorFillMode008: () => number;
+
+export const testImageAnimatorIterations001: () => number;
+
+export const testImageAnimatorIterations002: () => number;
+
+export const testImageAnimatorIterations003: () => number;
+
+export const testImageAnimatorIterations004: () => number;
+
+export const testImageAnimatorIterations005: () => number;
+
+export const testImageAnimatorIterations006: () => number;
+
 export const testListSwipeActionItem008: ()=> number;
 
 export const testListSwipeActionItem009: ()=> number;
@@ -5555,6 +5641,14 @@ export const testTimePickerTextStyle013: () => number;
 export const testToggleSelectedColor004: () => number;
 
 export const testToggleSelectedColor005: () => number;
+
+export const testToggleUnSelectedColor001: () => number;
+
+export const testToggleUnSelectedColor002: () => number;
+
+export const testToggleUnSelectedColor003: () => number;
+
+export const testToggleUnSelectedColor004: () => number;
 
 export const testToggleSwitchPointColor004: () => number;
 

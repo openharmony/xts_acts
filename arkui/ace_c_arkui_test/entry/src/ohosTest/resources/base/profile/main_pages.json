@@ -155,6 +155,11 @@
     "MainAbility/pages/swiper/SwiperOnAnimationEndTest",
     "MainAbility/pages/swiper/SwiperAdapterTest",
     "MainAbility/pages/swiper/SwiperOnContentDidScrollTest",
-    "MainAbility/pages/swiper/SwiperOnGestureSwipeTest"
+    "MainAbility/pages/swiper/SwiperOnGestureSwipeTest",
+    "MainAbility/pages/imageAnimator/ImageAnimatorOnCancelTest",
+    "MainAbility/pages/imageAnimator/ImageAnimatorOnPauseTest",
+    "MainAbility/pages/imageAnimator/ImageAnimatorOnRepeatTest",
+    "MainAbility/pages/imageAnimator/ImageAnimatorOnFinishTest"
+    
   ]
 }

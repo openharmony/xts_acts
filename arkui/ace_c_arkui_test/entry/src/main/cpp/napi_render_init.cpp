@@ -119,6 +119,7 @@
 #include "swiper/swiper_adapter_test.h"
 #include "swiper/swiper_onContentDidScroll_test.h"
 #include "swiper/swiper_onGestureSwipe_test.h"
+#include "imageAnimator/imageAnimator_event_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -434,6 +435,15 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"swiperOnGestureSwipeTest", nullptr, SwiperOnGestureSwipeTest::CreateNativeNode, nullptr,
          nullptr, nullptr, napi_default, nullptr},
+        {"imageAnimatorOnCancelTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnCancel,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"imageAnimatorOnPauseTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnPause,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"imageAnimatorOnRepeatTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnRepeat,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"imageAnimatorOnFinishTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnFinish,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

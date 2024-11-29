@@ -13,23 +13,22 @@
  * limitations under the License.
  */
 
-#ifndef ARKUI_CAPI_DEMO_FLOWITEM_COMPONENT_H
-#define ARKUI_CAPI_DEMO_FLOWITEM_COMPONENT_H
+#ifndef ARKUI_CAPI_XTS_IMAGEANIMATOR_EVENT_TEST_H
+#define ARKUI_CAPI_XTS_IMAGEANIMATOR_EVENT_TEST_H
 
-#include <arkui/native_node.h>
-#include <cassert>
-#include <stack>
-#include <string>
-#include <unordered_set>
+#include "../common/common.h"
 
-#include "component.h"
+#include <ace/xcomponent/native_interface_xcomponent.h>
 
 namespace ArkUICapiTest {
 
-class FlowItemComponent : public Component {
+class ImageAnimatorEventTest {
 public:
-    explicit FlowItemComponent() : Component(ARKUI_NODE_FLOW_ITEM) {}
-    explicit FlowItemComponent(ArkUI_NodeHandle handle) : Component(handle) {}
+    ~ImageAnimatorEventTest();
+    static napi_value ImageAnimatorOnCancel(napi_env env, napi_callback_info info);
+    static napi_value ImageAnimatorOnPause(napi_env env, napi_callback_info info);
+    static napi_value ImageAnimatorOnRepeat(napi_env env, napi_callback_info info);
+    static napi_value ImageAnimatorOnFinish(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
-#endif // ARKUI_CAPI_DEMO_FLOWITEM_COMPONENT_H
+#endif // ARKUI_CAPI_XTS_IMAGEANIMATOR_EVENT_TEST_H
