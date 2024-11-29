@@ -64,5 +64,57 @@ export default function refreshPullDownRatioTest() {
       expect(nativeFunc.testRefreshPullDownRatio003()).assertEqual(0)
       done();
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_PULL_DOWN_RATIO_0400
+     * @tc.name       : testRefreshPullDownRatio004
+     * @tc.desc       : testing value for Progress with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshPullDownRatio004', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshPullDownRatio004()).assertEqual(0)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_PULL_DOWN_RATIO_0500
+     * @tc.name       : testRefreshPullDownRatio005
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshPullDownRatio005', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshPullDownRatio005()).assertEqual(0)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_PULL_DOWN_RATIO_0600
+     * @tc.name       : testRefreshPullDownRatio006
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshPullDownRatio006', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshPullDownRatio006()).assertEqual(0)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_PULL_DOWN_RATIO_0700
+     * @tc.name       : testRefreshPullDownRatio007
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshPullDownRatio007', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshPullDownRatio007()).assertEqual(0)
+      done();
+    })
   })
 }

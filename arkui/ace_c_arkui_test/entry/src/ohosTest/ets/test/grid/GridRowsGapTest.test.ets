@@ -17,9 +17,9 @@ import { beforeEach, expect, describe, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
-export default function refreshRefreshingTest() {
+export default function gridRowsGapTest() {
 
-  describe('RefreshRefreshingTest', () => {
+  describe('GridRowsGapTest', () => {
 
     beforeEach(async (done: Function) => {
       await Utils.sleep(100);
@@ -27,55 +27,56 @@ export default function refreshRefreshingTest() {
     });
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_REFRESHING_0100
-     * @tc.name       : testRefreshRefreshing001
-     * @tc.desc       : testing value for Progress with normal value
+     * @tc.number     : SUB_ARKUI_CAPI_GRID_ROWSGAP_0100
+     * @tc.name       : testGridRowsGap001
+     * @tc.desc       : testing RowsGap for Grid with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshRefreshing001', 0, async (done: Function) => {
-      expect(nativeFunc.testRefreshRefreshing001()).assertEqual(0)
+    it('testGridRowsGap001', 0, async (done: Function) => {
+      expect(nativeFunc.testGridRowsGap001()).assertEqual(0)
       done();
     })
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_REFRESHING_0200
-     * @tc.name       : testRefreshRefreshing002
-     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.number     : SUB_ARKUI_CAPI_GRID_ROWSGAP_0200
+     * @tc.name       : testGridRowsGap002
+     * @tc.desc       : testing RowsGap for Grid with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshRefreshing002', 0, async (done: Function) => {
-      expect(nativeFunc.testRefreshRefreshing002()).assertEqual(0)
+    it('testGridRowsGap002', 0, async (done: Function) => {
+      expect(nativeFunc.testGridRowsGap002()).assertEqual(0)
       done();
     })
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_REFRESHING_0300
-     * @tc.name       : testRefreshRefreshing003
-     * @tc.desc       : testing value for Progress with normal value
+     * @tc.number     : SUB_ARKUI_CAPI_GRID_ROWSGAP_0300
+     * @tc.name       : testGridRowsGap003
+     * @tc.desc       : testing RowsGap for Grid with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshRefreshing003', 0, async (done: Function) => {
-      expect(nativeFunc.testRefreshRefreshing003()).assertEqual(0)
+    it('testGridRowsGap003', 0, async (done: Function) => {
+      expect(nativeFunc.testGridRowsGap003()).assertEqual(0)
       done();
     })
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_REFRESHING_0400
-     * @tc.name       : testRefreshRefreshing004
-     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.number     : SUB_ARKUI_CAPI_GRID_ROWSGAP_0400
+     * @tc.name       : testGridRowsGap004
+     * @tc.desc       : testing RowsGap for Grid with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshRefreshing004', 0, async (done: Function) => {
-      expect(nativeFunc.testRefreshRefreshing004()).assertEqual(0)
+    it('testGridRowsGap004', 0, async (done: Function) => {
+      expect(nativeFunc.testGridRowsGap004()).assertEqual(0)
       done();
     })
+
   })
 }

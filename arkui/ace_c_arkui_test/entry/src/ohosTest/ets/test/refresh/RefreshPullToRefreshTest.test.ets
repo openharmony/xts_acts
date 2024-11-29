@@ -64,5 +64,44 @@ export default function refreshPullToRefreshTest() {
       expect(nativeFunc.testRefreshPullToRefresh003()).assertEqual(0)
       done();
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_PULL_TO_REFRESH_0400
+     * @tc.name       : testRefreshPullToRefresh004
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshPullToRefresh004', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshPullToRefresh004()).assertEqual(0)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_PULL_TO_REFRESH_0500
+     * @tc.name       : testRefreshPullToRefresh005
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshPullToRefresh005', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshPullToRefresh005()).assertEqual(0)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_PULL_TO_REFRESH_0600
+     * @tc.name       : testRefreshPullToRefresh006
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshPullToRefresh006', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshPullToRefresh006()).assertEqual(0)
+      done();
+    })
   })
 }

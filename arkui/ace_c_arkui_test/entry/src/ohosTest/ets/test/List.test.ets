@@ -465,8 +465,12 @@ import imageSpanPaddingTest from './imagespan/ImageSpanPaddingTest.test'
 import columnWidthTest from './column/ColumnWidthTest.test'
 import columnHeightTest from './column/ColumnHeightTest.test'
 import columnPaddingTest from './column/ColumnPaddingTest.test'
+import columnJustifyContentTest from './column/ColumnJustifyContentTest.test'
+import columnAlignItemsTest from './column/ColumnAlignItemsTest.test'
 import columnForegroundBlurStyleTest from './column/ColumnForegroundBlurStyleTest.test'
 import rowHeightTest from './row/RowHeightTest.test'
+import rowJustifyContentTest from './row/RowJustifyContentTest.test'
+import rowAlignItemsTest from './row/RowAlignItemsTest.test'
 import sliderWidthTest from './slider/SliderWidthTest.test'
 import sliderHeightTest from './slider/SliderHeightTest.test'
 import sliderEnabledTest from './slider/SliderEnabledTest.test'
@@ -547,6 +551,7 @@ import textAreaDefaultFocusTest from './textarea/TextAreaDefaultFocusTest'
 import textAreaResponseRegionTest from './textarea/TextAreaResponseRegionTest'
 import refreshOnRefreshingTest from './refresh/RefreshOnRefreshingTest'
 import refreshOnStateChangeTest from './refresh/RefreshOnStateChangeTest'
+import refreshOnOffsetChangeTest from './refresh/RefreshOnOffsetChangeTest'
 import textAreaOnFocusTest from './textarea/TextAreaOnFocusTest'
 import textAreaOnBlurTest from './textarea/TextAreaOnBlurTest'
 import textAreaKeyTest from './textarea/TextAreaKeyTest'
@@ -595,7 +600,16 @@ import gestureGestureInterrupterTest from './gesture/GestureGestureInterrupterTe
 import gestureCreateGestureTest from './gesture/GestureCreateGestureTest.test'
 import gestureGestureInfoTest from  './gesture/GestureGestureInfoTest.test'
 import gestureNestScrollTest from './gestureScroll/GestureNestScollTest.test'
-
+import gridColumnGapTest from './grid/GridColumnGapTest.test' 
+import gridRowsTemplateTest from './grid/GridRowsTemplateTest.test'
+import gridColumnTemplateTest from './grid/GridColumnTemplateTest.test'
+import gridRowsGapTest from './grid/GridRowsGapTest.test' 
+import gridCachedCountTest from './grid/GridCachedCountTest.test' 
+import gridNodeAdapterTest from './grid/GridNodeAdapterTest.test' 
+import radioValueTest from './radio/RadioValueTest.test'
+import radioGroupTest from './radio/RadioGroupTest.test'
+import radioRadioStyleTest from './radio/RadioRadioStyleTest.test'
+import radioCheckedTest from './radio/RadioCheckedTest.test'
 import customComponentEventTest from './customcomponent/CustomComponentEventTest.test'
 import commonAttrsAnimateTest from './commonattrs/CommonAttrsAnimateTest.test'
 import drawableDescriptorCreateTest from './drawabledescriptor/DrawableDescriptorCreateTest.test'
@@ -642,6 +656,7 @@ import imageAnimatorFixedSizeTest from './imageAnimator/ImageAnimatorFixedSizeTe
 import imageAnimatorFillModeTest from './imageAnimator/ImageAnimatorFillModeTest.test'
 import imageAnimatorIterationsTest from './imageAnimator/ImageAnimatorIterationsTest.test'
 import imageAnimatorEventTest from "./imageAnimator/ImageAnimatorEventTest.test"
+import radioOnChangeTest from "./radio/RadioOnChangeTest.test"
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1116,9 +1131,13 @@ export default function testsuite() {
   columnWidthTest()
   columnHeightTest()
   rowHeightTest()
+  rowJustifyContentTest()
+  rowAlignItemsTest()
   sliderWidthTest()
   sliderHeightTest()
   columnPaddingTest()
+  columnJustifyContentTest()
+  columnAlignItemsTest()
   columnForegroundBlurStyleTest()
   commonAttrsAlignTest()
   commonAttrsDirectionTest()
@@ -1189,6 +1208,7 @@ export default function testsuite() {
   textAreaResponseRegionTest()
   refreshOnStateChangeTest()
   refreshOnRefreshingTest()
+  refreshOnOffsetChangeTest()
   sliderOnChangeTest()
   checkboxOnChangeTest()
   buttonOnClickTest()
@@ -1215,6 +1235,16 @@ export default function testsuite() {
   gestureGestureInterrupterTest()
   gestureGestureInfoTest()
   gestureNestScrollTest()
+  gridColumnGapTest()
+  gridRowsTemplateTest()
+  gridColumnTemplateTest()
+  gridRowsGapTest()
+  gridCachedCountTest()
+  gridNodeAdapterTest()
+  radioValueTest()
+  radioGroupTest()
+  radioRadioStyleTest()
+  radioCheckedTest()
   customComponentEventTest()
   commonAttrsAnimateTest()
   drawableDescriptorCreateTest()
@@ -1273,4 +1303,6 @@ export default function testsuite() {
   imageAnimatorIterationsTest()
   imageAnimatorEventTest()
   toggleUnSelectedColorTest()
+  radioOnChangeTest()
+
 }

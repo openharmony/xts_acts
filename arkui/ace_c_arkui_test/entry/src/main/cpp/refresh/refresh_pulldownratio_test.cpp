@@ -50,4 +50,50 @@ static napi_value TestRefreshPullDownRatio003(napi_env env, napi_callback_info i
     ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO)->value[PARAM_0].f32, ratio);
     NAPI_END;
 }
+
+static napi_value TestRefreshPullDownRatio004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_0}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO)->value[PARAM_0].f32, PARAM_0);
+    NAPI_END;
+}
+
+static napi_value TestRefreshPullDownRatio005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    NAPI_END;
+}
+
+static napi_value TestRefreshPullDownRatio006(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_1_POINT_1}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+
+    NAPI_END;
+}
+
+static napi_value TestRefreshPullDownRatio007(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_1_POINT_1}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    auto ret1 = nodeAPI->resetAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO);
+    ASSERT_EQ(ret1, SUCCESS);
+    ASSERT_NE(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO)->value[PARAM_0].f32, PARAM_1_POINT_1);
+
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

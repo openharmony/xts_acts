@@ -78,6 +78,7 @@
 #include "slider/slider_enabled_test.h"
 #include "refresh/refresh_onrefreshing_test.h"
 #include "refresh/refresh_onstatechange_test.h"
+#include "refresh/refresh_onOffsetChange_test.h"
 #include "textarea/textarea_onfocus_test.h"
 #include "textarea/textarea_onblur_test.h"
 #include "textarea/textarea_key_test.h"
@@ -120,7 +121,7 @@
 #include "swiper/swiper_onContentDidScroll_test.h"
 #include "swiper/swiper_onGestureSwipe_test.h"
 #include "imageAnimator/imageAnimator_event_test.h"
-
+#include "radio/radio_onChange_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -271,6 +272,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"refreshOnRefreshingTest", nullptr, RefreshOnRefreshingTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"refreshOnStateChangeTest", nullptr, RefreshOnStateChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"refreshOnOffsetChangeTest", nullptr, RefreshOnOffsetChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"textAreaOnFocusTest", nullptr, TextAreaOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
@@ -444,6 +447,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"imageAnimatorOnFinishTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnFinish,
          nullptr, nullptr, nullptr, napi_default, nullptr},
 
+        {"radioOnChangeTest", nullptr, RadioOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
