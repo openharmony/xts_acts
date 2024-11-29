@@ -10146,6 +10146,13 @@ static napi_value RunJsVm(napi_env nEnv, napi_callback_info nInfo)
   return result;
 }
 
+[[maybe_unused]] static napi_value TraceTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trace.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -10211,6 +10218,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testWasmOperator", testWasmOperator),
         DECLARE_NAPI_FUNCTION("wasmTest", WasmTest),
         DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
+        DECLARE_NAPI_FUNCTION("traceTest", TraceTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;
