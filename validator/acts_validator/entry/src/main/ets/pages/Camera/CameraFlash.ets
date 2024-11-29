@@ -24,7 +24,7 @@ import router from '@ohos.router';
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraFlash';
-  @State StepTips: string = '测试目的：用于测试相机闪光灯能力\n-确定是否有闪光灯\n-根据设备选择选项\n-点击开启关闭对闪光灯进行操作' + '\n' + '预期结果：操作后闪关灯表现一致';
+  @State StepTips: string = '测试目的：用于测试相机闪光灯能力\n测试步骤：如果设备存在闪光灯，选择开启，否则选择无闪光灯' + '\n' + '预期结果：操作后闪关灯表现一致';
   private tag: string = 'qlw CameraFlash';
   @State Vue: boolean = false;
   @State isFlash: boolean = false;
@@ -131,7 +131,7 @@ struct cameraOrientation {
                 this.openFlash()
               })
               Button('无闪光灯').onClick(() => {
-                this.Vue = true
+                this.Vue = false
               })
             }
             .justifyContent(FlexAlign.SpaceEvenly)

@@ -27,15 +27,15 @@ const TAG = '[TextPickerDialog]';
 struct textPickerDialog {
   @State FillColor: string = '#FF000000';
   @State name: string = 'TextPickerDialog';
-  @State StepTips: string = '操作步骤：1、点击文本选择弹窗\n' +
-    '2、将文本选择为openHarmony' + '\n' + '预期结果：弹窗显示和文本展示一致则通过';
+  @State StepTips: string = '操作步骤：' + '\n' + '1、点击文本弹窗按钮\n' +
+    '2、将文本选择为OpenHarmony' + '\n' + '预期结果：弹窗显示和文本展示一致则通过';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
   @State isMilitaryTime: boolean = false;
   @State text: string = '';
   @State select: number = 2;
-  @State language: string[] = ['openHarmony', 'java', 'C', 'C#']
+  @State language: string[] = ['OpenHarmony', 'java', 'C', 'C#']
 
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
@@ -104,7 +104,7 @@ struct textPickerDialog {
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-      if (this.text === 'openHarmony') {
+      if (this.text === 'OpenHarmony') {
         this.Vue = true;
       }
     }, 500)

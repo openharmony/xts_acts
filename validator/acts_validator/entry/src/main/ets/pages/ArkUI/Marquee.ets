@@ -28,8 +28,8 @@ struct marquee {
   @State address: string = '';
   @State FillColor: string = '#FF000000';
   @State name: string = 'Marquee';
-  @State StepTips: string = '操作步骤：1、点击开始按钮\n2、打开是否从右至左播放选择按钮' +
-    '\n3、设置速度为20\n4、设置循环次数为2' + '\n' + '预期结果：设置选项与最终效果一致则通过';
+  @State StepTips: string = '操作步骤：' + '\n' + '1、打开是否从右至左播放选择按钮\n2、设置速度为20' +
+    '\n3、设置循环次数为2\n4、点击开始按钮\n5、观察跑马灯是否按照预期设定运行' + '\n' + '预期结果：设置选项与最终播放效果一致则通过';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -37,6 +37,7 @@ struct marquee {
   @State fromStart: boolean = false;
   @State step: number = 10;
   @State loop: number = 0;
+  @State rolling: boolean = false;
   @State marqueeSrc: string = '欢迎来到validator,我是validator跑马灯';
   @State mColor: Color = Color.Gray;
 
@@ -107,7 +108,7 @@ struct marquee {
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-      if (this.step === 20 && this.loop === 2 && this.fromStart === true) {
+      if (this.step === 20 && this.loop === 2 && this.fromStart === true && this.rolling === true) {
         this.Vue = true;
       }
     }, 500)
@@ -183,6 +184,7 @@ struct marquee {
           Button(this.start ? '停止' : '开始')
             .onClick(() => {
               this.start = !this.start
+              this.rolling = !this.rolling
             })
             .id('test_marqueeButton')
             .width(150)

@@ -76,7 +76,7 @@ export default class NotificationOperations {
     try {
       if (this.context !== undefined && this.context !== null && this.basicContent !== undefined) {
         logger.info(TAG, `publishBasicNotification`);
-        this.basicContent.title = '基本通知';
+        this.basicContent.title = '基本型通知';
         let notificationContent = notificationContentUtil.initBasicNotificationContent(this.basicContent);
         this.notificationUtil.publishNotification(notificationRequestUtil.initBasicNotificationRequest(notificationContent), NOTIFICATION_ID.BASIC);
         this.countOne++;

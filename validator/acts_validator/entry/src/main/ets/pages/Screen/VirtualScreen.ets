@@ -168,6 +168,7 @@ export struct ShowInfo {
             this.infoText('yDPI', this.screenInfo('yDPI'));
           }
           .width('100%')
+          .height('100%')
           .borderRadius(10)
           .backgroundColor("#ffffff")
           .alignItems(HorizontalAlign.Start)
@@ -185,7 +186,7 @@ export struct ShowInfo {
           .fontSize(22)
           .fontColor('#007dff')
           .backgroundColor('#ffffff')
-          .margin({ top: '12px', left: '20%', right: '20%', bottom: '5%' })
+          .margin({ top: '20px', left: '20%', right: '20%', bottom: '40%' })
           .onClick(() => {
             if(this.dialogController !== undefined) {
               this.dialogController.close();
@@ -214,8 +215,9 @@ export struct ShowInfo {
 struct VirtualScreen {
   @State FillColor: string = '#FF000000';
   @State name: string = 'VirtualScreen';
-  @State StepTips: string = '测试目的：用于测试系统创建虚拟屏功能\n-点击添加虚拟屏按钮,能够添加一块虚拟屏' +
-    '\n-点击新增的绿色虚拟屏可以查看信息\n-点击移除虚拟屏按钮，能成功移除';
+  @State StepTips: string = '操作步骤：\n1.点击添加虚拟屏按钮,能够添加一块虚拟屏\n2.点击新增的绿色虚拟屏可以查看信息' +
+    '\n3.点击移除虚拟屏按钮，能成功移除' +
+    '\n预期结果：系统能够创建并移除虚拟屏';
   @State Vue: boolean = false;
   @State isFlush: boolean = false;
   @State isPass: boolean = false;
@@ -267,7 +269,7 @@ struct VirtualScreen {
       .justifyContent(FlexAlign.SpaceBetween)
 
       Row() {
-        Text('测试步骤：\n1.点击添加虚拟屏按钮\n2.点击新增的绿色虚拟屏查看信息\n3.点击移除虚拟屏')
+        Text('测试步骤：\n1.点击添加虚拟屏按钮,能够添加一块虚拟屏\n2.点击新增的绿色虚拟屏可以查看信息\n3.点击移除虚拟屏按钮，能成功移除')
           .fontSize('24fp')
           .fontColor(Color.White)
       }

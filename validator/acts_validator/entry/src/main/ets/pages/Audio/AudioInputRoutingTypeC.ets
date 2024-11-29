@@ -31,6 +31,7 @@ struct audioInputRouting {
   @State deviceChange: audio.DeviceChangeAction | undefined = undefined;
   @State audioRoutingManager: audio.AudioRoutingManager | undefined = undefined;
   @State yesEnable: boolean = false
+  @State yesEnable1: boolean = false
   @State recorderEnable: boolean = false
   @State stopEnable: boolean = false
   @State playEnable: boolean = false
@@ -38,8 +39,6 @@ struct audioInputRouting {
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
-    await this.onDeviceChange()
-    await this.getDevices()
   }
 
   onPageHide() {
@@ -47,44 +46,6 @@ struct audioInputRouting {
     Logger.info(this.tag, `onPageHide releaseCapturer end`)
     mediaPlay.release()
     Logger.info(this.tag, `onPageHide releaseAVplayer end`)
-  }
-
-  async onDeviceChange() {
-    this.audioRoutingManager = await audio.getAudioManager().getRoutingManager()
-    this.audioRoutingManager.on('deviceChange', audio.DeviceFlag.ALL_DEVICES_FLAG, async (DeviceChangeAction?) => {
-      Logger.info(this.tag, `deviceChange: ` + JSON.stringify(DeviceChangeAction))
-      await this.getDevices()
-    })
-  }
-
-  async getDevices() {
-    try {
-      Logger.info(this.tag, `getDevices test `)
-      let deviceDescriptors : audio.AudioDeviceDescriptors | undefined = undefined
-      await this.audioRoutingManager?.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
-        deviceDescriptors = data
-        Logger.info(this.tag, `getDevices: ` + JSON.stringify(deviceDescriptors))
-        switch (deviceDescriptors[0].deviceType) {
-          case 3:
-            this.inputDevice = "3.5mm有线耳机"
-            break
-          case 8:
-            this.inputDevice = "蓝牙耳机"
-            break
-          case 15:
-            this.inputDevice = "mic"
-            break
-          case 22:
-            this.inputDevice = "Type C"
-            break
-          default:
-            break
-        }
-      });
-      Logger.info(this.tag, `InputDeviceList: ${this.inputDevice}`)
-    } catch (err) {
-      Logger.info(this.tag, `getDevices err message: ${err.message}, err code: ${err.code} `)
-    }
   }
 
   build() {
@@ -135,7 +96,8 @@ struct audioInputRouting {
                     .enabled(!this.yesEnable)
                     .opacity(!this.yesEnable ? 1 : 0.4)
                     .onClick(async () => {
-                      this.Vue = true
+                      this.Vue = false
+                      this.yesEnable1 = true
                     })
                 }
 
@@ -144,6 +106,8 @@ struct audioInputRouting {
                     .borderRadius(8)
                     .backgroundColor(0x317aff)
                     .width('30%')
+                    .enabled(!this.yesEnable1)
+                    .opacity(!this.yesEnable1 ? 1 : 0.4)
                     .onClick(async () => {
                       this.yesEnable = true
                       this.recorderEnable = true
@@ -152,13 +116,7 @@ struct audioInputRouting {
               }
 
               Row() {
-                Text('测试目的:\n当设备连接TypeC耳机时，是否音频输入路由正确切换\n测试准备\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持TypeC耳机\n2. 连接TypeC耳机\n3. 按下录制按钮\n4. 对着耳机mic讲话\n5. 按下停止按钮\n6. 按下播放按钮\n测试标准：\n如果设备不支持TypeC耳机输入或者接收到输入路由通知、路由显示为TypeC耳机，通过TypeC可正常录制和播放，则用例pass')
-                  .fontColor(Color.White)
-                  .fontSize('18fp')
-              }
-
-              Row() {
-                Text(`Audio输入路由：${this.inputDevice}`)
+                Text('测试目的:\n当设备连接TypeC耳机时，是否能正常录制和播放\n测试准备：\n断连任何外设，保持设备常亮\n测试步骤：\n1. 若设备支持TypeC耳机，点击支持按钮\n2. 连接TypeC耳机\n3. 按下录制按钮\n4. 对着耳机mic讲话\n5. 按下停止按钮\n6. 按下播放按钮\n测试标准：\n通过TypeC耳机可正常录制和播放，则用例pass\n如果设备不支持TypeC耳机则点击不支持按钮并点击失败按钮')
                   .fontColor(Color.White)
                   .fontSize('18fp')
               }
