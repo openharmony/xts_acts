@@ -17,12 +17,49 @@ import huks from '@ohos.security.huks';
 import { setParam, genParam } from './utils/HuksOptionUtil';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
+export async function checkSoftware() {
+  let dsaAlies = "useDsaToCheckSoftware";
+  let properties : Array<huks.HuksParam> = [
+    {
+      tag : huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value : huks.HuksKeyAlg.HUKS_ALG_DSA
+    },
+    {
+      tag : huks.HuksTag.HUKS_TAG_PURPOSE,
+      value : huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag : huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value : huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024
+    },
+    {
+      tag : huks.HuksTag.HUKS_TAG_DIGEST,
+      value : huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    }
+  ];
+  let options : huks.HuksOptions = {
+    properties : properties
+  };
+  try {
+    await huks.generateKeyItem(dsaAlies, options);
+    await huks.deleteKeyItem(dsaAlies, options);
+    console.error("This device uses software");
+    return true
+  } catch (err) {
+    console.error('This device does not use software');
+    return false;
+  }
+}
+
+let useSoftware : boolean = true;
+
 export default function SecurityHuksnewtest() {
   describe('SecurityHuksnewtest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(() => {
+    beforeAll(async () => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
+      useSoftware = await checkSoftware();
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -306,64 +343,67 @@ export default function SecurityHuksnewtest() {
      * @tc.level Level2
      */
     it('SUB_Security_HUKS_Sign_RSA_0010', 0, async () => {
-      let keyAlias: string = 'keyAlias';
-      let properties: Array<huks.HuksParam> =[
-        {
-          tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-          value: huks.HuksKeyAlg.HUKS_ALG_RSA
-        },
-        {
-          tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-          value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024
-        },
-        {
-          tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-          value:
-          huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
-          huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-        },
-      ];
+      if (useSoftware) {
+        let keyAlias: string = 'keyAlias';
+        let properties: Array<huks.HuksParam> =[
+          {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_RSA
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value:
+            huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
+            huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+          },
+        ];
 
-      let properties1: Array<huks.HuksParam> =[
-        {
-          tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-          value: huks.HuksKeyAlg.HUKS_ALG_RSA
-        },
-        {
-          tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-          value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024
-        },
-        {
-          tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-          value:
-          huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
-        },
-        {
-          tag: huks.HuksTag.HUKS_TAG_PADDING,
-          value: huks.HuksKeyPadding.HUKS_PADDING_ISO_IEC_9796_2
-        },
-        {
-          tag: huks.HuksTag.HUKS_TAG_DIGEST,
-          value: huks.HuksKeyDigest.HUKS_DIGEST_SHA1
+        let properties1: Array<huks.HuksParam> =[
+          {
+            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+            value: huks.HuksKeyAlg.HUKS_ALG_RSA
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+            value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+            value:
+            huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_PADDING,
+            value: huks.HuksKeyPadding.HUKS_PADDING_ISO_IEC_9796_2
+          },
+          {
+            tag: huks.HuksTag.HUKS_TAG_DIGEST,
+            value: huks.HuksKeyDigest.HUKS_DIGEST_SHA1
+          }
+        ];
+
+        let options: huks.HuksOptions = {
+          properties: properties
+        };
+
+        let options1: huks.HuksOptions = {
+          properties: properties1
+        };
+
+        try {
+          await huks.generateKeyItem(keyAlias, options);
+          await huks.initSession(keyAlias, options1)
+        } catch (error) {
+          console.log( `SUB_Security_HUKS_Sign_RSA_0010 catch error: ${JSON.stringify(error)}`);
+          console.log( `SUB_Security_HUKS_Sign_RSA_0010 catch error.code: ${error.code}`);
+          expect(null).assertFail();
         }
-      ];
-
-      let options: huks.HuksOptions = {
-        properties: properties
-      };
-
-      let options1: huks.HuksOptions = {
-        properties: properties1
-      };
-
-      try {
-        await huks.generateKeyItem(keyAlias, options);
-        await huks.initSession(keyAlias, options1)
-      } catch (error) {
-        console.log( `SUB_Security_HUKS_Sign_RSA_0010 catch error: ${JSON.stringify(error)}`);
-        console.log( `SUB_Security_HUKS_Sign_RSA_0010 catch error.code: ${error.code}`);
-        expect(null).assertFail();
       }
+      
     })
   })
 }
