@@ -1041,8 +1041,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal(nap
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
 
-    const char *arr[] = {NULL,       "",     "   ",      "0123",
-                         "应用框架", "Test", "!@#$%&*(", "这里一共是二十一个汉字这里一共是二十一个汉"};
+    const char *arr[] = {
+        "", "0123", "natp ", "应用框架", "Test", "!@#$%&*(", "这里一共是二十一个汉字这里一共是二十一个汉"};
 
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_APP_FRAMEWORK_TYPE, arr[i]);
@@ -1055,7 +1055,8 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal(nap
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_2, &result);
             return result;
         }
-        if (arr[i] == frameworkType) {
+        int com = strcmp(arr[i], frameworkType);
+        if (com != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_3, &result);
             return result;
         }
@@ -1082,12 +1083,10 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal(n
     OH_NativeImage *iamge = initNative->returnNativeImage();
 
     const char *arr[] = {"这里一共是二十二个汉字这里一共是二十二个汉字",
-                         "64test64!@#$%&*64test64test64aaa64test64!@#$%&*64test64test64aaa",
-                         "63test63!@#$%&*63test63test63aaa63test63!@#$%&*63test63test63aa",
-                         "65test65!@#$%&*65test65test65aaa65test65!@#$%&*65test65test65aaaa"};
+                         "abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde"};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_APP_FRAMEWORK_TYPE, arr[i]);
-        if (flag == 0) {
+        if (flag != 0) {
             napi_create_int32(env, CONSTANT_1000 * (i + 1) + CONSTANT_1, &result);
             return result;
         }

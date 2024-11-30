@@ -1091,8 +1091,8 @@ export default function nativeWindowTest() {
      * @tc.level      : Level 2
      */
     it('testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal', 2, async (done: Function) => {
-      // let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal();
-      // expect(result).assertEqual(0);
+      let result: number | string = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal();
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -1106,8 +1106,8 @@ export default function nativeWindowTest() {
      * @tc.level      : Level 3
      */
     it('testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal', 3, async (done: Function) => {
-      // let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal();
-      // expect(result).assertEqual(0);
+      let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal();
+      expect(result).assertEqual(0);
       done();
     });
 
