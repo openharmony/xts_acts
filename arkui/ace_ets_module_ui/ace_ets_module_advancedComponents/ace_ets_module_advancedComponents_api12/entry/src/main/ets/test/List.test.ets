@@ -28,6 +28,7 @@ import exceptionPromptTestTwo from './exceptionPrompt/exceptionPromptTestTwo.tes
 import filterTest from './filter/filterTest.test';
 import filterTestTwo from './filter/filterTestTwo.test';
 import gridObjectSortComponentTest from './gridObjectSortComponent/gridObjectSortComponentTest.test';
+import gridObjectSortComponentTextTest from './gridObjectSortComponent/gridObjectSortComponentTextTest.test';
 import progressButtonTest from './progressButton/progressButtonTest.test';
 import splitLayoutTest from './splitLayout/splitLayoutTest.test';
 import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test';
@@ -81,6 +82,7 @@ export default function testsuite() {
   filterTest();
   filterTestTwo();
   gridObjectSortComponentTest();
+  gridObjectSortComponentTextTest();
   progressButtonTest();
   splitLayoutTest();
   selectTitleBarTest();
