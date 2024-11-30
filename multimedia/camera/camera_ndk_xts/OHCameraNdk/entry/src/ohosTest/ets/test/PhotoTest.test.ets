@@ -302,34 +302,6 @@ export default function PhotoTest() {
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
     })
     /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPreviewOutputRelease0100
-     * @tc.name       : testOHPreviewOutputRelease0100
-     * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testOHPreviewOutputRelease0100', 0, () => {
-
-      let ret = cameras.oHPreviewOutputRelease(0);
-      console.log(TAG+"testOHPreviewOutputRelease0100:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
-    })
-    /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPreviewOutputRelease0200
-     * @tc.name       : testOHPreviewOutputRelease0200
-     * @tc.size       : MediumTest
-     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testOHPreviewOutputRelease0200', 0, () => {
-
-      let ret = cameras.oHPreviewOutputRelease(1);
-      console.log(TAG+"testOHPreviewOutputRelease0200:"+ret);
-      expect(ret).assertEqual(CAMERA_ERROR_7400101);
-    })
-    /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPhotoOutputUnregisterCallback0100
      * @tc.name       : testOHPhotoOutputUnregisterCallback0100
      * @tc.size       : MediumTest
@@ -453,6 +425,7 @@ export default function PhotoTest() {
       let ret = cameras.oHPhotoOutputCapture(0);
       console.log(TAG+"testOHPhotoOutputCapture0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
+      await sleep(5000);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPhotoOutputCapture0200
@@ -573,5 +546,33 @@ export default function PhotoTest() {
       console.log(TAG+"testOHPhotoOutputRelease0200:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
     })*/
+        /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPreviewOutputRelease0100
+     * @tc.name       : testOHPreviewOutputRelease0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHPreviewOutputRelease0100', 0, () => {
+
+      let ret = cameras.oHPreviewOutputRelease(0);
+      console.log(TAG+"testOHPreviewOutputRelease0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPreviewOutputRelease0200
+     * @tc.name       : testOHPreviewOutputRelease0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHPreviewOutputRelease0200', 0, () => {
+
+      let ret = cameras.oHPreviewOutputRelease(1);
+      console.log(TAG+"testOHPreviewOutputRelease0200:"+ret);
+      expect(ret).assertEqual(CAMERA_ERROR_7400101);
+    })
   })
 }
