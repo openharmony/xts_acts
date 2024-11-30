@@ -25,6 +25,7 @@ export default function dividerThemeTest() {
   const emptyCheck = 'emptyCheck';
   const emptyAttr = 'emptyAttr';
   let localTheme: CustomTheme | undefined;
+  let redTheme: CustomTheme | undefined;
   let changeTheme: boolean = false;
   let colorValues: Map<string, string> | undefined = new Map<string, string>();
 
@@ -38,6 +39,7 @@ export default function dividerThemeTest() {
         if (pages?.name !== `DividerPage`) {
           await router.pushUrl(options).then(() => {
             localTheme = AppStorage.get<Theme>(dividerThemeProperty);
+            redTheme = AppStorage.get<Theme>(dividerThemeProperty);
             console.info(`${SUITE} router.pushUrl success`);
           })
         }
@@ -59,6 +61,7 @@ export default function dividerThemeTest() {
         AppStorage.setOrCreate(dividerThemeProperty, redCustomTheme);
       }
       localTheme = AppStorage.get<Theme>(dividerThemeProperty);
+      redTheme = AppStorage.get<Theme>(dividerThemeProperty);
       changeTheme = false;
     });
     afterAll(() => {
@@ -127,5 +130,49 @@ export default function dividerThemeTest() {
       changeTheme = true;
       console.info(`${SUITE} ${CASE} END`);
     });
+
+    /**
+      * @tc.number    : ActsDividerThemeColors_0400
+      * @tc.name      : ActsDividerThemeColors_0400
+      * @tc.desc      : check custom colors values of the Divider component
+      * @tc.level     : Level 2
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      */
+    it(`ActsDividerThemeColors_0400`, 0, async () => {
+      const CASE: string = `ActsDividerThemeColors_0400`;
+      console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime);
+      const dividerJSON = getInspectorByKey(DividerKeys.dividerWithRedTheme);
+      const indexerAttrs: DividerAttribute = JSON.parse(dividerJSON).$attrs;
+      const color: string = indexerAttrs?.color?.toString().toUpperCase() ?? emptyAttr;
+      const checkColor: string = redTheme?.colors?.compDivider?.toString() ?? emptyCheck;
+      expect(color).assertEqual(checkColor);
+      changeTheme = true;
+      console.info(`${SUITE} ${CASE} END`);
+    });
+    /**
+      * @tc.number    : ActsDividerThemeColors_0500
+      * @tc.name      : ActsDividerThemeColors_0500
+      * @tc.desc      : check system colors values of the Divider component
+      *                 after change theme
+      * @tc.level     : Level 2
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      */
+    it(`ActsDividerThemeColors_0500`, 0, async () => {
+      const CASE: string = `ActsDividerThemeColors_0500`;
+      console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime);
+      const dividerJSON = getInspectorByKey(DividerKeys.dividerWithRedTheme);
+      const indexerAttrs: DividerAttribute = JSON.parse(dividerJSON).$attrs;
+      const color: string = indexerAttrs?.color?.toString().toUpperCase() ?? emptyAttr;
+      const checkColor: string = redTheme?.colors?.compDivider?.toString() ?? emptyCheck;
+      expect(color).assertEqual(checkColor);
+      changeTheme = true;
+      console.info(`${SUITE} ${CASE} END`);
+    });
+
+
   })
 }

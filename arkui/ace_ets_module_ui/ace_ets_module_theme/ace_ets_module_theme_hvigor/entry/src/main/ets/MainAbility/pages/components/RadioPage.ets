@@ -12,29 +12,54 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { redCustomTheme } from '../../themes/CustomTheme';
+import { brownCustomTheme, redCustomTheme } from '../../themes/CustomTheme';
 import { CustomTheme } from '@ohos.arkui.theme';
 
 export const radioThemeProperty: string = `RadioThemeProperty`;
+export const radioThemeSetProperty: string = `RadioThemeSetProperty`;
 
 export class RadioKeys {
   public static readonly radioSystem = `Radio_System`;
+  public static readonly radioSystemCustomAttrs = `Radio_System_CustomAttrs`;
   public static readonly radioWithTheme = `Radio_WithTheme`;
+  public static readonly radioWithThemeCustomAttrs = `Radio_WithTheme_CustomAttrs`;
 }
 @Entry
 @Component
 struct RadioPage {
   @StorageLink(radioThemeProperty) localTheme: CustomTheme | undefined = redCustomTheme;
+  @StorageLink(radioThemeSetProperty) themeSet: boolean | undefined = true;
 
   build() {
     Column() {
         Radio({ value: 'Radio1', group: 'radioGroup1' })
           .key(RadioKeys.radioSystem)
           .checked(true)
-        WithTheme({ theme: this.localTheme }) {
-          Radio({ value: 'Radio1', group: 'radioGroup2' })
-            .key(RadioKeys.radioWithTheme)
-            .checked(true)
+
+        Radio({ value: 'Radio2', group: 'radioGroup2' })
+        .key(RadioKeys.radioSystemCustomAttrs)
+        .radioStyle({
+          checkedBackgroundColor: brownCustomTheme.colors?.compBackgroundEmphasize,
+          uncheckedBorderColor: brownCustomTheme.colors?.iconFourth,
+          indicatorColor: brownCustomTheme.colors?.iconOnPrimary
+        })
+        .checked(true)
+
+        WithTheme({ theme: this.themeSet ? this.localTheme : undefined }) {
+          Column() {
+            Radio({ value: 'Radio3', group: 'radioGroup3' })
+              .key(RadioKeys.radioWithTheme)
+              .checked(true)
+
+          Radio({ value: 'Radio4', group: 'radioGroup4' })
+            .key(RadioKeys.radioWithThemeCustomAttrs)
+            .radioStyle({
+              checkedBackgroundColor: brownCustomTheme.colors?.compBackgroundEmphasize,
+              uncheckedBorderColor: brownCustomTheme.colors?.iconFourth,
+              indicatorColor: brownCustomTheme.colors?.iconOnPrimary
+            })
+            .checked(true)  
+          }
         }
     }
     .height('100%')
