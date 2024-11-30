@@ -8,7 +8,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.MiscServices.InputMethodFramework"
+                    "SystemCapability.Startup.SystemInfo"
                 ]
             }
         ]

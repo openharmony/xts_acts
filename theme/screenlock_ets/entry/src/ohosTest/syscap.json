@@ -9,7 +9,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.MiscServices.ScreenLock"
+                    "SystemCapability.Startup.SystemInfo"
                 ]
             }
         ]
