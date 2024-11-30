@@ -12,18 +12,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { redCustomTheme } from '../../themes/CustomTheme';
+import { brownCustomTheme, redCustomTheme } from '../../themes/CustomTheme';
 import { CustomTheme } from '@ohos.arkui.theme';
 
 export const textPickerThemeProperty: string = `TextPickerThemeProperty`;
+export const textPickerThemeSetProperty: string = `TextPickerThemeSetProperty`
 
 export class TextPickerKeys {
   public static readonly textPickerSingleSystem = `TextPicker_Single_System`;
   public static readonly textPickerMultiSystem = `TextPicker_Single_System`;
   public static readonly textPickerCascadeSystem = `TextPicker_Single_System`;
+  public static readonly textPickerSingleSystemCustomAttrs = `TextPicker_Single_System_CustomAttrs`
+  public static readonly textPickerMultiSystemCustomAttrs = `TextPicker_Single_System_CustomAttrs`
+  public static readonly textPickerCascadeSystemCustomAttrs = `TextPicker_Single_System_CustomAttrs`
   public static readonly textPickerSingleWithTheme = `TextPicker_Single_WithTheme`;
   public static readonly textPickerMultiWithTheme = `TextPicker_Single_WithTheme`;
   public static readonly textPickerCascadeWithTheme = `TextPicker_Single_WithTheme`;
+  public static readonly textPickerSingleWithThemeCustomAttrs = `TextPicker_Single_WithTheme_CustomAttrs`
+  public static readonly textPickerMultiWithThemeCustomAttrs = `TextPicker_Single_WithTheme_CustomAttrs`
+  public static readonly textPickerCascadeWithThemeCustomAttrs = `TextPicker_Single_WithTheme_CustomAttrs`
 }
 @Entry
 @Component
@@ -55,24 +62,57 @@ struct TextPickerPage {
   ];
 
   @StorageLink(textPickerThemeProperty) localTheme: CustomTheme | undefined = redCustomTheme;
+  @StorageLink(textPickerThemeSetProperty) themeSet: boolean | undefined = true
 
   build() {
-    Column() {
-      TextPicker({ range: this.apples })
-        .key(TextPickerKeys.textPickerSingleSystem)
-      TextPicker({ range: this.multi })
-        .key(TextPickerKeys.textPickerMultiSystem)
-      TextPicker({ range: this.cascade })
-        .key(TextPickerKeys.textPickerCascadeSystem)
+    Scroll() {
+      Column({ space: `10vp` }) {
+        TextPicker({ range: this.apples })
+          .key(TextPickerKeys.textPickerSingleSystem)
+        TextPicker({ range: this.multi })
+          .key(TextPickerKeys.textPickerMultiSystem)
+        TextPicker({ range: this.cascade })
+          .key(TextPickerKeys.textPickerCascadeSystem)
+        TextPicker({ range: this.apples })
+          .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+          .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .key(TextPickerKeys.textPickerSingleSystemCustomAttrs)
+        TextPicker({ range: this.multi })
+          .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+          .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .key(TextPickerKeys.textPickerMultiSystemCustomAttrs)
+        TextPicker({ range: this.cascade })
+          .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+          .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .key(TextPickerKeys.textPickerCascadeSystemCustomAttrs)
 
-      WithTheme({ theme: this.localTheme }) {
-        Column() {
-          TextPicker({ range: this.apples })
-            .key(TextPickerKeys.textPickerSingleWithTheme)
-          TextPicker({ range: this.multi })
-            .key(TextPickerKeys.textPickerMultiWithTheme)
-          TextPicker({ range: this.cascade })
-            .key(TextPickerKeys.textPickerCascadeWithTheme)
+        WithTheme({ theme: this.themeSet ? this.localTheme : undefined }) {
+          Column() {
+            TextPicker({ range: this.apples })
+              .key(TextPickerKeys.textPickerSingleWithTheme)
+            TextPicker({ range: this.multi })
+              .key(TextPickerKeys.textPickerMultiWithTheme)
+            TextPicker({ range: this.cascade })
+              .key(TextPickerKeys.textPickerCascadeWithTheme)
+            TextPicker({ range: this.apples })
+              .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+              .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .key(TextPickerKeys.textPickerSingleWithThemeCustomAttrs)
+            TextPicker({ range: this.multi })
+              .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+              .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .key(TextPickerKeys.textPickerMultiWithThemeCustomAttrs)
+            TextPicker({ range: this.cascade })
+              .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+              .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .key(TextPickerKeys.textPickerCascadeWithThemeCustomAttrs)
+          }
         }
       }
     }

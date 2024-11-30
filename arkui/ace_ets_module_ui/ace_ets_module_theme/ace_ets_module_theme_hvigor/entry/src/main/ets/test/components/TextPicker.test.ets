@@ -14,28 +14,36 @@
  */
 import router from '@ohos.router';
 import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
-import { TextPickerKeys, textPickerThemeProperty } from '../../MainAbility/pages/components/TextPickerPage';
+import { TextPickerKeys, textPickerThemeProperty, textPickerThemeSetProperty } from '../../MainAbility/pages/components/TextPickerPage';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
-import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
+import { brownCustomTheme, greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
 import { frameTime, sleep } from '../Utils';
 import { Theme, CustomTheme } from '@ohos.arkui.theme';
 
+const emptyCheck: string = 'emptyCheck';
+const emptyAttr: string = 'emptyAttr';
+
 export default function textPickerThemeTest() {
   const SUITE: string = `TextPickerThemeTest`;
-  const EMPTY_CHECK: string = 'emptyCheck';
-  const EMPTY_ATTR: string = 'emptyAttr';
 
   const textPickerKeys: string[] = [
     TextPickerKeys.textPickerSingleSystem,
     TextPickerKeys.textPickerMultiSystem,
     TextPickerKeys.textPickerCascadeSystem,
+    TextPickerKeys.textPickerSingleSystemCustomAttrs,
+    TextPickerKeys.textPickerMultiSystemCustomAttrs,
+    TextPickerKeys.textPickerCascadeSystemCustomAttrs,
     TextPickerKeys.textPickerSingleWithTheme,
     TextPickerKeys.textPickerMultiWithTheme,
-    TextPickerKeys.textPickerCascadeWithTheme
+    TextPickerKeys.textPickerCascadeWithTheme,
+    TextPickerKeys.textPickerSingleWithThemeCustomAttrs,
+    TextPickerKeys.textPickerMultiWithThemeCustomAttrs,
+    TextPickerKeys.textPickerCascadeWithThemeCustomAttrs
   ];
 
   let localTheme: CustomTheme | undefined;
   let changeTheme: boolean = false;
+  let themeSet: boolean | undefined = false
   let colorValues: Map<string, string> | undefined = new Map<string, string>();
 
   describe(SUITE, () => {
@@ -48,6 +56,7 @@ export default function textPickerThemeTest() {
         if (pages?.name !== `TextPickerPage`) {
           await router.pushUrl(options).then(() => {
             localTheme = AppStorage.get<Theme>(textPickerThemeProperty);
+            themeSet = AppStorage.get<boolean>(textPickerThemeSetProperty);
             console.info(`${SUITE} router.pushUrl success`);
           })
         }
@@ -58,15 +67,17 @@ export default function textPickerThemeTest() {
       }
     })
     beforeEach(() => {
-      if (!changeTheme) return;
-      if ((AppStorage.get(textPickerThemeProperty) as Theme)?.colors?.fontEmphasize
-        == redCustomTheme?.colors?.fontEmphasize) {
-        AppStorage.setOrCreate(textPickerThemeProperty, greenCustomTheme);
+      AppStorage.setOrCreate(textPickerThemeSetProperty, themeSet)
+      if (changeTheme) {
+        if ((AppStorage.get(textPickerThemeProperty) as Theme)?.colors?.fontEmphasize
+          == redCustomTheme?.colors?.fontEmphasize) {
+          AppStorage.setOrCreate(textPickerThemeProperty, greenCustomTheme);
+        }
+        else {
+          AppStorage.setOrCreate(textPickerThemeProperty, redCustomTheme);
+        }
       }
-      else {
-        AppStorage.setOrCreate(textPickerThemeProperty, redCustomTheme);
-      }
-      localTheme = AppStorage.get<Theme>(textPickerThemeProperty);
+      localTheme = AppStorage.get<boolean>(textPickerThemeSetProperty) ? AppStorage.get<Theme>(textPickerThemeProperty) : undefined;
       changeTheme = false;
     })
     afterAll(() => {
@@ -79,101 +90,104 @@ export default function textPickerThemeTest() {
     })
 
     /**
-      * @tc.number    : ActsTextPickerThemeColors_0100 
-      * @tc.name      : ActsTextPickerThemeColors_0100
-      * @tc.desc      : Check system colors values of the TextPicker component
-      * @tc.level     : Level 2
-      * @tc.size      : MediumTest
-      * @tc.type      : Function
-      */
-    it(`ActsTextPickerThemeColors_0100`, 0, () => {
+     * @tc.number    : ActsTextPickerThemeColors_0100
+     * @tc.name      : ActsTextPickerThemeColors_0100
+     * @tc.desc      : Check system colors values of the TextPicker component
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it(`ActsTextPickerThemeColors_0100`, 0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime);
       textPickerKeys.forEach((key) => {
         if (key.search(`WithTheme`) > 0) return;
-        const textPickerJSON = getInspectorByKey(key);
-        const textPickerAttrs: TextPickerAttribute = JSON.parse(textPickerJSON).$attrs;
-        const selectedTextStyle: PickerTextStyle = (textPickerAttrs?.selectedTextStyle as PickerTextStyle);
-        const selectedTextColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkSelectedTextColor: string = colorValues?.get(`fontEmphasize`)?.toString().toUpperCase()
-          ?? EMPTY_CHECK;
-        expect(selectedTextColor).assertEqual(checkSelectedTextColor);
-        const textStyle: PickerTextStyle = (textPickerAttrs?.textStyle as PickerTextStyle)
-        const textColor: string = textStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkTextColor: string = colorValues?.get(`fontPrimary`)?.toString().toUpperCase() ?? EMPTY_CHECK;
-        expect(textColor).assertEqual(checkTextColor);
-        const disappearTextStyle: PickerTextStyle = (textPickerAttrs?.disappearTextStyle as PickerTextStyle)
-        const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkDisappearTextColor: string = colorValues?.get(`fontPrimary`)?.toString().toUpperCase()
-          ?? EMPTY_CHECK;
-        expect(disappearTextColor).assertEqual(checkDisappearTextColor);
+        checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
       });
       console.info(`${SUITE} ${CASE} END`);
     });
 
     /**
-      * @tc.number    : ActsTextPickerThemeColors_0200 
-      * @tc.name      : ActsTextPickerThemeColors_0200
-      * @tc.desc      : Check custom colors values of the TextPicker component
-      * @tc.level     : Level 2
-      * @tc.size      : MediumTest
-      * @tc.type      : Function
-      */
-    it(`ActsTextPickerThemeColors_0200`, 0, () => {
+     * @tc.number    : ActsTextPickerThemeColors_0200
+     * @tc.name      : ActsTextPickerThemeColors_0200
+     * @tc.desc      : Check custom colors values of the TextPicker component
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it(`ActsTextPickerThemeColors_0200`, 0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0200`
       console.info(`${SUITE} ${CASE} START`)
+      await sleep(frameTime);
       textPickerKeys.forEach((key) => {
         if (key.search(`System`) > 0) return;
-        const textPickerJSON = getInspectorByKey(key);
-        const textPickerAttrs: TextPickerAttribute = JSON.parse(textPickerJSON).$attrs;
-        const selectedTextStyle: PickerTextStyle = (textPickerAttrs?.selectedTextStyle as PickerTextStyle);
-        const selectedTextColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkSelectedTextColor: string = localTheme?.colors?.fontEmphasize?.toString().toUpperCase() ?? EMPTY_CHECK;
-        expect(selectedTextColor).assertEqual(checkSelectedTextColor);
-        const textStyle: PickerTextStyle = (textPickerAttrs?.textStyle as PickerTextStyle)
-        const textColor: string = textStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? EMPTY_CHECK;
-        expect(textColor).assertEqual(checkTextColor);
-        const disappearTextStyle: PickerTextStyle = (textPickerAttrs?.disappearTextStyle as PickerTextStyle)
-        const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkDisappearTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? EMPTY_CHECK;
-        expect(disappearTextColor).assertEqual(checkDisappearTextColor);
+        checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
       });
       changeTheme = true
       console.info(`${SUITE} ${CASE} END`)
     });
     /**
-      * @tc.number    : ActsTextPickerThemeColors_0300 
-      * @tc.name      : ActsTextPickerThemeColors_0300
-      * @tc.desc      : Check custom colors values of the TextPicker component
-      *                 after change theme
-      * @tc.level     : Level 2
-      * @tc.size      : MediumTest
-      * @tc.type      : Function
-      */
+     * @tc.number    : ActsTextPickerThemeColors_0300
+     * @tc.name      : ActsTextPickerThemeColors_0300
+     * @tc.desc      : Check custom colors values of the TextPicker component
+     *                 after change theme
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
     it(`ActsTextPickerThemeColors_0300`, 0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
       textPickerKeys.forEach((key) => {
         if (key.search(`System`) > 0) return;
-        const textPickerJSON = getInspectorByKey(key);
-        const textPickerAttrs: TextPickerAttribute = JSON.parse(textPickerJSON).$attrs;
-        const selectedTextStyle: PickerTextStyle = (textPickerAttrs?.selectedTextStyle as PickerTextStyle);
-        const selectedTextColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkSelectedTextColor: string = localTheme?.colors?.fontEmphasize?.toString().toUpperCase() ?? EMPTY_CHECK;
-        expect(selectedTextColor).assertEqual(checkSelectedTextColor);
-        const textStyle: PickerTextStyle = (textPickerAttrs?.textStyle as PickerTextStyle)
-        const textColor: string = textStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? EMPTY_CHECK;
-        expect(textColor).assertEqual(checkTextColor);
-        const disappearTextStyle: PickerTextStyle = (textPickerAttrs?.disappearTextStyle as PickerTextStyle)
-        const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? EMPTY_ATTR;
-        const checkDisappearTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? EMPTY_CHECK;
-        expect(disappearTextColor).assertEqual(checkDisappearTextColor);
+        checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
       });
-      changeTheme = true;
+      themeSet = false;
+      console.info(`${SUITE} ${CASE} END`);
+    })
+    /**
+     * @tc.number    : ActsTextPickerThemeColors_0400
+     * @tc.name      : ActsTextPickerThemeColors_0400
+     * @tc.desc      : Check custom colors values of the TextPicker component
+     *                 after change theme
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it(`ActsTextPickerThemeColors_0400`, 0, async () => {
+      const CASE: string = `ActsTextPickerThemeColors_0400`;
+      console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime);
+      textPickerKeys.forEach((key) => {
+        checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
+      });
+      themeSet = true;
       console.info(`${SUITE} ${CASE} END`);
     })
   })
+}
+
+function checkWithTheme(localTheme: CustomTheme | undefined, key: string, customAttrs: boolean, colorValues: Map<string, string> | undefined) {
+  const textPickerJSON = getInspectorByKey(key)
+  const textPickerAttrs: TextPickerAttribute = JSON.parse(textPickerJSON).$attrs;
+  const selectedTextStyle: PickerTextStyle = (textPickerAttrs?.selectedTextStyle as PickerTextStyle);
+  const selectedColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
+  const checkSelectedColor: string = (customAttrs ? brownCustomTheme : localTheme)?.colors?.fontEmphasize?.toString().toUpperCase()
+    ?? colorValues?.get(`fontEmphasize`)
+    ?? emptyCheck;
+  expect(selectedColor).assertEqual(checkSelectedColor);
+  const textStyle: PickerTextStyle = (textPickerAttrs?.textStyle as PickerTextStyle);
+  const textColor: string = textStyle?.color?.toString().toUpperCase() ?? emptyAttr;
+  const checkTextColor: string = (customAttrs ? brownCustomTheme : localTheme)?.colors?.fontPrimary?.toString().toUpperCase()
+    ?? colorValues?.get(`fontPrimary`)
+    ?? emptyCheck;
+  expect(textColor).assertEqual(checkTextColor);
+  const disappearTextStyle: PickerTextStyle = (textPickerAttrs?.disappearTextStyle as PickerTextStyle)
+  const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
+  const checkDisappearTextColor: string = (customAttrs ? brownCustomTheme : localTheme)?.colors?.fontPrimary?.toString().toUpperCase()
+    ?? colorValues?.get(`fontPrimary`)
+    ?? emptyCheck;
+  expect(disappearTextColor).assertEqual(checkDisappearTextColor);
 }
