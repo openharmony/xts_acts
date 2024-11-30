@@ -12,67 +12,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { redCustomTheme } from '../../themes/CustomTheme';
+import { brownCustomTheme, redCustomTheme } from '../../themes/CustomTheme';
 import { CustomTheme } from '@ohos.arkui.theme';
 
-export const textPickerThemeProperty: string = `TextPickerThemeProperty`;
-
-export class TextPickerKeys {
-  public static readonly textPickerSingleSystem = `TextPicker_Single_System`;
-  public static readonly textPickerMultiSystem = `TextPicker_Single_System`;
-  public static readonly textPickerCascadeSystem = `TextPicker_Single_System`;
-  public static readonly textPickerSingleWithTheme = `TextPicker_Single_WithTheme`;
-  public static readonly textPickerMultiWithTheme = `TextPicker_Single_WithTheme`;
-  public static readonly textPickerCascadeWithTheme = `TextPicker_Single_WithTheme`;
+export const timePickerThemeProperty: string = `timePickerThemeProperty`;
+export const timePickerThemeSetProperty: string = `timePickerThemeSetProperty`
+export const timePickerIsMilitaryProperty: string = `timePickerIsMilitaryProperty`;
+export class TimePickerKeys {
+  public static readonly timePickerSystem = `TimePicker_System`;
+  public static readonly timePickerSystemCustomAttrs = `TimePicker_System_CustomAttrs`
+  public static readonly timePickerWithTheme = `TimePicker_WithTheme`;
+  public static readonly timePickerWithThemeCustomAttrs = `TimePicker_WithTheme_CustomAttrs`
 }
+
 @Entry
 @Component
-struct TextPickerPage {
-  apples: string[] = ['apple1', 'apple2', 'apple3', 'apple4'];
-  oranges: string[] = ['orange1', 'orange2', 'orange3', 'orange4'];
-  peaches: string[] = ['peach1', 'peach2', 'peach3', 'peach4'];
-  multi: string[][] = [this.apples, this.oranges, this.peaches];
-  cascade: TextCascadePickerRangeContent[] = [
-    {
-      text: 'Main1',
-      children: [
-        {
-          text: 'child11',
-          children: [
-            {
-              text: 'child111'
-            },
-            {
-              text: 'child112'
-            },
-            {
-              text: 'child113'
-            }
-          ]
-        }
-      ]
-    }
-  ];
-
-  @StorageLink(textPickerThemeProperty) localTheme: CustomTheme | undefined = redCustomTheme;
+struct TimePickerPage {
+  @StorageProp(timePickerThemeProperty) localTheme: CustomTheme | undefined = redCustomTheme;
+  @StorageLink(timePickerIsMilitaryProperty) isMilitary: boolean = false;
+  @StorageLink(timePickerThemeSetProperty) themeSet: boolean = true
 
   build() {
-    Column() {
-      TextPicker({ range: this.apples })
-        .key(TextPickerKeys.textPickerSingleSystem)
-      TextPicker({ range: this.multi })
-        .key(TextPickerKeys.textPickerMultiSystem)
-      TextPicker({ range: this.cascade })
-        .key(TextPickerKeys.textPickerCascadeSystem)
-
-      WithTheme({ theme: this.localTheme }) {
-        Column() {
-          TextPicker({ range: this.apples })
-            .key(TextPickerKeys.textPickerSingleWithTheme)
-          TextPicker({ range: this.multi })
-            .key(TextPickerKeys.textPickerMultiWithTheme)
-          TextPicker({ range: this.cascade })
-            .key(TextPickerKeys.textPickerCascadeWithTheme)
+    Scroll() {
+      Column({ space: `10vp` }) {
+        TimePicker()
+          .useMilitaryTime(this.isMilitary)
+          .key(TimePickerKeys.timePickerSystem)
+        TimePicker()
+          .useMilitaryTime(this.isMilitary)
+          .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+          .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .key(TimePickerKeys.timePickerSystemCustomAttrs)
+        WithTheme({ theme: this.themeSet ? this.localTheme : undefined }) {
+          Column({ space: `10vp` }) {
+            TimePicker()
+              .useMilitaryTime(this.isMilitary)
+              .key(TimePickerKeys.timePickerWithTheme)
+            TimePicker()
+              .useMilitaryTime(this.isMilitary)
+              .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+              .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .key(TimePickerKeys.timePickerWithThemeCustomAttrs)
+          }
         }
       }
     }

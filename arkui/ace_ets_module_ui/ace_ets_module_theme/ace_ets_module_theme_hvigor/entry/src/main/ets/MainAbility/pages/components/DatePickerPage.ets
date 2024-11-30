@@ -12,14 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { redCustomTheme } from '../../themes/CustomTheme';
+import { brownCustomTheme, redCustomTheme } from '../../themes/CustomTheme';
 import { CustomTheme } from '@ohos.arkui.theme';
 
 export const datePickerThemeProperty: string = `datePickerThemeProperty`;
+export const datePickerThemeSetProperty: string = `datePickerThemeSetProperty`
 export const datePickerIsLunarProperty: string = `datePickerIsLunarProperty`;
 export class DatePickerKeys {
   public static readonly datePickerSystem = `DatePicker_System`;
+  public static readonly datePickerSystemCustomAttrs = `DatePicker_System_CustomAttrs`
   public static readonly datePickerWithTheme = `DatePicker_WithTheme`;
+  public static readonly datePickerWithThemeCustomAttrs = `DatePicker_WithTheme_CustomAttrs`
 }
 
 @Entry
@@ -27,65 +30,69 @@ export class DatePickerKeys {
 struct DatePickerPage {
   count = 0;
   @StorageProp(datePickerThemeProperty) localTheme: CustomTheme | undefined = redCustomTheme;
+  @StorageLink(datePickerThemeSetProperty) themeSet: boolean | undefined = true
   @StorageLink(datePickerIsLunarProperty) isLunar: boolean = true;
   @State selectedSystem: Date = new Date();
   selectedCustom: Date = new Date();
 
   build() {
-    Column() {
-      Text('System Theme')
-        .fontColor(Color.Blue)
-        .margin({
-          top: '5%',
-          bottom: '10%'
-        })
-      DatePicker({
-        selected: this.selectedSystem
-      })
-        .key(DatePickerKeys.datePickerSystem)
-        .margin({
-          right: '5%'
-        })
-        .lunar(this.isLunar)
-        .onDateChange(value => {
-          this.selectedSystem = value
-        })
-      Divider()
-        .height('4vp')
-        .width('100%')
-        .color(Color.Black)
-        .margin({
-          top: '5%',
-          bottom: '5%'
-        })
-      Text('Custom Theme')
-        .fontColor(this.localTheme?.colors?.fontEmphasize ?? Color.Black)
-        .margin({
-          top: '5%',
-          bottom: '10%'
-        })
-      WithTheme({ theme: this.localTheme }) {
+    Scroll() {
+      Column({ space: '20vp' }) {
         DatePicker({
-          selected: this.selectedCustom
+          selected: this.selectedSystem
         })
-          .key(DatePickerKeys.datePickerWithTheme)
+          .key(DatePickerKeys.datePickerSystem)
           .margin({
             right: '5%'
           })
           .lunar(this.isLunar)
           .onDateChange(value => {
-            this.selectedCustom = value
+            this.selectedSystem = value
           })
-      }
-      Button('Lunar<==>Gregorian')
-        .margin({ top: 30, bottom: 30 })
-        .onClick(() => {
-          this.isLunar = !this.isLunar
+        DatePicker({
+          selected: this.selectedSystem
         })
-        .margin(30)
+          .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+          .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+          .key(DatePickerKeys.datePickerSystemCustomAttrs)
+          .margin({
+            right: '5%'
+          })
+          .lunar(this.isLunar)
+          .onDateChange(value => {
+            this.selectedSystem = value
+          })
+        WithTheme({ theme: this.themeSet ? this.localTheme : undefined }) {
+          Column({ space: "20vp" }) {
+            DatePicker({
+              selected: this.selectedCustom
+            })
+              .key(DatePickerKeys.datePickerWithTheme)
+              .margin({
+                right: '5%'
+              })
+              .lunar(this.isLunar)
+              .onDateChange(value => {
+                this.selectedCustom = value
+              })
+            DatePicker({
+              selected: this.selectedCustom
+            })
+              .selectedTextStyle({ color: brownCustomTheme.colors?.fontEmphasize })
+              .textStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .disappearTextStyle({ color: brownCustomTheme.colors?.fontPrimary })
+              .key(DatePickerKeys.datePickerWithThemeCustomAttrs)
+              .margin({
+                right: '5%'
+              })
+              .lunar(this.isLunar)
+              .onDateChange(value => {
+                this.selectedCustom = value
+              })
+          }
+        }
+      }
     }
-    .width('100%')
-    .height('100%')
-    .padding('4%')
   }
 }
