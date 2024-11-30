@@ -16,6 +16,7 @@
     "MainAbility/pages/filter/filterPage",
     "MainAbility/pages/filter/filterPageTwo",
     "MainAbility/pages/gridObjectSortComponent/gridObjectSortComponentTest",
+	"MainAbility/pages/gridObjectSortComponent/gridObjectSortComponentTextTest",
     "MainAbility/pages/progressButton/progressButtonTest",
     "MainAbility/pages/splitLayout/splitLayoutTest",
     "MainAbility/pages/selectTitleBar/selectTitleBarPage",
