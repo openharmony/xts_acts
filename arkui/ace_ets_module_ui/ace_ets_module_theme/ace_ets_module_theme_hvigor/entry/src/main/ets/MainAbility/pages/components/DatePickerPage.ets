@@ -64,7 +64,7 @@ struct DatePickerPage {
             this.selectedSystem = value
           })
         WithTheme({ theme: this.themeSet ? this.localTheme : undefined }) {
-          Column({ space: "20vp" }) {
+          Column({ space: '20vp' }) {
             DatePicker({
               selected: this.selectedCustom
             })
