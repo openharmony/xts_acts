@@ -24,11 +24,11 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAdminDisabled(){
       console.log('EnterpriseAdminExtensionAbility onAdminDisabled');
   }
-  onBundleAdded(bundleName: string){
-    console.log('EnterpriseAdminExtensionAbility onBundleAdded: ' + bundleName);
+  onBundleAdded(bundleName: string, accountId?: number){
+    console.log(`EnterpriseAdminExtensionAbility onBundleAdded: ${bundleName}, accountId: ${accountId}`);
   }
-  onBundleRemoved(bundleName: string){
-    console.log('EnterpriseAdminExtensionAbility onBundleRemoved: ' + bundleName);
+  onBundleRemoved(bundleName: string, accountId?: number){
+    console.log(`EnterpriseAdminExtensionAbility onBundleRemoved: ${bundleName}, accountId: ${accountId}`);
   }
   onAppStart(bundleName: string){
     console.log('EnterpriseAdminExtensionAbility onAppStart: ' + bundleName);

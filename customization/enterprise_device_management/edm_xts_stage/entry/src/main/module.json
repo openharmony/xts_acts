@@ -203,6 +203,10 @@
       {
         "name": "ohos.permission.ENTERPRISE_OPERATE_DEVICE",
         "reason": "need use ENTERPRISE_OPERATE_DEVICE"
+      },
+      {
+        "name": "ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY",
+        "reason": "need use ENTERPRISE_MANAGE_DELEGATED_POLICY"
       }
     ]
   }
