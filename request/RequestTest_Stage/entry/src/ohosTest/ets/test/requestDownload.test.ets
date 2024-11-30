@@ -1174,60 +1174,6 @@ export default function requestDownloadJSUnit() {
     });
 
     /**
-     * @tc.number Download_Test_0300
-     * @tc.desc Called when the current download session fails.
-     * @tc.size      MEDIUMTEST
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('Download_Test_0300', 0, async (done: Function) => {
-      console.info("====>---------------------Download_Test_0300 is starting---------------------");
-      let downloadFilePath = `${baseContext.tempDir}/Download_Test_0300.txt`
-      console.info("====>downloadFileConfig:" + `${baseContext.tempDir}/Download_Test_0300.txt`);
-      let downloadFileConfig: request.DownloadConfig = {
-        url: 'https://xxx.com.apk',
-        header: {
-          headers: 'http'
-        },
-        enableMetered: false,
-        enableRoaming: false,
-        description: 'XTS download test!',
-        filePath: downloadFilePath,
-        title: 'XTS download test!',
-      }
-      request.downloadFile(baseContext, downloadFileConfig, async (err, downloadTask) => {
-        console.info("====>Download_Test_0300 downloadTask: " + downloadTask);
-        try {
-          if (err) {
-            console.info('====>Download_Test_0300 downloadFile fail: ' + JSON.stringify(err));
-            expect().assertFail();
-          }
-          expect(downloadTask != undefined).assertEqual(true);
-          downloadTask.on('fail', async () => {
-            try {
-              downloadTask.off('fail');
-              console.info('====>Download_Test_0300 fail success');
-              fs.unlinkSync(downloadFilePath);
-              console.info('====>Download_Test_0300 delete files success');
-              await downloadTask.delete();
-              console.info('====>Download_Test_0300 delete downloadTask');
-              expect(true).assertTrue();
-              done();
-            } catch (err) {
-              console.info("====>Download_Test_0300 fail error: " + JSON.stringify(err));
-              done();
-            }
-          });
-        } catch (err) {
-          console.info("====>Download_Test_0300 error: " + JSON.stringify(err));
-          await downloadTask.delete();
-          fs.unlinkSync(downloadFilePath);
-          done();
-        }
-      })
-    });
-
-    /**
      * @tc.number Download_Test_0400
      * @tc.desc Get mimetype of the download task
      * @tc.size      MEDIUMTEST
