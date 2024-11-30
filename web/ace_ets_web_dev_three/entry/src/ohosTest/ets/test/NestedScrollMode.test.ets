@@ -77,7 +77,7 @@ export default function webViewSrollableJsunit() {
     })
 
     /*
-  *tc.number SUB_ACE_BASIC_ETS_NESTEDSCROLLMODERIGHT_API_001
+  *tc.number SUB_ACE_BASIC_ETS_NESTEDSCROLLMODERIGHT_API_002
   *tc.name NestedScrollMode02
   *tc.desic test NestedScrollMode02 interface when choose callback mode.
   */
@@ -88,7 +88,7 @@ export default function webViewSrollableJsunit() {
     })
 
     /*
-    *tc.number SUB_ACE_BASIC_ETS_NESTEDSCROLLMODETOP_API_001
+    *tc.number SUB_ACE_BASIC_ETS_NESTEDSCROLLMODETOP_API_003
     *tc.name NestedScrollMode03
     *tc.desic test NestedScrollMode03 interface when choose callback mode.
     */
@@ -99,7 +99,7 @@ export default function webViewSrollableJsunit() {
     })
 
       /*
-  *tc.number SUB_ACE_BASIC_ETS_NESTEDSCROLLMODEBOTTOM_API_001
+  *tc.number SUB_ACE_BASIC_ETS_NESTEDSCROLLMODEBOTTOM_API_004
   *tc.name NestedScrollMode04
   *tc.desic test NestedScrollMode04 interface when choose callback mode.
   */
