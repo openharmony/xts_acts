@@ -97,9 +97,10 @@ export default function textPickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTextPickerThemeColors_0100`, 0, () => {
+    it(`ActsTextPickerThemeColors_0100`, 0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime);
       textPickerKeys.forEach((key) => {
         if (key.search(`WithTheme`) > 0) return;
         checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
@@ -115,9 +116,10 @@ export default function textPickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTextPickerThemeColors_0200`, 0, () => {
+    it(`ActsTextPickerThemeColors_0200`, 0, async () => {
       const CASE: string = `ActsTextPickerThemeColors_0200`
       console.info(`${SUITE} ${CASE} START`)
+      await sleep(frameTime);
       textPickerKeys.forEach((key) => {
         if (key.search(`System`) > 0) return;
         checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)

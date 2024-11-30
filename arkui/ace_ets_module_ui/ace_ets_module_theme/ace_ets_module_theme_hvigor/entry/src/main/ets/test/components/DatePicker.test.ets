@@ -155,7 +155,7 @@ export default function datePickerThemeTest() {
     it(`ActsDatePickerThemeColors_0400`, 0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0400`;
       console.info(`${SUITE} ${CASE} START`);
-      await sleep(frameTime);
+      await sleep(frameTime * 2);
       datePickerKeys.forEach((key) => {
         checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
       })
@@ -175,7 +175,7 @@ export default function datePickerThemeTest() {
     it(`ActsDatePickerThemeColors_0500`, 0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0500`;
       console.info(`${SUITE} ${CASE} START`);
-      await sleep(frameTime);
+      await sleep(frameTime * 2);
       datePickerKeys.forEach((key) => {
         if (key.search(`WithTheme`) > 0) return
         checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
@@ -191,9 +191,10 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0600`, 0, () => {
+    it(`ActsDatePickerThemeColors_0600`, 0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0600`;
       console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime * 2);
       datePickerKeys.forEach((key) => {
         if (key.search(`System`) > 0) return
         checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)

@@ -93,9 +93,10 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0100`, 0, () => {
+    it(`ActsTimePickerThemeColors_0100`, 0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime)
       timePickerKeys.forEach((key) => {
         if (key.search(`WithTheme`) > 0) return
         checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
@@ -111,9 +112,10 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0200`, 0, () => {
+    it(`ActsTimePickerThemeColors_0200`, 0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime)
       timePickerKeys.forEach((key) => {
         if (key.search(`System`) > 0) return
         checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
@@ -191,9 +193,10 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0600`, 0, () => {
+    it(`ActsTimePickerThemeColors_0600`, 0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0600`
       console.info(`${SUITE} ${CASE} START`)
+      await sleep(frameTime);
       timePickerKeys.forEach((key) => {
         if (key.search(`System`) > 0) return
         checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
