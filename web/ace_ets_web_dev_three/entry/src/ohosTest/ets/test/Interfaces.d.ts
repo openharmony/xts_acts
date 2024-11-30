@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,16 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webJsunit from './WebJsunit.test';
-import webTwoJsunit from './WebTwoJsunit.test';
-import bindSelectionMenu from './bindSelectionMenu.test'
-import createPdf from './createPdfJsunit.test'
-import NestedScrollMode from './NestedScrollMode.test'
 
-export default function testsuite() {
-  webJsunit();
-  webTwoJsunit();
-  bindSelectionMenu();
-  createPdf();
-  NestedScrollMode()
+export interface JsProxyObject {
+  test(res: object);
+
+  toString(res: string);
+
+  register(res: object);
+}
+
+export class ComponentInfo {
+  $type: string;
+  $rect: Object[];
+}
+
+export class RectInfo {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
 }
