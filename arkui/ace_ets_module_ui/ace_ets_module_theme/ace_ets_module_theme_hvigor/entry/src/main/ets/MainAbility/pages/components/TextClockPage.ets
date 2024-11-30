@@ -13,31 +13,47 @@
  * limitations under the License.
  */
 
-import { redCustomTheme } from '../../themes/CustomTheme';
+import { brownCustomTheme, redCustomTheme } from '../../themes/CustomTheme';
 import { CustomTheme } from '@ohos.arkui.theme';
 
 export const textClockThemeProperty = 'TextClockThemeProperty';
+export const textClockThemeSetProperty: string = `TextClockThemeSetProperty`
+
+export const textClockFontColor: ResourceColor | undefined = brownCustomTheme.colors?.fontEmphasize
 
 export class TextClockKeys {
   public static readonly textClockSystem = `TextClock_System`;
   public static readonly textClockWithTheme = `TextClock_WithTheme`;
+  public static readonly textClockSystemCustomAttrs = `TextClock_System_CustomAttrs`
+  public static readonly textClockWithThemeCustomAttrs = `TextClock_WithTheme_CustomAttrs`
 }
 
 @Entry
 @Component
 struct TextClockPage {
   @StorageLink(textClockThemeProperty) localTheme: CustomTheme | undefined = redCustomTheme;
+  @StorageLink(textClockThemeSetProperty) themeSet: boolean = true
   textClockController: TextClockController = new TextClockController();
   timeZoneOffset: number = 1;
 
   build() {
-    Column() {
+    Column({ space: '8vp' }) {
       TextClock({ timeZoneOffset: this.timeZoneOffset, controller: this.textClockController })
         .key(TextClockKeys.textClockSystem)
 
-      WithTheme({ theme: this.localTheme }) {
-        TextClock({ timeZoneOffset: this.timeZoneOffset, controller: this.textClockController })
-          .key(TextClockKeys.textClockWithTheme)
+      TextClock({ timeZoneOffset: this.timeZoneOffset, controller: this.textClockController })
+        .fontColor(textClockFontColor)
+        .key(TextClockKeys.textClockSystemCustomAttrs)
+
+      WithTheme({ theme: this.themeSet ? this.localTheme : undefined }) {
+        Column({ space: '8vp' }) {
+          TextClock({ timeZoneOffset: this.timeZoneOffset, controller: this.textClockController })
+            .key(TextClockKeys.textClockWithTheme)
+
+          TextClock({ timeZoneOffset: this.timeZoneOffset, controller: this.textClockController })
+            .fontColor(textClockFontColor)
+            .key(TextClockKeys.textClockWithThemeCustomAttrs)
+        }
       }
     }
     .width('100%')

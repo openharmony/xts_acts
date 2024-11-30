@@ -12,36 +12,52 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { redCustomTheme } from '../../themes/CustomTheme';
+import { brownCustomTheme, redCustomTheme } from '../../themes/CustomTheme';
 import { CustomTheme } from '@ohos.arkui.theme';
 
 export const counterThemeProperty = 'counterThemeProperty';
+export const counterThemeSetProperty = 'counterThemeSetProperty'
 
 export class CounterKeys {
-  public static readonly counterSystem = `Counter_System`;
-  public static readonly counterWithTheme = `Counter_WithTheme`;
+  public static readonly counterSystem = `Counter_System`
+  public static readonly counterSystemCustomAttrs = `Counter_System_CustomAttrs`
+  public static readonly counterWithTheme = `Counter_WithTheme`
+  public static readonly counterWithThemeCustomAttrs = `Counter_WithTheme_CustomAttrs`
 }
 @Entry
 @Component
 struct CounterPage {
-  @StorageLink(counterThemeProperty) customTheme: CustomTheme | undefined = redCustomTheme;
+  @StorageLink(counterThemeProperty) customTheme: CustomTheme | undefined = redCustomTheme
+  @StorageLink(counterThemeSetProperty) themeSet: boolean | undefined = true
   value: number = 0;
 
   build() {
     Row() {
-      Column({ space: '100vp' }) {
+      Column({ space: '8vp' }) {
         Counter() {
           Text(this.value.toString())
         }.key(CounterKeys.counterSystem)
 
-        Column({ space: '8vp' }) {
-          WithTheme({ theme: this.customTheme }) {
+        Counter() {
+          Text(this.value.toString())
+        }
+        .foregroundColor(brownCustomTheme.colors?.fontPrimary)
+        .key(CounterKeys.counterSystemCustomAttrs)
+
+        WithTheme({ theme: this.themeSet ? this.customTheme : undefined }) {
+          Column({ space: '8vp' }) {
             Counter() {
               Text(this.value.toString())
             }.key(CounterKeys.counterWithTheme)
+
+            Counter() {
+              Text(this.value.toString())
+            }
+            .foregroundColor(brownCustomTheme.colors?.fontPrimary)
+            .key(CounterKeys.counterWithThemeCustomAttrs)
           }
-        }
         .width('100%')
+        }
       }
     }
     .alignItems(VerticalAlign.Center)
