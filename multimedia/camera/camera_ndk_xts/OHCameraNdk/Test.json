@@ -5,6 +5,7 @@
         "test-timeout": "600000",
         "shell-timeout": "600000",
         "bundle-name": "com.example.ohcamerandk",
+        "testcase-timeout": 300000,
         "module-name": "entry_test"
     },
     "kits": [
