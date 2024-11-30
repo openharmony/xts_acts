@@ -58,7 +58,6 @@ common_include = [
 ]
 
 common_depends_gles2 = [
-  "//third_party/zlib:libz",
   "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
   "//third_party/vk-gl-cts/framework/delibs/decpp:libdeqp_decpp",
   "//third_party/vk-gl-cts/framework/delibs/debase:libdeqp_debase",
@@ -81,7 +80,6 @@ common_depends_gles2 = [
 ]
 
 common_depends_gles3 = [
-  "//third_party/zlib:libz",
   "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
   "//third_party/vk-gl-cts/framework/delibs/decpp:libdeqp_decpp",
   "//third_party/vk-gl-cts/framework/delibs/debase:libdeqp_debase",
@@ -103,7 +101,6 @@ common_depends_gles3 = [
 ]
 
 common_depends_gles31 = [
-  "//third_party/zlib:libz",
   "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
   "//third_party/vk-gl-cts/framework/delibs/decpp:libdeqp_decpp",
   "//third_party/vk-gl-cts/framework/delibs/debase:libdeqp_debase",
@@ -125,7 +122,6 @@ common_depends_gles31 = [
 ]
 
 common_depends_glesext = [
-  "//third_party/zlib:libz",
   "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
   "//third_party/vk-gl-cts/framework/delibs/decpp:libdeqp_decpp",
   "//third_party/vk-gl-cts/framework/delibs/debase:libdeqp_debase",
@@ -146,7 +142,6 @@ common_depends_glesext = [
 ]
 
 common_depends_egl = [
-  "//third_party/zlib:libz",
   "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
   "//third_party/vk-gl-cts/framework/delibs/decpp:libdeqp_decpp",
   "//third_party/vk-gl-cts/framework/delibs/debase:libdeqp_debase",
