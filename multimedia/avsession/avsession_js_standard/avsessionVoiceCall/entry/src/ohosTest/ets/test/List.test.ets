@@ -14,8 +14,10 @@
  */
 import voiceCall from './AVSessionVoiceCall.test'
 import avSessionERRCode from './AVSessionERRCode.test'
+import avCastPickerHelper from './AVCastPickerHelper.test'
 
 export default function testsuite() {
   voiceCall()
   avSessionERRCode()
+  avCastPickerHelper()
 }
