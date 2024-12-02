@@ -637,6 +637,7 @@ export default function drawingTsCanvasTest() {
         canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SRC_ATOP);
         canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.DST_ATOP);
         canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.XOR);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.PLUS);
         canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.MODULATE);
         canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SCREEN);
         canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.OVERLAY);
