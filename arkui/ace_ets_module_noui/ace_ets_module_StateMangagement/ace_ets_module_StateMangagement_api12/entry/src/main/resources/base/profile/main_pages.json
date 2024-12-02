@@ -168,6 +168,17 @@
         "MainAbility/pages/foreach/ForEach003",
         "MainAbility/pages/state/State0040",
         "MainAbility/pages/state/State0080",
-        "MainAbility/pages/wrap_builder/WrapBuilder0020"
+        "MainAbility/pages/wrap_builder/WrapBuilder0020",
+        "MainAbility/pages/state/State0070",
+        "MainAbility/pages/state/State0090",
+        "MainAbility/pages/Param/Param0010",
+        "MainAbility/pages/LazyForEach/LazyForEach0470",
+        "MainAbility/pages/foreach/ForEach0330",
+        "MainAbility/pages/IfElse/IfElse0100",
+        "MainAbility/pages/Repeat/Repeat0200",
+        "MainAbility/pages/makeObserved/MakeObserved0300",
+        "MainAbility/pages/watch/WatchLink0050",
+        "MainAbility/pages/provide_consume/ProvideConsume0010",
+        "MainAbility/pages/Provider/Provider0270"
     ]
 }
