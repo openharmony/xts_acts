@@ -120,6 +120,10 @@ export default function RichEditor3() {
       console.info('[RichEditor3_0300] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
+      let RichEditorGetAttribute = await driver.findComponent(ON.id("RichEditorGetAttribute"));
+      await RichEditorGetAttribute.clearText()
+      let setContent = await driver.findComponent(ON.id("setContent"));
+      await setContent.click()
       // doubleClick
       let richEditor = await driver.findComponent(ON.id('RichEditorGetAttribute'));
       let centerPoint = await richEditor.getBoundsCenter();
@@ -159,6 +163,19 @@ export default function RichEditor3() {
       console.info('[RichEditor3_0400] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
+      let RichEditorGetAttribute = await driver.findComponent(ON.id("RichEditorGetAttribute"));
+      await RichEditorGetAttribute.clearText()
+      let setContent = await driver.findComponent(ON.id("setContent"));
+      await setContent.click()
+      let richEditor = await driver.findComponent(ON.id('RichEditorGetAttribute'));
+      let centerPoint = await richEditor.getBoundsCenter();
+      let point = `${centerPoint.x} ${centerPoint.y}`;
+      let cmd = `uinput -T -d ${point} -u ${point} -i 50 -d ${point} -u ${point}`;
+      let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+      abilityDelegator.executeShellCommand(cmd);
+      await driver.delayMs(500)
+      let quanxuan = await driver.findComponent(ON.text("全选"));
+      await quanxuan.click()
       let getSelection = await driver.findComponent(ON.id("getSelection"));
       await getSelection.click()
       await driver.delayMs(500)
@@ -170,6 +187,10 @@ export default function RichEditor3() {
       let PSLeadingMarginText = await PSLeadingMargin.getText()
       let LSBorderRadiusText = await LSBorderRadius.getText()
       let LSMarginText = await LSMargin.getText()
+      console.info('[RichEditor3_0400] PSTextAlignText:' + Boolean(PSTextAlignText));
+      console.info('[RichEditor3_0400] PSLeadingMarginText:' + Boolean(PSLeadingMarginText));
+      console.info('[RichEditor3_0400] LSBorderRadiusText:' + Boolean(LSBorderRadiusText));
+      console.info('[RichEditor3_0400] LSMarginText:' + Boolean(LSMarginText));
       expect(Boolean(PSTextAlignText)).assertTrue()
       expect(Boolean(PSLeadingMarginText)).assertTrue()
       expect(Boolean(LSBorderRadiusText)).assertTrue()
@@ -191,6 +212,8 @@ export default function RichEditor3() {
       console.info('[RichEditor3_0500] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
+      let setContent = await driver.findComponent(ON.id("setContent"));
+      await setContent.click()
       let RichEditorGetAttribute = await driver.findComponent(ON.id("RichEditorGetAttribute"));
       await RichEditorGetAttribute.clearText()
       let PSTextAlign = await driver.findComponent(ON.id("PSTextAlign"));

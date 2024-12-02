@@ -71,6 +71,30 @@ export default function StyledString() {
       done();
     });
 
+    /**
+     * @tc.number    SUB_ACE_StyledString_0200
+     * @tc.name      StyledString_0200
+     * @tc.desc      set api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('StyledString_0200', 0, async (done: Function) => {
+      console.info('StyledString_0200 START');
+      let driver: Driver = Driver.create();
+      await CommonFunc.sleep(1000);
+      let button: Component = await driver.findComponent(ON.id('but3'));
+      await CommonFunc.sleep(1000);
+      await button.click()
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('text2');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[StyledString_0200] component obj is: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertContain('6');
+      console.info('[StyledString_0200] END');
+      done();
+    });
+
   })
 }
 
