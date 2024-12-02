@@ -6621,5 +6621,18 @@ export default function JsvmJsunit() {
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0517
+     * @tc.name      JsvmTest0517
+     * @tc.desc      Test the function of Trace interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0517', 0, () => {
+      let rst: number = napitest.traceTest();
+      console.info('JsvmTest0517 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
   });
 }
