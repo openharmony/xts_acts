@@ -19,7 +19,7 @@
 #define COLOR_RED 0xFFFF0000
 #define INVALID_PARAM 401
 #define ON_REFRESH_EVENT_ID 1212
-#define PARAM_LENGTH 600
+#define PARAM_LENGTH 300
 
 namespace ArkUICapiTest {
 static ArkUI_NodeHandle refresh;
@@ -46,10 +46,13 @@ static void BasicSet()
     refresh = nodeAPI->createNode(ARKUI_NODE_REFRESH);
     ArkUI_NumberValue width_value[] = {{.f32 = PARAM_LENGTH}};
     ArkUI_NumberValue height_value[] = {{.f32 = PARAM_LENGTH}};
+    ArkUI_NumberValue ratio_value[] = {{.f32 = PARAM_1}};
     ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     ArkUI_AttributeItem height_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_AttributeItem ratio_item = {ratio_value, sizeof(ratio_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(refresh, NODE_WIDTH, &width_item);
     nodeAPI->setAttribute(refresh, NODE_HEIGHT, &height_item);
+    nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_DOWN_RATIO, &ratio_item);
 }
 
 napi_value RefreshOnRefreshingTest::CreateNativeNode(napi_env env, napi_callback_info info)
