@@ -13,22 +13,28 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsThirdPartyMusl32_main") {
-  testonly = true
-  js_build_mode = "debug"
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsThirdPartyMusl32MainTest"
-  subsystem_name = "thirdparty"
-  part_name = "musl"
-}
+if (target_cpu == "arm") {
+  ohos_app_assist_suite("ActsThirdPartyMusl32_main") {
+    testonly = true
+    js_build_mode = "debug"
+    certificate_profile = "./signature/openharmony_sx.p7b"
+    hap_name = "ActsThirdPartyMusl32MainTest"
+    subsystem_name = "thirdparty"
+    part_name = "musl"
+  }
 
-ohos_js_app_suite("ActsThirdPartyMusl32Test") {
-  js_build_mode = "debug"
-  test_hap = true
-  testonly = true
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsThirdPartyMusl32Test"
-  subsystem_name = "thirdparty"
-  part_name = "musl"
-  deps = [ ":ActsThirdPartyMusl32_main" ]
+  ohos_js_app_suite("ActsThirdPartyMusl32Test") {
+    js_build_mode = "debug"
+    test_hap = true
+    testonly = true
+    certificate_profile = "./signature/openharmony_sx.p7b"
+    hap_name = "ActsThirdPartyMusl32Test"
+    subsystem_name = "thirdparty"
+    part_name = "musl"
+    deps = [ ":ActsThirdPartyMusl32_main" ]
+  }
+} else {
+  group("ActsThirdPartyMusl32Test") {
+    print("ActsThirdPartyMusl32Test is not build")
+  }
 }
