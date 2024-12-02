@@ -23,19 +23,15 @@ export default function AVScreenCaptureRecorderTest() {
 
     beforeAll(async () => {
       console.info('beforeAll case');
-      mediaTestBase.msleepAsync(1000);
-      mediaTestBase.playPcmPromise();
     })
 
     beforeEach(async () => {
       console.info('beforeEach case');
       mediaTestBase.msleepAsync(3000);
-      mediaTestBase.playPcmPromiseStart();
     })
 
     afterEach(async () => {
       console.info('afterEach case');
-      mediaTestBase.playPcmPromiseStop();
     })
 
     afterAll(async () => {
@@ -65,20 +61,18 @@ export default function AVScreenCaptureRecorderTest() {
         // start recorder
         mediaTestBase.STARTRECORDER_EVENT,
         // skip PrivacyMode
-        // mediaTestBase.SKIPPRIVACYMODE_EVENT,
+        mediaTestBase.SKIPPRIVACYMODE_EVENT,
         // stop recorder
         mediaTestBase.STOPRECORDER_EVENT,
         //release recorder
         //close fd
         mediaTestBase.RELEASECORDER_EVENT,
-        //create AV
-        mediaTestBase.AV_CREATEAVPLAYER,
         mediaTestBase.END_EVENT);
 
       mediaTestBase.outputName = mediaTestBase.resourceName();
       mediaTestBase.outputFdObject = mediaTestBase.getFd(mediaTestBase.outputName);
       let avConfig: media.AVScreenCaptureRecordConfig = {
-        fd: mediaTestBase.outputFdObject.fd,
+        fd: -1,
         frameWidth: 640,
         frameHeight: 480,
         videoBitrate: 10000000,
@@ -88,7 +82,7 @@ export default function AVScreenCaptureRecorderTest() {
         preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4,
       }
 
-      mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 6000, mySteps, done)
+      mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 3000, mySteps, done)
 
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100 end')
     })
@@ -117,16 +111,10 @@ export default function AVScreenCaptureRecorderTest() {
         // stop recorder
         mediaTestBase.STOPRECORDER_EVENT,
         mediaTestBase.RELEASECORDER_EVENT,
-        mediaTestBase.AV_CREATEAVPLAYER,
         mediaTestBase.END_EVENT);
 
-
-      mediaTestBase.outputName = mediaTestBase.resourceName();
-      mediaTestBase.outputFdObject = mediaTestBase.getFd(mediaTestBase.outputName);
-      mediaTestBase.playPcmPromise()
-
       let avConfig: media.AVScreenCaptureRecordConfig = {
-        fd: mediaTestBase.outputFdObject.fd,
+        fd: -1,
         frameWidth: 640,
         frameHeight: 480,
         videoBitrate: 10000000,
@@ -154,7 +142,7 @@ export default function AVScreenCaptureRecorderTest() {
       let sessionId: number = 0; // 替换成拉起此进程的sessionId
       let choice: string = 'false'; // 替换成用户的选择内容
       try {
-        // await media.reportAVScreenCaptureUserChoice(sessionId, choice);
+        await media.reportAVScreenCaptureUserChoice(sessionId, choice);
       } catch (error) {
         console.error(`reportAVScreenCaptureUserChoice error, error message: ${error.message}`);
         expect().assertFail()

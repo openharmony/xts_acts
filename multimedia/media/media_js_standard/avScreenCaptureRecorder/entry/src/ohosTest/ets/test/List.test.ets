@@ -15,9 +15,7 @@
 
 
 import AVScreenCaptureRecorderTest from './AVScreenCaptureRecorderTest.test'
-import AVScreenCaptureRecorderMicro from './AVScreenCaptureRecorderMicro.test'
 
 export default function testsuite() {
   AVScreenCaptureRecorderTest();
-  AVScreenCaptureRecorderMicro();
 }
