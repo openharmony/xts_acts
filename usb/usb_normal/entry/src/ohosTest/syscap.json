@@ -7,7 +7,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.USB.USBManager"
+                    "SystemCapability.Startup.SystemInfo"
                 ]
             }
         ]

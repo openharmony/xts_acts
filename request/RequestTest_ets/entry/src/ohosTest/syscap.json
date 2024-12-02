@@ -7,9 +7,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.MiscServices.Download",
-                    "SystemCapability.MiscServices.Upload",
-                    "SystemCapability.Request.FileTransferAgent"
+                    "SystemCapability.Startup.SystemInfo"
                 ]
             }
         ]

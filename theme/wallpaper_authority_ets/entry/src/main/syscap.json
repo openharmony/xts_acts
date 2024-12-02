@@ -7,7 +7,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.MiscServices.Wallpaper"
+                    "SystemCapability.Startup.SystemInfo"
                 ]
             }
         ]

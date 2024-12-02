@@ -7,7 +7,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.MiscServices.Time"
+                    "SystemCapability.Startup.SystemInfo"
                 ]
             }
         ]
