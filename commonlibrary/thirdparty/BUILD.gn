@@ -15,11 +15,14 @@ import("//test/xts/tools/build/suite.gni")
 group("thirdparty") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "musl:ActsThirdPartyMuslTest" ]
+    deps = [ 
+      "musl:ActsThirdPartyMuslTest",
+      "musl32:ActsThirdPartyMusl32Test",
+      "decimal:decimal",
+      "ubsan:ActsThirdPartyUBSanTest"
+    ]
     if (target_cpu == "arm") {
       deps += [ "musl32:ActsThirdPartyMusl32Test" ]
     }
-    deps += [ "decimal:decimal" ]
-    deps += [ "ubsan:ActsThirdPartyUBSanTest" ]
   }
 }
