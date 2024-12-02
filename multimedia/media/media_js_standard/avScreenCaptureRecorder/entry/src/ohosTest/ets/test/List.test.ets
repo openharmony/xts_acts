@@ -14,9 +14,10 @@
  */
 
 
+import AVScreenCaptureRecorderTest from './AVScreenCaptureRecorderTest.test'
+import AVScreenCaptureRecorderMicro from './AVScreenCaptureRecorderMicro.test'
 
-
-import avScreenCaptureTest from './AVScreenCaptureRecorderTest.test'
 export default function testsuite() {
-  avScreenCaptureTest();
+  AVScreenCaptureRecorderTest();
+  AVScreenCaptureRecorderMicro();
 }

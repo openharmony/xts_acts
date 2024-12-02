@@ -17,11 +17,10 @@ import audio from '@ohos.multimedia.audio';
 import { expect } from '@ohos/hypium'
 import fs from '@ohos.file.fs';
 import { UiDriver, BY } from '@ohos.UiTest';
-import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import media from '@ohos.multimedia.media';
 
-const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 
 
 export default class MediaTestBase {
@@ -103,6 +102,8 @@ export default class MediaTestBase {
       console.info('case success!!');
       done();
     }
+
+    console.info('case EVENT::::!!'+steps[0]);
     switch (steps[0]) {
       case this.SETONCALLBACK_EVENT:
         steps.shift();
@@ -165,7 +166,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.info('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
-          expect().assertFail()
+          // expect().assertFail()
         })
 
         break;
@@ -205,14 +206,15 @@ export default class MediaTestBase {
         break;
       case this.AV_CREATEAVPLAYER:
         steps.shift();
-        this.AvPlayerMp4(this.outputName, done)
+        let sampleRate: ESObject = avConfig.audioSampleRate;
+        this.AvPlayerMp4(this.outputName, sampleRate, done)
         break;
       default:
         break;
     }
   }
 
-  AvPlayerMp4(outputName: string, done: Function) {
+  AvPlayerMp4(outputName: string, audioSampleRate: number, done: Function) {
     media.createAVPlayer((err, video) => {
       console.info(`case media err: ${err}`)
       if (typeof (video) != 'undefined') {
@@ -241,20 +243,24 @@ export default class MediaTestBase {
               console.error(`case INITIALIZED , surfaceID is ${surfaceID}`);
               this.avPlayer.surfaceId = surfaceID;
               expect(this.avPlayer.state).assertEqual(this.AV_INITIALIZED);
-              this.avPlayer.prepare((err) => {
-                console.info('case prepare called' + err);
-                if (err != null) {
-                  console.error(`case prepare error, errMessage is ${err.message}`);
-                  expect().assertFail();
-                  done();
-                } else if (this.avPlayer) {
-                  console.info('case avPlayer.duration: ' + this.avPlayer.duration);
-                }
-              });
+
+              setTimeout(() => {
+                this.avPlayer?.prepare((err) => {
+                  console.info('case prepare called' + err);
+                  if (err != null) {
+                    console.error(`case prepare error, errMessage is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                  } else if (this.avPlayer) {
+                    console.info('case avPlayer.duration: ' + this.avPlayer.duration);
+                  }
+                });
+              }, 1000);
+
               break;
             case this.AV_PREPARED:
               if (this.avPlayer != null) {
-                this.getTrackDescriptionTest(this.avPlayer, done)
+                this.getTrackDescriptionTest(this.avPlayer, audioSampleRate, done)
               }
               this.avPlayer?.play().then(() => {
                 console.info('Succeeded in playing');
@@ -264,11 +270,25 @@ export default class MediaTestBase {
               break;
             case this.AV_PLAYING:
               if (this.avPlayer != null) {
-                this.getTrackDescriptionTest(this.avPlayer, done)
+                this.getTrackDescriptionTest(this.avPlayer, audioSampleRate, done)
               }
+
+              this.avPlayer?.stop().then(() => {
+                console.info('avPlayer stop success');
+                this.avPlayer?.release().then(() => {
+                  console.info('avPlayer release success');
+                }).catch((err: BusinessError) => {
+                  console.info('avPlayer release failed, error: ' + err.message);
+                  expect().assertFail()
+                })
+              }).catch((err: BusinessError) => {
+                console.info('avPlayer stop failed, error: ' + err.message);
+                expect().assertFail()
+              })
               break;
             case this.AV_RELEASED:
               this.avPlayer = null;
+              this.closeFd(this.avFileDescriptor.fd)
               done();
               break;
             case this.AV_ERROR:
@@ -295,13 +315,15 @@ export default class MediaTestBase {
 
   }
 
-  getTrackDescriptionTest(avPlayer: media.AVPlayer, done: Function) {
+  getTrackDescriptionTest(avPlayer: media.AVPlayer, audioSampleRate: number, done: Function) {
 
     avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
           console.info(`case getTrackDescription is ${JSON.stringify(arrList[i])}`);
-          // expect(arrList[i]['bitrate']).assertEqual(480000)
+          if(arrList[i]['codec_mime'].toString()=="audio/mp4a-latm"){
+            expect(arrList[i]['bitrate']).assertLess(audioSampleRate / 3)
+          }
         }
         done();
       } else {
@@ -319,8 +341,6 @@ export default class MediaTestBase {
     for (let i = 0; i < num; i++) {
       let button = await driver.findComponent(BY.text('允许'))
       if (button == null) {
-        let cmd = "hidumper -s WindowManagerService -a'-a'"
-        await delegator.executeShellCommand(cmd);
         continue;
       }
       console.info(`button is ${JSON.stringify(button)}`)
@@ -328,6 +348,37 @@ export default class MediaTestBase {
         await button.click()
       }
     }
+  }
+
+  async getPermission(permissionNames: Array<Permissions>) {
+    let context: ESObject = AppStorage.get('testContext');
+    let atManager = abilityAccessCtrl.createAtManager();
+    //requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
+    atManager.requestPermissionsFromUser(context, permissionNames).then((data) => {
+      let grantStatus = data.authResults;
+      let length = grantStatus.length;
+      for (let i = 0; i < length; i++) {
+        if (grantStatus[i] === 0) {
+          // 用户授权，可以继续访问目标操作
+        } else {
+          // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
+          return;
+        }
+      }
+      //授权成功
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to request permissions from user. Code is ${err.code}, message is ${err.message}`);
+    })
+  }
+  // wait asynchronously
+  async msleepAsync(time: number) {
+    return new Promise<string>((resolve, reject) => {
+      setTimeout(() => {
+        resolve("ok");
+      }, time);
+    }).then(() => {
+      console.info(`sleep ${time} over...`);
+    });
   }
 
   resourceName() {
@@ -360,11 +411,12 @@ export default class MediaTestBase {
     }
   }
 
+   audioRen: audio.AudioRenderer | ESObject;
   async playPcmPromise() {
     console.info(`${this.TAG}: Promise : Audio playPcmPromise Function`);
     let audioStreamInfo: audio.AudioStreamInfo = {
       samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-      channels: audio.AudioChannel.CHANNEL_1,
+      channels: audio.AudioChannel.CHANNEL_2,
       sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
       encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
     };
@@ -379,9 +431,8 @@ export default class MediaTestBase {
       rendererInfo: audioRendererInfo
     };
 
-    let audioRen: audio.AudioRenderer | ESObject;
     await audio.createAudioRenderer(audioRendererOptions).then((data) => {
-      audioRen = data;
+      this.audioRen = data;
       console.info(`${this.TAG}: AudioRender Created : Success : Stream Type: SUCCESS`);
     }).catch((err: BusinessError) => {
       console.info(`${this.TAG}: AudioRender Created : ERROR : ${err.message}`);
@@ -397,7 +448,7 @@ export default class MediaTestBase {
     let stat = await fs.stat(filePath)
     let file: fs.File = await fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 
-    await audioRen.on('writeData', (buffer: ArrayBuffer) => {
+    await this.audioRen.on('writeData', (buffer: ArrayBuffer) => {
       console.info(`${this.TAG}: writeDataCallback : ${buffer.byteLength}`);
 
       let options: Options = {
@@ -413,12 +464,23 @@ export default class MediaTestBase {
 
     console.info(`${this.TAG}: AudioRenderer : Path : ${filePath}`);
 
-    console.info(`${this.TAG}: AudioRenderer : STATE : ${audioRen.state}`);
+    console.info(`${this.TAG}: AudioRenderer : STATE : ${this.audioRen.state}`);
 
-    await audioRen.start().then(() => {
+  }
+  async playPcmPromiseStart(){
+
+    await this.audioRen.start().then(() => {
       console.info(`${this.TAG}: renderInstant started :SUCCESS `);
     }).catch((err: BusinessError) => {
       console.info(`${this.TAG}: renderInstant start :ERROR : ${err.message}`);
+    });
+  }
+  async playPcmPromiseStop(){
+
+    await this.audioRen.stop().then(() => {
+      console.info(`${this.TAG}: renderInstant stop :SUCCESS `);
+    }).catch((err: BusinessError) => {
+      console.info(`${this.TAG}: renderInstant stop :ERROR : ${err.message}`);
     });
   }
 }

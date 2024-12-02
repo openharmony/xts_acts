@@ -48,6 +48,10 @@
           }
         ]
       }
-    ]
+    ],
+    "requestPermissions": [{
+      "name": "ohos.permission.MICROPHONE",
+      "reason": "$string:entry_MainAbility"
+    }]
   }
 }

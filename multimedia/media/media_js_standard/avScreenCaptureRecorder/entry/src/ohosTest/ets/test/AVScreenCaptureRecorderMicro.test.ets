@@ -18,12 +18,15 @@ import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 let mediaTestBase = new MediaTestBase()
-export default function AVScreenCaptureRecorderTest() {
-  describe('AVScreenCaptureRecorderTest', () => {
+export default function AVScreenCaptureRecorderMicro() {
+  describe('AVScreenCaptureRecorderMicro', () => {
 
     beforeAll(async () => {
       console.info('beforeAll case');
-      mediaTestBase.msleepAsync(1000);
+      mediaTestBase.getPermission(['ohos.permission.MICROPHONE']);
+      mediaTestBase.msleepAsync(4000);
+      mediaTestBase.driveFnNoSleep(1);
+
       mediaTestBase.playPcmPromise();
     })
 
@@ -44,15 +47,15 @@ export default function AVScreenCaptureRecorderTest() {
 
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1100
         * @tc.name      : 01.AvScreenCaptureRecorder
         * @tc.desc      : AvScreenCaptureRecorder
         * @tc.size      : MediumTest
         * @tc.type      : Performance test
         * @tc.level     : Level 1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100', 0, async (done: Function) => {
-      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100 start')
+    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1100', 0, async (done: Function) => {
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1100 start')
 
       let mySteps = new Array(
         // create
@@ -90,19 +93,19 @@ export default function AVScreenCaptureRecorderTest() {
 
       mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 6000, mySteps, done)
 
-      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100 end')
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1100 end')
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200
         * @tc.name      : 02.AvScreenCaptureRecorder
         * @tc.desc      : AvScreenCaptureRecorder
         * @tc.size      : MediumTest
         * @tc.type      : Performance test
         * @tc.level     : Level 1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200', 0, async (done: Function) => {
-      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 start')
+    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200', 0, async (done: Function) => {
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200 start')
 
       let mySteps = new Array(
         // create
@@ -137,19 +140,19 @@ export default function AVScreenCaptureRecorderTest() {
       }
 
       mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 3000, mySteps, done)
-      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200 end')
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1300
         * @tc.name      : 03.AvScreenCaptureRecorder
         * @tc.desc      : AvScreenCaptureRecorder
         * @tc.size      : MediumTest
         * @tc.type      : Performance test
         * @tc.level     : Level 1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300', 0, async (done: Function) => {
-      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300 start')
+    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1300', 0, async (done: Function) => {
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1300 start')
 
       let sessionId: number = 0; // 替换成拉起此进程的sessionId
       let choice: string = 'false'; // 替换成用户的选择内容
@@ -159,7 +162,7 @@ export default function AVScreenCaptureRecorderTest() {
         console.error(`reportAVScreenCaptureUserChoice error, error message: ${error.message}`);
         expect().assertFail()
       }
-      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1300 end')
       done();
     })
   })
