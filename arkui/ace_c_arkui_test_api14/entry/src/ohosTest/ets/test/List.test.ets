@@ -14,8 +14,28 @@
  */
 import customPropertyTest from "./customproperty/CustomPropertyTest.test"
 import StyledStringTest from "./styledString/StyledStringTest.test"
+import KeyEventGetTypeTest from './keyEvent/KeyEventGetTypeTest.test'
+import KeyEventGetKeyCodeTest from './keyEvent/KeyEventGetKeyCodeTest.test'
+import KeyEventGetGetDeviceIdTest from './keyEvent/KeyEventGetGetDeviceIdTest.test'
+import KeyEventGetKeyIntensionCodeTest from './keyEvent/KeyEventGetKeyIntensionCodeTest.test'
+import KeyEventGetKeySourceTest from './keyEvent/KeyEventGetKeySourceTest.test'
+import KeyEventGetKeyTextTest from './keyEvent/KeyEventGetKeyTextTest.test'
+import KeyEventGetPressedKeysTest from './keyEvent/KeyEventGetPressedKeysTest.test'
+import KeyEventGetUnicodeTest from './keyEvent/KeyEventGetUnicodeTest.test'
+import KeyEventSetConsumedTest from './keyEvent/KeyEventSetConsumedTest.test'
+import KeyEventStopPropagationTest from './keyEvent/KeyEventStopPropagationTest.test'
 
 export default function testsuite() {
   customPropertyTest()
   StyledStringTest()
+  KeyEventGetKeyCodeTest()
+  KeyEventGetTypeTest()
+  KeyEventStopPropagationTest()
+  KeyEventSetConsumedTest()
+  KeyEventGetGetDeviceIdTest()
+  KeyEventGetKeyIntensionCodeTest()
+  KeyEventGetKeySourceTest()
+  KeyEventGetKeyTextTest()
+  // KeyEventGetPressedKeysTest()
+  KeyEventGetUnicodeTest()
 }

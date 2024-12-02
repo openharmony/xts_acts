@@ -14,6 +14,17 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     customproperty/custom_property_test.cpp
+    keyEvent/keyEvent_GetType.cpp
+    keyEvent/keyEvent_GetKeyCode.cpp
+    keyEvent/keyEvent_SetConsumed.cpp
+    keyEvent/keyEvent_GetDeviceId.cpp
+    keyEvent/keyEvent_StopPropagation.cpp
+    keyEvent/keyEvent_GetUnicode.cpp
+    keyEvent/keyEvent_GetKeyIntensionCode.cpp
+    keyEvent/keyEvent_GetKeyCode.cpp
+    keyEvent/keyEvent_GetPressedKeys.cpp
+    keyEvent/keyEvent_GetKeyText.cpp
+    keyEvent/keyEvent_GetKeySource.cpp
 )
 
 add_library(nativefunc SHARED
