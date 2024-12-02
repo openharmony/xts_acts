@@ -160,6 +160,31 @@ export default function AvPlayerEnumTest() {
       expect(media.PlaybackInfoKey.BUFFER_DURATION).assertEqual('buffer_duration');
       done();
     });
+
+    
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0910
+     * @tc.name      : AVPlayer
+     * @tc.desc      : AVPlayer Enumeration test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0910', 0, async (done: Function) => {
+      expect(media.AVErrorCode.AVERR_IO_HOST_NOT_FOUND).assertEqual(5411001);
+      expect(media.AVErrorCode.AVERR_IO_CONNECTION_TIMEOUT).assertEqual(5411002);
+      expect(media.AVErrorCode.AVERR_IO_NETWORK_ABNORMAL).assertEqual(5411003);
+      expect(media.AVErrorCode.AVERR_IO_NETWORK_UNAVAILABLE).assertEqual(5411004);
+      expect(media.AVErrorCode.AVERR_IO_NO_PERMISSION).assertEqual(5411005);
+      expect(media.AVErrorCode.AVERR_IO_REQUEST_DENIED).assertEqual(5411006);
+      expect(media.AVErrorCode.AVERR_IO_RESOURCE_NOT_FOUND).assertEqual(5411007);
+      expect(media.AVErrorCode.AVERR_IO_SSL_CLIENT_CERT_NEEDED).assertEqual(5411008);
+      expect(media.AVErrorCode.AVERR_IO_SSL_CONNECTION_FAILED).assertEqual(5411009);
+      expect(media.AVErrorCode.AVERR_IO_SSL_SERVER_CERT_UNTRUSTED).assertEqual(5411010);
+      expect(media.AVErrorCode.AVERR_IO_UNSUPPORTED_REQUEST).assertEqual(5411011);
+      done();
+    });
+
   })
 }
 
