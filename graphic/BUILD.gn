@@ -32,7 +32,6 @@ group("graphic") {
       "graphicDrawing:ActsGraphicDrawingTest",
       "graphicDrawingFont:ActsGraphicDrawingFontTest",
       "graphicEGL:ActsGraphicEglTest",
-      "graphicEffectFliterTest:ActsGraphicEffectFliterTest",
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicGlesExtension:ActsGraphicGlesExtensionTest",
       "graphicImage:ActsGraphicImageTest",
