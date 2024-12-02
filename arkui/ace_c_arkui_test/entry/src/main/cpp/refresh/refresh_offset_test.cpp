@@ -41,7 +41,24 @@ static napi_value TestRefreshOffset002(napi_env env, napi_callback_info info)
 static napi_value TestRefreshOffset003(napi_env env, napi_callback_info info)
 {
     NAPI_START(refresh, ARKUI_NODE_REFRESH);
-    ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_OFFSET)->value[PARAM_0].f32, PARAM_64);
+    ArkUI_NumberValue value[] = {};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_OFFSET, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    NAPI_END;
+}
+
+static napi_value TestRefreshOffset004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_80}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_OFFSET, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    auto ret1 = nodeAPI->resetAttribute(refresh, NODE_REFRESH_OFFSET);
+    ASSERT_EQ(ret1, SUCCESS);
+
+    ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_OFFSET)->value[PARAM_0].f32, PARAM_0);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

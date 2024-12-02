@@ -14,6 +14,7 @@
  */
 export const usbInit: () => number;
 export const usbRelease: () => number;
+export const usbReleaseResource: () => number;
 export const usbGetDeviceDescriptor: (a: number) => number;
 export const usbGetConfigDescriptor: (a: number) => number;
 export const usbFreeConfigDescriptor: (a: number) => number;

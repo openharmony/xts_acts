@@ -19,11 +19,13 @@
           "MainAbility/pages/components/PatternLockPage",
           "MainAbility/pages/components/QRCodePage",
           "MainAbility/pages/components/RadioPage",
+          "MainAbility/pages/components/ScrollPage",
           "MainAbility/pages/components/SearchPage",
           "MainAbility/pages/components/SliderPage",
           "MainAbility/pages/components/SwiperPage",
           "MainAbility/pages/components/TextPage",
           "MainAbility/pages/components/TextClockPage",
+          "MainAbility/pages/components/TextInputPage",
           "MainAbility/pages/components/TextPickerPage",
           "MainAbility/pages/components/TimePickerPage",
           "MainAbility/pages/components/TogglePage"

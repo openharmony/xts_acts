@@ -267,7 +267,7 @@ export default function signNormalNotAccessBiometricExecute() {
         title: '请输入密码',
       };
       await userAuthPromise(authParam, widgetParam, 
-        'SUB_Security_IAM_authWidget_API_0150 step' + stepIndex, 12500010);
+        'SUB_Security_IAM_authWidget_API_0120 step' + stepIndex, 12500010);
       done();
     });
 
@@ -281,7 +281,7 @@ export default function signNormalNotAccessBiometricExecute() {
     */
     it('SUB_Security_IAM_authWidget_API_0140', Level.LEVEL2, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0140 start");
-      let reuseMode1 = [-1, 0, 3];
+      let reuseMode1 = [-1, 0, 5];
       let reuseMode2 = [1, 2];
       const widgetParam = {
         title: '请输入密码',
@@ -326,7 +326,7 @@ export default function signNormalNotAccessBiometricExecute() {
         };
   
         await userAuthPromise(authParam1, widgetParam, 
-          'SUB_Security_IAM_authWidget_API_0150 step' + stepIndex, 12500010);
+          'SUB_Security_IAM_authWidget_API_0140 step' + stepIndex, 12500010);
         stepIndex++;
       }
       done();
@@ -368,6 +368,24 @@ export default function signNormalNotAccessBiometricExecute() {
         console.log('SUB_Security_IAM_authWidget_API_0110 error.code: ' + error.code);
         expect(error.code).assertEqual(401);
       }
+      done();
+    });
+
+    /*
+        * @tc.number    : SUB_Security_IAM_authWidget_API_0200
+        * @tc.name      : execute_enum_ReuseMode.
+        * @tc.desc      : 
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level.LEVEL3
+    */
+    it('SUB_Security_IAM_authWidget_API_0200', Level.LEVEL2, async function (done) {
+      console.info("SUB_Security_IAM_authWidget_API_0200 start");
+      expect(1).assertEqual(userAuth.ReuseMode.AUTH_TYPE_RELEVANT);
+      expect(2).assertEqual(userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT);
+      expect(3).assertEqual(userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT);
+      expect(4).assertEqual(userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT);
+      console.info('SUB_Security_IAM_authWidget_API_0200 end');
       done();
     });
   });

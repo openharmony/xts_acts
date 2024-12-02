@@ -19,5 +19,5 @@ ohos_js_app_suite("ActsNotificationEmitterNewTest") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsNotificationEmitterNewTest"
   subsystem_name = "notification"
-  part_name = "distributed_notification_service"
+  part_name = "eventhandler"
 }

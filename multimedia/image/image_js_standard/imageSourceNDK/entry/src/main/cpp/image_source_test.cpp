@@ -39,12 +39,8 @@ namespace {
 namespace OHOS {
 namespace Media {
 
-#define IMAGE_LOG_TAG "ImageSourceNDKTest"
-#define IMAGE_LOG_DOMAIN 0x3200
-
-#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, IMAGE_LOG_DOMAIN, IMAGE_LOG_TAG, fmt, ##__VA_ARGS__)
-#define DEBUG_PTR(p) (((p) == nullptr)?"nullptr":"not nullptr")
 #define STATIC_FUNCTION(n, f) { (n), nullptr, (f), nullptr, nullptr, nullptr, napi_static, nullptr }
+#define DEBUG_PTR(p) (((p) == nullptr)?"nullptr":"not nullptr")
 
 napi_value ImageSourceNDKTest::Init(napi_env env, napi_value exports)
 {

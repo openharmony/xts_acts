@@ -211,6 +211,8 @@ export const customComponentIdTest: (a: string) => void;
 
 export const refreshOnStateChangeTest: (a: string) => void;
 
+export const refreshOnOffsetChangeTest: (a: string) => void;
+
 export const refreshOnRefreshingTest: (a: string) => void;
 
 export const textAreaOnFocusTest: (a: string) => void;
@@ -244,6 +246,22 @@ export const panGestureTest: (a: string) => void;
 export const rotateGestureTest: (a: string) => void;
 export const pinchGestureTest: (a: string) => void;
 export const interruptGestureTest: (a: string) => void;
+
+export const gestureCreateGestureTest: (a: string) => void;
+
+export const gestureCreateGesture1Test: (a: string) => void;
+
+export const gestureCreateGesture2Test: (a: string) => void;
+
+export const gestureCreateGesture3Test: (a: string) => void;
+
+export const gestureCreateGesture4Test: (a: string) => void;
+
+export const gestureGestureInterrupterTest: (a: string) => void;
+
+export const gestureGestureInfoTest: (a: string) => void;
+
+export const getGestureData: () => number[][];
 
 export const dragTest: (a: string) => void;
 
@@ -292,4 +310,46 @@ export const testAnimatorRegisterOnFinish: (a: string) => void;
 export const testAnimatorRegisterOnCancel: (a: string) => void;
 
 export const testAnimatorRegisterOnRepeat: (a: string) => void;
+
+export const imageAnimatorOnCancelTest: (a: string) => void;
+
+export const imageAnimatorOnPauseTest: (a: string) => void;
+
+export const imageAnimatorOnRepeatTest: (a: string) => void;
+
+export const imageAnimatorOnFinishTest: (a: string) => void;
+
+export const inputEventTest: (a: string) => void;
+
+export const inputEventMouseTest: (a: string) => void;
+
+export const inputEventAxisTest: (a: string) => void;
+
+export const swiperOnChangeTest: (a: string) => void;
+
+export const swiperOnAnimationStartTest: (a: string) => void;
+
+export const swiperOnAnimationEndTest: (a: string) => void;
+
+export const swiperAdapterTest: (a: string) => void;
+
+export const swiperOnContentDidScrollTest: (a: string) => void;
+
+export const swiperOnGestureSwipeTest: (a: string) => void;
+
+export const radioOnChangeTest: (a: string) => void;
+
+export const textAreaOnTextSelectionChangeTest : (a : string) => void ;
+
+export const textAreaOnContentScrollTest : (a : string) => void;
+
+export const textAreaOnContentDidChangeTest : (a : string) => void;
+
+export const textAreaOnEditChangeTest : (a : string) => void;
+
+export const textAreaOnInsertTest : (a : string) => void;
+
+export const textAreaOnDeleteTest : (a : string) =>void;
+
+export const textAreaOnSubmitTest : (a : string) =>void;
 

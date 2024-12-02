@@ -73,6 +73,21 @@ export default function usbDdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3800
+     * @tc.name       : testUsbReleaseResource001
+     * @tc.desc       : OH_Usb_ReleaseResource Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbReleaseResource001', 0, async (done: Function) => {
+      let data = usbDdk.usbReleaseResource();
+      console.info("Test USB data Result = " + data);
+      expect(data).assertEqual(USB_DDK_SUCCESS);
+      done()
+    });
+
+    /**
      * @tc.number     : SUB_Driver_Ext_DDKETS_0300
      * @tc.name       : testUsbGetDeviceDescriptor001
      * @tc.desc       : OH_Usb_GetDeviceDescriptor Interface testing

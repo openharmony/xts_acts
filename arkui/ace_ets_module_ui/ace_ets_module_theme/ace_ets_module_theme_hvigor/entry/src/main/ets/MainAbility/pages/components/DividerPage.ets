@@ -20,11 +20,13 @@ export const dividerThemeProperty: string = `DividerThemeProperty`;
 export class DividerKeys {
   public static readonly dividerSystem = `Divider_System`;
   public static readonly dividerWithTheme = `Divider_WithTheme`;
+  public static readonly dividerWithRedTheme = `Divider_WithRedTheme`;
 }
 @Entry
 @Component
 struct DividerPage {
   @StorageLink(dividerThemeProperty) localTheme: CustomTheme | undefined = redCustomTheme;
+  @StorageLink(dividerThemeProperty) redTheme: CustomTheme | undefined = redCustomTheme;
   buttonWidth: number = 200;
 
   build() {
@@ -48,6 +50,18 @@ struct DividerPage {
           }
           Button('Peach')
             .width(this.buttonWidth)
+
+         Column() {
+          Button('Orange')
+            .width(this.buttonWidth)
+          WithTheme({ theme: this.redTheme }) {
+            Divider()
+              .width(this.buttonWidth)
+              .key(DividerKeys.dividerWithRedTheme)
+          }
+          Button('Peach')
+            .width(this.buttonWidth)
+         }
         }
         .width('100%')
       }

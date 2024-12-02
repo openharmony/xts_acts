@@ -78,6 +78,7 @@
 #include "slider/slider_enabled_test.h"
 #include "refresh/refresh_onrefreshing_test.h"
 #include "refresh/refresh_onstatechange_test.h"
+#include "refresh/refresh_onOffsetChange_test.h"
 #include "textarea/textarea_onfocus_test.h"
 #include "textarea/textarea_onblur_test.h"
 #include "textarea/textarea_key_test.h"
@@ -92,6 +93,9 @@
 #include "textinput/textinput_onpaste_test.h"
 #include "gesture/gesture_test.h"
 #include "gestureScroll/gesture_interfaceTest.h"
+#include "gesture/gesture_creategesture_test.h"
+#include "gesture/gesture_gestureinterrupter_test.h"
+#include "gesture/gesture_gestureinfo_test.h"
 #include "customcomponent/customcomponent_event_test.h"
 #include "drag/drag_setSuggestedDropOperation.h"
 #include "drag/drag_disableDefaultDropAnimation.h"
@@ -109,7 +113,22 @@
 #include "drag/dragAction_setTouchPointXY.h"
 #include "drag/dragAction_registerStatusListener.h"
 #include "animation/animator_event_test.h"
-
+#include "inputevent/input_event_test.h"
+#include "swiper/swiper_onChange_test.h"
+#include "swiper/swiper_onAnimationStart_test.h"
+#include "swiper/swiper_onAnimationEnd_test.h"
+#include "swiper/swiper_adapter_test.h"
+#include "swiper/swiper_onContentDidScroll_test.h"
+#include "swiper/swiper_onGestureSwipe_test.h"
+#include "imageAnimator/imageAnimator_event_test.h"
+#include "radio/radio_onChange_test.h"
+#include "textarea/textarea_ontextselectionchange_test.h"
+#include "textarea/textarea_oncontentscroll_test.h"
+#include "textarea/textarea_oncontentdidchange_test.h"
+#include "textarea/textarea_oneditchange_test.h"
+#include "textarea/textarea_oninsert_test.h"
+#include "textarea/textarea_ondelete_test.h"
+#include "textarea/textarea_onsubmit_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -261,6 +280,8 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"refreshOnStateChangeTest", nullptr, RefreshOnStateChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"refreshOnOffsetChangeTest", nullptr, RefreshOnOffsetChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"textAreaOnFocusTest", nullptr, TextAreaOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"textAreaOnBlurTest", nullptr, TextAreaOnBlurTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
@@ -354,6 +375,22 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"interruptGestureTest", nullptr, GestureTest::CreateInterruptNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"gestureCreateGestureTest", nullptr, GestureCreateGestureTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureCreateGesture1Test", nullptr, GestureCreateGestureTest::CreateNativeNode1, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureCreateGesture2Test", nullptr, GestureCreateGestureTest::CreateNativeNode2, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureCreateGesture3Test", nullptr, GestureCreateGestureTest::CreateNativeNode3, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureCreateGesture4Test", nullptr, GestureCreateGestureTest::CreateNativeNode4, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"gestureGestureInterrupterTest", nullptr, GestureGestureInterrupterTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"gestureGestureInfoTest", nullptr, GestureGestureInfoTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"getGestureData", nullptr, GestureGestureInfoTest::GetGestureData, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"disableDefaultDropAnimationTest", nullptr, DisableDefaultDropAnimationTest::CreateNativeNode, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"getPreDragStatusTest", nullptr, GetPreDragStatusTest::CreateNativeNode, nullptr, nullptr, nullptr,
@@ -396,9 +433,64 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testAnimatorRegisterOnRepeat", nullptr, AnimatorEventTest::testAnimatorRegisterOnRepeat_006,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"swiperOnChangeTest", nullptr, SwiperOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"swiperOnAnimationStartTest", nullptr, SwiperOnAnimationStartTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"swiperOnAnimationEndTest", nullptr, SwiperOnAnimationEndTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"swiperAdapterTest", nullptr, SwiperAdapterTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"swiperOnContentDidScrollTest", nullptr, SwiperOnContentDidScrollTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"swiperOnGestureSwipeTest", nullptr, SwiperOnGestureSwipeTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"imageAnimatorOnCancelTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnCancel,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"imageAnimatorOnPauseTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnPause,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"imageAnimatorOnRepeatTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnRepeat,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"imageAnimatorOnFinishTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnFinish,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"radioOnChangeTest", nullptr, RadioOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnTextSelectionChangeTest", nullptr, TextAreaOnTextSelectionChangeTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"textAreaOnContentScrollTest", nullptr, TextAreaOnContentScrollTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"textAreaOnContentDidChangeTest", nullptr, TextAreaOnContentDidChangeTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"textAreaOnEditChangeTest", nullptr, TextAreaOnEditChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnInsertTest", nullptr, TextAreaOnInsertTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnDeleteTest", nullptr, TextAreaOnDeleteTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnSubmitTest", nullptr, TextAreaOnSubmitTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
+        return nullptr;
+    }
+
+    // Input Event
+    napi_property_descriptor inputEvent_desc[] = {
+        // testInputEvent001,testInputEvent002
+        { "inputEventTest", nullptr, InputEventTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+            nullptr },
+        // testInputEvent011,testInputEvent012,testInputEvent013,testInputEvent014
+        { "inputEventMouseTest", nullptr, InputEventTest::CreateNativeNodeForMouse, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        // testInputEvent017
+        { "inputEventAxisTest", nullptr, InputEventTest::CreateNativeNodeForAxis, nullptr, nullptr, nullptr,
+            napi_default, nullptr }
+    };
+    if (napi_define_properties(env, exports, sizeof(inputEvent_desc) / sizeof(inputEvent_desc[0]), inputEvent_desc) !=
+        napi_ok) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties inputEvent_desc failed");
         return nullptr;
     }
 

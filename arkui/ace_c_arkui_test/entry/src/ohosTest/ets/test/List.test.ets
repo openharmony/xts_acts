@@ -144,6 +144,7 @@ import toggleHeightTest from './toggle/ToggleHeightTest.test'
 import toggleMarginTest from './toggle/ToggleMarginTest.test'
 import togglePositionTest from './toggle/TogglePositionTest.test'
 import toggleSelectedColorTest from './toggle/ToggleSelectedColorTest.test'
+import toggleUnSelectedColorTest from './toggle/ToggleUnSelectedColorTest.test'
 import toggleSwitchPointColorTest from './toggle/ToggleSwitchPointColorTest.test'
 import toggleWidthTest from './toggle/ToggleWidthTest.test'
 import toggleSwitchTest from './toggle/ToggleSwitchTest.test'
@@ -166,6 +167,17 @@ import swiperPositionTest from './swiper/SwiperPositionTest.test'
 import swiperVerticalTest from './swiper/SwiperVerticalTest.test'
 import swiperWidthTest from './swiper/SwiperWidthTest.test'
 import swiperCachedCountTest from './swiper/SwiperCachedCountTest.test'
+import swiperEffectModeTest from './swiper/SwiperEffectModeTest.test'
+import swiperPrevMarginTest from './swiper/SwiperPrevMarginTest.test'
+import swiperNextMarginTest from './swiper/SwiperNextMarginTest.test'
+import swiperNestedScrollTest from './swiper/SwiperNestedScrollTest.test'
+import swiperChangeIndexTest from './swiper/SwiperChangeIndexTest.test'
+import swiperOnChangeTest from './swiper/SwiperOnChangeTest.test'
+import swiperOnAnimationStartTest from './swiper/SwiperOnAnimationStartTest.test'
+import swiperOnAnimationEndTest from './swiper/SwiperOnAnimationEndTest.test'
+import swiperAdapterTest from './swiper/SwiperAdapterTest.test'
+import swiperOnContentDidScrollTest from './swiper/SwiperOnContentDidScrollTest.test'
+import swiperOnGestureSwipeTest from './swiper/SwiperOnGestureSwipeTest.test'
 import textWidthTest from './text/TextWidthTest.test'
 import textHeightTest from './text/TextHeightTest.test'
 import textPositionTest from './text/TextPositionTest.test'
@@ -453,8 +465,12 @@ import imageSpanPaddingTest from './imagespan/ImageSpanPaddingTest.test'
 import columnWidthTest from './column/ColumnWidthTest.test'
 import columnHeightTest from './column/ColumnHeightTest.test'
 import columnPaddingTest from './column/ColumnPaddingTest.test'
+import columnJustifyContentTest from './column/ColumnJustifyContentTest.test'
+import columnAlignItemsTest from './column/ColumnAlignItemsTest.test'
 import columnForegroundBlurStyleTest from './column/ColumnForegroundBlurStyleTest.test'
 import rowHeightTest from './row/RowHeightTest.test'
+import rowJustifyContentTest from './row/RowJustifyContentTest.test'
+import rowAlignItemsTest from './row/RowAlignItemsTest.test'
 import sliderWidthTest from './slider/SliderWidthTest.test'
 import sliderHeightTest from './slider/SliderHeightTest.test'
 import sliderEnabledTest from './slider/SliderEnabledTest.test'
@@ -535,6 +551,7 @@ import textAreaDefaultFocusTest from './textarea/TextAreaDefaultFocusTest'
 import textAreaResponseRegionTest from './textarea/TextAreaResponseRegionTest'
 import refreshOnRefreshingTest from './refresh/RefreshOnRefreshingTest'
 import refreshOnStateChangeTest from './refresh/RefreshOnStateChangeTest'
+import refreshOnOffsetChangeTest from './refresh/RefreshOnOffsetChangeTest'
 import textAreaOnFocusTest from './textarea/TextAreaOnFocusTest'
 import textAreaOnBlurTest from './textarea/TextAreaOnBlurTest'
 import textAreaKeyTest from './textarea/TextAreaKeyTest'
@@ -578,8 +595,21 @@ import accessibilityStateTest from './accessibilityState/accessibilityStateTest.
 import relativecontaineAlignmentRuleOptionTest from './relativecontaine/RelativeContaineAlignmentRuleOptionTest.test'
 import relativecontaineBarrierOptionTest from './relativecontaine/RelativeContaineBarrierOptionTest.test'
 import testGesture from './gesture/GestureTest.test'
+import gestureGestureAttrsTest from './gesture/GestureGestureAttrsTest.test'
+import gestureGestureInterrupterTest from './gesture/GestureGestureInterrupterTest.test'
+import gestureCreateGestureTest from './gesture/GestureCreateGestureTest.test'
+import gestureGestureInfoTest from  './gesture/GestureGestureInfoTest.test'
 import gestureNestScrollTest from './gestureScroll/GestureNestScollTest.test'
-
+import gridColumnGapTest from './grid/GridColumnGapTest.test' 
+import gridRowsTemplateTest from './grid/GridRowsTemplateTest.test'
+import gridColumnTemplateTest from './grid/GridColumnTemplateTest.test'
+import gridRowsGapTest from './grid/GridRowsGapTest.test' 
+import gridCachedCountTest from './grid/GridCachedCountTest.test' 
+import gridNodeAdapterTest from './grid/GridNodeAdapterTest.test' 
+import radioValueTest from './radio/RadioValueTest.test'
+import radioGroupTest from './radio/RadioGroupTest.test'
+import radioRadioStyleTest from './radio/RadioRadioStyleTest.test'
+import radioCheckedTest from './radio/RadioCheckedTest.test'
 import customComponentEventTest from './customcomponent/CustomComponentEventTest.test'
 import commonAttrsAnimateTest from './commonattrs/CommonAttrsAnimateTest.test'
 import drawableDescriptorCreateTest from './drawabledescriptor/DrawableDescriptorCreateTest.test'
@@ -616,7 +646,38 @@ import SystemColorFontChangeTest from "./system/SystemColorFontChange.test"
 import animatorEventTest from "./animation/AnimatorEventTest.test"
 import textCustomSpanTest from "./text/TextCustomSpan.test"
 import textImageSpanTest from "./text/TextImageSpan.test"
+import inputEvent from "./inputevent/InputEventTest.test"
+import imageAnimatorImageFrameInfoTest from './imageAnimator/ImageAnimatorImageFrameInfoTest.test'
+import imageAnimatorImagesTest from './imageAnimator/ImageAnimatorImagesTest.test'
+import imageAnimatorStateTest from './imageAnimator/ImageAnimatorStateTest.test'
+import imageAnimatorDurationTest from './imageAnimator/ImageAnimatorDurationTest.test'
+import imageAnimatorReverseTest from './imageAnimator/ImageAnimatorReverseTest.test'
+import imageAnimatorFixedSizeTest from './imageAnimator/ImageAnimatorFixedSizeTest.test'
+import imageAnimatorFillModeTest from './imageAnimator/ImageAnimatorFillModeTest.test'
+import imageAnimatorIterationsTest from './imageAnimator/ImageAnimatorIterationsTest.test'
+import imageAnimatorEventTest from "./imageAnimator/ImageAnimatorEventTest.test"
+import radioOnChangeTest from "./radio/RadioOnChangeTest.test"
 
+import textAreaTextTest from "./textarea/TextAreaTextTest.test"
+import textAreaFontFeatureTest from "./textarea/TextAreaFontFeatureTest.test"
+import textAreaMaxLinesTest from "./textarea/TextAreaMaxLinesTest.test"
+import textAreaInputFilterTest from "./textarea/TextAreaInputFilterTest.test"
+import textAreaEnterKeyTypeTest from "./textarea/TextAreaEnterKeyTypeTest.test"
+import textAreaEnableKeyboardOnFocusTest from "./textarea/TextAreaEnableKeyboardOnFocusTest.test"
+import textAreaShowKeyboardOnFocusTest from "./textarea/TextAreaShowKeyboardOnFocusTest.test"
+import textAreaCaretOffsetTest from "./textarea/TextAreaCaretOffsetTest.test"
+import textAreaGetTextContentRectTest from "./textarea/TextAreaGetTextContentRectTest.test"
+import textAreaGetContentLineCountTest from "./textarea/TextAreaGetContentLineCountTest.test"
+import textAreaTextSelectionTest from "./textarea/TextAreaTextSelectionTest.test"
+import textAreaOnTextSelectionChangeTest from "./textarea/TextAreaOnTextSelectionChangeTest.test"
+import textAreaOnContentScrollTest from "./textarea/TextAreaOnContentScrollTest.test"
+import textAreaOnContentDidChangeTest from "./textarea/TextAreaOnContentDidChangeTest.test"
+import textAreaEnableAutoFillTest from "./textarea/TextAreaEnableAutoFillTest.test"
+import textAreaOnInsertTest from "./textarea/TextAreaOnInsertTest.test"
+import textAreaOnDeleteTest from "./textarea/TextAreaOnDeleteTest.test"
+import textAreaNumberOfLinesTest from "./textarea/TextAreaNumberOfLinesTest.test"
+import textAreaContentTypeTest from "./textarea/TextAreaContentTypeTest.test"
+import textAreaOnSubmitTest from "./textarea/TextAreaOnSubmitTest.test"
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1090,9 +1151,13 @@ export default function testsuite() {
   columnWidthTest()
   columnHeightTest()
   rowHeightTest()
+  rowJustifyContentTest()
+  rowAlignItemsTest()
   sliderWidthTest()
   sliderHeightTest()
   columnPaddingTest()
+  columnJustifyContentTest()
+  columnAlignItemsTest()
   columnForegroundBlurStyleTest()
   commonAttrsAlignTest()
   commonAttrsDirectionTest()
@@ -1163,6 +1228,7 @@ export default function testsuite() {
   textAreaResponseRegionTest()
   refreshOnStateChangeTest()
   refreshOnRefreshingTest()
+  refreshOnOffsetChangeTest()
   sliderOnChangeTest()
   checkboxOnChangeTest()
   buttonOnClickTest()
@@ -1184,7 +1250,21 @@ export default function testsuite() {
   relativecontaineAlignmentRuleOptionTest()
   relativecontaineBarrierOptionTest()
   testGesture()
+  gestureGestureAttrsTest()
+  gestureCreateGestureTest()
+  gestureGestureInterrupterTest()
+  gestureGestureInfoTest()
   gestureNestScrollTest()
+  gridColumnGapTest()
+  gridRowsTemplateTest()
+  gridColumnTemplateTest()
+  gridRowsGapTest()
+  gridCachedCountTest()
+  gridNodeAdapterTest()
+  radioValueTest()
+  radioGroupTest()
+  radioRadioStyleTest()
+  radioCheckedTest()
   customComponentEventTest()
   commonAttrsAnimateTest()
   drawableDescriptorCreateTest()
@@ -1221,4 +1301,47 @@ export default function testsuite() {
   animatorEventTest()
   textCustomSpanTest()
   textImageSpanTest()
+  inputEvent()
+  swiperEffectModeTest()
+  swiperPrevMarginTest()
+  swiperNextMarginTest()
+  swiperNestedScrollTest()
+  swiperChangeIndexTest()
+  swiperOnChangeTest()
+  swiperOnAnimationStartTest()
+  swiperOnAnimationEndTest()
+  swiperAdapterTest()
+  swiperOnContentDidScrollTest()
+  swiperOnGestureSwipeTest()
+  imageAnimatorImageFrameInfoTest()
+  imageAnimatorImagesTest()
+  imageAnimatorStateTest()
+  imageAnimatorDurationTest()
+  imageAnimatorReverseTest()
+  imageAnimatorFixedSizeTest()
+  imageAnimatorFillModeTest()
+  imageAnimatorIterationsTest()
+  imageAnimatorEventTest()
+  toggleUnSelectedColorTest()
+  radioOnChangeTest()
+  textAreaTextTest()
+  textAreaFontFeatureTest()
+  textAreaMaxLinesTest()
+  textAreaInputFilterTest()
+  textAreaEnterKeyTypeTest()
+  textAreaEnableKeyboardOnFocusTest()
+  textAreaShowKeyboardOnFocusTest()
+  textAreaCaretOffsetTest()
+  textAreaGetTextContentRectTest()
+  textAreaGetContentLineCountTest()
+  textAreaTextSelectionTest()
+  textAreaOnTextSelectionChangeTest()
+  textAreaOnContentScrollTest()
+  textAreaOnContentDidChangeTest()
+  textAreaEnableAutoFillTest()
+  textAreaOnInsertTest()
+  textAreaOnDeleteTest()
+  textAreaNumberOfLinesTest()
+  textAreaContentTypeTest()
+  textAreaOnSubmitTest()
 }

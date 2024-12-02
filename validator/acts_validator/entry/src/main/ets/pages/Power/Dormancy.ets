@@ -24,7 +24,7 @@ struct Dormancy {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'Dormancy';
-  @State StepTips: string = '操作步骤：点击测试页面内熄屏按钮,等待5秒打开设备' + '\n' + '预期结果：点击测试页面熄屏按钮，屏幕能正常熄屏，等待五秒后亮屏，pass按钮亮起';
+  @State StepTips: string = '操作步骤：点击测试页面内熄屏按钮,观察设备是否熄屏' + '\n' + '预期结果：点击测试页面熄屏按钮，屏幕能正常熄屏，熄屏后唤醒设备，pass按钮亮起';
   @State Vue: boolean = false;
 
   async aboutToAppear() {
@@ -41,22 +41,17 @@ struct Dormancy {
               .fontSize(28)
               .onClick(() => {
                 console.info('power onClick');
-                setTimeout(() => {
-                  console.info('power setTimeout');
-                  try {
-                    let isActive = power.isActive();
-                    console.info('power is active: ' + isActive);
-                    if (!isActive) {
-                      this.Vue = true
-                    }
-                  } catch (err) {
-                    console.error('check active status failed, err: ' + err);
-                  }
-                }, 5000)
                 try {
-                  power.suspend();
+                  let isActive = power.isActive();
+                  console.info('power is active: ' + isActive);
+                  try {
+                    power.suspend();
+                    this.Vue = true
+                  } catch (err) {
+                    console.error('suspend failed, err: ' + err);
+                  }
                 } catch (err) {
-                  console.error('suspend failed, err: ' + err);
+                  console.error('check active status failed, err: ' + err);
                 }
               })
           }

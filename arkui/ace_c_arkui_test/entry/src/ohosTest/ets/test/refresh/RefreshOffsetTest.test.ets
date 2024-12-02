@@ -64,5 +64,19 @@ export default function refreshOffsetTest() {
       expect(nativeFunc.testRefreshOffset003()).assertEqual(0)
       done();
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_OFFSET_0400
+     * @tc.name       : testRefreshOffset004
+     * @tc.desc       : testing value for Progress with default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshOffset004', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshOffset004()).assertEqual(0)
+      done();
+    })
+
   })
 }

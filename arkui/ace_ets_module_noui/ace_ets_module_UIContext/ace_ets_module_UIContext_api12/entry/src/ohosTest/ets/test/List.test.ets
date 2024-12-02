@@ -16,8 +16,10 @@
 import UIContextApi1 from './UIContext/UIContextApi1.test'
 import UIContextTestCase from './UIContext/UIContextTestCase.test'
 import UIContextComponentSnapshot from './UIContext/UIContextComponentSnapshot.test'
+import ComponentSnapshotSync from './componentSnapshot/componentSnapshotSync.test'
 export default function testsuite() {
   UIContextApi1();
   UIContextTestCase();
   UIContextComponentSnapshot()
+  ComponentSnapshotSync()
 }

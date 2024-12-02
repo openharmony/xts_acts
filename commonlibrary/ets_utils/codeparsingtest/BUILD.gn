@@ -20,6 +20,7 @@ group("codeparsingtest") {
       "actscodeparsingtest:ActsCodeParsingTest",
       "baselibtest:ActsBaseLibTest",
       "builtinstest:ActsBuiltinsTest",
+      "datetest:ActsDateTest",
       "decimallibtest:ActsDecimalLibTest",
     ]
   }

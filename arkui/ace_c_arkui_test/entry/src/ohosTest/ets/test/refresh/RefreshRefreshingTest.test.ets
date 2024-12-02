@@ -64,5 +64,18 @@ export default function refreshRefreshingTest() {
       expect(nativeFunc.testRefreshRefreshing003()).assertEqual(0)
       done();
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REFRESH_REFRESHING_0400
+     * @tc.name       : testRefreshRefreshing004
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRefreshRefreshing004', 0, async (done: Function) => {
+      expect(nativeFunc.testRefreshRefreshing004()).assertEqual(0)
+      done();
+    })
   })
 }

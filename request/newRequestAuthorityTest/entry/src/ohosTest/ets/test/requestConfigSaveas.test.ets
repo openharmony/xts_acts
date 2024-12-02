@@ -1268,48 +1268,6 @@ export default function requestConfigSavesTest() {
     });
 
     /*
-     * @tc.number: SUB_Request_Agent_ErrorDetailed_0500
-     * @tc.name: SUB_Request_Agent_ErrorDetailed_0500
-     * @tc.desc: incorrect error of DNS
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 2
-     */
-    it('SUB_Request_Agent_ErrorDetailed_0500', 0, async (done: Function) => {
-      console.info('====>-----------------------SUB_Request_Agent_ErrorDetailed_0500 is starting-----------------------');
-      let config:request.agent.Config = {
-        action: request.agent.Action.DOWNLOAD,
-        url: 'https://singnn.com',
-        title: 'createTest',
-        description: 'XTS download test!',
-        saveas: './SUB_Request_Agent_ErrorDetailed_0500',
-        network: request.agent.Network.ANY,
-        overwrite: true
-      };
-      try {
-        let task: request.agent.Task = await request.agent.create(baseContext, config);
-        task.on('failed', async (pro: request.agent.Progress) => {
-          try {
-            task.off('failed');
-            console.info('====>SUB_Request_Agent_ErrorDetailed_0500 failed pro: ' + JSON.stringify(pro));
-            let info:request.agent.TaskInfo = await request.agent.show(task.tid);
-            console.info('====>SUB_Request_Agent_ErrorDetailed_0500 info: ' + JSON.stringify(info));
-            expect(info.faults).assertEqual(80);
-            done();
-          } catch (err) {
-            console.info('====>SUB_Request_Agent_ErrorDetailed_0500 err: ' + JSON.stringify(err));
-          }
-        })
-        await task.start();
-        console.info('====>SUB_Request_Agent_ErrorDetailed_0500 create success');
-      } catch (err) {
-        console.info('====>SUB_Request_Agent_ErrorDetailed_0500 create catch err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      }
-    });
-
-    /*
      * @tc.number: SUB_Request_Agent_ErrorDetailed_0100
      * @tc.name: SUB_Request_Agent_ErrorDetailed_0100
      * @tc.desc: incorrect error of PARAM

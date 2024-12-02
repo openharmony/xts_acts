@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import customPropertyTest from "./customproperty/CustomPropertyTest.test"
+import StyledStringTest from "./styledString/StyledStringTest.test"
 
 export default function testsuite() {
   customPropertyTest()
+  StyledStringTest()
 }

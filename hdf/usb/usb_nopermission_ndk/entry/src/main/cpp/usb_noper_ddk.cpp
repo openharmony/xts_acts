@@ -99,6 +99,16 @@ static napi_value UsbRelease(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value UsbReleaseResource(napi_env env, napi_callback_info info)
+{
+    int32_t usbInitReturnValue = OH_Usb_Init();
+    NAPI_ASSERT(env, usbInitReturnValue == USB_DDK_ERR_NOPERM, "OH_Usb_Init failed, no permission");
+    int32_t returnValue = OH_Usb_ReleaseResource();
+    napi_value result = nullptr;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
 static napi_value UsbGetDeviceDescriptor(napi_env env, napi_callback_info info)
 {
     size_t argc = PARAM_1;
@@ -413,6 +423,7 @@ static napi_value Init(napi_env env, napi_value exports)
     napi_property_descriptor desc[] = {
         {"usbInit", nullptr, UsbInit, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"usbRelease", nullptr, UsbRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"usbReleaseResource", nullptr, UsbReleaseResource, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"usbGetDeviceDescriptor", nullptr, UsbGetDeviceDescriptor, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"usbGetConfigDescriptor", nullptr, UsbGetConfigDescriptor, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"usbFreeConfigDescriptor", nullptr, UsbFreeConfigDescriptor, nullptr, nullptr, nullptr, napi_default,

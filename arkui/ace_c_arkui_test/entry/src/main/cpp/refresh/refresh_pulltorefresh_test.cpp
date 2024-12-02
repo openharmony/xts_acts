@@ -48,4 +48,36 @@ static napi_value TestRefreshPullToRefresh003(napi_env env, napi_callback_info i
     ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH)->value[PARAM_0].i32, 0);
     NAPI_END;
 }
+static napi_value TestRefreshPullToRefresh004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    NAPI_END;
+}
+static napi_value TestRefreshPullToRefresh005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {{.i32 = PARAM_NEGATIVE_1}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_NE(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH)->value[PARAM_0].i32, PARAM_NEGATIVE_1);
+    NAPI_END;
+}
+
+static napi_value TestRefreshPullToRefresh006(napi_env env, napi_callback_info info)
+{
+    NAPI_START(refresh, ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue value[] = {{.i32 = PARAM_2}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    auto ret1 = nodeAPI->resetAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH);
+    ASSERT_EQ(ret1, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH)->value[PARAM_0].i32, true);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

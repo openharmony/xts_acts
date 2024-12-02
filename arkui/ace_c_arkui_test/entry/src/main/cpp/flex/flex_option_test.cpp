@@ -607,5 +607,27 @@ static napi_value TestFlexOption022(napi_env env, napi_callback_info info)
     
     NAPI_END;
 }
+static napi_value TestFlexOption023(napi_env env, napi_callback_info info)
+{
+    NAPI_START(flex, ARKUI_NODE_FLEX);
 
+    ArkUI_NumberValue value[] = {
+        {.i32 = PARAM_NEGATIVE_1},
+        {.i32 = PARAM_NEGATIVE_1},
+        {.i32 = PARAM_NEGATIVE_1},
+        {.i32 = PARAM_NEGATIVE_1},
+    };
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(flex, NODE_FLEX_OPTION, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    
+    if (nodeAPI->getAttribute(flex, NODE_FLEX_OPTION) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(flex, NODE_FLEX_OPTION)->value[PARAM_0].i32, PARAM_NEGATIVE_1);
+        ASSERT_NE(nodeAPI->getAttribute(flex, NODE_FLEX_OPTION)->value[PARAM_1].i32, PARAM_NEGATIVE_1);
+        ASSERT_NE(nodeAPI->getAttribute(flex, NODE_FLEX_OPTION)->value[PARAM_2].i32, PARAM_NEGATIVE_1);
+        ASSERT_NE(nodeAPI->getAttribute(flex, NODE_FLEX_OPTION)->value[PARAM_3].i32, PARAM_NEGATIVE_1);
+    }
+    NAPI_END;
 }
+
+} // namespace ArkUICapiTest

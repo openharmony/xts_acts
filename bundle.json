@@ -25,10 +25,10 @@
             "components": [
                 "graphic_2d",
                 "graphic_surface",
-                "window_manager"
+                "window_manager",
+                "zlib"
             ],
             "third_party": [
-                "zlib",
                 "libpng",
                 "glslang",
                 "spirv-tools",

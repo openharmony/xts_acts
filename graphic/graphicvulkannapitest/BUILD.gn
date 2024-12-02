@@ -41,7 +41,6 @@ ohos_moduletest_suite("ActsGraphicVulkanTest") {
     "$comPath/utils:libgraphic_utils",
     "//third_party/googletest:gtest_main",
     "//third_party/vulkan-headers:vulkan_headers",
-    "//third_party/zlib:libz",
   ]
 
   include_dirs = [
@@ -54,5 +53,6 @@ ohos_moduletest_suite("ActsGraphicVulkanTest") {
     "c_utils:utils",
     "graphic_surface:surface",
     "hilog:libhilog",
+    "zlib:libz",
   ]
 }

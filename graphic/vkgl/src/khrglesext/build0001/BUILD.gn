@@ -33,6 +33,7 @@ ohos_static_library("libkhrglesextfunc0001") {
 
   include_dirs = common_include
   deps = common_depends_glesext
+  external_deps = [ "zlib:libz" ]
   configs = [ ":deqp_platform_ohos_config" ]
 }
 

@@ -314,7 +314,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1100 get state result err is: " + JSON.stringify(err))
         }
-
+        console.info('animateTest_1100 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -322,9 +323,6 @@ export default function animateToTest() {
         console.info("animateTest_1100 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1100 click result is: " + JSON.stringify(sendEventByKey('button6', 10, "")));
-      await CommonFunc.sleep(500);
-      console.info('animateTest_1100 END');
-      done();
     });
 
     it('animateTest_1200', 0, async (done: Function) => {
@@ -344,6 +342,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1200 get state result err is: " + JSON.stringify(err))
         }
+        console.info('animateTest_1200 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -351,9 +351,6 @@ export default function animateToTest() {
         console.info("animateTest_1200 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1200 click result is: " + JSON.stringify(sendEventByKey('button7', 10, "")));
-      await CommonFunc.sleep(500);
-      console.info('animateTest_1200 END');
-      done();
     });
 
     it('animateTest_1300', 0, async (done: Function) => {
@@ -373,7 +370,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1300 get state result err is: " + JSON.stringify(err))
         }
-
+        console.info('animateTest_1300 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -381,9 +379,6 @@ export default function animateToTest() {
         console.info("animateTest_1300 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1300 click result is: " + JSON.stringify(sendEventByKey('button8', 10, "")));
-      await CommonFunc.sleep(500);
-      console.info('animateTest_1300 END');
-      done();
     });
 
     it('animateTest_1400', 0, async (done: Function) => {
@@ -403,6 +398,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1400 get state result err is: " + JSON.stringify(err))
         }
+        console.info('animateTest_1400 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -410,9 +407,6 @@ export default function animateToTest() {
         console.info("animateTest_1400 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1400 click result is: " + JSON.stringify(sendEventByKey('button9', 10, "")));
-      await CommonFunc.sleep(500);
-	  console.info('animateTest_1400 END');
-      done();
     });
 
     it('animateTest_1500', 0, async (done: Function) => {
@@ -432,6 +426,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1500 get state result err is: " + JSON.stringify(err))
         }
+		console.info('animateTest_1500 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -439,9 +435,6 @@ export default function animateToTest() {
         console.info("animateTest_1500 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1500 click result is: " + JSON.stringify(sendEventByKey('button10', 10, "")));
-      await CommonFunc.sleep(500);
-      console.info('animateTest_1500 END');
-      done();
     });
 
     it('animateTest_1600', 0, async (done: Function) => {
@@ -461,6 +454,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1600 get state result err is: " + JSON.stringify(err))
         }
+        console.info('animateTest_1600 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -468,9 +463,6 @@ export default function animateToTest() {
         console.info("animateTest_1600 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1600 click result is: " + JSON.stringify(sendEventByKey('button111', 10, "")));
-      await CommonFunc.sleep(500);
-	  console.info('animateTest_1600 END');
-      done();
     });
 
     it('animateTest_1700', 0, async (done: Function) => {
@@ -490,7 +482,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1700 get state result err is: " + JSON.stringify(err))
         }
-
+	    console.info('animateTest_1700 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -498,9 +491,6 @@ export default function animateToTest() {
         console.info("animateTest_1700 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1700 click result is: " + JSON.stringify(sendEventByKey('button121', 10, "")));
-      await CommonFunc.sleep(500);     
-	  console.info('animateTest_1700 END');
-      done();
     });
 
     it('animateTest_1800', 0, async (done: Function) => {
@@ -520,6 +510,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1800 get state result err is: " + JSON.stringify(err))
         }
+		console.info('animateTest_1800 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -527,9 +519,6 @@ export default function animateToTest() {
         console.info("animateTest_1800 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1800 click result is: " + JSON.stringify(sendEventByKey('button131', 10, "")));
-      await CommonFunc.sleep(500);
-      console.info('animateTest_1800 END');
-      done();
     });
 
     it('animateTest_1900', 0, async (done: Function) => {
@@ -549,6 +538,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_1900 get state result err is: " + JSON.stringify(err))
         }
+		console.info('animateTest_1900 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -556,9 +547,6 @@ export default function animateToTest() {
         console.info("animateTest_1900 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_1900 click result is: " + JSON.stringify(sendEventByKey('button141', 10, "")));
-      await CommonFunc.sleep(500);
-      console.info('animateTest_1900 END');
-      done();
     });
 
     it('animateTest_2000', 0, async (done: Function) => {
@@ -579,7 +567,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_2000 get state result err is: " + JSON.stringify(err));
         }
-
+	    console.info('animateTest_2000 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -587,9 +576,6 @@ export default function animateToTest() {
         console.info("animateTest_2000 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_2000 click result is: " + JSON.stringify(sendEventByKey('button151', 10, "")));
-      await CommonFunc.sleep(500);
-	  console.info('animateTest_2000 END');
-      done();
     });
     /* *
       * @tc.number: SUB_ACE_FUNCTION_SR000S6E08_001

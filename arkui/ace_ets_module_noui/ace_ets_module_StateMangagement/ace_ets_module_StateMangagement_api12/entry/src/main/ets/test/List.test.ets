@@ -179,6 +179,17 @@ import ForEachTest030 from './foreachTest/ForEachTest030.test';
 import StateTest0040 from './state/StateTest0040.test';
 import StateTest0080 from './state/StateTest0080.test';
 import WrapBuilder0020Test from './wrap_builder/WrapBuilder0020Test.test';
+import StateTest0070 from './state/StateTest0070.test';
+import StateTest0090 from './state/StateTest0090.test';
+import ParamTest0010 from './ParamTest/ParamTest0010.test';
+import LazyForEachTest0470 from './LazyForEach/LazyForEachTest0470.test';
+import ForEachTest0330 from './foreachTest/ForEachTest0330.test';
+import IfElseTest0100 from './IfElseTest/IfElseTest0100.test';
+import RepeatTest0200 from './RepeatTest/RepeatTest0200.test';
+import MakeObservedTest0300 from './makeObservedTest/MakeObservedTest0300.test';
+import WatchLinkTest0050 from './watchTest/WatchLinkTest0050.test';
+import ProvideConsumeTest0010 from './provide_consume/ProvideConsumeTest0010.test';
+import ProviderTest0270 from './ProviderTest/ProviderTest0270.test';
 
 export default function testsuite() {
 
@@ -348,4 +359,15 @@ export default function testsuite() {
   StateTest0040();
   StateTest0080();
   WrapBuilder0020Test();
+  StateTest0070();
+  StateTest0090();
+  ParamTest0010();
+  LazyForEachTest0470();
+  ForEachTest0330();
+  IfElseTest0100();
+  RepeatTest0200();
+  MakeObservedTest0300();
+  WatchLinkTest0050();
+  ProvideConsumeTest0010();
+  ProviderTest0270();
 }

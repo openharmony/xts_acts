@@ -5,6 +5,7 @@
     "MainAbility/pages/UIContext/KeyboardAvoidMode",
     "MainAbility/pages/styledString/StyledString",
     "MainAbility/pages/RichEditor/onHover",
-    "MainAbility/pages/Search/autoDisable"
+    "MainAbility/pages/Search/autoDisable",
+    "MainAbility/pages/imageSpan/imageSpan"
   ]
 }

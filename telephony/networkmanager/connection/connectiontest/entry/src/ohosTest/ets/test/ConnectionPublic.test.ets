@@ -34,7 +34,12 @@ const ExpectTrue: (n: boolean) => void = (n: boolean) => {
   }
 };
 
-
+function sleep (time:number):Promise<string>{
+    return new Promise<string>((resolve)=>{
+        setTimeout(()=>{
+            resolve('ok')},time)
+    });
+}
 
 
 export default function ConnectionPublicTest() {
@@ -565,8 +570,8 @@ export default function ConnectionPublicTest() {
       console.info(`${caseName} test start`);
       try {
         await connection.getDefaultNet().then(async (netHandle: connection.NetHandle) => {
-          netHandle.netId = 100;
-          await connection.reportNetConnected(netHandle).then(() => {
+		  if(netHandle.netId > 0){
+			await connection.reportNetConnected(netHandle).then(() => {
             console.info(`${caseName}: reportNetConnected: success`);
             ExpectTrue(true);
             console.info(`${caseName}---End`);
@@ -576,7 +581,12 @@ export default function ConnectionPublicTest() {
             ExpectFail();
             console.info(`${caseName}---End`);
             done();
-          });
+			});
+		  }else{
+			console.info(`${caseName} connect: err->please link the network`);
+			ExpectFail();
+			done();
+		  }
         }).catch((error: BusinessError) => {
           console.info(`${caseName} getDefaultNet: err->${JSON.stringify(error)}`);
           ExpectFail();
@@ -8269,6 +8279,7 @@ export default function ConnectionPublicTest() {
             done();
           }
         });
+		await sleep(1000);
         netCon.unregister((error: BusinessError) => {
           if (error) {
             console.info(`${caseName} unregister fail error ${JSON.stringify(error)}`);

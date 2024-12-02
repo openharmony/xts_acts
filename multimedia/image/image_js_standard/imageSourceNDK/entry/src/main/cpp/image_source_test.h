@@ -22,6 +22,12 @@
 
 namespace OHOS {
 namespace Media {
+
+#define IMAGE_LOG_TAG "ImageSourceNDKTest"
+#define IMAGE_LOG_DOMAIN 0x3200
+
+#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, IMAGE_LOG_DOMAIN, IMAGE_LOG_TAG, fmt, ##__VA_ARGS__)
+
 class ImageSourceNDKTest {
 public:
     static napi_value Init(napi_env env, napi_value exports);

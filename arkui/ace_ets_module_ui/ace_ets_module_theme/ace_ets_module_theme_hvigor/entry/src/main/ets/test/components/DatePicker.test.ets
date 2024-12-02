@@ -17,19 +17,30 @@ import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hyp
 import {
   datePickerIsLunarProperty,
   DatePickerKeys,
-  datePickerThemeProperty
+  datePickerThemeProperty,
+  datePickerThemeSetProperty
 } from '../../MainAbility/pages/components/DatePickerPage';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
-import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
+import { brownCustomTheme, greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
 import { frameTime, sleep } from '../Utils';
 import { Theme, CustomTheme } from '@ohos.arkui.theme';
 
+const emptyCheck = 'emptyCheck';
+const emptyAttr = 'emptyAttr';
+
 export default function datePickerThemeTest() {
   const SUITE: string = `DatePickerThemeTest`;
-  const emptyCheck = 'emptyCheck';
-  const emptyAttr = 'emptyAttr';
+
+  const datePickerKeys: string[] = [
+    DatePickerKeys.datePickerSystem,
+    DatePickerKeys.datePickerSystemCustomAttrs,
+    DatePickerKeys.datePickerWithTheme,
+    DatePickerKeys.datePickerWithThemeCustomAttrs
+  ]
+
   let localTheme: CustomTheme | undefined;
   let changeTheme: boolean = false;
+  let themeSet: boolean | undefined = true
   let colorValues: Map<string, string> | undefined = new Map<string, string>();
 
   describe(SUITE, () => {
@@ -42,6 +53,7 @@ export default function datePickerThemeTest() {
         if (pages?.name !== `DatePickerPage`) {
           await router.pushUrl(options).then(() => {
             localTheme = AppStorage.get<Theme>(datePickerThemeProperty);
+            themeSet = AppStorage.get<boolean>(datePickerThemeSetProperty)
             console.info(`${SUITE} router.pushUrl success`);
           })
         }
@@ -52,17 +64,17 @@ export default function datePickerThemeTest() {
       }
     });
     beforeEach(() => {
-      if (!changeTheme) {
-        return
+      AppStorage.setOrCreate(datePickerThemeSetProperty, themeSet)
+      if (changeTheme) {
+        if ((AppStorage.get(datePickerThemeProperty) as Theme)?.colors?.fontEmphasize
+          == redCustomTheme?.colors?.fontEmphasize) {
+          AppStorage.setOrCreate(datePickerThemeProperty, greenCustomTheme);
+        }
+        else {
+          AppStorage.setOrCreate(datePickerThemeProperty, redCustomTheme);
+        }
       }
-      if ((AppStorage.get(datePickerThemeProperty) as Theme)?.colors?.fontEmphasize
-        == redCustomTheme?.colors?.fontEmphasize) {
-        AppStorage.setOrCreate(datePickerThemeProperty, greenCustomTheme);
-      }
-      else {
-        AppStorage.setOrCreate(datePickerThemeProperty, redCustomTheme);
-      }
-      localTheme = AppStorage.get<Theme>(datePickerThemeProperty);
+      localTheme = AppStorage.get<boolean>(datePickerThemeSetProperty) ? AppStorage.get<Theme>(datePickerThemeProperty) : undefined
       changeTheme = false;
     });
     afterAll(() => {
@@ -75,160 +87,105 @@ export default function datePickerThemeTest() {
     });
 
     /**
-      * @tc.number    : ActsDatePickerThemeColors_0100
-      * @tc.name      : ActsDatePickerThemeColors_0100
-      * @tc.desc      : check system colors values of the DatePicker component
-      *                 isLunar = false
-      * @tc.level     : Level 2
-      * @tc.size      : MediumTest
-      * @tc.type      : Function
-      */
+     * @tc.number    : ActsDatePickerThemeColors_0100
+     * @tc.name      : ActsDatePickerThemeColors_0100
+     * @tc.desc      : check system colors values of the DatePicker component
+     *                 isLunar = false
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
     it(`ActsDatePickerThemeColors_0100`, 0, () => {
       const CASE: string = `ActsDatePickerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
-      const datePickerJSON = getInspectorByKey(DatePickerKeys.datePickerSystem);
-      const datePickerAttrs: DatePickerAttribute = JSON.parse(datePickerJSON).$attrs;
-      const selectedTextStyle: PickerTextStyle = (datePickerAttrs?.selectedTextStyle as PickerTextStyle);
-      const selectedTextColor = selectedTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkSelectedTextColor: string = colorValues?.get(`fontEmphasize`) ?? emptyCheck;
-      expect(selectedTextColor, checkSelectedTextColor);
-      const textStyle: PickerTextStyle = (datePickerAttrs?.textStyle as PickerTextStyle);
-      const textStyleColor: string = textStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const chekcTextStyleColor: string = colorValues?.get(`fontPrimary`) ?? emptyCheck;
-      expect(textStyleColor).assertEqual(chekcTextStyleColor);
-      const disappearTextStyle: PickerTextStyle = (datePickerAttrs?.disappearTextStyle as PickerTextStyle);
-      const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkDisappearTextColor: string = colorValues?.get(`fontPrimary`) ?? emptyCheck;
-      expect(disappearTextColor).assertEqual(checkDisappearTextColor);
+      datePickerKeys.forEach((key) => {
+        if (key.search(`WithTheme`) > 0) return
+        checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
+      })
       console.info(`${SUITE} ${CASE} END`);
     });
     /**
-      * @tc.number    : ActsDatePickerThemeColors_0200
-      * @tc.name      : ActsDatePickerThemeColors_0200
-      * @tc.desc      : check custom colors values of the DatePicker component
-      *                 isLunar = false
-      * @tc.level     : Level 2
-      * @tc.size      : MediumTest
-      * @tc.type      : Function
-      */
+     * @tc.number    : ActsDatePickerThemeColors_0200
+     * @tc.name      : ActsDatePickerThemeColors_0200
+     * @tc.desc      : check custom colors values of the DatePicker component
+     *                 isLunar = false
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
     it(`ActsDatePickerThemeColors_0200`, 0, () => {
       const CASE: string = `ActsDatePickerThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
-      const datePickerJSON = getInspectorByKey(DatePickerKeys.datePickerWithTheme);
-      const datePickerAttrs: DatePickerAttribute = JSON.parse(datePickerJSON).$attrs;
-      const selectedTextStyle: PickerTextStyle = (datePickerAttrs?.selectedTextStyle as PickerTextStyle);
-      const selectedColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkSelectedColor: string = localTheme?.colors?.fontEmphasize?.toString().toUpperCase()
-        ?? emptyCheck;
-      expect(selectedColor).assertEqual(checkSelectedColor);
-      const textStyle: PickerTextStyle = (datePickerAttrs?.textStyle as PickerTextStyle);
-      const textColor: string = textStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? emptyCheck;
-      expect(textColor).assertEqual(checkTextColor);
-      const disappearTextStyle: PickerTextStyle = (datePickerAttrs?.disappearTextStyle as PickerTextStyle)
-      const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkDisappearTextColor: string = localTheme?.colors?.fontPrimary?.toString()?.toUpperCase()
-        ?? emptyCheck;
-      expect(disappearTextColor).assertEqual(checkDisappearTextColor);
-      changeTheme = true;
+      datePickerKeys.forEach((key) => {
+        if (key.search(`System`) > 0) return
+        checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
+      })
+      changeTheme = true
       console.info(`${SUITE} ${CASE} END`);
     });
     /**
-      * @tc.number    : ActsDatePickerThemeColors_0300
-      * @tc.name      : ActsDatePickerThemeColors_0300
-      * @tc.desc      : check custom colors values of the DatePicker component after change
-      *                 isLunar = false
-      * @tc.level     : Level 2
-      * @tc.size      : MediumTest
-      * @tc.type      : Function
-      */
+     * @tc.number    : ActsDatePickerThemeColors_0300
+     * @tc.name      : ActsDatePickerThemeColors_0300
+     * @tc.desc      : check custom colors values of the DatePicker component after change
+     *                 isLunar = false
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
     it(`ActsDatePickerThemeColors_0300`, 0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
-      const datePickerJSON = getInspectorByKey(DatePickerKeys.datePickerWithTheme);
-      const datePickerAttrs: DatePickerAttribute = JSON.parse(datePickerJSON).$attrs;
-      const selectedTextStyle: PickerTextStyle = (datePickerAttrs?.selectedTextStyle as PickerTextStyle);
-      const selectedColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkSelectedColor: string = localTheme?.colors?.fontEmphasize?.toString().toUpperCase() ?? emptyCheck;
-      expect(selectedColor).assertEqual(checkSelectedColor);
-      const textStyle: PickerTextStyle = (datePickerAttrs?.textStyle as PickerTextStyle);
-      const textColor: string = textStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? emptyCheck;
-      expect(textColor).assertEqual(checkTextColor);
-      const disappearTextStyle: PickerTextStyle = (datePickerAttrs?.disappearTextStyle as PickerTextStyle)
-      const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkDisappearTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? emptyCheck;
-      expect(disappearTextColor).assertEqual(checkDisappearTextColor);
-      changeTheme = true;
+      datePickerKeys.forEach((key) => {
+        if (key.search(`System`) > 0) return
+        checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
+      })
+      themeSet = false
       console.info(`${SUITE} ${CASE} END`);
     });
     /**
-      * @tc.number    : ActsDatePickerThemeColors_0400
-      * @tc.name      : ActsDatePickerThemeColors_0400
-      * @tc.desc      : check system colors values of the DatePicker component
-      *                 isLunar = true
-      * @tc.level     : Level 2
-      * @tc.size      : MediumTest
-      * @tc.type      : Function
-      */
+     * @tc.number    : ActsDatePickerThemeColors_0400
+     * @tc.name      : ActsDatePickerThemeColors_0400
+     * @tc.desc      : check system colors values of the DatePicker component after reset
+     *                 isLunar = false
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
     it(`ActsDatePickerThemeColors_0400`, 0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0400`;
       console.info(`${SUITE} ${CASE} START`);
-      await sleep(frameTime);
-      const datePickerJSON = getInspectorByKey(DatePickerKeys.datePickerWithTheme);
-      const datePickerAttrs: DatePickerAttribute = JSON.parse(datePickerJSON).$attrs;
-      const selectedTextStyle: PickerTextStyle = (datePickerAttrs?.selectedTextStyle as PickerTextStyle);
-      const selectedColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkSelectedColor: string = localTheme?.colors?.fontEmphasize?.toString().toUpperCase() ?? emptyCheck;
-      expect(selectedColor).assertEqual(checkSelectedColor);
-      const textStyle: PickerTextStyle = (datePickerAttrs?.textStyle as PickerTextStyle);
-      const textColor: string = textStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? emptyCheck;
-      expect(textColor).assertEqual(checkTextColor);
-      const disappearTextStyle: PickerTextStyle = (datePickerAttrs?.disappearTextStyle as PickerTextStyle)
-      const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkDisappearTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase()
-        ?? emptyCheck;
-      expect(disappearTextColor).assertEqual(checkDisappearTextColor);
+      await sleep(frameTime * 2);
+      datePickerKeys.forEach((key) => {
+        checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
+      })
+      themeSet = true
+      AppStorage.setOrCreate(datePickerIsLunarProperty, true);
       console.info(`${SUITE} ${CASE} END`);
     });
     /**
      * @tc.number    : ActsDatePickerThemeColors_0500
      * @tc.name      : ActsDatePickerThemeColors_0500
-     * @tc.desc      : check custom colors values of the DatePicker component
+     * @tc.desc      : check system colors values of the DatePicker component
      *                 isLunar = true
      * @tc.level     : Level 2
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0500`, 0, () => {
+    it(`ActsDatePickerThemeColors_0500`, 0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0500`;
       console.info(`${SUITE} ${CASE} START`);
-      const datePickerJSON = getInspectorByKey(DatePickerKeys.datePickerWithTheme);
-      const datePickerAttrs: DatePickerAttribute = JSON.parse(datePickerJSON).$attrs;
-      const selectedTextStyle: PickerTextStyle = (datePickerAttrs?.selectedTextStyle as PickerTextStyle);
-      const selectedColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkSelectedColor: string = localTheme?.colors?.fontEmphasize?.toString().toUpperCase()
-        ?? emptyCheck;
-      expect(selectedColor).assertEqual(checkSelectedColor);
-      const textStyle: PickerTextStyle = (datePickerAttrs?.textStyle as PickerTextStyle);
-      const textColor: string = textStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? emptyCheck;
-      expect(textColor).assertEqual(checkTextColor);
-      const disappearTextStyle: PickerTextStyle = (datePickerAttrs?.disappearTextStyle as PickerTextStyle)
-      const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkDisappearTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase()
-        ?? emptyCheck;
-      expect(disappearTextColor).assertEqual(checkDisappearTextColor);
-      changeTheme = true;
+      await sleep(frameTime * 2);
+      datePickerKeys.forEach((key) => {
+        if (key.search(`WithTheme`) > 0) return
+        checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
+      })
       console.info(`${SUITE} ${CASE} END`);
     });
     /**
      * @tc.number    : ActsDatePickerThemeColors_0600
      * @tc.name      : ActsDatePickerThemeColors_0600
-     * @tc.desc      : check system colors values of the DatePicker component
-     *                 after change theme
+     * @tc.desc      : check custom colors values of the DatePicker component
      *                 isLunar = true
      * @tc.level     : Level 2
      * @tc.size      : MediumTest
@@ -237,26 +194,78 @@ export default function datePickerThemeTest() {
     it(`ActsDatePickerThemeColors_0600`, 0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0600`;
       console.info(`${SUITE} ${CASE} START`);
-      await sleep(frameTime);
-      const datePickerJSON = getInspectorByKey(DatePickerKeys.datePickerWithTheme);
-      const datePickerAttrs: DatePickerAttribute = JSON.parse(datePickerJSON).$attrs;
-      const selectedTextStyle: PickerTextStyle = (datePickerAttrs?.selectedTextStyle as PickerTextStyle);
-      const selectedColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkSelectedColor: string = localTheme?.colors?.fontEmphasize?.toString().toUpperCase()
-        ?? emptyCheck;
-      expect(selectedColor).assertEqual(checkSelectedColor);
-      const textStyle: PickerTextStyle = (datePickerAttrs?.textStyle as PickerTextStyle);
-      const textColor: string = textStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase() ?? emptyCheck;
-      expect(textColor).assertEqual(checkTextColor);
-      const disappearTextStyle: PickerTextStyle = (datePickerAttrs?.disappearTextStyle as PickerTextStyle)
-      const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
-      const checkDisappearTextColor: string = localTheme?.colors?.fontPrimary?.toString().toUpperCase()
-       ?? emptyCheck;
-      expect(disappearTextColor).assertEqual(checkDisappearTextColor);
+      await sleep(frameTime * 2);
+      datePickerKeys.forEach((key) => {
+        if (key.search(`System`) > 0) return
+        checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
+      })
       changeTheme = true;
+      console.info(`${SUITE} ${CASE} END`);
+    });
+    /**
+     * @tc.number    : ActsDatePickerThemeColors_0700
+     * @tc.name      : ActsDatePickerThemeColors_0700
+     * @tc.desc      : check custom colors values of the DatePicker component
+     *                 after change theme
+     *                 isLunar = true
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it(`ActsDatePickerThemeColors_0700`, 0, async () => {
+      const CASE: string = `ActsDatePickerThemeColors_0700`;
+      console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime * 2);
+      datePickerKeys.forEach((key) => {
+        if (key.search(`System`) > 0) return
+        checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
+      })
+      themeSet = false
+      console.info(`${SUITE} ${CASE} END`);
+    });
+    /**
+     * @tc.number    : ActsDatePickerThemeColors_0800
+     * @tc.name      : ActsDatePickerThemeColors_0800
+     * @tc.desc      : check system colors values of the DatePicker component
+     *                 after reset theme
+     *                 isLunar = true
+     * @tc.level     : Level 2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it(`ActsDatePickerThemeColors_0800`, 0, async () => {
+      const CASE: string = `ActsDatePickerThemeColors_0800`;
+      console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime * 2);
+      datePickerKeys.forEach((key) => {
+        checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
+      })
+      themeSet = true
       AppStorage.setOrCreate(datePickerIsLunarProperty, false);
       console.info(`${SUITE} ${CASE} END`);
     });
   });
+}
+
+function checkWithTheme(localTheme: CustomTheme | undefined, key: string, customAttrs: boolean, colorValues: Map<string, string> | undefined) {
+  const datePickerJSON = getInspectorByKey(key)
+  const datePickerAttrs: DatePickerAttribute = JSON.parse(datePickerJSON).$attrs;
+  const selectedTextStyle: PickerTextStyle = (datePickerAttrs?.selectedTextStyle as PickerTextStyle);
+  const selectedColor: string = selectedTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
+  const checkSelectedColor: string = (customAttrs ? brownCustomTheme : localTheme)?.colors?.fontEmphasize?.toString().toUpperCase()
+    ?? colorValues?.get(`fontEmphasize`)
+    ?? emptyCheck;
+  expect(selectedColor).assertEqual(checkSelectedColor);
+  const textStyle: PickerTextStyle = (datePickerAttrs?.textStyle as PickerTextStyle);
+  const textColor: string = textStyle?.color?.toString().toUpperCase() ?? emptyAttr;
+  const checkTextColor: string = (customAttrs ? brownCustomTheme : localTheme)?.colors?.fontPrimary?.toString().toUpperCase()
+    ?? colorValues?.get(`fontPrimary`)
+    ?? emptyCheck;
+  expect(textColor).assertEqual(checkTextColor);
+  const disappearTextStyle: PickerTextStyle = (datePickerAttrs?.disappearTextStyle as PickerTextStyle)
+  const disappearTextColor: string = disappearTextStyle?.color?.toString().toUpperCase() ?? emptyAttr;
+  const checkDisappearTextColor: string = (customAttrs ? brownCustomTheme : localTheme)?.colors?.fontPrimary?.toString().toUpperCase()
+    ?? colorValues?.get(`fontPrimary`)
+    ?? emptyCheck;
+  expect(disappearTextColor).assertEqual(checkDisappearTextColor);
 }

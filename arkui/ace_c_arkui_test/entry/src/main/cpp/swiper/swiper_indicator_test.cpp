@@ -128,4 +128,64 @@ static napi_value TestSwiperIndicator007(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestSwiperIndicator008(napi_env env, napi_callback_info info)
+{
+    NAPI_START(swiper, ARKUI_NODE_SWIPER);
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+    OH_ArkUI_SwiperIndicator_SetStartPosition(indicator, NUM_5);
+    OH_ArkUI_SwiperIndicator_SetTopPosition(indicator, NUM_5);
+    OH_ArkUI_SwiperIndicator_SetEndPosition(indicator, NUM_5);
+    OH_ArkUI_SwiperIndicator_SetBottomPosition(indicator, NUM_5);
+
+    ArkUI_NumberValue value[] = {{.i32 = ARKUI_SWIPER_INDICATOR_TYPE_DOT}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    value_item.object = indicator;
+    auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INDICATOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDICATOR)->value[PARAM_0].i32,
+        ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+    ASSERT_OBJ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDICATOR)->object, indicator);
+
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator009(napi_env env, napi_callback_info info)
+{
+    NAPI_START(swiper, ARKUI_NODE_SWIPER);
+
+    ArkUI_NumberValue value[] = {};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INDICATOR, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator010(napi_env env, napi_callback_info info)
+{
+    NAPI_START(swiper, ARKUI_NODE_SWIPER);
+
+    ArkUI_NumberValue value[] = {{.i32 = PARAM_NEGATIVE_1}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INDICATOR, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator011(napi_env env, napi_callback_info info)
+{
+    NAPI_START(swiper, ARKUI_NODE_SWIPER);
+
+    ArkUI_NumberValue value[] = { { .i32 = PARAM_NEGATIVE_1 } };
+    ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
+    auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INDICATOR, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+
+    auto ret1 = nodeAPI->resetAttribute(swiper, NODE_SWIPER_INDICATOR);
+    ASSERT_EQ(ret1, SUCCESS);
+
+    ASSERT_EQ(
+        nodeAPI->getAttribute(swiper, NODE_SWIPER_INDICATOR)->value[PARAM_0].i32, ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDICATOR)->value[PARAM_1].i32, PARAM_0);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

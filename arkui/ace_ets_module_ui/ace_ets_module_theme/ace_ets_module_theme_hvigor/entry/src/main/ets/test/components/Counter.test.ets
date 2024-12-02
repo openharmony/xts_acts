@@ -15,15 +15,27 @@
 import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import router from '@ohos.router';
-import { CounterKeys, counterThemeProperty } from '../../MainAbility/pages/components/CounterPage';
-import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
+import { CounterKeys, counterThemeProperty, counterThemeSetProperty } from '../../MainAbility/pages/components/CounterPage';
+import { brownCustomTheme, greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
 import { frameTime, sleep } from '../Utils';
 import { Theme, CustomTheme } from '@ohos.arkui.theme';
+
+const emptyCheck: string = 'emptyCheck';
+const emptyAttr: string = 'emptyAttr';
 
 export default function counterThemeTest() {
   const SUITE: string = `CounterThemeTest`;
   let localTheme: CustomTheme | undefined;
   let changeTheme: boolean = false;
+  let themeSet: boolean = true;
+
+  const counterKeys: string [] = [
+    CounterKeys.counterSystem,
+    CounterKeys.counterSystemCustomAttrs,
+    CounterKeys.counterWithTheme,
+    CounterKeys.counterWithThemeCustomAttrs
+  ]
+  
   let colorValues: Map<string, string> | undefined = new Map<string, string>();
 
   describe(SUITE, () => {
@@ -46,17 +58,17 @@ export default function counterThemeTest() {
     })
 
     beforeEach(() => {
-      if (!changeTheme) {
-        return
+      AppStorage.setOrCreate(counterThemeSetProperty, themeSet)
+      if (changeTheme) {
+        if ((AppStorage.get(counterThemeProperty) as Theme)?.colors?.fontEmphasize
+          == redCustomTheme?.colors?.fontEmphasize) {
+          AppStorage.setOrCreate(counterThemeProperty, greenCustomTheme);
+        } else {
+          AppStorage.setOrCreate(counterThemeProperty, redCustomTheme);
+        }
+        changeTheme = false;
       }
-      if ((AppStorage.get(counterThemeProperty) as Theme)?.colors?.fontEmphasize
-        == redCustomTheme?.colors?.fontEmphasize) {
-        AppStorage.setOrCreate(counterThemeProperty, greenCustomTheme);
-      } else {
-        AppStorage.setOrCreate(counterThemeProperty, redCustomTheme);
-      }
-      localTheme = AppStorage.get<Theme>(counterThemeProperty);
-      changeTheme = false;
+      localTheme = AppStorage.get<boolean>(counterThemeSetProperty) ? AppStorage.get<Theme>(counterThemeProperty) : undefined;
     })
 
     afterAll(() => {
@@ -77,11 +89,10 @@ export default function counterThemeTest() {
     it(`ActsCounterThemeColors_0100`, 0, () => {
       const CASE: string = `ActsCounterThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
-      const counterJSON = getInspectorByKey(CounterKeys.counterSystem);
-      const attrsCounter = (JSON.parse(counterJSON)?.$attrs as CounterAttribute);
-      const foregroundColor = attrsCounter?.foregroundColor?.toString().toUpperCase();
-      const checkForegroundColor = colorValues?.get(`fontPrimary`);
-      expect(foregroundColor).assertEqual(checkForegroundColor);
+      counterKeys.forEach((key) => {
+        if (key.search(`WithTheme`) > 0) return;
+        checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
+      });
       console.info(`${SUITE} ${CASE} END`);
     })
     /**
@@ -95,13 +106,10 @@ export default function counterThemeTest() {
     it(`ActsCounterThemeColors_0200`, 0, async () => {
       const CASE: string = `ActsCounterThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
-      await sleep(frameTime);
-      localTheme = AppStorage.get<Theme>(counterThemeProperty);
-      const counterJSON = getInspectorByKey(CounterKeys.counterWithTheme);
-      const attrsCounter = (JSON.parse(counterJSON)?.$attrs as CounterAttribute);
-      const foregroundColor = attrsCounter?.foregroundColor?.toString().toUpperCase();
-      const checkForegroundColor = localTheme?.colors?.fontPrimary;
-      expect(foregroundColor).assertEqual(checkForegroundColor);
+      counterKeys.forEach((key) => {
+        if (key.search(`System`) > 0) return;
+        checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
+      });
       changeTheme = true;
       console.info(`${SUITE} ${CASE} END`);
     })
@@ -117,13 +125,41 @@ export default function counterThemeTest() {
       const CASE: string = `ActsCounterThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
-      const counterJSON = getInspectorByKey(CounterKeys.counterWithTheme);
-      const attrsCounter = (JSON.parse(counterJSON)?.$attrs as CounterAttribute);
-      const foregroundColor = attrsCounter?.foregroundColor?.toString().toUpperCase();
-      const checkForegroundColor = localTheme?.colors?.fontPrimary;
-      expect(foregroundColor).assertEqual(checkForegroundColor);
-      changeTheme = true;
+      counterKeys.forEach((key) => {
+        if (key.search(`System`) > 0) return;
+        checkWithTheme(localTheme, key, key.search(`CustomAttrs`) > 0, colorValues)
+      });
+      themeSet = false;
+      console.info(`${SUITE} ${CASE} END`);
+    })
+
+    /**
+      * @tc.number    : ActsCounterThemeColors_0400
+      * @tc.name      : ActsCounterThemeColors_0400
+      * @tc.desc      : Check counter system colors after reset theme
+      * @tc.level     : Level 2
+      * @tc.size      : MediumTest
+      * @tc.type      : Function
+      */
+    it(`ActsCounterThemeColors_0400`, 0, async () => {
+      const CASE: string = `ActsCounterThemeColors_0400`;
+      console.info(`${SUITE} ${CASE} START`);
+      await sleep(frameTime);
+      counterKeys.forEach((key) => {
+        checkWithTheme(undefined, key, key.search(`CustomAttrs`) > 0, colorValues)
+      });
+      themeSet = true;
       console.info(`${SUITE} ${CASE} END`);
     })
   })
+}
+
+function checkWithTheme(localTheme: CustomTheme | undefined, key: string, customAttrs: boolean, colorValues: Map<string, string> | undefined) {
+  const counterJSON = getInspectorByKey(key);
+  const attrsCounter = (JSON.parse(counterJSON)?.$attrs as CounterAttribute);
+  const foregroundColor = attrsCounter?.foregroundColor?.toString().toUpperCase() ?? emptyAttr;
+  const checkForegroundColor = (customAttrs ? brownCustomTheme : localTheme)?.colors?.fontPrimary
+    ?? colorValues?.get(`fontPrimary`)
+    ?? emptyCheck;;
+  expect(foregroundColor).assertEqual(checkForegroundColor);
 }

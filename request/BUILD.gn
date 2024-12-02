@@ -20,5 +20,6 @@ group("request") {
     "newRequestAuthorityTest:ActsRequestAuthorityTest",
     "newRequestNormalTest:ActsRequestNormalTest",
     "newRequestTest:ActsRequestNewTest",
+    "requestSpecialTest:ActsRequestSpecialTest",
   ]
 }

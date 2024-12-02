@@ -1195,6 +1195,14 @@ export const testSwiperIndicator006: () => number;
 
 export const testSwiperIndicator007: () => number;
 
+export const testSwiperIndicator008: () => number;
+
+export const testSwiperIndicator009: () => number;
+
+export const testSwiperIndicator010: () => number;
+
+export const testSwiperIndicator011: () => number;
+
 export const testSwiperInterval001: () => number;
 
 export const testSwiperInterval002: () => number;
@@ -1232,6 +1240,70 @@ export const testSwiperWidth003: () => number;
 export const testSwiperCachedCount001: () => number;
 
 export const testSwiperCachedCount002: () => number;
+
+export const testSwiperEffectMode001: () => number;
+
+export const testSwiperEffectMode002: () => number;
+
+export const testSwiperEffectMode003: () => number;
+
+export const testSwiperEffectMode004: () => number;
+
+export const testSwiperEffectMode005: () => number;
+
+export const testSwiperEffectMode006: () => number;
+
+export const testSwiperEffectMode007: () => number;
+
+export const testSwiperNextMargin001: () => number;
+
+export const testSwiperNextMargin002: () => number;
+
+export const testSwiperNextMargin003: () => number;
+
+export const testSwiperNextMargin004: () => number;
+
+export const testSwiperNextMargin005: () => number;
+
+export const testSwiperNextMargin006: () => number;
+
+export const testSwiperNextMargin007: () => number;
+
+export const testSwiperPrevMargin001: () => number;
+
+export const testSwiperPrevMargin002: () => number;
+
+export const testSwiperPrevMargin003: () => number;
+
+export const testSwiperPrevMargin004: () => number;
+
+export const testSwiperPrevMargin005: () => number;
+
+export const testSwiperPrevMargin006: () => number;
+
+export const testSwiperPrevMargin007: () => number;
+
+export const testSwiperNestedScroll001: () => number;
+
+export const testSwiperNestedScroll002: () => number;
+
+export const testSwiperNestedScroll003: () => number;
+
+export const testSwiperNestedScroll004: () => number;
+
+export const testSwiperNestedScroll005: () => number;
+
+export const testSwiperNestedScroll006: () => number;
+
+export const testSwiperChangeIndex001: () => number;
+
+export const testSwiperChangeIndex002: () => number;
+
+export const testSwiperChangeIndex003: () => number;
+
+export const testSwiperChangeIndex004: () => number;
+
+export const testSwiperChangeIndex005: () => number;
 
 export const testImageHeight001: () => number;
 
@@ -1980,6 +2052,92 @@ export const testImageAniMator009: () => number;
 export const testImageAniMator010: () => number;
 
 export const testImageAniMator011: () => number;
+
+export const testImageAniMatorImageFramelnfo001: () => number;
+
+export const testImageAniMatorImageFramelnfo002: () => number;
+
+export const testImageAniMatorImageFramelnfo003: () => number;
+
+export const testImageAniMatorImageFramelnfo004: () => number;
+
+export const testImageAnimatorImages001: () => number;
+
+export const testImageAnimatorImages002: () => number;
+
+export const testImageAnimatorImages003: () => number;
+
+export const testImageAnimatorImages004: () => number;
+
+export const testImageAnimatorState001: () => number;
+
+export const testImageAnimatorState002: () => number;
+
+export const testImageAnimatorState003: () => number;
+
+export const testImageAnimatorState004: () => number;
+
+export const testImageAnimatorState005: () => number;
+
+export const testImageAnimatorState006: () => number;
+
+export const testImageAnimatorState007: () => number;
+
+export const testImageAnimatorState008: () => number;
+
+export const testImageAnimatorDuration001: () => number;
+
+export const testImageAnimatorDuration002: () => number;
+
+export const testImageAnimatorDuration003: () => number;
+
+export const testImageAnimatorDuration004: () => number;
+
+export const testImageAnimatorDuration005: () => number;
+
+export const testImageAnimatorReverse001: () => number;
+
+export const testImageAnimatorReverse002: () => number;
+
+export const testImageAnimatorReverse003: () => number;
+
+export const testImageAnimatorReverse004: () => number;
+
+export const testImageAnimatorFixedSize001: () => number;
+
+export const testImageAnimatorFixedSize002: () => number;
+
+export const testImageAnimatorFixedSize003: () => number;
+
+export const testImageAnimatorFixedSize004: () => number;
+
+export const testImageAnimatorFillMode001: () => number;
+
+export const testImageAnimatorFillMode002: () => number;
+
+export const testImageAnimatorFillMode003: () => number;
+
+export const testImageAnimatorFillMode004: () => number;
+
+export const testImageAnimatorFillMode005: () => number;
+
+export const testImageAnimatorFillMode006: () => number;
+
+export const testImageAnimatorFillMode007: () => number;
+
+export const testImageAnimatorFillMode008: () => number;
+
+export const testImageAnimatorIterations001: () => number;
+
+export const testImageAnimatorIterations002: () => number;
+
+export const testImageAnimatorIterations003: () => number;
+
+export const testImageAnimatorIterations004: () => number;
+
+export const testImageAnimatorIterations005: () => number;
+
+export const testImageAnimatorIterations006: () => number;
 
 export const testListSwipeActionItem008: ()=> number;
 
@@ -4073,6 +4231,28 @@ export const testColumnPadding003: () => number;
 
 export const testColumnPadding004: () => number;
 
+export const testColumnJustifyContent001: () => number;
+
+export const testColumnJustifyContent002: () => number;
+
+export const testColumnJustifyContent003: () => number;
+
+export const testColumnJustifyContent004: () => number;
+
+export const testColumnJustifyContent005: () => number;
+
+export const testColumnJustifyContent006: () => number;
+
+export const testColumnJustifyContent007: () => number;
+
+export const testColumnAlignItems001: () => number;
+
+export const testColumnAlignItems002: () => number;
+
+export const testColumnAlignItems003: () => number;
+
+export const testColumnAlignItems004: () => number;
+
 export const testColumnForegroundBlurStyle001: () => number;
 
 export const testColumnForegroundBlurStyle002: () => number;
@@ -4381,6 +4561,8 @@ export const testFlexOption021: () => number;
 
 export const testFlexOption022: () => number;
 
+export const testFlexOption023: () => number;
+
 export const testXComponentWidth001: () => number;
 
 export const testXComponentWidth002: () => number;
@@ -4398,6 +4580,28 @@ export const testRowHeight001: () => number;
 export const testRowHeight002: () => number;
 
 export const testRowHeight003: () => number;
+
+export const testRowJustifyContent001: () => number;
+
+export const testRowJustifyContent002: () => number;
+
+export const testRowJustifyContent003: () => number;
+
+export const testRowJustifyContent004: () => number;
+
+export const testRowJustifyContent005: () => number;
+
+export const testRowJustifyContent006: () => number;
+
+export const testRowJustifyContent007: () => number;
+
+export const testRowAlignItems001: () => number;
+
+export const testRowAlignItems002: () => number;
+
+export const testRowAlignItems003: () => number;
+
+export const testRowAlignItems004: () => number;
 
 export const testSliderWidth001: () => number;
 
@@ -4451,11 +4655,21 @@ export const testRefreshOffset002: () => number;
 
 export const testRefreshOffset003: () => number;
 
+export const testRefreshOffset004: () => number;
+
 export const testRefreshPullDownRatio001: () => number;
 
 export const testRefreshPullDownRatio002: () => number;
 
 export const testRefreshPullDownRatio003: () => number;
+
+export const testRefreshPullDownRatio004: () => number;
+
+export const testRefreshPullDownRatio005: () => number;
+
+export const testRefreshPullDownRatio006: () => number;
+
+export const testRefreshPullDownRatio007: () => number;
 
 export const testRefreshPullToRefresh001: () => number;
 
@@ -4463,11 +4677,19 @@ export const testRefreshPullToRefresh002: () => number;
 
 export const testRefreshPullToRefresh003: () => number;
 
+export const testRefreshPullToRefresh004: () => number;
+
+export const testRefreshPullToRefresh005: () => number;
+
+export const testRefreshPullToRefresh006: () => number;
+
 export const testRefreshRefreshing001: () => number;
 
 export const testRefreshRefreshing002: () => number;
 
 export const testRefreshRefreshing003: () => number;
+
+export const testRefreshRefreshing004: () => number;
 
 export const testTextAreaBackgroundColor001: () => number;
 
@@ -5484,6 +5706,14 @@ export const testToggleSelectedColor004: () => number;
 
 export const testToggleSelectedColor005: () => number;
 
+export const testToggleUnSelectedColor001: () => number;
+
+export const testToggleUnSelectedColor002: () => number;
+
+export const testToggleUnSelectedColor003: () => number;
+
+export const testToggleUnSelectedColor004: () => number;
+
 export const testToggleSwitchPointColor004: () => number;
 
 export const testToggleSwitchPointColor005: () => number;
@@ -5523,10 +5753,98 @@ export const gestureTestParaMeter006: () => number;
 export const gestureTestParaMeter007: () => number;
 export const gestureTestParaMeter008: () => number;
 export const gestureTestParaMeter009: () => number;
+
+export const testGridColumnsGap001: () => number;
+export const testGridColumnsGap002: () => number;
+export const testGridColumnsGap003: () => number;
+export const testGridColumnsGap004: () => number;
+export const testGridRowsTemplate001: () => number;
+export const testGridRowsTemplate002: () => number;
+export const testGridRowsTemplate003: () => number;
+export const testGridColumnTemplate001: () => number;
+export const testGridColumnTemplate002: () => number;
+export const testGridColumnTemplate003: () => number;
+export const testGridRowsGap001: () => number;
+export const testGridRowsGap002: () => number;
+export const testGridRowsGap003: () => number;
+export const testGridRowsGap004: () => number;
+export const testGridCachedCount001: () => number;
+export const testGridCachedCount002: () => number;
+export const testGridCachedCount003: () => number;
+export const testGridCachedCount004: () => number;
+export const testGridCachedCount005: () => number;
+export const testGridNodeAdapter001: () => number;
+export const testGridNodeAdapter002: () => number;
+export const testGridNodeAdapter003: () => number;
+
+export const testRadioValue001: () => number;
+export const testRadioValue002: () => number;
+export const testRadioValue003: () => number;
+export const testRadioGroup001: () => number;
+export const testRadioGroup002: () => number;
+export const testRadioGroup003: () => number;
+export const testRadioRadioStyle001: () => number;
+export const testRadioRadioStyle002: () => number;
+export const testRadioRadioStyle003: () => number;
+export const testRadioChecked001: () => number;
+export const testRadioChecked002: () => number;
+export const testRadioChecked003: () => number;
+export const testRadioChecked004: () => number;
+export const testRadioChecked005: () => number;
 export const drag_setDragEventStrictReportWidthNode_001: () => number;
 export const drag_setDragEventStrictReportWidthNode_002: () => number;
 export const drag_setDragEventStrictReportWidthContext_003: () => number;
 export const drag_setDragEventStrictReportWidthContext_004: () => number;
+
+export const testAddChildGesture001: () => number;
+
+export const testAddChildGesture002: () => number;
+
+export const testAddChildGesture003: () => number;
+
+export const testAddChildGesture004: () => number;
+
+export const testAddChildGesture005: () => number;
+
+export const testAddChildGesture006: () => number;
+
+export const testRemoveChildGesture001: () => number;
+
+export const testRemoveChildGesture002: () => number;
+
+export const testRemoveChildGesture003: () => number;
+
+export const testRemoveChildGesture004: () => number;
+
+export const testRemoveChildGesture005: () => number;
+
+export const testRemoveChildGesture006: () => number;
+
+export const testSetGestureEventTarget001: () => number;
+
+export const testSetGestureEventTarget002: () => number;
+
+export const testSetGestureEventTarget003: () => number;
+
+export const testSetGestureEventTarget004: () => number;
+
+export const testAddGestureToNode001: () => number;
+
+export const testAddGestureToNode002: () => number;
+
+export const testAddGestureToNode003: () => number;
+
+export const testAddGestureToNode004: () => number;
+
+export const testAddGestureToNode005: () => number;
+
+export const testAddGestureToNode006: () => number;
+
+export const testRemoveGestureFromNode001: () => number;
+
+export const testSetGestureInterrupterToNode001: () => number;
+
+export const testDisposeToNode001: () => number;
 
 export const drag_setNodeAllowedDropDataTypes_001: () => number;
 export const drag_disallowNodeAnyDropDataTypes_002: () => number;
@@ -5571,3 +5889,80 @@ export const testUnregisterSystemFontStyleChangeEvent_004: () => number;
 export const testSystemFontStyleEvent_GetFontSizeScale_005: () => number;
 export const testSystemFontStyleEvent_GetFontWeightScale_006: () => number;
 export const textImageSpanTest001: () => number;
+export const testInputEvent003: () => number;
+export const testInputEvent004: () => number;
+export const testInputEvent005: () => number;
+export const testInputEvent006: () => number;
+export const testInputEvent008: () => number;
+export const testInputEvent009: () => number;
+export const testInputEvent010: () => number;
+export const testInputEvent015: () => number;
+export const testInputEvent016: () => number;
+export const testTextAreaText001 :() =>number;
+export const testTextAreaFontFeature001 : () =>number;
+export const testTextAreaFontFeature002 : () =>number;
+export const testTextAreaFontFeature003 : () =>number;
+export const testTextAreaMaxLines001 : () => number;
+export const testTextAreaMaxLines002 : () => number;
+export const testTextAreaMaxLines003 : () => number;
+export const testTextAreaMaxLines004 : () => number;
+export const testTextAreaInputFilter001 : () => number;
+export const testTextAreaInputFilter002 : () => number;
+export const testTextAreaEnterKeyType001 : () => number;
+export const testTextAreaEnterKeyType002 : () => number;
+export const testTextAreaEnterKeyType003 : () => number;
+export const testTextAreaEnterKeyType004 : () => number;
+export const testTextAreaEnterKeyType005 : () => number;
+export const testTextAreaEnterKeyType006 : () => number;
+export const testTextAreaEnterKeyType007 : () => number;
+export const testTextAreaEnterKeyType008 : () => number;
+export const testTextAreaEnterKeyType009 : () => number;
+export const testTextAreaEnterKeyType010 : () => number;
+export const testTextAreaEnableKeyboardOnFocus001 : () => number;
+export const testTextAreaEnableKeyboardOnFocus002 : () => number;
+export const testTextAreaEnableKeyboardOnFocus003 : () => number;
+export const testTextAreaShowKeyboardOnFocus001 : () => number;
+export const testTextAreaShowKeyboardOnFocus002 : () => number;
+export const testTextAreaShowKeyboardOnFocus003 : () => number;
+export const testTextAreaCaretOffset001 : () => number;
+export const testTextAreaCaretOffset002 : () => number;
+export const testTextAreaCaretOffset003 : () => number;
+export const testTextAreaGetTextContentRect001 : () => number;
+export const testTextAreaContentLineCount001 :  () => number;
+export const testTextAreaContentLineCount002 :  () => number;
+export const testTextAreaContentLineCount003 :  () => number;
+export const testTextAreaTextSelection001 : () => number;
+export const testTextAreaTextSelection002 : () => number;
+export const testTextAreaTextSelection003 : () => number;
+export const testTextAreaTextSelection004 : () => number;
+export const testTextAreaEnableAutoFill001 : () => number;
+export const testTextAreaEnableAutoFill002 : () => number;
+export const testTextAreaEnableAutoFill003 : () => number;
+export const testTextAreaEnableAutoFill004 : () => number;
+export const testTextAreaNumberOfLines001 : () => number;
+export const testTextAreaNumberOfLines002 : () => number;
+export const testTextAreaNumberOfLines003 : () => number;
+export const testTextAreaContentType001 : () => number;
+export const testTextAreaContentType002 : () => number;
+export const testTextAreaContentType003 : () => number;
+export const testTextAreaContentType004 : () => number;
+export const testTextAreaContentType005 : () => number;
+export const testTextAreaContentType006 : () => number;
+export const testTextAreaContentType007 : () => number;
+export const testTextAreaContentType008 : () => number;
+export const testTextAreaContentType009 : () => number;
+export const testTextAreaContentType010 : () => number;
+export const testTextAreaContentType011 : () => number;
+export const testTextAreaContentType012 : () => number;
+export const testTextAreaContentType013 : () => number;
+export const testTextAreaContentType014 : () => number;
+export const testTextAreaContentType015 : () => number;
+export const testTextAreaContentType016 : () => number;
+export const testTextAreaContentType017 : () => number;
+export const testTextAreaContentType018 : () => number;
+export const testTextAreaContentType019 : () => number;
+export const testTextAreaContentType020 : () => number;
+export const testTextAreaContentType021 : () => number;
+export const testTextAreaContentType022 : () => number;
+export const testTextAreaContentType023 : () => number;
+export const testTextAreaContentType024 : () => number;
