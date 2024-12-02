@@ -338,3 +338,18 @@ export const swiperOnContentDidScrollTest: (a: string) => void;
 export const swiperOnGestureSwipeTest: (a: string) => void;
 
 export const radioOnChangeTest: (a: string) => void;
+
+export const textAreaOnTextSelectionChangeTest : (a : string) => void ;
+
+export const textAreaOnContentScrollTest : (a : string) => void;
+
+export const textAreaOnContentDidChangeTest : (a : string) => void;
+
+export const textAreaOnEditChangeTest : (a : string) => void;
+
+export const textAreaOnInsertTest : (a : string) => void;
+
+export const textAreaOnDeleteTest : (a : string) =>void;
+
+export const textAreaOnSubmitTest : (a : string) =>void;
+

@@ -658,6 +658,26 @@ import imageAnimatorIterationsTest from './imageAnimator/ImageAnimatorIterations
 import imageAnimatorEventTest from "./imageAnimator/ImageAnimatorEventTest.test"
 import radioOnChangeTest from "./radio/RadioOnChangeTest.test"
 
+import textAreaTextTest from "./textarea/TextAreaTextTest.test"
+import textAreaFontFeatureTest from "./textarea/TextAreaFontFeatureTest.test"
+import textAreaMaxLinesTest from "./textarea/TextAreaMaxLinesTest.test"
+import textAreaInputFilterTest from "./textarea/TextAreaInputFilterTest.test"
+import textAreaEnterKeyTypeTest from "./textarea/TextAreaEnterKeyTypeTest.test"
+import textAreaEnableKeyboardOnFocusTest from "./textarea/TextAreaEnableKeyboardOnFocusTest.test"
+import textAreaShowKeyboardOnFocusTest from "./textarea/TextAreaShowKeyboardOnFocusTest.test"
+import textAreaCaretOffsetTest from "./textarea/TextAreaCaretOffsetTest.test"
+import textAreaGetTextContentRectTest from "./textarea/TextAreaGetTextContentRectTest.test"
+import textAreaGetContentLineCountTest from "./textarea/TextAreaGetContentLineCountTest.test"
+import textAreaTextSelectionTest from "./textarea/TextAreaTextSelectionTest.test"
+import textAreaOnTextSelectionChangeTest from "./textarea/TextAreaOnTextSelectionChangeTest.test"
+import textAreaOnContentScrollTest from "./textarea/TextAreaOnContentScrollTest.test"
+import textAreaOnContentDidChangeTest from "./textarea/TextAreaOnContentDidChangeTest.test"
+import textAreaEnableAutoFillTest from "./textarea/TextAreaEnableAutoFillTest.test"
+import textAreaOnInsertTest from "./textarea/TextAreaOnInsertTest.test"
+import textAreaOnDeleteTest from "./textarea/TextAreaOnDeleteTest.test"
+import textAreaNumberOfLinesTest from "./textarea/TextAreaNumberOfLinesTest.test"
+import textAreaContentTypeTest from "./textarea/TextAreaContentTypeTest.test"
+import textAreaOnSubmitTest from "./textarea/TextAreaOnSubmitTest.test"
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1304,5 +1324,24 @@ export default function testsuite() {
   imageAnimatorEventTest()
   toggleUnSelectedColorTest()
   radioOnChangeTest()
-
+  textAreaTextTest()
+  textAreaFontFeatureTest()
+  textAreaMaxLinesTest()
+  textAreaInputFilterTest()
+  textAreaEnterKeyTypeTest()
+  textAreaEnableKeyboardOnFocusTest()
+  textAreaShowKeyboardOnFocusTest()
+  textAreaCaretOffsetTest()
+  textAreaGetTextContentRectTest()
+  textAreaGetContentLineCountTest()
+  textAreaTextSelectionTest()
+  textAreaOnTextSelectionChangeTest()
+  textAreaOnContentScrollTest()
+  textAreaOnContentDidChangeTest()
+  textAreaEnableAutoFillTest()
+  textAreaOnInsertTest()
+  textAreaOnDeleteTest()
+  textAreaNumberOfLinesTest()
+  textAreaContentTypeTest()
+  textAreaOnSubmitTest()
 }
