@@ -21,8 +21,5 @@ group("thirdparty") {
       "decimal:decimal",
       "ubsan:ActsThirdPartyUBSanTest"
     ]
-    if (target_cpu == "arm") {
-      deps += [ "musl32:ActsThirdPartyMusl32Test" ]
-    }
   }
 }
