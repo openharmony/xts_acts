@@ -6634,5 +6634,31 @@ export default function JsvmJsunit() {
       console.info('JsvmTest0517 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0518
+     * @tc.name      JsvmTest0518
+     * @tc.desc      Test the function of Wrapper Object.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0518', 0, () => {
+      let rst: number = napitest.wrapperObjectTest();
+      console.info('JsvmTest0518 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0519
+     * @tc.name      JsvmTest0519
+     * @tc.desc      Test the function of Well-Known Symbols.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0519', 0, () => {
+      let rst: number = napitest.wellKnownSymbolsTest();
+      console.info('JsvmTest0519 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
   });
 }
