@@ -16,8 +16,9 @@
     "module": {
         "package": "com.example.accessibleabilitylist",
         "name": ".entry",
+        "mainAbility": ".MainAbility",
+        "srcPath": "",
         "deviceType": [
-      "wearable",
       "tablet",
       "default",
             "phone",
@@ -104,8 +105,6 @@
         "testRunner": {
             "name": "OpenHarmonyTestRunner",
             "srcPath": "TestRunner"
-        },
-        "mainAbility": ".MainAbility",
-        "srcPath": ""
+        }
     }
 }
