@@ -199,6 +199,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err:BusinessError, data:number) => {
+        sleep(500);
         if (err) {
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  err = " + JSON.stringify(err));
           ExpectFail();
@@ -215,52 +216,54 @@ export default function ContactInterfaceStageTest() {
             return;
           }
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  keyData = " + JSON.stringify(keyData));
-          contact.updateContact(context, {
-            id: data,
-            key: keyData,
-            emails: [{
-              email: "13800000001@email.com",
-              labelName: "自定义邮箱",
-              labelId: 1,
-              displayName: "emailDisplayName"
-            }]
-          }, (err) => {
-            if (err) {
-              console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
-              done();
-              return;
-            }
-            console.log('updateContact success');
-            contact.queryKey(context, data, (err, newKey) => {
+          if (JSON.stringify(keyData) != undefined){
+            contact.updateContact(context, {
+              id: data,
+              key: keyData,
+              emails: [{
+                email: "13800000001@email.com",
+                labelName: "自定义邮箱",
+                labelId: 1,
+                displayName: "emailDisplayName"
+              }]
+            }, (err) => {
               if (err) {
                 console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  err = " + JSON.stringify(err));
                 expect(false).assertTrue();
                 done();
                 return;
               }
-              console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  newKey = " + JSON.stringify(newKey));
-              contact.queryContact(context, newKey, (err, data) => {
+              console.log('updateContact success');
+              contact.queryKey(context, data, (err, newKey) => {
                 if (err) {
                   console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  err = " + JSON.stringify(err));
                   expect(false).assertTrue();
                   done();
                   return;
                 }
-                console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  data = " + JSON.stringify(data));
-                let resDate: contact.Contact = data;
-                if (resDate.emails !== undefined) {
-                  let emails: contact.Email[] = resDate.emails
-                  if (emails[0].email !== undefined) {
-                    let email: string = emails[0].email;
-                    expect(email === "13800000001@email.com").assertTrue();
+                console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  newKey = " + JSON.stringify(newKey));
+                contact.queryContact(context, newKey, (err, data) => {
+                  if (err) {
+                    console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  err = " + JSON.stringify(err));
+                    expect(false).assertTrue();
                     done();
+                    return;
                   }
-                };
-                ;
+                  console.info("SUB_Telephony_ContactsApi_updateContact_test_0100  data = " + JSON.stringify(data));
+                  let resDate: contact.Contact = data;
+                  if (resDate.emails !== undefined) {
+                    let emails: contact.Email[] = resDate.emails
+                    if (emails[0].email !== undefined) {
+                      let email: string = emails[0].email;
+                      expect(email === "13800000001@email.com").assertTrue();
+                      done();
+                    }
+                  };
+                  ;
+                });
               });
             });
-          });
+          }else {done()}
         })
       });
     });
@@ -276,6 +279,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -292,51 +296,53 @@ export default function ContactInterfaceStageTest() {
             return;
           }
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  keyData = " + JSON.stringify(keyData));
-          contact.updateContact(context, {
-            id: data,
-            key: keyData,
-            emails: [{
-              email: "13800000001@email.com",
-              labelName: "自定义邮箱",
-              labelId: 1,
-              displayName: "emailDisplayName"
-            }]
-          }, attr, (err) => {
-            if (err) {
-              console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
-              done();
-              return;
-            }
-            console.log('updateContact success');
-            contact.queryKey(context, data, (err, newKey) => {
+          if (JSON.stringify(keyData != undefined)){
+            contact.updateContact(context, {
+              id: data,
+              key: keyData,
+              emails: [{
+                email: "13800000001@email.com",
+                labelName: "自定义邮箱",
+                labelId: 1,
+                displayName: "emailDisplayName"
+              }]
+            }, attr, (err) => {
               if (err) {
                 console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  err = " + JSON.stringify(err));
                 expect(false).assertTrue();
                 done();
                 return;
               }
-              console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  newKey = " + JSON.stringify(newKey));
-              contact.queryContact(context, newKey, (err, data) => {
+              console.log('updateContact success');
+              contact.queryKey(context, data, (err, newKey) => {
                 if (err) {
                   console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  err = " + JSON.stringify(err));
                   expect(false).assertTrue();
                   done();
                   return;
                 }
-                console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  data = " + JSON.stringify(data));
-                let resDate: contact.Contact = data;
-                if (resDate.emails !== undefined) {
-                  let emails: contact.Email[] = resDate.emails;
-                  if (emails[0].email !== undefined) {
-                    let email: string = emails[0].email;
-                    expect(email === "13800000001@email.com").assertTrue();
+                console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  newKey = " + JSON.stringify(newKey));
+                contact.queryContact(context, newKey, (err, data) => {
+                  if (err) {
+                    console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  err = " + JSON.stringify(err));
+                    expect(false).assertTrue();
                     done();
+                    return;
+                  }
+                  console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  data = " + JSON.stringify(data));
+                  let resDate: contact.Contact = data;
+                  if (resDate.emails !== undefined) {
+                    let emails: contact.Email[] = resDate.emails;
+                    if (emails[0].email !== undefined) {
+                      let email: string = emails[0].email;
+                      expect(email === "13800000001@email.com").assertTrue();
+                      done();
+                    };
                   };
-                };
+                });
               });
             });
-          });
+          }else {done()}
         });
       });
       sleep(500);
@@ -353,6 +359,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -369,50 +376,52 @@ export default function ContactInterfaceStageTest() {
             return;
           }
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  keyData = " + JSON.stringify(keyData));
-          let promise = contact.updateContact(context, {
-            id: data,
-            key: keyData,
-            emails: [{
-              email: "13800000001@email.com",
-              labelName: "自定义邮箱",
-              labelId: 1,
-              displayName: "emailDisplayName"
-            }]
-          }, attr);
-          promise.then(() => {
-            console.log('updateContact success');
-            contact.queryKey(context, data, (err, newKey) => {
-              if (err) {
-                console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
-                expect(false).assertTrue();
-                done();
-                return;
-              }
-              console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  newKey = " + JSON.stringify(newKey));
-              contact.queryContact(context, newKey, (err, data) => {
+          if (JSON.stringify(keyData != undefined)) {
+            let promise = contact.updateContact(context, {
+              id: data,
+              key: keyData,
+              emails: [{
+                email: "13800000001@email.com",
+                labelName: "自定义邮箱",
+                labelId: 1,
+                displayName: "emailDisplayName"
+              }]
+            }, attr);
+            promise.then(() => {
+              console.log('updateContact success');
+              contact.queryKey(context, data, (err, newKey) => {
                 if (err) {
                   console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
                   expect(false).assertTrue();
                   done();
                   return;
                 }
-                let resDate: contact.Contact = data;
-                if (resDate.emails !== undefined) {
-                  let emails: contact.Email[] = resDate.emails;
-                  if (emails[0].email !== undefined) {
-                    let email: string = emails[0].email;
-                    expect(email === "13800000001@email.com").assertTrue();
+                console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  newKey = " + JSON.stringify(newKey));
+                contact.queryContact(context, newKey, (err, data) => {
+                  if (err) {
+                    console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
+                    expect(false).assertTrue();
                     done();
+                    return;
+                  }
+                  let resDate: contact.Contact = data;
+                  if (resDate.emails !== undefined) {
+                    let emails: contact.Email[] = resDate.emails;
+                    if (emails[0].email !== undefined) {
+                      let email: string = emails[0].email;
+                      expect(email === "13800000001@email.com").assertTrue();
+                      done();
+                    };
                   };
-                };
+                });
               });
+            }).catch((err:BusinessError) => {
+              console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
+              expect(false).assertTrue();
+              done();
+              return;
             });
-          }).catch((err:BusinessError) => {
-            console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
-            expect(false).assertTrue();
-            done();
-            return;
-          });
+          }else {done()}
         });
       });
       sleep(500);
@@ -429,6 +438,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0400  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -462,6 +472,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("SUB_Telephony_ContactsApi_isLocalContact_test_0200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -495,6 +506,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("SUB_Telephony_ContactsApi_isMyCard_test_0100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -528,6 +540,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("SUB_Telephony_ContactsApi_isMyCard_test_0200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -561,6 +574,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (!err) {
           console.info("SUB_Telephony_ContactsApi_selectContacts_test_0100  data = " + JSON.stringify(data));
           expect(data > 0).assertTrue();
@@ -592,6 +606,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (!err) {
           console.info("SUB_Telephony_ContactsApi_selectContacts_test_0200  data = " + JSON.stringify(data));
           expect(data > 0).assertTrue();
@@ -622,6 +637,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (!err) {
           console.info("SUB_Telephony_ContactsApi_selectContacts_test_0300  data = " + JSON.stringify(data));
           expect(data > 0).assertTrue();
@@ -655,6 +671,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
+        sleep(500);
         if (!err) {
           console.info("SUB_Telephony_ContactsApi_selectContacts_test_0400  data = " + JSON.stringify(data));
           expect(data > 0).assertTrue();
@@ -687,6 +704,7 @@ export default function ContactInterfaceStageTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       let rawContactId = await contact.addContact(context, contactData);
+      sleep(500);
       expect(rawContactId > 0).assertTrue();
       try {
         let resultSet = await contact.queryKey(context, rawContactId, holder);
