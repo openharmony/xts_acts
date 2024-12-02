@@ -611,6 +611,7 @@ export default function brushTest() {
         brush.setBlendMode(drawing.BlendMode.SRC_ATOP);
         brush.setBlendMode(drawing.BlendMode.DST_ATOP);
         brush.setBlendMode(drawing.BlendMode.XOR);
+        brush.setBlendMode(drawing.BlendMode.PLUS);
         brush.setBlendMode(drawing.BlendMode.MODULATE);
         brush.setBlendMode(drawing.BlendMode.SCREEN);
         brush.setBlendMode(drawing.BlendMode.OVERLAY);
