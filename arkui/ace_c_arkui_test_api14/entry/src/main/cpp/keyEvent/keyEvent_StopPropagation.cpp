@@ -50,16 +50,6 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-
-    // if (type != -1) {
-    //     ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-    //     ArkUI_AttributeItem background_color_item = {background_color_value,
-    //                                                  sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-    //     nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-    // } else {
-    //     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "KeyEventStopPropagation",
-    //                  "KeyEventStopPropagation result : %{public}d", type);
-    // }
 }
 
 napi_value KeyEventStopPropagationTest::KeyEventStopPropagationTest_001(napi_env env, napi_callback_info info)
@@ -83,9 +73,6 @@ napi_value KeyEventStopPropagationTest::KeyEventStopPropagationTest_001(napi_env
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
     auto button = createChildNode(nodeAPI);
-
-    ArkUI_AttributeItem id_item = {};
-    // id_item.string = "KeyEventStopPropagation";
      ArkUI_AttributeItem textId = {.string = "KeyEventStopPropagation"};
     nodeAPI->setAttribute(button, NODE_ID, &textId);
 
