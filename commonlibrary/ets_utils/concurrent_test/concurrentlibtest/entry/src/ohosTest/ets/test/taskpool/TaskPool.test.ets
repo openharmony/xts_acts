@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 import { describe, it, expect } from '@ohos/hypium';
-import { collections, JSON, taskpool } from '@kit.ArkTS';
+import { ArkTSUtils, collections, JSON, lang, taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@ohos.base';
 import { delay, getTaskStateByTaskName } from '../utils/taskPoolCommon';
 import {
@@ -79,6 +79,32 @@ import {
   executeTask,
   executeTaskGroup
 } from '../utils/taskPoolCombineScenes';
+
+import {
+  SendableClass,
+  SendableFunc,
+  unionType,
+  shareTypeTask0001,
+  shareTypeTask0002,
+  shareTypeTask0003,
+  shareTypeTask0004,
+  shareTypeTask0005,
+  shareTypeTask0006,
+  shareTypeTask0007,
+  shareTypeTask0008,
+  shareTypeTaskFun,
+  shareTypeTask0011,
+  shareTypeTask0013,
+  shareTypeTask0016,
+  shareTypeTask0017,
+  CustomizeClass,
+  ISendableClass,
+  shareTypeTask0015,
+} from '../utils/taskPoolExecuteCommon';
+
+declare class ArkTools {
+  static forceFullGC(): void;
+}
 
 class Person1 {
   name: string;
@@ -6460,5 +6486,434 @@ export default function TaskPoolTest() {
       }
       console.info(`${caseName} test end`);
     });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0100
+     * @tc.name      : testExecuteTaskShareType0001
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0001', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0001';
+      console.info(`${caseName} test start`);
+      try {
+        let data: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
+        await taskpool.execute(shareTypeTask0001, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(res instanceof collections.Array).assertTrue();
+          expect((res as collections.ConcatArray<number>)[0]).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0200
+     * @tc.name      : testExecuteTaskShareType0002
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0002', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0002';
+      console.info(`${caseName} test start`);
+      try {
+        let data: collections.Array<number> = new collections.Array<number>();
+        await taskpool.execute(shareTypeTask0002, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(res instanceof collections.Array).assertTrue();
+          expect((res as collections.Array<number>)[0]).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0300
+     * @tc.name      : testExecuteTaskShareType0003
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0003', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0003';
+      console.info(`${caseName} test start`);
+      try {
+        let data: collections.Map<string, string> = new collections.Map<string, string>();
+        await taskpool.execute(shareTypeTask0003, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(res instanceof collections.Map).assertTrue();
+          expect((res as collections.Map<string, string>).get('key')).assertEqual('value');
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0400
+     * @tc.name      : testExecuteTaskShareType0004
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0004', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0004';
+      console.info(`${caseName} test start`);
+      try {
+        let data: collections.Set<number> = new collections.Set<number>();
+        await taskpool.execute(shareTypeTask0004, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(res instanceof collections.Set).assertTrue();
+          expect((res as collections.Set<number>).has(1)).assertTrue();
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0500
+     * @tc.name      : testExecuteTaskShareType0005
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0005', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0005';
+      console.info(`${caseName} test start`);
+      try {
+        let data: collections.BitVector = new collections.BitVector(0);
+        await taskpool.execute(shareTypeTask0005, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(res instanceof collections.BitVector).assertTrue();
+          expect((res as collections.BitVector).pop()).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0600
+     * @tc.name      : testExecuteTaskShareType0006
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0006', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0006';
+      console.info(`${caseName} test start`);
+      try {
+        let data: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request(caseName);
+        await taskpool.execute(shareTypeTask0006, data).then((res) => {
+          ArkTools.forceFullGC();
+          expect(res instanceof ArkTSUtils.locks.AsyncLock).assertTrue();
+          expect((res as ArkTSUtils.locks.AsyncLock).name).assertEqual(caseName);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0700
+     * @tc.name      : testExecuteTaskShareType0007
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0007', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0007';
+      console.info(`${caseName} test start`);
+      try {
+        const str: string = '{"name":"John","age":30,"city":"ChangKing"}';
+        let data: lang.ISendable | null = ArkTSUtils.ASON.parse(str);
+        if (data) {
+          await taskpool.execute(shareTypeTask0007, data).then((res) => {
+            ArkTools.forceFullGC();
+            expect(ArkTSUtils.ASON.stringify(res as lang.ISendable)).assertEqual(str);
+          })
+        } else {
+          expect().assertFail();
+        }
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0800
+     * @tc.name      : testExecuteTaskShareType0008
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0008', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0008';
+      console.info(`${caseName} test start`);
+      try {
+        let sendable = new SendableClass();
+        let data: number = sendable.count_;
+        await taskpool.execute(shareTypeTask0008, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(typeof res == 'number').assertTrue();
+          expect(res as number).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_0900
+     * @tc.name      : testExecuteTaskShareType0009
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0009', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0009';
+      console.info(`${caseName} test start`);
+      try {
+        let data: Function = SendableFunc;
+        await taskpool.execute(shareTypeTaskFun, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect((res as Function)()).assertTrue();
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_1000
+     * @tc.name      : testExecuteTaskShareType0010
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0010', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0010';
+      console.info(`${caseName} test start`);
+      try {
+        let data: Function = SendableClass.getPromiseCount;
+        await taskpool.execute(shareTypeTaskFun, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect((res as Function)()).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_1100
+     * @tc.name      : testExecuteTaskShareType0011
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0011', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0011';
+      console.info(`${caseName} test start`);
+      try {
+        let data: SendableClass = new SendableClass();
+        await taskpool.execute(shareTypeTask0011, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(res instanceof SendableClass).assertTrue();
+          expect((res as SendableClass).count_).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_1300
+     * @tc.name      : testExecuteTaskShareType0013
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0013', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0013';
+      console.info(`${caseName} test start`);
+      try {
+        await taskpool.execute(shareTypeTask0013, SendableClass.count).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(typeof res == 'number').assertTrue();
+          expect((res as number)).assertEqual(2);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_1400
+     * @tc.name      : testExecuteTaskShareType0014
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0014', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0014';
+      console.info(`${caseName} test start`);
+      try {
+        await taskpool.execute(shareTypeTaskFun, SendableClass.getPromiseCount).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect((res as Function)()).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_1500
+     * @tc.name      : testExecuteTaskShareType0015
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0015', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0015';
+      console.info(`${caseName} test start`);
+      try {
+        let data: ISendableClass = new ISendableClass();
+        await taskpool.execute(shareTypeTask0015, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(res instanceof ISendableClass).assertTrue();
+          expect((res as ISendableClass).count).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_1600
+     * @tc.name      : testExecuteTaskShareType0016
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0016', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0016';
+      console.info(`${caseName} test start`);
+      try {
+        let data: unionType = 1;
+        await taskpool.execute(shareTypeTask0016, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect(typeof res == 'boolean').assertTrue();
+          expect(res as boolean).assertTrue();
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_EXECUTE_TASK_SHARE_TYPE_1700
+     * @tc.name      : testExecuteTaskShareType0017
+     * @tc.desc      : Testing the task->execute with create func, assert return type and value.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testExecuteTaskShareType0017', 0, async (done: Function) => {
+      const caseName: string = 'testExecuteTaskShareType0017';
+      console.info(`${caseName} test start`);
+      try {
+        let data: CustomizeClass = new CustomizeClass();
+        await taskpool.execute(shareTypeTask0017, data).then((res) => {
+          ArkTools.forceFullGC();
+          console.info(`${caseName} res: ${res}`);
+          expect((res as CustomizeClass).sendable.count_).assertEqual(1);
+        })
+      } catch (error) {
+        console.error(`${caseName} catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+      }
+      console.info(`${caseName} test end`);
+      done();
+    })
   });
 }

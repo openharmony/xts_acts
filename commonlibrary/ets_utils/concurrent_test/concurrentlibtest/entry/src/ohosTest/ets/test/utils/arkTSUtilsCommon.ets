@@ -16,6 +16,15 @@
 import { ArkTSUtils } from '@kit.ArkTS';
 import { GetTime, Sleep } from './utils';
 
+export function loadCase(): Promise<void | Object> {
+  let p: Promise<void | Object> = new Promise((resolve: Function, reject: Function) => {
+    setTimeout(() => {
+      resolve(1);
+    }, 100);
+  });
+  return p;
+}
+
 @Concurrent
 export async function sharedTaskTime(lockName: string): Promise<Array<number>> {
   let res = new Array<number>();
@@ -30,11 +39,21 @@ export async function sharedTaskTime(lockName: string): Promise<Array<number>> {
 }
 
 @Concurrent
-export async function exclusiveTask(lockName: string): Promise<string> {
+export async function exclusiveTask(lockName: string, str: string): Promise<string> {
   let res = "";
   let lock = ArkTSUtils.locks.AsyncLock.request(lockName);
   await lock.lockAsync(async () => {
-    res += 'B';
+    res += str;
+    await Sleep(500);
+  }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+  return res;
+}
+
+@Concurrent
+export async function lockExclusiveTask(lock: ArkTSUtils.locks.AsyncLock, str: string): Promise<string> {
+  let res = "";
+  await lock.lockAsync(async () => {
+    res += str;
     await Sleep(500);
   }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
   return res;
@@ -72,6 +91,19 @@ export async function locksTask(lock: ArkTSUtils.locks.AsyncLock,
     res = mode == ArkTSUtils.locks.AsyncLockMode.SHARED ? 'A' : 'B';
     await Sleep(500);
   }, mode);
+  return res;
+}
+
+@Concurrent
+export async function locksTimeTask(lock: ArkTSUtils.locks.AsyncLock,
+  mode: ArkTSUtils.locks.AsyncLockMode): Promise<Array<number>> {
+  let res = new Array<number>();
+  await lock.lockAsync(async () => {
+    res.push(GetTime());
+    await Sleep(500);
+  }, mode).then(() => {
+    res.push(GetTime());
+  })
   return res;
 }
 
