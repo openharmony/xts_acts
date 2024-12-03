@@ -3376,7 +3376,7 @@ export default function IntlTest() {
     it('testIntlNewLong0002', 0, () => {
       const TAG = "testIntlNewLong0002";
       try {
-        let locales = "de";
+        let locales = "en";
         let options: Intl.DateTimeFormatOptions = {
           month: "long"
         }
