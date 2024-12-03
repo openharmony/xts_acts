@@ -62,34 +62,24 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testActiveChildrenInfoGetCount", nullptr, CustomPropertyTest::testActiveChildrenInfoGetCount011,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-          {"KeyEventGetTypeTest_001", nullptr, KeyEventGetTypeTest::KeyEventGetTypeTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventGetTypeTest_001", nullptr, KeyEventGetTypeTest::KeyEventGetTypeTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
 
-        {"KeyEventGetKeyCodeTest_001", nullptr, KeyEventGetKeyCodeTest::KeyEventGetKeyCodeTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventGetKeyCodeTest_001", nullptr, KeyEventGetKeyCodeTest::KeyEventGetKeyCodeTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
          
-        {"KeyEventGetKeyTextTest_001", nullptr, KeyEventGetKeyTextTest::KeyEventGetKeyTextTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventGetKeyTextTest_001", nullptr, KeyEventGetKeyTextTest::KeyEventGetKeyTextTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
 
-        {"KeyEventGetKeySourceTest_001", nullptr, KeyEventGetKeySourceTest::KeyEventGetKeySourceTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventGetKeySourceTest_001", nullptr, KeyEventGetKeySourceTest::KeyEventGetKeySourceTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
 
-         {"KeyEventGetGetDeviceIdTest_001", nullptr, KeyEventGetGetDeviceIdTest::KeyEventGetGetDeviceIdTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventGetGetDeviceIdTest_001", nullptr, KeyEventGetGetDeviceIdTest::KeyEventGetGetDeviceIdTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
          
-          {"KeyEventStopPropagationTest_001", nullptr, KeyEventStopPropagationTest::KeyEventStopPropagationTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-         {"KeyEventGetPressedKeysTest_001", nullptr, KeyEventGetPressedKeysTest::KeyEventGetPressedKeysTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventStopPropagationTest_001", nullptr, KeyEventStopPropagationTest::KeyEventStopPropagationTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventGetPressedKeysTest_001", nullptr, KeyEventGetPressedKeysTest::KeyEventGetPressedKeysTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
 
-        {"KeyEventGetKeyIntensionCodeTest_001", nullptr, KeyEventGetKeyIntensionCodeTest::KeyEventGetKeyIntensionCodeTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventGetKeyIntensionCodeTest_001", nullptr, KeyEventGetKeyIntensionCodeTest::KeyEventGetKeyIntensionCodeTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
 
-         {"KeyEventGetUnicodeTest_001", nullptr, KeyEventGetUnicodeTest::KeyEventGetUnicodeTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventGetUnicodeTest_001", nullptr, KeyEventGetUnicodeTest::KeyEventGetUnicodeTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
          
-          {"KeyEventSetConsumedTest_001", nullptr, KeyEventSetConsumedTest::KeyEventSetConsumedTest_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"KeyEventSetConsumedTest_001", nullptr, KeyEventSetConsumedTest::KeyEventSetConsumedTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
