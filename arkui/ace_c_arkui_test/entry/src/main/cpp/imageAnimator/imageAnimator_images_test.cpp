@@ -79,4 +79,46 @@ static napi_value TestImageAnimatorImages004(napi_env env, napi_callback_info in
     ASSERT_EQ(nodeAPI->getAttribute(imageAnimator, NODE_IMAGE_ANIMATOR_IMAGES)->size, 0);
     NAPI_END;
 }
+
+static napi_value TestImageAnimatorImages005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(imageAnimator, ARKUI_NODE_IMAGE_ANIMATOR);
+    ArkUI_ImageAnimatorFrameInfo *frameInfoArray[PARAM_5];
+    char* imageUrls1[] = {
+        "./resources/base/media/background_green1.jpg",
+        "./resources/base/media/background_red1.jpg",
+        "./resources/base/media/background_yellow1.jpg",
+        "./resources/base/media/background_blue1.jpg",
+    };
+    for (int i = 0; i < PARAM_5; ++i) {
+        frameInfoArray[i] = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(const_cast<char *>(imageUrls1[i]));
+    }
+    ArkUI_AttributeItem image_attribute_item = {.object = frameInfoArray, .size = PARAM_5};
+
+    auto ret = nodeAPI->setAttribute(imageAnimator, NODE_IMAGE_ANIMATOR_IMAGES, &image_attribute_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_OBJ(nodeAPI->getAttribute(imageAnimator, NODE_IMAGE_ANIMATOR_IMAGES)->object, frameInfoArray);
+    NAPI_END;
+}
+
+static napi_value TestImageAnimatorImages006(napi_env env, napi_callback_info info)
+{
+    NAPI_START(imageAnimator, ARKUI_NODE_IMAGE_ANIMATOR);
+    ArkUI_ImageAnimatorFrameInfo *frameInfoArray[PARAM_5];
+    char* imageUrls1[] = {
+        "./resources/base/media/background_green2.bmp",
+        "./resources/base/media/background_red2.bmp",
+        "./resources/base/media/background_yellow2.bmp",
+        "./resources/base/media/background_blue2.bmp",
+    };
+    for (int i = 0; i < PARAM_5; ++i) {
+        frameInfoArray[i] = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(const_cast<char *>(imageUrls1[i]));
+    }
+    ArkUI_AttributeItem image_attribute_item = {.object = frameInfoArray, .size = PARAM_5};
+
+    auto ret = nodeAPI->setAttribute(imageAnimator, NODE_IMAGE_ANIMATOR_IMAGES, &image_attribute_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_OBJ(nodeAPI->getAttribute(imageAnimator, NODE_IMAGE_ANIMATOR_IMAGES)->object, frameInfoArray);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

@@ -77,5 +77,31 @@ export default function imageAnimatorImagesTest() {
         expect(nativeFunc.testImageAnimatorImages004()).assertEqual(0)
         done()
     })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_NODE_IMAGE_ANIMATOR_IMAGES_0500
+    * @tc.name       : testImageAnimatorImages005
+    * @tc.desc       : testing testImageAnimator interface
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testImageAnimatorImages005', 0, async (done: Function) => {
+        expect(nativeFunc.testImageAnimatorImages005()).assertEqual(0)
+        done()
+    })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_NODE_IMAGE_ANIMATOR_IMAGES_0600
+    * @tc.name       : testImageAnimatorImages006
+    * @tc.desc       : testing testImageAnimator interface
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testImageAnimatorImages006', 0, async (done: Function) => {
+        expect(nativeFunc.testImageAnimatorImages006()).assertEqual(0)
+        done()
+    })
   })
 }
