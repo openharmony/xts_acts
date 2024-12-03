@@ -36,6 +36,7 @@ import lightWeightMapTest from './lightweightmap/LightWeightMap.test'
 import linkedListTest from './linkedlist/LinkedList.test'
 import plainArrayTest from './plainarray/PlainArray.test'
 import stringDecoderTest from './stringDecoder/StringDecoder.test'
+import streamTest from './stream/Stream.test'
 
 export default function testsuite() {
   bufferTest();
@@ -61,4 +62,5 @@ export default function testsuite() {
   linkedListTest()
   plainArrayTest()
   stringDecoderTest()
+  streamTest()
 }
