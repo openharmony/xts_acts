@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import avSession from '@ohos.multimedia.avsession';
 import featureAbility from '@ohos.ability.featureAbility';
-import AVCastPickerState from '@ohos.multimedia.avCastPickerParam';
+import { AVCastPickerState } from '@ohos.multimedia.avCastPickerParam';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 
