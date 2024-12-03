@@ -792,7 +792,7 @@ static napi_value ReleaseConfiguration(napi_env env, napi_callback_info info)
     bool flag = (code == 0 && strcmp(temp, "zh_Hans_CN") == 0 && config.locale == nullptr);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
-    delete temp;
+    free(temp);
     return value;
 }
 

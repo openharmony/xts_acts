@@ -2150,6 +2150,25 @@ export default function globalStageTest() {
         expect(e.code == '9001005').assertTrue();
       }
     })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_I18N_RawFileSync_0100
+     * @tc.name      : resourceManager_test_closeRawFdSync_0100
+     * @tc.desc      : closeRawFdSync with error path
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_closeRawFdSync_0100', 0, () => {
+      try {
+        let value = res.resourceManager.closeRawFdSync('error_path.xml');
+        console.log('resourceManager_test_closeRawFdSync_0100:' + value);
+      } catch (e) {
+        console.log('resourceManager_test_closeRawFdSync_0100_errorCode' + e.code);
+        console.log('resourceManager_test_closeRawFdSync_0100_errorMessage' + e.message);
+        expect(e.code == '9001005').assertTrue();
+      }
+    })
     console.log('*************end globalStageTest*************');
   })
 }
