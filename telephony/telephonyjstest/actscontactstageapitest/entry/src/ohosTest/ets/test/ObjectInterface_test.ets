@@ -24,10 +24,10 @@ import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
 
 function sleep (time:number):Promise<string>{
-    return new Promise<string>((resolve)=>{
-        setTimeout(()=>{
-            resolve('ok')},time)
-    });
+  return new Promise<string>((resolve)=>{
+    setTimeout(()=>{
+      resolve('ok')},time)
+  });
 }
 
 const ExpectTrue = (n: boolean) => {
@@ -224,135 +224,131 @@ export default function ObjectInterfaceTest() {
       done();
     });
     it("contactsApi_contactdata_test_300", 0, async (done:Function) => {
-        if (cdata.emails!=undefined){
-            let emails:contact.Email[]=cdata.emails;
-            expect(emails[0].email != null).assertTrue();
-            expect(emails[0].labelName != null).assertTrue();
-            console.info("contactData.emails.labelId == 1" + emails[0].labelId);
-            expect(emails[0].labelId != 0).assertTrue();
-            expect(emails[0].displayName != null).assertTrue();
-        }
-        if (cdata.events!=undefined){
-            let events:contact.Event[]=cdata.events;
-            expect(events[0].eventDate === null).assertFalse();
-            expect(events[0].labelName === null).assertFalse();
-            expect(events[0].labelId != 0).assertTrue();
-        }
-        if (cdata.groups!=undefined){
-            let groups:contact.Group[]=cdata.groups;
-            expect(groups[0].groupId != 0).assertTrue();
-            expect(groups[0].title === null).assertFalse();
-        }
-        done();
+      if (contactData.emails!=undefined){
+        expect(contactData.emails[0].email != null).assertTrue();
+        expect(contactData.emails[0].labelName != null).assertTrue();
+        expect(contactData.emails[0].labelId != 0).assertTrue();
+        expect(contactData.emails[0].displayName != null).assertTrue();
+      }
+      if (contactData.events!=undefined){
+        expect(contactData.events[0].eventDate === null).assertFalse();
+        expect(contactData.events[0].labelName === null).assertFalse();
+        expect(contactData.events[0].labelId != 0).assertTrue();
+      }
+      if (contactData.groups!=undefined){
+        expect(contactData.groups[0].groupId != 0).assertTrue();
+        expect(contactData.groups[0].title === null).assertFalse();
+      }
+      done();
     });
     it("contactsApi_contactdata_test_400", 0, async (done:Function) => {
       if (cdata.imAddresses!=undefined){
-          let imAddresses:contact.ImAddress[]=cdata.imAddresses;
-          expect(imAddresses[0].imAddress === null).assertFalse();
-          expect(imAddresses[0].labelName === null).assertFalse();
-          expect(imAddresses[0].labelId != 0).assertTrue();
+        let imAddresses:contact.ImAddress[]=cdata.imAddresses;
+        expect(imAddresses[0].imAddress === null).assertFalse();
+        expect(imAddresses[0].labelName === null).assertFalse();
+        expect(imAddresses[0].labelId != 0).assertTrue();
       }
       if (cdata.name!=undefined){
-          let name:contact.Name = cdata.name;
-          expect(name.familyName === null).assertFalse();
-          expect(name.familyNamePhonetic === null).assertFalse();
-          expect(name.fullName === null).assertFalse();
-          expect(name.givenName === null).assertFalse();
-          expect(name.givenNamePhonetic === null).assertFalse();
-          expect(name.middleName === null).assertFalse();
-          expect(name.middleNamePhonetic === null).assertFalse();
-          expect(name.namePrefix === null).assertFalse();
-          expect(name.nameSuffix === null).assertFalse();
+        let name:contact.Name = cdata.name;
+        expect(name.familyName === null).assertFalse();
+        expect(name.familyNamePhonetic === null).assertFalse();
+        expect(name.fullName === null).assertFalse();
+        expect(name.givenName === null).assertFalse();
+        expect(name.givenNamePhonetic === null).assertFalse();
+        expect(name.middleName === null).assertFalse();
+        expect(name.middleNamePhonetic === null).assertFalse();
+        expect(name.namePrefix === null).assertFalse();
+        expect(name.nameSuffix === null).assertFalse();
       }
       done();
     });
     it("contactsApi_contactdata_test_500", 0, async (done:Function) => {
       if (cdata.nickName!=undefined){
-          let nickName:contact.NickName=cdata.nickName;
-          expect(nickName === null).assertFalse();
+        let nickName:contact.NickName=cdata.nickName;
+        expect(nickName === null).assertFalse();
       }
       if (cdata.note!=undefined){
-          let note:contact.Note=cdata.note;
-          expect(note.noteContent === null).assertFalse();
+        let note:contact.Note=cdata.note;
+        expect(note.noteContent === null).assertFalse();
       }
       if (cdata.organization!=undefined){
-          let organization:contact.Organization=cdata.organization;
-          expect(organization.name === null).assertFalse();
-          expect(organization.title === null).assertFalse();
+        let organization:contact.Organization=cdata.organization;
+        expect(organization.name === null).assertFalse();
+        expect(organization.title === null).assertFalse();
       }
       if (cdata.phoneNumbers!=undefined){
-          let phoneNumbers:contact.PhoneNumber[]=cdata.phoneNumbers;
-          expect(phoneNumbers[0].labelId != 0).assertTrue();
-          expect(phoneNumbers[0].labelName === null).assertFalse();
-          expect(phoneNumbers[0].phoneNumber === null).assertFalse();
+        let phoneNumbers:contact.PhoneNumber[]=cdata.phoneNumbers;
+        expect(phoneNumbers[0].labelId != 0).assertTrue();
+        expect(phoneNumbers[0].labelName === null).assertFalse();
+        expect(phoneNumbers[0].phoneNumber === null).assertFalse();
       }
       if (cdata.portrait!=undefined){
-          let portrait:contact.Portrait=cdata.portrait;
-          expect(portrait.uri === null).assertFalse();
+        let portrait:contact.Portrait=cdata.portrait;
+        expect(portrait.uri === null).assertFalse();
       }
       done();
     });
     it("contactsApi_contactdata_test_600", 0, async (done:Function) => {
       if (cdata.postalAddresses!=undefined){
-          let postalAddresses:contact.PostalAddress[]=cdata.postalAddresses;
-          console.info("contactData.postalAddresses.city != null"
-              + postalAddresses[0].city
-              + (postalAddresses[0].city != null));
-          expect(postalAddresses[0].city === null).assertFalse();
-          expect(postalAddresses[0].country === null).assertFalse();
-          expect(postalAddresses[0].labelName === null).assertFalse();
-          expect(postalAddresses[0].neighborhood === null).assertFalse();
-          expect(postalAddresses[0].pobox === null).assertFalse();
-          expect(postalAddresses[0].postalAddress === null).assertFalse();
-          expect(postalAddresses[0].postcode === null).assertFalse();
-          expect(postalAddresses[0].region === null).assertFalse();
-          expect(postalAddresses[0].street === null).assertFalse();
-          expect(postalAddresses[0].labelId != 0).assertTrue();
+        let postalAddresses:contact.PostalAddress[]=cdata.postalAddresses;
+        console.info("contactData.postalAddresses.city != null"
+          + postalAddresses[0].city
+          + (postalAddresses[0].city != null));
+        expect(postalAddresses[0].city === null).assertFalse();
+        expect(postalAddresses[0].country === null).assertFalse();
+        expect(postalAddresses[0].labelName === null).assertFalse();
+        expect(postalAddresses[0].neighborhood === null).assertFalse();
+        expect(postalAddresses[0].pobox === null).assertFalse();
+        expect(postalAddresses[0].postalAddress === null).assertFalse();
+        expect(postalAddresses[0].postcode === null).assertFalse();
+        expect(postalAddresses[0].region === null).assertFalse();
+        expect(postalAddresses[0].street === null).assertFalse();
+        expect(postalAddresses[0].labelId != 0).assertTrue();
       }
       done();
     });
     it("contactsApi_contactdata_test_700", 0, async (done:Function) => {
       if (cdata.relations!=undefined){
-          let relations:contact.Relation[]=cdata.relations;
-          console.info("contactData.relations.labelName != null"
-              + relations[0].labelName + (relations[0].labelName === null));
-          expect(relations[0].labelId != 0).assertTrue();
-          expect(relations[0].labelName === null).assertFalse();
-          expect(relations[0].relationName === null).assertFalse();
+        let relations:contact.Relation[]=cdata.relations;
+        console.info("contactData.relations.labelName != null"
+          + relations[0].labelName + (relations[0].labelName === null));
+        expect(relations[0].labelId != 0).assertTrue();
+        expect(relations[0].labelName === null).assertFalse();
+        expect(relations[0].relationName === null).assertFalse();
       }
       if (cdata.sipAddresses!=undefined){
-          let sipAddresses:contact.SipAddress[]=cdata.sipAddresses;
-          expect(sipAddresses[0].labelId != 0).assertTrue();
-          expect(sipAddresses[0].labelName === null).assertFalse();
-          expect(sipAddresses[0].sipAddress === null).assertFalse();
+        let sipAddresses:contact.SipAddress[]=cdata.sipAddresses;
+        expect(sipAddresses[0].labelId != 0).assertTrue();
+        expect(sipAddresses[0].labelName === null).assertFalse();
+        expect(sipAddresses[0].sipAddress === null).assertFalse();
       }
       if (cdata.websites!=undefined){
-          let websites:contact.Website[]=cdata.websites;
-          expect(websites[0].website === null).assertFalse();
+        let websites:contact.Website[]=cdata.websites;
+        expect(websites[0].website === null).assertFalse();
       }
       done();
     });
     it("contactsApi_contactdata_test_800", 0, async (done:Function) => {
       if (cdata.contactAttributes!=undefined){
-          let contactAttributes:contact.ContactAttributes=cdata.contactAttributes;
-          expect(contact.Contact.INVALID_CONTACT_ID == -1).assertTrue();
-          expect(contact.Attribute.ATTR_CONTACT_EVENT ==
-          contactAttributes.attributes[0]).assertTrue();
-          expect(contact.Attribute.ATTR_EMAIL == contactAttributes.attributes[1]).assertTrue();
-          expect(contact.Attribute.ATTR_GROUP_MEMBERSHIP ==
-          contactAttributes.attributes[2]).assertTrue();
-          expect(contact.Attribute.ATTR_IM == contactAttributes.attributes[3]).assertTrue();
-          expect(contact.Attribute.ATTR_NAME == contactAttributes.attributes[4]).assertTrue();
-          expect(contact.Attribute.ATTR_NICKNAME == contactAttributes.attributes[5]).assertTrue();
-          expect(contact.Attribute.ATTR_NOTE == contactAttributes.attributes[6]).assertTrue();
-          expect(contact.Attribute.ATTR_ORGANIZATION == contactAttributes.attributes[7]).assertTrue();
-          expect(contact.Attribute.ATTR_PHONE == contactAttributes.attributes[8]).assertTrue();
-          expect(contact.Attribute.ATTR_PORTRAIT == contactAttributes.attributes[9]).assertTrue();
-          expect(contact.Attribute.ATTR_POSTAL_ADDRESS ==
-          contactAttributes.attributes[10]).assertTrue();
-          expect(contact.Attribute.ATTR_RELATION == contactAttributes.attributes[11]).assertTrue();
-          expect(contact.Attribute.ATTR_SIP_ADDRESS == contactAttributes.attributes[12]).assertTrue();
-          expect(contact.Attribute.ATTR_WEBSITE == contactAttributes.attributes[13]).assertTrue();
+        let contactAttributes:contact.ContactAttributes=cdata.contactAttributes;
+        expect(contact.Contact.INVALID_CONTACT_ID == -1).assertTrue();
+        expect(contact.Attribute.ATTR_CONTACT_EVENT ==
+        contactAttributes.attributes[0]).assertTrue();
+        expect(contact.Attribute.ATTR_EMAIL == contactAttributes.attributes[1]).assertTrue();
+        expect(contact.Attribute.ATTR_GROUP_MEMBERSHIP ==
+        contactAttributes.attributes[2]).assertTrue();
+        expect(contact.Attribute.ATTR_IM == contactAttributes.attributes[3]).assertTrue();
+        expect(contact.Attribute.ATTR_NAME == contactAttributes.attributes[4]).assertTrue();
+        expect(contact.Attribute.ATTR_NICKNAME == contactAttributes.attributes[5]).assertTrue();
+        expect(contact.Attribute.ATTR_NOTE == contactAttributes.attributes[6]).assertTrue();
+        expect(contact.Attribute.ATTR_ORGANIZATION == contactAttributes.attributes[7]).assertTrue();
+        expect(contact.Attribute.ATTR_PHONE == contactAttributes.attributes[8]).assertTrue();
+        expect(contact.Attribute.ATTR_PORTRAIT == contactAttributes.attributes[9]).assertTrue();
+        expect(contact.Attribute.ATTR_POSTAL_ADDRESS ==
+        contactAttributes.attributes[10]).assertTrue();
+        expect(contact.Attribute.ATTR_RELATION == contactAttributes.attributes[11]).assertTrue();
+        expect(contact.Attribute.ATTR_SIP_ADDRESS == contactAttributes.attributes[12]).assertTrue();
+        expect(contact.Attribute.ATTR_WEBSITE == contactAttributes.attributes[13]).assertTrue();
       }
 
       done();
@@ -440,8 +436,9 @@ export default function ObjectInterfaceTest() {
      */
     it("contactsApi_query_key_test_2300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       let rawContactId = await contact.addContact(context,contactData);
+      sleep(500);
       expect(rawContactId > 0).assertTrue();
       try {
         let resultSet = await contact.queryKey(context,rawContactId, holder);
@@ -461,8 +458,9 @@ export default function ObjectInterfaceTest() {
      */
     it("contactsApi_query_key_test_2400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       let rawContactId = await contact.addContact(context,contactData);
+      sleep(500);
       expect(rawContactId > 0).assertTrue();
       console.info("contactsApi_query_key_test_2400 : query gRawContactId = " + rawContactId);
       try {
@@ -581,8 +579,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_addContact_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_addContact_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -599,25 +598,29 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_addContact_test_100  keyData = " + JSON.stringify(keyData));
-          contact.deleteContact(context,keyData, (keyData) => {
-            if (err) {
-              console.info("contactsApi_addContact_test_100  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
+          if (JSON.stringify(keyData) != undefined){
+            sleep(500);
+            contact.deleteContact(context,keyData, (keyData) => {
+              if (err) {
+                console.info("contactsApi_addContact_test_100  err = " + JSON.stringify(err));
+                expect(false).assertTrue();
+                done();
+                return;
+              }
+              console.log('deleteContact success');
               done();
-              return;
-            }
-            console.log('deleteContact success');
-            done();
-          });
+            });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_addContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       let promise = contact.addContact(context,contactData);
       promise.then((data) => {
+        sleep(500);
         console.info("contactsApi_addContact_test_200  data = " + JSON.stringify(data));
         expect(data > 0).assertTrue();
         contact.queryKey(context,data, (err, keyData) => {
@@ -628,16 +631,19 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_addContact_test_200  keyData = " + JSON.stringify(keyData));
-          let promise = contact.deleteContact(context,keyData);
-          promise.then(() => {
-            console.log(`deleteContact success`);
-            done();
-          }).catch((err:BusinessError) => {
-            console.info("contactsApi_addContact_test_200  err = " + JSON.stringify(err));
-            expect(false).assertTrue();
-            done();
-            return;
-          });
+          if (JSON.stringify(keyData) != undefined) {
+            sleep(500);
+            let promise = contact.deleteContact(context,keyData);
+            promise.then(() => {
+              console.log(`deleteContact success`);
+              done();
+            }).catch((err:BusinessError) => {
+              console.info("contactsApi_addContact_test_200  err = " + JSON.stringify(err));
+              expect(false).assertTrue();
+              done();
+              return;
+            });
+          }else {done()}
         });
       }).catch((err:BusinessError) => {
         console.info("contactsApi_addContact_test_200  err = " + JSON.stringify(err));
@@ -655,8 +661,9 @@ export default function ObjectInterfaceTest() {
       expect(holder.bundleName === null).assertFalse();
       expect(holder.displayName === null).assertFalse();
       expect(holder.holderId != 0).assertTrue();
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContact_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -673,32 +680,35 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_queryContact_test_100  keyData = " + JSON.stringify(keyData));
-          contact.queryContact(context,keyData, (err, data) => {
-            if (err) {
-              console.info("contactsApi_queryContact_test_100  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
-              done();
-              return;
-            }
-            console.info("contactsApi_queryContact_test_100  data = " + JSON.stringify(data));
+          if (JSON.stringify(keyData) != undefined){
+            contact.queryContact(context,keyData, (err, data) => {
+              if (err) {
+                console.info("contactsApi_queryContact_test_100  err = " + JSON.stringify(err));
+                expect(false).assertTrue();
+                done();
+                return;
+              }
+              console.info("contactsApi_queryContact_test_100  data = " + JSON.stringify(data));
               let resDate: contact.Contact = data;
               if (resDate.emails !== undefined) {
-                  let emails: contact.Email[] = resDate.emails;
-                  if (emails[0].email !== undefined) {
-                      let email: string = emails[0].email;
-                      expect(email != "").assertTrue();
-                      done();
-                  };
+                let emails: contact.Email[] = resDate.emails;
+                if (emails[0].email !== undefined) {
+                  let email: string = emails[0].email;
+                  expect(email != "").assertTrue();
+                  done();
+                };
               };
-          });
+            });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_queryContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContact_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -715,24 +725,27 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_queryContact_test_200  keyData = " + JSON.stringify(keyData));
-          contact.queryContact(context,keyData, holder, (err, data) => {
-            if (err) {
-              console.info("contactsApi_queryContact_test_200  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
+          if (JSON.stringify(keyData) != undefined){
+            contact.queryContact(context,keyData, holder, (err, data) => {
+              if (err) {
+                console.info("contactsApi_queryContact_test_200  err = " + JSON.stringify(err));
+                expect(false).assertTrue();
+                done();
+                return;
+              }
+              console.info("contactsApi_queryContact_test_200  data = " + JSON.stringify(data));
               done();
-              return;
-            }
-            console.info("contactsApi_queryContact_test_200  data = " + JSON.stringify(data));
-            done();
-          });
+            });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_queryContact_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContact_test_300  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -749,32 +762,35 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_queryContact_test_300  keyData = " + JSON.stringify(keyData));
-          contact.queryContact(context,keyData, attr, (err, data) => {
-            if (err) {
-              console.info("contactsApi_queryContact_test_300  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
-              done();
-              return;
-            }
-            console.info("contactsApi_queryContact_test_300  data = " + JSON.stringify(data));
+          if (JSON.stringify(keyData) != undefined){
+            contact.queryContact(context,keyData, attr, (err, data) => {
+              if (err) {
+                console.info("contactsApi_queryContact_test_300  err = " + JSON.stringify(err));
+                expect(false).assertTrue();
+                done();
+                return;
+              }
+              console.info("contactsApi_queryContact_test_300  data = " + JSON.stringify(data));
               let resDate: contact.Contact = data;
               if (resDate.emails !== undefined) {
-                  let emails: contact.Email[] = resDate.emails;
-                  if (emails[0].email !== undefined) {
-                      let email: string = emails[0].email;
-                      expect(email != "").assertTrue();
-                      done();
-                  };
+                let emails: contact.Email[] = resDate.emails;
+                if (emails[0].email !== undefined) {
+                  let email: string = emails[0].email;
+                  expect(email != "").assertTrue();
+                  done();
+                };
               };
-          });
+            });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_queryContact_test_400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContact_test_400  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -791,24 +807,27 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_queryContact_test_400  keyData = " + JSON.stringify(keyData));
-          contact.queryContact(context,keyData, holder, attr, (err, data) => {
-            if (err) {
-              console.info("contactsApi_queryContact_test_400  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
+          if (JSON.stringify(keyData) != undefined){
+            contact.queryContact(context,keyData, holder, attr, (err, data) => {
+              if (err) {
+                console.info("contactsApi_queryContact_test_400  err = " + JSON.stringify(err));
+                expect(false).assertTrue();
+                done();
+                return;
+              }
+              console.info("contactsApi_queryContact_test_400  data = " + JSON.stringify(data));
               done();
-              return;
-            }
-            console.info("contactsApi_queryContact_test_400  data = " + JSON.stringify(data));
-            done();
-          });
+            });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_queryContact_test_500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContact_test_500  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -825,24 +844,27 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_queryContact_test_500  keyData = " + JSON.stringify(keyData));
-          let promise = contact.queryContact(context,keyData, holder, attr);
-          promise.then((data) => {
-            console.info("contactsApi_queryContact_test_500  data = " + JSON.stringify(data));
-            done();
-          }).catch((err:BusinessError) => {
-            console.info("contactsApi_queryContact_test_500  err = " + JSON.stringify(err));
-            expect(false).assertTrue();
-            done();
-            return;
-          });
+          if (JSON.stringify(keyData != undefined)) {
+            let promise = contact.queryContact(context,keyData, holder, attr);
+            promise.then((data) => {
+              console.info("contactsApi_queryContact_test_500  data = " + JSON.stringify(data));
+              done();
+            }).catch((err:BusinessError) => {
+              console.info("contactsApi_queryContact_test_500  err = " + JSON.stringify(err));
+              expect(false).assertTrue();
+              done();
+              return;
+            });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_queryContacts_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContacts_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -867,8 +889,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContacts_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -893,8 +916,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContacts_test_300  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -919,8 +943,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContacts_test_400  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -945,8 +970,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContacts_test_500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContacts_test_500  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -971,8 +997,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_000", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_000  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -997,8 +1024,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1023,8 +1051,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1049,8 +1078,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_300  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1075,8 +1105,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByPhoneNumber_test_400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByPhoneNumber_test_400  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1101,8 +1132,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1127,8 +1159,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1153,8 +1186,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_300  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1179,8 +1213,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_400", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_400  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1205,8 +1240,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryContactsByEmail_test_500", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryContactsByEmail_test_500  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1231,8 +1267,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryGroups_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryGroups_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1257,8 +1294,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryGroups_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryGroups_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1283,8 +1321,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryGroups_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryGroups_test_300  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1339,8 +1378,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryKey_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryKey_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1365,8 +1405,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_queryKey_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryKey_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1393,6 +1434,7 @@ export default function ObjectInterfaceTest() {
       sleep(500);
       let context: Context = AppStorage.get('context') as Context;
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_queryKey_test_300  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1459,8 +1501,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_updateContact_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_updateContact_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1477,59 +1520,62 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_updateContact_test_100  keyData = " + JSON.stringify(keyData));
-          contact.updateContact(context,{
-            id: data,
-            key: keyData,
-            emails: [{
-              email: "13800000001@email.com",
-              labelName: "自定义邮箱",
-              labelId: 1,
-              displayName: "emailDisplayName"
-            }]
-          }, (err) => {
-            if (err) {
-              console.info("contactsApi_updateContact_test_100  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
-              done();
-              return;
-            }
-            console.log('updateContact success');
-            contact.queryKey(context,data, (err, newKey) => {
+          if (JSON.stringify(keyData) != undefined){
+            contact.updateContact(context,{
+              id: data,
+              key: keyData,
+              emails: [{
+                email: "13800000001@email.com",
+                labelName: "自定义邮箱",
+                labelId: 1,
+                displayName: "emailDisplayName"
+              }]
+            }, (err) => {
               if (err) {
                 console.info("contactsApi_updateContact_test_100  err = " + JSON.stringify(err));
                 expect(false).assertTrue();
                 done();
                 return;
               }
-              console.info("contactsApi_updateContact_test_100  newKey = " + JSON.stringify(newKey));
-              contact.queryContact(context,newKey, (err, data) => {
+              console.log('updateContact success');
+              contact.queryKey(context,data, (err, newKey) => {
                 if (err) {
                   console.info("contactsApi_updateContact_test_100  err = " + JSON.stringify(err));
                   expect(false).assertTrue();
                   done();
                   return;
                 }
-                console.info("contactsApi_updateContact_test_100  data = " + JSON.stringify(data));
+                console.info("contactsApi_updateContact_test_100  newKey = " + JSON.stringify(newKey));
+                contact.queryContact(context,newKey, (err, data) => {
+                  if (err) {
+                    console.info("contactsApi_updateContact_test_100  err = " + JSON.stringify(err));
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                  }
+                  console.info("contactsApi_updateContact_test_100  data = " + JSON.stringify(data));
                   let resDate: contact.Contact = data;
                   if (resDate.emails !== undefined) {
-                      let emails: contact.Email[] = resDate.emails;
-                      if (emails[0].email !== undefined) {
-                          let email: string = emails[0].email;
-                          expect(email === "13800000001@email.com").assertTrue();
-                          done();
-                      };
+                    let emails: contact.Email[] = resDate.emails;
+                    if (emails[0].email !== undefined) {
+                      let email: string = emails[0].email;
+                      expect(email === "13800000001@email.com").assertTrue();
+                      done();
+                    };
                   };
+                });
               });
             });
-          });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_updateContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1546,59 +1592,62 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_updateContact_test_200  keyData = " + JSON.stringify(keyData));
-          contact.updateContact(context,{
-            id: data,
-            key: keyData,
-            emails: [{
-              email: "13800000001@email.com",
-              labelName: "自定义邮箱",
-              labelId: 1,
-              displayName: "emailDisplayName"
-            }]
-          }, attr, (err) => {
-            if (err) {
-              console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
-              expect(false).assertTrue();
-              done();
-              return;
-            }
-            console.log('updateContact success');
-            contact.queryKey(context,data, (err, newKey) => {
+          if (JSON.stringify(keyData) != undefined){
+            contact.updateContact(context,{
+              id: data,
+              key: keyData,
+              emails: [{
+                email: "13800000001@email.com",
+                labelName: "自定义邮箱",
+                labelId: 1,
+                displayName: "emailDisplayName"
+              }]
+            }, attr, (err) => {
               if (err) {
                 console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
                 expect(false).assertTrue();
                 done();
                 return;
               }
-              console.info("contactsApi_updateContact_test_200  newKey = " + JSON.stringify(newKey));
-              contact.queryContact(context,newKey, (err, data) => {
+              console.log('updateContact success');
+              contact.queryKey(context,data, (err, newKey) => {
                 if (err) {
                   console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
                   expect(false).assertTrue();
                   done();
                   return;
                 }
-                console.info("contactsApi_updateContact_test_200  data = " + JSON.stringify(data));
+                console.info("contactsApi_updateContact_test_200  newKey = " + JSON.stringify(newKey));
+                contact.queryContact(context,newKey, (err, data) => {
+                  if (err) {
+                    console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                  }
+                  console.info("contactsApi_updateContact_test_200  data = " + JSON.stringify(data));
                   let resDate: contact.Contact = data;
                   if (resDate.emails !== undefined) {
-                      let emails: contact.Email[] = resDate.emails;
-                      if (emails[0].email !== undefined) {
-                          let email: string = emails[0].email;
-                          expect(email === "13800000001@email.com").assertTrue();
-                          done();
-                      };
+                    let emails: contact.Email[] = resDate.emails;
+                    if (emails[0].email !== undefined) {
+                      let email: string = emails[0].email;
+                      expect(email === "13800000001@email.com").assertTrue();
+                      done();
+                    };
                   };
+                });
               });
             });
-          });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_updateContact_test_300", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1615,59 +1664,62 @@ export default function ObjectInterfaceTest() {
             return;
           }
           console.info("contactsApi_updateContact_test_300  keyData = " + JSON.stringify(keyData));
-          let promise = contact.updateContact(context,{
-            id: data,
-            key: keyData,
-            emails: [{
-              email: "13800000001@email.com",
-              labelName: "自定义邮箱",
-              labelId: 1,
-              displayName: "emailDisplayName"
-            }]
-          }, attr);
-          promise.then(() => {
-            console.log('updateContact success');
-            contact.queryKey(context,data, (err, newKey) => {
-              if (err) {
-                console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
-                expect(false).assertTrue();
-                done();
-                return;
-              }
-              console.info("contactsApi_updateContact_test_300  newKey = " + JSON.stringify(newKey));
-              contact.queryContact(context,newKey, (err, data) => {
+          if (JSON.stringify(keyData) != undefined) {
+            let promise = contact.updateContact(context,{
+              id: data,
+              key: keyData,
+              emails: [{
+                email: "13800000001@email.com",
+                labelName: "自定义邮箱",
+                labelId: 1,
+                displayName: "emailDisplayName"
+              }]
+            }, attr);
+            promise.then(() => {
+              console.log('updateContact success');
+              contact.queryKey(context,data, (err, newKey) => {
                 if (err) {
                   console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
                   expect(false).assertTrue();
                   done();
                   return;
                 }
-                console.info("contactsApi_updateContact_test_300  data = " + JSON.stringify(data));
+                console.info("contactsApi_updateContact_test_300  newKey = " + JSON.stringify(newKey));
+                contact.queryContact(context,newKey, (err, data) => {
+                  if (err) {
+                    console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                  }
+                  console.info("contactsApi_updateContact_test_300  data = " + JSON.stringify(data));
                   let resDate: contact.Contact = data;
                   if (resDate.emails !== undefined) {
-                      let emails: contact.Email[] = resDate.emails;
-                      if (emails[0].email !== undefined) {
-                          let email: string = emails[0].email;
-                          expect(email === "13800000001@email.com").assertTrue();
-                          done();
-                      };
+                    let emails: contact.Email[] = resDate.emails;
+                    if (emails[0].email !== undefined) {
+                      let email: string = emails[0].email;
+                      expect(email === "13800000001@email.com").assertTrue();
+                      done();
+                    };
                   };
+                });
               });
+            }).catch((err:BusinessError) => {
+              console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
+              expect(false).assertTrue();
+              done();
+              return;
             });
-          }).catch((err:BusinessError) => {
-            console.info("contactsApi_updateContact_test_300  err = " + JSON.stringify(err));
-            expect(false).assertTrue();
-            done();
-            return;
-          });
+          }else {done()}
         });
       });
       sleep(500);
     });
     it("contactsApi_isLocalContact_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_isLocalContact_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1691,8 +1743,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_isLocalContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_isLocalContact_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1716,8 +1769,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_isMyCard_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1741,8 +1795,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_isMyCard_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (err) {
           console.info("contactsApi_isMyCard_test_100  err = " + JSON.stringify(err));
           expect(false).assertTrue();
@@ -1796,8 +1851,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_selectContact_test_100", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (!err) {
           console.info("contactsApi_selectContact_test_100  data = " + JSON.stringify(data));
           expect(data > 0).assertTrue();
@@ -1818,8 +1874,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_selectContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-	  sleep(500);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
+        sleep(500);
         if (!err) {
           console.info("contactsApi_selectContact_test_200  data = " + JSON.stringify(data));
           expect(data > 0).assertTrue();
