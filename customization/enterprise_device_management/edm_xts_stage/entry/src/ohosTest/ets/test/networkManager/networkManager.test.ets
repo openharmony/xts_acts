@@ -657,8 +657,8 @@ function testSetGlobalProxySync() {
     } catch (error) {
       expect(false).assertTrue();
     } finally {
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       networkManager.setGlobalProxySync(SELFWANT, originProxy);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });
