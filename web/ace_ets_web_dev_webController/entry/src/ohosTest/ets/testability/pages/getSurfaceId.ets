@@ -83,12 +83,12 @@ struct getSurfaceId {
               try {
                 this.controller.clearMatches();
                 this.controller.loadUrl('www.example.com');
-                await Utils.sleep(2000);
+                await Utils.sleep(10000);
                 this.checkResult = 1;
                 this.controller.setUrlTrustList(this.urltrustList);
-                await Utils.sleep(2000);
+                await Utils.sleep(10000);
                 this.controller.loadUrl('https://www.baidu.com');
-                await Utils.sleep(5000);
+                await Utils.sleep(20000);
                 this.controller.searchAllAsync('返回');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -99,11 +99,11 @@ struct getSurfaceId {
               try {
                 this.controller.clearMatches();
                 this.controller.loadUrl('www.example.com');
-                await Utils.sleep(2000);
+                await Utils.sleep(10000);
                 this.controller.setUrlTrustList('');
-                await Utils.sleep(2000);
+                await Utils.sleep(10000);
                 this.controller.loadUrl('https://www.baidu.com');
-                await Utils.sleep(2000);
+                await Utils.sleep(20000);
                 this.checkResult = 2;
                 await Utils.sleep(2000);
                 this.controller.searchAllAsync('百度一下');
@@ -116,9 +116,9 @@ struct getSurfaceId {
               try {
                 this.controller.clearMatches();
                 this.controller.setUrlTrustList(this.urltrustListTwo);
-                await Utils.sleep(2000);
+                await Utils.sleep(10000);
                 this.controller.loadUrl('https://www.test.com/test');
-                await Utils.sleep(2000);
+                await Utils.sleep(20000);
                 this.checkResult = 3;
                 await Utils.sleep(2000);
                 this.controller.searchAllAsync('返回');
@@ -131,9 +131,9 @@ struct getSurfaceId {
               try {
                 this.controller.clearMatches();
                 this.controller.setUrlTrustList(this.urltrustListThree);
-                await Utils.sleep(2000);
+                await Utils.sleep(10000);
                 this.controller.loadUrl('http://www.163.com/test');
-                await Utils.sleep(2000);
+                await Utils.sleep(40000);
                 this.checkResult = 4;
                 await Utils.sleep(2000);
                 this.controller.searchAllAsync('返回');
@@ -149,7 +149,7 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustListFour);
                 await Utils.sleep(4000);
                 this.controller.loadUrl('http://www.163.com/test');
-                await Utils.sleep(20000);
+                await Utils.sleep(40000);
                 this.checkResult = 5;
                 await Utils.sleep(10000);
                 this.controller.searchAllAsync('网易首页');
@@ -170,7 +170,7 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustListFour);
                 await Utils.sleep(4000);
                 this.controller.loadUrl('https://www.163.com/test');
-                await Utils.sleep(20000);
+                await Utils.sleep(40000);
                 this.checkResult = 6;
                 await Utils.sleep(10000);
                 this.controller.searchAllAsync('网易首页');
@@ -186,7 +186,7 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustListThree);
                 await Utils.sleep(2000);
                 this.controller.loadUrl('https://163.com/test');
-                await Utils.sleep(2000);
+                await Utils.sleep(40000);
                 this.checkResult = 7;
                 await Utils.sleep(2000);
                 this.controller.searchAllAsync('返回');
@@ -249,7 +249,7 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustListSix);
                 await Utils.sleep(2000);
                 this.controller.loadUrl('www.baidu.com');
-                await Utils.sleep(2000);
+                await Utils.sleep(20000);
                 this.checkResult = 9;
                 await Utils.sleep(3000);
                 this.controller.searchAllAsync('百度一下');
@@ -264,7 +264,7 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustListSix);
                 await Utils.sleep(2000);
                 this.controller.loadUrl('www.163.com:80/test');
-                await Utils.sleep(2000);
+                await Utils.sleep(40000);
                 this.checkResult = 10;
                 await Utils.sleep(3000);
                 this.controller.searchAllAsync('网易首页');
@@ -279,7 +279,7 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustList);
                 await Utils.sleep(2000);
                 this.controller.loadUrl('www.example.com');
-                await Utils.sleep(2000);
+                await Utils.sleep(20000);
                 this.checkResult = 11;
                 await Utils.sleep(3000);
                 this.controller.searchAllAsync('Domain');
@@ -295,7 +295,7 @@ struct getSurfaceId {
                 this.controller.setUrlTrustList(this.urltrustList);
                 await Utils.sleep(2000);
                 this.controller.loadUrl('www.example.com');
-                await Utils.sleep(2000);
+                await Utils.sleep(20000);
                 this.checkResult = 12;
                 await Utils.sleep(3000);
                 this.controller.searchAllAsync('Domain');
