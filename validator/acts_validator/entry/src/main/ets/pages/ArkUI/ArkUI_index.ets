@@ -84,7 +84,8 @@ struct IndexPage {
     { title: 'Refresh', uri: 'pages/ArkUI/Refresh' },
     { title: 'onAccessibilityHover', uri: 'pages/ArkUI/AccessBilityHover' },
     { title: 'NavigationEnableHoverMode', uri: 'pages/ArkUI/NavigationEnableHoverMode' },
-    { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' }
+    { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' },
+    { title: 'AccessibilityOptions', uri: 'pages/ArkUI/AccessibilityOptions' }
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];
