@@ -81,14 +81,9 @@ napi_value KeyEventGetGetDeviceIdTest::KeyEventGetGetDeviceIdTest_001(napi_env e
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
     auto button = createChildNode(nodeAPI, true);
-
-    ArkUI_AttributeItem id_item = {};
-    // id_item.string = "KeyEventGetDeviceId";
     ArkUI_AttributeItem textId = {.string = "KeyEventGetDeviceId"};
     nodeAPI->setAttribute(button, NODE_ID, &textId);
-
     nodeAPI->addChild(column, button);
-
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);
 
     std::string id(xComponentID);
