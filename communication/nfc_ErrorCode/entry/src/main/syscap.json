@@ -1,0 +1,16 @@
+{
+    "devices": {
+        "general": [
+            "tablet",
+            "default",
+            "phone"
+        ],
+        "custom": [
+            {
+                "xts": [
+                    "SystemCapability.Startup.SystemInfo"
+                ]
+            }
+        ]
+    }
+}

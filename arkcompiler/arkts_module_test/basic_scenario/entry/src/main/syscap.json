@@ -1,0 +1,15 @@
+{
+    "devices": {
+        "general": [
+            "wearable",
+            "default"
+        ],
+        "custom": [
+            {
+                "xts": [
+                    "SystemCapability.Startup.SystemInfo"
+                ]
+            }
+        ]
+    }
+}
