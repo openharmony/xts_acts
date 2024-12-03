@@ -76,7 +76,7 @@ struct webViewOnSslErrorEvent {
               this.controller.clearClientAuthenticationCache();
               this.controller.clearSslCache();
               await Utils.sleep(2000)
-              this.controller.loadUrl('https://incomplete-chain.badssl.com');
+              this.controller.loadUrl('https://untrusted-root.badssl.com/');
               await Utils.sleep(4000);
               break;
             }
