@@ -16,8 +16,10 @@
 import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaTestBase = new MediaTestBase()
+
 export default function AVScreenCaptureRecorderTest() {
   describe('AVScreenCaptureRecorderTest', () => {
 
@@ -27,11 +29,20 @@ export default function AVScreenCaptureRecorderTest() {
 
     beforeEach(async () => {
       console.info('beforeEach case');
-      mediaTestBase.msleepAsync(3000);
+      await mediaTestBase.msleepAsync(3000);
     })
 
     afterEach(async () => {
       console.info('afterEach case');
+      if (mediaTestBase.avScreenCaptureRecorder != null) {
+        await mediaTestBase.avScreenCaptureRecorder?.release().then(() => {
+          console.info('avScreenCaptureRecorder release success');
+          console.info(mediaTestBase.TAG + 'this testCase execution completed')
+        }).catch((err: BusinessError) => {
+          console.info('avScreenCaptureRecorder release failed, error: ' + err.message);
+        })
+      }
+      await mediaTestBase.msleepAsync(1000);
     })
 
     afterAll(async () => {
@@ -66,7 +77,7 @@ export default function AVScreenCaptureRecorderTest() {
         mediaTestBase.STOPRECORDER_EVENT,
         //release recorder
         //close fd
-        mediaTestBase.RELEASECORDER_EVENT,
+        // mediaTestBase.RELEASECORDER_EVENT,
         mediaTestBase.END_EVENT);
 
       mediaTestBase.outputName = mediaTestBase.resourceName();
@@ -110,7 +121,7 @@ export default function AVScreenCaptureRecorderTest() {
         mediaTestBase.STARTRECORDER_EVENT,
         // stop recorder
         mediaTestBase.STOPRECORDER_EVENT,
-        mediaTestBase.RELEASECORDER_EVENT,
+        // mediaTestBase.RELEASECORDER_EVENT,
         mediaTestBase.END_EVENT);
 
       let avConfig: media.AVScreenCaptureRecordConfig = {
@@ -138,11 +149,8 @@ export default function AVScreenCaptureRecorderTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300', 0, async (done: Function) => {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0300 start')
-
-      let sessionId: number = 0; // 替换成拉起此进程的sessionId
-      let choice: string = 'false'; // 替换成用户的选择内容
       try {
-        await media.reportAVScreenCaptureUserChoice(sessionId, choice);
+        await media.reportAVScreenCaptureUserChoice(-1, "-1")
       } catch (error) {
         console.error(`reportAVScreenCaptureUserChoice error, error message: ${error.message}`);
         expect().assertFail()
