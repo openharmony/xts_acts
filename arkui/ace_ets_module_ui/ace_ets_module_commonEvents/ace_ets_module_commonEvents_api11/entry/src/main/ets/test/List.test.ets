@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import dragAdaptationTest from './DragController/dragAdaptationTest.test';
 import touchJsunit from './onTouchTest/TouchJsunit.test';
 import appearJsunit from './onAppearTest/AppearJsunit.test';
 import areaChangeJsunit from './onAreaChangeTest/AreaChangeJsunit.test';
@@ -82,6 +83,7 @@ import commonJsunit from './CommonJsunit.test.ets';
 import motionPathJsunit from './MotionPathJsunit.test.ets';
 
 export default function testsuite() {
+  dragAdaptationTest()
   touchJsunit();
   appearJsunit();
   areaChangeJsunit();
