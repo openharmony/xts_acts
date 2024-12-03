@@ -45,22 +45,10 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
 
     int32_t count = 1;
     int32_t pressedKeys[1] = {0};
-    // // auto type = OH_ArkUI_UIInputEvent_GetPressedKeys(get_ArkuI_UIInputEvent, pressedKeys, &count);
 
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-
-    // if (type != -1 && pressedKeys[0] ==  && count == 1) {
-    // if (type != 401) {
-    //     ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-    //     ArkUI_AttributeItem background_color_item = {background_color_value,
-    //                                                  sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-    //     nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-    // } else {
-    //     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "KeyEventGetPressedKeys",
-    //                  "KeyEventGetPressedKeys result : %{public}d", type);
-    // }
 }
 
 napi_value KeyEventGetPressedKeysTest::KeyEventGetPressedKeysTest_001(napi_env env, napi_callback_info info)
@@ -84,9 +72,6 @@ napi_value KeyEventGetPressedKeysTest::KeyEventGetPressedKeysTest_001(napi_env e
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
     auto button = createChildNode(nodeAPI);
-
-    ArkUI_AttributeItem id_item = {};
-    // id_item.string = "KeyEventGetPressedKeys";
     ArkUI_AttributeItem textId = {.string = "KeyEventGetPressedKeys"};
     nodeAPI->setAttribute(button, NODE_ID, &textId);
 
