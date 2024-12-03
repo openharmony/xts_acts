@@ -438,6 +438,7 @@ export default function ObjectInterfaceTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       let rawContactId = await contact.addContact(context,contactData);
+      sleep(500);
       expect(rawContactId > 0).assertTrue();
       try {
         let resultSet = await contact.queryKey(context,rawContactId, holder);
@@ -459,6 +460,7 @@ export default function ObjectInterfaceTest() {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       let rawContactId = await contact.addContact(context,contactData);
+      sleep(500);
       expect(rawContactId > 0).assertTrue();
       console.info("contactsApi_query_key_test_2400 : query gRawContactId = " + rawContactId);
       try {
@@ -615,10 +617,10 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_addContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-      sleep(1000);
+      sleep(500);
       let promise = contact.addContact(context,contactData);
       promise.then((data) => {
-        sleep(1000);
+        sleep(500);
         console.info("contactsApi_addContact_test_200  data = " + JSON.stringify(data));
         expect(data > 0).assertTrue();
         contact.queryKey(context,data, (err, keyData) => {
@@ -1571,9 +1573,9 @@ export default function ObjectInterfaceTest() {
     });
     it("contactsApi_updateContact_test_200", 0, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
-      sleep(1000);
+      sleep(500);
       contact.addContact(context,contactData, (err, data) => {
-        sleep(1000);
+        sleep(500);
         if (err) {
           console.info("contactsApi_updateContact_test_200  err = " + JSON.stringify(err));
           expect(false).assertTrue();
