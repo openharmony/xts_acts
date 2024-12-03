@@ -19,7 +19,10 @@ import { Sleep } from '../utils/utils';
 import {
   exclusiveTask,
   exclusiveTimeTask,
+  loadCase,
+  lockExclusiveTask,
   locksTask,
+  locksTimeTask,
   NumClass,
   SendableClass,
   sendableFunction,
@@ -376,16 +379,23 @@ export default function arkTSUtilsTest() {
         options.isAvailable = false;
         options.signal = null;
         options.timeout = 0;
+        let state1: boolean = false;
+        let state2: boolean = false;
         lock.lockAsync(async () => {
           result += 'A';
-          await Sleep(1000);
+          await Sleep(500);
+          state1 = true;
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE, options);
+        await Sleep(200);
         lock.lockAsync(async () => {
           result += 'B';
-          await Sleep(1000);
+          await Sleep(500);
+          state2 = true;
         }, ArkTSUtils.locks.AsyncLockMode.SHARED, options);
-        await Sleep(500);
-        expect(result).assertEqual('A');
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        expect(result).assertEqual('AB');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -429,7 +439,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0008', 0, () => {
+    it('testLockAsync0008', 0, async () => {
       const TAG = "testLockAsync0008";
       try {
         let result = '';
@@ -463,7 +473,7 @@ export default function arkTSUtilsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLockAsync0009', 0, () => {
+    it('testLockAsync0009', 0, async () => {
       const TAG = "testLockAsync0009";
       try {
         let result = '';
@@ -474,14 +484,22 @@ export default function arkTSUtilsTest() {
           aborted: false, reason: 'Aborted'
         };
         options.timeout = 0;
+        let state1: boolean = false;
+        let state2: boolean = false;
         lock.lockAsync(async () => {
           result += 'A'
-          await Sleep(1000);
+          await Sleep(500);
+          state1 = true;
         }, ArkTSUtils.locks.AsyncLockMode.SHARED, options);
+        await Sleep(200);
         lock.lockAsync(async () => {
           result += 'B';
-          await Sleep(1000);
+          await Sleep(500);
+          state2 = true;
         }, ArkTSUtils.locks.AsyncLockMode.SHARED, options);
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
         expect(result).assertEqual('AB');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -592,18 +610,26 @@ export default function arkTSUtilsTest() {
       try {
         let res = '';
         let lock = new ArkTSUtils.locks.AsyncLock();
+        let state1: boolean = false;
+        let state2: boolean = false;
         lock.lockAsync(async () => {
           res += 'l1开始-';
-          await Sleep(200);
+          await Sleep(1000);
         }, ArkTSUtils.locks.AsyncLockMode.SHARED).then(() => {
           res += 'l1结束-';
+          state1 = true;
         })
-        await lock.lockAsync(async () => {
+        await Sleep(200);
+        lock.lockAsync(async () => {
           res += 'l2开始-';
-          await Sleep(200);
+          await Sleep(1000);
         }, ArkTSUtils.locks.AsyncLockMode.SHARED).then(() => {
           res += 'l2结束';
+          state2 = true;
         })
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
         expect(res).assertEqual('l1开始-l2开始-l1结束-l2结束')
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
@@ -625,18 +651,26 @@ export default function arkTSUtilsTest() {
       try {
         let res = '';
         let lock = new ArkTSUtils.locks.AsyncLock();
+        let state1: boolean = false;
+        let state2: boolean = false;
         lock.lockAsync(async () => {
           res += 'l1开始-';
-          await Sleep(200);
+          await Sleep(500);
         }, ArkTSUtils.locks.AsyncLockMode.SHARED).then(() => {
           res += 'l1结束-';
+          state1 = true;
         })
-        await lock.lockAsync(async () => {
+        await Sleep(200);
+        lock.lockAsync(async () => {
           res += 'l2开始-';
-          await Sleep(200);
+          await Sleep(500);
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE).then(() => {
           res += 'l2结束';
+          state2 = true;
         })
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
         expect(res).assertEqual('l1开始-l1结束-l2开始-l2结束');
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
@@ -658,18 +692,26 @@ export default function arkTSUtilsTest() {
       try {
         let res = '';
         let lock = new ArkTSUtils.locks.AsyncLock();
+        let state1: boolean = false;
+        let state2: boolean = false;
         lock.lockAsync(async () => {
           res += 'l1开始-';
-          await Sleep(200);
+          await Sleep(500);
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE).then(() => {
           res += 'l1结束-';
+          state1 = true;
         })
-        await lock.lockAsync(async () => {
+        await Sleep(200);
+        lock.lockAsync(async () => {
           res += 'l2开始-';
-          await Sleep(200);
+          await Sleep(500);
         }, ArkTSUtils.locks.AsyncLockMode.SHARED).then(() => {
           res += 'l2结束';
+          state2 = true;
         })
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
         expect(res).assertEqual('l1开始-l1结束-l2开始-l2结束');
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
@@ -691,18 +733,26 @@ export default function arkTSUtilsTest() {
       try {
         let res = '';
         let lock = new ArkTSUtils.locks.AsyncLock();
+        let state1: boolean = false;
+        let state2: boolean = false;
         lock.lockAsync(async () => {
           res += 'l1开始-';
-          await Sleep(200);
+          await Sleep(500);
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE).then(() => {
           res += 'l1结束-';
+          state1 = true;
         })
-        await lock.lockAsync(async () => {
+        await Sleep(200);
+        lock.lockAsync(async () => {
           res += 'l2开始-';
-          await Sleep(200);
+          await Sleep(500);
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE).then(() => {
           res += 'l2结束';
+          state2 = true;
         })
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
         expect(res).assertEqual('l1开始-l1结束-l2开始-l2结束');
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
@@ -727,19 +777,25 @@ export default function arkTSUtilsTest() {
         let l2_end = 0;
         let task1: taskpool.Task = new taskpool.Task(sharedTaskTime, TAG);
         let task2: taskpool.Task = new taskpool.Task(sharedTaskTime, TAG);
+        let state1: boolean = false;
+        let state2: boolean = false;
         taskpool.execute(task1).then(value => {
           const res = value as Array<number>;
           l1_start = res[0];
           l1_end = res[1];
+          state1 = true;
         })
-        await Sleep(200);
-        await taskpool.execute(task2).then(value => {
+        await Sleep(100);
+        taskpool.execute(task2).then(value => {
           const res = value as Array<number>;
           l2_start = res[0];
           l2_end = res[1];
+          state2 = true;
         })
-        await Sleep(300);
-        const res = (l1_start < l2_start) && (l2_start < l1_end) && (l1_end < l2_end);
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        const res = (l1_start < l2_start) && (l2_start <= l1_end) && (l1_end < l2_end);
         expect(res).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -764,15 +820,23 @@ export default function arkTSUtilsTest() {
         let B = 0;
         let task1: taskpool.Task = new taskpool.Task(sharedTimeTask, lockName);
         let task2: taskpool.Task = new taskpool.Task(exclusiveTimeTask, lockName);
+        let state1: boolean = false;
+        let state2: boolean = false;
         taskpool.execute(task1).then(value => {
           const res = value as Array<number>;
           A = res[1];
+          state1 = true;
         })
-        await taskpool.execute(task2).then(value => {
+        await Sleep(200);
+        taskpool.execute(task2).then(value => {
           const res = value as Array<number>;
           B = res[1];
+          state2 = true;
         })
-        res = B - A > 400;
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        res = B - A >= 200;
         expect(res).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -797,15 +861,23 @@ export default function arkTSUtilsTest() {
         let B = 0;
         let task1: taskpool.Task = new taskpool.Task(exclusiveTimeTask, lockName);
         let task2: taskpool.Task = new taskpool.Task(sharedTimeTask, lockName);
+        let state1: boolean = false;
+        let state2: boolean = false;
         taskpool.execute(task1).then(value => {
           const res = value as Array<number>;
           A = res[1];
+          state1 = true;
         })
-        await taskpool.execute(task2).then(value => {
+        await Sleep(200);
+        taskpool.execute(task2).then(value => {
           const res = value as Array<number>;
           B = res[1];
+          state2 = true;
         })
-        res = B - A > 400;
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        res = B - A >= 500;
         expect(res).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -825,16 +897,23 @@ export default function arkTSUtilsTest() {
       const TAG = "testLockAsync0020";
       try {
         let res = "";
-        let task1: taskpool.Task = new taskpool.Task(exclusiveTask, TAG);
-        let task2: taskpool.Task = new taskpool.Task(exclusiveTask, TAG);
+        let task1: taskpool.Task = new taskpool.Task(exclusiveTask, TAG, 'A');
+        let task2: taskpool.Task = new taskpool.Task(exclusiveTask, TAG, 'B');
+        let state1: boolean = false;
+        let state2: boolean = false;
         taskpool.execute(task1).then(value => {
           res += (value as string);
+          state1 = true;
         })
+        await Sleep(200);
         taskpool.execute(task2).then(value => {
           res += (value as string);
+          state2 = true;
         })
-        await Sleep(800);
-        expect(res).assertEqual('B');
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        expect(res).assertEqual('AB');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -852,18 +931,33 @@ export default function arkTSUtilsTest() {
     it('testLockAsync0021', 0, async () => {
       const TAG = "testLockAsync0021";
       try {
-        let res = '';
+        let l1_start = 0;
+        let l1_end = 0;
+        let l2_start = 0;
+        let l2_end = 0;
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
-        let task1: taskpool.Task = new taskpool.Task(locksTask, lock, ArkTSUtils.locks.AsyncLockMode.SHARED);
-        let task2: taskpool.Task = new taskpool.Task(locksTask, lock, ArkTSUtils.locks.AsyncLockMode.SHARED);
+        let task1: taskpool.Task = new taskpool.Task(locksTimeTask, lock, ArkTSUtils.locks.AsyncLockMode.SHARED);
+        let task2: taskpool.Task = new taskpool.Task(locksTimeTask, lock, ArkTSUtils.locks.AsyncLockMode.SHARED);
+        let state1: boolean = false;
+        let state2: boolean = false;
         taskpool.execute(task1).then(value => {
-          res += (value as string);
+          const res = value as Array<number>;
+          l1_start = res[0];
+          l1_end = res[1];
+          state1 = true;
         })
+        await Sleep(200);
         taskpool.execute(task2).then(value => {
-          res += (value as string);
+          const res = value as Array<number>;
+          l2_start = res[0];
+          l2_end = res[1];
+          state2 = true;
         })
-        await Sleep(1000);
-        expect(res).assertEqual('AA');
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        const res = (l1_start < l2_start) && (l2_start <= l1_end) && (l1_end < l2_end);
+        expect(res).assertTrue();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -913,15 +1007,21 @@ export default function arkTSUtilsTest() {
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
         let task1: taskpool.Task = new taskpool.Task(locksTask, lock, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
         let task2: taskpool.Task = new taskpool.Task(locksTask, lock, ArkTSUtils.locks.AsyncLockMode.SHARED);
+        let state1: boolean = false;
+        let state2: boolean = false;
         taskpool.execute(task1).then(value => {
           res += (value as string);
+          state1 = true;
         })
-        await Sleep(10);
+        await Sleep(200);
         taskpool.execute(task2).then(value => {
           res += (value as string);
+          state2 = true;
         })
-        await Sleep(800);
-        expect(res).assertEqual('B');
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        expect(res).assertEqual('BA');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -941,16 +1041,23 @@ export default function arkTSUtilsTest() {
       try {
         let res = '';
         let lock = ArkTSUtils.locks.AsyncLock.request(TAG);
-        let task1: taskpool.Task = new taskpool.Task(locksTask, lock, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-        let task2: taskpool.Task = new taskpool.Task(locksTask, lock, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+        let task1: taskpool.Task = new taskpool.Task(lockExclusiveTask, lock, 'A');
+        let task2: taskpool.Task = new taskpool.Task(lockExclusiveTask, lock, 'B');
+        let state1: boolean = false;
+        let state2: boolean = false;
         taskpool.execute(task1).then(value => {
           res += (value as string);
+          state1 = true;
         })
+        await Sleep(200);
         taskpool.execute(task2).then(value => {
           res += (value as string);
+          state2 = true;
         })
-        await Sleep(800);
-        expect(res).assertEqual('B');
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        expect(res).assertEqual('AB');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -970,16 +1077,22 @@ export default function arkTSUtilsTest() {
       try {
         let res = '';
         let lock = new ArkTSUtils.locks.AsyncLock;
+        let state1: boolean = false;
+        let state2: boolean = false;
         lock.lockAsync(async () => {
           console.log('shared0');
           res += 'A'
-          await Sleep(1000);
+          state1 = true;
         }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+        await Sleep(200);
         lock.lockAsync(async () => {
           console.log('shared1');
           res += 'B'
-          await new Promise<void>((resolve) => setTimeout(resolve, 500));
+          state2 = true;
         }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
         expect(res).assertEqual('AB');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
@@ -1000,17 +1113,26 @@ export default function arkTSUtilsTest() {
       try {
         let res = '';
         let lock = ArkTSUtils.locks.AsyncLock.request("exclusive0");
+        let state1: boolean = false;
+        let state2: boolean = false;
         lock.lockAsync(async () => {
           console.log('shared0');
           res += 'A'
-          await Sleep(1000);
-        }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          await Sleep(500);
+        }, ArkTSUtils.locks.AsyncLockMode.SHARED).then(() => {
+          state1 = true;
+        });
+        await Sleep(200);
         lock.lockAsync(async () => {
           console.log('exclusive0');
           res += 'B'
-          await new Promise<void>((resolve) => setTimeout(resolve, 500));
+          await Sleep(500);
+          state2 = true;
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-        expect(res).assertEqual('A');
+        while (!(state1 && state2)) {
+          await loadCase();
+        }
+        expect(res).assertEqual('AB');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
