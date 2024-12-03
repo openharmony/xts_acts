@@ -129,5 +129,5 @@ ohos_sh_assist_suite("cpvkgl") {
     ":VKGLCTSTest",
     "//third_party/vk-gl-cts/framework/platform:glcts",
   ]
-  part_name = "vk-gl-cts"
+  part_name = "graphic_2d"
 }
