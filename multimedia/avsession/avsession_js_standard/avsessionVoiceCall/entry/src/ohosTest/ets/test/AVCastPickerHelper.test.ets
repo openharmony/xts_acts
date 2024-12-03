@@ -84,28 +84,26 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_ON_PICKERSTATECHANGE_0100', 2, async (done: Function) => {
-      try {
-        let avCastPickerOptions : avSession.AVCastPickerOptions = {
-          sessionType: 'video',
-        }
-        let avCastPicker = new avSession.AVCastPickerHelper(context);
-        avCastPicker.on('pickerStateChange',(state: AVCastPickerState) => {
-          console.info(`${TAG}: pickerStateChange received picker stage change: ${stage}`);
-          if (stage == AVCastPickerState.STATE_APPEARING || stage == AVCastPickerState.STATE_DISAPPEARING) {
-            expect(true).assertTrue();
-          } else {
-            expect(false).assertTrue();
-          }
-          done();
-        });
-        await avCastPicker.select(avCastPickerOptions).then(() => {
-          console.info('${TAG}: avCastPicker select successfully');
-        }).catch((err: BusinessError) => {
-          console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
-          expect(false).assertTrue();
-        })
-        done();
+      let avCastPickerOptions : avSession.AVCastPickerOptions = {
+        sessionType: 'video',
       }
+      let avCastPicker = new avSession.AVCastPickerHelper(context);
+      avCastPicker.on('pickerStateChange',(state: AVCastPickerState) => {
+        console.info(`${TAG}: pickerStateChange received picker stage change: ${stage}`);
+        if (stage == AVCastPickerState.STATE_APPEARING || stage == AVCastPickerState.STATE_DISAPPEARING) {
+          expect(true).assertTrue();
+        } else {
+          expect(false).assertTrue();
+        }
+        done();
+      });
+      await avCastPicker.select(avCastPickerOptions).then(() => {
+        console.info('${TAG}: avCastPicker select successfully');
+      }).catch((err: BusinessError) => {
+        console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
+        expect(false).assertTrue();
+      })
+      done();
     })
 
     /* *
