@@ -15,20 +15,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "remount",
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files",
-                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test"
-            ]
-        },
-        {
-            "type": "PushKit",
-            "push": [
-                "./resource/media/audioplayer/lbvc_1c_16000hz_6k.pcm -> /data/app/el2/100/base/ohos.acts.multimedia.avscreencapturerecorder/haps/entry_test/files/"
-            ]
         }
     ]
 }
