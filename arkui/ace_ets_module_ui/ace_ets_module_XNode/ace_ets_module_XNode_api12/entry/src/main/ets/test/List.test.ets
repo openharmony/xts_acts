@@ -90,6 +90,7 @@ import attachNodeAdapterTest from './FrameNodeTest/attachNodeAdapter.test';
 import updateConfigurationTest1 from './BuilderNodeTest/updateConfigurationTest1';
 import updateConfigurationTest2 from './ComponentContentTest/updateConfigurationTest2';
 import getAttachedFrameNodeById from './FrameNodeTest/getAttachedFrameNodeById.test';
+import getAfterRemove from './FrameNodeTest/getAfterRemove.test';
 
 export default function testsuite() {
   APIdisposeTreeTest();
@@ -155,5 +156,6 @@ export default function testsuite() {
   updateConfigurationTest1();
   updateConfigurationTest2();
   getAttachedFrameNodeById();
+  getAfterRemove();
 
 }
