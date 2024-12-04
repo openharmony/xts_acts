@@ -17,11 +17,25 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { BusinessError } from '@ohos.base';
 import { Want, WantAgent, wantAgent, wantConstant } from '@kit.AbilityKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
-
+import Utils from '../common/Utils'
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function abilityTest() {
 
   describe('ActsAbilityTest', () => {
+    afterEach(async (done: Function)=>{
+      await Utils.sleep(500);
+      let Delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        Delegator.startAbility(
+            {
+                bundleName: 'com.example.wantagentappkeytest',
+                abilityName: 'TestAbility'
+            },()=> {
+            console.log("====>ActsAbilityTest afterEach end====>");
+        })
+      await Utils.sleep(500);
+      done();
+    })
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_wantAgent_Multiton_0100
      * @tc.name: SUB_Ability_AbilityRuntime_wantAgent_Multiton_0100
@@ -47,8 +61,8 @@ export default function abilityTest() {
         wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       };
 
-      wantAgent.getWantAgent(wantAgentInfo)
-        .then((data) => {
+      await wantAgent.getWantAgent(wantAgentInfo)
+        .then(async (data) => {
           wantAgentData = data;
           console.info(`${caseName} getWantAgent succes!!!!`);
           let triggerInfo: wantAgent.TriggerInfo = {
@@ -66,6 +80,7 @@ export default function abilityTest() {
                 done();
               }
             });
+            await Utils.sleep(500);
         }).catch((err: BusinessError) => {
           console.error(`${caseName} getWantAgent fail, error: ${JSON.stringify(err)}`);
           expect.assertFail();
@@ -103,12 +118,13 @@ export default function abilityTest() {
         wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
       };
       wantAgent.getWantAgent(wantAgentInfo)
-        .then((data) => {
+        .then(async (data) => {
           wantAgentData = data;
           console.info(`${caseName} getWantAgent succes!!!!`);
           let triggerInfo: wantAgent.TriggerInfo = {
             code: 0
           };
+          await Utils.sleep(2000);
           wantAgent.trigger(wantAgentData, triggerInfo,
             (err: BusinessError, data: wantAgent.CompleteData) => {
               if (err) {
@@ -159,12 +175,13 @@ export default function abilityTest() {
       };
 
       wantAgent.getWantAgent(wantAgentInfo)
-        .then((data) => {
+        .then(async (data) => {
           wantAgentData = data;
           console.info(`${caseName} getWantAgent succes!!!!`);
           let triggerInfo: wantAgent.TriggerInfo = {
             code: 0
           };
+          await Utils.sleep(2000);
           wantAgent.trigger(wantAgentData, triggerInfo,
             (err: BusinessError, data: wantAgent.CompleteData) => {
               if (err) {
@@ -215,12 +232,13 @@ export default function abilityTest() {
       };
 
       wantAgent.getWantAgent(wantAgentInfo)
-        .then((data) => {
+        .then(async(data) => {
           wantAgentData = data;
           console.info(`${caseName} getWantAgent succes!!!!`);
           let triggerInfo: wantAgent.TriggerInfo = {
             code: 0
           };
+          await Utils.sleep(2000);
           wantAgent.trigger(wantAgentData, triggerInfo,
             (err: BusinessError, data: wantAgent.CompleteData) => {
               if (err) {
@@ -275,12 +293,13 @@ export default function abilityTest() {
           wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         };
         wantAgent.getWantAgent(wantAgentInfo)
-          .then((data) => {
+          .then(async (data) => {
             wantAgentData = data;
             console.info(`${caseName} getWantAgent succes!!!!`);
             let triggerInfo: wantAgent.TriggerInfo = {
               code: 0
             };
+            await Utils.sleep(2000);
             wantAgent.trigger(wantAgentData, triggerInfo,
               (err: BusinessError, data: wantAgent.CompleteData) => {
                 if (err) {
