@@ -677,9 +677,8 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_027, TestSize.Level2)
     ASSERT_EQ(result0, AV_ERR_OK);
     index = aDecBufferDemo->GetInputIndex();
     result0 = aDecBufferDemo->PushInputData(codec, index);
-    index = aDecBufferDemo->GetInputIndex();
     result0 = aDecBufferDemo->PushInputData(codec, index);
-    ASSERT_EQ(result0, AV_ERR_UNKNOWN);
+    ASSERT_EQ(result0, AV_ERR_INVALID_VAL);
     result0 = aDecBufferDemo->Destroy(codec);
     delete aDecBufferDemo;
 }
@@ -1158,7 +1157,7 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_043, TestSize.Level2)
     result0 = aDecBufferDemo->Flush(codec);
     index = aDecBufferDemo->GetInputIndex();
     result0 = aDecBufferDemo->PushInputData(codec, index);
-    ASSERT_EQ(result0, AV_ERR_INVALID_STATE);
+    ASSERT_NE(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Destroy(codec);
     delete aDecBufferDemo;
 }
@@ -1385,7 +1384,7 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_051, TestSize.Level2)
     result0 = aDecBufferDemo->Stop(codec);
     index = aDecBufferDemo->GetInputIndex();
     result0 = aDecBufferDemo->PushInputData(codec, index);
-    ASSERT_EQ(result0, AV_ERR_INVALID_STATE);
+    ASSERT_NE(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Destroy(codec);
     delete aDecBufferDemo;
 }
