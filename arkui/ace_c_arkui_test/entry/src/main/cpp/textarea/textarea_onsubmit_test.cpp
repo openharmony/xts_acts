@@ -22,6 +22,22 @@
 namespace ArkUICapiTest {
 
 static ArkUI_NodeHandle textArea = nullptr;
+std::vector<int32_t> TextAreaOnSubmitTest::submitValue = {};
+static napi_value SetArrayNapiDataWithSubmit(const std::vector<int32_t>& data, napi_env env)
+{
+    napi_value array;
+    napi_create_array(env, &array);
+    for (size_t i = PARAM_0; i < data.size(); i++) {
+        napi_value num;
+        napi_create_int32(env, data[i], &num);
+        napi_set_element(env, array, i, num);
+    }
+    return array;
+};
+static void PushBackIntToData(std::vector<int32_t>& data, int32_t value)
+{
+    data.push_back(value);
+}
 static auto createChildNode(ArkUI_NativeNodeAPI_1* nodeAPI)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_TEXT_AREA);
@@ -58,6 +74,10 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
 
     if (eventId == ON_TEXT_AREA_ON_SUBMIT_EVENT_ID) {
+        ArkUI_NodeComponentEvent* result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextAreaOnSubmitTest",
+            "ON_TEXT_AREA_ON_SUBMIT_EVENT_ID PARAM_0 : %{public}d", result->data[PARAM_0].i32);
+        PushBackIntToData(TextAreaOnSubmitTest::submitValue, result->data[PARAM_0].i32);
         ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
         ArkUI_AttributeItem background_color_item = { background_color_value,
             sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
@@ -110,5 +130,14 @@ napi_value TextAreaOnSubmitTest::CreateNativeNode(napi_env env, napi_callback_in
     }
 
     return exports;
+}
+napi_value TextAreaOnSubmitTest::GetTextAreaSubmitData(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnSubmitTest", "GetTextAreaSubmitData");
+    napi_value result;
+    napi_create_array(env, &result);
+    napi_set_element(env, result, PARAM_0, SetArrayNapiDataWithSubmit(TextAreaOnSubmitTest::submitValue, env));
+    TextAreaOnSubmitTest::submitValue.clear();
+    return result;
 }
 } // namespace ArkUICapiTest

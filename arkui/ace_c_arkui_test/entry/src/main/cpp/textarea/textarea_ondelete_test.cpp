@@ -23,6 +23,22 @@ namespace ArkUICapiTest {
 
 #define TEXT_AREA_ON_DELETE_STRING "textareaondelete"
 static ArkUI_NodeHandle textArea = nullptr;
+std::vector<int32_t> TextAreaOnDeleteTest::deleteOffset = {};
+static napi_value SetArrayNapiDataWithDelete(const std::vector<int32_t>& data, napi_env env)
+{
+    napi_value array;
+    napi_create_array(env, &array);
+    for (size_t i = PARAM_0; i < data.size(); i++) {
+        napi_value num;
+        napi_create_int32(env, data[i], &num);
+        napi_set_element(env, array, i, num);
+    }
+    return array;
+};
+static void PushBackIntToData(std::vector<int32_t>& data, int32_t value)
+{
+    data.push_back(value);
+}
 static auto createChildNode(ArkUI_NativeNodeAPI_1* nodeAPI)
 {
     textArea = nodeAPI->createNode(ARKUI_NODE_TEXT_AREA);
@@ -85,6 +101,11 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
             return;
         }
         case ON_TEXT_AREA_WILL_DELETE_ID: {
+            ArkUI_NumberValue deleteValue[] = { { .f32 = 0 } };
+            OH_ArkUI_NodeEvent_GetNumberValue(event, 0, deleteValue);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextAreaOnDeleteTest",
+                "TextAreaOnDeleteTest ON_TEXT_AREA_WILL_DELETE_ID deleteValue: %{public}f", deleteValue[PARAM_0].f32);
+            PushBackIntToData(TextAreaOnDeleteTest::deleteOffset, deleteValue[PARAM_0].f32);
             ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
             ArkUI_AttributeItem background_color_item = { background_color_value,
                 sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
@@ -145,5 +166,14 @@ napi_value TextAreaOnDeleteTest::CreateNativeNode(napi_env env, napi_callback_in
     }
 
     return exports;
+}
+napi_value TextAreaOnDeleteTest::GetTextAreaDeleteData(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnDeleteTest", "GetTextAreaDeleteData");
+    napi_value result;
+    napi_create_array(env, &result);
+    napi_set_element(env, result, PARAM_0, SetArrayNapiDataWithDelete(TextAreaOnDeleteTest::deleteOffset, env));
+    TextAreaOnDeleteTest::deleteOffset.clear();
+    return result;
 }
 } // namespace ArkUICapiTest

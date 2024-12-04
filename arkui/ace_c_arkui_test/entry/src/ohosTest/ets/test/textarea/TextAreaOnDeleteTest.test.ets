@@ -15,6 +15,7 @@
 
 import { beforeAll, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
+import nativeRender from 'libnativerender.so'
 
 export default function textAreaOnDeleteTest() {
 
@@ -39,9 +40,10 @@ export default function textAreaOnDeleteTest() {
       await Utils.sleep(1000)
       await Utils.triggerKey(2055)
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnDeleteTestTextArea').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      let dataArray: number[][] = nativeRender.getTextAreaDeleteData();
+      let textAreaDeleteData: number[] = dataArray[0];
+      expect(textAreaDeleteData[0] == 16).assertEqual(true)
       done()
     })
-
   })
 }

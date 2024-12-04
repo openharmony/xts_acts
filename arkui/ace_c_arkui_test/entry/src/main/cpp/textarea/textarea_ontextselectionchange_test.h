@@ -16,16 +16,19 @@
 #ifndef ARKUI_CAPI_XTS_TEXTAREA_ON_TEXT_SELECTION_CHANGE_TEST_H
 #define ARKUI_CAPI_XTS_TEXTAREA_ON_TEXT_SELECTION_CHANGE_TEST_H
 
-#include "../common/common.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
+
+#include "../common/common.h"
 
 namespace ArkUICapiTest {
 
 class TextAreaOnTextSelectionChangeTest {
 public:
     ~TextAreaOnTextSelectionChangeTest();
-    static ArkUI_NodeHandle CreateSubTextAreaNode(ArkUI_NativeNodeAPI_1 *nodeApi);
+    static ArkUI_NodeHandle CreateSubTextAreaNode(ArkUI_NativeNodeAPI_1* nodeApi);
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
+    static std::vector<int32_t> SelectionVector;
+    static napi_value GetTextAreaData(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_XTS_TEXTAREA_ON_TEXT_SELECTION_CHANGE_TEST_H

@@ -15,6 +15,7 @@
 
 import { beforeAll, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
+import nativeRender from 'libnativerender.so'
 
 export default function textAreaOnSubmitTest() {
 
@@ -39,7 +40,10 @@ export default function textAreaOnSubmitTest() {
       await Utils.sleep(1000)
       await Utils.triggerKey(2054)
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnSubmitTestTextArea').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      let dataArray: number[][] = nativeRender.getTextAreaSubmitData();
+      console.log('testTextAreaOnSubmit001', JSON.stringify(dataArray))
+      let textAreaSubmitData: number[] = dataArray[0];
+      expect(textAreaSubmitData[0] == 2).assertEqual(true)
       done()
     })
 
