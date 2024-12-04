@@ -28,7 +28,7 @@ export default function windowImmersiveTest() {
     let deviceType: string = '';
     let isAutoWindow:string = '';
     
-    beforeAll(async () => {
+    beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       isPCStatus = settings.getValueSync(context,'isStatusBarExist','',settings.domainName.USER_PROPERTY)
