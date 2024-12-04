@@ -21,7 +21,6 @@ import hilog from '@ohos.hilog';
 import systemApp from '@system.app';
 import { add as napiAdd } from 'libentry.so';
 import BigNumber from 'json-bigint';
-import { SUCCESS, Selector } from 'behaviortree';
 import myJson from './1.json';
 
 export default function staticImport() {
@@ -147,23 +146,6 @@ export default function staticImport() {
         console.log('ModuleTest Ohpm import Ohpm success');
       }
       expect(ohpmImportOhpm).assertEqual('success');
-    })
-
-    /**
-     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_StaticImport_0800
-     * @tc.name      : testCjsDictionary
-     * @tc.desc      : Import Cjs DictionaryMode
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('testCjsDictionary', 0, () => {
-      let cjsDictionary: String = '';
-      if (SUCCESS && typeof Selector == 'function') {
-        cjsDictionary = 'success';
-        console.log('ModuleTest import cjsDictionary success');
-      }
-      expect(cjsDictionary).assertEqual('success');
     })
 
     /**

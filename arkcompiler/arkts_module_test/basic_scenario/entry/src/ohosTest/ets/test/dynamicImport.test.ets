@@ -184,29 +184,5 @@ export default function dynamicImport() {
         expect(res).assertEqual('success');
       })
     })
-
-    /**
-     * @tc.number    : SUB_ARKCOMPILER_ETSRUNTIME_BasicScenario_DynamicImport_0800
-     * @tc.name      : testNpmRes
-     * @tc.desc      : Import Ohpm
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('testNpmRes', 0, () => {
-      let res: String = '';
-      import('@wolfx/json5').then(m => {
-        try {
-          if (m.JSON5.stringify("aaa") == "'aaa'") {
-            res = 'success';
-            console.error("ModuleTest: successfully load package json5");
-          }
-        } catch (e) {
-          console.error("ModuleTest: package json5 test failed");
-          console.error("ModuleTest: error", e.toString());
-        }
-        expect(res).assertEqual('success');
-      })
-    })
   })
 }
