@@ -6,6 +6,7 @@
     "MainAbility/pages/second/pageTwo",
     "MainAbility/pages/LineMetrics",
     "MainAbility/pages/LineMetricsTwo",
-    "MainAbility/pages/FontDescriptor"
+    "MainAbility/pages/FontDescriptor",
+    "MainAbility/pages/FontDescriptor1"
   ]
 }
