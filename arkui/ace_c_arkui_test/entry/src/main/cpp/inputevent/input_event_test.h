@@ -17,6 +17,7 @@
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #include <arkui/native_interface.h>
 #include <arkui/native_node.h>
+#include <cstdint>
 
 #include "../common/common.h"
 
@@ -25,12 +26,15 @@ namespace ArkUICapiTest {
 class InputEventTest {
 public:
     ~InputEventTest();
-    // testInputEvent001,testInputEvent002
+
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
-    // testInputEvent011,testInputEvent012,testInputEvent013,testInputEvent014
-    static napi_value CreateNativeNodeForMouse(napi_env env, napi_callback_info info);
-    // testInputEvent017
     static napi_value CreateNativeNodeForAxis(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeForMouse(napi_env env, napi_callback_info info);
+
+    static napi_value GetEventState(napi_env env, napi_callback_info info);
+    static napi_value SetFuncName(napi_env env, napi_callback_info info);
+    static int32_t eventState;
+    static std::string funcName;
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_DEMO_INPUT_EVENT_TEST_H

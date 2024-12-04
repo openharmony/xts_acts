@@ -319,11 +319,15 @@ export const imageAnimatorOnRepeatTest: (a: string) => void;
 
 export const imageAnimatorOnFinishTest: (a: string) => void;
 
-export const inputEventTest: (a: string) => void;
+export const inputEventTest: (a: string, b: string) => void;
+
+export const getEventState: () => number;
+
+export const setFuncName: (a: string) => void;
 
 export const inputEventMouseTest: (a: string) => void;
 
-export const inputEventAxisTest: (a: string) => void;
+export const inputEventAxisTest: (a: string, b: string) => void;
 
 export const swiperOnChangeTest: (a: string) => void;
 

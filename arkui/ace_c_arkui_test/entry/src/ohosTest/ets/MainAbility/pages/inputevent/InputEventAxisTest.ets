@@ -15,18 +15,30 @@
 
 import render from 'libnativerender.so'
 import { CommonView } from '../../componet/CommonView';
+import { InputEventTestFunctionData,InputEventTestFunctionStaticData } from './InputEventTest';
+import router from '@ohos.router';
 
 @Entry
 @Component
 struct InputEventAxisTest {
-  PAGE_TAG: string = 'InputEventAxisTest';
+  private PAGE_TAG: string = (router.getParams() as InputEventTestFunctionData).pageTag;
+  private funcName: string = (router.getParams() as InputEventTestFunctionData).funcName;
 
   build() {
     Column() {
+      Button()
+        .backgroundColor(Color.Transparent)
+        .width(200)
+        .height(100)
+        .id('axisCallInputEvent')
+        .onClick(() => {
+          render.setFuncName(InputEventTestFunctionStaticData.funcName);
+        })
+
       CommonView({
         pageTag: this.PAGE_TAG,
       }).onAppear(() => {
-        render.inputEventAxisTest(this.PAGE_TAG);
+        render.inputEventAxisTest(this.PAGE_TAG,this.funcName);
       })
     }
   }
