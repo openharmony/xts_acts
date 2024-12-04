@@ -1,7 +1,7 @@
 {
     "description": "Config for avcodec ndk test cases",
     "driver": {
-        "module-name": "ActsDetailEnhancerVideoNdkInnerUnitTest",
+        "module-name": "ActsDetailEnhancerVideoNdkUnitTest",
         "native-test-timeout": "300000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "1s",
@@ -16,7 +16,7 @@
                 "mkdir -p /data/local/tmp/"
             ],
             "push": [
-                "ActsDetailEnhancerVideoNdkInnerUnitTest->/data/local/tmp/ActsDetailEnhancerVideoNdkInnerUnitTest"
+                "ActsDetailEnhancerVideoNdkUnitTest->/data/local/tmp/ActsDetailEnhancerVideoNdkUnitTest"
             ]
         },
         {
