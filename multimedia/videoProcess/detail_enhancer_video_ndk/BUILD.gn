@@ -61,7 +61,7 @@ ohos_moduletest_suite("ActsDetailEnhancerVideoNdkUnitTest") {
 
   sources = [
     "./src/detail_enhancer_video_ndk_unit_test.cpp",
-    "./src/video_sample.cpp"
+    "./src/video_sample.cpp",
   ]
 
   cflags = detail_enhancer_video_ndk_unit_test_cflags
