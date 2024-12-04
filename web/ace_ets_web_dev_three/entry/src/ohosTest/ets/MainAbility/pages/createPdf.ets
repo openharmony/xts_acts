@@ -86,34 +86,35 @@ struct WebComponent {
             }
 
             case "emitSavePDF1": {
-                this.controller.createPdf(
-                    this.pdfConfig,
-                    (error, result: webview.PdfData) => {
-                    try {
-                        // 获取组件上下文
-                        let context = getContext(this) as common.UIAbilityContext;
-                        // 获取沙箱路径，设置pdf文件名
-                        let filePath = context.filesDir + "/test.pdf";
-                        let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-                        fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                           Utils.emitEvent(result.pdfArrayBuffer().length > 0, 20241128);
-                        
-                        }).catch((err: BusinessError) => {
-                        console.error("createPDF write data to file failed with error message: " + err.message +
-                            ", error code: " + err.code);
-                        }).finally(() => {
-                        fs.closeSync(file);
-                        });
-                    } catch (resError) {
-                        console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-                    }
+                this.controller.createPdf(this.pdfConfig)
+                .then((result: webview.PdfData) => {
+                  try {
+                    // 获取组件上下文
+                    let context = getContext(this) as common.UIAbilityContext;
+                    // 获取沙箱路径，设置pdf文件名
+                    let filePath = context.filesDir + "/test.pdf";
+                    let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+                    fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
+                      console.info("pdfResult" + result.pdfArrayBuffer().length );
+                      if(result.pdfArrayBuffer().length > 0) {
+                        Utils.emitEvent(true, 20241128);
+                      }
+                    }).catch((err: BusinessError) => {
+                      console.error("createPDF write data to file failed with error message: " + err.message +
+                        ", error code: " + err.code);
+                    }).finally(() => {
+                      fs.closeSync(file);
                     });
+                  } catch (resError) {
+                    console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+                  }
+                })
+
                 break;
             }
           }
         })
       }
-
 
 
      Web({ src: "www.example.com", controller: this.controller })
