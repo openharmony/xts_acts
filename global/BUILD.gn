@@ -23,6 +23,7 @@ group("global") {
       "i18n_standard/intljs:intljs_test",
       "perf/perfjs:perfjs_test",
       "resmgr_standard/resmgrjs:resmgrjs_test",
+      "i18n_stage:i18nStageTest",
     ]
   } else {
     deps = [
