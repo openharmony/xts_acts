@@ -111,6 +111,9 @@ group("multimedia") {
       "media/media_ndk_standard/avPlayerDrmNdk:AVPlayerDrm_NDK_test",
       "photoAccess/photoAccess:photoAccess_js_hap",
       "photoAccess/pickerView:TextPickerTest",
+      "videoProcess/detail_enhancer_image_ndk:ActsDetailEnhancerImageNdkUnitTest",
+      "videoProcess/detail_enhancer_video_ndk:ActsDetailEnhancerVideoNdkUnitTest",
+      "videoProcess/moduletest/video:ActsVpeVideoNativModuleTest",
     ]
   } else {
     deps = [
