@@ -514,7 +514,6 @@
 #include "grid/grid_columnTemplate_test.cpp"
 #include "grid/grid_rowsGap_test.cpp"
 #include "grid/grid_cachedCount_test.cpp"
-#include "grid/grid_nodeadapter_test.cpp"
 #include "span/span_decoration_test.cpp"
 #include "span/span_textcase_test.cpp"
 #include "span/span_letterspacing_test.cpp"
@@ -5489,9 +5488,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testGridCachedCount003", nullptr, TestGridCachedCount003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testGridCachedCount004", nullptr, TestGridCachedCount004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testGridCachedCount005", nullptr, TestGridCachedCount005, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testGridNodeAdapter001", nullptr, TestGridNodeAdapter001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testGridNodeAdapter002", nullptr, TestGridNodeAdapter002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testGridNodeAdapter003", nullptr, TestGridNodeAdapter003, nullptr, nullptr, nullptr, napi_default, nullptr},
 
         {"testRadioValue001", nullptr, TestRadioValue001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRadioValue002", nullptr, TestRadioValue002, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -5502,11 +5498,15 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testRadioRadioStyle001", nullptr, TestRadioRadioStyle001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRadioRadioStyle002", nullptr, TestRadioRadioStyle002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRadioRadioStyle003", nullptr, TestRadioRadioStyle003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioRadioStyle004", nullptr, TestRadioRadioStyle004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioRadioStyle005", nullptr, TestRadioRadioStyle005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRadioChecked001", nullptr, TestRadioChecked001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRadioChecked002", nullptr, TestRadioChecked002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRadioChecked003", nullptr, TestRadioChecked003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRadioChecked004", nullptr, TestRadioChecked004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRadioChecked005", nullptr, TestRadioChecked005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioChecked006", nullptr, TestRadioChecked006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRadioChecked007", nullptr, TestRadioChecked007, nullptr, nullptr, nullptr, napi_default, nullptr},
 
         {"drag_setDragEventStrictReportWidthNode_001", nullptr, drag_setDragEventStrictReportWidthNode_001, nullptr,
          nullptr, nullptr, napi_default, nullptr},

@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef ARKUI_CAPI_XTS_RADIO_ONCHANGE_TEST_H
-#define ARKUI_CAPI_XTS_RADIO_ONCHANGE_TEST_H
+#ifndef ARKUI_CAPI_XTS_REFRESH_OFFSET_TEST_H
+#define ARKUI_CAPI_XTS_REFRESH_OFFSET_TEST_H
 
 #include "../common/common.h"
 
@@ -24,11 +24,11 @@
 
 namespace ArkUICapiTest {
 
-class RadioOnChangeTest {
+class RefreshOffsetTest {
 public:
-    ~RadioOnChangeTest();
+    ~RefreshOffsetTest();
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
-    static napi_value CreateNativeNodeChecked(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeLessThanOffset(napi_env env, napi_callback_info info);
 };
-} // namespace ArkUICapiTest
-#endif // ARKUI_CAPI_XTS_RADIO_ONCHANGE_TEST_H
+}
+#endif // ARKUI_CAPI_XTS_REFRESH_OFFSET_TEST_H

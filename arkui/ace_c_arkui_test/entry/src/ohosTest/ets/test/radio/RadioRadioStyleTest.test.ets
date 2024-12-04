@@ -64,5 +64,31 @@ export default function radioRadioStyleTest() {
       expect(nativeFunc.testRadioRadioStyle003()).assertEqual(0)
       done();
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_RADIO_STYLE_0400
+     * @tc.name       : testRadioRadioStyle004
+     * @tc.desc       : testing Style for radio with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRadioRadioStyle004', 0, async (done: Function) => {
+      expect(nativeFunc.testRadioRadioStyle004()).assertEqual(0)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_RADIO_STYLE_0500
+     * @tc.name       : testRadioRadioStyle005
+     * @tc.desc       : testing Style for radio with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRadioRadioStyle005', 0, async (done: Function) => {
+      expect(nativeFunc.testRadioRadioStyle005()).assertEqual(0)
+      done();
+    })
   })
 }

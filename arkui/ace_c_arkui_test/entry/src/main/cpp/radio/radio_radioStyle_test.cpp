@@ -57,4 +57,30 @@ static napi_value TestRadioRadioStyle003(napi_env env, napi_callback_info info)
 
     NAPI_END;
 }
+static napi_value TestRadioRadioStyle004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(radio, ARKUI_NODE_RADIO);
+
+    ArkUI_NumberValue value[] = { { .u32 = COLOR_YELLOW }, { .u32 = COLOR_BLUE } };
+    ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
+    auto ret = nodeAPI->setAttribute(radio, NODE_RADIO_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(radio, NODE_RADIO_STYLE)->value[PARAM_0].u32, COLOR_YELLOW);
+    ASSERT_EQ(nodeAPI->getAttribute(radio, NODE_RADIO_STYLE)->value[PARAM_1].u32, COLOR_BLUE);
+
+    NAPI_END;
+}
+static napi_value TestRadioRadioStyle005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(radio, ARKUI_NODE_RADIO);
+
+    ArkUI_NumberValue value[] = { { .u32 = COLOR_YELLOW } };
+    ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
+    auto ret = nodeAPI->setAttribute(radio, NODE_RADIO_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(radio, NODE_RADIO_STYLE)->value[PARAM_0].u32, COLOR_YELLOW);
+
+    NAPI_END;
+}
+
 }

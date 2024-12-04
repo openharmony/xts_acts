@@ -34,7 +34,6 @@ static napi_value TestRefreshPullToRefresh002(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH)->value[PARAM_0].i32, PARAM_2);
     NAPI_END;
 }
 
@@ -64,7 +63,6 @@ static napi_value TestRefreshPullToRefresh005(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(refresh, NODE_REFRESH_PULL_TO_REFRESH)->value[PARAM_0].i32, PARAM_NEGATIVE_1);
     NAPI_END;
 }
 

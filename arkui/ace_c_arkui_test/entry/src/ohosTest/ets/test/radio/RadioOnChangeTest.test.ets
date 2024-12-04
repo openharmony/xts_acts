@@ -37,8 +37,8 @@ export default function radioOnChangeTest() {
     */
     it('testRadioOnChange001', 0, async (done: Function) => {
       await Utils.clickComponent('OnChangeRadio')
-      await Utils.sleep(5000);
-      expect(Utils.getComponentInfoByKey('OnChangeRadio').$attrs.backgroundColor).assertEqual('#FFFFFF00')
+      await Utils.sleep(3000);
+      expect(Utils.getComponentInfoByKey('OnChangeRadio').$attrs.backgroundColor).assertEqual('#FFFF0000')
       done()
     })
 

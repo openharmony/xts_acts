@@ -25,6 +25,7 @@ export class ComponentAttrs {
   enabled: string;
   focusable: boolean;
   trackColor: string;
+  checked: boolean;
 }
 
 /**

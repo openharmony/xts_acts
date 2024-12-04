@@ -90,5 +90,31 @@ export default function radioCheckedTest() {
       expect(nativeFunc.testRadioChecked005()).assertEqual(0)
       done();
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_RADIO_CHECKED_0600
+     * @tc.name       : testRadioChecked006
+     * @tc.desc       : testing Checked for radio with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRadioChecked006', 0, async (done: Function) => {
+      expect(nativeFunc.testRadioChecked006()).assertEqual(0)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_RADIO_CHECKED_0700
+     * @tc.name       : testRadioChecked007
+     * @tc.desc       : testing Checked for radio with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testRadioChecked007', 0, async (done: Function) => {
+      expect(nativeFunc.testRadioChecked007()).assertEqual(0)
+      done();
+    })
   })
 }

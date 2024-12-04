@@ -144,6 +144,8 @@
 #include "nodetree/node_tree_xcomponent_test.h"
 #include "commonevent/commonevent_event_test.h"
 
+#include "grid/grid_nodeadapter_test.h"
+#include "refresh/refresh_offsetEvent_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -493,6 +495,8 @@ static napi_value Init(napi_env env, napi_value exports)
 
         {"radioOnChangeTest", nullptr, RadioOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"radioOnChangeCheckedTest", nullptr, RadioOnChangeTest::CreateNativeNodeChecked, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"textAreaOnTextSelectionChangeTest", nullptr, TextAreaOnTextSelectionChangeTest::CreateNativeNode, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"getTextAreaData", nullptr, TextAreaOnTextSelectionChangeTest::GetTextAreaData, nullptr,
@@ -517,6 +521,12 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"textAreaOnSubmitTest", nullptr, TextAreaOnSubmitTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"gridAdapterTest", nullptr, GridAdapterTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"refreshOffsetTest", nullptr, RefreshOffsetTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"refreshOffsetLessThanOffsetTest", nullptr, RefreshOffsetTest::CreateNativeNodeLessThanOffset, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
         {"getTextAreaSubmitData", nullptr, TextAreaOnSubmitTest::GetTextAreaSubmitData, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"textInputOnTextSelectionChangeTest", nullptr, TextInputOnTextSelectionChangeTest::CreateNativeNode,

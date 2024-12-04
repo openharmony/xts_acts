@@ -212,6 +212,10 @@
     "MainAbility/pages/nodetree/NodeTreeXComponentDetach401Test",
     "MainAbility/pages/swiper/SwiperSwipeToIndexTest",
     "MainAbility/pages/swiper/SwiperNestedScrollTest",
-    "MainAbility/pages/swiper/SwiperNestedScrollChildTest"
+    "MainAbility/pages/swiper/SwiperNestedScrollChildTest",
+    "MainAbility/pages/grid/GridAdapterTest",
+    "MainAbility/pages/refresh/RefreshLessOffsetTest",
+    "MainAbility/pages/refresh/RefreshOverOffsetTest",
+    "MainAbility/pages/radio/RadioOnChangeCheckedTest"
   ]
 }

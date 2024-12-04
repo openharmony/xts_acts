@@ -34,11 +34,12 @@ export default function refreshOnOffsetChangeTest() {
       await Utils.pushPage(`refresh/${PAGE_TAG}`);
       await Utils.sleep(1000)
       let driver = Driver.create();
+      
       let rect = Utils.getComponentRect("RefreshOnOffsetChange");
       let x = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
       let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
       console.info("RefreshOnOffsetChangeTest  x= " +  x  + ", y = " + y);
-      await driver.swipe(Math.round(x - vp2px(50)), Math.round(y - vp2px(100)), Math.round(x + vp2px(50)), Math.round(y + vp2px(100)));
+      await driver.swipe(Math.round(x - vp2px(30)), Math.round(y - vp2px(100)), Math.round(x + vp2px(30)), Math.round(y + vp2px(150)));
       await Utils.sleep(2000);
       expect(Utils.getComponentInfoByKey('RefreshOnOffsetChange').$attrs.backgroundColor).assertEqual('#FFFFFF00');
       done();
