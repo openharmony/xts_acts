@@ -12,8 +12,8 @@
 # limitations under the License.
 
 import("//build/test.gni")
-import("//foundation/multimedia/media_foundation/config.gni")
 import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
+import("//foundation/multimedia/media_foundation/config.gni")
 
 module_output_path = "acts/ActsDetailEnhancerImageNdkInnerUnitTest"
 
@@ -60,7 +60,7 @@ ohos_unittest("ActsDetailEnhancerImageNdkInnerUnitTest") {
     "$histreamer_root_dir/video_processing_engine/framework/dfx/include",
     "$histreamer_root_dir/video_processing_engine/framework/capi/image_processing/include",
     "$histreamer_root_dir/video_processing_engine/framework/algorithm/include",
-    "$image_subsystem/interfaces/kits/native/include/image"
+    "$image_subsystem/interfaces/kits/native/include/image",
   ]
 
   sources = [ "./src/detail_enhancer_image_ndk_unit_test.cpp" ]
