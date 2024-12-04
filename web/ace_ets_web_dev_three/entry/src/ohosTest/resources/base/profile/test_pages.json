@@ -4,6 +4,7 @@
         "MainAbility/pages/webTwo",
 		"MainAbility/pages/bindSelectionMenu",
 		"MainAbility/pages/createPdf",
-        "MainAbility/pages/NestedScrollMode"
+        "MainAbility/pages/NestedScrollMode",
+        "MainAbility/pages/blurMode"
     ]
 }
