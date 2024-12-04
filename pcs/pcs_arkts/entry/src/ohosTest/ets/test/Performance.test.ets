@@ -98,6 +98,16 @@ export default function performanceTest() {
           await button.click()
           await driver.delayMs(2000)
         }
+        let allowButton1 = await driver.findComponent(ON.text('允许'))
+        if(allowButton1 != undefined && allowButton1 != null) {
+          await allowButton1.click()
+          await driver.delayMs(2000)
+        }
+        let allowButton2 = await driver.findComponent(ON.text('本次允许'))
+        if(allowButton2 != undefined && allowButton2 != null) {
+          await allowButton2.click()
+          await driver.delayMs(2000)
+        }
         expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
         await driver.delayMs(2000)
         audioStateText = await driver.findComponent(ON.id('AudioStateText').inWindow('com.acts.pcs.arktstest'))

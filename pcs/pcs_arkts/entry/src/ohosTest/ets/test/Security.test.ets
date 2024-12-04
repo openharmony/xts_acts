@@ -55,7 +55,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testPermissionUserGrant0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       let permissions: Array<Permissions> = ['ohos.permission.CAMERA']
       await PermissionUtils.getPermission(abilityContext, permissions)
       await PermissionUtils.grantPermission()
@@ -101,6 +100,16 @@ export default function securityTest() {
       let openButton = await driver.findComponent(ON.text('打开').inWindow('com.acts.pcs.arktstest'))
       if(openButton != undefined) {
         await openButton.click()
+        await driver.delayMs(2000)
+      }
+      let allowButton1 = await driver.findComponent(ON.text('允许'))
+      if(allowButton1 != undefined && allowButton1 != null) {
+        await allowButton1.click()
+        await driver.delayMs(2000)
+      }
+      let allowButton2 = await driver.findComponent(ON.text('本次允许'))
+      if(allowButton2 != undefined && allowButton2 != null) {
+        await allowButton2.click()
         await driver.delayMs(2000)
       }
       let processInformations = await applicationContext.getRunningProcessInformation()
@@ -182,7 +191,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testHardwareSupportAESGCM256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey = await SecurityUtils.genSymKeyByData(keyData, 'AES256')
@@ -215,7 +223,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportHASHAndHMACAlg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let mdAlgName = 'SHA256'
         let message = 'This is a HASH_SHA256 test'
@@ -261,7 +268,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportRSA2048Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyGenAlg = "RSA2048"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -290,7 +296,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportECCAlg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyGenAlg = "ECC256"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -319,7 +324,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportSecureRandomNumber0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let rand = cryptoFramework.createRandom();
         let seed = new Uint8Array([1, 2, 3]);
@@ -347,7 +351,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportHASHSHA256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let mdAlgName = 'SHA256'
         let message = 'This is a HASH_SHA256 test'
@@ -375,7 +378,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportHKDFAlg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       let keyAlias = 'hkdf_key'
       let HuksKeyDeriveKeySize = 32
       let deriveHkdfInData = "deriveHkdfTestIndata"
@@ -416,7 +418,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCBC128Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -447,7 +448,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCBC192Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -478,7 +478,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCBC256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -509,7 +508,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESGCM128Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -540,7 +538,6 @@ export default function securityTest() {
       * @tc.level: Level 0
       */
     it('testSupportAESGCM192Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -571,7 +568,6 @@ export default function securityTest() {
       * @tc.level: Level 0
       */
     it('testSupportAESGCM256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -603,7 +599,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESECB128Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -634,7 +629,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESECB192Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -665,7 +659,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESECB256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -696,7 +689,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESOFB128Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -728,7 +720,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESOFB192Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -760,7 +751,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESOFB256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -792,7 +782,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCFB128Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -824,7 +813,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCFB192Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -856,7 +844,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCFB256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -888,7 +875,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCTR128Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -920,7 +906,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCTR192Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -953,7 +938,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCTR256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -985,7 +969,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCCM128Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -1017,7 +1000,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCCM192Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -1049,7 +1031,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportAESCCM256Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -1081,7 +1062,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportRSA3072Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyGenAlg = "RSA3072"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -1111,7 +1091,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportRSA4096Alg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyGenAlg = "RSA4096"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -1141,7 +1120,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportSignatureVerifyAlg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let keyGenAlg = "ECC256"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -1187,7 +1165,6 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testSupportKeySignatureAlg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256')
         let keyPairA = await eccGen.generateKeyPair()
@@ -1227,7 +1204,6 @@ export default function securityTest() {
     * @tc.level: Level 0
     */
     it('testSupportKeyAgreementAlg0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       try {
         let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256')
         let keyPairA = await eccGen.generateKeyPair()
@@ -1266,7 +1242,6 @@ export default function securityTest() {
     * @tc.level: Level 0
     */
     it('testKeyStorage0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       let keyAlias = 'hkdf_key'
       try {
         let generateRes: [boolean, huks.HuksOptions] = await SecurityUtils.generateKeyItem(keyAlias,
@@ -1306,6 +1281,16 @@ export default function securityTest() {
       let openButton = await driver.findComponent(ON.text('打开').inWindow('com.acts.pcs.arktstest'))
       if(openButton != undefined && openButton != null) {
         await openButton.click()
+        await driver.delayMs(2000)
+      }
+      let allowButton1 = await driver.findComponent(ON.text('允许'))
+      if(allowButton1 != undefined && allowButton1 != null) {
+        await allowButton1.click()
+        await driver.delayMs(2000)
+      }
+      let allowButton2 = await driver.findComponent(ON.text('本次允许'))
+      if(allowButton2 != undefined && allowButton2 != null) {
+        await allowButton2.click()
         await driver.delayMs(2000)
       }
       let button = await driver.findComponent(ON.id('generateKey').inWindow('com.acts.pcs.arkts.assist'))
