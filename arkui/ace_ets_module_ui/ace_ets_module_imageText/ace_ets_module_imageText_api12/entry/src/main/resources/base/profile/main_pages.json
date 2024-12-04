@@ -138,7 +138,6 @@
     "MainAbility/pages/Text/imageSpan8",
     "MainAbility/pages/RichEditor/getRectsForRange",
     "MainAbility/pages/TextInput/textInputEnterKeyType",
-    "MainAbility/pages/span/spanPage",
     "MainAbility/pages/TextArea/textAreaAutoFill",
     "MainAbility/pages/TextArea/textAreaHeightAdaptivePolicy",
     "MainAbility/pages/TextArea/textAreaMaxFontSize",
@@ -152,6 +151,19 @@
     "MainAbility/pages/TextInput/textInputHeightAdaptivePolicy",
     "MainAbility/pages/TextInput/textInputDecoration",
     "MainAbility/pages/TextInput/textInputLetterSpacing",
-    "MainAbility/pages/TextInput/textInputLineHeight"
+    "MainAbility/pages/TextInput/textInputLineHeight",
+	"MainAbility/pages/component/searchMaxFontSize",
+    "MainAbility/pages/component/searchMinFontSize",
+    "MainAbility/pages/component/searchDecoration",
+    "MainAbility/pages/component/searchLetterSpacing",
+    "MainAbility/pages/component/searchLineHeight",
+    "MainAbility/pages/component/APISearchExample",
+    "MainAbility/pages/Common/Search/Search_API/MenuPolicy_HIDE",
+    "MainAbility/pages/Common/Search/Search_API/MenuPolicy_SHOW",
+	"MainAbility/pages/component/spanBaselineOffset",
+	"MainAbility/pages/xts/SearchXts",
+    "MainAbility/pages/xts/TextAreaXts",
+    "MainAbility/pages/xts/TextInputXts",
+	"MainAbility/pages/span/spanPage"
   ]
 }

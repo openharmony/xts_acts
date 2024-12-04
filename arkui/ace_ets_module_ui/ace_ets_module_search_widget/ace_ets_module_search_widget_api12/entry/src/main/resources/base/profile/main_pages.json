@@ -1,8 +1,0 @@
-{
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/xts/SearchXts",
-        "MainAbility/pages/xts/TextAreaXts",
-        "MainAbility/pages/xts/TextInputXts"
-    ]
-}
