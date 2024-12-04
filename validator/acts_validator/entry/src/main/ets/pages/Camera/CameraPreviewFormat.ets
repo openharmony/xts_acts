@@ -54,6 +54,7 @@ struct cameraFormat {
   @State resolutionSelectVal: string = '';
   @State nextEnabled: boolean = true;
   @State formatVal: SelectOption[] = [];
+  @State selectFn: string = 'Camera 0';
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
@@ -82,6 +83,10 @@ struct cameraFormat {
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
       this.cameraListFn()
     })
+  }
+
+  selectClickFn() {
+    this.selectFn = 'Camera ' + this.cameraDeviceIndex;
   }
 
   onPageShow() {
@@ -219,7 +224,7 @@ struct cameraFormat {
                   .backgroundColor(Color.Black)
                 Select(this.cameraList)
                   .selected(this.cameraDeviceIndex)
-                  .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
+                  .value(this.selectFn)
                   .font({ size: 16, weight: 500 })
                   .fontColor(Color.White)
                   .selectedOptionBgColor(Color.Black)
@@ -229,6 +234,7 @@ struct cameraFormat {
                   .onSelect((index: number) => {
                     this.cameraDeviceIndex = index
                     this.cameraInit()
+                    this.selectClickFn()
                   })
                   .backgroundColor(Color.Black)
               }.size({ width: '100%', height: '30%' }).justifyContent(FlexAlign.SpaceEvenly)
