@@ -128,7 +128,7 @@ let GET_0200 = async (done: Function) => {
 };
 
 let POST_0100 = async (done: Function) => {
-  let casename = 'SUB_Telephony_http_HttpRequestMethod_0300';
+  let casename = 'SUB_Telephony_http_HttpRequestMethod_POST_0100';
   console.log('-----------------------HttpRequestMethod_POST Test is starting-----------------------');
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
@@ -146,7 +146,7 @@ let POST_0100 = async (done: Function) => {
       connectTimeout: 60000
     }
     let httpRequest = http.createHttp();
-    httpRequest.request('https://image.baidu.com/search/albumsdetail/', httpRequestOptions, (err, data) => {
+    httpRequest.request('https://image.baidu.com/search/detail', httpRequestOptions, (err, data) => {
       console.log(casename + JSON.stringify(err) + ' data: ' + JSON.stringify(data));
       expect(data.responseCode == 200).assertTrue();
       httpRequest.destroy();
@@ -180,7 +180,7 @@ let POST_0200 = async (done: Function) => {
       connectTimeout: 60000
     }
     let httpRequest = http.createHttp();
-    httpRequest.request('https://image.baidu.com/search/albumsdetail/', httpRequestOptions).then(data => {
+    httpRequest.request('https://image.baidu.com/search/detail', httpRequestOptions).then(data => {
       console.log(casename + JSON.stringify(data));
       expect(data.responseCode == 200).assertTrue();
       httpRequest.destroy();
