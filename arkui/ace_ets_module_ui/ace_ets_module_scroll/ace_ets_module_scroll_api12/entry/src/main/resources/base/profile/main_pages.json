@@ -98,6 +98,7 @@
         "MainAbility/pages/WaterFlow/waterFlowFling1",
         "MainAbility/pages/WaterFlow/waterFlowFling2",
         "MainAbility/pages/AlphabetIndexer/alphabetAlignStyle",
-        "MainAbility/pages/AlphabetIndexer/outliersAlphabet"
+        "MainAbility/pages/AlphabetIndexer/outliersAlphabet",
+        "MainAbility/pages/AlphabetIndexer/valueAlphabet"
     ]
 }
