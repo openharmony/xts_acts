@@ -17,16 +17,19 @@ import Want from '@ohos.app.ability.Want';
 import common from '@ohos.app.ability.common';
 
 export default class AbilityUtils {
+  static ERROR_CODE_ABILITY_IS_STARTING = 16000082
   static async startAbility(bundleName: string, abilityName: string, context: common.UIAbilityContext) {
     let want: Want = {
       bundleName: bundleName,
       abilityName: abilityName
     }
     let res = true
-    context.startAbilityForResult(want, (err, data) => {
-      console.log(`Start ability finished. err: ${err}, data: ${data}`)
-      if (err) {
+    await context.startAbilityForResult(want, (err, data) => {
+      if (err.code && err.code != AbilityUtils.ERROR_CODE_ABILITY_IS_STARTING) {
+        console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
         res = false
+      } else {
+        console.info('startAbilityForResult succeed');
       }
     })
     return res
@@ -38,8 +41,10 @@ export default class AbilityUtils {
       await context.startAbility(wantInfo);
     } catch (error) {
       let err = error as BusinessError;
-      console.error(`Failed to startAbilityImplicitly. error: ${JSON.stringify(err)}`)
-      res = false
+      console.error(`Failed to startAbilityImplicitly. code is ${err.code}, message is ${err.message}`)
+      if (err.code != AbilityUtils.ERROR_CODE_ABILITY_IS_STARTING) {
+        res = false
+      }
     }
     return res
   }
