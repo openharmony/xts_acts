@@ -31,7 +31,7 @@ struct WebComponent {
     marginBottom: 0,
     marginRight: 0,
     marginLeft: 0,
-    shouldPrintBackground: false
+    shouldPrintBackground: true
   }
 
   onPageShow() {
