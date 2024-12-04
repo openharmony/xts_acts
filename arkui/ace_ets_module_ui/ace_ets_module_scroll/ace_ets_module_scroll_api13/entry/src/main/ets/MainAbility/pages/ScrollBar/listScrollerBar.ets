@@ -19,19 +19,11 @@ struct listScrollerPage {
   @State arr: number[] = []
   @State outBarState: BarState = BarState.Off
   @State mvisiblity: Visibility = Visibility.Visible
-  @State ScrollForwardMode: NestedScrollMode = NestedScrollMode.PARENT_FIRST
-  @State ScrollBackwardMode: NestedScrollMode = NestedScrollMode.PARENT_FIRST
+  @State scrollForwardMode: NestedScrollMode = NestedScrollMode.PARENT_FIRST
+  @State scrollBackwardMode: NestedScrollMode = NestedScrollMode.PARENT_FIRST
   @State scrollEventArr: Set<string> = new Set()
   @State listEventArr: Set<string> = new Set()
   @State onText:string = 'bar: '
-
-  @Styles
-  listCard() {
-    .backgroundColor(Color.White)
-    .width('100%')
-    .height(72)
-    .borderRadius(12)
-  }
 
   aboutToAppear() {
     this.listItems(10)
@@ -76,7 +68,10 @@ struct listScrollerPage {
                       Text('item' + item + index)
                         .fontSize(16)
                     }
-                    .listCard()
+                    .backgroundColor(Color.White)
+                    .width('100%')
+                    .height(72)
+                    .borderRadius(12)
                     .visibility(index % 2 == 0 ? this.mvisiblity : Visibility.Visible)
                   }, (item: string) => item)
                 }
@@ -104,8 +99,8 @@ struct listScrollerPage {
                 .borderWidth(3)
                 .borderColor(Color.Orange)
                 .nestedScroll({
-                  scrollForward: this.ScrollForwardMode,
-                  scrollBackward: this.ScrollBackwardMode
+                  scrollForward: this.scrollForwardMode,
+                  scrollBackward: this.scrollBackwardMode
                 })
               }.height('100%').width('100%')
             }
