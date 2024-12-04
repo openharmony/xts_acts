@@ -45,7 +45,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode).assertEqual(1000000);
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode).assertEqual(1000000);
-        expect(data.targetVersion).assertEqual(12);
+        expect(data.targetVersion).assertEqual(14);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
         expect(data.appInfo).assertEqual(null);
@@ -74,7 +74,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode).assertEqual(1000000);
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode).assertEqual(1000000);
-        expect(data.targetVersion).assertEqual(12);
+        expect(data.targetVersion).assertEqual(14);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
         expect(data.appInfo).assertEqual(null);
@@ -1140,7 +1140,7 @@ export default function getBundleInfoForSelf() {
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       expect(data.minCompatibleVersionCode).assertEqual(1000000);
-      expect(data.targetVersion).assertEqual(12);
+      expect(data.targetVersion).assertEqual(14);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
       expect(data.appInfo).assertEqual(null);
@@ -1642,7 +1642,7 @@ export default function getBundleInfoForSelf() {
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       expect(data.minCompatibleVersionCode).assertEqual(1000000);
-      expect(data.targetVersion).assertEqual(12);
+      expect(data.targetVersion).assertEqual(14);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
       expect(data.appIndex).assertEqual(0);
