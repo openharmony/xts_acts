@@ -13,6 +13,7 @@
 
 import("//build/test.gni")
 import("//foundation/multimedia/media_foundation/config.gni")
+import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
 
 module_output_path = "acts/ActsDetailEnhancerImageNdkInnerUnitTest"
 
@@ -58,8 +59,8 @@ ohos_unittest("ActsDetailEnhancerImageNdkInnerUnitTest") {
     "$histreamer_root_dir/video_processing_engine/interface/inner_api",
     "$histreamer_root_dir/video_processing_engine/framework/dfx/include",
     "$histreamer_root_dir/video_processing_engine/framework/capi/image_processing/include",
-    "//foundation/multimedia/media_foundation/video_processing_engine/framework/algorithm/include",
-    "//foundation/multimedia/image_framework/interfaces/kits/native/include/image",
+    "$histreamer_root_dir/video_processing_engine/framework/algorithm/include",
+    "$image_subsystem/interfaces/kits/native/include/image"
   ]
 
   sources = [ "./src/detail_enhancer_image_ndk_unit_test.cpp" ]
