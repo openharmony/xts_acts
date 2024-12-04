@@ -1590,6 +1590,40 @@ export default function WindowLifecycle() {
           }
         }
       });
-    
+    /**
+       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_REMOVE_STARTING_WINDOW_0100
+       * @tc.name      : testRemoveStartingWindow_Promise
+       * @tc.desc      : testRemoveStartingWindow_Promise
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 2
+       */
+      it("testRemoveStartingWindow_Promise", 2, async (done:Function) => {
+        let msgStr = "testRemoveStartingWindow_Promise";
+        console.log(msgStr + "begin");
+        try {
+          windowStage.removeStartingWindow().then(() => {
+          console.info('Succeeded in removing starting window.');
+          expect(true).assertTrue();
+          done();
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to remove starting window. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code != 801) {
+            console.error(msgStr + 'Failed testRemoveStartingWindow_Promise. Cause:' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + 'The device not support SystemCapability.Window.SessionManager');
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        });
+          
+        } catch (error) {
+          console.log(msgStr + 'Failed to testRemoveStartingWindow_Promise. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      });
   })
 }

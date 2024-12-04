@@ -18,16 +18,21 @@ import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
+import deviceInfo from '@ohos.deviceInfo';
 
 export default function windowMaximizeTest() {
   describe('windowMaximize_test', () => {
     let sleep = (sleepMs: number) => new Promise < string > (resolve => setTimeout(resolve, sleepMs));
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
-    beforeAll(() => {
+    let deviceType: string = '';
+    let isAutoWindow:string = '';
+    beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+      deviceType = deviceInfo.deviceType;
+      console.log('jsUnittest beforeAll deviceType =' + deviceType);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -59,6 +64,7 @@ export default function windowMaximizeTest() {
         windowClass.maximize().then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
+          windowClass.recover();
           done();
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -92,6 +98,7 @@ export default function windowMaximizeTest() {
         windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
+          windowClass.recover();
           done();
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -127,6 +134,7 @@ export default function windowMaximizeTest() {
         windowClass.maximize(window.MaximizePresentation.EXIT_IMMERSIVE).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
+          windowClass.recover();
           done();
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -162,8 +170,15 @@ export default function windowMaximizeTest() {
         windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
-          expect(immersiveModeEnabledState).assertTrue();
-          done();
+          if(deviceType != '2in1'&& deviceType!='table'){
+            expect(immersiveModeEnabledState).assertTrue();
+            done();
+          }else{
+            expect(immersiveModeEnabledState).assertFalse();
+            windowClass.recover();
+            done();
+          }
+          
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
@@ -199,6 +214,7 @@ export default function windowMaximizeTest() {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
           expect(immersiveModeEnabledState).assertFalse();
+          windowClass.recover();
           done();
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -235,6 +251,7 @@ export default function windowMaximizeTest() {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
           expect(immersiveModeEnabledState).assertTrue();
+          windowClass.recover();
           done();
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -271,6 +288,7 @@ export default function windowMaximizeTest() {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
           expect(immersiveModeEnabledState).assertFalse();
+          windowClass.recover();
           done();
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -306,8 +324,15 @@ export default function windowMaximizeTest() {
         windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
-          expect(immersiveModeEnabledState).assertTrue();
-          done();
+          if(deviceType != '2in1'&& deviceType!='table'){
+            expect(immersiveModeEnabledState).assertTrue();
+            done();
+          }else{
+            expect(immersiveModeEnabledState).assertFalse();
+            windowClass.recover();
+            done();
+          }
+          
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
             console.info(`${message} The current device type does not support to maximize`);
@@ -343,6 +368,7 @@ export default function windowMaximizeTest() {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
           expect(immersiveModeEnabledState).assertFalse();
+          windowClass.recover();
           done();
         }).catch((err: BusinessError) => {
           if (err.code == 801) {
@@ -380,6 +406,7 @@ export default function windowMaximizeTest() {
           await windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
+          windowClass.recover();
           done();
         }).catch((err: BusinessError) => {
           if (err.code == 801) {

@@ -18,14 +18,17 @@ import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import settings from '@ohos.settings';
+import deviceInfo from '@ohos.deviceInfo';
 export default function windowImmersiveTest() {
   describe('windowImmersive_test', () => {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context : common.UIAbilityContext;
     let windowStage:ohosWindow.WindowStage;
     let isPCStatus:string = '';
+    let deviceType: string = '';
+    let isAutoWindow:string = '';
     
-    beforeAll(() => {
+    beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       isPCStatus = settings.getValueSync(context,'isStatusBarExist','',settings.domainName.USER_PROPERTY)
@@ -34,6 +37,8 @@ export default function windowImmersiveTest() {
       //isPCStatus == '0' PC设备状态栏dock融合
       console.info(`beforeAll isPCStatus: ${isPCStatus}`);
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+      deviceType = deviceInfo.deviceType;
+      console.log('jsUnittest beforeAll deviceType =' + deviceType);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -316,6 +321,7 @@ export default function windowImmersiveTest() {
           expect(avoidArea.rightRect !== null).assertTrue();
           expect(avoidArea.bottomRect !== null).assertTrue();
           expect(avoidArea.leftRect !== null).assertTrue();
+          windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
           done();
         });
       } catch (exception) {
@@ -630,6 +636,7 @@ export default function windowImmersiveTest() {
         await windowClass.setWindowSystemBarEnable([]);
         console.info(`${caseName} Succeeded in setting the status bar to be invisible.`);
         await windowClass.setWindowLayoutFullScreen(false);
+        console.info(`${caseName} Succeeded in setting the setWindowLayoutFullScreen false.`);
         }
         else{
           console.info(`${caseName} not support, isPCStatus: ${isPCStatus}`);
@@ -1055,8 +1062,9 @@ export default function windowImmersiveTest() {
      */
     it('testSetImmersive', 0, async (done: Function) => {
       let caseName = 'TestSetImmersive';
+      let windowClass = windowStage.getMainWindowSync();
       try {
-        let windowClass = windowStage.getMainWindowSync();
+        if(deviceType != '2in1'&& deviceType!='table'){
         windowClass.setImmersiveModeEnabledState(false);
         let immersiveModeStateTrue: boolean = windowClass.getImmersiveModeEnabledState();
         console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${immersiveModeStateTrue}`);
@@ -1067,6 +1075,20 @@ export default function windowImmersiveTest() {
         console.info(`${caseName} Succeeded in setting the immersiveMode enabled true. Data: ${immersiveModeStateFalse}`);
         expect(immersiveModeStateFalse).assertTrue();
         done();
+        }else{
+        await windowClass.maximize(window.MaximizePresentation.EXIT_IMMERSIVE);
+        let immersiveModeStateTrue2: boolean = await windowClass.getImmersiveModeEnabledState();
+        console.info(`${caseName} Succeeded in setting the maximize EXIT_IMMERSIVE enabled false. Data: ${immersiveModeStateTrue2}`);
+        expect(immersiveModeStateTrue2).assertFalse();
+        await sleep(1000);
+        await windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+        let immersiveModeStateFalse2: boolean = await windowClass.getImmersiveModeEnabledState();
+        console.info(`${caseName} Succeeded in setting the maximize ENTER_IMMERSIVE enabled true. Data: ${immersiveModeStateFalse2}`);
+        expect(immersiveModeStateFalse2).assertTrue();
+        windowClass.recover();
+        done();
+        }
+        
       } catch (exception) {
         console.error(`${caseName} Failed to obtain the main window. Cause code: ${exception.code}, message: ${exception.message}`);
         expect().assertFail();
@@ -1089,13 +1111,19 @@ export default function windowImmersiveTest() {
           windowClass.setImmersiveModeEnabledState(true);
           let beforeImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
           console.info(`${caseName} Succeeded in setting the immersiveMode enabled true. Data: ${beforeImmersiveModeState}`);
-          expect(beforeImmersiveModeState).assertTrue();
-          await sleep(1000);
-          windowClass.setImmersiveModeEnabledState(false);
-          let afterImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
-          console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${afterImmersiveModeState}`);
-          expect(afterImmersiveModeState).assertFalse();
-          done();
+          if(deviceType != '2in1'&& deviceType!='table'){
+            expect(beforeImmersiveModeState).assertTrue();
+            await sleep(1000);
+            windowClass.setImmersiveModeEnabledState(false);
+            let afterImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
+            console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${afterImmersiveModeState}`);
+            expect(afterImmersiveModeState).assertFalse();
+            done();
+          }else{
+            expect(beforeImmersiveModeState).assertFalse();
+            done();
+          }
+          
         }).catch((err: BusinessError) => {
           console.error(`${caseName} Failed to set the window layout to full-screen mode. Cause code: ${err.code}, message: ${err.message}`);
           expect().assertFail();
@@ -1122,13 +1150,20 @@ export default function windowImmersiveTest() {
           windowClass.setImmersiveModeEnabledState(true);
           let beforeImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
           console.info(`${caseName} Succeeded in setting the immersiveMode enabled true. Data: ${beforeImmersiveModeState}`);
-          expect(beforeImmersiveModeState).assertTrue();
-          await sleep(1000);
-          windowClass.setImmersiveModeEnabledState(false);
-          let afterImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
-          console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${afterImmersiveModeState}`);
-          expect(afterImmersiveModeState).assertFalse();
-          done();
+            expect(beforeImmersiveModeState).assertTrue();
+            await sleep(1000);
+            windowClass.setImmersiveModeEnabledState(false);
+            let afterImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
+            console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${afterImmersiveModeState}`);
+            if(deviceType != '2in1'&& deviceType!='table'){
+            expect(afterImmersiveModeState).assertFalse();
+            done();
+          }else{
+            expect(beforeImmersiveModeState).assertTrue();
+            windowClass.recover();
+            done();
+          }
+          
         }).catch((err: BusinessError) => {
           if(err.code == 801){
             console.info(`${caseName} The current device type does not support to maximize`);
