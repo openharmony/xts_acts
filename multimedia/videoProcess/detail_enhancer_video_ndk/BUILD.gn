@@ -11,15 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/test.gni")
+import("//test/xts/tools/build/suite.gni")
 import("//foundation/multimedia/media_foundation/config.gni")
 
-module_output_path = "acts/ActsDetailEnhancerVideoNdkInnerUnitTest"
+module_output_path = "acts/ActsDetailEnhancerVideoNdkUnitTest"
 
-group("ActsDetailEnhancerVideoNdkUnitTest") {
-  testonly = true
-  deps = [ ":ActsDetailEnhancerVideoNdkInnerUnitTest" ]
-}
 
 #################################################################################################################
 detail_enhancer_video_ndk_unit_test_cflags = [
@@ -44,7 +40,7 @@ detail_enhancer_video_ndk_unit_test_cflags = [
   "-Dprotected=public",
 ]
 
-ohos_unittest("ActsDetailEnhancerVideoNdkInnerUnitTest") {
+ohos_unittest("ActsDetailEnhancerVideoNdkUnitTest") {
   module_out_path = module_output_path
 
   sanitize = {
