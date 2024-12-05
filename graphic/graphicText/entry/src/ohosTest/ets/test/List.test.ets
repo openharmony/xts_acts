@@ -22,6 +22,7 @@ import graphicFontDescriptorTest from './graphicFontDescriptor.test'
 import LineMetricsTest from './LineMetricsTest.test'
 import LineMetricsTwoTest from './LineMetricsTwoTest.test'
 import FontDescriptorTest from './FontDescriptorTest.test'
+import FontDescriptorTest1 from './FontDescriptorTest1.test'
 
 export default function testsuite() {
   graphicTextATest()
@@ -34,4 +35,5 @@ export default function testsuite() {
   LineMetricsTest();
   LineMetricsTwoTest()
   FontDescriptorTest()
+  FontDescriptorTest1()
 }
