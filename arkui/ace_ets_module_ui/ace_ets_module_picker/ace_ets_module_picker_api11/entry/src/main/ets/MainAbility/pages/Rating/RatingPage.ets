@@ -18,9 +18,14 @@ import {MessageManager,Callback} from '../../utils/MessageManager';
 @Component
 struct RatingPage {
   @State rating: number = 3.5
-  @State indicator : boolean = true
+  @State rating1: number = 3.5
+
+  @State indicator: boolean = true
+  @State indicator1: boolean = true
   @State stars: number = 5
   @State stepSize: number = 0.5
+  @State stars1: number = 5
+  @State stepSize1: number = 0.5
   @State text: string = 'no change'
   @State backgroundUri: string = 'resources/base/media/star_1.png'
   @State foregroundUri: string = 'resources/base/media/star_2.png'
@@ -32,7 +37,7 @@ struct RatingPage {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback:Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'rating') {
         this.rating = message.value
@@ -45,6 +50,18 @@ struct RatingPage {
       }
       if (message.name == 'stepSize') {
         this.stepSize = message.value
+      }
+      if (message.name == 'rating1') {
+        this.rating1 = message.value
+      }
+      if (message.name == 'indicator1') {
+        this.indicator1 = message.value
+      }
+      if (message.name == 'stars1') {
+        this.stars1 = message.value
+      }
+      if (message.name == 'stepSize1') {
+        this.stepSize1 = message.value
       }
       if (message.name == 'backgroundUri') {
         this.backgroundUri = message.value
@@ -84,8 +101,22 @@ struct RatingPage {
           .fontSize(16)
           .fontColor('rgba(24,36,49,0.60)')
           .margin({ top: 16 })
+        Rating({ rating: this.rating1, indicator: this.indicator1 })
+          .stars(this.stars1)
+          .stepSize(this.stepSize1)
+          .id('ratingBtn')
+          .starStyle({ backgroundUri: this.backgroundUri,foregroundUri: this.foregroundUri,secondaryUri: this.secondaryUri })
+          .margin({ top: 24 })
+          .onChange((value: number) => {
+            this.text = 'change succ'
+            this.rating1 = value
+          })
+        Text('current score is ' + this.rating1)
+          .fontSize(16)
+          .fontColor('rgba(24,36,49,0.60)')
+          .margin({ top: 16 })
         Text(this.text).fontSize(20).margin(10).key('text')
-      }.width(360).height(150).backgroundColor('#FFFFFF').margin({ top: 68 })
+      }.width(400).height(150).backgroundColor('#FFFFFF').margin({ top: 68 })
 
       Row() {
         Image('resources/base/media/image.png')
