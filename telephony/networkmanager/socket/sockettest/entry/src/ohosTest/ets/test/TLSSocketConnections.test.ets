@@ -325,6 +325,7 @@ export default function TLSSocketConnectionsTest() {
         })
         tlsServer.listen(ServerOptions).then(() => {
           console.info(`${caseName} listen success`);
+          done()
         }).catch((err: BusinessError) => {
           console.info(`${caseName} listen err:${JSON.stringify(err)}`);
           done()
@@ -382,6 +383,7 @@ export default function TLSSocketConnectionsTest() {
         })
         tlsServer.listen(ServerOptions).then(() => {
           console.info(`${caseName} listen success`);
+          done()
         }).catch((err: BusinessError) => {
           console.info(`${caseName} listen err:${JSON.stringify(err)}`);
           done()
@@ -523,6 +525,7 @@ export default function TLSSocketConnectionsTest() {
         })
         tlsServer.listen(ServerOptions).then(() => {
           console.info(`${caseName} listen success`);
+          done()
         }).catch((err: BusinessError) => {
           console.info(`${caseName} listen err:${JSON.stringify(err)}`);
           done()
@@ -577,6 +580,7 @@ export default function TLSSocketConnectionsTest() {
         })
         tlsServer.listen(ServerOptions).then(() => {
           console.info(`${caseName} listen success`);
+          done()
         }).catch((err: BusinessError) => {
           console.info(`${caseName} listen err:${JSON.stringify(err)}`);
           done()
@@ -686,6 +690,7 @@ export default function TLSSocketConnectionsTest() {
         })
         tlsServer.listen(ServerOptions).then(() => {
           console.info(`${caseName} listen success`);
+          done()
         }).catch((err: BusinessError) => {
           console.info(`${caseName} listen err:${JSON.stringify(err)}`);
           done()
@@ -753,6 +758,7 @@ export default function TLSSocketConnectionsTest() {
         })
         tlsServer.listen(ServerOptions).then(() => {
           console.info(`${caseName} listen success`);
+          done()
         }).catch((err: BusinessError) => {
           console.info(`${caseName} listen err:${JSON.stringify(err)}`);
           done()
@@ -820,6 +826,7 @@ export default function TLSSocketConnectionsTest() {
         })
         tlsServer.listen(ServerOptions).then(() => {
           console.info(`${caseName} listen success`);
+          done()
         }).catch((err: BusinessError) => {
           console.info(`${caseName} listen err:${JSON.stringify(err)}`);
           done()
