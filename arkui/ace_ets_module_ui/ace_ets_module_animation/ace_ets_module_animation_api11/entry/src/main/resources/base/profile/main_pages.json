@@ -14,6 +14,7 @@
         "MainAbility/pages/Animation/animationAdd",
         "MainAbility/pages/Animation/animate",
         "MainAbility/pages/Animation/animationStatus",
-        "MainAbility/pages/Animation/pageTransition"
+        "MainAbility/pages/Animation/pageTransition",
+		"MainAbility/pages/WorkerUseCurves"
     ]
 }
