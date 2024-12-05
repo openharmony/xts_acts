@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import deviceInfo from '@ohos.deviceInfo';
 
 async function sleep(time: number) {
   let timeoutId: number = 0;
@@ -33,7 +34,14 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
     console.log('describe window_focus_test start!!!')
     let tempWnd: window.Window | void;
     let subWin: window.Window | void;
-
+    let currentDeviceIsPC = false;
+    beforeAll(() => {
+      console.info('window_layout_test beforeAll begin');
+      let deviceTypeInfo = deviceInfo.deviceType
+      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
+      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
+      console.info('window_layout_test beforeAll end');
+    })
     afterEach(async ()=>{
       if(tempWnd !== null && tempWnd !== undefined){
         await (tempWnd as window.Window).destroyWindow();
@@ -248,31 +256,52 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         console.log(msgStr + 'showWindow failed');
         expect().assertFail();
       });
-      await (win as window.Window).setWindowLayoutFullScreen(true).then(() => {
-        console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-      });
-      let names: Array<'status' | 'navigation'> = [];
-      try {
-        await (win as window.Window).setWindowSystemBarEnable(names).then(() => {
-          console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+      if(currentDeviceIsPC){
+        await (win as window.Window).maximize(window.MaximizePresentation.ENTER_IMMERSIVE).then(async () => {
+          console.info(msgStr + 'Succeeded in maximizing the main window.');
+          await (win as window.Window).resize(707, 707).then(() => {
+            console.info(msgStr + 'Succeeded in changing the window size.');
+            expect().assertFail();
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
+            expect(err.code).assertEqual(1300002);
+          });
         }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
-          expect().assertFail();
+          if (err.code == 801) {
+            console.log(msgStr + `The current device type does not support calling maximize Cause code: ${err.code}, message: ${err.message}`)
+            expect(err.code).assertEqual(801);
+          } else {
+            console.error(msgStr + `Failed to maximize the main window. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          }
         });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
+      } else {
+          await (win as window.Window).setWindowLayoutFullScreen(true).then(() => {
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+            expect().assertFail();
+          });
+          let names: Array<'status' | 'navigation'> = [];
+          try {
+            await (win as window.Window).setWindowSystemBarEnable(names).then(() => {
+              console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+              expect().assertFail();
+            });
+          } catch (exception) {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+            expect().assertFail();
+          }
+          await (win as window.Window).resize(707, 707).then(() => {
+            console.info(msgStr + 'Succeeded in changing the window size.');
+            expect().assertFail();
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
+            expect(err.code).assertEqual(1300002);
+          });
       }
-      await (win as window.Window).resize(707, 707).then(() => {
-        console.info(msgStr + 'Succeeded in changing the window size.');
-        expect().assertFail();
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(1300002);
-      });
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5160
@@ -294,39 +323,67 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         expect().assertFail();
         done();
       });
-      await (win as window.Window).setWindowLayoutFullScreen(true).then(() => {
-        console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-      }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      let names: Array<'status' | 'navigation'> = [];
-      try {
-        await (win as window.Window).setWindowSystemBarEnable(names).then(() => {
-          console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+      if(currentDeviceIsPC){
+        await (win as window.Window).maximize(window.MaximizePresentation.ENTER_IMMERSIVE).then(() => {
+          console.info(msgStr + 'Succeeded in maximizing the main window.');
+          (win as window.Window).resize(500, 1000, (err: BusinessError) => {
+            const errCode: number = err.code;
+            if (errCode) {
+              console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(1300002);
+              done();
+              return;
+            }
+            expect().assertFail();
+            done();
+            console.info(msgStr + 'Succeeded in changing the window size.');
+          });
         }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
-          expect().assertFail();
-          done();
+          if (err.code == 801) {
+            console.log(msgStr + `The current device type does not support calling maximize Cause code: ${err.code}, message: ${err.message}`)
+            expect(err.code).assertEqual(801);
+            done();
+          } else {
+            console.error(msgStr + `Failed to maximize the main window. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+          }
         });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
+      } else {
+          await (win as window.Window).setWindowLayoutFullScreen(true).then(() => {
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          });
+          let names: Array<'status' | 'navigation'> = [];
+          try {
+            await (win as window.Window).setWindowSystemBarEnable(names).then(() => {
+              console.info(msgStr + 'Succeeded in setting the system bar to be invisible.');
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+              expect().assertFail();
+              done();
+            });
+          } catch (exception) {
+            console.error(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(exception));
+            expect().assertFail();
+            done();
+          }
+          (win as window.Window).resize(500, 1000, (err: BusinessError) => {
+            const errCode: number = err.code;
+            if (errCode) {
+              console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(1300002);
+              done();
+              return;
+            }
+            expect().assertFail();
+            done();
+            console.info(msgStr + 'Succeeded in changing the window size.');
+          });
       }
-      (win as window.Window).resize(500, 1000, (err: BusinessError) => {
-        const errCode: number = err.code;
-        if (errCode) {
-          console.error(msgStr + `Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
-          expect(err.code).assertEqual(1300002);
-          done();
-          return;
-        }
-        expect().assertFail();
-        done();
-        console.info(msgStr + 'Succeeded in changing the window size.');
-      });
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5170
