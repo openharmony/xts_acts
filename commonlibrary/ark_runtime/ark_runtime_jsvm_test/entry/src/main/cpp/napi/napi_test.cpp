@@ -10153,6 +10153,20 @@ static napi_value RunJsVm(napi_env nEnv, napi_callback_info nInfo)
   return result;
 }
 
+[[maybe_unused]] static napi_value WrapperObjectTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_wrapper_object.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value WellKnownSymbolsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_well_known_symbols.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -10217,6 +10231,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testArrayBuffer3", testArrayBuffer3),
         DECLARE_NAPI_FUNCTION("testWasmOperator", testWasmOperator),
         DECLARE_NAPI_FUNCTION("wasmTest", WasmTest),
+        DECLARE_NAPI_FUNCTION("wrapperObjectTest", WrapperObjectTest),
+        DECLARE_NAPI_FUNCTION("wellKnownSymbolsTest", WellKnownSymbolsTest),
         DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
         DECLARE_NAPI_FUNCTION("traceTest", TraceTest),
     };

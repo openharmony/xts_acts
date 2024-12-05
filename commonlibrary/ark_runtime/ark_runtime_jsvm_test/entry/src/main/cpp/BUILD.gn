@@ -26,6 +26,8 @@ config("config") {
     "-DOHOS_JSVMTEST_XTS",
     "-DTEST_WASM",
     "-DTEST_ARRAY_BUFFER_BACKING_STORE",
+    "-DTEST_WRAPPER_OBJECT",
+    "-DTEST_WELL_KNOWN_SYMBOLS",
     "-DTEST_TRACE",
   ]
 }
@@ -40,6 +42,8 @@ ohos_shared_library("jsvmtest") {
     "./jsvmtest/unittests/test_array_buffer_backing_store.cpp",
     "./jsvmtest/unittests/test_trace.cpp",
     "./jsvmtest/unittests/test_wasm.cpp",
+    "./jsvmtest/unittests/test_well_known_symbols.cpp",
+    "./jsvmtest/unittests/test_wrapper_object.cpp",
     "./napi/napi_test.cpp",
   ]
   include_dirs = [
