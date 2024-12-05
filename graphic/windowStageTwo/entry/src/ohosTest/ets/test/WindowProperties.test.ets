@@ -2450,6 +2450,7 @@ export default function windowPropertiesTest() {
         const windowStatus = windowClass.getWindowStatus();
         console.info(`${caseName} windowStatus is: ${windowStatus}`);
         expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+        await windowClass.recover();
         done();
       } catch (exception) {
         if(exception.code == 801) {
