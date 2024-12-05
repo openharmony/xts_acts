@@ -28,22 +28,22 @@ export default function WorkerUseCurvesTest() {
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get WorkerUseCurves state pages:" + JSON.stringify(pages));
-        if (!("WorkerUseCurves" == pages.name)) {
-          console.info("get WorkerUseCurves state pages.name:" + JSON.stringify(pages.name));
+        console.info('get WorkerUseCurves state pages:' + JSON.stringify(pages));
+        if (!('WorkerUseCurves' == pages.name)) {
+          console.info('get WorkerUseCurves state pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push WorkerUseCurves page result:" + JSON.stringify(result));
+          console.info('push WorkerUseCurves page result:' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push WorkerUseCurves page error:" + err);
+        console.error('push WorkerUseCurves page error:' + err);
       }
       done()
     });
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("WorkerUseCurves after each called");
+      console.info('WorkerUseCurves after each called');
     });
 
     it('WorkerUseCurves_0100', 0, async (done: Function) => {
@@ -55,8 +55,8 @@ export default function WorkerUseCurvesTest() {
       await CommonFunc.sleep(500);
       let strJson: string = getInspectorByKey('workTextId');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
-      console.info("[workTextId_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[workTextId_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
+      console.info('[workTextId_0100] component obj is: ' + JSON.stringify(obj));
+      console.info('[workTextId_0100] content obj is: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('texttext');
       console.info('WorkerUseCurves_0100 END');
       done();
