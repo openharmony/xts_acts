@@ -23,7 +23,7 @@ struct WorkerUseCurves {
   build() {
     Column({ space: 20 }) {
       Text(this.result).id('workTextId')
-      Button("Click").id('workClickId').onClick(() => {
+      Button('Click').id('workClickId').onClick(() => {
         const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
         workerInstance.onmessage = (e: MessageEvents): void => {
            this.result = e.data;
