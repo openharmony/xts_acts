@@ -17,16 +17,23 @@
 struct Index {
   build() {
     Column() {
-      CustomLayout({ builder: ColumnChildren }).constraintSize({minWidth : 20, maxWidth: 50, minHeight : 10, maxHeight: 200})
+      CustomLayout({
+        builder: ColumnChildren
+      }).constraint({
+        minWidth : 20,
+        maxWidth: 50,
+        minHeight : 10,
+        maxHeight: 200
+      })
     }
-    .width('100%')
-    .height('100%')
+    .width('10%')
+    .height('00%')
     .constraintSize({minWidth : 20, minHeight : 20})
   }
 }
 
 @Builder
-function ColumnChildren() {
+function columnChildren() {
   ForEach([1], (index: number) => {
     Text('S' + index)
       .fontSize(30)
@@ -57,11 +64,14 @@ struct CustomLayout {
     console.log('llhh333 onPlaceChildren ' + constraint.minWidth + '-' + constraint.maxWidth + '-' + constraint.minHeight + '-' + constraint.maxHeight);
     console.log('llhh333 onPlaceChildren selfLayoutInfo ' + selfLayoutInfo.width + '-' + selfLayoutInfo.height);
     let startPos = 300;
-    children.forEach((child, child_index) => {
+    children.forEach((child, childIndex) => {
       let pos = startPos - child.measureResult.height;
       child.layout({ x: pos, y: pos })
     })
-    if (constraint.maxHeight !== undefined && constraint.minHeight !== undefined && constraint.maxWidth !== undefined && constraint.minWidth !== undefined){
+    if (constraint.maxHeight !== undefined && 
+    constraint.minHeight !== undefined && 
+    constraint.maxWidth !== undefined && 
+    constraint.minWidth !== undefined){
       this.height1 = constraint.maxHeight
       this.height2 = constraint.minHeight
       this.width1 = constraint.maxWidth
@@ -76,7 +86,7 @@ struct CustomLayout {
     constraint.minWidth = 20;
     constraint.minHeight = 30;
     console.log('llhh333 onMeasureSize ' + constraint.minWidth + '-' + constraint.maxWidth + '-' + constraint.minHeight + '-' + constraint.maxHeight);
-    children.forEach((child, child_index) => {
+    children.forEach((child, childIndex) => {
       child.measure(undefined)
     })
     this.result.width = 500;
