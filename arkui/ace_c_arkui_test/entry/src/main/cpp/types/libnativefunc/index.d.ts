@@ -1345,6 +1345,54 @@ export const testImageWidth002: () => number;
 
 export const testImageWidth003: () => number;
 
+export const testImageDraggable001: () => number;
+
+export const testImageDraggable002: () => number;
+
+export const testImageDraggable003: () => number;
+
+export const testImageDraggable004: () => number;
+
+export const testImageDraggable005: () => number;
+
+export const testImageRenderMode001: () => number;
+
+export const testImageRenderMode002: () => number;
+
+export const testImageRenderMode003: () => number;
+
+export const testImageRenderMode004: () => number;
+
+export const testImageRenderMode005: () => number;
+
+export const testImageFitOriginalSize001: () => number;
+
+export const testImageFitOriginalSize002: () => number;
+
+export const testImageFitOriginalSize003: () => number;
+
+export const testImageFitOriginalSize004: () => number;
+
+export const testImageFitOriginalSize005: () => number;
+
+export const testImageFillColor001: () => number;
+
+export const testImageFillColor002: () => number;
+
+export const testImageFillColor003: () => number;
+
+export const testImageFillColor004: () => number;
+
+export const testImageResizable001: () => number;
+
+export const testImageResizable002: () => number;
+
+export const testImageResizable003: () => number;
+
+export const testImageResizable004: () => number;
+
+export const testImageResizable005: () => number;
+
 export const testImageAlt001: () => number;
 
 export const testImageAutoResize001: () => number;
@@ -1523,6 +1571,26 @@ export const testImageObjectFit007: () => number;
 
 export const testImageObjectFit008: () => number;
 
+export const testImageObjectFit009: () => number;
+
+export const testImageObjectFit010: () => number;
+
+export const testImageObjectFit011: () => number;
+
+export const testImageObjectFit012: () => number;
+
+export const testImageObjectFit013: () => number;
+
+export const testImageObjectFit014: () => number;
+
+export const testImageObjectFit015: () => number;
+
+export const testImageObjectFit016: () => number;
+
+export const testImageObjectFit017: () => number;
+
+export const testImageObjectFit018: () => number;
+
 export const testImageObjectRepeat001: () => number;
 
 export const testImageObjectRepeat002: () => number;
@@ -1608,6 +1676,12 @@ export const testImageShadow006: () => number;
 export const testImageSrc001: () => number;
 
 export const testImageSrc002: () => number;
+
+export const testImageSrc003: () => number;
+
+export const testImageSrc004: () => number;
+
+export const testImageSrc005: () => number;
 
 export const testImageSweepGradient001: () => number;
 
@@ -2334,6 +2408,8 @@ export const testTextClip011: () => number;
 export const testTextClip012: () => number;
 
 export const testTextContent001: () => number;
+
+export const testTextContent002: () => number;
 
 export const testTextCopyOption001: () => number;
 
@@ -4161,6 +4237,26 @@ export const testImageSpanPadding003: () => number;
 
 export const testImageSpanPadding004: () => number;
 
+export const testImageSpanSrc001: () => number;
+
+export const testImageSpanSrc002: () => number;
+
+export const testImageSpanSrc003: () => number;
+
+export const testImageSpanSrc004: () => number;
+
+export const testImageSpanSrc005: () => number;
+
+export const testImageSpanAlt001: () => number;
+
+export const testImageSpanAlt002: () => number;
+
+export const testImageSpanAlt003: () => number;
+
+export const testImageSpanAlt004: () => number;
+
+export const testImageSpanAlt005: () => number;
+
 export const testSpanDecoration001: () => number;
 
 export const testSpanDecoration002: () => number;
@@ -4242,6 +4338,42 @@ export const testSpanFontWeight015: () => number;
 export const testSpanFontWeight016: () => number;
 
 export const testSpanContent001: () => number;
+
+export const testSpanContent002: () => number;
+
+export const testSpanTextBackgroundStyle001: () => number;
+
+export const testSpanTextBackgroundStyle002: () => number;
+
+export const testSpanTextBackgroundStyle003: () => number;
+
+export const testSpanTextBackgroundStyle004: () => number;
+
+export const testSpanTextBackgroundStyle005: () => number;
+
+export const testSpanTextBackgroundStyle006: () => number;
+
+export const testSpanTextShadow001: () => number;
+
+export const testSpanTextShadow002: () => number;
+
+export const testSpanTextShadow003: () => number;
+
+export const testSpanTextShadow004: () => number;
+
+export const testSpanFontFamily001: () => number;
+
+export const testSpanFontFamily002: () => number;
+
+export const testSpanFontFamily003: () => number;
+
+export const testSpanBaseLineOffset001: () => number;
+
+export const testSpanBaseLineOffset002: () => number;
+
+export const testSpanBaseLineOffset003: () => number;
+
+export const testSpanBaseLineOffset004: () => number;
 
 export const testColumnHeight001: () => number;
 
@@ -5687,6 +5819,94 @@ export const testTextDecoration011: () => number;
 export const testTextDecoration012: () => number;
 
 export const testTextDecoration013: () => number;
+
+export const testTextDecoration014: () => number;
+
+export const testTextDecoration015: () => number;
+
+export const testTextDecoration016: () => number;
+
+export const testTextWordBreak001: () => number;
+
+export const testTextWordBreak002: () => number;
+
+export const testTextWordBreak003: () => number;
+
+export const testTextWordBreak004: () => number;
+
+export const testTextWordBreak005: () => number;
+
+export const testTextWordBreak006: () => number;
+
+export const testTextWordBreak007: () => number;
+
+export const testTextLineSpacing001: () => number;
+
+export const testTextLineSpacing002: () => number;
+
+export const testTextLineSpacing003: () => number;
+
+export const testTextLineSpacing004: () => number;
+
+export const testTextFontFeature001: () => number;
+
+export const testTextFontFeature002: () => number;
+
+export const testTextFontFeature003: () => number;
+
+export const testTextFontFeature004: () => number;
+
+export const testTextSelectedBackgroundColor001: () => number;
+
+export const testTextSelectedBackgroundColor002: () => number;
+
+export const testTextSelectedBackgroundColor003: () => number;
+
+export const testTextSelectedBackgroundColor004: () => number;
+
+export const testTextEnableDataDetector001: () => number;
+
+export const testTextEnableDataDetector002: () => number;
+
+export const testTextEnableDataDetector003: () => number;
+
+export const testTextEnableDataDetector004: () => number;
+
+export const testTextEllipsisMode001: () => number;
+
+export const testTextEllipsisMode002: () => number;
+
+export const testTextEllipsisMode003: () => number;
+
+export const testTextEllipsisMode004: () => number;
+
+export const testTextEllipsisMode005: () => number;
+
+export const testTextEllipsisMode006: () => number;
+
+export const testTextEllipsisMode007: () => number;
+
+export const testTextParagraph001: () => number;
+
+export const testTextParagraph002: () => number;
+
+export const testTextParagraph003: () => number;
+
+export const testTextDataDetectorConfig001: () => number;
+
+export const testTextDataDetectorConfig002: () => number;
+
+export const testTextDataDetectorConfig003: () => number;
+
+export const testTextDataDetectorConfig004: () => number;
+
+export const testTextDataDetectorConfig005: () => number;
+
+export const testTextDataDetectorConfig006: () => number;
+
+export const testTextDataDetectorConfig007: () => number;
+
+export const testTextDataDetectorConfig008: () => number;
 
 export const testSpanDecoration006: () => number;
 

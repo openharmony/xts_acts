@@ -528,6 +528,16 @@ export const lazyForEachGetItemIndexTest: (a: string) => void;
 
 export const lazyForEachSetItemTest: (a: string) => void;
 
+export const imageOnfinishTest: (a: string) => void;
+
+export const imageDownProgressTest: (a: string) => void;
+
+export const imageSpanOnClickTest: (a: string) => void;
+
+export const spanOnClickTest: (a: string) => void;
+
+export const imageDraggableEventTest: (a: string) => void;
+
 export const scrollScrollEventOnWillScrollTest: (a: string) => void;
 
 export const scrollScrollEventOnDidScrollTest: (a: string) => void;

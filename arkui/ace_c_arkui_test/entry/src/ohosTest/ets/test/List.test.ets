@@ -188,6 +188,14 @@ import scrollPositionTest from './scroll/ScrollPositionTest.test'
 import imageWidthTest from './image/ImageWidthTest.test'
 import imageHeightTest from './image/ImageHeightTest.test'
 import imagePositionTest from './image/ImagePositionTest.test'
+import imageDraggableTest from './image/ImageDraggableTest.test'
+import imageDraggableEventTest from './image/ImageDraggableEventTest.test'
+import imageRenderModeTest from './image/ImageRenderModeTest.test'
+import imageFitOriginalSizeTest from './image/ImageFitOriginalSizeTest.test'
+import imageFillColorTest from './image/ImageFillColorTest.test'
+import imageResizableTest from './image/ImageResizableTest.test'
+import imageOnfinishTest from './image/ImageOnfinishTest.test'
+import imageOnDownloadProgressTest from './image/ImageOnDownloadProgressTest.test'
 import listHeightTest from './list/ListHeightTest.test'
 import listWidthTest from './list/ListWidthTest.test'
 import listBackgroundColorTest from './list/ListBackgroundColorTest.test'
@@ -279,6 +287,14 @@ import textTransformTest from './text/TextTransformTest.test'
 import textVisibilityTest from './text/TextVisibilityTest.test'
 import textLineBreakStrategyTest from './text/TextLineBreakStrategyTest.test'
 import textAlignRulesTest from './text/TextAlignRulesTest.test'
+import textWorkBreakTest from './text/TextWorkBreakTest.test'
+import textEllipsisModeTest from './text/TextEllipsisModeTest.test'
+import textLineSpacingTest from './text/TextLineSpacingTest.test'
+import textFontFeatureTest from './text/TextFontFeatureTest.test'
+import textSelectedBackgroundColorTest from './text/TextSelectedBackgroundColorTest.test'
+import textEnableDataDetectortest from './text/TextEnableDataDetectortest.test'
+import textParagraphTest from './text/TextParagraphTest.test'
+import textDataDetectorConfigTest from './text/TextDataDetectorConfigTest.test'
 import commonAttrsRadialGradientTest from './commonattrs/CommonAttrsRadialGradientTest.test'
 import commonAttrsSweepGradientTest from './commonattrs/CommonAttrsSweepGradientTest.test'
 import scrollScrollBarTest from './scroll/ScrollScrollBarTest.test'
@@ -464,6 +480,9 @@ import imageSpanHeightTest from './imagespan/ImageSpanHeightTest.test'
 import imageSpanObjectFitTest from './imagespan/ImageSpanObjectFitTest.test'
 import imageSpanVerticalAlignTest from './imagespan/ImageSpanVerticalAlignTest.test'
 import imageSpanPaddingTest from './imagespan/ImageSpanPaddingTest.test'
+import imageSpanSrcTest from './imagespan/ImageSpanSrcTest.test'
+import imageSpanAltTest from './imagespan/ImageSpanAltTest.test'
+import imageSpanOnClickTest from './imagespan/ImageSpanOnClickTest.test'
 import columnWidthTest from './column/ColumnWidthTest.test'
 import columnHeightTest from './column/ColumnHeightTest.test'
 import columnPaddingTest from './column/ColumnPaddingTest.test'
@@ -525,6 +544,11 @@ import spanFontSizeTest from './span/SpanFontSizeTest.test'
 import spanFontStyleTest from './span/SpanFontStyleTest.test'
 import spanFontWeightTest from './span/SpanFontWeightTest.test'
 import spanContentTest from './span/SpanContentTest.test'
+import spanTextBackgroundStyleTest from './span/SpanTextBackgroundStyleTest.test'
+import spanTextShadowTest from './span/SpanTextShadowTest.test'
+import spanFontFamilyTest from './span/SpanFontFamilyTest.test'
+import spanBaseLineOffsetTest from './span/SpanBaseLineOffsetTest.test'
+import spanOnClickTest from './span/SpanOnClickTest.test'
 import loadingProgressColorTest from './loadingprogress/LoadingProgressColorTest'
 import loadingProgressEnableLoadingTest from './loadingprogress/LoadingProgressEnableLoadingTest'
 import progressColorTest from './progress/ProgressColorTest'
@@ -838,7 +862,6 @@ import scrollScrollEventTest from './scroll/ScrollScrollEventTest.test'
 import xComponentIdTest from './xcomponent/XComponentIdTest.test'
 
 export default function testsuite() {
-
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
   datePickerAccessibilityLevelTest()
@@ -1532,6 +1555,30 @@ export default function testsuite() {
   textInputOnDeleteTest()
   textInputGetTextContentRect()
   textInputOnContentDidChangeTest()
+  textWorkBreakTest()
+  textEllipsisModeTest()
+  textLineSpacingTest()
+  textFontFeatureTest()
+  textSelectedBackgroundColorTest()
+  textEnableDataDetectortest()
+  textParagraphTest()
+  spanTextBackgroundStyleTest()
+  spanTextShadowTest()
+  spanFontFamilyTest()
+  spanBaseLineOffsetTest()
+  imageDraggableTest()
+  imageRenderModeTest()
+  imageFitOriginalSizeTest()
+  imageFillColorTest()
+  imageResizableTest()
+  imageOnfinishTest()
+  imageOnDownloadProgressTest()
+  imageSpanSrcTest()
+  imageSpanAltTest()
+  imageSpanOnClickTest()
+  spanOnClickTest()
+  textDataDetectorConfigTest()
+  imageDraggableEventTest()
   commonAttrsSaturateTest()
   commonAttrsBlurTest()
   commonAttrsZIndexTest()  

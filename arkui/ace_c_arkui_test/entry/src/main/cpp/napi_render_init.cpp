@@ -138,6 +138,11 @@
 #include "textinput/textinput_oneditchange_test.h"
 #include "textinput/textinput_oninsert_test.h"
 #include "textinput/textinput_ondelete_test.h"
+#include "image/image_onfinish_test.h"
+#include "image/image_downprogress_test.h"
+#include "image/image_draggableEvent_test.h"
+#include "imagespan/imagespan_onclick_test.h"
+#include "span/span_onclick_test.h"
 #include "commonattrs/commonattrs_focusstatus_test.h"
 #include "commonattrs/commonattrs_touchable_test.h"
 #include "commonattrs/commonattrs_focusontouch_test.h"
@@ -572,6 +577,16 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr },
         {"getTextInputDeleteData", nullptr, TextInputOnDeleteTest::GetTextInputDeleteData, nullptr, nullptr, nullptr,
          napi_default, nullptr },
+        {"imageOnfinishTest", nullptr, ImageOnFinishTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"imageDownProgressTest", nullptr, ImageDownProgressTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"imageDraggableEventTest", nullptr, ImageDraggableTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"imageSpanOnClickTest", nullptr, ImagespanOnClickTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"spanOnClickTest", nullptr, SpanOnClickTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
         {"commonAttrsFocusStatusTest", nullptr, CommonAttrsFocusStatusTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"commonAttrsTouchableTest", nullptr, CommonAttrsTouchableTest::CreateNativeNode,

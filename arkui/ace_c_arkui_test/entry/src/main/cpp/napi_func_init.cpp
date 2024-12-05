@@ -242,6 +242,11 @@
 #include "image/image_transform_test.cpp"
 #include "image/image_translate_test.cpp"
 #include "image/image_width_test.cpp"
+#include "image/image_draggable_test.cpp"
+#include "image/image_renderMode_test.cpp"
+#include "image/image_fitOriginalSize_test.cpp"
+#include "image/image_fillColor_test.cpp"
+#include "image/image_resizable_test.cpp"
 #include "imageAnimator/imageAnimator_imageFrameInfo_test.cpp"
 #include "imageAnimator/imageAnimator_images_test.cpp"
 #include "imageAnimator/imageAnimator_state_test.cpp"
@@ -417,6 +422,14 @@
 #include "text/text_width_test.cpp"
 #include "text/text_CustomSpan_test.cpp"
 #include "text/text_StyleGraphic_test.cpp"
+#include "text/text_wordBreak_test.cpp"
+#include "text/text_ellipsisMode_test.cpp"
+#include "text/text_enableDataDetector_test.cpp"
+#include "text/text_fontFeature_test.cpp"
+#include "text/text_lineSpacing_test.cpp"
+#include "text/text_selectBackgroundColor_test.cpp"
+#include "text/text_paragraph_test.cpp"
+#include "text/text_dataDetectorConfig_test.cpp"
 #include "textinput/textinput_backgroundcolor_test.cpp"
 #include "textinput/textinput_backgroundimage_test.cpp"
 #include "textinput/textinput_caretcolor_test.cpp"
@@ -461,6 +474,8 @@
 #include "imagespan/imagespan_objectfit_test.cpp"
 #include "imagespan/imagespan_verticalalign_test.cpp"
 #include "imagespan/imagespan_padding_test.cpp"
+#include "imagespan/imagespan_src_test.cpp"
+#include "imagespan/imagespan_alt_test.cpp"
 #include "column/column_foregroundblurstyle_test.cpp"
 #include "radio/radio_value_test.cpp"
 #include "radio/radio_group_test.cpp"
@@ -524,6 +539,10 @@
 #include "span/span_fontstyle_test.cpp"
 #include "span/span_fontweight_test.cpp"
 #include "span/span_content_test.cpp"
+#include "span/span_fontfamily_test.cpp"
+#include "span/span_textshadow_test.cpp"
+#include "span/span_textBackgroundStyle_test.cpp"
+#include "span/span_baseLineOffset_test.cpp"
 #include "loadingprogress/loadingprogress_color_test.cpp"
 #include "loadingprogress/loadingprogress_enableloading_test.cpp"
 #include "progress/progress_color_test.cpp"
@@ -1331,6 +1350,26 @@ static napi_value Init(napi_env env, napi_value exports)
 
         {"testImageObjectFit008", nullptr, TestImageObjectFit008, nullptr, nullptr, nullptr, napi_default, nullptr},
 
+        {"testImageObjectFit009", nullptr, TestImageObjectFit009, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit010", nullptr, TestImageObjectFit010, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit011", nullptr, TestImageObjectFit011, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit012", nullptr, TestImageObjectFit012, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit013", nullptr, TestImageObjectFit013, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit014", nullptr, TestImageObjectFit014, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit015", nullptr, TestImageObjectFit015, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit016", nullptr, TestImageObjectFit016, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit017", nullptr, TestImageObjectFit017, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageObjectFit018", nullptr, TestImageObjectFit018, nullptr, nullptr, nullptr, napi_default, nullptr},
+
         {"testImageObjectRepeat001", nullptr, TestImageObjectRepeat001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
 
@@ -1419,6 +1458,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testImageSrc001", nullptr, TestImageSrc001, nullptr, nullptr, nullptr, napi_default, nullptr},
 
         {"testImageSrc002", nullptr, TestImageSrc002, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageSrc003", nullptr, TestImageSrc003, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageSrc004", nullptr, TestImageSrc004, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testImageSrc005", nullptr, TestImageSrc005, nullptr, nullptr, nullptr, napi_default, nullptr},
 
         {"testImageSweepGradient001", nullptr, TestImageSweepGradient001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
@@ -1958,6 +2003,44 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testImageWidth001", nullptr, TestImageWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testImageWidth002", nullptr, TestImageWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testImageWidth003", nullptr, TestImageWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageDraggable001", nullptr, TestImageDraggable001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageDraggable002", nullptr, TestImageDraggable002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageDraggable003", nullptr, TestImageDraggable003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageDraggable004", nullptr, TestImageDraggable004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageDraggable005", nullptr, TestImageDraggable005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageRenderMode001", nullptr, TestImageRenderMode001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageRenderMode002", nullptr, TestImageRenderMode002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageRenderMode003", nullptr, TestImageRenderMode003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageRenderMode004", nullptr, TestImageRenderMode004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageRenderMode005", nullptr, TestImageRenderMode005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageFitOriginalSize001", nullptr, TestImageFitOriginalSize001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageFitOriginalSize002", nullptr, TestImageFitOriginalSize002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageFitOriginalSize003", nullptr, TestImageFitOriginalSize003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageFitOriginalSize004", nullptr, TestImageFitOriginalSize004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageFitOriginalSize005", nullptr, TestImageFitOriginalSize005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageFillColor001", nullptr, TestImageFillColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageFillColor002", nullptr, TestImageFillColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageFillColor003", nullptr, TestImageFillColor003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageFillColor004", nullptr, TestImageFillColor004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageResizable001", nullptr, TestImageResizable001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageResizable002", nullptr, TestImageResizable002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageResizable003", nullptr, TestImageResizable003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageResizable004", nullptr, TestImageResizable004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageResizable005", nullptr, TestImageResizable005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"testScrollWidth001", nullptr, TestScrollWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollWidth002", nullptr, TestScrollWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollWidth003", nullptr, TestScrollWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2483,6 +2566,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextClip011", nullptr, TestTextClip011, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextClip012", nullptr, TestTextClip012, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextContent001", nullptr, TestTextContent001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextContent002", nullptr, TestTextContent002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextCopyOption001", nullptr, TestTextCopyOption001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextCopyOption002", nullptr, TestTextCopyOption002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextCopyOption003", nullptr, TestTextCopyOption003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2539,6 +2623,81 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextFont016", nullptr, TestTextFont016, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextFont017", nullptr, TestTextFont017, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextFont018", nullptr, TestTextFont018, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextWordBreak001", nullptr, TestTextWordBreak001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextWordBreak002", nullptr, TestTextWordBreak002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextWordBreak003", nullptr, TestTextWordBreak003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextWordBreak004", nullptr, TestTextWordBreak004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextWordBreak005", nullptr, TestTextWordBreak005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextWordBreak006", nullptr, TestTextWordBreak006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextWordBreak007", nullptr, TestTextWordBreak007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextEllipsisMode001", nullptr, TestTextEllipsisMode001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEllipsisMode002", nullptr, TestTextEllipsisMode002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEllipsisMode003", nullptr, TestTextEllipsisMode003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEllipsisMode004", nullptr, TestTextEllipsisMode004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEllipsisMode005", nullptr, TestTextEllipsisMode005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEllipsisMode006", nullptr, TestTextEllipsisMode006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEllipsisMode007", nullptr, TestTextEllipsisMode007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextLineSpacing001", nullptr, TestTextLineSpacing001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextLineSpacing002", nullptr, TestTextLineSpacing002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextLineSpacing003", nullptr, TestTextLineSpacing003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextLineSpacing004", nullptr, TestTextLineSpacing004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextFontFeature001", nullptr, TestTextFontFeature001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextFontFeature002", nullptr, TestTextFontFeature002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextFontFeature003", nullptr, TestTextFontFeature003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextFontFeature004", nullptr, TestTextFontFeature004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextSelectedBackgroundColor001", nullptr, TestTextSelectedBackgroundColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextSelectedBackgroundColor002", nullptr, TestTextSelectedBackgroundColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextSelectedBackgroundColor003", nullptr, TestTextSelectedBackgroundColor003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextSelectedBackgroundColor004", nullptr, TestTextSelectedBackgroundColor004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEnableDataDetector001", nullptr, TestTextEnableDataDetector001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEnableDataDetector002", nullptr, TestTextEnableDataDetector002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEnableDataDetector003", nullptr, TestTextEnableDataDetector003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextEnableDataDetector004", nullptr, TestTextEnableDataDetector004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextParagraph001", nullptr, TestTextParagraph001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextParagraph002", nullptr, TestTextParagraph002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextParagraph003", nullptr, TestTextParagraph003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextDataDetectorConfig001", nullptr, TestTextDataDetectorConfig001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextDataDetectorConfig002", nullptr, TestTextDataDetectorConfig002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextDataDetectorConfig003", nullptr, TestTextDataDetectorConfig003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextDataDetectorConfig004", nullptr, TestTextDataDetectorConfig004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextDataDetectorConfig005", nullptr, TestTextDataDetectorConfig005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextDataDetectorConfig006", nullptr, TestTextDataDetectorConfig006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextDataDetectorConfig007", nullptr, TestTextDataDetectorConfig007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextDataDetectorConfig008", nullptr, TestTextDataDetectorConfig008, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"testTextHeightAdaptivePolicy001", nullptr, TestTextHeightAdaptivePolicy001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextHeightAdaptivePolicy002", nullptr, TestTextHeightAdaptivePolicy002, nullptr, nullptr, nullptr,
@@ -4109,6 +4268,16 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testImageSpanPadding002", nullptr, TestImageSpanPadding002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testImageSpanPadding003", nullptr, TestImageSpanPadding003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testImageSpanPadding004", nullptr, TestImageSpanPadding004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanSrc001", nullptr, TestImageSpanSrc001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanSrc002", nullptr, TestImageSpanSrc002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanSrc003", nullptr, TestImageSpanSrc003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanSrc004", nullptr, TestImageSpanSrc004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanSrc005", nullptr, TestImageSpanSrc005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanAlt001", nullptr, TestImageSpanAlt001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanAlt002", nullptr, TestImageSpanAlt002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanAlt003", nullptr, TestImageSpanAlt003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanAlt004", nullptr, TestImageSpanAlt004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanAlt005", nullptr, TestImageSpanAlt005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxHeight001", nullptr, TestCheckboxHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxHeight002", nullptr, TestCheckboxHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCheckboxHeight003", nullptr, TestCheckboxHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -4209,6 +4378,41 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSpanFontWeight015", nullptr, TestSpanFontWeight015, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSpanFontWeight016", nullptr, TestSpanFontWeight016, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSpanContent001", nullptr, TestSpanContent001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanContent002", nullptr, TestSpanContent002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanTextBackgroundStyle001", nullptr, TestSpanTextBackgroundStyle001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextBackgroundStyle002", nullptr, TestSpanTextBackgroundStyle002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextBackgroundStyle003", nullptr, TestSpanTextBackgroundStyle003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextBackgroundStyle004", nullptr, TestSpanTextBackgroundStyle004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextBackgroundStyle005", nullptr, TestSpanTextBackgroundStyle005, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextBackgroundStyle006", nullptr, TestSpanTextBackgroundStyle006, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextShadow001", nullptr, TestSpanTextShadow001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextShadow002", nullptr, TestSpanTextShadow002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextShadow003", nullptr, TestSpanTextShadow003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanTextShadow004", nullptr, TestSpanTextShadow004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanFontFamily001", nullptr, TestSpanFontFamily001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanFontFamily002", nullptr, TestSpanFontFamily002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanFontFamily003", nullptr, TestSpanFontFamily003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanBaseLineOffset001", nullptr, TestSpanBaseLineOffset001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanBaseLineOffset002", nullptr, TestSpanBaseLineOffset002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanBaseLineOffset003", nullptr, TestSpanBaseLineOffset003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSpanBaseLineOffset004", nullptr, TestSpanBaseLineOffset004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"testColumnHeight001", nullptr, TestColumnHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testColumnHeight002", nullptr, TestColumnHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testColumnHeight003", nullptr, TestColumnHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -5431,6 +5635,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextDecoration011", nullptr, TestTextDecoration011, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextDecoration012", nullptr, TestTextDecoration012, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextDecoration013", nullptr, TestTextDecoration013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextDecoration014", nullptr, TestTextDecoration014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextDecoration015", nullptr, TestTextDecoration015, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextDecoration016", nullptr, TestTextDecoration016, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSpanDecoration006", nullptr, TestSpanDecoration006, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSpanDecoration007", nullptr, TestSpanDecoration007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSpanDecoration008", nullptr, TestSpanDecoration008, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -6199,6 +6406,7 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr },
         {"testTextInputGetTextContentRect001", nullptr, TestTextInputGetTextContentRect001, nullptr, nullptr, nullptr,
          napi_default, nullptr },
+        
         {"testCommonAttrsSaturate001", nullptr, TestCommonAttrsSaturate001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testCommonAttrsSaturate002", nullptr, TestCommonAttrsSaturate002, nullptr, nullptr, nullptr, napi_default,

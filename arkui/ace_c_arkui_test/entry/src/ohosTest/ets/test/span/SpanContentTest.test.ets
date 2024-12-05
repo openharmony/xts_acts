@@ -39,5 +39,18 @@ export default function spanContentTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SPAN_CONTENT_0200
+     * @tc.name       : testSpanContent002
+     * @tc.desc       : testing content for span with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSpanContent002', 0, async (done: Function) => {
+      expect(nativeFunc.testSpanContent002()).assertEqual(0)
+      done()
+    })
+
   })
 }

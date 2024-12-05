@@ -16,7 +16,7 @@
 #include "common/common.h"
 
 #define MIN_ABNORMAL_VALUE (-1)
-#define MAX_ABNORMAL_VALUE 10
+#define MAX_ABNORMAL_VALUE 15
 
 namespace ArkUICapiTest {
 
@@ -113,8 +113,148 @@ static napi_value TestImageObjectFit008(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit009(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
         ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit010(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit011(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit012(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit013(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit014(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit015(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit016(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit017(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, objectFitValue);
+    }
+    NAPI_END;
+}
+
+static napi_value TestImageObjectFit018(napi_env env, napi_callback_info info)
+{
+    NAPI_START(image, ARKUI_NODE_IMAGE);
+    int32_t objectFitValue = ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END;
+    ArkUI_NumberValue value[] = {{.i32 = objectFitValue}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    auto ret1 = nodeAPI->resetAttribute(image, NODE_IMAGE_OBJECT_FIT);
+    ASSERT_EQ(ret1, SUCCESS);
+    if (nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_OBJECT_FIT)->value[PARAM_0].i32, ARKUI_OBJECT_FIT_COVER);
     }
     NAPI_END;
 }
