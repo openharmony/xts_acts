@@ -231,6 +231,29 @@ export default class Utils {
     }
   }
 
+  static async pushPageByParams(pageTag: string, params: object, done?: Function) {
+    let options: router.RouterOptions = {
+      url: `MainAbility/pages/${pageTag}`,
+      params: params
+    }
+    try {
+      router.clear();
+      let pages = router.getState();
+      console.info(`get ${pageTag} state success ` + JSON.stringify(pages));
+      if (pageTag.indexOf(pages.name) < 0) {
+        console.info(`get ${pageTag} state success ` + JSON.stringify(pages.name));
+        let result = await router.pushUrl(options);
+        await Utils.sleep(2000);
+        console.info(`push ${pageTag} page success ` + JSON.stringify(result));
+      }
+    } catch (err) {
+      console.error(`push ${pageTag} page error: ` + err);
+    }
+    if (done) {
+      done();
+    }
+  }
+  
   static getComponentRect(key: string): Rect {
     let strJson = getInspectorByKey(key);
     let obj: ComponentInfo = JSON.parse(strJson);

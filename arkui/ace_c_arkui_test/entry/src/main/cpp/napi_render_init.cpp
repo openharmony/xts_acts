@@ -478,15 +478,14 @@ static napi_value Init(napi_env env, napi_value exports)
 
     // Input Event
     napi_property_descriptor inputEvent_desc[] = {
-        // testInputEvent001,testInputEvent002
         { "inputEventTest", nullptr, InputEventTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
             nullptr },
-        // testInputEvent011,testInputEvent012,testInputEvent013,testInputEvent014
         { "inputEventMouseTest", nullptr, InputEventTest::CreateNativeNodeForMouse, nullptr, nullptr, nullptr,
             napi_default, nullptr },
-        // testInputEvent017
         { "inputEventAxisTest", nullptr, InputEventTest::CreateNativeNodeForAxis, nullptr, nullptr, nullptr,
-            napi_default, nullptr }
+            napi_default, nullptr },
+        { "getEventState", nullptr, InputEventTest::GetEventState, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "setFuncName", nullptr, InputEventTest::SetFuncName, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(inputEvent_desc) / sizeof(inputEvent_desc[0]), inputEvent_desc) !=
         napi_ok) {

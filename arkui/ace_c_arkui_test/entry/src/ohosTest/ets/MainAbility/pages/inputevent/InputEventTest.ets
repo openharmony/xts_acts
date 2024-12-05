@@ -15,19 +15,49 @@
 
 import render from 'libnativerender.so'
 import { CommonView } from '../../componet/CommonView';
+import router from '@ohos.router';
+
+class InputEventTestFunctionData {
+  public pageTag: string;
+  public funcName: string;
+
+  constructor(pageTag: string, funcName: string) {
+    this.pageTag = pageTag;
+    this.funcName = funcName;
+  }
+}
+
+class InputEventTestFunctionStaticData {
+  public static pageTag: string;
+  public static funcName: string;
+}
+
 
 @Entry
 @Component
 struct InputEventTest {
-  PAGE_TAG: string = 'InputEventTest';
+  private PAGE_TAG: string = (router.getParams() as InputEventTestFunctionData).pageTag;
+  private funcName: string = (router.getParams() as InputEventTestFunctionData).funcName;
+
 
   build() {
     Column() {
+      Button()
+        .backgroundColor(Color.Transparent)
+        .width(200)
+        .height(100)
+        .id('mouseButtonCallInputEvent')
+        .onClick(() => {
+          render.setFuncName(InputEventTestFunctionStaticData.funcName);
+        })
+
       CommonView({
         pageTag: this.PAGE_TAG,
       }).onAppear(() => {
-        render.inputEventTest(this.PAGE_TAG);
+        render.inputEventTest(this.PAGE_TAG,this.funcName);
       })
     }
   }
 }
+
+export { InputEventTestFunctionData,InputEventTestFunctionStaticData }

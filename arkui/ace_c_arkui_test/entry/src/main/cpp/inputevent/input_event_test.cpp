@@ -42,111 +42,319 @@ constexpr int32_t SOURCETOLL_UNKNOWN = 0;
 constexpr int32_t SOURCETOLL_FINGER = 1;
 constexpr int32_t SOURCETOLL_MOUSE = 7;
 static std::vector<int32_t> MouseActionVector;
+int32_t InputEventTest::eventState = -1;
+std::string InputEventTest::funcName = "";
 
-void PrintHistoryPointEventLogByPointIndex(
-    const ArkUI_UIInputEvent* inputEvent, uint32_t pointerIndex, uint32_t historyIndex)
+void FunctionMap(const ArkUI_UIInputEvent* uiInputEvent, const std::string functionName)
 {
-    auto getHistorySize = OH_ArkUI_PointerEvent_GetHistorySize(inputEvent);
-    auto getHistoryEventTime = OH_ArkUI_PointerEvent_GetHistoryEventTime(inputEvent, historyIndex);
-    auto getHistoryPointerCount = OH_ArkUI_PointerEvent_GetHistoryPointerCount(inputEvent, historyIndex);
-    auto getHistoryPointerId = OH_ArkUI_PointerEvent_GetHistoryPointerId(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryX = OH_ArkUI_PointerEvent_GetHistoryX(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryY = OH_ArkUI_PointerEvent_GetHistoryY(inputEvent, pointerIndex, historyIndex);
-
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest",
-        "HistoryPointEventLogByPointIndex %{public}d, pointIndex=%{public}u, "
-        "historyIndex=%{public}u",
-        !!inputEvent, pointerIndex, historyIndex);
-
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistorySize %{public}d", getHistorySize);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryEventTime %{public}ld", getHistoryEventTime);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryPointerCount %{public}u",
-        getHistoryPointerCount);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryPointerId %{public}d", getHistoryPointerId);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryX %{public}f", getHistoryX);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryY %{public}f", getHistoryY);
+    if (functionName == "OH_ArkUI_UIInputEvent_GetType") {
+        auto value = OH_ArkUI_UIInputEvent_GetType(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getType %{public}d", value);
+        InputEventTest::eventState = value;
+    }
+    if (functionName == "OH_ArkUI_UIInputEvent_GetAction") {
+        auto value = OH_ArkUI_UIInputEvent_GetAction(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "GetAction %{public}d", value);
+        InputEventTest::eventState = value;
+    }
+    if (functionName == "OH_ArkUI_UIInputEvent_GetSourceType") {
+        auto value = OH_ArkUI_UIInputEvent_GetSourceType(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "GetSourceType %{public}d", value);
+        InputEventTest::eventState = value;
+    }
+    if (functionName == "OH_ArkUI_UIInputEvent_GetToolType") {
+        auto value = OH_ArkUI_UIInputEvent_GetToolType(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "GetToolType %{public}d", value);
+        InputEventTest::eventState = value;
+    }
+    if (functionName == "OH_ArkUI_UIInputEvent_GetEventTime") {
+        auto value = OH_ArkUI_UIInputEvent_GetEventTime(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "GetEventTime %{public}lld", value);
+        InputEventTest::eventState = 1;
+    }
 }
 
-void PrintHistoryPointEventLogByPointIndex1(
-    const ArkUI_UIInputEvent* inputEvent, uint32_t pointerIndex, uint32_t historyIndex)
+void PointEventFunctionMap1(const ArkUI_UIInputEvent* uiInputEvent, const std::string functionName)
 {
-    auto getHistoryWindowX = OH_ArkUI_PointerEvent_GetHistoryWindowX(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryWindowY = OH_ArkUI_PointerEvent_GetHistoryWindowY(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryDisplayX = OH_ArkUI_PointerEvent_GetHistoryDisplayX(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryDisplayY = OH_ArkUI_PointerEvent_GetHistoryDisplayY(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryPressure = OH_ArkUI_PointerEvent_GetHistoryPressure(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryTiltX = OH_ArkUI_PointerEvent_GetHistoryTiltX(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryTiltY = OH_ArkUI_PointerEvent_GetHistoryTiltY(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryTouchAreaWidth =
-        OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(inputEvent, pointerIndex, historyIndex);
-    auto getHistoryTouchAreaHeight =
-        OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(inputEvent, pointerIndex, historyIndex);
-
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest",
-        "PrintHistoryPointEventLogByPointIndex1 %{public}d, pointIndex=%{public}u, "
-        "historyIndex=%{public}u",
-        !!inputEvent, pointerIndex, historyIndex);
-
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryWindowX %{public}f", getHistoryWindowX);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryWindowY %{public}f", getHistoryWindowY);
-
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryDisplayX %{public}f", getHistoryDisplayX);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryDisplayY %{public}f", getHistoryDisplayY);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryPressure %{public}f", getHistoryPressure);
-
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryTiltX %{public}f", getHistoryTiltX);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryTiltY %{public}f", getHistoryTiltY);
-
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryTouchAreaWidth %{public}f",
-        getHistoryTouchAreaWidth);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getHistoryTouchAreaHeight %{public}f",
-        getHistoryTouchAreaHeight);
+    if (functionName == "OH_ArkUI_PointerEvent_GetPointerCount") {
+        auto value = OH_ArkUI_PointerEvent_GetPointerCount(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "GetPointerCount %{public}d", value);
+        InputEventTest::eventState = value;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetPointerId") {
+        auto value = OH_ArkUI_PointerEvent_GetPointerId(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "GetPointerId %{public}d", value);
+        InputEventTest::eventState = value;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetX") {
+        auto value = OH_ArkUI_PointerEvent_GetX(uiInputEvent);
+        OH_LOG_Print(
+            LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "OH_ArkUI_PointerEvent_GetX %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetXByIndex") {
+        auto value = OH_ArkUI_PointerEvent_GetXByIndex(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetXByIndex %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetY") {
+        auto value = OH_ArkUI_PointerEvent_GetY(uiInputEvent);
+        OH_LOG_Print(
+            LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "OH_ArkUI_PointerEvent_GetY %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetYByIndex") {
+        auto value = OH_ArkUI_PointerEvent_GetYByIndex(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetYByIndex %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetWindowX") {
+        auto value = OH_ArkUI_PointerEvent_GetWindowX(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetWindowX %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetWindowXByIndex") {
+        auto value = OH_ArkUI_PointerEvent_GetWindowXByIndex(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetWindowXByIndex %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
 }
 
-void PrintPointEventLogByPointIndex(const ArkUI_UIInputEvent* uiInputEvent, int32_t pointIndex)
+void PointEventFunctionMap2(const ArkUI_UIInputEvent* uiInputEvent, const std::string functionName)
 {
-    auto getPointerCount = OH_ArkUI_PointerEvent_GetPointerCount(uiInputEvent);
-    auto getPintId = OH_ArkUI_PointerEvent_GetPointerId(uiInputEvent, pointIndex);
-    auto getX = OH_ArkUI_PointerEvent_GetX(uiInputEvent);
-    auto getY = OH_ArkUI_PointerEvent_GetY(uiInputEvent);
-    auto getXByIndex = OH_ArkUI_PointerEvent_GetXByIndex(uiInputEvent, pointIndex);
-    auto getYByIndex = OH_ArkUI_PointerEvent_GetYByIndex(uiInputEvent, pointIndex);
-    auto getWindowX = OH_ArkUI_PointerEvent_GetWindowX(uiInputEvent);
-    auto getWindowY = OH_ArkUI_PointerEvent_GetWindowY(uiInputEvent);
-    auto getWindowXByIndex = OH_ArkUI_PointerEvent_GetWindowXByIndex(uiInputEvent, pointIndex);
-    auto getWindowYByIndex = OH_ArkUI_PointerEvent_GetWindowYByIndex(uiInputEvent, pointIndex);
-    auto getDisplayX = OH_ArkUI_PointerEvent_GetDisplayX(uiInputEvent);
-    auto getDisplayY = OH_ArkUI_PointerEvent_GetDisplayY(uiInputEvent);
-    auto getDisplayXByIndex = OH_ArkUI_PointerEvent_GetDisplayXByIndex(uiInputEvent, pointIndex);
-    auto getDisplayYByIndex = OH_ArkUI_PointerEvent_GetDisplayYByIndex(uiInputEvent, pointIndex);
+    if (functionName == "OH_ArkUI_PointerEvent_GetWindowY") {
+        auto value = OH_ArkUI_PointerEvent_GetWindowY(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetWindowY %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetWindowYByIndex") {
+        auto value = OH_ArkUI_PointerEvent_GetWindowYByIndex(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetWindowYByIndex %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetDisplayX") {
+        auto value = OH_ArkUI_PointerEvent_GetDisplayX(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetDisplayX %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetDisplayXByIndex") {
+        auto value = OH_ArkUI_PointerEvent_GetDisplayXByIndex(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetDisplayXByIndex %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetDisplayY") {
+        auto value = OH_ArkUI_PointerEvent_GetDisplayY(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetDisplayY %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetDisplayYByIndex") {
+        auto value = OH_ArkUI_PointerEvent_GetDisplayYByIndex(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetDisplayYByIndex %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetPressure") {
+        auto value = OH_ArkUI_PointerEvent_GetPressure(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetPressure %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+}
+void PointEventFunctionMap3(const ArkUI_UIInputEvent* uiInputEvent, const std::string functionName)
+{
+    if (functionName == "OH_ArkUI_PointerEvent_GetTiltX") {
+        auto value = OH_ArkUI_PointerEvent_GetTiltX(uiInputEvent, 0);
+        OH_LOG_Print(
+            LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "OH_ArkUI_PointerEvent_GetTiltX %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetTiltY") {
+        auto value = OH_ArkUI_PointerEvent_GetTiltY(uiInputEvent, 0);
+        OH_LOG_Print(
+            LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "OH_ArkUI_PointerEvent_GetTiltY %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetTouchAreaWidth") {
+        auto value = OH_ArkUI_PointerEvent_GetTouchAreaWidth(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetTouchAreaWidth %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetTouchAreaHeight") {
+        auto value = OH_ArkUI_PointerEvent_GetTouchAreaHeight(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetTouchAreaHeight %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+}
 
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "inputEvent %{public}d, pointIndex=%{public}d",
-        !!uiInputEvent, pointIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getPointerCount %{public}d", getPointerCount);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getPintId %{public}d", getPintId);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getX %{public}f", getX);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getY %{public}f", getY);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getXByIndex %{public}f", getXByIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getYByIndex %{public}f", getYByIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getWindowX %{public}f", getWindowX);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getWindowY %{public}f", getWindowY);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getWindowXByIndex %{public}f", getWindowXByIndex);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getWindowYByIndex %{public}f", getWindowYByIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getDisplayX %{public}f", getDisplayX);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getDisplayY %{public}f", getDisplayY);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getDisplayXByIndex %{public}f", getDisplayXByIndex);
-    OH_LOG_Print(
-        LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest", "getDisplayYByIndex %{public}f", getDisplayYByIndex);
+void HisportyPointEventFunctionMap(const ArkUI_UIInputEvent* uiInputEvent, const std::string functionName)
+{
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistorySize") {
+        auto value = OH_ArkUI_PointerEvent_GetHistorySize(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistorySize %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryEventTime") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryEventTime(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryEventTime %{public}lld", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryPointerCount") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryPointerCount(uiInputEvent, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryPointerCount %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryPointerId") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryPointerId(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryPointerId %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryX") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryX(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryX %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryY") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryY(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryY %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+}
+
+void HisportyPointEventFunctionMap1(const ArkUI_UIInputEvent* uiInputEvent, const std::string functionName)
+{
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryWindowX") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryWindowX(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryWindowX %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryWindowY") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryWindowY(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryWindowY %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryDisplayX") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryDisplayX(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryDisplayX %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryDisplayY") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryDisplayY(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryDisplayY %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryPressure") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryX(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryPressure %{public}d", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryTiltX") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryY(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryTiltX %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+}
+
+void HisportyPointEventFunctionMap2(const ArkUI_UIInputEvent* uiInputEvent, const std::string functionName)
+{
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryTiltY") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryTiltY(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryTiltY %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryWindowY(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight") {
+        auto value = OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(uiInputEvent, 0, 0);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight %{public}f", value);
+        InputEventTest::eventState = 1;
+    }
+}
+
+void AxisFunctionMap(const ArkUI_UIInputEvent* uiInputEvent, const std::string functionName)
+{
+    if (functionName == "OH_ArkUI_AxisEvent_GetVerticalAxisValue") {
+        auto value = OH_ArkUI_AxisEvent_GetVerticalAxisValue(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_AxisEvent_GetVerticalAxisValue %{public}lf", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_AxisEvent_GetHorizontalAxisValue") {
+        auto value = OH_ArkUI_AxisEvent_GetHorizontalAxisValue(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_AxisEvent_GetHorizontalAxisValue %{public}lf", value);
+        InputEventTest::eventState = 1;
+    }
+    if (functionName == "OH_ArkUI_AxisEvent_GetPinchAxisScaleValue") {
+        auto value = OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(uiInputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+            "OH_ArkUI_AxisEvent_GetPinchAxisScaleValue %{public}lf", value);
+        InputEventTest::eventState = 1;
+    }
+}
+
+napi_value InputEventTest::GetEventState(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest", "GetEventState eventState=%{public}d",
+        InputEventTest::eventState);
+    napi_value result;
+    napi_create_int32(env, InputEventTest::eventState, &result);
+    InputEventTest::eventState = -1;
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest", "GetEventState reset eventState=%{public}d",
+        InputEventTest::eventState);
+    return result;
+}
+
+napi_value InputEventTest::SetFuncName(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    size_t length = 128;
+    size_t funcNameStrLength = 0;
+    char functionName[128] = { 0 };
+    napi_get_value_string_utf8(env, args[0], functionName, length, &funcNameStrLength);
+    InputEventTest::funcName = std::string(functionName);
+
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InputEventTest",
+        "SetFuncName InputEventTest::funcName = %{public}s", InputEventTest::funcName.c_str());
+
+    napi_value exports;
+    if (napi_create_object(env, &exports) != napi_ok) {
+        napi_throw_type_error(env, NULL, "napi_create_object failed");
+        return nullptr;
+    }
+
+    return exports;
 }
 
 std::shared_ptr<ColumnComponent> CreateMouseButton()
@@ -167,41 +375,13 @@ std::shared_ptr<ColumnComponent> CreateMouseButton()
     textShow->SetBackgroundColor(COLOR_PINK);
     buttonMouse->RegisterOnMouse([textShow, buttonMouse](ArkUI_NodeEvent* event) {
         auto* uiInputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-        // ARKUI_UIINPUTEVENT_TYPE_UNKNOWN = 0,
-        // ARKUI_UIINPUTEVENT_TYPE_TOUCH = 1,
-        // ARKUI_UIINPUTEVENT_TYPE_AXIS = 2,
-        // ARKUI_UIINPUTEVENT_TYPE_MOUSE = 3,
-        auto type = OH_ArkUI_UIInputEvent_GetType(uiInputEvent);
-        auto action = OH_ArkUI_UIInputEvent_GetAction(uiInputEvent);
-        // NONE = 0, MOUSE = 1,TOUCH = 2, TOUCH_PAD = 3, KEYBOARD = 4
-        auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(uiInputEvent);
-        auto toolType = OH_ArkUI_UIInputEvent_GetToolType(uiInputEvent);
-        auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(uiInputEvent);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest",
-            "type=%{public}d, action=%{public}d,sourceType=%{public}d, toolType=%{public}d,eventTime=%{public}ld", type,
-            action, sourceType, toolType, eventTime);
-
-        std::string str = "type:" + std::to_string(type) + "\n" + "action:" + std::to_string(action) + "\n" +
-                          "sourceType:" + std::to_string(sourceType) + "\n" + "toolType:" + std::to_string(toolType) +
-                          "\n" + "eventTime:" + std::to_string(eventTime) + "\n";
-        textShow->SetFontSize(SIZE_20);
-        textShow->SetTextContent(str);
-
-        PrintPointEventLogByPointIndex(uiInputEvent, 0);
-        PrintPointEventLogByPointIndex(uiInputEvent, PARAM_NEGATIVE_1);
-        PrintPointEventLogByPointIndex(uiInputEvent, PARAM_2);
-
-        PrintHistoryPointEventLogByPointIndex(uiInputEvent, 0, 0);
-        PrintHistoryPointEventLogByPointIndex1(uiInputEvent, 0, 0);
-        PrintHistoryPointEventLogByPointIndex(uiInputEvent, 0, PARAM_NEGATIVE_1);
-        PrintHistoryPointEventLogByPointIndex1(uiInputEvent, 0, PARAM_NEGATIVE_1);
-        PrintHistoryPointEventLogByPointIndex(uiInputEvent, 0, PARAM_2);
-        PrintHistoryPointEventLogByPointIndex1(uiInputEvent, 0, PARAM_2);
-
-        if (type == ArkUI_UIInputEvent_Type::ARKUI_UIINPUTEVENT_TYPE_MOUSE && sourceType == SOURCETYPE_NONE &&
-            toolType == OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN) {
-            buttonMouse->SetBackgroundColor(COLOR_GREEN);
-        }
+        FunctionMap(uiInputEvent, InputEventTest::funcName);
+        PointEventFunctionMap1(uiInputEvent, InputEventTest::funcName);
+        PointEventFunctionMap2(uiInputEvent, InputEventTest::funcName);
+        PointEventFunctionMap3(uiInputEvent, InputEventTest::funcName);
+        HisportyPointEventFunctionMap(uiInputEvent, InputEventTest::funcName);
+        HisportyPointEventFunctionMap1(uiInputEvent, InputEventTest::funcName);
+        HisportyPointEventFunctionMap2(uiInputEvent, InputEventTest::funcName);
     });
     columnMouse->AddChild(std::shared_ptr<ButtonComponent>(buttonMouse));
     columnMouse->AddChild(std::shared_ptr<TextComponent>(textShow));
@@ -223,38 +403,13 @@ std::shared_ptr<ColumnComponent> CreateTouchButton()
     textTouch->SetId("textTouch");
     textTouch->RegisterOnTouch([textTouch](ArkUI_NodeEvent* event) {
         auto* uiInputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-        auto type = OH_ArkUI_UIInputEvent_GetType(uiInputEvent);
-        auto action = OH_ArkUI_UIInputEvent_GetAction(uiInputEvent);
-        auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(uiInputEvent);
-        auto toolType = OH_ArkUI_UIInputEvent_GetToolType(uiInputEvent);
-        auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(uiInputEvent);
-        eventTime = eventTime == 0 ? 0 : 1;
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest",
-            "type=%{public}d, action=%{public}d,type=%{public}d, action=%{public}d,eventTime=%{public}ld", type, action,
-            sourceType, toolType, eventTime);
-
-        std::string str = "type:" + std::to_string(type) + "\n" + "action:" + std::to_string(action) + "\n" +
-                          "sourceType:" + std::to_string(sourceType) + "\n" + "toolType:" + std::to_string(toolType) +
-                          "\n" + "eventTime:" + std::to_string(eventTime) + "\n";
-
-        textTouch->SetFontSize(SIZE_20);
-        textTouch->SetTextContent(str);
-
-        PrintPointEventLogByPointIndex(uiInputEvent, 0);
-        PrintPointEventLogByPointIndex(uiInputEvent, PARAM_NEGATIVE_1);
-        PrintPointEventLogByPointIndex(uiInputEvent, PARAM_1);
-
-        PrintHistoryPointEventLogByPointIndex(uiInputEvent, 0, 0);
-        PrintHistoryPointEventLogByPointIndex1(uiInputEvent, 0, 0);
-        PrintHistoryPointEventLogByPointIndex(uiInputEvent, 0, PARAM_NEGATIVE_1);
-        PrintHistoryPointEventLogByPointIndex1(uiInputEvent, 0, PARAM_NEGATIVE_1);
-        PrintHistoryPointEventLogByPointIndex(uiInputEvent, 0, PARAM_2);
-        PrintHistoryPointEventLogByPointIndex1(uiInputEvent, 0, PARAM_2);
-
-        if (type == ArkUI_UIInputEvent_Type::ARKUI_UIINPUTEVENT_TYPE_TOUCH && sourceType == SOURCETYPE_TOUCH &&
-            toolType == SOURCETOLL_FINGER) {
-            textTouch->SetBackgroundColor(COLOR_GRAY);
-        }
+        FunctionMap(uiInputEvent, InputEventTest::funcName);
+        PointEventFunctionMap1(uiInputEvent, InputEventTest::funcName);
+        PointEventFunctionMap2(uiInputEvent, InputEventTest::funcName);
+        PointEventFunctionMap3(uiInputEvent, InputEventTest::funcName);
+        HisportyPointEventFunctionMap(uiInputEvent, InputEventTest::funcName);
+        HisportyPointEventFunctionMap1(uiInputEvent, InputEventTest::funcName);
+        HisportyPointEventFunctionMap2(uiInputEvent, InputEventTest::funcName);
     });
     columnTouch->AddChild(std::shared_ptr<TextComponent>(textTouch));
     return columnTouch;
@@ -264,13 +419,18 @@ napi_value InputEventTest::CreateNativeNode(napi_env env, napi_callback_info inf
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest", "CreateNativeNode");
 
-    size_t argc = 1;
-    napi_value args[1] = { nullptr };
+    size_t argc = 2;
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = 64;
     size_t strLength = 0;
     char xComponentID[64] = { 0 };
     napi_get_value_string_utf8(env, args[0], xComponentID, length, &strLength);
+
+    size_t lengthFuncName = 128;
+    size_t funcNameStrLength = 0;
+    char functionName[128] = { 0 };
+    napi_get_value_string_utf8(env, args[1], functionName, lengthFuncName, &funcNameStrLength);
 
     if ((env == nullptr) || (info == nullptr)) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest", "GetContext env or info is null");
@@ -279,6 +439,10 @@ napi_value InputEventTest::CreateNativeNode(napi_env env, napi_callback_info inf
 
     ArkUI_NativeNodeAPI_1* nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+
+    InputEventTest::funcName = std::string(funcName);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest", "InputEventTest::funcName:%{public}s",
+        InputEventTest::funcName.c_str());
 
     auto parentColumn = new ColumnComponent();
     auto columnMouse = CreateMouseButton();
@@ -289,8 +453,8 @@ napi_value InputEventTest::CreateNativeNode(napi_env env, napi_callback_info inf
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(
         PluginManager::GetInstance()->GetNativeXComponent(id), parentColumn->GetComponent()) == INVALID_PARAM) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest",
-            "OH_NativeXComponent_AttachNativeRootNode failed");
+        OH_LOG_Print(
+            LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest", "OH_NativeXComponent_AttachNativeRootNode failed");
     }
 
     napi_value exports;
@@ -451,24 +615,14 @@ ColumnComponent* axisColumn;
 void OnActionCallBackAxis(ArkUI_GestureEvent* event, void* extraparam)
 {
     auto uiInputEvent = OH_ArkUI_GestureEvent_GetRawInputEvent(event);
-    PrintPointEventLogByPointIndex(uiInputEvent, 0);
-    PrintPointEventLogByPointIndex(uiInputEvent, PARAM_NEGATIVE_1);
-    PrintPointEventLogByPointIndex(uiInputEvent, PARAM_2);
-
-    // ARKUI_UIINPUTEVENT_TYPE_AXIS = 2,
-    auto type = OH_ArkUI_UIInputEvent_GetType(uiInputEvent);
-    auto action = OH_ArkUI_UIInputEvent_GetAction(uiInputEvent);
-    // NONE = 0, MOUSE = 1,TOUCH = 2, TOUCH_PAD = 3, KEYBOARD = 4
-    auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(uiInputEvent);
-    auto toolType = OH_ArkUI_UIInputEvent_GetToolType(uiInputEvent);
-    auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(uiInputEvent);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InputEventTest",
-        "Axis type=%{public}d, action=%{public}d,sourceType=%{public}d, "
-        "toolType=%{public}d,eventTime=%{public}ld",
-        type, action, sourceType, toolType, eventTime);
-    if (type == ArkUI_UIInputEvent_Type::ARKUI_UIINPUTEVENT_TYPE_AXIS && sourceType == SOURCETYPE_MOUSE && axisColumn) {
-        axisColumn->SetBackgroundColor(COLOR_GREEN);
-    }
+    FunctionMap(uiInputEvent, InputEventTest::funcName);
+    PointEventFunctionMap1(uiInputEvent, InputEventTest::funcName);
+    PointEventFunctionMap2(uiInputEvent, InputEventTest::funcName);
+    PointEventFunctionMap3(uiInputEvent, InputEventTest::funcName);
+    HisportyPointEventFunctionMap(uiInputEvent, InputEventTest::funcName);
+    HisportyPointEventFunctionMap1(uiInputEvent, InputEventTest::funcName);
+    HisportyPointEventFunctionMap2(uiInputEvent, InputEventTest::funcName);
+    AxisFunctionMap(uiInputEvent, InputEventTest::funcName);
 }
 napi_value InputEventTest::CreateNativeNodeForAxis(napi_env env, napi_callback_info info)
 {
