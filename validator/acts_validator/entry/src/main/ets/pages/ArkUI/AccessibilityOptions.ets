@@ -15,30 +15,22 @@
 
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
-import fs from '@ohos.file.fs';
 import FirstDialog from '../model/FirstDialog';
-import { BusinessError } from '@ohos.base';
 
-const TAG = '[AccessibilityProperty]';
+const TAG = '[AccessibilityOptions]';
 
 @Entry
 @Component
-struct AccessibilityProperty {
+struct AccessibilityOptions {
   @State FillColor: string = '#FF000000';
-  @State name: string = 'AccessibilityProperty';
-  @State StepTips: string =  '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、从上到下依次滑动观察屏幕朗读情况\n'+'\n'+
-    '预期结果：1、绿框绘制在组件上，屏幕朗读朗读”已选中checkable测试(true)“\n' +
-    '2、绿框绘制在组件上，屏幕朗读朗读“未选中checkable测试(false)”\n' +
-    '3、绿框绘制在组件上，屏幕朗读朗读“checkable测试(undefined)”\n' +
-    '4、绿框绘制在组件上，屏幕朗读朗读“已选中accessibilitySelected true”\n' +
-    '5、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected false”\n' +
-    '6、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected undefined”\n' +
-    '7、勾选不勾选Checkbox，屏幕朗读的都是“已选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked true Select undefined”\n' +
-    '8、勾选不勾选Checkbox，屏幕朗读的都是“未选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked false Select undefined”\n' +
-    '9、勾选Checkbox，屏幕朗读的都是“已选中”，不勾选的时候朗读的是“未选中”，聚焦到后面的文本内容，朗读的是“accessbilityChecked undefined Select undefined”\n' +
-    '10、绿框绘制在组件上，屏幕朗读朗读“已选中accessibilitySelected true Checked undefined”\n' +
-    '11、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected false Checked undefined”\n' +
-    '12、绿框绘制在组件上，屏幕朗读朗读“accessibilitySelected undefined Checked undefined”';
+  @State name: string = 'AccessibilityOptions';
+  @State StepTips: string = '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、从上到下依次滑动观察屏幕朗读情况\n' + '\n' +
+    '预期结果：1、绿框绘制在组件上，屏幕朗读朗读”有accessibility有text优先读accessibility，accessibility无text 读accessibility，无accessibility有text 读text，有accessibility有text btn123，btn123“\n' +
+    '2、绿框绘制在组件上，屏幕朗读朗读“有accessibility有text优先读accessibility”\n' +
+    '3、绿框绘制在组件上，屏幕朗读朗读“accessibility无text 读accessibility按钮”\n' +
+    '4、绿框绘制在组件上，屏幕朗读朗读“无accessibility有text 读text按钮”\n' +
+    '5、绿框绘制在组件上，屏幕朗读朗读“有accessibility有text btn123按钮”\n' +
+    '6、绿框绘制在组件上，屏幕朗读朗读“btn123按钮”';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -118,7 +110,8 @@ struct AccessibilityProperty {
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-      if (this.text1 === 'HOVER_ENTER' && this.text2 === 'HOVER_MOVE' && this.text3 === 'HOVER_EXIT' &&this.text4 === 'HOVER_CANCEL') {
+      if (this.text1 === 'HOVER_ENTER' && this.text2 === 'HOVER_MOVE' && this.text3 === 'HOVER_EXIT' &&
+        this.text4 === 'HOVER_CANCEL') {
         this.Vue = true;
       }
     }, 500)
@@ -165,8 +158,9 @@ struct AccessibilityProperty {
 
       Column({ space: 12 }) {
         Row() {
-          Text(`是否设备支持屏幕朗读`).fontColor(Color.Green).fontSize('18fp').margin({top:20})
+          Text(`是否设备支持屏幕朗读`).fontColor(Color.Green).fontSize('18fp').margin({ top: 20 })
         }
+
         Row() {
           Column() {
             Button(`不支持`)
@@ -192,84 +186,20 @@ struct AccessibilityProperty {
               })
           }
         }
-        Text('checkable测试(true)').accessibilityChecked(true);
-        Text('checkable测试(false)').accessibilityChecked(false);
-        Text('checkable测试(undefined)').accessibilityChecked(undefined);
 
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Text('accessibilitySelected true')
-            .accessibilitySelected(true)
+        Column({ space: 10 }) {
+          Text('123456')
+            .focusable(true)
+            .borderRadius(5)
+            .accessibilityText("有accessibility有text优先读accessibility")
+            .accessibilityLevel("yes")
+          Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility")
+          Button("无accessibility有text 读text").accessibilityLevel("yes")
+          Button()
+          Button('btnl23').accessibilityText("有accessibility有text btn123").accessibilityLevel("yes")
+          Button('btn123').accessibilityLevel("yes")
         }
-
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Text('accessibilitySelected false')
-            .accessibilitySelected(false)
-        }
-
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Text('accessibilitySelected undefined')
-            .accessibilitySelected(undefined)
-        }
-
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
-            .selectedColor(0x39a2db)
-            .shape(CheckBoxShape.ROUNDED_SQUARE)
-            .onChange((value: boolean) => {
-              console.info('Checkbox change is' + value)
-            })
-            .width(30)
-            .height(30)
-            .accessibilityChecked(true)
-            .accessibilitySelected(undefined)
-          Text('accessibilityChecked true Select undefined')
-        }
-
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
-            .selectedColor(0x39a2db)
-            .shape(CheckBoxShape.ROUNDED_SQUARE)
-            .onChange((value: boolean) => {
-              console.info('Checkbox change is' + value)
-            })
-            .width(30)
-            .height(30)
-            .accessibilityChecked(false)
-            .accessibilitySelected(undefined)
-          Text('accessibilityChecked false Select undefined')
-        }
-
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
-            .selectedColor(0x39a2db)
-            .shape(CheckBoxShape.ROUNDED_SQUARE)
-            .onChange((value: boolean) => {
-              console.info('Checkbox change is' + value)
-            })
-            .width(30)
-            .height(30)
-            .accessibilityChecked(undefined)
-            .accessibilitySelected(undefined)
-          Text('accessibilityChecked undefined Select undefined')
-        }
-
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Text('accessibilitySelected true Checked undefined')
-            .accessibilitySelected(true)
-            .accessibilityChecked(undefined)
-        }
-
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Text('accessibilitySelected false Checked undefined')
-            .accessibilitySelected(false)
-            .accessibilityChecked(undefined)
-        }
-
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-          Text('accessibilitySelected undefined Checked undefined')
-            .accessibilitySelected(undefined)
-            .accessibilityChecked(undefined)
-        }
+        .accessibilityGroup(true, { accessibilityPreferred: true })
       }.height('80%')
       .width('100%')
       .backgroundColor(Color.White)

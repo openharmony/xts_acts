@@ -109,7 +109,8 @@
     "pages/PCS/UninstallHap",
     "pages/PCS/SecureScreenLock",
     "pages/PCS/RebootScreenUnlock",
-    "pages/ArkUI/AccessibilityProperty"
+    "pages/ArkUI/AccessibilityProperty",
+    "pages/ArkUI/AccessibilityOptions"
   ]
 }
 
