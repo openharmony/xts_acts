@@ -274,7 +274,10 @@ export default function RatingAdvancedTest() {
       expect(obj1.$attrs.content).assertContain('1');
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_CUSTOMIZINGS_0070] END');
       await btn1.click()
-      await btn2.click()
+      let rect = await btn2.getBounds();
+      console.info(`rect is: ` + JSON.stringify(rect))
+      await driver.click(rect.left+Math.round((rect.right-rect.left)/2)-1,Math.round((rect.top+rect.bottom)/2))
+      console.info(`click is: `,rect.left+Math.round((rect.right-rect.left)/2)-1,Math.round((rect.top+rect.bottom)/2))
       await Utils.sleep(1000);
       let strJson2 = getInspectorByKey('ratingText07');
       let obj2: ESObject = JSON.parse(strJson2);
