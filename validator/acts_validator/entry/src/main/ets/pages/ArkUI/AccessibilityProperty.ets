@@ -188,7 +188,6 @@ struct AccessibilityProperty {
               .onClick(async () => {
                 this.yesEnable = true
                 this.onAccessibilityHoverEnable = true
-                this.Vue = true
               })
           }
         }
