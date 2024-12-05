@@ -62,6 +62,8 @@ export default function gestureGestureInfoTest() {
 
   describe('GestureGestureInfoTest', () => {
 
+    let PAGE_TAG = 'GestureGestureInfoTest';
+
     /*
      * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INFO_0100
      * @tc.name       : testGestureGestureInfo001
@@ -71,7 +73,6 @@ export default function gestureGestureInfoTest() {
      * @tc.level      : Level1
      */
     it('testGestureGestureInfo001', 0, async (done: Function) => {
-      let PAGE_TAG = 'GestureGestureInfoTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.longClickComponent('button1')
       await pan('column2', 40, 40, 80, 40)
@@ -80,16 +81,75 @@ export default function gestureGestureInfoTest() {
       await pinch('column5')
       let dataArray: number[][] = nativeRender.getGestureData();
       let longPressGesture: number[] = dataArray[0];
-      let panGesture: number[] = dataArray[1];
-      let swipeGesture: number[] = dataArray[2];
-      let rotationGesture: number[] = dataArray[3];
-      let pinchGesture: number[] = dataArray[4];
-      console.log('testGestureGestureInfo001', JSON.stringify(dataArray))
       expect(longPressGesture[0] == 0 && longPressGesture[1] == 1 && longPressGesture[2] == 1).assertEqual(true)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INFO_0200
+     * @tc.name       : testGestureGestureInfo002
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testGestureGestureInfo002', 0, async (done: Function) => {
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await pan('column2', 40, 40, 80, 40)
+      let dataArray: number[][] = nativeRender.getGestureData();
+      let panGesture: number[] = dataArray[1];
       expect(panGesture[0] >= 170 && panGesture[0] <= 230 && panGesture[1] >= 170 && panGesture[1] <= 230 &&
         panGesture[2] >= -1 && panGesture[2] <= 1 && panGesture[3] >= 8 && panGesture[3] <= 16 && panGesture[4] == 0).assertEqual(true)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INFO_0300
+     * @tc.name       : testGestureGestureInfo003
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testGestureGestureInfo003', 0, async (done: Function) => {
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await pan('column3', 40, 40, 80, 40)
+      let dataArray: number[][] = nativeRender.getGestureData();
+      let swipeGesture: number[] = dataArray[2];
       expect(swipeGesture[0] == 0 && swipeGesture[1] >= 177 && swipeGesture[1] <= 183).assertEqual(true)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INFO_0400
+     * @tc.name       : testGestureGestureInfo004
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testGestureGestureInfo004', 0, async (done: Function) => {
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await rotation('column4')
+      let dataArray: number[][] = nativeRender.getGestureData();
+      let rotationGesture: number[] = dataArray[3];
       expect(rotationGesture[0] >= 30 && rotationGesture[0] <= 31).assertEqual(true)
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INFO_0500
+     * @tc.name       : testGestureGestureInfo005
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testGestureGestureInfo005', 0, async (done: Function) => {
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await pinch('column5')
+      let dataArray: number[][] = nativeRender.getGestureData();
+      let pinchGesture: number[] = dataArray[4];
       expect(pinchGesture[0] == 4 && pinchGesture[1] == 55 && pinchGesture[2] == 55).assertEqual(true)
       done();
     })

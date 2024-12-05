@@ -32,15 +32,75 @@ export default function gestureGestureInterrupterTest() {
       let PAGE_TAG = 'GestureGestureInterrupterTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.clickComponent('button1')
-      await Utils.clickComponent('button2')
-      await Utils.clickComponent('button3')
-      await Utils.clickComponent('button4')
-      await Utils.clickComponent('button5')
       await Utils.sleep(600)
       expect(Utils.getComponentInfoByKey('button1').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INTERRUPTER_0200
+     * @tc.name       : testGestureGestureInterrupter002
+     * @tc.desc       : Test the functionality of gesture interrupter
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testGestureGestureInterrupter002', 0, async (done: Function) => {
+      let PAGE_TAG = 'GestureGestureInterrupterTest';
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await Utils.clickComponent('button2')
+      await Utils.sleep(600)
       expect(Utils.getComponentInfoByKey('button2').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INTERRUPTER_0300
+     * @tc.name       : testGestureGestureInterrupter003
+     * @tc.desc       : Test the functionality of gesture interrupter
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testGestureGestureInterrupter003', 0, async (done: Function) => {
+      let PAGE_TAG = 'GestureGestureInterrupterTest';
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await Utils.clickComponent('button3')
+      await Utils.sleep(600)
       expect(Utils.getComponentInfoByKey('button3').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INTERRUPTER_0400
+     * @tc.name       : testGestureGestureInterrupter004
+     * @tc.desc       : Test the functionality of gesture interrupter
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testGestureGestureInterrupter004', 0, async (done: Function) => {
+      let PAGE_TAG = 'GestureGestureInterrupterTest';
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await Utils.clickComponent('button4')
+      await Utils.sleep(600)
       expect(Utils.getComponentInfoByKey('button4').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_GESTURE_INTERRUPTER_0500
+     * @tc.name       : testGestureGestureInterrupter005
+     * @tc.desc       : Test the functionality of gesture interrupter
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testGestureGestureInterrupter005', 0, async (done: Function) => {
+      let PAGE_TAG = 'GestureGestureInterrupterTest';
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await Utils.clickComponent('button5')
+      await Utils.sleep(600)
       expect(Utils.getComponentInfoByKey('button5').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     })

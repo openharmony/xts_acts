@@ -18,6 +18,7 @@ import Utils from '../common/Utils';
 import { Driver, ON, PointerMatrix } from '@kit.TestKit';
 import { Point } from '@ohos.UiTest';
 
+
 async function panGesture(id: string, x1: number, y1: number, x2: number, y2: number) {
   let driver = Driver.create();
   let refresh = await driver.findComponent(ON.id(id));
@@ -69,49 +70,77 @@ export default function gestureCreateGestureTest() {
 
   describe('GestureCreateGestureTest', () => {
 
+    let PAGE_TAG1 = 'GestureCreateGestureTest';
+    let PAGE_TAG2 = 'GestureCreateGesture1Test';
+
     /*
      * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0100
      * @tc.name       : testGestureCreateGesture001
-     * @tc.desc       : testing tapGesture and longPressGesture
+     * @tc.desc       : testing tapGesture
      * @tc.size       : MediumTest
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
     it('testGestureCreateGesture001', 0, async (done: Function) => {
-      let PAGE_TAG = 'GestureCreateGestureTest';
-      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await Utils.pushPage(`gesture/${PAGE_TAG1}`);
       await Utils.clickComponent('button1')
       await Utils.clickComponent('button2')
       await Utils.clickComponent('button3')
       await Utils.clickComponent('button4')
-      await Utils.longClickComponent('button5')
-      await Utils.longClickComponent('button6')
-      await Utils.longClickComponent('button7')
-      await Utils.longClickComponent('button8')
       await Utils.sleep(600)
       expect(Utils.getComponentInfoByKey('button1').$attrs.backgroundColor).assertEqual('#FF00FF00')
       expect(Utils.getComponentInfoByKey('button2').$attrs.backgroundColor).assertEqual('#FFFF0000')
       expect(Utils.getComponentInfoByKey('button3').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('button4').$attrs.backgroundColor).assertEqual('#FFFF0000')
-      expect(Utils.getComponentInfoByKey('button5').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('button6').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('button7').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('button8').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('button9').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('button2').$attrs.backgroundColor).assertEqual('#FFFF0000')
       done();
     })
 
     /*
      * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0200
      * @tc.name       : testGestureCreateGesture002
-     * @tc.desc       : testing panGesture
+     * @tc.desc       : testing longPressGesture
      * @tc.size       : MediumTest
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
     it('testGestureCreateGesture002', 0, async (done: Function) => {
-      let PAGE_TAG = 'GestureCreateGesture1Test';
-      await Utils.pushPage(`gesture/${PAGE_TAG}`);
+      await Utils.pushPage(`gesture/${PAGE_TAG1}`);
+      await Utils.longClickComponent('button5')
+      await Utils.longClickComponent('button6')
+      await Utils.longClickComponent('button7')
+      await Utils.longClickComponent('button8')
+      await Utils.sleep(600)
+      expect(Utils.getComponentInfoByKey('button5').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('button6').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('button7').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('button8').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0300
+     * @tc.name       : testGestureCreateGesture003
+     * @tc.desc       : testing gestureGroup
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level 1
+     */
+    it('testGestureCreateGesture003', 0, async (done: Function) => {
+      await Utils.pushPage(`gesture/${PAGE_TAG1}`);
+      expect(Utils.getComponentInfoByKey('button9').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0400
+     * @tc.name       : testGestureCreateGesture004
+     * @tc.desc       : testing panGesture
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level 1
+     */
+    it('testGestureCreateGesture004', 0, async (done: Function) => {
+      await Utils.pushPage(`gesture/${PAGE_TAG2}`);
       await panGesture('column1', 40, 40, 80, 40)
       await panGesture('column2', 80, 40, 40, 40)
       await panGesture('column3', 40, 40, 40, 80)
@@ -137,27 +166,42 @@ export default function gestureCreateGestureTest() {
     })
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0300
-     * @tc.name       : testGestureCreateGesture003
-     * @tc.desc       : testing rotationGesture and PinchGesture
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0500
+     * @tc.name       : testGestureCreateGesture005
+     * @tc.desc       : testing pinchGesture
      * @tc.size       : MediumTest
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture003', 0, async (done: Function) => {
+    it('testGestureCreateGesture005', 0, async (done: Function) => {
       let PAGE_TAG = 'GestureCreateGesture2Test';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await pinchGesture('column1')
       await pinchGesture('column2')
       await pinchGesture('column3')
+      await Utils.sleep(600)
+      expect(Utils.getComponentInfoByKey('column1').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('column2').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('column3').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0600
+     * @tc.name       : testGestureCreateGesture006
+     * @tc.desc       : testing rotationGesture
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level 1
+     */
+    it('testGestureCreateGesture006', 0, async (done: Function) => {
+      let PAGE_TAG = 'GestureCreateGesture2Test';
+      await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await rotationGesture('column4')
       await rotationGesture('column5')
       await rotationGesture('column6')
       await rotationGesture('column7')
       await Utils.sleep(600)
-      expect(Utils.getComponentInfoByKey('column1').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('column2').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('column3').$attrs.backgroundColor).assertEqual('#FF00FF00')
       expect(Utils.getComponentInfoByKey('column4').$attrs.backgroundColor).assertEqual('#FF00FF00')
       expect(Utils.getComponentInfoByKey('column5').$attrs.backgroundColor).assertEqual('#FF00FF00')
       expect(Utils.getComponentInfoByKey('column6').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -166,14 +210,14 @@ export default function gestureCreateGestureTest() {
     })
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0400
-     * @tc.name       : testGestureCreateGesture004
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0700
+     * @tc.name       : testGestureCreateGesture007
      * @tc.desc       : testing swipeGesture
      * @tc.size       : MediumTest
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture004', 0, async (done: Function) => {
+    it('testGestureCreateGesture007', 0, async (done: Function) => {
       let PAGE_TAG = 'GestureCreateGesture3Test';
       await Utils.pushPage(`gesture/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)
@@ -203,14 +247,14 @@ export default function gestureCreateGestureTest() {
     })
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0500
-     * @tc.name       : testGestureCreateGesture005
-     * @tc.desc       : testing Gesture
+     * @tc.number     : SUB_ARKUI_CAPI_GESTURE_CREATE_GESTURE_0800
+     * @tc.name       : testGestureCreateGesture008
+     * @tc.desc       : testing specialGesture
      * @tc.size       : MediumTest
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture005', 0, async (done: Function) => {
+    it('testGestureCreateGesture008', 0, async (done: Function) => {
       let PAGE_TAG = 'GestureCreateGesture4Test';
       await Utils.pushPage(`gesture/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)
