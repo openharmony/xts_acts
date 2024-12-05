@@ -2069,6 +2069,10 @@ export const testImageAnimatorImages003: () => number;
 
 export const testImageAnimatorImages004: () => number;
 
+export const testImageAnimatorImages005: () => number;
+
+export const testImageAnimatorImages006: () => number;
+
 export const testImageAnimatorState001: () => number;
 
 export const testImageAnimatorState002: () => number;
