@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,18 +13,21 @@
  * limitations under the License.
  */
 
-#ifndef ARKUI_CAPI_XTS_SWIPER_ONCHANGE_TEST_H
-#define ARKUI_CAPI_XTS_SWIPER_ONCHANGE_TEST_H
-#include "../common/common.h"
-#include "text_component.h"
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-namespace ArkUICapiTest {
+@Entry
+@Component
+struct SwiperNestedScrollChildTest {
+  PAGE_TAG: string = 'SwiperNestedScrollChildTest';
 
-class SwiperOnChangeTest {
-public:
-    ~SwiperOnChangeTest();
-    static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
-    static napi_value CreateNativeNodeSwipeToIndex(napi_env env, napi_callback_info info);
-};
-} // namespace ArkUICapiTest
-#endif // ARKUI_CAPI_XTS_SWIPER_ONCHANGE_TEST_H
+  build() {
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.swiperNestedScrollChildTest(this.PAGE_TAG);
+      })
+    }
+  }
+}

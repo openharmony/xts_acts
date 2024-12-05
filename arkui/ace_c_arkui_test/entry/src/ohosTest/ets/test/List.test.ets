@@ -763,6 +763,8 @@ import textInputOnEditChangeTest from "./textinput/TextInputOnEditChangeTest.tes
 import textInputOnInsertTest from "./textinput/TextInputOnInsertTest.test"
 import textInputOnDeleteTest from "./textinput/TextInputOnDeleteTest.test"
 import textInputGetTextContentRect from "./textinput/TextInputGetTextContentRectTest.test"
+import swiperSwipeToIndexTest from "./swiper/SwiperSwipeToIndexTest.test"
+import swiperNestedScrollEventTest from "./swiper/SwiperNestedScrollEventTest.test"
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1385,6 +1387,8 @@ export default function testsuite() {
   swiperAdapterTest()
   swiperOnContentDidScrollTest()
   swiperOnGestureSwipeTest()
+  swiperNestedScrollEventTest()
+  swiperSwipeToIndexTest()
   imageAnimatorImageFrameInfoTest()
   imageAnimatorImagesTest()
   imageAnimatorStateTest()

@@ -38,7 +38,6 @@ set(exclude "types")
 set(CMAKE_CXX_STANDARD 17)
 getAllCpp("${path}" ${PROJECT_SOURCE_DIR} "${exclude}")
 
-
 add_library(nativerender SHARED
     napi_render_init.cpp
     ${path}

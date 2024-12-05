@@ -121,6 +121,7 @@
 #include "swiper/swiper_adapter_test.h"
 #include "swiper/swiper_onContentDidScroll_test.h"
 #include "swiper/swiper_onGestureSwipe_test.h"
+#include "swiper/swiper_nestedscrollEvent_test.h"
 #include "imageAnimator/imageAnimator_event_test.h"
 #include "radio/radio_onChange_test.h"
 #include "textarea/textarea_ontextselectionchange_test.h"
@@ -465,6 +466,8 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"swiperOnChangeTest", nullptr, SwiperOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"swiperSwipeToIndexTest", nullptr, SwiperOnChangeTest::CreateNativeNodeSwipeToIndex, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"swiperOnAnimationStartTest", nullptr, SwiperOnAnimationStartTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"swiperOnAnimationEndTest", nullptr, SwiperOnAnimationEndTest::CreateNativeNode, nullptr, nullptr, nullptr,
@@ -475,6 +478,10 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"swiperOnGestureSwipeTest", nullptr, SwiperOnGestureSwipeTest::CreateNativeNode, nullptr,
          nullptr, nullptr, napi_default, nullptr},
+        {"swiperNestedScrollTest", nullptr, SwiperNestedScrollTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"swiperNestedScrollChildTest", nullptr, SwiperNestedScrollTest::CreateNativeNodeChild, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"imageAnimatorOnCancelTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnCancel,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"imageAnimatorOnPauseTest", nullptr, ImageAnimatorEventTest::ImageAnimatorOnPause,

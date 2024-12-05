@@ -36,6 +36,7 @@ static std::shared_ptr<SwiperComponent> CreateSwiperNode(const std::string &id)
     swiper->SetMargin(PARAM_20);
     swiper->SetSwiperLoop(false);
     swiper->SetSwiperAutoPlay(true);
+    swiper->SetSwiperIndex(PARAM_2);
     swiper->SetId(id);
     auto text = CreateTextNode(0xFFAFEEEE);
     auto text_second = CreateTextNode(0xFF00FF00);
@@ -72,16 +73,18 @@ napi_value SwiperOnAnimationEndTest::CreateNativeNode(napi_env env, napi_callbac
     auto swiper_second = CreateSwiperNode("SwiperOnAnimationEnd");
     swiper_second->RegisterOnAnimationEnd([swiper_second, text_end](ArkUI_NodeEvent *event) {
         ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
-        std::string str = "End: \n Index is: " + std::to_string(result->data[0].i32) + "\n" +
-                          "currentOffset is: " + std::to_string(result->data[1].f32);
+        std::string str = "End: \n Index is: " + std::to_string(result->data[PARAM_0].i32) + "\n" +
+                          "currentOffset is: " + std::to_string(result->data[PARAM_1].f32);
         text_end->SetTextContent(str);
-        ArkUI_NativeNodeAPI_1 *nodeAPI1 = nullptr;
-        OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI1);
-        auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-        ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-        ArkUI_AttributeItem background_color_item = {background_color_value,
-                                                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-        nodeAPI1->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        if (result->data[PARAM_0].i32 == PARAM_3 && result->data[PARAM_1].f32 == PARAM_0) {
+            ArkUI_NativeNodeAPI_1 *nodeAPI1 = nullptr;
+            OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI1);
+            auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                                                         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            nodeAPI1->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
     });
 
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
