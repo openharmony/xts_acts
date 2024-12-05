@@ -93,11 +93,12 @@ export default function StatisticsTest() {
       let ifaceName = "wlan1";
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
         if (err) {
-          console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
+          console.log(`${caseName} >>> ${JSON.stringify(err)} `);
           expect(err.code == 2103005 || err.code == 2103012).assertTrue();
+          console.log(`${caseName} success`);
           done();
         } else {
-          console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
+          console.log(`${caseName} fail ${JSON.stringify(data)}`);
           expectFalse();
           done();
         }
