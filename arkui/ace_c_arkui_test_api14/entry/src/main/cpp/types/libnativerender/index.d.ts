@@ -36,3 +36,23 @@ export const testActiveChildrenInfoDestroy: (a: string) => void;
 export const testActiveChildrenInfoGetNodeByIndex: (a: string) => void;
 
 export const testActiveChildrenInfoGetCount: (a: string) => void;
+
+export const KeyEventGetTypeTest_001: (a: string) => void;
+
+export const KeyEventGetKeyCodeTest_001: (a: string) => void;
+
+export const KeyEventGetKeyTextTest_001: (a: string) => void;
+
+export const KeyEventGetKeySourceTest_001: (a: string) => void;
+
+export const KeyEventGetGetDeviceIdTest_001: (a: string) => void;
+
+export const KeyEventStopPropagationTest_001: (a: string) => void;
+
+export const KeyEventGetPressedKeysTest_001: (a: string) => void;
+
+export const KeyEventGetKeyIntensionCodeTest_001: (a: string) => void;
+
+export const KeyEventGetUnicodeTest_001: (a: string) => void;
+
+export const KeyEventSetConsumedTest_001: (a: string) => void;
