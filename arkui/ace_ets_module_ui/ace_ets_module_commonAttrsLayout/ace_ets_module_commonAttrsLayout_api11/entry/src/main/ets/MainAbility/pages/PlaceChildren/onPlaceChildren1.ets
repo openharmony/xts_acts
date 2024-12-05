@@ -15,21 +15,20 @@
 @Entry
 @Component
 struct Index {
-  build() {
-    Column() {
-      CustomLayout({
-        builder: ColumnChildren
-      }).constraint({
-        minWidth : 20,
-        maxWidth: 50,
-        minHeight : 10,
-        maxHeight: 200
-      })
-    }
-    .width('10%')
-    .height('00%')
-    .constraintSize({minWidth : 20, minHeight : 20})
-  }
+build() {
+Column() {
+  CustomLayout({
+    builder: columnChildren
+  }).constraintSize({
+    minWidth : 20,
+    maxWidth: 50,
+    minHeight : 10,
+    maxHeight: 200})
+}
+.width('100%')
+.height('100%')
+.constraintSize({minWidth : 20, minHeight : 20})
+}
 }
 
 @Builder
