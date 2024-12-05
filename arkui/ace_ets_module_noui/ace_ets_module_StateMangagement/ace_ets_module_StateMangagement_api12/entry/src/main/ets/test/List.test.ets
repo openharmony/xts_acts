@@ -116,6 +116,7 @@ import makeObserved0110Test from './makeObservedTest/makeObserved0110Test.test';
 import makeObserved0120Test from './makeObservedTest/makeObserved0120Test.test';
 import makeObserved0130Test from './makeObservedTest/makeObserved0130Test.test';
 import makeObserved0140Test from './makeObservedTest/makeObserved0140Test.test';
+import makeObserved0150Test from './makeObservedTest/makeObserved0150Test.test';
 import ParamTest from './ParamTest/Param.test';
 import twoWayBindTest from './twoWayBindTest/twoWayBind.test';
 import IfElse001Test from './IfElseTest/IfElse001.test';
@@ -297,6 +298,7 @@ export default function testsuite() {
   makeObserved0110Test();
   makeObserved0120Test();
   makeObserved0130Test();
+  makeObserved0150Test();
   ParamTest();
   twoWayBindTest();
   IfElse001Test();
