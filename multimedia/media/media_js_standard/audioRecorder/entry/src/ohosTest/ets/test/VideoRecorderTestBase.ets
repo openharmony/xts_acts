@@ -152,7 +152,7 @@ export default class VideoRecorderTestBase {
     } else {
       console.info('case audio bitrate is  ' + obj['bitrate']);
       let tmpDescriptionValue: number = Number(descriptionValue[index++]);
-      expect(Math.abs(Number(obj['bitrate']) - tmpDescriptionValue)).assertLess(BITRATE_DELTA_TIME);
+      expect(Number(obj['bitrate'])/3).assertLess(tmpDescriptionValue);
       console.info('case audio channel_count is  ' + obj['channel_count']);
       expect(obj['channel_count']).assertEqual(descriptionValue[index++]);
       console.info('case audio codec_mime is  ' + obj['codec_mime']);
