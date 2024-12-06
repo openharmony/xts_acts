@@ -22,6 +22,22 @@
 namespace ArkUICapiTest {
 
 static ArkUI_NodeHandle textArea = nullptr;
+std::vector<int32_t> TextAreaOnInsertTest::insertOffset = {};
+static napi_value SetArrayNapiDataWithInsert(const std::vector<int32_t>& data, napi_env env)
+{
+    napi_value array;
+    napi_create_array(env, &array);
+    for (size_t i = PARAM_0; i < data.size(); i++) {
+        napi_value num;
+        napi_create_int32(env, data[i], &num);
+        napi_set_element(env, array, i, num);
+    }
+    return array;
+};
+static void PushBackIntToData(std::vector<int32_t>& data, int32_t value)
+{
+    data.push_back(value);
+}
 static auto createChildNode(ArkUI_NativeNodeAPI_1* nodeAPI)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_TEXT_AREA);
@@ -60,6 +76,11 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
     OH_ArkUI_NodeEvent_SetReturnNumberValue(event, return_value, 1);
     switch (eventId) {
         case ON_TEXT_AREA_DID_INSERT_ID: {
+            ArkUI_NumberValue insertValue[] = { { .f32 = 0 } };
+            OH_ArkUI_NodeEvent_GetNumberValue(event, 0, insertValue);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextAreaOnInsertTest",
+                "TextAreaOnInsertTest ON_TEXT_AREA_DID_INSERT_ID insertValue: %{public}f", insertValue[PARAM_0].f32);
+            PushBackIntToData(TextAreaOnInsertTest::insertOffset, insertValue[PARAM_0].f32);
             ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_GREEN } };
             ArkUI_AttributeItem background_color_item = { background_color_value,
                 sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
@@ -106,7 +127,7 @@ napi_value TextAreaOnInsertTest::CreateNativeNode(napi_env env, napi_callback_in
     id_item.string = "OnInsertTestTextArea";
     nodeAPI->setAttribute(textArea, NODE_ID, &id_item);
     ArkUI_AttributeItem content_item = {};
-    content_item.string = "123";
+    content_item.string = "textArea";
     nodeAPI->setAttribute(textArea, NODE_TEXT_AREA_TEXT, &content_item);
     nodeAPI->addChild(column, textArea);
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);
@@ -124,5 +145,14 @@ napi_value TextAreaOnInsertTest::CreateNativeNode(napi_env env, napi_callback_in
     }
 
     return exports;
+}
+napi_value TextAreaOnInsertTest::GetTextAreaInsertData(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnInsertTest", "GetTextAreaInsertData");
+    napi_value result;
+    napi_create_array(env, &result);
+    napi_set_element(env, result, PARAM_0, SetArrayNapiDataWithInsert(TextAreaOnInsertTest::insertOffset, env));
+    TextAreaOnInsertTest::insertOffset.clear();
+    return result;
 }
 } // namespace ArkUICapiTest

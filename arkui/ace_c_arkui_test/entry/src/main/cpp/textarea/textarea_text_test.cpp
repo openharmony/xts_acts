@@ -27,6 +27,8 @@ static napi_value TestTextAreaText001(napi_env env, napi_callback_info info)
     valueItem.string = DEFAULT_TEXT;
     auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_TEXT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
+    auto str = nodeAPI->getAttribute(textarea, NODE_TEXT_INPUT_TEXT)->string;
+    ASSERT_EQ(std::strcmp(str, DEFAULT_TEXT), SUCCESS);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

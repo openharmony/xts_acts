@@ -15,6 +15,7 @@
 
 import { beforeAll, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
+import nativeRender from 'libnativerender.so'
 
 export default function textAreaOnTextSelectionChangeTest() {
 
@@ -39,7 +40,10 @@ export default function textAreaOnTextSelectionChangeTest() {
       await Utils.sleep(1000)
       await Utils.clickComponent('OnButtonClick')
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnTextSelectionChangeTestTextArea').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      let dataArray: number[][] = nativeRender.getTextAreaData();
+      let textAreaSelectionData: number[] = dataArray[0];
+      console.log('testTextAreaOnTextSelectionChange001', JSON.stringify(dataArray))
+      expect(textAreaSelectionData[2] == 0 && textAreaSelectionData[3] == 4).assertEqual(true)
       done()
     })
 

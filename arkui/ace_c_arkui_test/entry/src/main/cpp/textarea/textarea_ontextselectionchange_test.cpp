@@ -26,6 +26,23 @@ namespace ArkUICapiTest {
 #define START 0
 #define END 4
 static ArkUI_NodeHandle textArea = nullptr;
+std::vector<int32_t> TextAreaOnTextSelectionChangeTest::SelectionVector = {};
+
+static napi_value SetArrayNapiDataWithTextInput(const std::vector<int32_t>& data, napi_env env)
+{
+    napi_value array;
+    napi_create_array(env, &array);
+    for (size_t i = PARAM_0; i < data.size(); i++) {
+        napi_value num;
+        napi_create_int32(env, data[i], &num);
+        napi_set_element(env, array, i, num);
+    }
+    return array;
+};
+static void PushBackIntToData(std::vector<int32_t>& data, int32_t value)
+{
+    data.push_back(value);
+}
 ArkUI_NodeHandle TextAreaOnTextSelectionChangeTest::CreateSubTextAreaNode(ArkUI_NativeNodeAPI_1* nodeApi)
 {
     float width = 200;
@@ -83,16 +100,22 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
         case ON_TEXT_AREA_SELECTION_CHANGE_ID: {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnTextSelectionChangeTest",
                 "OnEventReceive ON_TEXT_AREA_SELECTION_CHANGE_ID");
-            auto result = nodeAPI->getAttribute(textArea, NODE_TEXT_AREA_TEXT_SELECTION);
-            if (result == nullptr) {
+            auto ret = nodeAPI->getAttribute(textArea, NODE_TEXT_AREA_TEXT_SELECTION);
+            if (ret == nullptr) {
                 OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnTextSelectionChangeTest",
                     "Failed to get caret offset attribute");
                 return;
             }
-            if ((result->value[0].i32 == START) && (result->value[1].i32 == END)) {
+            ArkUI_NodeComponentEvent* result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextAreaOnTextSelectionChangeTest",
+                "ON_TEXT_AREA_SELECTION_CHANGE_ID start : %{public}d,end : %{public}d", result->data[PARAM_0].i32,
+                result->data[PARAM_1].i32);
+            PushBackIntToData(TextAreaOnTextSelectionChangeTest::SelectionVector, result->data[PARAM_0].i32);
+            PushBackIntToData(TextAreaOnTextSelectionChangeTest::SelectionVector, result->data[PARAM_1].i32);
+            if ((ret->value[0].i32 == START) && (ret->value[1].i32 == END)) {
                 OH_LOG_Print(
                     LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnTextSelectionChangeTest", "OnEventReceive");
-                if (result->value[1].i32 > 0) {
+                if (ret->value[1].i32 > 0) {
                     ArkUI_NumberValue color_value[] = { { .u32 = COLOR_GREEN } };
                     ArkUI_AttributeItem color_item = { color_value, sizeof(color_value) / sizeof(ArkUI_NumberValue) };
                     nodeAPI->setAttribute(textArea, NODE_BACKGROUND_COLOR, &color_item);
@@ -177,5 +200,16 @@ napi_value TextAreaOnTextSelectionChangeTest::CreateNativeNode(napi_env env, nap
     }
 
     return exports;
+}
+napi_value TextAreaOnTextSelectionChangeTest::GetTextAreaData(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnTextSelectionChangeTest", "GetTextInputData");
+    napi_value result;
+    napi_create_array(env, &result);
+    napi_set_element(
+        env, result, PARAM_0, SetArrayNapiDataWithTextInput(TextAreaOnTextSelectionChangeTest::SelectionVector, env));
+
+    TextAreaOnTextSelectionChangeTest::SelectionVector.clear();
+    return result;
 }
 } // namespace ArkUICapiTest

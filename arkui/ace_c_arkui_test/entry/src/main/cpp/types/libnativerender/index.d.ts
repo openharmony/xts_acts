@@ -345,15 +345,26 @@ export const radioOnChangeTest: (a: string) => void;
 
 export const textAreaOnTextSelectionChangeTest : (a : string) => void ;
 
+export const getTextAreaData :() => number[][];
 export const textAreaOnContentScrollTest : (a : string) => void;
 
 export const textAreaOnContentDidChangeTest : (a : string) => void;
 
+export const getTextAreaContentDidData : () => number[][];
+
 export const textAreaOnEditChangeTest : (a : string) => void;
+
+export const getTextAreaEditChangeData : () => number[][];
 
 export const textAreaOnInsertTest : (a : string) => void;
 
+export const getTextAreaInsertData : () => number[][];
+
 export const textAreaOnDeleteTest : (a : string) =>void;
 
+export const getTextAreaDeleteData : () => number[][];
+
 export const textAreaOnSubmitTest : (a : string) =>void;
+
+export const getTextAreaSubmitData : () => number[][];
 

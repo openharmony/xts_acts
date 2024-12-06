@@ -15,6 +15,7 @@
 
 import { beforeAll, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
+import nativeRender from 'libnativerender.so'
 
 export default function textAreaOnEditChangeTest() {
 
@@ -37,7 +38,10 @@ export default function textAreaOnEditChangeTest() {
     it('testTextAreaOnEditChange001', 0, async (done: Function) => {
       focusControl.requestFocus('OnEditChangeTestTextArea')
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnEditChangeTestTextArea').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      let dataArray: number[][] = nativeRender.getTextAreaEditChangeData();
+      console.log('testTextAreaOnEditChange001', JSON.stringify(dataArray));
+      let textAreaOnEditChangeData: number[] = dataArray[0];
+      expect(textAreaOnEditChangeData[1] == 1 ).assertEqual(true)
       done()
     })
 

@@ -16,8 +16,9 @@
 #ifndef ARKUI_CAPI_XTS_TEXTAREA_ON_DELETE_TEST_H
 #define ARKUI_CAPI_XTS_TEXTAREA_ON_DELETE_TEST_H
 
-#include "../common/common.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
+
+#include "../common/common.h"
 
 namespace ArkUICapiTest {
 
@@ -25,6 +26,8 @@ class TextAreaOnDeleteTest {
 public:
     ~TextAreaOnDeleteTest();
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
+    static std::vector<int32_t> deleteOffset;
+    static napi_value GetTextAreaDeleteData(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_XTS_TEXTINPUT_ON_DELETE_TEST_H

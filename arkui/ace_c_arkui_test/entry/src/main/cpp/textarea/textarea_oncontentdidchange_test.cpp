@@ -25,6 +25,22 @@ static ArkUI_NodeHandle textArea = nullptr;
 #define ON_CLICK_EVENT_ID 1010
 #define FONT_SIZE 30
 float g_fontSize = 0;
+std::vector<int32_t> TextAreaOnContentDidChangeTest::contentDidValue = {};
+static napi_value SetArrayNapiDataWithContentDid(const std::vector<int32_t>& data, napi_env env)
+{
+    napi_value array;
+    napi_create_array(env, &array);
+    for (size_t i = PARAM_0; i < data.size(); i++) {
+        napi_value num;
+        napi_create_int32(env, data[i], &num);
+        napi_set_element(env, array, i, num);
+    }
+    return array;
+};
+static void PushBackIntToData(std::vector<int32_t>& data, int32_t value)
+{
+    data.push_back(value);
+}
 static auto CreateButton(ArkUI_NativeNodeAPI_1* nodeAPI)
 {
     auto nodeHandler = nodeAPI->createNode(ARKUI_NODE_BUTTON);
@@ -73,12 +89,17 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
     switch (eventId) {
         case ON_TEXT_AREA_CONTENT_DID_CHANGE_ID: {
-            auto result = nodeAPI->getAttribute(textArea, NODE_TEXT_INPUT_TEXT);
+            ArkUI_NodeComponentEvent* result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
             if (result == nullptr) {
                 OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnContentDidChangeTest",
                     "Failed to get caret offset attribute");
                 return;
             }
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaOnContentDidChangeTest",
+                "ON_CONTENT_DID_CHANGE_ID fontWidth : %{public}f fontHeight : %{public}f", result->data[PARAM_0].f32,
+                result->data[PARAM_1].f32);
+            PushBackIntToData(TextAreaOnContentDidChangeTest::contentDidValue, result->data[PARAM_0].f32);
+            PushBackIntToData(TextAreaOnContentDidChangeTest::contentDidValue, result->data[PARAM_1].f32);
             if (g_fontSize == FONT_SIZE) {
                 ArkUI_NumberValue color_value[] = { { .u32 = COLOR_GREEN } };
                 ArkUI_AttributeItem color_item = { color_value, sizeof(color_value) / sizeof(ArkUI_NumberValue) };
@@ -158,5 +179,15 @@ napi_value TextAreaOnContentDidChangeTest::CreateNativeNode(napi_env env, napi_c
     }
 
     return exports;
+}
+napi_value TextAreaOnContentDidChangeTest::GetTextAreaContentDidData(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextInputOnContentDidChangeTest", "GetTextInputContentDidData");
+    napi_value result;
+    napi_create_array(env, &result);
+    napi_set_element(
+        env, result, PARAM_0, SetArrayNapiDataWithContentDid(TextAreaOnContentDidChangeTest::contentDidValue, env));
+    TextAreaOnContentDidChangeTest::contentDidValue.clear();
+    return result;
 }
 } // namespace ArkUICapiTest

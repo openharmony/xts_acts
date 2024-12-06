@@ -15,6 +15,7 @@
 
 import { beforeAll, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
+import nativeRender from 'libnativerender.so'
 
 export default function textAreaOnContentDidChangeTest() {
 
@@ -37,7 +38,10 @@ export default function textAreaOnContentDidChangeTest() {
     it('testTextAreaOnContentDidChange001', 0, async (done: Function) => {
       await Utils.clickComponent('TextAreaOnContentDidChange_buttonId1')
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnContentDidChangeTestTextArea').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      let dataArray: number[][] = nativeRender.getTextAreaContentDidData();
+      let textAreaContentDidData: number[] = dataArray[0];
+      console.log('testTextAreaOnContentDidChange001', JSON.stringify(dataArray))
+      expect(textAreaContentDidData[2] == 119 && textAreaContentDidData[3] == 35).assertEqual(true)
       done()
     })
 

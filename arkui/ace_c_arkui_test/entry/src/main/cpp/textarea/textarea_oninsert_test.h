@@ -16,8 +16,9 @@
 #ifndef ARKUI_CAPI_XTS_TEXTAREA_ON_INSERT_TEST_H
 #define ARKUI_CAPI_XTS_TEXTAREA_ON_INSERT_TEST_H
 
-#include "../common/common.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
+
+#include "../common/common.h"
 
 namespace ArkUICapiTest {
 
@@ -25,6 +26,8 @@ class TextAreaOnInsertTest {
 public:
     ~TextAreaOnInsertTest();
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
+    static std::vector<int32_t> insertOffset;
+    static napi_value GetTextAreaInsertData(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_XTS_TEXTAREA_ON_INSERT_TEST_H
