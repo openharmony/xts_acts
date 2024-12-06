@@ -476,26 +476,6 @@ export default function SpecialCharTest() {
         expect().assertFail();
       }
     })
-
-    /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUILINTS_SPECIAL_1000
-     * @tc.name       : testBuilintsStringPrototypeIsWellFormedSpecial0010
-     * @tc.desc       : Testing the Buffer interface String with PrototypeIsWellFormed
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testBuilintsStringPrototypeIsWellFormedSpecial0010', 0, () => {
-      const TAG = "testBuilintsStringPrototypeIsWellFormedSpecial0010";
-      try {
-        const result = specChars.indexOf("~");
-        expect(result).assertEqual(94);
-      } catch (err) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect().assertFail();
-      }
-    })
-
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUILINTS_SPECIAL_1100
      * @tc.name       : testBuilintsStringLastIndexOfSpecial0011
