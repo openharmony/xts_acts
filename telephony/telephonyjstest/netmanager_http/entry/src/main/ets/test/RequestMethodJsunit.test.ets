@@ -166,7 +166,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_POST_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0300"
+      var casename = "Telephony_http_HttpRequestMethod_POST_0100"
       console.log("-----------------------HttpRequestMethod_POST Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -185,7 +185,7 @@ export default function requestMethodJsunit() {
           connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        httpRequest.request("https://image.baidu.com/search/albumsdetail/", httpRequestOptions, (err, data) => {
+        httpRequest.request("https://image.baidu.com/search/detail", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           httpRequest.destroy();
@@ -227,7 +227,7 @@ export default function requestMethodJsunit() {
           connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        httpRequest.request("https://image.baidu.com/search/albumsdetail/", httpRequestOptions).then(data => {
+        httpRequest.request("https://image.baidu.com/search/detail", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           httpRequest.destroy();
