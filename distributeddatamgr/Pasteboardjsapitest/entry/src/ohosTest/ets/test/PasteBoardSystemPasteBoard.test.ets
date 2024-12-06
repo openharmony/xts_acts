@@ -248,14 +248,14 @@ export default function pasteBoardSystemPasteBoardTest() {
             expect(false).assertTrue();
           } else {
             expect(data).assertTrue();
+			console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0100 end");
+			done();
           }
         })
       }).catch((err: Error) => {
         console.info("System pasteBoard set pastedata error,error: " + err)
         expect(false).assertTrue();
       })
-      console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0100 end")
-      done();
     })
 
     /**
@@ -276,11 +276,11 @@ export default function pasteBoardSystemPasteBoardTest() {
             expect(false).assertTrue();
           } else {
             expect(data == false).assertTrue();
+			console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0200 end")
+			done();
           }
         })
       })
-      console.info("SUB_PASTEBOARD_FUNCTION_ETS_HASDATA_CALLBACK_0200 end")
-      done();
     })
 
     /**
