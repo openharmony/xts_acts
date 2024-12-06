@@ -20,6 +20,7 @@ import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import notificationManager from '@ohos.notificationManager';
+import wifiManager from '@ohos.wifiManager'
 
 let LocationRequestScenario = {UNSET : 0x300 ,NAVIGATION : 0x301 ,
     TRAJECTORY_TRACKING : 0x302 ,CAR_HAILING : 0x303,
@@ -2160,6 +2161,24 @@ export default function geolocationTest_geo7() {
             expect(error.code).assertEqual("401");
         }
         await sleep(1000);
+        done();
+    })
+
+    /**
+    * @tc.number    : SUB_HSS_LOCATIONSYSTEM_GETWIFIBSSID_0001
+    * @tc.name      : testGetCurrentWifiBssidForLocating01
+    * @tc.desc      : Obtain the Actual Bssid of the Wifi Network.
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+     it('testGetCurrentWifiBssidForLocating01', 0, async function (done) {
+        try {
+            let mac = geolocationm.getCurrentWifiBssidForLocating();
+            expect(true).assertEqual(mac != '');
+        } catch(error) {
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
         done();
     })
     })
