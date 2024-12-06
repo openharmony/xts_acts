@@ -14,11 +14,9 @@
  */
 
 import EmptyTest from './Empty.test';
-import EsimPublic1 from './EsimPublic1.test';
-import EsimPublic2 from './EsimPublic2.test';
+import EsimNoPermissionPublic from './EsimNoPermissionPublic.test';
 
 export default function testsuite() {
   EmptyTest();
-  EsimPublic1();
-  EsimPublic2();
+  EsimNoPermissionPublic();
 }
