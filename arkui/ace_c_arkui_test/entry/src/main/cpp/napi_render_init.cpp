@@ -113,6 +113,7 @@
 #include "drag/dragAction_setTouchPointXY.h"
 #include "drag/dragAction_registerStatusListener.h"
 #include "animation/animator_event_test.h"
+#include "animation/animation_event_test.h"
 #include "inputevent/input_event_test.h"
 #include "swiper/swiper_onChange_test.h"
 #include "swiper/swiper_onAnimationStart_test.h"
@@ -439,6 +440,22 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testAnimatorRegisterOnRepeat", nullptr, AnimatorEventTest::testAnimatorRegisterOnRepeat_006,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"animateToTest", nullptr, AnimationEventTest::TestAnimateOption001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"keyframeRegisterOnFinishTest", nullptr, AnimationEventTest::TestKeyframeAnimateOption012, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"keyframeRegisterOnEventTest", nullptr, AnimationEventTest::TestKeyframeAnimateOption023, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"animatorRegisterOnFrameTest", nullptr, AnimationEventTest::TestAnimatorOption047, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"animatorRegisterOnFinishTest", nullptr, AnimationEventTest::TestAnimatorOption050, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"animatorRegisterOnCancelTest", nullptr, AnimationEventTest::TestAnimatorOption053, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"animatorRegisterOnRepeatTest", nullptr, AnimationEventTest::TestAnimatorOption056, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"animatorReverseTest", nullptr, AnimationEventTest::TestAnimatorOption062, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"swiperOnChangeTest", nullptr, SwiperOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"swiperOnAnimationStartTest", nullptr, SwiperOnAnimationStartTest::CreateNativeNode, nullptr, nullptr,

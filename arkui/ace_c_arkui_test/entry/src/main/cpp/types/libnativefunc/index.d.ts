@@ -5722,6 +5722,292 @@ export const testToggleSwitchPointColor004: () => number;
 
 export const testToggleSwitchPointColor005: () => number;
 
+export const testAnimateOption002: () => number;
+
+export const testAnimateOption003: () => number;
+
+export const testAnimateOption004: () => number;
+
+export const testAnimateOption005: () => number;
+
+export const testAnimateOption006: () => number;
+
+export const testAnimateOption007: () => number;
+
+export const testAnimateOption008: () => number;
+
+export const testAnimateOption009: () => number;
+
+export const testAnimateOption010: () => number;
+
+export const testAnimateOption011: () => number;
+
+export const testAnimateOption012: () => number;
+
+export const testAnimateOption013: () => number;
+
+export const testAnimateOption014: () => number;
+
+export const testAnimateOption015: () => number;
+
+export const testAnimateOption016: () => number;
+
+export const testAnimateOption017: () => number;
+
+export const testAnimateOption018: () => number;
+
+export const testAnimateOption019: () => number;
+
+export const testAnimateOption020: () => number;
+
+export const testAnimateOption021: () => number;
+
+export const testAnimateOption022: () => number;
+
+export const testAnimateOption023: () => number;
+
+export const testAnimateOption024: () => number;
+
+export const testAnimateOption025: () => number;
+
+export const testAnimateOption026: () => number;
+
+export const testAnimateOption027: () => number;
+
+export const testAnimateOption028: () => number;
+
+export const testAnimateOption029: () => number;
+
+export const testAnimateOption030: () => number;
+
+export const testAnimateOption031: () => number;
+
+export const testAnimateOption032: () => number;
+
+export const testAnimateOption033: () => number;
+
+export const testAnimateOption034: () => number;
+
+export const testAnimateOption035: () => number;
+
+export const testAnimateOption036: () => number;
+
+export const testAnimateOption037: () => number;
+
+export const testAnimateOption038: () => number;
+
+export const testAnimateOption039: () => number;
+
+export const testAnimateOption040: () => number;
+
+export const testAnimateOption041: () => number;
+
+export const testAnimateOption042: () => number;
+
+export const testAnimateOption043: () => number;
+
+export const testAnimateCurve001: () => number;
+
+export const testAnimateCurve002: () => number;
+
+export const testAnimateCurve003: () => number;
+
+export const testAnimateCurve004: () => number;
+
+export const testAnimateCurve005: () => number;
+
+export const testAnimateCurve006: () => number;
+
+export const testAnimateCurve007: () => number;
+
+export const testAnimateCurve008: () => number;
+
+export const testAnimateCurve009: () => number;
+
+export const testAnimateCurve010: () => number;
+
+export const testAnimateCurve011: () => number;
+
+export const testKeyframeAnimateOption001: () => number;
+
+export const testKeyframeAnimateOption002: () => number;
+
+export const testKeyframeAnimateOption003: () => number;
+
+export const testKeyframeAnimateOption004: () => number;
+
+export const testKeyframeAnimateOption005: () => number;
+
+export const testKeyframeAnimateOption006: () => number;
+
+export const testKeyframeAnimateOption007: () => number;
+
+export const testKeyframeAnimateOption008: () => number;
+
+export const testKeyframeAnimateOption009: () => number;
+
+export const testKeyframeAnimateOption010: () => number;
+
+export const testKeyframeAnimateOption011: () => number;
+
+export const testKeyframeAnimateOption013: () => number;
+
+export const testKeyframeAnimateOption014: () => number;
+
+export const testKeyframeAnimateOption015: () => number;
+
+export const testKeyframeAnimateOption016: () => number;
+
+export const testKeyframeAnimateOption017: () => number;
+
+export const testKeyframeAnimateOption018: () => number;
+
+export const testKeyframeAnimateOption019: () => number;
+
+export const testKeyframeAnimateOption020: () => number;
+
+export const testKeyframeAnimateOption021: () => number;
+
+export const testKeyframeAnimateOption022: () => number;
+
+export const testKeyframeAnimateOption024: () => number;
+
+export const testKeyframeAnimateOption025: () => number;
+
+export const testGeometryTransition001: () => number;
+
+export const testGeometryTransition002: () => number;
+
+export const testGeometryTransition003: () => number;
+
+export const testGeometryTransition004: () => number;
+
+export const testGeometryTransition005: () => number;
+
+export const testAnimatorOption001: () => number;
+
+export const testAnimatorOption002: () => number;
+
+export const testAnimatorOption003: () => number;
+
+export const testAnimatorOption004: () => number;
+
+export const testAnimatorOption005: () => number;
+
+export const testAnimatorOption006: () => number;
+
+export const testAnimatorOption007: () => number;
+
+export const testAnimatorOption008: () => number;
+
+export const testAnimatorOption009: () => number;
+
+export const testAnimatorOption010: () => number;
+
+export const testAnimatorOption011: () => number;
+
+export const testAnimatorOption012: () => number;
+
+export const testAnimatorOption013: () => number;
+
+export const testAnimatorOption014: () => number;
+
+export const testAnimatorOption015: () => number;
+
+export const testAnimatorOption016: () => number;
+
+export const testAnimatorOption017: () => number;
+
+export const testAnimatorOption018: () => number;
+
+export const testAnimatorOption019: () => number;
+
+export const testAnimatorOption020: () => number;
+
+export const testAnimatorOption021: () => number;
+
+export const testAnimatorOption022: () => number;
+
+export const testAnimatorOption023: () => number;
+
+export const testAnimatorOption024: () => number;
+
+export const testAnimatorOption025: () => number;
+
+export const testAnimatorOption026: () => number;
+
+export const testAnimatorOption027: () => number;
+
+export const testAnimatorOption028: () => number;
+
+export const testAnimatorOption029: () => number;
+
+export const testAnimatorOption030: () => number;
+
+export const testAnimatorOption031: () => number;
+
+export const testAnimatorOption032: () => number;
+
+export const testAnimatorOption033: () => number;
+
+export const testAnimatorOption034: () => number;
+
+export const testAnimatorOption035: () => number;
+
+export const testAnimatorOption036: () => number;
+
+export const testAnimatorOption037: () => number;
+
+export const testAnimatorOption038: () => number;
+
+export const testAnimatorOption039: () => number;
+
+export const testAnimatorOption040: () => number;
+
+export const testAnimatorOption041: () => number;
+
+export const testAnimatorOption042: () => number;
+
+export const testAnimatorOption043: () => number;
+
+export const testAnimatorOption044: () => number;
+
+export const testAnimatorOption045: () => number;
+
+export const testAnimatorOption046: () => number;
+
+export const testAnimatorOption048: () => number;
+
+export const testAnimatorOption049: () => number;
+
+export const testAnimatorOption051: () => number;
+
+export const testAnimatorOption052: () => number;
+
+export const testAnimatorOption054: () => number;
+
+export const testAnimatorOption055: () => number;
+
+export const testAnimatorOption057: () => number;
+
+export const testAnimatorOption058: () => number;
+
+export const testAnimatorOption059: () => number;
+
+export const testAnimatorOption060: () => number;
+
+export const testAnimatorOption061: () => number;
+
+export const testAnimatorOption063: () => number;
+
+export const testAnimatorOption064: () => number;
+
+export const testAnimatorOption065: () => number;
+
+export const testAnimatorOption066: () => number;
+
+export const testAnimatorOption067: () => number;
+
 export const native_001: () => number;
 export const native_002: () => number;
 export const native_003: () => number;
