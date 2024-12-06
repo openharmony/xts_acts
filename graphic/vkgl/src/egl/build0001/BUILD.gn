@@ -126,7 +126,7 @@ ohos_static_library("libeglfunc0001") {
   configs = [ ":deqp_platform_ohos_config" ]
 }
 
-ohos_moduletest_suite("ActsEglTestSuite0001") {
+ohos_moduletest_suite("ActsEglSuite0001Test") {
   subsystem_name = "xts"
   part_name = "acts"
 

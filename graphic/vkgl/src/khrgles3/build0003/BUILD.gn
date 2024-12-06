@@ -41,7 +41,7 @@ ohos_static_library("libkhrgles3func0003") {
   configs = [ ":deqp_platform_ohos_config" ]
 }
 
-ohos_moduletest_suite("ActsKhrgles3TestSuite0003") {
+ohos_moduletest_suite("ActsKhrgles3Suite0003Test") {
   subsystem_name = "graphic"
   part_name = "graphic_2d"
   sources = [

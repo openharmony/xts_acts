@@ -37,7 +37,7 @@ ohos_static_library("libkhrglesextfunc0001") {
   configs = [ ":deqp_platform_ohos_config" ]
 }
 
-ohos_moduletest_suite("ActsKhrglesextTestSuite0001") {
+ohos_moduletest_suite("ActsKhrglesextSuite0005Test") {
   subsystem_name = "xts"
   part_name = "acts"
   sources = [

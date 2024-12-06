@@ -41,7 +41,7 @@ ohos_static_library("libdeqpgles31func0033") {
   configs = [ ":deqp_platform_ohos_config" ]
 }
 
-ohos_moduletest_suite("ActsDeqpgles31TestSuite0033") {
+ohos_moduletest_suite("ActsDeqpgles31Suite0033Test") {
   subsystem_name = "graphic"
   part_name = "graphic_2d"
   sources = [

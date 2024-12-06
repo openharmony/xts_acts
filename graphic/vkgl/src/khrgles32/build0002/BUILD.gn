@@ -41,7 +41,7 @@ ohos_static_library("libkhrgles32func0002") {
   configs = [ ":deqp_platform_ohos_config" ]
 }
 
-ohos_moduletest_suite("ActsKhrgles32TestSuite0002") {
+ohos_moduletest_suite("ActsKhrgles32Suite0002Test") {
   subsystem_name = "graphic"
   part_name = "graphic_2d"
   sources = [
