@@ -443,7 +443,7 @@ export default class MediaTestBase {
       length?: number;
     }
 
-    let filePath = globalThis.abilityContext.filesDir + '/lbvc_1c_16000hz_6k.pcm'
+    let filePath = globalThis.abilityContext.filesDir + '/f32le_44100_2_dayuhaitang.pcm'
     let stat = await fs.stat(filePath)
     let file: fs.File = await fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 
