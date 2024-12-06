@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsDeqpgles2TestSuite0004 test cases",
+    "description": "Config for ActsDeqpgles2Suite0004Test test cases",
     "driver": {
-        "module-name": "ActsDeqpgles2TestSuite0004",
+        "module-name": "ActsDeqpgles2Suite0004Test",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -23,7 +23,7 @@
                 "cp /data/local/tmp/librosen_context* /system/lib"
             ],
             "push": [
-                "ActsDeqpgles2TestSuite0004->/data/local/tmp/ActsDeqpgles2TestSuite0004",
+                "ActsDeqpgles2Suite0004Test->/data/local/tmp/ActsDeqpgles2Suite0004Test",
                 "vkgldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "vkgldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "vkgldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
