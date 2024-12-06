@@ -39,10 +39,10 @@ static void OnVSync(long long timestamp, void *data) {}
 namespace {
 /*
  * @tc.name: OH_NativeVSync_Create001
- * @tc.desc: test for Call OH_NativeVSync_Create and check ret.
+ * @tc.desc: test for call OH_NativeVSync_Create by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 2
  */
 HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create001, Function | MediumTest | Level2) {
     ASSERT_EQ(OH_NativeVSync_Create(nullptr, 0), nullptr);
@@ -50,10 +50,10 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create001, Function | MediumTest | Leve
 
 /*
  * @tc.name: OH_NativeVSync_Create002
- * @tc.desc: test for Call OH_NativeVSync_Create and check ret.
+ * @tc.desc: test for call OH_NativeVSync_Create by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 2
  */
 HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create002, Function | MediumTest | Level2) {
     char name[] = "test";
@@ -63,10 +63,10 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_Create002, Function | MediumTest | Leve
 
 /*
  * @tc.name: OH_NativeVSync_RequestFrame001
- * @tc.desc: test for Call OH_NativeVSync_RequestFrame and check ret.
+ * @tc.desc: test for call OH_NativeVSync_RequestFrame by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 2
  */
 HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame001, Function | MediumTest | Level2) {
     ASSERT_NE(OH_NativeVSync_RequestFrame(nullptr, nullptr, nullptr), 0);
@@ -74,10 +74,10 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame001, Function | MediumTest 
 
 /*
  * @tc.name: OH_NativeVSync_RequestFrame002
- * @tc.desc: test for Call OH_NativeVSync_RequestFrame and check ret.
+ * @tc.desc: test for call OH_NativeVSync_RequestFrame by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 2
  */
 HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame002, Function | MediumTest | Level2) {
     ASSERT_NE(OH_NativeVSync_RequestFrame(native_vsync, nullptr, nullptr), 0);
@@ -85,10 +85,10 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame002, Function | MediumTest 
 
 /*
  * @tc.name: OH_NativeVSync_RequestFrame003
- * @tc.desc: test for Call OH_NativeVSync_RequestFrame and check ret.
+ * @tc.desc: test for call OH_NativeVSync_RequestFrame by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 2
  */
 HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame003, Function | MediumTest | Level2) {
     OH_NativeVSync_FrameCallback callback = OnVSync;
@@ -97,31 +97,31 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrame003, Function | MediumTest 
 
 /*
  * @tc.name: OH_NativeVSync_Destroy001
- * @tc.desc: test for AbNormal OH_NativeVSync_Destroy and check ret.
+ * @tc.desc: test for call OH_NativeVSync_Destroy by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 2
  */
-HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy001, Function | MediumTest | Level3) {
+HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy001, Function | MediumTest | Level2) {
     OH_NativeVSync_Destroy(nullptr);
 }
 
 /*
  * @tc.name: OH_NativeVSync_Destroy002
- * @tc.desc: test for Normal OH_NativeVSync_Destroy and check ret.
+ * @tc.desc: test for call OH_NativeVSync_Destroy by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 2
  */
 HWTEST_F(NativeVsyncTest, OH_NativeVSync_Destroy002, Function | MediumTest | Level2) {
     OH_NativeVSync_Destroy(native_vsync);
 }
 /*
  * @tc.name: OH_NativeVSync_RequestFrameWithMultiCallbackNormal
- * @tc.desc: test for Normal OH_NativeVSync_RequestFrameWithMultiCallback and check ret.
+ * @tc.desc: test for call OH_NativeVSync_RequestFrameWithMultiCallback by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 2
  */
 HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackNormal, Function | MediumTest | Level2) {
     char name[] = "test";
@@ -159,10 +159,10 @@ HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackNormal, Fu
 }
 /*
  * @tc.name: OH_NativeVSync_RequestFrameWithMultiCallbackAbnormal
- * @tc.desc: test for AbNormal OH_NativeVSync_RequestFrameWithMultiCallback and check ret.
+ * @tc.desc: test for call OH_NativeVSync_RequestFrameWithMultiCallback by abnormal input and check ret.
  * @tc.size  : MediumTest
  * @tc.type  : Function
- * @tc.level : Level 3
+ * @tc.Level : Level 3
  */
 HWTEST_F(NativeVsyncTest, OH_NativeVSync_RequestFrameWithMultiCallbackAbnormal, Function | MediumTest | Level3) {
     char name[] = "test";
