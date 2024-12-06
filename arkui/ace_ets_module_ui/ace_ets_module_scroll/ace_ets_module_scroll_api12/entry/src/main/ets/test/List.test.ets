@@ -111,6 +111,10 @@ import waterFlowFling2 from './WaterFlowTest/waterFlowFling2.test';
 import alphabetAlignStyle from './AlphabetIndexerTest/alphabetAlignStyle.test';
 import outliersAlphabet from './AlphabetIndexerTest/outliersAlphabet.test';
 import valueAlphabet from './AlphabetIndexerTest/valueAlphabet.test';
+import tabsCallBack1 from './TabsTest/tabsCallBack1.test';
+import tabsCallBack2 from './TabsTest/tabsCallBack2.test';
+import tabsCallBack3 from './TabsTest/tabsCallBack3.test';
+import tabsCallBack4 from './TabsTest/tabsCallBack4.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -212,4 +216,8 @@ export default function testsuite() {
   alphabetAlignStyle()
   outliersAlphabet()
   valueAlphabet()
+  tabsCallBack1()
+  tabsCallBack2()
+  tabsCallBack3()
+  tabsCallBack4()
 }
