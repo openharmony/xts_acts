@@ -663,6 +663,54 @@ import imageAnimatorFillModeTest from './imageAnimator/ImageAnimatorFillModeTest
 import imageAnimatorIterationsTest from './imageAnimator/ImageAnimatorIterationsTest.test'
 import imageAnimatorEventTest from "./imageAnimator/ImageAnimatorEventTest.test"
 import radioOnChangeTest from "./radio/RadioOnChangeTest.test"
+import commonAttrsSaturateTest from './commonattrs/CommonAttrsSaturateTest.test'
+import commonAttrsBlurTest from './commonattrs/CommonAttrsBlurTest.test'
+import commonAttrsZIndexTest from './commonattrs/CommonAttrsZIndexTest.test'
+import commonAttrsVisibilityTest from './commonattrs/CommonAttrsVisibilityTest.test'
+import commonAttrsClipShapeTest from './commonattrs/CommonAttrsClipShapeTest.test'
+import commonAttrsBackgroundImageTest from './commonattrs/CommonAttrsBackgroundImageTest.test'
+import commonAttrsBackgroundImagePixelMapTest from './commonattrs/CommonAttrsBackgourndImagePixelMapTest.test'
+import commonAttrsPaddingTest from './commonattrs/CommonAttrsPaddingTest.test'
+import commonAttrsTranslateTest from './commonattrs/CommonAttrsTranslateTest.test'
+import commonAttrsRotateTest from './commonattrs/CommonAttrsRotateTest.test'
+import commonAttrsBrightnessTest from './commonattrs/CommonAttrsBrightnessTest.test'
+import commonAttrsCustomShadowTest from './commonattrs/CommonAttrsCustomShadowTest.test'
+import commonAttrsBackgroundImageSizeTest from './commonattrs/CommonAttrsBackgroundImageSizeTest.test'
+import commonAttrsBackgroundBlurStyleTest from './commonattrs/CommonAttrsBackgroundBlurStyleTest.test'
+import commonAttrsTransformCenterTest from './commonattrs/CommonAttrsTransformCenterTest.test'
+import commonAttrsTransitionEffectOpacityTest from './commonattrs/CommonAttrsTransitionOpacityTest.test'
+import commonAttrsTransitionEffectRotateTest from './commonattrs/CommonAttrsTransitionRotateTest.test'
+import commonAttrsTransitionEffectScaleTest from './commonattrs/CommonAttrsTransitionScaleTest.test'
+import commonAttrsTransitionTranslateTest from './commonattrs/CommonAttrsTransitionTranslateTest.test'
+import commonAttrsTransitionEffectMoveTest from './commonattrs/CommonAttrsTransitionMoveTest.test'
+import commonAttrsDefaultFocusTest from './commonattrs/CommonAttrsDefaultFocusTest.test'
+import commonAttrsResponseRegionTest from './commonattrs/CommonAttrsResponseRegionTest.test'
+import commonAttrsOverlayTest from './commonattrs/CommonAttrsOverlayTest.test'
+import commonAttrsForegroundColorTest from './commonattrs/CommonAttrsForegroundColorTest.test'
+import commonAttrsOffsetTest from './commonattrs/CommonAttrsOffsetTest.test'
+import commonAttrsMarkAnchorTest from './commonattrs/CommonAttrsMarkAnchorTest.test'
+import commonAttrsBackgroundImagePositionTest from './commonattrs/CommonAttrsBackgroundImagePositionTest.test'
+import commonAttrsFocusStatusTest from './commonattrs/CommonAttrsFocusStatusTest.test'
+import commonAttrsAspectRatioTest from './commonattrs/CommonAttrsAspectRatioTest.test'
+import commonAttrsLayoutWeightTest from './commonattrs/CommonAttrsLayoutWeightTest.test'
+import commonAttrsDisplayPriorityTest from './commonattrs/CommonAttrsDisplayPriorityTest.test'
+import commonAttrsOutlineWidthTest from './commonattrs/CommonAttrsOutlineWidthTest.test'
+import commonAttrsOutlineColorTest from './commonattrs/CommonAttrsOutlineColorTest.test'
+import commonAttrsRenderFitTest from './commonattrs/CommonAttrsRenderFitTest.test'
+import commonAttrsColorBlendTest from './commonattrs/CommonAttrsColorBlendTest.test'
+import commonAttrsTouchableTest from './commonattrs/CommonAttrsTouchableTest.test'
+import commonAttrsRenderGroupTest from './commonattrs/CommonAttrsRenderGroupTest.test'
+import commonAttrsSizeTest from './commonattrs/CommonAttrsSizeTest.test'
+import commonAttrsChainModeTest from './commonattrs/CommonAttrsChainModeTest.test'
+import commonAttrsAccessibilityIdTest from './commonattrs/CommonAttrsAccessibilityIdTest.test'
+import commonAttrsAccessibilityActionsTest from './commonattrs/CommonAttrsAccessibilityActionsTest.test'
+import commonAttrsAccessibilityRoleTest from './commonattrs/CommonAttrsAccessibilityRoleTest.test'
+import commonAttrsAccessibilityStateTest from './commonattrs/CommonAttrsAccessibilityStateTest.test'
+import commonAttrsAccessibilityValueTest from './commonattrs/CommonAttrsAccessibilityValueTest.test'
+import commonAttrsFocusOnTouchTest from './commonattrs/CommonAttrsFocusOnTouchTest.test'
+import commonAttrsExpandSafeAreaTest from './commonattrs/CommonAttrsExpandSafeAreaTest.test'
+import commonAttrsTransitionEffectAsymmetricTest from './commonattrs/CommonAttrsTransitionAsymmetricTest.test'
+
 import textAreaTextTest from "./textarea/TextAreaTextTest.test"
 import textAreaFontFeatureTest from "./textarea/TextAreaFontFeatureTest.test"
 import textAreaMaxLinesTest from "./textarea/TextAreaMaxLinesTest.test"
@@ -1390,4 +1438,51 @@ export default function testsuite() {
   textInputOnDeleteTest()
   textInputGetTextContentRect()
   textInputOnContentDidChangeTest()
+  commonAttrsSaturateTest()
+  commonAttrsBlurTest()
+  commonAttrsZIndexTest()  
+  commonAttrsVisibilityTest()
+  commonAttrsClipShapeTest()
+  commonAttrsBackgroundImageTest()
+  commonAttrsBackgroundImagePixelMapTest()
+  commonAttrsPaddingTest()
+  commonAttrsTranslateTest()
+  commonAttrsRotateTest()
+  commonAttrsBrightnessTest()
+  commonAttrsCustomShadowTest()
+  commonAttrsBackgroundImageSizeTest()
+  commonAttrsBackgroundBlurStyleTest()
+  commonAttrsTransformCenterTest()
+  commonAttrsTransitionEffectOpacityTest()
+  commonAttrsTransitionEffectRotateTest()
+  commonAttrsTransitionEffectScaleTest()
+  commonAttrsTransitionTranslateTest()
+  commonAttrsTransitionEffectMoveTest()
+  commonAttrsDefaultFocusTest()
+  commonAttrsResponseRegionTest()
+  commonAttrsOverlayTest()
+  commonAttrsForegroundColorTest()
+  commonAttrsOffsetTest()
+  commonAttrsMarkAnchorTest()
+  commonAttrsBackgroundImagePositionTest()
+  commonAttrsFocusStatusTest()
+  commonAttrsAspectRatioTest()
+  commonAttrsLayoutWeightTest()
+  commonAttrsDisplayPriorityTest()
+  commonAttrsOutlineWidthTest()
+  commonAttrsOutlineColorTest()
+  commonAttrsRenderFitTest()
+  commonAttrsColorBlendTest()
+  commonAttrsTouchableTest()
+  commonAttrsRenderGroupTest()
+  commonAttrsSizeTest()
+  commonAttrsChainModeTest()
+  commonAttrsAccessibilityIdTest()
+  commonAttrsAccessibilityActionsTest()
+  commonAttrsAccessibilityRoleTest()
+  commonAttrsAccessibilityStateTest()
+  commonAttrsAccessibilityValueTest()
+  commonAttrsFocusOnTouchTest()
+  commonAttrsExpandSafeAreaTest()
+  commonAttrsTransitionEffectAsymmetricTest()
 }

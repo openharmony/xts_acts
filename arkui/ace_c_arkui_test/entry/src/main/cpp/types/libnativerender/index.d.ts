@@ -406,3 +406,8 @@ export const getTextInputInsertData: () => number[][];
 export const textInputOnDeleteTest : (a : string) => void;
 
 export const getTextInputDeleteData: () =>number[][];
+export const commonAttrsFocusStatusTest: (a: string) => void;
+
+export const commonAttrsTouchableTest: (a: string) => void;
+
+export const commonAttrsFocusOnTouchTest: (a: string) => void;

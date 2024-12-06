@@ -22,9 +22,11 @@
 #include <arkui/native_interface.h>
 #include <arkui/native_node.h>
 #include <string>
+#include <arkui/native_animate.h>
 
 namespace ArkUICapiTest {
 
+#define PARAM_0_POINT_2 0.2
 #define PARAM_0_POINT_5 0.5
 #define PARAM_1_POINT_5 1.5
 #define PARAM_0_POINT_6 0.6
@@ -53,24 +55,42 @@ namespace ArkUICapiTest {
 #define PARAM_19 19
 #define PARAM_20 20
 #define PARAM_30 30
+#define PARAM_40 40
+#define PARAM_45 45
 #define PARAM_50 50
+#define PARAM_51 51
 #define PARAM_60 60
 #define PARAM_80 80
 #define PARAM_50_POINT_5 50.5
 #define PARAM_80_POINT_5 80.5
 #define PARAM_101_POINT_5 101.5
 #define PARAM_90 90
+#define PARAM_96 96
 #define PARAM_100 100
+#define PARAM_127 127
+#define PARAM_150 150
+#define PARAM_180 180
 #define PARAM_200 200
+#define NULLPTR_ERROR (-1)
+#define PARAM_255 255
+#define PARAM_300 300
+#define PARAM_800 800
+#define PARAM_999 999
 #define PARAM_1000 1000
+#define PARAM_1016 1016
 #define PARAM_2000 2000
 #define PARAM_10000 10000
-#define NULLPTR_ERROR (-1)
+#define PARAM_20000 20000
 #define PARAM_NEGATIVE_1 (-1)
 #define PARAM_NEGATIVE_2 (-2)
+#define PARAM_NEGATIVE_5 (-5)
 #define PARAM_NEGATIVE_10 (-10)
+#define PARAM_NEGATIVE_15 (-15)
 #define PARAM_NEGATIVE_20 (-20)
 #define PARAM_NEGATIVE_30 (-30)
+#define PARAM_NEGATIVE_40 (-40)
+#define PARAM_NEGATIVE_45 (-45)
+#define PARAM_NEGATIVE_51 (-51)
 #define PARAM_NEGATIVE_50 (-50)
 #define PARAM_NEGATIVE_50_POINT_5 (-50.5)
 #define PARAM_NEGATIVE_100 (-100)
@@ -80,6 +100,11 @@ namespace ArkUICapiTest {
 #define PARAM_64 64
 #define DEFAULT_MARGIN 10
 #define SIZE_5 5
+#define PARAM_NEGATIVE_180 (-180)
+#define PARAM_NEGATIVE_300 (-300)
+#define PARAM_NEGATIVE_1000 (-1000)
+#define PARAM_NEGATIVE_2000 (-2000)
+#define SIZE_0 0
 #define SIZE_10 10
 #define SIZE_20 20
 #define SIZE_30 30
@@ -90,6 +115,9 @@ namespace ArkUICapiTest {
 #define SIZE_80 80
 #define SIZE_90 90
 #define SIZE_100 100
+#define SIZE_110 110
+#define SIZE_120 120
+#define SIZE_130 130
 #define SIZE_180 180
 #define SIZE_150 150
 #define SIZE_200 200
@@ -145,6 +173,7 @@ namespace ArkUICapiTest {
 #define ON_DID_INSERT_ID 6019
 #define ON_WILL_DELETE_ID 6020
 #define ON_DID_DELETE_ID 6021
+#define ON_ACCESSIBILITY_ACTIONS_EVENT_ID 6040
 
 /**
  * Log print domain.
