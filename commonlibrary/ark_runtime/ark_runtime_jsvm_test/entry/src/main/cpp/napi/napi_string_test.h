@@ -21,7 +21,7 @@
 #include "securec.h"
 #include <cstdint>
 #include <cstdio>
-#include <malloc.h>
+#include <cstdlib>
 #include <ctime>
 #include <thread>
 #include <uv.h>
@@ -32,13 +32,6 @@
 #include <string>
 #include <vector>
 using namespace std;
-
-const size_t BUF_SIZE_MAX = 128;
-const size_t BUF_SIZE_50 = 50;
-const size_t BUF_SIZE_20 = 20;
-const size_t BUF_SIZE_10 = 10;
-const size_t BUF_SIZE_5 = 5;
-const size_t BUF_SIZE_3 = 3;
 
 // OH_JSVM_GetValueStringUtf8 interface
 JSVM_Value TestGetValueStringUtf8Test1(JSVM_Env env, JSVM_CallbackInfo info);
