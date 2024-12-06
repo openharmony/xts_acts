@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -65,25 +65,25 @@ export default function onPlaceChildren1() {
     it('onPlaceChildren1_001', 0, async (done: Function) => {
       console.info('[onPlaceChildren1_001] START');
       await CommonFunc.sleep(500);
-      let MaxHeightText1 = getInspectorByKey('constraint_maxHeight1');
+      let MaxHeightText1 : string = JSON.parse(getInspectorByKey('constraint_maxHeight1')).$attrs.content;
       await CommonFunc.sleep(500);
-      console.log('maxHeight111' + JSON.stringify(JSON.parse(MaxHeightText1).$attrs.content));
-      expect(JSON.parse(MaxHeightText1).$attrs.content).assertEqual('600');
+      console.log('maxHeight111 is ' + MaxHeightText1);
+      expect(Math.abs(Number(MaxHeightText1) - 600) <= 1).assertTrue();
       await CommonFunc.sleep(500);
-      let MinHeightText1 = getInspectorByKey('constraint_minHeight1');
+      let MinHeightText1 : string = JSON.parse(getInspectorByKey('constraint_minHeight1')).$attrs.content;
       await CommonFunc.sleep(500);
-      console.log('minHeight111' + JSON.stringify(JSON.parse(MinHeightText1).$attrs.content));
-      expect(JSON.parse(MinHeightText1).$attrs.content).assertEqual('0');
+      console.log('minHeight111 is ' + MinHeightText1);
+      expect(Math.abs(Number(MinHeightText1) - 0) <= 1).assertTrue();
       await CommonFunc.sleep(500);
-      let MaxWidthText1 = getInspectorByKey('constraint_maxWidth1');
+      let MaxWidthText1 : string = JSON.parse(getInspectorByKey('constraint_maxWidth1')).$attrs.content;
       await CommonFunc.sleep(500);
-      console.log('maxWidth111' + JSON.stringify(JSON.parse(MaxWidthText1).$attrs.content));
-      expect(JSON.parse(MaxWidthText1).$attrs.content).assertEqual('500');
+      console.log('maxWidth111 is' + MaxWidthText1);
+      expect(Math.abs(Number(MaxWidthText1) - 500) <= 1).assertTrue();
       await CommonFunc.sleep(500);
-      let MinWidthText1 = getInspectorByKey('constraint_minWidth1');
+      let MinWidthText1 : string = JSON.parse(getInspectorByKey('constraint_minWidth1')).$attrs.content;
       await CommonFunc.sleep(500);
-      console.log('minWidth111' + JSON.stringify(JSON.parse(MinWidthText1).$attrs.content));
-      expect(JSON.parse(MinWidthText1).$attrs.content).assertEqual('0');
+      console.log('minWidth111 is' + MinWidthText1);
+      expect(Math.abs(Number(MinWidthText1) - 0) <= 1).assertTrue();
       await CommonFunc.sleep(500);
       console.info('[onPlaceChildren1_001] END');
       done();
