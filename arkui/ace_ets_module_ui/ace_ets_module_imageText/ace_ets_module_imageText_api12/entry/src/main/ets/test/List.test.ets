@@ -153,7 +153,6 @@ import imageSpanTest8 from './TextTest/imageSpan8.test';
 import TextMaxLines from './Text/TextMaxLines.test';
 import getRectsForRangeTest from './RichEditor/getRectsForRange.test'
 import textInputEnterKeyTypeTest from './TextInput/textInputEnterKeyType.test'
-import spanTest from './spanTest/SpanJsunit1.test'
 import textAreaAutoFillTest from './TextArea/TextAreaAutoFillJsUnit.test'
 import textAreaHeightAdaptivePolicyTest from "./TextArea/textAreaHeightAdaptivePolicy.test";
 import textAreaMaxFontSize from "./TextArea/textAreaMaxFontSize.test";
@@ -168,6 +167,19 @@ import textInputHeightAdaptivePolicy from "./TextInput/textInputHeightAdaptivePo
 import textInputDecoration from "./TextInput/textInputDecoration.test";
 import textInputLetterSpacing from "./TextInput/textInputLetterSpacing.test";
 import textInputLineHeight from "./TextInput/textInputLineHeight.test";
+import searchMaxFontSize from "./component/searchMaxFontSize.test.ets";
+import searchMinFontSize from "./component/serachMinFontSize.test.ets";
+import searchDecoration from "./component/searchDecoration.test.ets";
+import searchLetterSpacing from "./component/searchLetterSpacing.test.ets";
+import searchLineHeight from "./component/searchLineHeight.test.ets";
+import APISearchExample from "./component/APISearchExample.test.ets";
+import MenuPolicy_HIDE_APITest from './CommonTest/SearchTest/Search_APITest/MenuPolicy_HIDE_APITest';
+import MenuPolicy_SHOW_APITest from './CommonTest/SearchTest/Search_APITest/MenuPolicy_SHOW_APITest';
+import spanBaselineOffsetJsunit from "./component/spanBaselineOffsetJsunit.test";
+import SearchXtsJsunit from './xts/SearchXtsJsunit.test'
+import TextAreaXtsJsunit from './xts/TextAreaXtsJsunit.test'
+import TextInputXtsJsunit from './xts/TextInputXtsJsunit.test'
+import spanTest from './spanTest/SpanJsunit1.test'
 
 export default function testsuite() {
   textAreaInputTest();
@@ -303,7 +315,6 @@ export default function testsuite() {
   TextMaxLines();
   getRectsForRangeTest();
   textInputEnterKeyTypeTest();
-  spanTest();
   textAreaAutoFillTest()
   textAreaHeightAdaptivePolicyTest();
   textAreaMinFontSize();
@@ -318,4 +329,17 @@ export default function testsuite() {
   textInputDecoration();
   textInputLetterSpacing();
   textInputLineHeight();
+  searchMaxFontSize();
+  searchMinFontSize();
+  searchDecoration();
+  searchLetterSpacing();
+  searchLineHeight();
+  APISearchExample();
+  MenuPolicy_HIDE_APITest();
+  MenuPolicy_SHOW_APITest();
+  spanBaselineOffsetJsunit();
+  SearchXtsJsunit();
+  TextAreaXtsJsunit();
+  TextInputXtsJsunit();
+  spanTest();
 }
