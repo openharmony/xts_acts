@@ -564,4 +564,25 @@ void InstallMyConsoleLog(JSVM_Env env)
     jsvm::SetProperty(console, "log", log);
 }
 
+void TryTriggerOOM()
+{
+    static std::vector<JSVM_Value> arrayVec;
+    int loopCount = 1000;
+    for (int i = 0; i < loopCount; i++) {
+        JSVM_Value array;
+        JSVMTEST_CALL(OH_JSVM_CreateArrayWithLength(jsvm_env, 0xffffff, &array));
+        arrayVec.push_back(array);
+    }
+}
+
+void TryTriggerFatalError(JSVM_VM vm)
+{
+    OH_JSVM_DestroyVM(vm);
+}
+
+void TryTriggerGC()
+{
+    JSVMTEST_CALL(OH_JSVM_MemoryPressureNotification(jsvm_env, JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL));
+}
+
 }  // namespace jsvm
