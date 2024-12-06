@@ -346,6 +346,7 @@ export const radioOnChangeTest: (a: string) => void;
 export const textAreaOnTextSelectionChangeTest : (a : string) => void ;
 
 export const getTextAreaData :() => number[][];
+
 export const textAreaOnContentScrollTest : (a : string) => void;
 
 export const textAreaOnContentDidChangeTest : (a : string) => void;
@@ -368,3 +369,24 @@ export const textAreaOnSubmitTest : (a : string) =>void;
 
 export const getTextAreaSubmitData : () => number[][];
 
+export const textInputOnTextSelectionChangeTest: (a : string ) => void;
+
+export const getTextInputData: () => number[][];
+
+export const textInputOnContentScrollTest : (a : string ) => void;
+
+export const textInputOnContentDidChangeTest : (a : string ) => void;
+
+export const getTextInputContentDidData : () =>number[][];
+
+export const textInputOnEditChangeTest : (a : string ) => void;
+
+export const getTextInputEditChangeData : () =>number[][];
+
+export const textInputOnInsertTest : (a : string) => void;
+
+export const getTextInputInsertData: () => number[][];
+
+export const textInputOnDeleteTest : (a : string) => void;
+
+export const getTextInputDeleteData: () =>number[][];

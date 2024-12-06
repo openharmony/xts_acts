@@ -21,8 +21,8 @@ static napi_value TestTextInputEnableKeyboardOnFocus001(napi_env env, napi_callb
 {
     NAPI_START(textInput, ARKUI_NODE_TEXT_INPUT);
 
-    ArkUI_NumberValue value[] = {{.i32 = PARAM_1}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_NumberValue value[] = { { .i32 = PARAM_1 } };
+    ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
     auto ret = nodeAPI->setAttribute(textInput, NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(textInput, NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS)->value[PARAM_0].i32, PARAM_1);
@@ -33,8 +33,8 @@ static napi_value TestTextInputEnableKeyboardOnFocus002(napi_env env, napi_callb
 {
     NAPI_START(textInput, ARKUI_NODE_TEXT_INPUT);
 
-    ArkUI_NumberValue value[] = {{.i32 = PARAM_0}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_NumberValue value[] = { { .i32 = PARAM_0 } };
+    ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
     auto ret = nodeAPI->setAttribute(textInput, NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(textInput, NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS)->value[PARAM_0].i32, PARAM_0);
@@ -45,13 +45,13 @@ static napi_value TestTextInputEnableKeyboardOnFocus003(napi_env env, napi_callb
 {
     NAPI_START(textInput, ARKUI_NODE_TEXT_INPUT);
 
-    ArkUI_NumberValue value[] = {{.i32 = PARAM_NEGATIVE_1}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    ArkUI_NumberValue value[] = { { .i32 = PARAM_NEGATIVE_1 } };
+    ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
     auto ret = nodeAPI->setAttribute(textInput, NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(textInput, NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(textInput, NODE_TEXT_INPUT_ENABLE_KEYBOARD_ON_FOCUS)->value[PARAM_0].i32,
-                  PARAM_NEGATIVE_1);
+            PARAM_NEGATIVE_1);
     }
     NAPI_END;
 }

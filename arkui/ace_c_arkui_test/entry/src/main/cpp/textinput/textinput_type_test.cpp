@@ -157,5 +157,4 @@ static napi_value TestTextInputType011(napi_env env, napi_callback_info info)
     }
     NAPI_END;
 }
-
 } // namespace ArkUICapiTest
