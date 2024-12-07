@@ -710,6 +710,11 @@ import commonAttrsAccessibilityValueTest from './commonattrs/CommonAttrsAccessib
 import commonAttrsFocusOnTouchTest from './commonattrs/CommonAttrsFocusOnTouchTest.test'
 import commonAttrsExpandSafeAreaTest from './commonattrs/CommonAttrsExpandSafeAreaTest.test'
 import commonAttrsTransitionEffectAsymmetricTest from './commonattrs/CommonAttrsTransitionAsymmetricTest.test'
+import eventCallbackTest from "./eventcallback/EventCallbackTest.test"
+import attributeSettingTest from "./attributesetting/AttributeSettingTest.test"
+import commonEventEventTest from './commonevent/CommonEventEventTest.test'
+import nodeTreeTest from './nodetree/NodeTreeTest.test'
+import nodeTreeXComponentTest from './nodetree/NodeTreeXComponentTest.test'
 
 import textAreaTextTest from "./textarea/TextAreaTextTest.test"
 import textAreaFontFeatureTest from "./textarea/TextAreaFontFeatureTest.test"
@@ -1485,4 +1490,9 @@ export default function testsuite() {
   commonAttrsFocusOnTouchTest()
   commonAttrsExpandSafeAreaTest()
   commonAttrsTransitionEffectAsymmetricTest()
+  attributeSettingTest()
+  eventCallbackTest()
+  commonEventEventTest()
+  nodeTreeTest()
+  nodeTreeXComponentTest()
 }

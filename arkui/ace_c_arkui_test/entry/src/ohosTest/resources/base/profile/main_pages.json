@@ -185,6 +185,31 @@
     "MainAbility/pages/imageAnimator/ImageAnimatorOnFinishTest",
     "MainAbility/pages/commonattrs/CommonAttrsFocusStatusTest",
     "MainAbility/pages/commonattrs/CommonAttrsFocusOnTouchTest",
-    "MainAbility/pages/commonattrs/CommonAttrsTouchableTest"
+    "MainAbility/pages/commonattrs/CommonAttrsTouchableTest",
+    "MainAbility/pages/eventcallback/EventCallbackAddReceiverTest",
+    "MainAbility/pages/eventcallback/EventCallbackRemoveReceiverTest",
+    "MainAbility/pages/eventcallback/EventCallbackRegisterEventTest",
+    "MainAbility/pages/eventcallback/EventCallbackUnregisterEventTest",
+    "MainAbility/pages/eventcallback/EventCallbackRegisterReceiverTest",
+    "MainAbility/pages/eventcallback/EventCallbackUnregisterReceiverTest",
+    "MainAbility/pages/eventcallback/EventCallbackAddReceiver401Test",
+    "MainAbility/pages/eventcallback/EventCallbackRemoveReceiver401Test",
+    "MainAbility/pages/eventcallback/EventCallbackRegisterEvent401Test",
+    "MainAbility/pages/eventcallback/EventCallbackRegisterEvent001Test",
+    "MainAbility/pages/eventcallback/EventCallbackRegisterEvent002Test",
+    "MainAbility/pages/commonevent/CommonEventOnHoverTest",
+    "MainAbility/pages/commonevent/CommonEventOnMouseTest",
+    "MainAbility/pages/commonevent/CommonEventOnDisappearTest",
+    "MainAbility/pages/commonevent/CommonEventOnVisibleAreaChangeTest",
+    "MainAbility/pages/commonevent/CommonEventOnTouchPropagationTest",
+    "MainAbility/pages/commonevent/CommonEventOnTouchInterceptDefaultTest",
+    "MainAbility/pages/commonevent/CommonEventOnTouchInterceptBlockTest",
+    "MainAbility/pages/commonevent/CommonEventOnTouchInterceptTransparentTest",
+    "MainAbility/pages/commonevent/CommonEventOnTouchInterceptNoneTest",
+    "MainAbility/pages/nodetree/NodeTreeXComponentTest",
+    "MainAbility/pages/nodetree/NodeTreeXComponentDetachTest",
+    "MainAbility/pages/nodetree/NodeTreeXComponent401Test",
+    "MainAbility/pages/nodetree/NodeTreeXComponentDetach401Test"
+
   ]
 }
