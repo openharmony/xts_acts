@@ -648,7 +648,7 @@ static napi_value OHNativeBufferMapPlanesAbNormal(napi_env env, napi_callback_in
     if (ret != NUMBER_50007000) {
         napi_create_int32(env, NUMBER_1001, &result);
         return result;
-    }else{
+    } else {
         napi_create_int32(env, ret, &result);
     }
     OH_NativeBuffer_Unreference(nativeBuffer);
@@ -659,9 +659,13 @@ static napi_value OHNativeBufferMapPlanesNormal(napi_env env, napi_callback_info
 {
     napi_value result = nullptr;
     napi_create_array_with_length(env, NUMBER_3, &result);
-    OH_NativeBuffer_Format format[] = {NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP, NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP,
-                                        NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P, NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P};
-    for (int i = 0; i <sizeof(format)/sizeof(format[0]); i++){
+    OH_NativeBuffer_Format format[] = {
+        NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP,
+        NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP,
+        NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P,
+        NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P
+    };
+    for (int i = 0; i < sizeof(format) / sizeof(format[0]); i++){
         OH_NativeBuffer_Config nativeBufferConfig = {
             .width = 0x100,
             .height = 0x100,
@@ -865,7 +869,7 @@ static napi_value OHNativeBufferGetColorSpaceNullptr(napi_env env, napi_callback
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_1, result1);
     ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, nullptr);
-    napi_create_int32(env, ret, &result1); 
+    napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_2, result1);
     OH_NativeBuffer_ColorSpace colorSpaceGet;
     ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, &colorSpaceGet);

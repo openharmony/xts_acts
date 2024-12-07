@@ -113,14 +113,16 @@ static void InitEGLEnv()
     eglMakeCurrent(eglDisplay_, EGL_NO_SURFACE, EGL_NO_SURFACE, eglContext_);
 }
 
-int32_t CALL_BACK = 0;
+int32_t g_callBack = 0;
 
-void DealCallback(void * context) {
-    CALL_BACK ++;
+void DealCallback(void * context)
+{
+    g_callBack++;
     return;
 }
 
-static void OnFrameAvailable(void *context) {
+static void OnFrameAvailable(void *context)
+{
     DealCallback(context);
     return;
 }
