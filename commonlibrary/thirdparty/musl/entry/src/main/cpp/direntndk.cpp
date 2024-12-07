@@ -21,8 +21,10 @@
 #include <js_native_api.h>
 #include <node_api.h>
 #include <unistd.h>
+#include <hilog/log.h>
 
 #define FAIL (-1)
+#define MFAIL (-2)
 #define FALSE 0
 #define ERROR (-1)
 #define FIVE 5
@@ -46,6 +48,12 @@
 
 #define INIT (-1)
 #define SUCCESS_DIRENT 0
+
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_LIBCTEST"
+
 static napi_value Opendir(napi_env env, napi_callback_info info)
 {
     DIR *dir = opendir("/data/storage/el2/base/files/test.txt");
@@ -62,16 +70,20 @@ static napi_value Scandir64(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     size_t argc = PARAM_2;
+    napi_value result;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = SIXFOURVAL, stresult = PARAM_0;
     char *strTemp = static_cast<char *>(malloc(sizeof(char) * length));
+    if (strTemp == nullptr) {
+        OH_LOG_INFO(LOG_APP, "Scandir64 malloc failed");
+        napi_create_int32(env, MFAIL, &result);
+        return result;
+    }
     napi_get_value_string_utf8(env, args[0], strTemp, length, &stresult);
-    int fd = open(strTemp, O_RDWR);
     int valueFirst;
     napi_get_value_int32(env, args[1], &valueFirst);
     struct dirent **namelist;
-    napi_value result;
     if (valueFirst == PARAM_0) {
         int total = scandir64(strTemp, &namelist, PARAM_0, alphasort);
         napi_create_int32(env, total, &result);
@@ -79,7 +91,6 @@ static napi_value Scandir64(napi_env env, napi_callback_info info)
         int total = scandir64(nullptr, &namelist, PARAM_0, alphasort);
         napi_create_int32(env, total, &result);
     }
-    close(fd);
     return result;
 }
 
@@ -87,16 +98,20 @@ static napi_value Scandir(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     size_t argc = PARAM_2;
+    napi_value result;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = SIXFOURVAL, stresult = PARAM_0;
     char *strTemp = static_cast<char *>(malloc(sizeof(char) * length));
+    if (strTemp == nullptr) {
+        OH_LOG_INFO(LOG_APP, "Scandir malloc failed");
+        napi_create_int32(env, MFAIL, &result);
+        return result;
+    }
     napi_get_value_string_utf8(env, args[0], strTemp, length, &stresult);
-    int fd = open(strTemp, O_RDWR);
     int valueFirst;
     napi_get_value_int32(env, args[1], &valueFirst);
     struct dirent **namelist;
-    napi_value result;
     if (valueFirst == PARAM_0) {
         int total = scandir(strTemp, &namelist, PARAM_0, alphasort);
         napi_create_int32(env, total, &result);
@@ -104,7 +119,6 @@ static napi_value Scandir(napi_env env, napi_callback_info info)
         int total = scandir(nullptr, &namelist, PARAM_0, alphasort);
         napi_create_int32(env, total, &result);
     }
-    close(fd);
     return result;
 }
 
@@ -116,7 +130,13 @@ static napi_value Seekdir(napi_env env, napi_callback_info info)
     int valueFirst;
     napi_get_value_int32(env, args[PARAM_0], &valueFirst);
     napi_value result;
+    errno = 0;
     DIR *dir = opendir("/data/storage/el2/base/files/");
+    if (dir == nullptr) {
+        OH_LOG_INFO(LOG_APP, "Seekdir opendir failed errno : %{public}d", errno);
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     readdir(dir);
     errno = ERRON_0;
     if (valueFirst == PARAM_0) {

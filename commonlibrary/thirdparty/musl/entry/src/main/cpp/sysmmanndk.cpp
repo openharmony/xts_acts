@@ -28,6 +28,7 @@ static napi_value PosixMadvise(napi_env env, napi_callback_info info)
     errno = ERROR;
     size_t size = PARAM_1;
     void *param = nullptr;
+    //Test syscall encapsulation interface
     int returnValue = posix_madvise(param, size, PARAM_1);
     if (errno == ERROR) {
         returnValue = SUCCESS;
