@@ -5612,6 +5612,207 @@ export const testWaterFlower_002: () => number;
 export const testWaterFlower_003: () => number;
 export const testWaterFlower_004: () => number;
 export const testWaterFlower_005: () => number;
+
+export const testLayoutDirection001: () => number;
+
+export const testLayoutDirection002: () => number;
+
+export const testLayoutDirection003: () => number;
+
+export const testLayoutDirection004: () => number;
+
+export const testLayoutDirection005: () => number;
+
+export const testLayoutDirection006: () => number;
+
+export const testLayoutDirection007: () => number;
+
+export const testColumnsTemplate001: () => number;
+
+export const testColumnsTemplate002: () => number;
+
+export const testColumnsTemplate003: () => number;
+
+export const testRowsTemplate001: () => number;
+
+export const testRowsTemplate002: () => number;
+
+export const testRowsTemplate003: () => number;
+
+export const testColumnsGap001: () => number;
+
+export const testColumnsGap002: () => number;
+
+export const testColumnsGap003: () => number;
+
+export const testRowsGap001: () => number;
+
+export const testRowsGap002: () => number;
+
+export const testRowsGap003: () => number;
+
+export const testNestedScroll001: () => number;
+
+export const testNestedScroll002: () => number;
+
+export const testNestedScroll003: () => number;
+
+export const testNestedScroll004: () => number;
+
+export const testNestedScroll005: () => number;
+
+export const testNestedScroll006: () => number;
+
+export const testCachedCount001: () => number;
+
+export const testCachedCount002: () => number;
+
+export const testCachedCount003: () => number;
+
+export const testCachedCount004: () => number;
+
+export const testScrollBar001: () => number;
+
+export const testScrollBar002: () => number;
+
+export const testScrollBar003: () => number;
+
+export const testScrollBar004: () => number;
+
+export const testScrollBar005: () => number;
+
+export const testWaterFlowScrollBarWidth001: () => number;
+
+export const testWaterFlowScrollBarWidth002: () => number;
+
+export const testWaterFlowScrollBarWidth003: () => number;
+
+export const testWaterFlowScrollBarWidth004: () => number;
+
+export const testScrollBarColor001: () => number;
+
+export const testScrollBarColor002: () => number;
+
+export const testScrollBarColor003: () => number;
+
+export const testItemConstraintSize001: () => number;
+
+export const testItemConstraintSize002: () => number;
+
+export const testItemConstraintSize003: () => number;
+
+export const testItemConstraintSize004: () => number;
+
+export const testEnableScrollInteraction001: () => number;
+
+export const testEnableScrollInteraction002: () => number;
+
+export const testEnableScrollInteraction003: () => number;
+
+export const testEdgeEffect001: () => number;
+
+export const testEdgeEffect002: () => number;
+
+export const testEdgeEffect003: () => number;
+
+export const testEdgeEffect004: () => number;
+
+export const testEdgeEffect005: () => number;
+
+export const testScrollOffset001: () => number;
+
+export const testScrollOffset002: () => number;
+
+export const testScrollOffset003: () => number;
+
+export const testScrollOffset004: () => number;
+
+export const testScrollOffset005: () => number;
+
+export const testScrollOffset006: () => number;
+
+export const testScrollOffset007: () => number;
+
+export const testScrollOffset008: () => number;
+
+export const testScrollOffset009: () => number;
+
+export const testScrollOffset0010: () => number;
+
+export const testScrollOffset0011: () => number;
+
+export const testScrollOffset0012: () => number;
+
+export const testScrollOffset0013: () => number;
+
+export const testScrollOffset0014: () => number;
+
+export const testScrollOffset0015: () => number;
+
+export const testScrollOffset0016: () => number;
+
+export const testScrollOffset0017: () => number;
+
+export const testScrollOffset0018: () => number;
+
+export const testScrollOffset0019: () => number;
+
+export const testScrollEdge001: () => number;
+
+export const testScrollEdge002: () => number;
+
+export const testScrollEdge003: () => number;
+
+export const testScrollEdge004: () => number;
+
+export const testScrollEdge005: () => number;
+
+export const testScrollPage001: () => number;
+
+export const testScrollPage002: () => number;
+
+export const testScrollPage003: () => number;
+
+export const testScrollBy001: () => number;
+
+export const testScrollBy002: () => number;
+
+export const testScrollBy003: () => number;
+
+export const testScrollBy004: () => number;
+
+export const testSectionOption001: () => number;
+
+export const testSectionOption002: () => number;
+
+export const testSectionOption003: () => number;
+
+export const testSectionOption004: () => number;
+
+export const testSectionOption005: () => number;
+
+export const testSectionOption006: () => number;
+
+export const testSectionOption007: () => number;
+
+export const testSectionOption008: () => number;
+
+export const testSectionOption009: () => number;
+
+export const testSectionOption010: () => number;
+
+export const testSectionOption011: () => number;
+
+export const testSectionOption012: () => number;
+
+export const testWaterFlowNodeAdapter001: () => number;
+
+export const testWaterFlowFooter001: () => number;
+
+export const testWaterFlowScrollFriction001: () => number;
+
+export const testWaterFlowScrollFriction002: () => number;
+
 export const accessibilityState_001: () => number;
 export const accessibilityState_002: () => number;
 export const accessibilityState_003: () => number;

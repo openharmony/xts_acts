@@ -319,6 +319,25 @@
     "MainAbility/pages/image/ImageOnDownloadProgressTest",
     "MainAbility/pages/image/ImageDraggableTest",
     "MainAbility/pages/imagespan/ImageSpanOnClickTest",
-    "MainAbility/pages/span/SpanOnClickTest"
+    "MainAbility/pages/span/SpanOnClickTest",
+    "MainAbility/pages/waterflow/WaterFlowOnReachEndTest",
+    "MainAbility/pages/waterflow/WaterFlowOnReachStartTest",
+    "MainAbility/pages/waterflow/WaterFlowOnScrollStopTest",
+    "MainAbility/pages/waterflow/WaterFlowOnWillDidScrollTest",
+    "MainAbility/pages/waterflow/WaterFlowOnScrollIndexTest",
+    "MainAbility/pages/waterflow/WaterFlowOnScrollFrameBeginTest",
+    "MainAbility/pages/waterflow/WaterFlowOnScrollFrameBegin2Test",
+    "MainAbility/pages/waterflow/WaterFlowScrollToIndexTest",
+    "MainAbility/pages/waterflow/WaterFlowEmptyTest",
+    "MainAbility/pages/waterflow/WaterFlowScrollOffsetTest",
+    "MainAbility/pages/waterflow/WaterFlowScrollBy001Test",
+    "MainAbility/pages/waterflow/WaterFlowScrollBy002Test",
+    "MainAbility/pages/waterflow/WaterFlowScrollBy003Test",
+    "MainAbility/pages/waterflow/WaterFlowScrollBy004Test",
+    "MainAbility/pages/waterflow/WaterFlowScrollPageTest",
+    "MainAbility/pages/waterflow/WaterFlowNestedScroll1Test",
+    "MainAbility/pages/waterflow/WaterFlowNestedScroll2Test",
+    "MainAbility/pages/waterflow/WaterFlowNestedScroll3Test"
+    
   ]
 }

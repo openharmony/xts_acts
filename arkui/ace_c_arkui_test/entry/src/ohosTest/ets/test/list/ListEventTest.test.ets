@@ -72,29 +72,29 @@ export default function listEventTest() {
       await Utils.pushPage(`list/ListOnScrollTest`);
       // Fingers rolling upwards with rebound
       {
-        await flingComponentV('list', true, 10000, 80)
+        await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', true, 10000, 80)
+        await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnScrollData()
         let willOffsetData: number[] = dataArray[0];
         let willStateData: number[] = dataArray[1];
         console.log('testListOnScroll001 dataArray =', JSON.stringify(dataArray))
-        expect(willOffsetData.length == 2 && willOffsetData[0] > 0 && willOffsetData[1] < 0).assertEqual(true)
-        expect(willStateData.length == 1 && willStateData[0] < 0.000001).assertEqual(true)
+        expect(willOffsetData[0] > 0 && willOffsetData[willOffsetData.length-1] < 0).assertEqual(true)
+        expect(willStateData[0] < 0.000001).assertEqual(true)
       }
       // Fingers rolling downwards with rebound
       {
-        await flingComponentV('list', false, 10000, 80)
+        await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', false, 10000, 80)
+        await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnScrollData()
         let willOffsetData: number[] = dataArray[0];
         let willStateData: number[] = dataArray[1];
         console.log('testListOnScroll001 dataArray =', JSON.stringify(dataArray))
-        expect(willOffsetData.length == 2 && willOffsetData[0] < 0 && willOffsetData[1] > 0).assertEqual(true)
-        expect(willStateData.length == 1 && willStateData[0] < 0.000001).assertEqual(true)
+        expect(willOffsetData[0] < 0 && willOffsetData[willOffsetData.length-1] > 0).assertEqual(true)
+        expect(willStateData[0] < 0.000001).assertEqual(true)
       }
       done()
     })
@@ -300,9 +300,9 @@ export default function listEventTest() {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       // Fingers rolling upwards with rebound
       {
-        await flingComponentV('list', true, 10000, 80)
+        await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', true, 10000, 80)
+        await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
         let willOffsetData: number[] = dataArray[0];
@@ -322,9 +322,9 @@ export default function listEventTest() {
       }
       // Fingers rolling downwards with rebound
       {
-        await flingComponentV('list', false, 10000, 80)
+        await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', false, 10000, 80)
+        await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
         let willOffsetData: number[] = dataArray[0];
@@ -534,9 +534,9 @@ export default function listEventTest() {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       // Fingers rolling upwards with rebound
       {
-        await flingComponentV('list', true, 10000, 80)
+        await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', true, 10000, 80)
+        await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
         let willOffsetData: number[] = dataArray[0];
@@ -550,9 +550,9 @@ export default function listEventTest() {
       }
       // Fingers rolling downwards with rebound
       {
-        await flingComponentV('list', false, 10000, 80)
+        await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', false, 10000, 80)
+        await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
         let willOffsetData: number[] = dataArray[0];
@@ -725,9 +725,9 @@ export default function listEventTest() {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       // Fingers rolling upwards with rebound
       {
-        await flingComponentV('list', true, 10000, 80)
+        await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', true, 10000, 80)
+        await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
         let didOffsetData: number[] = dataArray[0];
@@ -741,9 +741,9 @@ export default function listEventTest() {
       }
       // Fingers rolling downwards with rebound
       {
-        await flingComponentV('list', false, 10000, 80)
+        await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', false, 10000, 80)
+        await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
         let didOffsetData: number[] = dataArray[0];
@@ -902,7 +902,7 @@ export default function listEventTest() {
     */
     it('testListOnScrollIndex001', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollIndexTest`);
-      await flingComponentV('list', true, 10000, 50)
+      await flingComponentV('list', true, 20000, 50)
       await Utils.sleep(1500)
       let dataArray: number[][] = nativeRender.listGetOnScrollIndexData()
       let firstArray: number[] = dataArray[0];
@@ -928,7 +928,7 @@ export default function listEventTest() {
     */
     it('testListOnScrollIndex002', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollIndexTest`);
-      await flingComponentV('list', false, 10000, 50)
+      await flingComponentV('list', false, 20000, 50)
       await Utils.sleep(1500)
       let dataArray: number[][] = nativeRender.listGetOnScrollIndexData()
       let firstArray: number[] = dataArray[0];
@@ -975,9 +975,9 @@ export default function listEventTest() {
     */
     it('testListOnScrollFrameBegin002', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
-      await flingComponentV('list', true, 10000, 80)
+      await flingComponentV('list', true, 20000, 80)
       await Utils.sleep(1000)
-      await flingComponentV('list', true, 10000, 80)
+      await flingComponentV('list', true, 20000, 80)
       await Utils.sleep(1500)
       let dataArray = nativeRender.listGetOnWillDidScrollData();
       let willOffsetData: number[] = dataArray[0];

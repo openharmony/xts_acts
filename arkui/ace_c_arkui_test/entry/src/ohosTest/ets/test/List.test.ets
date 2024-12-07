@@ -619,6 +619,13 @@ import TestArkUIAddApi from './arkApi/arkApi.test'
 import testArkUI from './arkApi/arkUIApiTest.test'
 import testAnimationTest from './animation/animationTest.test'
 import testWaterFlower from './waterFlower/waterFlowerTest.test'
+import waterFlowAttrsTest from './waterFlower/WaterFlowAttrsTest.test'
+import waterFlowEventTest from './waterFlower/WaterFlowEventTest.test'
+import waterFlowScrollToIndex from './waterFlower/WaterFlowScrollToIndex.test'
+import waterFlowScrollOffsetTest from './waterFlower/WaterFlowScrollOffsetTest.test'
+import waterFlowScrollPageTest from './waterFlower/WaterFlowScrollPageTest.test'
+import waterFlowScrollByTest from './waterFlower/WaterFlowScrollByTest.test'
+import waterFlowNestedScrollTest from './waterFlower/WaterFlowNestedScrollTest.test'
 import accessibilityStateTest from './accessibilityState/accessibilityStateTest.test'
 import relativeContainerGuidelineTest from "./relativecontainer/RelativeContainerGuidelineTest.test"
 import relativeContainerBarrierTest from "./relativecontainer/RelativeContainerBarrierTest.test"
@@ -1444,6 +1451,13 @@ export default function testsuite() {
   testArkUI()
   testAnimationTest()
   testWaterFlower()
+  waterFlowEventTest()
+  waterFlowScrollToIndex()
+  waterFlowScrollOffsetTest()
+  waterFlowScrollPageTest()
+  waterFlowScrollByTest()
+  waterFlowAttrsTest()
+  waterFlowNestedScrollTest()
   textInputOnFocusTest()
   accessibilityStateTest()
   relativeContainerGuidelineTest()
