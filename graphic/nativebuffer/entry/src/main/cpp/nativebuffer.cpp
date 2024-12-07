@@ -23,6 +23,8 @@
 #include <native_image/native_image.h>
 #include <sys/types.h>
 #include <vector>
+#include <hilog/log.h>
+const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
 
 #define SUCCESS 0
 #define FAIL (-1)
@@ -629,10 +631,9 @@ static napi_value OHNativeBuffeMapPlanesNullptr(napi_env env, napi_callback_info
     OH_NativeBuffer_Unreference(nativeBuffer);
     return result;
 }
-static napi_value OHNativeBufferMapPlanesNormal(napi_env env, napi_callback_info info)
+static napi_value OHNativeBufferMapPlanesAbNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    napi_value result1 = nullptr;
     napi_create_array_with_length(env, NUMBER_3, &result);
     OH_NativeBuffer_Config nativeBufferConfig = {
         .width = 0x100,
@@ -647,8 +648,38 @@ static napi_value OHNativeBufferMapPlanesNormal(napi_env env, napi_callback_info
     if (ret != NUMBER_50007000) {
         napi_create_int32(env, NUMBER_1001, &result);
         return result;
+    }else{
+        napi_create_int32(env, ret, &result);
     }
     OH_NativeBuffer_Unreference(nativeBuffer);
+    return result;
+}
+
+static napi_value OHNativeBufferMapPlanesNormal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, NUMBER_3, &result);
+    OH_NativeBuffer_Format format[] = {NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP, NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP,
+                                        NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P, NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P};
+    for (int i = 0; i <sizeof(format)/sizeof(format[0]); i++){
+        OH_NativeBuffer_Config nativeBufferConfig = {
+            .width = 0x100,
+            .height = 0x100,
+            .format = format[i],
+            .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
+        };
+        OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+        void *virAddr = nullptr;
+        OH_NativeBuffer_Planes outPlanes;
+        int32_t ret = OH_NativeBuffer_MapPlanes(nativeBuffer, &virAddr, &outPlanes);
+        if (ret != SUCCESS) {
+            napi_create_int32(env, NUMBER_1000 * (i + 1) + NUMBER_1, &result);
+            return result;
+        } else {
+            napi_create_int32(env, SUCCESS, &result);
+        }
+        OH_NativeBuffer_Unreference(nativeBuffer);
+    }
     return result;
 }
 static napi_value OHNativeBuffeReferenceNullptr(napi_env env, napi_callback_info info)
@@ -834,7 +865,7 @@ static napi_value OHNativeBufferGetColorSpaceNullptr(napi_env env, napi_callback
     napi_create_int32(env, ret, &result1);
     napi_set_element(env, result, NUMBER_1, result1);
     ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, nullptr);
-    napi_create_int32(env, ret, &result1);
+    napi_create_int32(env, ret, &result1); 
     napi_set_element(env, result, NUMBER_2, result1);
     OH_NativeBuffer_ColorSpace colorSpaceGet;
     ret = OH_NativeBuffer_GetColorSpace(nativeBuffer, &colorSpaceGet);
@@ -898,7 +929,7 @@ napi_value OHNativeBufferSetDynamicMetadataValue1(napi_env env, OH_NativeBuffer 
     metaData[0] = static_cast<uint8_t>(0);
     flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData);
     if (flag != 0) {
-        napi_create_int32(env, NUMBER_3001, &result);
+        napi_create_int32(env, flag, &result);
         return result;
     }
     flag = OH_NativeBuffer_GetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, &bufferSize, &buffer);
@@ -911,6 +942,7 @@ napi_value OHNativeBufferSetDynamicMetadataValue1(napi_env env, OH_NativeBuffer 
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -958,6 +990,7 @@ napi_value OHNativeBufferSetDynamicMetadataValue2(napi_env env, OH_NativeBuffer 
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1008,6 +1041,7 @@ napi_value OHNativeBufferSetDynamicMetadataValue3(napi_env env, OH_NativeBuffer 
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1074,6 +1108,7 @@ static napi_value OHNativeBufferSetMetadataValueTimes(napi_env env, napi_callbac
         }
     }
     OH_NativeBuffer_Unreference(nativeBuffer);
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1109,7 +1144,7 @@ napi_value OHNativeBufferSetStaticMetadataValue1(napi_env env, OH_NativeBuffer *
     metaData[0] = static_cast<uint8_t>(0);
     flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData);
     if (flag != 0) {
-        napi_create_int32(env, NUMBER_3001, &result);
+        napi_create_int32(env, flag, &result);
         return result;
     }
     flag = OH_NativeBuffer_GetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, &bufferSize, &buffer);
@@ -1122,6 +1157,7 @@ napi_value OHNativeBufferSetStaticMetadataValue1(napi_env env, OH_NativeBuffer *
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1169,6 +1205,7 @@ napi_value OHNativeBufferSetStaticMetadataValue2(napi_env env, OH_NativeBuffer *
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1219,6 +1256,7 @@ napi_value OHNativeBufferSetStaticMetadataValue3(napi_env env, OH_NativeBuffer *
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1285,7 +1323,7 @@ napi_value OHNativeBufferSetMetadataValue1(napi_env env, OH_NativeBuffer *native
     metaData[0] = static_cast<uint8_t>(X);
     flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData);
     if (flag != 0) {
-        napi_create_int32(env, NUMBER_3001, &result);
+        napi_create_int32(env, flag, &result);
         return result;
     }
     flag = OH_NativeBuffer_GetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, &bufferSize, &buffer);
@@ -1298,6 +1336,7 @@ napi_value OHNativeBufferSetMetadataValue1(napi_env env, OH_NativeBuffer *native
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1346,6 +1385,7 @@ napi_value OHNativeBufferSetMetadataValue2(napi_env env, OH_NativeBuffer *native
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1390,6 +1430,7 @@ napi_value OHNativeBufferSetMetadataValue3(napi_env env, OH_NativeBuffer *native
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1415,6 +1456,7 @@ napi_value OHNativeBufferSetMetadataValue4(napi_env env, OH_NativeBuffer *native
         return result;
     }
     delete[] buffer;
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -1536,7 +1578,7 @@ static napi_value OHNativeBufferGetMetadataValueNullptr(napi_env env, napi_callb
     // 1.
     flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, NUMBER_60, buffer);
     if (flag != 0) {
-        napi_create_int32(env, 1, &result);
+        napi_create_int32(env, flag, &result);
         return result;
     }
     // 2.
@@ -1616,6 +1658,8 @@ napi_value NativeBufferInit2(napi_env env, napi_value exports)
         {"oHNativeBuffeMapNullptr", nullptr, OHNativeBuffeMapNullptr, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeBufferMapNormal", nullptr, OHNativeBufferMapNormal, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeBuffeMapPlanesNullptr", nullptr, OHNativeBuffeMapPlanesNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeBufferMapPlanesAbNormal", nullptr, OHNativeBufferMapPlanesAbNormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"oHNativeBufferMapPlanesNormal", nullptr, OHNativeBufferMapPlanesNormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},

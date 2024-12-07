@@ -41,6 +41,7 @@ export const oHNativeBufferGetSeqNumNormal: () => number;
 export const oHNativeBuffeMapNullptr: () => number;
 export const oHNativeBufferMapNormal: () => number;
 export const oHNativeBuffeMapPlanesNullptr: () => Array<number>;
+export const oHNativeBufferMapPlanesAbNormal: () => Array<number>;
 export const oHNativeBufferMapPlanesNormal: () => Array<number>;
 export const oHNativeBuffeReferenceNullptr: () => number;
 export const oHNativeBuffeUnreferenceNullptr: () => number;
