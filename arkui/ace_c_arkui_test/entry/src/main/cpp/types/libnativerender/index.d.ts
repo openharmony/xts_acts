@@ -69,6 +69,110 @@ export const listItemHitTestBehaviorTransparentTest: (a: string) => void;
 
 export const listItemHitTestBehaviorNoneTest: (a: string) => void;
 
+export const listOnScrollTest: (a: string) => void;
+
+export const listOnScrollFrameBeginTest: (a: string) => void;
+
+export const listOnScrollStartTest: (a: string) => void;
+
+export const listOnScrollStopTest: (a: string) => void;
+
+export const listOnWillDidScrollTest: (a: string) => void;
+
+export const listOnWillScrollTest: (a: string) => void;
+
+export const listOnDidScrollTest: (a: string) => void;
+
+export const listScrollToIndexTest: (a: string, index: number, alignment: number) => void;
+
+export const listOnReachStartTest: (a: string) => void;
+
+export const listOnReachEndTest: (a: string) => void;
+
+export const listOnScrollIndexTest: (a: string) => void;
+
+export const listGetOnWillScrollData: () => number[][];
+
+export const listGetOnDidScrollData: () => number[][];
+
+export const listGetOnWillDidScrollData: () => number[][];
+
+export const listGetOnScrollIndexData: () => number[][];
+
+export const listGetOnScrollData: () => number[][];
+
+export const listGetScrollOffsetData: () => number[][];
+
+export const listScrollOffset001Test: (a: string) => void;
+
+export const listScrollOffset002Test: (a: string) => void;
+
+export const listScrollOffset003Test: (a: string) => void;
+
+export const listScrollOffset004Test: (a: string) => void;
+
+export const listScrollOffset005Test: (a: string) => void;
+
+export const listScrollOffset006Test: (a: string) => void;
+
+export const listScrollOffset007Test: (a: string) => void;
+
+export const listScrollOffset008Test: (a: string) => void;
+
+export const listScrollOffset009Test: (a: string) => void;
+
+export const listScrollOffset010Test: (a: string) => void;
+
+export const listScrollOffset011Test: (a: string) => void;
+
+export const listScrollOffset012Test: (a: string) => void;
+
+export const listScrollOffset013Test: (a: string) => void;
+
+export const listScrollOffset014Test: (a: string) => void;
+
+export const listScrollOffset015Test: (a: string) => void;
+
+export const listScrollOffset016Test: (a: string) => void;
+
+export const listScrollOffset017Test: (a: string) => void;
+
+export const listScrollOffset018Test: (a: string) => void;
+
+export const listScrollOffset019Test: (a: string) => void;
+
+export const listScrollOffset020Test: (a: string) => void;
+
+export const listScrollOffset021Test: (a: string) => void;
+
+export const listScrollOffset022Test: (a: string) => void;
+
+export const listScrollPageTest: (a: string) => void;
+
+export const listGetScrollPageData: () => number[][];
+
+export const listScrollBy001Test: (a: string) => void;
+
+export const listScrollBy002Test: (a: string) => void;
+
+export const listScrollBy003Test: (a: string) => void;
+
+export const listScrollBy004Test: (a: string) => void;
+
+export const listGetScrollByData: () => number[][];
+
+export const listCloseAllActionTest: (a: string) => void;
+
+export const listGetCloseAllActionRetData: () => number[][];
+
+export const listNestedScroll001Test: (a: string) => void;
+
+export const listNestedScroll002Test: (a: string) => void;
+
+export const listNestedScroll003Test: (a: string) => void;
+
+export const listGetNestedScrollRetData: () => number[][];
+
 export const toggleOnChangeTest: (a: string) => void;
 
 export const toggleEnabledTest: (a: string) => void;

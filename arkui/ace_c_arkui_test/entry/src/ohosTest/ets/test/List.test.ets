@@ -861,6 +861,27 @@ import lazyForEachUnregisterEventReceiverTest from "./lazyforeach/LazyForEachUnr
 import scrollScrollEventTest from './scroll/ScrollScrollEventTest.test'
 import xComponentIdTest from './xcomponent/XComponentIdTest.test'
 
+import listScrollBarColorTest from './list/ListScrollBarColorTest.test'
+import listScrollBarWidthTest from './list/ListScrollBarWidthTest.test'
+import listSpaceTest from './list/ListSpaceTest.test'
+import listAlignListItemTest from './list/ListAlignListItemTest.test'
+import listListNodeAdapterTest from './list/ListListNodeAdapterTest.test'
+import listInitialIndexTest from './list/ListInitialIndexTest.test'
+import listDividerTest from './list/ListDividerTest.test'
+import listItemGroupSetHeaderTest from './list/ListItemGroupSetHeaderTest.test'
+import listItemGroupSetFooterTest from './list/ListItemGroupSetFooterTest.test'
+import listItemGroupSetDividerTest from './list/ListItemGroupSetDividerTest.test'
+import listItemSwipeActionTest from './list/ListItemSwipeActionTest.test'
+import listScrollOffsetTest from './list/ListScrollOffsetTest.test'
+import listScrollEdgeTest from './list/ListScrollEdgeTest.test'
+import listScrollPageTest from './list/ListScrollPageTest.test'
+import listScrollByTest from './list/ListScrollByTest.test'
+import listEventTest from './list/ListEventTest.test'
+import listScrollToIndex from './list/ListScrollToIndexTest.test'
+import listChildrenMainSizeTest from './list/ListChildrenMainSizeTest.test'
+import listCloseAllActionTest from './list/ListCloseAllActionTest.test'
+import listNestedScrollEventTest from './list/ListNestedScrollEventTest.test'
+import listNestedScrollTest from './list/ListNestedScrollTest.test'
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1698,4 +1719,25 @@ export default function testsuite() {
   calendarPickerSelectedDateTest()
   scrollScrollEventTest()
   xComponentIdTest()
+  listScrollBarColorTest()
+  listScrollBarWidthTest()
+  listSpaceTest()
+  listAlignListItemTest()
+  listListNodeAdapterTest()
+  listInitialIndexTest()
+  listDividerTest()
+  listItemGroupSetHeaderTest()
+  listItemGroupSetFooterTest()
+  listItemGroupSetDividerTest()
+  listItemSwipeActionTest()
+  listScrollOffsetTest()
+  listScrollEdgeTest()
+  listScrollPageTest()
+  listScrollByTest()
+  listEventTest()
+  listScrollToIndex()
+  listChildrenMainSizeTest()
+  listCloseAllActionTest()
+  listNestedScrollEventTest()
+  listNestedScrollTest()
 }
