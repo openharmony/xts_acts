@@ -81,6 +81,7 @@ import onMeasureSize1 from './MeasureSizeTest/onMeasureSize1.test';
 import onMeasureSize2 from './MeasureSizeTest/onMeasureSize2.test';
 import onMeasureSize3 from './MeasureSizeTest/onMeasureSize3.test';
 import backgroundJsunit from './BackgroundTest/BackgroundJsunit.test';
+import onPlaceChildren1 from './PlaceChildrenTest/onPlaceChildren1.test';
 
 export default function testsuite() {
   girdContainerJsunit();
@@ -151,4 +152,5 @@ export default function testsuite() {
   onMeasureSize3();
   MeasureJsunit();
   backgroundJsunit();
+  onPlaceChildren1();
 }
