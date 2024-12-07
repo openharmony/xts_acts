@@ -209,7 +209,9 @@
     "MainAbility/pages/nodetree/NodeTreeXComponentTest",
     "MainAbility/pages/nodetree/NodeTreeXComponentDetachTest",
     "MainAbility/pages/nodetree/NodeTreeXComponent401Test",
-    "MainAbility/pages/nodetree/NodeTreeXComponentDetach401Test"
-
+    "MainAbility/pages/nodetree/NodeTreeXComponentDetach401Test",
+    "MainAbility/pages/swiper/SwiperSwipeToIndexTest",
+    "MainAbility/pages/swiper/SwiperNestedScrollTest",
+    "MainAbility/pages/swiper/SwiperNestedScrollChildTest"
   ]
 }

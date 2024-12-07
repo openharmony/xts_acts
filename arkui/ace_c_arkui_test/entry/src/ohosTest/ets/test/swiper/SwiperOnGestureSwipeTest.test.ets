@@ -40,8 +40,8 @@ export default function swiperOnGestureSwipeTest() {
       let driver = Driver.create();
       let component = await driver.findComponent(ON.id("SwiperOnGestureSwipe"));
       let point = await component.getBounds();
-      await driver.drag(point.right, point.top + 20, point.left, point.top + 20, 2000);
-      await Utils.sleep(1000);
+      await driver.swipe(point.right, point.top + 20, point.left, point.top + 20, 2000);
+      await Utils.sleep(2000);
       expect(Utils.getComponentInfoByKey('SwiperOnGestureSwipe').$attrs.backgroundColor).assertEqual('#FF00FF00');
       done();
     });

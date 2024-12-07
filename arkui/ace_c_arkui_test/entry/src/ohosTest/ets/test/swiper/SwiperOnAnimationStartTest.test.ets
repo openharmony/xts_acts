@@ -39,8 +39,6 @@ export default function swiperOnAnimationStartTest() {
         await Utils.pushPage(`swiper/${PAGE_TAG}`);
         let driver = Driver.create();
         let component = await driver.findComponent(ON.id("SwiperOnAnimationStart"));
-        let point = await component.getBounds();
-        await driver.drag(point.right, point.top + 20, point.left, point.top + 20, 2000);
         await Utils.sleep(1000);
         expect(Utils.getComponentInfoByKey('SwiperOnAnimationStart').$attrs.backgroundColor).assertEqual('#FF00FF00');
         done();

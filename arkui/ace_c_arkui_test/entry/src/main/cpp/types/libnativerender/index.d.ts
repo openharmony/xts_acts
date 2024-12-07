@@ -383,6 +383,12 @@ export const getTextAreaDeleteData : () => number[][];
 
 export const textAreaOnSubmitTest : (a : string) =>void;
 
+export const swiperSwipeToIndexTest: (a: string) => void;
+
+export const swiperNestedScrollTest: (a: string) => void;
+
+export const swiperNestedScrollChildTest: (a: string) => void;
+
 export const getTextAreaSubmitData : () => number[][];
 
 export const textInputOnTextSelectionChangeTest: (a : string ) => void;

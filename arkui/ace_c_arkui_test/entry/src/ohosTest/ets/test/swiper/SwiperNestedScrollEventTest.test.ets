@@ -12,38 +12,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import { expect, describe, it, afterEach } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
-export default function swiperOnChangeTest() {
+export default function swiperNestedScrollEventTest() {
 
-  describe('SwiperOnChangeTest', () => {
+  describe('SwiperNestedScrollEventTest', () => {
     afterEach(async (done: Function) => {
-      await Utils.sleep(1000);
-      done();
-    })
+      //WindowSnap.snapShot(globalThis.context, 'test', done);
+      await Utils.sleep(1000)
+      done()
+    });
 
-    /*
-     * @tc.number: SUB_ARKUI_CAPI_SWIPER_EVENT_ON_CHANGE_0100
-     * @tc.name: testSwiperOnChange001
-     * @tc.desc: testing onChange for swiper
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 1
-     */
-    it('testSwiperOnChange001', 0, async (done: Function) => {
-      let PAGE_TAG = 'SwiperOnChangeTest';
+    it('testSwiperNestedScroll001', 0, async (done: Function) => {
+      let PAGE_TAG = 'SwiperNestedScrollTest';
       await Utils.pushPage(`swiper/${PAGE_TAG}`);
       let driver = Driver.create();
-      let refresh = await driver.findComponent(ON.id('OnChangeTestSwiper'));
+      let refresh = await driver.findComponent(ON.id('ChildSwiperNestedScroll'));
       let point = await refresh.getBounds();
       await driver.drag(point.right, point.top + 50, point.left, point.top + 50, 10000);
       await Utils.sleep(2000);
-      expect(Utils.getComponentInfoByKey('OnChangeTestSwiper').$attrs.backgroundColor).assertEqual('#FF00FF00');
+      expect(Utils.getComponentInfoByKey('SwiperNestedScroll').$attrs.backgroundColor).assertEqual('#FFFFFFFF');
+      done();
+    });
+
+    it('testSwiperNestedScroll002', 0, async (done: Function) => {
+      let PAGE_TAG = 'SwiperNestedScrollChildTest';
+      await Utils.pushPage(`swiper/${PAGE_TAG}`);
+      let driver = Driver.create();
+      let refresh = await driver.findComponent(ON.id('ChildSwiperNestedScroll'));
+      let point = await refresh.getBounds();
+      await driver.drag(point.right, point.top + 50, point.left, point.top + 50, 10000);
+      await Utils.sleep(4000);
+      expect(Utils.getComponentInfoByKey('SwiperNestedScroll1').$attrs.backgroundColor).assertEqual('#FF00FF00');
       done();
     });
   })
 }
+

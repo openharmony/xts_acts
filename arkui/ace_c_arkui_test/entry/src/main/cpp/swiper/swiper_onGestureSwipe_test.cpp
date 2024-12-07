@@ -35,8 +35,9 @@ static std::shared_ptr<SwiperComponent> CreateSwiperNode(const std::string &id)
     swiper->SetHeight(SIZE_100);
     swiper->SetMargin(PARAM_20);
     swiper->SetSwiperLoop(false);
-    swiper->SetSwiperAutoPlay(true);
+    swiper->SetSwiperAutoPlay(false);
     swiper->SetId(id);
+    swiper->SetSwiperIndex(PARAM_2);
     auto text = CreateTextNode(0xFFAFEEEE);
     auto text_second = CreateTextNode(0xFF00FF00);
     auto text_third = CreateTextNode(0xFFFF0000);
@@ -69,21 +70,17 @@ napi_value SwiperOnGestureSwipeTest::CreateNativeNode(napi_env env, napi_callbac
     auto text_start = std::make_shared<TextComponent>();
     text_start->SetTextContent("test");
     auto swiper = CreateSwiperNode("SwiperOnGestureSwipe");
-    swiper->RegisterOnGesture([swiper, text_start](ArkUI_NodeEvent *event) {
+    swiper->RegisterOnGesture([swiper](ArkUI_NodeEvent *event) {
         ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
-        std::string str = "Start: \nIndex is: " + std::to_string(result->data[0].i32) + "\n" +
-                          "targetIndex is: " + std::to_string(result->data[1].i32) + "\n" +
-                          "currentOffset is: " + std::to_string(result->data[2].f32) + "\n" +
-                          "targetOffset	 is: " + std::to_string(result->data[3].f32) + "\n" +
-                          "velocity is: " + std::to_string(result->data[4].f32) + "\n";
-        text_start->SetTextContent(str);
-        ArkUI_NativeNodeAPI_1 *nodeAPI1 = nullptr;
-        OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI1);
-        auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-        ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-        ArkUI_AttributeItem background_color_item = {background_color_value,
-                                                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-        nodeAPI1->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        if (result->data[PARAM_0].i32 == PARAM_2 && result->data[PARAM_1].f32 < PARAM_0) {
+            ArkUI_NativeNodeAPI_1 *nodeAPI1 = nullptr;
+            OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI1);
+            auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                                                         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            nodeAPI1->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
     });
 
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
