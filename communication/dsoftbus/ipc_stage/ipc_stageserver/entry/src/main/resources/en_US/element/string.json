@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "entry_MainAbility",
+      "value": "RpcRrequestServer"
+    },
+    {
+      "name": "entry_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_label",
+      "value": "RpcRrequestServer"
+    },
+    {
+      "name": "description_serviceability",
+      "value": "RpcRrequestServer"
+    }
+  ]
+}
