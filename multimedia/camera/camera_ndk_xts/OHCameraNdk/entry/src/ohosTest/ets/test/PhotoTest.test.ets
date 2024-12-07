@@ -425,7 +425,6 @@ export default function PhotoTest() {
       let ret = cameras.oHPhotoOutputCapture(0);
       console.log(TAG+"testOHPhotoOutputCapture0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
-      await sleep(5000);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHPhotoOutputCapture0200
