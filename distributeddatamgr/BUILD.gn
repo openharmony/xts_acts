@@ -46,5 +46,6 @@ group("pasteboard") {
   deps = [
     "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
     "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
+    "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
   ]
 }
