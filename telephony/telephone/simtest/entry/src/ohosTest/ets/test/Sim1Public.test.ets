@@ -650,7 +650,7 @@ export default function Sim1Public() {
         console.info(`${caseName} test end`);
         done();
       }
-      sim.getSimAuthentication(0, sim.SIM_AUTH_EAP_SIM_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
+      sim.getSimAuthentication(0, sim.AuthType.SIM_AUTH_EAP_SIM_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
         console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
         ExpectTrue(true);
         console.info(`${caseName} test end`);
@@ -680,7 +680,7 @@ export default function Sim1Public() {
         console.info(`${caseName} test end`);
         done();
       }
-      sim.getSimAuthentication(0, sim.SIM_AUTH_EAP_AKA_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
+      sim.getSimAuthentication(0, sim.AuthType.SIM_AUTH_EAP_AKA_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
         console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
         ExpectTrue(true);
         console.info(`${caseName} test end`);
@@ -711,7 +711,7 @@ export default function Sim1Public() {
         console.info(`${caseName} test end`);
         done();
       }
-      sim.getSimAuthentication(-1, sim.SIM_AUTH_EAP_SIM_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
+      sim.getSimAuthentication(-1, sim.AuthType.SIM_AUTH_EAP_SIM_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
         console.info(`${caseName} failed, The result is not in line with expectations`);
         ExpectFail();
         console.info(`${caseName} test end`);
