@@ -664,8 +664,8 @@ static napi_value OHNativeBufferMapPlanesNormal(napi_env env, napi_callback_info
         NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP,
         NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P,
         NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P
-    };
-    for (int i = 0; i < sizeof(format) / sizeof(format[0]); i++){
+    }; 
+    for (int i = 0; i < sizeof(format) / sizeof(format[0]); i++) {
         OH_NativeBuffer_Config nativeBufferConfig = {
             .width = 0x100,
             .height = 0x100,
