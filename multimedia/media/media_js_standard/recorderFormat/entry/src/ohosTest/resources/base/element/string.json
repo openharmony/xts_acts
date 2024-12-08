@@ -1,12 +1,20 @@
 {
   "string": [
     {
-      "name": "TestAbility_desc",
-      "value": "the test ability"
+      "name": "entry_MainAbility",
+      "value": "entry_MainAbility"
+    },
+    {
+      "name": "mainability_description",
+      "value": "JS_Empty Ability"
     },
     {
       "name": "TestAbility_label",
-      "value": "test label"
+      "value": "module description"
+    },
+    {
+      "name": "TestAbility_desc",
+      "value": "description"
     }
   ]
 }
