@@ -16,26 +16,33 @@
 import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaTestBase = new MediaTestBase()
+
 export default function AVScreenCaptureRecorderTest() {
   describe('AVScreenCaptureRecorderTest', () => {
 
     beforeAll(async () => {
       console.info('beforeAll case');
-      mediaTestBase.msleepAsync(1000);
-      mediaTestBase.playPcmPromise();
     })
 
     beforeEach(async () => {
       console.info('beforeEach case');
-      mediaTestBase.msleepAsync(3000);
-      mediaTestBase.playPcmPromiseStart();
+      await mediaTestBase.msleepAsync(3000);
     })
 
     afterEach(async () => {
       console.info('afterEach case');
-      mediaTestBase.playPcmPromiseStop();
+      if (mediaTestBase.avScreenCaptureRecorder != null) {
+        await mediaTestBase.avScreenCaptureRecorder?.release().then(() => {
+          console.info('avScreenCaptureRecorder release success');
+          console.info(mediaTestBase.TAG + 'this testCase execution completed')
+        }).catch((err: BusinessError) => {
+          console.info('avScreenCaptureRecorder release failed, error: ' + err.message);
+        })
+      }
+      await mediaTestBase.msleepAsync(1000);
     })
 
     afterAll(async () => {
@@ -65,20 +72,18 @@ export default function AVScreenCaptureRecorderTest() {
         // start recorder
         mediaTestBase.STARTRECORDER_EVENT,
         // skip PrivacyMode
-        // mediaTestBase.SKIPPRIVACYMODE_EVENT,
+        mediaTestBase.SKIPPRIVACYMODE_EVENT,
         // stop recorder
         mediaTestBase.STOPRECORDER_EVENT,
         //release recorder
         //close fd
-        mediaTestBase.RELEASECORDER_EVENT,
-        //create AV
-        mediaTestBase.AV_CREATEAVPLAYER,
+        // mediaTestBase.RELEASECORDER_EVENT,
         mediaTestBase.END_EVENT);
 
       mediaTestBase.outputName = mediaTestBase.resourceName();
       mediaTestBase.outputFdObject = mediaTestBase.getFd(mediaTestBase.outputName);
       let avConfig: media.AVScreenCaptureRecordConfig = {
-        fd: mediaTestBase.outputFdObject.fd,
+        fd: -1,
         frameWidth: 640,
         frameHeight: 480,
         videoBitrate: 10000000,
@@ -88,7 +93,7 @@ export default function AVScreenCaptureRecorderTest() {
         preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4,
       }
 
-      mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 6000, mySteps, done)
+      mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 3000, mySteps, done)
 
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100 end')
     })
@@ -116,17 +121,11 @@ export default function AVScreenCaptureRecorderTest() {
         mediaTestBase.STARTRECORDER_EVENT,
         // stop recorder
         mediaTestBase.STOPRECORDER_EVENT,
-        mediaTestBase.RELEASECORDER_EVENT,
-        mediaTestBase.AV_CREATEAVPLAYER,
+        // mediaTestBase.RELEASECORDER_EVENT,
         mediaTestBase.END_EVENT);
 
-
-      mediaTestBase.outputName = mediaTestBase.resourceName();
-      mediaTestBase.outputFdObject = mediaTestBase.getFd(mediaTestBase.outputName);
-      mediaTestBase.playPcmPromise()
-
       let avConfig: media.AVScreenCaptureRecordConfig = {
-        fd: mediaTestBase.outputFdObject.fd,
+        fd: -1,
         frameWidth: 640,
         frameHeight: 480,
         videoBitrate: 10000000,
