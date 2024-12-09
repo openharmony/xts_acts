@@ -18,9 +18,9 @@ import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import { Component, Driver, ON } from '@ohos.UiTest';
 
-export default function KeyEventGetKeyIntensionCodeTest() {
+export default function KeyEventGetPressedKeysTest() {
 
-  describe('KeyEventGetKeyIntensionCodeTest', () => {
+  describe('KeyEventGetPressedKeysTest', () => {
 
     let PAGE_TAG = 'KeyEventGetPressedKeysTest';
 
@@ -43,7 +43,7 @@ export default function KeyEventGetKeyIntensionCodeTest() {
         await Utils.sleep(500);
         await driver.triggerKey(2049);
         await Utils.sleep(500);
-        expect(Utils.getComponentInfoByKey('KeyEventGeKeyEventGetPressedKeystType').$attrs.backgroundColor).assertEqual('#FF00FF00');
+        expect(Utils.getComponentInfoByKey('KeyEventGetPressedKeys').$attrs.backgroundColor).assertEqual('#FF00FF00');
         done();
      })
   })
