@@ -37,7 +37,7 @@ const ExpectTrue = (n: boolean) => {
 }
 
 const SIM_PIN_OLD = "741593";
-			
+
 async function getPermissions() {
   console.info('getPermission start');
   type MyPermissions = "ohos.permission.WRITE_CONTACTS" | "ohos.permission.READ_CONTACTS";
@@ -60,9 +60,9 @@ export default function Sim1Public() {
   describe('Sim1Public', () => {
 
     beforeAll(async (done: Function) => {
-			console.log('getPermission beforeAll');
-			await getPermissions();
-			done();
+      console.log('getPermission beforeAll');
+      await getPermissions();
+      done();
     });
 
     afterEach(async (done: Function) => {
@@ -632,5 +632,296 @@ export default function Sim1Public() {
         }
       });
     });
-  });
+
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetSimAuthentication_1500
+     * @tc.name   : testTelephonySimGetSimAuthentication1500
+     * @tc.desc   : Performs SIM card authentication. Need to insert SIM card.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it('testTelephonySimGetSimAuthentication1500', 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetSimAuthentication1500';
+      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
+      if (!hasSimCard) {
+        console.info(`${caseName} failed, No SIM exists in slot 0`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+      sim.getSimAuthentication(0, sim.AuthType.SIM_AUTH_EAP_SIM_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
+        console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
+        ExpectTrue(true);
+        console.info(`${caseName} test end`);
+        done();
+      }).catch((err: BusinessError) => {
+        console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      });
+    });
+
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetSimAuthentication_1600
+     * @tc.name   : testTelephonySimGetSimAuthentication1600
+     * @tc.desc   : Performs SIM card authentication. Need to insert SIM card.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it('testTelephonySimGetSimAuthentication1600', 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetSimAuthentication1600';
+      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
+      if (!hasSimCard) {
+        console.info(`${caseName} failed, No SIM exists in slot 0`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+      sim.getSimAuthentication(0, sim.AuthType.SIM_AUTH_EAP_AKA_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
+        console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
+        ExpectTrue(true);
+        console.info(`${caseName} test end`);
+        done();
+      }).catch((err: BusinessError) => {
+        console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      });
+    });
+
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetSimAuthentication_1700
+     * @tc.name   : testTelephonySimGetSimAuthentication1700
+     * @tc.desc   : Performs SIM card authentication. Need to insert SIM card.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it('testTelephonySimGetSimAuthentication1700', 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetSimAuthentication1700';
+      console.info(`${caseName} test start`);
+      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
+      if (!hasSimCard) {
+        console.info(`${caseName} failed, No SIM exists in slot 0`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+      sim.getSimAuthentication(-1, sim.AuthType.SIM_AUTH_EAP_SIM_TYPE, "test").then((data: sim.SimAuthenticationResponse) => {
+        console.info(`${caseName} failed, The result is not in line with expectations`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }).catch((err: BusinessError) => {
+        if (err && err.code === 8300001) {
+          console.info(`${caseName} successfully step2 end : Pass an invalid parameter and return 8300001`);
+          ExpectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        } else {
+          console.info(`${caseName} failed, err: ${JSON.stringify(err)}`);
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetSimAuthentication_1800
+     * @tc.name   : testTelephonySimGetSimAuthentication1800
+     * @tc.desc   : Performs SIM card authentication. Need to insert SIM card.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it('testTelephonySimGetSimAuthentication1800', 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetSimAuthentication1800';
+      console.info(`${caseName} test start`);
+      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
+      if (!hasSimCard) {
+        console.info(`${caseName} failed, No SIM exists in slot 0`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+      try {
+        sim.getSimAuthentication(null, null, "test").then((data: sim.SimAuthenticationResponse) => {
+          console.info(`${caseName} failed, The result is not in line with expectations`);
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          if (err && err.code === 401) {
+            console.info(`${caseName} successfully : Parameter error and return 401`);
+            ExpectTrue(true);
+            console.info(`${caseName} test end`);
+            done();
+          } else {
+            console.info(`${caseName} failed, err: ${JSON.stringify(err)}`);
+            ExpectFail();
+            console.info(`${caseName} test end`);
+            done();
+          }
+        });
+      } catch (error) {
+        if ((error as BusinessError).code === 401) {
+          console.info(`${caseName} successfully  : Parameter error and return 401`);
+          ExpectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        } else {
+          console.info(`${caseName} failed, err: ${JSON.stringify(error)}`);
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetSimAuthentication_1900
+     * @tc.name   : testTelephonySimGetSimAuthentication1900
+     * @tc.desc   : Performs SIM card authentication. Need to insert SIM card.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it('testTelephonySimGetSimAuthentication1900', 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetSimAuthentication1900';
+      console.info(`${caseName} test start`);
+      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
+      if (!hasSimCard) {
+        console.info(`${caseName} failed, No SIM exists in slot 0`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+      try {
+        sim.getSimAuthentication(0, null, "test").then((data: sim.SimAuthenticationResponse) => {
+          console.info(`${caseName} failed, The result is not in line with expectations`);
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          if (err && err.code === 401) {
+            console.info(`${caseName} successfully : Parameter error and return 401`);
+            ExpectTrue(true);
+            console.info(`${caseName} test end`);
+            done();
+          } else {
+            console.info(`${caseName} failed, err: ${JSON.stringify(err)}`);
+            ExpectFail();
+            console.info(`${caseName} test end`);
+            done();
+          }
+        });
+      } catch (error) {
+        if ((error as BusinessError).code === 401) {
+          console.info(`${caseName} successfully  : Parameter error and return 401`);
+          ExpectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        } else {
+          console.info(`${caseName} failed, err: ${JSON.stringify(error)}`);
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetSimAuthentication_2000
+     * @tc.name   : testTelephonySimGetSimAuthentication2000
+     * @tc.desc   : Performs SIM card authentication. Need to insert SIM card.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it('testTelephonySimGetSimAuthentication2000', 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetSimAuthentication2000';
+      console.info(`${caseName} test start`);
+      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
+      if (!hasSimCard) {
+        console.info(`${caseName} failed, No SIM exists in slot 0`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+      try {
+        sim.getSimAuthentication(0, sim.AuthType.SIM_AUTH_EAP_SIM_TYPE, null).then((data: sim.SimAuthenticationResponse) => {
+          console.info(`${caseName} failed, The result is not in line with expectations`);
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }).catch((err: BusinessError) => {
+          if (err && err.code === 401) {
+            console.info(`${caseName} successfully : Parameter error and return 401`);
+            ExpectTrue(true);
+            console.info(`${caseName} test end`);
+            done();
+          } else {
+            console.info(`${caseName} failed, err: ${JSON.stringify(err)}`);
+            ExpectFail();
+            console.info(`${caseName} test end`);
+            done();
+          }
+        });
+      } catch (error) {
+        if ((error as BusinessError).code === 401) {
+          console.info(`${caseName} successfully  : Parameter error and return 401`);
+          ExpectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        } else {
+          console.info(`${caseName} failed, err: ${JSON.stringify(error)}`);
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }
+      }
+    });
+    
+    /**
+     * @tc.number : SUB_Telephony_Sim_GetSimAuthentication_2100
+     * @tc.name   : testTelephonySimGetSimAuthentication2100
+     * @tc.desc   : Performs SIM card authentication. Need to insert SIM card.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it('testTelephonySimGetSimAuthentication2100', 0, async (done: Function) => {
+      let caseName: string = 'testTelephonySimGetSimAuthentication2100';
+      console.info(`${caseName} test start`);
+      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
+      if (!hasSimCard) {
+        console.info(`${caseName} failed, No SIM exists in slot 0`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }
+      sim.getSimAuthentication(0, 200, "test").then((data: sim.SimAuthenticationResponse) => {
+        console.info(`${caseName} failed, The result is not in line with expectations`);
+        ExpectFail();
+        console.info(`${caseName} test end`);
+        done();
+      }).catch((err: BusinessError) => {
+        if (err && err.code === 8300001) {
+          console.info(`${caseName} successfully step2 end : Pass an invalid parameter and return 8300001`);
+          ExpectTrue(true);
+          console.info(`${caseName} test end`);
+          done();
+        } else {
+          console.info(`${caseName} failed, err: ${JSON.stringify(err)}`);
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }
+      });
+    });
 }
