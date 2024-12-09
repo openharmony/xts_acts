@@ -19,9 +19,9 @@
 
 namespace ArkUICapiTest {
 
-static ArkUI_NodeHandle refresh;
-static ArkUI_NodeHandle column;
-static ArkUI_NativeNodeAPI_1 *nodeAPI;
+static ArkUI_NodeHandle refresh2;
+static ArkUI_NodeHandle column2;
+static ArkUI_NativeNodeAPI_1 *nodeAPI2;
 
 static void OnEventReceive(ArkUI_NodeEvent *event)
 {
@@ -35,23 +35,28 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
         float offset = result->data[0].f32;
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "refreshTest", "offset=%{public}f", offset);
-        // 设置背景色
-        ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_YELLOW}};
-        ArkUI_AttributeItem background_color_item = {background_color_value,
-                                                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-        nodeAPI->setAttribute(refresh, NODE_BACKGROUND_COLOR, &background_color_item);
+        if (offset > PARAM_0) {
+            ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_YELLOW } };
+            ArkUI_AttributeItem background_color_item = { background_color_value,
+                sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
+            nodeAPI->setAttribute(refresh, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
     }
 }
 
 static void BasicSet()
 {
-    refresh = nodeAPI->createNode(ARKUI_NODE_REFRESH);
-    ArkUI_NumberValue width_value[] = {{.f32 = PARAM_1000}};
-    ArkUI_NumberValue height_value[] = {{.f32 = PARAM_1000}};
+    refresh2 = nodeAPI2->createNode(ARKUI_NODE_REFRESH);
+    ArkUI_NumberValue width_value[] = {{.f32 = SIZE_300}};
+    ArkUI_NumberValue height_value[] = {{.f32 = SIZE_300}};
     ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     ArkUI_AttributeItem height_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(refresh, NODE_WIDTH, &width_item);
-    nodeAPI->setAttribute(refresh, NODE_HEIGHT, &height_item);
+    nodeAPI2->setAttribute(refresh2, NODE_WIDTH, &width_item);
+    nodeAPI2->setAttribute(refresh2, NODE_HEIGHT, &height_item);
+    ArkUI_NumberValue background_color_value[] = { { .u32 = COLOR_BLUE } };
+    ArkUI_AttributeItem background_color_item = { background_color_value,
+        sizeof(background_color_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI2->setAttribute(refresh2, NODE_BACKGROUND_COLOR, &background_color_item);
 }
 
 napi_value RefreshOnOffsetChangeTest::CreateNativeNode(napi_env env, napi_callback_info info)
@@ -64,19 +69,19 @@ napi_value RefreshOnOffsetChangeTest::CreateNativeNode(napi_env env, napi_callba
     char xComponentID[PARAM_64] = {PARAM_0};
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
-    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI2);
 
     BasicSet();
 
     ArkUI_AttributeItem idItem;
     idItem.string = "RefreshOnOffsetChange";
-    nodeAPI->setAttribute(refresh, NODE_ID, &idItem);
+    nodeAPI2->setAttribute(refresh2, NODE_ID, &idItem);
 
-    nodeAPI->registerNodeEventReceiver(&OnEventReceive);
-    nodeAPI->registerNodeEvent(refresh, NODE_REFRESH_ON_OFFSET_CHANGE, ON_REFRESH_EVENT_ID, nullptr);
+    nodeAPI2->registerNodeEventReceiver(&OnEventReceive);
+    nodeAPI2->registerNodeEvent(refresh2, NODE_REFRESH_ON_OFFSET_CHANGE, ON_REFRESH_EVENT_ID, nullptr);
 
     std::string idRefresh(xComponentID);
-    OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(idRefresh), refresh);
+    OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(idRefresh), refresh2);
 
     napi_value exports;
     napi_create_object(env, &exports);

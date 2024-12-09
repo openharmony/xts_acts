@@ -359,6 +359,8 @@ export const swiperOnGestureSwipeTest: (a: string) => void;
 
 export const radioOnChangeTest: (a: string) => void;
 
+export const radioOnChangeCheckedTest: (a: string) => void;
+
 export const textAreaOnTextSelectionChangeTest : (a : string) => void ;
 
 export const getTextAreaData :() => number[][];
@@ -467,4 +469,6 @@ export const nodeTreeXComponentDetach001Test: (a: string) => void;
 export const nodeTreeXComponent401Test: (a: string) => void;
 
 export const nodeTreeXComponentDetach401Test: (a: string) => void;
-
+export const gridAdapterTest : (a : string) =>void;
+export const refreshOffsetTest : (a : string) =>void;
+export const refreshOffsetLessThanOffsetTest : (a : string) =>void;

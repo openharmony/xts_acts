@@ -69,4 +69,67 @@ static napi_value TestRadioChecked005(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(radio, NODE_RADIO_CHECKED)->value[PARAM_0].i32, false);
     NAPI_END;
 }
+
+static napi_value TestRadioChecked006(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+    auto radio1 = nodeAPI->createNode(ARKUI_NODE_RADIO);
+    ArkUI_AttributeItem idItem = {};
+    idItem.string = "radio1";
+    nodeAPI->setAttribute(radio1, NODE_ID, &idItem);
+    auto radio2 = nodeAPI->createNode(ARKUI_NODE_RADIO);
+    ArkUI_AttributeItem idItem2 = {};
+    idItem2.string = "radio2";
+    nodeAPI->setAttribute(radio2, NODE_ID, &idItem2);
+    
+    ArkUI_NumberValue value[] = {{.i32 = false}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    value_item.string = "test";
+    ArkUI_NumberValue value2[] = {{.i32 = true}};
+    ArkUI_AttributeItem value_item2 = {value2, sizeof(value2) / sizeof(ArkUI_NumberValue)};
+    value_item2.string = "test";
+    auto ret1 = nodeAPI->setAttribute(radio1, NODE_RADIO_CHECKED, &value_item);
+    ASSERT_EQ(ret1, SUCCESS);
+    auto ret2 = nodeAPI->setAttribute(radio2, NODE_RADIO_CHECKED, &value_item2);
+    ASSERT_EQ(ret2, SUCCESS);
+
+    nodeAPI->setAttribute(radio1, NODE_RADIO_GROUP, &value_item);
+    nodeAPI->setAttribute(radio2, NODE_RADIO_GROUP, &value_item2);
+
+    ASSERT_EQ(nodeAPI->getAttribute(radio1, NODE_RADIO_CHECKED)->value[PARAM_0].i32, false);
+    ASSERT_EQ(nodeAPI->getAttribute(radio2, NODE_RADIO_CHECKED)->value[PARAM_0].i32, true);
+    NAPI_END;
+}
+static napi_value TestRadioChecked007(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+    auto radio1 = nodeAPI->createNode(ARKUI_NODE_RADIO);
+    ArkUI_AttributeItem idItem = {};
+    idItem.string = "radio1";
+    nodeAPI->setAttribute(radio1, NODE_ID, &idItem);
+    auto radio2 = nodeAPI->createNode(ARKUI_NODE_RADIO);
+    ArkUI_AttributeItem idItem2 = {};
+    idItem2.string = "radio2";
+    nodeAPI->setAttribute(radio2, NODE_ID, &idItem2);
+    
+    ArkUI_NumberValue value[] = {{.i32 = true}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    value_item.string = "test1";
+    ArkUI_NumberValue value2[] = {{.i32 = true}};
+    ArkUI_AttributeItem value_item2 = {value2, sizeof(value2) / sizeof(ArkUI_NumberValue)};
+    value_item2.string = "test2";
+    auto ret1 = nodeAPI->setAttribute(radio1, NODE_RADIO_CHECKED, &value_item);
+    ASSERT_EQ(ret1, SUCCESS);
+    auto ret2 = nodeAPI->setAttribute(radio2, NODE_RADIO_CHECKED, &value_item2);
+    ASSERT_EQ(ret2, SUCCESS);
+
+    nodeAPI->setAttribute(radio1, NODE_RADIO_GROUP, &value_item);
+    nodeAPI->setAttribute(radio2, NODE_RADIO_GROUP, &value_item2);
+
+    ASSERT_EQ(nodeAPI->getAttribute(radio1, NODE_RADIO_CHECKED)->value[PARAM_0].i32, true);
+    ASSERT_EQ(nodeAPI->getAttribute(radio2, NODE_RADIO_CHECKED)->value[PARAM_0].i32, true);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

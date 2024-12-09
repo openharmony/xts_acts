@@ -605,7 +605,7 @@ import gridRowsTemplateTest from './grid/GridRowsTemplateTest.test'
 import gridColumnTemplateTest from './grid/GridColumnTemplateTest.test'
 import gridRowsGapTest from './grid/GridRowsGapTest.test' 
 import gridCachedCountTest from './grid/GridCachedCountTest.test' 
-import gridNodeAdapterTest from './grid/GridNodeAdapterTest.test' 
+import gridAdapterTest from './grid/GridAdapterTest.test' 
 import radioValueTest from './radio/RadioValueTest.test'
 import radioGroupTest from './radio/RadioGroupTest.test'
 import radioRadioStyleTest from './radio/RadioRadioStyleTest.test'
@@ -765,6 +765,8 @@ import textInputOnDeleteTest from "./textinput/TextInputOnDeleteTest.test"
 import textInputGetTextContentRect from "./textinput/TextInputGetTextContentRectTest.test"
 import swiperSwipeToIndexTest from "./swiper/SwiperSwipeToIndexTest.test"
 import swiperNestedScrollEventTest from "./swiper/SwiperNestedScrollEventTest.test"
+import refreshOffsetEventTest from "./refresh/RefreshOffsetEventTest.test"
+import radioOnChangeCheckedTest from "./radio/RadioOnChangeCheckedTest.test"
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1333,6 +1335,15 @@ export default function testsuite() {
   relativecontaineBarrierOptionTest()
   testGesture()
   gestureNestScrollTest()
+  gridColumnGapTest()
+  gridRowsTemplateTest()
+  gridColumnTemplateTest()
+  gridRowsGapTest()
+  gridCachedCountTest()
+  radioValueTest()
+  radioGroupTest()
+  radioRadioStyleTest()
+  radioCheckedTest()
   customComponentEventTest()
   commonAttrsAnimateTest()
   drawableDescriptorCreateTest()
@@ -1499,4 +1510,7 @@ export default function testsuite() {
   commonEventEventTest()
   nodeTreeTest()
   nodeTreeXComponentTest()
+  gridAdapterTest()
+  radioOnChangeCheckedTest()
+  refreshOffsetEventTest()
 }

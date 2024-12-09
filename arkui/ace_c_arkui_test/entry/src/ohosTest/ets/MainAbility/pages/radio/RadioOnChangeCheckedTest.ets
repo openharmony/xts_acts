@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,21 +13,21 @@
  * limitations under the License.
  */
 
-#ifndef ARKUI_CAPI_XTS_REFRESH_ONOFFSETCHANGE_TEST_H
-#define ARKUI_CAPI_XTS_REFRESH_ONOFFSETCHANGE_TEST_H
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-#include "../common/common.h"
+@Entry
+@Component
+struct RadioOnChangeCheckedTest {
+  PAGE_TAG: string = 'RadioOnChangeCheckedTest';
 
-#include <ace/xcomponent/native_interface_xcomponent.h>
-#include <arkui/native_interface.h>
-#include <arkui/native_node.h>
-
-namespace ArkUICapiTest {
-
-class RefreshOnOffsetChangeTest {
-public:
-    ~RefreshOnOffsetChangeTest();
-    static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
-};
+  build() {
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.radioOnChangeCheckedTest(this.PAGE_TAG);
+      })
+    }
+  }
 }
-#endif // ARKUI_CAPI_XTS_REFRESH_ONOFFSETCHANGE_TEST_H
