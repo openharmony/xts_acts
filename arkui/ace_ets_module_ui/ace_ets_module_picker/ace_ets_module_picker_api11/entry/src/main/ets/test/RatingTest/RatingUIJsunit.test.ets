@@ -77,22 +77,26 @@ export default function RatingUIJsunit() {
     it('RatingUIJsunit_0300', 0, async (done: Function) => {
       // Modify the indicator value of the Rating component
       console.info('[RatingUIJsunit_0300] START');
-      globalThis.value.message.notify({name:'indicator',value:false})
+      globalThis.value.message.notify({name:'indicator1',value:false})
       await CommonFunc.sleep(2000);
+      let driver = await Driver.create()
       // Get the indicator value of the Rating component
-      let strJson = getInspectorByKey('rating1');
+      let strJson = getInspectorByKey('ratingBtn');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[RatingUIJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.indicator).assertEqual('false');
 
       // Verify that click cannot be modified the rating value of the Rating component
-      let driver = await UiDriver.create()
-      let textComponent = await driver.findComponent(BY.key('rating1'));
-      await textComponent.click();
-      await CommonFunc.sleep(1000);
+      let rating = await driver.findComponent(ON.id('ratingBtn'));
 
+      console.info(`rating ` + JSON.stringify(rating))
+      let rect = await rating.getBounds();
+      console.info(`rect is: ` + JSON.stringify(rect))
+      await driver.click(rect.left+Math.round((rect.right-rect.left)/2)-1,Math.round((rect.top+rect.bottom)/2))
+      console.info(`click is: `,rect.left+Math.round((rect.right-rect.left)/2)-1,Math.round((rect.top+rect.bottom)/2))
+      await CommonFunc.sleep(1000);
       // Verify the rating value of the Rating component
-      let strJson1 = getInspectorByKey('rating1');
+      let strJson1 = getInspectorByKey('ratingBtn');
       let obj1: Record<string, ESObject> = JSON.parse(strJson1);
       console.info("[RatingUIJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.rating).assertEqual('2.500000');
@@ -138,6 +142,7 @@ export default function RatingUIJsunit() {
       globalThis.value.message.notify({name:'rating',value:1})
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'text',value:'no change'})
+       globalThis.value.message.notify({name:'indicator',value:false})
       await CommonFunc.sleep(2000);
 
       let driver = await UiDriver.create()
