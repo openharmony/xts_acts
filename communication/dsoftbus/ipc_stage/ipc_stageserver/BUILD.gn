@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsIpcStageServer") {
+ohos_app_assist_suite("ActsIPCEtsServer") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsIpcStageServer"
+  hap_name = "ActsIPCStageServer"
   part_name = "ipc"
   subsystem_name = "communication"
 }
