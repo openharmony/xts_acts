@@ -15,6 +15,7 @@
 
 import usbMan from '@ohos.usbManager';
 import { UiDriver, BY } from '@ohos.UiTest';
+import CheckEmptyUtils from './CheckEmptyUtils.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 
@@ -26,6 +27,8 @@ describe("UsbAccessoryJsTest", function () {
     const ACCESSORY_NOT_REOPEN = 14401003;
     const COMMON_SERVICE_EXCEPTION = 14400004;
     const COMMON_HAS_NO_RIGHT = 14400001;
+    const ACCESSORY_TARGET_NOT_MATCHED = 14401001;
+    const PARAM_TYPE_ERROR = 401;
 
     let accList;
     let isDevAccessoryFunc;
@@ -75,7 +78,7 @@ describe("UsbAccessoryJsTest", function () {
             await button.click();
         } catch (err) {
             console.info(TAG, 'err is ' + err);
-            return;
+            return
         }
     }
     
@@ -157,19 +160,22 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testRequestAccessoryRight002", 0, async () => {
         console.info(TAG, '----------------------testRequestAccessoryRight002---------------------------');
-        if (!isDevAccessoryFunc) {
-            expect(isDevAccessoryFunc).assertFalse();
-            return
-        }
         try {
             await usbMan.requestAccessoryRight(accList[0]).then(data => {
                 console.info(TAG, 'testRequestAccessoryRight002 ret : ', JSON.stringify(data));
-                expect(data !== null).assertFalse();
+                expect(data).assertTrue();
             });
+            await driveFn();
+            CheckEmptyUtils.sleep(1000);
             usbMan.cancelAccessoryRight(accList[0]);
         } catch (err) {
             console.info(TAG, 'testRequestAccessoryRight002 err : ', err);
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            expect(isDevAccessoryFunc).assertFalse();
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
+            } else {
+                expect(err.code).assertEqual(ACCESSORY_TARGET_NOT_MATCHED);
+            }
         }
     })
 
@@ -208,17 +214,17 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testHasAccessoryRight002", 0, () => {
         console.info(TAG, '----------------------testHasAccessoryRight002---------------------------');
-        if (!isDevAccessoryFunc) {
-            expect(isDevAccessoryFunc).assertFalse();
-            return
-        }
         try {
             let ret = usbMan.hasAccessoryRight(accList[0]);
             console.info(TAG, 'testHasAccessoryRight002 ret : ', ret);
             expect(ret).assertFalse();
         } catch (err) {
             console.info(TAG, 'testHasAccessoryRight002 err : ', err);
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
+            } else {
+                expect(err.code).assertEqual(ACCESSORY_TARGET_NOT_MATCHED);
+            }
         }
     })
 
@@ -232,29 +238,24 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testHasAccessoryRight003", 0, async () => {
         console.info(TAG, '----------------------testHasAccessoryRight003---------------------------');
-        if (!isDevAccessoryFunc) {
-            expect(isDevAccessoryFunc).assertFalse();
-            return
-        }
+        await getAccPermission();
+        CheckEmptyUtils.sleep(1000);
+        await driveFn();
+        CheckEmptyUtils.sleep(1000);
         try {
-            await getAccPermission();
-            CheckEmptyUtils.sleep(1000);
-            await driveFn();
-             CheckEmptyUtils.sleep(1000);
-            try {
-                let ret = usbMan.hasAccessoryRight(accList[0]);
-                console.info(TAG, 'testHasAccessoryRight003 ret : ', ret);
-                expect(ret).assertTrue();
-                usbMan.cancelAccessoryRight(accList[0]);
-                ret = usbMan.hasAccessoryRight(accList[0]);
-                expect(ret).assertFalse();
-            } catch (err) {
-                console.info(TAG, 'testHasAccessoryRight003 err : ', err);
-                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
-            }
+            let ret = usbMan.hasAccessoryRight(accList[0]);
+            console.info(TAG, 'testHasAccessoryRight003 ret : ', ret);
+            expect(ret).assertTrue();
+            usbMan.cancelAccessoryRight(accList[0]);
+            ret = usbMan.hasAccessoryRight(accList[0]);
+            expect(ret).assertFalse();
         } catch (err) {
             console.info(TAG, 'testHasAccessoryRight003 err : ', err);
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
+            } else {
+                expect(err.code).assertEqual(ACCESSORY_TARGET_NOT_MATCHED);
+            }
         }
     })
 
@@ -294,27 +295,22 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testCancelAccessoryRight002", 0, async () => {
         console.info(TAG, '----------------------testCancelAccessoryRight002---------------------------');
-        if (!isDevAccessoryFunc) {
-            expect(isDevAccessoryFunc).assertFalse();
-            return
-        }
+        await getAccPermission();
+        CheckEmptyUtils.sleep(1000);
+        await driveFn();
+        CheckEmptyUtils.sleep(1000);
         try {
-            await getAccPermission();
-            CheckEmptyUtils.sleep(1000);
-            await driveFn();
-             CheckEmptyUtils.sleep(1000);
-            try {
-                usbMan.cancelAccessoryRight(accList[0]);
-                let ret = usbMan.hasAccessoryRight(access);
-                console.info(TAG, 'testCancelAccessoryRight002 ret : ', ret);
-                expect(ret).assertFalse();
-            } catch (err) {
-                console.info(TAG, 'testCancelAccessoryRight002 err : ', err);
-                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
-            }
+            usbMan.cancelAccessoryRight(accList[0]);
+            let ret = usbMan.hasAccessoryRight(access);
+            console.info(TAG, 'testCancelAccessoryRight002 ret : ', ret);
+            expect(ret).assertFalse();
         } catch (err) {
             console.info(TAG, 'testCancelAccessoryRight002 err : ', err);
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
+            } else {
+                expect(err.code).assertEqual(ACCESSORY_TARGET_NOT_MATCHED);
+            }
         }
     })
 
@@ -351,33 +347,30 @@ describe("UsbAccessoryJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it("testOpenAccessory002", 0, async () => {
+    it("testOpenAccessory002", 0, async (done) => {
         console.info(TAG, '----------------------testOpenAccessory002---------------------------');
-        if (!isDevAccessoryFunc) {
-            expect(isDevAccessoryFunc).assertFalse();
-            return
-        }
+        await getAccPermission();
+        CheckEmptyUtils.sleep(1000);
+        await driveFn();
+        CheckEmptyUtils.sleep(1000);
         try {
-            await getAccPermission();
-            CheckEmptyUtils.sleep(1000);
-            await driveFn();
-            CheckEmptyUtils.sleep(1000);
-            try {
-                let accHandle = usbMan.openAccessory(accList[0]);
-                console.info(TAG, 'testOpenAccessory002 ret : ', accHandle);
-                expect(accHandle !== null).assertTrue();
-                let accFd = accHandle.accessoryHandle;
-                expect(accFd > 0).assertTrue();
-            } catch (err) {
-                console.info(TAG, 'testOpenAccessory002 err : ', err);
-                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
-            }
-            usbMan.closeAccessory(accList[0]);
-            usbMan.cancelAccessoryRight(accList[0]);
+            let accHandle = usbMan.openAccessory(accList[0]);
+            console.info(TAG, 'testOpenAccessory002 ret : ', accHandle);
+            expect(accHandle !== null).assertTrue();
+            let accFd = accHandle.accessoryHandle;
+            expect(accFd > 0).assertTrue();
         } catch (err) {
             console.info(TAG, 'testOpenAccessory002 err : ', err);
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
+                done();
+            } else {
+                expect(err.code).assertEqual(ACCESSORY_TARGET_NOT_MATCHED);
+                done();
+            }
         }
+        usbMan.closeAccessory(accList[0]);
+        usbMan.cancelAccessoryRight(accList[0]);
     })
 
     /**
@@ -388,32 +381,31 @@ describe("UsbAccessoryJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it("testOpenAccessory003", 0, async () => {
+    it("testOpenAccessory003", 0, async (done) => {
         console.info(TAG, '----------------------testOpenAccessory003---------------------------');
-        if (!isDevAccessoryFunc) {
-            expect(isDevAccessoryFunc).assertFalse();
-            return
-        }
+        await getAccPermission();
+        CheckEmptyUtils.sleep(1000);
+        await driveFn();
+        CheckEmptyUtils.sleep(1000);
         try {
-            await getAccPermission();
-            CheckEmptyUtils.sleep(1000);
-            await driveFn();
-            CheckEmptyUtils.sleep(1000);
-            try {
-                let acchandle = usbMan.openAccessory(accList[0]);
-                expect(acchandle !== null).assertTrue();
-                acchandle = usbMan.openAccessory(accList[0]);
-                expect(acchandle !== null).assertFalse();
-            } catch (err) {
-                console.info(TAG, 'testOpenAccessory003 reopen err : ', err);
-                expect(err.code).assertEqual(ACCESSORY_NOT_REOPEN);
-            }
-            usbMan.closeAccessory(accList[0]);
-            usbMan.cancelAccessoryRight(accList[0]);
+            let acchandle = usbMan.openAccessory(accList[0]);
+            console.info(TAG, 'testOpenAccessory003 acchandle : ', acchandle);
+            expect(acchandle !== null).assertTrue();
+            acchandle = usbMan.openAccessory(accList[0]);
+            expect(acchandle !== null).assertFalse();
         } catch (err) {
             console.info(TAG, 'testOpenAccessory003 err : ', err);
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
+                done();
+            } else {
+                console.info(TAG, 'testOpenAccessory003 reopen err : ', err);
+                expect(err.code).assertEqual(ACCESSORY_NOT_REOPEN);
+                done();
+            }    
         }
+        usbMan.closeAccessory(accList[0]);
+        usbMan.cancelAccessoryRight(accList[0]);
     })
 
     /**
@@ -426,17 +418,13 @@ describe("UsbAccessoryJsTest", function () {
      */
     it("testOpenAccessory004", 0, () => {
         console.info(TAG, '----------------------testOpenAccessory004---------------------------');
-        if (!isDevAccessoryFunc) {
-            expect(isDevAccessoryFunc).assertFalse();
-            return
-        }
         try {
             let acchandle = usbMan.openAccessory(accList[0]);
             expect(acchandle !== null).assertTrue();
         } catch (err) {
             console.info(TAG, 'testOpenAccessory004 reopen err : ', err);
-            if (err.code == SERVICE_EXCEPTION_CODE) {
-                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
             } else {
                 expect(err.code).assertEqual(COMMON_HAS_NO_RIGHT);
             }
@@ -451,36 +439,39 @@ describe("UsbAccessoryJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it("testCloseccessory001", 0, async () => {
+    it("testCloseccessory001", 0, async (done) => {
         console.info(TAG, '----------------------testCloseccessory001---------------------------');
-        if (!isDevAccessoryFunc) {
-            expect(isDevAccessoryFunc).assertFalse();
-            return
-        }
+        await getAccPermission();
+        CheckEmptyUtils.sleep(1000);
+        await driveFn();
+        CheckEmptyUtils.sleep(1000);
+        let acchandle;
         try {
-            await getAccPermission();
-            CheckEmptyUtils.sleep(1000);
-            await driveFn();
-            CheckEmptyUtils.sleep(1000);
-            let acchandle;
-            try {
-                acchandle = usbMan.openAccessory(accList[0]);
-                expect(acchandle !== null).assertTrue();
-                usbMan.closeAccessory(acchandle);
-            } catch (err) {
-                console.info(TAG, 'testCloseccessory001 err : ', err);
-                expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
-            }
-            try {
-                usbMan.closeAccessory(acchandle);
-            } catch (err) {
-                expect(err.code).assertEqual(COMMON_SERVICE_EXCEPTION);
-            }
-            usbMan.cancelAccessoryRight(accList[0]);
+            acchandle = usbMan.openAccessory(accList[0]);
+            expect(acchandle !== null).assertTrue();
+            usbMan.closeAccessory(acchandle);
         } catch (err) {
             console.info(TAG, 'testCloseccessory001 err : ', err);
-            expect(err.code).assertEqual(SERVICE_EXCEPTION_CODE);
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
+                done();
+            } else {
+                expect(err.code).assertEqual(ACCESSORY_TARGET_NOT_MATCHED);
+                done();
+            }
         }
+        try {
+            usbMan.closeAccessory(acchandle);
+        } catch (err) {
+            if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(PARAM_TYPE_ERROR);
+                done();
+            } else {
+                expect(err.code).assertEqual(COMMON_SERVICE_EXCEPTION);
+                done();
+            }
+        }
+        usbMan.cancelAccessoryRight(accList[0]);
     })
 
     /**
