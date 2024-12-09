@@ -16,7 +16,7 @@ import { FrameNode } from '@kit.ArkUI'
 
 @Entry
 @Component
-struct CanvasAttrTabTest {
+struct CanvasAttrsTabTest {
   @State fontColor: string = '#182431'
   @State selectedFontColor: string = '#007DFF'
   @State currentIndex: number = 0
@@ -44,8 +44,8 @@ struct CanvasAttrTabTest {
 
   build() {
     Column() {
-      Text(this.message1).id('content1').fontSize(12).width('100%').margin(10).padding(10)
-      Text(this.message2).id('content2').fontSize(12).width('100%').margin(10).padding(10)
+      Text(this.message1).id('visible_content').fontSize(12).width('100%').margin(10).padding(10)
+      Text(this.message2).id('invisible_content').fontSize(12).width('100%').margin(10).padding(10)
 
       Tabs({ barPosition: BarPosition.Start, index: this.currentIndex, controller: this.controller }) {
         TabContent() {

@@ -53,12 +53,12 @@ export default function CanvasAttrsTabTest() {
       await CommonFunc.sleep(1000);
 
       // 页面加载
-      let strJson1 = getInspectorByKey('content1');
-      let strJson2 = getInspectorByKey('content2');
+      let strJson1 = getInspectorByKey('visible_content');
+      let strJson2 = getInspectorByKey('invisible_content');
       let obj1: ESObject = JSON.parse(strJson1);
       let obj2: ESObject = JSON.parse(strJson2);
-      console.info("[CanvasAttrsTabTest_0100] content1 is: " + JSON.stringify(obj1.$attrs.content));
-      console.info("[CanvasAttrsTabTest_0100] content2 is: " + JSON.stringify(obj2.$attrs.content));
+      console.info("[CanvasAttrsTabTest_0100] visible_content is: " + JSON.stringify(obj1.$attrs.content));
+      console.info("[CanvasAttrsTabTest_0100] invisible_content is: " + JSON.stringify(obj2.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('Canvas 1 is fully visible.');
       expect(obj2.$attrs.content).assertEqual('');
 
@@ -67,12 +67,12 @@ export default function CanvasAttrsTabTest() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      strJson1 = getInspectorByKey('content1');
-      strJson2 = getInspectorByKey('content2');
+      strJson1 = getInspectorByKey('visible_content');
+      strJson2 = getInspectorByKey('invisible_content');
       obj1 = JSON.parse(strJson1);
       obj2 = JSON.parse(strJson2);
-      console.info("[CanvasAttrsTabTest_0100] content1 is: " + JSON.stringify(obj1.$attrs.content));
-      console.info("[CanvasAttrsTabTest_0100] content2 is: " + JSON.stringify(obj2.$attrs.content));
+      console.info("[CanvasAttrsTabTest_0100] visible_content is: " + JSON.stringify(obj1.$attrs.content));
+      console.info("[CanvasAttrsTabTest_0100] invisible_content is: " + JSON.stringify(obj2.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('Canvas 2 is fully visible.');
       expect(obj2.$attrs.content).assertEqual('Canvas 1 is completely invisible.');
 
@@ -81,12 +81,12 @@ export default function CanvasAttrsTabTest() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      strJson1 = getInspectorByKey('content1');
-      strJson2 = getInspectorByKey('content2');
+      strJson1 = getInspectorByKey('visible_content');
+      strJson2 = getInspectorByKey('invisible_content');
       obj1 = JSON.parse(strJson1);
       obj2 = JSON.parse(strJson2);
-      console.info("[CanvasAttrsTabTest_0100] content1 is: " + JSON.stringify(obj1.$attrs.content));
-      console.info("[CanvasAttrsTabTest_0100] content2 is: " + JSON.stringify(obj2.$attrs.content));
+      console.info("[CanvasAttrsTabTest_0100] visible_content is: " + JSON.stringify(obj1.$attrs.content));
+      console.info("[CanvasAttrsTabTest_0100] invisible_content is: " + JSON.stringify(obj2.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('Canvas 3 is fully visible.');
       expect(obj2.$attrs.content).assertEqual('Canvas 2 is completely invisible.');
 
@@ -95,12 +95,12 @@ export default function CanvasAttrsTabTest() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      strJson1 = getInspectorByKey('content1');
-      strJson2 = getInspectorByKey('content2');
+      strJson1 = getInspectorByKey('visible_content');
+      strJson2 = getInspectorByKey('invisible_content');
       obj1 = JSON.parse(strJson1);
       obj2 = JSON.parse(strJson2);
-      console.info("[CanvasAttrsTabTest_0100] content1 is: " + JSON.stringify(obj1.$attrs.content));
-      console.info("[CanvasAttrsTabTest_0100] content2 is: " + JSON.stringify(obj2.$attrs.content));
+      console.info("[CanvasAttrsTabTest_0100] visible_content is: " + JSON.stringify(obj1.$attrs.content));
+      console.info("[CanvasAttrsTabTest_0100] invisible_content is: " + JSON.stringify(obj2.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('Canvas 1 is fully visible.');
       expect(obj2.$attrs.content).assertEqual('Canvas 3 is completely invisible.');
 

@@ -52,7 +52,7 @@ struct AttachDetachRebindTest {
           })
       }
 
-      Text(this.message).id('content').backgroundColor(Color.Pink)
+      Text(this.message).id('attach_detach_content').backgroundColor(Color.Pink)
 
       Row() {
         if (this.flag) {
@@ -76,7 +76,6 @@ struct AttachDetachRebindTest {
               this.context.fillText('Canvas 2', this.context.width / 2, 50)
             })
         }
-
       }
     }
   }

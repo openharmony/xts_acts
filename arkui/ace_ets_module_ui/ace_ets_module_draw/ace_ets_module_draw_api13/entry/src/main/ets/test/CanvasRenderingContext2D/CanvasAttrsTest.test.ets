@@ -52,7 +52,7 @@ export default function CanvasAttrsTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 
-      let strJson = getInspectorByKey('content');
+      let strJson = getInspectorByKey('show_content');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[CanvasAttrsTest_0100] content is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Canvas is fully visible.');
@@ -62,7 +62,7 @@ export default function CanvasAttrsTest() {
       await button.click();
       await CommonFunc.sleep(2000);
 
-      strJson = getInspectorByKey('content');
+      strJson = getInspectorByKey('show_content');
       obj = JSON.parse(strJson);
       console.info("[CanvasAttrsTest_0100] content is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Canvas is completely invisible.');
@@ -72,7 +72,7 @@ export default function CanvasAttrsTest() {
       await button.click();
       await CommonFunc.sleep(2000);
 
-      strJson = getInspectorByKey('content');
+      strJson = getInspectorByKey('show_content');
       obj = JSON.parse(strJson);
       console.info("[CanvasAttrsTest_0100] content is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Canvas is fully visible.');

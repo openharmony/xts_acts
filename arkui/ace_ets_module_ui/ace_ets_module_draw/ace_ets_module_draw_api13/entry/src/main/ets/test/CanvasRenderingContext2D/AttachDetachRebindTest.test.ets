@@ -54,19 +54,18 @@ export default function AttachDetachRebindTest() {
 
       // aboutToAppear中已绑定“onAttach”和“onDetach”
       // 页面加载，触发“onAttach”回调
-      let strJson = getInspectorByKey('content');
+      let strJson = getInspectorByKey('attach_detach_content');
       let obj: ESObject = JSON.parse(strJson);
       console.info("页面加载，触发onAttach回调");
       console.info("[AttachDetachRebindTest_0100] content is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('onAttach');
-
 
       // 点击按钮绑定新的canvas，原cavas解绑触发“onDetach”回调，新canvas绑定触发“onAttach”回调
       let button = await driver.findComponent(ON.id('change_canvas'));
       await button.click();
       await CommonFunc.sleep(1000);
 
-      strJson = getInspectorByKey('content');
+      strJson = getInspectorByKey('attach_detach_content');
       obj = JSON.parse(strJson);
       console.info("点击按钮绑定新的canvas，原cavas解绑触发onDetach回调，新canvas绑定触发onAttach回调");
       console.info("[AttachDetachRebindTest_0100] content is: " + JSON.stringify(obj.$attrs.content));

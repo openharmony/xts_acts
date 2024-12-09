@@ -94,10 +94,10 @@ struct AttachDetachTest {
           })
       }
 
-      Text(this.message1).id('content1').width('80%').height(30).backgroundColor(Color.Pink)
-      Text(this.message2).id('content2').width('80%').height(30).backgroundColor(Color.Pink)
-      Text(this.message3).id('content3').width('80%').height(30).backgroundColor(Color.Pink)
-      Text(this.message4).id('content4').width('80%').height(30).backgroundColor(Color.Pink)
+      Text(this.message1).id('attach_content_1').width('80%').height(30).backgroundColor(Color.Pink)
+      Text(this.message2).id('detach_content_1').width('80%').height(30).backgroundColor(Color.Pink)
+      Text(this.message3).id('attach_content_2').width('80%').height(30).backgroundColor(Color.Pink)
+      Text(this.message4).id('detach_content_2').width('80%').height(30).backgroundColor(Color.Pink)
       Row() {
         Canvas(this.flag ? undefined : this.context)
           .width('100%')

@@ -62,7 +62,7 @@ struct CanvasAttrsTest {
           })
       }
 
-      Text(this.message).id('content')
+      Text(this.message).id('show_content')
 
       List({ space: 3, scroller: this.scroller }) {
         ForEach(this.arr, (item: number) => {
