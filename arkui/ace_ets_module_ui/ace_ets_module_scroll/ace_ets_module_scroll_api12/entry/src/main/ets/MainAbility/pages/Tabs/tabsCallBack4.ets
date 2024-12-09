@@ -75,7 +75,7 @@ struct tabsCallBack4Example {
         })
         .onTabBarClick((index: number) => {
           this.message1 +='onTabBarClick-'
-          console.info("onTabBarClick index: " + index)
+          console.info('onTabBarClick index: ' + index)
         })
         .onContentWillChange((currentIndex, comingIndex) => {
           if (comingIndex == 2) {
