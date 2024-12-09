@@ -23,6 +23,7 @@
 #include <sys/timex.h>
 #include <unistd.h>
 #include <utime.h>
+#include <securec.h>
 
 #define PARAM_1 1
 #define MPARAM_1 (-1)
@@ -32,6 +33,7 @@ extern "C" int __adjtimex_time64(struct timex *);
 static napi_value AdjTimex_time64_One(napi_env env, napi_callback_info info)
 {
     struct timex tx;
+    memset_s(&tx, sizeof(tx), PARAM_0, sizeof(tx));
     tx.offset = ADJ_OFFSET;
     tx.tick = ADJ_TICK;
     tx.maxerror = ADJ_MAXERROR;
@@ -59,6 +61,7 @@ static napi_value AdjTimex_time64_Two(napi_env env, napi_callback_info info)
 {
     errno = PARAM_0;
     struct timex tx;
+    memset_s(&tx, sizeof(tx), PARAM_0, sizeof(tx));
     int resultValue = __adjtimex_time64(&tx);
     NAPI_ASSERT(env, resultValue != MPARAM_1, "AdjTimex_time64_Two failed");
     napi_value result = nullptr;
@@ -70,6 +73,7 @@ extern "C" int adjtimex(struct timex *);
 static napi_value AdjTimex_One(napi_env env, napi_callback_info info)
 {
     struct timex tx;
+    memset_s(&tx, sizeof(tx), PARAM_0, sizeof(tx));
     tx.offset = ADJ_OFFSET;
     tx.tick = ADJ_TICK;
     tx.maxerror = ADJ_MAXERROR;
@@ -97,6 +101,7 @@ static napi_value AdjTimex_Two(napi_env env, napi_callback_info info)
 {
     errno = PARAM_0;
     struct timex tx;
+    memset_s(&tx, sizeof(tx), PARAM_0, sizeof(tx));
     int resultValue = adjtimex(&tx);
     napi_value result = nullptr;
     napi_create_int32(env, resultValue == TIME_BAD, &result);
@@ -107,7 +112,7 @@ extern "C" int __clock_adjtime64(clockid_t, struct timex *);
 static napi_value Clock_adjTime64_One(napi_env env, napi_callback_info info)
 {
     struct timex tx;
-    memset(&tx, PARAM_0, sizeof(tx));
+    memset_s(&tx, sizeof(tx), PARAM_0, sizeof(tx));
     int returnValue = __clock_adjtime64(CLOCK_REALTIME, &tx);
     napi_value result = nullptr;
     napi_create_int32(env, returnValue == TIME_BAD, &result);
@@ -126,7 +131,7 @@ static napi_value Clock_adjTime64_Two(napi_env env, napi_callback_info info)
 static napi_value Clock_adjTime64_Three(napi_env env, napi_callback_info info)
 {
     struct timex tx;
-    memset(&tx, PARAM_0, sizeof(tx));
+    memset_s(&tx, sizeof(tx), PARAM_0, sizeof(tx));
     int returnValue = __clock_adjtime64(CLOCK_PROCESS_CPUTIME_ID, &tx);
     napi_value result = nullptr;
     napi_create_int32(env, returnValue == MPARAM_1, &result);
@@ -136,7 +141,7 @@ static napi_value Clock_adjTime64_Three(napi_env env, napi_callback_info info)
 static napi_value Clock_adjTime64_Four(napi_env env, napi_callback_info info)
 {
     struct timex tx;
-    memset(&tx, PARAM_0, sizeof(tx));
+    memset_s(&tx, sizeof(tx), PARAM_0, sizeof(tx));
     int returnValue = __clock_adjtime64(CLOCK_THREAD_CPUTIME_ID, &tx);
     napi_value result = nullptr;
     napi_create_int32(env, returnValue == MPARAM_1, &result);
