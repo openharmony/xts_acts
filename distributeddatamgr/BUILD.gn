@@ -44,6 +44,7 @@ group("distributeddatamgr") {
 group("pasteboard") {
   testonly = true
   deps = [
+    "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
     "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
     "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
   ]
