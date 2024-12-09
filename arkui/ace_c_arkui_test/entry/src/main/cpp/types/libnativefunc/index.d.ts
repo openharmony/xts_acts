@@ -5415,6 +5415,150 @@ export const testArkUI090: () => number;
 
 export const testArkUI091: () => number;
 
+export const testRelativeContaineAlignmentRuleOptionCreate001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionDispose001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetStart001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetStart002: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetStart003: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetEnd001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetEnd002: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetEnd003: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetCenterHorizontal001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetCenterHorizontal002: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetCenterHorizontal003: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetTop001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetTop002: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetTop003: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetBottom001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetBottom002: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetBottom003: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetCenterVertical001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetCenterVertical002: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetCenterVertical003: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetBiasHorizontal001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetBiasHorizontal002: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetBiasVertical001: () => number;
+
+export const testRelativeContaineAlignmentRuleOptionSetBiasVertical002: () => number;
+
+export const testRelativeContainerGuidelineOptionCreate001: () => number;
+
+export const testRelativeContainerGuidelineOptionDispose001: () => number;
+
+export const testRelativeContainerGuidelineOptionSetId001: () => number;
+
+export const testRelativeContainerGuidelineOptionSetId002: () => number;
+
+export const testRelativeContainerGuidelineOptionSetId003: () => number;
+
+export const testRelativeContainerGuidelineOptionSetId004: () => number;
+
+export const testRelativeContainerGuidelineOptionGetId001: () => number;
+
+export const testRelativeContainerGuidelineOptionGetId002: () => number;
+
+export const testRelativeContainerGuidelineOptionSetDirection001: () => number;
+
+export const testRelativeContainerGuidelineOptionSetDirection002: () => number;
+
+export const testRelativeContainerGuidelineOptionGetDirection001: () => number;
+
+export const testRelativeContainerGuidelineOptionGetDirection002: () => number;
+
+export const testRelativeContainerGuidelineOptionSetPositionStart001: () => number;
+
+export const testRelativeContainerGuidelineOptionSetPositionStart002: () => number;
+
+export const testRelativeContainerGuidelineOptionSetPositionStart003: () => number;
+
+export const testRelativeContainerGuidelineOptionSetPositionStart004: () => number;
+
+export const testRelativeContainerGuidelineOptionGetPositionStart001: () => number;
+
+export const testRelativeContainerGuidelineOptionGetPositionStart002: () => number;
+
+export const testRelativeContainerGuidelineOptionSetPositionEnd001: () => number;
+
+export const testRelativeContainerGuidelineOptionSetPositionEnd002: () => number;
+
+export const testRelativeContainerGuidelineOptionSetPositionEnd003: () => number;
+
+export const testRelativeContainerGuidelineOptionSetPositionEnd004: () => number;
+
+export const testRelativeContainerGuidelineOptionGetPositionEnd001: () => number;
+
+export const testRelativeContainerGuidelineOptionGetPositionEnd002: () => number;
+
+export const testRelativeContainerBarrierOptionCreate001: () => number;
+
+export const testRelativeContainerBarrierOptionDispose001: () => number;
+
+export const testRelativeContainerBarrierOptionSetId001: () => number;
+
+export const testRelativeContainerBarrierOptionSetId002: () => number;
+
+export const testRelativeContainerBarrierOptionSetId003: () => number;
+
+export const testRelativeContainerBarrierOptionSetId004: () => number;
+
+export const testRelativeContainerBarrierOptionGetId001: () => number;
+
+export const testRelativeContainerBarrierOptionGetId002: () => number;
+
+export const testRelativeContainerBarrierOptionSetDirection001: () => number;
+
+export const testRelativeContainerBarrierOptionSetDirection002: () => number;
+
+export const testRelativeContainerBarrierOptionSetDirection003: () => number;
+
+export const testRelativeContainerBarrierOptionSetDirection004: () => number;
+
+export const testRelativeContainerBarrierOptionSetDirection005: () => number;
+
+export const testRelativeContainerBarrierOptionSetDirection006: () => number;
+
+export const testRelativeContainerBarrierOptionGetDirection001: () => number;
+
+export const testRelativeContainerBarrierOptionGetDirection002: () => number;
+
+export const testRelativeContainerBarrierOptionSetReferencedId001: () => number;
+
+export const testRelativeContainerBarrierOptionSetReferencedId002: () => number;
+
+export const testRelativeContainerBarrierOptionSetReferencedId003: () => number;
+
+export const testRelativeContainerBarrierOptionGetReferencedId001: () => number;
+
+export const testRelativeContainerBarrierOptionGetReferencedId002: () => number;
+
+export const testRelativeContainerBarrierOptionGetReferencedId003: () => number;
+
+export const testRelativeContainerBarrierOptionGetReferencedSize001: () => number;
+
+export const testRelativeContainerBarrierOptionGetReferencedSize002: () => number;
+
 export const testRelativeContaineAlignmentRuleOption001: () => number;
 
 export const testRelativeContaineAlignmentRuleOption002: () => number;

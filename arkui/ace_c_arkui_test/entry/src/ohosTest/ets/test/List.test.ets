@@ -592,6 +592,9 @@ import testArkUI from './arkApi/arkUIApiTest.test'
 import testAnimationTest from './animation/animationTest.test'
 import testWaterFlower from './waterFlower/waterFlowerTest.test'
 import accessibilityStateTest from './accessibilityState/accessibilityStateTest.test'
+import relativeContainerGuidelineTest from "./relativecontainer/RelativeContainerGuidelineTest.test"
+import relativeContainerBarrierTest from "./relativecontainer/RelativeContainerBarrierTest.test"
+import relativecontaineAlignmentRuleOptionAdditionTest from './relativecontainer/RelativeContainerAlignmentRuleOptionAdditionTest.test'
 import relativecontaineAlignmentRuleOptionTest from './relativecontaine/RelativeContaineAlignmentRuleOptionTest.test'
 import relativecontaineBarrierOptionTest from './relativecontaine/RelativeContaineBarrierOptionTest.test'
 import testGesture from './gesture/GestureTest.test'
@@ -1331,6 +1334,9 @@ export default function testsuite() {
   testWaterFlower()
   textInputOnFocusTest()
   accessibilityStateTest()
+  relativeContainerGuidelineTest()
+  relativeContainerBarrierTest()
+  relativecontaineAlignmentRuleOptionAdditionTest()
   relativecontaineAlignmentRuleOptionTest()
   relativecontaineBarrierOptionTest()
   testGesture()
