@@ -42,7 +42,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
       console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.info('window_layout_test beforeAll end');
     })
-    afterEach(async ()=>{
+    beforeEach(async ()=>{
       if(tempWnd !== null && tempWnd !== undefined){
         await (tempWnd as window.Window).destroyWindow();
       }
