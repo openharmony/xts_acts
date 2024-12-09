@@ -25,7 +25,7 @@ export default function windowInputTest(context: common.UIAbilityContext, window
     let tempWnd: window.Window | void;
     let subWin: window.Window | void;
 
-    afterEach(async ()=>{
+    beforeEach(async ()=>{
       if(tempWnd !== null && tempWnd !== undefined){
         await (tempWnd as window.Window).destroyWindow();
       }

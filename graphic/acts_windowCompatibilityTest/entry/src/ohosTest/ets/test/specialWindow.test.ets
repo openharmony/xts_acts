@@ -29,7 +29,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
     let tempWnd: window.Window | void;
     let subWinWithOPs: window.Window | void;
 
-    afterEach(async ()=>{
+    beforeEach(async ()=>{
       if(windowClass !== null && windowClass !== undefined){
         await (windowClass as window.Window).destroyWindow();
       }
