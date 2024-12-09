@@ -639,6 +639,9 @@ export default function animateToTest() {
     */
     it('animateTest_2300', 0, async (done: Function) => {
       console.info('animateTest_2300 START');
+      globalThis.value.message.notify({
+        name: 'finishCallbackType', value: 1
+      });
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 1013,
         priority: events_emitter.EventPriority.LOW
@@ -650,6 +653,8 @@ export default function animateToTest() {
         } catch (err) {
           console.info("animateTest_2300 get state result err is: " + JSON.stringify(err));
         }
+        console.info('animateTest_2300 END');
+        done();
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -657,8 +662,6 @@ export default function animateToTest() {
         console.info("animateTest_2300 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("animateTest_2300 click result is: " + JSON.stringify(sendEventByKey('button181', 10, "")));
-      console.info('animateTest_2300 END');
-      done();
     });
   })
 }
