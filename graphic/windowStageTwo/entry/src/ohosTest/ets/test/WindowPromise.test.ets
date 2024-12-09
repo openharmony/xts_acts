@@ -19,6 +19,7 @@ import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import deviceInfo from '@ohos.deviceInfo';
 import { Driver, ON } from '@ohos.UiTest';
+import settings from '@ohos.settings';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -64,6 +65,7 @@ export default function windowPromiseTest() {
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
     let deviceType: string = '';
+    let isAutoWindow:string = '';
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -78,6 +80,11 @@ export default function windowPromiseTest() {
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
+      isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','');
+      //isAutoWindow == '' 非PAD设备
+      //isAutoWindow == 'true' PAD设备自由多窗模式
+      //isAutoWindow == 'false' PAD设备非自由多窗模式
+      console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
       
     })
 
@@ -1702,7 +1709,7 @@ export default function windowPromiseTest() {
         windowClass.setImmersiveModeEnabledState(enabled);
         let isEnabled = windowClass.getImmersiveModeEnabledState();
         console.log(msgStr + 'success to setImmersiveModeEnabledState enabled:' + isEnabled);
-        if(deviceType != '2in1' &&  deviceType!='table'){
+        if(deviceType != '2in1' || isAutoWindow =='false'){
           expect(isEnabled).assertEqual(true);
           done();
         }else{

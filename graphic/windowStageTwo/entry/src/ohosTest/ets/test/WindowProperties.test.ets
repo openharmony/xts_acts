@@ -18,16 +18,24 @@ import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import { Driver, ON } from '@ohos.UiTest';
-
+import deviceInfo from '@ohos.deviceInfo';
+import settings from '@ohos.settings';
 export default function windowPropertiesTest() {
   describe('windowProperties_test', () => {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context : common.UIAbilityContext;
+    let deviceType: string = '';
     let windowStage:ohosWindow.WindowStage;
+    let isAutoWindow:string = '';
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+      deviceType = deviceInfo.deviceType;
+      console.log('jsUnittest beforeAll deviceType =' + deviceType);
+      isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','');
+      console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -2419,8 +2427,15 @@ export default function windowPropertiesTest() {
         console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
         const windowStatus = windowClass.getWindowStatus();
         console.info(`${caseName} windowStatus is: ${windowStatus}`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
-        done();
+        if(deviceType !=='2in1' || isAutoWindow =='false'){
+          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+          await windowClass.recover();
+          done();
+        }else{
+          expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE);
+          await windowClass.recover();
+          done();
+        }
       } catch (exception) {
         if(exception.code == 801) {
           console.info(`${caseName}: The current device type does not support: ${exception.message}`);
@@ -2449,9 +2464,9 @@ export default function windowPropertiesTest() {
         await sleep(1000);
         const windowStatus = windowClass.getWindowStatus();
         console.info(`${caseName} windowStatus is: ${windowStatus}`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
-        await windowClass.recover();
-        done();
+          expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+          await windowClass.recover();
+          done();
       } catch (exception) {
         if(exception.code == 801) {
           console.info(`${caseName}: The current device type does not support: ${exception.message}`);
