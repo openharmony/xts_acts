@@ -143,7 +143,7 @@
 #include "eventcallback/event_callback_test.h"
 #include "nodetree/node_tree_xcomponent_test.h"
 #include "commonevent/commonevent_event_test.h"
-
+#include "customdialog/customdialog_test.h"
 #include "grid/grid_nodeadapter_test.h"
 #include "refresh/refresh_offsetEvent_test.h"
 #include "hybird/hybird_getnodehandle_test.h"
@@ -640,6 +640,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"customComponentUnregisterNodeCustomEventTest", nullptr,
          CustomComponentUnregisterNodeCustomEventTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"customDialogSetAutoCancelTest", nullptr, CustomDialogTest::CreateNativeNodeSetAutoCancel,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customDialogRegisterOnWillDismissTest", nullptr, CustomDialogTest::CreateNativeNodeRegisterOnWillDismiss,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

@@ -796,6 +796,19 @@ import hybirdGetNodeHandleTest from "./hybird/HybirdGetNodeHandleTest.test"
 import responseConfigUpdateTest from "./response/ResponseConfigUpdateTest.test"
 import requirementPanGestureTest from './requirement/RequirementPanGestureTest.test'
 import customComponentLayoutConstraintTest from './customcomponent/CustomComponentLayoutConstraintTest.test'
+import customDialogSetContentTest from "./customdialog/CustomDialogSetContentTest.test"
+import customDialogRemoveContentTest from "./customdialog/CustomDialogRemoveContentTest.test"
+import customDialogSetContentAlignmentTest from "./customdialog/CustomDialogSetContentAlignmentTest.test"
+import customDialogResetContentAlignmentTest from "./customdialog/CustomDialogResetContentAlignmentTest.test"
+import customDialogSetModalModeTest from "./customdialog/CustomDialogSetModalModeTest.test"
+import customDialogSetAutoCancelTest from "./customdialog/CustomDialogSetAutoCancelTest.test"
+import customDialogSetMaskTest from "./customdialog/CustomDialogSetMaskTest.test"
+import customDialogSetBackgroundColorTest from "./customdialog/CustomDialogSetBackgroundColorTest.test"
+import customDialogSetCornerRadiusTest from "./customdialog/CustomDialogSetCornerRadiusTest.test"
+import customDialogSetGridColumnCountTest from "./customdialog/CustomDialogSetGridColumnCountTest.test"
+import customDialogEnableCustomAnimationTest from "./customdialog/CustomDialogEnableCustomAnimationTest.test"
+import customDialogRegisterOnWillDismissTest from "./customdialog/CustomDialogRegisterOnWillDismissTest.test"
+import customDialogShowTest from "./customdialog/CustomDialogShowTest.test"
 
 export default function testsuite() {
 
@@ -1572,4 +1585,17 @@ export default function testsuite() {
   customComponentUnRegisterNodeCustomEventTest()
   customComponentLayoutConstraintDisposeTest()
   customComponentLayoutConstraintTest()
+  customDialogSetContentTest()
+  customDialogRemoveContentTest()
+  customDialogSetContentAlignmentTest()
+  customDialogResetContentAlignmentTest()
+  customDialogSetModalModeTest()
+  customDialogSetAutoCancelTest()
+  customDialogSetMaskTest()
+  customDialogSetBackgroundColorTest()
+  customDialogSetCornerRadiusTest()
+  customDialogSetGridColumnCountTest()
+  customDialogEnableCustomAnimationTest()
+  customDialogRegisterOnWillDismissTest()
+  customDialogShowTest()
 }
