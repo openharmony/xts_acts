@@ -38,6 +38,7 @@ group("multimedia") {
       "audio_ndk/oh_audio_stream_builder_test:ActsAudioStreamBuildeTest",
       "av_codec/audio_decoder:ActsAvbufferDecoderTest",
       "av_codec/audio_encoder:ActsAvbufferEncoderTest",
+      "av_codec/audio_test:ActsAvAudioEncoderCapiUnitTest",
       "av_codec/avcencInfo:ActsAvcencInfoTest",
       "av_codec/capability:ActsCapabilityTest",
       "av_codec/demuxer:ActsDemuxerTest",
