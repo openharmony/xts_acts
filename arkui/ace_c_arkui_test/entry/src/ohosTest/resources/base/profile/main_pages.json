@@ -216,6 +216,8 @@
     "MainAbility/pages/grid/GridAdapterTest",
     "MainAbility/pages/refresh/RefreshLessOffsetTest",
     "MainAbility/pages/refresh/RefreshOverOffsetTest",
-    "MainAbility/pages/radio/RadioOnChangeCheckedTest"
+    "MainAbility/pages/radio/RadioOnChangeCheckedTest",
+    "MainAbility/pages/hybird/HybirdGetNodeHandleTest",
+    "MainAbility/pages/requirement/RequirementPanGestureTest"
   ]
 }
