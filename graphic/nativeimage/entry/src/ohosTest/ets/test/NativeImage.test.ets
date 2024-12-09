@@ -543,10 +543,7 @@ export default function nativeImageTest() {
      */
     it('testNativeImageSetOnFrameAvailableListenerNormal', 0, async (done: Function) => {
       let result: Array<number> = nativeimage.oHNativeImageSetOnFrameAvailableListenerNormal();
-      expect(result[0]).assertEqual(0);
-      expect(result[1]).assertEqual(0);
-      expect(result[2]).assertEqual(0);
-      expect(result[3]).assertEqual(0);
+      expect(result).assertEqual(0);
       done();
     });
 

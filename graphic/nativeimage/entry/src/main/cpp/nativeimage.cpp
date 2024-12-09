@@ -113,6 +113,20 @@ static void InitEGLEnv()
     eglMakeCurrent(eglDisplay_, EGL_NO_SURFACE, EGL_NO_SURFACE, eglContext_);
 }
 
+int32_t g_callBack = 0;
+
+void DealCallback(void * context)
+{
+    g_callBack++;
+    return;
+}
+
+static void OnFrameAvailable(void *context)
+{
+    DealCallback(context);
+    return;
+}
+
 static OH_NativeImage *getNativeImage()
 {
     GLuint textureId = SUCCESS;
@@ -937,12 +951,6 @@ static napi_value OHNativeImageGetTransformMatrixV2Normal(napi_env env, napi_cal
 
 static napi_value OHNativeImageSetOnFrameAvailableListenerNullptr(napi_env env, napi_callback_info info)
 {
-    class NativeImageAdaptor {
-    public:
-        ~NativeImageAdaptor();
-        static NativeImageAdaptor *GetInstance();
-        static void OnFrameAvailable(void *context);
-    };
     OH_NativeImage *nativeImage = nullptr;
     napi_value result = nullptr;
     OH_OnFrameAvailableListener listener;
@@ -970,55 +978,40 @@ static napi_value OHNativeImageUnSetOnFrameAvailableListenerNullptr(napi_env env
 
 static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, napi_callback_info info)
 {
-    class NativeImageAdaptor {
-    public:
-        ~NativeImageAdaptor();
-        static NativeImageAdaptor *GetInstance();
-        static void OnFrameAvailable(void *context);
-    };
-
-    OH_NativeImage *nativeImage1 = getNativeImage();
+    OH_NativeImage *nativeImage1 = nullptr;
+    nativeImage1 = OH_ConsumerSurface_Create();
     OH_OnFrameAvailableListener listener1;
+    listener1.context = static_cast<void *>(nativeImage1);
+    listener1.onFrameAvailable = OnFrameAvailable;
     napi_value result = nullptr;
-    napi_create_array_with_length(env, ARR_NUMBER_4, &result);
-    napi_value result1 = nullptr;
-
-    int res1 = OH_NativeImage_SetOnFrameAvailableListener(nativeImage1, listener1);
-    if (res1 == 0) {
-        napi_create_int32(env, SUCCESS, &result1);
-    } else {
-        napi_create_int32(env, FAIL, &result1);
+    int res = OH_NativeImage_SetOnFrameAvailableListener(nativeImage1, listener1);
+    if (res != 0) {
+        napi_create_int32(env, FAIL, &result);
+        return result;
     }
-    napi_set_element(env, result, ARR_NUMBER_0, result1);
-
     napi_value result2 = nullptr;
-    int res2 = OH_NativeImage_SetOnFrameAvailableListener(nativeImage1, listener1);
-    if (res2 == 0) {
-        napi_create_int32(env, SUCCESS, &result2);
-    } else {
-        napi_create_int32(env, FAIL, &result2);
+    res = OH_NativeImage_SetOnFrameAvailableListener(nativeImage1, listener1);
+    if (res != 0) {
+        napi_create_int32(env, FAIL, &result);
+        return result;
     }
-    napi_set_element(env, result, ARR_NUMBER_1, result2);
-
-    OH_NativeImage *nativeImage2 = getNativeImage();
+    OH_NativeImage *nativeImage2 = nullptr;
+    nativeImage2 = OH_ConsumerSurface_Create();
     OH_OnFrameAvailableListener listener2;
-    napi_value result3 = nullptr;
-    int res3 = OH_NativeImage_SetOnFrameAvailableListener(nativeImage1, listener2);
-    if (res3 == 0) {
-        napi_create_int32(env, SUCCESS, &result3);
-    } else {
-        napi_create_int32(env, FAIL, &result3);
+    listener2.context = static_cast<void *>(nativeImage1);
+    listener2.onFrameAvailable = OnFrameAvailable;
+    res = OH_NativeImage_SetOnFrameAvailableListener(nativeImage1, listener2);
+    if (res != 0) {
+        napi_create_int32(env, FAIL, &result);
+        return result;
     }
-    napi_set_element(env, result, ARR_NUMBER_2, result3);
-
     napi_value result4 = nullptr;
-    int res4 = OH_NativeImage_SetOnFrameAvailableListener(nativeImage2, listener1);
-    if (res4 == 0) {
-        napi_create_int32(env, SUCCESS, &result4);
-    } else {
-        napi_create_int32(env, FAIL, &result4);
+    res = OH_NativeImage_SetOnFrameAvailableListener(nativeImage2, listener1);
+    if (res != 0) {
+        napi_create_int32(env, FAIL, &result);
+        return result;
     }
-    napi_set_element(env, result, ARR_NUMBER_3, result4);
+    napi_create_int32(env, SUCCESS, &result);
     OH_NativeImage_Destroy(&nativeImage1);
     OH_NativeImage_Destroy(&nativeImage2);
     return result;
@@ -1026,15 +1019,10 @@ static napi_value OHNativeImageSetOnFrameAvailableListenerNormal(napi_env env, n
 
 static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env, napi_callback_info info)
 {
-    class NativeImageAdaptor {
-    public:
-        ~NativeImageAdaptor();
-        static NativeImageAdaptor *GetInstance();
-        static void OnFrameAvailable(void *context);
-    };
-
     OH_NativeImage *nativeImage1 = getNativeImage();
     OH_OnFrameAvailableListener listener1;
+    listener1.context = static_cast<void *>(nativeImage1);
+    listener1.onFrameAvailable = OnFrameAvailable;
     napi_value result = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_3, &result);
     napi_value result1 = nullptr;

@@ -30,6 +30,7 @@
 #define NUMBER_3 3
 #define TIMEOUT_FIVE 10
 #define NUMBER_254 254
+#define NUMBER_255 255
 #define NUMBER_256 256
 #define NUMBER_500 500
 #define NUMBER_40001000 40001000
@@ -280,15 +281,19 @@ static napi_value OHNativeVSyncCreateMuch(napi_env env, napi_callback_info info)
             continue;
         }
     }
-    if (success == NUMBER_254) {
+    if (success == NUMBER_255 || success == NUMBER_254) {
+        for (uint32_t i = 0; i < NUMBER_500; i++) {
+            OH_NativeVSync_Destroy(nativeVSyncArr[i]);
+        }
         napi_create_int32(env, SUCCESS, &result);
+        return result;
     } else {
-        napi_create_int32(env, success, &result);
+        for (uint32_t i = 0; i < NUMBER_500; i++) {
+            OH_NativeVSync_Destroy(nativeVSyncArr[i]);
+        }
+        napi_create_int32(env, FAIL, &result);
+        return result;
     }
-    for (uint32_t i = 0; i < NUMBER_500; i++) {
-        OH_NativeVSync_Destroy(nativeVSyncArr[i]);
-    }
-    return result;
 }
 
 static napi_value OHNativeVSyncGetPeriodNullptr(napi_env env, napi_callback_info info)
