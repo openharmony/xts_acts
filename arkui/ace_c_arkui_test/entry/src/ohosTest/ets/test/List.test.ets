@@ -810,6 +810,27 @@ import customDialogEnableCustomAnimationTest from "./customdialog/CustomDialogEn
 import customDialogRegisterOnWillDismissTest from "./customdialog/CustomDialogRegisterOnWillDismissTest.test"
 import customDialogShowTest from "./customdialog/CustomDialogShowTest.test"
 
+import lazyForEachCreateTest from "./lazyforeach/LazyForEachCreateTest.test"
+import lazyForEachDisposeTest from "./lazyforeach/LazyForEachDisposeTest.test"
+import lazyForEachGetAllItemsTest from "./lazyforeach/LazyForEachGetAllItemsTest.test"
+import lazyForEachGetHostNodeTest from "./lazyforeach/LazyForEachGetHostNodeTest.test"
+import lazyForEachGetItemIndexTest from "./lazyforeach/LazyForEachGetItemIndexTest.test"
+import lazyForEachGetRemovedNodeTest from "./lazyforeach/LazyForEachGetRemovedNodeTest.test"
+import lazyForEachGetTotalNodeCountTest from "./lazyforeach/LazyForEachGetTotalNodeCountTest.test"
+import lazyForEachGetTypeTest from "./lazyforeach/LazyForEachGetTypeTest.test"
+import lazyForEachGetUserDataTest from "./lazyforeach/LazyForEachGetUserDataTest.test"
+import lazyForEachInsertItemTest from "./lazyforeach/LazyForEachInsertItemTest.test"
+import lazyForEachMoveItemTest from "./lazyforeach/LazyForEachMoveItemTest.test"
+import lazyForEachRegisterEventReceiverTest from "./lazyforeach/LazyForEachRegisterEventReceiverTest.test"
+import lazyForEachReloadAllItemsTest from "./lazyforeach/LazyForEachReloadAllItemsTest.test"
+import lazyForEachReloadItemTest from "./lazyforeach/LazyForEachReloadItemTest.test"
+import lazyForEachRemoveItemTest from "./lazyforeach/LazyForEachRemoveItemTest.test"
+import lazyForEachSetItemTest from "./lazyforeach/LazyForEachSetItemTest.test"
+import lazyForEachSetNodeIdTest from "./lazyforeach/LazyForEachSetNodeIdTest.test"
+import lazyForEachSetTotalNodeCountTest from "./lazyforeach/LazyForEachSetTotalNodeCountTest.test"
+import lazyForEachSetUserDataTest from "./lazyforeach/LazyForEachSetUserDataTest.test"
+import lazyForEachUnregisterEventReceiverTest from "./lazyforeach/LazyForEachUnregisterEventReceiverTest.test"
+
 export default function testsuite() {
 
   datePickerAccessibilityDescriptionTest()
@@ -1598,4 +1619,24 @@ export default function testsuite() {
   customDialogEnableCustomAnimationTest()
   customDialogRegisterOnWillDismissTest()
   customDialogShowTest()
+  lazyForEachSetUserDataTest()
+  lazyForEachCreateTest()
+  lazyForEachDisposeTest()
+  lazyForEachSetTotalNodeCountTest()
+  lazyForEachGetTotalNodeCountTest()
+  lazyForEachRegisterEventReceiverTest()
+  lazyForEachUnregisterEventReceiverTest()
+  lazyForEachReloadAllItemsTest()
+  lazyForEachReloadItemTest()
+  lazyForEachRemoveItemTest()
+  lazyForEachInsertItemTest()
+  lazyForEachMoveItemTest()
+  lazyForEachGetAllItemsTest()
+  lazyForEachGetUserDataTest()
+  lazyForEachGetTypeTest()
+  lazyForEachGetRemovedNodeTest()
+  lazyForEachGetItemIndexTest()
+  lazyForEachGetHostNodeTest()
+  lazyForEachSetItemTest()
+  lazyForEachSetNodeIdTest()
 }

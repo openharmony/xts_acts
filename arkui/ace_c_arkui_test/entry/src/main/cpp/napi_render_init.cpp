@@ -155,6 +155,8 @@
 #include "customcomponent/customcomponent_eventondraw_test.h"
 #include "customcomponent/customcomponent_registernodecustomevent_test.h"
 #include "customcomponent/customcomponent_unregisternodecustomevent_test.h"
+#include "lazyforeach/lazyforeach_test.h"
+
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -644,6 +646,32 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"customDialogRegisterOnWillDismissTest", nullptr, CustomDialogTest::CreateNativeNodeRegisterOnWillDismiss,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"lazyForEachGetHostNodeTest", nullptr, LazyForEachTest::CreateNativeNodeHostNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachSetNodeIdTest", nullptr, LazyForEachTest::CreateNativeNodeNodeId, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachReloadAllItemsTest", nullptr, LazyForEachTest::CreateNativeNodeReloadAllItems, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachGetAllItemsTest", nullptr, LazyForEachTest::CreateNativeNodeGetAllItems, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachReloadItemTest", nullptr, LazyForEachTest::CreateNativeNodeReloadItem, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachInsertItemTest", nullptr, LazyForEachTest::CreateNativeNodeInsertItem, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachMoveItemTest", nullptr, LazyForEachTest::CreateNativeNodeMoveItem, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachRemoveItemTest", nullptr, LazyForEachTest::CreateNativeNodeRemoveItem, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachGetUserDataTest", nullptr, LazyForEachTest::CreateNativeNodeGetUserData, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachGetTypeTest", nullptr, LazyForEachTest::CreateNativeNodeGetType, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachGetRemovedNodeTest", nullptr, LazyForEachTest::CreateNativeNodeGetRemovedNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachGetItemIndexTest", nullptr, LazyForEachTest::CreateNativeNodeItemIndex, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"lazyForEachSetItemTest", nullptr, LazyForEachTest::CreateNativeNodeSetItem, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

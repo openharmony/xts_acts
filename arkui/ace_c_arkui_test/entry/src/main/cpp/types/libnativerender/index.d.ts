@@ -491,6 +491,33 @@ export const customComponentEventOnDrawTest : (a : string) => void;
 export const customComponentRegisterNodeCustomEventTest : (a : string) => void;
 
 export const customComponentUnregisterNodeCustomEventTest : (a : string) => void;
+
 export const customDialogSetAutoCancelTest: (a: string) => void;
 
 export const customDialogRegisterOnWillDismissTest: (a: string) => void;
+
+export const lazyForEachGetHostNodeTest: (a: string) => void;
+
+export const lazyForEachSetNodeIdTest: (a: string) => void;
+
+export const lazyForEachReloadAllItemsTest: (a: string) => void;
+
+export const lazyForEachGetAllItemsTest: (a: string) => void;
+
+export const lazyForEachReloadItemTest: (a: string) => void;
+
+export const lazyForEachInsertItemTest: (a: string) => void;
+
+export const lazyForEachRemoveItemTest: (a: string) => void;
+
+export const lazyForEachMoveItemTest: (a: string) => void;
+
+export const lazyForEachGetUserDataTest: (a: string) => void;
+
+export const lazyForEachGetTypeTest: (a: string) => void;
+
+export const lazyForEachGetRemovedNodeTest: (a: string) => void;
+
+export const lazyForEachGetItemIndexTest: (a: string) => void;
+
+export const lazyForEachSetItemTest: (a: string) => void;
