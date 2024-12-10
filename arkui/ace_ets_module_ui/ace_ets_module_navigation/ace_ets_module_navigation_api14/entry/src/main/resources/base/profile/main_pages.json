@@ -6,3 +6,123 @@
 		"MainAbility/pages/BarStyle/SafeAreaPadding"
     ]
 }
+import { LengthMetrics } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct SafeAreaPadding_01 {
+  @State row_top: number = 0;
+  @State row_bottom: number = 0;
+  @State row_left: number = 0;
+  @State row_right: number = 0;
+  @State row_safeArea_top: number = 0;
+  @State row_safeArea_bottom: number = 0;
+  @State row_safeArea_left: number = 0;
+  @State row_safeArea_right: number = 0;
+  @State column_top: number = 0;
+  @State column_bottom: number = 0;
+  @State column_left: number = 0;
+  @State column_right: number = 0;
+  @State column_safeArea_top: number = 0;
+  @State column_safeArea_bottom: number = 0;
+  @State column_safeArea_left: number = 0;
+  @State column_safeArea_right: number = 0;
+
+  build() {
+    Column({ space: 20 }) {
+      Column() {
+        Row()
+          .backgroundColor(Color.Gray)
+          .width(150)
+          .height(150)
+          .borderWidth(2)
+          .borderColor(Color.Blue)
+          .padding({
+            top: this.row_top,
+            bottom: this.row_bottom,
+            left: this.row_left,
+            right: this.row_right
+          })
+          .safeAreaPadding({
+            top: this.row_safeArea_top,
+            bottom: this.row_safeArea_bottom,
+            left: this.row_safeArea_left,
+            right: this.row_safeArea_right
+          })
+
+      }
+      .backgroundColor(Color.Pink)
+      .width(200)
+      .height(200)
+      // .alignItems(HorizontalAlign.Start)
+      .borderWidth(2)
+      .borderColor(Color.Red)
+      .padding({
+        top: this.column_top,
+        bottom: this.column_bottom,
+        left: this.column_left,
+        right: this.column_right
+      })
+      .safeAreaPadding({
+        top: this.column_safeArea_top,
+        bottom: this.column_safeArea_bottom,
+        left: this.column_safeArea_left,
+        right: this.column_safeArea_right
+      })
+
+      Blank()
+
+      Scroll() {
+        Column({space: 10}) {
+          Column() {
+            Text('Row Setting')
+            Row() {
+              Button('safeArea-top+,' + this.row_safeArea_top).onClick((event: ClickEvent) => {
+                this.row_safeArea_top += 5
+              })
+              Button('safeArea-top-,' + this.row_safeArea_top).onClick((event: ClickEvent) => {
+                this.row_safeArea_top -= 5
+              })
+            }
+
+            Row() {
+              Button('safeArea-bottom+,' + this.row_safeArea_bottom).onClick((event: ClickEvent) => {
+                this.row_safeArea_bottom += 5
+              })
+              Button('safeArea-bottom-,' + this.row_safeArea_bottom).onClick((event: ClickEvent) => {
+                this.row_safeArea_bottom -= 5
+              })
+            }
+
+            Row() {
+              Button('safeArea-left+,' + this.row_safeArea_left).onClick((event: ClickEvent) => {
+                this.row_safeArea_left += 5
+              })
+              Button('safeArea-left-,' + this.row_safeArea_left).onClick((event: ClickEvent) => {
+                this.row_safeArea_left -= 5
+              })
+            }
+
+            Row() {
+              Button('safeArea-right+,' + this.row_safeArea_right).onClick((event: ClickEvent) => {
+                this.row_safeArea_right += 5
+              })
+              Button('safeArea-right-,' + this.row_safeArea_right).onClick((event: ClickEvent) => {
+                this.row_safeArea_right -= 5
+              })
+            }
+
+            Row() {
+              Button('padding-top+,' + this.row_top).onClick((event: ClickEvent) => {
+                this.row_top += 5
+              })
+              Button('padding-top-,' + this.row_top).onClick((event: ClickEvent) => {
+                this.row_top -= 5
+              })
+            }
+
+            Row() {
+              Button('padding-bottom+,' + this.row_bottom).onClick((event: ClickEvent) => {
+                this.row_bottom += 5
+              })
+              Button('padding-bottom-,' + 
