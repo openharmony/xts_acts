@@ -12,13 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ReplaceDestination1Test from './Navigation/ReplaceDestination1.test'
-import ReplaceDestination2 from './Navigation/ReplaceDestination2.test'
-import SafeAreaPadding from './BarStyleTest/SafeAreaPadding.test'
 
-export default function testsuite() {
-  ReplaceDestination1Test();
-  ReplaceDestination2();
-  SafeAreaPadding();
+@Entry
+@Component
+struct NavigationBarStyle {
+  @State str1:string = ''
+  @State pageInfos: NavPathStack = new NavPathStack();
 
+  build() {
+    Column({space:5}){
+      Text('BarStyle.SAFE_AREA_PADDING')
+      Navigation(this.pageInfos) {
+        Column({space:10}) {
+          Text('content')
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Pink)
+        .id('NavigationBarStyle_content2')
+      }
+      .title('NavigationTitle', {barStyle: BarStyle.SAFE_AREA_PADDING, backgroundColor:Color.Orange})
+      .id('BarStyle_SafeAreaPadding')
+    }
+  }
 }
