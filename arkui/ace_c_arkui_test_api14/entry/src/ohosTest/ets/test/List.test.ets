@@ -36,6 +36,6 @@ export default function testsuite() {
   KeyEventGetKeyIntensionCodeTest()
   KeyEventGetKeySourceTest()
   KeyEventGetKeyTextTest()
-  // KeyEventGetPressedKeysTest()
+  KeyEventGetPressedKeysTest()
   KeyEventGetUnicodeTest()
 }
