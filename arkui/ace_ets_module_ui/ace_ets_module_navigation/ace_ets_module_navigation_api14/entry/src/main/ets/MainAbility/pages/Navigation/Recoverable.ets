@@ -32,7 +32,7 @@ struct RecoverableDemo {
         Scroll(){
           Column(){
             Text('这是NavIndex 首页').fontStyle(FontStyle.Italic).fontWeight(FontWeight.Bolder).padding({top:10,bottom:10})
-            Button("navigation："+this.navigationrecstring).onClick(()=>{
+            Button('navigation：'+this.navigationrecstring).onClick(()=>{
               if(this.navigationOpenReceover===true){
                 this.navigationOpenReceover=false
                 this.navigationrecstring='当前页面不可恢复'
