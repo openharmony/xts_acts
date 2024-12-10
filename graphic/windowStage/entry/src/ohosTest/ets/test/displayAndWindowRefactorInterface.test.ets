@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import deviceInfo from '@ohos.deviceInfo';
 
 function createFirstWindow(windowConfig: ohosWindow.Configuration, msgStr: string): Promise<ohosWindow.Window> {
   return new Promise((resolve, reject) => {
@@ -62,7 +63,14 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
   windowStage: ohosWindow.WindowStage) {
   describe('displayAndWindowRefactorInterface_test', () => {
     console.log('describe displayAndWindowRefactorInterface_test start!!!')
-
+    let currentDeviceIsPC = false;
+    beforeAll(() => {
+      console.info('displayAndWindowRefactorInterface_test beforeAll begin');
+      let deviceTypeInfo = deviceInfo.deviceType
+      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
+      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
+      console.info('displayAndWindowRefactorInterface_test beforeAll end');
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0090
      * @tc.name      : testCreateWindow_Type_Dialog
@@ -1569,35 +1577,39 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
     it('testSetWindowLayoutFullScreen_True_Promise', 0, async ()=> {
       let caseName = 'testSetWindowLayoutFullScreen_True_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd: ohosWindow.Window | undefined = undefined;
-      try {
-        wnd = windowStage.getMainWindowSync();
-        console.log(msgStr + 'ohosWindow.getLastWindow ' + JSON.stringify(wnd));
-        expect(wnd != null).assertTrue();
-      } catch (exception) {
-        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-        expect().assertFail();
-      };
-      try {
-        let isLayoutFullScreen = true;
-        await wnd!.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
-          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-          try {
-            let propData = wnd!.getWindowProperties()
-            console.info(msgStr + 'wnd.getWindowProperties propData: ' + JSON.stringify(propData));
-            expect(propData.isLayoutFullScreen).assertTrue();
-          } catch (exception) {
-            console.error(msgStr + 'try catch Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
-            expect().assertFail();
-          }
-        }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+      if(currentDeviceIsPC){
+        console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
+      } else {
+        let wnd: ohosWindow.Window | undefined = undefined;
+        try {
+          wnd = windowStage.getMainWindowSync();
+          console.log(msgStr + 'ohosWindow.getLastWindow ' + JSON.stringify(wnd));
+          expect(wnd != null).assertTrue();
+        } catch (exception) {
+          console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
-        });
-      } catch (exception) {
-        console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-      };
+        };
+        try {
+          let isLayoutFullScreen = true;
+          await wnd!.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            try {
+              let propData = wnd!.getWindowProperties()
+              console.info(msgStr + 'wnd.getWindowProperties propData: ' + JSON.stringify(propData));
+              expect(propData.isLayoutFullScreen).assertTrue();
+            } catch (exception) {
+              console.error(msgStr + 'try catch Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+              expect().assertFail();
+            }
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+            expect().assertFail();
+          });
+        } catch (exception) {
+          console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
+          expect().assertFail();
+        };
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1780
@@ -1610,34 +1622,40 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
     it('testSetWindowLayoutFullScreen_False_Promise', 0, async ()=> {
       let caseName = 'testSetWindowLayoutFullScreen_False_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd: ohosWindow.Window | undefined = undefined;
-      try {
-        wnd = windowStage.getMainWindowSync();
-        expect(wnd != null).assertTrue();
-      } catch (exception) {
-        console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
-        expect().assertFail();
-      };
-      try {
-        let isLayoutFullScreen = false;
-        await wnd!.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
-          console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
+      if(currentDeviceIsPC){
+        console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
+      } else {
+          let wnd: ohosWindow.Window | undefined = undefined;
           try {
-            let propData = wnd!.getWindowProperties()
-            console.info(msgStr + 'wnd.getWindowProperties propData: ' + JSON.stringify(propData));
-            expect(!propData.isLayoutFullScreen).assertTrue();
+            wnd = windowStage.getMainWindowSync();
+            expect(wnd != null).assertTrue();
           } catch (exception) {
-            console.error(msgStr + 'try catch Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+            console.error(msgStr + 'try catch Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
-          }
-        }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-          expect().assertFail();
-        });
-      } catch (exception) {
-        console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-      };
+          };
+          try {
+            let isLayoutFullScreen = false;
+            await wnd!.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+              console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
+              try {
+                let propData = wnd!.getWindowProperties()
+                console.info(msgStr + 'wnd.getWindowProperties propData: ' + JSON.stringify(propData));
+                expect(!propData.isLayoutFullScreen).assertTrue();
+              } catch (exception) {
+                console.error(msgStr + 'try catch Failed to obtain the window properties. Cause: ' +
+                JSON.stringify(exception));
+                expect().assertFail();
+              }
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+              expect().assertFail();
+            });
+          } catch (exception) {
+            console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' +
+            JSON.stringify(exception));
+            expect().assertFail();
+          };
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1790
@@ -1650,45 +1668,55 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
     it('testSetWindowLayoutFullScreen_True_Callback', 0, async (done: Function) => {
       let caseName = 'testSetWindowLayoutFullScreen_True_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd: ohosWindow.Window | undefined = undefined;
-      try {
-        wnd = windowStage.getMainWindowSync();
-        expect(wnd != null).assertTrue();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to get the main window. Cause: ' + JSON.stringify(exception));
-        expect().assertFail();
+      if(currentDeviceIsPC){
+        console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
         done();
-      };
-      let isLayoutFullScreen = true;
-      try {
-        wnd!.setWindowLayoutFullScreen(isLayoutFullScreen, (err) => {
-          if (err.code) {
-            console.error(msgStr + 'err Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-            try {
-              expect().assertFail();
-            } catch (error) {
-              console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+      } else {
+        let wnd: ohosWindow.Window | undefined = undefined;
+        try {
+          wnd = windowStage.getMainWindowSync();
+          expect(wnd != null).assertTrue();
+        } catch (exception) {
+          console.error(msgStr + 'Failed to get the main window. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+          done();
+        }
+        ;
+        let isLayoutFullScreen = true;
+        try {
+          wnd!.setWindowLayoutFullScreen(isLayoutFullScreen, (err) => {
+            if (err.code) {
+              console.error(msgStr + 'err Failed to set the window layout to full-screen mode. Cause:' +
+              JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+              }
+              done();
+              return;
             }
-            done();
-            return;
-          }
-          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-          try {
-            let propData = wnd!.getWindowProperties()
-            console.log(msgStr + JSON.stringify(propData));
-            expect(propData.isLayoutFullScreen).assertTrue();
-            done();
-          } catch (exception) {
-            console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
-            expect().assertFail();
-            done();
-          };
-        });
-      } catch (exception) {
-        console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
-      };
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            try {
+              let propData = wnd!.getWindowProperties()
+              console.log(msgStr + JSON.stringify(propData));
+              expect(propData.isLayoutFullScreen).assertTrue();
+              done();
+            } catch (exception) {
+              console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+              expect().assertFail();
+              done();
+            }
+            ;
+          });
+        } catch (exception) {
+          console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' +
+          JSON.stringify(exception));
+          expect().assertFail();
+          done();
+        }
+        ;
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1800
@@ -1701,45 +1729,50 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
     it('testSetWindowLayoutFullScreen_False_Callback', 0, async (done: Function) => {
       let caseName = 'testSetWindowLayoutFullScreen_False_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let wnd: ohosWindow.Window | undefined = undefined;
-      try {
-        wnd = windowStage.getMainWindowSync();
-        expect(wnd != null).assertTrue();
-      } catch (exception) {
-        console.error(msgStr + 'Failed to create the main window. Cause: ' + JSON.stringify(exception));
-        expect().assertFail();
+      if(currentDeviceIsPC){
+        console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
         done();
-      };
-      let isLayoutFullScreen = false;
-      try {
-        wnd!.setWindowLayoutFullScreen(isLayoutFullScreen, (err) => {
-          if (err.code) {
-            console.error(msgStr + 'err Failed to set the window not layout to full-screen mode. Cause:' + JSON.stringify(err));
-            try {
-              expect().assertFail();
-            } catch (error) {
-              console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
-            }
-            done();
-            return;
-          }
-          console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
+      } else {
+          let wnd: ohosWindow.Window | undefined = undefined;
           try {
-            let propData = wnd!.getWindowProperties()
-            console.log(msgStr + JSON.stringify(propData));
-            expect(!propData.isLayoutFullScreen).assertTrue();
-            done();
+            wnd = windowStage.getMainWindowSync();
+            expect(wnd != null).assertTrue();
           } catch (exception) {
-            console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+            console.error(msgStr + 'Failed to create the main window. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
             done();
           };
-        });
-      } catch (exception) {
-        console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
-      };
+          let isLayoutFullScreen = false;
+          try {
+            wnd!.setWindowLayoutFullScreen(isLayoutFullScreen, (err) => {
+              if (err.code) {
+                console.error(msgStr + 'err Failed to set the window not layout to full-screen mode. Cause:' + JSON.stringify(err));
+                try {
+                  expect().assertFail();
+                } catch (error) {
+                  console.info(`ohosWindow.createWindow catch error: ${JSON.stringify(error)}`)
+                }
+                done();
+                return;
+              }
+              console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
+              try {
+                let propData = wnd!.getWindowProperties()
+                console.log(msgStr + JSON.stringify(propData));
+                expect(!propData.isLayoutFullScreen).assertTrue();
+                done();
+              } catch (exception) {
+                console.error(msgStr + 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+                expect().assertFail();
+                done();
+              };
+            });
+          } catch (exception) {
+            console.error(msgStr + 'try catch Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
+            expect().assertFail();
+            done();
+          };
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2300

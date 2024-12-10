@@ -12,15 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import deviceInfo from '@ohos.deviceInfo';
 
 export default function windowRichSceneTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage) {
   describe('window_richScene_test', () => {
     console.log('describe window_richScene_test start!!!')
-
+    let currentDeviceIsPC = false;
+    beforeAll(() => {
+      console.info('window_richScene_test beforeAll begin');
+      let deviceTypeInfo = deviceInfo.deviceType
+      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
+      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
+      console.info('window_richScene_test beforeAll end');
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0110
      * @tc.name      : testCreateWindow_Invalid_WinType_Promise
@@ -481,48 +489,59 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
       let caseName: string = 'testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: ohosWindow.Window | void;
-      windowClass = await windowStage.createSubWindow('testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times').catch((err: BusinessError) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
+      if(currentDeviceIsPC){
+        console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
         done();
-      });
-      console.log(msgStr + 'windowStage.createSubWindow success');
-      expect(!!windowClass).assertTrue();
-      let isLayoutFullScreen = true;
-      try {
-        await (windowClass as ohosWindow.Window).setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
-          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-        }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+      } else {
+        let windowClass: ohosWindow.Window | void;
+        windowClass =
+          await windowStage.createSubWindow('testSetWindowLayoutFullScreen_Invoke_Interface_Two_Times')
+            .catch((err: BusinessError) => {
+              console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+              expect().assertFail();
+              done();
+            });
+        console.log(msgStr + 'windowStage.createSubWindow success');
+        expect(!!windowClass).assertTrue();
+        let isLayoutFullScreen = true;
+        try {
+          await (windowClass as ohosWindow.Window).setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' +
+            JSON.stringify(err));
+            expect().assertFail();
+            done();
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' +
+          JSON.stringify(exception));
           expect().assertFail();
           done();
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
-      }
-      try {
-        (windowClass as ohosWindow.Window).setWindowLayoutFullScreen(false, async (err) => {
-          if (err.code) {
-            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
-            try {
-              expect().assertFail();
-            } catch (error) {
-              console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
+        }
+        try {
+          (windowClass as ohosWindow.Window).setWindowLayoutFullScreen(false, async (err) => {
+            if (err.code) {
+              console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' +
+              JSON.stringify(err));
+              try {
+                expect().assertFail();
+              } catch (error) {
+                console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
+              }
+              done();
+              return;
             }
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+            await (windowClass as ohosWindow.Window).destroyWindow();
             done();
-            return;
-          }
-          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-          await (windowClass as ohosWindow.Window).destroyWindow();
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' +
+          JSON.stringify(exception));
+          expect().assertFail();
           done();
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
+        }
       }
     })
     /**
@@ -537,51 +556,61 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
       let caseName: string = 'testSetWindowLayoutFullScreen_Destroyed_Win';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowClass: ohosWindow.Window | void;
-      windowClass = await windowStage.createSubWindow('testSetWindowLayoutFullScreen_Destroyed_Win').catch((err: BusinessError) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
+      if(currentDeviceIsPC){
+        console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
         done();
-      });
-      console.log(msgStr + 'windowStage.createSubWindow success');
-      expect(!!windowClass).assertTrue();
-      let isLayoutFullScreen = true;
-      try {
-        await (windowClass as ohosWindow.Window).setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
-          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-        }).catch((err: BusinessError) => {
-          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+      } else {
+        let windowClass: ohosWindow.Window | void;
+        windowClass = await windowStage.createSubWindow('testSetWindowLayoutFullScreen_Destroyed_Win')
+          .catch((err: BusinessError) => {
+            console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          });
+        console.log(msgStr + 'windowStage.createSubWindow success');
+        expect(!!windowClass).assertTrue();
+        let isLayoutFullScreen = true;
+        try {
+          await (windowClass as ohosWindow.Window).setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' +
+            JSON.stringify(err));
+            expect().assertFail();
+            done();
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' +
+          JSON.stringify(exception));
           expect().assertFail();
           done();
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
-        done();
-      }
-      await (windowClass as ohosWindow.Window).destroyWindow();
-      try {
-        (windowClass as ohosWindow.Window).setWindowLayoutFullScreen(false, (err) => {
-          if (err.code) {
-            console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        }
+        await (windowClass as ohosWindow.Window).destroyWindow();
+        try {
+          (windowClass as ohosWindow.Window).setWindowLayoutFullScreen(false, (err) => {
+            if (err.code) {
+              console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' +
+              JSON.stringify(err));
+              try {
+                expect(err.code).assertEqual(1300002);
+              } catch (error) {
+                console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
+              }
+              done();
+              return;
+            }
+            console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
             try {
-              expect(err.code).assertEqual(1300002);
+              expect().assertFail();
             } catch (error) {
               console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
             }
             done();
-            return;
-          }
-          console.info(msgStr + 'Succeeded in setting the window layout to full-screen mode.');
-          try {
-            expect().assertFail();
-          } catch (error) {
-            console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
-          }
-          done();
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed to set the window layout to full-screen mode. catch Cause:' + JSON.stringify(exception));
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to set the window layout to full-screen mode. catch Cause:' +
+          JSON.stringify(exception));
+        }
       }
     })
     /**
@@ -1760,7 +1789,7 @@ export default function windowRichSceneTest(context: common.UIAbilityContext, wi
         done();
       });
     })
-    
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1440
      * @tc.name      : testSetUIContent_Window_State_Abnorma_Callback
