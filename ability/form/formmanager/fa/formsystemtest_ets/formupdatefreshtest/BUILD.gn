@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsFormUpdateRefreshTest") {
+ohos_js_hap_suite("ActsFormUpdateTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
@@ -22,7 +22,7 @@ ohos_js_hap_suite("ActsFormUpdateRefreshTest") {
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsFormUpdateRefreshTest"
+  hap_name = "ActsFormUpdateTest"
   subsystem_name = "ability"
   part_name = "form_fwk"
 }

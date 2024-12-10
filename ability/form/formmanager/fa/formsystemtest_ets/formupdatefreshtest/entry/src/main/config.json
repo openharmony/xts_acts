@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.ohos.st.formupdaterefreshtest",
+    "bundleName": "com.ohos.st.formupdatetest",
     "vendor": "ohos",
     "version": {
       "code": 1000000,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.ohos.st.formupdaterefreshtest",
+    "package": "com.ohos.st.formupdatetest",
     "name": ".FormUpdateSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [

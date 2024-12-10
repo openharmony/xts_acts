@@ -60,7 +60,7 @@ group("formmanager") {
       "formsystemtest_ets/formstatetest_disable:ActsFormStateDisableTest",
       "formsystemtest_ets/formstatetest_enable:ActsFormStateEnableTest",
       "formsystemtest_ets/formstresstest:ActsFormStressTest",
-      "formsystemtest_ets/formupdatefreshtest:ActsFormUpdateRefreshTest",
+      "formsystemtest_ets/formupdatefreshtest:ActsFormUpdateTest",
     ]
   }
 }
