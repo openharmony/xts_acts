@@ -125,4 +125,110 @@ struct SafeAreaPadding_01 {
               Button('padding-bottom+,' + this.row_bottom).onClick((event: ClickEvent) => {
                 this.row_bottom += 5
               })
-              Button('padding-bottom-,' + 
+              Button('padding-bottom-,' + this.row_bottom).onClick((event: ClickEvent) => {
+                this.row_bottom -= 5
+              })
+            }
+
+            Row() {
+              Button('padding-left+,' + this.row_left).onClick((event: ClickEvent) => {
+                this.row_left += 5
+              })
+              Button('padding-left-,' + this.row_left).onClick((event: ClickEvent) => {
+                this.row_left -= 5
+              })
+            }
+
+            Row() {
+              Button('padding-right+,' + this.row_right).onClick((event: ClickEvent) => {
+                this.row_right += 5
+              })
+              Button('padding-right-,' + this.row_right).onClick((event: ClickEvent) => {
+                this.row_right -= 5
+              })
+            }
+          }
+          .border({width: 1})
+
+          Column() {
+            Text('Column Setting')
+            Row() {
+              Button('safeArea-top+,' + this.column_safeArea_top).onClick((event: ClickEvent) => {
+                this.column_safeArea_top += 5
+              })
+              Button('safeArea-top-,' + this.column_safeArea_top).onClick((event: ClickEvent) => {
+                this.column_safeArea_top -= 5
+              })
+            }
+
+            Row() {
+              Button('safeArea-bottom+,' + this.column_safeArea_bottom).onClick((event: ClickEvent) => {
+                this.column_safeArea_bottom += 5
+              })
+              Button('safeArea-bottom-,' + this.column_safeArea_bottom).onClick((event: ClickEvent) => {
+                this.column_safeArea_bottom -= 5
+              })
+            }
+
+            Row() {
+              Button('safeArea-left+,' + this.column_safeArea_left).onClick((event: ClickEvent) => {
+                this.column_safeArea_left += 5
+              })
+              Button('safeArea-left-,' + this.column_safeArea_left).onClick((event: ClickEvent) => {
+                this.column_safeArea_left -= 5
+              })
+            }
+
+            Row() {
+              Button('safeArea-right+,' + this.column_safeArea_right).onClick((event: ClickEvent) => {
+                this.column_safeArea_right += 5
+              })
+              Button('safeArea-right-,' + this.column_safeArea_right).onClick((event: ClickEvent) => {
+                this.column_safeArea_right -= 5
+              })
+            }
+
+            Row() {
+              Button('padding-top+,' + this.column_top).onClick((event: ClickEvent) => {
+                this.column_top += 5
+              })
+              Button('padding-top-,' + this.column_top).onClick((event: ClickEvent) => {
+                this.column_top -= 5
+              })
+            }
+
+            Row() {
+              Button('padding-bottom+,' + this.column_bottom).onClick((event: ClickEvent) => {
+                this.column_bottom += 5
+              })
+              Button('padding-bottom-,' + this.column_bottom).onClick((event: ClickEvent) => {
+                this.column_bottom -= 5
+              })
+            }
+
+            Row() {
+              Button('padding-left+,' + this.column_left).onClick((event: ClickEvent) => {
+                this.column_left += 5
+              })
+              Button('padding-left-,' + this.column_left).onClick((event: ClickEvent) => {
+                this.column_left -= 5
+              })
+            }
+
+            Row() {
+              Button('padding-right+,' + this.column_right).onClick((event: ClickEvent) => {
+                this.column_right += 5
+              })
+              Button('padding-right-,' + this.column_right).onClick((event: ClickEvent) => {
+                this.column_right -= 5
+              })
+            }
+          }
+          .border({width: 1})
+        }
+      }.height(350)
+
+      // .alignItems(HorizontalAlign.End)
+    }.width('100%').height('100%')
+  }
+}
