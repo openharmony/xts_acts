@@ -4681,12 +4681,6 @@ export const testTextAreaBlurOnSubmit002: () => number;
 
 export const testTextAreaBlurOnSubmit003: () => number;
 
-export const testTextAreaSelectionMenuHidden001: () => number;
-
-export const testTextAreaSelectionMenuHidden002: () => number;
-
-export const testTextAreaSelectionMenuHidden003: () => number;
-
 export const testTextAreaShowCounter001: () => number;
 
 export const testTextAreaShowCounter002: () => number;
@@ -7051,8 +7045,6 @@ export const testTextAreaMaxLines001 : () => number;
 export const testTextAreaMaxLines002 : () => number;
 export const testTextAreaMaxLines003 : () => number;
 export const testTextAreaMaxLines004 : () => number;
-export const testTextAreaInputFilter001 : () => number;
-export const testTextAreaInputFilter002 : () => number;
 export const testTextAreaEnterKeyType001 : () => number;
 export const testTextAreaEnterKeyType002 : () => number;
 export const testTextAreaEnterKeyType003 : () => number;

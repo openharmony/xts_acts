@@ -168,6 +168,8 @@
 #include "customcomponent/customcomponent_registernodecustomevent_test.h"
 #include "customcomponent/customcomponent_unregisternodecustomevent_test.h"
 #include "lazyforeach/lazyforeach_test.h"
+#include "textarea/textarea_selectionmenuhidden_test.h"
+#include "textarea/textarea_inputfilter_test.h"
 #include "scroll/scroll_scroll_event_test.h"
 #include "button/button_label_test.h"
 #include "xcomponent/xcomponent_id_test.h"
@@ -811,6 +813,10 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"lazyForEachSetItemTest", nullptr, LazyForEachTest::CreateNativeNodeSetItem, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"textAreaSelectionMenuHiddenTest", nullptr, TextAreaSelectionMenuHiddenTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textAreaInputFilterTest", nullptr, TextAreaInputFilterTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
         {"scrollScrollEventOnWillScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnWillScroll,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"scrollScrollEventOnDidScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnDidScroll,

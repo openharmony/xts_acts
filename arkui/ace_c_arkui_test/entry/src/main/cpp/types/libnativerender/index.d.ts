@@ -632,6 +632,10 @@ export const lazyForEachGetItemIndexTest: (a: string) => void;
 
 export const lazyForEachSetItemTest: (a: string) => void;
 
+export const textAreaSelectionMenuHiddenTest: (a: string) => void;
+
+export const textAreaInputFilterTest: (a: string) => void;
+
 export const imageOnfinishTest: (a: string) => void;
 
 export const imageDownProgressTest: (a: string) => void;

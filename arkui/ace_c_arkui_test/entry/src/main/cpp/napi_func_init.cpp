@@ -496,7 +496,6 @@
 #include "radio/radio_radioStyle_test.cpp"
 #include "radio/radio_checked_test.cpp"
 #include "textarea/textarea_bluronsubmit_test.cpp"
-#include "textarea/textarea_selectionmenuhidden_test.cpp"
 #include "textarea/textarea_showcounter_test.cpp"
 #include "textarea/textarea_selectedbackgroundcolor_test.cpp"
 #include "textarea/textarea_placeholder_test.cpp"
@@ -650,7 +649,6 @@
 #include "textarea/textarea_text_test.cpp"
 #include "textarea/textarea_fontfeature_test.cpp"
 #include "textarea/textarea_maxlines_test.cpp"
-#include "textarea/textarea_inputfilter_test.cpp"
 #include "textarea/textarea_enterkeytype_test.cpp"
 #include "textarea/textarea_enablekeyboardonfocus_test.cpp"
 #include "textarea/textarea_showkeyboardonfocus_test.cpp"
@@ -4726,12 +4724,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testTextAreaBlurOnSubmit003", nullptr, TestTextAreaBlurOnSubmit003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testTextAreaSelectionMenuHidden001", nullptr, TestTextAreaSelectionMenuHidden001, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextAreaSelectionMenuHidden002", nullptr, TestTextAreaSelectionMenuHidden002, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextAreaSelectionMenuHidden003", nullptr, TestTextAreaSelectionMenuHidden003, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
         {"testTextAreaShowCounter001", nullptr, TestTextAreaShowCounter001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextAreaShowCounter002", nullptr, TestTextAreaShowCounter002, nullptr, nullptr, nullptr,
@@ -6420,10 +6412,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextAreaMaxLines003", nullptr, TestTextAreaMaxLines003, nullptr, nullptr, nullptr, napi_default,
          nullptr },
         {"testTextAreaMaxLines004", nullptr, TestTextAreaMaxLines004, nullptr, nullptr, nullptr, napi_default,
-         nullptr },
-        {"testTextAreaInputFilter001", nullptr, TestTextAreaInputFilter001, nullptr, nullptr, nullptr, napi_default,
-         nullptr },
-        {"testTextAreaInputFilter002", nullptr, TestTextAreaInputFilter002, nullptr, nullptr, nullptr, napi_default,
          nullptr },
         {"testTextAreaEnterKeyType001", nullptr, TestTextAreaEnterKeyType001, nullptr, nullptr, nullptr, napi_default,
          nullptr },
