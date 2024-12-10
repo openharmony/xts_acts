@@ -59,19 +59,22 @@ export default function NavigationEnableDragBar() {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
 
-      let btn1 = await driver.findComponent(ON.id('drag_true'));
-      await btn1.click()
-      console.info('[NavigationEnableDragBar_0100] click drag true');
-      await CommonFunc.sleep(1000);
-      await driver.assertComponentExist(ON.type('DragBarItem'));
+      // The pc device does not have a DragBar.
+      if (globalThis.winLeft == 0) {
+        let btn1 = await driver.findComponent(ON.id('drag_true'));
+        await btn1.click()
+        console.info('[NavigationEnableDragBar_0100] click drag true');
+        await CommonFunc.sleep(1000);
+        await driver.assertComponentExist(ON.type('DragBarItem'));
 
-      btn1 = await driver.findComponent(ON.id('drag_false'));
-      await btn1.click()
-      console.info('[NavigationEnableDragBar_0100] click drag false');
-      await CommonFunc.sleep(1000);
+        btn1 = await driver.findComponent(ON.id('drag_false'));
+        await btn1.click()
+        console.info('[NavigationEnableDragBar_0100] click drag false');
+        await CommonFunc.sleep(1000);
 
-      let comps = await driver.findComponent(ON.type('DragBarItem'));
-      expect(comps).assertNull();
+        let comps = await driver.findComponent(ON.type('DragBarItem'));
+        expect(comps).assertNull();
+      }
 
       console.info('NavigationEnableDragBar_0100 END');
       done();

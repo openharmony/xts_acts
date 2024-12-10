@@ -63,7 +63,7 @@ export struct PageOne {
                     }
                   }, (item1: string) => item1)
                 }
-                .height('50%')
+                .height('30%')
               } else {
                 Text('item_' + item).fontSize(16).backgroundColor(Color.Yellow).width('90%').height(100)
               }

@@ -84,6 +84,5 @@ export default function NavigationBindToNestedScrollable() {
       console.info('NavigationBindToNestedScrollable_0100 END');
       done();
     });
-
   })
 }
