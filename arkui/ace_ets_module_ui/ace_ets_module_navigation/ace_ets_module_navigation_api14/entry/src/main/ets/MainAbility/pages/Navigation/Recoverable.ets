@@ -65,7 +65,7 @@ struct RecoverableDemo {
         .onClick(() => {
           this.navigationOpenReceover = !this.navigationOpenReceover;
         })
-        .id("update")
+        .id('update')
 
     }
   }
