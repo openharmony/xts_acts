@@ -16,8 +16,8 @@
 import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class param {
-  info: string = "default_param";
+class Param {
+  info: string = 'defaultParam';
   constructor(info: string) { this.info = info }
 }
 
@@ -57,7 +57,7 @@ export struct PageHome1 {
                 .margin(10)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    this.pageStack.pushPath({ name: 'PageDetail1', param:new param('ok') }, true, SplitPolicy.DETAIL_PAGE);
+                    this.pageStack.pushPath({ name: 'PageDetail1', param:new Param('ok') }, true, SplitPolicy.DETAIL_PAGE);
                   }
                 })
                 .id('pageDetail1Id')
