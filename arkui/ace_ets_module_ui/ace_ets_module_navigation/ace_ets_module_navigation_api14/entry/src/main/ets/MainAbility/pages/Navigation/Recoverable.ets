@@ -53,13 +53,13 @@ struct RecoverableDemo {
               .height(40)
               .margin({ bottom: 10 })
           }.backgroundColor('#FFFF77')
-          .height("100%")
+          .height('100%')
         }
       }.title('NavIndex')
       .recoverable(this.navigationOpenReceover)
-      .id("testNavigation")
+      .id('testNavigation')
       .navDestination(this.pageMap)
-      .height("50%")
+      .height('50%')
 
       Button('update recoverable')
         .onClick(() => {
