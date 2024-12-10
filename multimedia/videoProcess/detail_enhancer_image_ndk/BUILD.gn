@@ -15,12 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
 import("//foundation/multimedia/media_foundation/config.gni")
 
-module_output_path = "acts/ActsDetailEnhancerImageNdkInnerUnitTest"
-
-group("ActsDetailEnhancerImageNdkUnitTest") {
-  testonly = true
-  deps = [ ":ActsDetailEnhancerImageNdkInnerUnitTest" ]
-}
+module_output_path = "acts/ActsDetailEnhancerImageNdkUnitTest"
 
 #################################################################################################################
 detail_enhancer_image_ndk_unit_test_cflags = [
@@ -45,7 +40,7 @@ detail_enhancer_image_ndk_unit_test_cflags = [
   "-Dprotected=public",
 ]
 
-ohos_unittest("ActsDetailEnhancerImageNdkInnerUnitTest") {
+ohos_moduletest_suite("ActsDetailEnhancerImageNdkUnitTest") {
   module_out_path = module_output_path
 
   sanitize = {
