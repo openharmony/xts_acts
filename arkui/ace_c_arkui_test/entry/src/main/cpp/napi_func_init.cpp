@@ -505,7 +505,6 @@
 #include "textarea/textarea_height_test.cpp"
 #include "textarea/textarea_position_test.cpp"
 #include "textinput/textinput_bluronsubmit_test.cpp"
-#include "textinput/textinput_selectionmenuhidden_test.cpp"
 #include "textinput/textinput_placeholder_test.cpp"
 #include "textinput/textinput_width_test.cpp"
 #include "textinput/textinput_height_test.cpp"
@@ -677,7 +676,6 @@
 #include "textinput/textinput_selectall_test.cpp"
 #include "textinput/textinput_maxlines_test.cpp"
 #include "textinput/textinput_numberoflines_test.cpp"
-#include "textinput/textinput_inputfilter_test.cpp"
 #include "textinput/textinput_showkeyboardonfocus_test.cpp"
 #include "textinput/textinput_caretoffset_test.cpp"
 #include "textinput/textinput_contentlinecount_test.cpp"
@@ -4776,12 +4774,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testTextInputBlurOnSubmit003", nullptr, TestTextInputBlurOnSubmit003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testTextInputSelectionMenuHidden001", nullptr, TestTextInputSelectionMenuHidden001, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextInputSelectionMenuHidden002", nullptr, TestTextInputSelectionMenuHidden002, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"testTextInputSelectionMenuHidden003", nullptr, TestTextInputSelectionMenuHidden003, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
         {"testTextInputPlaceholder001", nullptr, TestTextInputPlaceholder001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextInputCaretStyle001", nullptr, TestTextInputCaretStyle001, nullptr, nullptr, nullptr, napi_default,
@@ -6686,10 +6678,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextInputNumberOfLines003", nullptr, TestTextInputNumberOfLines003, nullptr, nullptr, nullptr,
          napi_default, nullptr },
         {"testTextInputNumberOfLines004", nullptr, TestTextInputNumberOfLines004, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputInputFilter001", nullptr, TestTextInputInputFilter001, nullptr, nullptr, nullptr,
-         napi_default, nullptr },
-        {"testTextInputInputFilter002", nullptr, TestTextInputInputFilter002, nullptr, nullptr, nullptr,
          napi_default, nullptr },
         {"testTextInputShowKeyboardOnFocus001", nullptr, TestTextInputShowKeyboardOnFocus001, nullptr, nullptr,
          nullptr, napi_default, nullptr },

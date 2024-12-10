@@ -745,3 +745,11 @@ export const waterFlowNestedScroll2Test: (a: string) => void;
 export const waterFlowNestedScroll3Test: (a: string) => void;
 
 export const waterFlowGetNestedScrollData: () => number[][];
+
+export const textInputSelectionMenuHiddenTest: (a: string) => void;
+
+export const textInputInputFilterTest: (a: string) => void;
+
+export const textInputOnTextSelectionAllChangeTest :( a :string) => void;
+
+export const getTextInputSelectAllData : () => number[][];

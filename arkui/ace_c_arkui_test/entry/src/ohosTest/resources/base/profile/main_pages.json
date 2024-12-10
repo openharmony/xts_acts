@@ -337,7 +337,10 @@
     "MainAbility/pages/waterflow/WaterFlowScrollPageTest",
     "MainAbility/pages/waterflow/WaterFlowNestedScroll1Test",
     "MainAbility/pages/waterflow/WaterFlowNestedScroll2Test",
-    "MainAbility/pages/waterflow/WaterFlowNestedScroll3Test"
+    "MainAbility/pages/waterflow/WaterFlowNestedScroll3Test",
+    "MainAbility/pages/textinput/TextInputSelectionMenuHiddenTest",
+    "MainAbility/pages/textinput/TextInputInputFilterTest",
+    "MainAbility/pages/textinput/TextInputOnTextSelectionAllChangeTest"
     
   ]
 }

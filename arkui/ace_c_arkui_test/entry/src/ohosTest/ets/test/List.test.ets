@@ -889,6 +889,8 @@ import listChildrenMainSizeTest from './list/ListChildrenMainSizeTest.test'
 import listCloseAllActionTest from './list/ListCloseAllActionTest.test'
 import listNestedScrollEventTest from './list/ListNestedScrollEventTest.test'
 import listNestedScrollTest from './list/ListNestedScrollTest.test'
+
+import textInputOnTextSelectionAllChangeTest from './textinput/TextInputOnTextSelectionAllChangeTest.test'
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1754,4 +1756,5 @@ export default function testsuite() {
   listCloseAllActionTest()
   listNestedScrollEventTest()
   listNestedScrollTest()
+  textInputOnTextSelectionAllChangeTest()
 }
