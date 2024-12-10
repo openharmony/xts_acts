@@ -36,7 +36,7 @@ struct MultiNavigationEntry {
   }
 
   aboutToAppear(): void {
-    this.pageStack.pushPathByName('PageHome1',"paramTest", (popInfo) => {
+    this.pageStack.pushPathByName('PageHome1', 'paramTest', (popInfo) => {
       hilog.info(0x0000, 'demotest', 'PageHome1 onpop popInfo.result=' + popInfo.result);
     }, false, SplitPolicy.HOME_PAGE);
   }
