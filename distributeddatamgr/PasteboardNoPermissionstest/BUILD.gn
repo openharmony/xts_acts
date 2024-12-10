@@ -18,7 +18,7 @@ group("PasteboardNoPermissionstest") {
   if (is_standard_system) {
     deps = [
       "PasteboardEtsNoPermissionsTest:ActsPasteboardEtsNoPermissionsTest",
-	  "PasteboardNdkNoPermissionsTest:ActsPasteboardNdkNoPermissionsTest",
+      "PasteboardNdkNoPermissionsTest:ActsPasteboardNdkNoPermissionsTest",
     ]
   }
 }
