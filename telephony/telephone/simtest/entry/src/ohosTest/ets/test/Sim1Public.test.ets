@@ -37,7 +37,7 @@ const ExpectTrue = (n: boolean) => {
 }
 
 const SIM_PIN_OLD = "741593";
-
+			
 async function getPermissions() {
   console.info('getPermission start');
   type MyPermissions = "ohos.permission.WRITE_CONTACTS" | "ohos.permission.READ_CONTACTS";
@@ -60,9 +60,9 @@ export default function Sim1Public() {
   describe('Sim1Public', () => {
 
     beforeAll(async (done: Function) => {
-      console.log('getPermission beforeAll');
-      await getPermissions();
-      done();
+			console.log('getPermission beforeAll');
+			await getPermissions();
+			done();
     });
 
     afterEach(async (done: Function) => {
