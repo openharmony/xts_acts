@@ -27,8 +27,6 @@ struct clipContentWaterFlowDemo {
   private itemHeightArray: number[] = []
   //裁剪效果
   @State clipContent1: ContentClipMode = ContentClipMode.CONTENT_ONLY
-  @State clipContentMode1: ContentClipMode[] = [ContentClipMode.CONTENT_ONLY,ContentClipMode.BOUNDARY,ContentClipMode.SAFE_AREA]
-  @State clipNum: number = 0
   @State text1: string = 'CONTENT_ONLY'
 
   // 计算FlowItem高度
