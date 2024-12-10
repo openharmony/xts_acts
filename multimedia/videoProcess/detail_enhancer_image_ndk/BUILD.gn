@@ -11,9 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite.gni")
 import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
 import("//foundation/multimedia/media_foundation/config.gni")
+import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "acts/ActsDetailEnhancerImageNdkUnitTest"
 
