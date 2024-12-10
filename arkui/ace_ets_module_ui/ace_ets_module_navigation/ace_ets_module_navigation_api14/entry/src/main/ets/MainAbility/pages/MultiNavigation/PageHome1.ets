@@ -17,7 +17,7 @@ import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNaviga
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class Param {
-  info: string = 'defaultParam';
+  private info: string = 'defaultParam';
   constructor(info: string) { this.info = info }
 }
 
