@@ -41,7 +41,7 @@ struct ChainWeight {
         .justifyContent(FlexAlign.Center)
         .width(100)
         .height(100)
-        .backgroundColor("#FFCC00")
+        .backgroundColor('#FFCC00')
         .alignRules({
           left: { anchor: "row1", align: HorizontalAlign.End },
           right: { anchor: "__container__", align: HorizontalAlign.End }
