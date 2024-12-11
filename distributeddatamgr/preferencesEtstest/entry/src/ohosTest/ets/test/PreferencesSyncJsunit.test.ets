@@ -16,6 +16,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import data_preferences from '@ohos.data.preferences';
 import common from "@ohos.app.ability.common";
 
+
+const TAG = ["preserence_test"];
+
 let context: common.UIAbilityContext;
 const NAME = 'test_preferences_store';
 let options: data_preferences.Options = { name: 'test_preferences_store' };
@@ -504,6 +507,38 @@ export default function PreferencesSyncTest() {
             mPreferences = await data_preferences.getPreferencesSync(context, options);
             let pre2 = await mPreferences.getSync(KEY_TEST_BIGINT, BigInt(0));
             expect(bigint === pre2).assertTrue();
+        })
+
+
+
+        /**
+         * @tc.name testPreferencesPutBigIntSync0100
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperEtsTest_3200
+         * @tc.desc flushsync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+
+
+        it('testPreferenceFlushSync0100', 0, async (done: Function) => {
+            try {
+                mPreferences.clearSync();
+                mPreferences.putSync(KEY_TEST_STRING_ELEMENT,'TEST');
+                let pre = mPreferences.getSync(KEY_TEST_STRING_ELEMENT,'default');
+                expect('TEST').assertEqual(pre)
+                mPreferences.flushSync();
+                data_preferences.removePreferencesFromCacheSync(context,options)
+                mPreferences = data_preferences.getPreferencesSync(context,options)
+                let pre2 = mPreferences.getSync(KEY_TEST_STRING_ELEMENT,'default')
+                expect('TEST').assertEqual(pre2)
+                done();
+            } catch (e) {
+                console.info(TAG + "testPreferenceFlushSync0100" +e.code);
+                expect().assertFail();
+                done();
+            }
+
         })
 
     })
