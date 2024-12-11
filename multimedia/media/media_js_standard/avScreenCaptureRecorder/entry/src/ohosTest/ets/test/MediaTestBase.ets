@@ -89,6 +89,7 @@ export default class MediaTestBase {
 
     avScreenCaptureRecorder?.on('error', (err) => {
       console.error('avScreenCaptureRecorder error:' + err.message);
+      expect().assertFail()
     })
 
   }
@@ -101,7 +102,7 @@ export default class MediaTestBase {
       done();
     }
 
-    console.info('case EVENT::::!!' + steps[0]);
+    console.info('case EVENT::::!!'+steps[0]);
     switch (steps[0]) {
       case this.SETONCALLBACK_EVENT:
         steps.shift();
@@ -135,15 +136,8 @@ export default class MediaTestBase {
           console.info('avScreenCaptureRecorder init success');
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
-          if (avConfig.fd == -1) {
-
-            let mySteps = new Array(
-              this.END_EVENT);
-            this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, mySteps, done);
-          } else {
-            console.info('avScreenCaptureRecorder init failed, error: ' + err.message);
-            expect().assertFail()
-          }
+          console.info('avScreenCaptureRecorder init failed, error: ' + err.message);
+          expect().assertFail()
 
         });
 
@@ -154,12 +148,13 @@ export default class MediaTestBase {
           console.info('avScreenCaptureRecorder start success');
         }).catch((err: BusinessError) => {
           console.info('avScreenCaptureRecorder start failed, error: ' + err.message);
-
-          let mySteps = new Array(
-            this.RELEASECORDER_EVENT,
-            this.END_EVENT);
-          this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, mySteps, done);
+          expect().assertFail()
         })
+
+        this.driveFnNoSleep(1)
+        setTimeout(() => {
+          this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
+        }, recorderTime);
 
         break;
       case this.SKIPPRIVACYMODE_EVENT:
@@ -170,11 +165,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.info('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
-
-          let mySteps = new Array(
-            this.RELEASECORDER_EVENT,
-            this.END_EVENT);
-          this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, mySteps, done);
+          // expect().assertFail()
         })
 
         break;
@@ -185,11 +176,7 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.info('avScreenCaptureRecorder stop failed, error: ' + err.message);
-
-          let mySteps = new Array(
-            this.RELEASECORDER_EVENT,
-            this.END_EVENT);
-          this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, mySteps, done);
+          expect().assertFail()
         })
 
         break;
@@ -213,16 +200,118 @@ export default class MediaTestBase {
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.info('avScreenCaptureRecorder setMicEnabled failed, error: ' + err.message);
-
-          let mySteps = new Array(
-            this.RELEASECORDER_EVENT,
-            this.END_EVENT);
-          this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, mySteps, done);
+          expect().assertFail()
         })
+        break;
+      case this.AV_CREATEAVPLAYER:
+        steps.shift();
+        let sampleRate: ESObject = avConfig.audioSampleRate;
+        this.AvPlayerMp4(this.outputName, sampleRate, done)
         break;
       default:
         break;
     }
+  }
+
+  AvPlayerMp4(outputName: string, audioSampleRate: number, done: Function) {
+    media.createAVPlayer((err, video) => {
+      console.info(`case media err: ${err}`)
+      if (typeof (video) != 'undefined') {
+        console.info('case createAVPlayer success');
+        this.avPlayer = video;
+
+        this.avFileDescriptor = this.getFd(outputName)
+        if (typeof (this.avFileDescriptor) == 'string') {
+          console.info('case src test');
+          this.avPlayer.url = this.avFileDescriptor;
+        } else {
+          console.info('case fdsrc test');
+          this.avPlayer.fdSrc = this.avFileDescriptor;
+        }
+
+        let surfaceID: string = globalThis.value;
+        console.error(`case INITIALIZED , surfaceID is ${surfaceID}`);
+        this.avPlayer?.on('stateChange', async (state, reason) => {
+          switch (state) {
+            case this.AV_INITIALIZED:
+              if (!this.avPlayer) {
+                console.info(`avPlayer is null`);
+                break;
+              }
+              console.info(`case INITIALIZED`);
+              console.error(`case INITIALIZED , surfaceID is ${surfaceID}`);
+              this.avPlayer.surfaceId = surfaceID;
+              expect(this.avPlayer.state).assertEqual(this.AV_INITIALIZED);
+
+              setTimeout(() => {
+                this.avPlayer?.prepare((err) => {
+                  console.info('case prepare called' + err);
+                  if (err != null) {
+                    console.error(`case prepare error, errMessage is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                  } else if (this.avPlayer) {
+                    console.info('case avPlayer.duration: ' + this.avPlayer.duration);
+                  }
+                });
+              }, 1000);
+
+              break;
+            case this.AV_PREPARED:
+              if (this.avPlayer != null) {
+                this.getTrackDescriptionTest(this.avPlayer, audioSampleRate, done)
+              }
+              this.avPlayer?.play().then(() => {
+                console.info('Succeeded in playing');
+              }, (err: BusinessError) => {
+                console.error('Failed to play,error message is :' + err.message)
+              })
+              break;
+            case this.AV_PLAYING:
+              if (this.avPlayer != null) {
+                this.getTrackDescriptionTest(this.avPlayer, audioSampleRate, done)
+              }
+
+              this.avPlayer?.stop().then(() => {
+                console.info('avPlayer stop success');
+                this.avPlayer?.release().then(() => {
+                  console.info('avPlayer release success');
+                }).catch((err: BusinessError) => {
+                  console.info('avPlayer release failed, error: ' + err.message);
+                  expect().assertFail()
+                })
+              }).catch((err: BusinessError) => {
+                console.info('avPlayer stop failed, error: ' + err.message);
+                expect().assertFail()
+              })
+              break;
+            case this.AV_RELEASED:
+              this.avPlayer = null;
+              this.closeFd(this.avFileDescriptor.fd)
+              done();
+              break;
+            case this.AV_ERROR:
+              expect().assertFail();
+              this.avPlayer?.release().then(() => {
+                console.info('avPlayer release success');
+              }).catch((err: BusinessError) => {
+                console.info('avPlayer release failed, error: ' + err.message);
+                expect().assertFail()
+              })
+              this.avPlayer = null;
+              break;
+            default:
+              break;
+          }
+        })
+      }
+      if (err != null) {
+        console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
   }
 
   getTrackDescriptionTest(avPlayer: media.AVPlayer, audioSampleRate: number, done: Function) {
@@ -231,7 +320,7 @@ export default class MediaTestBase {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
           console.info(`case getTrackDescription is ${JSON.stringify(arrList[i])}`);
-          if (arrList[i]['codec_mime'].toString() == "audio/mp4a-latm") {
+          if(arrList[i]['codec_mime'].toString()=="audio/mp4a-latm"){
             expect(arrList[i]['bitrate']).assertLess(audioSampleRate / 3)
           }
         }
@@ -280,7 +369,6 @@ export default class MediaTestBase {
       console.error(`Failed to request permissions from user. Code is ${err.code}, message is ${err.message}`);
     })
   }
-
   // wait asynchronously
   async msleepAsync(time: number) {
     return new Promise<string>((resolve, reject) => {
@@ -320,6 +408,79 @@ export default class MediaTestBase {
     } else {
       console.info('[fs.closeSync] case fdNumber is null');
     }
+  }
+
+   audioRen: audio.AudioRenderer | ESObject;
+  async playPcmPromise() {
+    console.info(`${this.TAG}: Promise : Audio playPcmPromise Function`);
+    let audioStreamInfo: audio.AudioStreamInfo = {
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+      channels: audio.AudioChannel.CHANNEL_2,
+      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+    };
+
+    let audioRendererInfo: audio.AudioRendererInfo = {
+      usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+      rendererFlags: 0
+    };
+
+    let audioRendererOptions: audio.AudioRendererOptions = {
+      streamInfo: audioStreamInfo,
+      rendererInfo: audioRendererInfo
+    };
+
+    await audio.createAudioRenderer(audioRendererOptions).then((data) => {
+      this.audioRen = data;
+      console.info(`${this.TAG}: AudioRender Created : Success : Stream Type: SUCCESS`);
+    }).catch((err: BusinessError) => {
+      console.info(`${this.TAG}: AudioRender Created : ERROR : ${err.message}`);
+    });
+    let bufferSize: number = 0;
+
+    class Options {
+      offset?: number;
+      length?: number;
+    }
+
+    let filePath = globalThis.abilityContext.filesDir + '/f32le_44100_2_dayuhaitang.pcm'
+    let stat = await fs.stat(filePath)
+    let file: fs.File = await fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+
+    await this.audioRen.on('writeData', (buffer: ArrayBuffer) => {
+      console.info(`${this.TAG}: writeDataCallback : ${buffer.byteLength}`);
+
+      let options: Options = {
+        offset: bufferSize,
+        length: buffer.byteLength
+      }
+      fs.readSync(file.fd, buffer, options);
+      bufferSize += buffer.byteLength;
+      if (bufferSize > stat.size) {
+        bufferSize = 0
+      }
+    });
+
+    console.info(`${this.TAG}: AudioRenderer : Path : ${filePath}`);
+
+    console.info(`${this.TAG}: AudioRenderer : STATE : ${this.audioRen.state}`);
+
+  }
+  async playPcmPromiseStart(){
+
+    await this.audioRen.start().then(() => {
+      console.info(`${this.TAG}: renderInstant started :SUCCESS `);
+    }).catch((err: BusinessError) => {
+      console.info(`${this.TAG}: renderInstant start :ERROR : ${err.message}`);
+    });
+  }
+  async playPcmPromiseStop(){
+
+    await this.audioRen.stop().then(() => {
+      console.info(`${this.TAG}: renderInstant stop :SUCCESS `);
+    }).catch((err: BusinessError) => {
+      console.info(`${this.TAG}: renderInstant stop :ERROR : ${err.message}`);
+    });
   }
 }
 
