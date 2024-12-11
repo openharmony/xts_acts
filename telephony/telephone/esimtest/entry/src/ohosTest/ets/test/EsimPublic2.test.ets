@@ -1308,8 +1308,8 @@ export default function EsimPublic2() {
     it("testTelephonyEsimCancelSession5100", 0, async (done: Function) => {
       let caseName: string = 'testTelephonyEsimCancelSession5100';
       console.info(`${caseName} test start`);
-        eSIM.cancelSession(SLOT_0, transactionId,
-            eSIM.CancelReason.CANCEL_REASON_TIMEOUT).then((data: eSIM.ResultCode) => {
+      eSIM.cancelSession(SLOT_0, transactionId,
+        eSIM.CancelReason.CANCEL_REASON_TIMEOUT).then((data: eSIM.ResultCode) => {
         console.info(`${caseName} success : the ResultCode is:${data}`);
         expect(true).assertTrue();
         console.info(`${caseName} test end`);

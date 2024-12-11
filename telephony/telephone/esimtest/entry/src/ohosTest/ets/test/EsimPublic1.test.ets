@@ -47,7 +47,7 @@ let configuration: eSIM.DownloadConfiguration = {
 export default function EsimPublic1() {
   describe('EsimPublic1', () => {
     beforeAll(async (done: Function) => {
-          try {
+      try {
         isEsimSupport = eSIM.isSupported(SLOT_0);
         if (isEsimSupport) {
           console.info(`eSIM is supported`);
@@ -80,7 +80,7 @@ export default function EsimPublic1() {
       let caseName: string = 'testTelephonyEsimIsSupported0100';
       console.info(`${caseName} test start`);
       let isEsimSupport: boolean = eSIM.isSupported(SLOT_0);
-      if (!isEsimSupport) {
+      if (isEsimSupport) {
         console.info(`eSIM is supported`);
         expect(true).assertTrue();
         console.info(`${caseName} test end`);
@@ -237,7 +237,7 @@ export default function EsimPublic1() {
         done();
       } catch (err) {
         console.info(`${caseName} AddProfile failed, promise: err->${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(8300999);
+        expect(err.code).assertEqual(3120002);
         console.info(`${caseName} test end`);
         done();
       }
@@ -984,7 +984,7 @@ export default function EsimPublic1() {
       } catch (err) {
         console.info(`${caseName} GetEuiccInfo failed, promise: err->${JSON.stringify(err)}`);
         expect(err.code).assertEqual(3120001);
-                console.info(`${caseName} test end`);
+        console.info(`${caseName} test end`);
         done();
       }
     });
