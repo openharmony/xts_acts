@@ -29,6 +29,7 @@
         "MainAbility/pages/Scroll/offsetRemainScroll",
         "MainAbility/pages/Tabs/barBackEffect",
         "MainAbility/pages/Grid/nodeTypeGrid",
-        "MainAbility/pages/ScrollBar/listScrollerBar"
+        "MainAbility/pages/ScrollBar/listScrollerBar",
+        "MainAbility/pages/WaterFlow/clipContent"
     ]
 }

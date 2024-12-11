@@ -14,26 +14,20 @@
 import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-if (target_cpu == "arm64") {
-  ohos_app_assist_suite("ActsArkRuntimeJsvmTest_main") {
-    testonly = true
-    certificate_profile = "./signature/openharmony_sx.p7b"
-    hap_name = "ActsArkRuntimeJsvmTest_main"
-    part_name = "napi"
-    subsystem_name = "arkui"
-  }
+ohos_app_assist_suite("ActsArkRuntimeJsvmTest_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsArkRuntimeJsvmTest_main"
+  part_name = "node"
+  subsystem_name = "thirdparty"
+}
 
-  ohos_js_app_suite("ActsArkRuntimeJsvmTest") {
-    test_hap = true
-    testonly = true
-    certificate_profile = "./signature/openharmony_sx.p7b"
-    hap_name = "ActsArkRuntimeJsvmTest"
-    part_name = "napi"
-    subsystem_name = "arkui"
-    deps = [ ":ActsArkRuntimeJsvmTest_main" ]
-  }
-} else {
-  group("ActsArkRuntimeJsvmTest") {
-    print("ActsArkRuntimeJsvmTest is not build")
-  }
+ohos_js_app_suite("ActsArkRuntimeJsvmTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsArkRuntimeJsvmTest"
+  part_name = "node"
+  subsystem_name = "thirdparty"
+  deps = [ ":ActsArkRuntimeJsvmTest_main" ]
 }
