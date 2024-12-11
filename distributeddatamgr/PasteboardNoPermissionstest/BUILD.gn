@@ -16,7 +16,9 @@ import("//test/xts/tools/build/suite.gni")
 group("PasteboardNoPermissionstest") {
   testonly = true
   if (is_standard_system) {
-    deps =
-        [ "PasteboardEtsNoPermissionsTest:ActsPasteboardEtsNoPermissionsTest" ]
+    deps = [
+      "PasteboardEtsNoPermissionsTest:ActsPasteboardEtsNoPermissionsTest",
+      "PasteboardNdkNoPermissionsTest:ActsPasteboardNdkNoPermissionsTest",
+    ]
   }
 }

@@ -42,7 +42,7 @@ export default function progressTotalTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_TOTAL_0200
      * @tc.name       : testProgressTotal002
-     * @tc.desc       : testing total for Progress with abnormal value
+     * @tc.desc       : testing total for Progress with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -62,6 +62,45 @@ export default function progressTotalTest() {
      */
     it('testProgressTotal003', 0, async (done: Function) => {
       expect(nativeFunc.testProgressTotal003()).assertEqual(0)
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_TOTAL_0400
+     * @tc.name       : testProgressTotal004
+     * @tc.desc       : testing total for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testProgressTotal004', 0, async (done: Function) => {
+      expect(nativeFunc.testProgressTotal004()).assertEqual(0)
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_TOTAL_0500
+     * @tc.name       : testProgressTotal005
+     * @tc.desc       : testing total for Progress with NULL
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testProgressTotal005', 0, async (done: Function) => {
+      expect(nativeFunc.testProgressTotal005()).assertEqual(0)
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_TOTAL_0600
+     * @tc.name       : testProgressTotal006
+     * @tc.desc       : testing total for Progress with default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testProgressTotal006', 0, async (done: Function) => {
+      expect(nativeFunc.testProgressTotal006()).assertEqual(0)
       done();
     });
   })

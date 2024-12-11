@@ -87,5 +87,55 @@ export default function scrollScrollEdgeTest() {
       expect(Utils.getComponentInfoByKey('ScrollEdge').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
     })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLEDGE_0500
+    * @tc.name       : testScrollScrollEdge005
+    * @tc.desc       : test ScrollEdge abnormal value
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testScrollScrollEdge005', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollEdge001Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollEdge001Button');
+      await Utils.sleep(2000);
+      expect(Utils.getComponentInfoByKey('ScrollEdge001').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done()
+    })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLEDGE_0600
+    * @tc.name       : testScrollScrollEdge006
+    * @tc.desc       : test ScrollEdge abnormal value
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testScrollScrollEdge006', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollEdge002Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollEdge002Button');
+      await Utils.sleep(2000);
+      expect(Utils.getComponentInfoByKey('ScrollEdge002').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done()
+    })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLEDGE_0700
+    * @tc.name       : testScrollScrollEdge007
+    * @tc.desc       : test ScrollEdge abnormal value
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testScrollScrollEdge007', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollEdge003Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.sleep(2000);
+      expect(Utils.getComponentInfoByKey('ScrollEdge003').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done()
+    })
   })
 }

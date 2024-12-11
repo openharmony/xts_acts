@@ -15,6 +15,7 @@
 
 import { expect, describe, it, afterEach } from '@ohos/hypium';
 import Utils from '../common/Utils';
+import nativeFunc from 'libnativefunc.so'
 
 export default function scrollScrollToTest() {
 
@@ -217,6 +218,157 @@ export default function scrollScrollToTest() {
       let PAGE_TAG = 'ScrollScrollToFrictionTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_1400
+     * @tc.name       : testScrollScrollTo014
+     * @tc.desc       : testing canoverscroll to for scroll with 1
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo014', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollToCanOverScrollTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.sleep(3000)
+      expect(Utils.getComponentInfoByKey('CanOverScroll').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_1500
+     * @tc.name       : testScrollScrollTo015
+     * @tc.desc       : testing canoverscroll to for scroll with 0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo015', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollToCanOverScrollOffTest';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.sleep(3000)
+      expect(Utils.getComponentInfoByKey('CanOverScrollOff').$attrs.backgroundColor).assertEqual('#FFFF0000')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_1600
+     * @tc.name       : testScrollScrollTo016
+     * @tc.desc       : testing ScrollTo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo016', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollTo001Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollTo001');
+      await Utils.sleep(1000)
+      expect(Utils.getComponentInfoByKey('ScrollTo001').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_1700
+     * @tc.name       : testScrollScrollTo017
+     * @tc.desc       : testing ScrollTo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo017', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollTo002Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollTo002');
+      await Utils.sleep(1000)
+      expect(Utils.getComponentInfoByKey('ScrollTo002').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_1800
+     * @tc.name       : testScrollScrollTo018
+     * @tc.desc       : testing ScrollTo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo018', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollTo003Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollTo003');
+      await Utils.sleep(1000)
+      expect(Utils.getComponentInfoByKey('ScrollTo003').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_1900
+     * @tc.name       : testScrollScrollTo019
+     * @tc.desc       : testing ScrollTo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo019', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollTo004Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollTo004');
+      await Utils.sleep(1000)
+      expect(Utils.getComponentInfoByKey('ScrollTo004').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_2000
+     * @tc.name       : testScrollScrollTo020
+     * @tc.desc       : testing ScrollTo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo020', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollTo005Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollTo005');
+      await Utils.sleep(1000)
+      expect(Utils.getComponentInfoByKey('ScrollTo005').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_2100
+     * @tc.name       : testScrollScrollTo021
+     * @tc.desc       : testing ScrollTo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo021', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollTo006Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollTo006');
+      await Utils.sleep(1000)
+      expect(Utils.getComponentInfoByKey('ScrollTo006').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_SCROLLTO_2200
+     * @tc.name       : testScrollScrollTo022
+     * @tc.desc       : testing ScrollTo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollScrollTo022', 0, async (done: Function) => {
+      let PAGE_TAG = 'ScrollScrollTo007Test';
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
+      await Utils.clickComponent('ScrollTo007');
+      await Utils.sleep(1000)
+      expect(Utils.getComponentInfoByKey('ScrollTo007').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
   })

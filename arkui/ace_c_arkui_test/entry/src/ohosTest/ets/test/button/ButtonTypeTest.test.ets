@@ -78,5 +78,44 @@ export default function ButtonTypeTest() {
       done()
     })
 
+    /*
+     * @tc.number: SUB_ARKUI_CAPI_BUTTON_TYPE_0500
+     * @tc.name: testButtonType005
+     * @tc.desc: testing Type for button with invalid value
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testButtonType005', 0, async (done: Function) => {
+      expect(nativeFunc.testButtonType005()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number: SUB_ARKUI_CAPI_BUTTON_TYPE_0600
+     * @tc.name: testButtonType006
+     * @tc.desc: testing Type for button with null
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testButtonType006', 0, async (done: Function) => {
+      expect(nativeFunc.testButtonType006()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number: SUB_ARKUI_CAPI_BUTTON_TYPE_0700
+     * @tc.name: testButtonType007
+     * @tc.desc: testing Type for button with default value
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testButtonType007', 0, async (done: Function) => {
+      expect(nativeFunc.testButtonType007()).assertEqual(0)
+      done()
+    })
+
   })
 }

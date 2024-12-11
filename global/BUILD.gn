@@ -20,6 +20,7 @@ group("global") {
       "global_idna_test:ActsDemoIdnaStageTest",
       "global_napi_test:ActsGlobalNapiTest",
       "global_stage:global_stage_hap",
+      "i18n_stage:i18nStageTest",
       "i18n_standard/intljs:intljs_test",
       "perf/perfjs:perfjs_test",
       "resmgr_standard/resmgrjs:resmgrjs_test",
