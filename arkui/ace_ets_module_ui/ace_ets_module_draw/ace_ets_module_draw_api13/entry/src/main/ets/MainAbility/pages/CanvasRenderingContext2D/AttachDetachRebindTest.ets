@@ -20,25 +20,25 @@ struct AttachDetachRebindTest {
   @State flag: boolean = true
   @State canvasWidth: number = 600
   @State canvasHeight: number = 200
-  @State message: string = ""
+  @State message: string = ''
 
 
   aboutToAppear(): void {
     this.context.on('onAttach', () => {
       console.info('onAttach')
       if (this.message == '') {
-        this.message = "onAttach"
+        this.message = 'onAttach'
       } else {
-        this.message += " onAttach"
+        this.message += ' onAttach'
       }
     })
 
     this.context.on('onDetach', () => {
       console.info('onDetach')
       if (this.message == '') {
-        this.message = "onDetach"
+        this.message = 'onDetach'
       } else {
-        this.message += " onDetach"
+        this.message += ' onDetach'
       }
     })
   }

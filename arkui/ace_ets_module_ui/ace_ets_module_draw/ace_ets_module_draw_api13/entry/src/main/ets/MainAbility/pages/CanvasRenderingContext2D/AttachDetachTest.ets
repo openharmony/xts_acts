@@ -20,28 +20,28 @@ struct AttachDetachTest {
   @State flag: boolean = false
   @State canvasWidth: number = 600
   @State canvasHeight: number = 200
-  @State message1: string = ""
-  @State message2: string = ""
-  @State message3: string = ""
-  @State message4: string = ""
+  @State message1: string = ''
+  @State message2: string = ''
+  @State message3: string = ''
+  @State message4: string = ''
   private attachCallback: Callback<void> = () => {
     console.info('onAttach 2')
-    this.message3 = "onAttach 2"
+    this.message3 = 'onAttach 2'
   }
   private detachCallback: Callback<void> = () => {
     console.info('onDetach 2')
-    this.message4 = "onDetach 2"
+    this.message4 = 'onDetach 2'
   }
 
   aboutToAppear(): void {
     this.context.on('onAttach', () => {
       console.info('onAttach 1')
-      this.message1 = "onAttach 1"
+      this.message1 = 'onAttach 1'
     })
 
     this.context.on('onDetach', () => {
       console.info('onDetach 1')
-      this.message2 = "onDetach 1"
+      this.message2 = 'onDetach 1'
     })
   }
 
@@ -86,10 +86,10 @@ struct AttachDetachTest {
       Row() {
         Button('change content <=> undefined').id('change_canvas')
           .onClick(() => {
-            this.message1 = ""
-            this.message2 = ""
-            this.message3 = ""
-            this.message4 = ""
+            this.message1 = ''
+            this.message2 = ''
+            this.message3 = ''
+            this.message4 = ''
             this.flag = !this.flag
           })
       }
