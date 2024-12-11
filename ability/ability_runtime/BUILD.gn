@@ -45,6 +45,7 @@ group("ability_runtime") {
       "actsdelegatorfaabilitytest:ActsDelegatorFAAbilityTest",
       "actsfaabilitydisplayorientationtest:ActsFAAbilityDisplayOrientationTest",
       "actsfwkdataaccessortest:dataability",
+      "actsgetapplicationcontexttest:actsgetapplicationcontexttest",
       "actsjsdataabilitytest:ActsJsDataAbilityTest",
       "actslastexitreason:actslastexitreason",
       "actsmultiplecall:actsmultiplecall",
