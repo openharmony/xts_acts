@@ -65,8 +65,6 @@ export const testButtonFontWeight015: () => number;
 
 export const testButtonFontWeight016: () => number;
 
-export const testButtonLabel001: () => number;
-
 export const testButtonType001: () => number;
 
 export const testButtonType002: () => number;
@@ -74,6 +72,12 @@ export const testButtonType002: () => number;
 export const testButtonType003: () => number;
 
 export const testButtonType004: () => number;
+
+export const testButtonType005: () => number;
+
+export const testButtonType006: () => number;
+
+export const testButtonType007: () => number;
 
 export const textTextStyleGraphic001: () => number;
 
@@ -586,6 +590,12 @@ export const testStackAlign008: () => number;
 export const testStackAlign009: () => number;
 
 export const testStackAlign010: () => number;
+
+export const testStackAlign011: () => number;
+
+export const testStackAlign012: () => number;
+
+export const testStackAlign013: () => number;
 
 export const testStackBackgroundBlurStyle001: () => number;
 
@@ -2903,11 +2913,25 @@ export const testScrollPageEnable001: () => number;
 
 export const testScrollPageEnable002: () => number;
 
+export const testScrollPageEnable003: () => number;
+
+export const testScrollPageEnable004: () => number;
+
+export const testScrollPageEnable005: () => number;
+
 export const testCalendarPickerHintRadius001: () => number;
 
 export const testCalendarPickerHintRadius002: () => number;
 
 export const testCalendarPickerHintRadius003: () => number;
+
+export const testCalendarPickerHintRadius004: () => number;
+
+export const testCalendarPickerHintRadius005: () => number;
+
+export const testCalendarPickerHintRadius006: () => number;
+
+export const testCalendarPickerHintRadius007: () => number;
 
 export const testCalendarPickerEdgeAlign001: () => number;
 
@@ -3084,6 +3108,10 @@ export const testTimePickerTextStyle002: () => number;
 export const testXComponentSourceId001: () => number;
 
 export const testXComponentSourceId002: () => number;
+
+export const testXComponentSourceId003: () => number;
+
+export const testXComponentSourceId004: () => number;
 
 export const testXComponentType001: () => number;
 
@@ -4647,11 +4675,25 @@ export const testProgressTotal002: () => number;
 
 export const testProgressTotal003: () => number;
 
+export const testProgressTotal004: () => number;
+
+export const testProgressTotal005: () => number;
+
+export const testProgressTotal006: () => number;
+
 export const testProgressValue001: () => number;
 
 export const testProgressValue002: () => number;
 
 export const testProgressValue003: () => number;
+
+export const testProgressValue004: () => number;
+
+export const testProgressValue005: () => number;
+
+export const testProgressValue006: () => number;
+
+export const testProgressValue007: () => number;
 
 export const testRefreshOffset001: () => number;
 
@@ -5058,6 +5100,28 @@ export const testSliderTrackThickness002: () => number;
 export const testSliderTrackThickness003: () => number;
 
 export const testSliderTrackThickness004: () => number;
+
+export const testSliderTrackThickness005: () => number;
+
+export const testSliderTrackThickness006: () => number;
+
+export const testSliderTrackThickness007: () => number;
+
+export const testSliderTrackThickness008: () => number;
+
+export const testSliderTrackThickness009: () => number;
+
+export const testSliderTrackThickness010: () => number;
+
+export const testSliderTrackThickness011: () => number;
+
+export const testSliderTrackThickness012: () => number;
+
+export const testSliderTrackThickness013: () => number;
+
+export const testSliderTrackThickness014: () => number;
+
+export const testSliderTrackThickness015: () => number;
 
 export const testSliderValue001: () => number;
 
@@ -7230,3 +7294,25 @@ export const testLazyForEachSetUserData003: () => number;
 export const testLazyForEachUnregisterEventReceiver001: () => number;
 export const testLazyForEachUnregisterEventReceiver002: () => number;
 export const testLazyForEachUnregisterEventReceiver003: () => number;
+export const testProgressType001: () => number;
+export const testProgressType002: () => number;
+export const testProgressType003: () => number;
+export const testProgressType004: () => number;
+export const testProgressType005: () => number;
+export const testProgressType006: () => number;
+export const testProgressType007: () => number;
+export const testProgressType008: () => number;
+export const testProgressType009: () => number;
+
+export const testCalendarPickerSelectedDate001: () => number;
+export const testCalendarPickerSelectedDate002: () => number;
+export const testCalendarPickerSelectedDate003: () => number;
+export const testCalendarPickerSelectedDate004: () => number;
+export const testCalendarPickerSelectedDate005: () => number;
+
+export const testScrollBarWidth001: () => number;
+export const testScrollBarWidth002: () => number;
+export const testScrollBarWidth003: () => number;
+export const testScrollBarWidth004: () => number;
+export const testScrollBarWidth005: () => number;
+export const testScrollBarWidth006: () => number;

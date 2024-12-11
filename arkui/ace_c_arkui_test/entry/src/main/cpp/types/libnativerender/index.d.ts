@@ -89,6 +89,8 @@ export const scrollOnScrollEdgeTest: (a: string) => void;
 
 export const scrollOnScrollStartTest: (a: string) => void;
 
+export const scrollPageTest: (a: string) => void;
+
 export const scrollOnScrollStopTest: (a: string) => void;
 
 export const scrollOverlayTest: (a: string) => void;
@@ -122,6 +124,10 @@ export const scrollScrollToRhythmTest: (a: string) => void;
 export const scrollScrollToSharpTest: (a: string) => void;
 
 export const scrollScrollToSmoothTest: (a: string) => void;
+
+export const scrollScrollToCanOverScrollTest: (a: string) => void;
+
+export const scrollScrollToCanOverScrollOffTest: (a: string) => void;
 
 export const scrollCurrentOffsetLinearTest: (a: string) => void;
 
@@ -521,3 +527,63 @@ export const lazyForEachGetRemovedNodeTest: (a: string) => void;
 export const lazyForEachGetItemIndexTest: (a: string) => void;
 
 export const lazyForEachSetItemTest: (a: string) => void;
+
+export const scrollScrollEventOnWillScrollTest: (a: string) => void;
+
+export const scrollScrollEventOnDidScrollTest: (a: string) => void;
+
+export const scrollScrollEventOnWillDidScrollTest: (a: string) => void;
+
+export const scrollScrollEventOnReachStartTest: (a: string) => void;
+
+export const scrollScrollEventOnReachEndTest: (a: string) => void;
+
+export const scrollScrollEventScrollBy001Test: (a: string) => void;
+
+export const scrollScrollEventScrollBy002Test: (a: string) => void;
+
+export const scrollScrollEventScrollBy003Test: (a: string) => void;
+
+export const scrollScrollEventScrollBy004Test: (a: string) => void;
+
+export const scrollScrollEventScrollBy005Test: (a: string) => void;
+
+export const scrollScrollEventScrollBy006Test: (a: string) => void;
+
+export const getOnWillDidDataTest: () => number[][];
+
+export const scrollScrollTo001Test: (a: string) => void;
+
+export const scrollScrollTo002Test: (a: string) => void;
+
+export const scrollScrollTo003Test: (a: string) => void;
+
+export const scrollScrollTo004Test: (a: string) => void;
+
+export const scrollScrollTo005Test: (a: string) => void;
+
+export const scrollScrollTo006Test: (a: string) => void;
+
+export const scrollScrollTo007Test: (a: string) => void;
+
+export const buttonLabel001Test: (a: string) => void;
+
+export const buttonLabel002Test: (a: string) => void;
+
+export const buttonLabel003Test: (a: string) => void;
+
+export const buttonLabel004Test: (a: string) => void;
+
+export const xComponentId001Test: (a: string) => void;
+
+export const xComponentId002Test: (a: string) => void;
+
+export const xComponentId003Test: (a: string) => void;
+
+export const xComponentId004Test: (a: string) => void;
+
+export const scrollScrollEdge001Test: (a: string) => void;
+
+export const scrollScrollEdge002Test: (a: string) => void;
+
+export const scrollScrollEdge003Test: (a: string) => void;

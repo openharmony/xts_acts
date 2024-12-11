@@ -286,6 +286,7 @@ import scrollScrollBarColorTest from './scroll/ScrollScrollBarColorTest.test'
 import scrollEnableScrollInteractionTest from './scroll/ScrollEnableScrollInteractionTest'
 import scrollClipTest from './scroll/ScrollClipTest'
 import scrollBackgroundColorTest from './scroll/ScrollBackgroundColorTest'
+import scrollBarWidthTest from './scroll/ScrollBarWidthTest.test'
 import scrollBorderWidthTest from './scroll/ScrollBorderWidthTest'
 import scrollBorderColorTest from './scroll/ScrollBorderColorTest'
 import scrollBorderRadiusTest from './scroll/ScrollBorderRadiusTest'
@@ -305,6 +306,7 @@ import scrollSaturateTest from './scroll/ScrollSaturateTest'
 import scrollScrollToTest from './scroll/ScrollScrollToTest.test'
 import scrollOverlayTest from './scroll/ScrollOverlayTest.test'
 import scrollLinearGradientTest from './scroll/ScrollLinearGradientTest'
+import scrollPageTest from './scroll/ScrollPageTest.test'
 import scrollPageEnableTest from './scroll/ScrollPageEnableTest'
 import calendarPickerOnChangeTest from './calendarpicker/CalendarPickerOnChangeTest.test'
 import textPickerOnChangeTest from './textpicker/TextPickerOnChangeTest.test'
@@ -512,6 +514,7 @@ import textInputEnterKeyTypeTest from './textinput/TextInputEnterKeyTypeTest.tes
 import textInputEnableKeyboardOnFocusTest from './textinput/TextInputEnableKeyboardOnFocusTest.test'
 import calendarPickerEnabledTest from './calendarpicker/CalendarPickerEnabledTest.test'
 import calendarPickerHintRadiusTest from './calendarpicker/CalendarPickerHintRadiusTest.test'
+import calendarPickerSelectedDateTest from './calendarpicker/CalendarPickerSelectedDateTest.test'
 import datePickerEnabledTest from './datepicker/DatePickerEnabledTest.test'
 import spanDecorationTest from './span/SpanDecorationTest.test'
 import spanTextCaseTest from './span/SpanTextCaseTest.test'
@@ -561,6 +564,7 @@ import textAreaOnPasteTest from './textarea/TextAreaOnPasteTest.test'
 import progressStyleTest from './progress/ProgressStyleTest'
 import progressTotalTest from './progress/ProgressTotalTest.test'
 import progressValueTest from './progress/ProgressValueTest.test'
+import progressTypeTest from './progress/ProgressTypeTest.test'
 import refreshOffsetTest from './refresh/RefreshOffsetTest.test'
 import refreshPullDownRatioTest from './refresh/RefreshPullDownRatioTest.test'
 import refreshPullToRefreshTest from './refresh/RefreshPullToRefreshTest.test'
@@ -830,6 +834,8 @@ import lazyForEachSetNodeIdTest from "./lazyforeach/LazyForEachSetNodeIdTest.tes
 import lazyForEachSetTotalNodeCountTest from "./lazyforeach/LazyForEachSetTotalNodeCountTest.test"
 import lazyForEachSetUserDataTest from "./lazyforeach/LazyForEachSetUserDataTest.test"
 import lazyForEachUnregisterEventReceiverTest from "./lazyforeach/LazyForEachUnregisterEventReceiverTest.test"
+import scrollScrollEventTest from './scroll/ScrollScrollEventTest.test'
+import xComponentIdTest from './xcomponent/XComponentIdTest.test'
 
 export default function testsuite() {
 
@@ -1639,4 +1645,10 @@ export default function testsuite() {
   lazyForEachGetHostNodeTest()
   lazyForEachSetItemTest()
   lazyForEachSetNodeIdTest()
+  progressTypeTest()
+  scrollBarWidthTest()
+  scrollPageTest()
+  calendarPickerSelectedDateTest()
+  scrollScrollEventTest()
+  xComponentIdTest()
 }

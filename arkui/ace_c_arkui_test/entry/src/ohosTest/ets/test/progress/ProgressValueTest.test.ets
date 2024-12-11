@@ -42,7 +42,7 @@ export default function progressValueTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_VALUE_0200
      * @tc.name       : testProgressValue002
-     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.desc       : testing value for Progress with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -62,6 +62,58 @@ export default function progressValueTest() {
      */
     it('testProgressValue003', 0, async (done: Function) => {
       expect(nativeFunc.testProgressValue003()).assertEqual(0)
+      done();
+    });
+
+        /*
+     * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_VALUE_0400
+     * @tc.name       : testProgressValue004
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testProgressValue004', 0, async (done: Function) => {
+      expect(nativeFunc.testProgressValue004()).assertEqual(0)
+      done();
+    });
+
+        /*
+     * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_VALUE_0500
+     * @tc.name       : testProgressValue005
+     * @tc.desc       : testing value for Progress with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testProgressValue005', 0, async (done: Function) => {
+      expect(nativeFunc.testProgressValue005()).assertEqual(0)
+      done();
+    });
+
+        /*
+     * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_VALUE_0600
+     * @tc.name       : testProgressValue006
+     * @tc.desc       : testing value for Progress with NULL
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testProgressValue006', 0, async (done: Function) => {
+      expect(nativeFunc.testProgressValue006()).assertEqual(0)
+      done();
+    });
+
+        /*
+     * @tc.number     : SUB_ARKUI_CAPI_PROGRESS_VALUE_0700
+     * @tc.name       : testProgressValue007
+     * @tc.desc       : testing value for Progress with default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testProgressValue007', 0, async (done: Function) => {
+      expect(nativeFunc.testProgressValue007()).assertEqual(0)
       done();
     });
   })

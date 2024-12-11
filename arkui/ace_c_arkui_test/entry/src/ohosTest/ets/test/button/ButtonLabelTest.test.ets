@@ -17,7 +17,7 @@ import { beforeEach, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
-export default function ButtonLabelTest() {
+export default function buttonLabelTest() {
 
   describe('ButtonLabelTest', () => {
 
@@ -35,7 +35,55 @@ export default function ButtonLabelTest() {
      * @tc.level: Level 1
      */
     it('testButtonLabel001', 0, async (done: Function) => {
-      expect(nativeFunc.testButtonLabel001()).assertEqual(0)
+      let PAGE_TAG = 'ButtonLabel001Test';
+      await Utils.pushPage(`button/${PAGE_TAG}`);
+      expect(JSON.parse(getInspectorByKey('button001')).$attrs.label).assertEqual('label')
+      done()
+    })
+
+    /*
+     * @tc.number: SUB_ARKUI_CAPI_BUTTON_LABEL_0200
+     * @tc.name: testButtonLabel002
+     * @tc.desc: testing label for button with normal value
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testButtonLabel002', 0, async (done: Function) => {
+      let PAGE_TAG = 'ButtonLabel002Test';
+      await Utils.pushPage(`button/${PAGE_TAG}`);
+      expect(JSON.parse(getInspectorByKey('button002')).$attrs.label).assertEqual('longlonglonglonglonglonglonglong' +
+        'longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong')
+      done()
+    })
+
+    /*
+     * @tc.number: SUB_ARKUI_CAPI_BUTTON_LABEL_0300
+     * @tc.name: testButtonLabel003
+     * @tc.desc: testing label for button with NULL value
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testButtonLabel003', 0, async (done: Function) => {
+      let PAGE_TAG = 'ButtonLabel003Test';
+      await Utils.pushPage(`button/${PAGE_TAG}`);
+      expect(JSON.parse(getInspectorByKey('button003')).$attrs.label).assertEqual('')
+      done()
+    })
+
+    /*
+     * @tc.number: SUB_ARKUI_CAPI_BUTTON_LABEL_0400
+     * @tc.name: testButtonLabel004
+     * @tc.desc: testing label for button with abnormal value
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testButtonLabel004', 0, async (done: Function) => {
+      let PAGE_TAG = 'ButtonLabel004Test';
+      await Utils.pushPage(`button/${PAGE_TAG}`);
+      expect(JSON.parse(getInspectorByKey('button004')).$attrs.width).assertEqual('100.00vp')
       done()
     })
 

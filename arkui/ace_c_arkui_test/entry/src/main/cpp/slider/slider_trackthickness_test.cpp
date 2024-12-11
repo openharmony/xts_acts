@@ -14,28 +14,36 @@
  */
 
 #include "common/common.h"
+
 namespace ArkUICapiTest {
 
 static napi_value TestSliderTrackThickness001(napi_env env, napi_callback_info info)
 {
     NAPI_START(slider, ARKUI_NODE_SLIDER);
-    ArkUI_NumberValue value[] = {{.f32 = PARAM_16}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_OUT_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_5}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_16);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_5);
     NAPI_END;
 }
 
 static napi_value TestSliderTrackThickness002(napi_env env, napi_callback_info info)
 {
     NAPI_START(slider, ARKUI_NODE_SLIDER);
-    int32_t styleValue = ARKUI_SLIDER_STYLE_IN_SET;
-    ArkUI_NumberValue value[] = {{.i32 = styleValue}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, 20.0f);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_OUT_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_NEGATIVE_1}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_4);
     NAPI_END;
 }
 
@@ -43,23 +51,194 @@ static napi_value TestSliderTrackThickness003(napi_env env, napi_callback_info i
 {
     NAPI_START(slider, ARKUI_NODE_SLIDER);
     int32_t styleValue = ARKUI_SLIDER_STYLE_OUT_SET;
-    ArkUI_NumberValue value[] = {{.i32 = styleValue}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item);
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_10000}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, 4.0f);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_10000);
     NAPI_END;
 }
 
 static napi_value TestSliderTrackThickness004(napi_env env, napi_callback_info info)
 {
     NAPI_START(slider, ARKUI_NODE_SLIDER);
-    float thickness = -16.0f;
-    ArkUI_NumberValue value[] = {{.f32 = thickness}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_OUT_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_AttributeItem value_item1 = {};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, -16.0f);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_4);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_OUT_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_5}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    auto ret = nodeAPI->resetAttribute(slider, NODE_SLIDER_TRACK_THICKNESS);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_4);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness006(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_IN_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_5}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_5);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness007(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_IN_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_NEGATIVE_1}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_20);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness008(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_IN_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_10000}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_10000);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness009(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_IN_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_AttributeItem value_item1 = {};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_20);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness010(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_IN_SET;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_5}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    auto ret = nodeAPI->resetAttribute(slider, NODE_SLIDER_TRACK_THICKNESS);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_20);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness011(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_NONE;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_5}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_5);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness012(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_NONE;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_NEGATIVE_1}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_4);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness013(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_NONE;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_10000}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_10000);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness014(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_NONE;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_AttributeItem value_item1 = {};
+    auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_4);
+    NAPI_END;
+}
+
+static napi_value TestSliderTrackThickness015(napi_env env, napi_callback_info info)
+{
+    NAPI_START(slider, ARKUI_NODE_SLIDER);
+    int32_t styleValue = ARKUI_SLIDER_STYLE_NONE;
+    ArkUI_NumberValue value0[] = {{.i32 = styleValue}};
+    ArkUI_AttributeItem value_item0 = {value0, sizeof(value0) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_STYLE, &value_item0);
+    ArkUI_NumberValue value1[] = {{.f32 = PARAM_5}};
+    ArkUI_AttributeItem value_item1 = {value1, sizeof(value1) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_TRACK_THICKNESS, &value_item1);
+    auto ret = nodeAPI->resetAttribute(slider, NODE_SLIDER_TRACK_THICKNESS);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_TRACK_THICKNESS)->value[PARAM_0].f32, PARAM_4);
     NAPI_END;
 }
 

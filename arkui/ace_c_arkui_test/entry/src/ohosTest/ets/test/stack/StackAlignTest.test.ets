@@ -156,5 +156,44 @@ export default function stackAlignTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_STACK_ALIGN_1100
+     * @tc.name       : testStackAlign011
+     * @tc.desc       : testing align for stack with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testStackAlign011', 0, async (done: Function) => {
+      expect(nativeFunc.testStackAlign011()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_STACK_ALIGN_1200
+     * @tc.name       : testStackAlign012
+     * @tc.desc       : testing align for stack with NULL
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testStackAlign012', 0, async (done: Function) => {
+      expect(nativeFunc.testStackAlign012()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_STACK_ALIGN_1300
+     * @tc.name       : testStackAlign013
+     * @tc.desc       : testing align for stack with default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testStackAlign013', 0, async (done: Function) => {
+      expect(nativeFunc.testStackAlign013()).assertEqual(0)
+      done()
+    })
+
   })
 }
