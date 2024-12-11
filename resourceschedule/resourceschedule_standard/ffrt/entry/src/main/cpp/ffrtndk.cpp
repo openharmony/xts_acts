@@ -3712,10 +3712,15 @@ inline void OnePlusForTestQos(void* arg)
     *(int*)arg += PARAM_100;
 }
 
+inline void OnePlusForGetIdTest(void* arg)
+{
+    *(uint64_t*)arg = ffrt_this_task_get_id();
+}
+
 static napi_value FfrtThisTaskGetId(napi_env env, napi_callback_info info)
 {
     uint64_t taskId = SUCCESS;
-    std::function<void()>&& GetPidFunc = [&taskId]() { OnePlusForTest((void *)(&taskId)); };
+    std::function<void()>&& GetPidFunc = [&taskId]() { OnePlusForGetIdTest((void *)(&taskId)); };
     ffrt_submit_base(create_function_wrapper(GetPidFunc), nullptr, nullptr, nullptr);
     ffrt_wait();
     napi_value result = nullptr;
