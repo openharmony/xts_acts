@@ -54,7 +54,7 @@ static napi_value OH_Pasteboard_GetMimeTypes0100(napi_env env, napi_callback_inf
     OH_Pasteboard_ClearData(pasteboard);
     unsigned int count = 1000;
     char** res = OH_Pasteboard_GetMimeTypes(pasteboard, &count);
-    NAPI_ASSERT(env, 0 == count, "OH_Pasteboard_GetMimeTypes is fail.");
+    NAPI_ASSERT(env, count == 0, "OH_Pasteboard_GetMimeTypes is fail.");
     NAPI_ASSERT(env, res == nullptr, "OH_Pasteboard_GetMimeTypes is fail.");
     napi_create_int32(env, res == nullptr, &result);
     OH_Pasteboard_Destroy(pasteboard);
@@ -81,7 +81,7 @@ static napi_value OH_Pasteboard_GetMimeTypes0200(napi_env env, napi_callback_inf
 
     unsigned int count = 1000;
     char** res = OH_Pasteboard_GetMimeTypes(pasteboard, &count);
-    NAPI_ASSERT(env, 1 == count, "OH_Pasteboard_GetMimeTypes is fail.");
+    NAPI_ASSERT(env, count == 1, "OH_Pasteboard_GetMimeTypes is fail.");
     NAPI_ASSERT(env, res != nullptr, "OH_Pasteboard_GetMimeTypes is fail.");
     NAPI_ASSERT(env, strcmp("text/plain", res[0]) == 0, "OH_Pasteboard_GetMimeTypes is fail.");
     napi_create_int32(env, strcmp("text/plain", res[0]) == 0, &result);
@@ -116,8 +116,9 @@ static napi_value OH_Pasteboard_GetMimeTypes0300(napi_env env, napi_callback_inf
     OH_Pasteboard_SetData(pasteboard, setData);
 
     unsigned int count = 1000;
+    int num = 2;
     char** res = OH_Pasteboard_GetMimeTypes(pasteboard, &count);
-    NAPI_ASSERT(env, 2 == count, "OH_Pasteboard_GetMimeTypes is fail.");
+    NAPI_ASSERT(env, count == num, "OH_Pasteboard_GetMimeTypes is fail.");
     NAPI_ASSERT(env, res != nullptr, "OH_Pasteboard_GetMimeTypes is fail.");
     NAPI_ASSERT(env, (strcmp("text/plain", res[0]) == 0 && strcmp("text/html", res[1]) == 0) ||
         (strcmp("text/plain", res[1]) == 0 && strcmp("text/html", res[0]) == 0), "OH_Pasteboard_GetMimeTypes is fail.");
