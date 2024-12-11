@@ -130,5 +130,135 @@ export default function imageObjectFitTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_0900
+     * @tc.name       : testImageObjectFit009
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit009', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit009()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1000
+     * @tc.name       : testImageObjectFit010
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit010', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit010()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1100
+     * @tc.name       : testImageObjectFit011
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit011', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit011()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1200
+     * @tc.name       : testImageObjectFit012
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit012', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit012()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1300
+     * @tc.name       : testImageObjectFit013
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit013', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit013()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1400
+     * @tc.name       : testImageObjectFit014
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit014', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit014()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1500
+     * @tc.name       : testImageObjectFit015
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit015', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit015()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1600
+     * @tc.name       : testImageObjectFit016
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit016', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit016()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1700
+     * @tc.name       : testImageObjectFit017
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit017', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit017()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_OBJECTFIT_1800
+     * @tc.name       : testImageObjectFit018
+     * @tc.desc       : testing objectfit for image with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testImageObjectFit018', 0, async (done: Function) => {
+      expect(nativeFunc.testImageObjectFit018()).assertEqual(0)
+      done()
+    })
+
   })
 }

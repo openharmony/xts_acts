@@ -19,16 +19,29 @@
 
 namespace ArkUICapiTest {
 
-    static napi_value TestTextContent001(napi_env env, napi_callback_info info)
-    {
-        NAPI_START(text, ARKUI_NODE_TEXT);
+static napi_value TestTextContent001(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
 
-        ArkUI_AttributeItem valueItem = {};
-        valueItem.string = STR_TEXT;
-        auto ret = nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &valueItem);
-        ASSERT_EQ(ret, SUCCESS);
-        ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_TEXT_CONTENT)->string, STR_TEXT);
-        
-        NAPI_END;
-    }
+    ArkUI_AttributeItem valueItem = {};
+    valueItem.string = STR_TEXT;
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_TEXT_CONTENT)->string, STR_TEXT);
+    
+    NAPI_END;
 }
+
+static napi_value TestTextContent002(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
+
+    ArkUI_NumberValue value[] = { { .i32 = PARAM_NEGATIVE_1 } };
+    ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+
+    NAPI_END;
+}
+
+} // namespace ArkUICapiTest

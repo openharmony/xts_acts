@@ -28,9 +28,14 @@ public:
     explicit ImageComponent() : Component(ARKUI_NODE_IMAGE) {}
     explicit ImageComponent(ArkUI_NodeHandle handle) : Component(handle) {}
 
-    void SetImageSrc(const std::string& content);
-    void SetImageSrc(ArkUI_DrawableDescriptor* descriptors);
-    void SetObjectFit(const int32_t objectFit);
+    int32_t SetImageSrc(const std::string& content);
+    int32_t SetImageSrc(ArkUI_DrawableDescriptor* descriptors);
+    int32_t SetObjectFit(const int32_t objectFit);
+    int32_t SetResizable(const float left, const float top, const float right, const float bottom);
+    int32_t SetImageDraggable(bool isDraggable);
+    int32_t SetImageRenderMode(int32_t renderMode);
+    int32_t SetImageFitOriginalSize(int32_t fitOriginalSize);
+    int32_t SetImageFillColor(uint32_t color);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_DEMO_IMAGE_COMPONENT_H
