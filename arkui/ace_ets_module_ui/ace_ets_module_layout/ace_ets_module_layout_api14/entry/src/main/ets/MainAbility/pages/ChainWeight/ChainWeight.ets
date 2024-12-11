@@ -22,14 +22,14 @@ struct ChainWeight {
         Row() {
           Text('row1')
         }
-        .id("row1")
+        .id('row1')
         .justifyContent(FlexAlign.Center)
         .width(100)
         .height(100)
-        .backgroundColor("#FF3333")
+        .backgroundColor('#FF3333')
         .alignRules({
-          left: { anchor: "__container__", align: HorizontalAlign.Start },
-          right: { anchor: "row2", align: HorizontalAlign.Start }
+          left: { anchor: '__container__', align: HorizontalAlign.Start },
+          right: { anchor: 'row2', align: HorizontalAlign.Start }
         })
         .chainMode(Axis.Horizontal, ChainStyle.PACKED)
         .chainWeight({ horizontal: 2 })
@@ -37,14 +37,14 @@ struct ChainWeight {
         Row() {
           Text('row2')
         }
-        .id("row2")
+        .id('row2')
         .justifyContent(FlexAlign.Center)
         .width(100)
         .height(100)
         .backgroundColor('#FFCC00')
         .alignRules({
-          left: { anchor: "row1", align: HorizontalAlign.End },
-          right: { anchor: "__container__", align: HorizontalAlign.End }
+          left: { anchor: 'row1', align: HorizontalAlign.End },
+          right: { anchor: '__container__', align: HorizontalAlign.End }
         })
         .chainWeight({ horizontal: 1 })
       }
