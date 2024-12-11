@@ -103,6 +103,10 @@
         "MainAbility/pages/Tabs/tabsCallBack1",
         "MainAbility/pages/Tabs/tabsCallBack2",
         "MainAbility/pages/Tabs/tabsCallBack3",
-        "MainAbility/pages/Tabs/tabsCallBack4"
+        "MainAbility/pages/Tabs/tabsCallBack4",
+        "MainAbility/pages/Tabs/tabsCallBack5",
+        "MainAbility/pages/Tabs/tabsCallBack6",
+        "MainAbility/pages/Tabs/tabsTransition",
+        "MainAbility/pages/Swiper/swiperLoops"
     ]
 }

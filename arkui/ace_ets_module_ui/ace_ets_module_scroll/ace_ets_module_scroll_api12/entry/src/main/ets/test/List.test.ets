@@ -115,6 +115,10 @@ import tabsCallBack1 from './TabsTest/tabsCallBack1.test';
 import tabsCallBack2 from './TabsTest/tabsCallBack2.test';
 import tabsCallBack3 from './TabsTest/tabsCallBack3.test';
 import tabsCallBack4 from './TabsTest/tabsCallBack4.test';
+import tabsCallBack5 from './TabsTest/tabsCallBack5.test';
+import tabsCallBack6 from './TabsTest/tabsCallBack6.test';
+import tabsTransition from './TabsTest/tabsTransition.test';
+import swiperLoops from './SwiperTest/swiperLoops.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -220,4 +224,8 @@ export default function testsuite() {
   tabsCallBack2()
   tabsCallBack3()
   tabsCallBack4()
+  tabsCallBack5()
+  tabsCallBack6()
+  tabsTransition()
+  swiperLoops()
 }
