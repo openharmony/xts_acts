@@ -37,7 +37,25 @@
 #include "native_drawing/drawing_text_lineTypography.h"
 
 #define SUCCESS 0
-#define FAIL    (-1)
+#define FAIL (-1)
+#define ALIGNMENT600 600
+#define ALIGNMENT700 700
+#define ALIGNMENT20 20
+#define TEXTLINE30 30
+#define TEXTLINE250 250
+#define HEIGHT40 40
+#define NUM_50 50
+#define NUM_500 500.0
+#define INT_NUM_2 2
+#define INT_NUM_100 100
+#define INT_NUM_200 200
+#define INT_NUM_5 5
+#define DOUBLE_NUM_2 2.0
+#define DOUBLE_NUM_0 0.0
+#define DOUBLE_NEGATIVE_NUM_1 (-1.0)
+#define DOUBLE_NUM_05 0.5
+#define DOUBLE_NUM_100 100.0
+#define DOUBLE_NUM_800 800.0
 
 static OH_Drawing_TypographyStyle *typoStyle_ = nullptr;
 static OH_Drawing_TextStyle *txtStyle_ = nullptr;
@@ -50,7 +68,7 @@ static OH_Drawing_TypographyCreate *handler2_ = nullptr;
 static OH_Drawing_FontCollection *fontCollection2_ = nullptr;
 static OH_Drawing_TextStyle *txtStyle2_ = nullptr;
 static OH_Drawing_TypographyStyle *typoStyle2_ = nullptr;
-std::string text_;
+std::string g_text;
 
 static void PrepareCreateTextLine(const std::string &text)
 {
@@ -287,7 +305,7 @@ static napi_value OHDrawingLineTypographyGetLineBreak001(napi_env env, napi_call
     handler_ = OH_Drawing_CreateTypographyHandler(typoStyle_, fontCollection_);
     OH_Drawing_TypographyHandlerAddText(handler_, text);
     OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler_);
-    double maxWidth = 800.0;
+    double maxWidth = DOUBLE_NUM_800;
     size_t startIndex = 0;
     auto count = OH_Drawing_LineTypographyGetLineBreak(lineTypography, startIndex, maxWidth);
     if (count == strlen(text)) {
@@ -334,7 +352,7 @@ static napi_value OHDrawingFontGetBounds001(napi_env env, napi_callback_info inf
 {
     napi_value result = nullptr;
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
-    OH_Drawing_FontSetTextSize(font, 50);
+    OH_Drawing_FontSetTextSize(font, NUM_50);
     const char *space = "   ";
     uint32_t count = OH_Drawing_FontCountText(font, space, strlen(space), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
     uint16_t glyphs[count];
@@ -357,7 +375,7 @@ static napi_value OHDrawingRectDestroyArray001(napi_env env, napi_callback_info 
 {
     napi_value result = nullptr;
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
-    OH_Drawing_FontSetTextSize(font, 50);
+    OH_Drawing_FontSetTextSize(font, NUM_50);
     const char *space = "   ";
     uint32_t count = OH_Drawing_FontCountText(font, space, strlen(space), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
     uint16_t glyphs[count];
@@ -377,7 +395,7 @@ static napi_value OHDrawingFontGetPathForGlyph001(napi_env env, napi_callback_in
 {
     napi_value result = nullptr;
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
-    OH_Drawing_FontSetTextSize(font, 50);
+    OH_Drawing_FontSetTextSize(font, NUM_50);
     uint16_t glyphsNotExist = 65535;
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     if (OH_Drawing_FontGetPathForGlyph(font, glyphsNotExist, path) == OH_DRAWING_ERROR_INVALID_PARAMETER) {
@@ -395,7 +413,7 @@ static napi_value OHDrawingFontGetPathForGlyph001(napi_env env, napi_callback_in
 static napi_value OHDrawingRectGetArraySize001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    OH_Drawing_Array *rectArray = OH_Drawing_RectCreateArray(50);
+    OH_Drawing_Array *rectArray = OH_Drawing_RectCreateArray(NUM_50);
     size_t size = 0;
     if ((OH_Drawing_RectGetArraySize(nullptr, &size) == OH_DRAWING_ERROR_INVALID_PARAMETER) &&
         (OH_Drawing_RectGetArraySize(rectArray, nullptr) == OH_DRAWING_ERROR_INVALID_PARAMETER)) {
@@ -409,7 +427,7 @@ static napi_value OHDrawingRectGetArraySize001(napi_env env, napi_callback_info 
 static napi_value OHDrawingRectGetArrayElement001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    size_t size = 50;
+    size_t size = NUM_50;
     OH_Drawing_Array *rectArray = OH_Drawing_RectCreateArray(size);
     OH_Drawing_Rect *rect = nullptr;
     if ((OH_Drawing_RectGetArrayElement(rectArray, size, &rect) == OH_DRAWING_ERROR_INVALID_PARAMETER) &&
@@ -425,7 +443,7 @@ static napi_value OHDrawingRectGetArrayElement001(napi_env env, napi_callback_in
 static napi_value OHDrawingCreateTextTab001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    OH_Drawing_TextTab *textTab = OH_Drawing_CreateTextTab(TEXT_ALIGN_LEFT, 0.0);
+    OH_Drawing_TextTab *textTab = OH_Drawing_CreateTextTab(TEXT_ALIGN_LEFT, DOUBLE_NUM_0);
     if (textTab != nullptr) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
@@ -438,7 +456,7 @@ static napi_value OHDrawingCreateTextTab001(napi_env env, napi_callback_info inf
 static napi_value OHDrawingGetTextTabAlignment001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    OH_Drawing_TextTab *textTab = OH_Drawing_CreateTextTab(TEXT_ALIGN_LEFT, 0.0);
+    OH_Drawing_TextTab *textTab = OH_Drawing_CreateTextTab(TEXT_ALIGN_LEFT, DOUBLE_NUM_0);
     if (OH_Drawing_GetTextTabAlignment(textTab) == TEXT_ALIGN_LEFT) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
@@ -451,8 +469,8 @@ static napi_value OHDrawingGetTextTabAlignment001(napi_env env, napi_callback_in
 static napi_value OHDrawingGetTextTabLocation001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    OH_Drawing_TextTab *textTab = OH_Drawing_CreateTextTab(TEXT_ALIGN_LEFT, 0.0);
-    if (OH_Drawing_GetTextTabLocation(textTab) == 0.0) {
+    OH_Drawing_TextTab *textTab = OH_Drawing_CreateTextTab(TEXT_ALIGN_LEFT, DOUBLE_NUM_0);
+    if (OH_Drawing_GetTextTabLocation(textTab) == DOUBLE_NUM_0) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -523,7 +541,7 @@ static napi_value OHDrawingTypographyGetTextLines002(napi_env env, napi_callback
     PrepareCreateTextLine("\n");
     OH_Drawing_Array *textLines = textLines = OH_Drawing_TypographyGetTextLines(typography_);
     size_t size = OH_Drawing_GetDrawingArraySize(textLines);
-    if (size == 2) {
+    if (size == INT_NUM_2) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -647,8 +665,8 @@ static napi_value OHDrawingTextLinePaint001(napi_env env, napi_callback_info inf
     for (size_t index = 0; index < size; index++) {
         OH_Drawing_TextLine *textLine = OH_Drawing_GetTextLineByIndex(textLines, index);
         OH_Drawing_TextLine *truncatedLine =
-        OH_Drawing_TextLineCreateTruncatedLine(textLine, 100, ELLIPSIS_MODAL_HEAD, "...");
-        OH_Drawing_TextLinePaint(truncatedLine, canvas_, 30, 250);
+        OH_Drawing_TextLineCreateTruncatedLine(textLine, INT_NUM_100, ELLIPSIS_MODAL_HEAD, "...");
+        OH_Drawing_TextLinePaint(truncatedLine, canvas_, TEXTLINE30, TEXTLINE250);
         double count = OH_Drawing_TextLineGetGlyphCount(truncatedLine);
         if (count > 0) {
             napi_create_int32(env, SUCCESS, &result);
@@ -668,7 +686,7 @@ static napi_value OHDrawingTextLineCreateTruncatedLine001(napi_env env, napi_cal
     PrepareCreateTextLine("\n\n");
     OH_Drawing_Array *textLines = OH_Drawing_TypographyGetTextLines(typography_);
     OH_Drawing_TextLine *textLine = OH_Drawing_GetTextLineByIndex(textLines, 0);
-    OH_Drawing_TextLine *truncatedLine = OH_Drawing_TextLineCreateTruncatedLine(textLine, 200, 5, "1");
+    OH_Drawing_TextLine *truncatedLine = OH_Drawing_TextLineCreateTruncatedLine(textLine, INT_NUM_200, INT_NUM_5, "1");
     if (truncatedLine == nullptr) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
@@ -685,9 +703,9 @@ static napi_value OHDrawingTextLineGetTypographicBounds001(napi_env env, napi_ca
     PrepareCreateTextLine("\n\n\n\n");
     OH_Drawing_Array *textLines = OH_Drawing_TypographyGetTextLines(typography_);
     size_t size = OH_Drawing_GetDrawingArraySize(textLines);
-    double ascent = 0.0;
-    double descent = 0.0;
-    double leading = 0.0;
+    double ascent = DOUBLE_NUM_0;
+    double descent = DOUBLE_NUM_0;
+    double leading = DOUBLE_NUM_0;
     for (size_t index = 0; index < size; index++) {
         OH_Drawing_TextLine *textLine = OH_Drawing_GetTextLineByIndex(textLines, index);
         double width = OH_Drawing_TextLineGetTypographicBounds(textLine, &ascent, &descent, &leading);
@@ -713,8 +731,8 @@ static napi_value OHDrawingTextLineGetImageBounds001(napi_env env, napi_callback
         OH_Drawing_Rect *rect = OH_Drawing_TextLineGetImageBounds(textLine);
         if ((OH_Drawing_RectGetRight(rect) > OH_Drawing_RectGetLeft(rect)) &&
             (OH_Drawing_RectGetBottom(rect) > OH_Drawing_RectGetTop(rect)) &&
-            (OH_Drawing_RectGetWidth(rect) < 500.0) &&
-            (OH_Drawing_RectGetHeight(rect) <= 40)) {
+            (OH_Drawing_RectGetWidth(rect) < NUM_500) &&
+            (OH_Drawing_RectGetHeight(rect) <= HEIGHT40)) {
             napi_create_int32(env, SUCCESS, &result);
         } else {
             napi_create_int32(env, FAIL, &result);
@@ -770,8 +788,8 @@ static napi_value OHDrawingTextLineGetOffsetForStringIndex001(napi_env env, napi
     size_t size = OH_Drawing_GetDrawingArraySize(textLines);
     for (size_t index = 0; index < size; index++) {
         OH_Drawing_TextLine *textLine = OH_Drawing_GetTextLineByIndex(textLines, index);
-        if ((OH_Drawing_TextLineGetOffsetForStringIndex(textLine, 0) == 0.0) &&
-            (OH_Drawing_TextLineGetOffsetForStringIndex(textLine, 100) == 0.0)) {
+        if ((OH_Drawing_TextLineGetOffsetForStringIndex(textLine, 0) == DOUBLE_NUM_0) &&
+            (OH_Drawing_TextLineGetOffsetForStringIndex(textLine, INT_NUM_100) == DOUBLE_NUM_0)) {
             napi_create_int32(env, SUCCESS, &result);
         } else {
             napi_create_int32(env, FAIL, &result);
@@ -790,10 +808,10 @@ static napi_value OHDrawingTextLineGetAlignmentOffset001(napi_env env, napi_call
     size_t size = OH_Drawing_GetDrawingArraySize(textLines);
     for (size_t index = 0; index < size; index++) {
         OH_Drawing_TextLine *textLine = OH_Drawing_GetTextLineByIndex(textLines, index);
-        if ((OH_Drawing_TextLineGetAlignmentOffset(textLine, 0.0, 600) == 0.0) &&
-            (OH_Drawing_TextLineGetAlignmentOffset(textLine, 0.5, 700) > 100.0) &&
-            (OH_Drawing_TextLineGetAlignmentOffset(textLine, -1.0, 700) == 0.0) &&
-            (OH_Drawing_TextLineGetAlignmentOffset(textLine, 2.0, 20) == 0.0)) {
+        if ((OH_Drawing_TextLineGetAlignmentOffset(textLine, DOUBLE_NUM_0, ALIGNMENT600) == DOUBLE_NUM_0) &&
+            (OH_Drawing_TextLineGetAlignmentOffset(textLine, DOUBLE_NUM_05, ALIGNMENT700) > DOUBLE_NUM_100) &&
+            (OH_Drawing_TextLineGetAlignmentOffset(textLine, DOUBLE_NEGATIVE_NUM_1, ALIGNMENT700) == DOUBLE_NUM_0) &&
+            (OH_Drawing_TextLineGetAlignmentOffset(textLine, DOUBLE_NUM_2, ALIGNMENT20) == DOUBLE_NUM_0)) {
             napi_create_int32(env, SUCCESS, &result);
         } else {
             napi_create_int32(env, FAIL, &result);
@@ -837,11 +855,11 @@ static napi_value OHDrawingGetRunTypographicBounds001(napi_env env, napi_callbac
 {
     napi_value result = nullptr;
     OH_Drawing_RunPaint(nullptr, nullptr, 0, 0);
-    float ascent = 0.0;
-    float descent = 0.0;
-    float leading = 0.0;
+    float ascent = DOUBLE_NUM_0;
+    float descent = DOUBLE_NUM_0;
+    float leading = DOUBLE_NUM_0;
     float width = OH_Drawing_GetRunTypographicBounds(nullptr, &ascent, &descent, &leading);
-    if ((ascent == 0.0) && (descent == 0.0) && (leading == 0.0) && (width == 0.0)) {
+    if ((ascent == DOUBLE_NUM_0) && (descent == DOUBLE_NUM_0) && (leading == DOUBLE_NUM_0) && (width == DOUBLE_NUM_0)) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -852,8 +870,8 @@ static napi_value OHDrawingGetRunTypographicBounds001(napi_env env, napi_callbac
 static napi_value OHDrawingGetRunStringIndicesByIndex001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    text_ = "Hello 你好 World";
-    PrepareCreateTextLine(text_);
+    g_text = "Hello 你好 World";
+    PrepareCreateTextLine(g_text);
     OH_Drawing_Array *textLines = OH_Drawing_TypographyGetTextLines(typography_);
     size_t size = OH_Drawing_GetDrawingArraySize(textLines);
     for (size_t index = 0; index < size; index++) {
@@ -867,8 +885,8 @@ static napi_value OHDrawingGetRunStringIndicesByIndex001(napi_env env, napi_call
             uint64_t length = 0;
             OH_Drawing_GetRunStringRange(run, &location, &length);
             OH_Drawing_Array *stringIndicesArr = OH_Drawing_GetRunStringIndices(run, 0, count);
-            size_t size = OH_Drawing_GetDrawingArraySize(stringIndicesArr);
-            for (size_t stringIndex = 0; stringIndex < size; stringIndex++) {
+            size_t sizeArr = OH_Drawing_GetDrawingArraySize(stringIndicesArr);
+            for (size_t stringIndex = 0; stringIndex < sizeArr; stringIndex++) {
                 uint64_t indices = OH_Drawing_GetRunStringIndicesByIndex(stringIndicesArr, stringIndex);
                 if (indices >= 0) {
                     napi_create_int32(env, SUCCESS, &result);
@@ -888,8 +906,8 @@ static napi_value OHDrawingGetRunStringIndicesByIndex001(napi_env env, napi_call
 static napi_value OHDrawingGetRunImageBounds001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    text_ = "Hello 你好 World";
-    PrepareCreateTextLine(text_);
+    g_text = "Hello 你好 World";
+    PrepareCreateTextLine(g_text);
     OH_Drawing_Array *textLines = OH_Drawing_TypographyGetTextLines(typography_);
     size_t size = OH_Drawing_GetDrawingArraySize(textLines);
     for (size_t index = 0; index < size; index++) {
@@ -903,8 +921,8 @@ static napi_value OHDrawingGetRunImageBounds001(napi_env env, napi_callback_info
             uint64_t length = 0;
             OH_Drawing_GetRunStringRange(run, &location, &length);
             OH_Drawing_Array *stringIndicesArr = OH_Drawing_GetRunStringIndices(run, 0, count);
-            size_t size = OH_Drawing_GetDrawingArraySize(stringIndicesArr);
-            for (size_t stringIndex = 0; stringIndex < size; stringIndex++) {
+            size_t sizeArr = OH_Drawing_GetDrawingArraySize(stringIndicesArr);
+            for (size_t stringIndex = 0; stringIndex < sizeArr; stringIndex++) {
                 uint64_t indices = OH_Drawing_GetRunStringIndicesByIndex(stringIndicesArr, stringIndex);
             }
             OH_Drawing_DestroyRunStringIndices(stringIndicesArr);
@@ -915,7 +933,7 @@ static napi_value OHDrawingGetRunImageBounds001(napi_env env, napi_callback_info
                 napi_create_int32(env, FAIL, &result);
             }
             OH_Drawing_DestroyRunImageBounds(bounds);
-            OH_Drawing_RunPaint(canvas_, run, 0.0, 0.0);
+            OH_Drawing_RunPaint(canvas_, run, DOUBLE_NUM_0, DOUBLE_NUM_0);
         }
         OH_Drawing_DestroyRuns(runs);
     }
@@ -927,8 +945,8 @@ static napi_value OHDrawingGetRunImageBounds001(napi_env env, napi_callback_info
 static napi_value OHDrawingGetRunGlyphsByIndex001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    text_ = "Hello 你好 World";
-    PrepareCreateTextLine(text_);
+    g_text = "Hello 你好 World";
+    PrepareCreateTextLine(g_text);
     OH_Drawing_Array *textLines = OH_Drawing_TypographyGetTextLines(typography_);
     size_t size = OH_Drawing_GetDrawingArraySize(textLines);
     for (size_t index = 0; index < size; index++) {
@@ -938,9 +956,9 @@ static napi_value OHDrawingGetRunGlyphsByIndex001(napi_env env, napi_callback_in
         for (size_t runIndex = 0; runIndex < runsSize; runIndex++) {
             OH_Drawing_Run *run = OH_Drawing_GetRunByIndex(runs, runIndex);
             uint32_t count = OH_Drawing_GetRunGlyphCount(run);
-            float ascent = 0.0;
-            float descent = 0.0;
-            float leading = 0.0;
+            float ascent = DOUBLE_NUM_0;
+            float descent = DOUBLE_NUM_0;
+            float leading = DOUBLE_NUM_0;
             float width = OH_Drawing_GetRunTypographicBounds(run, &ascent, &descent, &leading);
             OH_Drawing_Array *glyphs = OH_Drawing_GetRunGlyphs(run, 0, count);
             size_t glyphSize = OH_Drawing_GetDrawingArraySize(glyphs);
@@ -963,8 +981,8 @@ static napi_value OHDrawingGetRunGlyphsByIndex001(napi_env env, napi_callback_in
 static napi_value OHDrawingGetRunPositions001(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    text_ = "Hello 你好 World";
-    PrepareCreateTextLine(text_);
+    g_text = "Hello 你好 World";
+    PrepareCreateTextLine(g_text);
     OH_Drawing_Array *textLines = OH_Drawing_TypographyGetTextLines(typography_);
     size_t size = OH_Drawing_GetDrawingArraySize(textLines);
     for (size_t index = 0; index < size; index++) {
@@ -978,9 +996,9 @@ static napi_value OHDrawingGetRunPositions001(napi_env env, napi_callback_info i
             size_t positionSize = OH_Drawing_GetDrawingArraySize(positions);
             for (size_t posIndex = 0; posIndex < positionSize; posIndex++) {
                 OH_Drawing_Point *pos = OH_Drawing_GetRunPositionsByIndex(positions, posIndex);
-                float x = 0.0;
+                float x = DOUBLE_NUM_0;
                 OH_Drawing_PointGetX(pos, &x);
-                if (x >= 0.0) {
+                if (x >= DOUBLE_NUM_0) {
                     napi_create_int32(env, SUCCESS, &result);
                 } else {
                     napi_create_int32(env, FAIL, &result);
