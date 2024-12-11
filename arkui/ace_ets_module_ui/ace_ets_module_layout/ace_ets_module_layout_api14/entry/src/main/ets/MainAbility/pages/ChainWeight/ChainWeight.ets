@@ -50,7 +50,7 @@ struct ChainWeight {
       }
       .width(300).height(300)
       .margin({ left: 50 })
-      .border({ width: 2, color: "#6699FF" })
+      .border({ width: 2, color: '#6699FF' })
     }
     .height('100%')
   }
