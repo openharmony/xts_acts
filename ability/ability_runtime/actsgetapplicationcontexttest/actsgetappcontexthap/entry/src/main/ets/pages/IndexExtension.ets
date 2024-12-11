@@ -1,0 +1,49 @@
+/*
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@Entry
+@Component
+struct Index {
+  @State inputTxt: string = '';
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+        Text('Extension Context')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+      }
+      .margin({ top: 10 })
+
+      UIExtensionComponent({
+        bundleName: 'com.example.getapplicationcontexthap',
+        abilityName: 'UIExtAbility',
+        moduleName: 'entry',
+        parameters: {
+          'ability.want.params.uiExtensionType': 'sys/commonUI',
+        }
+      })
+      .margin(10)
+      .size({ width: '80%', height: 300 })
+      .border({
+        width: 5,
+        color: 0x317AF7,
+        radius: 10,
+        style: BorderStyle.Dotted
+      })
+
+    }
+
+    .height('100%')
+  }
+}
