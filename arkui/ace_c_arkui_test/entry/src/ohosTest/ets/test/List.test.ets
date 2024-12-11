@@ -1581,6 +1581,7 @@ export default function testsuite() {
   gridAdapterTest()
   radioOnChangeCheckedTest()
   refreshOffsetEventTest()
+  refreshOnOffsetChangeTest()
   unitLengthMetricsTest()
   unitWidthPercentTest()
   unitHeightPercentTest()
