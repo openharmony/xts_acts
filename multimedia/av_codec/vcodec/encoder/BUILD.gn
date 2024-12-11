@@ -64,6 +64,7 @@ ohos_moduletest_suite("ActsEncoderTest") {
       "./src/temporal_test.cpp",
       "./src/videoenc_api11_sample.cpp",
       "./src/videoenc_ndk_sample.cpp",
+      "./src/configure_test.cpp"
     ]
   }
 
