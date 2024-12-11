@@ -15,6 +15,7 @@
 
 import ReplaceDestination1Test from './Navigation/ReplaceDestination1.test'
 import ReplaceDestination2 from './Navigation/ReplaceDestination2.test'
+import MultiNavigationTest from './MultiNavigation/MultiNavigationTest.test'
 import NavigationEnableDragBar from './EnableDragBarTest/NavigationEnableDragBar.test'
 import NavigationBindToScrollable from './BindToScrollable/NavigationBindToScrollable.test'
 import NavigationBindToNestedScrollable from './BindToScrollable/NavigationBindToNestedScrollable.test'
@@ -23,6 +24,7 @@ import Recoverable from './Navigation/Recoverable.test'
 export default function testsuite() {
   ReplaceDestination1Test();
   ReplaceDestination2();
+  MultiNavigationTest();
   NavigationEnableDragBar();
   NavigationBindToScrollable();
   NavigationBindToNestedScrollable();

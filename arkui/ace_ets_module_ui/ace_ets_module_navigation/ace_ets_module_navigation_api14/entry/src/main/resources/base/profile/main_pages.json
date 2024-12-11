@@ -3,6 +3,7 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/Navigation/ReplaceDestination1",
         "MainAbility/pages/Navigation/ReplaceDestination2",
+        "MainAbility/pages/MultiNavigation/MultiNavigationEntry",
         "MainAbility/pages/EnableDragBar/NavigationEnableDragBar",
         "MainAbility/pages/BindToScrollable/NavigationBindToScrollable",
         "MainAbility/pages/BindToScrollable/NavigationBindToNestedScrollable",
