@@ -73,7 +73,7 @@ export default function PasteboardVarietyTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Pasteboard_Local_SDK_PastedataRecord_0200', 0, async () => {
+    it('SUB_Pasteboard_Local_SDK_PasteboardVariety_0200', 0, async () => {
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0200 start ************')
       let record: Record<string, pasteboard.ValueType> = {};
       record[pasteboard.MIMETYPE_TEXT_HTML] = html;
@@ -84,6 +84,7 @@ export default function PasteboardVarietyTest() {
         expect(pasteDataHtml).assertEqual(html)
       } catch (error) {
         console.info(TAG + 'code:' + error.code + ',message:' + error.message)
+		expect().assertFail();
       }
       console.info(TAG + '************ SUB_Pasteboard_Local_SDK_PasteboardVariety_0200 end ************')
     })
@@ -167,6 +168,7 @@ export default function PasteboardVarietyTest() {
           expect(JSON.stringify(imageInfo)).assertEqual('{"size":{"width":5,"height":3},"pixelFormat":3,"colorSpace":2,"alphaType":1,"density":0,"stride":20,"mimeType":"","isHdr":false}');
         }).catch((err:BusinessError) => {
           console.info(TAG + 'Cause:' + err.message + ',code:' +err.code)
+		  expect().assertFail();
         })
       } catch (error) {
         console.info(TAG + 'code:' + error.code + ',message:' + error.message);
@@ -255,6 +257,7 @@ export default function PasteboardVarietyTest() {
           expect(JSON.stringify(imageInfo)).assertEqual('{"size":{"width":5,"height":3},"pixelFormat":3,"colorSpace":2,"alphaType":1,"density":0,"stride":20,"mimeType":"","isHdr":false}')
         }).catch((err:BusinessError) => {
           console.info(TAG + 'Cause:' + err.message + ',code:' +err.code)
+		  expect().assertFail();
         });
       } catch (error) {
         console.info(TAG + ',code:' + error.code + ',message' + error.message)
