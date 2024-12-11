@@ -42,6 +42,7 @@ import offsetRemainScroll from './ScrollTest/offsetRemainScroll.test';
 import barBackEffect from './TabsTest/barBackEffect.test';
 import nodeTypeGrid from './GridTest/nodeTypeGrid.test'; 
 import listScrollerBar from './ScrollBarTest/listScrollerBar.test';
+import clipContent from './WaterFlowTest/clipContent.test';
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -73,4 +74,5 @@ export default function testsuite() {
   barBackEffect()
   nodeTypeGrid()
   listScrollerBar()
+  clipContent()
 }

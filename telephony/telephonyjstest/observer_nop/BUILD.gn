@@ -20,7 +20,7 @@ ohos_js_app_suite("ActsObserverEtsNopTest") {
   hap_name = "ActsObserverEtsNopTest"
 
   # 部件名称，真实数据，需要子系统对应
-  part_name = "ril_adapter"
+  part_name = "sms_mms"
 
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "telephony"
