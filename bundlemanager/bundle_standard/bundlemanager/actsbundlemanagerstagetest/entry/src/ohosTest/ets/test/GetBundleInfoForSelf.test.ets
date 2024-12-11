@@ -342,6 +342,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowWidth).assertEqual(0);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.maxWindowHeight).assertEqual(0);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowHeight).assertEqual(0);
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].orientationId).assertEqual(0);
         expect(data.hapModulesInfo[0].abilitiesInfo[1].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility1");
         expect(data.hapModulesInfo[0].abilitiesInfo[1].launchType).assertEqual(bundle.LaunchType.MULTITON);
         expect(data.hapModulesInfo[0].abilitiesInfo[1].orientation).assertEqual(bundle.DisplayOrientation.LANDSCAPE);
@@ -1733,5 +1734,6 @@ export default function getBundleInfoForSelf() {
       expect(data.windowSize.maxWindowHeight).assertEqual(0);
       expect(data.windowSize.minWindowHeight).assertEqual(0);
       expect(data.appIndex).assertEqual(0);
+      expect(data.orientationId).assertEqual(0);
       console.info("checkCommonAbilityInfo end");
     }
