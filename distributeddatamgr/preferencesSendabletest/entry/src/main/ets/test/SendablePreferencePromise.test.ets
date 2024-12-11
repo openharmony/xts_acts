@@ -571,10 +571,13 @@ export default function sendablePreferencesPromiseTest() {
         mPreferences = sendablePreferences.getPreferencesSync(context,options)
         let pre2 = mPreferences.getSync(KEY_NUMBER,'default')
         expect('TEST').assertEqual(pre2)
+		done();
       } catch (e) {
+	    console.info(TAG + "testSendableFlushSync0100" +e.code);
         expect().assertFail();
+		done();
       }
-      done();
+      
     })
     })
 }

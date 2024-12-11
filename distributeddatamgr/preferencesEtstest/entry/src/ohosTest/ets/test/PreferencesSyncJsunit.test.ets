@@ -16,6 +16,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import data_preferences from '@ohos.data.preferences';
 import common from "@ohos.app.ability.common";
 
+
+const TAG = ["preserence_test"];
+
 let context: common.UIAbilityContext;
 const NAME = 'test_preferences_store';
 let options: data_preferences.Options = { name: 'test_preferences_store' };
@@ -518,7 +521,7 @@ export default function PreferencesSyncTest() {
          */
 
 
-        it('testSendableFlushSync0100', 0, async (done: Function) => {
+        it('testPreferenceFlushSync0100', 0, async (done: Function) => {
             try {
                 mPreferences.clearSync();
                 mPreferences.putSync(KEY_TEST_STRING_ELEMENT,'TEST');
@@ -531,7 +534,9 @@ export default function PreferencesSyncTest() {
                 expect('TEST').assertEqual(pre2)
                 done();
             } catch (e) {
+                console.info(TAG + "testPreferenceFlushSync0100" +e.code);
                 expect().assertFail();
+                done();
             }
 
         })
