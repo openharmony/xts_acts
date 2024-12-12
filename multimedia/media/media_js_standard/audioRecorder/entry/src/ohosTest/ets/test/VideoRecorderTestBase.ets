@@ -146,26 +146,25 @@ export default class VideoRecorderTestBase {
       console.info('case video codec_mime is  ' + obj['codec_mime']);
       expect(obj['codec_mime']).assertEqual(descriptionValue[index++]);
       console.info('case video height is  ' + obj['height']);
-      expect(obj['height']).assertEqual(descriptionValue[index++]);
+      expect(obj['height']).assertEqual(Number(descriptionValue[index++]));
       console.info('case video width is  ' + obj['width']);
-      expect(obj['width']).assertEqual(descriptionValue[index++]);
+      expect(obj['width']).assertEqual(Number(descriptionValue[index++]));
     } else {
       console.info('case audio bitrate is  ' + obj['bitrate']);
       let tmpDescriptionValue: number = Number(descriptionValue[index++]);
       expect(Number(obj['bitrate'])/3).assertLess(tmpDescriptionValue);
       console.info('case audio channel_count is  ' + obj['channel_count']);
-      expect(obj['channel_count']).assertEqual(descriptionValue[index++]);
+      expect(obj['channel_count']).assertEqual(Number(descriptionValue[index++]));
       console.info('case audio codec_mime is  ' + obj['codec_mime']);
       expect(obj['codec_mime']).assertEqual(descriptionValue[index++]);
       console.info('case audio sample_rate is  ' + obj['sample_rate']);
       if (Number(descriptionValue[index]) > 48000 && obj['sample_rate'] == 48000) {
         index++;
       } else {
-        expect(obj['sample_rate']).assertEqual(descriptionValue[index++]);
+        expect(obj['sample_rate']).assertEqual(Number(descriptionValue[index++]));
       }
     }
   }
-
   async checkVideos(playFdPath: string, duration: number, trackArray: Array<Array<string>>,
     playerSurfaceId: string | null) {
     let videoPlayer: media.VideoPlayer = await media.createVideoPlayer();
@@ -204,6 +203,8 @@ export default class VideoRecorderTestBase {
       console.info('case getTrackDescription is failed');
       expect().assertFail();
     }
+    console.info(`case arrayDescription is ${JSON.stringify(arrayDescription)}`)
+    console.info(`case trackArray is ${JSON.stringify(trackArray)}`)
     for (let i = 0; i < arrayDescription.length; i++) {
       this.checkDescription(arrayDescription[i], tarckType[i], trackArray[i]);
     }
