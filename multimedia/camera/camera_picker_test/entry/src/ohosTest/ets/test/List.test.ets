@@ -13,14 +13,7 @@
  * limitations under the License.
  */
 import cameraPicker from './CameraPicker.test'
-import cameraPickerPc from './CameraPickerPc.test'
-import call from  '@ohos.telephony.call'
-let voice = call.hasVoiceCapability()
 
 export default async function testsuite() {
-    if (voice){
-        cameraPicker()
-    }else{
-        cameraPickerPc()
-    }
+    cameraPicker()
 }
