@@ -57,6 +57,7 @@ ohos_moduletest_suite("ActsEncoderTest") {
   if (av_codec_support_codec) {
     sources = [
       "./src/api_test.cpp",
+      "./src/configure_test.cpp",
       "./src/func_test.cpp",
       "./src/getparam_test.cpp",
       "./src/setparam_test.cpp",
@@ -64,7 +65,6 @@ ohos_moduletest_suite("ActsEncoderTest") {
       "./src/temporal_test.cpp",
       "./src/videoenc_api11_sample.cpp",
       "./src/videoenc_ndk_sample.cpp",
-      "./src/configure_test.cpp"
     ]
   }
 
