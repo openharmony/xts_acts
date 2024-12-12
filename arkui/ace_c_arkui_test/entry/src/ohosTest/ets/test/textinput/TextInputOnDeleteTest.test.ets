@@ -42,7 +42,7 @@ export default function textInputOnDeleteTest() {
       await Utils.sleep(1000)
       let dataArray: number[][] = nativeRender.getTextInputDeleteData();
       let textInputDeleteData: number[] = dataArray[0];
-      expect(textInputDeleteData[0] == 17).assertEqual(true)
+      expect(textInputDeleteData[0] == 9 && textInputDeleteData[1] == 8).assertEqual(true)
       done()
     })
 

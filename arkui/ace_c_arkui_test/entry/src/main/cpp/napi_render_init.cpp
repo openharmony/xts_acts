@@ -176,6 +176,10 @@
 #include "waterFlower/waterflow_scroll_by_test.h"
 #include "waterFlower/waterflow_scroll_page_test.h"
 #include "waterFlower/waterflow_scrolloffset_test.h"
+
+#include "textinput/textinput_selectionmenuhidden_test.h"
+#include "textinput/textinput_inputfilter_test.h"
+#include "textinput/textinput_ontextselectionallchange_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -915,6 +919,14 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, napi_default, nullptr },
         { "waterFlowGetNestedScrollData", nullptr, WaterFlowNestedScrollTest::WaterFlowGetNestedScrollData, nullptr,
             nullptr, nullptr, napi_default, nullptr },
+        {"textInputSelectionMenuHiddenTest", nullptr, TextInputSelectionMenuHiddenTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textInputInputFilterTest", nullptr, TextInputInputFilterTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textInputOnTextSelectionAllChangeTest", nullptr, TextInputOnTextSelectionAllChangeTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"getTextInputSelectAllData", nullptr, TextInputOnTextSelectionAllChangeTest::GetTextInputSelectAllData,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

@@ -4735,12 +4735,6 @@ export const testTextInputBlurOnSubmit002: () => number;
 
 export const testTextInputBlurOnSubmit003: () => number;
 
-export const testTextInputSelectionMenuHidden001: () => number;
-
-export const testTextInputSelectionMenuHidden002: () => number;
-
-export const testTextInputSelectionMenuHidden003: () => number;
-
 export const testTextInputPlaceholder001: () => number;
 
 export const testTextInputWidth001: () => number;
@@ -7187,8 +7181,6 @@ export const testTextInputNumberOfLines001 : () => number;
 export const testTextInputNumberOfLines002 : () => number;
 export const testTextInputNumberOfLines003 : () => number;
 export const testTextInputNumberOfLines004 : () => number;
-export const testTextInputInputFilter001 : () => number;
-export const testTextInputInputFilter002 : () => number;
 export const testTextInputShowKeyboardOnFocus001 : () => number;
 export const testTextInputShowKeyboardOnFocus002 : () => number;
 export const testTextInputShowKeyboardOnFocus003 : () => number;

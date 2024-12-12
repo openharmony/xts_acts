@@ -15,32 +15,33 @@
 
 import { beforeAll, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
-import { Component,Driver, ON} from '@ohos.UiTest';
+import nativeRender from 'libnativerender.so'
 
-export default function textInputInputFilterTest() {
+export default function textInputOnTextSelectionAllChangeTest() {
 
-  describe('TextInputInputFilterTest', () => {
+  describe('TextInputOnTextSelectionAllChangeTest', () => {
 
-    let PAGE_TAG = 'TextInputInputFilterTest';
+    let PAGE_TAG = 'TextInputOnTextSelectionAllChangeTest';
 
     beforeAll(async (done: Function) => {
       await Utils.pushPage(`textinput/${PAGE_TAG}`, done);
     });
 
     /*
-    * @tc.number     : SUB_ARKUI_CAPI_TEXTINPUT_INPUTFILTER_0100
-    * @tc.name       : testTextInputInputFilter001
-    * @tc.desc       : test inputFilter event callback
+    * @tc.number     : SUB_ARKUI_CAPI_TEXTINPUT_ON_TEXT_SELECTION_ALL_CHANGE_0001
+    * @tc.name       : testTextInputOnTextSelectionChange001
+    * @tc.desc       : test onTextSelectionChange event callback
     * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputInputFilter001', 0, async (done: Function) => {
-      let driver:Driver = Driver.create();
-      let textInput:Component = await driver.findComponent(ON.type('TextInput'));
-      let content  = await textInput.getText();
-      console.log('testTextInputInputFilter001', content)
-      expect(content).assertEqual('abc')
+    it('testTextInputOnTextSelectionAllChange001', 0, async (done: Function) => {
+      focusControl.requestFocus('OnTextSelectionAllChangeTestTextInput')
+      await Utils.sleep(1000)
+      let dataArray: number[][] = nativeRender.getTextInputSelectAllData();
+      console.log('testTextInputOnTextSelectionAllChange001', JSON.stringify(dataArray))
+      let textInputSelectionData: number[] = dataArray[0];
+      expect(textInputSelectionData[2] == 0 && textInputSelectionData[3] == 9).assertEqual(true)
       done()
     })
 
