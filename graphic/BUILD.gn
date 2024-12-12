@@ -44,6 +44,7 @@ group("graphic") {
       "nativeColorSpaceNdk:ActsNativeColorSpaceTest",
       "nativeDisplaySoloistNdk:ActsNativeDisplaySoloistTest",
       "nativeEffectNdk:ActsNativeEffectTest",
+      "nativeFontNdk:ActsNativeFontTest",
       "nativebuffer:ActsNativeBufferTest",
       "nativedrawing:ActsNativeDrawingTest",
       "nativeimage:ActsNativeImageTest",
