@@ -16,8 +16,10 @@
 import basicabilityapi from './basicabilityapi.test.js'
 import mediaqueryTest from './mediaquery.test.js'
 import aceJsApiAndAttr from './commonComponentJsApi.test.js'
+import globalGetAppTest from './global.test.js'
 export default function testsuite() {
 basicabilityapi()
 mediaqueryTest()
 aceJsApiAndAttr()
+globalGetAppTest()
 }
