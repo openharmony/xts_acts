@@ -285,7 +285,10 @@
     "MainAbility/pages/lazyforeach/LazyForEachReloadItemTest",
     "MainAbility/pages/lazyforeach/LazyForEachRemoveItemTest",
     "MainAbility/pages/lazyforeach/LazyForEachSetItemTest",
+    
     "MainAbility/pages/lazyforeach/LazyForEachSetNodeIdTest",
+    "MainAbility/pages/textarea/TextAreaSelectionMenuHiddenTest",
+    "MainAbility/pages/textarea/TextAreaInputFilterTest",
     "MainAbility/pages/scroll/ScrollScrollEventOnWillScrollTest",
     "MainAbility/pages/scroll/ScrollScrollEventOnDidScrollTest",
     "MainAbility/pages/scroll/ScrollScrollEventOnWillDidScrollTest",
