@@ -1729,6 +1729,184 @@ export const testImagePosition001: () => number;
 
 export const testImagePosition002: () => number;
 
+export const testListScrollBarColor001: () => number;
+
+export const testListScrollBarColor002: () => number;
+
+export const testListScrollBarColor003: () => number;
+
+export const testListScrollBarWidth001: () => number;
+
+export const testListScrollBarWidth002: () => number;
+
+export const testListScrollBarWidth003: () => number;
+
+export const testListScrollBarWidth004: () => number;
+
+export const testListScrollBarWidth005: () => number;
+
+export const testListSpace001: () => number;
+
+export const testListSpace002: () => number;
+
+export const testListSpace003: () => number;
+
+export const testListSpace004: () => number;
+
+export const testListSpace005: () => number;
+
+export const testListAlignListItem001: () => number;
+
+export const testListAlignListItem002: () => number;
+
+export const testListAlignListItem003: () => number;
+
+export const testListAlignListItem004: () => number;
+
+export const testListAlignListItem005: () => number;
+
+export const testListAlignListItem006: () => number;
+
+export const testListListNodeAdapter001: () => number;
+
+export const testListListNodeAdapter002: () => number;
+
+export const testListListNodeAdapter003: () => number;
+
+export const testListInitialIndex001: () => number;
+
+export const testListInitialIndex002: () => number;
+
+export const testListInitialIndex003: () => number;
+
+export const testListInitialIndex004: () => number;
+
+export const testListInitialIndex005: () => number;
+
+export const testListDivider001: () => number;
+
+export const testListDivider002: () => number;
+
+export const testListDivider003: () => number;
+
+export const testListDivider004: () => number;
+
+export const testListDivider005: () => number;
+
+export const testListItemGroupSetHeader001: () => number;
+
+export const testListItemGroupSetHeader002: () => number;
+
+export const testListItemGroupSetHeader003: () => number;
+
+export const testListItemGroupSetFooter001: () => number;
+
+export const testListItemGroupSetFooter002: () => number;
+
+export const testListItemGroupSetFooter003: () => number;
+
+export const testListItemGroupSetDivider001: () => number;
+
+export const testListItemGroupSetDivider002: () => number;
+
+export const testListItemGroupSetDivider003: () => number;
+
+export const testListItemGroupSetDivider004: () => number;
+
+export const testListItemGroupSetDivider005: () => number;
+
+export const testListItemSwipeAction001: () => number;
+
+export const testListItemSwipeAction002: () => number;
+
+export const testListItemSwipeAction003: () => number;
+
+export const testListItemSwipeAction004: () => number;
+
+export const testListItemSwipeAction005: () => number;
+
+export const testListItemSwipeAction006: () => number;
+
+export const testListScrollEdge001: () => number;
+
+export const testListScrollEdge002: () => number;
+
+export const testListScrollEdge003: () => number;
+
+export const testListScrollEdge004: () => number;
+
+export const testListScrollEdge005: () => number;
+
+export const testListScrollEdge006: () => number;
+
+export const testListScrollEdge007: () => number;
+
+export const testListChildrenMainSize001: () => number;
+
+export const testListChildrenMainSize002: () => number;
+
+export const testListChildrenMainSize003: () => number;
+
+export const testListChildrenMainSize004: () => number;
+
+export const testListChildrenMainSize005: () => number;
+
+export const testListChildrenMainSize006: () => number;
+
+export const testListChildrenMainSize007: () => number;
+
+export const testListChildrenMainSize008: () => number;
+
+export const testListChildrenMainSize009: () => number;
+
+export const testListChildrenMainSize010: () => number;
+
+export const testListChildrenMainSize011: () => number;
+
+export const testListChildrenMainSize012: () => number;
+
+export const testListChildrenMainSize013: () => number;
+
+export const testListChildrenMainSize014: () => number;
+
+export const testListChildrenMainSize015: () => number;
+
+export const testListChildrenMainSize016: () => number;
+
+export const testListChildrenMainSize017: () => number;
+
+export const testListChildrenMainSize018: () => number;
+
+export const testListChildrenMainSize019: () => number;
+
+export const testListChildrenMainSize020: () => number;
+
+export const testListChildrenMainSize021: () => number;
+
+export const testListChildrenMainSize022: () => number;
+
+export const testListChildrenMainSize023: () => number;
+
+export const testListChildrenMainSize024: () => number;
+
+export const testListChildrenMainSize025: () => number;
+
+export const testListChildrenMainSize026: () => number;
+
+export const testListNestedScroll001: () => number;
+
+export const testListNestedScroll002: () => number;
+
+export const testListNestedScroll003: () => number;
+
+export const testListNestedScroll004: () => number;
+
+export const testListNestedScroll005: () => number;
+
+export const testListNestedScroll006: () => number;
+
+export const testListNestedScroll007: () => number;
+
 export const testListBackgroundColor001: () => number;
 
 export const testListBlur001: () => number;
