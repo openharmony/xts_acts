@@ -43,8 +43,8 @@ function checkResourceFile(context: Context) {
 }
 async function example111() {
   try {
-    let imageFileUri = 'file://com.arkui.ace.imageText.api13/data/storage/el2/base/haps/entry/files/test_mov_1.jpg';
-    let videoFileUri = 'file://com.arkui.ace.imageText.api13/data/storage/el2/base/haps/entry/files/test_mov_1.mp4';
+    let imageFileUri = 'file://com.arkui.ace.imageText.api14/data/storage/el2/base/haps/entry/files/test_mov_1.jpg';
+    let videoFileUri = 'file://com.arkui.ace.imageText.api14/data/storage/el2/base/haps/entry/files/test_mov_1.mp4';
     data = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
     console.info('load moving photo successfully');
   } catch (err) {
