@@ -24,7 +24,7 @@ export default function AVScreenCaptureRecorderMicro() {
     beforeAll(async () => {
       console.info('beforeAll case');
       mediaTestBase.getPermission(['ohos.permission.MICROPHONE']);
-      mediaTestBase.msleepAsync(4000);
+      await mediaTestBase.msleepAsync(4000);
       mediaTestBase.driveFnNoSleep(1);
 
       mediaTestBase.playPcmPromise();
@@ -32,7 +32,7 @@ export default function AVScreenCaptureRecorderMicro() {
 
     beforeEach(async () => {
       console.info('beforeEach case');
-      mediaTestBase.msleepAsync(3000);
+      await mediaTestBase.msleepAsync(3000);
       mediaTestBase.playPcmPromiseStart();
     })
 

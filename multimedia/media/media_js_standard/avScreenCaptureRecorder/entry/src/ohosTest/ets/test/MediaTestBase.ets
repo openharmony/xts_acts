@@ -337,6 +337,7 @@ export default class MediaTestBase {
     let driver = await UiDriver.create()
     console.info(`driver is ${JSON.stringify(driver)}`)
     console.info(`UiDriver start`)
+    await this.msleepAsync(500)
     for (let i = 0; i < num; i++) {
       let button = await driver.findComponent(BY.text('允许'))
       if (button == null) {
@@ -347,6 +348,7 @@ export default class MediaTestBase {
         await button.click()
       }
     }
+    await this.msleepAsync(500)
   }
 
   async getPermission(permissionNames: Array<Permissions>) {
@@ -429,6 +431,9 @@ export default class MediaTestBase {
       streamInfo: audioStreamInfo,
       rendererInfo: audioRendererInfo
     };
+    if(this.audioRen){
+      return;
+    }
 
     await audio.createAudioRenderer(audioRendererOptions).then((data) => {
       this.audioRen = data;

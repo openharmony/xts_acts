@@ -23,13 +23,13 @@ export default function AVScreenCaptureRecorderTest() {
 
     beforeAll(async () => {
       console.info('beforeAll case');
-      mediaTestBase.msleepAsync(1000);
+      await mediaTestBase.msleepAsync(4000);
       mediaTestBase.playPcmPromise();
     })
 
     beforeEach(async () => {
       console.info('beforeEach case');
-      mediaTestBase.msleepAsync(3000);
+      await mediaTestBase.msleepAsync(3000);
       mediaTestBase.playPcmPromiseStart();
     })
 
