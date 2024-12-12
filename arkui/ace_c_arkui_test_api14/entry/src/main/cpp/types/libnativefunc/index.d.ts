@@ -13,3 +13,4 @@
  * limitations under the License.
  */
 export const testStyledString001: () => number;
+export const testNativeXComponent_RegisterKeyEventCallbackWithResult001: () => number;
