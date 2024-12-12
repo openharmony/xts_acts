@@ -21,6 +21,10 @@
                 "find /system -name notification_config.json | xargs sed -i 's/com.huawei.hmos.notepad/ohos.acts.resourceschedule.reminderagent.js.function/'",
                 "reboot",
                 "power-shell wakeup",
+                "uinput -T -m 300 2700 280 200",
+                "wait 5",
+                "uinput -T -m 300 2700 280 200",
+                "uinput -K -d 2054 -u 2054",
                 "power-shell setmode 602"
             ],
             "teardown-command": [
