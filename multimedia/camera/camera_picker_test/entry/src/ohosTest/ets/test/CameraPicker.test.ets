@@ -188,7 +188,7 @@ export default function cameraPicker() {
       await driveSafeFn();
       await drivePhotoFn();
       }else{
-        except(true).assertTrue();
+        expect(true).assertTrue();
         done();
       }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100 ends here");
@@ -225,7 +225,7 @@ export default function cameraPicker() {
       await driveSafeFn();
       await drivePhotoFrontFn();
       }else{
-        except(true).assertTrue();
+        expect(true).assertTrue();
         done();
       }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101 ends here");
@@ -269,7 +269,7 @@ export default function cameraPicker() {
       await driveSafeFn();
       await drivePhotoFn();
     }else{
-        except(true).assertTrue();
+        expect(true).assertTrue();
         done();
       }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102 ends here");
@@ -307,7 +307,7 @@ export default function cameraPicker() {
       await driveSafeFn();
       await drivePhotoFn();
       }else{
-        except(true).assertTrue();
+        expect(true).assertTrue();
         done();
       }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103 ends here");
@@ -346,7 +346,7 @@ export default function cameraPicker() {
       await driveSafeFn();
       await driveVideoFn(videoDuration);
       }else{
-        except(true).assertTrue();
+        expect(true).assertTrue();
         done();
       }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100 ends here");
@@ -383,7 +383,7 @@ export default function cameraPicker() {
       await driveSafeFn();
       await driveVideoFn(0);
       }else{
-        except(true).assertTrue();
+        expect(true).assertTrue();
         done();
       }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101 ends here");
@@ -422,7 +422,7 @@ export default function cameraPicker() {
       await driveSafeFn();
       await driveVideoFrontFn(videoDuration);
       }else{
-        except(true).assertTrue();
+        expect(true).assertTrue();
         done();
       }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102 ends here");
