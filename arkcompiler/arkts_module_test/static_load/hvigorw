@@ -63,4 +63,4 @@ fi
 
 # start hvigor-wrapper script
 exec "${EXECUTABLE_NODE}" "${NODE_OPTS}" \
-  "${HVIGOR_WRAPPER_SCRIPT}" "$@"
+  "${HVIGOR_WRAPPER_SCRIPT}" clean "$@"
