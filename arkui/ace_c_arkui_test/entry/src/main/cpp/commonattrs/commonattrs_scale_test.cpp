@@ -83,4 +83,75 @@ static napi_value TestCommonAttrsScale005(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(flexDefault, NODE_SCALE)->value[PARAM_1].f32, scaleY);
     NAPI_END;
 }
+
+static napi_value TestCommonAttrsScale006(napi_env env, napi_callback_info info)
+{
+    NAPI_START(flex, ARKUI_NODE_FLEX);
+    float scaleX = PARAM_NEGATIVE_1;
+    float scaleY = PARAM_1;
+    ArkUI_NumberValue value[] = {{.f32 = scaleX}, {.f32 = scaleY}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(flex, NODE_SCALE, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_0].f32, scaleX);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_1].f32, scaleY);
+    NAPI_END;
+}
+
+static napi_value TestCommonAttrsScale007(napi_env env, napi_callback_info info)
+{
+    NAPI_START(flex, ARKUI_NODE_FLEX);
+    float scaleX = PARAM_1;
+    float scaleY = PARAM_NEGATIVE_1;
+    ArkUI_NumberValue value[] = {{.f32 = scaleX}, {.f32 = scaleY}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(flex, NODE_SCALE, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_0].f32, scaleX);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_1].f32, scaleY);
+    NAPI_END;
+}
+
+static napi_value TestCommonAttrsScale008(napi_env env, napi_callback_info info)
+{
+    NAPI_START(flex, ARKUI_NODE_FLEX);
+    float scaleX = PARAM_0;
+    float scaleY = PARAM_1;
+    ArkUI_NumberValue value[] = {{.f32 = scaleX}, {.f32 = scaleY}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(flex, NODE_SCALE, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_0].f32, scaleX);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_1].f32, scaleY);
+    NAPI_END;
+}
+
+static napi_value TestCommonAttrsScale009(napi_env env, napi_callback_info info)
+{
+    NAPI_START(flex, ARKUI_NODE_FLEX);
+    float scaleX = PARAM_1;
+    float scaleY = PARAM_0;
+    ArkUI_NumberValue value[] = {{.f32 = scaleX}, {.f32 = scaleY}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(flex, NODE_SCALE, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_0].f32, scaleX);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_1].f32, scaleY);
+    NAPI_END;
+}
+
+static napi_value TestCommonAttrsScale010(napi_env env, napi_callback_info info)
+{
+    NAPI_START(flex, ARKUI_NODE_FLEX);
+    float scaleX = PARAM_0_POINT_5;
+    float scaleY = PARAM_0_POINT_5;
+    ArkUI_NumberValue value[] = {{.f32 = scaleX}, {.f32 = scaleY}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(flex, NODE_SCALE, &valueItem);
+    auto ret = nodeAPI->resetAttribute(flex, NODE_SCALE);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_0].f32, PARAM_1);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_SCALE)->value[PARAM_1].f32, PARAM_1);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

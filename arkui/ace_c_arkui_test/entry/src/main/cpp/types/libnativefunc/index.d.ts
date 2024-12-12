@@ -2473,6 +2473,16 @@ export const testCommonAttrsScale004: () => number;
 
 export const testCommonAttrsScale005: () => number;
 
+export const testCommonAttrsScale006: () => number;
+
+export const testCommonAttrsScale007: () => number;
+
+export const testCommonAttrsScale008: () => number;
+
+export const testCommonAttrsScale009: () => number;
+
+export const testCommonAttrsScale010: () => number;
+
 export const testCommonAttrsShadow001: () => number;
 
 export const testCommonAttrsShadow002: () => number;
