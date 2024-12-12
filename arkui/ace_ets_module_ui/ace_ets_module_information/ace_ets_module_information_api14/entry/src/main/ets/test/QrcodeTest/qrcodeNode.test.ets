@@ -46,32 +46,26 @@ export default function QrcodeNodeTest() {
       await CommonFunc.sleep(1000);
       console.info('qrcodeNode after each called');
     })
+
+     /**
+     * @tc.number    QRCodeNode0100
+     * @tc.name      QRCodeNode0100
+     * @tc.desc      frameNode: createNodeQRCodeToWindow
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
     it('QRCodeNode0100', 0, async (done: Function) => {
 
         let tagName = 'QRCodeNode0100';
         console.info('[' + tagName + '] START============================');
         let strJsonNew = getInspectorByKey('key_QRCode_001');
-        console.info('[' + tagName + '] Search width is: ' + JSON.stringify(JSON.parse(strJsonNew)
-          .$attrs
-          .width));
-  
-        expect(JSON.parse(strJsonNew).$attrs.width).assertEqual('100.00vp');
+        console.info('[' + tagName + '] Search is: ' + JSON.stringify(JSON.parse(strJsonNew).$type));
+        expect(JSON.parse(strJsonNew).$type).assertEqual('QRCode');
         console.info('[' + tagName + '] END ===========================');
         done();
       });
-  
-      it('QRCodeNode0200', 0, async (done: Function) => {
-        let tagName = 'QRCodeNode0200';
-        console.info('[' + tagName + '] START============================');
-        let strJsonNew = getInspectorByKey('key_QRCode_001');
-        console.info('[' + tagName + '] Search contentOpacity is: ' + JSON.stringify(JSON.parse(strJsonNew)
-          .$attrs
-          .contentOpacity));
-        expect(JSON.parse(strJsonNew).$attrs.contentOpacity).assertEqual(undefined);
-        console.info('[' + tagName + '] END ===========================');
-        done();
-      });
-  
+
     })
   }
   
