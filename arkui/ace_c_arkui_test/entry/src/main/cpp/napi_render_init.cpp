@@ -171,7 +171,11 @@
 #include "scroll/scroll_scroll_event_test.h"
 #include "button/button_label_test.h"
 #include "xcomponent/xcomponent_id_test.h"
-
+#include "waterFlower/waterflow_event_test.h"
+#include "waterFlower/waterflow_nested_scroll_test.h"
+#include "waterFlower/waterflow_scroll_by_test.h"
+#include "waterFlower/waterflow_scroll_page_test.h"
+#include "waterFlower/waterflow_scrolloffset_test.h"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -867,6 +871,50 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"scrollScrollEdge003Test", nullptr, ScrollScrollEdgeTest::CreateNativeNodeScrollEdge003, nullptr,
          nullptr, nullptr, napi_default, nullptr},
+        { "waterFlowOnReachStartTest", nullptr, WaterFlowEventTest::CreateNativeNodeReachStart, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowOnReachEndTest", nullptr, WaterFlowEventTest::CreateNativeNodeReachEnd, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowOnScrollStopTest", nullptr, WaterFlowEventTest::CreateNativeNodeScrollStop, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowOnWillDidScrollTest", nullptr, WaterFlowEventTest::CreateNativeNodeOnWillDidScroll, nullptr,
+            nullptr, nullptr, napi_default, nullptr },
+        { "getOnWillDidScrollData", nullptr, WaterFlowEventTest::GetOnWillDidScrollData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowOnScrollIndexTest", nullptr, WaterFlowEventTest::CreateNativeNodeOnScrollIndex, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "getOnScrollIndexData", nullptr, WaterFlowEventTest::GetOnScrollIndexData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowOnScrollFrameBeginTest", nullptr, WaterFlowEventTest::CreateNativeNodeOnScrollFrameBegin, nullptr,
+            nullptr, nullptr, napi_default, nullptr },
+        { "waterFlowScrollToIndexTest", nullptr, WaterFlowEventTest::CreateNativeNodeScrollToIndex, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollOffsetTest", nullptr, WaterFlowScrollOffsetTest::CreateNativeNode, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowScrollOffsetData", nullptr, WaterFlowScrollOffsetTest::WaterFlowScrollOffsetData, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollPageTest", nullptr, WaterFlowScrollPageTest::TestWaterFlowScrollPage, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowGetScrollPageData", nullptr, WaterFlowScrollPageTest::WaterFlowGetScrollPageData, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollBy001Test", nullptr, WaterFlowScrollByTest::TestWaterFlowScrollBy001, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollBy002Test", nullptr, WaterFlowScrollByTest::TestWaterFlowScrollBy002, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollBy003Test", nullptr, WaterFlowScrollByTest::TestWaterFlowScrollBy003, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollBy004Test", nullptr, WaterFlowScrollByTest::TestWaterFlowScrollBy004, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowGetScrollByData", nullptr, WaterFlowScrollByTest::WaterFlowGetScrollByData, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowNestedScroll1Test", nullptr, WaterFlowNestedScrollTest::CreateNativeNode, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowNestedScroll2Test", nullptr, WaterFlowNestedScrollTest::CreateNativeNodeSmall, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowNestedScroll3Test", nullptr, WaterFlowNestedScrollTest::CreateNativeNodeReset, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowGetNestedScrollData", nullptr, WaterFlowNestedScrollTest::WaterFlowGetNestedScrollData, nullptr,
+            nullptr, nullptr, napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

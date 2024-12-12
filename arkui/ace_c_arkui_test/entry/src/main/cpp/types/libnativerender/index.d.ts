@@ -701,3 +701,47 @@ export const scrollScrollEdge001Test: (a: string) => void;
 export const scrollScrollEdge002Test: (a: string) => void;
 
 export const scrollScrollEdge003Test: (a: string) => void;
+
+export const waterFlowOnReachStartTest: (a: string) => void;
+
+export const waterFlowOnReachEndTest: (a: string) => void;
+
+export const waterFlowOnScrollStopTest: (a: string) => void;
+
+export const waterFlowOnWillDidScrollTest: (a: string) => void;
+
+export const getOnWillDidScrollData: () => number[][];
+
+export const waterFlowOnScrollIndexTest: (a: string) => void;
+
+export const getOnScrollIndexData: () => number[][];
+
+export const waterFlowOnScrollFrameBeginTest: (a: string, b: number) => void;
+
+export const waterFlowScrollToIndexTest: (a: string, index: number, alignment: number) => void;
+
+export const waterFlowScrollOffsetTest: (a: string) => void;
+
+export const waterFlowScrollOffsetData: () => number[][];
+
+export const waterFlowScrollPageTest: (a: string) => void;
+
+export const waterFlowGetScrollPageData: () => number[][];
+
+export const waterFlowScrollBy001Test: (a: string) => void;
+
+export const waterFlowScrollBy002Test: (a: string) => void;
+
+export const waterFlowScrollBy003Test: (a: string) => void;
+
+export const waterFlowScrollBy004Test: (a: string) => void;
+
+export const waterFlowGetScrollByData: () => number[][];
+
+export const waterFlowNestedScroll1Test: (a: string) => void;
+
+export const waterFlowNestedScroll2Test: (a: string) => void;
+
+export const waterFlowNestedScroll3Test: (a: string) => void;
+
+export const waterFlowGetNestedScrollData: () => number[][];

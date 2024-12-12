@@ -91,7 +91,7 @@ export default function gestureCreateGestureTest() {
       expect(Utils.getComponentInfoByKey('button1').$attrs.backgroundColor).assertEqual('#FF00FF00')
       expect(Utils.getComponentInfoByKey('button2').$attrs.backgroundColor).assertEqual('#FFFF0000')
       expect(Utils.getComponentInfoByKey('button3').$attrs.backgroundColor).assertEqual('#FF00FF00')
-      expect(Utils.getComponentInfoByKey('button2').$attrs.backgroundColor).assertEqual('#FFFF0000')
+      expect(Utils.getComponentInfoByKey('button4').$attrs.backgroundColor).assertEqual('#FFFF0000')
       done();
     })
 

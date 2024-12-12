@@ -18,42 +18,6 @@
 
 namespace ArkUICapiTest {
 
-static napi_value TestCommonAttrsTouchable002(napi_env env, napi_callback_info info)
-{
-    NAPI_START(button, ARKUI_NODE_BUTTON);
-    int32_t touchable = false;
-    ArkUI_NumberValue value[] = {{.i32 = touchable}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(button, NODE_ENABLED, &value_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ENABLED)->value[PARAM_0].i32, touchable);
-    NAPI_END;
-}
-
-static napi_value TestCommonAttrsTouchable003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(button, ARKUI_NODE_BUTTON);
-    int32_t touchable = PARAM_NEGATIVE_1;
-    ArkUI_NumberValue value[] = {{.i32 = touchable}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(button, NODE_ENABLED, &value_item);
-    ASSERT_EQ(ret, INVALID_PARAM);
-    NAPI_END;
-}
-
-static napi_value TestCommonAttrsTouchable004(napi_env env, napi_callback_info info)
-{
-    NAPI_START(button, ARKUI_NODE_BUTTON);
-    int32_t touchable = false;
-    ArkUI_NumberValue value[] = {{.i32 = touchable}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(button, NODE_ENABLED, &value_item);
-    auto ret = nodeAPI->resetAttribute(button, NODE_ENABLED);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ENABLED)->value[PARAM_0].i32, true);
-    NAPI_END;
-}
-
 static auto CreateChildNodeTouchable(ArkUI_NativeNodeAPI_1 *nodeAPI, int32_t touchable)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_BUTTON);

@@ -39,7 +39,7 @@ Component::Component(ArkUI_NodeHandle handle)
     _nodeAPI->addNodeEventReceiver(_component, Component::NodeEventReceiver);
 
     int32_t count = _nodeAPI->getTotalChildCount(_component);
-    for (int32_t i = 0; i < count; i++) {
+    for (int32_t i = PARAM_0; i < count; i++) {
         auto temp = _nodeAPI->getChildAt(_component, i);
         children_.emplace_back(std::make_shared<Component>(temp));
     }
@@ -63,97 +63,97 @@ int32_t Component::resetAttribute(ArkUI_NodeAttributeType attribute)
 void Component::SetWidth(float width)
 {
     ArkUI_NumberValue value[] = { { .f32 = width } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_WIDTH, &item);
 }
 void Component::SetPercentWidth(float percent)
 {
     ArkUI_NumberValue value[] = { { .f32 = percent } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_WIDTH_PERCENT, &item);
 }
 void Component::SetHeight(float height)
 {
     ArkUI_NumberValue value[] = { { .f32 = height } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_HEIGHT, &item);
 }
 void Component::SetPercentHeight(float percent)
 {
     ArkUI_NumberValue value[] = { { .f32 = percent } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_HEIGHT_PERCENT, &item);
 }
 void Component::SetBackgroundColor(uint32_t color)
 {
     ArkUI_NumberValue value[] = { { .u32 = color } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_BACKGROUND_COLOR, &item);
 }
 void Component::SetBackgroundImage(const std::string& backgroundImage)
 {
-    ArkUI_AttributeItem item = { nullptr, 0, backgroundImage.c_str() };
+    ArkUI_AttributeItem item = { nullptr, PARAM_0, backgroundImage.c_str() };
     _nodeAPI->setAttribute(_component, NODE_BACKGROUND_IMAGE, &item);
 }
 void Component::SetBackgroundImageSizeWithStyle(int32_t imageSize)
 {
     ArkUI_NumberValue value[] = { { .i32 = imageSize } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_BACKGROUND_IMAGE_SIZE_WITH_STYLE, &item);
 }
 void Component::SetBorderRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)
 {
     ArkUI_NumberValue value[] = { { .f32 = topLeft }, { .f32 = topRight }, { .f32 = bottomLeft },
         { .f32 = bottomRight } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_BORDER_RADIUS, &item);
 }
 
 void Component::SetPadding(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = { { .f32 = top }, { .f32 = right }, { .f32 = bottom }, { .f32 = left } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_PADDING, &item);
 }
 
 void Component::SetPaddingPercent(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = { { .f32 = top }, { .f32 = right }, { .f32 = bottom }, { .f32 = left } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_PADDING_PERCENT, &item);
 }
 
 void Component::SetMargin(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = { { .f32 = top }, { .f32 = right }, { .f32 = bottom }, { .f32 = left } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_MARGIN, &item);
 }
 void Component::SetMargin(float margin)
 {
     ArkUI_NumberValue value[] = { { .f32 = margin }, { .f32 = margin }, { .f32 = margin }, { .f32 = margin } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_MARGIN, &item);
 }
 
 void Component::SetMarginPercent(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = { { .f32 = top }, { .f32 = right }, { .f32 = bottom }, { .f32 = left } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_MARGIN_PERCENT, &item);
 }
 
 void Component::SetEnabled(int32_t enable)
 {
     ArkUI_NumberValue value[] = { { .i32 = enable } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_ENABLED, &item);
 }
 
 void Component::SetAlign(int32_t align)
 {
     ArkUI_NumberValue value[] = { { .i32 = align } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_ALIGNMENT, &item);
 }
 
@@ -166,21 +166,21 @@ void Component::SetAlignRules(ArkUI_AlignmentRuleOption* option)
 void Component::SetAlignSelf(int32_t value)
 {
     ArkUI_NumberValue val[] = { { .i32 = value } };
-    ArkUI_AttributeItem item = { val, 1 };
+    ArkUI_AttributeItem item = { val, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_ALIGN_SELF, &item);
 }
 
 void Component::SetOpacity(float opacity)
 {
     ArkUI_NumberValue value[] = { { .f32 = opacity } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_OPACITY, &item);
 }
 
 void Component::SetBorderWidth(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = { { .f32 = top }, { .f32 = right }, { .f32 = bottom }, { .f32 = left } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_BORDER_WIDTH, &item);
 }
 
@@ -188,33 +188,33 @@ void Component::SetBorderWidth(float borderWidth)
 {
     ArkUI_NumberValue value[] = { { .f32 = borderWidth }, { .f32 = borderWidth }, { .f32 = borderWidth },
         { .f32 = borderWidth } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_BORDER_WIDTH, &item);
 }
 
 void Component::SetBorderColor(uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)
 {
     ArkUI_NumberValue value[] = { { .u32 = top }, { .u32 = right }, { .u32 = bottom }, { .u32 = left } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_BORDER_COLOR, &item);
 }
 
 void Component::SetBorderStyle(int32_t top, int32_t right, int32_t bottom, int32_t left)
 {
     ArkUI_NumberValue value[] = { { .i32 = top }, { .i32 = right }, { .i32 = bottom }, { .i32 = left } };
-    ArkUI_AttributeItem item = { value, 4 };
+    ArkUI_AttributeItem item = { value, PARAM_4 };
     _nodeAPI->setAttribute(_component, NODE_BORDER_STYLE, &item);
 }
 
 void Component::SetVisibility(int32_t visibility)
 {
     ArkUI_NumberValue value[] = { { .i32 = visibility } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_VISIBILITY, &item);
 }
 void Component::SetId(const std::string& id)
 {
-    ArkUI_AttributeItem item = { nullptr, 0, id.c_str() };
+    ArkUI_AttributeItem item = { nullptr, PARAM_0, id.c_str() };
     _nodeAPI->setAttribute(_component, NODE_ID, &item);
 }
 void Component::AddChild(const std::shared_ptr<Component>& child)
@@ -272,89 +272,106 @@ void Component::NodeEventReceiver(ArkUI_NodeEvent* event)
 void Component::SetFontSize(float fontSize)
 {
     ArkUI_NumberValue value[] = { { .f32 = fontSize } };
-    ArkUI_AttributeItem item = { value, 1 };
+    ArkUI_AttributeItem item = { value, PARAM_1 };
     _nodeAPI->setAttribute(_component, NODE_FONT_SIZE, &item);
 }
-void Component::ProcessNodeEventByType(ArkUI_NodeEventType eventType)
-{
-    switch (eventType) {
-        case NODE_ON_CLICK: {
-            if (onClick_) {
-                onClick_();
-            }
-            break;
-        }
-        case NODE_EVENT_ON_DISAPPEAR: {
-            if (onDisappear_) {
-                onDisappear_();
-            }
-            break;
-        }
-        case NODE_ON_FOCUS: {
-            if (onFocus_) {
-                onFocus_();
-            }
-            break;
-        }
-        case NODE_EVENT_ON_APPEAR: {
-            if (onAppear_) {
-                onAppear_();
-            }
-            break;
-        }
-    }
-}
-
 void Component::ProcessNodeEvent(ArkUI_NodeEvent* event)
 {
     auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-    switch (eventType) {
-        case NODE_ON_CLICK:
-        case NODE_EVENT_ON_DISAPPEAR:
-        case NODE_EVENT_ON_APPEAR:
-        case NODE_ON_FOCUS: {
-            ProcessNodeEventByType(eventType);
-            break;
-        }
-        case NODE_TOUCH_EVENT: {
-            if (onTouch_) {
-                onTouch_(event);
-            }
-            break;
-        }
-        case NODE_ON_HOVER: {
-            if (onHover_) {
-                ArkUI_NodeComponentEvent* result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
-                int32_t isHover = result->data[0].i32;
-                onHover_(static_cast<bool>(isHover));
-            }
-            break;
-        }
-        case NODE_EVENT_ON_VISIBLE_AREA_CHANGE: {
-            if (onVisibleAreaChange_) {
-                ArkUI_NodeComponentEvent* result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
-                bool visible = static_cast<bool>(result->data[0].i32);
-                float ratio = result->data[1].f32;
-                onVisibleAreaChange_(visible, ratio);
-            }
-            break;
-        }
-        case NODE_ON_MOUSE: {
-            if (onMouse_) {
-                onMouse_(event);
-            }
-            break;
-        }
-        case NODE_ON_TOUCH_INTERCEPT: {
-            if (onTouchIntercept_) {
-                onTouchIntercept_(event);
-            }
-            break;
-        }
-        default: {
-            OnNodeEvent(event);
-        }
+    OH_LOG_Print(
+        LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "commonEvent", "ProcessNodeEvent eventType=%{public}d", eventType);
+    if (eventMap_.find(eventType) != eventMap_.end()) {
+        eventMap_[eventType](event);
+    } else {
+        OnNodeEvent(event);
     }
+}
+
+void Component::RegisterOnClick(const std::function<void()>& onClick)
+{
+    auto onClickCallback = [onClick](ArkUI_NodeEvent*) {
+        if (onClick) {
+            onClick();
+        }
+    };
+    eventMap_[NODE_ON_CLICK] = onClickCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_ON_CLICK, PARAM_0, nullptr);
+}
+
+void Component::RegisterOnTouch(const std::function<void(ArkUI_NodeEvent* event)>& onTouch)
+{
+    auto onTouchCallback = [onTouch](ArkUI_NodeEvent* event) {
+        if (onTouch) {
+            onTouch(event);
+        }
+    };
+    eventMap_[NODE_TOUCH_EVENT] = onTouchCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_TOUCH_EVENT, PARAM_0, nullptr);
+}
+
+void Component::RegisterOnDisappear(const std::function<void()>& onDisappear)
+{
+    auto onDisappearCallback = [onDisappear](ArkUI_NodeEvent*) {
+        if (onDisappear) {
+            onDisappear();
+        }
+    };
+    eventMap_[NODE_EVENT_ON_DISAPPEAR] = onDisappearCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_EVENT_ON_DISAPPEAR, PARAM_0, nullptr);
+}
+
+void Component::RegisterOnAppear(const std::function<void()>& onAppear)
+{
+    auto onAppearCallback = [onAppear](ArkUI_NodeEvent*) {
+        if (onAppear) {
+            onAppear();
+        }
+    };
+    eventMap_[NODE_EVENT_ON_APPEAR] = onAppearCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_EVENT_ON_APPEAR, PARAM_0, nullptr);
+}
+void Component::RegisterOnHover(const std::function<void(bool isHover)>& onHover)
+{
+    auto onHoverCallback = [onHover](ArkUI_NodeEvent* event) {
+        if (onHover) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "commonEvent", "NODE_ON_HOVER");
+            ArkUI_NodeComponentEvent* result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+            int32_t isHover = result->data[PARAM_0].i32;
+            onHover(static_cast<bool>(isHover));
+        }
+    };
+    eventMap_[NODE_ON_HOVER] = onHoverCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_ON_HOVER, PARAM_0, nullptr);
+}
+void Component::RegisterOnMouse(const std::function<void(ArkUI_NodeEvent* event)>& onMouse)
+{
+    auto onMouseCallback = [onMouse](ArkUI_NodeEvent* event) {
+        if (onMouse) {
+            onMouse(event);
+        }
+    };
+    eventMap_[NODE_ON_MOUSE] = onMouseCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_ON_MOUSE, PARAM_0, nullptr);
+}
+void Component::RegisterOnTouchIntercept(const std::function<void(ArkUI_NodeEvent* event)>& onTouchIntercept)
+{
+    auto onTouchInterceptCallback = [onTouchIntercept](ArkUI_NodeEvent* event) {
+        if (onTouchIntercept) {
+            onTouchIntercept(event);
+        }
+    };
+    eventMap_[NODE_ON_TOUCH_INTERCEPT] = onTouchInterceptCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_ON_TOUCH_INTERCEPT, PARAM_0, nullptr);
+}
+void Component::RegisterOnFocus(const std::function<void()>& onFocus)
+{
+    auto onFocusCallback = [onFocus](ArkUI_NodeEvent*) {
+        if (onFocus) {
+            onFocus();
+        }
+    };
+    eventMap_[NODE_ON_FOCUS] = onFocusCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_ON_FOCUS, PARAM_0, nullptr);
 }
 
 void Component::RegisterOnVisibleAreaChange(
@@ -362,12 +379,21 @@ void Component::RegisterOnVisibleAreaChange(
 {
     ArkUI_NumberValue value[ratioArray.size()];
 
-    for (size_t i = 0; i < ratioArray.size(); i++) {
+    for (size_t i = PARAM_0; i < ratioArray.size(); i++) {
         value[i].f32 = { ratioArray[i] };
     }
     ArkUI_AttributeItem item = { value, static_cast<int32_t>(ratioArray.size()) };
 
-    onVisibleAreaChange_ = onVisibleAreaChange;
-    _nodeAPI->registerNodeEvent(_component, NODE_EVENT_ON_VISIBLE_AREA_CHANGE, 0, &item);
+    auto onVisibleAreaChangeCallback = [onVisibleAreaChange](ArkUI_NodeEvent* event) {
+        if (onVisibleAreaChange) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "commonEvent", "NODE_EVENT_ON_VISIBLE_AREA_CHANGE");
+            ArkUI_NodeComponentEvent* result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+            bool visible = static_cast<bool>(result->data[PARAM_0].i32);
+            float ratio = result->data[PARAM_1].f32;
+            onVisibleAreaChange(visible, ratio);
+        }
+    };
+    eventMap_[NODE_EVENT_ON_VISIBLE_AREA_CHANGE] = onVisibleAreaChangeCallback;
+    _nodeAPI->registerNodeEvent(_component, NODE_EVENT_ON_VISIBLE_AREA_CHANGE, PARAM_0, &item);
 }
 } // namespace ArkUICapiTest
