@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "bundle-name": "com.acts.actscommoncomponentcalltest",
+        "bundle-name": "com.example.appa",
         "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 30000
@@ -12,7 +12,7 @@
         {
             "test-file-name": [
                 "ActsDeepLinkTest.hap",
-                "ActsDeepLinkDemoTest.hap",
+                "ActsDeepLinkDemoTest.hap"
     
             ],
             "type": "AppInstallKit",
