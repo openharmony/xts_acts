@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsAaAppDebugrely") {
+ohos_app_assist_suite("ActsStartUIServiceExtensionRely") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAaAppDebugrely"
+  hap_name = "ActsStartUIServiceExtensionRely"
 
   # 部件名称，真实数据，需要子系统对应
   part_name = "ability_runtime"

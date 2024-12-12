@@ -292,6 +292,29 @@ export default function abilityTest() {
     })
 
     /*
+    * @tc.number: SUB_Ability_AbilityRuntime_UIServiceExtension_0600
+    * @tc.name: When the input parameter want is null, an error code is returned.
+    * @tc.desc: When the input parameter want is null, an error code is returned.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 3
+    */
+    it('SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100', 0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100";
+      console.info('====> [SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100] start');
+      try {
+        testAbilityContext.getApplicationContext().getAllRunningInstanceKeys()
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error(`getAllRunningInstanceKeys fail, code: ${code}, msg: ${message}`);
+        expect(code).assertEqual(16000078)
+      }
+      console.info('====> [SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100] end');
+      done();
+    })
+
+    /*
      * @tc.number: SUB_Ability_AbilityRuntime_AppManager_0100
      * @tc.name: When the input parameter want is null, an error code is returned.
      * @tc.desc: When the input parameter want is null, an error code is returned.
