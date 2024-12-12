@@ -182,6 +182,8 @@
 #include "textinput/textinput_selectionmenuhidden_test.h"
 #include "textinput/textinput_inputfilter_test.h"
 #include "textinput/textinput_ontextselectionallchange_test.h"
+#include "customcomponent/customcomponent_secondarylayout_test.h"
+
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -932,6 +934,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"textInputOnTextSelectionAllChangeTest", nullptr, TextInputOnTextSelectionAllChangeTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr },
         {"getTextInputSelectAllData", nullptr, TextInputOnTextSelectionAllChangeTest::GetTextInputSelectAllData,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"customComponentSecondaryLayoutTest", nullptr, CustomComponentSecondaryLayoutTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"getSecondaryLayoutData", nullptr, CustomComponentSecondaryLayoutTest::GetSecondaryLayoutData,
          nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

@@ -750,6 +750,10 @@ export const waterFlowNestedScroll3Test: (a: string) => void;
 
 export const waterFlowGetNestedScrollData: () => number[][];
 
+export const customComponentSecondaryLayoutTest: (a: string) => void;
+
+export const getSecondaryLayoutData : () => number[][];
+
 export const textInputSelectionMenuHiddenTest: (a: string) => void;
 
 export const textInputInputFilterTest: (a: string) => void;

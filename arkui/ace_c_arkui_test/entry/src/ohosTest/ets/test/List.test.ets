@@ -891,6 +891,8 @@ import listNestedScrollEventTest from './list/ListNestedScrollEventTest.test'
 import listNestedScrollTest from './list/ListNestedScrollTest.test'
 
 import textInputOnTextSelectionAllChangeTest from './textinput/TextInputOnTextSelectionAllChangeTest.test'
+import customComponentSecondaryLayoutTest from "./customcomponent/CustomComponentSecondaryLayoutTest.test"
+
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1758,4 +1760,5 @@ export default function testsuite() {
   listNestedScrollEventTest()
   listNestedScrollTest()
   textInputOnTextSelectionAllChangeTest()
+  customComponentSecondaryLayoutTest()
 }
