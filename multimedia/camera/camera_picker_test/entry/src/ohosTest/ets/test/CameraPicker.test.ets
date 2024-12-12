@@ -24,6 +24,8 @@ import fileio from '@ohos.fileio';
 import { BusinessError } from '@ohos.base'
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 
+const cameraAvailable = canIUse('SystemCapability.Multimedia.Camera.Core');
+
 const TAG = "CameraPickerTest: ";
 
 const sleep = (delay: number) => new Promise<void>((resolve) => setTimeout(resolve, delay));
@@ -165,6 +167,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100--------------");
+      if(cameraAvailable){
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK
       };
@@ -184,6 +187,10 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await drivePhotoFn();
+      }else{
+        except(true).assertTrue();
+        done();
+      }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100 ends here");
     });
 
@@ -197,6 +204,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101--------------");
+      if(cameraAvailable){
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_FRONT
       };
@@ -216,6 +224,10 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await drivePhotoFrontFn();
+      }else{
+        except(true).assertTrue();
+        done();
+      }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101 ends here");
     });
 
@@ -230,6 +242,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102--------------");
+      if(cameraAvailable){
       let pathDir = getContext().filesDir;
       let filePath = pathDir + `/${new Date().getTime()}.jpg}`
       fs.createRandomAccessFileSync(filePath, fs.OpenMode.CREATE);
@@ -255,6 +268,10 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await drivePhotoFn();
+    }else{
+        except(true).assertTrue();
+        done();
+      }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102 ends here");
     });
 
@@ -268,6 +285,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103--------------");
+      if(cameraAvailable){
       let uri: string = "fail_string";
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -288,6 +306,10 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await drivePhotoFn();
+      }else{
+        except(true).assertTrue();
+        done();
+      }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103 ends here");
     });
 
@@ -301,6 +323,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100--------------");
+      if(cameraAvailable){
       let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -322,6 +345,10 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await driveVideoFn(videoDuration);
+      }else{
+        except(true).assertTrue();
+        done();
+      }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100 ends here");
     });
 
@@ -335,6 +362,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101--------------");
+      if(cameraAvailable){
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
       };
@@ -354,6 +382,10 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await driveVideoFn(0);
+      }else{
+        except(true).assertTrue();
+        done();
+      }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101 ends here");
     });
 
@@ -367,6 +399,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102--------------");
+      if(cameraAvailable){
       let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_FRONT,
@@ -388,6 +421,10 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await driveVideoFrontFn(videoDuration);
+      }else{
+        except(true).assertTrue();
+        done();
+      }
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102 ends here");
     });
   })
