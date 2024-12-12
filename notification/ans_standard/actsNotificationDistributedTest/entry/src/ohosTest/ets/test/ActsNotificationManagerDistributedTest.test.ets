@@ -67,6 +67,24 @@ export default function ActsNotificationManagerDistributedTest() {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4200 END`)
     })
 
+    /* *
+    * @tc.number    : Sub_Notification_Ans_Is_Notification_Enable_0100
+    * @tc.name      : isNotificationEnabledSync
+    * @tc.desc      : test function isNotificationEnabledSync
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('Sub_Notification_Ans_Is_Notification_Enable_0100', 0, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_Is_Notification_Enable_0100 START`);
+
+      notificationManager.isNotificationEnabledSync()
+      expect(true).assertTrue()
+      done()
+
+      console.info(`${TAG} Sub_Notification_Ans_Is_Notification_Enable_0100 END`);
+    });
+
     console.info(TAG + 'SUB_NOTIFICATION_IS_DISTRIBUTED_ENABLED_TEST END')
   })
 
