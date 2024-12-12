@@ -924,4 +924,5 @@ export default function Sim1Public() {
         }
       });
     });
+  });
 }
