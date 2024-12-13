@@ -21,7 +21,8 @@
 
 namespace ArkUICapiTest {
 
-bool onKeyEventCBWR(OH_NativeXComponent *component, void *window) {
+bool onKeyEventCBWR(OH_NativeXComponent *component, void *window)
+{
     return true;
 }
 
