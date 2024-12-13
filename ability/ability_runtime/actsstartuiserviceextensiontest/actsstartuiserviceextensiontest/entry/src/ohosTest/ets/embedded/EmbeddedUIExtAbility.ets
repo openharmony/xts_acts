@@ -30,7 +30,7 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
     };
     let tag = want?.parameters?.caseName as string;
     let storage: LocalStorage = new LocalStorage(param);
-    if(want?.parameters?.case == "startUIService"){
+    if(want?.parameters?.case == 'startUIService'){
       try{
         this.context.startUIServiceExtensionAbility(null).then((data)=>{
           console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(data));
@@ -50,7 +50,7 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
         });
       }
 
-    }else if(want?.parameters?.case == "connectUIService"){
+    }else if(want?.parameters?.case == 'connectUIService'){
       try{
         let dataCallBack : common.UIServiceExtensionConnectCallback = {
           // 接收数据
@@ -80,7 +80,7 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
         });
       }
 
-    }else if(want?.parameters?.case == "disconnectUIService"){
+    }else if(want?.parameters?.case == 'disconnectUIService'){
       try{
         this.context.disconnectUIServiceExtensionAbility(null)
         .then(() => {
