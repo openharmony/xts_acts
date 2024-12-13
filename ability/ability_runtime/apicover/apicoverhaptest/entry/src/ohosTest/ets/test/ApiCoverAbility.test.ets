@@ -36,6 +36,7 @@ import { AbilityLifecycleCallback } from '@kit.AbilityKit';
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
+let PARAM_ERROR = 401;
 let CROSS_USER_DENY = 201;
 let array: string[] = new Array();
 let TAG = '';
@@ -1225,5 +1226,33 @@ export default function ApiCoverTest() {
       console.log(`${tag}, test end`);
     });
 
+    /*
+     * @tc.number  SUB_AA_Test_SetStartUpPage_0100
+     * @tc.name    Test setStartUpPage param,startWindowIcon and startWindowBackgroundColor.
+     * @tc.desc    Function test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   3
+     */
+    it('SUB_AA_Test_SetStartUpPage_0100', 0, async (done: Function) => {
+      let startOp: startOptions = {
+        startWindowIcon: undefined,
+        startWindowBackgroundColor: undefined,
+      }
+      let startWant: Want = {
+        deviceId: "",
+        bundleName: "ohos.acts.aafwk.test.stagesupplementerr",
+        abilityName: "MainAbility3",
+      }
+      try {
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(startWant, startOp);
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`Start ability failed, code is ${code}, message is ${message}`);
+        expect(err.code).assertEqual(PARAM_ERROR);
+        done();
+      }
+    });
   })
 }
