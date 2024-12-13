@@ -13,21 +13,23 @@
  * limitations under the License.
  */
 
-#ifndef ARKUI_CAPI_XTS_RESPONSE_CONFIGUPDATE_TEST_H
-#define ARKUI_CAPI_XTS_RESPONSE_CONFIGUPDATE_TEST_H
+#ifndef ARKUI_CAPI_XTS_RESOURCE_NAPI_VALUE_TEST_H
+#define ARKUI_CAPI_XTS_RESOURCE_NAPI_VALUE_TEST_H
 
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #include <arkui/native_interface.h>
 #include <arkui/native_node.h>
 
 #include "../common/common.h"
+#include "column_component.h"
+#include "row_component.h"
 
 namespace ArkUICapiTest {
 
-class ResponseConfigUpdateTest {
+class ResourceNapiValueTest {
 public:
-    ~ResponseConfigUpdateTest();
+    ~ResourceNapiValueTest();
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
-#endif // ARKUI_CAPI_XTS_RESPONSE_CONFIGUPDATE_TEST_H
+#endif // ARKUI_CAPI_XTS_REQUIREMENT_ROUTER_PAGE_STATE_TEST_H
