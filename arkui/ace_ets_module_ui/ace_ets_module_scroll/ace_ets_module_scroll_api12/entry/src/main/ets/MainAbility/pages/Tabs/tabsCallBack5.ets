@@ -53,7 +53,7 @@ struct tabsCallBack5Example {
           }
           return true
         })
-        .onGestureSwipe((index: number, extraInfo: SwiperAnimationEvent) => {
+        .onGestureSwipe((index: number, extraInfo: TabsAnimationEvent) => {
           this.message1 += 'onGestureSwipe-'
           console.info('GestureSwipe index: ' + index)
           console.info('current offset: ' + extraInfo.currentOffset)
