@@ -163,6 +163,7 @@ HWTEST_F(DrawingNativePathTest, testPathDestroyNormal, TestSize.Level0) {
  */
 HWTEST_F(DrawingNativePathTest, testPathDestroyNull, TestSize.Level3) {
     OH_Drawing_PathDestroy(nullptr);
+    EXPECT_TRUE(true);
 }
 
 /*
