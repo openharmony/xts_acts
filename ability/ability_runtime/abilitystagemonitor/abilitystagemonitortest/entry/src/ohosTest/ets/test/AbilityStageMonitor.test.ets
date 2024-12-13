@@ -22,8 +22,8 @@ import Want from '@ohos.app.ability.Want';
 import common from '@ohos.app.ability.common';
 import base from '@ohos.base';
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-let moduleName1: string
-let monitor: AbilityDelegatorRegistryNew.AbilityMonitor
+let moduleName1: string;
+let monitor: AbilityDelegatorRegistryNew.AbilityMonitor;
 let want: Want
 let timeout = 3000;
 let addMonitor = false;
@@ -69,7 +69,7 @@ export default function abilityStageMonitorTest() {
       console.info("SUB_AA_AbilityStage_0100 begin")
       try {
         console.info("SUB_AA_AbilityStage_0100 wait abilityStage");
-        let stage: AbilityDelegatorRegistry.AbilityStageMonitor= {
+        let stage: AbilityDelegatorRegistryNew.AbilityStageMonitor= {
           moduleName: "feature_assista",
           srcEntrance: "./ets/Application/MyAbilityStage.ts",
         }
