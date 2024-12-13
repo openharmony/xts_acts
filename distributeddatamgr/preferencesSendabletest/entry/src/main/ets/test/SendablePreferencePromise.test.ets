@@ -545,5 +545,34 @@ export default function sendablePreferencesPromiseTest() {
       });
       done()
     })
+	
+	
+	/**
+     * @tc.name testSendablePreferencesFlushsync0100
+     * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_2200
+     * @tc.desc Flushsync interface test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+	
+	
+	it('testSendableFlushSync0100', 0, async (done: Function) => {
+      try {
+        mPreferences.clearSync();
+        mPreferences.putSync(KEY_NUMBER,'TEST');
+        let pre = mPreferences.getSync(KEY_NUMBER,'default');
+        expect('TEST').assertEqual(pre)
+        mPreferences.flushSync();
+        sendablePreferences.removePreferencesFromCacheSync(context,options)
+        mPreferences = sendablePreferences.getPreferencesSync(context,options)
+        let pre2 = mPreferences.getSync(KEY_NUMBER,'default')
+        expect('TEST').assertEqual(pre2)
+      } catch (e) {
+        expect().assertFail();
+      }
+      })
+	
+	
     })
 }
