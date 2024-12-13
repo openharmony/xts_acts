@@ -36,6 +36,10 @@
 #define NUMBER_256 256
 #define NUMBER_500 500
 #define NUMBER_40001000 40001000
+#define ARR_NUMBER_0 0
+#define ARR_NUMBER_1 1
+#define ARR_NUMBER_2 2
+#define ARR_NUMBER_3 3
 static bool g_flag = false;
 static void OnVSync(long long timestamp, void *data) { g_flag = true; }
 
@@ -360,7 +364,8 @@ static napi_value OHNativeVSyncRequestFrameParamErr(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value OHNativeVSyncCreateForAssociatedWindowNormal(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateForAssociatedWindowNormal(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     OHNativeWindow *nativeWindow = nullptr;
     OH_NativeImage *image = OH_ConsumerSurface_Create();
@@ -382,7 +387,8 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowNormal(napi_env env, nap
     return result;
 }
 
-static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal01(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal01(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
@@ -402,26 +408,27 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal01(napi_env env,
     } else {
         napi_create_int32(env, SUCCESS, &result1);
     }
-    napi_set_element(env, result, 0, result1);
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
     OH_NativeVSync *ret1 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, 0);
     if (ret1 == nullptr) {
         napi_create_int32(env, FAIL, &result2);
     } else {
         napi_create_int32(env, SUCCESS, &result2);
     }
-    napi_set_element(env, result, 1, result2);
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
     OH_NativeVSync *ret2 = OH_NativeVSync_Create_ForAssociatedWindow(0, name, length);
     if (ret2 == nullptr) {
         napi_create_int32(env, FAIL, &result3);
     } else {
         napi_create_int32(env, SUCCESS, &result3);
     }
-    napi_set_element(env, result, 2, result3);
+    napi_set_element(env, result, ARR_NUMBER_2, result3);
     OH_NativeVSync_Destroy(nativeVSync);
     return result;
 }
 
-static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal02(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal02(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
@@ -441,25 +448,26 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal02(napi_env env,
     } else {
         napi_create_int32(env, SUCCESS, &result1);
     }
-    napi_set_element(env, result, 0, result1);
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
     OH_NativeVSync *ret4 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, "", length);
     if (ret4 == nullptr) {
         napi_create_int32(env, FAIL, &result2);
     } else {
         napi_create_int32(env, SUCCESS, &result2);
     }
-    napi_set_element(env, result, 1, result2);
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
     OH_NativeVSync *ret5 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, sizeof(name));
     if (ret5 == nullptr) {
         napi_create_int32(env, FAIL, &result3);
     } else {
         napi_create_int32(env, SUCCESS, &result3);
     }
-    napi_set_element(env, result, 2, result3);
+    napi_set_element(env, result, ARR_NUMBER_2, result3);
     OH_NativeVSync_Destroy(nativeVSync);
     return result;
 }
-static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal03(napi_env env, napi_callback_info info) {
+static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal03(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     napi_create_array_with_length(env, NUMBER_3, &result);
     uint64_t windowID = 1;
