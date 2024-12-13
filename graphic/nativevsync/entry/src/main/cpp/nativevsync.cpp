@@ -22,6 +22,8 @@
 #include <stdexcept>
 #include <cstdio>
 #include <zconf.h>
+#include <native_image/native_image.h>
+#include <native_window/external_window.h>
 
 #define SUCCESS 0
 #define FAIL (-1)
@@ -358,6 +360,131 @@ static napi_value OHNativeVSyncRequestFrameParamErr(napi_env env, napi_callback_
     return result;
 }
 
+static napi_value OHNativeVSyncCreateForAssociatedWindowNormal(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    OHNativeWindow *nativeWindow = nullptr;
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
+    uint64_t surfaceId;
+    OH_NativeWindow_GetSurfaceId(nativeWindow, &surfaceId);
+    char name[] = "test";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    OH_NativeVSync *ret = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, length);
+    if (ret == nullptr) {
+        napi_create_int32(env, FAIL, &result);
+        OH_NativeVSync_Destroy(nativeVSync);
+        return result;
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+        OH_NativeVSync_Destroy(nativeVSync);
+    }
+    return result;
+}
+
+static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal01(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_create_array_with_length(env, NUMBER_3, &result);
+    OHNativeWindow *nativeWindow = nullptr;
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
+    uint64_t surfaceId;
+    OH_NativeWindow_GetSurfaceId(nativeWindow, &surfaceId);
+    char name[] = "test";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    OH_NativeVSync *ret = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, nullptr, length);
+    if (ret == nullptr) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 0, result1);
+    OH_NativeVSync *ret1 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, 0);
+    if (ret1 == nullptr) {
+        napi_create_int32(env, FAIL, &result2);
+    } else {
+        napi_create_int32(env, SUCCESS, &result2);
+    }
+    napi_set_element(env, result, 1, result2);
+    OH_NativeVSync *ret2 = OH_NativeVSync_Create_ForAssociatedWindow(0, name, length);
+    if (ret2 == nullptr) {
+        napi_create_int32(env, FAIL, &result3);
+    } else {
+        napi_create_int32(env, SUCCESS, &result3);
+    }
+    napi_set_element(env, result, 2, result3);
+    OH_NativeVSync_Destroy(nativeVSync);
+    return result;
+}
+
+static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal02(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_create_array_with_length(env, NUMBER_3, &result);
+    OHNativeWindow *nativeWindow = nullptr;
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
+    uint64_t surfaceId;
+    OH_NativeWindow_GetSurfaceId(nativeWindow, &surfaceId);
+    char name[] = "test";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    OH_NativeVSync *ret3 = OH_NativeVSync_Create_ForAssociatedWindow(3, name, length);
+    if (ret3 == nullptr) {
+        napi_create_int32(env, FAIL, &result1);
+    } else {
+        napi_create_int32(env, SUCCESS, &result1);
+    }
+    napi_set_element(env, result, 0, result1);
+    OH_NativeVSync *ret4 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, "", length);
+    if (ret4 == nullptr) {
+        napi_create_int32(env, FAIL, &result2);
+    } else {
+        napi_create_int32(env, SUCCESS, &result2);
+    }
+    napi_set_element(env, result, 1, result2);
+    OH_NativeVSync *ret5 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, sizeof(name));
+    if (ret5 == nullptr) {
+        napi_create_int32(env, FAIL, &result3);
+    } else {
+        napi_create_int32(env, SUCCESS, &result3);
+    }
+    napi_set_element(env, result, 2, result3);
+    OH_NativeVSync_Destroy(nativeVSync);
+    return result;
+}
+static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal03(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, NUMBER_3, &result);
+    uint64_t windowID = 1;
+    char name[] = "test";
+    int maximum = 257;
+    int count = 0;
+    OH_NativeVSync *native_vsync_array[maximum];
+    for (count = 0; count < maximum; ++count) {
+        native_vsync_array[count] = OH_NativeVSync_Create_ForAssociatedWindow(windowID, name, sizeof(name));
+        if (native_vsync_array[count] == nullptr) {
+            break;
+        }
+    }
+    if (native_vsync_array[count] == nullptr) {
+        napi_create_int32(env, FAIL, &result);
+    } else {
+        napi_create_int32(env, SUCCESS, &result);
+    }
+    count--;
+    for (; count >= 0; --count) {
+        OH_NativeVSync_Destroy(native_vsync_array[count]);
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -391,6 +518,14 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHNativeVSyncRequestFrameParamErr", nullptr, OHNativeVSyncRequestFrameParamErr, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"oHNativeVSyncCreateForAssociatedWindowNormal", nullptr, OHNativeVSyncCreateForAssociatedWindowNormal, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncCreateForAssociatedWindowAbNormal01", nullptr, OHNativeVSyncCreateForAssociatedWindowAbNormal01,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncCreateForAssociatedWindowAbNormal02", nullptr, OHNativeVSyncCreateForAssociatedWindowAbNormal02,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncCreateForAssociatedWindowAbNormal03", nullptr, OHNativeVSyncCreateForAssociatedWindowAbNormal03,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

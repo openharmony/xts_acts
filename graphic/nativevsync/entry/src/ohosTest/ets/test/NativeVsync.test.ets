@@ -270,5 +270,66 @@ export default function nativeVsyncTest() {
       done();
     });
 
+   /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_ASSOCIATEDWINDOW_0100
+     * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowNormal
+     * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncCreateForAssociatedWindowNormal', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncCreateForAssociatedWindowNormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_ASSOCIATEDWINDOW_0101
+     * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal01
+     * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal01', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal01();
+      console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_ASSOCIATEDWINDOW_0102
+     * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal02
+     * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal02();
+      console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_ASSOCIATEDWINDOW_0103
+     * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal03
+     * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal03', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal03();
+      console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
+      expect(result).assertEqual(-1);
+      done();
+    });
   })
 }

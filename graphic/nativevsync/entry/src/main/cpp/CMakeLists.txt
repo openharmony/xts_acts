@@ -8,4 +8,4 @@ include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
 add_library(nativevsync SHARED nativevsync.cpp)
-target_link_libraries(nativevsync PUBLIC libace_napi.z.so  libnative_buffer.so libnative_vsync.so)
+target_link_libraries(nativevsync PUBLIC libace_napi.z.so libnative_vsync.so libnative_image.so libnative_buffer.so libnative_window.so)
