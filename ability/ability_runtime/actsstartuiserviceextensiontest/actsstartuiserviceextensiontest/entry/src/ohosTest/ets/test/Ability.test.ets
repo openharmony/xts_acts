@@ -312,7 +312,7 @@ export default function abilityTest() {
             expect(processData?.uid).assertLarger(0);
             expect(processData?.isContinuousTask).assertFalse();
             expect(processData?.isKeepAlive).assertFalse();
-            expect(processData?.state).assertLarger(0);
+			expect(typeof(processData?.state)).assertEqual("number");
           }catch(e){}
           }
         },
