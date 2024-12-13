@@ -76,5 +76,27 @@ export default function MovingPhotoViewTest() {
       console.info('MovingPhotoViewTest_0120 END');
       done();
     });
+
+    /**
+     * @tc.number MovingPhotoViewTest_0130
+     * @tc.name MovingPhotoViewTest_0130
+     * @tc.desc test the api of MovingPhotoView: refresh
+     * @tc.level: Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('MovingPhotoViewTest_0130', 0, async (done: Function) => {
+      console.info('MovingPhotoViewTest_0130 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('MovingPhotoView_refreshButton'));
+      await button.click();
+      await CommonFunc.sleep(2000);
+      let strJson = getInspectorByKey('MovingPhotoView_refresh');
+      console.log('MovingPhotoViewTest_0130', JSON.parse(strJson).$attrs.content)
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("refresh succ");
+      console.info('MovingPhotoViewTest_0130 END');
+      done();
+    });
   })
 }
