@@ -81,7 +81,8 @@
                     "pages/viewModel/root/root",
                     "pages/viewModel1/index/index",
                     "pages/viewModel1/comp/comp",
-                    "pages/list/router/index"
+                    "pages/list/router/index",
+                    "pages/global/index"
                 ],
                 "name": ".MainAbility",
                 "window": {
