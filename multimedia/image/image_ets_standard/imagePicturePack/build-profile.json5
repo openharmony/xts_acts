@@ -13,8 +13,31 @@
  * limitations under the License.
  */
 
-import imagePicture from './imagePicture.test';
-
-export default function testsuite() {
-  imagePicture();
+{
+  "app": {
+    "signingConfigs": [
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 12,
+        "compatibleSdkVersion": 12
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
 }
