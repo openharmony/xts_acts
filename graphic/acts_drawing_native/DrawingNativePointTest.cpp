@@ -178,13 +178,11 @@ HWTEST_F(DrawingNativePointTest, testPointGetXNull, TestSize.Level3) {
     //1. OH_Drawing_PointGetX with the first parameter as null
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     float x;
-    OH_Drawing_PointGetX(nullptr, &x);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_PointGetX(nullptr, &x), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //2. OH_Drawing_PointGetX with the second parameter as null
-    OH_Drawing_PointGetX(point, nullptr);
+    EXPECT_EQ(OH_Drawing_PointGetX(point, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //3. free memory
     OH_Drawing_PointDestroy(point);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 
 /*
@@ -243,11 +241,9 @@ HWTEST_F(DrawingNativePointTest, testPointGetYNull, TestSize.Level3) {
     //1. OH_Drawing_PointGetY with the first parameter as null
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     float y;
-    OH_Drawing_PointGetX(nullptr, &y);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_PointGetX(nullptr, &y), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //2. OH_Drawing_PointGetY with the second parameter as null
-    OH_Drawing_PointGetX(point, nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_PointGetX(point, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //3. free memory
     OH_Drawing_PointDestroy(point);
 }
@@ -304,14 +300,11 @@ HWTEST_F(DrawingNativePointTest, testPointSetNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativePointTest, testPointSetNull, TestSize.Level3) {
     //1. OH_Drawing_PointSet with the first parameter as null
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
-    OH_Drawing_PointSet(nullptr, 10, 10);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_PointSet(nullptr, 10, 10), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //2. OH_Drawing_PointSet with the second parameter as 0
-    OH_Drawing_PointSet(point, 0, 10);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_PointSet(point, 0, 10), OH_DRAWING_SUCCESS);
     //3. OH_Drawing_PointSet with the third parameter as 0
-    OH_Drawing_PointSet(point, 10, 0);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_PointSet(point, 10, 0), OH_DRAWING_SUCCESS);
     //4. free memory
     OH_Drawing_PointDestroy(point);
 }
