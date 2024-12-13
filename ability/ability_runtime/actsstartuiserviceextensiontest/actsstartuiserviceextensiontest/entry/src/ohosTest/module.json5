@@ -62,11 +62,19 @@
     "extensionAbilities": [
       {
         "name": "UIExtAbility1",
-        "srcEntry": "./ets/embedded/EmbeddedUIExtAbility.ts",
+        "srcEntry": "./ets/embedded/EmbeddedUIExtAbility.ets",
         "description": "$string:TestAbility_desc",
         "label": "$string:TestAbility_label",
         "type": "embeddedUI",
         "exported": true
+      }
+    ],
+    "requestPermissions": [
+     {
+        "name": "ohos.permission.RUNNING_STATE_OBSERVER"
+      },
+      {
+        "name": "ohos.permission.GET_RUNNING_INFO"
       }
     ]
   }

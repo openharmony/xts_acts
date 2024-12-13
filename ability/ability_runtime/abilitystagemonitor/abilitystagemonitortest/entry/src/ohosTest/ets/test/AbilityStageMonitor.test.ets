@@ -69,10 +69,11 @@ export default function abilityStageMonitorTest() {
       console.info("SUB_AA_AbilityStage_0100 begin")
       try {
         console.info("SUB_AA_AbilityStage_0100 wait abilityStage");
-        abilityDelegator.waitAbilityStageMonitor({
+		let stage: AbilityDelegatorRegistry.AbilityStageMonitor= {
           moduleName: "feature_assista",
           srcEntrance: "./ets/Application/MyAbilityStage.ts",
-        }, (err, data) => {
+        }
+        abilityDelegator.waitAbilityStageMonitor(stage, (err, data) => {
           console.log("SUB_AA_AbilityStage_0100 waitAbilityStageMonitor callback " +
             "err = " + err + ", data = " + JSON.stringify(data));
           moduleName1 = data.context.currentHapModuleInfo.name;

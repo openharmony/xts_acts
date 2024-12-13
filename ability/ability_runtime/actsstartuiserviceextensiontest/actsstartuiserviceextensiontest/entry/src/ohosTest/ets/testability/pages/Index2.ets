@@ -20,37 +20,36 @@ let testAbilityWant:Want;
 @Entry
 @Component
 struct Index {
+  @State message: string = 'Hello World'
+  private context:common.UIAbilityContext = getContext(this) as common.UIAbilityContext;
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
     testAbilityWant = AppStorage.get<Want>('TestAbilityWant') as Want;
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear ' + JSON.stringify(testAbilityWant));
   }
-  @State message: string = 'Hello World'
-  private want: Want = {
-    bundleName: "com.example.embeddeddemo",
-    abilityName: "ExampleEmbeddedAbility",
-    parameters:{
-      "case":testAbilityWant?.parameters?.case,
-      "caseName":testAbilityWant?.parameters?.caseName
-    }
-  }
-  private context:common.UIAbilityContext = getContext() as common.UIAbilityContext;
   build() {
     Row() {
       Column() {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-          .width('100%')
-          .height('90%')
-          .onTerminated((info)=>{
-            this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
-            this.context.terminateSelf()
-          })
-          .onError((error)=>{
-            this.message = 'Error: code = ' + error.code;
-          })
+            EmbeddedComponent({
+              bundleName: "com.acts.startuiserviceextensiontest",
+              abilityName: "UIExtAbility1",
+              parameters:{
+                "case":testAbilityWant?.parameters?.case as string,
+                "caseName":testAbilityWant?.parameters?.caseName as string
+              }
+            }, EmbeddedType.EMBEDDED_UI_EXTENSION)
+            .width('100%')
+            .height('90%')
+            .onTerminated((info)=>{
+              this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
+              this.context.terminateSelf()
+            })
+            .onError((error)=>{
+              this.message = 'Error: code = ' + error.code;
+            })
       }.width('100%')
     }.height('100%')
   }

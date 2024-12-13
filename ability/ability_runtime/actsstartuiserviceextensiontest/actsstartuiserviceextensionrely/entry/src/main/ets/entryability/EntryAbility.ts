@@ -46,6 +46,9 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    setTimeout(()=>{
+      this.context.terminateSelf();
+    },2000)
   }
 
   onBackground() {
