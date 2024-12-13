@@ -828,7 +828,6 @@ import unitPaddingPercentTest from "./unit/UnitPaddingPercentTest.test"
 import unitBorderRadiusPercentTest from "./unit/UnitBorderRadiusPercentTest.test"
 import toolsLayoutRectTest from "./tools/ToolsLayoutRectTest.test"
 import hybirdGetNodeHandleTest from "./hybird/HybirdGetNodeHandleTest.test"
-import responseConfigUpdateTest from "./response/ResponseConfigUpdateTest.test"
 import requirementPanGestureTest from './requirement/RequirementPanGestureTest.test'
 import customComponentLayoutConstraintTest from './customcomponent/CustomComponentLayoutConstraintTest.test'
 import customDialogSetContentTest from "./customdialog/CustomDialogSetContentTest.test"
@@ -892,6 +891,8 @@ import listNestedScrollTest from './list/ListNestedScrollTest.test'
 
 import textInputOnTextSelectionAllChangeTest from './textinput/TextInputOnTextSelectionAllChangeTest.test'
 import customComponentSecondaryLayoutTest from "./customcomponent/CustomComponentSecondaryLayoutTest.test"
+import requirementRouterPageStateTest from './requirement/RequirementRouterPageStateTest.test'
+import resourceNapiValueTest from './resourcenapivalue/ResourceNapiValueTest.test'
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1761,4 +1762,6 @@ export default function testsuite() {
   listNestedScrollTest()
   textInputOnTextSelectionAllChangeTest()
   customComponentSecondaryLayoutTest()
+  requirementRouterPageStateTest()
+  resourceNapiValueTest()
 }

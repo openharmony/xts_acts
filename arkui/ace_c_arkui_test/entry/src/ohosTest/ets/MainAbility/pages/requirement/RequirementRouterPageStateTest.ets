@@ -12,21 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { resourceManager } from '@kit.LocalizationKit';
 
 import render from 'libnativerender.so'
 import { CommonView } from '../../componet/CommonView';
 
+
 @Entry
 @Component
-struct ResponseConfigUpdateTest {
-  PAGE_TAG: string = 'ResponseConfigUpdateTest';
+struct RequirementRouterPageStateTest {
+  PAGE_TAG: string = 'RequirementRouterPageStateTest';
 
   build() {
     Column() {
       CommonView({
         pageTag: this.PAGE_TAG,
       }).onAppear(() => {
-        render.responseConfigUpdateTest(this.PAGE_TAG);
+        render.requirementRouterPageStateTest(this.PAGE_TAG)
       })
     }
   }
