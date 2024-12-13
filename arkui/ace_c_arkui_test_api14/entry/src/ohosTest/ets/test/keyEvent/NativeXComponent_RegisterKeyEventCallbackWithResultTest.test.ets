@@ -26,12 +26,12 @@ export default function NativeXComponent_RegisterKeyEventCallbackWithResultTest(
     });
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_CUSTOM_PRPPERTY_0100
+     * @tc.number     : SUB_ACE_UI_COMPONENT_SPECIALCOMPONENTS_RETURN_KEY_0130
      * @tc.name       : NativeXComponent_RegisterKeyEventCallbackWithResultTest001
      * @tc.desc       : testing OH_NativeXComponent_RegisterKeyEventCallbackWithResult
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
 
     it('testNativeXComponent_RegisterKeyEventCallbackWithResult001', 0, async (done: Function) => {
