@@ -15,6 +15,7 @@
 
 import media from '@ohos.multimedia.media'
 import MediaTestBase, { FdObject } from './MediaTestBase';
+import { Permissions } from '@kit.AbilityKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 let audioRecorder: media.AudioRecorder | null = null;
@@ -62,41 +63,35 @@ async function nextStep(mySteps: Array<number>, done: Function) {
     console.info('case to done');
     return;
   }
+  console.info('case to EVENT:::'+mySteps[0]);
   switch (mySteps[0]) {
     case PRE_STATE:
       console.info('case to prepare');
       audioRecorder?.prepare(audioConfig);
-      await mediaTestBase.msleep(1000)
       break;
     case START_STATE:
       console.info('case to start');
       audioRecorder?.start();
-      await mediaTestBase.msleep(1000)
       break;
     case PAUSE_STATE:
       console.info('case to pause');
       audioRecorder?.pause();
-      await mediaTestBase.msleep(1000)
       break;
     case RESUME_STATE:
       console.info('case to resume');
       audioRecorder?.resume();
-      await mediaTestBase.msleep(1000)
       break;
     case STOP_STATE:
       console.info('case to stop');
       audioRecorder?.stop();
-      await mediaTestBase.msleep(1000)
       break;
     case RESET_STATE:
       console.info('case to reset');
       audioRecorder?.reset();
-      await mediaTestBase.msleep(1000)
       break;
     case RELEASE_STATE:
       console.info('case to release');
       audioRecorder?.release();
-      await mediaTestBase.msleep(1000)
       audioRecorder = null;
       break;
     case ERROR_STATE:
@@ -163,6 +158,12 @@ async function setCallback(mySteps: Array<number>, done: Function) {
 export default function RecorderLocalTestAudioAPI() {
   describe('RecorderLocalTestAudioAPI', () => {
     beforeAll(async () => {
+      let permissionNames: Array<Permissions> =
+        ['ohos.permission.MICROPHONE', 'ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA',
+          'ohos.permission.WRITE_MEDIA'];
+      await mediaTestBase.getPermission(permissionNames);
+      await mediaTestBase.msleepAsync(2000);
+      await mediaTestBase.driveFn(3);
       fdObject = await mediaTestBase.getFd('audio_api.mp4');
       if (fdObject.fdNumber != null) {
         fdPath = "fd://" + fdObject.fdNumber.toString();

@@ -56,6 +56,8 @@ let audioConfig: RecorderConfigFile = {
 
 function initAudioRecorder() {
   if (audioRecorder != null) {
+    console.info('case to initAudioRecorder:::');
+    console.info('case to initAudioRecorder:::release');
     audioRecorder.release();
     audioRecorder = null;
   }
@@ -68,41 +70,35 @@ async function nextStep(mySteps: Array<number | Array<Array<string>>>, done: Fun
     done();
     return;
   }
+  console.info('case to EVENT:::'+mySteps[0]);
   switch (mySteps[0]) {
     case PRE_STATE:
       console.info('case to prepare');
       audioRecorder?.prepare(audioConfig);
-      await mediaTestBase.msleep(1000)
       break;
     case START_STATE:
       console.info('case to start');
       audioRecorder?.start();
-      await mediaTestBase.msleep(1000)
       break;
     case PAUSE_STATE:
       console.info('case to pause');
       audioRecorder?.pause();
-      await mediaTestBase.msleep(1000)
       break;
     case RESUME_STATE:
       console.info('case to resume');
       audioRecorder?.resume();
-      await mediaTestBase.msleep(1000)
       break;
     case STOP_STATE:
       console.info('case to stop');
       audioRecorder?.stop();
-      await mediaTestBase.msleep(1000)
       break;
     case RESET_STATE:
       console.info('case to reset');
       audioRecorder?.reset();
-      await mediaTestBase.msleep(1000)
       break;
     case RELEASE_STATE:
       console.info('case to release');
       audioRecorder?.release();
-      await mediaTestBase.msleep(1000)
       audioRecorder = null;
       break;
     case CHECK_STATE:
@@ -114,7 +110,6 @@ async function nextStep(mySteps: Array<number | Array<Array<string>>>, done: Fun
         await videoRecorderBase.checkVideos(fdPath, ((recorderTime as ESObject) as number), ((trackArray as ESObject ) as Array<Array<string>>), null);
         nextStep(mySteps, done);
         break;
-      break;
     case ERROR_STATE:
       console.info('case to wait error callback');
       break;
