@@ -271,7 +271,7 @@ export default function nativeVsyncTest() {
     });
 
    /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_ASSOCIATEDWINDOW_0100
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_CREATE_ASSOCIATEDWINDOW_0100
      * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowNormal
      * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
      * @tc.size       : MediumTest
@@ -285,7 +285,7 @@ export default function nativeVsyncTest() {
     });
 
     /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_ASSOCIATEDWINDOW_0101
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_CREATE_ASSOCIATEDWINDOW_0200
      * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal01
      * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
      * @tc.size       : MediumTest
@@ -301,7 +301,7 @@ export default function nativeVsyncTest() {
       done();
     });
     /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_ASSOCIATEDWINDOW_0102
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_CREATE_ASSOCIATEDWINDOW_0300
      * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal02
      * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
      * @tc.size       : MediumTest
@@ -318,7 +318,7 @@ export default function nativeVsyncTest() {
     });
 
     /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_NATIVEVSYNC_CREATE_ASSOCIATEDWINDOW_0103
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_CREATE_ASSOCIATEDWINDOW_0400
      * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal03
      * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
      * @tc.size       : MediumTest
