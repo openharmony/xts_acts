@@ -16,6 +16,6 @@ ohos_js_app_suite("ActsTelephonyObserverWithCardTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsTelephonyObserverWithCardTest"
-  part_name = "sms_mms"
+  part_name = "call_manager"
   subsystem_name = "telephony"
 }
