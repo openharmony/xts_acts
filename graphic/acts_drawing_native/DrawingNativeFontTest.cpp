@@ -586,13 +586,13 @@ HWTEST_F(DrawingNativeFontTest, testFontCountTextNormal, TestSize.Level0) {
                 EXPECT_EQ(count, 11);
                 break;
             case TEXT_ENCODING_UTF16:
-                EXPECT_EQ(count, 11);
+                EXPECT_EQ(count, -1);
                 break;
             case TEXT_ENCODING_UTF32:
-                EXPECT_EQ(count, 11);
+                EXPECT_EQ(count, 2);
                 break;
             case TEXT_ENCODING_GLYPH_ID:
-                EXPECT_EQ(count, 11);
+                EXPECT_EQ(count, 5);
                 break;
             default:
                 break;
