@@ -78,9 +78,9 @@ struct WebComponent {
             case "NestedScrollMode02": {
               let driver: Driver = await Driver.create()
               this.offsetX = 0
-              await driver.swipe(X, Y, X+100, Y);
+              await driver.swipe(X, Y, X+50, Y);
               await Utils.sleep(2000);
-              if(this.offsetX < 100) {
+              if(this.offsetX >0) {
                 Utils.emitEvent(true, 20241130)
               }
               break;
@@ -100,9 +100,9 @@ struct WebComponent {
             case "NestedScrollMode04": {
               let driver: Driver = await Driver.create()
               this.offsetY = 0
-              await driver.swipe(X, Y, X, Y+100);
+              await driver.swipe(X, Y, X, Y+50);
               await Utils.sleep(2000);
-              if(this.offsetY < 100) {
+              if(this.offsetY >0) {
                 Utils.emitEvent(true, 20241132)
               }
               break;
