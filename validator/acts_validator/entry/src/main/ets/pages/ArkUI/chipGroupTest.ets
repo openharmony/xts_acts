@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -22,7 +22,7 @@ import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
 const TAG = '[chipGroupTest]';
 
 @Builder
-function DefaultFunction(): void {
+function defaultFunction(): void {
 }
 
 @Component
@@ -32,7 +32,7 @@ struct SectionGroup {
   title: ResourceStr;
   @BuilderParam
   @Require
-  content: () => void = DefaultFunction;
+  content: () => void = defaultFunction;
 
   build() {
     Column({ space: 4 }) {
@@ -55,7 +55,7 @@ struct SectionItem {
   title: ResourceStr;
   @BuilderParam
   @Require
-  content: () => void = DefaultFunction;
+  content: () => void = defaultFunction;
 
   build() {
     Column({ space: 12 }) {
@@ -77,7 +77,7 @@ struct chipGroupTest {
     '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、分别点击单选区域和多选区域组件的的后缀图标删除符号，观察朗读内容\n' +'\n' +
       '预期结果：1、朗读内容为：保存，按钮，选项后缀图标\n' +
       '2、朗读内容为：删除，按钮，单指双击即可执行\n';
-  @State Vue: boolean = false;
+  @State isVue: boolean = false;
   @State intervalNum: number = 0;
   @State yesEnable: boolean = false
   // 默认不支持
@@ -125,8 +125,8 @@ struct chipGroupTest {
 
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
-    if (this.Vue == false) {
-      Button({ stateEffect: this.Vue }) {
+    if (this.isVue == false) {
+      Button({ stateEffect: this.isVue }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -139,7 +139,7 @@ struct chipGroupTest {
 
       })
     } else {
-      Button({ stateEffect: this.Vue }) {
+      Button({ stateEffect: this.isVue }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -189,7 +189,7 @@ struct chipGroupTest {
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-      this.Vue = true;
+      this.isVue = true;
     }, 1000)
   }
 
@@ -246,7 +246,7 @@ struct chipGroupTest {
               .enabled(!this.yesEnable)
               .opacity(!this.yesEnable ? 1 : 0.4)
               .onClick(async () => {
-                this.Vue = true
+                this.isVue = true
               })
           }
 
@@ -272,7 +272,7 @@ struct chipGroupTest {
                       prefixIcon: {
                         src: $r('app.media.icon')
                       },
-                      label: { text: "选项1" },
+                      label: { text: '选项1' },
                       suffixImageIcon: {
                         src: $r('sys.media.save_button_picture'),
                         accessibilityText: '保存',
@@ -287,7 +287,7 @@ struct chipGroupTest {
                       allowClose: true
                     },
                     {
-                      label: { text: "选项2" },
+                      label: { text: '选项2' },
                       suffixSymbol: {
                         normal: new SymbolGlyphModifier($r('sys.symbol.save')),
                         activated: new SymbolGlyphModifier($r('sys.symbol.save'))
@@ -305,13 +305,13 @@ struct chipGroupTest {
                         }
                       }
                     },
-                    { label: { text: "选项3" }, allowClose: true },
-                    { label: { text: "选项4" }, allowClose: true },
-                    { label: { text: "选项5" }, allowClose: true },
-                    { label: { text: "选项6" }, allowClose: true },
-                    { label: { text: "选项7" }, allowClose: true },
-                    { label: { text: "选项8" }, allowClose: true },
-                    { label: { text: "选项9" }, allowClose: true },
+                    { label: { text: '选项3' }, allowClose: true },
+                    { label: { text: '选项4' }, allowClose: true },
+                    { label: { text: '选项5' }, allowClose: true },
+                    { label: { text: '选项6' }, allowClose: true },
+                    { label: { text: '选项7' }, allowClose: true },
+                    { label: { text: '选项8' }, allowClose: true },
+                    { label: { text: '选项9' }, allowClose: true },
                   ]
                 })
               }
@@ -319,15 +319,15 @@ struct chipGroupTest {
               SectionItem({ title: '单选 有后缀区域' }) {
                 ChipGroup({
                   items: [
-                    { label: { text: "选项1" },allowClose: true },
-                    { label: { text: "选项2" },allowClose: true },
-                    { label: { text: "选项3" },allowClose: true },
-                    { label: { text: "选项4" },allowClose: true },
-                    { label: { text: "选项5" },allowClose: true },
-                    { label: { text: "选项6" },allowClose: true },
-                    { label: { text: "选项7" },allowClose: true },
-                    { label: { text: "选项8" },allowClose: true },
-                    { label: { text: "选项9" },allowClose: true },
+                    { label: { text: '选项1' },allowClose: true },
+                    { label: { text: '选项2' },allowClose: true },
+                    { label: { text: '选项3' },allowClose: true },
+                    { label: { text: '选项4' },allowClose: true },
+                    { label: { text: '选项5' },allowClose: true },
+                    { label: { text: '选项6' },allowClose: true },
+                    { label: { text: '选项7' },allowClose: true },
+                    { label: { text: '选项8' },allowClose: true },
+                    { label: { text: '选项9' },allowClose: true },
                   ],
                   suffix: this.Suffix.bind(this),
                 })
@@ -341,7 +341,7 @@ struct chipGroupTest {
                 ChipGroup({
                   items: [
                     {
-                      label: { text: "选项1" },
+                      label: { text: '选项1' },
                       suffixImageIcon: {
                         src: $r('sys.media.save_button_picture'),
                         accessibilityText: '保存',
@@ -355,7 +355,7 @@ struct chipGroupTest {
                       }
                     },
                     {
-                      label: { text: "选项2" },
+                      label: { text: '选项2' },
                       suffixSymbol: {
                         normal: new SymbolGlyphModifier($r('sys.symbol.save')),
                         activated: new SymbolGlyphModifier($r('sys.symbol.save'))
@@ -373,13 +373,13 @@ struct chipGroupTest {
                         }
                       }
                     },
-                    { label: { text: "选项3" },allowClose: true },
-                    { label: { text: "选项4" },allowClose: true },
-                    { label: { text: "选项5" },allowClose: true },
-                    { label: { text: "选项6" },allowClose: true },
-                    { label: { text: "选项7" },allowClose: true },
-                    { label: { text: "选项8" },allowClose: true },
-                    { label: { text: "选项9" },allowClose: true },
+                    { label: { text: '选项3' },allowClose: true },
+                    { label: { text: '选项4' },allowClose: true },
+                    { label: { text: '选项5' },allowClose: true },
+                    { label: { text: '选项6' },allowClose: true },
+                    { label: { text: '选项7' },allowClose: true },
+                    { label: { text: '选项8' },allowClose: true },
+                    { label: { text: '选项9' },allowClose: true },
                   ],
                   multiple: true
                 })
@@ -388,15 +388,15 @@ struct chipGroupTest {
               SectionItem({ title: '多选 有后缀区域' }) {
                 ChipGroup({
                   items: [
-                    { label: { text: "选项1" },allowClose: true },
-                    { label: { text: "选项2" },allowClose: true },
-                    { label: { text: "选项3" },allowClose: true },
-                    { label: { text: "选项4" },allowClose: true },
-                    { label: { text: "选项5" },allowClose: true },
-                    { label: { text: "选项6" },allowClose: true },
-                    { label: { text: "选项7" },allowClose: true },
-                    { label: { text: "选项8" },allowClose: true },
-                    { label: { text: "选项9" },allowClose: true },
+                    { label: { text: '选项1' },allowClose: true },
+                    { label: { text: '选项2' },allowClose: true },
+                    { label: { text: '选项3' },allowClose: true },
+                    { label: { text: '选项4' },allowClose: true },
+                    { label: { text: '选项5' },allowClose: true },
+                    { label: { text: '选项6' },allowClose: true },
+                    { label: { text: '选项7' },allowClose: true },
+                    { label: { text: '选项8' },allowClose: true },
+                    { label: { text: '选项9' },allowClose: true },
                   ],
                   suffix: this.Suffix.bind(this),
                   multiple: true,

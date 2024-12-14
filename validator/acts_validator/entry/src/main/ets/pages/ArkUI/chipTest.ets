@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -21,7 +21,7 @@ import { BusinessError } from '@ohos.base';
 import { Chip, ChipSize, SymbolGlyphModifier } from '@kit.ArkUI';
 const TAG = '[chipTest]';
 @Builder
-function DefaultFunction(): void {
+function defaultFunction(): void {
 }
 
 @Component
@@ -31,7 +31,7 @@ struct SectionGroup {
   title: ResourceStr;
   @BuilderParam
   @Require
-  content: () => void = DefaultFunction;
+  content: () => void = defaultFunction;
 
   build() {
     Column({ space: 4 }) {
@@ -54,7 +54,7 @@ struct SectionItem {
   title: ResourceStr;
   @BuilderParam
   @Require
-  content: () => void = DefaultFunction;
+  content: () => void = defaultFunction;
 
   build() {
     Column({ space: 12 }) {
@@ -77,7 +77,7 @@ struct chipTest {
     '预期结果：1、朗读内容为：删除，按钮，单指双击即可执行\n' +
     '2、朗读内容为：已激活音乐，按钮，新手提醒\n' +
     '3、朗读内容为：未激活音乐，按钮，新手提醒\n';
-  @State Vue: boolean = false;
+  @State isVue: boolean = false;
   @State intervalNum: number = 0;
   @State yesEnable: boolean = false
   // 默认不支持
@@ -87,8 +87,8 @@ struct chipTest {
 
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
-    if (this.Vue == false) {
-      Button({ stateEffect: this.Vue }) {
+    if (this.isVue == false) {
+      Button({ stateEffect: this.isVue }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -101,7 +101,7 @@ struct chipTest {
 
       })
     } else {
-      Button({ stateEffect: this.Vue }) {
+      Button({ stateEffect: this.isVue }) {
         Image($r('app.media.ic_public_pass'))
           .width('20vp')
           .height('20vp')
@@ -151,7 +151,7 @@ struct chipTest {
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-      this.Vue = true;
+      this.isVue = true;
     }, 1000)
   }
 
@@ -207,7 +207,7 @@ struct chipTest {
               .enabled(!this.yesEnable)
               .opacity(!this.yesEnable ? 1 : 0.4)
               .onClick(async () => {
-                this.Vue = true
+                this.isVue = true
               })
           }
 
@@ -232,10 +232,10 @@ struct chipTest {
                   fillColor: Color.Blue
                 },
                 label: {
-                  text: "操作块",
+                  text: '操作块',
                   fontSize: 12,
                   fontColor: Color.Blue,
-                  fontFamily: "HarmonyOS Sans",
+                  fontFamily: 'HarmonyOS Sans',
                   labelMargin: { left: 20, right: 30 }
                 },
                 size: ChipSize.SMALL,
@@ -244,7 +244,7 @@ struct chipTest {
                 backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
                 borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
                 onClose:()=>{
-                  console.log("chip on close")
+                  console.log('chip on close')
                 }
               })
               Chip({
@@ -254,10 +254,10 @@ struct chipTest {
                   fillColor: Color.Blue
                 },
                 label: {
-                  text: "操作块",
+                  text: '操作块',
                   fontSize: 12,
                   fontColor: Color.Blue,
-                  fontFamily: "HarmonyOS Sans",
+                  fontFamily: 'HarmonyOS Sans',
                   labelMargin: { left: 20, right: 30 }
                 },
                 size: ChipSize.SMALL,
@@ -266,7 +266,7 @@ struct chipTest {
                 backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
                 borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
                 onClose:()=>{
-                  console.log("chip on close")
+                  console.log('chip on close')
                 }
               })
             }
