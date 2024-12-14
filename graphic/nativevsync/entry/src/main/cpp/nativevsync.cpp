@@ -374,9 +374,9 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowNormal(napi_env env, nap
     OH_NativeWindow_GetSurfaceId(nativeWindow, &surfaceId);
     char name[] = "test";
     unsigned int length = strlen(name);
-    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
-    OH_NativeVSync *ret = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, length);
-    if (ret == nullptr) {
+    OH_NativeVSync *nativeVSync = nullptr;
+    nativeVSync = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, length);
+    if (nativeVSync == nullptr) {
         napi_create_int32(env, FAIL, &result);
         OH_NativeVSync_Destroy(nativeVSync);
         return result;
@@ -401,29 +401,32 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal01(napi_env env,
     OH_NativeWindow_GetSurfaceId(nativeWindow, &surfaceId);
     char name[] = "test";
     unsigned int length = strlen(name);
-    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
-    OH_NativeVSync *ret = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, nullptr, length);
-    if (ret == nullptr) {
+    OH_NativeVSync *nativeVSync1 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, nullptr, length);
+    if (nativeVSync1 == nullptr) {
         napi_create_int32(env, FAIL, &result1);
     } else {
         napi_create_int32(env, SUCCESS, &result1);
     }
     napi_set_element(env, result, ARR_NUMBER_0, result1);
-    OH_NativeVSync *ret1 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, 0);
-    if (ret1 == nullptr) {
+    OH_NativeVSync *nativeVSync2 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, 0);
+    if (nativeVSync2 == nullptr) {
         napi_create_int32(env, FAIL, &result2);
     } else {
         napi_create_int32(env, SUCCESS, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-    OH_NativeVSync *ret2 = OH_NativeVSync_Create_ForAssociatedWindow(0, name, length);
-    if (ret2 == nullptr) {
+    OH_NativeVSync *nativeVSync3 = OH_NativeVSync_Create_ForAssociatedWindow(0, name, length);
+    if (nativeVSync3 == nullptr) {
         napi_create_int32(env, FAIL, &result3);
     } else {
         napi_create_int32(env, SUCCESS, &result3);
     }
     napi_set_element(env, result, ARR_NUMBER_2, result3);
-    OH_NativeVSync_Destroy(nativeVSync);
+    OH_NativeVSync_Destroy(nativeVSync1);
+    OH_NativeVSync_Destroy(nativeVSync2);
+    OH_NativeVSync_Destroy(nativeVSync3);
+    OH_NativeImage_Destroy(&image);
+    OH_NativeWindow_DestroyNativeWindow(nativeWindow);
     return result;
 }
 
@@ -441,56 +444,63 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal02(napi_env env,
     OH_NativeWindow_GetSurfaceId(nativeWindow, &surfaceId);
     char name[] = "test";
     unsigned int length = strlen(name);
-    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
-    OH_NativeVSync *ret3 = OH_NativeVSync_Create_ForAssociatedWindow(3, name, length);
-    if (ret3 == nullptr) {
+    int max = 184467440737095516;
+    OH_NativeVSync *nativeVSync1 = OH_NativeVSync_Create_ForAssociatedWindow(max, name, length);
+    if (nativeVSync1 == nullptr) {
         napi_create_int32(env, FAIL, &result1);
     } else {
         napi_create_int32(env, SUCCESS, &result1);
     }
     napi_set_element(env, result, ARR_NUMBER_0, result1);
-    OH_NativeVSync *ret4 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, "", length);
-    if (ret4 == nullptr) {
+    OH_NativeVSync *nativeVSync2 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, "", length);
+    if (nativeVSync2 == nullptr) {
         napi_create_int32(env, FAIL, &result2);
     } else {
         napi_create_int32(env, SUCCESS, &result2);
     }
     napi_set_element(env, result, ARR_NUMBER_1, result2);
-    OH_NativeVSync *ret5 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, sizeof(name));
-    if (ret5 == nullptr) {
+    OH_NativeVSync *nativeVSync3 = OH_NativeVSync_Create_ForAssociatedWindow(surfaceId, name, sizeof(name));
+    if (nativeVSync3 == nullptr) {
         napi_create_int32(env, FAIL, &result3);
     } else {
         napi_create_int32(env, SUCCESS, &result3);
     }
     napi_set_element(env, result, ARR_NUMBER_2, result3);
-    OH_NativeVSync_Destroy(nativeVSync);
+    OH_NativeVSync_Destroy(nativeVSync1);
+    OH_NativeVSync_Destroy(nativeVSync2);
+    OH_NativeVSync_Destroy(nativeVSync3);
+    OH_NativeImage_Destroy(&image);
+    OH_NativeWindow_DestroyNativeWindow(nativeWindow);
     return result;
 }
+
 static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal03(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    napi_create_array_with_length(env, NUMBER_3, &result);
-    uint64_t windowID = 1;
+    uint64_t windowID = 9999;
     char name[] = "test";
-    int maximum = 257;
-    int count = 0;
-    OH_NativeVSync *native_vsync_array[maximum];
-    for (count = 0; count < maximum; ++count) {
-        native_vsync_array[count] = OH_NativeVSync_Create_ForAssociatedWindow(windowID, name, sizeof(name));
-        if (native_vsync_array[count] == nullptr) {
-            break;
+    OH_NativeVSync *nativeVSyncArr[NUMBER_500];
+    int success = 0;
+    for (uint32_t i = 0; i < NUMBER_500; i++) {
+        nativeVSyncArr[i] = OH_NativeVSync_Create_ForAssociatedWindow(windowID, name, sizeof(name));
+        if (nativeVSyncArr[i] != nullptr) {
+            success = success + 1;
+            continue;
         }
     }
-    if (native_vsync_array[count] == nullptr) {
-        napi_create_int32(env, FAIL, &result);
-    } else {
+    if (success == NUMBER_255 || success == NUMBER_254) {
+        for (uint32_t i = 0; i < NUMBER_500; i++) {
+            OH_NativeVSync_Destroy(nativeVSyncArr[i]);
+        }
         napi_create_int32(env, SUCCESS, &result);
+        return result;
+    } else {
+        for (uint32_t i = 0; i < NUMBER_500; i++) {
+            OH_NativeVSync_Destroy(nativeVSyncArr[i]);
+        }
+        napi_create_int32(env, FAIL, &result);
+        return result;
     }
-    count--;
-    for (; count >= 0; --count) {
-        OH_NativeVSync_Destroy(native_vsync_array[count]);
-    }
-    return result;
 }
 
 EXTERN_C_START
