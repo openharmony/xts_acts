@@ -444,7 +444,7 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal02(napi_env env,
     OH_NativeWindow_GetSurfaceId(nativeWindow, &surfaceId);
     char name[] = "test";
     unsigned int length = strlen(name);
-    int max = 184467440737095516;
+    uint64_t max = 184467440737095516;
     OH_NativeVSync *nativeVSync1 = OH_NativeVSync_Create_ForAssociatedWindow(max, name, length);
     if (nativeVSync1 == nullptr) {
         napi_create_int32(env, FAIL, &result1);
