@@ -19,6 +19,6 @@ ohos_js_app_suite("ActsTLSSupportSendArrayBufferTest") {
   js_build_mode = "debug"
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsTLSSupportSendArrayBufferTest"
-  part_name = "sms_mms"
+  part_name = "netstack"
   subsystem_name = "telephony"
 }

@@ -19,5 +19,5 @@ ohos_js_app_suite("ActsJSHTTPTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsJSHTTPTest"
   part_name = "netstack"
-  subsystem_name = "communication"
+  subsystem_name = "telephony"
 }

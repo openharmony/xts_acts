@@ -18,6 +18,6 @@ ohos_js_app_suite("ActsNetWorkMgrNetworkSecurityTest") {
   testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsNetWorkMgrNetworkSecurityTest"
-  part_name = "sms_mms"
+  part_name = "netstack"
   subsystem_name = "telephony"
 }

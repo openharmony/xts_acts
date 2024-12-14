@@ -18,7 +18,7 @@ ohos_app_assist_suite("NetWorkMgrStack_ndk_main") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNetWorkMgrStackNDKMainTest"
   subsystem_name = "telephony"
-  part_name = "sms_mms"
+  part_name = "netmanager_base"
   js_build_mode = "debug"
 }
 
@@ -28,7 +28,7 @@ ohos_js_app_suite("ActsNetWorkMgrStackNDKTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNetWorkMgrStackNDKTest"
   subsystem_name = "telephony"
-  part_name = "sms_mms"
+  part_name = "netmanager_base"
   js_build_mode = "debug"
   deps = [ ":NetWorkMgrStack_ndk_main" ]
 }
