@@ -169,7 +169,7 @@ export default function abilityTest() {
         done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expect(err.code).assertEqual(401);
+        expect(error.code).assertEqual(401);
         done();
       }
     })
