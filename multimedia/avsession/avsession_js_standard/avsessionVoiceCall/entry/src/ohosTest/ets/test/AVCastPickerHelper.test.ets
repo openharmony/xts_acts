@@ -143,6 +143,126 @@ export default function abilityTest() {
       }
     })
 
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0200
+     * @tc.name      : ON_HANGUP_0100
+     * @tc.desc      : Testing on('hangUp')
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0200', 2, async (done: Function) => {
+      let avCastPickerOptions : avSession.AVCastPickerOptions = {
+        sessionType: 'video',
+      }
+      let context_1: common.UIAbilityContext;
+      context_1 = AppStorage.get<common.UIAbilityContext>('Context') as common.UIAbilityContext;
+      try {
+        let avCastPicker = new avSession.AVCastPickerHelper(context_1);
+        await avCastPicker.select(avCastPickerOptions).then(() => {
+          console.info('${TAG}: avCastPicker select successfully');
+          expect(false).assertTrue();
+        }).catch((err: BusinessError) => {
+          console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
+          expect(ret).assertEqual(401);
+        })
+        done();
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(ret).assertEqual(401);
+        done();
+      })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0300
+     * @tc.name      : sessionType: 'audio'
+     * @tc.desc      : sessionType: 'audio'
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0300', 2, async (done: Function) => {
+      let avCastPickerOptions : avSession.AVCastPickerOptions = {
+        sessionType: 'audio',
+      }
+      let avCastPicker = new avSession.AVCastPickerHelper(context);
+      await avCastPicker.select(avCastPickerOptions).then(() => {
+        expect(true).assertTrue();
+        console.info('${TAG}: avCastPicker select successfully');
+      }).catch((err: BusinessError) => {
+        console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
+        expect(false).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0400
+     * @tc.name      : sessionType: 'vioce_call'
+     * @tc.desc      : sessionType: 'vioce_call'
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0400', 2, async (done: Function) => {
+      let avCastPickerOptions : avSession.AVCastPickerOptions = {
+        sessionType: 'vioce_call',
+      }
+      let avCastPicker = new avSession.AVCastPickerHelper(context);
+      await avCastPicker.select(avCastPickerOptions).then(() => {
+        expect(true).assertTrue();
+        console.info('${TAG}: avCastPicker select successfully');
+      }).catch((err: BusinessError) => {
+        console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
+        expect(false).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0500
+     * @tc.name      : sessionType: 'vioce_call'
+     * @tc.desc      : sessionType: 'vioce_call'
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0500', 2, async (done: Function) => {
+      let avCastPickerOptions : avSession.AVCastPickerOptions = {
+        sessionType: 'video_call',
+      }
+      let avCastPicker = new avSession.AVCastPickerHelper(context);
+      await avCastPicker.select(avCastPickerOptions).then(() => {
+        expect(true).assertTrue();
+        console.info('${TAG}: avCastPicker select successfully');
+      }).catch((err: BusinessError) => {
+        console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
+        expect(false).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0600
+     * @tc.name      : sessionType: 'vioce_call'
+     * @tc.desc      : sessionType: 'vioce_call'
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0600', 2, async (done: Function) => {
+      let avCastPickerOptions : avSession.AVCastPickerOptions = {}
+      let avCastPicker = new avSession.AVCastPickerHelper(context);
+      await avCastPicker.select(avCastPickerOptions).then(() => {
+        expect(false).assertTrue();
+        console.info('${TAG}: avCastPicker select successfully');
+      }).catch((err: BusinessError) => {
+        console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
+        expect(ret).assertEqual(401);
+      })
+      done();
+    })
+
 
   })
 }
