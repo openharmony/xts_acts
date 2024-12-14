@@ -29,5 +29,9 @@ export const oHNativeVSyncGetPeriodNullptr: () => number;
 export const oHNativeVSyncRequestFrameNullptr: () => Array<number>;
 export const oHNativeVSyncRequestFrameNormal: () => number;
 export const oHNativeVSyncRequestFrameParamErr: () => number;
+export const oHNativeVSyncCreateForAssociatedWindowNormal: () => number;
+export const oHNativeVSyncCreateForAssociatedWindowAbNormal01: () => Array<number>;
+export const oHNativeVSyncCreateForAssociatedWindowAbNormal02: () => Array<number>;
+export const oHNativeVSyncCreateForAssociatedWindowAbNormal03: () => number;
 //
 
