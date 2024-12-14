@@ -164,12 +164,12 @@ export default function abilityTest() {
           expect(false).assertTrue();
         }).catch((err: BusinessError) => {
           console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
-          expect(ret).assertEqual(401);
+          expect(err.code).assertEqual(401);
         })
         done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expect(ret).assertEqual(401);
+        expect(err.code).assertEqual(401);
         done();
       }
     })
@@ -199,15 +199,15 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0400
-     * @tc.name      : sessionType: 'vioce_call'
-     * @tc.desc      : sessionType: 'vioce_call'
+     * @tc.name      : sessionType: 'voice_call'
+     * @tc.desc      : sessionType: 'voice_call'
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0400', 2, async (done: Function) => {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {
-        sessionType: 'vioce_call',
+        sessionType: 'voice_call',
       }
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select(avCastPickerOptions).then(() => {
@@ -259,7 +259,7 @@ export default function abilityTest() {
         console.info('${TAG}: avCastPicker select successfully');
       }).catch((err: BusinessError) => {
         console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
-        expect(ret).assertEqual(401);
+        expect(err.code).assertEqual(401);
       })
       done();
     })
