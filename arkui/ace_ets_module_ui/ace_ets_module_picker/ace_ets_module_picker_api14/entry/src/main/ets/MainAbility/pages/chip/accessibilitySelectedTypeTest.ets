@@ -57,7 +57,6 @@ struct accessibilitySelectedTypeTest {
           text: '操作块',
           fontSize: 12,
           fontColor: Color.Blue,
-          fontFamily: 'HarmonyOS Sans',
           labelMargin: { left: 20, right: 30 }
         },
         size: ChipSize.NORMAL,

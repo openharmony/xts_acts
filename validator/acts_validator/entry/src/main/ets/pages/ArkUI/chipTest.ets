@@ -72,7 +72,7 @@ struct SectionItem {
 @Component
 struct chipTest {
   @State name: string = 'chipTest';
-  @State StepTips: string =  '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、点击closeOPtions下chip组件的删除符号，观察朗读内容\n'+
+  @State stepTips: string =  '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、点击closeOPtions下chip组件的删除符号，观察朗读内容\n'+
     '2、分别点击后缀Symbol播报下激活态和未激活态的后缀图标，观察朗读内容\n' +'\n'+
     '预期结果：1、朗读内容为：删除，按钮，单指双击即可执行\n' +
     '2、朗读内容为：已激活音乐，按钮，新手提醒\n' +
@@ -146,7 +146,7 @@ struct chipTest {
   }
 
   aboutToAppear() {
-    FirstDialog.ChooseDialog(this.StepTips, this.name);
+    FirstDialog.ChooseDialog(this.stepTips, this.name);
   }
 
   onPageShow() {
@@ -235,7 +235,6 @@ struct chipTest {
                   text: '操作块',
                   fontSize: 12,
                   fontColor: Color.Blue,
-                  fontFamily: 'HarmonyOS Sans',
                   labelMargin: { left: 20, right: 30 }
                 },
                 size: ChipSize.SMALL,
@@ -257,7 +256,6 @@ struct chipTest {
                   text: '操作块',
                   fontSize: 12,
                   fontColor: Color.Blue,
-                  fontFamily: 'HarmonyOS Sans',
                   labelMargin: { left: 20, right: 30 }
                 },
                 size: ChipSize.SMALL,
@@ -348,7 +346,7 @@ struct chipTest {
           AlertDialog.show(
             {
               title: '操作提示',
-              message: this.StepTips,
+              message: this.stepTips,
               confirm: {
                 value: 'OK',
                 action: () => {
