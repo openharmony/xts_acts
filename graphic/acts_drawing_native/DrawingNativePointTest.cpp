@@ -241,9 +241,9 @@ HWTEST_F(DrawingNativePointTest, testPointGetYNull, TestSize.Level3) {
     //1. OH_Drawing_PointGetY with the first parameter as null
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     float y;
-    EXPECT_EQ(OH_Drawing_PointGetX(nullptr, &y), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_PointGetY(nullptr, &y), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //2. OH_Drawing_PointGetY with the second parameter as null
-    EXPECT_EQ(OH_Drawing_PointGetX(point, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_PointGetY(point, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
     //3. free memory
     OH_Drawing_PointDestroy(point);
 }
