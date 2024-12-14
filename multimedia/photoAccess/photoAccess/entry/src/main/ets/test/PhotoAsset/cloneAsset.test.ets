@@ -15,11 +15,13 @@
 
 import { describe, beforeAll, it, expect } from '@ohos/hypium';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import { systemDateTime } from '@kit.BasicServicesKit';
+import systemDateTime from '@ohos.systemDateTime';
 import {
   photoKeys,
   fetchOption,
   getFileAsset,
+  getPermission,
+  pushCreateAsset,
   createMovingPhoto
 } from '../../../../../../../common'
 
@@ -35,6 +37,7 @@ export default function cloneAssetTest() {
     beforeAll(async () => {
       await getPermission();
       await sleep();
+      await pushCreateAsset(fileNameList);
     })
 
     it("test_clone_image_001", 0, async (done: Function) => {
@@ -113,6 +116,7 @@ export default function cloneAssetTest() {
           expect(false).assertTrue();
           done();
         }
+        await sleep(1000);
         let cloneTitle: string = systemDateTime.getTime().toString();
         console.log(`${testNum} :: title is ${title}`);
         let newPhotoAsset: photoAccessHelper.PhotoAsset | undefined = await movingPhotoAsset?.clone(cloneTitle);
