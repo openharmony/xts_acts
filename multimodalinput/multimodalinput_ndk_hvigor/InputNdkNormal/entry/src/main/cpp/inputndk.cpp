@@ -178,6 +178,29 @@ static napi_value GetKeyState(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value GetKeyState2(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    
+    napi_valuetype valuetype0;
+    napi_typeof(env, args[0], &valuetype0);
+    
+    int32_t value0;
+    napi_get_value_int32(env, args[0], &value0);
+    
+    napi_value result;
+    struct Input_KeyState *keyState = OH_Input_CreateKeyState();
+    OH_Input_SetKeyCode(keyState, value0);
+    OH_Input_GetKeyState(keyState);
+    int32_t keyStateValue = OH_Input_GetKeyState(keyState);
+    napi_create_int32(env, keyStateValue == INPUT_PARAMETER_ERROR ? 1 : 0, &result);
+    OH_Input_DestroyKeyState(&keyState);
+    return result;
+}
+
 static napi_value CreateKeyEvent(napi_env env, napi_callback_info info)
 {
     napi_value result;
@@ -651,6 +674,40 @@ static napi_value injectMouseEvent(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value injectMouseEvent2(napi_env env, napi_callback_info info)
+{
+    Input_MouseEvent* mouseEvent = OH_Input_CreateMouseEvent();
+    OH_Input_SetMouseEventAction(mouseEvent, MOUSE_ACTION_CANCEL);
+    OH_Input_SetMouseEventDisplayX(mouseEvent, 350);
+    OH_Input_SetMouseEventDisplayY(mouseEvent, 350);
+    OH_Input_SetMouseEventAxisType(mouseEvent, MOUSE_AXIS_SCROLL_VERTICAL);
+    OH_Input_SetMouseEventAxisValue(mouseEvent, 1.1);
+    OH_Input_SetMouseEventActionTime(mouseEvent, 2);
+    int32_t retResult1 = OH_Input_InjectMouseEvent(mouseEvent);
+    OH_Input_SetMouseEventAction(mouseEvent, MOUSE_ACTION_MOVE);
+    OH_Input_SetMouseEventButton(mouseEvent, MOUSE_BUTTON_NONE);
+    int32_t retResult2 = OH_Input_InjectMouseEvent(mouseEvent);
+    OH_Input_SetMouseEventAction(mouseEvent, MOUSE_ACTION_BUTTON_DOWN);
+    OH_Input_SetMouseEventButton(mouseEvent, MOUSE_BUTTON_LEFT);
+    int32_t retResult3 = OH_Input_InjectMouseEvent(mouseEvent);
+    OH_Input_SetMouseEventAction(mouseEvent, MOUSE_ACTION_BUTTON_UP);
+    OH_Input_SetMouseEventButton(mouseEvent, MOUSE_BUTTON_MIDDLE);
+    int32_t retResult4 = OH_Input_InjectMouseEvent(mouseEvent);
+    OH_Input_SetMouseEventAction(mouseEvent, MOUSE_ACTION_AXIS_BEGIN);
+    OH_Input_SetMouseEventButton(mouseEvent, MOUSE_BUTTON_RIGHT);
+    int32_t retResult5 = OH_Input_InjectMouseEvent(mouseEvent);
+    OH_Input_SetMouseEventAction(mouseEvent, MOUSE_ACTION_AXIS_UPDATE);
+    OH_Input_SetMouseEventButton(mouseEvent, MOUSE_BUTTON_FORWARD);
+    int32_t retResult6 = OH_Input_InjectMouseEvent(mouseEvent);
+
+    napi_value result;
+    napi_create_int32(env, (mouseEvent != nullptr && retResult1 == INPUT_PERMISSION_DENIED
+        && retResult2 == INPUT_PERMISSION_DENIED && retResult3 == INPUT_PERMISSION_DENIED
+        && retResult4 == INPUT_PERMISSION_DENIED && retResult5 == INPUT_PERMISSION_DENIED
+        && retResult6 == INPUT_PERMISSION_DENIED ), &result);
+    return result;
+}
+
 static napi_value RegisterDeviceListener(napi_env env, napi_callback_info info)
 {
     napi_value result;
@@ -1040,7 +1097,7 @@ static napi_value GetDeviceName2(napi_env env, napi_callback_info info)
 
     char *name = nullptr;
     Input_Result retResult2 = OH_Input_GetDeviceName(deviceInfo, &name);
-    napi_create_int32(env, (retResult1, retResult2 == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult1==INPUT_PARAMETER_ERROR && retResult2==INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
     return result;
 }
 
@@ -1106,7 +1163,7 @@ static napi_value GetDeviceAddress2(napi_env env, napi_callback_info info)
 
     char *address = nullptr;
     Input_Result retResult2 = OH_Input_GetDeviceAddress(deviceInfo, &address);
-    napi_create_int32(env, (retResult1, retResult2 == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult1==INPUT_PARAMETER_ERROR && retResult2==INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
     return result;
 }
 
@@ -1170,7 +1227,8 @@ static napi_value GetDeviceId2(napi_env env, napi_callback_info info)
     
     int32_t id = -1;
     Input_Result retResult2 = OH_Input_GetDeviceId(deviceInfo, &id);
-    napi_create_int32(env, ((retResult1, retResult2 == INPUT_PARAMETER_ERROR) && (id == -1)) ? 1 : 0, &result);
+    napi_create_int32(env, ((retResult1==INPUT_PARAMETER_ERROR && retResult2==INPUT_PARAMETER_ERROR)
+        && (id == -1)) ? 1 : 0, &result);
     return result;
 }
 
@@ -1223,7 +1281,7 @@ static napi_value GetCapabilities2(napi_env env, napi_callback_info info)
 
     int32_t capabilities = -1;
     Input_Result retResult2 = OH_Input_GetCapabilities(deviceInfo, &capabilities);
-    napi_create_int32(env, (retResult1, retResult2 == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult1==INPUT_PARAMETER_ERROR && retResult2==INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
     OH_Input_DestroyDeviceInfo(&deviceInfo);
     return result;
 }
@@ -1288,7 +1346,7 @@ static napi_value GetDeviceVersion2(napi_env env, napi_callback_info info)
 
     int32_t version = -1;
     Input_Result retResult2 = OH_Input_GetDeviceVersion(deviceInfo, &version);
-    napi_create_int32(env, (retResult1, retResult2 == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult1==INPUT_PARAMETER_ERROR && retResult2==INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
     return result;
 }
 
@@ -1352,7 +1410,7 @@ static napi_value GetDeviceProduct2(napi_env env, napi_callback_info info)
 
     int32_t product = -1;
     Input_Result retResult2 = OH_Input_GetDeviceProduct(deviceInfo, &product);
-    napi_create_int32(env, (retResult1, retResult2 == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult1==INPUT_PARAMETER_ERROR && retResult2==INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
     OH_Input_DestroyDeviceInfo(&deviceInfo);
     return result;
 }
@@ -1417,7 +1475,7 @@ static napi_value GetDeviceVendor2(napi_env env, napi_callback_info info)
 
     int32_t vendor = -1;
     Input_Result retResult2 = OH_Input_GetDeviceVendor(deviceInfo, &vendor);
-    napi_create_int32(env, (retResult1, retResult2 == INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
+    napi_create_int32(env, (retResult1==INPUT_PARAMETER_ERROR && retResult2==INPUT_PARAMETER_ERROR) ? 1 : 0, &result);
     return result;
 }
 
@@ -1922,6 +1980,84 @@ static napi_value AddHotkeyMonitor23(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value AddHotkeyMonitor24(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_Hotkey *hotkey = OH_Input_CreateHotkey();
+
+    int32_t prekeys[1] = { KEYCODE_CTRL_LEFT };
+    OH_Input_SetPreKeys(hotkey, prekeys, 1);
+    OH_Input_SetFinalKey(hotkey, KEYCODE_TAB);
+    OH_Input_SetRepeat(hotkey, false);
+    int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
+    ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
+    OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
+    OH_Input_DestroyHotkey(&hotkey);
+    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value AddHotkeyMonitor25(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_Hotkey *hotkey = OH_Input_CreateHotkey();
+
+    int32_t prekeys[1] = { KEYCODE_SHIFT_LEFT };
+    OH_Input_SetPreKeys(hotkey, prekeys, 1);
+    OH_Input_SetFinalKey(hotkey, KEYCODE_C);
+    OH_Input_SetRepeat(hotkey, false);
+    int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, nullptr);
+    OH_Input_DestroyHotkey(&hotkey);
+    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value AddHotkeyMonitor26(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_Hotkey *hotkey = OH_Input_CreateHotkey();
+
+    int32_t prekeys[2] = { KEYCODE_SHIFT_LEFT, 999 };
+    OH_Input_SetPreKeys(hotkey, prekeys, 2);
+    OH_Input_SetFinalKey(hotkey, KEYCODE_C);
+    OH_Input_SetRepeat(hotkey, false);
+    int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
+    OH_Input_DestroyHotkey(&hotkey);
+    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value AddHotkeyMonitor27(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_Hotkey *hotkey = OH_Input_CreateHotkey();
+
+    int32_t prekeys[1] = { KEYCODE_SHIFT_LEFT };
+    OH_Input_SetPreKeys(hotkey, prekeys, 1);
+    OH_Input_SetFinalKey(hotkey, 869);
+    OH_Input_SetRepeat(hotkey, false);
+    int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
+    OH_Input_DestroyHotkey(&hotkey);
+    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value AddHotkeyMonitor28(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_Hotkey *hotkey = OH_Input_CreateHotkey();
+
+    int32_t prekeys[1] = { KEYCODE_CTRL_LEFT };
+    OH_Input_SetPreKeys(hotkey, prekeys, 1);
+    OH_Input_SetFinalKey(hotkey, KEYCODE_TAB);
+    OH_Input_SetRepeat(hotkey, false);
+    OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
+    int32_t ret = OH_Input_RemoveHotkeyMonitor(hotkey, nullptr);
+    OH_Input_DestroyHotkey(&hotkey);
+    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1934,6 +2070,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"GetKeyPressed", nullptr, GetKeyPressed, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetKeySwitch", nullptr, GetKeySwitch, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetKeyState", nullptr, GetKeyState, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetKeyState2", nullptr, GetKeyState2, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreateKeyEvent", nullptr, CreateKeyEvent, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"InjectKeyEvent", nullptr, InjectKeyEvent, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"DestroyKeyEvent", nullptr, DestroyKeyEvent, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1961,6 +2098,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"mouseEventAxisValue", nullptr, mouseEventAxisValue, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"mouseEventActionTime", nullptr, mouseEventActionTime, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"injectMouseEvent", nullptr, injectMouseEvent, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"injectMouseEvent2", nullptr, injectMouseEvent2, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"RegisterDeviceListener", nullptr, RegisterDeviceListener, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"UnregisterDeviceListener", nullptr, UnregisterDeviceListener, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"RegisterDeviceListener2", nullptr, RegisterDeviceListener2, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2046,6 +2184,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AddHotkeyMonitor21", nullptr, AddHotkeyMonitor21, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor22", nullptr, AddHotkeyMonitor22, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor23", nullptr, AddHotkeyMonitor23, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddHotkeyMonitor24", nullptr, AddHotkeyMonitor24, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddHotkeyMonitor25", nullptr, AddHotkeyMonitor25, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddHotkeyMonitor26", nullptr, AddHotkeyMonitor26, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddHotkeyMonitor27", nullptr, AddHotkeyMonitor27, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddHotkeyMonitor28", nullptr, AddHotkeyMonitor28, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
