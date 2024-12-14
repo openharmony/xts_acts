@@ -171,7 +171,8 @@ export default function abilityTest() {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(ret).assertEqual(401);
         done();
-      })
+      }
+    })
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0300
