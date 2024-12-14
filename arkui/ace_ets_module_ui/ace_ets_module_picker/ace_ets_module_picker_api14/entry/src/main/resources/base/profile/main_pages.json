@@ -1,7 +1,8 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/buttonType/buttonTypeApi"
-    
+        "MainAbility/pages/buttonType/buttonTypeApi",
+		"MainAbility/pages/chip/accessibilitySelectedTypeTest",
+        "MainAbility/pages/textPicker/onScrollStopTest"
     ]
 }
