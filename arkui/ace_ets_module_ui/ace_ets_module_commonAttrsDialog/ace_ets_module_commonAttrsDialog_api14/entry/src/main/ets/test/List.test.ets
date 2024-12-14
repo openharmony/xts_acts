@@ -16,10 +16,12 @@ import bindSheetKeyboardAvoidMode from './bindSheetTest/bindSheetKeyboardAvoidMo
 import followTransformOfTargetPopup from './PopupTest/followTransformOfTargetPopup.test.ets';
 import followTransformOfTargetCustomPopup from './PopupTest/followTransformOfTargetCustomPopup.test.ets';
 import activeTest from './UIContext/FocusController/activeTest.test.ets'
+import lunarSwitchStyleTest from './DatePickerDialog/lunarSwitchStyleTest.test'
 
 export default function testsuite() {
   bindSheetKeyboardAvoidMode()
   followTransformOfTargetPopup();
   followTransformOfTargetCustomPopup()
   activeTest()
+  lunarSwitchStyleTest()
 }
