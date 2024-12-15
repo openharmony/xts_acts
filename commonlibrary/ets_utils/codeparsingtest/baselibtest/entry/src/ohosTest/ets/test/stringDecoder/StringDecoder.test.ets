@@ -510,7 +510,7 @@ export default function stringDecoderTest() {
      */
     it("testURI_utf8_003", 0, async (done: Function) => {
       // 遍历所有utf-8字符查看是否存在异常  三字节场景
-      for (let i = 2048; i <= 65535; i++) {
+      for (let i = 2048; i <= 35535; i++) {
         if (i >= 55296 && i <= 57343) {
           continue;
         }
@@ -550,8 +550,49 @@ export default function stringDecoderTest() {
      * @tc.level      : Level 1
      */
     it("testURI_utf8_004", 0, async (done: Function) => {
+      // 遍历所有utf-8字符查看是否存在异常  三字节场景
+      for (let i = 35535; i <= 65535; i++) {
+        if (i >= 55296 && i <= 57343) {
+          continue;
+        }
+        let binary = i.toString(2);
+        if (binary.length === 15) {
+          binary = '0' + binary;
+        } else if (binary.length === 14) {
+          binary = '00' + binary;
+        } else if (binary.length === 13) {
+          binary = '000' + binary;
+        } else if (binary.length === 12) {
+          binary = '0000' + binary;
+        }
+        let ziJie1 = binary.substring(0, 4);
+        let ziJie2 = binary.substring(4, 10);
+        let ziJie3 = binary.substring(10, 16);
+        let res1 = '1110' + ziJie1;
+        let res2 = '10' + ziJie2;
+        let res3 = '10' + ziJie3;
+        let binary1 = '%' + parseInt(res1, 2).toString(16);
+        let binary2 = '%' + parseInt(res2, 2).toString(16);
+        let binary3 = '%' + parseInt(res3, 2).toString(16);
+        let de1 = decodeURI(binary1 + binary2 + binary3)
+        let de2 = decodeURIComponent(binary1 + binary2 + binary3)
+        let en1 = encodeURI(de1);
+        let en2 = encodeURIComponent(de2);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1500
+     * @tc.name       : testURI_utf8_005
+     * @tc.desc       : Test UTF-8 by URI.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testURI_utf8_005", 0, async (done: Function) => {
       // 遍历所有utf-8字符查看是否存在异常  四字节场景
-      for (let i = 65536; i <= 114111; i++) {
+      for (let i = 65536; i <= 85535; i++) {
         let binary = i.toString(2);
         if (binary.length === 20) {
           binary = '0' + binary;
@@ -585,7 +626,93 @@ export default function stringDecoderTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1500
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1600
+     * @tc.name       : testURI_utf8_006
+     * @tc.desc       : Test UTF-8 by URI.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testURI_utf8_006", 0, async (done: Function) => {
+      // 遍历所有utf-8字符查看是否存在异常  四字节场景
+      for (let i = 85535; i <= 104111; i++) {
+        let binary = i.toString(2);
+        if (binary.length === 20) {
+          binary = '0' + binary;
+        } else if (binary.length === 19) {
+          binary = '00' + binary;
+        } else if (binary.length === 18) {
+          binary = '000' + binary;
+        } else if (binary.length === 17) {
+          binary = '0000' + binary;
+        } else if (binary.length === 16) {
+          binary = '00000' + binary;
+        }
+        let ziJie1 = binary.substring(0, 3);
+        let ziJie2 = binary.substring(3, 9);
+        let ziJie3 = binary.substring(9, 15);
+        let ziJie4 = binary.substring(15, 21);
+        let res1 = '11110' + ziJie1;
+        let res2 = '10' + ziJie2;
+        let res3 = '10' + ziJie3;
+        let res4 = '10' + ziJie4;
+        let binary1 = '%' + parseInt(res1, 2).toString(16);
+        let binary2 = '%' + parseInt(res2, 2).toString(16);
+        let binary3 = '%' + parseInt(res3, 2).toString(16);
+        let binary4 = '%' + parseInt(res4, 2).toString(16);
+        let de1 = decodeURI(binary1 + binary2 + binary3 + binary4)
+        let de2 = decodeURIComponent(binary1 + binary2 + binary3 + binary4)
+        let en1 = encodeURI(de1);
+        let en2 = encodeURIComponent(de2);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1700
+     * @tc.name       : testURI_utf8_007
+     * @tc.desc       : Test UTF-8 by URI.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testURI_utf8_007", 0, async (done: Function) => {
+      // 遍历所有utf-8字符查看是否存在异常  四字节场景
+      for (let i = 104111; i <= 114111; i++) {
+        let binary = i.toString(2);
+        if (binary.length === 20) {
+          binary = '0' + binary;
+        } else if (binary.length === 19) {
+          binary = '00' + binary;
+        } else if (binary.length === 18) {
+          binary = '000' + binary;
+        } else if (binary.length === 17) {
+          binary = '0000' + binary;
+        } else if (binary.length === 16) {
+          binary = '00000' + binary;
+        }
+        let ziJie1 = binary.substring(0, 3);
+        let ziJie2 = binary.substring(3, 9);
+        let ziJie3 = binary.substring(9, 15);
+        let ziJie4 = binary.substring(15, 21);
+        let res1 = '11110' + ziJie1;
+        let res2 = '10' + ziJie2;
+        let res3 = '10' + ziJie3;
+        let res4 = '10' + ziJie4;
+        let binary1 = '%' + parseInt(res1, 2).toString(16);
+        let binary2 = '%' + parseInt(res2, 2).toString(16);
+        let binary3 = '%' + parseInt(res3, 2).toString(16);
+        let binary4 = '%' + parseInt(res4, 2).toString(16);
+        let de1 = decodeURI(binary1 + binary2 + binary3 + binary4)
+        let de2 = decodeURIComponent(binary1 + binary2 + binary3 + binary4)
+        let en1 = encodeURI(de1);
+        let en2 = encodeURIComponent(de2);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1800
      * @tc.name       : testBuffer_utf8_001
      * @tc.desc       : Test UTF-8 by BUFFER.
      * @tc.size       : MediumTest
@@ -608,7 +735,7 @@ export default function stringDecoderTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1600
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1900
      * @tc.name       : testBuffer_utf8_002
      * @tc.desc       : Test UTF-8 by BUFFER.
      * @tc.size       : MediumTest
@@ -639,7 +766,7 @@ export default function stringDecoderTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1700
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_2000
      * @tc.name       : testBuffer_utf8_003
      * @tc.desc       : Test UTF-8 by BUFFER.
      * @tc.size       : MediumTest
@@ -648,7 +775,7 @@ export default function stringDecoderTest() {
      */
     it("testBuffer_utf8_003", 0, async (done: Function) => {
       // 遍历所有utf-8字符查看是否存在异常  三字节场景
-      for (let i = 2048; i <= 65535; i++) {
+      for (let i = 2048; i <= 35535; i++) {
         if (i >= 55296 && i <= 57343) {
           continue;
         }
@@ -677,16 +804,133 @@ export default function stringDecoderTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_1800
-     * @tc.name       : testBuffer_utf8_003
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_2100
+     * @tc.name       : testBuffer_utf8_004
      * @tc.desc       : Test UTF-8 by BUFFER.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it("testBuffer_utf8_004", 0, async (done: Function) => {
+      // 遍历所有utf-8字符查看是否存在异常  三字节场景
+      for (let i = 35535; i <= 65535; i++) {
+        if (i >= 55296 && i <= 57343) {
+          continue;
+        }
+        let binary = i.toString(2);
+        if (binary.length === 15) {
+          binary = '0' + binary;
+        } else if (binary.length === 14) {
+          binary = '00' + binary;
+        } else if (binary.length === 13) {
+          binary = '000' + binary;
+        } else if (binary.length === 12) {
+          binary = '0000' + binary;
+        }
+        let ziJie1 = binary.substring(0, 4);
+        let ziJie2 = binary.substring(4, 10);
+        let ziJie3 = binary.substring(10, 16);
+        let res1 = '1110' + ziJie1;
+        let res2 = '10' + ziJie2;
+        let res3 = '10' + ziJie3;
+        let decimalNum = parseInt(res1 + res2 + res3, 2);
+        const binaryData = new Uint8Array([decimalNum]);
+        const decoder = util.TextDecoder.create('utf-8');
+        const test = decoder.decodeToString(binaryData);
+      }
+      done();
+    })
+
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_2200
+     * @tc.name       : testBuffer_utf8_005
+     * @tc.desc       : Test UTF-8 by BUFFER.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testBuffer_utf8_005", 0, async (done: Function) => {
       // 遍历所有utf-8字符查看是否存在异常  四字节场景
-      for (let i = 65536; i <= 114111; i++) {
+      for (let i = 65536; i <= 85536; i++) {
+        let binary = i.toString(2);
+        if (binary.length === 20) {
+          binary = '0' + binary;
+        } else if (binary.length === 19) {
+          binary = '00' + binary;
+        } else if (binary.length === 18) {
+          binary = '000' + binary;
+        } else if (binary.length === 17) {
+          binary = '0000' + binary;
+        } else if (binary.length === 16) {
+          binary = '00000' + binary;
+        }
+        let ziJie1 = binary.substring(0, 3);
+        let ziJie2 = binary.substring(3, 9);
+        let ziJie3 = binary.substring(9, 15);
+        let ziJie4 = binary.substring(15, 21);
+        let res1 = '11110' + ziJie1;
+        let res2 = '10' + ziJie2;
+        let res3 = '10' + ziJie3;
+        let res4 = '10' + ziJie4;
+        let decimalNum = parseInt(res1 + res2 + res3 + res4, 2);
+        const binaryData = new Uint8Array([decimalNum]);
+        const decoder = util.TextDecoder.create('utf-8');
+        const test = decoder.decodeToString(binaryData);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_2300
+     * @tc.name       : testBuffer_utf8_006
+     * @tc.desc       : Test UTF-8 by BUFFER.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testBuffer_utf8_006", 0, async (done: Function) => {
+      // 遍历所有utf-8字符查看是否存在异常  四字节场景
+      for (let i = 85536; i <= 104111; i++) {
+        let binary = i.toString(2);
+        if (binary.length === 20) {
+          binary = '0' + binary;
+        } else if (binary.length === 19) {
+          binary = '00' + binary;
+        } else if (binary.length === 18) {
+          binary = '000' + binary;
+        } else if (binary.length === 17) {
+          binary = '0000' + binary;
+        } else if (binary.length === 16) {
+          binary = '00000' + binary;
+        }
+        let ziJie1 = binary.substring(0, 3);
+        let ziJie2 = binary.substring(3, 9);
+        let ziJie3 = binary.substring(9, 15);
+        let ziJie4 = binary.substring(15, 21);
+        let res1 = '11110' + ziJie1;
+        let res2 = '10' + ziJie2;
+        let res3 = '10' + ziJie3;
+        let res4 = '10' + ziJie4;
+        let decimalNum = parseInt(res1 + res2 + res3 + res4, 2);
+        const binaryData = new Uint8Array([decimalNum]);
+        const decoder = util.TextDecoder.create('utf-8');
+        const test = decoder.decodeToString(binaryData);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_2400
+     * @tc.name       : testBuffer_utf8_007
+     * @tc.desc       : Test UTF-8 by BUFFER.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testBuffer_utf8_007", 0, async (done: Function) => {
+      // 遍历所有utf-8字符查看是否存在异常  四字节场景
+      for (let i = 104111; i <= 114111; i++) {
         let binary = i.toString(2);
         if (binary.length === 20) {
           binary = '0' + binary;
