@@ -40,6 +40,15 @@ export default function cloneAssetTest() {
       await pushCreateAsset(fileNameList);
     })
 
+
+    /**
+     * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_001
+     * @tc.name      : test_clone_image_001
+     * @tc.desc      : clone image, expect success
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("test_clone_image_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_image_001";
       try {
@@ -73,6 +82,14 @@ export default function cloneAssetTest() {
       }
     })
 
+    /**
+     * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_002
+     * @tc.name      : test_clone_video_001
+     * @tc.desc      : clone video, expect success
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("test_clone_video_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_video_001";
       try {
@@ -106,6 +123,14 @@ export default function cloneAssetTest() {
       }
     })
 
+    /**
+     * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_003
+     * @tc.name      : test_clone_moving_photo_001
+     * @tc.desc      : clone moving photo, expect success
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("test_clone_moving_photo_001", 0, async (done: Function) => {
       let testNum = "test_clone_moving_photo_001";
       try {
@@ -140,6 +165,14 @@ export default function cloneAssetTest() {
       }
     })
 
+    /**
+     * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_004
+     * @tc.name      : test_clone_long_title_001
+     * @tc.desc      : clone image with titile and suffix length <= 255 , expect success
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("test_clone_long_title_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_long_title_001";
       try {
@@ -178,6 +211,14 @@ export default function cloneAssetTest() {
       }
     })
 
+    /**
+     * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_005
+     * @tc.name      : test_clone_long_title_002
+     * @tc.desc      : clone image with titile and suffix length > 255 , expect failed ahd errCode is 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("test_clone_long_title_002", 0, async (done: Function) => {
       let testNum: string = "test_clone_long_title_002";
       try {
@@ -205,6 +246,14 @@ export default function cloneAssetTest() {
       }
     })
 
+    /**
+     * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_006
+     * @tc.name      : test_clone_with_suffix_001
+     * @tc.desc      : clone image, titile with suffix, expect failed ahd errCode is 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("test_clone_with_suffix_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_with_suffix_001";
       try {
@@ -229,6 +278,14 @@ export default function cloneAssetTest() {
       }
     })
 
+    /**
+     * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_007
+     * @tc.name      : test_clone_with_illegal_str_001
+     * @tc.desc      : clone image, titile with illegal str, expect failed ahd errCode is 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("test_clone_with_illegal_str_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_with_illegal_str_001";
       try {
@@ -264,6 +321,14 @@ export default function cloneAssetTest() {
       }
     })
 
+    /**
+     * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_008
+     * @tc.name      : test_clone_with_empty_str_001
+     * @tc.desc      : clone image, titile is empty str, expect failed ahd errCode is 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it("test_clone_with_empty_str_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_with_empty_str_001";
       try {
