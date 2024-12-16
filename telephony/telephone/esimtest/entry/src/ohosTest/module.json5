@@ -21,9 +21,8 @@
     "mainElement": "TestAbility",
     "deviceTypes": [
       "wearable",
-      "phone",
-      "tablet",
-      "2in1"
+      "default",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -48,6 +47,29 @@
             ]
           }
         ]
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO"
+      },
+      {
+        "name": "ohos.permission.GET_TELEPHONY_STATE"
+      },
+      {
+        "name": "ohos.permission.GET_WIFI_INFO"
+      },
+      {
+        "name": "ohos.permission.sec.ACCESS_UDID"
+      },
+      {
+        "name": "ohos.permission.GET_TELEPHONY_ESIM_STATE"
+      },
+      {
+        "name": "ohos.permission.SET_TELEPHONY_ESIM_STATE"
+      },
+      {
+        "name": "ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN"
       }
     ]
   }

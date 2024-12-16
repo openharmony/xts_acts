@@ -20,9 +20,8 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "wearable",
-      "phone",
-      "tablet",
-      "2in1"
+      "default",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
