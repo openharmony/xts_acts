@@ -50,3 +50,7 @@ export const oHNativeImageSetOnFrameAvailableListenerNullptr: () => number;
 export const oHNativeImageUnSetOnFrameAvailableListenerNullptr: () => number;
 export const oHNativeImageSetOnFrameAvailableListenerNormal: () => Array<number>;
 export const oHNativeImageUnsetOnFrameAvailableListenerNormal: () => Array<number>;
+export const oHNativeImageGetBufferMatrixNormal: () => number;
+export const oHNativeImageGetBufferMatrixNormal01: () => Array<number>;
+export const oHNativeImageGetBufferMatrixAbNormal: () => Array<number>;
+export const oHNativeImageGetBufferMatrixCall: () => number;

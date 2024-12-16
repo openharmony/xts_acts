@@ -562,5 +562,64 @@ export default function nativeImageTest() {
       expect(result[2]).assertEqual(0);
       done();
     });
+    
+    /**
+      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0700
+      * @tc.name       : testNativeImageGetBufferMatrixNormal
+      * @tc.desc       : test OH_NativeImage_GetBufferMatrix
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testNativeImageGetBufferMatrixNormal', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageGetBufferMatrixNormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0701
+      * @tc.name       : testNativeImageGetBufferMatrixNormal01
+      * @tc.desc       : test OH_NativeImage_GetBufferMatrix
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testNativeImageGetBufferMatrixNormal01', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageGetBufferMatrixNormal01();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0702
+      * @tc.name       : testNativeImageGetBufferMatrixAbNormal
+      * @tc.desc       : test OH_NativeImage_GetBufferMatrix
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 3
+      */
+    it('testNativeImageGetBufferMatrixAbNormal', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageGetBufferMatrixAbNormal();
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(40001000);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0703
+      * @tc.name       : testNativeImageGetBufferMatrixNormal
+      * @tc.desc       : test OH_NativeImage_GetBufferMatrix
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testNativeImageGetBufferMatrixCall', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageGetBufferMatrixCall();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }
