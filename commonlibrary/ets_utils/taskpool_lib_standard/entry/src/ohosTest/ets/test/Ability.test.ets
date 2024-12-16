@@ -4753,5 +4753,419 @@ export default function TaskPoolTest() {
       expect(result).assertEqual(800);
       done();
     })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0207
+     * @tc.name      : TaskPoolTestClass207
+     * @tc.desc      : Create AsyncRunner error
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass207', 0, async (done: Function) => {
+      try {
+        new taskpool.AsyncRunner(0);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The input parameters are invalid, RunningCapacity must be greater than zero.');
+      }
+
+      try {
+        new taskpool.AsyncRunner("async207", 5, -1);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The input parameters are invalid, WaitingCapacity must be greater than or equal zero.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0208
+     * @tc.name      : TaskPoolTestClass208
+     * @tc.desc      : Create AsyncRunner error
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass208', 0, async (done: Function) => {
+      new taskpool.AsyncRunner("async208", 5);
+      try {
+        new taskpool.AsyncRunner("async208", 4);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The input parameters are invalid, AsyncRunner runningCapacity can not changed.');
+      }
+
+      try {
+        new taskpool.AsyncRunner("async208", 5, 10);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The input parameters are invalid, AsyncRunner waitingCapacity can not changed.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0209
+     * @tc.name      : TaskPoolTestClass209
+     * @tc.desc      : AsyncRunner execute error
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass209', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async209", 5, 5);
+      let task: taskpool.Task = new taskpool.Task("task209", printArgs, 100);
+      try {
+        asyncRunner.execute(task, 4);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The input parameters are invalid, Priority value is error.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0210
+     * @tc.name      : TaskPoolTestClass210
+     * @tc.desc      : AsyncRunner cancel task
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass210', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async210", 2);
+      let num = 0;
+      for (let i = 0; i < 5; i++) {
+        let task: taskpool.Task = new taskpool.Task(AdditionDelay, 100);
+        asyncRunner.execute(task).then(() => {
+          num++;
+        }).catch((e: BusinessError) => {
+          num++;
+          expect((e as BusinessError).toString()).assertEqual('BusinessError: The asyncRunner task has been canceled.');
+        })
+        if (i > 3) {
+          taskpool.cancel(task);
+        }
+      }
+      while (num < 5) {
+        await promiseCase();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0211
+     * @tc.name      : TaskPoolTestClass211
+     * @tc.desc      : AsyncRunner cannot execute seqRunnerTask
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass211', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async211", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      let seqRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner("seq211");
+      seqRunner.execute(task);
+      try {
+        asyncRunner.execute(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, AsyncRunner cannot execute seqRunnerTask or executedTask.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0212
+     * @tc.name      : TaskPoolTestClass212
+     * @tc.desc      : AsyncRunner cannot execute groupTask
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass212', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async212", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup("taskGroup212");
+      taskGroup.addTask(task);
+      try {
+        asyncRunner.execute(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, AsyncRunner cannot execute groupTask.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0213
+     * @tc.name      : TaskPoolTestClass213
+     * @tc.desc      : AsyncRunner cannot execute dependent task
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass213', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async213", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      task.addDependency(task2);
+      try {
+        asyncRunner.execute(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: AsyncRunner:: dependent task not allowed.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0214
+     * @tc.name      : TaskPoolTestClass214
+     * @tc.desc      : AsyncRunner cannot execute asyncRunnerTask
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass214', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async214", 2);
+      let asyncRunner2: taskpool.AsyncRunner = new taskpool.AsyncRunner("async214-1", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      asyncRunner.execute(task);
+      try {
+        asyncRunner2.execute(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, AsyncRunner cannot execute asyncRunnerTask.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0215
+     * @tc.name      : TaskPoolTestClass215
+     * @tc.desc      : AsyncRunner cannot execute executedTask
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass215', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async215", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      taskpool.execute(task);
+      try {
+        asyncRunner.execute(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, AsyncRunner cannot execute seqRunnerTask or executedTask.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0216
+     * @tc.name      : TaskPoolTestClass216
+     * @tc.desc      : AsyncRunner cannot execute periodicTask
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass216', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async216", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      taskpool.executePeriodically(1000, task);
+      try {
+        asyncRunner.execute(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, AsyncRunner cannot execute the periodicTask.');
+      }
+      setTimeout(()=>{
+        taskpool.cancel(task);
+      }, 2000);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0217
+     * @tc.name      : TaskPoolTestClass217
+     * @tc.desc      : sequenceRunner cannot execute asyncRunnerTask
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass217', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async217", 2);
+      let seqRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner("seq217");
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      asyncRunner.execute(task);
+      try {
+        seqRunner.execute(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, SequenceRunner cannot execute asyncRunnerTask.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0218
+     * @tc.name      : TaskPoolTestClass218
+     * @tc.desc      : taskGroup cannot execute asyncRunnerTask
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass218', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async218", 2);
+      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup("taskGroup218");
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      asyncRunner.execute(task);
+      try {
+        taskGroup.addTask(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, TaskGroup cannot execute asyncRunnerTask.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0219
+     * @tc.name      : TaskPoolTestClass219
+     * @tc.desc      : asyncRunnerTask cannot execute outside
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass219', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async219", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      asyncRunner.execute(task);
+      try {
+        taskpool.execute(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, AsyncRunnerTask cannot execute outside.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0220
+     * @tc.name      : TaskPoolTestClass220
+     * @tc.desc      : asyncRunnerTask cannot execute outside
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass220', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async220", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      asyncRunner.execute(task);
+      try {
+        task2.addDependency(task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task has been executed by AsyncRunner.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0221
+     * @tc.name      : TaskPoolTestClass221
+     * @tc.desc      : asyncRunnerTask cannot executed periodically
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass221', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async221", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      asyncRunner.execute(task);
+      try {
+        taskpool.executePeriodically(1000, task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, AsyncRunnerTask cannot executePeriodically.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0222
+     * @tc.name      : TaskPoolTestClass222
+     * @tc.desc      : asyncRunnerTask cannot executeDelayed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass222', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async222", 2);
+      let task: taskpool.Task = new taskpool.Task(AdditionDelay, 1000);
+      asyncRunner.execute(task);
+      try {
+        taskpool.executeDelayed(1000, task);
+      } catch (e) {
+        expect(e.toString()).assertEqual('BusinessError: The task cannot be executed by two APIs, AsyncRunnerTask cannot executeDelayed.');
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0223
+     * @tc.name      : TaskPoolTestClass223
+     * @tc.desc      : asyncRunner task discarded
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass223', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async223", 5, 2);
+      let success = 0;
+      let failure = 0;
+      let size = 10;
+      for (let i = 0; i < size; i++) {
+        let task: taskpool.Task = new taskpool.Task(printArgs, i);
+        asyncRunner.execute(task, taskpool.Priority.HIGH).then(() => {
+          success++;
+        }).catch((e: BusinessError) => {
+          failure++;
+          expect((e as BusinessError).toString()).assertEqual('BusinessError: The asyncRunner task discarded.');
+        });
+      }
+      while (success + failure < size) {
+        await promiseCase();
+      }
+      expect(success >= 5).assertTrue();
+      expect(success).assertLess(size);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0224
+     * @tc.name      : TaskPoolTestClass224
+     * @tc.desc      : asyncRunner task has been canceled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass224', 0, async (done: Function) => {
+      let asyncRunner: taskpool.AsyncRunner = new taskpool.AsyncRunner("async224", 2);
+      let success = 0;
+      let failure = 0;
+      let size = 5;
+      let arr: Array<taskpool.Task> = [];
+      for (let i = 0; i < size; i++) {
+        let task: taskpool.Task = new taskpool.Task(printArgs, i);
+        asyncRunner.execute(task).then(() => {
+          success++;
+        }).catch((e: BusinessError) => {
+          failure++;
+          expect((e as BusinessError).toString()).assertEqual('BusinessError: The asyncRunner task has been canceled.');
+        });
+        if (i > 3) {
+          arr.push(task);
+        }
+      }
+      for (let i = 0; i < arr.length; i++) {
+        try {
+          taskpool.cancel(arr[i]);
+        } catch (e) {
+        }
+      }
+      while (success + failure < size) {
+        await promiseCase();
+      }
+      expect(failure).assertEqual(arr.length);
+      done();
+    })
   })
 }
