@@ -39,6 +39,7 @@ export default function cloneAssetTest() {
       await getPermission();
       await sleep();
       await pushCreateAsset(fileNameList);
+      await sleep(3500);
     })
 
 
@@ -52,6 +53,7 @@ export default function cloneAssetTest() {
      */
     it("test_clone_image_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_image_001";
+      let title: string = "";
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "cloneTest.jpg");
         let photoAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchOps);
@@ -60,7 +62,7 @@ export default function cloneAssetTest() {
           expect(false).assertTrue();
           done();
         }
-        let title: string = systemDateTime.getTime().toString();
+        title = systemDateTime.getTime().toString();
         console.log(`${testNum} :: title is ${title}`);
         let newPhotoAsset: photoAccessHelper.PhotoAsset | undefined = await photoAsset?.clone(title);
         if (newPhotoAsset === undefined ) {
@@ -78,7 +80,18 @@ export default function cloneAssetTest() {
         done();
       } catch (error) {
         console.error(`${testNum} :: test failed ,error is ${error}`);
-        expect(false).assertTrue();
+        // RK3568 not support kv , will exception occurred
+        if (error.code == "14000011") {
+          let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(title + ".jpg"));
+          let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
+          if (cloneAsset === undefined) {
+            console.error(`${testNum} :: after clone, then query, is undefined !`)
+            expect(false).assertTrue();
+            done();
+          }
+        } else {
+          expect(false).assertTrue();
+        }
         done();
       }
     })
@@ -93,6 +106,7 @@ export default function cloneAssetTest() {
      */
     it("test_clone_video_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_video_001";
+      let title: string = "";
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "cloneTest.mp4");
         let photoAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchOps);
@@ -101,7 +115,7 @@ export default function cloneAssetTest() {
           expect(false).assertTrue();
           done();
         }
-        let title: string = systemDateTime.getTime().toString();
+        title = systemDateTime.getTime().toString();
         console.log(`${testNum} :: title is ${title}`);
         let newPhotoAsset: photoAccessHelper.PhotoAsset | undefined = await photoAsset?.clone(title);
         if (newPhotoAsset === undefined ) {
@@ -119,7 +133,18 @@ export default function cloneAssetTest() {
         done();
       } catch (error) {
         console.error(`${testNum} :: test failed ,error is ${error}`);
-        expect(false).assertTrue();
+        // RK3568 not support kv , will exception occurred
+        if (error.code == "14000011") {
+          let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(title + ".mp4"));
+          let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
+          if (cloneAsset === undefined) {
+            console.error(`${testNum} :: after clone, then query, is undefined !`)
+            expect(false).assertTrue();
+            done();
+          }
+        } else {
+          expect(false).assertTrue();
+        }
         done();
       }
     })
@@ -134,6 +159,7 @@ export default function cloneAssetTest() {
      */
     it("test_clone_moving_photo_001", 0, async (done: Function) => {
       let testNum = "test_clone_moving_photo_001";
+      let cloneTitle: string = "";
       try {
         let title = "cloneMovingPhoto"
         let movingPhotoAsset = await createMovingPhoto(testNum, context, title);
@@ -142,8 +168,8 @@ export default function cloneAssetTest() {
           expect(false).assertTrue();
           done();
         }
-        await sleep(1000);
-        let cloneTitle: string = systemDateTime.getTime().toString();
+        await sleep(3000);
+        cloneTitle = systemDateTime.getTime().toString();
         console.log(`${testNum} :: title is ${title}`);
         let newPhotoAsset: photoAccessHelper.PhotoAsset | undefined = await movingPhotoAsset?.clone(cloneTitle);
         if (newPhotoAsset === undefined ) {
@@ -161,7 +187,18 @@ export default function cloneAssetTest() {
         done();
       } catch (error) {
         console.error(`${testNum} :: test failed ,error is ${error}`);
-        expect(false).assertTrue();
+        // RK3568 not support kv , will exception occurred
+        if (error.code == "14000011") {
+          let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(cloneTitle + ".jpg"));
+          let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
+          if (cloneAsset === undefined) {
+            console.error(`${testNum} :: after clone, then query, is undefined !`)
+            expect(false).assertTrue();
+            done();
+          }
+        } else {
+          expect(false).assertTrue();
+        }
         done();
       }
     })
@@ -176,6 +213,7 @@ export default function cloneAssetTest() {
      */
     it("test_clone_long_title_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_long_title_001";
+      let title: string = "";
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "cloneTest.jpg");
         let photoAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchOps);
@@ -184,7 +222,6 @@ export default function cloneAssetTest() {
           expect(false).assertTrue();
           done();
         }
-        let title: string = "";
         for (let i = 0; i < 251; i++) {
           title += "1";
         }
@@ -195,9 +232,7 @@ export default function cloneAssetTest() {
           expect(false).assertTrue();
           done();
         }
-        let assetName = title + ".jpg";
-        console.log(`${testNum} :: assetName len is ${assetName.length}`);
-        let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, assetName);
+        let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(title + ".jpg"));
         let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
         if (cloneAsset === undefined) {
           console.error(`${testNum} :: after clone, then query, is undefined !`)
@@ -207,7 +242,18 @@ export default function cloneAssetTest() {
         done();
       } catch (error) {
         console.error(`${testNum} :: test failed ,error is ${error}`);
-        expect(false).assertTrue();
+        // RK3568 not support kv , will exception occurred
+        if (error.code == "14000011") {
+          let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(title + ".jpg"));
+          let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
+          if (cloneAsset === undefined) {
+            console.error(`${testNum} :: after clone, then query, is undefined !`)
+            expect(false).assertTrue();
+            done();
+          }
+        } else {
+          expect(false).assertTrue();
+        }
         done();
       }
     })
@@ -215,7 +261,7 @@ export default function cloneAssetTest() {
     /**
      * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_005
      * @tc.name      : test_clone_long_title_002
-     * @tc.desc      : clone image with titile and suffix length > 255 , expect failed ahd errCode is 401
+     * @tc.desc      : clone image with titile and suffix length > 255 , expect failed and errCode is 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -250,7 +296,7 @@ export default function cloneAssetTest() {
     /**
      * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_006
      * @tc.name      : test_clone_with_suffix_001
-     * @tc.desc      : clone image, titile with suffix, expect failed ahd errCode is 401
+     * @tc.desc      : clone image, titile with suffix, expect failed and errCode is 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -282,7 +328,7 @@ export default function cloneAssetTest() {
     /**
      * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_007
      * @tc.name      : test_clone_with_illegal_str_001
-     * @tc.desc      : clone image, titile with illegal str, expect failed ahd errCode is 401
+     * @tc.desc      : clone image, titile with illegal str, expect failed and errCode is 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -325,7 +371,7 @@ export default function cloneAssetTest() {
     /**
      * @tc.number    : Sub_MediaLibrary_PhotoAccessHelper_Clone_Test_008
      * @tc.name      : test_clone_with_empty_str_001
-     * @tc.desc      : clone image, titile is empty str, expect failed ahd errCode is 401
+     * @tc.desc      : clone image, titile is empty str, expect failed and errCode is 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
