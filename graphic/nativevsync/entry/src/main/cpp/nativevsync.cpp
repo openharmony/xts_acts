@@ -580,10 +580,10 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeVSyncCreateForAssociatedWindowAbNormal03", nullptr, OHNativeVSyncCreateForAssociatedWindowAbNormal03,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-		{"oHNativeVSyncDVSyncSwitch", nullptr, OHNativeVSyncDVSyncSwitch, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"oHNativeVSyncDVSyncSwitchNullptr", nullptr, OHNativeVSyncDVSyncSwitchNullptr, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
+        {"oHNativeVSyncDVSyncSwitch", nullptr, OHNativeVSyncDVSyncSwitch,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncDVSyncSwitchNullptr", nullptr, OHNativeVSyncDVSyncSwitchNullptr,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
