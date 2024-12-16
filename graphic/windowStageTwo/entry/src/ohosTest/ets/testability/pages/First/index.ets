@@ -21,13 +21,13 @@ import testsuite from '../../../test/List.test'
 @Entry
 @Component
 struct Index {
-  aboutToAppear() {
-    console.info("start run testcase!!!!")
-    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments()
-    console.info('start run testcase!!!')
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-  }
+  // aboutToAppear() {
+  //   console.info("start run testcase!!!!")
+  //   let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+  //   let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments()
+  //   console.info('start run testcase!!!')
+  //   Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+  // }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
