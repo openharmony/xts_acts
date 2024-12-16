@@ -47,7 +47,7 @@ set(src_sec
     ${OPENHARMONY_ROOT_PATH}/third_party/bounds_checking_function/src/wscanf_s.c
 )
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall  -g3 -Wunused-variable -DOHOS_JSVMTEST_XTS -DTEST_WASM -DTEST_ARRAY_BUFFER_BACKING_STORE -DTEST_TRACE -Wunused-command-line-argument")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall  -g3 -Wunused-variable -DOHOS_JSVMTEST_XTS -DTEST_WASM -DTEST_ARRAY_BUFFER_BACKING_STORE -DTEST_DEFINE_CLASS_WITH_OPTIONS -DTEST_TRIGGER_EXCEPTIONS -DTEST_TRIGGER_GC -Wunused-command-line-argument")
 if(DEFINED PACKAGE_FIND_FILE)
     include(${PACKAGE_FIND_FILE})
 endif()
@@ -68,7 +68,10 @@ add_library(entry SHARED napi/napi_test.cpp
     jsvmtest/jsvmtest.cpp
     jsvmtest/unittests/test_array_buffer_backing_store.cpp
     jsvmtest/unittests/test_wasm.cpp
-    jsvmtest/unittests/test_trace.cpp)
+    jsvmtest/unittests/test_trace.cpp
+    jsvmtest/unittests/test_define_class_with_options.cpp
+    jsvmtest/unittests/test_trigger_exceptions.cpp
+    jsvmtest/unittests/test_trigger_gc.cpp)
 target_link_libraries(entry PUBLIC libace_napi.z.so libjsvm.so entry2)
 target_link_directories(entry PUBLIC ${OPENHARMONY_ROOT_PATH}/out/generic_generic_arm_64only/general_all_phone_standard/gen/foundation/arkui/napi/jsvm/)
 

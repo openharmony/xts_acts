@@ -10167,6 +10167,27 @@ static napi_value RunJsVm(napi_env nEnv, napi_callback_info nInfo)
   return result;
 }
 
+[[maybe_unused]] static napi_value DefineClassWithOptionsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_define_class_with_options.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value TriggerExceptionsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trigger_exceptions.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value TriggerGCTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trigger_gc.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -10235,6 +10256,9 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("wellKnownSymbolsTest", WellKnownSymbolsTest),
         DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
         DECLARE_NAPI_FUNCTION("traceTest", TraceTest),
+        DECLARE_NAPI_FUNCTION("defineClassWithOptionsTest", DefineClassWithOptionsTest),
+        DECLARE_NAPI_FUNCTION("triggerExceptionsTest", TriggerExceptionsTest),
+        DECLARE_NAPI_FUNCTION("triggerGCTest", TriggerGCTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

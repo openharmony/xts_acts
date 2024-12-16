@@ -29,6 +29,9 @@ config("config") {
     "-DTEST_WRAPPER_OBJECT",
     "-DTEST_WELL_KNOWN_SYMBOLS",
     "-DTEST_TRACE",
+    "-DTEST_DEFINE_CLASS_WITH_OPTIONS",
+    "-DTEST_TRIGGER_EXCEPTIONS",
+    "-DTEST_TRIGGER_GC",
   ]
 }
 
@@ -40,7 +43,10 @@ ohos_shared_library("jsvmtest") {
     "./jsvmtest/jsvm_utils.cpp",
     "./jsvmtest/jsvmtest.cpp",
     "./jsvmtest/unittests/test_array_buffer_backing_store.cpp",
+    "./jsvmtest/unittests/test_define_class_with_options.cpp",
     "./jsvmtest/unittests/test_trace.cpp",
+    "./jsvmtest/unittests/test_trigger_exceptions.cpp",
+    "./jsvmtest/unittests/test_trigger_gc.cpp",
     "./jsvmtest/unittests/test_wasm.cpp",
     "./jsvmtest/unittests/test_well_known_symbols.cpp",
     "./jsvmtest/unittests/test_wrapper_object.cpp",

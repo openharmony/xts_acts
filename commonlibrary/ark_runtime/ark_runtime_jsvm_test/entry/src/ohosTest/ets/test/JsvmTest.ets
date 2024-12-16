@@ -6660,5 +6660,44 @@ export default function JsvmJsunit() {
       console.info('JsvmTest0519 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0520
+     * @tc.name      JsvmTest0520
+     * @tc.desc      Test OH_JSVM_DefineClassWithOptions.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0520', 0, () => {
+      let rst: number = napitest.defineClassWithOptionsTest();
+      console.info('JsvmTest0520 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0521
+     * @tc.name      JsvmTest0521
+     * @tc.desc      Test the handler for exceptions.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0521', 0, () => {
+      let rst: number = napitest.triggerExceptionsTest();
+      console.info('JsvmTest0521 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0522
+     * @tc.name      JsvmTest0522
+     * @tc.desc      Test the handler for gc.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0522', 0, () => {
+      let rst: number = napitest.triggerGCTest();
+      console.info('JsvmTest00522 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
   });
 }
