@@ -289,7 +289,7 @@ export default function printTest() {
       printerInformation.printerStatus = print.PrinterStatus.PRINTER_IDLE;
       printerInformation.printerStatus = print.PrinterStatus.PRINTER_BUSY;
       printerInformation.printerStatus = print.PrinterStatus.PRINTER_UNAVAILABLE;
-      printerInformation.description = 'testDescriptor';
+      printerInformation.description = 'testDescription';
       printerInformation.capability = new MyPrinterCapabilities();
       let pageSize = new MyPrintPageSize();
       pageSize.id = '0';
@@ -345,7 +345,7 @@ export default function printTest() {
       printerInformation.printerId = 'testPrinterId';
       printerInformation.printerName = 'testPrinterName';
       printerInformation.printerStatus = print.PrinterStatus.PRINTER_UNAVAILABLE;
-      printerInformation.description = 'testDescriptor';
+      printerInformation.description = 'testDescription';
       printerInformation.capability = new MyPrinterCapabilities();
       let pageSize = new MyPrintPageSize();
       pageSize.id = '0';
