@@ -15,96 +15,96 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import Want from '@ohos.app.ability.Want'
+import Want from '@ohos.app.ability.Want';
 import PrintExtension from '../testability/PrintExtension';
 
 const DOMAIN: number = 0x0023
-const TAG: string = 'printTestXTS';
+const TAG: string = 'printExtensionTestXTS';
 let printExtension = new PrintExtension();
 
 export default function printExtensionTest() {
-    describe('printExtensionTest', () => {
+  describe('printExtensionTest', () => {
 
-        /**
-         * @tc.number printExtension_function_0100
-         * @tc.name Test printExtension
-         * @tc.desc check the printExtension function
-         * @tc.size MEDIUM
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('printExtension_function_0100', 0, () => {
-            hilog.info(DOMAIN, TAG, 'printExtension_function_0100 onCreate begin');
-            let want: Want = {
-                bundleName: 'com.huawei.printxtstest',
-                abilityName: 'PrintExtension'
-            }
-            printExtension.onCreate(want);
-        })
-
-        /**
-         * @tc.number printExtension_function_0200
-         * @tc.name Test printExtension
-         * @tc.desc check the printExtension function
-         * @tc.size MEDIUM
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('printExtension_function_0200', 0, () => {
-            hilog.info(DOMAIN, TAG, 'printExtension_function_0200 onStartDiscoverPrinter begin');
-            printExtension.onStartDiscoverPrinter();
-        })
-
-        /**
-         * @tc.number printExtension_function_0300
-         * @tc.name Test printExtension
-         * @tc.desc check the printExtension function
-         * @tc.size MEDIUM
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('printExtension_function_0300', 0, () => {
-            hilog.info(DOMAIN, TAG, 'printExtension_function_0300 onStopDiscoverPrinter begin');
-            printExtension.onStopDiscoverPrinter();
-        })
-
-        /**
-         * @tc.number printExtension_function_0400
-         * @tc.name Test printExtension
-         * @tc.desc check the printExtension function
-         * @tc.size MEDIUM
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('printExtension_function_0400', 0, () => {
-            hilog.info(DOMAIN, TAG, 'printExtension_function_0400 onConnectPrinter begin');
-            printExtension.onConnectPrinter();
-        })
-
-        /**
-         * @tc.number printExtension_function_0500
-         * @tc.name Test printExtension
-         * @tc.desc check the printExtension function
-         * @tc.size MEDIUM
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('printExtension_function_0500', 0, () => {
-            hilog.info(DOMAIN, TAG, 'printExtension_function_0500 onDisconnectPrinter begin');
-            printExtension.onDisconnectPrinter();
-        })
-
-        /**
-         * @tc.number printExtension_function_0600
-         * @tc.name Test printExtension
-         * @tc.desc check the printExtension function
-         * @tc.size MEDIUM
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('printExtension_function_0600', 0, () => {
-            hilog.info(DOMAIN, TAG, 'printExtension_function_0600 onDestroy begin');
-            printExtension.onDestroy();
-        })
+    /**
+     * @tc.number printExtension_function_0100
+     * @tc.name Test printExtension
+     * @tc.desc check the printExtension function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('printExtension_function_0100', 0, () => {
+      hilog.info(DOMAIN, TAG, 'printExtension_function_0100 onCreate begin');
+      let want: Want = {
+        bundleName: 'com.huawei.printxtstest',
+        abilityName: 'PrintExtension'
+      }
+      printExtension.onCreate(want);
     })
+
+    /**
+     * @tc.number printExtension_function_0200
+     * @tc.name Test printExtension
+     * @tc.desc check the printExtension function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('printExtension_function_0200', 0, () => {
+      hilog.info(DOMAIN, TAG, 'printExtension_function_0200 onStartDiscoverPrinter begin');
+      printExtension.onStartDiscoverPrinter();
+    })
+
+    /**
+     * @tc.number printExtension_function_0300
+     * @tc.name Test printExtension
+     * @tc.desc check the printExtension function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('printExtension_function_0300', 0, () => {
+      hilog.info(DOMAIN, TAG, 'printExtension_function_0300 onStopDiscoverPrinter begin');
+      printExtension.onStopDiscoverPrinter();
+    })
+
+    /**
+     * @tc.number printExtension_function_0400
+     * @tc.name Test printExtension
+     * @tc.desc check the printExtension function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('printExtension_function_0400', 0, () => {
+      hilog.info(DOMAIN, TAG, 'printExtension_function_0400 onConnectPrinter begin');
+      printExtension.onConnectPrinter();
+    })
+
+    /**
+     * @tc.number printExtension_function_0500
+     * @tc.name Test printExtension
+     * @tc.desc check the printExtension function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('printExtension_function_0500', 0, () => {
+      hilog.info(DOMAIN, TAG, 'printExtension_function_0500 onDisconnectPrinter begin');
+      printExtension.onDisconnectPrinter();
+    })
+
+    /**
+     * @tc.number printExtension_function_0600
+     * @tc.name Test printExtension
+     * @tc.desc check the printExtension function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('printExtension_function_0600', 0, () => {
+      hilog.info(DOMAIN, TAG, 'printExtension_function_0600 onDestroy begin');
+      printExtension.onDestroy();
+    })
+  })
 }
