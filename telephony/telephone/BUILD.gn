@@ -18,6 +18,7 @@ group("telephone") {
     "contactnoptest:ActsTelephonyContactNopTest",
     "contacttest:ActsTelephonyContactTest",
     "datatest:ActsTelephonyDataHasCardTest",
+    "esimtest:ActsTelephonyEsimTest",
     "noCard:noCard",
     "noPermission:noPermission",
     "observertest:ActsTelephonyObserverWithCardTest",
@@ -25,6 +26,5 @@ group("telephone") {
     "simtest:ActsTelephonySimHasCardTest",
     "smstest:ActsTelephonySmsWithCardTest",
     "telephonyNDKTest:ActsTelephonyNdkTest",
-    "esimtest:ActsTelephonyEsimTest",
   ]
 }
