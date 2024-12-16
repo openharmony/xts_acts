@@ -43,6 +43,7 @@
 #define ARR_NUMBER_4 4
 #define NUMBER_99999 99999
 #define NUMBER_500 500
+#define NUMBER_1000 1000
 
 using GetPlatformDisplayExt = PFNEGLGETPLATFORMDISPLAYEXTPROC;
 constexpr const char *EGL_EXT_PLATFORM_WAYLAND = "EGL_EXT_platform_wayland";
@@ -54,6 +55,69 @@ constexpr const char *EGL_GET_PLATFORM_DISPLAY_EXT = "eglGetPlatformDisplayEXT";
 EGLContext eglContext_ = EGL_NO_CONTEXT;
 EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
 static inline EGLConfig config_;
+
+class InitNativeWindow {
+private:
+    int32_t width_ = 0x100;
+    int32_t height_ = 0x100;
+    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
+    OH_NativeImage *_image = nullptr;
+    OHNativeWindow *_nativeWindow = nullptr;
+    GLuint textureId = 0;
+public:
+    InitNativeWindow()
+    {
+        _image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+        if (_image != nullptr) {
+            _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
+            if (_nativeWindow != nullptr) {
+                OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_BUFFER_GEOMETRY, width_, height_);
+                OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, usage);
+            } else {
+                _nativeWindow = nullptr;
+            }
+        } else {
+            _image = nullptr;
+            _nativeWindow = nullptr;
+        }
+    }
+    ~InitNativeWindow()
+    {
+        _image = nullptr;
+        _nativeWindow = nullptr;
+    }
+    OHNativeWindow *returnNativeWindow()
+    {
+        if (_nativeWindow == nullptr) {
+            return nullptr;
+        } else {
+            return _nativeWindow;
+        }
+    };
+    OH_NativeImage *returnNativeImage()
+    {
+        if (_image == nullptr) {
+            return nullptr;
+        } else {
+            return _image;
+        }
+    }
+    int32_t OH_FlushBuffer()
+    {
+        OHNativeWindowBuffer *Buffer = nullptr;
+        int fenceFd = -1;
+        struct Region *region = new Region();
+        struct Region::Rect *rect = new Region::Rect();
+        rect->x = 0x100;
+        rect->y = 0x100;
+        rect->w = 0x100;
+        rect->h = 0x100;
+        region->rects = rect;
+        int32_t ret = OH_NativeWindow_NativeWindowRequestBuffer(_nativeWindow, &Buffer, &fenceFd);
+        ret = OH_NativeWindow_NativeWindowFlushBuffer(_nativeWindow, Buffer, fenceFd, *region);
+        return ret;
+    }
+};
 
 static bool CheckEglExtension(const char *extensions, const char *extension)
 {
@@ -1056,6 +1120,128 @@ static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env,
     return result;
 }
 
+static napi_value OHNativeImageGetBufferMatrixNormal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    InitNativeWindow *initNative = new InitNativeWindow();
+    OH_NativeImage *image = initNative->returnNativeImage();
+    initNative->OH_FlushBuffer();
+    int32_t ret = OH_NativeImage_UpdateSurfaceImage(image);
+    float matrix[16] = {-1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    ret = OH_NativeImage_GetBufferMatrix(image, matrix);
+    if (ret == 0) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeImage_Destroy(&image);
+    delete initNative;
+    return result;
+}
+
+static napi_value OHNativeImageGetBufferMatrixNormal01(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_create_array_with_length(env, ARR_NUMBER_2, &result);
+    InitNativeWindow *initNative = new InitNativeWindow();
+    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_OnFrameAvailableListener listener;
+    listener.context = static_cast<void *>(image);
+    listener.onFrameAvailable = OnFrameAvailable;
+    int32_t ret = OH_NativeImage_SetOnFrameAvailableListener(image, listener);
+    float matrix[16] = {-1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    ret = OH_NativeImage_GetBufferMatrix(image, matrix);
+    if (ret == 0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, ret, &result1);
+    }
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
+    initNative->OH_FlushBuffer();
+    ret = OH_NativeImage_UpdateSurfaceImage(image);
+    int32_t ret1 = OH_NativeImage_GetBufferMatrix(image, matrix);
+    if (ret1 == 0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, ret1, &result2);
+    }
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
+    OH_NativeImage_Destroy(&image);
+    delete initNative;
+    return result;
+}
+
+static napi_value OHNativeImageGetBufferMatrixAbNormal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUMBER_3, &result);
+    OH_NativeImage *nativeImage = getNativeImage();
+    float matrix[16];
+    napi_value result1 = nullptr;
+    int32_t ret = OH_NativeImage_GetBufferMatrix(nullptr, matrix);
+    if (ret == 0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, ret, &result1);
+    }
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
+    napi_value result2 = nullptr;
+    int32_t ret1 = OH_NativeImage_GetBufferMatrix(nativeImage, nullptr);
+    if (ret1 == 0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, ret1, &result2);
+    }
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
+    napi_value result3 = nullptr;
+    float matrix1[14];
+    int32_t ret2 = OH_NativeImage_GetBufferMatrix(nativeImage, matrix1);
+    if (ret2 == 0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, ret2, &result3);
+    }
+    napi_set_element(env, result, ARR_NUMBER_2, result3);
+    OH_NativeImage_Destroy(&nativeImage);
+    return result;
+}
+
+static napi_value OHNativeImageGetBufferMatrixCall(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    InitNativeWindow *initNative = new InitNativeWindow();
+    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_OnFrameAvailableListener listener;
+    listener.context = static_cast<void *>(image);
+    listener.onFrameAvailable = OnFrameAvailable;
+    int32_t ret = OH_NativeImage_SetOnFrameAvailableListener(image, listener);
+    ret = initNative->OH_FlushBuffer();
+    if (ret != 0) {
+        napi_create_int32(env, ret, &result);
+        return result;
+    }
+    ret = OH_NativeImage_UpdateSurfaceImage(image);
+    if (ret != 0) {
+        napi_create_int32(env, ret, &result);
+        return result;
+    }
+    float matrix[16] = {-1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    for (int i = 0; i < NUMBER_1000; i++) {
+        int32_t flag = OH_NativeImage_GetBufferMatrix(image, matrix);
+        if (flag == 0) {
+            napi_create_int32(env, SUCCESS, &result);
+        } else {
+            napi_create_int32(env, (NUMBER_1000 * i) + ARR_NUMBER_1, &result);
+            return result;
+        }
+    }
+    OH_NativeImage_Destroy(&image);
+    delete initNative;
+    return result;
+}
+
 napi_value NativeImageInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
@@ -1096,10 +1282,28 @@ napi_value NativeImageInit(napi_env env, napi_value exports)
     return exports;
 }
 
+static napi_value NativeImageInit2(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        {"oHNativeImageGetBufferMatrixNormal", nullptr, OHNativeImageGetBufferMatrixNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeImageGetBufferMatrixNormal01", nullptr, OHNativeImageGetBufferMatrixNormal01, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageGetBufferMatrixAbNormal", nullptr, OHNativeImageGetBufferMatrixAbNormal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeImageGetBufferMatrixCall", nullptr, OHNativeImageGetBufferMatrixCall, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     NativeImageInit(env, exports);
+    NativeImageInit2(env, exports);
     napi_property_descriptor desc[] = {
         {"oHNativeImageAcquireNativeWindowNullptr", nullptr, OHNativeImageAcquireNativeWindowNullptr, nullptr, nullptr,
          nullptr, napi_default, nullptr},
