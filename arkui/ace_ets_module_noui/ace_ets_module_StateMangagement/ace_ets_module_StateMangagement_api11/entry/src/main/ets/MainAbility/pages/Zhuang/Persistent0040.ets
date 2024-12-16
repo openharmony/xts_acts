@@ -44,7 +44,7 @@ struct Persistent0040 {
 
   build() {
     Column({ space: 15 }) {
-      Text("value:" + this.ps0040)
+      Text('value:' + this.ps0040)
         .id('tvPS0040')
       Button('Change')
         .id('btnChangePS0040')
