@@ -31,10 +31,11 @@
         "name": "TestAbility",
         "srcEntry": "./ets/testability/TestAbility.ets",
         "description": "$string:TestAbility_desc",
-        "icon": "$media:icon",
+        "icon": "$media:startIcon",
         "label": "$string:TestAbility_label",
         "exported": true,
-        "startWindowIcon": "$media:icon",
+        "launchType": "multiton",
+        "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
         "orientation": "portrait",
         "skills": [
@@ -47,6 +48,18 @@
             ]
           }
         ]
+      },
+      {
+        "name": "StartAbility",
+        "srcEntry": "./ets/testability/StartAbility.ets",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:startIcon",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "launchType": "multiton",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "orientation": "portrait",
       }
     ],
     "requestPermissions": [
