@@ -503,6 +503,42 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal03(napi_env env,
     }
 }
 
+static napi_value OHNativeVSyncDVSyncSwitch(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    char name[] = "testcase_switch";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    char param[] = "test";
+    OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, &param);
+    if ((OH_NativeVSync_DVSyncSwitch(nativeVSync, true) == 0) ||
+        (OH_NativeVSync_DVSyncSwitch(nativeVSync, false) == 0)) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeVSync_Destroy(nativeVSync);
+    return result;
+}
+
+static napi_value OHNativeVSyncDVSyncSwitchNullptr(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    char name[] = "testcase_switch";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    char param[] = "test";
+    OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, &param);
+    if ((OH_NativeVSync_DVSyncSwitch(nullptr, true) != 0) ||
+        (OH_NativeVSync_DVSyncSwitch(nullptr, false) != 0)) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeVSync_Destroy(nativeVSync);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -544,6 +580,10 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeVSyncCreateForAssociatedWindowAbNormal03", nullptr, OHNativeVSyncCreateForAssociatedWindowAbNormal03,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+		{"oHNativeVSyncDVSyncSwitch", nullptr, OHNativeVSyncDVSyncSwitch, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHNativeVSyncDVSyncSwitchNullptr", nullptr, OHNativeVSyncDVSyncSwitchNullptr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
