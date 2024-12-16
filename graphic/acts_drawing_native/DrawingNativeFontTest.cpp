@@ -1863,20 +1863,16 @@ HWTEST_F(DrawingNativeFontTest, testFontMeasuretextNull, TestSize.Level3)
     const void *text = "abc";
     const size_t byteLength = 3;
     float textWidth = 0.f;
-    OH_Drawing_FontMeasureText(nullptr, text, byteLength, TEXT_ENCODING_UTF8, bounds, &textWidth);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_FontMeasureText(nullptr, text, byteLength, TEXT_ENCODING_UTF8, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_FontMeasureText with nullptr as the second parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_FontMeasureText(font, nullptr, byteLength, TEXT_ENCODING_UTF8, bounds, &textWidth);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_FontMeasureText(font, nullptr, byteLength, TEXT_ENCODING_UTF8, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 4. Call OH_Drawing_FontMeasureText with nullptr or 0 as the third parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_FontMeasureText(font, text, 0, TEXT_ENCODING_UTF8, bounds, &textWidth);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_FontMeasureText(font, text, 0, TEXT_ENCODING_UTF8, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Call OH_Drawing_FontMeasureText with nullptr as the sixth parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_FontMeasureText(font, text, byteLength, TEXT_ENCODING_UTF8, bounds, nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_FontMeasureText(font, text, byteLength, TEXT_ENCODING_UTF8, bounds, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 6. free memory
     OH_Drawing_FontDestroy(font);
     OH_Drawing_RectDestroy(rect);
