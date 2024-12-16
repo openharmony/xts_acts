@@ -47,6 +47,12 @@
               "entity.system.home"
             ]
           }
+        ],
+        "metadata":[
+          {
+            "name":"enable.remove.starting.window",
+            "value":'true'
+          }
         ]
       },
       {

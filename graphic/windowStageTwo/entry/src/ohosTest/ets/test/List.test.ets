@@ -13,14 +13,18 @@
  * limitations under the License.
  */
 import WindowLifecycle from './WindowLifecycle.test';
+import windowTitleBarTest from './WindowTitleBar.test';
 import windowPromiseTest from './WindowPromise.test';
 import windowMaximizeTest from './WindowMaximize.test';
 import windowImmersiveTest from './WindowImmersive.test';
 import windowPropertiesTest from './WindowProperties.test';
 import windowManageTest from './WindowManage.test';
 import windowInterface from './WindowInterface.test';
+import windowZindexTest from './WindowZindex.test';
 export default function testsuite() {
   windowInterface();
+  windowTitleBarTest();
+  windowZindexTest();
   windowManageTest();
   WindowLifecycle();
   windowPromiseTest();
