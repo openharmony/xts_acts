@@ -26,6 +26,7 @@ const ABILITY_NAME1 = "ohos.acts.bundle.stage.test.MainAbility1";
 const APPID = "ohos.acts.bundle.stage.test_BNtg4JBClbl92Rgc3jm/RfcAdrHXaM8F0QO" +
 "iwVEhnV5ebE5jNIYnAx+weFRT3QTyUjRNdhmc2aAzWyi+5t5CoBM=";
 const FINGERPRINT = "8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5";
+const CERTIFICATE = "-----BEGIN CERTIFICATE-----"
 const PARAM_ERROR_CODE = 401;
 
 export default function getBundleInfoForSelf() {
@@ -961,6 +962,7 @@ export default function getBundleInfoForSelf() {
         expect(data.permissionGrantStates.length).assertEqual(0);
         expect(data.signatureInfo.appId).assertEqual(APPID);
         expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
+        expect(data.signatureInfo.certificate).assertContain(CERTIFICATE);
         done();
       }).catch(err => {
         console.info("getBundleInfoForSelf fail" + JSON.stringify(err));
@@ -985,6 +987,7 @@ export default function getBundleInfoForSelf() {
         expect(data.permissionGrantStates.length).assertEqual(0);
         expect(data.signatureInfo.appId).assertEqual(APPID);
         expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
+        expect(data.signatureInfo.certificate).assertContain(CERTIFICATE);
         expect(err).assertEqual(null);
         done();
       })
@@ -1607,6 +1610,7 @@ export default function getBundleInfoForSelf() {
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo.appId).assertEqual(APPID);
       expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
+      expect(data.signatureInfo.certificate).assertContain(CERTIFICATE);
       expect(data.signatureInfo.appIdentifier).assertEqual("");
       done();
     })
