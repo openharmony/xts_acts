@@ -24,6 +24,7 @@
 #include <node_api.h>
 #include <search.h>
 #include <unistd.h>
+#include <hilog/log.h>
 
 #define PARAM_0 0
 #define PARAM_5 5
@@ -47,6 +48,11 @@
 #define VALUE_TWO 1
 #define BUFFERSIZE 128
 #define LOOPNUM 12
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_LIBCTEST"
+
 static void *g_root = nullptr;
 
 static int Compare(const void *pa, const void *pb)
@@ -302,11 +308,16 @@ static napi_value Lfind(napi_env env, napi_callback_info info)
 
 static napi_value Remque(napi_env env, napi_callback_info info)
 {
+    napi_value result = nullptr;
     errno = NOERR;
     struct Q *elem = (struct Q *)malloc(sizeof(struct Q));
+    if (elem == nullptr) {
+        OH_LOG_INFO(LOG_APP, "Remque malloc failed");
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
     insque(elem, nullptr);
     remque(elem);
-    napi_value result = nullptr;
     if (errno == NOERR) {
         napi_create_int32(env, NOERR, &result);
     } else {
@@ -344,9 +355,15 @@ static napi_value Twalk(napi_env env, napi_callback_info info)
     int i = PARAM_0, *ptr = nullptr;
     void *val = nullptr;
     void *rootVal = nullptr;
+    napi_value result = nullptr;
     srand(time(nullptr));
     for (i = PARAM_0; i < LOOPNUM; i++) {
         ptr = static_cast<int *>(malloc(sizeof(int)));
+        if (ptr == nullptr) {
+            OH_LOG_INFO(LOG_APP, "Twalk malloc failed");
+            napi_create_int32(env, FAIL, &result);
+            return result;
+        }
         *ptr = rand() & PARAM_0xff;
         val = tsearch((void *)ptr, &rootVal, Compare);
         if (val == nullptr)
@@ -356,7 +373,6 @@ static napi_value Twalk(napi_env env, napi_callback_info info)
     }
     twalk(rootVal, action);
     tdestroy(rootVal, free);
-    napi_value result = nullptr;
     if (rootVal != nullptr) {
         napi_create_int32(env, NOERR, &result);
     } else {
