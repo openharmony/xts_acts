@@ -17,4 +17,5 @@ import unicodeTest from './onKeyEventTest/unicode.test';
 
 export default function testsuite() {
   unicodeTest();
+  defaultFocus();
 }
