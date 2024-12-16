@@ -56,8 +56,7 @@ EGLContext eglContext_ = EGL_NO_CONTEXT;
 EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
 static inline EGLConfig config_;
 
-class InitNativeWindow
-{
+class InitNativeWindow {
 private:
     int32_t width_ = 0x100;
     int32_t height_ = 0x100;
@@ -1130,8 +1129,7 @@ static napi_value OHNativeImageGetBufferMatrixNormal(napi_env env, napi_callback
     int32_t ret = OH_NativeImage_UpdateSurfaceImage(image);
     float matrix[16] = {-1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     ret = OH_NativeImage_GetBufferMatrix(image, matrix);
-    float num = -1.000000e+00;
-    if (ret == 0 && matrix[0] != num && matrix[5] != num && matrix[10] != num) {
+    if (ret == 0) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
