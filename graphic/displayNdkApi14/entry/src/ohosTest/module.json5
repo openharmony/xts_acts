@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -36,7 +36,6 @@
         "exported": true,
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
-        "orientation": "portrait",
         "skills": [
           {
             "actions": [
@@ -46,27 +45,15 @@
               "entity.system.home"
             ]
           }
-        ],
-        "metadata":[
-          {
-            "name":"enable.remove.starting.window",
-            "value":'true'
-          }
         ]
       }
     ],
     "requestPermissions": [
       {
-        "name": "ohos.permission.PRIVACY_WINDOW",
+        "name": 'ohos.permission.CUSTOM_SCREEN_CAPTURE'
       },
       {
-        "name": "ohos.permission.WINDOW_TOPMOST",
-        "usedScene": {
-          "abilities": [
-            "EntryAbility"
-          ],
-          "when": "always"
-        }
+        "name": 'ohos.permission.PRIVACY_WINDOW'
       }
     ]
   }
