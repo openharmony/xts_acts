@@ -18,30 +18,30 @@ import Want from '@ohos.app.ability.Want'
 import PrintExtensionAbility from '@ohos.app.ability.PrintExtensionAbility';
 
 const DOMAIN: number = 0x0023
-const TAG: string = 'printTestXTS';
+const TAG: string = 'printExtension';
 
 export default class PrintExtension extends PrintExtensionAbility {
-    onCreate(want: Want): void {
-        hilog.info(DOMAIN, TAG, 'PrintExtension onCreate');
-    }
+  onCreate(want: Want): void {
+    hilog.info(DOMAIN, TAG, 'PrintExtension onCreate');
+  }
 
-    onStartDiscoverPrinter(): void {
-        hilog.info(DOMAIN, TAG, 'PrintExtension onStartDiscoverPrinter');
-    }
+  onStartDiscoverPrinter(): void {
+    hilog.info(DOMAIN, TAG, 'PrintExtension onStartDiscoverPrinter');
+  }
 
-    onStopDiscoverPrinter(): void {
-        hilog.info(DOMAIN, TAG, 'PrintExtension onStopDiscoverPrinter');
-    }
+  onStopDiscoverPrinter(): void {
+    hilog.info(DOMAIN, TAG, 'PrintExtension onStopDiscoverPrinter');
+  }
 
-    onConnectPrinter(): void {
-        hilog.info(DOMAIN, TAG, 'PrintExtension onConnectPrinter');
-    }
+  onConnectPrinter(): void {
+    hilog.info(DOMAIN, TAG, 'PrintExtension onConnectPrinter');
+  }
 
-    onDisconnectPrinter(): void {
-        hilog.info(DOMAIN, TAG, 'PrintExtension onDisconnectPrinter');
-    }
+  onDisconnectPrinter(): void {
+    hilog.info(DOMAIN, TAG, 'PrintExtension onDisconnectPrinter');
+  }
 
-    onDestroy(): void {
-        hilog.info(DOMAIN, TAG, 'PrintExtension onDestroy');
-    }
+  onDestroy(): void {
+    hilog.info(DOMAIN, TAG, 'PrintExtension onDestroy');
+  }
 }
