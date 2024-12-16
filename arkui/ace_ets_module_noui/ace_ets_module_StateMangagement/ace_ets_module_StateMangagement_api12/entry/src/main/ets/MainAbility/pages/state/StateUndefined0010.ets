@@ -32,21 +32,21 @@ struct ChildStateUndefined0010 {
 
   build() {
     Column({ space: 5 }) {
-      Text("stateValue:" + this.stateValue)
+      Text('stateValue:' + this.stateValue)
         .id('tvStateValue')
-      Text("propValue:" + this.propValue)
+      Text('propValue:' + this.propValue)
         .id('tvPropValue')
-      Text("linkValue:" + this.linkValue)
+      Text('linkValue:' + this.linkValue)
         .id('tvLinkValue')
-      Text("comsumeValue:" + this.comsumeValue)
+      Text('comsumeValue:' + this.comsumeValue)
         .id('tvComsumeValue')
-      Text("storagePropValue:" + this.storagePropValue)
+      Text('storagePropValue:' + this.storagePropValue)
         .id('tvStoragePropValue')
-      Text("storageLinkValue:" + this.storageLinkValue)
+      Text('storageLinkValue:' + this.storageLinkValue)
         .id('tvStorageLinkValue')
-      Text("localStorageProp:" + this.localStorageProp)
+      Text('localStorageProp:' + this.localStorageProp)
         .id('tvLocalStorageProp')
-      Text("localStorageLink:" + this.localStorageLink)
+      Text('localStorageLink:' + this.localStorageLink)
         .id('tvLocalStorageLink')
     }
   }
@@ -60,7 +60,7 @@ struct StateUndefined0010 {
 
   build() {
     Column({ space: 5 }) {
-      Text("provideValue:" + this.provideValue)
+      Text('provideValue:' + this.provideValue)
         .id('tvProvideValue')
       ChildStateUndefined0010({stateValue: this.stateValue, propValue: this.stateValue, linkValue: this.stateValue})
     }
