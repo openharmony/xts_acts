@@ -36,7 +36,7 @@ export default function printExtensionTest() {
     it('printExtension_function_0100', 0, () => {
       hilog.info(DOMAIN, TAG, 'printExtension_function_0100 onCreate begin');
       let want: Want = {
-        bundleName: 'com.huawei.printxtstest',
+        bundleName: 'com.ohos.printxtstest',
         abilityName: 'PrintExtension'
       }
       printExtension.onCreate(want);
