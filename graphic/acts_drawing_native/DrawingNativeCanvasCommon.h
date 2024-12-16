@@ -29,5 +29,6 @@ class DrawingNativeCanvasTest : public testing::Test {};
 OH_PixelmapNative *GET_OH_PixelmapNative();
 OH_PixelmapNative *GET_OH_PixelmapNative(uint32_t width, uint32_t height);
 OH_PixelmapNative *GET_OH_PixelmapNative4KBoundary();
+OH_PixelmapNative *GET_OH_PixelmapNative_4ByteAlignment();
 
 #endif // DRAWING_NATIVE_CANVAS_COMMON_H

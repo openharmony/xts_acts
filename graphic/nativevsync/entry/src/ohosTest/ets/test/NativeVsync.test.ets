@@ -331,5 +331,33 @@ export default function nativeVsyncTest() {
       expect(result).assertEqual(0);
       done();
     });
+	
+	/**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OHNativeVSyncDVSyncSwitch
+     * @tc.name       : testOHNativeVSyncDVSyncSwitch
+     * @tc.desc       : test OHNativeVSyncDVSyncSwitch
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncDVSyncSwitch', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncDVSyncSwitch();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OHNativeVSyncDVSyncSwitchNullptr
+     * @tc.name       : testOHNativeVSyncDVSyncSwitchNullptr
+     * @tc.desc       : test OHNativeVSyncDVSyncSwitchNullptr
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncDVSyncSwitchNullptr', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncDVSyncSwitchNullptr();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }
