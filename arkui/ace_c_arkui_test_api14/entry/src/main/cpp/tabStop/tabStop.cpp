@@ -42,7 +42,7 @@ namespace ArkUICapiTest {
 
 static napi_value tabStop_001(napi_env env, napi_callback_info info)
 {
-     NAPI_START(button, ARKUI_NODE_BUTTON);
+    NAPI_START(button, ARKUI_NODE_BUTTON);
     int32_t accessibilityGroup = PARAM_2;
     ArkUI_NumberValue value[] = {{.i32 = accessibilityGroup}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
