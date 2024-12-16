@@ -145,6 +145,8 @@
         "MainAbility/pages/twoWayBind/swiper",
         "MainAbility/pages/twoWayBind/textArea",
         "MainAbility/pages/twoWayBind/textInput",
-        "MainAbility/pages/twoWayBind/toggle"
+        "MainAbility/pages/twoWayBind/toggle",
+        "MainAbility/pages/Zhuang/StorageDeprecated",
+        "MainAbility/pages/Zhuang/Persistent0040"
     ]
 }
