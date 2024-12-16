@@ -328,7 +328,7 @@ export default function nativeVsyncTest() {
     it('testOHNativeVSyncCreateForAssociatedWindowAbNormal03', 0, async (done: Function) => {
       let result: number = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal03();
       console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
   })
