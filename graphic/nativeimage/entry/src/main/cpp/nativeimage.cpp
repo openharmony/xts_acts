@@ -56,7 +56,8 @@ EGLContext eglContext_ = EGL_NO_CONTEXT;
 EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
 static inline EGLConfig config_;
 
-class InitNativeWindow {
+class InitNativeWindow
+{
 private:
     int32_t width_ = 0x100;
     int32_t height_ = 0x100;
@@ -65,8 +66,8 @@ private:
     OHNativeWindow *_nativeWindow = nullptr;
     GLuint textureId = 0;
 public:
-    InitNativeWindow() {
-
+    InitNativeWindow()
+    {
         _image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
         if (_image != nullptr) {
             _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
@@ -81,25 +82,29 @@ public:
             _nativeWindow = nullptr;
         }
     }
-    ~InitNativeWindow() {
+    ~InitNativeWindow()
+    {
         _image = nullptr;
         _nativeWindow = nullptr;
     }
-    OHNativeWindow *returnNativeWindow() {
+    OHNativeWindow *returnNativeWindow()
+    {
         if (_nativeWindow == nullptr) {
             return nullptr;
         } else {
             return _nativeWindow;
         }
     };
-    OH_NativeImage *returnNativeImage() {
+    OH_NativeImage *returnNativeImage()
+    {
         if (_image == nullptr) {
             return nullptr;
         } else {
             return _image;
         }
     }
-    int32_t OH_FlushBuffer() {
+    int32_t OH_FlushBuffer()
+    {
         OHNativeWindowBuffer *Buffer = nullptr;
         int fenceFd = -1;
         struct Region *region = new Region();
@@ -109,15 +114,9 @@ public:
         rect->w = 0x100;
         rect->h = 0x100;
         region->rects = rect;
-        int32_t ret1 = OH_NativeWindow_NativeWindowRequestBuffer(_nativeWindow, &Buffer, &fenceFd);
-        if (ret1 != 0) {
-            return ret1 + 10;
-        }
-        int32_t ret2 = OH_NativeWindow_NativeWindowFlushBuffer(_nativeWindow, Buffer, fenceFd, *region);
-        if (ret2 != 0) {
-            return ret2 + 20;
-        }
-        return 0;
+        int32_t ret = OH_NativeWindow_NativeWindowRequestBuffer(_nativeWindow, &Buffer, &fenceFd);
+        ret = OH_NativeWindow_NativeWindowFlushBuffer(_nativeWindow, Buffer, fenceFd, *region);
+        return ret;
     }
 };
 
@@ -1131,7 +1130,8 @@ static napi_value OHNativeImageGetBufferMatrixNormal(napi_env env, napi_callback
     int32_t ret = OH_NativeImage_UpdateSurfaceImage(image);
     float matrix[16] = {-1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     ret = OH_NativeImage_GetBufferMatrix(image, matrix);
-    if (ret == 0 && matrix[0] != -1.000000e+00 && matrix[5] != -1.000000e+00 && matrix[10] != -1.000000e+00) {
+    float num = -1.000000e+00;
+    if (ret == 0 && matrix[0] != num && matrix[5] != num && matrix[10] != num) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -1221,12 +1221,12 @@ static napi_value OHNativeImageGetBufferMatrixCall(napi_env env, napi_callback_i
     int32_t ret = OH_NativeImage_SetOnFrameAvailableListener(image, listener);
     ret = initNative->OH_FlushBuffer();
     if (ret != 0) {
-        napi_create_int32(env, ret + 1, &result);
+        napi_create_int32(env, ret, &result);
         return result;
     }
     ret = OH_NativeImage_UpdateSurfaceImage(image);
     if (ret != 0) {
-        napi_create_int32(env, ret + 2, &result);
+        napi_create_int32(env, ret, &result);
         return result;
     }
     float matrix[16] = {-1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
