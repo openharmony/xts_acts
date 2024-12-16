@@ -17,6 +17,7 @@ import { describe, beforeAll, it, expect } from '@ohos/hypium';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import systemDateTime from '@ohos.systemDateTime';
 import {
+  sleep,
   photoKeys,
   fetchOption,
   getFileAsset,
