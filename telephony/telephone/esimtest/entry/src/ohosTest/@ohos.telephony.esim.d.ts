@@ -773,7 +773,7 @@ declare namespace eSIM {
     nickName: string;
 
     /**
-     * The service provider name for the profile.
+     * The service provider name.
      * 
      * @type { string }
      * @syscap SystemCapability.Telephony.CoreService.Esim
@@ -1524,8 +1524,7 @@ declare namespace eSIM {
     forceDisableProfile: boolean;
 
     /**
-     * Specifies whether the user allows the service provider to enforce this Profile Policy Rule (PPR)
-     * after being informed of its restrictions.
+     * Specifies whether the user allows the service provider to enforce this Profile Policy Rule (PPR) after being informed of its restrictions.
      *
      * @type { boolean }
      * @syscap SystemCapability.Telephony.CoreService.Esim
