@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsUDMFwithOutPermissiontest.hap"
+                "ActsUDMFWithOutPermissiontest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

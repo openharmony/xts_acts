@@ -17,7 +17,7 @@ ohos_js_app_suite("UDMF_drag_test") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsUDMFwithPermissiontest"
+  hap_name = "ActsUDMFWithPermissiontest"
 
   # 部件名称，真实数据，需要子系统对应
   part_name = "udmf"
