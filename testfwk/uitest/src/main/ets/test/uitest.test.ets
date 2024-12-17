@@ -17,6 +17,7 @@ import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import { BusinessError } from '@ohos.base';
+import display from '@ohos.display';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -781,8 +782,14 @@ export default function UiTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
-            await driver.swipe(500, 1100, 500, 300)
-            let text = await driver.findComponent(BY.text('next page'))
+            let displayClass = await display.getDefaultDisplay();
+            let screenWidth = displayClass.width
+            let screenHeight = displayClass.height
+            console.info('screenWidth:' + screenWidth + ', screenHeight:' +screenHeight)
+            await driver.swipe(Math.floor(screenWidth / 2), Math.floor(screenHeight / 2 + screenHeight / 4),
+              Math.floor(screenWidth / 2), Math.floor(screenHeight / 2 - screenHeight / 4))
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponent(BY.text('toast'))
             expect(text == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
@@ -1331,11 +1338,14 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            await driver.swipe(500,1100,500,300)
-            let text = await driver.findComponent(ON.text('next page'))
+            let scoll = await driver.findComponent(ON.type('Scroll'))
+            let rect = await scoll.getBounds()
+            let center = await scoll.getBoundsCenter()
+            await driver.swipe(center.x, Math.floor(center.y + (rect.bottom - rect.top) / 4),
+              center.x, Math.floor(center.y - (rect.bottom - rect.top) / 4))
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponent(ON.text('toast'))
             expect(text == null).assertTrue()
-            let scrollBar = await driver.findComponent(ON.type('Scroll'))
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -1348,12 +1358,14 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            await driver.fling({x:500, y:1100},{x:500, y:300}, 20, 600)
+            let scoll = await driver.findComponent(ON.type('Scroll'))
+            let rect = await scoll.getBounds()
+            let center = await scoll.getBoundsCenter()
+            await driver.fling({x: center.x, y:Math.floor(center.y + (rect.bottom - rect.top) / 4)},
+              {x: center.x, y:Math.floor(center.y - (rect.bottom - rect.top) / 4)}, 20, 600)
             await driver.delayMs(1000)
             let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
-            let scrollBar = await driver.findComponent(ON.type('Scroll'))
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
