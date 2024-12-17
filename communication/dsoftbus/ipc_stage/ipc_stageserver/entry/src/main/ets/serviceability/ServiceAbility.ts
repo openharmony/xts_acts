@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ServiceExtension from "@ohos.app.ability.ServiceExtensionAbility";
+
+import { UIAbility } from "@kit.AbilityKit";
 import rpc from "@ohos.rpc";
-import fileio from '@ohos.fileio';
 
 let logTag = "[IpcServer_log:]";
 
@@ -201,6 +201,15 @@ class Stub extends rpc.RemoteObject {
             console.info(logTag + "onRemoteMessageRequest success");
             return true;
           }
+        case 15:
+          {
+            console.info(logTag + "case 15 start");
+            let ret = new MySequenceable(0, "");
+            data.readParcelable(ret);
+            reply.writeParcelable(ret);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
         default:
           this.onRemoteMessageRequest(code, data, reply, option);
       }
@@ -211,7 +220,7 @@ class Stub extends rpc.RemoteObject {
   }
 }
 
-export default class ServiceAbility extends ServiceExtension {
+export default class ServiceAbility extends UIAbility {
   onCreate() {
     console.info(logTag + "IpcStageServer ServiceAbility onCreate");
   }
