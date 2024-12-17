@@ -12,7 +12,7 @@
         {
             "test-file-name": [
                 "ActsIPCStageTest.hap",
-                "./testcases/ActsIPCStageServer.hap"
+                "ActsIPCStageServer.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

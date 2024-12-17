@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { UIAbility } from "@kit.AbilityKit";
+import ServiceExtension from "@ohos.app.ability.ServiceExtensionAbility";
 import rpc from "@ohos.rpc";
 
 let logTag = "[IpcServer_log:]";
@@ -220,7 +220,7 @@ class Stub extends rpc.RemoteObject {
   }
 }
 
-export default class ServiceAbility extends UIAbility {
+export default class ServiceAbility extends ServiceExtension {
   onCreate() {
     console.info(logTag + "IpcStageServer ServiceAbility onCreate");
   }
