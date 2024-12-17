@@ -275,13 +275,13 @@ export default function windowInterface() {
           windowStageStart = await startAbility(message, context)
           windowClassStart = windowStageStart.getMainWindowSync()
           let windowStatusType = windowClassStart.getWindowStatus();
-          console.info(`${message} windowStatusType = ${windowStatusType} , expect 1`)
+          console.info(`${message} windowStatusType = ${windowStatusType} , expect 2`)
           let isLayoutFullScreen = windowClassStart.getWindowProperties().isLayoutFullScreen
           console.info(`${message} isLayoutFullScreen = ${isLayoutFullScreen} , expect false`)
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
           // 窗口全屏，非沉浸式
-          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN)
+          expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE)
           expect(isLayoutFullScreen).assertFalse()
           done()
         }).catch((err: BusinessError) => {
@@ -489,7 +489,7 @@ export default function windowInterface() {
           // 窗口全屏，非沉浸式
           windowClassStart = windowStageStart.getMainWindowSync()
           let windowStatusType = windowClassStart.getWindowStatus();
-          console.info(`${message} windowStatusType = ${windowStatusType} , expect 1`)
+          console.info(`${message} windowStatusType = ${windowStatusType} , expect 2`)
           let isLayoutFullScreen = windowClassStart.getWindowProperties().isLayoutFullScreen
           console.info(`${message} windowRect = ${JSON.stringify(windowClassStart.getWindowProperties()
             .windowRect)} , expect false`)
@@ -497,7 +497,7 @@ export default function windowInterface() {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
 
-          expect(windowStatusType).assertEqual(window.windowStatusType.FULL_SCREEN)
+          expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE)
           expect(isLayoutFullScreen).assertFalse()
           done()
         }).catch((err: BusinessError) => {
@@ -543,13 +543,13 @@ export default function windowInterface() {
           // 窗口全屏，非沉浸式
           windowClassStart = windowStageStart.getMainWindowSync()
           let windowStatusType = windowClassStart.getWindowStatus();
-          console.info(`${message} windowStatusType = ${windowStatusType} , expect 1`)
+          console.info(`${message} windowStatusType = ${windowStatusType} , expect 2`)
           let isLayoutFullScreen = windowClassStart.getWindowProperties().isLayoutFullScreen
           console.info(`${message} isLayoutFullScreen = ${isLayoutFullScreen} , expect false`)
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
 
-          expect(windowStatusType).assertEqual(window.windowStatusType.FULL_SCREEN)
+          expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE)
           expect(isLayoutFullScreen).assertFalse()
           done()
         }).catch((err: BusinessError) => {
@@ -996,8 +996,8 @@ export default function windowInterface() {
         let windowClass = windowStageStart.getMainWindowSync()
         // 获取窗口状态 - 全屏
         let windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FULL_SCREEN);
+        console.info(`${message} windowStatus: ${windowStatus}, expect 2`);
+        expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE);
         // 判断是否存在最大化 - false
         let test = await assertMaximizeComponentExist(windowStatus)
 
@@ -1245,8 +1245,8 @@ export default function windowInterface() {
         await sleep(300)
         // 获取窗口状态 - 全屏
         windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FULL_SCREEN);
+        console.info(`${message} windowStatus: ${windowStatus}, expect 2`);
+        expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE);
         // 判断是否存在最大化 - false
         test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
@@ -1310,8 +1310,8 @@ export default function windowInterface() {
         await sleep(300)
         // 获取窗口状态 - 全屏
         windowStatus = windowClass.getWindowStatus()
-        console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FULL_SCREEN);
+        console.info(`${message} windowStatus: ${windowStatus}, expect 2`);
+        expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE);
         // 判断是否存在最大化 - true
         test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
