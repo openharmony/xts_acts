@@ -344,10 +344,6 @@ export default function applicationManagerTest() {
      * @tc.size      : MediumTest
      */
     it("test_addAutoStartApps_004", 0, async (done: Function) => {
-      if (sysDeviceInfo.deviceType != '2in1') {
-        done();
-        return;
-      }
       try {
         let autoStartApps: Array<Want> = [AUTOSTARTAPP1, AUTOSTARTAPP2];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
@@ -595,6 +591,10 @@ export default function applicationManagerTest() {
      * @tc.size      : MediumTest
      */
     it("test_addKeepAliveApps_004", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType != '2in1') {
+        done();
+        return;
+      }
       try {
         let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
