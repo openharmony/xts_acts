@@ -4209,6 +4209,79 @@ export default function inputMethodAbility() {
     });
 
     /*
+    * @tc.number  Sub_Misc_inputMethod_getEditorAttribute_sync_0233
+    * @tc.name   Sub_Misc_inputMethod_getEditorAttribute_sync_0233
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0233', 0, async (done: Function) => {
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: ESObject) => {
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 subscriberCallback data:"
+          + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = (err: BusinessError) => {
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 publishCallback start");
+        if (err) {
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 publishCallback failed:" +
+          JSON.stringify(err));
+        }
+      }
+      await runCmd();
+      console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 runCmd success");
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getEditorAttribute_sync_0233"]
+      }
+      let subscriber: ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try {
+          subscriber = data;
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 subscriber data:" +
+          JSON.stringify(data));
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0233 subscriber finish");
+        } catch (err) {
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 233
+          }
+          commonEventManager.publish('inputMethodAbilityTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /*
     * @tc.number  Sub_Misc_inputMethod_moveCursor_sync_0240
     * @tc.name   Sub_Misc_inputMethod_moveCursor_sync_0240
     * @tc.desc    Function test
