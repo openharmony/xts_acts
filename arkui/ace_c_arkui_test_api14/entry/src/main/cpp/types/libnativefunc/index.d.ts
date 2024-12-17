@@ -14,3 +14,5 @@
  */
 export const testStyledString001: () => number;
 export const testNativeXComponent_RegisterKeyEventCallbackWithResult001: () => number;
+
+export const tabStop_001: () => number;

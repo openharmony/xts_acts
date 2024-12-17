@@ -25,6 +25,7 @@ import KeyEventGetUnicodeTest from './keyEvent/KeyEventGetUnicodeTest.test'
 import KeyEventSetConsumedTest from './keyEvent/KeyEventSetConsumedTest.test'
 import KeyEventStopPropagationTest from './keyEvent/KeyEventStopPropagationTest.test'
 import NativeXComponent_RegisterKeyEventCallbackWithResultTest from './keyEvent/NativeXComponent_RegisterKeyEventCallbackWithResultTest.test'
+import tabStop from './tabStop/tabStop.test'
 
 export default function testsuite() {
   customPropertyTest()
@@ -40,4 +41,5 @@ export default function testsuite() {
   KeyEventGetPressedKeysTest()
   KeyEventGetUnicodeTest()
   NativeXComponent_RegisterKeyEventCallbackWithResultTest()
+  tabStop()
 }
