@@ -191,6 +191,7 @@ import MakeObservedTest0300 from './makeObservedTest/MakeObservedTest0300.test';
 import WatchLinkTest0050 from './watchTest/WatchLinkTest0050.test';
 import ProvideConsumeTest0010 from './provide_consume/ProvideConsumeTest0010.test';
 import ProviderTest0270 from './ProviderTest/ProviderTest0270.test';
+import StateUndefinedTest0010 from './state/StateUndefinedTest0010.test';
 
 export default function testsuite() {
 
@@ -372,4 +373,5 @@ export default function testsuite() {
   WatchLinkTest0050();
   ProvideConsumeTest0010();
   ProviderTest0270();
+  StateUndefinedTest0010();
 }

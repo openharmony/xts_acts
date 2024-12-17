@@ -180,6 +180,7 @@
         "MainAbility/pages/makeObserved/MakeObserved0300",
         "MainAbility/pages/watch/WatchLink0050",
         "MainAbility/pages/provide_consume/ProvideConsume0010",
-        "MainAbility/pages/Provider/Provider0270"
+        "MainAbility/pages/Provider/Provider0270",
+        "MainAbility/pages/state/StateUndefined0010"
     ]
 }
