@@ -1907,8 +1907,8 @@ export default function windowPropertiesTest() {
                         }
                     } else {
                         console.info(`${caseName} Succeeded in snapshotting window. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
-                        let widthBefore: number = windowClass.getWindowProperties.windowRect.width;
-                        let heightBefore: number = windowClass.getWindowProperties.windowRect.height;
+                        let widthBefore: number = windowClass.getWindowProperties().windowRect.width;
+                        let heightBefore: number = windowClass.getWindowProperties().windowRect.height;
                         console.info(`${caseName} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
                         let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
                         console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
@@ -1950,8 +1950,8 @@ export default function windowPropertiesTest() {
                         }
                     } else {
                         console.info(`${caseName} Succeeded in snapshotting subwindow. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
-                        let widthBefore: number = subWindow.getWindowProperties.windowRect.width;
-                        let heightBefore: number = subWindow.getWindowProperties.windowRect.height;
+                        let widthBefore: number = subWindow.getWindowProperties().windowRect.width;
+                        let heightBefore: number = subWindow.getWindowProperties().windowRect.height;
                         console.info(`${caseName} subWindowHeight: ${heightBefore}, subWindowWidth: ${widthBefore}`);
                         let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
                         console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
@@ -1982,8 +1982,8 @@ export default function windowPropertiesTest() {
                 let windowClass = windowStage.getMainWindowSync();
                 windowClass.snapshot().then((pixelMap) => {
                     console.info(`${caseName} Succeeded in snapshotting window. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
-                    let widthBefore: number = windowClass.getWindowProperties.windowRect.width;
-                    let heightBefore: number = windowClass.getWindowProperties.windowRect.height;
+                    let widthBefore: number = windowClass.getWindowProperties().windowRect.width;
+                    let heightBefore: number = windowClass.getWindowProperties().windowRect.height;
                     console.info(`${caseName} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
                     let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
                     console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
@@ -2022,8 +2022,8 @@ export default function windowPropertiesTest() {
                 console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
                 subWindow.snapshot().then(async (pixelMap) => {
                     console.info(`${caseName} Succeeded in snapshotting window. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
-                    let widthBefore: number = subWindow.getWindowProperties.windowRect.width;
-                    let heightBefore: number = subWindow.getWindowProperties.windowRect.height;
+                    let widthBefore: number = subWindow.getWindowProperties().windowRect.width;
+                    let heightBefore: number = subWindow.getWindowProperties().windowRect.height;
                     console.info(`${caseName} subWindowHeight: ${heightBefore}, subWindowWidth: ${widthBefore}`);
                     let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
                     console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
