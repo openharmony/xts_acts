@@ -15,7 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
-import eSIM from '@ohos.telephony.esim';
+import eSIM from '../../@ohos.telephony.esim';
 
 const SLOT_0: number = 0;
 const PORT_INDEX: number = 0;
