@@ -8,6 +8,7 @@
     "testability/pages/First/index2",
     "testability/pages/First/index3",
     "testability/pages/First/index1",
-    "testability/pages/WindowTest/StartMoving"
+    "testability/pages/WindowTest/StartMoving",
+    "testability/pages/WindowTest/Modality"
   ]
 }
