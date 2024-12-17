@@ -27,6 +27,7 @@
                 "sed -i 's/enableFullExperienceFeature\": true/enableFullExperienceFeature\": false/' /system/variant/tablet/base/etc/inputmethod/inputmethod_framework_config.json",
                 "sed -i 's/enableInputMethodFeature\": true/enableInputMethodFeature\": false/' /system/variant/pc/base/etc/inputmethod/inputmethod_framework_config.json",
                 "sed -i 's/enableFullExperienceFeature\": true/enableFullExperienceFeature\": false/' /system/variant/pc/base/etc/inputmethod/inputmethod_framework_config.json",
+                "param set persist.usb.setting.gadget_conn_prompt false",
                 "reboot",
                 "power-shell wakeup",
                 "power-shell timeout -o 2147483647",
