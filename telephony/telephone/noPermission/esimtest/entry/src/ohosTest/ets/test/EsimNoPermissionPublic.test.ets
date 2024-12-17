@@ -295,15 +295,15 @@ export default function EsimNoPermissionPublic() {
     });
 
     /**
-     * @tc.number    : SUB_Telephony_Esim_SwitchToProfile_1000
-     * @tc.name      : testTelephonyEsimSwitchToProfile1000
+     * @tc.number    : SUB_Telephony_Esim_SwitchToProfile_1001
+     * @tc.name      : testTelephonyEsimSwitchToProfile1001
      * @tc.desc      : No permission to switch to (enable) the given profile on the eUICC.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("testTelephonyEsimSwitchToProfile1000", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyEsimSwitchToProfile1000';
+    it("testTelephonyEsimSwitchToProfile1001", 0, async (done: Function) => {
+      let caseName: string = 'testTelephonyEsimSwitchToProfile1001';
       console.info(`${caseName} test start`);
       try {
         let data = await eSIM.switchToProfile(SLOT_0, PORT_INDEX, iccid, forceDisableProfile);
