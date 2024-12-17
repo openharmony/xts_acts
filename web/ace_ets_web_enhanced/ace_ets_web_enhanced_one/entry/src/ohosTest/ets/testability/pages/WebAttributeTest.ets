@@ -405,7 +405,7 @@ struct WebAttributeTest {
               case "emitOnErrorReceive001": {
                 try {
                   this.controller.loadUrl('http://testonerrorexample.com/')
-                  await Utils.sleep(2000)
+                  await Utils.sleep(6000)
                   Utils.emitEvent(this.errorReceive, 60065)
                 } catch (error) {
                   console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
