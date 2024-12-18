@@ -80,18 +80,7 @@ export default function cloneAssetTest() {
         done();
       } catch (error) {
         console.error(`${testNum} :: test failed ,error is ${error}`);
-        // RK3568 not support kv , will exception occurred
-        if (error.code == "14000011") {
-          let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(title + ".jpg"));
-          let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
-          if (cloneAsset === undefined) {
-            console.error(`${testNum} :: after clone, then query, is undefined !`)
-            expect(false).assertTrue();
-            done();
-          }
-        } else {
-          expect(false).assertTrue();
-        }
+        expect(false).assertTrue();
         done();
       }
     })
@@ -133,18 +122,7 @@ export default function cloneAssetTest() {
         done();
       } catch (error) {
         console.error(`${testNum} :: test failed ,error is ${error}`);
-        // RK3568 not support kv , will exception occurred
-        if (error.code == "14000011") {
-          let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(title + ".mp4"));
-          let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
-          if (cloneAsset === undefined) {
-            console.error(`${testNum} :: after clone, then query, is undefined !`)
-            expect(false).assertTrue();
-            done();
-          }
-        } else {
-          expect(false).assertTrue();
-        }
+        expect(false).assertTrue();
         done();
       }
     })
@@ -187,18 +165,7 @@ export default function cloneAssetTest() {
         done();
       } catch (error) {
         console.error(`${testNum} :: test failed ,error is ${error}`);
-        // RK3568 not support kv , will exception occurred
-        if (error.code == "14000011") {
-          let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(cloneTitle + ".jpg"));
-          let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
-          if (cloneAsset === undefined) {
-            console.error(`${testNum} :: after clone, then query, is undefined !`)
-            expect(false).assertTrue();
-            done();
-          }
-        } else {
-          expect(false).assertTrue();
-        }
+        expect(false).assertTrue();
         done();
       }
     })
@@ -242,18 +209,7 @@ export default function cloneAssetTest() {
         done();
       } catch (error) {
         console.error(`${testNum} :: test failed ,error is ${error}`);
-        // RK3568 not support kv , will exception occurred
-        if (error.code == "14000011") {
-          let fetchCloneOps = fetchOption(testNum, photoKeys.DISPLAY_NAME,(title + ".jpg"));
-          let cloneAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(testNum, context, fetchCloneOps);
-          if (cloneAsset === undefined) {
-            console.error(`${testNum} :: after clone, then query, is undefined !`)
-            expect(false).assertTrue();
-            done();
-          }
-        } else {
-          expect(false).assertTrue();
-        }
+        expect(false).assertTrue();
         done();
       }
     })
