@@ -15,14 +15,15 @@
 
 import { beforeEach, describe, expect, it } from '@ohos/hypium';
 import Utils from '../common/Utils';
-import nativeFunc from 'libnativefunc.so'
+import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 
 export default function StyledStringTest(){
 
   describe('StyledStringTest', () => {
     beforeEach(async (done: Function) => {
       await Utils.sleep(100);
-      done();
+      let PAGE_TAG = 'styledString';
+      await Utils.pushPage(`styledString/${PAGE_TAG}`, done);
     });
 
     /*
@@ -35,7 +36,42 @@ export default function StyledStringTest(){
      */
 
     it('testStyledString001', 0, async (done: Function) => {
-      expect(nativeFunc.testStyledString001()).assertEqual(0)
+      await Utils.sleep(1000);
+      let driver = await Driver.create();
+      await Utils.sleep(1000);
+      let button = await driver.findComponent(ON.id('but1'));
+      await Utils.sleep(500);
+      await button.click();
+      await Utils.sleep(500);
+      let richEditor = await driver.findComponent(ON.id('richEditor'));
+      await Utils.sleep(500);
+      await richEditor.longClick();
+      await Utils.sleep(500);
+      let selection = await driver.findComponent(ON.text('全选'));
+      await Utils.sleep(500);
+      await selection.longClick();
+      await Utils.sleep(500);
+      let copy = await driver.findComponent(ON.text('复制'));
+      await Utils.sleep(500);
+      await copy.longClick();
+      await Utils.sleep(500);
+      let richEditor2 = await driver.findComponent(ON.id('richEditor2'));
+      await richEditor2.longClick();
+      await Utils.sleep(500);
+      let paste = await driver.findComponent(ON.text('粘贴'));
+      await Utils.sleep(500);
+      await paste.longClick();
+      await Utils.sleep(500);
+      let button2 = await driver.findComponent(ON.id('but2'));
+      await button2.click();
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('textString');
+      await Utils.sleep(200);
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[testStyledString001] component obj is: " + JSON.stringify(obj));
+      console.info("[testStyledString001] content is: " + JSON.stringify(obj.$attrs.content));
+      await Utils.sleep(1000);
+      expect(obj.$attrs.content).assertEqual('0');
       done()
     })
   })
