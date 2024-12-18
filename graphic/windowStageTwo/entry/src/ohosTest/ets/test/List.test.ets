@@ -19,8 +19,10 @@ import windowMaximizeTest from './WindowMaximize.test';
 import windowImmersiveTest from './WindowImmersive.test';
 import windowPropertiesTest from './WindowProperties.test';
 import windowManageTest from './WindowManage.test';
+import windowInterface from './WindowInterface.test';
 import windowZindexTest from './WindowZindex.test';
 export default function testsuite() {
+  windowInterface();
   windowTitleBarTest();
   windowZindexTest();
   windowManageTest();

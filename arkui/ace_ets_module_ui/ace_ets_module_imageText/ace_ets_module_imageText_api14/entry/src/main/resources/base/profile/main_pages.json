@@ -10,6 +10,7 @@
     "MainAbility/pages/MovingPhotoView/MovingPhotoView",
     "MainAbility/pages/onSubmit/onSubmitTest",
     "MainAbility/pages/styledString/StyledStringURL",
-    "MainAbility/pages/Text/textCaretColor"
+    "MainAbility/pages/Text/textCaretColor",
+    "MainAbility/pages/RichEditor/getRectsForRange"
   ]
 }

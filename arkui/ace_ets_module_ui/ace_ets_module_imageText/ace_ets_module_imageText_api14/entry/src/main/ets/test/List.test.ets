@@ -23,6 +23,7 @@ import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
 import onSubmitTest from './onSubmitTest/onSubmitTest.test';
 import StyledStringURL from './styledString/StyledStringURL.test';
 import textCaretColor from './TextTest/textCaretColor.test';
+import getRectsForRangeTest from './RichEditorTest/getRectsForRange.test'
 
 
 export default function testsuite() {
@@ -36,4 +37,5 @@ export default function testsuite() {
   onSubmitTest();
   StyledStringURL();
   textCaretColor();
+  getRectsForRangeTest();
 }
