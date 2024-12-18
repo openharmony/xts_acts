@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 #include "napi/native_api.h"
-#include "udmf.h"
-#include "udmf_err_code.h"
+#include "database/udmf/udmf.h"
+#include "database/udmf/udmf_err_code.h"
 #include <bits/alltypes.h>
 #include <iostream>
 #include <string>
-#include "udmf_meta.h"
-#include "uds.h"
-#include "utd.h"
-#include "napi/native_node_api.h"
+#include "database/udmf/udmf_meta.h"
+#include "database/udmf/uds.h"
+#include "database/udmf/utd.h"
+#include "common.h"
 #include "napi/native_api.h"
 
 #define PARAM_0 0

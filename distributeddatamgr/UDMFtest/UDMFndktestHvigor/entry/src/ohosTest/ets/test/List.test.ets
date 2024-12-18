@@ -13,7 +13,15 @@
  * limitations under the License.
  */
 import pasteboardNdkTest from './Ability.test';
+import UdmfNdkTest from './UdmfNdkTest';
+import UdsNdkTest from './UdsNdkTest';
+import UtdNdkTest from './UtdNdkTest';
+import ContentNdkTest from './ContentNdkTest';
 
 export default function testsuite() {
   pasteboardNdkTest();
+  UdmfNdkTest();
+  UdsNdkTest();
+  UtdNdkTest();
+  ContentNdkTest();
 }
