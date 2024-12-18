@@ -75,6 +75,7 @@ import PhotoAccessHelperNativeTest from './PhotoAccessHelper/photoAccessHelperNa
 import getBurstAssetsTest from './PhotoAccessHelper/getBurstAssets.test';
 import convertToCommonTest from './Sendable/convertToCommon.test'
 import getSendableBurstAssetsTest from './Sendable/getSendableBurstAssets.test'
+import cloneAssetTest from './PhotoAsset/cloneAsset.test'
 //import photoAccessHelperTest from './photoAccessHelperTest/PhotoAccessHelper.test'
 
 export default function testsuite () {
@@ -142,4 +143,5 @@ export default function testsuite () {
   getBurstAssetsTest()
   convertToCommonTest()
   getSendableBurstAssetsTest()
+  cloneAssetTest()
 }
