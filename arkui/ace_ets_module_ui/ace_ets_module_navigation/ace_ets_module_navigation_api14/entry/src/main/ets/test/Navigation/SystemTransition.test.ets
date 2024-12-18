@@ -92,33 +92,5 @@ export default function SystemTransition() {
       done();
     });
 
-    //     /**
-    //  * @tc.number    SystemTransition_0200
-    //  * @tc.name      SystemTransition_0200
-    //  * @tc.desc      Test systemTransition and NavigationSystemTransitionType.CONTENT
-    //  * @tc.level     Level 2
-    //  */
-    // it('SystemTransition_0200', 0, async (done: Function) => {
-    //   console.info('SystemTransition_0200 START');
-    //   await CommonFunc.sleep(200);
-
-    //   let driver = Driver.create();
-    //   await CommonFunc.sleep(500);
-
-    //   let btn1 = await driver.findComponent(ON.id('pageTwoId'));
-    //   await btn1.click()
-    //   console.info('[SystemTransition_0200] btn1 click');
-    //   await CommonFunc.sleep(200);
-
-    //   let strJson: string = getInspectorByKey('pageTwo');
-    //   let obj: Record<string, ESObject> = JSON.parse(strJson);
-    //   console.info('[SystemTransition_0200] component obj is: ' + JSON.stringify(obj));
-    //   console.info('[SystemTransition_0200] content obj is: ' + JSON.stringify(obj.$attrs.content));
-    //   expect(obj.$attrs.content).assertEqual('This is page two');
-
-    //   console.info('SystemTransition_0200 END');
-    //   done();
-    // });
-
   })
 }
