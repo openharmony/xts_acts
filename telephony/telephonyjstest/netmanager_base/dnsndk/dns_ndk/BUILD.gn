@@ -18,7 +18,7 @@ ohos_app_assist_suite("dns_ndk_main") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsDnsNdkMainTest"
   subsystem_name = "telephony"
-  part_name = "netmanager_base"
+  part_name = "sms_mms"
   js_build_mode = "debug"
 }
 
@@ -28,7 +28,7 @@ ohos_js_app_suite("ActsDnsNdkTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsDnsNdkTest"
   subsystem_name = "telephony"
-  part_name = "netmanager_base"
+  part_name = "sms_mms"
   js_build_mode = "debug"
   deps = [ ":dns_ndk_main" ]
 }
