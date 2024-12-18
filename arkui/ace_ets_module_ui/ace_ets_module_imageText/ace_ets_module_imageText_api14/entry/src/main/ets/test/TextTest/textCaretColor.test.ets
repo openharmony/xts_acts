@@ -58,7 +58,8 @@ export default function textCaretColor() {
       console.info("[textCaretColor0001] component obj is: " + JSON.stringify(obj));
       console.info("[textCaretColor0001] caretColor: " + JSON.stringify(obj.$attrs.caretColor));
       console.info("[textCaretColor0001] selectedBackgroundColor: " + JSON.stringify(obj.$attrs.selectedBackgroundColor));
-      expect(obj.$type).assertEqual('Text');
+      expect(obj.$attrs.caretColor).assertEqual('#FFFF0000');
+      expect(obj.$attrs.selectedBackgroundColor).assertEqual('#33008000');
       console.info('[textCaretColor0001] END');
     });
 
