@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/onKeyEvent/unicode"
+        "MainAbility/pages/onKeyEvent/unicode",
+		"MainAbility/pages/FocusView/defaultFocus"
     ]
 }
