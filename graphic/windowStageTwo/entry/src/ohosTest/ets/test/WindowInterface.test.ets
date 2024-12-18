@@ -2115,8 +2115,8 @@ export default function windowInterface() {
           expect(btnText).assertEqual('Modality')
           windowClass.destroyWindow()
         }).catch((err: BusinessError) => {
-          if (err.code == 401) {
-            console.info(`${message}  Parameter error.`);
+          if (err.code == 401||err.code == 401) {
+            console.info(`${message} Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
             expect(false).assertFalse()
           } else {
             console.error(`${message} Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
