@@ -407,8 +407,8 @@ export default function documentPickerCallback(abilityContext: Context) {
         let documentPicker = new picker.DocumentViewPicker();
         let option = new picker.DocumentSaveOptions();
         documentPicker.save(option, (err, result) => {
-          let index = documentPicker.getSelectdIndex();
-          console.info('test_Documentpicker_Save_Callback_012 getSelectdIndex:' + index);
+          let index = documentPicker.getSelectedIndex();
+          console.info('test_Documentpicker_Save_Callback_012 getSelectedIndex:' + index);
           if (option.fileSuffixChoices != undefined) {
             if (option.fileSuffixChoices?.length || index == -1){
               console.error('test_Documentpicker_Save_Callback_012 getSelectdIndex:' + index);
