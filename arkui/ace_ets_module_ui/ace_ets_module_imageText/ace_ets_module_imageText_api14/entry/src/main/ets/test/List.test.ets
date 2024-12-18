@@ -24,6 +24,7 @@ import onSubmitTest from './onSubmitTest/onSubmitTest.test';
 import StyledStringURL from './styledString/StyledStringURL.test';
 import textCaretColor from './TextTest/textCaretColor.test';
 import getRectsForRangeTest from './RichEditorTest/getRectsForRange.test'
+import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 
 
 export default function testsuite() {
@@ -38,4 +39,5 @@ export default function testsuite() {
   StyledStringURL();
   textCaretColor();
   getRectsForRangeTest();
+  SetFrameRateRangeTest();
 }
