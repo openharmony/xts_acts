@@ -13,18 +13,19 @@
  * limitations under the License.
  */
 
-import cameraObj from 'libentry.so';
-import image from '@ohos.multimedia.image';
-import fs from '@ohos.file.fs';
-import featureAbility from '@ohos.ability.featureAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import common from '@ohos.app.ability.common';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import { Driver, ON } from '@ohos.UiTest';
-import { GlobalThis } from './Constants';
+import cameraObj from 'libentry.so'
+import image from '@ohos.multimedia.image';
+import { Camera_PreconfigType, Camera_SceneMode, Camera_MediaType, Parameter_Setting } from './Constants';
+import account from '@ohos.account.osAccount';
+import MediaUtils from './MediaUtils';
+import media from '@ohos.multimedia.media';
+import { bundleManager } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Context, PermissionRequestResult, common, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Driver, ON, MatchPattern } from '@ohos.UiTest';
+import fs from '@ohos.file.fs';
 
-let mContext = getContext(this) as common.Context;
-let driver: Driver = Driver.create();
 
 interface PhotoSettings {
   quality: number, // Photo quality
@@ -44,12 +45,13 @@ let photoSettings: PhotoSettings = {
   altitude: 1000
 };
 
-const TAG = "CameraXts CameraFunctionTest: ";
+const TAG = "CAMERA_FUNCTION_JS";
 
 // 创建录像输出流
 let mPhotoSurface: string;
 let fdNumber: number;
 let receiver: image.ImageReceiver;
+let mCameraSession: number;
 
 // multi-device
 let camera: cameraObj.cameraInfo;
@@ -62,17 +64,15 @@ function isEmpty(data: cameraObj.cameraInfo | number) {
 }
 
 async function getPhotoReceiverSurface() {
-  console.log(TAG + 'Entering getPhotoReceiverSurface');
-  receiver = image.createImageReceiver(640, 480, 4, 8);
-  console.log(TAG + 'before receiver check');
+  console.info(TAG + 'createImageReceiver start.');
+  receiver = image.createImageReceiver({ width: 640, height: 480 }, 4, 8);
   if (receiver !== undefined) {
-    console.log(TAG + 'Photo receiver is created successfully');
+    console.error(TAG + 'createImageReceiver successfully');
     mPhotoSurface = await receiver.getReceivingSurfaceId();
-    console.log(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface));
+    console.info(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface));
   } else {
-    console.log(TAG + 'Photo receiver is created failed');
+    console.error(TAG + 'createImageReceiver failed');
   }
-  console.log(TAG + 'Exit getPhotoReceiverSurface');
 }
 
 async function closeFd() {
@@ -84,16 +84,14 @@ async function closeFd() {
         }
 }
 
-async function getCameraManagerInstance() {
-  let previewSurfaceId = GlobalThis.getInstance().getValue();
-  console.info(TAG, 'previewSurfaceId = ' + JSON.stringify(previewSurfaceId));
-  let ret = cameraObj.initCamera(previewSurfaceId);
-  if (ret) {
-    console.info(TAG + "getCameraManager FAILED");
-    return false;
+function getCameraManagerInstance() {
+  console.info(TAG + 'mSurfaceId : ' + mPhotoSurface);
+  let ret = cameraObj.initCamera(mPhotoSurface);
+  console.info(TAG + 'initCamera : ' + ret);
+  if (ret != 0) {
+    console.error(TAG + "getCameraManager FAILED");
+    expect().assertFail();
   }
-  console.info(TAG + 'Exit getCameraManagerInstance');
-  return true;
 }
 
 function getCameraSupportDevicesArray() {
@@ -111,16 +109,14 @@ function getCameraSupportDevicesArray() {
   return true;
 }
 
-async function createInput() {
-  console.info(TAG + 'Enter createInput');
+function createInput() {
+  console.info(TAG + "createCameraInput start.");
   let ret = cameraObj.createCameraInput();
-  if (ret) {
-    console.info(TAG + "createCameraInput FAILED");
-    return false;
+  if (ret != 0) {
+    console.error(TAG + "createCameraInput FAILED");
+    expect().assertFail();
   }
-  await cameraObj.cameraInputOpen();
-  console.info(TAG + 'Exit createInput');
-  return true;
+  cameraObj.cameraInputOpen();
 }
 
 function beginCameraSessionConfig() {
@@ -132,8 +128,13 @@ function beginCameraSessionConfig() {
 
 function createCameraSessionInstance() {
   console.info(TAG + 'Enter createCameraSessionInstance');
-  let ret = cameraObj.createSession();
-  if (ret) {
+  try {
+    mCameraSession = cameraObj.createSession();
+  }
+  catch {
+    console.info(TAG + 'createCaptureSession FAILED');
+  }
+  if (isEmpty(mCameraSession)) {
     console.info(TAG + "createCaptureSession FAILED");
     return false;
   }
@@ -152,8 +153,9 @@ function createPreviewOutput() {
   console.info(TAG + 'Enter createPreviewOutput');
   let ret = cameraObj.createPreviewOutput();
 
-  if (ret) {
+  if (ret != 0) {
     console.info(TAG + "createPreviewOutput FAILED");
+    expect().assertFail();
   }
   console.info(TAG + "createPreviewOutput: " + ret);
   console.info(TAG + 'Exit createPreviewOutputs');
@@ -180,30 +182,71 @@ async function commitCameraSessionConfig() {
   return true;
 }
 
-async function getPermission() {
-  console.info(TAG + 'Exit getPermission');
-  abilityAccessCtrl.createAtManager().requestPermissionsFromUser(mContext, [
-    'ohos.permission.CAMERA',
-    'ohos.permission.MICROPHONE',
-    'ohos.permission.READ_MEDIA',
-    'ohos.permission.WRITE_MEDIA'
-  ]).then(() => {
+let getPermissions1 = () => {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissions: Array<Permissions> = ['ohos.permission.CAMERA'];
+  atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
+    console.info('data:' + JSON.stringify(data))
+    console.info('data permissions:' + data.permissions)
+
+  }).catch((err: BusinessError) => {
+    console.info('data:' + JSON.stringify(err))
   })
 }
 
-async function driveFn() {
-  await driver.delayMs(1000);
-  await driver.assertComponentExist(ON.text('允许'));
-  let btnStart = await driver.findComponent(ON.text('允许'));
-  await btnStart.click();
-  let i = 0;
-  while (i < 3) {
-    btnStart = await driver.findComponent(ON.text('允许'));
-    if (btnStart != null) {
-      await btnStart.click();
-    }
-    i++;
-  }
+let getPermissions2 = () => {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissions: Array<Permissions> = ['ohos.permission.MICROPHONE'];
+  atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
+    console.info('data:' + JSON.stringify(data))
+    console.info('data permissions:' + data.permissions)
+  }).catch((err: BusinessError) => {
+    console.info('data:' + JSON.stringify(err))
+  })
+}
+
+let getPermissions3 = () => {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissions: Array<Permissions> = ['ohos.permission.READ_MEDIA'];
+  atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
+    console.info('data:' + JSON.stringify(data))
+    console.info('data permissions:' + data.permissions)
+  }).catch((err: BusinessError) => {
+    console.info('data:' + JSON.stringify(err))
+  })
+}
+
+let getPermissions4 = () => {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissions: Array<Permissions> = ['ohos.permission.WRITE_MEDIA'];
+  atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
+    console.info('data:' + JSON.stringify(data))
+    console.info('data permissions:' + data.permissions)
+  }).catch((err: BusinessError) => {
+    console.info('data:' + JSON.stringify(err))
+  })
+}
+
+function sleep(ms: number) {
+  return new Promise<number>(resolve => setTimeout(resolve, ms));
+}
+
+let driveFn = async () => {
+  let dr = Driver.create();
+  await sleep(500);
+  let power = await dr?.waitForComponent(ON.text('允许', MatchPattern.EQUALS), 500);
+  await sleep(500);
+  await power?.click();
+  await sleep(500);
+}
+
+function getSupportedCameraOutputCapability() {
+  let cameraOutputCapability = cameraObj.getSupportedOutputCapability();
+  console.info(TAG + 'cameraOutputCapability[0] = ' + cameraOutputCapability.previewProfilesSize);
+  console.info(TAG + 'cameraOutputCapability[1] = ' + cameraOutputCapability.photoProfilesSize);
+  console.info(TAG + 'cameraOutputCapability[2] = ' + cameraOutputCapability.videoProfilesSize);
+  console.info(TAG + 'cameraOutputCapability[3] = ' + cameraOutputCapability.metadataProfilesSize);
+  return true;
 }
 
 export default function CameraFunctionTest() {
@@ -211,12 +254,18 @@ export default function CameraFunctionTest() {
   describe('CameraFunctionTest', () => {
     console.info(TAG + '-------------CameraFunctionTest--------------');
     beforeAll(async () => {
-      await getPermission();
+      await getPermissions1();
+      await driveFn();
+      await getPermissions2();
+      await driveFn();
+      await getPermissions3();
+      await driveFn();
+      await getPermissions4();
       await driveFn();
       await getPhotoReceiverSurface();
       getCameraManagerInstance();
       getCameraSupportDevicesArray();
-      cameraObj.getSupportedOutputCapability();
+      getSupportedCameraOutputCapability();
       console.info(TAG + 'beforeAll case');
     });
     beforeEach(() => {
