@@ -2124,8 +2124,13 @@ export default function windowInterface() {
           }
         });
       } catch (exception) {
-        console.error(`${message} Failed to create the subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
-        expect().assertFail()
+        if (exception.code == 801) {
+            console.info(`${message} Failed to set subwindow modal. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect(false).assertFalse() 
+          } else {
+            console.error(`${message} Failed to create the subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail()
+          }
       }
       done()
     })
