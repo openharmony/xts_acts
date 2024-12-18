@@ -19,20 +19,40 @@ import { GlobalThis } from './Constants';
 
 const TAG = "CameraXts CameraInputTest: ";
 
-async function getCameraManagerInstance() {
+let camera: cameraObj.cameraInfo;
+let mCameraSession: number;
+
+function getCameraManagerInstance() {``
+  console.info(TAG + 'Enter getCameraManagerInstance');
+  console.info(TAG + 'mSurfaceId : ' + GlobalThis.getInstance().getValue());
   let ret = cameraObj.initCamera(GlobalThis.getInstance().getValue());
-  if (ret) {
+  if (ret != 0) {
     console.info(TAG + "getCameraManager FAILED");
-    return false;
+    expect().assertFail();
   }
   console.info(TAG + 'Exit getCameraManagerInstance');
   return true;
 }
 
+function isEmpty(data: cameraObj.cameraInfo | number) {
+  if (data == null || data == undefined) {
+    return true;
+  }
+  return false;
+}
+
 function getCameraSupportDevicesArray() {
-  console.info('Enter getCameraSupportDevicesArray');
-  cameraObj.getSupportedCameras();
-  console.info('Exit getCameraSupportDevicesArray');
+  console.info(TAG + 'Enter getCameraSupportDevicesArray');
+  camera = cameraObj.getSupportedCameras();
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraPosition);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.connectionType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraId);
+  if (isEmpty(camera)) {
+    console.info(TAG + "getSupportedCameras FAILED");
+    expect().assertFail();
+  }
+  console.info(TAG + 'Exit getCameraSupportDevicesArray');
   return true;
 }
 
@@ -55,8 +75,13 @@ async function commitCameraSessionConfig() {
 
 function createCameraSessionInstance() {
   console.info(TAG + 'Enter createCameraSessionInstance');
-  let ret = cameraObj.createSession();
-  if (ret) {
+  try {
+    mCameraSession = cameraObj.createSession();
+  }
+  catch {
+    console.info(TAG + 'createCaptureSession FAILED');
+  }
+  if (isEmpty(mCameraSession)) {
     console.info(TAG + "createCaptureSession FAILED");
     return false;
   }
