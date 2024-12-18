@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gitweb_webview from '@ohos.web.webview';
+import web_webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import { BusinessError } from '@ohos.base';
 import { Driver, ON } from '@ohos.UiTest';
