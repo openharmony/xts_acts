@@ -18,6 +18,7 @@ import adminManager from '@ohos.enterprise.adminManager'
 import bundleManager from '@ohos.enterprise.bundleManager'
 import securityManager from '@ohos.enterprise.securityManager'
 
+const BUNDLENAME1: string = "com.example.extensionzerotest"
 const WANT1 = {
   bundleName: "com.example.extensionzerotest",
   abilityName: "com.example.extensionzerotest.EnterpriseAdminAbility"
@@ -133,7 +134,7 @@ const INVALID_UPDATE_VERSION: string = "version1.0";
 const UPDATE_VERSION: string = "1.0";
 
 export {
-  WANT1, ENTINFO1, SELFWANT, AUTOSTARTAPP1, AUTOSTARTAPP2, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2,
+  BUNDLENAME1, WANT1, ENTINFO1, SELFWANT, AUTOSTARTAPP1, AUTOSTARTAPP2, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2,
   ENTINFO2, NETWORK_ETH_LOCAL, NETWORK_ETH_INVALID, DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID,
   SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS, HAP_FILE_PATH, HAP_FILE_PATH_ERROR, EMPTY_HAP_FILE_PATH,
   isMultipleUserEnabled, SetIsMultipleUserEnabled, SetTestUserId, appIdsInit, EDM_INSTALL_PARAM, APP_IDS_1,
