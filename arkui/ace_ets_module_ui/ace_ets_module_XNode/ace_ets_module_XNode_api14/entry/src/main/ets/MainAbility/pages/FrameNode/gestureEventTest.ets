@@ -80,6 +80,6 @@ struct gestureEventTest {
         .borderWidth(1)
         .width(300)
         .height(300)
-    }.width("100%")
+    }.width('100%')
   }
 }
