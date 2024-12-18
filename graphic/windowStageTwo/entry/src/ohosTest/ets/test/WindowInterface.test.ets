@@ -1035,7 +1035,7 @@ export default function windowInterface() {
         // 获取窗口状态 - 自由窗口
         let windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FLOATING);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         // 判断是否存在最大化 - false
         let test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
@@ -1052,7 +1052,7 @@ export default function windowInterface() {
         console.info(`${message} windowStatus: ${windowStatus}, expect 5`);
         await driver.click(2340, 977);
         await sleep(500)
-        expect(windowStatus).assertEqual(window.windowStatusType.SPLIT_SCREEN);
+        expect(windowStatus).assertEqual(window.WindowStatusType.SPLIT_SCREEN);
         done()
       } else {
         console.info(`${message} not support`);
@@ -1084,7 +1084,7 @@ export default function windowInterface() {
         // 获取窗口状态 - 自由窗口
         let windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FLOATING);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         // 判断是否存在最大化 - false
         let test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
@@ -1099,7 +1099,7 @@ export default function windowInterface() {
         // 获取窗口状态 - 自由窗口
         windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FLOATING);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         done()
       } else {
         console.info(`${message} not support`);
@@ -1182,7 +1182,7 @@ export default function windowInterface() {
         // 获取窗口状态 - 自由窗口
         let windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FLOATING);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         // 判断是否存在最大化 - true
         let test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
@@ -1199,7 +1199,7 @@ export default function windowInterface() {
         console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
         await driver.click(2340, 977);
         await sleep(500)
-        expect(windowStatus).assertEqual(window.windowStatusType.FLOATING);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         done()
       } else {
         console.info(`${message} not support`);
@@ -1232,7 +1232,7 @@ export default function windowInterface() {
         // 获取窗口状态 - 自由窗口
         let windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FLOATING);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         // 判断是否存在最大化 - true
         let test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
@@ -1263,7 +1263,7 @@ export default function windowInterface() {
         console.info(`${message} windowStatus: ${windowStatus}, expect 5`);
         await driver.click(2340, 977);
         await sleep(500)
-        expect(windowStatus).assertEqual(window.windowStatusType.SPLIT_SCREEN);
+        expect(windowStatus).assertEqual(window.WindowStatusType.SPLIT_SCREEN);
         done()
       } else {
         console.info(`${message} not support`);
@@ -1297,7 +1297,7 @@ export default function windowInterface() {
         // 获取窗口状态 - 自由窗口
         let windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 4`);
-        expect(windowStatus).assertEqual(window.windowStatusType.FLOATING);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FLOATING);
         // 判断是否存在最大化 - true
         let test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
@@ -1328,7 +1328,7 @@ export default function windowInterface() {
         console.info(`${message} windowStatus: ${windowStatus}, expect 5`);
         await driver.click(2340, 977);
         await sleep(500)
-        expect(windowStatus).assertEqual(window.windowStatusType.SPLIT_SCREEN);
+        expect(windowStatus).assertEqual(window.WindowStatusType.SPLIT_SCREEN);
         done()
       } else {
         console.info(`${message} not support`);
