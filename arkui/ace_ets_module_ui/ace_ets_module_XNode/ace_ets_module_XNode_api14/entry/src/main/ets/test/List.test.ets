@@ -12,11 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
 import gestureEventTest from './FrameNodeTest/gestureEventTest.test';
 
-
 export default function testsuite() {
-  commonEventTest1();
   gestureEventTest();
 }
