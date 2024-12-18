@@ -19,7 +19,10 @@ struct onSubmitTest {
   @State searchText :string = ''
   @State searchEventText :string = ''
   @State enterKeyType:EnterKeyType = 0
-  @State TextAreaEventText:string = ''
+  @State textAreaEventText:string = ''
+  @State isCallKeepEditableState :boolean = false
+  @State textAreaIsEditing :boolean = false
+  @State searchIsEditing :boolean = false
 
   @Builder
 
@@ -35,7 +38,7 @@ struct onSubmitTest {
           .borderColor(Color.Blue)
           .margin(10)
           .id('enterKeyType')
-        Text(this.TextAreaEventText)
+        Text(this.textAreaEventText)
           .width('100%')
           .padding(5)
           .textAlign(TextAlign.Center)
@@ -44,6 +47,15 @@ struct onSubmitTest {
           .borderColor(Color.Blue)
           .margin(10)
           .id('TextAreaevent')
+        Text(this.textAreaIsEditing+'')
+          .width('100%')
+          .padding(5)
+          .textAlign(TextAlign.Center)
+          .border({ width: 1 })
+          .borderWidth(1)
+          .borderColor(Color.Blue)
+          .margin(10)
+          .id('TextAreaIsEdit')
         TextArea()
           .width('100%')
           .height(50)
@@ -53,9 +65,16 @@ struct onSubmitTest {
           .enterKeyType(EnterKeyType.Done)
           .onSubmit((enterKeyType: EnterKeyType, event: SubmitEvent) => {
             this.enterKeyType = enterKeyType
-            this.TextAreaEventText = event.text
-            console.log('trigger richeditor onsubmit: '+enterKeyType );
+            this.textAreaEventText = event.text
+            if(this.isCallKeepEditableState) {
+              event.keepEditableState();
+            }
+            console.log('trigger textArea onsubmit: '+enterKeyType );
             console.log('trigger event onsubmit: '+event.text );
+
+          })
+          .onEditChange((isEditing: boolean) => {
+            this.textAreaIsEditing = isEditing
           })
           .id('TextArea')
       }.margin(10)
@@ -78,6 +97,15 @@ struct onSubmitTest {
           .borderColor(Color.Blue)
           .margin(10)
           .id('event')
+        Text(this.searchIsEditing+'')
+          .width('100%')
+          .padding(5)
+          .textAlign(TextAlign.Center)
+          .border({ width: 1 })
+          .borderWidth(1)
+          .borderColor(Color.Blue)
+          .margin(10)
+          .id('searchIsEditing')
         Search()
           .width('100%')
           .height(50)
@@ -87,11 +115,20 @@ struct onSubmitTest {
           .onSubmit((searchContent: string, event: SubmitEvent) => {
             this.searchText = searchContent
             this.searchEventText = event.text
-            console.log('trigger richeditor onsubmit: '+searchContent );
+            console.log('trigger search onsubmit: '+searchContent );
             console.log('trigger event onsubmit: '+event.text );
+            if(this.isCallKeepEditableState) {
+              event.keepEditableState();
+            }
+          })
+		  .onEditChange((isEditing: boolean) => {
+            this.searchIsEditing = isEditing
           })
           .id('Search')
       }.margin(10)
-    }
+      Button('isCallKeepEditableState:'+this.isCallKeepEditableState).onClick(()=>{
+        this.isCallKeepEditableState = !this.isCallKeepEditableState
+      }).id('changeIsCallKeepEditableState')
+    }.height('100%')
   }
 }

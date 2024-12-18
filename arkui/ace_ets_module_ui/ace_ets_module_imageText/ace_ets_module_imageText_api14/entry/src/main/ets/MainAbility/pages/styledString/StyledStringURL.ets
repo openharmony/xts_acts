@@ -18,7 +18,7 @@
 struct StyledStringURLExample3 {
   @State text: string = ''
 
-  urlString: StyledStringValue = new UrlStyle( 'https://www.example.com' );
+  urlString: StyledStringValue = new UrlStyle( 'https://www.123.com/' );
   mutableStyledString: MutableStyledString = new MutableStyledString('Hello World', [{
     start: 0,
     length: 'Hello'.length,
@@ -48,11 +48,11 @@ struct StyledStringURLExample3 {
       Row() {
         Button('点击').onClick(() => {
           let text = getInspectorByKey('text');
-          console.log('wgl------' + JSON.stringify(JSON.parse(text).$attrs))
+          console.log('test------' + JSON.stringify(JSON.parse(text).$attrs))
           let caretColor = JSON.stringify(JSON.parse(text).$attrs.caretColor);
           let selectedBackgroundColor = JSON.stringify(JSON.parse(text).$attrs.selectedBackgroundColor);
-          console.log('wgl---caretColor---' + caretColor)
-          console.log('wgl---selectedBackgroundColor---' + selectedBackgroundColor)
+          console.log('test---caretColor---' + caretColor)
+          console.log('test---selectedBackgroundColor---' + selectedBackgroundColor)
         })
 
         Button('getStyles')

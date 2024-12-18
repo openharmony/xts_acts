@@ -42,12 +42,12 @@ export default function onSubmitTest() {
       done();
     });
 
-     /**
+    /**
      * @tc.number    SUB_ACE_onSubmitTest_0010
      * @tc.name      SUB_ACE_onSubmitTest_0010
      * @tc.desc      test TextArea onSubmitTest
      * @tc.level:    Level 2
-     * @tc.type : 
+     * @tc.type :
      * @tc.size :
      */
     it('onSubmitTest_0010', 0, async (done: Function) => {
@@ -63,24 +63,64 @@ export default function onSubmitTest() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("TextArea enterKeyType content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('6');
-	  let strJson2 = getInspectorByKey('TextAreaevent');
+      let strJson2 = getInspectorByKey('TextAreaevent');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("TextArea TextAreaEventText content: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual('这是测试文本');
+      let strJson3 = getInspectorByKey('TextAreaIsEdit');
+      let obj3: ESObject = JSON.parse(strJson3);
+      console.info("TextArea TextAreaIsEdit content: " + JSON.stringify(obj3.$attrs.content));
+      expect(obj3.$attrs.content).assertEqual('false');
       console.info('[onSubmitTest_0010] END');
       done();
     });
-
-     /**
+    /**
      * @tc.number    SUB_ACE_onSubmitTest_0020
      * @tc.name      SUB_ACE_onSubmitTest_0020
-     * @tc.desc      test Search onSubmitTest
+     * @tc.desc      test TextArea onSubmitTest
      * @tc.level:    Level 2
-     * @tc.type : 
+     * @tc.type :
      * @tc.size :
      */
     it('onSubmitTest_0020', 0, async (done: Function) => {
       console.info('onSubmitTest_0020 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('changeIsCallKeepEditableState'));
+      await CommonFunc.sleep(500);
+      await button.click()
+      await CommonFunc.sleep(500);
+      let TextArea = await driver.findComponent(ON.id('TextArea'));
+      await TextArea.inputText('这是测试文本')
+      await CommonFunc.sleep(500);
+      await driver.triggerKey(2054)
+      await CommonFunc.sleep(1000);
+      let strJson1 = getInspectorByKey('enterKeyType');
+      let obj1: ESObject = JSON.parse(strJson1);
+      console.info("TextArea enterKeyType content: " + JSON.stringify(obj1.$attrs.content));
+      expect(obj1.$attrs.content).assertEqual('6');
+      let strJson2 = getInspectorByKey('TextAreaevent');
+      let obj2: ESObject = JSON.parse(strJson2);
+      console.info("TextArea TextAreaEventText content: " + JSON.stringify(obj2.$attrs.content));
+      expect(obj2.$attrs.content).assertEqual('这是测试文本');
+      let strJson3 = getInspectorByKey('TextAreaIsEdit');
+      let obj3: ESObject = JSON.parse(strJson3);
+      console.info("TextArea TextAreaIsEdit content: " + JSON.stringify(obj3.$attrs.content));
+      expect(obj3.$attrs.content).assertEqual('true');
+      console.info('[onSubmitTest_0020] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_onSubmitTest_0030
+     * @tc.name      SUB_ACE_onSubmitTest_0030
+     * @tc.desc      test Search onSubmitTest
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('onSubmitTest_0030', 0, async (done: Function) => {
+      console.info('onSubmitTest_0030 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let Search = await driver.findComponent(ON.id('Search'));
@@ -88,15 +128,55 @@ export default function onSubmitTest() {
       await CommonFunc.sleep(500);
       await driver.triggerKey(2054)
       await CommonFunc.sleep(1000);
-      let strJson3 = getInspectorByKey('searchText');
+      let strJson1 = getInspectorByKey('searchText');
+      let obj1: ESObject = JSON.parse(strJson1);
+      console.info("Search searchText content: " + JSON.stringify(obj1.$attrs.content));
+      expect(obj1.$attrs.content).assertEqual('这是测试文本');
+      let strJson2 = getInspectorByKey('event');
+      let obj2: ESObject = JSON.parse(strJson2);
+      console.info("Search event content: " + JSON.stringify(obj2.$attrs.content));
+      expect(obj2.$attrs.content).assertEqual('这是测试文本');
+      let strJson3 = getInspectorByKey('searchIsEditing');
       let obj3: ESObject = JSON.parse(strJson3);
-      console.info("Search searchText content: " + JSON.stringify(obj3.$attrs.content));
-      expect(obj3.$attrs.content).assertEqual('这是测试文本');
-	  let strJson4 = getInspectorByKey('event');
-      let obj4: ESObject = JSON.parse(strJson4);
-      console.info("Search event content: " + JSON.stringify(obj4.$attrs.content));
-      expect(obj4.$attrs.content).assertEqual('这是测试文本');
-      console.info('[onSubmitTest_0020] END');
+      console.info("TextArea searchIsEditing content: " + JSON.stringify(obj3.$attrs.content));
+      expect(obj3.$attrs.content).assertEqual('false');
+      console.info('[onSubmitTest_0030] END');
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_onSubmitTest_0040
+     * @tc.name      SUB_ACE_onSubmitTest_0040
+     * @tc.desc      test Search onSubmitTest
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('onSubmitTest_0040', 0, async (done: Function) => {
+      console.info('onSubmitTest_0040 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button = await driver.findComponent(ON.id('changeIsCallKeepEditableState'));
+      await CommonFunc.sleep(500);
+      await button.click()
+      await CommonFunc.sleep(500);
+      let Search = await driver.findComponent(ON.id('Search'));
+      await Search.inputText('这是测试文本')
+      await CommonFunc.sleep(500);
+      await driver.triggerKey(2054)
+      await CommonFunc.sleep(1000);
+      let strJson1 = getInspectorByKey('searchText');
+      let obj1: ESObject = JSON.parse(strJson1);
+      console.info("Search searchText content: " + JSON.stringify(obj1.$attrs.content));
+      expect(obj1.$attrs.content).assertEqual('这是测试文本');
+      let strJson2 = getInspectorByKey('event');
+      let obj2: ESObject = JSON.parse(strJson2);
+      console.info("Search event content: " + JSON.stringify(obj2.$attrs.content));
+      expect(obj2.$attrs.content).assertEqual('这是测试文本');
+      let strJson3 = getInspectorByKey('searchIsEditing');
+      let obj3: ESObject = JSON.parse(strJson3);
+      console.info("searchIsEditing content: " + JSON.stringify(obj3.$attrs.content));
+      expect(obj3.$attrs.content).assertEqual('true');
+      console.info('[onSubmitTest_0040] END');
       done();
     });
   })
