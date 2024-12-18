@@ -30,7 +30,7 @@
 #define STR_TEXT  "<div ><p style=\"text-align: start;word-break: break_word;text-overflow: clip;\"><span style=\"font-size: 40.00px;font-style: normal;font-weight: normal;color: #0000FFFF;font-family: HarmonyOS Sans;\">hello</span></p></div>"
 #define SIZE 10
 #define SUCC 0
-#define FAIL -1
+#define FAIL (-1)
 #define LENGTH 175
 #define MAX_RESULT_SIZE 10000
 #define LIG true
@@ -73,7 +73,8 @@ napi_value StyledStringTest::testStyledString001(napi_env env, napi_callback_inf
     auto *styledStringDescriber = OH_ArkUI_StyledString_Descriptor_Create(); // ArkUI_StyledString_Descriptor {(C++) 属性字符串，html}
     // 反序列化接口，把data_byte信息写到styledStringDescriber。
     auto status = OH_ArkUI_UnmarshallStyledStringDescriptor(data_bytes, arraySize, styledStringDescriber);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", "UnmarshallingStyledStringDescriber status is %{public}d",status);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", 
+      "UnmarshallingStyledStringDescriber status is %{public}d",status);
     ASSERT_EQ(status, 0);
     // (c++)属性字符串 -> html
     auto html = OH_ArkUI_ConvertToHtml(styledStringDescriber);
@@ -85,9 +86,10 @@ napi_value StyledStringTest::testStyledString001(napi_env env, napi_callback_inf
     uint8_t *buffer = (uint8_t *)malloc(size * sizeof(uint8_t));
     napi_value result = nullptr;
     if (OH_ArkUI_MarshallStyledStringDescriptor(buffer, size, styledStringDescriber, &resultSize) != 0) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "resultSize is :[%{public}zu]", resultSize);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", 
+          "resultSize is :[%{public}zu]", resultSize);
         if(resultSize <= 0 || resultSize >= MAX_RESULT_SIZE) {
-            return nullptr; 
+            return nullptr;
         }
         uint8_t *buffer2 = (uint8_t *)malloc(resultSize * sizeof(uint8_t));
         size_t resultSize2;
@@ -108,9 +110,6 @@ napi_value StyledStringTest::testStyledString001(napi_env env, napi_callback_inf
             ASSERT_EQ(isAllEqual, LIG);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "testStyledString001", "序列化前后的数组是否完全一致：[%{public}d]",
                          isAllEqual);
-            // if(!isAllEqual){
-
-            // }
             napi_create_int32(env, SUCC, &result);
         }
         else {

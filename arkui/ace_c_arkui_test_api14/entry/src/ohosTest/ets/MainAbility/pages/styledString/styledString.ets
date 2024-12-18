@@ -74,13 +74,10 @@ struct styledStringMenu {
                 let types = new Array(pasteboard.MIMETYPE_TEXT_PLAIN,pasteboard.MIMETYPE_TEXT_URI,pasteboard.MIMETYPE_PIXELMAP,'openharmony.styled-string')
                 let validTypes = record.getValidTypes(types) // 获取record1 里的所有数据的样式集合。
                 if (validTypes.includes('openharmony.styled-string')) {
-                  let spanString = record.getData('openharmony.styled-string')  // spanString instanseOf Promise<ValueType>,
-                  // type ValueType = string | image.PixelMap | Want | ArrayBuffer;
+                  let spanString = record.getData('openharmony.styled-string')
                   spanString.then((value) => {
                     console.info(`testStyledString001 Succeeded obtain buffer `);
-                    // value ：  type ValueType = string | image.PixelMap | Want | ArrayBuffer;
                     let buffer = value as ArrayBuffer;
-                    // buffer : ArrayBuffer
                     let uint8Array = new Uint8Array(buffer); // 从剪切板中获取属性字符串的序列化的字节数组。 uint8Array -> 属性字符串
                     console.log('testStyledString001-----------' + uint8Array)
                     console.log('testStyledString001-----------' + uint8Array.length)
