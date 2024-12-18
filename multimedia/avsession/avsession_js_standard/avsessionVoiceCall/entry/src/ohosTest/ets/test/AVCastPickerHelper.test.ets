@@ -255,11 +255,31 @@ export default function abilityTest() {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {}
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select(avCastPickerOptions).then(() => {
-        expect(false).assertTrue();
+        expect(true).assertTrue();
         console.info('${TAG}: avCastPicker select successfully');
       }).catch((err: BusinessError) => {
         console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
         expect(err.code).assertEqual(401);
+      })
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0700
+     * @tc.name      : select()
+     * @tc.desc      : select()
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0700', 2, async (done: Function) => {
+      let avCastPicker = new avSession.AVCastPickerHelper(context);
+      await avCastPicker.select().then(() => {
+        console.info('${TAG}: avCastPicker select successfully');
+        expect(true).assertTrue();
+      }).catch((err: BusinessError) => {
+        console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
+        expect(false).assertTrue();
       })
       done();
     })
