@@ -20,6 +20,7 @@ import NavigationEnableDragBar from './EnableDragBarTest/NavigationEnableDragBar
 import NavigationBindToScrollable from './BindToScrollable/NavigationBindToScrollable.test'
 import NavigationBindToNestedScrollable from './BindToScrollable/NavigationBindToNestedScrollable.test'
 import Recoverable from './Navigation/Recoverable.test'
+import SystemTransition from './Navigation/SystemTransition.test'
 
 export default function testsuite() {
   ReplaceDestination1Test();
@@ -31,4 +32,5 @@ export default function testsuite() {
   NavigationBindToScrollable();
   NavigationBindToNestedScrollable();
   Recoverable();
+  SystemTransition();
 }
