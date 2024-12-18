@@ -16,12 +16,13 @@
 import pasteboardDetectPatternsTest from './PasteBoardDetectPatterns.test';
 import PasteboardDelayCopyTest from './PasteboardDelayCopyTest.test';
 import pasteboardSyncTest from './Pasteboardsync.test';
-import pasteBoardJEtsunitTest from './PasteBoardEtsunitTest';
-import pasteBoardTest from './PasteBoard.test.ets';
-import pasteBoardRecordTest from './PasteBoardRecord.test.ets'
-import pasteBoardSystemPasteBoardTest from './PasteBoardSystemPasteBoard.test.ets'
+import pasteBoardJEtsunitTest from './PasteBoardEtsunitTest.test';
+import pasteBoardTest from './PasteBoard.test';
+import pasteBoardRecordTest from './PasteBoardRecord.test';
+import pasteBoardSystemPasteBoardTest from './PasteBoardSystemPasteBoard.test';
 import PasteboardUnifiedTest from './PasteboardUnified.test';
 import PasteboartdCopyJsAPITest from './PasteboartdCopyJsAPITest.test';
+import PasteboardVarietyTest from './PasteboardVariety.test';
 export default function testsuite() {
   pasteboardDetectPatternsTest()
   pasteBoardJEtsunitTest()
@@ -32,4 +33,5 @@ export default function testsuite() {
   PasteboardUnifiedTest()
   PasteboardDelayCopyTest()
   PasteboartdCopyJsAPITest()
+  PasteboardVarietyTest()
 }
