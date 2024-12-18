@@ -16,6 +16,6 @@ ohos_js_app_suite("ActsNetworkMgrMdnsNoNetTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNetworkMgrMdnsNoNetTest"
-  part_name = "netmanager_base"
+  part_name = "sms_mms"
   subsystem_name = "telephony"
 }

@@ -19,6 +19,6 @@ ohos_js_app_suite("ActsNetworkManagerSSLCertVerifyTest") {
   js_build_mode = "debug"
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsNetworkManagerSSLCertVerifyTest"
-  part_name = "netstack"
+  part_name = "sms_mms"
   subsystem_name = "telephony"
 }
