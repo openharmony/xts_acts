@@ -188,7 +188,6 @@ export default function abilityTest() {
       }
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select(avCastPickerOptions).then(() => {
-        expect(true).assertTrue();
         console.info('${TAG}: avCastPicker select successfully');
       }).catch((err: BusinessError) => {
         console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
@@ -211,7 +210,6 @@ export default function abilityTest() {
       }
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select(avCastPickerOptions).then(() => {
-        expect(true).assertTrue();
         console.info('${TAG}: avCastPicker select successfully');
       }).catch((err: BusinessError) => {
         console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
@@ -234,7 +232,6 @@ export default function abilityTest() {
       }
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select(avCastPickerOptions).then(() => {
-        expect(true).assertTrue();
         console.info('${TAG}: avCastPicker select successfully');
       }).catch((err: BusinessError) => {
         console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
@@ -255,7 +252,6 @@ export default function abilityTest() {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {}
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select(avCastPickerOptions).then(() => {
-        expect(true).assertTrue();
         console.info('${TAG}: avCastPicker select successfully');
       }).catch((err: BusinessError) => {
         console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
@@ -276,7 +272,6 @@ export default function abilityTest() {
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select().then(() => {
         console.info('${TAG}: avCastPicker select successfully');
-        expect(true).assertTrue();
       }).catch((err: BusinessError) => {
         console.info(`${TAG}: avCastPicker select failed with err: ${err.code}, ${err.message}`);
         expect(false).assertTrue();
