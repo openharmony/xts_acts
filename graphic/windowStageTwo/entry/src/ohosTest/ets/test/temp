@@ -1,0 +1,214 @@
+    /**
+     * @tc.number    : testSetResizeByDragEnabledTrue_0100
+     * @tc.name      : testSetResizeByDragEnabledTrue_0100
+     * @tc.desc      :
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
+      const message = 'testSetResizeByDragEnabledTrueTest_0100';
+      let windowClass = windowStage.getMainWindowSync()
+      let enabled = true;
+      if (isPCStatus != '') {
+        try {
+          windowClass.setResizeByDragEnabled(enabled, async (err) => {
+            if (err.code == 801) {
+              console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+              expect(false).assertFalse();
+              done();
+            } else if (err.code && err.code != 801) {
+              console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${err.code}, message: ${err.message}`)
+              expect().assertFail();
+              done();
+            }
+            let windowPoint = windowClass.getWindowProperties().windowRect
+            console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
+            let driver = await Driver.create()
+            await driver.drag(windowPoint.left + windowPoint.width / 2, windowPoint.top + 5,
+              windowPoint.left + windowPoint.width / 2, windowPoint.top - 100)
+            await sleep(300)
+            let windowPointDragged = windowClass.getWindowProperties().windowRect
+            console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
+            expect(windowPointDragged.width).assertEqual(windowPoint.width)
+            expect(windowPointDragged.height).assertEqual(windowPoint.height + 105)
+            console.info(`${message} Succeeded in setting the function of disabling the resize by drag window.`);
+            done()
+          });
+        } catch (exception) {
+          console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`)
+          expect().assertFail();
+          done();
+        }
+      } else {
+        console.info(`${message} not support`);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : testSetResizeByDragEnabledTrue_0200
+     * @tc.name      : testSetResizeByDragEnabledTrue_0200
+     * @tc.desc      :
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetResizeByDragEnabledTrue_0200', 0, async (done: Function) => {
+      const message = 'testSetResizeByDragEnabledTrueTest_0200';
+      if (isPCStatus != '') {
+        try {
+          let options: window.SubWindowOptions = {
+            title: 'subWindow',
+            decorEnabled: true
+          };
+          windowStage.createSubWindowWithOptions('subWindow', options).then(async (subWindowClass) => {
+            subWindowClass.setUIContent("testability/pages/Index");
+            subWindowClass.resizeAsync(1000, 1200)
+            subWindowClass.moveWindowToAsync(300, 200)
+            subWindowClass.showWindow()
+            let enabled = true;
+            let promise = subWindowClass.setResizeByDragEnabled(enabled);
+            promise.then(async () => {
+              console.info(`${message} Succeeded in setting the function of disabling the resize by drag window.`);
+              let windowPoint = subWindowClass.getWindowProperties().windowRect
+              console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
+              let driver = await Driver.create()
+              await driver.drag(windowPoint.left + windowPoint.width / 2, windowPoint.top + 5,
+                windowPoint.left + windowPoint.width / 2, windowPoint.top + 100)
+              await sleep(300)
+              let windowPointDragged = subWindowClass.getWindowProperties().windowRect
+              console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
+              expect(windowPointDragged.width).assertEqual(windowPoint.width)
+              expect(windowPointDragged.height).assertEqual(windowPoint.height - 95)
+              done()
+            }).catch((err: BusinessError) => {
+              if (err.code == 801) {
+                console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+                expect(false).assertFalse();
+                done();
+              } else {
+                console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${err.code}, message: ${err.message}`)
+                expect().assertFail();
+                done();
+              }
+            });
+          })
+        } catch (exception) {
+          console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`)
+          expect().assertFail();
+          done();
+        }
+      } else {
+        console.info(`${message} not support`);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : testSetResizeByDragEnabledFalse_0100
+     * @tc.name      : testSetResizeByDragEnabledFalse_0100
+     * @tc.desc      :
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetResizeByDragEnabledFalse_0100', 0, async (done: Function) => {
+      const message = 'testSetResizeByDragEnabledFalseTest_0100';
+      let windowClass = windowStage.getMainWindowSync()
+      if (isPCStatus != '') {
+        try {
+          let enabled = false;
+          let promise = windowClass.setResizeByDragEnabled(enabled);
+          promise.then(async () => {
+            console.info(`${message} Succeeded in setting the function of disabling the resize by drag window.`);
+            let windowPoint = windowClass.getWindowProperties().windowRect
+            console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
+            let driver = await Driver.create()
+            await driver.drag(windowPoint.left + windowPoint.width / 2, windowPoint.top + 5,
+              windowPoint.left + windowPoint.width / 2, windowPoint.top - 100)
+            await sleep(300)
+            let windowPointDragged = windowClass.getWindowProperties().windowRect
+            console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
+            expect(windowPointDragged.width).assertEqual(windowPoint.width)
+            expect(windowPointDragged.height).assertEqual(windowPoint.height)
+            done()
+          }).catch((err: BusinessError) => {
+            if (err.code == 801) {
+              console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+              expect(false).assertFalse();
+              done();
+            } else {
+              console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${err.code}, message: ${err.message}`)
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (exception) {
+          console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`)
+          expect().assertFail();
+          done();
+        }
+      } else {
+        console.info(`${message} not support`);
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : testSetResizeByDragEnabledFalse_0200
+     * @tc.name      : testSetResizeByDragEnabledFalse_0200
+     * @tc.desc      :
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetResizeByDragEnabledFalse_0200', 0, async (done: Function) => {
+      const message = 'testSetResizeByDragEnabledFalseTest_0200';
+      if (isPCStatus != '') {
+        let options: window.SubWindowOptions = {
+          title: 'subWindow',
+          decorEnabled: true
+        };
+        windowStage.createSubWindowWithOptions('subWindow', options).then(async (subWindowClass)=>{
+          subWindowClass.setUIContent("testability/pages/Index");
+          subWindowClass.resizeAsync(1000, 1200)
+          subWindowClass.moveWindowToAsync(300, 200)
+          subWindowClass.showWindow()
+          try {
+            let enabled = false;
+            subWindowClass.setResizeByDragEnabled(enabled, async (err) => {
+              if (err.code == 801) {
+                console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+                expect(false).assertFalse();
+                done();
+              } else if (err.code && err.code != 801) {
+                console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${err.code}, message: ${err.message}`)
+                expect().assertFail();
+                done();
+              }
+              console.info(`${message} Succeeded in setting the function of disabling the resize by drag window.`);
+              let windowPoint = subWindowClass.getWindowProperties().windowRect
+              console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
+              let driver = Driver.create()
+              await driver.drag(windowPoint.left + windowPoint.width / 2, windowPoint.top + 5,
+                windowPoint.left + windowPoint.width / 2, windowPoint.top - 100)
+              await sleep(300)
+              let windowPointDragged = subWindowClass.getWindowProperties().windowRect
+              console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
+              expect(windowPointDragged.width).assertEqual(windowPoint.width)
+              expect(windowPointDragged.height).assertEqual(windowPoint.height)
+              done()
+            });
+          } catch (exception) {
+            console.error(`${message} Failed to check whether the window support the rect auto-save. Cause code: ${exception.code}, message: ${exception.message}`)
+            expect().assertFail();
+            done();
+          }
+        })
+
+      } else {
+        console.info(`${message} not support`);
+        done()
+      }
+    })
