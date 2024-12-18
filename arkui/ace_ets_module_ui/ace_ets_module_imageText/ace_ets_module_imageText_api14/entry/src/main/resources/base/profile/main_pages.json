@@ -11,6 +11,7 @@
     "MainAbility/pages/onSubmit/onSubmitTest",
     "MainAbility/pages/styledString/StyledStringURL",
     "MainAbility/pages/Text/textCaretColor",
-    "MainAbility/pages/RichEditor/getRectsForRange"
+    "MainAbility/pages/RichEditor/getRectsForRange",
+    "MainAbility/pages/Marquee/marqueeFrame"
   ]
 }
