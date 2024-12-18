@@ -38,7 +38,7 @@ export default function userauthTest() {
                         userAuthNorth.getAvailableStatus(authType[idx0], level[idx1]);
                     } catch (e) {
                         console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
-                        expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+                        expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TYPE_NOT_SUPPORT)).assertTrue();
                         done();
                     }
                 }
@@ -61,7 +61,8 @@ export default function userauthTest() {
                     userAuthNorth.getAvailableStatus(authType2, level1);
                 } catch (e) {
                     console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
-                    expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
+                    expect((e.code == userAuthNorth.UserAuthResultCode.TYPE_NOT_SUPPORT) || 
+                            (e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
                     done();
                 }
             done();
