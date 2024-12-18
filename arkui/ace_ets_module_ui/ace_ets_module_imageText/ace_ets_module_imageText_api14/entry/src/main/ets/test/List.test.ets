@@ -20,6 +20,9 @@ import RichEditorOnHoverTest from './RichEditorTest/onHover.test';
 import SearchAutoDisableTest from './SearchTest/autoDisable.test';
 import imageSpanJsunit from './imageSpanTest/imageSpan.test';
 import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
+import onSubmitTest from './onSubmitTest/onSubmitTest.test';
+import StyledStringURL from './styledString/StyledStringURL.test';
+import textCaretColor from './TextTest/textCaretColor.test';
 import getRectsForRangeTest from './RichEditorTest/getRectsForRange.test'
 
 
@@ -31,5 +34,8 @@ export default function testsuite() {
   SearchAutoDisableTest();
   imageSpanJsunit();
   MovingPhotoViewTest();
+  onSubmitTest();
+  StyledStringURL();
+  textCaretColor();
   getRectsForRangeTest();
 }
