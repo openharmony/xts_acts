@@ -24,8 +24,7 @@ struct SystemTransition {
   pageMap(name: string) {
     if (name == 'pageOne') {
       PageOne()
-    }
-    else if (name == 'pageTwo') {
+    } else if (name == 'pageTwo') {
       PageTwo()
     }
   }
