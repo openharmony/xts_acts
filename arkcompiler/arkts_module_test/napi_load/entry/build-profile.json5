@@ -28,7 +28,9 @@
           "harOne",
           "harTwo",
           "hspOne",
-          "hspTwo"
+          "hspTwo",
+          "sharedHarOne",
+          "sharedHspOne"
         ],
         "sources": [
           "./Test.ets"

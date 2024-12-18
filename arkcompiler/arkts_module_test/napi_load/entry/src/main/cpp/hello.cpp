@@ -14,8 +14,9 @@
  */
 
 #include "napi/native_api.h"
+#include <string>
 
-constexpr const int32_t charSize = 50;
+constexpr int32_t CHAR_SIZE = 50;
 
 static napi_value Add(napi_env env, napi_callback_info info)
 {
@@ -54,12 +55,12 @@ static napi_value loadModuleWithInfo(napi_env env, napi_callback_info info)
 
     napi_value path_c = args[1];
     napi_value name_c = args[0];
-    char name[charSize] = {0};
+    char name[CHAR_SIZE] = {0};
     size_t len = 0;
-    napi_get_value_string_utf8(env, name_c, name, charSize, &len);
-    char path[charSize] = {0};
+    napi_get_value_string_utf8(env, name_c, name, CHAR_SIZE, &len);
+    char path[CHAR_SIZE] = {0};
     size_t pathLen = 0;
-    napi_get_value_string_utf8(env, path_c, path, charSize, &pathLen);
+    napi_get_value_string_utf8(env, path_c, path, CHAR_SIZE, &pathLen);
 
     napi_value result;
     if (pathLen == 0) {
@@ -75,12 +76,56 @@ static napi_value loadModuleWithInfo(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value loadModuleOHPMCrypto(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    napi_value result;
+    napi_status status;
+
+    status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    if (status != napi_ok || argc < 1) {
+        napi_throw_error(env, nullptr, "Expected one argument");
+        return nullptr;
+    }
+
+    status = napi_load_module_with_info(env, "@ohos/crypto-js", "com.acts.arktsnapiloadtest/entry_test", &result);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to load @ohos/crypto-js module");
+        return nullptr;
+    }
+
+    napi_value cryptoJS;
+    status = napi_get_named_property(env, result, "CryptoJS", &cryptoJS);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get CryptoJS property");
+        return nullptr;
+    }
+
+    napi_value md5Fn;
+    status = napi_get_named_property(env, cryptoJS, "MD5", &md5Fn);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get MD5 method");
+        return nullptr;
+    }
+
+    napi_value hashResult;
+    status = napi_call_function(env, cryptoJS, md5Fn, 1, args, &hashResult);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to call MD5 function");
+        return nullptr;
+    }
+
+    return hashResult;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "loadModuleWithInfo", nullptr, loadModuleWithInfo, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "loadModuleWithInfo", nullptr, loadModuleWithInfo, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "loadModuleOHPMCrypto", nullptr, loadModuleOHPMCrypto, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

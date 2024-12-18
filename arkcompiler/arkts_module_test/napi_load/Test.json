@@ -13,6 +13,7 @@
             "test-file-name": [
                 "ActsArkTsNapiLoadTest-hspTwo-default-signed.hsp",
                 "ActsArkTsNapiLoadTest-hspOne-default-signed.hsp",
+                "ActsArkTsNapiLoadTest-sharedHspOne-default-signed.hsp",
                 "ActsArkTsNapiLoadTest-entry-default-signed.hap",
                 "ActsArkTsNapiLoadTest.hap"
             ],
