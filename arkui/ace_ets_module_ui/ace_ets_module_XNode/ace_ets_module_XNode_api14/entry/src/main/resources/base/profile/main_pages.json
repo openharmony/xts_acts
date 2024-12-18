@@ -1,0 +1,7 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/FrameNode/commonEventTest1",
+        "MainAbility/pages/FrameNode/gestureEventTest"
+    ]
+}
