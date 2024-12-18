@@ -1998,12 +1998,9 @@ static napi_value AuxiliaryPictureSetInfoToCtx(napi_env env, napi_callback_info 
 
     IMG_NAPI_CHECK_NULL_PTR(g_ctx.auxPicture, result);
 
-    if (OH_AuxiliaryPictureNative_SetInfo(g_ctx.auxPicture, g_ctx.auxInfo) != IMAGE_SUCCESS) {
-        napi_throw_error(env, nullptr, "OH_AuxiliaryPictureNative_SetInfo failed");
-        return result;
-    }
+    Image_ErrorCode errCode = OH_AuxiliaryPictureNative_SetInfo(g_ctx.auxPicture, g_ctx.auxInfo);
 
-    napi_create_int32(env, IMAGE_SUCCESS, &result);
+    napi_create_int32(env, errCode, &result);
     return result;
 }
 
