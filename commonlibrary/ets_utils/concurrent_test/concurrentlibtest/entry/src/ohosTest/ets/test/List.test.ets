@@ -15,8 +15,10 @@
 
 import TaskPoolTest from './taskpool/TaskPool.test.ets';
 import arkTSUtilsTest from './arkTSUtils/ArkTSUtils.test';
+import workerTest from './worker/Worker.test';
 
 export default function testsuite() {
   arkTSUtilsTest();
   TaskPoolTest();
+  workerTest();
 }
