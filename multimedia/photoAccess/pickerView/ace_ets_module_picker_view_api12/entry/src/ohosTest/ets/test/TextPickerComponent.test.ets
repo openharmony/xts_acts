@@ -1103,5 +1103,49 @@ export default function TextPicker() {
       console.info("testPicer22 finish");
       done();
     });
+
+        /* *
+       * @tc.number    : testPicker23
+       * @tc.name      : testPicker23
+       * @tc.desc      : Testing requestPhotoUrisReadPermission
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker23', 0, async (done: Function) => {
+      let srcFileUris: Array<string> = ['file://com.example.myapplication/data/storage/el2/base/haps/entry_test/files/test.jpg'];
+      let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
+        {
+          title: 'test',
+          fileNameExtension: 'jpg',
+          photoType: photoAccessHelper.PhotoType.IMAGE,
+          subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
+        }
+      ];
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
+      let desFileUris = phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
+      await CommonFunc.sleep(2000);
+      let button: Component = await driver.findComponent(ON.text('允许'));
+      if (button !== undefined) {
+        await button.click();
+        console.info("testPicker findComponent Button succsess");
+      }
+      
+      try {
+        phAccessHelper.requestPhotoUrisReadPermission(await desFileUris).then((result: Array<string>) => {
+          console.info("requestPhotoUrisReadPermission, result = " + JSON.stringify(result));
+          if (result) {
+            expect(true).assertTrue();
+          } else {
+            console.error("testPicker23 empty result");
+            expect(false).assertTrue();
+          }
+        })
+      } catch(error) {
+        console.error("testPicer23 error: " + JSON.stringify(error))
+      }
+      console.info("testPicer23 finish");
+      done();
+    });
   })
 }
