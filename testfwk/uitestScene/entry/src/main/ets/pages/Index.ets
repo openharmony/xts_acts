@@ -21,7 +21,7 @@ struct ScrollExample {
   scroller: Scroller = new Scroller()
   private arr: number[] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
   @State hoverText : string = 'jump'
-
+  @State pressure : number = 0.0
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('MainPage')
@@ -122,6 +122,16 @@ struct ScrollExample {
                   router.push({ uri: 'pages/drag' })
                 })
             )
+            Button() {
+              Text('scroll')
+                .fontSize(25)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .margin({ top: 20 })
+            .onClick(() => {
+              router.push({ uri: 'pages/scroll' })
+            })
             Checkbox({ name: 'hi' })
               .size({ width: 30, height: 30 })
             TextInput({ placeholder: 'welcome', text: 'Hello World' })
@@ -162,6 +172,13 @@ struct ScrollExample {
           console.info(xOffset + ' ' + yOffset)
         })
       }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+      .onTouch((event) => {
+        console.log(`onTouch action 11111`);
+        this.pressure = event.pressure;
+      })
+      Text(this.pressure.toFixed(1))
+        .id('pressure')
+        .fontSize(20)
       Text('MainPage_End')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)

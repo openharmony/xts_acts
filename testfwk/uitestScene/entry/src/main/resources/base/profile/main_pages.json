@@ -5,6 +5,7 @@
     "pages/third",
     "pages/fourth",
     "pages/pinch",
-    "pages/drag"
+    "pages/drag",
+    "pages/scroll"
   ]
 }
