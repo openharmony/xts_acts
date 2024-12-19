@@ -20,6 +20,7 @@ import { Camera_Position, Camera_Type } from './Constants';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
+import { cameraInfo } from '../../../main/cpp/types/libentry';
 
 const TAG = "CAMERA_LOGTAG_JS";
 const CAMERA_OK = 0;
@@ -96,6 +97,26 @@ async function getPermissions() {
   }
   console.info('getPermission end');
 };
+
+function getIsCameraTypeSupported(cameraType: number): boolean {
+  let cameraInfos: Array<cameraInfo> = cameras.oHCameraManagerGetSupportedCameraInfos(0);
+  for (let i = 0; i < cameraInfos.length; i++) {
+    if(cameraInfos[i].cameraType == cameraType) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function getIsCameraPositionSupported(cameraPosition: number): boolean {
+  let cameraInfos: Array<cameraInfo> = cameras.oHCameraManagerGetSupportedCameraInfos(0);
+  for (let i = 0; i < cameraInfos.length; i++) {
+    if(cameraInfos[i].cameraPosition == cameraPosition) {
+      return true;
+    }
+  }
+  return false;
+}
 
 export default function CameraManagerTest() {
 
@@ -227,9 +248,14 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0100', 0, () => {
       getCameraManagerInstance(0);
-      let ret =  cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_UNSPECIFIED, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
-      console.log(TAG+"testOHCreateCameraInputWithPositionAndType0100:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_UNSPECIFIED) ||
+        !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_DEFAULT)) {
+          expect(true).assertTrue();
+      } else {
+        let ret =  cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_UNSPECIFIED, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
+        console.log(TAG+"testOHCreateCameraInputWithPositionAndType0100:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      }
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCreateCameraInputWithPositionAndType0200
@@ -241,9 +267,14 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0200', 0, () => {
       getCameraManagerInstance(0);
-      let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_BACK, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
-      console.log(TAG+"testOHCreateCameraInputWithPositionAndType0200:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_BACK) ||
+        !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_DEFAULT)) {
+          expect(true).assertTrue();
+      } else {
+        let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_BACK, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
+        console.log(TAG+"testOHCreateCameraInputWithPositionAndType0200:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      }
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCreateCameraInputWithPositionAndType0300
@@ -255,9 +286,14 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0300', 0, () => {
       getCameraManagerInstance(0);
-      let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
-      console.log(TAG+"testOHCreateCameraInputWithPositionAndType0300:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT) ||
+        !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_DEFAULT)) {
+          expect(true).assertTrue();
+      } else {
+        let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
+        console.log(TAG+"testOHCreateCameraInputWithPositionAndType0300:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      }
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCreateCameraInputWithPositionAndType0400
@@ -269,9 +305,14 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0400', 0, () => {
       getCameraManagerInstance(0);
-      let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_WIDE_ANGLE, 0)
-      console.log(TAG+"testOHCreateCameraInputWithPositionAndType0400:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT) ||
+        !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_WIDE_ANGLE)) {
+          expect(true).assertTrue();
+      } else {
+        let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_WIDE_ANGLE, 0)
+        console.log(TAG+"testOHCreateCameraInputWithPositionAndType0400:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      }
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCreateCameraInputWithPositionAndType0500
@@ -283,9 +324,14 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0500', 0, () => {
       getCameraManagerInstance(0);
-      let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_ULTRA_WIDE, 0)
-      console.log(TAG+"testOHCreateCameraInputWithPositionAndType0500:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT) ||
+      !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_ULTRA_WIDE)) {
+        expect(true).assertTrue();
+      } else {
+        let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_ULTRA_WIDE, 0)
+        console.log(TAG+"testOHCreateCameraInputWithPositionAndType0500:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      }
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCreateCameraInputWithPositionAndType0600
@@ -297,9 +343,14 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0600', 0, () => {
       getCameraManagerInstance(0);
-      let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_TELEPHOTO, 0)
-      console.log(TAG+"testOHCreateCameraInputWithPositionAndType0600:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT) ||
+      !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_TELEPHOTO)) {
+        expect(true).assertTrue();
+      } else {
+        let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_TELEPHOTO, 0)
+        console.log(TAG+"testOHCreateCameraInputWithPositionAndType0600:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      }
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCreateCameraInputWithPositionAndType0700
@@ -311,9 +362,14 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0700', 0, () => {
       getCameraManagerInstance(0);
-      let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_TRUE_DEPTH, 0)
-      console.log(TAG+"testOHCreateCameraInputWithPositionAndType0700:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT) ||
+      !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_TRUE_DEPTH)) {
+        expect(true).assertTrue();
+      } else {
+        let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_TRUE_DEPTH, 0)
+        console.log(TAG+"testOHCreateCameraInputWithPositionAndType0700:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      }
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCreateCameraInputWithPositionAndType0800
@@ -946,4 +1002,3 @@ export default function CameraManagerTest() {
 
   })
 }
-
