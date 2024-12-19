@@ -18,6 +18,7 @@ import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import router from '@ohos.router';
+import nativeRender from 'libnativerender.so'
 
 export default function gestureTest() {
 
