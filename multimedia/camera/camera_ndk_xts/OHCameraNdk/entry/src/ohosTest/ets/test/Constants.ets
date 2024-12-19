@@ -80,3 +80,7 @@ export class Camera_VideoStabilizationMode {
   static readonly STABILIZATION_MODE_HIGH = 3;
   static readonly STABILIZATION_MODE_AUTO = 4;
 }
+export class Camera_MediaType {
+  static readonly IMAGE = 0;
+  static readonly VIDEO = 1;
+}
