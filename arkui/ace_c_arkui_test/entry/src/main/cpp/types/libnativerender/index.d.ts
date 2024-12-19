@@ -291,3 +291,7 @@ export const testAnimatorRegisterOnFinish: (a: string) => void;
 export const testAnimatorRegisterOnCancel: (a: string) => void;
 
 export const testAnimatorRegisterOnRepeat: (a: string) => void;
+
+export const swipeAxisGestureTest: (a: string) => void;
+
+export const GetGestureDataAxis: () => number[][];
