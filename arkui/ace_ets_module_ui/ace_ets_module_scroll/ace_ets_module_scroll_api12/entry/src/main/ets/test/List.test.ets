@@ -116,6 +116,37 @@ import tabsCallBack2 from './TabsTest/tabsCallBack2.test';
 import tabsCallBack3 from './TabsTest/tabsCallBack3.test';
 import tabsCallBack4 from './TabsTest/tabsCallBack4.test';
 
+import SwiperImplicitanimation0050 from  './SwiperTest/SwiperImplicitanimationTest/SwiperImplicitanimation0050.test';
+import SwiperImplicitanimation0010 from  './SwiperTest/SwiperImplicitanimationTest/SwiperImplicitanimation0010.test';
+import SwiperImplicitanimation0020 from  './SwiperTest/SwiperImplicitanimationTest/SwiperImplicitanimation0020.test';
+import SwiperImplicitanimation0030 from  './SwiperTest/SwiperImplicitanimationTest/SwiperImplicitanimation0030.test';
+import SwiperImplicitanimation0060 from  './SwiperTest/SwiperImplicitanimationTest/SwiperImplicitanimation0060.test';
+import SwiperImplicitanimation0070 from  './SwiperTest/SwiperImplicitanimationTest/SwiperImplicitanimation0070.test';
+import SwiperAcross0300 from  './SwiperTest/SwiperAcrossTest/SwiperAcross0300.test';
+import SwiperInterfaceMix0220 from  './SwiperTest/SwiperInterfaceMixTest/SwiperInterfaceMix0220.test';
+import SwiperMirroring0010 from  './SwiperTest/SwiperMirroringTest/SwiperMirroring0010.test';
+import SwiperAdd0510 from  './SwiperTest/SwiperAddTest/SwiperAdd0510.test';
+import SwiperInterface01 from  './SwiperTest/swiperinterfaceTest/SwiperInterface01.test';
+import SwiperInterface02 from  './SwiperTest/swiperinterfaceTest/SwiperInterface02.test';
+import SwiperInterface03 from  './SwiperTest/swiperinterfaceTest/SwiperInterface03.test';
+import SwiperInterface1570 from  './SwiperTest/swiperinterfaceTest/SwiperInterface1570.test';
+import SwiperDrag0710 from  './SwiperTest/SwiperDragTest/SwiperDrag0710.test';
+import SwiperDrag0230 from  './SwiperTest/SwiperDragTest/SwiperDrag0230.test';
+import SwiperDrag0240 from  './SwiperTest/SwiperDragTest/SwiperDrag0240.test';
+import SwiperDrag0250 from  './SwiperTest/SwiperDragTest/SwiperDrag0250.test';
+import SwiperDrag0260 from  './SwiperTest/SwiperDragTest/SwiperDrag0260.test';
+import SwiperDrag0270 from  './SwiperTest/SwiperDragTest/SwiperDrag0270.test';
+import SwiperDrag0280 from  './SwiperTest/SwiperDragTest/SwiperDrag0280.test';
+import SwiperDrag0300 from  './SwiperTest/SwiperDragTest/SwiperDrag0300.test';
+import SwiperDrag0310 from  './SwiperTest/SwiperDragTest/SwiperDrag0310.test';
+import UIComponentScrollSwiperDisplaycount0200
+  from './SwiperTest/UIComponentScrollSwiperDisplaycountTest/UIComponentScrollSwiperDisplaycount0200.test';
+import UIComponentScrollSwiperDisplaycount0210
+  from './SwiperTest/UIComponentScrollSwiperDisplaycountTest/UIComponentScrollSwiperDisplaycount0210.test';
+import UIComponentScrollSwiperAnimated0260
+  from './SwiperTest/UIComponentScrollSwiperAnimatedTest/UIComponentScrollSwiperAnimated0260.test';
+
+
 export default function testsuite() {
   ListScrollTest1()
   PopupAlphaTest()
@@ -220,4 +251,30 @@ export default function testsuite() {
   tabsCallBack2()
   tabsCallBack3()
   tabsCallBack4()
+  SwiperImplicitanimation0050();
+  SwiperImplicitanimation0010();
+  SwiperImplicitanimation0020();
+  SwiperImplicitanimation0030();
+  SwiperImplicitanimation0060();
+  SwiperImplicitanimation0070();
+  SwiperAcross0300();
+  SwiperInterfaceMix0220();
+  SwiperMirroring0010();
+  SwiperAdd0510();
+  SwiperInterface01();
+  SwiperInterface02();
+  SwiperInterface03();
+  SwiperInterface1570();
+  SwiperDrag0710();
+  SwiperDrag0230();
+  SwiperDrag0240();
+  SwiperDrag0250();
+  SwiperDrag0260();
+  SwiperDrag0270();
+  SwiperDrag0280();
+  SwiperDrag0300();
+  SwiperDrag0310();
+  UIComponentScrollSwiperDisplaycount0200();
+  UIComponentScrollSwiperDisplaycount0210();
+  UIComponentScrollSwiperAnimated0260();
 }
