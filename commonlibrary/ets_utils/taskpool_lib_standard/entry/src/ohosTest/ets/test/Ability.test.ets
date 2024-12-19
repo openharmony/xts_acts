@@ -23,7 +23,7 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
   errorManageTest, dealHashMapTest, noUseConcurrentTest, sendDataTest, sendableClassTestFunc, Int8ArrayTestFunc,
   SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray,
-  sendableFuncTest, sendableClassTest } from './testFunclist'
+  sendableFuncTest, sendableClassTest, promiseTest, measureTest } from './testFunclist'
 import { A, B, StrCat, printArgs, printStrArgs, fun, cancelById } from './exportFunclist'
 import { SendableClass, SimpleSendable, sendableFunc, SendableClassTest } from './sendable';
 import HashMap from '@ohos.util.HashMap';
@@ -5323,6 +5323,37 @@ export default function TaskPoolTest() {
         await promiseCase();
       }
       expect(str).assertEqual('cancel success');
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0231
+     * @tc.name      : TaskPoolTestClass231
+     * @tc.desc      : test microjob in the taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass231', 0, async (done: Function) => {
+      let value: number = 500;
+      let task: taskpool.Task = new taskpool.Task(promiseTest, value);
+      let result = await taskpool.execute(task);
+      expect(result).assertEqual(1000);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0232
+     * @tc.name      : TaskPoolTestClass232
+     * @tc.desc      : Test the ContainerScope and Measure
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass232', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(measureTest);
+      let result = await taskpool.execute(task);
+      expect(result).assertEqual(true);
       done();
     })
   })
