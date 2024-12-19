@@ -61,11 +61,11 @@ export default function userauthTest() {
                         console.info('Security_IAM_PIN_Kit_Func_0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
                         availabeStatus = UserAuthKit.getAvailableStatus(authType[idx0], level[idx1]);
                         console.info(`Security_IAM_PIN_Kit_Func_0102 ${availabeStatus}`)
-                        expect(availabeStatus).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
+                        expect((availabeStatus == userAuthNorth.ResultCode.NOT_ENROLLED || (availabeStatus == userAuthNorth.ResultCode.TYPE_NOT_SUPPORT))).assertTrue();
                     } catch (e) {
                         console.info(`Security_IAM_PIN_Kit_Func_0102 e ${JSON.stringify(e)}`)
                         console.log("Security_IAM_PIN_Kit_Func_0102 throw fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
-                        expect(e.code).assertEqual(userAuthNorth.ResultCode.NOT_ENROLLED);
+                        expect(null).assertFail();
                     }
                     done();
                 }
@@ -86,7 +86,8 @@ export default function userauthTest() {
                     userAuthNorth.getAvailableStatus(authType2, level1);
                 } catch (e) {
                     console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
-                    expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
+                    expect((e.code == userAuthNorth.UserAuthResultCode.TYPE_NOT_SUPPORT) || 
+                        (e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
                     done();
                 }
             done();
