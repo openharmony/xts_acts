@@ -17,6 +17,7 @@ import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import { BusinessError } from '@ohos.base';
+import display from '@ohos.display';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -199,7 +200,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_005
         * @tc.name: test_touchPadMultiFingerSwipe_direction_verification_401
-        * @tc.desc: direction参数 401验证
+        * @tc.desc: direction param 401 test
         */
         it('test_touchPadMultiFingerSwipe_direction_verification_401', 0, async () => {
             console.log(TestTag, 'test_touchPadMultiFingerSwipe_direction_verification_401 start');
@@ -245,7 +246,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_006
         * @tc.name: test_touchPadMultiFingerSwipe_direction_verification_401
-        * @tc.desc: option参数返回桌面验证
+        * @tc.desc: option param test
         */
         it('test_touchPadMultiFingerSwipe_option_verification_Up', 0, async () => {
             console.log(TestTag, 'test_touchPadMultiFingerSwipe_option_verification_Up start');
@@ -611,12 +612,18 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs);
             try {
-                // 垂直滑动400
-                await driver.delayMs(waitUiReadyMs)
-                await driver.penSwipe({x: 500, y: 1100},
-                    {x: 500, y: 300 },600, 0.5);
+                // 垂直滑动
                 await driver.delayMs(waitUiReadyMs);
-                let text = await driver.findComponent(ON.text('next page'));
+                let displayClass = display.getDefaultDisplaySync();
+                await driver.delayMs(waitUiReadyMs);
+                let screenWidth = displayClass.width;
+                let screenHeight = displayClass.height;
+                console.log(TestTag, 'screenWidth:' + screenWidth + ', screenHeight:' +screenHeight);
+                await driver.penSwipe({x: Math.floor(screenWidth / 2), y: Math.floor(screenHeight / 2 + screenHeight / 4)},
+                    {x: Math.floor(screenWidth / 2), y: Math.floor(screenHeight / 2 - screenHeight / 4) },600, 0.5);
+                await driver.delayMs(waitUiReadyMs);
+                let text = await driver.findComponent(ON.text('toast'));
+                await driver.delayMs(waitUiReadyMs);
                 expect(text == null).assertTrue();
                 await driver.delayMs(waitUiReadyMs);
                 let pressureCom = await driver.findComponent(ON.id('pressure'));
@@ -624,7 +631,6 @@ export default function UiTest() {
                 let pressure = await pressureCom.getText();
                 await driver.delayMs(waitUiReadyMs);
                 expect(pressure).assertEqual('0.5');
-                await driver.delayMs(waitUiReadyMs);
                 let scrollBar = await driver.findComponent(ON.type('Scroll'));
                 await driver.delayMs(waitUiReadyMs);
                 await scrollBar.scrollToTop();
@@ -711,14 +717,21 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
+            let displayClass = display.getDefaultDisplaySync();
+            await driver.delayMs(waitUiReadyMs);
+            let screenWidth = displayClass.width;
+            let screenHeight = displayClass.height;
+            console.log(TestTag, 'screenWidth:' + screenWidth + ', screenHeight:' +screenHeight);
             let pointer = PointerMatrix.create(1,8);
+            let stepLength = (screenHeight / 4) * 2 / 8;
             for (let step = 0; step < 8; step++) {
-                pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+                pointer.setPoint(0, step, {x: Math.floor(screenWidth / 2),
+                    y: Math.floor(screenHeight / 2 + screenHeight / 4) - stepLength * step });
             }
             try {
                 await driver.injectPenPointerAction(pointer, 600, 0.5);
                 await driver.delayMs(waitUiReadyMs * 2);
-                let text = await driver.findComponent(ON.text('next page'));
+                let text = await driver.findComponent(ON.text('toast'));
                 expect(text == null).assertTrue();
                 await driver.delayMs(waitUiReadyMs);
                 let pressureCom = await driver.findComponent(ON.id('pressure'));
@@ -1058,7 +1071,7 @@ export default function UiTest() {
             let center = await input.getBoundsCenter()
             await driver.inputText(center, '123')
             await driver.delayMs(2000)
-            let input_new = await driver.findComponent(ON.type('TextInput'))                                                                                                                                                                           
+            let input_new = await driver.findComponent(ON.type('TextInput'))
             let text = await input_new.getText()
             console.info("testInputText result :" + text)
             expect(text == '123').assertTrue()
@@ -1106,6 +1119,7 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,active:true,title:''})
             await window.focus()
+            await driver.delayMs(waitUiReadyMs)
             let isActive = await window.isActive()
             expect(isActive == true).assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -1138,7 +1152,7 @@ export default function UiTest() {
          * @tc.desc: find UiComponent inside of the given UiComponent.
          */
         it('testWithIn', 0, async () => {
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
             let scroll = await driver.findComponent(ON.type('Scroll'))
@@ -1298,27 +1312,27 @@ export default function UiTest() {
         * @tc.desc: monitor toast appearance.
         */
         it('testMonitor1', 0, async () => {
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-        let driver = Driver.create()
-        await driver.delayMs(waitUiReadyMs)
-        let observer = await driver.createUIEventObserver()
-        let callback = (UiElementInfo : UIElementInfo) => {
-            try {
-                console.info('UIElementInfo bundleName:'+ UiElementInfo.bundleName)
-                console.info('UIElementInfo text:'+ UiElementInfo.text)
-                console.info('UIElementInfo type:'+ UiElementInfo.type)
-                expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
-                expect(UiElementInfo.text == 'toastShow').assertTrue()
-                expect(UiElementInfo.type == 'Toast').assertTrue()
-            } catch (err) {
-                console.info(err)
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let observer = await driver.createUIEventObserver()
+            let callback = (UiElementInfo : UIElementInfo) => {
+                try {
+                    console.info('UIElementInfo bundleName:'+ UiElementInfo.bundleName)
+                    console.info('UIElementInfo text:'+ UiElementInfo.text)
+                    console.info('UIElementInfo type:'+ UiElementInfo.type)
+                    expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
+                    expect(UiElementInfo.text == 'toastShow').assertTrue()
+                    expect(UiElementInfo.type == 'Toast').assertTrue()
+                } catch (err) {
+                    console.info(err)
+                }
             }
-        }
-        observer.once('toastShow', callback)
-        let btn = await driver.findComponent(ON.text('toast'))
-        await btn.click()
-        await driver.delayMs(waitUiReadyMs)
-        await stopApplication('com.uitestScene.acts')
+            observer.once('toastShow', callback)
+            let btn = await driver.findComponent(ON.text('toast'))
+            await btn.click()
+            await driver.delayMs(waitUiReadyMs)
+            await stopApplication('com.uitestScene.acts')
         })
 
         /*
@@ -1328,27 +1342,27 @@ export default function UiTest() {
         */
 
         it('testMonitor2', 0, async () => {
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-        let driver = Driver.create()
-        await driver.delayMs(waitUiReadyMs)
-        let observer = await driver.createUIEventObserver()
-        let callback = (UiElementInfo : UIElementInfo) => {
-            try {
-                console.info('UIElementInfo bundleName:'+ UiElementInfo.bundleName)
-                console.info('UIElementInfo text:'+ UiElementInfo.text)
-                console.info('UIElementInfo type:'+ UiElementInfo.type)
-                expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
-                expect(UiElementInfo.text == 'dialogShow').assertTrue()
-                expect(UiElementInfo.type == 'AlertDialog').assertTrue()
-            } catch (err) {
-                console.info(err)
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let observer = await driver.createUIEventObserver()
+            let callback = (UiElementInfo : UIElementInfo) => {
+                try {
+                    console.info('UIElementInfo bundleName:'+ UiElementInfo.bundleName)
+                    console.info('UIElementInfo text:'+ UiElementInfo.text)
+                    console.info('UIElementInfo type:'+ UiElementInfo.type)
+                    expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
+                    expect(UiElementInfo.text == 'dialogShow').assertTrue()
+                    expect(UiElementInfo.type == 'AlertDialog').assertTrue()
+                } catch (err) {
+                    console.info(err)
+                }
             }
-        }
-        observer.once('dialogShow', callback)
-        let btn = await driver.findComponent(ON.text('dialog'))
-        await btn.click()
-        await driver.delayMs(waitUiReadyMs)
-        await stopApplication('com.uitestScene.acts')
+            observer.once('dialogShow', callback)
+            let btn = await driver.findComponent(ON.text('dialog'))
+            await btn.click()
+            await driver.delayMs(waitUiReadyMs)
+            await stopApplication('com.uitestScene.acts')
         })
     })
 
@@ -1688,11 +1702,17 @@ export default function UiTest() {
          * @tc.desc: swipe on the screen between the specified points.
          */
         it('testSwipe', 0, async () => {
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
-            await driver.swipe(500, 1100, 500, 300)
-            let text = await driver.findComponent(BY.text('next page'))
+            let displayClass = await display.getDefaultDisplay();
+            let screenWidth = displayClass.width
+            let screenHeight = displayClass.height
+            console.info('screenWidth:' + screenWidth + ', screenHeight:' +screenHeight)
+            await driver.swipe(Math.floor(screenWidth / 2), Math.floor(screenHeight / 2 + screenHeight / 4),
+                Math.floor(screenWidth / 2), Math.floor(screenHeight / 2 - screenHeight / 4))
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponent(BY.text('toast'))
             expect(text == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
@@ -2241,11 +2261,14 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            await driver.swipe(500,1100,500,300)
-            let text = await driver.findComponent(ON.text('next page'))
+            let scoll = await driver.findComponent(ON.type('Scroll'))
+            let rect = await scoll.getBounds()
+            let center = await scoll.getBoundsCenter()
+            await driver.swipe(center.x, Math.floor(center.y + (rect.bottom - rect.top) / 4),
+                center.x, Math.floor(center.y - (rect.bottom - rect.top) / 4))
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponent(ON.text('toast'))
             expect(text == null).assertTrue()
-            let scrollBar = await driver.findComponent(ON.type('Scroll'))
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -2258,12 +2281,14 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            await driver.fling({x:500, y:1100},{x:500, y:300}, 20, 600)
+            let scoll = await driver.findComponent(ON.type('Scroll'))
+            let rect = await scoll.getBounds()
+            let center = await scoll.getBoundsCenter()
+            await driver.fling({x: center.x, y:Math.floor(center.y + (rect.bottom - rect.top) / 4)},
+                {x: center.x, y:Math.floor(center.y - (rect.bottom - rect.top) / 4)}, 20, 600)
             await driver.delayMs(1000)
             let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
-            let scrollBar = await driver.findComponent(ON.type('Scroll'))
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -2313,7 +2338,9 @@ export default function UiTest() {
             let scrollBar = await driver.findComponent(ON.type('Scroll'))
             expect(scrollBar !== null).assertTrue()
             await scrollBar.scrollToBottom()
+            await driver.delayMs(waitUiReadyMs)
             await scrollBar.scrollToTop()
+            await driver.delayMs(waitUiReadyMs)
             let button = await driver.findComponent(ON.text('next page'))
             expect(await button.getText() == 'next page').assertTrue()
             await stopApplication('com.uitestScene.acts')
