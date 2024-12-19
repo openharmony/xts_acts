@@ -380,12 +380,14 @@ export default function GetAccountsByOwner() {
         */
         it('GetAccountsByOwner_1300', 0, async function (done) {
             console.info("====>GetAccountsByOwner_1300 start====");
-            var appAccountManager = account.createAppAccountManager();
-            console.info("====>creat finish====");
-            var nonexistentBundle = "com.example.actsgetallaccountsnonexistent";
+            let appAccountManager = account.createAppAccountManager();
+            console.info("====>create finish====");
+            let nonexistentBundle = "com.example.actsgetallaccountsnonexistent";
             appAccountManager.getAccountsByOwner(nonexistentBundle, (err, data)=>{
                 console.info("====>getAccountsByOwner 1300 err:" + JSON.stringify(err));
-                expect(err.code == 12400001).assertEqual(true);
+                console.info("====>getAccountsByOwner 1300 data:" + JSON.stringify(data));
+                expect(err).assertEqual(null);
+                expect(data.length == 0).assertTrue();
                 console.info("====>GetAccountsByOwner_1300 end====");
                 done();
             })
@@ -398,18 +400,18 @@ export default function GetAccountsByOwner() {
         */
         it('GetAccountsByOwner_1400', 0, async function (done) {
             console.info("====>GetAccountsByOwner_1400 start====");
-            var appAccountManager = account.createAppAccountManager();
-            console.info("====>creat finish====");
-            var nonexistentBundle = "com.example.actsgetallaccountsnonexistent";
+            let appAccountManager = account.createAppAccountManager();
+            console.info("====>create finish====");
+            let nonexistentBundle = "com.example.actsgetallaccountsnonexistent";
             try{
-                var data = await appAccountManager.getAccountsByOwner(nonexistentBundle);
-                expect().assertFail();
-                done();
-            }
-            catch(err){
-                console.info("====>getAccountsByOwner 1400 err:" + JSON.stringify(err));   
-                expect(err.code == 12400001).assertEqual(true);
+                let data = await appAccountManager.getAccountsByOwner(nonexistentBundle);
+                console.info("====>GetAccountsByOwner_1400 data:" + JSON.stringify(data));
+                expect(data.length == 0).assertTrue();
                 console.info("====>GetAccountsByOwner_1400 end====");
+                done();
+            } catch(err){
+                console.info("====>getAccountsByOwner 1400 err:" + JSON.stringify(err));
+                expect().assertFail();
                 done();
             }
         });
