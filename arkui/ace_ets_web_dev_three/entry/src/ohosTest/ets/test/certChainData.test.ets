@@ -18,35 +18,35 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
-let emitKey = "bindSelectionMenuType01";
-export default function webViewSrollableJsunit() {
-  describe('bindSelectionMenuTest',  () =>{
+let emitKey = "certChainData01";
+export default function certChainDataTest() {
+  describe('certChainDataTest',  () =>{
     beforeAll(async  (done: Function) =>{
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/bindSelectionMenu"
+        url: "MainAbility/pages/certChainData"
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get bindSelectionMenu state success " + JSON.stringify(pages));
-        if (!("bindSelectionMenu" == pages.name)) {
-          console.info("get bindSelectionMenu state success " + JSON.stringify(pages.name));
+        console.info("get certChainData state success " + JSON.stringify(pages));
+        if (!("certChainData" == pages.name)) {
+          console.info("get certChainData state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(2000);
-          console.info("push bindSelectionMenu page success " + JSON.stringify(result));
+          console.info("push certChainData page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push bindSelectionMenu page error: " + err);
+        console.error("push certChainData page error: " + err);
       }
       done()
     });
     beforeEach(async  (done: Function) =>{
       await Utils.sleep(2000);
-      console.info("bindSelectionMenu beforeEach start");
+      console.info("certChainData beforeEach start");
       done();
     })
     afterEach(async  (done: Function) =>{
-      console.info("bindSelectionMenu afterEach start:"+emitKey);
+      console.info("certChainData afterEach start:"+emitKey);
       try {
         let backData: events_emitter.EventData = {
           data: {
@@ -65,26 +65,19 @@ export default function webViewSrollableJsunit() {
       await Utils.sleep(2000);
       done();
     })
+
     /*
-     *tc.number SUB_ACE_BASIC_ETS_BINDSELECTIONMENUTYPE_API_001
-     *tc.name bindSelectionMenuType01
-     *tc.desic test bindSelectionMenuType01 interface when choose callback mode.
+     *tc.number SUB_ACE_CERTCHAINDATA_API_001
+     *tc.name certChainData01
+     *tc.desic test certChainData01 interface when choose callback mode.
      */
-    it('bindSelectionMenuType01',0,async (done: Function) =>{
-      emitKey="bindSelectionMenuType02";
-      Utils.registerEvent("bindSelectionMenuType01",true,8301,done);
-      sendEventByKey('webcomponentSelectionMenu',10,'');
+    it('certChainData01',0,async  (done: Function) =>{
+      emitKey="certChainData01";
+      Utils.registerEvent("certChainData01",true,202412099,done);
+      sendEventByKey('certChainDataWeb',10,'');
     })
-    /*
-     *tc.number SUB_ACE_BASIC_ETS_BINDSELECTIONMENUTYPE_API_002
-     *tc.name bindSelectionMenuType02
-     *tc.desic test bindSelectionMenuType02 interface when choose callback mode.
-     */
-    it('bindSelectionMenuType02',0,async  (done: Function) =>{
-      emitKey="bindSelectionMenuType02";
-      Utils.registerEvent("bindSelectionMenuType02",1,8302,done);
-      sendEventByKey('webcomponentSelectionMenu',10,'');
-    })
+
+
 
   })
 }

@@ -2,8 +2,10 @@
     "src": [
         "MainAbility/pages/web",
         "MainAbility/pages/webTwo",
-        "MainAbility/pages/bindSelectionMenu",
-		"MainAbility/pages/NestedScrollMode",
-        "MainAbility/pages/blurMode"
+		"MainAbility/pages/bindSelectionMenu",
+		"MainAbility/pages/createPdf",
+        "MainAbility/pages/NestedScrollMode",
+        "MainAbility/pages/blurMode",
+		"MainAbility/pages/certChainData"
     ]
 }
