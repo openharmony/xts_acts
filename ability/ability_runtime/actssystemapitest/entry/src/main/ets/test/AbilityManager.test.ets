@@ -67,36 +67,38 @@ export default function abilityManagerTest() {
 
     /**
      * @tc.number: System_API_Test_Ability_Manager_0300
-     * @tc.name: callback form getAbilityRunningInfos system interface interception test
-     * @tc.desc: Test the third-party application call getAbilityRunningInfos will be blocked
+     * @tc.name: callback form getAbilityRunningInfos public interface interception test
+     * @tc.desc: Test the third-party application without permission call getAbilityRunningInfos only get self info
      * @tc.level 3
      */
     it('System_API_Test_Ability_Manager_0300', 0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0300';
-      abilityManager.getAbilityRunningInfos((err) => {
-        console.log(TAG + "  err.code: " + err.code);
-        expect(err.code).assertEqual(ERROR_CODE);
+      abilityManager.getAbilityRunningInfos((err, data) => {
+        console.log(TAG + "  err: " + JSON.stringify(err) + "  data: " + JSON.stringify(data));
+        expect(data.length).assertEqual(1);
+        expect(data[0].ability.bundleName).assertEqual("com.acts.systemapitest");
         done();
       });
     })
 
     /**
      * @tc.number: System_API_Test_Ability_Manager_0400
-     * @tc.name: promise form getAbilityRunningInfos system interface interception test
-     * @tc.desc: Test the third-party application call getAbilityRunningInfos will be blocked
+     * @tc.name: promise form getAbilityRunningInfos public interface interception test
+     * @tc.desc: Test the third-party application without permission call getAbilityRunningInfos only get self info
      * @tc.level 3
      */
     it('System_API_Test_Ability_Manager_0400', 0, (done: Function) => {
       let TAG = 'System_API_Test_Ability_Manager_0400';
       abilityManager.getAbilityRunningInfos()
-        .then(err => {
-          console.log(TAG + ` err->${JSON.stringify(err)}`);
-          expect().assertFail();
+        .then((data) => {
+          console.log(TAG + '')
+          expect(data.length).assertEqual(1);
+          expect(data[0].ability.bundleName).assertEqual('com.acts.systemapitest');
           done();
         })
         .catch((err: BusinessError) => {
-          console.log(TAG + "  err.code: " + err.code);
-          expect(err.code).assertEqual(ERROR_CODE);
+          console.log(TAG + ' err:' + JSON.stringify(err));
+          expect().assertFail();
           done();
         })
     })
