@@ -153,6 +153,47 @@ static napi_value CameraManagerGetSupportedCameras(napi_env env, napi_callback_i
     return cameraInfo;
 }
 
+static napi_value CameraManagerGetSupportedCameraInfos(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera->GetSupportedCameras(index);
+
+    napi_value cameraInfo = nullptr;
+
+    if (code != CAMERA_OK) {
+        return nullptr;
+    }
+    napi_value jsValue = nullptr;
+
+    napi_value cameraInfos = nullptr;
+
+    napi_status status = napi_create_array(env, &cameraInfos);
+    
+    for (uint32_t i = 0; i < ndkCamera->GetCameraDeviceSize(); i++) {
+        napi_create_object(env, &cameraInfo);
+        napi_create_string_utf8(env, ndkCamera->cameras_[i].cameraId, sizeof(ndkCamera->cameras_[i].cameraId) + 1, &jsValue);
+        napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
+
+        napi_create_int32(env, ndkCamera->cameras_[i].cameraPosition, &jsValue);
+        napi_set_named_property(env, cameraInfo, "cameraPosition", jsValue);
+
+        napi_create_int32(env, ndkCamera->cameras_[i].cameraType, &jsValue);
+        napi_set_named_property(env, cameraInfo, "cameraType", jsValue);
+
+        napi_create_int32(env, ndkCamera->cameras_[i].connectionType, &jsValue);
+        napi_set_named_property(env, cameraInfo, "connectionType", jsValue);
+
+        napi_set_element(env, cameraInfos, i, cameraInfo);
+    }
+    return cameraInfos;
+}
+
 static napi_value CameraManagerDeleteSupportedCameras(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -687,7 +728,12 @@ static napi_value OHCaptureSessionIsExposureModeSupported(napi_env env, napi_cal
     napi_get_value_int32(env, args[1], &index);
 
     Camera_ErrorCode code =  ndkCamera->SessionIsExposureModeSupported(exposureMode, index);
-    napi_create_int32(env, code, &result);
+    LOG("SessionIsExposureModeSupported code is:  %{public}d", code);
+    if (code == CAMERA_OK) {
+        napi_get_boolean(env, ndkCamera->isExposureMode_, &result);
+    } else {
+        napi_get_undefined(env, &result);
+    }
     return result;
 }
 static napi_value OHCaptureSessionSetExposureMode(napi_env env, napi_callback_info info)
@@ -739,9 +785,13 @@ static napi_value OHCaptureSessionIsFlashModeSupported(napi_env env, napi_callba
 
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
-
     Camera_ErrorCode ret = ndkCamera->SessionIsFlashModeSupported(exposureBias, index);
-    napi_create_int32(env, ret, &result);
+    LOG("OHCaptureSessionIsFlashModeSupported code is:  %{public}d", ret);
+    if (ret == CAMERA_OK) {
+        napi_get_boolean(env, ndkCamera->isFlashMode_, &result);
+    } else {
+        napi_get_undefined(env, &result);
+    }
     return result;
 }
 static napi_value OHCaptureSessionHasFlash(napi_env env, napi_callback_info info)
@@ -974,7 +1024,12 @@ static napi_value OHCaptureSessionIsVideoStabilizationModeSupported(napi_env env
     napi_get_value_int32(env, args[1], &index);
 
     Camera_ErrorCode code = ndkCamera->SessionIsVideoStabilizationModeSupported(mode, index);
-    napi_create_int32(env, code, &result);
+     LOG("OHCaptureSessionIsVideoStabilizationModeSupported code is:  %{public}d", code);
+    if (code == CAMERA_OK) {
+        napi_get_boolean(env, ndkCamera->isVideoSupported_, &result);
+    } else {
+        napi_get_undefined(env, &result);
+    }
     return result;
 }
 static napi_value OHCaptureSessionGetVideoStabilizationMode(napi_env env, napi_callback_info info)
@@ -1410,6 +1465,8 @@ napi_property_descriptor desc1[] = {
     {"oHCameraDeleteCameraManager", nullptr, CameraDeleteCameraManager, nullptr, nullptr, nullptr, napi_default,
      nullptr},
     {"oHCameraManagerGetSupportedCameras", nullptr, CameraManagerGetSupportedCameras, nullptr, nullptr, nullptr,
+     napi_default, nullptr},
+    {"oHCameraManagerGetSupportedCameraInfos", nullptr, CameraManagerGetSupportedCameraInfos, nullptr, nullptr, nullptr,
      napi_default, nullptr},
     {"oHCameraManagerDeleteSupportedCameras", nullptr, CameraManagerDeleteSupportedCameras, nullptr, nullptr,
      nullptr, napi_default, nullptr},
