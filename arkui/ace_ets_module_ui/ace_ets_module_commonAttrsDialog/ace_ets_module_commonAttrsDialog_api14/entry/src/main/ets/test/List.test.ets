@@ -17,6 +17,7 @@ import followTransformOfTargetPopup from './PopupTest/followTransformOfTargetPop
 import followTransformOfTargetCustomPopup from './PopupTest/followTransformOfTargetCustomPopup.test.ets';
 import activeTest from './UIContext/FocusController/activeTest.test.ets'
 import lunarSwitchStyleTest from './DatePickerDialog/lunarSwitchStyleTest.test'
+import bindSheetHoverMode from './bindSheetTest/bindSheetHoverMode.test'
 
 export default function testsuite() {
   bindSheetKeyboardAvoidMode()
@@ -24,4 +25,5 @@ export default function testsuite() {
   followTransformOfTargetCustomPopup()
   activeTest()
   lunarSwitchStyleTest()
+  bindSheetHoverMode()
 }

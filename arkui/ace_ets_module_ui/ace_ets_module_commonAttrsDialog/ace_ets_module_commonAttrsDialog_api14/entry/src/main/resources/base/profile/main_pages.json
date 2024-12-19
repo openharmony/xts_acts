@@ -5,6 +5,7 @@
       "MainAbility/pages/Popup/followTransformOfTargetPopup",
       "MainAbility/pages/Popup/followTransformOfTargetCustomPopup",
       "MainAbility/pages/UIContext/FocusController/activeTest",
-      "MainAbility/pages/DatePickerDialog/lunarSwitchStyleTest"
+      "MainAbility/pages/DatePickerDialog/lunarSwitchStyleTest",
+      "MainAbility/pages/bindSheetTest/bindSheetHoverMode"
     ]
 }
