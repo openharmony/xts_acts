@@ -26,13 +26,12 @@ group("ActsAbilityAmsTest") {
       "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
       "actsapplicationstartabilitytest:ActsApplicationStartAbilityEntry",
       "actsapplicationstartabilitytest:ActsApplicationStartAbilityTest",
-      "actsassistappatest:ActsAssistAppATest"
+      "actsassistappatest:ActsAssistAppATest",
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscommoncomponentcalltest:ActsCommonComponentCallTest",
-      "actsconnectservicetest:ActsConnectServiceTest",
       "actscreatemodulecontexttest:ActsCreateModuleContextErrorTest",
       "actsembeddeduiextensiontest:ActsEmbeddedUIExtensionMainTest",
-      "actsembeddeduiextensiontest:ActsEmbeddedUIExtensionTest"
+      "actsembeddeduiextensiontest:ActsEmbeddedUIExtensionTest",
       "actsstartappcloneapptest:ActsStartAppCloneAppTest",
       "actsstartchildprocesstest:ActsStartChildProcessTest",
       "actsterminateselfwithresulttest:ActsTerminateselfWithResultEntry",
