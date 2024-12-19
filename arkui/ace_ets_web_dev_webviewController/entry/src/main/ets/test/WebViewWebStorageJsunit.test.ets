@@ -14,14 +14,15 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
-import router from '@system.router';
+import Utils from './Utils';
+// import router from '@system.router';
+import router from '@ohos.router';
 let emitKey = 'emitGetOriginsCallbackLoadWebkit';
 export default function WebViewWebStorageJsunit() {
-  describe('actsAceWebViewWebStorageJsunit', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: "MainAbility/pages/webStorage"
+  describe('actsAceWebViewWebStorageJsunit',  () => {
+    beforeEach(async  (done: Function) => {
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/webStorage"
       }
       try {
         router.clear();
@@ -38,15 +39,15 @@ export default function WebViewWebStorageJsunit() {
       }
       await Utils.sleep(2000);
       done()
-    })
-    afterEach(async function (done) {
+    });
+    afterEach(async  (done: Function) =>{
       try {
-        let backData = {
+        let backData: events_emitter.EventData  = {
           data: {
             "ACTION": emitKey
           }
         }
-        let backEvent = {
+        let backEvent: events_emitter.InnerEvent = {
           eventId:10,
           priority:events_emitter.EventPriority.LOW
         }
@@ -64,7 +65,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins callback mode by checking the value 0f Origins[0].origin when load website which
     * address is 'https://webkit.org/demos/sticky-notes/index.html'
     */
-    it('testGetOriginsCallbackLoadWebkit01', 0, async function(done){
+    it('testGetOriginsCallbackLoadWebkit01', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsCallbackLoadWebkit02';
       let origin = 'https://webkit.org/';
       Utils.registerEvent("testGetOriginsCallbackLoadWebkit01", origin, 7136, done);
@@ -76,7 +77,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins callback mode by checking the value 0f  Origins[0].usage when load website which
     * address is 'https://webkit.org/demos/sticky-notes/index.html'
     */
-    it('testGetOriginsCallbackLoadWebkit02', 0, async function(done){
+    it('testGetOriginsCallbackLoadWebkit02', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsCallbackLoadWebkit03';
       let usage = 24576;
       Utils.registerEvent("testGetOriginsCallbackLoadWebkit02", usage, 7138, done);
@@ -88,10 +89,9 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins callback mode by the value 0f checking Origins[0].quote when load website which
     * address is 'https://webkit.org/demos/sticky-notes/index.html'
     */
-    it('testGetOriginsCallbackLoadWebkit03', 0, async function(done){
+    it('testGetOriginsCallbackLoadWebkit03', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsPromiseLoadWebkit01';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsCallbackLoadWebkit03", quota.toString(), 7140, done);
+      Utils.registerLargerEvent("testGetOriginsCallbackLoadWebkit03", 7140, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -100,7 +100,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins promise mode by checking the value 0f Origins[0].origin when load website which address
     * is 'https://webkit.org/demos/sticky-notes/index.html'
     */
-    it('testGetOriginsPromiseLoadWebkit01', 0, async function(done){
+    it('testGetOriginsPromiseLoadWebkit01', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsPromiseLoadWebkit02';
       let origin = 'https://webkit.org/';
       Utils.registerEvent("testGetOriginsPromiseLoadWebkit01", origin, 7142, done);
@@ -112,7 +112,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins promise mode by checking the value 0f  Origins[0].usage when load website which address
     * is 'https://webkit.org/demos/sticky-notes/index.html'
     */
-    it('testGetOriginsPromiseLoadWebkit02', 0, async function(done){
+    it('testGetOriginsPromiseLoadWebkit02', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsPromiseLoadWebkit03';
       let usage = 24576;
       Utils.registerEvent("testGetOriginsPromiseLoadWebkit02", usage, 7144, done);
@@ -124,10 +124,9 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins promise mode by the value 0f checking Origins[0].quote when load website which address
     * is 'https://webkit.org/demos/sticky-notes/index.html'
     */
-    it('testGetOriginsPromiseLoadWebkit03', 0, async function(done){
+    it('testGetOriginsPromiseLoadWebkit03', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsCallbackLoadBaidu01';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsPromiseLoadWebkit03", quota.toString(), 7146, done);
+      Utils.registerLargerEvent("testGetOriginsPromiseLoadWebkit03", 7146, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -136,7 +135,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins callback mode by checking the length of origins when load website which address
     * is 'https://www.baidu.com'
     */
-    it('testGetOriginsCallbackLoadBaidu01', 0, async function(done){
+    it('testGetOriginsCallbackLoadBaidu01', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsCallbackLoadBaidu02';
       let length  = 1;
       Utils.registerEvent("testGetOriginsCallbackLoadBaidu01", length, 7148, done);
@@ -148,7 +147,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins callback mode by checking the value 0f Origins[0].usage when load website which address
     * is 'https://www.baidu.com'
     */
-    it('testGetOriginsCallbackLoadBaidu02', 0, async function(done){
+    it('testGetOriginsCallbackLoadBaidu02', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsCallbackLoadBaidu03';
       let usage = 24576;
       Utils.registerEvent("testGetOriginsCallbackLoadBaidu02", usage, 7150, done);
@@ -160,10 +159,9 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins callback mode by checking the value 0f Origins[0].quota when load website which address
     * is 'https://www.baidu.com'
     */
-    it('testGetOriginsCallbackLoadBaidu03', 0, async function(done){
+    it('testGetOriginsCallbackLoadBaidu03', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsPromiseLoadBaidu01';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsCallbackLoadBaidu03", quota.toString(), 7152, done);
+      Utils.registerLargerEvent("testGetOriginsCallbackLoadBaidu03", 7152, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -172,7 +170,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins Promise mode by checking the length of origins when load website which address
     * is 'https://www.baidu.com'
     */
-    it('testGetOriginsPromiseLoadBaidu01', 0, async function(done){
+    it('testGetOriginsPromiseLoadBaidu01', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsPromiseLoadBaidu02';
       let length  = 1;
       Utils.registerEvent("testGetOriginsPromiseLoadBaidu01", length, 7154, done);
@@ -184,7 +182,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins Promise mode by checking the value 0f Origins[0].usage when load website which address
     * is 'https://www.baidu.com'
     */
-    it('testGetOriginsPromiseLoadBaidu02', 0, async function(done){
+    it('testGetOriginsPromiseLoadBaidu02', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsPromiseLoadBaidu03';
       let usage = 24576;
       Utils.registerEvent("testGetOriginsPromiseLoadBaidu02", usage, 7156, done);
@@ -196,10 +194,9 @@ export default function WebViewWebStorageJsunit() {
     *tc.desc test api getOrigins Promise mode by checking the value 0f Origins[0].quota when load website which address
     * is 'https://www.baidu.com'
     */
-    it('testGetOriginsPromiseLoadBaidu03', 0, async function(done){
+    it('testGetOriginsPromiseLoadBaidu03', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsCallbackLoadLocalHtml01';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsPromiseLoadBaidu03", quota.toString(), 7158, done);
+      Utils.registerLargerEvent("testGetOriginsPromiseLoadBaidu03", 7158, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -207,7 +204,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginsCallbackLoadLocalHtml01
     *tc.desc test api getOrigins callback mode by checking the length of origins when load local html
     */
-    it('testGetOriginsCallbackLoadLocalHtml01', 0, async function(done){
+    it('testGetOriginsCallbackLoadLocalHtml01', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsCallbackLoadLocalHtml02';
       let length = 1;
       Utils.registerEvent("testGetOriginsCallbackLoadLocalHtml01", length, 7160, done);
@@ -218,7 +215,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginsLoadCallbackLocalHtml02
     *tc.desc test api getOrigins callback mode by checking the value 0f Origins[0].usage when load local html
     */
-    it('testGetOriginsLoadCallbackLocalHtml02', 0, async function(done){
+    it('testGetOriginsLoadCallbackLocalHtml02', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsCallbackLoadLocalHtml03';
       let usage = 24576;
       Utils.registerEvent("testGetOriginsLoadCallbackLocalHtml02", usage, 7162, done);
@@ -229,10 +226,9 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginsCallbackLoadLocalHtml03
     *tc.desc test api getOrigins callback mode by checking the value 0f Origins[0].quota when load local html
     */
-    it('testGetOriginsCallbackLoadLocalHtml03', 0, async function(done){
+    it('testGetOriginsCallbackLoadLocalHtml03', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsPromiseLoadLocalHtml02';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsCallbackLoadLocalHtml03", quota.toString(), 7164, done);
+      Utils.registerLargerEvent("testGetOriginsCallbackLoadLocalHtml03", 7164, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -243,7 +239,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginsPromiseLoadLocalHtml02
     *tc.desc test api getOrigins callback mode by checking the value 0f Origins[0].usage when load local html
     */
-    it('testGetOriginsLoadPromiseLocalHtml02', 0, async function(done){
+    it('testGetOriginsLoadPromiseLocalHtml02', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsPromiseLoadLocalHtml03';
       let usage = 24576;
       Utils.registerEvent("testGetOriginsPromiseLoadLocalHtml02", usage, 7168, done);
@@ -254,10 +250,9 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginsPromiseLoadLocalHtml03
     *tc.desc test api getOrigins Promise mode by checking the value 0f Origins[0].quota when load local html
     */
-    it('testGetOriginsPromiseLoadLocalHtml03', 0, async function(done){
+    it('testGetOriginsPromiseLoadLocalHtml03', 0, async (done: Function) =>{
       emitKey = 'emitDeleteOrigin';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsPromiseLoadLocalHtml03", quota.toString(), 7170, done);
+      Utils.registerLargerEvent("testGetOriginsPromiseLoadLocalHtml03", 7170, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -265,7 +260,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testDeleteOrigin
     *tc.desc test api deleteOrigin by checking the value 0f getOriginUsage when delete 'resource://rawfile/'
     */
-    it('testDeleteOrigin', 0, async function(done){
+    it('testDeleteOrigin', 0, async (done: Function) =>{
       emitKey = 'emitDeleteAllData';
       let usage = 0;
       Utils.registerEvent("testDeleteOrigin", usage, 7172, done);
@@ -276,7 +271,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testDeleteAllData
     *tc.desc test api deleteAllData by checking the value 0f getOriginUsage when delete 'resource://rawfile/'
     */
-    it('testDeleteAllData', 0, async function(done){
+    it('testDeleteAllData', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginQuotaCallback';
       let usage = 0;
       Utils.registerEvent("testDeleteAllData", usage, 7174, done);
@@ -287,10 +282,9 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginQuotaCallback
     *tc.desc test api getOriginQuota callbcak mode by load loacal html
     */
-    it('testGetOriginQuotaCallback', 0, async function(done){
+    it('testGetOriginQuotaCallback', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginQuotaPromise';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginQuotaCallback", quota.toString(), 7176, done);
+      Utils.registerLargerEvent("testGetOriginQuotaCallback", 7176, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -298,10 +292,9 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginQuotaPromise
     *tc.desc test api getOriginQuota callbcak mode by load loacal html
     */
-    it('testGetOriginQuotaPromise', 0, async function(done){
+    it('testGetOriginQuotaPromise', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginUsageCallback';
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginQuotaPromise", quota.toString(), 7178, done);
+      Utils.registerLargerEvent("testGetOriginQuotaPromise", 7178, done);
       sendEventByKey('webStorage',10,'');
     })
     /*
@@ -309,7 +302,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginUsageCallback
     *tc.desc test api getOriginUsage callbcak mode by load loacal html
     */
-    it('testGetOriginUsageCallback', 0, async function(done){
+    it('testGetOriginUsageCallback', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginUsagePromise';
       let usage = 24576;
       Utils.registerEvent("testGetOriginUsageCallback", usage, 7180, done);
@@ -320,7 +313,7 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginUsagePromise
     *tc.desc test api getOriginUsage callbcak mode by load loacal html
     */
-    it('testGetOriginUsagePromise', 0, async function(done){
+    it('testGetOriginUsagePromise', 0, async (done: Function) =>{
       emitKey = 'emitGetOriginsDomStorageAccessFalse';
       let usage = 24576;
       Utils.registerEvent("testGetOriginUsagePromise", usage, 7182, done);
@@ -331,9 +324,8 @@ export default function WebViewWebStorageJsunit() {
     *tc.name testGetOriginsDomStorageAccessFalse
     *tc.desc test api blockNetWork set to false by load online website
     */
-    it('testGetOriginsDomStorageAccessFalse',0,async function(done){
-      let quota = 4054614016;
-      Utils.registerEvent("testGetOriginsDomStorageAccessFalse", quota.toString(), 7184, done);
+    it('testGetOriginsDomStorageAccessFalse',0,async (done: Function) =>{
+      Utils.registerLargerEvent("testGetOriginsDomStorageAccessFalse", 7184, done);
       sendEventByKey('webStorage', 10, '');
     })
   })
