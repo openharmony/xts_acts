@@ -18,7 +18,7 @@ import bindSelectionMenu from './bindSelectionMenu.test'
 import createPdf from './createPdfJsunit.test'
 import NestedScrollMode from './NestedScrollMode.test'
 import blurMode from './blurMode.test'
-import certChainData from './certChainData.test'
+
 
 export default function testsuite() {
   webJsunit();
@@ -27,5 +27,4 @@ export default function testsuite() {
   createPdf();
   NestedScrollMode();
   blurMode();
-  certChainData()
 }

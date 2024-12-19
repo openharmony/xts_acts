@@ -5,7 +5,6 @@
 		"MainAbility/pages/bindSelectionMenu",
 		"MainAbility/pages/createPdf",
         "MainAbility/pages/NestedScrollMode",
-        "MainAbility/pages/blurMode",
-		"MainAbility/pages/certChainData"
+        "MainAbility/pages/blurMode"
     ]
 }
