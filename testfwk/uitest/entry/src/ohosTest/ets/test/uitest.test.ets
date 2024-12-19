@@ -381,7 +381,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_07
         * @tc.name: test_penClick_function
-        * @tc.desc: penClick功能验证
+        * @tc.desc: penClick function test
         */
         it('test_penClick_function', 0, async () => {
             console.log(TestTag, 'test_penClick_function start');
@@ -415,7 +415,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_08
         * @tc.name: test_penClick_function_401
-        * @tc.desc: penClick参数401验证
+        * @tc.desc: penClick param 401 test
         */
         it('test_penClick_function_401', 0, async () =>{
             console.log(TestTag, 'test_penClick_function_401 start');
@@ -458,7 +458,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_09
         * @tc.name: test_penLongClick_function
-        * @tc.desc: penLongClick功能验证
+        * @tc.desc: penLongClick function test
         */
         it('test_penLongClick_function', 0, async () =>{
             console.log(TestTag, 'test_penLongClick_function start');
@@ -487,7 +487,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_010
         * @tc.name: test_penLongClick_function_401
-        * @tc.desc: penLongClick参数401验证
+        * @tc.desc: penLongClick param 401 test
         */
         it('test_penLongClick_function_401', 0, async () =>{
             console.log(TestTag, 'test_penLongClick_function_401 start');
@@ -530,7 +530,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_011
         * @tc.name: test_penDoubleClick_function
-        * @tc.desc: penDoubleClick功能验证
+        * @tc.desc: penDoubleClick function test
         */
         it('test_penDoubleClick_function', 0, async () => {
             console.log(TestTag, 'test_penDoubleClick_function start');
@@ -560,7 +560,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_012
         * @tc.name: test_penDoubleClick_function_401
-        * @tc.desc: penLongClick参数401验证
+        * @tc.desc: penLongClick param 401 test
         */
         it('test_penDoubleClick_function_401', 0, async () =>{
             console.log(TestTag, 'test_penDoubleClick_function_401 start');
@@ -603,7 +603,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_013
         * @tc.name: test_penSwipe_function
-        * @tc.desc: penSwipe功能验证
+        * @tc.desc: penSwipe function test
         */
         it('test_penSwipe_function', 0, async () =>{
             console.log(TestTag, 'test_penSwipe_function start');
@@ -647,7 +647,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_014
         * @tc.name: test_penSwipe_function_401
-        * @tc.desc: penSwipe参数401验证
+        * @tc.desc: penSwipe param 401  test
         */
         it('test_penSwipe_function_401', 0, async () =>{
             console.log(TestTag, 'test_penSwipe_function_401 start');
@@ -710,7 +710,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_015
         * @tc.name: test_injectPenPointAction_function
-        * @tc.desc: injectPenPointAction功能验证
+        * @tc.desc: injectPenPointAction function test
         */
         it('test_injectPenPointAction_function', 0, async () => {
             console.log(TestTag, `test_injectPenPointAction_function start`);
@@ -756,7 +756,7 @@ export default function UiTest() {
         /*
         * @tc.number: UiTest_API16_016
         * @tc.name: test_injectPenPointAction_function_401
-        * @tc.desc: injectPenPointAction参数401验证
+        * @tc.desc: injectPenPointAction param 401 test
         */
         it('test_injectPenPointAction_function_401', 0, async () =>{
             console.log(TestTag, 'test_injectPenPointAction_function_401 start');
