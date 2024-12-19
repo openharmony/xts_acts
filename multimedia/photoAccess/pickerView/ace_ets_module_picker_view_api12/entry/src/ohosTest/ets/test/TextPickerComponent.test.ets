@@ -1113,7 +1113,7 @@ export default function TextPicker() {
        * @tc.level     : Level0
        */
     it('testPicker23', 0, async (done: Function) => {
-      let srcFileUris: Array<string> = ['file://com.example.myapplication/data/storage/el2/base/haps/entry_test/files/test.jpg'];
+      let srcFileUris: Array<string> = ['file://com.example.myapplication/data/storage/el2/base/haps/entry_test/files/01.jpg'];
       let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
         {
           title: 'test',
