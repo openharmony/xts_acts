@@ -527,8 +527,11 @@ export default function PreferencesSyncTest() {
                 mPreferences = data_preferences.getPreferencesSync(context,NAME)
                 let pre2 = mPreferences.getSync(KEY_TEST_STRING_ELEMENT,'default')
                 expect('TEST').assertEqual(pre2)
+                done();
             } catch (e) {
+                console.info(TAG + "testPreferenceFlushSync0100" +e.code);
                 expect().assertFail();
+                done();
             }
         })
 
