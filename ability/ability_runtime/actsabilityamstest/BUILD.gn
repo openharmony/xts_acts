@@ -26,6 +26,7 @@ group("ActsAbilityAmsTest") {
       "actsapplicationstartabilityauxiliary_2:ActsApplicationStartAbilityAuxiliary_2",
       "actsapplicationstartabilitytest:ActsApplicationStartAbilityEntry",
       "actsapplicationstartabilitytest:ActsApplicationStartAbilityTest",
+      "actsassistappatest:ActsAssistAppATest"
       "actsbacktocallerabilitywithresulttest:ActsBackToCallerAbilityWithResultTest",
       "actscommoncomponentcalltest:ActsCommonComponentCallTest",
       "actsconnectservicetest:ActsConnectServiceTest",
