@@ -245,7 +245,7 @@ export default function UiTest() {
 
         /*
         * @tc.number: UiTest_API16_006
-        * @tc.name: test_touchPadMultiFingerSwipe_direction_verification_401
+        * @tc.name: test_touchPadMultiFingerSwipe_option_verification_Up
         * @tc.desc: option param test
         */
         it('test_touchPadMultiFingerSwipe_option_verification_Up', 0, async () => {
