@@ -37,7 +37,7 @@ workerPort.onmessage = (e: MessageEvents) => {
     }
     res = value == data.methodName;
   } catch (error) {
-    console.error("worker: error code is " + error.code + " error message is " + error.message);
+    console.error('worker: error code is ' + error.code + ' error message is ' + error.message);
     res = false;
   }
   workerPort.postMessage(res);

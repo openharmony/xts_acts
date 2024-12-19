@@ -76,8 +76,7 @@
         "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageAsyncLock.ets",
         "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageAson.ets",
         "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageSendableClass.ets",
-        "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageImplSendableClass.ets",
-        "./src/ohosTest/ets/workers/sharedSendable/WorkerGlobalCallObject.ets"
+        "./src/ohosTest/ets/workers/sharedSendable/WorkerPostMessageImplSendableClass.ets"
       ]
     }
   },

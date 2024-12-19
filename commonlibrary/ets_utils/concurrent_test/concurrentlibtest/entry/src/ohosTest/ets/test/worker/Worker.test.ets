@@ -412,7 +412,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_0700
      * @tc.name      : testPostMessage0007
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -447,7 +447,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_0800
      * @tc.name      : testPostMessage0008
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -482,7 +482,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_0900
      * @tc.name      : testPostMessage0009
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -517,7 +517,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1000
      * @tc.name      : testPostMessage0010
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -553,7 +553,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1100
      * @tc.name      : testPostMessage0011
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -588,7 +588,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1200
      * @tc.name      : testPostMessage0012
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -624,7 +624,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1300
      * @tc.name      : testPostMessage0013
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -660,7 +660,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1400
      * @tc.name      : testPostMessage0014
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -696,7 +696,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1500
      * @tc.name      : testPostMessage0015
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -732,7 +732,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1600
      * @tc.name      : testPostMessage0016
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -768,7 +768,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1700
      * @tc.name      : testPostMessage0017
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -805,7 +805,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1800
      * @tc.name      : testPostMessage0018
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -842,7 +842,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_1900
      * @tc.name      : testPostMessage0019
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -877,7 +877,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2000
      * @tc.name      : testPostMessage0020
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -912,7 +912,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2100
      * @tc.name      : testPostMessage0021
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -947,7 +947,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2200
      * @tc.name      : testPostMessage0022
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -983,7 +983,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2300
      * @tc.name      : testPostMessage0023
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1018,7 +1018,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2400
      * @tc.name      : testPostMessage0024
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1053,7 +1053,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2500
      * @tc.name      : testPostMessage0025
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1088,7 +1088,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2600
      * @tc.name      : testPostMessage0026
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1115,7 +1115,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2700
      * @tc.name      : testPostMessage0027
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1150,7 +1150,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2800
      * @tc.name      : testPostMessage0028
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1177,7 +1177,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_2900
      * @tc.name      : testPostMessage0029
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1212,7 +1212,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_3000
      * @tc.name      : testPostMessage0030
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1238,7 +1238,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_3100
      * @tc.name      : testPostMessage0031
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1273,7 +1273,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_3200
      * @tc.name      : testPostMessage0032
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1308,7 +1308,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_3300
      * @tc.name      : testPostMessage0033
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1342,7 +1342,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_3400
      * @tc.name      : testPostMessage0034
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1377,7 +1377,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_3500
      * @tc.name      : testPostMessage0035
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1414,7 +1414,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_3600
      * @tc.name      : testPostMessage0036
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1449,7 +1449,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_3700
      * @tc.name      : testPostMessage0037
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1484,7 +1484,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4000
      * @tc.name      : testPostMessage0040
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1521,7 +1521,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4100
      * @tc.name      : testPostMessage0041
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1556,7 +1556,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4200
      * @tc.name      : testPostMessage0042
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1590,7 +1590,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4300
      * @tc.name      : testPostMessage0043
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1625,7 +1625,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4400
      * @tc.name      : testPostMessage0044
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1660,7 +1660,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4600
      * @tc.name      : testPostMessage0046
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1694,7 +1694,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4700
      * @tc.name      : testPostMessage0047
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1728,7 +1728,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4800
      * @tc.name      : testPostMessage0048
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1763,7 +1763,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_4900
      * @tc.name      : testPostMessage0049
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1798,7 +1798,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_5000
      * @tc.name      : testPostMessage0050
-     * @tc.desc      :Test the function of the interface PostMessage.
+     * @tc.desc      : Test the function of the interface PostMessage.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1996,7 +1996,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_0700
      * @tc.name      : testPostMessageWithSharedSendable0007
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2031,7 +2031,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_0800
      * @tc.name      : testPostMessageWithSharedSendable0008
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2066,7 +2066,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_0900
      * @tc.name      : testPostMessageWithSharedSendable0009
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2101,7 +2101,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1000
      * @tc.name      : testPostMessageWithSharedSendable0010
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2138,7 +2138,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1100
      * @tc.name      : testPostMessageWithSharedSendable0011
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2175,7 +2175,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1200
      * @tc.name      : testPostMessageWithSharedSendable0012
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2212,7 +2212,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1300
      * @tc.name      : testPostMessageWithSharedSendable0013
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2249,7 +2249,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1400
      * @tc.name      : testPostMessageWithSharedSendable0014
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2286,7 +2286,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1500
      * @tc.name      : testPostMessageWithSharedSendable0015
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2323,7 +2323,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1600
      * @tc.name      : testPostMessageWithSharedSendable0016
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2360,7 +2360,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1700
      * @tc.name      : testPostMessageWithSharedSendable0017
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2398,7 +2398,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1800
      * @tc.name      : testPostMessageWithSharedSendable0018
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2436,7 +2436,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_1900
      * @tc.name      : testPostMessageWithSharedSendable0019
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2472,7 +2472,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2000
      * @tc.name      : testPostMessageWithSharedSendable0020
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2508,7 +2508,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2100
      * @tc.name      : testPostMessageWithSharedSendable0021
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2544,7 +2544,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2200
      * @tc.name      : testPostMessageWithSharedSendable0022
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2581,7 +2581,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2300
      * @tc.name      : testPostMessageWithSharedSendable0023
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2617,7 +2617,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2400
      * @tc.name      : testPostMessageWithSharedSendable0024
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2653,7 +2653,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2500
      * @tc.name      : testPostMessageWithSharedSendable0025
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2689,7 +2689,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2600
      * @tc.name      : testPostMessageWithSharedSendable0026
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2716,7 +2716,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2700
      * @tc.name      : testPostMessageWithSharedSendable0027
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2752,7 +2752,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2800
      * @tc.name      : testPostMessageWithSharedSendable0028
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2779,7 +2779,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_2900
      * @tc.name      : testPostMessageWithSharedSendable0029
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2814,7 +2814,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3000
      * @tc.name      : testPostMessageWithSharedSendable0030
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2840,7 +2840,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3100
      * @tc.name      : testPostMessageWithSharedSendable0031
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2877,7 +2877,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3200
      * @tc.name      : testPostMessageWithSharedSendable0032
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2914,7 +2914,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3300
      * @tc.name      : testPostMessageWithSharedSendable0033
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2949,7 +2949,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3400
      * @tc.name      : testPostMessageWithSharedSendable0034
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -2985,7 +2985,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3500
      * @tc.name      : testPostMessageWithSharedSendable0035
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3022,7 +3022,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3600
      * @tc.name      : testPostMessageWithSharedSendable0036
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3059,7 +3059,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3700
      * @tc.name      : testPostMessageWithSharedSendable0037
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3096,7 +3096,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3800
      * @tc.name      : testPostMessageWithSharedSendable0038
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3133,7 +3133,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_3900
      * @tc.name      : testPostMessageWithSharedSendable0039
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3169,7 +3169,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4000
      * @tc.name      : testPostMessageWithSharedSendable0040
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3206,7 +3206,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4100
      * @tc.name      : testPostMessageWithSharedSendable0041
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3241,7 +3241,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4200
      * @tc.name      : testPostMessageWithSharedSendable0042
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3275,7 +3275,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4300
      * @tc.name      : testPostMessageWithSharedSendable0043
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3310,7 +3310,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4400
      * @tc.name      : testPostMessageWithSharedSendable0044
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3346,7 +3346,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4600
      * @tc.name      : testPostMessageWithSharedSendable0046
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3380,7 +3380,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4700
      * @tc.name      : testPostMessageWithSharedSendable0047
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3414,7 +3414,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4800
      * @tc.name      : testPostMessageWithSharedSendable0048
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3450,7 +3450,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_4900
      * @tc.name      : testPostMessageWithSharedSendable0049
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -3486,7 +3486,7 @@ export default function workerTest() {
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_5000
      * @tc.name      : testPostMessageWithSharedSendable0050
-     * @tc.desc      :Test the function of the interface PostMessageWithSharedSendable.
+     * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
