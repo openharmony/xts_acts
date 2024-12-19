@@ -138,8 +138,8 @@
     "MainAbility/pages/animation/TestAnimatorRegisterOnFrame",
     "MainAbility/pages/animation/TestAnimatorRegisterOnFinish",
     "MainAbility/pages/animation/TestAnimatorRegisterOnCancel",
-    "MainAbility/pages/animation/TestAnimatorRegisterOnRepeat"
-    
+    "MainAbility/pages/animation/TestAnimatorRegisterOnRepeat",
+    "MainAbility/pages/gesture/AxisGestureTest"
 
   ]
 }
