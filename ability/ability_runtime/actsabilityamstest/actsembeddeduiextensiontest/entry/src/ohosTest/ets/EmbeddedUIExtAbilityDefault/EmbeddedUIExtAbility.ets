@@ -6,7 +6,7 @@ function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time))
 }
 
-const TAG: string = '[ExampleEmbeddedAbility]'
+const TAG: string = '[ExampleEmbeddedAbilityDefault]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {

@@ -6,7 +6,6 @@ import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 struct HostInstance {
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility HostInstance aboutToAppear');
-
   }
 
   @State message: string = 'ni'
@@ -15,7 +14,7 @@ struct HostInstance {
     abilityName: 'EmbeddedUIExtAbilityBundle',
     moduleName: 'entry_test',
     parameters: {
-      'ohos.extension.processMode.hostInstance': {}
+      'ohos.extension.processMode.hostInstance': 1
     }
   }
 

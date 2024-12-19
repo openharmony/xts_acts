@@ -3,7 +3,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 import { bundleManager } from '@kit.AbilityKit';
-const TAG: string = '[ExampleEmbeddedAbility]'
+const TAG: string = '[ExampleEmbeddedAbilityBundle]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {

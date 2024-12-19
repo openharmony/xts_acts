@@ -2,7 +2,7 @@ import { EmbeddedUIExtensionAbility, StartOptions, UIExtensionContentSession, Wa
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
-const TAG: string = '[ExampleEmbeddedAbility]'
+const TAG: string = '[ExampleEmbeddedAbility0700]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {
@@ -21,7 +21,7 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
       }
     }
     commonEventManager.publish('EmbeddedAbility_same_Type', commonEventPublishData, async (error) => {
-      hilog.info(0x0000, 'testTag1', '%{public}s', `Type publish: ${JSON.stringify(error)}`);
+      hilog.info(0x0000, TAG, '%{public}s', `Type publish: ${JSON.stringify(error)}`);
     })
   }
 
@@ -44,10 +44,10 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
     }
     session.startAbility(want1, (err: BusinessError) => {
       if (err) {
-        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
+        console.error(`${TAG}Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
         return;
       }
-      console.info(`Successed in startAbility`);
+      console.info(`${TAG}Successed in startAbility`);
     })
   }
 

@@ -29,7 +29,7 @@ struct Extension {
             }
           }
           commonEventManager.publish('EmbeddedUIExtension_Pull', commonEventPublishData, async (error) => {
-            hilog.info(0x0000, 'testTag1', '%{public}s', `pulling_up_fail: ${JSON.stringify(error)}`);
+            hilog.info(0x0000, LOG_TAG, '%{public}s', `pulling_up_fail: ${JSON.stringify(error)}`);
           })
           hilog.info(0x0000, LOG_TAG, 'embeddedUIExt onError: %{public}s', JSON.stringify(error));
         })

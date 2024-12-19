@@ -2,7 +2,7 @@ import { EmbeddedUIExtensionAbility, StartOptions, UIExtensionContentSession, Wa
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[ExampleEmbeddedAbility]'
+const TAG: string = '[ExampleEmbeddedAbility0900]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {

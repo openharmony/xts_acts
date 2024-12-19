@@ -2,7 +2,7 @@ import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@ki
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[ExampleEmbeddedAbility]'
+const TAG: string = '[ExampleEmbeddedAbility1300]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {

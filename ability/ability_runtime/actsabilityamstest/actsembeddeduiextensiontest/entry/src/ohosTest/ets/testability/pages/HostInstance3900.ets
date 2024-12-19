@@ -5,7 +5,7 @@ import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 @Component
 struct HostInstance {
   aboutToAppear() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility HostInstance aboutToAppear');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility HostInstance4 aboutToAppear');
 
   }
 
@@ -15,8 +15,7 @@ struct HostInstance {
     abilityName: 'EmbeddedUIExtAbilityBundle',
     moduleName: 'entry_test',
     parameters: {
-      'ohos.extension.processMode.hostInstance': 'true'
-
+      'ohos.extension.processMode.hostInstance': {}
     }
   }
 

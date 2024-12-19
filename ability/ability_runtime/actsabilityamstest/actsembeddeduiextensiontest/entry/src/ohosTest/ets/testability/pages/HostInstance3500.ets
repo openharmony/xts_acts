@@ -1,11 +1,11 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct HostInstance {
   aboutToAppear() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility HostInstance aboutToAppear');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility HostInstance3 aboutToAppear');
 
   }
 
@@ -15,7 +15,7 @@ struct HostInstance {
     abilityName: 'EmbeddedUIExtAbilityBundle',
     moduleName: 'entry_test',
     parameters: {
-      'ohos.extension.processMode.hostInstance': false
+      'ohos.extension.processMode.hostInstance': true
     }
   }
 

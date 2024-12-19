@@ -2,7 +2,7 @@ import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@ki
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
-const TAG: string = '[ExampleEmbeddedAbility]'
+const TAG: string = '[ExampleEmbeddedAbilityType]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {

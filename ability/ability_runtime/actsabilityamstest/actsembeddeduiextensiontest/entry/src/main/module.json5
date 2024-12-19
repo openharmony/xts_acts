@@ -48,24 +48,6 @@
         ]
       },
       {
-        "name": "EntryAbilityB",
-        "srcEntry": "./ets/entryabilityb/EntryAbilityB.ets",
-        "description": "$string:EntryAbilityB_desc",
-        "icon": "$media:layered_image",
-        "label": "$string:EntryAbilityB_label",
-        "startWindowIcon": "$media:startIcon",
-        "startWindowBackground": "$color:start_window_background"
-      },
-      {
-        "name": "EntryAbilityC",
-        "srcEntry": "./ets/entryabilityc/EntryAbilityC.ets",
-        "description": "$string:EntryAbilityC_desc",
-        "icon": "$media:layered_image",
-        "label": "$string:EntryAbilityC_label",
-        "startWindowIcon": "$media:startIcon",
-        "startWindowBackground": "$color:start_window_background"
-      },
-      {
         "name": "EntryAbilityd",
         "srcEntry": "./ets/entryabilityd/EntryAbilityd.ets",
         "description": "$string:EntryAbilityd_desc",

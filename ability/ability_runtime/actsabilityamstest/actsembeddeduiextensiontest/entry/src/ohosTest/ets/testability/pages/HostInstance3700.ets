@@ -1,11 +1,11 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct HostInstance {
   aboutToAppear() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility HostInstance aboutToAppear');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility HostInstance5 aboutToAppear');
 
   }
 
@@ -15,7 +15,8 @@ struct HostInstance {
     abilityName: 'EmbeddedUIExtAbilityBundle',
     moduleName: 'entry_test',
     parameters: {
-      'ohos.extension.processMode.hostInstance': true
+      'ohos.extension.processMode.hostInstance':'true'
+
     }
   }
 
@@ -31,7 +32,7 @@ struct HostInstance {
           })
           .onError((error: BusinessError) => {
             this.message = 'Error: code = ' + error.code;
-            console.log('EmbeddedAbility4', JSON.stringify(error))
+            console.log('HostInstance5', JSON.stringify(error))
           })
         EmbeddedComponent(this.want1, EmbeddedType.EMBEDDED_UI_EXTENSION)
           .width('100%')
