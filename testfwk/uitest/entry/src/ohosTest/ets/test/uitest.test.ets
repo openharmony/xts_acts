@@ -17,12 +17,14 @@ import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import { BusinessError } from '@ohos.base';
-import display from '@ohos.display';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const bundleName : string = abilityDelegatorRegistry.getArguments().bundleName;
 const waitUiReadyMs : number = 1000;
+const TestTag = 'UiTest_API16';
+const DeviceErrorCode = 17000005;
+const ErrorCode = 401;
 
 async function startAbility(bundleName: string, abilityName: string) {
     await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
@@ -41,6 +43,913 @@ async function stopApplication(bundleName: string) {
 }
 
 export default function UiTest() {
+    describe('UiTest_API16', () => {
+        beforeEach(async () => {
+            await stopApplication('com.uitestScene.acts');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_001
+        * @tc.name: test_touchPadMultiFingerSwipe_Up_Down_3
+        * @tc.desc: Swipe UP or Down with three point.
+        */
+        it('test_touchPadMultiFingerSwipe_Up_Down_3', 0, async () => {
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_Up_Down_3 start');
+            let driver : Driver = Driver.create();
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.delayMs(waitUiReadyMs);
+                // 三指上划返回桌面。
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_Up_Down_3_Up, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                // 三指下划,应用返回前台
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).not().assertNull();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_Up_Down_3_Down, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            await stopApplication('com.uitestScene.acts');
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_Up_Down_3 end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_002
+        * @tc.name: test_touchPadMultiFingerSwipe_Up_Down_Stay_3
+        * @tc.desc: Swipe Up or Down with three point then  in more task statue
+        */
+        it('test_touchPadMultiFingerSwipe_Up_Down_Stay_3', 0, async () => {
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_Up_Down_Stay_3 start');
+            let driver : Driver = Driver.create();
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.delayMs(waitUiReadyMs);
+                // 三指上划停留, 进入多任务中心。
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {stay: true});
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_Up_Down_Stay_3_Up, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                // 三指下划,应用返回前台。
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).not().assertNull();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_Up_Down_Stay_3_Down, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            await stopApplication('com.uitestScene.acts');
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_Up_Down_Stay_3 end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_003
+        * @tc.name: test_touchPadMultiFingerSwipe_other
+        * @tc.desc: Swipe Left, Swipe with four point
+        */
+        it('test_touchPadMultiFingerSwipe_other', 0, async () => {
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_other start');
+            let driver : Driver = Driver.create();
+            try {
+                // 3指左划
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.LEFT);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_other_left`);
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_other_left, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            }
+            try {
+                // 4指上划
+                await driver.touchPadMultiFingerSwipe(4, UiDirection.UP);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_other_4`);
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_other_4, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            }
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_other end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_004
+        * @tc.name: test_touchPadMultiFingerSwipe_fingers_verification_401
+        * @tc.desc: finger params 401 test
+        */
+        it('test_touchPadMultiFingerSwipe_fingers_verification_401', 0, async () => {
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_fingers_verification_401 start');
+            let driver : Driver = Driver.create();
+            try {
+                await driver.touchPadMultiFingerSwipe(null, UiDirection.UP);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_fingers_verification_401_null`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_fingers_verification_401_null, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await driver.touchPadMultiFingerSwipe(undefined, UiDirection.UP);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_fingers_verification_401_undefined`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_fingers_verification_401_undefined, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await driver.touchPadMultiFingerSwipe(2, UiDirection.UP);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_fingers_verification_401_2`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_fingers_verification_401_2, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await driver.touchPadMultiFingerSwipe(5, UiDirection.UP);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_fingers_verification_401_5`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_fingers_verification_401_5, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_fingers_verification_401 end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_005
+        * @tc.name: test_touchPadMultiFingerSwipe_direction_verification_401
+        * @tc.desc: direction参数 401验证
+        */
+        it('test_touchPadMultiFingerSwipe_direction_verification_401', 0, async () => {
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_direction_verification_401 start');
+            let driver : Driver = Driver.create();
+            try {
+                await driver.touchPadMultiFingerSwipe(3, null);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_direction_verification_401_null`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_direction_verification_401_null, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await driver.touchPadMultiFingerSwipe(3, undefined);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_direction_verification_401_undefined`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_direction_verification_401_undefined, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await driver.touchPadMultiFingerSwipe(3, -1);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_direction_verification_401_1`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_direction_verification_401_1, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await driver.touchPadMultiFingerSwipe(3, 4);
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_direction_verification_401_4`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_direction_verification_401_4, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_direction_verification_401 start');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_006
+        * @tc.name: test_touchPadMultiFingerSwipe_direction_verification_401
+        * @tc.desc: option参数返回桌面验证
+        */
+        it('test_touchPadMultiFingerSwipe_option_verification_Up', 0, async () => {
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_option_verification_Up start');
+            let driver : Driver = Driver.create();
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.delayMs(waitUiReadyMs);
+                // 三指上划返回桌面
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, null);
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_option_verification_Up_null, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.delayMs(waitUiReadyMs);
+                // 三指上划返回桌面
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, undefined);
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+                await stopApplication('com.uitestScene.acts');
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_option_verification_Up_undefined, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.delayMs(waitUiReadyMs);
+                // 三指上划返回桌面
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {});
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+                await stopApplication('com.uitestScene.acts');
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_option_verification_Up_obj, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.delayMs(waitUiReadyMs);
+                // 三指上划返回桌面
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {stay: false});
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+                await stopApplication('com.uitestScene.acts');
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_option_verification_Up_false, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.delayMs(waitUiReadyMs);
+                // 三指上划返回桌面
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {stay: undefined});
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_option_verification_Up_stay_undefined, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {stay: null});
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_option_verification_Up_stay_null, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {speed: null});
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_option_verification_Up_speed_null, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            }
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+                await driver.delayMs(waitUiReadyMs);
+                // 三指上划返回桌面
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {speed: 200});
+                await driver.delayMs(waitUiReadyMs);
+                let mainPageCom = await driver.findComponent(ON.text('MainPage'));
+                await driver.delayMs(waitUiReadyMs);
+                expect(mainPageCom).assertNull();
+                await stopApplication('com.uitestScene.acts');
+            } catch (error) {
+                console.log(TestTag, `test_touchPadMultiFingerSwipe_option_verification_Up_speed_200, error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            await driver.delayMs(waitUiReadyMs);
+            console.log(TestTag, 'test_touchPadMultiFingerSwipe_option_verification_Up end');
+        })
+
+
+        /*
+        * @tc.number: UiTest_API16_07
+        * @tc.name: test_penClick_function
+        * @tc.desc: penClick功能验证
+        */
+        it('test_penClick_function', 0, async () => {
+            console.log(TestTag, 'test_penClick_function start');
+            let driver : Driver = Driver.create();
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(waitUiReadyMs);
+            let btnCom = await driver.findComponent(ON.text('next page'));
+            expect(btnCom).not().assertNull();
+            await driver.delayMs(waitUiReadyMs);
+            let btnPoint = await btnCom.getBoundsCenter();
+            try {
+                await driver.penClick(btnPoint);
+                await driver.delayMs(waitUiReadyMs);
+                let strCom = await driver.findComponent(ON.text('back to index'));
+                await driver.delayMs(waitUiReadyMs);
+                let strText = await strCom.getText();
+                expect(strText).assertEqual('back to index');
+                await driver.delayMs(waitUiReadyMs);
+                await strCom.click();
+                await driver.delayMs(waitUiReadyMs);
+            } catch (error) {
+                console.log(TestTag, `test_penClick_function error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+
+                await stopApplication('com.uitestScene.acts');
+            }
+            console.log(TestTag, 'test_penClick_function end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_08
+        * @tc.name: test_penClick_function_401
+        * @tc.desc: penClick参数401验证
+        */
+        it('test_penClick_function_401', 0, async () =>{
+            console.log(TestTag, 'test_penClick_function_401 start');
+            let driver : Driver = Driver.create();
+            try {
+                await driver.penClick(null);
+                console.log(TestTag, `test_penClick_function_401_null`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penClick_function_401_null error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penClick(undefined);
+                console.log(TestTag, `test_penClick_function_401_undefined`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penClick_function_401_undefined error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penClick({x: -1, y: 100});
+                console.log(TestTag, `test_penClick_function_401_x`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penClick_function_401_x error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penClick({x: 100, y: -1});
+                console.log(TestTag, `test_penClick_function_401_y`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penClick_function_401_y error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            console.log(TestTag, 'test_penClick_function_401 end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_09
+        * @tc.name: test_penLongClick_function
+        * @tc.desc: penLongClick功能验证
+        */
+        it('test_penLongClick_function', 0, async () =>{
+            console.log(TestTag, 'test_penLongClick_function start');
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.text('next page'))
+            let btnPoint = await button.getBoundsCenter();
+            try {
+                await driver.penLongClick(btnPoint);
+                await driver.delayMs(waitUiReadyMs)
+                let newButton = await driver.findComponent(ON.text('longClick'))
+                let text = await newButton.getText()
+                expect(text == 'longClick').assertTrue()
+                await newButton.click()
+                await driver.delayMs(waitUiReadyMs);
+            } catch (error) {
+                console.log(TestTag, `test_penLongClick_function error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            console.log(TestTag, 'test_penLongClick_function end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_010
+        * @tc.name: test_penLongClick_function_401
+        * @tc.desc: penLongClick参数401验证
+        */
+        it('test_penLongClick_function_401', 0, async () =>{
+            console.log(TestTag, 'test_penLongClick_function_401 start');
+            let driver : Driver = Driver.create();
+            try {
+                await driver.penLongClick(null);
+                console.log(TestTag, `test_penLongClick_function_401_null`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penLongClick_function_401_null error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penLongClick(undefined);
+                console.log(TestTag, `test_penLongClick_function_401_undefined`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penLongClick_function_401_undefined is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penLongClick({x: -1, y: 100});
+                console.log(TestTag, `test_penLongClick_function_401_x`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penLongClick_function_401_x is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penLongClick({x: 100, y: -1});
+                console.log(TestTag, `test_penLongClick_function_401_y`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penLongClick_function_401_y is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            console.log(TestTag, 'test_penLongClick_function_401 end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_011
+        * @tc.name: test_penDoubleClick_function
+        * @tc.desc: penDoubleClick功能验证
+        */
+        it('test_penDoubleClick_function', 0, async () => {
+            console.log(TestTag, 'test_penDoubleClick_function start');
+            let driver : Driver = Driver.create();
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+            await driver.delayMs(waitUiReadyMs);
+            let btnCom = await driver.findComponent(ON.text('Click twice'))
+            expect(btnCom).not().assertNull();
+            await driver.delayMs(waitUiReadyMs);
+            let btnPoint = await btnCom.getBoundsCenter();
+            try {
+                await driver.penDoubleClick(btnPoint);
+                let newButton = await driver.findComponent(ON.text('doubleClick'))
+                let text = await newButton.getText()
+                expect(text == 'doubleClick').assertTrue()
+                await newButton.click()
+                await driver.delayMs(waitUiReadyMs);
+            } catch (error) {
+                console.log(TestTag, `test_penDoubleClick_function error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            console.log(TestTag, 'test_penDoubleClick_function end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_012
+        * @tc.name: test_penDoubleClick_function_401
+        * @tc.desc: penLongClick参数401验证
+        */
+        it('test_penDoubleClick_function_401', 0, async () =>{
+            console.log(TestTag, 'test_penDoubleClick_function_401 start');
+            let driver : Driver = Driver.create();
+            try {
+                await driver.penDoubleClick(null);
+                console.log(TestTag, `test_penDoubleClick_function_401`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penDoubleClick_function_401_null error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penDoubleClick(undefined);
+                console.log(TestTag, `test_penDoubleClick_function_401_undefined`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penDoubleClick_function_401_undefined is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penDoubleClick({x: -1, y: 100});
+                console.log(TestTag, `test_penDoubleClick_function_401_x`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penDoubleClick_function_401_x is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penDoubleClick({x: 100, y: -1});
+                console.log(TestTag, `test_penDoubleClick_function_401_y`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penDoubleClick_function_401_y is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            console.log(TestTag, 'test_penDoubleClick_function_401 end ');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_013
+        * @tc.name: test_penSwipe_function
+        * @tc.desc: penSwipe功能验证
+        */
+        it('test_penSwipe_function', 0, async () =>{
+            console.log(TestTag, 'test_penSwipe_function start');
+            let driver : Driver = Driver.create();
+            await driver.delayMs(waitUiReadyMs);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(waitUiReadyMs);
+            try {
+                // 垂直滑动400
+                await driver.delayMs(waitUiReadyMs)
+                await driver.penSwipe({x: 500, y: 1100},
+                    {x: 500, y: 300 },600, 0.5);
+                await driver.delayMs(waitUiReadyMs);
+                let text = await driver.findComponent(ON.text('next page'));
+                expect(text == null).assertTrue();
+                await driver.delayMs(waitUiReadyMs);
+                let pressureCom = await driver.findComponent(ON.id('pressure'));
+                await driver.delayMs(waitUiReadyMs);
+                let pressure = await pressureCom.getText();
+                await driver.delayMs(waitUiReadyMs);
+                expect(pressure).assertEqual('0.5');
+                await driver.delayMs(waitUiReadyMs);
+                let scrollBar = await driver.findComponent(ON.type('Scroll'));
+                await driver.delayMs(waitUiReadyMs);
+                await scrollBar.scrollToTop();
+                await driver.delayMs(waitUiReadyMs);
+            } catch (error) {
+                console.log(TestTag, `test_penSwipe_function error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts');
+            }
+            console.log(TestTag, 'test_penSwipe_function end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_014
+        * @tc.name: test_penSwipe_function_401
+        * @tc.desc: penSwipe参数401验证
+        */
+        it('test_penSwipe_function_401', 0, async () =>{
+            console.log(TestTag, 'test_penSwipe_function_401 start');
+            let driver : Driver = Driver.create();
+            try {
+                await driver.penSwipe(null, {x: 100, y: 100});
+                console.log(TestTag, `test_penSwipe_function_401_startPoint_null`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penSwipe_function_401_startPoint_null is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            try {
+                await driver.penSwipe({x: 100, y: 100}, null);
+                console.log(TestTag, `test_penSwipe_function_401_endPoint_null`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penSwipe_function_401_endPoint_null is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                await driver.penSwipe({x: -1, y: 100}, {x: 100, y: 500});
+                console.log(TestTag, `test_penSwipe_function_401_startPoint_x`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penSwipe_function_401_endPointPoint_x is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                await driver.penSwipe({x: 100, y: -1}, {x: 100, y: 500});
+                console.log(TestTag, `test_penSwipe_function_401_startPoint_y`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penSwipe_function_401_startPoint_y is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, -0.1);
+                console.log(TestTag, `test_penSwipe_function_401_pressure_l`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penSwipe_function_401_pressure_l is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 1.1);
+                console.log(TestTag, `test_penSwipe_function_401_pressure_r`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_penSwipe_function_401_pressure_r is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+            console.log(TestTag, 'test_penSwipe_function_401 end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_015
+        * @tc.name: test_injectPenPointAction_function
+        * @tc.desc: injectPenPointAction功能验证
+        */
+        it('test_injectPenPointAction_function', 0, async () => {
+            console.log(TestTag, `test_injectPenPointAction_function start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let pointer = PointerMatrix.create(1,8);
+            for (let step = 0; step < 8; step++) {
+                pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+            }
+            try {
+                await driver.injectPenPointerAction(pointer, 600, 0.5);
+                await driver.delayMs(waitUiReadyMs * 2);
+                let text = await driver.findComponent(ON.text('next page'));
+                expect(text == null).assertTrue();
+                await driver.delayMs(waitUiReadyMs);
+                let pressureCom = await driver.findComponent(ON.id('pressure'));
+                await driver.delayMs(waitUiReadyMs);
+                let pressure = await pressureCom.getText();
+                await driver.delayMs(waitUiReadyMs);
+                expect(pressure).assertEqual('0.5');
+                await driver.delayMs(waitUiReadyMs);
+                let scrollBar = await driver.findComponent(ON.type('Scroll'));
+                await driver.delayMs(waitUiReadyMs);
+                await scrollBar.scrollToTop();
+                await driver.delayMs(waitUiReadyMs);
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(DeviceErrorCode);
+            } finally {
+                await stopApplication('com.uitestScene.acts')
+            }
+            console.log(TestTag, `test_injectPenPointAction_function end`);
+        })
+
+        /*
+        * @tc.number: UiTest_API16_016
+        * @tc.name: test_injectPenPointAction_function_401
+        * @tc.desc: injectPenPointAction参数401验证
+        */
+        it('test_injectPenPointAction_function_401', 0, async () =>{
+            console.log(TestTag, 'test_injectPenPointAction_function_401 start');
+            let driver = Driver.create()
+            try {
+                await driver.injectPenPointerAction(null);
+                console.log(TestTag, `test_injectPenPointAction_function_401_null`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function_401_null error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                await driver.injectPenPointerAction(undefined);
+                console.log(TestTag, `test_injectPenPointAction_function_401_undefined`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function_401_undefined error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                let points = PointerMatrix.create(0, 2);
+                await driver.injectPenPointerAction(points);
+                console.log(TestTag, `test_injectPenPointAction_function_401_fingers_0`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function_401_fingers_0 error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                let points = PointerMatrix.create(2, 2);
+                await driver.injectPenPointerAction(points);
+                console.log(TestTag, `test_injectPenPointAction_function_401_fingers_2`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function_401_fingers_2 error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                let points = PointerMatrix.create(1, 0);
+                await driver.injectPenPointerAction(points);
+                console.log(TestTag, `test_injectPenPointAction_function_401_step_0`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function_401_step_0 error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                let points = PointerMatrix.create(1, 1001);
+                await driver.injectPenPointerAction(points);
+                console.log(TestTag, `test_injectPenPointAction_function_401_step_1001`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function_401_step_1001 error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                let points = PointerMatrix.create(1, 2);
+                points.setPoint(0, 1, {x:100, y:100});
+                points.setPoint(0, 2, {x:100, y:150})
+                await driver.injectPenPointerAction(points, 600, -0.1);
+                console.log(TestTag, `test_injectPenPointAction_function_401_pressure_l`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function_401_pressure_l error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+            try {
+                let points = PointerMatrix.create(1, 2);
+                points.setPoint(0, 1, {x:100, y:100});
+                points.setPoint(0, 2, {x:100, y:150})
+                await driver.injectPenPointerAction(points, 600, 1.1);
+                console.log(TestTag, `test_injectPenPointAction_function_401_pressure_r`);
+                expect().assertFail();
+            } catch (error) {
+                console.log(TestTag, `test_injectPenPointAction_function_401_pressure_r error is, ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(ErrorCode);
+            }
+
+        })
+
+        /*
+        * @tc.number: UiTest_API16_017
+        * @tc.name: testScrollSearchVertical
+        * @tc.desc: scroll vertically on this UiComponent to find matched UiComponent.
+        */
+        it('testScrollSearchVertical', 0, async () => {
+            console.log(TestTag, 'testScrollSearchVertical start');
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.text('scroll'))
+            await driver.delayMs(waitUiReadyMs)
+            await button.click()
+            await driver.delayMs(waitUiReadyMs)
+            let scrollBar = await driver.findComponent(ON.id('verticalScroll'))
+            await driver.delayMs(waitUiReadyMs)
+            let text1 = await scrollBar.scrollSearch(ON.text('11'), true, 80);
+            await driver.delayMs(waitUiReadyMs)
+            expect(text1 == null).assertTrue()
+            await driver.delayMs(waitUiReadyMs)
+            let text2 = await scrollBar.scrollSearch(ON.text('2'), null, null);
+            let text2Msg = await text2.getText();
+            console.log(TestTag, `testScrollSearchVertical 2 is , ${ text2Msg }`);
+            await driver.delayMs(waitUiReadyMs)
+            expect(await text2.getText()).assertEqual('2')
+            await driver.delayMs(waitUiReadyMs)
+            let text3 = await scrollBar.scrollSearch(ON.text('8'), undefined, undefined);
+            await driver.delayMs(waitUiReadyMs);
+            let text3Msg = await text3.getText();
+            console.log(TestTag, `testScrollSearchVertical 2 is , ${ text3Msg }`);
+            expect(await text3.getText()).assertEqual('8')
+            await driver.delayMs(waitUiReadyMs)
+            await stopApplication('com.uitestScene.acts');
+            console.log(TestTag, 'testScrollSearchVertical end');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_018
+        * @tc.name: testScrollSearchHorizontal
+        * @tc.desc: scroll horizontally on this UiComponent to find matched UiComponent.
+        */
+        it('testScrollSearchHorizontal', 0, async () => {
+            console.log(TestTag, 'testScrollSearchHorizontal start');
+            let driver = Driver.create();
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+            await driver.delayMs(waitUiReadyMs);
+            let button = await driver.findComponent(ON.text('scroll'))
+            await driver.delayMs(waitUiReadyMs)
+            await button.click()
+            await driver.delayMs(waitUiReadyMs)
+            let scrollBar = await driver.findComponent(ON.id('horizontalScroll'))
+            await driver.delayMs(waitUiReadyMs)
+            let text1 = await scrollBar.scrollSearch(ON.text('8'), false);
+            await driver.delayMs(waitUiReadyMs);
+            expect(text1 == null).assertTrue()
+            await driver.delayMs(waitUiReadyMs)
+            let text2 = await scrollBar.scrollSearch(ON.text('11'), false, 200);
+            await driver.delayMs(waitUiReadyMs)
+            expect(text2 == null).assertTrue()
+            await driver.delayMs(waitUiReadyMs)
+            let text3 = await scrollBar.scrollSearch(ON.text('2'), false, 200);
+            await driver.delayMs(waitUiReadyMs);
+            expect(await text3.getText()).assertEqual('2')
+            await driver.delayMs(waitUiReadyMs)
+            let text4 = await scrollBar.scrollSearch(ON.text('8'), false, 200)
+            await driver.delayMs(waitUiReadyMs);
+            expect(await text4.getText()).assertEqual('8');
+            await driver.delayMs(waitUiReadyMs);
+            await stopApplication('com.uitestScene.acts');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_019
+        * @tc.name: testScrollSearchHorizontal_401
+        * @tc.desc: param 401 test.
+        */
+        it('testScrollSearchHorizontal_401', 0, async () => {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.text('scroll'))
+            await driver.delayMs(waitUiReadyMs)
+            await button.click()
+            await driver.delayMs(waitUiReadyMs)
+            let scrollBar = await driver.findComponent(ON.id('verticalScroll'))
+            try {
+                let text1 = await scrollBar.scrollSearch(null);
+                expect(false).assertTrue();
+            } catch (error) {
+                let err = error as BusinessError
+                expect(err.code).assertEqual(401);
+            }
+            try {
+                let text2 = await scrollBar.scrollSearch(undefined);
+                expect(false).assertTrue();
+            } catch (error) {
+                let err = error as BusinessError
+                expect(err.code).assertEqual(401);
+            }
+            try {
+                let text3 = await scrollBar.scrollSearch(ON.text('8'), true, -1);
+                expect(false).assertTrue();
+            } catch (error) {
+                let err = error as BusinessError
+                expect(err.code).assertEqual(401);
+            }
+            try {
+                let rect = await scrollBar.getBounds();
+                let text4 = await scrollBar.scrollSearch(ON.text('8'), true, (rect.bottom + rect.top) / 2);
+                expect(false).assertTrue();
+            } catch (error) {
+                let err = error as BusinessError
+                expect(err.code).assertEqual(401);
+            }
+            await driver.delayMs(waitUiReadyMs)
+            await stopApplication('com.uitestScene.acts')
+        })
+    })
     describe('UiTest_API11', () => {
         beforeEach(async () => {
             await stopApplication('com.uitestScene.acts')
@@ -197,7 +1106,6 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,active:true,title:''})
             await window.focus()
-			await driver.delayMs(waitUiReadyMs)
             let isActive = await window.isActive()
             expect(isActive == true).assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -783,14 +1691,8 @@ export default function UiTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
-            let displayClass = await display.getDefaultDisplay();
-            let screenWidth = displayClass.width
-            let screenHeight = displayClass.height
-            console.info('screenWidth:' + screenWidth + ', screenHeight:' +screenHeight)
-            await driver.swipe(Math.floor(screenWidth / 2), Math.floor(screenHeight / 2 + screenHeight / 4),
-              Math.floor(screenWidth / 2), Math.floor(screenHeight / 2 - screenHeight / 4))
-            await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(BY.text('toast'))
+            await driver.swipe(500, 1100, 500, 300)
+            let text = await driver.findComponent(BY.text('next page'))
             expect(text == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
@@ -1339,14 +2241,11 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let scoll = await driver.findComponent(ON.type('Scroll'))
-            let rect = await scoll.getBounds()
-            let center = await scoll.getBoundsCenter()
-            await driver.swipe(center.x, Math.floor(center.y + (rect.bottom - rect.top) / 4),
-              center.x, Math.floor(center.y - (rect.bottom - rect.top) / 4))
-            await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('toast'))
+            await driver.swipe(500,1100,500,300)
+            let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
+            let scrollBar = await driver.findComponent(ON.type('Scroll'))
+            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -1359,14 +2258,12 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let scoll = await driver.findComponent(ON.type('Scroll'))
-            let rect = await scoll.getBounds()
-            let center = await scoll.getBoundsCenter()
-            await driver.fling({x: center.x, y:Math.floor(center.y + (rect.bottom - rect.top) / 4)},
-              {x: center.x, y:Math.floor(center.y - (rect.bottom - rect.top) / 4)}, 20, 600)
+            await driver.fling({x:500, y:1100},{x:500, y:300}, 20, 600)
             await driver.delayMs(1000)
             let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
+            let scrollBar = await driver.findComponent(ON.type('Scroll'))
+            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -1397,7 +2294,7 @@ export default function UiTest() {
             let scrollBar = await driver.findComponent(ON.type('Scroll'))
             expect(scrollBar != null).assertTrue()
             await scrollBar.scrollToBottom()
-			await driver.delayMs(waitUiReadyMs)
+            await driver.delayMs(waitUiReadyMs)
             let button = await driver.findComponent(ON.text('bottom'))
             expect(await button.getText() == 'bottom').assertTrue()
             await scrollBar.scrollToTop()
@@ -1416,9 +2313,7 @@ export default function UiTest() {
             let scrollBar = await driver.findComponent(ON.type('Scroll'))
             expect(scrollBar !== null).assertTrue()
             await scrollBar.scrollToBottom()
-			await driver.delayMs(waitUiReadyMs)
             await scrollBar.scrollToTop()
-			await driver.delayMs(waitUiReadyMs)
             let button = await driver.findComponent(ON.text('next page'))
             expect(await button.getText() == 'next page').assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -1607,7 +2502,7 @@ export default function UiTest() {
                 expect(bounds2 != bounds1).assertTrue()
 
                 await window2.resize(400,400,ResizeDirection.RIGHT_UP)
-				await driver.delayMs(waitUiReadyMs)
+                await driver.delayMs(waitUiReadyMs)
                 let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 let bounds3= await window3.getBounds()
                 expect(bounds3 != bounds2).assertTrue()
@@ -1693,7 +2588,7 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,actived:true,title:''})
             await window.focus()
-			await driver.delayMs(waitUiReadyMs)
+            await driver.delayMs(waitUiReadyMs)
             let isFocused = await window.isFocused()
             let isActived = await window.isActived()
             expect(isFocused == true).assertTrue()
@@ -1862,7 +2757,7 @@ export default function UiTest() {
                 expect(rotation3 == DisplayRotation.ROTATION_270)
 
                 await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
-				await driver.delayMs(waitUiReadyMs)
+                await driver.delayMs(waitUiReadyMs)
             }
             await stopApplication('com.uitestScene.acts')
         })
