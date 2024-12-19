@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,20 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//foundation/multimedia/av_codec/config.gni")
+import("//foundation/multimedia/media_foundation/config.gni")
 import("//test/xts/tools/build/suite.gni")
 
-MEDIA_ROOT_DIR = "//foundation/multimedia/av_codec/"
-module_output_path = "acts/ActsEncoderTest"
-
-encoder_moduletest_native_include_dirs = [
-  "./include",
-  "$MEDIA_ROOT_DIR/../../graphic/graphic_2d/interfaces/inner_api",
-  "$MEDIA_ROOT_DIR/interfaces/kits/c",
-  "$MEDIA_ROOT_DIR/../../../third_party/openssl/ohos_lite/include",
+video_moduletest_native_include_dirs = [
+  "$histreamer_root_dir/video_processing_engine/interface/kits/c",
+  "$histreamer_root_dir/video_processing_engine/../../../graphic/graphic_2d/interfaces/inner_api",
+  "$histreamer_root_dir/video_processing_engine/../../../window/window_manager/interfaces/innerkits",
 ]
 
-encoder_moduletest_cflags = [
+video_moduletest_cflags = [
   "-std=c++17",
   "-fno-rtti",
   "-fno-exceptions",
@@ -47,43 +43,26 @@ encoder_moduletest_cflags = [
 ]
 
 ##################################################################################################################
-ohos_moduletest_suite("ActsEncoderTest") {
-  sanitize = av_codec_test_sanitize
-  module_out_path = module_output_path
-  include_dirs = encoder_moduletest_native_include_dirs
+ohos_moduletest_suite("ActsVpeVideoNativModuleTest") {
+  module_out_path = "acts/ActsVpeVideoNativModuleTest"
+  include_dirs = video_moduletest_native_include_dirs
   include_dirs += [ "./" ]
-  cflags = encoder_moduletest_cflags
+  cflags = video_moduletest_cflags
 
-  if (av_codec_support_codec) {
-    sources = [
-      "./src/api_test.cpp",
-      "./src/configure_test.cpp",
-      "./src/func_test.cpp",
-      "./src/getparam_test.cpp",
-      "./src/setparam_test.cpp",
-      "./src/state_test.cpp",
-      "./src/temporal_test.cpp",
-      "./src/videoenc_api11_sample.cpp",
-      "./src/videoenc_ndk_sample.cpp",
-    ]
-  }
+  sources = [ "./src/api_test.cpp" ]
 
   deps = [
-    "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_codecbase",
-    "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_venc",
+    "$histreamer_root_dir/video_processing_engine/framework:video_processing",
   ]
+
   external_deps = [
     "c_utils:utils",
     "graphic_2d:libgraphic_utils",
     "graphic_2d:librender_service_client",
     "graphic_surface:surface",
     "hilog:libhilog",
-    "ipc:ipc_core",
     "media_foundation:media_foundation",
     "media_foundation:native_media_core",
     "window_manager:libwm",
   ]
-
-  part_name = "av_codec"
-  subsystem_name = "multimedia"
 }

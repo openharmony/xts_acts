@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef VIDEOENC_NDK_SAMPLE_H
-#define VIDEOENC_NDK_SAMPLE_H
+#ifndef VIDEOENC_SAMPLE_H
+#define VIDEOENC_SAMPLE_H
 
 #include <iostream>
 #include <cstdio>
@@ -43,6 +43,7 @@ class VEncSignal {
 public:
     std::mutex inMutex_;
     std::mutex outMutex_;
+    std::mutex flushMutex_;
     std::condition_variable inCond_;
     std::condition_variable outCond_;
     std::queue<uint32_t> inIdxQueue_;
@@ -65,6 +66,7 @@ public:
     double DEFAULT_FRAME_RATE = 30.0;
     uint32_t DEFAULT_FUZZ_TIME = 30;
     uint32_t DEFAULT_BITRATE_MODE = CBR;
+    uint32_t DEFAULT_RANGE_FLAG = 0;
     OH_AVPixelFormat DEFAULT_PIX_FMT = AV_PIXEL_FORMAT_NV12;
     uint32_t DEFAULT_KEY_FRAME_INTERVAL = 1000;
     uint32_t repeat_time = 0;
@@ -143,6 +145,7 @@ public:
     bool TEMPORAL_DEFAULT = false;
 
     std::atomic<bool> isRunning_ { false };
+    std::atomic<bool> isFlushing_ { false };
 private:
     std::unique_ptr<std::ifstream> inFile_;
     std::unique_ptr<std::thread> inputLoop_;
@@ -161,4 +164,4 @@ private:
 } // namespace Media
 } // namespace OHOS
 
-#endif // VIDEODEC_NDK_SAMPLE_H
+#endif // VIDEODEC_SAMPLE_H

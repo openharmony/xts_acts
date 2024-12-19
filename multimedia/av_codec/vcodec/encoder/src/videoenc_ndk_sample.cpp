@@ -20,7 +20,7 @@
 #include "openssl/sha.h"
 #include "native_buffer_inner.h"
 #include "display_type.h"
-#include "videoenc_ndk_sample.h"
+#include "videoenc_sample.h"
 using namespace OHOS;
 using namespace OHOS::Media;
 using namespace std;
@@ -71,8 +71,11 @@ static void VencFormatChanged(OH_AVCodec *codec, OH_AVFormat *format, void *user
 
 static void VencInputDataReady(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)
 {
+    if (enc_sample->isFlushing_) {
+        return;
+    }
     if (enc_sample->inputCallbackFlush) {
-        OH_VideoEncoder_Flush(codec);
+        enc_sample->Flush();
         cout << "OH_VideoEncoder_Flush end" << endl;
         enc_sample->isRunning_.store(false);
         enc_sample->signal_->inCond_.notify_all();
@@ -97,8 +100,11 @@ static void VencInputDataReady(OH_AVCodec *codec, uint32_t index, OH_AVMemory *d
 static void VencOutputDataReady(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr,
                                 void *userData)
 {
+    if (enc_sample->isFlushing_) {
+        return;
+    }
     if (enc_sample->outputCallbackFlush) {
-        OH_VideoEncoder_Flush(codec);
+        enc_sample->Flush();
         cout << "OH_VideoEncoder_Flush end" << endl;
         enc_sample->isRunning_.store(false);
         enc_sample->signal_->inCond_.notify_all();
@@ -142,6 +148,7 @@ int32_t VEncNdkSample::ConfigureVideoEncoder()
     (void)OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, DEFAULT_FRAME_RATE);
     (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
     (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, DEFAULT_KEY_FRAME_INTERVAL);
+    (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 1);
     if (DEFAULT_BITRATE_MODE == CQ) {
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_QUALITY, DEFAULT_QUALITY);
     }
@@ -752,20 +759,24 @@ void VEncNdkSample::InputFunc()
             if (!isRunning_.load()) {
                 return true;
             }
-            return signal_->inIdxQueue_.size() > 0;
+            return signal_->inIdxQueue_.size() > 0 && !isFlushing_.load();
         });
         if (!isRunning_.load()) {
             break;
         }
         uint32_t index = signal_->inIdxQueue_.front();
         auto buffer = signal_->inBufferQueue_.front();
-
         lock.unlock();
+        unique_lock<mutex> flushlock(signal_->flushMutex_);
+        if (isFlushing_) {
+            continue;
+        }
         if (fuzzMode == false) {
             InputDataNormal(runningFlag, index, buffer);
         } else {
             InputDataFuzz(runningFlag, index);
         }
+        flushlock.unlock();
         if (sleepOnFPS) {
             usleep(FRAME_INTERVAL);
         }
@@ -817,7 +828,7 @@ void VEncNdkSample::OutputFunc()
             if (!isRunning_.load()) {
                 return true;
             }
-            return signal_->outIdxQueue_.size() > 0;
+            return signal_->outIdxQueue_.size() > 0 && !isFlushing_.load();
         });
         if (!isRunning_.load()) {
             break;
@@ -833,7 +844,6 @@ void VEncNdkSample::OutputFunc()
             break;
         }
         int size = attr.size;
-
         if (outFile == nullptr) {
             cout << "dump data fail" << endl;
         } else {
@@ -856,6 +866,8 @@ void VEncNdkSample::OutputFunc()
 
 int32_t VEncNdkSample::Flush()
 {
+    isFlushing_.store(true);
+    unique_lock<mutex> flushLock(signal_->flushMutex_);
     unique_lock<mutex> inLock(signal_->inMutex_);
     clearIntqueue(signal_->inIdxQueue_);
     signal_->inCond_.notify_all();
@@ -865,7 +877,10 @@ int32_t VEncNdkSample::Flush()
     clearBufferqueue(signal_->attrQueue_);
     signal_->outCond_.notify_all();
     outLock.unlock();
-    return OH_VideoEncoder_Flush(venc_);
+    int32_t ret = OH_VideoEncoder_Flush(venc_);
+    isFlushing_.store(false);
+    flushLock.unlock();
+    return ret;
 }
 
 int32_t VEncNdkSample::Reset()
