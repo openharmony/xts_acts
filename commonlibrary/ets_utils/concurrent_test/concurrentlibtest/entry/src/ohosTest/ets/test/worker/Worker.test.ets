@@ -300,14 +300,20 @@ export default function workerTest() {
         const workerInstance = new worker.ThreadWorker("../../workers/postMessage/WorkerPostMessage.ets");
         const message = 'message';
         const transfer = null;
-        workerInstance.postMessage(message, transfer);
-        workerInstance.onmessage = (e) => {
-          console.log(`${caseName} main result: ` + JSON.stringify(e));
+        try {
+          workerInstance.postMessage(message, transfer);
+          workerInstance.onmessage = (e) => {
+            console.log(`${caseName} main result: ` + JSON.stringify(e));
+          }
+          expect().assertFail();
+        } catch (error) {
+          console.error(`${caseName} catch error: ${error.message}`);
+          workerInstance.terminate();
+          expect(error.code).assertEqual(401);
         }
-        expect().assertFail();
       } catch (error) {
         console.error(`${caseName} catch error: ${error.message}`);
-        expect(error.code).assertEqual(401);
+        expect().assertFail();
       }
     });
 
@@ -325,14 +331,20 @@ export default function workerTest() {
         const workerInstance = new worker.ThreadWorker("../../workers/postMessage/WorkerPostMessage.ets");
         const message = 'message';
         const transfer = undefined;
-        workerInstance.postMessage(message, transfer);
-        workerInstance.onmessage = (e) => {
-          console.log(`${caseName} main result: ` + JSON.stringify(e));
+        try {
+          workerInstance.postMessage(message, transfer);
+          workerInstance.onmessage = (e) => {
+            console.log(`${caseName} main result: ` + JSON.stringify(e));
+          }
+          expect().assertFail();
+        } catch (error) {
+          console.error(`${caseName} catch error: ${error.message}`);
+          workerInstance.terminate();
+          expect(error.code).assertEqual(401);
         }
-        expect().assertFail();
       } catch (error) {
-        console.error(`${caseName} catch error: ${error}`);
-        expect(error.code).assertEqual(401);
+        console.error(`${caseName} catch error: ${error.message}`);
+        expect().assertFail();
       }
     });
 
@@ -1884,14 +1896,20 @@ export default function workerTest() {
         const workerInstance = new worker.ThreadWorker("../../workers/sharedSendable/WorkerPostMessage.ets");
         const message = 'message';
         const transfer = null;
-        workerInstance.postMessageWithSharedSendable(message, transfer);
-        workerInstance.onmessage = (e) => {
-          console.log(`${caseName} main result: ` + JSON.stringify(e));
+        try {
+          workerInstance.postMessageWithSharedSendable(message, transfer);
+          workerInstance.onmessage = (e) => {
+            console.log(`${caseName} main result: ` + JSON.stringify(e));
+          }
+          expect().assertFail();
+        } catch (error) {
+          console.error(`${caseName} catch error: ${error.message}`);
+          workerInstance.terminate();
+          expect(error.code).assertEqual(401);
         }
-        expect().assertFail();
       } catch (error) {
         console.error(`${caseName} catch error: ${error.message}`);
-        expect(error.code).assertEqual(401);
+        expect().assertFail();
       }
     });
 
@@ -1909,14 +1927,20 @@ export default function workerTest() {
         const workerInstance = new worker.ThreadWorker("../../workers/sharedSendable/WorkerPostMessage.ets");
         const message = 'message';
         const transfer = undefined;
-        workerInstance.postMessageWithSharedSendable(message, transfer);
-        workerInstance.onmessage = (e) => {
-          console.log(`${caseName} main result: ` + JSON.stringify(e));
+        try {
+          workerInstance.postMessageWithSharedSendable(message, transfer);
+          workerInstance.onmessage = (e) => {
+            console.log(`${caseName} main result: ` + JSON.stringify(e));
+          }
+          expect().assertFail();
+        } catch (error) {
+          console.error(`${caseName} catch error: ${error.message}`);
+          workerInstance.terminate();
+          expect(error.code).assertEqual(401);
         }
-        expect().assertFail();
       } catch (error) {
-        console.error(`${caseName} catch error: ${error}`);
-        expect(error.code).assertEqual(401);
+        console.error(`${caseName} catch error: ${error.message}`);
+        expect().assertFail();
       }
     });
 
@@ -5801,9 +5825,13 @@ export default function workerTest() {
           expect(err.lineno ? true : false).assertTrue();
           expect(err.colno ? true : false).assertTrue();
           expect(err.error ? true : false).assertTrue();
-          state = true;
+          workerInstance.terminate();
         }
         workerInstance.postMessage('onerror');
+        workerInstance.onexit = (code) => {
+          console.log(`${caseName} main onexit code: ` + JSON.stringify(code));
+          state = true;
+        }
         while (!state) {
           await Sleep(100);
         }

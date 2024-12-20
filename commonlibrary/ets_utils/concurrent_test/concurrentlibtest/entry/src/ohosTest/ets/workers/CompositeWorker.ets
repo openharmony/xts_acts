@@ -29,6 +29,7 @@ workerPort.onmessage = async (e: MessageEvents) => {
         console.log(`testComposite0002 worker onmessage: ` + JSON.stringify(e));
         value = e.data as number;
         state = true;
+        mWorkerInstance.terminate();
       }
       mWorkerInstance.postMessage(2);
     } else {
