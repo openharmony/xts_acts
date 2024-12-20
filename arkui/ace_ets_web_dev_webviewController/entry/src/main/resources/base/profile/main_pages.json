@@ -45,6 +45,6 @@
         "MainAbility/pages/webViewGetAccessibleGeolocation",
         "MainAbility/pages/webViewOnAudioStateChanged",
         "MainAbility/pages/webViewMediaOption",
-        "testability/pages/scrollBar"
+        "MainAbility/pages/scrollBar"
     ]
 }
