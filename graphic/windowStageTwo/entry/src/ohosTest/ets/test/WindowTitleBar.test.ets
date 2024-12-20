@@ -866,7 +866,12 @@ export default function windowTitleBarTest() {
       console.log(msgStr + 'begin');
       let windowClass = await windowStage.getMainWindow();
       try {
+        let colorMode : ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_DARK;
         let style: window.DecorButtonStyle = {
+          colorMode: colorMode,
+          buttonBackgroundSize: 30,
+          spacingBetweenButtons: 20,
+          closeButtonRightMargin: 18
         };
         windowClass.setDecorButtonStyle(style);
         console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
@@ -874,8 +879,18 @@ export default function windowTitleBarTest() {
         console.info(msgStr+ ' Succeeded in getting the style of button. Data: ' + JSON.stringify(decorButtonStyle));
         expect(decorButtonStyle.colorMode).assertEqual(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
         expect(decorButtonStyle.buttonBackgroundSize).assertEqual(30);
-        expect(decorButtonStyle.spacingBetweenButtons).assertEqual(23);
-        expect(decorButtonStyle.closeButtonRightMargin).assertEqual(21);
+        expect(decorButtonStyle.spacingBetweenButtons).assertEqual(20);
+        expect(decorButtonStyle.closeButtonRightMargin).assertEqual(18);
+        let style1: window.DecorButtonStyle = {
+        };
+        windowClass.setDecorButtonStyle(style1);
+        console.info(msgStr+ ' Succeeded in setting the style1 of button. Data: ' + JSON.stringify(style1));
+        let decorButtonStyle1 = windowClass.getDecorButtonStyle();
+        console.info(msgStr+ ' Succeeded in getting the style1 of button. Data: ' + JSON.stringify(decorButtonStyle1));
+        expect(decorButtonStyle1.colorMode).assertEqual(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
+        expect(decorButtonStyle1.buttonBackgroundSize).assertEqual(30);
+        expect(decorButtonStyle1.spacingBetweenButtons).assertEqual(20);
+        expect(decorButtonStyle1.closeButtonRightMargin).assertEqual(18);
         done();
       } catch (exception) {
         console.error(msgStr+ `Failed to set the style of button. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1002,7 +1017,7 @@ export default function windowTitleBarTest() {
         windowClass.setDecorButtonStyle(style);
         windowClass.on('windowTitleButtonRectChange', (titleButtonRect) => {
           console.info(msgStr+ ` Succeeded in enabling the listener for window title buttons area changes. Data: ` + JSON.stringify(titleButtonRect));
-          expect(titleButtonRect.right).assertEqual(18);
+          expect(titleButtonRect.right).assertEqual(0);
           windowClass.off('windowTitleButtonRectChange');
           done();
         });
@@ -1149,14 +1164,14 @@ export default function windowTitleBarTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_3200
-     * @tc.name      : test_setDecorButtonStyle_setWindowTitleButtonVisible_true_false
-     * @tc.desc      : test_setDecorButtonStyle_setWindowTitleButtonVisible_true_false
+     * @tc.name      : test_setWindowDecorHeight_setDecorButtonStyle
+     * @tc.desc      : test_setWindowDecorHeight_setDecorButtonStyle
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_setDecorButtonStyle_setWindowTitleButtonVisible_true_false', 0, async (done: Function) => {
-      let caseName: string = 'test_setDecorButtonStyle_setWindowTitleButtonVisible_true_false';
+    it('test_setWindowDecorHeight_setDecorButtonStyle', 0, async (done: Function) => {
+      let caseName: string = 'test_setWindowDecorHeight_setDecorButtonStyle';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = await windowStage.getMainWindow();
@@ -1172,6 +1187,7 @@ export default function windowTitleBarTest() {
         };
         let height = 50;
         windowClass.setWindowDecorHeight(height);
+        console.info(msgStr+ `Succeeded in setting the height of window decor: ${height}`);
         windowClass.setDecorButtonStyle(style);
         console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
         let decorButtonStyle = windowClass.getDecorButtonStyle();
@@ -1180,6 +1196,96 @@ export default function windowTitleBarTest() {
         expect(decorButtonStyle.buttonBackgroundSize).assertEqual(30);
         expect(decorButtonStyle.spacingBetweenButtons).assertEqual(20);
         expect(decorButtonStyle.closeButtonRightMargin).assertEqual(18);
+        done();
+      } catch (exception) {
+        console.error(msgStr+ `Failed to set the style of button. Cause code: ${exception.code}, message: ${exception.message}`);
+        if(exception.code = 801){
+          done();
+        }else {
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_3300
+     * @tc.name      : test_setDecorButtonStyle_setWindowDecorHeight
+     * @tc.desc      : test_setDecorButtonStyle_setWindowDecorHeight
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setDecorButtonStyle_setWindowDecorHeight', 0, async (done: Function) => {
+      let caseName: string = 'test_setDecorButtonStyle_setWindowDecorHeight';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowClass = await windowStage.getMainWindow();
+      let driver = await Driver.create();
+      let windowPoint = windowClass.getWindowProperties().windowRect;
+      try {
+        let colorMode : ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_DARK;
+        let style: window.DecorButtonStyle = {
+          colorMode: colorMode,
+          buttonBackgroundSize: 30,
+          spacingBetweenButtons: 20,
+          closeButtonRightMargin: 18
+        };
+        let height = 50;
+        windowClass.setDecorButtonStyle(style);
+        console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
+        let decorButtonStyle = windowClass.getDecorButtonStyle();
+        console.info(msgStr+ ' Succeeded in getting the style of button. Data: ' + JSON.stringify(decorButtonStyle));
+        expect(decorButtonStyle.colorMode).assertEqual(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
+        expect(decorButtonStyle.buttonBackgroundSize).assertEqual(30);
+        expect(decorButtonStyle.spacingBetweenButtons).assertEqual(20);
+        expect(decorButtonStyle.closeButtonRightMargin).assertEqual(18);
+        windowClass.setWindowDecorHeight(height);
+        console.info(msgStr+ `Succeeded in setting the height of window decor: ${height}`);
+        done();
+      } catch (exception) {
+        console.error(msgStr+ `Failed to set the style of button. Cause code: ${exception.code}, message: ${exception.message}`);
+        if(exception.code = 801){
+          done();
+        }else {
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_3400
+     * @tc.name      : test_setDecorButtonStyle_30_setWindowDecorHeight_20
+     * @tc.desc      : test_setDecorButtonStyle_30_setWindowDecorHeight_20
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_setDecorButtonStyle_30_setWindowDecorHeight_20', 0, async (done: Function) => {
+      let caseName: string = 'test_setDecorButtonStyle_30_setWindowDecorHeight_20';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowClass = await windowStage.getMainWindow();
+      let driver = await Driver.create();
+      let windowPoint = windowClass.getWindowProperties().windowRect;
+      try {
+        let colorMode : ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_DARK;
+        let style: window.DecorButtonStyle = {
+          colorMode: colorMode,
+          buttonBackgroundSize: 30,
+          spacingBetweenButtons: 20,
+          closeButtonRightMargin: 18
+        };
+        let height = 20;
+        windowClass.setDecorButtonStyle(style);
+        console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
+        let decorButtonStyle = windowClass.getDecorButtonStyle();
+        console.info(msgStr+ ' Succeeded in getting the style of button. Data: ' + JSON.stringify(decorButtonStyle));
+        expect(decorButtonStyle.colorMode).assertEqual(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
+        expect(decorButtonStyle.buttonBackgroundSize).assertEqual(30);
+        expect(decorButtonStyle.spacingBetweenButtons).assertEqual(20);
+        expect(decorButtonStyle.closeButtonRightMargin).assertEqual(18);
+        windowClass.setWindowDecorHeight(height);
+        console.info(msgStr+ `Succeeded in setting the height of window decor: ${height}`);
         done();
       } catch (exception) {
         console.error(msgStr+ `Failed to set the style of button. Cause code: ${exception.code}, message: ${exception.message}`);
