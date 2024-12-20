@@ -370,5 +370,23 @@ export default function signNormalNotAccessBiometricExecute() {
       }
       done();
     });
+
+    /*
+        * @tc.number    : SUB_Security_IAM_authWidget_API_0200
+        * @tc.name      : execute_enum_ReuseMode.
+        * @tc.desc      : 
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level.LEVEL3
+    */
+    it('SUB_Security_IAM_authWidget_API_0200', Level.LEVEL2, async function (done) {
+      console.info("SUB_Security_IAM_authWidget_API_0200 start");
+      expect(1).assertEqual(userAuth.ReuseMode.AUTH_TYPE_RELEVANT);
+      expect(2).assertEqual(userAuth.ReuseMode.AUTH_TYPE_IRRELEVANT);
+      expect(3).assertEqual(userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT);
+      expect(4).assertEqual(userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT);
+      console.info('SUB_Security_IAM_authWidget_API_0200 end');
+      done();
+    });
   });
 };
