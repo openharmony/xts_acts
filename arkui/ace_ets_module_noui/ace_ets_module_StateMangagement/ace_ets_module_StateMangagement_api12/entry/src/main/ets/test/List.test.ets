@@ -23,6 +23,7 @@ import Foreach5 from './Foreach1/Foreach5.test';
 import Foreach6 from './Foreach1/Foreach6.test';
 import FreezeV2Test from './FreezeV2/Freeze001.test';
 import FreezeV2Test03 from './FreezeV2/Freeze002.test';
+import FreezeV2Child from './FreezeV2/Freeze003.test';
 import LazyForEachAdd from './LazyForEach/LazyForEachAdd.test';
 import LazyForEachDelete from './LazyForEach/LazyForEachDelete.test';
 import LazyForEachMove from './LazyForEach/LazyForEachMove.test';
@@ -206,6 +207,7 @@ export default function testsuite() {
   Foreach6();
   FreezeV2Test();
   FreezeV2Test03();
+  FreezeV2Child();
   LazyForEachAdd();
   LazyForEachDelete();
   LazyForEachMove();
