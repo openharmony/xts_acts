@@ -1,7 +1,7 @@
 {
     "description": "Config for avcodec ndk test cases",
     "driver": {
-      "module-name": "ActsAvAudioEncoderCapiUnitTest",
+      "module-name": "ActsAvAudioEncoderCapiNdkTest",
       "native-test-timeout": "300000",
       "native-test-device-path": "/data/local/tmp",
       "runtime-hint": "1s",
@@ -16,7 +16,7 @@
                 "mkdir -p /data/local/tmp/"
             ],
             "push": [
-              "ActsAvAudioEncoderCapiUnitTest->/data/local/tmp/ActsAvAudioEncoderCapiUnitTest",
+              "ActsAvAudioEncoderCapiNdkTest->/data/local/tmp/ActsAvAudioEncoderCapiNdkTest",
               "./resource/media/codec/audio_test/. ->/data/test/media/"
             ]
         },
