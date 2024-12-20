@@ -43,6 +43,7 @@ group("ets_utils") {
       "util_lib_standard:util_js_test",
       "worker_lib_standard:worker_js_hap",
       "worker_lib_standard2:ActsWorkerTest",
+      "worker_lib_standard4:ActsWorkerMixTest",
       "xml_lib_standard:xml_js_test",
     ]
   }
