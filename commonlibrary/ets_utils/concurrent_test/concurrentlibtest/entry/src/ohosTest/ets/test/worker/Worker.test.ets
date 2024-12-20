@@ -41,7 +41,7 @@ export default function workerTest() {
     })
 
     /**
-     * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_CONSTRUCTOR_0200
+     * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_CONSTRUCTOR_0100
      * @tc.name       : testThreadWorker0001
      * @tc.desc       : Test the function of the interface Constructor.
      * @tc.size       : MediumTest
@@ -101,7 +101,7 @@ export default function workerTest() {
     });
 
     /**
-     * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_CONSTRUCTOR_0600
+     * @tc.number     : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_CONSTRUCTOR_0700
      * @tc.name       : testThreadWorker0007
      * @tc.desc       : Test the function of the interface Constructor.
      * @tc.size       : MediumTest
@@ -1849,7 +1849,7 @@ export default function workerTest() {
     });
 
     /**
-     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_POST_MESSAGE_WITH_SHARED_SENDABLE_0100
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_WORKER_POST_MESSAGE_WITH_SHARED_SENDABLE_0100
      * @tc.name      : testPostMessageWithSharedSendable0001
      * @tc.desc      : Test the function of the interface PostMessageWithSharedSendable.
      * @tc.size      : MediumTest
