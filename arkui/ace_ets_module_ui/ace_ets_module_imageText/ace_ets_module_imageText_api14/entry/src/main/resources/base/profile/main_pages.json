@@ -12,6 +12,7 @@
     "MainAbility/pages/styledString/StyledStringURL",
     "MainAbility/pages/Text/textCaretColor",
     "MainAbility/pages/RichEditor/getRectsForRange",
-    "MainAbility/pages/Marquee/marqueeFrame"
+    "MainAbility/pages/Marquee/marqueeFrame",
+    "MainAbility/pages/ImageOrientation/ImageOrientation"
   ]
 }
