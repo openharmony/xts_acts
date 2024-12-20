@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 
 import napitest from 'libentry.so'
 
-async function sleep(time: number) {
+function sleep(time: number) {
   return new Promise<void>((resolve, reject) => {
     setTimeout(() => {
       resolve()
@@ -36,9 +36,11 @@ export default function JsvmJsunit() {
     /**
     * run after testcase
     */
-    afterEach(async () => {
+    afterEach(async (done:Function) => {
       console.info('[JsvmTest] after each called')
       value == '';
+      await sleep(50);
+      done();
     });
 
     /**
