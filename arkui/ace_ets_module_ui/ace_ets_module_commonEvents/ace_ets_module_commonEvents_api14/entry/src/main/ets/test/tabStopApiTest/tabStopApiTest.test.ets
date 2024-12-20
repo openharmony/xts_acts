@@ -23,7 +23,7 @@ export default function tabStopApiTest() {
     beforeEach(async (done: Function) => {
       console.info("tabStopApiTest beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/tabStopApiTest\tabStopApiTest",
+        url: "MainAbility/pages/tabStopApiTest/tabStopApiTest",
       }
       try {
         router.clear();
@@ -64,8 +64,6 @@ export default function tabStopApiTest() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[tabStopApiTest_1000] obj is: " + obj.$attrs.tabStop);
       expect(obj.$attrs.tabStop).assertEqual(true);
-      console.log('----------------------------------------')
-      expect(obj.$attrs.tabStop).assertEqual('true');
       console.info('[tabStopApiTest_1000] END');
       done();
     });
