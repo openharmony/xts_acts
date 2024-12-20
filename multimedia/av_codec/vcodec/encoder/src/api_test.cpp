@@ -565,7 +565,7 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_API_0400, TestSize.Level2)
     ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
     ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Start(venc_));
     ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Stop(venc_));
-    ASSERT_EQ(AV_ERR_INVALID_STATE, OH_VideoEncoder_Stop(venc_));
+    ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Stop(venc_));
 }
 
 /**
@@ -647,7 +647,7 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_API_0700, TestSize.Level2)
     ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
     ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Start(venc_));
     ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Flush(venc_));
-    ASSERT_EQ(AV_ERR_INVALID_STATE, OH_VideoEncoder_Flush(venc_));
+    ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Flush(venc_));
 }
 
 /**

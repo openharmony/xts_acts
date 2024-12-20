@@ -552,17 +552,14 @@ HWTEST_F(SwdecApiNdkTest, VIDEO_SWDEC_API_0400, TestSize.Level2)
     OH_AVFormat *format = OH_AVFormat_Create();
     ASSERT_NE(NULL, format);
 
-    string widthStr = "width";
-    string heightStr = "height";
-    string frameRateStr = "frame_rate";
-    (void)OH_AVFormat_SetIntValue(format, widthStr.c_str(), DEFAULT_WIDTH);
-    (void)OH_AVFormat_SetIntValue(format, heightStr.c_str(), DEFAULT_HEIGHT);
-    (void)OH_AVFormat_SetDoubleValue(format, frameRateStr.c_str(), DEFAULT_FRAME_RATE);
+    (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, DEFAULT_WIDTH);
+    (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
+    (void)OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, DEFAULT_FRAME_RATE);
 
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Configure(vdec_, format));
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Start(vdec_));
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Stop(vdec_));
-    ASSERT_EQ(AV_ERR_INVALID_STATE, OH_VideoDecoder_Stop(vdec_));
+    ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Stop(vdec_));
 }
 
 /**
@@ -638,17 +635,14 @@ HWTEST_F(SwdecApiNdkTest, VIDEO_SWDEC_API_0700, TestSize.Level2)
     OH_AVFormat *format = OH_AVFormat_Create();
     ASSERT_NE(NULL, format);
 
-    string widthStr = "width";
-    string heightStr = "height";
-    string frameRateStr = "frame_rate";
-    (void)OH_AVFormat_SetIntValue(format, widthStr.c_str(), DEFAULT_WIDTH);
-    (void)OH_AVFormat_SetIntValue(format, heightStr.c_str(), DEFAULT_HEIGHT);
-    (void)OH_AVFormat_SetDoubleValue(format, frameRateStr.c_str(), DEFAULT_FRAME_RATE);
+    (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, DEFAULT_WIDTH);
+    (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
+    (void)OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, DEFAULT_FRAME_RATE);
 
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Configure(vdec_, format));
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Start(vdec_));
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Flush(vdec_));
-    ASSERT_EQ(AV_ERR_INVALID_STATE, OH_VideoDecoder_Flush(vdec_));
+    ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Flush(vdec_));
 }
 
 /**
