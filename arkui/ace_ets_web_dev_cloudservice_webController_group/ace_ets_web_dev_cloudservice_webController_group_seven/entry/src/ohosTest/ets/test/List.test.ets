@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 import webViewPressureLevel from './webViewPressureLevel.test'
+import webViewJavaScriptPermission from './webViewJavaScriptPermission.test'
 
 
 export default function testsuite() {
   webViewPressureLevel()
+  webViewJavaScriptPermission()
 }

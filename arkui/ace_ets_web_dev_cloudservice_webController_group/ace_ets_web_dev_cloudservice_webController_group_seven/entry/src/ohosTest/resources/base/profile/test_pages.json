@@ -1,6 +1,7 @@
 {
   "src": [
     "testability/pages/Index",
-    "testability/pages/webViewPressureLevel"
+    "testability/pages/webViewPressureLevel",
+    "testability/pages/webViewJavaScriptPermission"
   ]
 }
