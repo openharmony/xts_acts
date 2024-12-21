@@ -60,8 +60,6 @@
 #define CONSTANT_9999999999999999999 999999999999999999
 #define LOG_PRINT_DOMAIN 0xFFFF
 
-
-
 napi_value testNativeWindowCreateNativeWindowNullptr(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
