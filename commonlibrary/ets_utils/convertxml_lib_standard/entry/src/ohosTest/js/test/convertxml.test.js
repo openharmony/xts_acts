@@ -1437,20 +1437,20 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-        it('testBusinessError001', 0, function () {
-            try {
-                let xml = 123;
-                let conv = new convertxml.ConvertXML();
-                let options = {trim : false, declarationKey:"_declaration",
-                    instructionKey : "_instruction", attributesKey : "_attributes",
-                    textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
-                    commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
-                    nameKey : "_name", elementsKey : "_elements"}
-                conv.convertToJSObject(xml, options);
-            } catch (e) {
-                expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string")
-            }
-        })
+    it('testBusinessError001', 0, function () {
+        try {
+            let xml = 123;
+            let conv = new convertxml.ConvertXML();
+            let options = {trim : false, declarationKey:"_declaration",
+                instructionKey : "_instruction", attributesKey : "_attributes",
+                textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                nameKey : "_name", elementsKey : "_elements"}
+            conv.convertToJSObject(xml, options);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string")
+        }
+    })
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_4300
@@ -1460,22 +1460,22 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-        it('testBusinessError002', 0, function () {
-            try {
-                let xml =
-                    '<?xml version="1.0" encoding="utf-8"?>' +
-                    '<note importance="high" logged="true">' +
-                    '    <title>Happy</title>' +
-                    '    <todo>Work</todo>' +
-                    '    <todo>Play</todo>' +
-                    '</note>';
-                let conv = new convertxml.ConvertXML();
-                let options = 123
-                conv.convertToJSObject(xml, options);
-            } catch (e) {
-                expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be object")
-            }
-        })
+    it('testBusinessError002', 0, function () {
+        try {
+            let xml =
+                '<?xml version="1.0" encoding="utf-8"?>' +
+                '<note importance="high" logged="true">' +
+                '    <title>Happy</title>' +
+                '    <todo>Work</todo>' +
+                '    <todo>Play</todo>' +
+                '</note>';
+            let conv = new convertxml.ConvertXML();
+            let options = 123
+            conv.convertToJSObject(xml, options);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be object")
+        }
+    })
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_4400
@@ -1485,14 +1485,476 @@ describe('XmlTest', function () {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-        it('testBusinessError003', 0, function () {
-            try {
-                let xml = 111;
-                let conv = new convertxml.ConvertXML();
-                let options = 123
-                conv.convertToJSObject(xml, options);
-            } catch (e) {
-                expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
-            }
-        })
+    it('testBusinessError003', 0, function () {
+        try {
+            let xml = 111;
+            let conv = new convertxml.ConvertXML();
+            let options = 123
+            conv.convertToJSObject(xml, options);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_4500
+     * @tc.name: testConvert045
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert045', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '    <todo>Play</todo>' +
+            '</note>';
+        let conv = new convertxml.ConvertXML();
+        let result = conv.fastConvertToJSObject(strXml);
+        let str = '{"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},'+
+            '"_elements":[{"_type":"element","_name":"note","_attributes":{"importance":"high",'+
+            '"logged":"true"},"_elements":[{"_type":"element","_name":"title","_elements":[{"_type":"text",'+
+            '"_text":"Happy"}]},{"_type":"element","_name":"todo","_elements":[{"_type":"text",'+
+            '"_text":"Work"}]},{"_type":"element","_name":"todo","_elements":[{"_type":"text","_text":"Play"}]}]}]}'
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_4600
+     * @tc.name: testConvert046
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert046', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <title> Happy </title>' +
+            '</note>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreDeclaration: true, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_elements":[{"_type":"element","_name":"note","_attributes":{"importance":"high",' +
+            '"logged":"true"},"_elements":[{"_type":"element","_name":"title","_elements":[{"_type":"text",' +
+            '"_text":" Happy "}]}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_4700
+     * @tc.name: testConvert047
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert047', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '    <?go there?>'+
+            '    <title>Happy</title>' +
+            '</note>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreInstruction: true, ignoreDeclaration: true,
+            declarationKey:"_declaration", instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype", commentKey : "_comment",
+            parentKey : "_parent", typeKey : "_type", nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_elements":[{"_type":"element","_name":"note","_attributes":{"importance":"high",' +
+            '"logged":"true"},"_elements":[{"_type":"element","_name":"title","_elements":[{"_type":"text",' +
+            '"_text":"Happy"}]}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_4800
+     * @tc.name: testConvert048
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert048', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<!--note-->'+
+            '<title>Happy</title>' +
+            '</note>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreAttributes : true, ignoreComment: true,
+            declarationKey:"_declaration", instructionKey : "_instruction",
+            attributesKey : "_attributes", textKey : "_text", cdataKey:"_cdata",
+            doctypeKey : "_doctype", commentKey : "_comment", parentKey : "_parent",
+            typeKey : "_type", nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":' +
+            '"element","_name":"note","_elements":[{"_type":"element","_name":"title","_elements":[{"_type":' +
+            '"text","_text":"Happy"}]}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_4900
+     * @tc.name: testConvert049
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert049', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<!DOCTYPE foo>'+
+            '<note importance="high" logged="true">' +
+            '<![CDATA[<foo></bar>]]>'+
+            '<title>Happy</title>' +
+            '</note>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreDoctype: true, ignoreCDATA: true, ignoreText: true,
+            declarationKey:"_declaration", instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype", commentKey : "_comment",
+            parentKey : "_parent", typeKey : "_type", nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":' +
+            '"element","_name":"note","_attributes":{"importance":"high","logged":"true"},"_elements":[{"_type":' +
+            '"element","_name":"title"}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5000
+     * @tc.name: testConvert050
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert050', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<?go there?>'+
+            '<![CDATA[1 is < 2]]>' +
+            '<title>Happy</title>' +
+            '</note>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey: "decl", instructionKey : "inst", attributesKey : "attr",
+            textKey : "text", cdataKey:"cdata", doctypeKey : "_doctype", commentKey : "_comment",
+            parentKey : "_parent", typeKey : "_type", nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"decl":{"attr":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"element","_name":' +
+           '"note","attr":{"importance":"high","logged":"true"},"_elements":[{"_type":"instruction","_name":"go",' +
+           '"inst":"there"},{"_type":"cdata","cdata":"1 is < 2"},{"_type":"element","_name":"title","_elements":' +
+           '[{"_type":"text","text":"Happy"}]}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5100
+     * @tc.name: testConvert051
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert051', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<!--note-->'+
+            '<note importance="high" logged="true">' +
+            '<?go there?>'+
+            '<![CDATA[1 is < 2]]>' +
+            '<title>Happy</title>' +
+            '</note>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey: "_declaration", instructionKey : "_instruction",
+            attributesKey : "_attributes", textKey : "_text", cdataKey:"_cdata", doctypeKey : "doct",
+            commentKey : "comm", parentKey : "_parent", typeKey : "type", nameKey : "name", elementsKey : "elem"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"elem":[{"type":"comment",' +
+            '"comm":"note"},{"type":"element","name":"note","_attributes":{"importance":"high","logged":"true"},' +
+            '"elem":[{"type":"instruction","name":"go","_instruction":"there"},{"type":"cdata","_cdata":"1 is < 2' +
+            '"},{"type":"element","name":"title","elem":[{"type":"text","_text":"Happy"}]}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5200
+     * @tc.name: testConvert052
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert052', 0, function () {
+        let strXml = '<?xml?>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_declaration":{}}'
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5300
+     * @tc.name: testConvert053
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert053', 0, function () {
+        let strXml = '<?xml version="1.0" encoding="utf-8"?>';
+        let conv = new convertxml.ConvertXML();
+        let result = conv.fastConvertToJSObject(strXml);
+        let str = '{"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}}}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5400
+     * @tc.name: testConvert054
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert054', 0, function () {
+        let strXml = '<!-- \t Hello World! \t -->';
+        let conv = new convertxml.ConvertXML();
+        let result = conv.fastConvertToJSObject(strXml);
+        let str = '{"_elements":[{"_type":"comment","_comment":" \\t Hello World! \\t "}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5500
+     * @tc.name: testConvert055
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert055', 0, function () {
+        let strXml = '<!-- \t Hello \t -->\n<!-- \t World \t -->';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_elements":[{"_type":"comment","_comment":" \\t Hello \\t "},{"_type":"comment",' +
+            '"_comment":" \\t World \\t "}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5600
+     * @tc.name: testConvert056
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert056', 0, function () {
+        let strXml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[ \t <foo>\r\n</bar> \t ]]>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let cdata = result._elements[0]._cdata;
+        let str = ' \t <foo>\n</bar> \t ';
+        expect(cdata).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5700
+     * @tc.name: testConvert057
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert057', 0, function () {
+        let strXml = '<a/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_elements":[{"_type":"element","_name":"a"}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5800
+     * @tc.name: testConvert058
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert058', 0, function () {
+        let strXml = '<a/>\n<a/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_elements":[{"_type":"element","_name":"a"},'+
+            '{"_type":"element","_name":"a"}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_5900
+     * @tc.name: testConvert059
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert059', 0, function () {
+        let strXml = '<a x="hello"/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_elements":[{"_type":"element","_name":"a","_attributes":{"x":"hello"}}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_6000
+     * @tc.name: testConvert060
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert060', 0, function () {
+        let strXml = '<a x="1.234" y="It\'s"/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str1 = '{"_elements":[{"_type":"element","_name":"a",' +
+            '"_attributes":{"x":"1.234","y":"It\'s"}}]}';
+        expect(JSON.stringify(result)).assertEqual(str1);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_6100
+     * @tc.name: testConvert061
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert061', 0, function () {
+        let strXml = '<a> \t Hi \t </a>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str1 = '{"_elements":[{"_type":"element","_name":"a","_elements":[{"_type":' +
+            '"text","_text":" \\t Hi \\t "}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str1);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_6200
+     * @tc.name: testConvert062
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert062', 0, function () {
+        let strXml = '<a>\n<b>\n\<c/>\n\</b>\n</a>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+            instructionKey : "_instruction", attributesKey : "_attributes",
+            textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+            commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+            nameKey : "_name", elementsKey : "_elements"}
+        let result = conv.fastConvertToJSObject(strXml, options);
+        let str = '{"_elements":[{"_type":"element","_name":"a","_elements":[{"_type":"element",'+
+            '"_name":"b","_elements":[{"_type":"element","_name":"c"}]}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_6300
+     * @tc.name: testConvert063
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert063', 0, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note>' +
+            '<title>\nHello\\n World\\\n</title>' +
+            '<title>\tHello\\t World\\\t</title>' +
+            '</note>'
+        let conv = new convertxml.ConvertXML();
+        let result = conv.fastConvertToJSObject(strXml);
+        let str = '{"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},' +
+            '"_elements":[{"_type":"element","_name":"note","_elements":[{"_type":"element",' +
+            '"_name":"title","_elements":[{"_type":"text","_text":"\\nHello\\\\n World\\\\\\n"}]},' +
+            '{"_type":"element","_name":"title","_elements":[{"_type":"text","_text":' +
+            '"\\tHello\\\\t World\\\\\\t"}]}]}]}';
+        expect(JSON.stringify(result)).assertEqual(str);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONVERTXML_6400
+     * @tc.name: testConvert064
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConvert064', 0, function () {
+        let strXml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[\nHello\\n World\\\n \tHello\\t World\\\t]]>';
+        let conv = new convertxml.ConvertXML();
+        let result = conv.fastConvertToJSObject(strXml);
+        let cdata = result["_elements"][0]._cdata;
+        let str = '\nHello\\n World\\\n \tHello\\t World\\\t';
+        expect(cdata).assertEqual(str);
+    })
 })}
