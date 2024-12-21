@@ -621,5 +621,243 @@ export default function nativeImageTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+      * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0800
+      * @tc.name       : testNativeImageAcquireNativeWindowBufferNormal
+      * @tc.desc       : test OH_NativeImage_AcquireNativeWindowBuffer
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testNativeImageAcquireNativeWindowBufferNormal', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageAcquireNativeWindowBufferNormal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_0900
+    * @tc.name       : testNativeImageAcquireNativeWindowBufferCall
+    * @tc.desc       : test OH_NativeImage_AcquireNativeWindowBuffer
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testNativeImageAcquireNativeWindowBufferCall', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageAcquireNativeWindowBufferCall();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1000
+    * @tc.name       : testNativeImageAcquireNativeWindowBufferAbNormal01
+    * @tc.desc       : test OH_NativeImage_AcquireNativeWindowBuffer
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */
+    it('testNativeImageAcquireNativeWindowBufferAbNormal01', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageAcquireNativeWindowBufferAbNormal01();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(-1);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1100
+    * @tc.name       : testNativeImageAcquireNativeWindowBufferAbNormal02
+    * @tc.desc       : test OH_NativeImage_AcquireNativeWindowBuffer
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */
+    it('testNativeImageAcquireNativeWindowBufferAbNormal02', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageAcquireNativeWindowBufferAbNormal02();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(-1);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1200
+    * @tc.name       : testNativeImageAcquireNativeWindowBufferAbNormal03
+    * @tc.desc       : test OH_NativeImage_AcquireNativeWindowBuffer
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */
+    it('testNativeImageAcquireNativeWindowBufferAbNormal03', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageAcquireNativeWindowBufferAbNormal03();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(-1);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1300
+    * @tc.name       : testNativeImageAcquireNativeWindowBufferAbNormal04
+    * @tc.desc       : test OH_NativeImage_AcquireNativeWindowBuffer
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */
+    it('testNativeImageAcquireNativeWindowBufferAbNormal04', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageAcquireNativeWindowBufferAbNormal04();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1400
+    * @tc.name       : testNativeImageAcquireNativeWindowBufferAbNormal05
+    * @tc.desc       : test OH_NativeImage_AcquireNativeWindowBuffer
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */
+    it('testNativeImageAcquireNativeWindowBufferAbNormal05', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHNativeImageAcquireNativeWindowBufferAbNormal05();
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1500
+    * @tc.name       : testNativeImageReleaseNativeWindowBufferAbnormal
+    * @tc.desc       : test OH_NativeImage_ReleaseNativeWindowBuffer
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */
+    it('testNativeImageReleaseNativeWindowBufferAbnormal', 0, async (done: Function) => {
+      let result: number = nativeimage.oHNativeImageReleaseNativeWindowBufferAbnormal();
+      expect(result).assertEqual(-1);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1600
+    * @tc.name       : testNativeImageSetDefaultUsageNormal
+    * @tc.desc       : test OH_NativeImage_SetDefaultUsageNormal
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testConsumerSurfaceSetDefaultUsageNormal', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHConsumerSurfaceSetDefaultUsageNormal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1700
+    * @tc.name       : testConsumerSurfaceSetDefaultUsageCall
+    * @tc.desc       : test OH_NativeImage_SetDefaultUsageCall
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testConsumerSurfaceSetDefaultUsageCall', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHConsumerSurfaceSetDefaultUsageCall();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1800
+    * @tc.name       : testConsumerSurfaceSetDefaultUsageAbNormal
+    * @tc.desc       : test OH_NativeImage_SetDefaultUsageAbNormal
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */
+    it('testConsumerSurfaceSetDefaultUsageAbNormal', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHConsumerSurfaceSetDefaultUsageAbNormal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      expect(result[4]).assertEqual(40001000);
+      done();
+    });
+  
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_1900
+    * @tc.name       : testConsumerSurfaceSetDefaultSizeNormal
+    * @tc.desc       : test OH_NativeImage_SetDefaultSizeNormal
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */  
+    it('testConsumerSurfaceSetDefaultSizeNormal', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHConsumerSurfaceSetDefaultSizeNormal();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      expect(result[4]).assertEqual(0);
+      expect(result[5]).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_2000
+    * @tc.name       : testConsumerSurfaceSetDefaultSizeCall
+    * @tc.desc       : test OH_NativeImage_SetDefaultSizeCall
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */  
+    it('testConsumerSurfaceSetDefaultSizeCall', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHConsumerSurfaceSetDefaultSizeCall();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_2100
+    * @tc.name       : testConsumerSurfaceSetDefaultSizeAbNormal
+    * @tc.desc       : test OH_NativeImage_SetDefaultSizeAbNormal
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */  
+    it('testConsumerSurfaceSetDefaultSizeAbNormal', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHConsumerSurfaceSetDefaultSizeAbNormal();
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(40001000);
+      expect(result[2]).assertEqual(40001000);
+      expect(result[3]).assertEqual(40001000);
+      expect(result[4]).assertEqual(40001000);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_2200
+    * @tc.name       : testConsumerSurfaceSetDefaultSizeAbNormal
+    * @tc.desc       : test OH_NativeImage_SetDefaultSizeAbNormal
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 3
+    */   
+    it('testConsumerSurfaceSetDefaultSizeAbNormal01', 0, async (done: Function) => {
+      let result: Array<number> = nativeimage.oHConsumerSurfaceSetDefaultSizeAbNormal01();
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(40001000);
+      expect(result[2]).assertEqual(40001000);
+      expect(result[3]).assertEqual(0);
+      expect(result[4]).assertEqual(40001000);
+      done();
+    });
   })
 }
