@@ -1126,7 +1126,8 @@ export default function TextPicker() {
           }
         })
       } catch(error) {
-        console.error("testPicer23 error: " + JSON.stringify(error))
+        console.error("testPicer23 error: " + JSON.stringify(error));
+        expect(false).assertTrue();
       }
       console.info("testPicer23 finish");
       done();
