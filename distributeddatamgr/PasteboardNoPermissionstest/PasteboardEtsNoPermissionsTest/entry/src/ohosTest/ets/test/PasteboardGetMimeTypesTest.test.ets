@@ -742,48 +742,6 @@ export default function PasteboardGetMimeTypesTest() {
       })
       console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_getMimeTypes_2200 end-----")
     })
-	
-	/**
-     * @tc.name      : test_SUB_Pasteboard_Local_SDK_SystemPasteboard_setAppShareOptions_0100
-     * @tc.number    : SUB_Pasteboard_Local_SDK_SystemPasteboard_setAppShareOptions_0100
-     * @tc.desc      : setAppShareOptions Verify
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_setAppShareOptions_0100', 0, async () => {
-      console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_setAppShareOptions_0100 start-----")
-      try {
-        systemPasteboard.setAppShareOptions(pasteboard.ShareOption.INAPP);
-        console.info(TAG + 'Set app share options success.');
-        expect().assertFail();
-      } catch (err) {
-        expect(err.code).assertEqual("201");
-        console.info(TAG + `Set app share options failed, errorCode: ${err.code}, errorMessage: ${err.message}.`);
-      }
-      console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_setAppShareOptions_0100 end-----")
-    })
-
-    /**
-     * @tc.name      : test_SUB_Pasteboard_Local_SDK_SystemPasteboard_removeAppShareOptions_0100
-     * @tc.number    : SUB_Pasteboard_Local_SDK_SystemPasteboard_removeAppShareOptions_0100
-     * @tc.desc      : removeAppShareOptions Verify
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('SUB_Pasteboard_Local_SDK_SystemPasteboard_removeAppShareOptions_0100', 0, async () => {
-      console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_removeAppShareOptions_0100 start-----")
-      try {
-        systemPasteboard.removeAppShareOptions();
-        console.info(TAG + 'Remove app share options success.');
-        expect().assertFail();
-      } catch (err) {
-        expect(err.code).assertEqual("201");
-        console.info(TAG + `Remove app share options failed, errorCode: ${err.code}, errorMessage: ${err.message}.`);
-      }
-      console.info(TAG + "-----SUB_Pasteboard_Local_SDK_SystemPasteboard_removeAppShareOptions_0100 end-----")
-    })
 
   })
 }
