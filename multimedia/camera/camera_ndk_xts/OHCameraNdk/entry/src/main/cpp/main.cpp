@@ -177,7 +177,8 @@ static napi_value CameraManagerGetSupportedCameraInfos(napi_env env, napi_callba
     
     for (uint32_t i = 0; i < ndkCamera->GetCameraDeviceSize(); i++) {
         napi_create_object(env, &cameraInfo);
-        napi_create_string_utf8(env, ndkCamera->cameras_[i].cameraId, sizeof(ndkCamera->cameras_[i].cameraId) + 1, &jsValue);
+        napi_create_string_utf8(env, ndkCamera->cameras_[i].cameraId,
+          sizeof(ndkCamera->cameras_[i].cameraId) + 1,&jsValue);
         napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
 
         napi_create_int32(env, ndkCamera->cameras_[i].cameraPosition, &jsValue);
@@ -1024,7 +1025,7 @@ static napi_value OHCaptureSessionIsVideoStabilizationModeSupported(napi_env env
     napi_get_value_int32(env, args[1], &index);
 
     Camera_ErrorCode code = ndkCamera->SessionIsVideoStabilizationModeSupported(mode, index);
-     LOG("OHCaptureSessionIsVideoStabilizationModeSupported code is:  %{public}d", code);
+    LOG("OHCaptureSessionIsVideoStabilizationModeSupported code is:  %{public}d", code);
     if (code == CAMERA_OK) {
         napi_get_boolean(env, ndkCamera->isVideoSupported_, &result);
     } else {
