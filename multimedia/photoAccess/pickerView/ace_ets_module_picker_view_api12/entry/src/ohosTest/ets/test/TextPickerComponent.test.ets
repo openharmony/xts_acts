@@ -1113,26 +1113,9 @@ export default function TextPicker() {
        * @tc.level     : Level0
        */
     it('testPicker23', 0, async (done: Function) => {
-      let srcFileUris: Array<string> = ['file://com.example.myapplication/data/storage/el2/base/haps/entry_test/files/01.jpg'];
-      let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
-        {
-          title: 'test',
-          fileNameExtension: 'jpg',
-          photoType: photoAccessHelper.PhotoType.IMAGE,
-          subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
-        }
-      ];
-      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
-      let desFileUris = phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
-      await CommonFunc.sleep(2000);
-      let button: Component = await driver.findComponent(ON.text('允许'));
-      if (button !== undefined) {
-        await button.click();
-        console.info("testPicker findComponent Button succsess");
-      }
-      
+      let uris = ['file://media/photo/test.jpg'];
       try {
-        phAccessHelper.requestPhotoUrisReadPermission(await desFileUris).then((result: Array<string>) => {
+        phAccessHelper.requestPhotoUrisReadPermission(uris).then((result: Array<string>) => {
           console.info("requestPhotoUrisReadPermission, result = " + JSON.stringify(result));
           if (result) {
             expect(true).assertTrue();
