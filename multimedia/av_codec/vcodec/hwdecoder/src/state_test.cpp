@@ -94,6 +94,17 @@ HWTEST_F(HwdecStateNdkTest, VIDEO_HWDEC_STATE_0100, TestSize.Level2)
 }
 
 /**
+ * @tc.number    : VIDEO_HWDEC_STATE_0101
+ * @tc.name      : create-configure-stop
+ * @tc.desc      : function test
+ */
+HWTEST_F(HwdecStateNdkTest, VIDEO_HWDEC_STATE_0101, TestSize.Level2)
+{
+    int32_t ret = vDecSample->Stop();
+    ASSERT_EQ(AV_ERR_OK, ret);
+}
+
+/**
  * @tc.number    : VIDEO_HWDEC_STATE_0200
  * @tc.name      : create-configure-start-stop-start
  * @tc.desc      : function test
