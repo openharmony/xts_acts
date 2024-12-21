@@ -68,6 +68,16 @@
         "orientation": "portrait",
       }
     ],
+    "extensionAbilities": [
+      {
+        "name": "ExampleEmbeddedAbility",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "srcEntry": "./ets/testability/EmbeddedAbility.ets",
+        "type": "embeddedUI"
+      }
+    ],
     "requestPermissions": [
       {
         "name": "ohos.permission.PRIVACY_WINDOW",
