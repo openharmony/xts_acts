@@ -178,7 +178,8 @@ static napi_value CameraManagerGetSupportedCameraInfos(napi_env env, napi_callba
     for (uint32_t i = 0; i < ndkCamera->GetCameraDeviceSize(); i++) {
         napi_create_object(env, &cameraInfo);
         napi_create_string_utf8(env, ndkCamera->cameras_[i].cameraId,
-          sizeof(ndkCamera->cameras_[i].cameraId) + 1,&jsValue);
+                                sizeof(ndkCamera->cameras_[].cameraId) + 1,
+                                &jsValue);
         napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
 
         napi_create_int32(env, ndkCamera->cameras_[i].cameraPosition, &jsValue);
