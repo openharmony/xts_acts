@@ -147,7 +147,9 @@ static napi_value CameraManagerGetSupportedCameras(napi_env env, napi_callback_i
     napi_create_int32(env, g_ndkCamera->cameras_->connectionType, &jsValue);
     napi_set_named_property(env, cameraInfo, "connectionType", jsValue);
 
-    napi_create_string_utf8(env, g_ndkCamera->cameras_->cameraId, sizeof(g_ndkCamera->cameras_->cameraId) + 1, &jsValue);
+    napi_create_string_utf8(env, g_ndkCamera->cameras_->cameraId,
+                            sizeof(g_ndkCamera->cameras_->cameraId) + 1,
+                            &jsValue);
     napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
 
     return cameraInfo;
