@@ -1,19 +1,19 @@
 import { router } from '@kit.ArkUI';
 
-class innerParams {
-  data3:number[]
+class InnerParams {
+  private data3: number[]
 
   constructor(tuple:number[]) {
     this.data3 = tuple
   }
 }
-class routerParams {
-  data1:string
-  data2:innerParams
+class RouterParams {
+  private data1: string
+  private data2: InnerParams
 
   constructor(str:string, tuple:number[]) {
     this.data1 = str
-    this.data2 = new innerParams(tuple)
+    this.data2 = new InnerParams(tuple)
   }
 }
 @Entry
@@ -40,7 +40,7 @@ struct RouterRecoverable {
         .onClick(()=>{
           router.pushUrl({
             url: 'MainAbility/pages/Navigation/RouterPage2',
-            params: new routerParams('message' ,[123,456,789]),
+            params: new RouterParams('message' ,[123,456,789]),
             recoverable:true
           })
         })
@@ -52,7 +52,7 @@ struct RouterRecoverable {
         .onClick(()=>{
           router.pushUrl({
             url: 'MainAbility/pages/Navigation/RouterPage2',
-            params: new routerParams('message' ,[123,456,789]),
+            params: new RouterParams('message' ,[123,456,789]),
             recoverable:false
           })
         })
