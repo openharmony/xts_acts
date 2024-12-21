@@ -27,9 +27,9 @@ export default function ScrollSizeTest(){
     })
 
     /*
-     * @tc.number     : SUB_ARKUI_CAPI_CUSTOM_PRPPERTY_0100
-     * @tc.name       : testRemoveCustomProperty002
-     * @tc.desc       : testing Custom Property
+     * @tc.number     : SUB_ARKUI_CAPI_NODE_SCROLL_SIZE_0100
+     * @tc.name       : testGetScrollSizeTest001
+     * @tc.desc       : testing NODE_SCROLL_SIZE
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
