@@ -43,6 +43,6 @@ ohos_moduletest_suite("ActsAudioRenderTest") {
   deps = [ "$old_root_dir/../../../../ohaudio:ohaudio" ]
 
   external_deps = [ "hilog:libhilog" ]
-  part_name = "av_codec"
+  part_name = "audio_framework"
   subsystem_name = "multimedia"
 }
