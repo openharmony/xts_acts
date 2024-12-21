@@ -164,7 +164,7 @@ public:
     CaptureSession_Callbacks *GetCaptureSessionRegister(void); // 注册捕获会话事件监听
     VideoOutput_Callbacks *GetVideoOutputListener(void);       // 注册录像监听
     PhotoOutput_Callbacks *GetPhotoOutputListener(void);       // 注册拍照输出监听
-    inline uint32_t GetCameraDeviceSize() 
+    inline uint32_t GetCameraDeviceSize()
     {
         return size_;
     }
