@@ -15,8 +15,10 @@
 
 import unicodeTest from './onKeyEventTest/unicode.test';
 import defaultFocus from './FocusView/defaultFocus.test';
+import tabStopApiTest from './tabStopApiTest/tabStopApiTest.test';
 
 export default function testsuite() {
   unicodeTest();
   defaultFocus();
+  tabStopApiTest()
 }
