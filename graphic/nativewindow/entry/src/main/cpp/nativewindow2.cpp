@@ -216,7 +216,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetUsageNormal(napi_env env, 
             return result;
         }
     }
-    uint64_t arr2[] = {0, 1, 1000, 100000000, 2147483647, 184467440737095516};
+    uint64_t arr2[] = {0, 1, 1000, 100000000, 2147483647, 18446744073709551615};
     for (int i = 0; i < sizeof(arr2) / sizeof(arr2[0]); ++i) {
         int32_t flag1 = OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, arr2[i]);
         uint64_t  usage;
@@ -656,7 +656,7 @@ napi_value testNativeWindowNativeWindowHandleOptSetUiTimeStampNormal(napi_env en
     }
     OH_NativeImage *iamge = initNative->returnNativeImage();
     uint64_t arr[] = {CONSTANT_0,          CONSTANT_1, CONSTANT_1000, 1ULL << 63, CONSTANT_999999999999999999,
-                      184467440737095516};
+                      18446744073709551615};
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i) {
         flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_UI_TIMESTAMP, arr[i]);
         if (flag != 0) {
