@@ -1114,6 +1114,7 @@ export default function TextPicker() {
        */
     it('testPicker23', 0, async (done: Function) => {
       let uris = ['file://media/photo/test.jpg'];
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
       try {
         phAccessHelper.requestPhotoUrisReadPermission(uris).then((result: Array<string>) => {
           console.info("requestPhotoUrisReadPermission, result = " + JSON.stringify(result));
