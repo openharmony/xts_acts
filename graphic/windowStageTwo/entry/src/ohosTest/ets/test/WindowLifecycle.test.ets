@@ -359,24 +359,24 @@ export default function WindowLifecycle() {
       console.info('windowTest testIsWindowShowingTest begin');
       // let wnd: window.Window | undefined = undefined;
       let msgStr = "testIsWindowShowingTest";
-       windowStage.createSubWindow('testIsWindowShowingTest').then(async (data) => {
-         let wnd: window.Window = data;
+      windowStage.createSubWindow('testIsWindowShowingTest').then(async (data) => {
+        let wnd: window.Window = data;
         console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-         let isWindowShowing:boolean = wnd.isWindowShowing();
-         console.log(msgStr + 'isWindowShowing:' + isWindowShowing);
-         expect(!isWindowShowing).assertTrue();
-         await wnd.showWindow().then(async () => {
-           let isWindowShowing2 = wnd.isWindowShowing();
-           console.log(msgStr + 'isWindowShowing2:' + isWindowShowing2);
-           expect(isWindowShowing2).assertTrue();
-           await wnd.destroyWindow();
-           done();
-         }).catch(async (err:BusinessError) => {
-           console.error('Failed to show window1. Cause:' + JSON.stringify(err));
-           expect().assertFail();
-           await wnd.destroyWindow();
-           done();
-         });
+        let isWindowShowing:boolean = wnd.isWindowShowing();
+        console.log(msgStr + 'isWindowShowing:' + isWindowShowing);
+        expect(!isWindowShowing).assertTrue();
+        await wnd.showWindow().then(async () => {
+          let isWindowShowing2 = wnd.isWindowShowing();
+          console.log(msgStr + 'isWindowShowing2:' + isWindowShowing2);
+          expect(isWindowShowing2).assertTrue();
+          await wnd.destroyWindow();
+          done();
+        }).catch(async (err:BusinessError) => {
+          console.error('Failed to show window1. Cause:' + JSON.stringify(err));
+          expect().assertFail();
+          await wnd.destroyWindow();
+          done();
+        });
       }).catch((err:BusinessError) => {
         console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
@@ -916,40 +916,40 @@ export default function WindowLifecycle() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let win:window.Window;
-       await windowStage.createSubWindow('testWindowOffWindowEvent_RepeatOff').then(async (data)=>{
-         win = data;
-         console.log(msgStr + 'windowStage.createSubWindow success');
-         expect(!!win).assertTrue();
-         try {
-           win.on('windowEvent', (data) => {
-             console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
-           });
-         } catch (exception) {
-           console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
-           await win.destroyWindow();
-           expect().assertFail();
-           done();
-         }
-         try {
-           win.off('windowEvent');
-           expect(true).assertTrue();
-         } catch (exception) {
-           console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-           await win.destroyWindow();
-           expect().assertFail();
-           done();
-         }
-         try {
-           win.off('windowEvent');
-           await win.destroyWindow();
-           expect(true).assertTrue();
-           done();
-         } catch (exception) {
-           console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-           await win.destroyWindow();
-           expect().assertFail();
-           done();
-         }
+      await windowStage.createSubWindow('testWindowOffWindowEvent_RepeatOff').then(async (data)=>{
+        win = data;
+        console.log(msgStr + 'windowStage.createSubWindow success');
+        expect(!!win).assertTrue();
+        try {
+          win.on('windowEvent', (data) => {
+            console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+          await win.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+        try {
+          win.off('windowEvent');
+          expect(true).assertTrue();
+        } catch (exception) {
+          console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+          await win.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+        try {
+          win.off('windowEvent');
+          await win.destroyWindow();
+          expect(true).assertTrue();
+          done();
+        } catch (exception) {
+          console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+          await win.destroyWindow();
+          expect().assertFail();
+          done();
+        }
       }).catch((err:BusinessError) => {
         console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
         expect().assertFail();
@@ -1108,12 +1108,12 @@ export default function WindowLifecycle() {
               console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
               expect(data).assertEqual(3);
               subWindow.off('windowEvent');
-              subWindow.destroyWindow();
+              await subWindow.destroyWindow();
               done();
             });
           } catch (exception) {
             console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
-            subWindow.destroyWindow();
+            await subWindow.destroyWindow();
             expect().assertFail();
             done();
           }
@@ -1122,17 +1122,17 @@ export default function WindowLifecycle() {
             promise.then(() => {
               console.info(msgStr + 'Succeeded in shifting app window focus');
               expect(true).assertTrue();
-            }).catch((err:BusinessError) => {
+            }).catch(async (err:BusinessError) => {
               console.error(msgStr +
                 `Failed to shift app window focus. Cause code: ${err.code}, message: ${err.message}`);
               if (err.code) {
                 expect(err.code).assertEqual(801);
                 subWindow.off('windowEvent');
-                subWindow.destroyWindow();
+                await subWindow.destroyWindow();
                 done();
               } else {
                 subWindow.off('windowEvent');
-                subWindow.destroyWindow();
+                await subWindow.destroyWindow();
                 expect().assertFail();
                 done();
               }
@@ -1154,442 +1154,476 @@ export default function WindowLifecycle() {
       });
 
     });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_0600
-       * @tc.name      : testWindow_on_WindowEvent_mainWindow_inactive
-       * @tc.desc      : testWindow_on_WindowEvent_mainWindow_inactive
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level 3
-       */
-      it('testWindow_on_WindowEvent_mainWindow_inactive', 0, async (done:Function) => {
-        let caseName = 'testWindow_on_WindowEvent_mainWindow_inactive';
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin');
-        let subWindow : window.Window;
-        let windowClass = await windowStage.getMainWindow();
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_0600
+     * @tc.name      : testWindow_on_WindowEvent_mainWindow_inactive
+     * @tc.desc      : testWindow_on_WindowEvent_mainWindow_inactive
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindow_on_WindowEvent_mainWindow_inactive', 0, async (done:Function) => {
+      let caseName = 'testWindow_on_WindowEvent_mainWindow_inactive';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow : window.Window;
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        windowClass.on('windowEvent', async (data) => {
+          console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
+          expect(data).assertEqual(3);
+          windowClass.off('windowEvent');
+          await subWindow.destroyWindow();
+          done();
+        });
+      } catch (exception) {
+        console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception) + exception.code);
+        expect().assertFail();
+        done();
+      }
+      await windowStage.createSubWindow('4testWindow_on_WindowEvent_mainWindow_inactive').then(async (data)=>{
+        subWindow = data;
+        console.log(msgStr + 'windowStage.createSubWindow success');
+        expect(!!subWindow).assertTrue();
         try {
+          await subWindow.showWindow();
+          console.log(msgStr + 'windowStage.show SubWindow success');
+          expect(true).assertTrue();
+          await sleep(1000);
+        } catch (exception) {
+          console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+          await subWindow.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      }).catch((err:BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_0700
+     * @tc.name      : testWindow_on_WindowEvent_mainWindow_active
+     * @tc.desc      : testWindow_on_WindowEvent_mainWindow_active
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindow_on_WindowEvent_mainWindow_active', 0, async (done:Function) => {
+      let caseName = 'testWindow_on_WindowEvent_mainWindow_active';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let storage: LocalStorage = new LocalStorage();
+      let subWindow : window.Window;
+      let windowClass = await windowStage.getMainWindow();
+      let promise = windowStage.createSubWindow('5testWindow_on_WindowEvent_mainWindow_active');
+      promise.then(async (data) => {
+        subWindow = data;
+        console.log(msgStr + 'windowStage.createSubWindow success');
+        expect(!!subWindow).assertTrue();
+        subWindow.resize(800, 1000);
+        subWindow.loadContent('testability/pages/First/index2', storage);
+        await subWindow.showWindow();
+        console.log(msgStr + 'windowStage.show SubWindow success');
+        try {
+          await sleep(2000);
           windowClass.on('windowEvent', (data) => {
             console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
-            expect(data).assertEqual(3);
+            expect(data).assertEqual(2);
             windowClass.off('windowEvent');
             subWindow.destroyWindow();
             done();
           });
         } catch (exception) {
           console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception) + exception.code);
+          await subWindow.destroyWindow();
           expect().assertFail();
           done();
         }
-        await windowStage.createSubWindow('4testWindow_on_WindowEvent_mainWindow_inactive').then(async (data)=>{
-          subWindow = data;
-          console.log(msgStr + 'windowStage.createSubWindow success');
-          expect(!!subWindow).assertTrue();
-          try {
-            await subWindow.showWindow();
-            console.log(msgStr + 'windowStage.show SubWindow success');
+        try {
+          await subWindow.destroyWindow();
+          console.log(msgStr + ' SubWindow  destroy success');
+          expect(true).assertTrue();
+          await sleep(1000);
+        } catch (exception) {
+          console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+          await subWindow.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      }).catch((err:BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_0800
+     * @tc.name      : testWindow_on_WindowEvent_Two_callback
+     * @tc.desc      : testWindow_on_WindowEvent_Two_callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindow_on_WindowEvent_Two_callback', 0, async (done:Function) => {
+      let caseName = 'testWindow_on_WindowEvent_Two_callback';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow : window.Window;
+      let num = 0;
+      const callback1 = (windowEventType: window.WindowEventType) => {
+        num++;
+        console.log(msgStr + 'callback1 is called,num: ' + num);
+      };
+      const callback2 = (windowEventType: window.WindowEventType) => {
+        num++;
+        console.log(msgStr + 'callback2 is called,num: ' + num);
+      };
+      await windowStage.createSubWindow('6testWindow_on_WindowEvent_Two_callback').then(async (data)=>{
+        subWindow = data;
+        console.log(msgStr + 'windowStage.createSubWindow success');
+        expect(!!subWindow).assertTrue();
+        try {
+          subWindow.on('windowEvent', callback1);
+          subWindow.on('windowEvent', callback2);
+        } catch (exception) {
+          console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+          await subWindow.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+        try {
+          subWindow.showWindow();
+          await sleep(1000);
+          if (num >= 2) {
             expect(true).assertTrue();
-            await sleep(1000);
-          } catch (exception) {
-            console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-            await subWindow.destroyWindow();
-            expect().assertFail();
+            subWindow.off('windowEvent');
+            subWindow.destroyWindow();
+            done();
+          } else {
+            expect(false).assertTrue();
             done();
           }
-        }).catch((err:BusinessError) => {
+        } catch (exception) {
+          console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+          await subWindow.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      }).catch((err:BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_0900
+     * @tc.name      : testWindow_on_WindowEvent_off_callback1
+     * @tc.desc      : testWindow_on_WindowEvent_off_callback1
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindow_on_WindowEvent_off_callback1', 0, async (done:Function) => {
+      let caseName = 'testWindow_on_WindowEvent_off_callback1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow : window.Window;
+      let num = 0;
+      const callback1 = (windowEventType: window.WindowEventType) => {
+        num--;
+        console.log(msgStr + 'callback1 is called,num: ' + num);
+      };
+      const callback2 = (windowEventType: window.WindowEventType) => {
+        num++;
+        console.log(msgStr + 'callback2 is called,num: ' + num);
+      };
+      await windowStage.createSubWindow('7testWindow_on_WindowEvent_off_callback1').then(async (data)=>{
+        subWindow = data;
+        console.log(msgStr + 'windowStage.createSubWindow success');
+        expect(!!subWindow).assertTrue();
+        try {
+          subWindow.on('windowEvent', callback1);
+          subWindow.on('windowEvent', callback2);
+          subWindow.off('windowEvent', callback1);
+        } catch (exception) {
+          console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+          await subWindow.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+        try {
+          subWindow.showWindow();
+          await sleep(1000);
+          expect(num).assertLarger(1);
+          subWindow.off('windowEvent');
+          subWindow.destroyWindow();
+          done();
+        } catch (exception) {
+          console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+          await subWindow.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      }).catch((err:BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_1000
+     * @tc.name      : testWindow_on_WindowEvent_off_callback_All
+     * @tc.desc      : testWindow_on_WindowEvent_off_callback_All
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindow_on_WindowEvent_off_callback_All', 0, async (done:Function) => {
+      let caseName = 'testWindow_on_WindowEvent_off_callback_All';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow : window.Window;
+      let num = 0;
+      const callback1 = (windowEventType: window.WindowEventType) => {
+        num++;
+        console.log(msgStr + 'callback1 is called,num: ' + num);
+      };
+      const callback2 = (windowEventType: window.WindowEventType) => {
+        num++;
+        console.log(msgStr + 'callback2 is called,num: ' + num);
+      };
+      await windowStage.createSubWindow('8testWindow_on_WindowEvent_off_callback_All').then(async (data)=>{
+        subWindow = data;
+        console.log(msgStr + 'windowStage.createSubWindow success');
+        expect(!!subWindow).assertTrue();
+        try {
+          subWindow.on('windowEvent', callback1);
+          subWindow.on('windowEvent', callback2);
+          subWindow.off('windowEvent');
+        } catch (exception) {
+          console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
+          await subWindow.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+        try {
+          subWindow.showWindow();
+          await sleep(1000);
+          expect(num).assertEqual(0);
+          subWindow.off('windowEvent');
+          subWindow.destroyWindow();
+          done();
+        } catch (exception) {
+          console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+          await subWindow.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      }).catch((err: BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_WINDOW_VISIBILITY_CHANGE_0100
+     * @tc.name      : testWindowOffWindowVisibilityChange_UnregisteredOff
+     * @tc.desc      : Enable this window to listen for status change events
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindowOffWindowVisibilityChange_UnregisteredOff', 0, async (done:Function) => {
+      let caseName: string = 'testWindowOffWindowVisibilityChange_UnregisteredOff';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win: window.Window | void =
+        await windowStage.createSubWindow('testWindowOffWindowVisibilityChange_UnregisteredOff').catch((err:BusinessError) => {
           console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
-
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      try {
+        (win as window.Window).off('windowVisibilityChange');
+        await (win as window.Window).destroyWindow();
+        expect(true).assertTrue();
+        done();
+      } catch (exception) {
+        await (win as window.Window).destroyWindow();
+        console.error(msgStr + 'Failed to disable the listener for system avoid area changes. Cause: ' +
+        JSON.stringify(exception));
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_WINDOW_VISIBILITY_CHANGE_0200
+     * @tc.name      : testWindowOffWindowVisibilityChange_RepeatOff
+     * @tc.desc      : Enable this window to listen for status change events
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testWindowOffWindowVisibilityChange_RepeatOff', 0, async (done:Function) => {
+      let caseName: string = 'testWindowOffWindowVisibilityChange_RepeatOff';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let win: window.Window | void = await windowStage.createSubWindow('testWindowOffWindowVisibilityChange_RepeatOff').catch((err:BusinessError) => {
+        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_0700
-       * @tc.name      : testWindow_on_WindowEvent_mainWindow_active
-       * @tc.desc      : testWindow_on_WindowEvent_mainWindow_active
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level 3
-       */
-      it('testWindow_on_WindowEvent_mainWindow_active', 0, async (done:Function) => {
-        let caseName = 'testWindow_on_WindowEvent_mainWindow_active';
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin');
-        let storage: LocalStorage = new LocalStorage();
-        let subWindow : window.Window;
+      console.log(msgStr + 'windowStage.createSubWindow success');
+      expect(!!win).assertTrue();
+      try {
+        (win as window.Window).on('windowVisibilityChange', (boolean) => {
+          console.info(msgStr + 'Window visibility changed, isVisible=' + boolean);
+        });
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error('Failed to register callback. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          console.log(msgStr + JSON.stringify(exception));
+          expect(exception.code).assertEqual(801);
+          // done();
+        }
+      }
+      try {
+        (win as window.Window).off('windowVisibilityChange');
+      } catch (exception) {
+        if (exception.code != 801) {
+          console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          console.log(msgStr + JSON.stringify(exception));
+          expect(exception.code).assertEqual(1300002);
+          // done();
+        }
+      }
+      try {
+        (win as window.Window).off('windowVisibilityChange');
+        await (win as window.Window).destroyWindow();
+        done();
+      } catch (exception) {
+        await (win as window.Window).destroyWindow();
+        console.error(msgStr + 'Failed to unregister callback Cause: ' + JSON.stringify(exception));
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_WINDOW_VISIBILITY_CHANGE_0300
+     * @tc.name      : testWindowVisibilityChange_on_Function_Callback
+     * @tc.desc      : window type windowVisibilityChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testWindowVisibilityChange_on_Function_Callback", 0, async (done:Function) => {
+      let msgStr = "testWindowVisibilityChange_on_Function_Callback";
+      console.log(msgStr + "begin");
+      try {
+        console.log(msgStr + "try begin");
         let windowClass = await windowStage.getMainWindow();
-        let promise = windowStage.createSubWindow('5testWindow_on_WindowEvent_mainWindow_active');
-        promise.then(async (data) => {
-          subWindow = data;
-          console.log(msgStr + 'windowStage.createSubWindow success');
-          expect(!!subWindow).assertTrue();
-          subWindow.resize(800, 1000);
-          subWindow.loadContent('testability/pages/First/index2', storage);
-          await subWindow.showWindow();
-          console.log(msgStr + 'windowStage.show SubWindow success');
-          try {
-            await sleep(2000);
-            windowClass.on('windowEvent', (data) => {
-              console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
-              expect(data).assertEqual(2);
-              windowClass.off('windowEvent');
-              subWindow.destroyWindow();
-              done();
-            });
-          } catch (exception) {
-            console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception) + exception.code);
-            await subWindow.destroyWindow();
-            expect().assertFail();
-            done();
-          }
-          try {
-            await subWindow.destroyWindow();
-            console.log(msgStr + ' SubWindow  destroy success');
-            expect(true).assertTrue();
-            await sleep(1000);
-          } catch (exception) {
-            console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-            await subWindow.destroyWindow();
-            expect().assertFail();
-            done();
-          }
-        }).catch((err:BusinessError) => {
-          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        windowClass.on('windowVisibilityChange', (boolean) => {
+          console.log(msgStr + 'Window visibility changed, isVisible=' + boolean);
+        });
+        expect(true).assertTrue();
+        windowClass.off('windowVisibilityChange');
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
+        if (error.code != 801) {
+          console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
           expect().assertFail();
           done();
-        });
-      });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_0800
-       * @tc.name      : testWindow_on_WindowEvent_Two_callback
-       * @tc.desc      : testWindow_on_WindowEvent_Two_callback
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level 3
-       */
-      it('testWindow_on_WindowEvent_Two_callback', 0, async (done:Function) => {
-        let caseName = 'testWindow_on_WindowEvent_Two_callback';
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin');
-        let subWindow : window.Window;
-        let num = 0;
-        const callback1 = (windowEventType: window.WindowEventType) => {
-          num++;
-          console.log(msgStr + 'callback1 is called,num: ' + num);
-        };
-        const callback2 = (windowEventType: window.WindowEventType) => {
-          num++;
-          console.log(msgStr + 'callback2 is called,num: ' + num);
-        };
-        await windowStage.createSubWindow('6testWindow_on_WindowEvent_Two_callback').then(async (data)=>{
-          subWindow = data;
-          console.log(msgStr + 'windowStage.createSubWindow success');
-          expect(!!subWindow).assertTrue();
-          try {
-            subWindow.on('windowEvent', callback1);
-            subWindow.on('windowEvent', callback2);
-          } catch (exception) {
-            console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
-            await subWindow.destroyWindow();
-            expect().assertFail();
-            done();
-          }
-          try {
-            subWindow.showWindow();
-            await sleep(1000);
-            if (num >= 2) {
-              expect(true).assertTrue();
-              subWindow.off('windowEvent');
-              subWindow.destroyWindow();
-              done();
-            } else {
-              expect(false).assertTrue();
-              done();
-            }
-          } catch (exception) {
-            console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-            await subWindow.destroyWindow();
-            expect().assertFail();
-            done();
-          }
-        }).catch((err:BusinessError) => {
-          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          console.log(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
+          expect(error.code).assertEqual(801);
+          done();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_WINDOW_VISIBILITY_CHANGE_0400
+     * @tc.name      : testWindowVisibilityChange_off_Function_Callback
+     * @tc.desc      : window type windowVisibilityChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testWindowVisibilityChange_off_Function_Callback", 0, async (done:Function) => {
+      let msgStr = "testWindowVisibilityChange_off_Function_Callback";
+      console.log(msgStr + "begin");
+      try {
+        console.log(msgStr + "try begin");
+        let windowClass = await windowStage.getMainWindow();
+        windowClass.off('windowVisibilityChange');
+        console.log(msgStr + 'Window visibility changed');
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
+        if (error.code != 801) {
+          console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
           expect().assertFail();
           done();
-        });
-
-      });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_0900
-       * @tc.name      : testWindow_on_WindowEvent_off_callback1
-       * @tc.desc      : testWindow_on_WindowEvent_off_callback1
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level 3
-       */
-      it('testWindow_on_WindowEvent_off_callback1', 0, async (done:Function) => {
-        let caseName = 'testWindow_on_WindowEvent_off_callback1';
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin');
-        let subWindow : window.Window;
-        let num = 0;
-        const callback1 = (windowEventType: window.WindowEventType) => {
-          num--;
-          console.log(msgStr + 'callback1 is called,num: ' + num);
-        };
-        const callback2 = (windowEventType: window.WindowEventType) => {
-          num++;
-          console.log(msgStr + 'callback2 is called,num: ' + num);
-        };
-        await windowStage.createSubWindow('7testWindow_on_WindowEvent_off_callback1').then(async (data)=>{
-          subWindow = data;
-          console.log(msgStr + 'windowStage.createSubWindow success');
-          expect(!!subWindow).assertTrue();
-          try {
-            subWindow.on('windowEvent', callback1);
-            subWindow.on('windowEvent', callback2);
-            subWindow.off('windowEvent', callback1);
-          } catch (exception) {
-            console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
-            await subWindow.destroyWindow();
-            expect().assertFail();
-            done();
-          }
-          try {
-            subWindow.showWindow();
-            await sleep(1000);
-            expect(num).assertLarger(1);
-            subWindow.off('windowEvent');
-            subWindow.destroyWindow();
-            done();
-          } catch (exception) {
-            console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-            await subWindow.destroyWindow();
-            expect().assertFail();
-            done();
-          }
-        }).catch((err:BusinessError) => {
-          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          console.log(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
+          expect(error.code).assertEqual(801);
           done();
-        });
-
-      });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_ON_WINDOW_EVENT_1000
-       * @tc.name      : testWindow_on_WindowEvent_off_callback_All
-       * @tc.desc      : testWindow_on_WindowEvent_off_callback_All
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level 3
-       */
-      it('testWindow_on_WindowEvent_off_callback_All', 0, async (done:Function) => {
-        let caseName = 'testWindow_on_WindowEvent_off_callback_All';
-        let msgStr = 'jsunittest ' + caseName + ' ';
-        console.log(msgStr + 'begin');
-        let subWindow : window.Window;
-        let num = 0;
-        const callback1 = (windowEventType: window.WindowEventType) => {
-          num++;
-          console.log(msgStr + 'callback1 is called,num: ' + num);
-        };
-        const callback2 = (windowEventType: window.WindowEventType) => {
-          num++;
-          console.log(msgStr + 'callback2 is called,num: ' + num);
-        };
-        await windowStage.createSubWindow('8testWindow_on_WindowEvent_off_callback_All').then(async (data)=>{
-          subWindow = data;
-          console.log(msgStr + 'windowStage.createSubWindow success');
-          expect(!!subWindow).assertTrue();
-          try {
-            subWindow.on('windowEvent', callback1);
-            subWindow.on('windowEvent', callback2);
-            subWindow.off('windowEvent');
-          } catch (exception) {
-            console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
-            await subWindow.destroyWindow();
-            expect().assertFail();
-            done();
-          }
-          try {
-            subWindow.showWindow();
-            await sleep(1000);
-            expect(num).assertEqual(0);
-            subWindow.off('windowEvent');
-            subWindow.destroyWindow();
-            done();
-          } catch (exception) {
-            console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-            await subWindow.destroyWindow();
-            expect().assertFail();
-            done();
-          }
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_REMOVE_STARTING_WINDOW_0100
+     * @tc.name      : testRemoveStartingWindow_Promise
+     * @tc.desc      : testRemoveStartingWindow_Promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("testRemoveStartingWindow_Promise", 2, async (done:Function) => {
+      let msgStr = "testRemoveStartingWindow_Promise";
+      console.log(msgStr + "begin");
+      try {
+        windowStage.removeStartingWindow().then(() => {
+          console.info('Succeeded in removing starting window.');
+          expect(true).assertTrue();
+          done();
         }).catch((err: BusinessError) => {
-          console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
+          console.error(`Failed to remove starting window. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code != 801) {
+            console.error(msgStr + 'Failed testRemoveStartingWindow_Promise. Cause:' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + 'The device not support SystemCapability.Window.SessionManager');
+            expect(err.code).assertEqual(801);
+            done();
+          }
         });
 
-      });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_WINDOW_VISIBILITY_CHANGE_0100
-       * @tc.name      : testWindowOffWindowVisibilityChange_UnregisteredOff
-       * @tc.desc      : Enable this window to listen for status change events
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level 3
-       */
-      it('testWindowOffWindowVisibilityChange_UnregisteredOff', 0, async (done:Function) => {
-        let caseName: string = 'testWindowOffWindowVisibilityChange_UnregisteredOff';
-        let msgStr: string = 'jsUnittest ' + caseName + ' ';
-        console.log(msgStr + 'begin');
-        let win: window.Window | void =
-          await windowStage.createSubWindow('testWindowOffWindowVisibilityChange_UnregisteredOff').catch((err:BusinessError) => {
-            console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          });
-        console.log(msgStr + 'windowStage.createSubWindow success');
-        expect(!!win).assertTrue();
-        try {
-          (win as window.Window).off('windowVisibilityChange');
-          await (win as window.Window).destroyWindow();
-          expect(true).assertTrue();
-          done();
-        } catch (exception) {
-          await (win as window.Window).destroyWindow();
-          console.error(msgStr + 'Failed to disable the listener for system avoid area changes. Cause: ' +
-          JSON.stringify(exception));
-          expect().assertFail();
-          done();
-        }
-      });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_WINDOW_VISIBILITY_CHANGE_0200
-       * @tc.name      : testWindowOffWindowVisibilityChange_RepeatOff
-       * @tc.desc      : Enable this window to listen for status change events
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level 3
-       */
-      it('testWindowOffWindowVisibilityChange_RepeatOff', 0, async (done:Function) => {
-        let caseName: string = 'testWindowOffWindowVisibilityChange_RepeatOff';
-        let msgStr: string = 'jsUnittest ' + caseName + ' ';
-        console.log(msgStr + 'begin');
-        let win: window.Window | void = await windowStage.createSubWindow('testWindowOffWindowVisibilityChange_RepeatOff').catch((err:BusinessError) => {
-            console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          });
-        console.log(msgStr + 'windowStage.createSubWindow success');
-        expect(!!win).assertTrue();
-        try {
-          (win as window.Window).on('windowVisibilityChange', (boolean) => {
-            console.info(msgStr + 'Window visibility changed, isVisible=' + boolean);
-          });
-        } catch (exception) {
-          if (exception.code != 801) {
-            console.error('Failed to register callback. Cause: ' + JSON.stringify(exception));
-            expect().assertFail();
-            done();
-          } else {
-            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
-            console.log(msgStr + JSON.stringify(exception));
-            expect(exception.code).assertEqual(801);
-            // done();
-          }
-        }
-        try {
-          (win as window.Window).off('windowVisibilityChange');
-        } catch (exception) {
-          if (exception.code != 801) {
-            console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
-            expect().assertFail();
-            done();
-          } else {
-            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
-            console.log(msgStr + JSON.stringify(exception));
-            expect(exception.code).assertEqual(1300002);
-            // done();
-          }
-        }
-        try {
-          (win as window.Window).off('windowVisibilityChange');
-          await (win as window.Window).destroyWindow();
-          done();
-        } catch (exception) {
-          await (win as window.Window).destroyWindow();
-          console.error(msgStr + 'Failed to unregister callback Cause: ' + JSON.stringify(exception));
-          expect().assertFail();
-          done();
-        }
-      });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_WINDOW_VISIBILITY_CHANGE_0300
-       * @tc.name      : testWindowVisibilityChange_on_Function_Callback
-       * @tc.desc      : window type windowVisibilityChange
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level3
-       */
-      it("testWindowVisibilityChange_on_Function_Callback", 0, async (done:Function) => {
-        let msgStr = "testWindowVisibilityChange_on_Function_Callback";
-        console.log(msgStr + "begin");
-        try {
-          console.log(msgStr + "try begin");
-          let windowClass = await windowStage.getMainWindow();
-          windowClass.on('windowVisibilityChange', (boolean) => {
-            console.log(msgStr + 'Window visibility changed, isVisible=' + boolean);
-          });
-          expect(true).assertTrue();
-          windowClass.off('windowVisibilityChange');
-          done();
-        } catch (error) {
-          console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
-          if (error.code != 801) {
-            console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
-            expect().assertFail();
-            done();
-          } else {
-            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
-            console.log(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
-            expect(error.code).assertEqual(801);
-            done();
-          }
-        }
-      });
-      /**
-       * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_API_WINDOW_VISIBILITY_CHANGE_0400
-       * @tc.name      : testWindowVisibilityChange_off_Function_Callback
-       * @tc.desc      : window type windowVisibilityChange
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level3
-       */
-      it("testWindowVisibilityChange_off_Function_Callback", 0, async (done:Function) => {
-        let msgStr = "testWindowVisibilityChange_off_Function_Callback";
-        console.log(msgStr + "begin");
-        try {
-          console.log(msgStr + "try begin");
-          let windowClass = await windowStage.getMainWindow();
-          windowClass.off('windowVisibilityChange');
-          console.log(msgStr + 'Window visibility changed');
-          expect(true).assertTrue();
-          done();
-        } catch (error) {
-          console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
-          if (error.code != 801) {
-            console.error(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
-            expect().assertFail();
-            done();
-          } else {
-            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
-            console.log(msgStr + 'Failed to register callback. Cause:' + JSON.stringify(error));
-            expect(error.code).assertEqual(801);
-            done();
-          }
-        }
-      });
-    
+      } catch (error) {
+        console.log(msgStr + 'Failed to testRemoveStartingWindow_Promise. Cause: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }

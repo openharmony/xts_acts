@@ -46,12 +46,27 @@
               "entity.system.home"
             ]
           }
+        ],
+        "metadata":[
+          {
+            "name":"enable.remove.starting.window",
+            "value":'true'
+          }
         ]
       }
     ],
     "requestPermissions": [
       {
         "name": "ohos.permission.PRIVACY_WINDOW",
+      },
+      {
+        "name": "ohos.permission.WINDOW_TOPMOST",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "always"
+        }
       }
     ]
   }
