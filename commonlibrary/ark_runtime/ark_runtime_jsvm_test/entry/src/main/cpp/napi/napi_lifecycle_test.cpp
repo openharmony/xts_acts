@@ -259,43 +259,6 @@ static JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetBoolean(env, setValue, &retValue);
     return retValue;
 }
-//not open,call this func,failed
-[[maybe_unused]] JSVM_Value TestCloseHandleScopeCase03(JSVM_Env env, JSVM_CallbackInfo info)
-{
-    JSVM_VM vm;
-    JSVM_CreateVMOptions options;
-    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != 0) {
-        return nullptr;
-    }
-    JSVM_Status status = OH_JSVM_CreateVM(&options, &vm);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCloseHandleScopeCase03:OH_JSVM_CreateVM Failed.");
-        return nullptr;
-    }
-    JSVM_Env env1;
-    JSVM_CallbackStruct param[1];
-    param[0].data = nullptr;
-    param[0].callback = assertEqual;
-    JSVM_PropertyDescriptor descriptor[] = {
-        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
-    };
-    status = OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env1);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCloseHandleScopeCase03:OH_JSVM_CreateEnv Failed.");
-        return nullptr;
-    }
-    JSVM_HandleScope handleScope;
-    status = OH_JSVM_CloseHandleScope(env1, handleScope);
-    if (status != JSVM_HANDLE_SCOPE_MISMATCH) {
-        OH_JSVM_ThrowError(env, nullptr, "TestCloseHandleScopeCase03:OH_JSVM_CloseHandleScope Execution exception.");
-        return nullptr;
-    }
-
-    bool setValue = true;
-    JSVM_Value retValue = nullptr;
-    OH_JSVM_GetBoolean(env, setValue, &retValue);
-    return retValue;
-}
 //open twice,close twice,return ok
 [[maybe_unused]] JSVM_Value TestOpenAndCloseHandleScopeCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {

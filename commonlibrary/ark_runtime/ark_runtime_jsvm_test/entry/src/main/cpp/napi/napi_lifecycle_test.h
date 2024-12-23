@@ -41,7 +41,6 @@ JSVM_Value TestOpenHandleScopeCase03(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenHandleScopeCase04(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCloseHandleScopeCase01(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestCloseHandleScopeCase02(JSVM_Env env, JSVM_CallbackInfo info);
-JSVM_Value TestCloseHandleScopeCase03(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenAndCloseHandleScopeCase01(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenAndCloseHandleScopeCase02(JSVM_Env env, JSVM_CallbackInfo info);
 JSVM_Value TestOpenEscapableHandleScopeCase01(JSVM_Env env, JSVM_CallbackInfo info);

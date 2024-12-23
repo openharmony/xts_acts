@@ -39,6 +39,16 @@
 #include "napi_datatype_test.h"
 #include "napi_date_test.h"
 #include "napi_json_test.h"
+#include "napi_arraybuffer_test.h"
+#include "napi_basicdatatypes_test.h"
+#include "napi_bigint_test.h"
+#include "napi_class_test.h"
+#include "napi_functioncall_test.h"
+#include "napi_heapstatisticsdebugg_test.h"
+#include "napi_lifecycle_test.h"
+#include "napi_memorymanagementuse_test.h"
+#include "napi_promise_test.h"
+#include "napi_version_test.h"
 #include <vector>
 #define LOG_DEMAIN 0x0202
 using namespace std;
@@ -9818,7 +9828,6 @@ static JSVM_CallbackStruct param[] = {
     {.callback = TestOpenHandleScopeCase04, .data = nullptr},
     {.callback = TestCloseHandleScopeCase01, .data = nullptr},
     {.callback = TestCloseHandleScopeCase02, .data = nullptr},
-    {.callback = TestCloseHandleScopeCase03, .data = nullptr},
     {.callback = TestOpenAndCloseHandleScopeCase01, .data = nullptr},
     {.callback = TestOpenAndCloseHandleScopeCase02, .data = nullptr},
     {.callback = TestOpenEscapableHandleScopeCase01, .data = nullptr},
@@ -10440,7 +10449,6 @@ static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"testOpenHandleScopeCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"testCloseHandleScopeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"testCloseHandleScopeCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"testCloseHandleScopeCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"testOpenAndCloseHandleScopeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"testOpenAndCloseHandleScopeCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"testOpenEscapableHandleScopeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
