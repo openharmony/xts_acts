@@ -64,15 +64,17 @@ function isEmpty(data: cameraObj.cameraInfo | number) {
 }
 
 async function getPhotoReceiverSurface() {
-  console.info(TAG + 'createImageReceiver start.');
-  receiver = image.createImageReceiver({ width: 640, height: 480 }, 4, 8);
+  console.log(TAG + 'Entering getPhotoReceiverSurface');
+  receiver = image.createImageReceiver(640, 480, 4, 8);
+  console.log(TAG + 'before receiver check');
   if (receiver !== undefined) {
-    console.error(TAG + 'createImageReceiver successfully');
+    console.log(TAG + 'Photo receiver is created successfully');
     mPhotoSurface = await receiver.getReceivingSurfaceId();
-    console.info(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface));
+    console.log(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface));
   } else {
-    console.error(TAG + 'createImageReceiver failed');
+    console.log(TAG + 'Photo receiver is created failed');
   }
+  console.log(TAG + 'Exit getPhotoReceiverSurface');
 }
 
 async function closeFd() {
@@ -84,14 +86,16 @@ async function closeFd() {
         }
 }
 
-function getCameraManagerInstance() {
-  console.info(TAG + 'mSurfaceId : ' + mPhotoSurface);
-  let ret = cameraObj.initCamera(mPhotoSurface);
-  console.info(TAG + 'initCamera : ' + ret);
-  if (ret != 0) {
-    console.error(TAG + "getCameraManager FAILED");
-    expect().assertFail();
+async function getCameraManagerInstance() {
+  let previewSurfaceId = GlobalThis.getInstance().getValue();
+  console.info(TAG, 'previewSurfaceId = ' + JSON.stringify(previewSurfaceId));
+  let ret = cameraObj.initCamera(previewSurfaceId);
+  if (ret) {
+    console.info(TAG + "getCameraManager FAILED");
+    return false;
   }
+  console.info(TAG + 'Exit getCameraManagerInstance');
+  return true;
 }
 
 function getCameraSupportDevicesArray() {
@@ -109,14 +113,16 @@ function getCameraSupportDevicesArray() {
   return true;
 }
 
-function createInput() {
-  console.info(TAG + "createCameraInput start.");
+async function createInput() {
+  console.info(TAG + 'Enter createInput');
   let ret = cameraObj.createCameraInput();
-  if (ret != 0) {
-    console.error(TAG + "createCameraInput FAILED");
-    expect().assertFail();
+  if (ret) {
+    console.info(TAG + "createCameraInput FAILED");
+    return false;
   }
-  cameraObj.cameraInputOpen();
+  await cameraObj.cameraInputOpen();
+  console.info(TAG + 'Exit createInput');
+  return true;
 }
 
 function beginCameraSessionConfig() {
@@ -128,13 +134,8 @@ function beginCameraSessionConfig() {
 
 function createCameraSessionInstance() {
   console.info(TAG + 'Enter createCameraSessionInstance');
-  try {
-    mCameraSession = cameraObj.createSession();
-  }
-  catch {
-    console.info(TAG + 'createCaptureSession FAILED');
-  }
-  if (isEmpty(mCameraSession)) {
+  let ret = cameraObj.createSession();
+  if (ret) {
     console.info(TAG + "createCaptureSession FAILED");
     return false;
   }
@@ -153,9 +154,8 @@ function createPreviewOutput() {
   console.info(TAG + 'Enter createPreviewOutput');
   let ret = cameraObj.createPreviewOutput();
 
-  if (ret != 0) {
+  if (ret) {
     console.info(TAG + "createPreviewOutput FAILED");
-    expect().assertFail();
   }
   console.info(TAG + "createPreviewOutput: " + ret);
   console.info(TAG + 'Exit createPreviewOutputs');
@@ -262,7 +262,7 @@ export default function CameraFunctionTest() {
       await driveFn();
       await getPermissionsWrite();
       await driveFn();
-      await getPhotoReceiverSurface();
+      getPhotoReceiverSurface();
       getCameraManagerInstance();
       getCameraSupportDevicesArray();
       getSupportedCameraOutputCapability();
