@@ -1744,13 +1744,13 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetBufferGeometryNormal(napi_
             napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_1, &result);
             return result;
         }
-        int width1, height1;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_BUFFER_GEOMETRY, &height1, &width1);
+        int width2, height2;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_BUFFER_GEOMETRY, &height2, &width2);
         if (flag != 0) {
             napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_2, &result);
             return result;
         }
-        if (width != _width || height != _height) {
+        if (width != width2 || height != height2) {
             napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_3, &result);
             return result;
         }
