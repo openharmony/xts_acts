@@ -43,7 +43,6 @@ export const oHCameraManagerCreateCameraInput: (index:number) => number;
 export const oHCreateCameraInputWithPositionAndType: (position: number, type: number,index:number) => number;
 export const oHCameraManagerCreateCaptureSession: (index:number) => number;
 export const oHCameraManagerGetSupportedCameras: (index:number) => cameraInfo;
-export const oHCameraManagerGetSupportedCameraInfos: (index:number) => Array<cameraInfo>;
 export const oHCameraManagerDeleteSupportedCameras: (index:number) => number;
 export const oHGetSupportedCameraOutputCapability: (index:number) => number;
 export const oHCameraManagerDeleteSupportedCameraOutputCapability: (index:number) => number;
