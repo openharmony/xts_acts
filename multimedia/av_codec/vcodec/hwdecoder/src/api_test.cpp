@@ -1257,7 +1257,11 @@ HWTEST_F(HwdecApiNdkTest, VIDEO_HWDEC_CAP_API_9400, TestSize.Level2)
 {
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
     ASSERT_NE(nullptr, capability);
-    ASSERT_EQ(false, OH_AVCapability_IsVideoSizeSupported(capability, 7680, 4320));
+    OH_AVRange heightRange;
+    OH_AVRange widthRange;
+    ASSERT_EQ(AV_ERR_OK, OH_AVCapability_GetVideoHeightRange(capability, &heightRange));
+    ASSERT_EQ(AV_ERR_OK, OH_AVCapability_GetVideoWidthRange(capability, &widthRange));
+    ASSERT_EQ(false, OH_AVCapability_IsVideoSizeSupported(capability, widthRange.maxVal + 1, heightRange.maxVal + 1));
 }
 /**
  * @tc.number    : VIDEO_HWDEC_CAP_API_5400
