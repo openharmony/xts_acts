@@ -86,10 +86,13 @@ export default function nativeAVScreenCaptureNdkTest() {
      */
     it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureTest-------------before click:");
-      Utils.keepClick();
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureTest();
-      console.info(Tag + "normalAVScreenCaptureTest-------------res:" + result);
+      console.info(Tag + "normalAVScreenCaptureTest-------------result:" + result);
       expect(result).assertEqual(0);
+      await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureTestStop();
+      console.info(Tag + "normalAVScreenCaptureTest-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
       done();
     });
 
@@ -103,10 +106,13 @@ export default function nativeAVScreenCaptureNdkTest() {
      */
     it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenRecordTest-------------before click:");
-      Utils.keepClick();
       let result: number = myScreenCaptureNdk.normalAVScreenRecordTest();
-      console.info(Tag + "normalAVScreenRecordTest-------------res:" + result);
+      console.info(Tag + "normalAVScreenRecordTest-------------result:" + result);
       expect(result).assertEqual(0);
+      await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenRecordTestStop();
+      console.info(Tag + "normalAVScreenRecordTest-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
       done();
     });
 
@@ -120,10 +126,13 @@ export default function nativeAVScreenCaptureNdkTest() {
      */
     it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300', 0, async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------before click:");
-      Utils.keepClick();
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureSurfaceTest();
-      console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------res:" + result);
+      console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------result:" + result);
       expect(result).assertEqual(0);
+      await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureSurfaceTestStop();
+      console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
       done();
     });
 
