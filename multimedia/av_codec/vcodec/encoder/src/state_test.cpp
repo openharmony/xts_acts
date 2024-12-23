@@ -87,11 +87,20 @@ namespace {
  */
 HWTEST_F(HwEncStateNdkTest, VIDEO_ENCODE_STATE_0100, TestSize.Level2)
 {
-    int32_t ret = vEncSample->Stop();
-    ASSERT_EQ(AV_ERR_INVALID_STATE, ret);
-    ret = vEncSample->Flush();
+    int32_t ret = vEncSample->Flush();
     ASSERT_EQ(AV_ERR_INVALID_STATE, ret);
     ret = vEncSample->SetVideoEncoderCallback();
+    ASSERT_EQ(AV_ERR_OK, ret);
+}
+
+/**
+ * @tc.number    : VIDEO_ENCODE_STATE_0101
+ * @tc.name      : create-configure-stop
+ * @tc.desc      : function test
+ */
+HWTEST_F(HwEncStateNdkTest, VIDEO_ENCODE_STATE_0101, TestSize.Level2)
+{
+    int32_t ret = vEncSample->Stop();
     ASSERT_EQ(AV_ERR_OK, ret);
 }
 

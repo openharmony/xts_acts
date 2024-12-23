@@ -328,8 +328,9 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_014, TestSize.Level2)
     result0 = aDecBufferDemo->SetCallback(codec);
     ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Configure(codec, format, channel, sampleRate);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Stop(codec);
-    ASSERT_EQ(result0, AV_ERR_INVALID_STATE);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Destroy(codec);
     delete aDecBufferDemo;
 }
@@ -1214,8 +1215,9 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_045, TestSize.Level2)
     result0 = aDecBufferDemo->Start(codec);
     ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Flush(codec);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Flush(codec);
-    ASSERT_EQ(result0, AV_ERR_INVALID_STATE);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Destroy(codec);
     delete aDecBufferDemo;
 }
@@ -1469,8 +1471,9 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_054, TestSize.Level2)
     result0 = aDecBufferDemo->Start(codec);
     ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Stop(codec);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Stop(codec);
-    ASSERT_EQ(result0, AV_ERR_INVALID_STATE);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = aDecBufferDemo->Destroy(codec);
     delete aDecBufferDemo;
 }
