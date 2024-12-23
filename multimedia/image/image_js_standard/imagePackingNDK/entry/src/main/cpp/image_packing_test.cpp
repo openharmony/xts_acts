@@ -22,11 +22,18 @@
 #include "image_packer_module_test.h"
 #include "multimedia/image_framework/image_pixel_map_napi.h"
 #include <cstring>
+#include <vector>
 
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0x3200
+#define LOG_TAG "IMAGE_TAGLOG"
 
-#define CAMERA_LOG_TAG "CAMERA_TAGLOG"
-#define CAMERA_LOG_DOMAIN 0x32000
-#define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_INFO, CAMERA_LOG_DOMAIN, CAMERA_LOG_TAG, fmt, ##__VA_ARGS__)
+#define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGD(...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGW(...) ((void)OH_LOG_Print(LOG_APP, LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+
 using namespace std;
 namespace {
     static constexpr uint32_t NUM_0 = 0;
@@ -46,6 +53,7 @@ namespace {
     constexpr size_t SIZE_ONE = 1;
     constexpr size_t SIZE_THREE = 3;
     constexpr size_t SIZE_FOUR = 4;
+    constexpr size_t SIZE_FIVE = 4;
     constexpr size_t DEFAULT_PACKING_SIZE = 25 * 1024 * 1024;
     constexpr uint32_t ARGS_FIRST = 0;
     constexpr uint32_t ARGS_SECOND = 1;
@@ -97,7 +105,7 @@ void setImageFormat(napi_env env, napi_value argValue, OH_PackingOptions *option
     size_t mimeTypeSize = 0;
     Image_MimeType format;
     if (napi_get_value_string_utf8(env, argValue, nullptr, 0, &mimeTypeSize) != napi_ok) {
-        LOG("failed to format");
+        LOGI("failed to format");
         return;
     }
     char *buffer = static_cast<char *>(malloc((mimeTypeSize + 1) * sizeof(char)));
@@ -111,138 +119,137 @@ void setImageFormat(napi_env env, napi_value argValue, OH_PackingOptions *option
     format.data = buffer;
     format.size = mimeTypeSize;
     OH_PackingOptions_SetMimeType(options, &format);
-    LOG("get format data success %{public}s", format.data);
-    LOG("get format size success %{public}zu", format.size);
+    LOGI("get format data success %{public}s", format.data);
+    LOGI("get format size success %{public}zu", format.size);
     free(buffer);
     return;
 }
 
-void setLoop(napi_env env, napi_value argValue, OH_PackingOptionsForSequence *options)
+struct PackingOptionsForSequence {
+    int32_t frameCount;
+    int32_t* delayTimesList;
+    size_t delayTimeListLength = 0;
+    uint32_t* disposalTypesList;
+    size_t disposalTypesLength = 0;
+    uint32_t loopCount = 1;
+};
+
+static void getLoop(napi_env env, napi_value argValue, PackingOptionsForSequence *ops)
 {
-    uint32_t loop = 0;
-    if (napi_get_value_uint32(env, argValue, &loop) != napi_ok) {
-        LOG("failed to get loop");
-        return;
+    if (napi_get_value_uint32(env, argValue, &(ops->loopCount)) != napi_ok) {
+        LOGE("failed to get loop");
     }
-    OH_PackingOptionsForSequence_SetLoopCount(options, loop);
-    LOG("get loop success %{public}d", loop);
-    return;
+    LOGI("get loop success %{public}d", ops->loopCount);
 }
 
-int32_t* setDelayTimes(napi_env env, napi_value argValue, OH_PackingOptionsForSequence *options)
+static bool getDelayTimes(napi_env env, napi_value argValue, PackingOptionsForSequence *ops)
 {
     napi_value delayTimesValue = nullptr;
     if (napi_get_named_property(env, argValue, "delayTimes", &delayTimesValue) != napi_ok) {
-        LOG("failed to napi_get_named_property");
-        return nullptr;
+        LOGE("failed to napi_get_named_property");
+        return false;
     }
     bool isDelayTimesArray = false;
     uint32_t delayTimesSize = 0;
     if (napi_is_array(env, delayTimesValue, &isDelayTimesArray) != napi_ok) {
-        LOG("JsPackToFileMultiFrames failed to napi_is_array");
-        return nullptr;
+        LOGE("JsPackToFileMultiFrames failed to napi_is_array");
+        return false;
     }
     if (!isDelayTimesArray) {
-        LOG("is not DelayTimesArray");
-        return nullptr;
+        LOGE("is not DelayTimesArray");
+        return false;
     }
     if (napi_get_array_length(env, delayTimesValue, &delayTimesSize) != napi_ok) {
-        LOG("Parse delayTime pack napi_get_array_length failed");
-        return nullptr;
+        LOGE("Parse delayTime pack napi_get_array_length failed");
+        return false;
     }
-        LOG("delayTime size %{public}u", delayTimesSize);
-
-    int32_t* delayTimesArray = static_cast<int32_t *>(malloc((delayTimesSize + 1) * sizeof(int32_t)));
-    if (delayTimesArray == nullptr) {
-        LOG("get delayTimesArray space failed.");
-        return nullptr;
+    LOGI("delayTime size %{public}u", delayTimesSize);
+    ops->delayTimeListLength = delayTimesSize;
+    ops->delayTimesList = static_cast<int32_t *>(malloc((delayTimesSize + 1) * sizeof(int32_t)));
+    if (ops->delayTimesList == nullptr) {
+        LOGE("get delayTimesArray space failed.");
+        return false;
     }
-    int32_t num1 = 0;
+    int32_t num = 0;
     for (size_t i = 0; i < delayTimesSize; i++) {
         napi_value item1;
         if (napi_get_element(env, delayTimesValue, i, &item1) != napi_ok) {
-            LOG("napi_get_element failed %{public}zu", i);
-            free(delayTimesArray);
-            return nullptr;
+            LOGE("napi_get_element failed %{public}zu", i);
+            return false;
         }
-        if (napi_get_value_int32(env, item1, &num1) != napi_ok) {
-            LOG("Parse delayTime in item1 failed %{public}zu", i);
-            free(delayTimesArray);
-            return nullptr;
+        if (napi_get_value_int32(env, item1, &num) != napi_ok) {
+            LOGE("Parse delayTime in item1 failed %{public}zu", i);
+            return false;
         }
-        delayTimesArray[i] = num1;
-        LOG("Parse delayTime in item1 success %{public}d", delayTimesArray[i]);
+        ops->delayTimesList[i] = num;
+        LOGI("Parse delayTime in item1 success %{public}d", ops->delayTimesList[i]);
     }
-    OH_PackingOptionsForSequence_SetDelayTimeList(options, delayTimesArray, delayTimesSize);
-    return delayTimesArray;
+    return true;
 }
 
-uint32_t* setDisposalTypes(napi_env env, napi_value argValue, OH_PackingOptionsForSequence *options)
+static void getDisposalTypes(napi_env env, napi_value argValue, PackingOptionsForSequence *ops)
 {
     napi_value disposalTypesValue = nullptr;
     if (napi_get_named_property(env, argValue, "disposalTypes", &disposalTypesValue) != napi_ok) {
-        LOG("JsPackToFileMultiFrames failed to napi_get_named_property");
-        return nullptr;
+        LOGE("JsPackToFileMultiFrames failed to napi_get_named_property");
+        return;
     }
     bool isDisposalTypesArray = false;
     uint32_t disposalSize = 0;
     if (napi_is_array(env, disposalTypesValue, &isDisposalTypesArray) != napi_ok) {
-        LOG(" failed to napi_is_array");
-        return nullptr;
+        LOGE(" failed to napi_is_array");
+        return;
     }
     if (!isDisposalTypesArray) {
-        LOG("is not DisposalTypesArray");
-        return nullptr;
+        LOGE("is not DisposalTypesArray");
+        return;
     }
     if (napi_get_array_length(env, disposalTypesValue, &disposalSize) != napi_ok) {
-        LOG("Parse disposalTypes pack napi_get_array_length failed");
-        return nullptr;
+        LOGE("Parse disposalTypes pack napi_get_array_length failed");
+        return;
     }
-    LOG("disposalSize %{public}u", disposalSize);
-    uint32_t* disposalTypesArray = static_cast<uint32_t *>(malloc((disposalSize + 1) * sizeof(uint32_t)));
-    if (disposalTypesArray == nullptr) {
-        LOG("get disposalTypesArray space failed.");
-        return nullptr;
+    LOGI("disposalSize %{public}u", disposalSize);
+    ops->disposalTypesLength = disposalSize;
+    ops->disposalTypesList = static_cast<uint32_t *>(malloc((disposalSize + 1) * sizeof(uint32_t)));
+    if (ops->disposalTypesList == nullptr) {
+        LOGE("get disposalTypesArray space failed.");
+        return;
     }
-    uint32_t num2 = 0;
+    uint32_t num = 0;
     for (size_t i = 0; i < disposalSize; i++) {
         napi_value item2;
         if (napi_get_element(env, disposalTypesValue, i, &item2) != napi_ok) {
-            LOG("napi_get_element failed %{public}zu", i);
-            free(disposalTypesArray);
-            return nullptr;
+            LOGE("napi_get_element failed %{public}zu", i);
+            return;
         }
-        if (napi_get_value_uint32(env, item2, &num2) != napi_ok) {
-            LOG("Parse disposalTypes in item2 failed %{public}zu", i);
-            free(disposalTypesArray);
-            return nullptr;
+        if (napi_get_value_uint32(env, item2, &num) != napi_ok) {
+            LOGE("Parse disposalTypes in item2 failed %{public}zu", i);
+            return;
         }
-        disposalTypesArray[i] = num2;
-        LOG("Parse disposalTypes in item2 success %{public}u", disposalTypesArray[i]);
+        ops->disposalTypesList[i] = num;
+        LOGI("Parse disposalTypes in item2 success %{public}u", ops->disposalTypesList[i]);
     }
-    OH_PackingOptionsForSequence_SetDisposalTypes(options, disposalTypesArray, disposalSize);
-    return disposalTypesArray;
+    return;
 }
 
-int32_t getFrameCount(napi_env env, napi_value argValue)
+static bool getFrameCount(napi_env env, napi_value argValue, PackingOptionsForSequence *ops)
 {
-    int32_t frameCount = 0;
-    if (napi_get_value_int32(env, argValue, &frameCount) != napi_ok) {
-        LOG("failed to get loop");
-        return frameCount;
+    if (napi_get_value_int32(env, argValue, &(ops->frameCount)) != napi_ok) {
+        LOGE("failed to get frameCount");
+        return false;
     }
-    LOG("get frameCount success %{public}d", frameCount);
-    return frameCount;
+    LOGI("get frameCount success %{public}d", ops->frameCount);
+    return true;
 }
 
 int32_t getFileDescriptor(napi_env env, napi_value argValue)
 {
     int32_t fd = 0;
     if (napi_get_value_int32(env, argValue, &fd) != napi_ok) {
-        LOG("get fd failed ");
+        LOGE("get fd failed ");
         return fd;
     }
-    LOG("get fd success %{public}d", fd);
+    LOGI("get fd success %{public}d", fd);
     return fd;
 }
 
@@ -267,7 +274,7 @@ static bool GetInt32Property(napi_env env, napi_value root, const char* utf8name
     napi_value property = nullptr;
     auto status = napi_get_named_property(env, root, utf8name, &property);
     if (status != napi_ok || property == nullptr) {
-        LOG("Get property error %{public}s", utf8name);
+        LOGE("Get property error %{public}s", utf8name);
         return false;
     }
     return (napi_get_value_int32(env, property, res) == napi_ok);
@@ -278,7 +285,7 @@ static bool GetUint32Property(napi_env env, napi_value root, const char* utf8nam
     napi_value property = nullptr;
     auto status = napi_get_named_property(env, root, utf8name, &property);
     if (status != napi_ok || property == nullptr) {
-        LOG("Get property error %{public}s", utf8name);
+        LOGE("Get property error %{public}s", utf8name);
         return false;
     }
     return (napi_get_value_uint32(env, property, res) == napi_ok);
@@ -290,13 +297,13 @@ static bool GetStringProperty(napi_env env, napi_value root,
     napi_value value = nullptr;
     auto status = napi_get_named_property(env, root, utf8name, &value);
     if (status != napi_ok || value == nullptr) {
-        LOG("Get property error %{public}s", utf8name);
+        LOGE("Get property error %{public}s", utf8name);
         return false;
     }
 
     if (napi_ok != napi_get_value_string_utf8(env, value, nullptr, SIZE_ZERO, bufferSize)
         || *bufferSize == SIZE_ZERO) {
-        LOG("Get napi string length error");
+        LOGE("Get napi string length error");
         return false;
     }
 
@@ -306,7 +313,7 @@ static bool GetStringProperty(napi_env env, napi_value root,
     }
 
     if (napi_ok != napi_get_value_string_utf8(env, value, *buffer, (*bufferSize) + 1, bufferSize)) {
-        LOG("Get napi string error");
+        LOGE("Get napi string error");
         return false;
     }
     return (*bufferSize > SIZE_ZERO);
@@ -315,12 +322,12 @@ static bool GetStringProperty(napi_env env, napi_value root,
 static bool checkArgs(const napi_value* argValue, size_t argCount, size_t want)
 {
     if (argCount < want) {
-        LOG("argCount %{public}zu < want %{public}zu", argCount, want);
+        LOGE("argCount %{public}zu < want %{public}zu", argCount, want);
         return false;
     }
     for (size_t i = SIZE_ZERO; i < want; i++) {
         if (argValue[i] == nullptr) {
-            LOG("argValue[%{public}zu] is nullptr", i);
+            LOGE("argValue[%{public}zu] is nullptr", i);
             return false;
         }
     }
@@ -337,7 +344,7 @@ struct ImagePackingTestOps {
 static bool parseImagePackingOps(napi_env env, napi_value arg, struct ImagePackingTestOps &ops)
 {
     if (env == nullptr || arg == nullptr) {
-        LOG("env is %{public}s || arg is %{public}s", DEBUG_PTR(env), DEBUG_PTR(arg));
+        LOGE("env is %{public}s || arg is %{public}s", DEBUG_PTR(env), DEBUG_PTR(arg));
         return false;
     }
 
@@ -371,83 +378,285 @@ static napi_value createResultValue(napi_env env, int32_t resCode, napi_value re
     return result;
 }
 
+static bool parsePackToDataOptionsForSequence(napi_env env, napi_value *argValue, PackingOptionsForSequence *ops)
+{
+    getLoop(env, argValue[NUM_0], ops);
+    getDisposalTypes(env, argValue[NUM_1], ops);
+    if (!getDelayTimes(env, argValue[NUM_1], ops)) {
+        LOGE("parsePackToDataOptionsForSequence get delayTimes failed");
+        return false;
+    }
+    if (!getFrameCount(env, argValue[NUM_2], ops)) {
+        LOGE("parsePackToDataOptionsForSequence get frameCount failed");
+        return false;
+    }
+    LOGI("parsePackToDataOptionsForSequence success");
+    return true;
+}
+
+static bool setPackingOptionsForSequence(OH_PackingOptionsForSequence *options, PackingOptionsForSequence ops)
+{
+    if (OH_PackingOptionsForSequence_SetFrameCount(options, static_cast<uint32_t>(ops.frameCount)) != IMAGE_SUCCESS) {
+        LOGE("OH_PackingOptionsForSequence_SetFrameCount failed");
+        return false;
+    }
+    if (OH_PackingOptionsForSequence_SetDelayTimeList(options, ops.delayTimesList,
+        ops.delayTimeListLength) != IMAGE_SUCCESS) {
+        LOGE("OH_PackingOptionsForSequence_SetDelayTimeList failed");
+        return false;
+    }
+    if (OH_PackingOptionsForSequence_SetDisposalTypes(options, ops.disposalTypesList,
+        ops.disposalTypesLength) != IMAGE_SUCCESS) {
+        LOGE("OH_PackingOptionsForSequence_SetDisposalTypes failed");
+        return false;
+    }
+    if (OH_PackingOptionsForSequence_SetLoopCount(options, ops.loopCount)!= IMAGE_SUCCESS) {
+        LOGE("OH_PackingOptionsForSequence_SetLoopCount failed");
+        return false;
+    }
+    LOGI("setPackingOptionsForSequence success");
+    return true;
+}
+
+static bool checkPackingOptionsForSequence(OH_PackingOptionsForSequence *options, PackingOptionsForSequence ops)
+{
+    PackingOptionsForSequence tmpOpts;
+    uint32_t frameCount = 0;
+    Image_ErrorCode reslut = OH_PackingOptionsForSequence_GetFrameCount(options, &frameCount);
+    LOGI("Set frameCount = %{public}d", ops.frameCount);
+    LOGI("Get frameCount = %{public}u", frameCount);
+    if (reslut != IMAGE_SUCCESS || ops.frameCount != static_cast<int32_t>(frameCount)) {
+        LOGE("frameCount not matching");
+        return false;
+    }
+    tmpOpts.delayTimeListLength = ops.delayTimeListLength;
+    std::vector<int32_t> delayTimeList(tmpOpts.delayTimeListLength);
+    reslut = OH_PackingOptionsForSequence_GetDelayTimeList(options, delayTimeList.data(), ops.delayTimeListLength);
+    if (reslut != IMAGE_SUCCESS) {
+        LOGE("OH_PackingOptionsForSequence_GetDelayTimeList failed");
+        return false;
+    }
+    if (ops.disposalTypesLength != 0) {
+        tmpOpts.disposalTypesLength = ops.disposalTypesLength;
+        std::vector<uint32_t> disposalTypes(tmpOpts.disposalTypesLength);
+        reslut = OH_PackingOptionsForSequence_GetDisposalTypes(
+            options, disposalTypes.data(), tmpOpts.disposalTypesLength);
+        if (reslut != IMAGE_SUCCESS) {
+            LOGE("OH_PackingOptionsForSequence_GetDisposalTypes failed");
+            return false;
+        }
+    }
+    reslut = OH_PackingOptionsForSequence_GetLoopCount(options, &(tmpOpts.loopCount));
+    LOGI("Set loopCount = %{public}u", ops.loopCount);
+    LOGI("Get loopCount = %{public}u", tmpOpts.loopCount);
+    if (tmpOpts.loopCount != ops.loopCount || reslut != IMAGE_SUCCESS) {
+        LOGE("loopCount not matching");
+        return false;
+    }
+    return true;
+}
 
 napi_value ImagePackingNDKTest::JsPackToDataMultiFrames(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
+    napi_value resultBuffer = nullptr;
     napi_get_undefined(env, &result);
+    napi_get_undefined(env, &resultBuffer);
     napi_value thisVar = nullptr;
     napi_value argValue[NUM_3] = {0};
     size_t argCount = NUM_3;
     if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok) {
-        LOG("JsPackToDataMultiFrames failed to parse params");
+        LOGE("JsPackToDataMultiFrames failed to parse params");
         return result;
     }
     OH_PackingOptionsForSequence *options = nullptr;
     OH_PackingOptionsForSequence_Create(&options);
-    setLoop(env, argValue[NUM_0], options);
-    int32_t* delayTimes = setDelayTimes(env, argValue[NUM_1], options);
-    uint32_t* disposalTypesArray = setDisposalTypes(env, argValue[NUM_1], options);
-    int32_t frameCount = getFrameCount(env, argValue[NUM_2]);
-    OH_PackingOptionsForSequence_SetFrameCount(options, static_cast<uint32_t>(frameCount));
-    OH_PixelmapNative *pixelmaps[frameCount];
-    createPixelMapList(pixelmaps, frameCount);
+    PackingOptionsForSequence ops;
+    if (!parsePackToDataOptionsForSequence(env, argValue, &ops)) {
+        LOGE("JsPackToDataMultiFrames failed to parse packing options");
+        return result;
+    }
+    if (!setPackingOptionsForSequence(options, ops)) {
+        LOGE("JsPackToDataMultiFrames failed to set packing options");
+        return result;
+    }
+    if (!checkPackingOptionsForSequence(options, ops)) {
+        LOGE("JsPackToDataMultiFrames failed to check packing options");
+        return result;
+    }
+    OH_PixelmapNative *pixelmaps[ops.frameCount];
+    createPixelMapList(pixelmaps, ops.frameCount);
 
     size_t outDataSize = 10000;
     uint8_t outData[outDataSize];
     ImagePackerModuleTest ipmt;
-    Image_ErrorCode ret = ipmt.PackToDataMultiFrames(options, pixelmaps, frameCount, outData, &outDataSize);
+    Image_ErrorCode ret = ipmt.PackToDataMultiFrames(options, pixelmaps, ops.frameCount, outData, &outDataSize);
     if (ret != IMAGE_SUCCESS) {
-        LOG("JsPackToDataMultiFrames failed");
-        free(delayTimes);
-        free(disposalTypesArray);
-        OH_PackingOptionsForSequence_Release(options);
-        return result;
+        LOGE("JsPackToDataMultiFrames failed");
+    } else {
+        CreateArrayBuffer(env, outData, outDataSize, &resultBuffer);
     }
-    CreateArrayBuffer(env, outData, outDataSize, &result);
-    free(delayTimes);
-    free(disposalTypesArray);
+    result = createResultValue(env, ret, resultBuffer);
     OH_PackingOptionsForSequence_Release(options);
     return result;
+}
+
+napi_value ImagePackingNDKTest::JsPackToDataMultiFramesError(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &result);
+    napi_get_undefined(env, &undefined);
+    napi_value thisVar = nullptr;
+    napi_value argValue[NUM_4] = {0};
+    size_t argCount = NUM_4;
+    if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok) {
+        LOGE("JsPackToDataMultiFramesError failed to parse params");
+        return result;
+    }
+    OH_PackingOptionsForSequence *options = nullptr;
+    OH_PackingOptionsForSequence_Create(&options);
+    PackingOptionsForSequence ops;
+    if (!parsePackToDataOptionsForSequence(env, argValue, &ops)) {
+        LOGE("JsPackToDataMultiFrames failed to parse packing options");
+        return result;
+    }
+    if (!setPackingOptionsForSequence(options, ops)) {
+        LOGE("JsPackToDataMultiFrames failed to set packing options");
+        return result;
+    }
+    if (!checkPackingOptionsForSequence(options, ops)) {
+        LOGE("JsPackToDataMultiFrames failed to check packing options");
+        return result;
+    }
+    uint32_t mode;
+    if (napi_get_value_uint32(env, argValue[NUM_3], &mode) != napi_ok) {
+        LOGE("Parse error mode in argValue failed");
+        return result;
+    }
+    OH_PixelmapNative *pixelmaps[ops.frameCount];
+    createPixelMapList(pixelmaps, ops.frameCount);
+
+    size_t outDataSize = 10000;
+    uint8_t outData[outDataSize];
+    ImagePackerModuleTest ipmt;
+    packMultiFramesOptions opts = {options, pixelmaps, ops.frameCount, mode};
+    Image_ErrorCode ret = ipmt.PackToDataMultiFramesError(&opts, outData, &outDataSize);
+    if (ret != IMAGE_SUCCESS) {
+        LOGE("PackToDataFromPixelmapSequence failed");
+    }
+    OH_PackingOptionsForSequence_Release(options);
+    result = createResultValue(env, ret, undefined);
+    return result;
+}
+
+static bool parsePackToFileOptionsForSequence(napi_env env, napi_value *argValue, PackingOptionsForSequence *ops)
+{
+    getLoop(env, argValue[NUM_3], ops);
+    getDisposalTypes(env, argValue[NUM_0], ops);
+    if (!getDelayTimes(env, argValue[NUM_0], ops)) {
+        LOGE("parsePackToFileOptionsForSequence get delayTimes failed");
+        return false;
+    }
+    if (!getFrameCount(env, argValue[NUM_2], ops)) {
+        LOGE("parsePackToFileOptionsForSequence get frameCount failed");
+        return false;
+    }
+    LOGI("parsePackToDataOptionsForSequence success");
+    return true;
 }
 
 napi_value ImagePackingNDKTest::JsPackToFileMultiFrames(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
+    napi_value undefined = nullptr;
     napi_get_undefined(env, &result);
+    napi_get_undefined(env, &undefined);
     napi_value thisVar = nullptr;
     napi_value argValue[NUM_4] = {0};
     size_t argCount = NUM_4;
     if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok) {
-        LOG("failed to parse params");
+        LOGE("failed to parse params");
         return result;
     }
 
     OH_PackingOptionsForSequence *options = nullptr;
     OH_PackingOptionsForSequence_Create(&options);
-    int32_t* delayTimes = setDelayTimes(env, argValue[NUM_0], options);
-    uint32_t* disposalTypesArray = setDisposalTypes(env, argValue[NUM_0], options);
-    setLoop(env, argValue[NUM_3], options);
+    PackingOptionsForSequence ops;
     int32_t fd = getFileDescriptor(env, argValue[NUM_1]);
-    int32_t frameCount = getFrameCount(env, argValue[NUM_2]);
-    OH_PackingOptionsForSequence_SetFrameCount(options, static_cast<uint32_t>(frameCount));
-    OH_PixelmapNative *pixelmaps[frameCount];
-    createPixelMapList(pixelmaps, frameCount);
-
-    ImagePackerModuleTest ipmt;
-    Image_ErrorCode ret = ipmt.PackToFileMultiFrames(options, pixelmaps, frameCount, fd);
-    if (ret != IMAGE_SUCCESS) {
-        LOG("JsPackToFileMultiFrames failed");
-        free(delayTimes);
-        free(disposalTypesArray);
-        OH_PackingOptionsForSequence_Release(options);
+    if (!parsePackToFileOptionsForSequence(env, argValue, &ops)) {
+        LOGE("JsPackToFileMultiFrames failed to parse packing options");
         return result;
     }
-    napi_create_int32(env, ret, &result);
-    LOG("ret = %{public}d", ret);
-    free(delayTimes);
-    free(disposalTypesArray);
+    if (!setPackingOptionsForSequence(options, ops)) {
+        LOGE("JsPackToFileMultiFrames failed to set packing options");
+        return result;
+    }
+    if (!checkPackingOptionsForSequence(options, ops)) {
+        LOGE("JsPackToFileMultiFrames failed to check packing options");
+        return result;
+    }
+    OH_PixelmapNative *pixelmaps[ops.frameCount];
+    createPixelMapList(pixelmaps, ops.frameCount);
+
+    ImagePackerModuleTest ipmt;
+    Image_ErrorCode ret = ipmt.PackToFileMultiFrames(options, pixelmaps, ops.frameCount, fd);
+    if (ret != IMAGE_SUCCESS) {
+        LOGE("JsPackToFileMultiFrames failed");
+    }
+    LOGI("ret = %{public}d", ret);
     OH_PackingOptionsForSequence_Release(options);
+    result = createResultValue(env, ret, undefined);
+    return result;
+}
+
+napi_value ImagePackingNDKTest::JsPackToFileMultiFramesError(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &result);
+    napi_get_undefined(env, &undefined);
+    napi_value thisVar = nullptr;
+    napi_value argValue[NUM_5] = {0};
+    size_t argCount = NUM_5;
+    if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok) {
+        LOGE("failed to parse params");
+        return result;
+    }
+
+    OH_PackingOptionsForSequence *options = nullptr;
+    OH_PackingOptionsForSequence_Create(&options);
+    PackingOptionsForSequence ops;
+    int32_t fd = getFileDescriptor(env, argValue[NUM_1]);
+    if (!parsePackToFileOptionsForSequence(env, argValue, &ops)) {
+        LOGE("JsPackToFileMultiFrames failed to parse packing options");
+        return result;
+    }
+    if (!setPackingOptionsForSequence(options, ops)) {
+        LOGE("JsPackToFileMultiFrames failed to set packing options");
+        return result;
+    }
+    if (!checkPackingOptionsForSequence(options, ops)) {
+        LOGE("JsPackToFileMultiFrames failed to check packing options");
+        return result;
+    }
+    uint32_t mode;
+    if (napi_get_value_uint32(env, argValue[NUM_4], &mode) != napi_ok || mode == BAD_PARAMETER_OUTDATA) {
+        LOGE("Parse error mode in argValue failed");
+        return result;
+    }
+    OH_PixelmapNative *pixelmaps[ops.frameCount];
+    createPixelMapList(pixelmaps, ops.frameCount);
+
+    packMultiFramesOptions opts = {options, pixelmaps, ops.frameCount, mode};
+    ImagePackerModuleTest ipmt;
+    Image_ErrorCode ret = ipmt.PackToFileMultiFramesError(&opts, fd);
+    if (ret != IMAGE_SUCCESS) {
+        LOGE("PackToFileFromPixelmapSequence failed");
+    }
+    LOGI("ret = %{public}d", ret);
+    OH_PackingOptionsForSequence_Release(options);
+    result = createResultValue(env, ret, undefined);
     return result;
 }
 
@@ -463,7 +672,7 @@ static ImagePacker_Native* getNativeImagePacker(napi_env env, napi_callback_info
 {
     napi_value thisVar = nullptr;
     if (argValue == nullptr || argCount == SIZE_ZERO) {
-        LOG("Invaild input!");
+        LOGE("Invaild input!");
         return nullptr;
     }
     if (napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr) != napi_ok) {
@@ -491,12 +700,12 @@ napi_value ImagePackingNDKTest::PackToData(napi_env env, napi_callback_info info
     size_t argCount = SIZE_THREE;
     ImagePacker_Native* native = getNativeImagePacker(env, info, argValue, argCount);
     if (native == nullptr || !checkArgs(argValue, argCount, SIZE_THREE)) {
-        LOG("argValue check failed");
+        LOGE("argValue check failed");
         return createUndefine(env);
     }
     struct ImagePackingTestOps ops;
     if (!parseImagePackingOps(env, argValue[ARGS_THIRD], ops)) {
-        LOG("packing ops parse failed");
+        LOGE("packing ops parse failed");
         return createResultValue(env, IMAGE_RESULT_INVALID_PARAMETER);
     }
 
@@ -509,7 +718,7 @@ napi_value ImagePackingNDKTest::PackToData(napi_env env, napi_callback_info info
     uint8_t *data = nullptr;
     if (napi_create_arraybuffer(env, dataSize,
         reinterpret_cast<void**>(&data), &nValue) != napi_ok || data == nullptr) {
-        LOG("packing create data failed");
+        LOGE("packing create data failed");
         return createUndefine(env);
     }
     int32_t res = OH_ImagePacker_PackToData(native,
@@ -518,7 +727,7 @@ napi_value ImagePackingNDKTest::PackToData(napi_env env, napi_callback_info info
         free(ops.format);
         ops.format = nullptr;
     }
-    LOG("packing act size %{public}zu", dataSize);
+    LOGI("packing act size %{public}zu", dataSize);
     return createResultValue(env, res, nValue);
 }
 
@@ -529,18 +738,18 @@ napi_value ImagePackingNDKTest::PackToFile(napi_env env, napi_callback_info info
     size_t argCount = SIZE_FOUR;
     ImagePacker_Native* native = getNativeImagePacker(env, info, argValue, argCount);
     if (native == nullptr || !checkArgs(argValue, argCount, SIZE_FOUR)) {
-        LOG("argValue check failed");
+        LOGE("argValue check failed");
         return createUndefine(env);
     }
     int32_t fd = INVALID_FD;
     if (napi_ok != napi_get_value_int32(env, argValue[ARGS_THIRD], &fd)) {
-        LOG("Fd arg failed");
+        LOGE("Fd arg failed");
         return createUndefine(env);
     }
 
     struct ImagePackingTestOps ops;
     if (!parseImagePackingOps(env, argValue[ARGS_FOURTH], ops)) {
-        LOG("packing ops parse failed");
+        LOGE("packing ops parse failed");
         return createResultValue(env, IMAGE_RESULT_INVALID_PARAMETER);
     }
 
@@ -562,7 +771,7 @@ napi_value ImagePackingNDKTest::Release(napi_env env, napi_callback_info info)
     size_t argCount = SIZE_ONE;
     ImagePacker_Native* native = getNativeImagePacker(env, info, argValue, argCount);
     if (native == nullptr) {
-        LOG("argValue check failed");
+        LOGE("argValue check failed");
         return createResultValue(env, IMAGE_RESULT_INVALID_PARAMETER);
     }
     int32_t res = OH_ImagePacker_Release(native);
@@ -585,8 +794,12 @@ static napi_value ModuleRegister(napi_env env, napi_value exports)
          nullptr},
         {"JsPackToDataMultiFrames", nullptr, OHOS::Media::ImagePackingNDKTest::JsPackToDataMultiFrames, nullptr,
          nullptr, nullptr, napi_static, nullptr},
+        {"JsPackToDataMultiFramesError", nullptr, OHOS::Media::ImagePackingNDKTest::JsPackToDataMultiFramesError,
+         nullptr, nullptr, nullptr, napi_static, nullptr },
         {"JsPackToFileMultiFrames", nullptr, OHOS::Media::ImagePackingNDKTest::JsPackToFileMultiFrames, nullptr,
          nullptr, nullptr, napi_static, nullptr},
+        {"JsPackToFileMultiFramesError", nullptr, OHOS::Media::ImagePackingNDKTest::JsPackToFileMultiFramesError,
+         nullptr, nullptr, nullptr, napi_static, nullptr },
     };
     napi_define_properties(env, exports, sizeof(props) / sizeof(props[ARGS_FIRST]), props);
     return exports;
