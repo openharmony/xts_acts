@@ -90,5 +90,70 @@ export default function commonAttrsScaleTest() {
       expect(nativeFunc.testCommonAttrsScale005()).assertEqual(0)
       done()
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_COMMONATTRS_SCALE_0600
+     * @tc.name       : testCommonAttrsScale006
+     * @tc.desc       : testing scale for flex with invalid value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCommonAttrsScale006', 0, async (done: Function) => {
+      expect(nativeFunc.testCommonAttrsScale006()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_COMMONATTRS_SCALE_0700
+     * @tc.name       : testCommonAttrsScale007
+     * @tc.desc       : testing scale for flex with invalid value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCommonAttrsScale007', 0, async (done: Function) => {
+      expect(nativeFunc.testCommonAttrsScale007()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_COMMONATTRS_SCALE_0800
+     * @tc.name       : testCommonAttrsScale008
+     * @tc.desc       : testing scale for flex with invalid value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCommonAttrsScale008', 0, async (done: Function) => {
+      expect(nativeFunc.testCommonAttrsScale008()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_COMMONATTRS_SCALE_0500
+     * @tc.name       : testCommonAttrsScale009
+     * @tc.desc       : testing scale for flex with invalid value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCommonAttrsScale009', 0, async (done: Function) => {
+      expect(nativeFunc.testCommonAttrsScale009()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_COMMONATTRS_SCALE_0500
+     * @tc.name       : testCommonAttrsScale010
+     * @tc.desc       : testing scale for flex with default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCommonAttrsScale010', 0, async (done: Function) => {
+      expect(nativeFunc.testCommonAttrsScale010()).assertEqual(0)
+      done()
+    })
   })
 }

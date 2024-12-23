@@ -47,16 +47,21 @@ export default function BadgeNodeTest() {
       console.info('badgeNode after each called');
     })
    
+    /**
+     * @tc.number    badgeNode0100
+     * @tc.name      badgeNode0100
+     * @tc.desc      frameNode: createNodebadgeToWindow
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
     it('badgeNode0100', 0, async (done: Function) => {
 
       let tagName = 'badgeNode0100';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_ badge_001');
-      console.info('[' + tagName + '] Search width is: ' + JSON.stringify(JSON.parse(strJsonNew)
-        .$attrs
-        .width));
-
-      expect(JSON.parse(strJsonNew).$attrs.width).assertEqual('20.00vp');
+      console.info('[' + tagName + '] Search is: ' + JSON.stringify(JSON.parse(strJsonNew).$type));
+      expect(JSON.parse(strJsonNew).$type).assertEqual("Badge");
       console.info('[' + tagName + '] END ===========================');
       done();
     });

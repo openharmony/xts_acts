@@ -188,6 +188,14 @@ import scrollPositionTest from './scroll/ScrollPositionTest.test'
 import imageWidthTest from './image/ImageWidthTest.test'
 import imageHeightTest from './image/ImageHeightTest.test'
 import imagePositionTest from './image/ImagePositionTest.test'
+import imageDraggableTest from './image/ImageDraggableTest.test'
+import imageDraggableEventTest from './image/ImageDraggableEventTest.test'
+import imageRenderModeTest from './image/ImageRenderModeTest.test'
+import imageFitOriginalSizeTest from './image/ImageFitOriginalSizeTest.test'
+import imageFillColorTest from './image/ImageFillColorTest.test'
+import imageResizableTest from './image/ImageResizableTest.test'
+import imageOnfinishTest from './image/ImageOnfinishTest.test'
+import imageOnDownloadProgressTest from './image/ImageOnDownloadProgressTest.test'
 import listHeightTest from './list/ListHeightTest.test'
 import listWidthTest from './list/ListWidthTest.test'
 import listBackgroundColorTest from './list/ListBackgroundColorTest.test'
@@ -279,6 +287,14 @@ import textTransformTest from './text/TextTransformTest.test'
 import textVisibilityTest from './text/TextVisibilityTest.test'
 import textLineBreakStrategyTest from './text/TextLineBreakStrategyTest.test'
 import textAlignRulesTest from './text/TextAlignRulesTest.test'
+import textWorkBreakTest from './text/TextWorkBreakTest.test'
+import textEllipsisModeTest from './text/TextEllipsisModeTest.test'
+import textLineSpacingTest from './text/TextLineSpacingTest.test'
+import textFontFeatureTest from './text/TextFontFeatureTest.test'
+import textSelectedBackgroundColorTest from './text/TextSelectedBackgroundColorTest.test'
+import textEnableDataDetectortest from './text/TextEnableDataDetectortest.test'
+import textParagraphTest from './text/TextParagraphTest.test'
+import textDataDetectorConfigTest from './text/TextDataDetectorConfigTest.test'
 import commonAttrsRadialGradientTest from './commonattrs/CommonAttrsRadialGradientTest.test'
 import commonAttrsSweepGradientTest from './commonattrs/CommonAttrsSweepGradientTest.test'
 import scrollScrollBarTest from './scroll/ScrollScrollBarTest.test'
@@ -464,6 +480,9 @@ import imageSpanHeightTest from './imagespan/ImageSpanHeightTest.test'
 import imageSpanObjectFitTest from './imagespan/ImageSpanObjectFitTest.test'
 import imageSpanVerticalAlignTest from './imagespan/ImageSpanVerticalAlignTest.test'
 import imageSpanPaddingTest from './imagespan/ImageSpanPaddingTest.test'
+import imageSpanSrcTest from './imagespan/ImageSpanSrcTest.test'
+import imageSpanAltTest from './imagespan/ImageSpanAltTest.test'
+import imageSpanOnClickTest from './imagespan/ImageSpanOnClickTest.test'
 import columnWidthTest from './column/ColumnWidthTest.test'
 import columnHeightTest from './column/ColumnHeightTest.test'
 import columnPaddingTest from './column/ColumnPaddingTest.test'
@@ -525,6 +544,11 @@ import spanFontSizeTest from './span/SpanFontSizeTest.test'
 import spanFontStyleTest from './span/SpanFontStyleTest.test'
 import spanFontWeightTest from './span/SpanFontWeightTest.test'
 import spanContentTest from './span/SpanContentTest.test'
+import spanTextBackgroundStyleTest from './span/SpanTextBackgroundStyleTest.test'
+import spanTextShadowTest from './span/SpanTextShadowTest.test'
+import spanFontFamilyTest from './span/SpanFontFamilyTest.test'
+import spanBaseLineOffsetTest from './span/SpanBaseLineOffsetTest.test'
+import spanOnClickTest from './span/SpanOnClickTest.test'
 import loadingProgressColorTest from './loadingprogress/LoadingProgressColorTest'
 import loadingProgressEnableLoadingTest from './loadingprogress/LoadingProgressEnableLoadingTest'
 import progressColorTest from './progress/ProgressColorTest'
@@ -595,6 +619,13 @@ import TestArkUIAddApi from './arkApi/arkApi.test'
 import testArkUI from './arkApi/arkUIApiTest.test'
 import testAnimationTest from './animation/animationTest.test'
 import testWaterFlower from './waterFlower/waterFlowerTest.test'
+import waterFlowAttrsTest from './waterFlower/WaterFlowAttrsTest.test'
+import waterFlowEventTest from './waterFlower/WaterFlowEventTest.test'
+import waterFlowScrollToIndex from './waterFlower/WaterFlowScrollToIndex.test'
+import waterFlowScrollOffsetTest from './waterFlower/WaterFlowScrollOffsetTest.test'
+import waterFlowScrollPageTest from './waterFlower/WaterFlowScrollPageTest.test'
+import waterFlowScrollByTest from './waterFlower/WaterFlowScrollByTest.test'
+import waterFlowNestedScrollTest from './waterFlower/WaterFlowNestedScrollTest.test'
 import accessibilityStateTest from './accessibilityState/accessibilityStateTest.test'
 import relativeContainerGuidelineTest from "./relativecontainer/RelativeContainerGuidelineTest.test"
 import relativeContainerBarrierTest from "./relativecontainer/RelativeContainerBarrierTest.test"
@@ -797,7 +828,6 @@ import unitPaddingPercentTest from "./unit/UnitPaddingPercentTest.test"
 import unitBorderRadiusPercentTest from "./unit/UnitBorderRadiusPercentTest.test"
 import toolsLayoutRectTest from "./tools/ToolsLayoutRectTest.test"
 import hybirdGetNodeHandleTest from "./hybird/HybirdGetNodeHandleTest.test"
-import responseConfigUpdateTest from "./response/ResponseConfigUpdateTest.test"
 import requirementPanGestureTest from './requirement/RequirementPanGestureTest.test'
 import customComponentLayoutConstraintTest from './customcomponent/CustomComponentLayoutConstraintTest.test'
 import customDialogSetContentTest from "./customdialog/CustomDialogSetContentTest.test"
@@ -837,8 +867,34 @@ import lazyForEachUnregisterEventReceiverTest from "./lazyforeach/LazyForEachUnr
 import scrollScrollEventTest from './scroll/ScrollScrollEventTest.test'
 import xComponentIdTest from './xcomponent/XComponentIdTest.test'
 
-export default function testsuite() {
+import listScrollBarColorTest from './list/ListScrollBarColorTest.test'
+import listScrollBarWidthTest from './list/ListScrollBarWidthTest.test'
+import listSpaceTest from './list/ListSpaceTest.test'
+import listAlignListItemTest from './list/ListAlignListItemTest.test'
+import listListNodeAdapterTest from './list/ListListNodeAdapterTest.test'
+import listInitialIndexTest from './list/ListInitialIndexTest.test'
+import listDividerTest from './list/ListDividerTest.test'
+import listItemGroupSetHeaderTest from './list/ListItemGroupSetHeaderTest.test'
+import listItemGroupSetFooterTest from './list/ListItemGroupSetFooterTest.test'
+import listItemGroupSetDividerTest from './list/ListItemGroupSetDividerTest.test'
+import listItemSwipeActionTest from './list/ListItemSwipeActionTest.test'
+import listScrollOffsetTest from './list/ListScrollOffsetTest.test'
+import listScrollEdgeTest from './list/ListScrollEdgeTest.test'
+import listScrollPageTest from './list/ListScrollPageTest.test'
+import listScrollByTest from './list/ListScrollByTest.test'
+import listEventTest from './list/ListEventTest.test'
+import listScrollToIndex from './list/ListScrollToIndexTest.test'
+import listChildrenMainSizeTest from './list/ListChildrenMainSizeTest.test'
+import listCloseAllActionTest from './list/ListCloseAllActionTest.test'
+import listNestedScrollEventTest from './list/ListNestedScrollEventTest.test'
+import listNestedScrollTest from './list/ListNestedScrollTest.test'
 
+import textInputOnTextSelectionAllChangeTest from './textinput/TextInputOnTextSelectionAllChangeTest.test'
+import customComponentSecondaryLayoutTest from "./customcomponent/CustomComponentSecondaryLayoutTest.test"
+import requirementRouterPageStateTest from './requirement/RequirementRouterPageStateTest.test'
+import resourceNapiValueTest from './resourcenapivalue/ResourceNapiValueTest.test'
+
+export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
   datePickerAccessibilityLevelTest()
@@ -1400,6 +1456,13 @@ export default function testsuite() {
   testArkUI()
   testAnimationTest()
   testWaterFlower()
+  waterFlowEventTest()
+  waterFlowScrollToIndex()
+  waterFlowScrollOffsetTest()
+  waterFlowScrollPageTest()
+  waterFlowScrollByTest()
+  waterFlowAttrsTest()
+  waterFlowNestedScrollTest()
   textInputOnFocusTest()
   accessibilityStateTest()
   relativeContainerGuidelineTest()
@@ -1532,6 +1595,30 @@ export default function testsuite() {
   textInputOnDeleteTest()
   textInputGetTextContentRect()
   textInputOnContentDidChangeTest()
+  textWorkBreakTest()
+  textEllipsisModeTest()
+  textLineSpacingTest()
+  textFontFeatureTest()
+  textSelectedBackgroundColorTest()
+  textEnableDataDetectortest()
+  textParagraphTest()
+  spanTextBackgroundStyleTest()
+  spanTextShadowTest()
+  spanFontFamilyTest()
+  spanBaseLineOffsetTest()
+  imageDraggableTest()
+  imageRenderModeTest()
+  imageFitOriginalSizeTest()
+  imageFillColorTest()
+  imageResizableTest()
+  imageOnfinishTest()
+  imageOnDownloadProgressTest()
+  imageSpanSrcTest()
+  imageSpanAltTest()
+  imageSpanOnClickTest()
+  spanOnClickTest()
+  textDataDetectorConfigTest()
+  imageDraggableEventTest()
   commonAttrsSaturateTest()
   commonAttrsBlurTest()
   commonAttrsZIndexTest()  
@@ -1587,6 +1674,7 @@ export default function testsuite() {
   gridAdapterTest()
   radioOnChangeCheckedTest()
   refreshOffsetEventTest()
+  refreshOnOffsetChangeTest()
   unitLengthMetricsTest()
   unitWidthPercentTest()
   unitHeightPercentTest()
@@ -1651,4 +1739,29 @@ export default function testsuite() {
   calendarPickerSelectedDateTest()
   scrollScrollEventTest()
   xComponentIdTest()
+  listScrollBarColorTest()
+  listScrollBarWidthTest()
+  listSpaceTest()
+  listAlignListItemTest()
+  listListNodeAdapterTest()
+  listInitialIndexTest()
+  listDividerTest()
+  listItemGroupSetHeaderTest()
+  listItemGroupSetFooterTest()
+  listItemGroupSetDividerTest()
+  listItemSwipeActionTest()
+  listScrollOffsetTest()
+  listScrollEdgeTest()
+  listScrollPageTest()
+  listScrollByTest()
+  listEventTest()
+  listScrollToIndex()
+  listChildrenMainSizeTest()
+  listCloseAllActionTest()
+  listNestedScrollEventTest()
+  listNestedScrollTest()
+  textInputOnTextSelectionAllChangeTest()
+  customComponentSecondaryLayoutTest()
+  requirementRouterPageStateTest()
+  resourceNapiValueTest()
 }

@@ -12,42 +12,91 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "textarea_selectionmenuhidden_test.h"
 
+#include "../manager/plugin_manager.h"
 #include "common/common.h"
 
 namespace ArkUICapiTest {
 
-static napi_value TestTextAreaSelectionMenuHidden001(napi_env env, napi_callback_info info)
+static auto CreateTextAreaNode(ArkUI_NativeNodeAPI_1* nodeAPI, int32_t value)
 {
-    NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = true}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN, &value_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN)->value[PARAM_0].i32, true);
-    NAPI_END;
-}
+    auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_TEXT_AREA);
+    ArkUI_NumberValue width_value[] = { { .f32 = 350 } };
+    ArkUI_AttributeItem width_item = { width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandle, NODE_WIDTH, &width_item);
 
-static napi_value TestTextAreaSelectionMenuHidden002(napi_env env, napi_callback_info info)
-{
-    NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    
-    ASSERT_EQ(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN)->value[PARAM_0].i32, false);
-    NAPI_END;
-}
+    ArkUI_NumberValue height_value[] = { { .f32 = 100 } };
+    ArkUI_AttributeItem height_item = { height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandle, NODE_HEIGHT, &height_item);
 
-static napi_value TestTextAreaSelectionMenuHidden003(napi_env env, napi_callback_info info)
+    ArkUI_AttributeItem text_item = {};
+    text_item.string = "test";
+    nodeAPI->setAttribute(nodeHandle, NODE_TEXT_AREA_TEXT, &text_item);
+
+    ArkUI_NumberValue keyboard_value[] = { { .i32 = PARAM_0 } };
+    ArkUI_AttributeItem keyboard_item = { keyboard_value, sizeof(keyboard_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandle, NODE_TEXT_AREA_ENABLE_KEYBOARD_ON_FOCUS, &keyboard_item);
+
+    ArkUI_NumberValue keyboard1_value[] = { { .i32 = PARAM_0 } };
+    ArkUI_AttributeItem keyboard1_item = { keyboard_value, sizeof(keyboard1_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandle, NODE_TEXT_AREA_SHOW_KEYBOARD_ON_FOCUS, &keyboard1_item);
+
+    ArkUI_NumberValue show_value[] = { { .i32 = value } };
+    ArkUI_AttributeItem show_item = { show_value, sizeof(show_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandle, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN, &show_item);
+
+    ArkUI_NumberValue fontsize[] = { { .f32 = 40 } };
+    ArkUI_AttributeItem fontsize_item = { fontsize, sizeof(fontsize) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandle, NODE_FONT_SIZE, &fontsize_item);
+
+    ArkUI_NumberValue margin_value[] = { { .f32 = 10 } };
+    ArkUI_AttributeItem margin_item = { margin_value, sizeof(margin_value) / sizeof(ArkUI_NumberValue) };
+    nodeAPI->setAttribute(nodeHandle, NODE_MARGIN, &margin_item);
+
+    return nodeHandle;
+}
+napi_value TextAreaSelectionMenuHiddenTest::CreateNativeNode(napi_env env, napi_callback_info info)
 {
-    NAPI_START(textarea, ARKUI_NODE_TEXT_AREA);
-    ArkUI_NumberValue value[] = {{.i32 = PARAM_NEGATIVE_2}};
-    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN, &value_item);
-    ASSERT_EQ(ret, INVALID_PARAM);
-    if (nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(textarea, NODE_TEXT_AREA_SELECTION_MENU_HIDDEN)->value[PARAM_0].i32,
-                  PARAM_NEGATIVE_2);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextAreaSelectionMenuHiddenTest", "CreateNativeNode");
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = { nullptr };
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = PARAM_64;
+    size_t strLength = PARAM_0;
+    char xComponentID[PARAM_64] = { PARAM_0 };
+    napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
+
+    if ((env == nullptr) || (info == nullptr)) {
+        OH_LOG_Print(
+            LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextInputSelectionMenuHiddenTest", "GetContext env or info is null");
+        return nullptr;
     }
-    NAPI_END;
-}
+    ArkUI_NativeNodeAPI_1* nodeAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 
+    auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+
+    auto textArea = CreateTextAreaNode(nodeAPI, 0);
+
+    ArkUI_AttributeItem id_item = {};
+    id_item.string = "textArea";
+    nodeAPI->setAttribute(textArea, NODE_ID, &id_item);
+
+    nodeAPI->addChild(column, textArea);
+
+    std::string id(xComponentID);
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
+        INVALID_PARAM) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "TextInputSelectionMenuHiddenTest",
+            "OH_NativeXComponent_AttachNativeRootNode failed");
+    }
+
+    napi_value exports;
+    if (napi_create_object(env, &exports) != napi_ok) {
+        napi_throw_type_error(env, NULL, "napi_create_object failed");
+        return nullptr;
+    }
+    return exports;
+}
 } // namespace ArkUICapiTest

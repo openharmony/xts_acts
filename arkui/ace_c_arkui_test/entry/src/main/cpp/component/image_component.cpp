@@ -16,20 +16,50 @@
 
 namespace ArkUICapiTest {
 
-void ImageComponent::SetImageSrc(const std::string& content)
+int32_t ImageComponent::SetImageSrc(const std::string& content)
 {
     ArkUI_AttributeItem item = { nullptr, 0, content.c_str() };
-    _nodeAPI->setAttribute(_component, NODE_IMAGE_SRC, &item);
+    return _nodeAPI->setAttribute(_component, NODE_IMAGE_SRC, &item);
 }
-void ImageComponent::SetImageSrc(ArkUI_DrawableDescriptor* descriptors)
+int32_t ImageComponent::SetImageSrc(ArkUI_DrawableDescriptor* descriptors)
 {
     ArkUI_AttributeItem item = { .object = descriptors };
-    _nodeAPI->setAttribute(_component, NODE_IMAGE_SRC, &item);
+    return _nodeAPI->setAttribute(_component, NODE_IMAGE_SRC, &item);
 }
-void ImageComponent::SetObjectFit(const int32_t objectFit)
+int32_t ImageComponent::SetObjectFit(const int32_t objectFit)
 {
     ArkUI_NumberValue value[] = { { .i32 = objectFit } };
     ArkUI_AttributeItem item = { value, 1 };
-    _nodeAPI->setAttribute(_component, NODE_IMAGE_OBJECT_FIT, &item);
+    return _nodeAPI->setAttribute(_component, NODE_IMAGE_OBJECT_FIT, &item);
+}
+int32_t ImageComponent::SetResizable(const float left, const float top, const float right, const float bottom)
+{
+    ArkUI_NumberValue value[] = { { .f32 = left }, { .f32 = top }, { .f32 = right }, { .f32 = bottom } };
+    ArkUI_AttributeItem item = { value, 4 };
+    return _nodeAPI->setAttribute(_component, NODE_IMAGE_RESIZABLE, &item);
+}
+int32_t ImageComponent::SetImageDraggable(bool isDraggable)
+{
+    ArkUI_NumberValue value[] = { { .i32 = isDraggable } };
+    ArkUI_AttributeItem item = { value, 1 };
+    return _nodeAPI->setAttribute(_component, NODE_IMAGE_DRAGGABLE, &item);
+}
+int32_t ImageComponent::SetImageRenderMode(int32_t renderMode)
+{
+    ArkUI_NumberValue value[] = { { .i32 = renderMode } };
+    ArkUI_AttributeItem item = { value, 1 };
+    return _nodeAPI->setAttribute(_component, NODE_IMAGE_RENDER_MODE, &item);
+}
+int32_t ImageComponent::SetImageFitOriginalSize(int32_t fitOriginalSize)
+{
+    ArkUI_NumberValue value[] = { { .i32 = fitOriginalSize } };
+    ArkUI_AttributeItem item = { value, 1 };
+    return _nodeAPI->setAttribute(_component, NODE_IMAGE_FIT_ORIGINAL_SIZE, &item);
+}
+int32_t ImageComponent::SetImageFillColor(uint32_t color)
+{
+    ArkUI_NumberValue value[] = { { .u32 = color } };
+    ArkUI_AttributeItem item = { value, 1 };
+    return _nodeAPI->setAttribute(_component, NODE_IMAGE_FILL_COLOR, &item);
 }
 } // namespace ArkUICapiTest

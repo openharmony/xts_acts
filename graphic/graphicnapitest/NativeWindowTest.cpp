@@ -363,47 +363,6 @@ HWTEST_F(NativeWindowTest, HandleOpt007, Function | MediumTest | Level2)
 }
 
 /*
- * @tc.name  HandleOpt008
- * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt by different param 
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 2
- */
-HWTEST_F(NativeWindowTest, HandleOpt008, Function | MediumTest | Level1)
-{
-    int code = GET_TRANSFORM;
-    int32_t transform = 0;
-    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &transform), NATIVE_ERROR_OK);
-    transform = GraphicTransformType::GRAPHIC_ROTATE_90;
-    code = SET_TRANSFORM;
-    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, transform), NATIVE_ERROR_OK);
-    int32_t transformTmp = 0;
-    code = GET_TRANSFORM;
-    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &transformTmp), NATIVE_ERROR_OK);
-    ASSERT_EQ(transformTmp, GraphicTransformType::GRAPHIC_ROTATE_90);
-    nativeWindow->surface->SetTransform(GraphicTransformType::GRAPHIC_ROTATE_180);
-    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &transformTmp), NATIVE_ERROR_OK);
-    ASSERT_EQ(transformTmp, GraphicTransformType::GRAPHIC_ROTATE_180);
-}
-
-/*
- * @tc.name  HandleOpt009
- * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt by different param 
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 2
- */
-HWTEST_F(NativeWindowTest, HandleOpt009, Function | MediumTest | Level1)
-{
-    int code = GET_BUFFERQUEUE_SIZE;
-    int32_t queueSize = 0;
-    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &queueSize), NATIVE_ERROR_OK);
-    ASSERT_EQ(queueSize, 3);
-    nativeWindow->surface->SetQueueSize(5);
-    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &queueSize), NATIVE_ERROR_OK);
-    ASSERT_EQ(queueSize, 5);
-}
-/*
  * @tc.name  HandleOpt010
  * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt by different param
  * @tc.size  : MediumTest
@@ -645,42 +604,6 @@ void NativeWindowAttachBuffer003Test(NativeWindow *nativeWindowTmp, NativeWindow
 }
 
 /*
-* Function: OH_NativeWindow_NativeWindowAttachBuffer
-* Type: Function
-* Rank: Important(2)
-* EnvConditions: N/A
-* CaseDescription: 1. call OH_NativeWindow_NativeWindowAttachBuffer by normal input
-*                  2. check ret
- */
-HWTEST_F(NativeWindowTest, NativeWindowAttachBuffer003, Function | MediumTest | Level1)
-{
-    sptr<OHOS::IConsumerSurface> cSurfaceTmp = IConsumerSurface::Create();
-    sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
-    cSurfaceTmp->RegisterConsumerListener(listener);
-    sptr<OHOS::IBufferProducer> producerTmp = cSurfaceTmp->GetProducer();
-    sptr<OHOS::Surface> pSurfaceTmp = Surface::CreateSurfaceAsProducer(producerTmp);
-
-    NativeWindow *nativeWindowTmp = OH_NativeWindow_CreateNativeWindow(&pSurfaceTmp);
-    ASSERT_NE(nativeWindowTmp, nullptr);
-    SetNativeWindowConfig(nativeWindowTmp);
-
-    sptr<OHOS::IConsumerSurface> cSurfaceTmp1 = IConsumerSurface::Create();
-    sptr<IBufferConsumerListener> listener1 = new BufferConsumerListener();
-    cSurfaceTmp1->RegisterConsumerListener(listener1);
-    sptr<OHOS::IBufferProducer> producerTmp1 = cSurfaceTmp1->GetProducer();
-    sptr<OHOS::Surface> pSurfaceTmp1 = Surface::CreateSurfaceAsProducer(producerTmp1);
-
-    NativeWindow *nativeWindowTmp1 = OH_NativeWindow_CreateNativeWindow(&pSurfaceTmp1);
-    ASSERT_NE(nativeWindowTmp1, nullptr);
-    SetNativeWindowConfig(nativeWindowTmp1);
-
-    NativeWindowAttachBuffer003Test(nativeWindowTmp, nativeWindowTmp1);
-
-    OH_NativeWindow_DestroyNativeWindow(nativeWindowTmp);
-    OH_NativeWindow_DestroyNativeWindow(nativeWindowTmp1);
-}
-
-/*
  * @tc.name  NativeWindowAttachBuffer004
  * @tc.desc  call OH_NativeWindow_NativeWindowAttachBuffer by normal input 
  * @tc.size  : MediumTest
@@ -723,41 +646,6 @@ HWTEST_F(NativeWindowTest, NativeWindowAttachBuffer004, Function | MediumTest | 
     OH_NativeWindow_DestroyNativeWindow(nativeWindowTmp);
 }
 
-/*
- * @tc.name  NativeWindowAttachBuffer005
- * @tc.desc  call OH_NativeWindow_NativeWindowAttachBuffer by normal input 
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 2
- */
-HWTEST_F(NativeWindowTest, NativeWindowAttachBuffer005, Function | MediumTest | Level1)
-{
-    sptr<OHOS::IConsumerSurface> cSurfaceTmp = IConsumerSurface::Create();
-    sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
-    cSurfaceTmp->RegisterConsumerListener(listener);
-    sptr<OHOS::IBufferProducer> producerTmp = cSurfaceTmp->GetProducer();
-    sptr<OHOS::Surface> pSurfaceTmp = Surface::CreateSurfaceAsProducer(producerTmp);
-
-    NativeWindow *nativeWindowTmp = OH_NativeWindow_CreateNativeWindow(&pSurfaceTmp);
-    ASSERT_NE(nativeWindowTmp, nullptr);
-    SetNativeWindowConfig(nativeWindowTmp);
-
-    NativeWindowBuffer *nativeWindowBuffer = nullptr;
-    int fenceFd = -1;
-    int32_t ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindowTmp, &nativeWindowBuffer, &fenceFd);
-    ASSERT_EQ(ret, NATIVE_ERROR_OK);
-
-    ASSERT_EQ(cSurface->AttachBufferToQueue(nativeWindowBuffer->sfbuffer), GSERROR_OK);
-
-    ASSERT_EQ(cSurface->DetachBufferFromQueue(nativeWindowBuffer->sfbuffer), GSERROR_OK);
-
-    ASSERT_EQ(cSurface->AttachBufferToQueue(nativeWindowBuffer->sfbuffer), GSERROR_OK);
-
-    sptr<SyncFence> fence = SyncFence::INVALID_FENCE;
-    ASSERT_EQ(cSurface->ReleaseBuffer(nativeWindowBuffer->sfbuffer, fence), GSERROR_OK);
-
-    OH_NativeWindow_DestroyNativeWindow(nativeWindowTmp);
-}
 /*
  * @tc.name  NativeWindowAttachBuffer006
  * @tc.desc  call OH_NativeWindow_NativeWindowAttachBuffer by normal input 

@@ -196,5 +196,32 @@ export default function textDecorationTest() {
       expect(nativeFunc.testTextDecoration013()).assertEqual(0)
       done()
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_1400
+     * @tc.name       : testTextDecoration014
+     * @tc.desc       : testing decoration for text with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration014', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration014()).assertEqual(0)
+      done()
+    })
+
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_1500
+     * @tc.name       : testTextDecoration015
+     * @tc.desc       : testing decoration for text with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration015', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration015()).assertEqual(0)
+      done()
+    })
   })
 }

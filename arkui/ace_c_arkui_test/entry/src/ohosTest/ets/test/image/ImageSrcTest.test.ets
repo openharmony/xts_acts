@@ -52,5 +52,44 @@ export default function imageSrcTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_SRC_0300
+     * @tc.name       : testImageSrc003
+     * @tc.desc       : testing src for image with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testImageSrc003', 0, async (done: Function) => {
+      expect(nativeFunc.testImageSrc003()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_SRC_0400
+     * @tc.name       : testImageSrc004
+     * @tc.desc       : testing src for image with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testImageSrc004', 0, async (done: Function) => {
+      expect(nativeFunc.testImageSrc004()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_IMAGE_SRC_0500
+     * @tc.name       : testImageSrc005
+     * @tc.desc       : testing src for image with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testImageSrc005', 0, async (done: Function) => {
+      expect(nativeFunc.testImageSrc005()).assertEqual(0)
+      done()
+    })
+
   })
 }

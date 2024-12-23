@@ -157,7 +157,7 @@ napi_value SwiperOnChangeTest::CreateNativeNodeSwipeToIndex(napi_env env, napi_c
         OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
         ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
         std::string str = "Page: " + std::to_string(result->data[0].i32);
-        if (result->data[PARAM_0].i32 == PARAM_3) {
+        if (result->data[PARAM_0].i32 == PARAM_0) {
             auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
             ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
             ArkUI_AttributeItem background_color_item = {background_color_value,

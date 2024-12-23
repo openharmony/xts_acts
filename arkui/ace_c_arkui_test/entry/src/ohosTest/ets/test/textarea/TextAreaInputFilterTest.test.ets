@@ -13,18 +13,19 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { beforeAll,expect, describe, it, afterEach } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
+import { Component,Driver, ON} from '@ohos.UiTest';
 
 export default function textAreaInputFilterTest() {
 
-  describe('textAreaInputFilterTest', () => {
+  describe('TextAreaInputFilterTest', () => {
 
-    afterEach(async (done: Function) => {
-      await Utils.sleep(100);
-      done();
-    })
+    let PAGE_TAG = 'TextAreaInputFilterTest';
+    beforeAll(async (done: Function) => {
+      await Utils.pushPage(`textarea/${PAGE_TAG}`, done);
+    });
 
     /*
      * @tc.number: SUB_ARKUI_CAPI_TEXTAREA_INPUT_FILTER_0001
@@ -35,20 +36,12 @@ export default function textAreaInputFilterTest() {
      * @tc.level: Level 1
      */
     it('testTextAreaInputFilter001', 0, async (done: Function) => {
-      expect(nativeFunc.testTextAreaInputFilter001()).assertEqual(0)
-      done();
+      let driver:Driver = Driver.create();
+      let textArea:Component = await driver.findComponent(ON.type('TextArea'));
+      let content  = await textArea.getText();
+      console.log('textAreaInputFilter001', content)
+      expect(content).assertEqual('abc')
+      done()
     });
-    /*
-     * @tc.number: SUB_ARKUI_CAPI_TEXTAREA_INPUT_FILTER_0002
-     * @tc.name: testTextAreaInputFilter002
-     * @tc.desc: testing text for textArea with normal value
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 1
-     */
-    it('testTextAreaInputFilter002', 0, async (done: Function) => {
-      expect(nativeFunc.testTextAreaInputFilter002()).assertEqual(0)
-      done();
-    });  
   })
 }

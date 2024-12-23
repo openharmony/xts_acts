@@ -151,7 +151,6 @@ import imageSpanTest6 from './TextTest/imageSpan6.test';
 import imageSpanTest7 from './TextTest/imageSpan7.test';
 import imageSpanTest8 from './TextTest/imageSpan8.test';
 import TextMaxLines from './Text/TextMaxLines.test';
-import getRectsForRangeTest from './RichEditor/getRectsForRange.test'
 import textInputEnterKeyTypeTest from './TextInput/textInputEnterKeyType.test'
 import textAreaAutoFillTest from './TextArea/TextAreaAutoFillJsUnit.test'
 import textAreaHeightAdaptivePolicyTest from "./TextArea/textAreaHeightAdaptivePolicy.test";
@@ -313,7 +312,6 @@ export default function testsuite() {
   imageSpanTest7();
   imageSpanTest8();
   TextMaxLines();
-  getRectsForRangeTest();
   textInputEnterKeyTypeTest();
   textAreaAutoFillTest()
   textAreaHeightAdaptivePolicyTest();

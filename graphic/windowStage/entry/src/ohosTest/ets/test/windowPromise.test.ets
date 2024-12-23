@@ -18,7 +18,7 @@ import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import settings from '@ohos.settings';
-
+import image from '@ohos.multimedia.image';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function,
   code: number) {
@@ -1126,6 +1126,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.level     : Level3
      */
     it('testSnapshotTest_Promise_Form', 0, async (done: Function) => {
+      await sleep(900);
       let caseName: string = 'testSnapshotTest_Promise_Form';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1134,12 +1135,26 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       });
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      let snapshotData = await (mainWin as ohosWindow.Window).snapshot().catch((err: BusinessError) => {
-        unexpectedError(TRUE_FLAG, err, caseName, 'mainWin.snapshot', done);
+      let properties = (mainWin as ohosWindow.Window).getWindowProperties();
+      let windowWidth:number = properties.windowRect.width;
+      let windowHeight:number = properties.windowRect.height;
+      console.log(msgStr + 'mainWin.getWindowProperties' + JSON.stringify(properties));
+      await (mainWin as ohosWindow.Window).snapshot().then(async (pixelMap: image.PixelMap) => {
+        console.info(msgStr + 'Succeeded in snapshotting window.');
+        await pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+          console.log(msgStr + 'pixelMap imageInfo' + JSON.stringify(imageInfo));
+          let imageWidth:number = imageInfo.size.width;
+          let imageHeight:number = imageInfo.size.height;
+          expect(imageWidth).assertEqual(windowWidth);
+          expect(imageHeight).assertEqual(windowHeight);
+        })
+        pixelMap.release(); // PixelMap使用完后及时释放内存
+        done();
+      }).catch((err: BusinessError) => {
         console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
+        expect().assertFail();
+        done();
       })
-      expect(!!snapshotData).assertTrue();
-      done();
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0330

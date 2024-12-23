@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import imagePicture from './imagePicture.test.ets';
+import imagePicture from './imagePicture.test';
 
 export default function testsuite() {
   imagePicture();

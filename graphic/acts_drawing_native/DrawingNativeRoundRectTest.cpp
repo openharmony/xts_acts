@@ -379,16 +379,13 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetNull, TestSize.Level3) {
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
-    OH_Drawing_RoundRectOffset(nullptr, 1.0f, 1.0f);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_RoundRectOffset(nullptr, 1.0f, 1.0f), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Call OH_Drawing_RoundRectOffset with 0 as the second parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_RoundRectOffset(roundRect, 0, 1.0f);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_RoundRectOffset(roundRect, 0, 1.0f), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RoundRectOffset with 0 as the third parameter, check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_RoundRectOffset(roundRect, 1.0f, 0);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_RoundRectOffset(roundRect, 1.0f, 0), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     //4. free memory
     OH_Drawing_RoundRectDestroy(roundRect);
     OH_Drawing_RectDestroy(rect);

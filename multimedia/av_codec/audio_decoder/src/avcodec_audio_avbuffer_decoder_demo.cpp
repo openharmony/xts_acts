@@ -792,13 +792,14 @@ uint32_t ADecBufferDemo::GetInputIndex()
 {
     int32_t sleep_time = 0;
     uint32_t index;
-    while (signal_->inQueue_.empty() && sleep_time < 5) {  // time 5
+    while (signal_->inQueue_.empty() && sleep_time < 5) { // time 5
         sleep(1);
         sleep_time++;
     }
     if (sleep_time >= 5) {  // time 5
         return 0;
     } else {
+        lock_guard<mutex> lock(signal_->inMutex_);
         index = signal_->inQueue_.front();
         signal_->inQueue_.pop();
     }

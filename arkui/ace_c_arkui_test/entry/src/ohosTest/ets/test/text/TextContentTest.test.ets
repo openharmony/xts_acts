@@ -39,5 +39,17 @@ export default function TextContentTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_CONTET_0200
+     * @tc.name       : testTextContent002
+     * @tc.desc       : testing CONTET for text with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextContent002', 0, async (done: Function) => {
+      expect(nativeFunc.testTextContent002()).assertEqual(0)
+      done()
+    })
   })
 }

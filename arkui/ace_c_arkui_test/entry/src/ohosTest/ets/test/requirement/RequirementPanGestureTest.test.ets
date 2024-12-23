@@ -40,29 +40,145 @@ export default function requirementPanGestureTest() {
 
     let PAGE_TAG = 'RequirementPanGestureTest';
 
+        /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0001
+     * @tc.name       : testRequirementPanGesture001
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
     it('testRequirementPanGesture001', 0, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper1", 20, 20, 10, 10)
-      await panGesture("swiper2", 20, 20, 20, 10)
-      await panGesture("swiper3", 20, 20, 30, 10)
-      await panGesture("swiper4", 20, 20, 30, 20)
-      await Utils.flingComponent("swiper5", true, true)
-      await panGesture("swiper6", 20, 20, 30, 30)
-      await panGesture("swiper7", 20, 20, 20, 30)
-      await panGesture("swiper8", 20, 20, 10, 30)
-      await panGesture("swiper9", 20, 20, 10, 20)
-      await Utils.flingComponent("swiper10", true, false)
       expect(Utils.getComponentInfoByKey('swiper1').$attrs.backgroundColor).assertEqual('#FF000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0002
+     * @tc.name       : testRequirementPanGesture002
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture002', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await panGesture("swiper2", 20, 20, 20, 10)
       expect(Utils.getComponentInfoByKey('swiper2').$attrs.backgroundColor).assertEqual('#FF000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0003
+     * @tc.name       : testRequirementPanGesture003
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture003', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await panGesture("swiper3", 20, 20, 30, 10)
       expect(Utils.getComponentInfoByKey('swiper3').$attrs.backgroundColor).assertEqual('#FF000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0004
+     * @tc.name       : testRequirementPanGesture004
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture004', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await panGesture("swiper4", 20, 20, 30, 20)
       expect(Utils.getComponentInfoByKey('swiper4').$attrs.backgroundColor).assertEqual('#FF000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0005
+     * @tc.name       : testRequirementPanGesture005
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture005', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await Utils.flingComponent("swiper5", true, true)
       expect(Utils.getComponentInfoByKey('swiper5').$attrs.backgroundColor).assertEqual('#00000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0006
+     * @tc.name       : testRequirementPanGesture006
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture006', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await panGesture("swiper6", 20, 20, 30, 30)
       expect(Utils.getComponentInfoByKey('swiper6').$attrs.backgroundColor).assertEqual('#FF000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0007
+     * @tc.name       : testRequirementPanGesture007
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture007', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await panGesture("swiper7", 20, 20, 20, 30)
       expect(Utils.getComponentInfoByKey('swiper7').$attrs.backgroundColor).assertEqual('#FF000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0008
+     * @tc.name       : testRequirementPanGesture008
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture008', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await panGesture("swiper8", 20, 20, 10, 30)
       expect(Utils.getComponentInfoByKey('swiper8').$attrs.backgroundColor).assertEqual('#FF000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0009
+     * @tc.name       : testRequirementPanGesture009
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture009', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await panGesture("swiper9", 20, 20, 10, 20)
       expect(Utils.getComponentInfoByKey('swiper9').$attrs.backgroundColor).assertEqual('#FF000000')
+      done();
+    })
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_REQUIREMENT_PAN_GESTURE_0010
+     * @tc.name       : testRequirementPanGesture010
+     * @tc.desc       : Test retrieving and verifying gesture information for various gestures
+     * @tc.size       : MediumTest
+     * @tc.type       : Render
+     * @tc.level      : Level1
+     */
+    it('testRequirementPanGesture010', 0, async (done: Function) => {
+      await Utils.pushPage(`requirement/${PAGE_TAG}`);
+      await Utils.flingComponent("swiper10", true, false)
       expect(Utils.getComponentInfoByKey('swiper10').$attrs.backgroundColor).assertEqual('#00000000')
-      done()
+      done();
     })
 
   })

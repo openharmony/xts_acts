@@ -66,6 +66,7 @@ group("multimedia") {
       "image/image_ets_standard/imageNdk:image_ndk_hap",
       "image/image_ets_standard/imagePackerExif:image_packer_exif_hap",
       "image/image_ets_standard/imagePicture:image_picture_hap",
+      "image/image_ets_standard/imagePicturePack:image_picture_pack_hap",
       "image/image_ets_standard/imagePixelMapSupportYuv:image_pixelmap_supportyuv_hap",
       "image/image_ets_standard/imageQualityEnhancement:image_quality_enhancement_hap",
       "image/image_ets_standard/pictureNdk:picture_ndk_hap",
@@ -111,6 +112,9 @@ group("multimedia") {
       "media/media_ndk_standard/AVPlayerNDK:OhAVPlayerNDK",
       "photoAccess/photoAccess:photoAccess_js_hap",
       "photoAccess/pickerView:TextPickerTest",
+      "videoProcess/detail_enhancer_image_ndk:ActsDetailEnhancerImageNdkUnitTest",
+      "videoProcess/detail_enhancer_video_ndk:ActsDetailEnhancerVideoNdkUnitTest",
+      "videoProcess/moduletest/video:ActsVpeVideoNativModuleTest",
     ]
   } else {
     deps = [

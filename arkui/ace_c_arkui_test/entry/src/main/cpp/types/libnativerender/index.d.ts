@@ -69,6 +69,110 @@ export const listItemHitTestBehaviorTransparentTest: (a: string) => void;
 
 export const listItemHitTestBehaviorNoneTest: (a: string) => void;
 
+export const listOnScrollTest: (a: string) => void;
+
+export const listOnScrollFrameBeginTest: (a: string) => void;
+
+export const listOnScrollStartTest: (a: string) => void;
+
+export const listOnScrollStopTest: (a: string) => void;
+
+export const listOnWillDidScrollTest: (a: string) => void;
+
+export const listOnWillScrollTest: (a: string) => void;
+
+export const listOnDidScrollTest: (a: string) => void;
+
+export const listScrollToIndexTest: (a: string, index: number, alignment: number) => void;
+
+export const listOnReachStartTest: (a: string) => void;
+
+export const listOnReachEndTest: (a: string) => void;
+
+export const listOnScrollIndexTest: (a: string) => void;
+
+export const listGetOnWillScrollData: () => number[][];
+
+export const listGetOnDidScrollData: () => number[][];
+
+export const listGetOnWillDidScrollData: () => number[][];
+
+export const listGetOnScrollIndexData: () => number[][];
+
+export const listGetOnScrollData: () => number[][];
+
+export const listGetScrollOffsetData: () => number[][];
+
+export const listScrollOffset001Test: (a: string) => void;
+
+export const listScrollOffset002Test: (a: string) => void;
+
+export const listScrollOffset003Test: (a: string) => void;
+
+export const listScrollOffset004Test: (a: string) => void;
+
+export const listScrollOffset005Test: (a: string) => void;
+
+export const listScrollOffset006Test: (a: string) => void;
+
+export const listScrollOffset007Test: (a: string) => void;
+
+export const listScrollOffset008Test: (a: string) => void;
+
+export const listScrollOffset009Test: (a: string) => void;
+
+export const listScrollOffset010Test: (a: string) => void;
+
+export const listScrollOffset011Test: (a: string) => void;
+
+export const listScrollOffset012Test: (a: string) => void;
+
+export const listScrollOffset013Test: (a: string) => void;
+
+export const listScrollOffset014Test: (a: string) => void;
+
+export const listScrollOffset015Test: (a: string) => void;
+
+export const listScrollOffset016Test: (a: string) => void;
+
+export const listScrollOffset017Test: (a: string) => void;
+
+export const listScrollOffset018Test: (a: string) => void;
+
+export const listScrollOffset019Test: (a: string) => void;
+
+export const listScrollOffset020Test: (a: string) => void;
+
+export const listScrollOffset021Test: (a: string) => void;
+
+export const listScrollOffset022Test: (a: string) => void;
+
+export const listScrollPageTest: (a: string) => void;
+
+export const listGetScrollPageData: () => number[][];
+
+export const listScrollBy001Test: (a: string) => void;
+
+export const listScrollBy002Test: (a: string) => void;
+
+export const listScrollBy003Test: (a: string) => void;
+
+export const listScrollBy004Test: (a: string) => void;
+
+export const listGetScrollByData: () => number[][];
+
+export const listCloseAllActionTest: (a: string) => void;
+
+export const listGetCloseAllActionRetData: () => number[][];
+
+export const listNestedScroll001Test: (a: string) => void;
+
+export const listNestedScroll002Test: (a: string) => void;
+
+export const listNestedScroll003Test: (a: string) => void;
+
+export const listGetNestedScrollRetData: () => number[][];
+
 export const toggleOnChangeTest: (a: string) => void;
 
 export const toggleEnabledTest: (a: string) => void;
@@ -480,8 +584,6 @@ export const refreshOffsetTest : (a : string) =>void;
 export const refreshOffsetLessThanOffsetTest : (a : string) =>void;
 export const hybirdGetNodeHandleTest : (a: string) => void;
 
-export const responseConfigUpdateTest : (a : string) =>void;
-
 export const requirementPanGestureTest: (a: string) => void;
 
 export const customComponentMeasureNodeTest : (a : string) => void;
@@ -527,6 +629,20 @@ export const lazyForEachGetRemovedNodeTest: (a: string) => void;
 export const lazyForEachGetItemIndexTest: (a: string) => void;
 
 export const lazyForEachSetItemTest: (a: string) => void;
+
+export const textAreaSelectionMenuHiddenTest: (a: string) => void;
+
+export const textAreaInputFilterTest: (a: string) => void;
+
+export const imageOnfinishTest: (a: string) => void;
+
+export const imageDownProgressTest: (a: string) => void;
+
+export const imageSpanOnClickTest: (a: string) => void;
+
+export const spanOnClickTest: (a: string) => void;
+
+export const imageDraggableEventTest: (a: string) => void;
 
 export const scrollScrollEventOnWillScrollTest: (a: string) => void;
 
@@ -587,3 +703,69 @@ export const scrollScrollEdge001Test: (a: string) => void;
 export const scrollScrollEdge002Test: (a: string) => void;
 
 export const scrollScrollEdge003Test: (a: string) => void;
+
+export const waterFlowOnReachStartTest: (a: string) => void;
+
+export const waterFlowOnReachEndTest: (a: string) => void;
+
+export const waterFlowOnScrollStopTest: (a: string) => void;
+
+export const waterFlowOnWillDidScrollTest: (a: string) => void;
+
+export const getOnWillDidScrollData: () => number[][];
+
+export const waterFlowOnScrollIndexTest: (a: string) => void;
+
+export const getOnScrollIndexData: () => number[][];
+
+export const waterFlowOnScrollFrameBeginTest: (a: string, b: number) => void;
+
+export const waterFlowScrollToIndexTest: (a: string, index: number, alignment: number) => void;
+
+export const waterFlowScrollOffsetTest: (a: string) => void;
+
+export const waterFlowScrollOffsetData: () => number[][];
+
+export const waterFlowScrollPageTest: (a: string) => void;
+
+export const waterFlowGetScrollPageData: () => number[][];
+
+export const waterFlowScrollBy001Test: (a: string) => void;
+
+export const waterFlowScrollBy002Test: (a: string) => void;
+
+export const waterFlowScrollBy003Test: (a: string) => void;
+
+export const waterFlowScrollBy004Test: (a: string) => void;
+
+export const waterFlowGetScrollByData: () => number[][];
+
+export const waterFlowNestedScroll1Test: (a: string) => void;
+
+export const waterFlowNestedScroll2Test: (a: string) => void;
+
+export const waterFlowNestedScroll3Test: (a: string) => void;
+
+export const waterFlowGetNestedScrollData: () => number[][];
+
+export const customComponentSecondaryLayoutTest: (a: string) => void;
+
+export const getSecondaryLayoutData : () => number[][];
+
+export const textInputSelectionMenuHiddenTest: (a: string) => void;
+
+export const textInputInputFilterTest: (a: string) => void;
+
+export const textInputOnTextSelectionAllChangeTest :( a :string) => void;
+
+export const getTextInputSelectAllData : () => number[][];
+
+export const requirementRouterPageStateTest: (a: string) => void;
+
+export const getRouterData: () => number[][];
+
+export const resourceNapiValueTest: (a: string, b: object) => void;
+
+export const swipeAxisGestureTest: (a: string) => void;
+
+export const GetGestureDataAxis: () => number[][];

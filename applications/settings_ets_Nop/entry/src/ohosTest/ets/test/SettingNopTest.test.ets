@@ -16,30 +16,13 @@ import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import settings from '@ohos.settings';
 import { BusinessError } from '@ohos.base';
-
-const context: Context =  getContext(this);
+import CommonFunc from './Common';
 
 export default function SettingNopTest() {
   describe('SettingNopTest', () => {
-    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(() => {
-      // Presets an action, which is performed only once before all test cases of the test suite start.
-      // This API supports only one parameter: preset action function.
-    })
-    beforeEach(() => {
-      // Presets an action, which is performed before each unit test case starts.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: preset action function.
-    })
-    afterEach(() => {
-      // Presets a clear action, which is performed after each unit test case ends.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: clear action function.
-    })
-    afterAll(() => {
-      // Presets a clear action, which is performed after all test cases of the test suite end.
-      // This API supports only one parameter: clear action function.
-    })
+    beforeEach(async (done: Function) => {
+      await CommonFunc.sleep(2000);
+    });
     /*
      * @tc.number:SUB_Setting_nop_test_0100
      * @tc.name: Setting_nop_test_0100
@@ -49,27 +32,13 @@ export default function SettingNopTest() {
      * @tc.size:MediumTest
      */
     it('Setting_nop_test_0100', 0, async (done : Function) => {
-      try {
-        let name = 'settings.screen.brightness10';
-        let ret  = settings.setValueSync(globalThis.abilityContext, name, "test getValueSync",settings.domainName.DEVICE_SHARED);
-        settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (status) => {
-          console.log('Callback return whether value is set.');
-        });
-        if (ret == true) {
-          console.info('success to sync');
-          expect(ret == true).assertTrue();
-          done()
-        } else {
-          console.info('nopermisson to sync');
-          expect(ret == false).assertTrue();
-          done()
-        }
-      } catch (e) {
-        let error = e as BusinessError
-        console.error('settings1 catch error: ' + JSON.stringify(error));
-        console.log('settings1 catch error log: ' + error.code);
-        expect(error.code == 201).assertTrue()
-      }
+      console.info('Setting_nop_test_0100 START');
+      let strJson = getInspectorByKey('settingsId1');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[Setting_nop_test_0100] strJson:" + JSON.stringify(obj));
+
+      expect(obj.$attrs.content).assertEqual("201");
+
       done();
     })
     /*
@@ -81,17 +50,13 @@ export default function SettingNopTest() {
      * @tc.size:MediumTest
      */
     it('Setting_nop_test_0200', 0, async (done : Function) => {
-      try {
-        settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (status) => {
-          console.log('Callback return whether value is set.');
-          expect(status).assertEqual(true)
-        });
-      } catch (e) {
-        let error = e as BusinessError
-        console.error('settings2 catch error: ' + JSON.stringify(error));
-        console.log('settings2 catch error log: ' + error.code);
-        expect(error.code == 201).assertTrue()
-      }
+      console.info('Setting_nop_test_0200 START');
+      let strJson = getInspectorByKey('settingsId2');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[Setting_nop_test_0200] strJson:" + JSON.stringify(obj));
+
+      expect(obj.$attrs.content).assertEqual("201");
+
       done();
     })
     /*
@@ -103,17 +68,13 @@ export default function SettingNopTest() {
      * @tc.size:MediumTest
      */
     it('Setting_nop_test_0300', 0, async (done : Function) => {
-      try {
-        settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', settings.domainName.DEVICE_SHARED).then((status) => {
-          console.log(`callback:return whether value is set.`)
-          expect(status).assertEqual(true)
-        });
-      } catch (e) {
-        let error = e as BusinessError
-        console.error('settings3 catch error: ' + JSON.stringify(error));
-        console.log('settings3 catch error log: ' + error.code);
-        expect(error.code == 201).assertTrue()
-      }
+      console.info('Setting_nop_test_0300 START');
+      let strJson = getInspectorByKey('settingsId3');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[Setting_nop_test_0300] strJson:" + JSON.stringify(obj));
+
+      expect(obj.$attrs.content).assertEqual("201");
+
       done();
     })
   })

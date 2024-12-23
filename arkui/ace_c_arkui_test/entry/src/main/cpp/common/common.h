@@ -69,6 +69,7 @@ namespace ArkUICapiTest {
 #define PARAM_100 100
 #define PARAM_105 105
 #define PARAM_127 127
+#define PARAM_149 149
 #define PARAM_150 150
 #define PARAM_180 180
 #define PARAM_200 200
@@ -84,6 +85,7 @@ namespace ArkUICapiTest {
 #define PARAM_2000 2000
 #define PARAM_10000 10000
 #define PARAM_20000 20000
+#define PARAM_100000 100000
 #define PARAM_NEGATIVE_1 (-1)
 #define PARAM_NEGATIVE_2 (-2)
 #define PARAM_NEGATIVE_5 (-5)
@@ -100,6 +102,7 @@ namespace ArkUICapiTest {
 #define PARAM_NEGATIVE_200 (-200)
 #define PARAM_NEGATIVE_600 (-600)
 #define PARAM_NEGATIVE_1000 (-1000)
+#define PARAM_NEGATIVE_100000 (-100000)
 #define PARAM_64 64
 #define DEFAULT_MARGIN 10
 #define SIZE_5 5
@@ -115,6 +118,7 @@ namespace ArkUICapiTest {
 #define SIZE_50 50
 #define SIZE_56 56
 #define SIZE_60 60
+#define SIZE_70 70
 #define SIZE_80 80
 #define SIZE_90 90
 #define SIZE_100 100
@@ -177,6 +181,13 @@ namespace ArkUICapiTest {
 #define ON_DID_INSERT_ID 6019
 #define ON_WILL_DELETE_ID 6020
 #define ON_DID_DELETE_ID 6021
+#define PARAM_0_POINT_8 0.8
+#define PARAM_1_POINT_0 1.0
+#define PARAM_0_POINT_2 0.2
+#define PARAM_90_POINT_0 90.0
+#define PARAM_960000 960000
+#define PARAM_255 255
+#define PARAM_3_POINT_25 3.25
 #define ON_ACCESSIBILITY_ACTIONS_EVENT_ID 6040
 
 /**

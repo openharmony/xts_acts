@@ -77,55 +77,19 @@ public:
         return _component;
     }
 
-    void RegisterOnClick(const std::function<void()>& onClick)
-    {
-        onClick_ = onClick;
-        _nodeAPI->registerNodeEvent(_component, NODE_ON_CLICK, 0, nullptr);
-    }
-
-    void RegisterOnTouch(const std::function<void(ArkUI_NodeEvent* event)>& onTouch)
-    {
-        onTouch_ = onTouch;
-        _nodeAPI->registerNodeEvent(_component, NODE_TOUCH_EVENT, 0, nullptr);
-    }
-
-    void RegisterOnDisappear(const std::function<void()>& onDisappear)
-    {
-        onDisappear_ = onDisappear;
-        _nodeAPI->registerNodeEvent(_component, NODE_EVENT_ON_DISAPPEAR, 0, nullptr);
-    }
-
-    void RegisterOnAppear(const std::function<void()>& onAppear)
-    {
-        onAppear_ = onAppear;
-        _nodeAPI->registerNodeEvent(_component, NODE_EVENT_ON_APPEAR, 0, nullptr);
-    }
-    void RegisterOnHover(const std::function<void(bool isHover)>& onHover)
-    {
-        onHover_ = onHover;
-        _nodeAPI->registerNodeEvent(_component, NODE_ON_HOVER, 0, nullptr);
-    }
-    void RegisterOnMouse(const std::function<void(ArkUI_NodeEvent* event)>& onMouse)
-    {
-        onMouse_ = onMouse;
-        _nodeAPI->registerNodeEvent(_component, NODE_ON_MOUSE, 0, nullptr);
-    }
-    void RegisterOnTouchIntercept(const std::function<void(ArkUI_NodeEvent* event)>& onTouchIntercept)
-    {
-        onTouchIntercept_ = onTouchIntercept;
-        _nodeAPI->registerNodeEvent(_component, NODE_ON_TOUCH_INTERCEPT, 0, nullptr);
-    }
-    void RegisterOnFocus(const std::function<void()>& onFocus)
-    {
-        onFocus_ = onFocus;
-        _nodeAPI->registerNodeEvent(_component, NODE_ON_FOCUS, 0, nullptr);
-    }
+    void RegisterOnClick(const std::function<void()>& onClick);
+    void RegisterOnTouch(const std::function<void(ArkUI_NodeEvent* event)>& onTouch);
+    void RegisterOnDisappear(const std::function<void()>& onDisappear);
+    void RegisterOnAppear(const std::function<void()>& onAppear);
+    void RegisterOnHover(const std::function<void(bool isHover)>& onHover);
+    void RegisterOnMouse(const std::function<void(ArkUI_NodeEvent* event)>& onMouse);
+    void RegisterOnTouchIntercept(const std::function<void(ArkUI_NodeEvent* event)>& onTouchIntercept);
+    void RegisterOnFocus(const std::function<void()>& onFocus);
     void RegisterOnVisibleAreaChange(
         const std::function<void(bool isVisible, float ratio)>& onVisibleAreaChange, std::vector<float> ratioArray);
 
     static void NodeEventReceiver(ArkUI_NodeEvent* event);
     void ProcessNodeEvent(ArkUI_NodeEvent* event);
-    void ProcessNodeEventByType(ArkUI_NodeEventType eventType);
     virtual void OnNodeEvent(ArkUI_NodeEvent* event) {}
 
 protected:
@@ -147,20 +111,10 @@ protected:
     }
 
 protected:
+    std::unordered_map<ArkUI_NodeEventType, std::function<void(ArkUI_NodeEvent*)>> eventMap_;
     std::list<std::shared_ptr<Component>> children_;
     ArkUI_NodeHandle _component { nullptr };
     ArkUI_NativeNodeAPI_1* _nodeAPI { nullptr };
-
-private:
-    std::function<void()> onClick_;
-    std::function<void()> onDisappear_;
-    std::function<void()> onAppear_;
-    std::function<void(ArkUI_NodeEvent* event)> onTouch_;
-    std::function<void(bool isHover)> onHover_;
-    std::function<void(bool isVisible, float ratio)> onVisibleAreaChange_;
-    std::function<void(ArkUI_NodeEvent* event)> onMouse_;
-    std::function<void(ArkUI_NodeEvent* event)> onTouchIntercept_;
-    std::function<void()> onFocus_;
 };
 } // namespace ArkUICapiTest
 

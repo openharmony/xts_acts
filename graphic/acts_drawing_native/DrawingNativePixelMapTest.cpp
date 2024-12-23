@@ -72,10 +72,8 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapNormal, Tes
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromNativePixelMapNull, TestSize.Level3) {
-    // 1. Call OH_Drawing_PixelMapGetFromNativePixelMap with nullptr as parameter and check the error code using
-    // OH_Drawing_ErrorCodeGet
-    OH_Drawing_PixelMapGetFromNativePixelMap(nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromNativePixelMap(nullptr);
+    EXPECT_EQ(drPixelMap, nullptr);
 }
 
 /*
@@ -140,8 +138,8 @@ HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNormal, T
 HWTEST_F(DrawingNativePixelMapTest, testPixelMapGetFromOhPixelMapNativeNull, TestSize.Level3) {
     // 1. Call OH_Drawing_PixelMapGetFromOhPixelMapNative with nullptr as parameter and check the error code using
     // OH_Drawing_ErrorCodeGet
-    OH_Drawing_PixelMapGetFromOhPixelMapNative(nullptr);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(nullptr);
+    EXPECT_EQ(drPixelMap, nullptr);
 }
 
 /*

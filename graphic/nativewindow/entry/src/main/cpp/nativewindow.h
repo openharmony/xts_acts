@@ -23,6 +23,61 @@
 #define NATIVEWINDOW_USELESS_H
 
 #include "napi/native_api.h"
+#include <IPCKit/ipc_cparcel.h>
+#include <bits/alltypes.h>
+#include <chrono>
+#include <multimedia/player_framework/native_avcodec_base.h>
+#include <native_image/native_image.h>
+#include <native_window/external_window.h>
+#include <native_buffer/native_buffer.h>
+
+class InitNativeWindow {
+private:
+    int32_t width_ = 0x100;
+    int32_t height_ = 0x100;
+    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
+    OH_NativeImage* _image = nullptr;
+    OHNativeWindow* _nativeWindow = nullptr;
+
+public:
+    InitNativeWindow()
+    {
+        _image = OH_ConsumerSurface_Create();
+        if (_image != nullptr) {
+            _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
+            if (_nativeWindow != nullptr) {
+                OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_BUFFER_GEOMETRY, width_, height_);
+                OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, usage);
+            } else {
+                _nativeWindow = nullptr;
+            }
+        } else {
+            _image = nullptr;
+            _nativeWindow = nullptr;
+        }
+    }
+    ~InitNativeWindow()
+    {
+        _image = nullptr;
+        _nativeWindow = nullptr;
+    }
+    OHNativeWindow* returnNativeWindow()
+    {
+        if (_nativeWindow == nullptr) {
+            return nullptr;
+        } else {
+            return _nativeWindow;
+        }
+    };
+    OH_NativeImage* returnNativeImage()
+    {
+        if (_image == nullptr) {
+            return nullptr;
+        } else {
+            return _image;
+        }
+    }
+};
 
 napi_value testNativeWindowCreateNativeWindowNullptr(napi_env env, napi_callback_info info);
 napi_value testNativeWindowDestroyNativeWindowNullptr(napi_env env, napi_callback_info info);
@@ -134,4 +189,9 @@ napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal
 napi_value testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal(napi_env env,
                                                                                    napi_callback_info info);
 napi_value testNativeWindowSetMetadataValue_metadata_type(napi_env env, napi_callback_info info);
+napi_value testNativeWindowCreateNativeWindow(napi_env env, napi_callback_info info);
+napi_value testNativeWindowNativeWindowSetSetScalingMode(napi_env env, napi_callback_info info);
+napi_value testNativeWindowNativeWindowSetMetaData(napi_env env, napi_callback_info info);
+napi_value testNativeWindowNativeWindowSetMetaDataSet(napi_env env, napi_callback_info info);
+napi_value testNativeWindowNativeWindowSetTunnelHandle(napi_env env, napi_callback_info info);
 #endif // NATIVEWINDOW_USELESS_H

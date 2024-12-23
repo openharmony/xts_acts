@@ -39,7 +39,11 @@
                 "./resource/image/UnrefocusMap.dat ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
                 "./resource/image/HDRVividSingleLayer.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
                 "./resource/image/JpegFragmentMap.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
-                "./resource/image/FragmentMap.dat ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files"
+                "./resource/image/FragmentMap.dat ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
+                "./resource/image/CUVAHdrMulti.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
+                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
+                "./resource/image/all_auxtype.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
+                "./resource/image/AllAuxiliaryPictures.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files"
             ]
         },
         {

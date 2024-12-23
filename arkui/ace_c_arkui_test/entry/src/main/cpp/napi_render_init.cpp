@@ -36,6 +36,12 @@
 #include "image/image_onerror_test.h"
 #include "list/list_hittestbehavior_test.h"
 #include "listitem/listitem_hittestbehavior_test.h"
+#include "list/list_event_test.h"
+#include "list/list_scroll_offset_test.h"
+#include "list/list_scroll_page_test.h"
+#include "list/list_scroll_by_test.h"
+#include "list/list_close_all_action_test.h"
+#include "list/list_nested_scroll_event_test.h"
 #include "manager/plugin_manager.h"
 #include "toggle/toggle_onchange_test.h"
 #include "toggle/toggle_enabled_test.h"
@@ -138,6 +144,11 @@
 #include "textinput/textinput_oneditchange_test.h"
 #include "textinput/textinput_oninsert_test.h"
 #include "textinput/textinput_ondelete_test.h"
+#include "image/image_onfinish_test.h"
+#include "image/image_downprogress_test.h"
+#include "image/image_draggableEvent_test.h"
+#include "imagespan/imagespan_onclick_test.h"
+#include "span/span_onclick_test.h"
 #include "commonattrs/commonattrs_focusstatus_test.h"
 #include "commonattrs/commonattrs_touchable_test.h"
 #include "commonattrs/commonattrs_focusontouch_test.h"
@@ -148,7 +159,6 @@
 #include "grid/grid_nodeadapter_test.h"
 #include "refresh/refresh_offsetEvent_test.h"
 #include "hybird/hybird_getnodehandle_test.h"
-#include "response/response_configupdate_test.h"
 #include "requirement/requirement_pangesture_test.h"
 #include "customcomponent/customcomponent_measurenode_test.h"
 #include "customcomponent/customcomponent_getcontextdrawcanvas_test.h"
@@ -157,9 +167,23 @@
 #include "customcomponent/customcomponent_registernodecustomevent_test.h"
 #include "customcomponent/customcomponent_unregisternodecustomevent_test.h"
 #include "lazyforeach/lazyforeach_test.h"
+#include "textarea/textarea_selectionmenuhidden_test.h"
+#include "textarea/textarea_inputfilter_test.h"
 #include "scroll/scroll_scroll_event_test.h"
 #include "button/button_label_test.h"
 #include "xcomponent/xcomponent_id_test.h"
+#include "waterFlower/waterflow_event_test.h"
+#include "waterFlower/waterflow_nested_scroll_test.h"
+#include "waterFlower/waterflow_scroll_by_test.h"
+#include "waterFlower/waterflow_scroll_page_test.h"
+#include "waterFlower/waterflow_scrolloffset_test.h"
+
+#include "textinput/textinput_selectionmenuhidden_test.h"
+#include "textinput/textinput_inputfilter_test.h"
+#include "textinput/textinput_ontextselectionallchange_test.h"
+#include "customcomponent/customcomponent_secondarylayout_test.h"
+#include "requirement/requirement_routerpagestate_test.h"
+#include "resourcenapivalue/resourcenapivalue_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -212,6 +236,110 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"imageOnErrorTest", nullptr, ImageOnErrorTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        { "listOnScrollTest", nullptr, ListEventTest::CreateNativeNodeOnScroll, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listOnScrollFrameBeginTest", nullptr, ListEventTest::CreateNativeNodeOnScrollFrameBegin, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "listOnScrollStartTest", nullptr, ListEventTest::CreateNativeNodeOnScrollStart, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listOnScrollStopTest", nullptr, ListEventTest::CreateNativeNodeOnScrollStop, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listOnWillScrollTest", nullptr, ListEventTest::CreateNativeNodeOnWillScroll, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listOnDidScrollTest", nullptr, ListEventTest::CreateNativeNodeOnDidScroll, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listOnWillDidScrollTest", nullptr, ListEventTest::CreateNativeNodeOnWillDidScroll, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "listScrollToIndexTest", nullptr, ListEventTest::CreateNativeNodeScrollToIndex, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listOnReachStartTest", nullptr, ListEventTest::CreateNativeNodeOnReachStart, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listOnReachEndTest", nullptr, ListEventTest::CreateNativeNodeOnReachEnd, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listOnScrollIndexTest", nullptr, ListEventTest::CreateNativeNodeOnScrollIndex, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetOnWillScrollData", nullptr, ListEventTest::GetOnWillScrollData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetOnDidScrollData", nullptr, ListEventTest::GetOnDidScrollData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetOnWillDidScrollData", nullptr, ListEventTest::GetOnWillDidScrollData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetOnScrollIndexData", nullptr, ListEventTest::GetOnScrollIndexData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetOnScrollData", nullptr, ListEventTest::GetOnScrollData, nullptr, nullptr, nullptr, napi_default,
+            nullptr },
+        { "listScrollOffset001Test", nullptr, ListScrollOffsetTest::TestListScrollOffset001, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset002Test", nullptr, ListScrollOffsetTest::TestListScrollOffset002, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset003Test", nullptr, ListScrollOffsetTest::TestListScrollOffset003, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset004Test", nullptr, ListScrollOffsetTest::TestListScrollOffset004, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset005Test", nullptr, ListScrollOffsetTest::TestListScrollOffset005, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset006Test", nullptr, ListScrollOffsetTest::TestListScrollOffset006, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset007Test", nullptr, ListScrollOffsetTest::TestListScrollOffset007, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset008Test", nullptr, ListScrollOffsetTest::TestListScrollOffset008, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset009Test", nullptr, ListScrollOffsetTest::TestListScrollOffset009, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset010Test", nullptr, ListScrollOffsetTest::TestListScrollOffset010, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset011Test", nullptr, ListScrollOffsetTest::TestListScrollOffset011, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset012Test", nullptr, ListScrollOffsetTest::TestListScrollOffset012, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset013Test", nullptr, ListScrollOffsetTest::TestListScrollOffset013, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset014Test", nullptr, ListScrollOffsetTest::TestListScrollOffset014, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset015Test", nullptr, ListScrollOffsetTest::TestListScrollOffset015, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset016Test", nullptr, ListScrollOffsetTest::TestListScrollOffset016, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset017Test", nullptr, ListScrollOffsetTest::TestListScrollOffset017, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset018Test", nullptr, ListScrollOffsetTest::TestListScrollOffset018, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset019Test", nullptr, ListScrollOffsetTest::TestListScrollOffset019, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset020Test", nullptr, ListScrollOffsetTest::TestListScrollOffset020, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset021Test", nullptr, ListScrollOffsetTest::TestListScrollOffset021, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollOffset022Test", nullptr, ListScrollOffsetTest::TestListScrollOffset022, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetScrollOffsetData", nullptr, ListScrollOffsetTest::GetScrollOffsetData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollPageTest", nullptr, ListScrollPageTest::TestListScrollPage, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetScrollPageData", nullptr, ListScrollPageTest::GetScrollPageData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollBy001Test", nullptr, ListScrollByTest::TestListScrollBy001, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollBy002Test", nullptr, ListScrollByTest::TestListScrollBy002, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollBy003Test", nullptr, ListScrollByTest::TestListScrollBy003, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listScrollBy004Test", nullptr, ListScrollByTest::TestListScrollBy004, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetScrollByData", nullptr, ListScrollByTest::GetScrollByData, nullptr, nullptr, nullptr, napi_default,
+            nullptr },
+        { "listCloseAllActionTest", nullptr, ListCloseAllTest::CreateNativeNodeCloseAll, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetCloseAllActionRetData", nullptr, ListCloseAllTest::GetRetData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listNestedScroll001Test", nullptr, ListNestedScrollTest::CreateNativeNode, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listNestedScroll002Test", nullptr, ListNestedScrollTest::CreateNativeNodeSmall, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listNestedScroll003Test", nullptr, ListNestedScrollTest::CreateNativeNodeReset, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "listGetNestedScrollRetData", nullptr, ListNestedScrollTest::ListGetNestedScrollData, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
         {"listHitTestBehaviorDefaultTest", nullptr, ListHitTestBehaviorTest::CreateNativeNodeDefault, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"listHitTestBehaviorBlockTest", nullptr, ListHitTestBehaviorTest::CreateNativeNodeBlock, nullptr, nullptr,
@@ -572,6 +700,16 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr },
         {"getTextInputDeleteData", nullptr, TextInputOnDeleteTest::GetTextInputDeleteData, nullptr, nullptr, nullptr,
          napi_default, nullptr },
+        {"imageOnfinishTest", nullptr, ImageOnFinishTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"imageDownProgressTest", nullptr, ImageDownProgressTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"imageDraggableEventTest", nullptr, ImageDraggableTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"imageSpanOnClickTest", nullptr, ImagespanOnClickTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"spanOnClickTest", nullptr, SpanOnClickTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
         {"commonAttrsFocusStatusTest", nullptr, CommonAttrsFocusStatusTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"commonAttrsTouchableTest", nullptr, CommonAttrsTouchableTest::CreateNativeNode,
@@ -632,8 +770,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"hybirdGetNodeHandleTest", nullptr, HybirdGetNodeHandleTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"responseConfigUpdateTest", nullptr, ResponseConfigUpdateTest::CreateNativeNode,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
         {"requirementPanGestureTest", nullptr, RequirementPanGestureTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"customComponentMeasureNodeTest", nullptr, CustomComponentMeasureNodeTest::CreateNativeNode,
@@ -682,6 +818,10 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"lazyForEachSetItemTest", nullptr, LazyForEachTest::CreateNativeNodeSetItem, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"textAreaSelectionMenuHiddenTest", nullptr, TextAreaSelectionMenuHiddenTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textAreaInputFilterTest", nullptr, TextAreaInputFilterTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
         {"scrollScrollEventOnWillScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnWillScroll,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"scrollScrollEventOnDidScrollTest", nullptr, ScrollScrollEventTest::CreateNativeNodeOnDidScroll,
@@ -742,6 +882,73 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"scrollScrollEdge003Test", nullptr, ScrollScrollEdgeTest::CreateNativeNodeScrollEdge003, nullptr,
          nullptr, nullptr, napi_default, nullptr},
+        { "waterFlowOnReachStartTest", nullptr, WaterFlowEventTest::CreateNativeNodeReachStart, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowOnReachEndTest", nullptr, WaterFlowEventTest::CreateNativeNodeReachEnd, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowOnScrollStopTest", nullptr, WaterFlowEventTest::CreateNativeNodeScrollStop, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowOnWillDidScrollTest", nullptr, WaterFlowEventTest::CreateNativeNodeOnWillDidScroll, nullptr,
+            nullptr, nullptr, napi_default, nullptr },
+        { "getOnWillDidScrollData", nullptr, WaterFlowEventTest::GetOnWillDidScrollData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowOnScrollIndexTest", nullptr, WaterFlowEventTest::CreateNativeNodeOnScrollIndex, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "getOnScrollIndexData", nullptr, WaterFlowEventTest::GetOnScrollIndexData, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowOnScrollFrameBeginTest", nullptr, WaterFlowEventTest::CreateNativeNodeOnScrollFrameBegin, nullptr,
+            nullptr, nullptr, napi_default, nullptr },
+        { "waterFlowScrollToIndexTest", nullptr, WaterFlowEventTest::CreateNativeNodeScrollToIndex, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollOffsetTest", nullptr, WaterFlowScrollOffsetTest::CreateNativeNode, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowScrollOffsetData", nullptr, WaterFlowScrollOffsetTest::WaterFlowScrollOffsetData, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollPageTest", nullptr, WaterFlowScrollPageTest::TestWaterFlowScrollPage, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowGetScrollPageData", nullptr, WaterFlowScrollPageTest::WaterFlowGetScrollPageData, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollBy001Test", nullptr, WaterFlowScrollByTest::TestWaterFlowScrollBy001, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollBy002Test", nullptr, WaterFlowScrollByTest::TestWaterFlowScrollBy002, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollBy003Test", nullptr, WaterFlowScrollByTest::TestWaterFlowScrollBy003, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowScrollBy004Test", nullptr, WaterFlowScrollByTest::TestWaterFlowScrollBy004, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowGetScrollByData", nullptr, WaterFlowScrollByTest::WaterFlowGetScrollByData, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowNestedScroll1Test", nullptr, WaterFlowNestedScrollTest::CreateNativeNode, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "waterFlowNestedScroll2Test", nullptr, WaterFlowNestedScrollTest::CreateNativeNodeSmall, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowNestedScroll3Test", nullptr, WaterFlowNestedScrollTest::CreateNativeNodeReset, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "waterFlowGetNestedScrollData", nullptr, WaterFlowNestedScrollTest::WaterFlowGetNestedScrollData, nullptr,
+            nullptr, nullptr, napi_default, nullptr },
+        {"textInputSelectionMenuHiddenTest", nullptr, TextInputSelectionMenuHiddenTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textInputInputFilterTest", nullptr, TextInputInputFilterTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"textInputOnTextSelectionAllChangeTest", nullptr, TextInputOnTextSelectionAllChangeTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"getTextInputSelectAllData", nullptr, TextInputOnTextSelectionAllChangeTest::GetTextInputSelectAllData,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"customComponentSecondaryLayoutTest", nullptr, CustomComponentSecondaryLayoutTest::CreateNativeNode,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"getSecondaryLayoutData", nullptr, CustomComponentSecondaryLayoutTest::GetSecondaryLayoutData,
+         nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"requirementRouterPageStateTest", nullptr, RequirementRouterPageStateTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr },
+        {"getRouterData", nullptr, RequirementRouterPageStateTest::GetRouterData, nullptr, nullptr,
+         nullptr, napi_default, nullptr },
+        {"resourceNapiValueTest", nullptr, ResourceNapiValueTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr },
+
+         {"swipeAxisGestureTest", nullptr, GestureTest::CreateSwipeAxisNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"GetGestureDataAxis", nullptr, GestureTest::GetGestureDataAxis, nullptr, nullptr,
+         nullptr, napi_default, nullptr },
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

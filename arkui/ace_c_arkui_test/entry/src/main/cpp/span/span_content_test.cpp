@@ -30,4 +30,15 @@ static napi_value TestSpanContent001(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestSpanContent002(napi_env env, napi_callback_info info)
+{
+    NAPI_START(span, ARKUI_NODE_SPAN);
+
+    ArkUI_NumberValue value[] = { { .i32 = PARAM_NEGATIVE_1 } };
+    ArkUI_AttributeItem value_item = { value, sizeof(value) / sizeof(ArkUI_NumberValue) };
+    auto ret = nodeAPI->setAttribute(span, NODE_SPAN_CONTENT, &value_item);
+    ASSERT_EQ(ret, INVALID_PARAM);
+
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

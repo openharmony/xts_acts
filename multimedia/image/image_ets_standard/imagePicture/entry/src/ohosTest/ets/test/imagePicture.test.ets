@@ -34,25 +34,18 @@ let sleep = async (delay: number): Promise<void> => {
 };
 
 export default function imagePicture() {
-  let globalImageSource: image.ImageSource;
-  let globalPixelMap: image.PixelMap;
-  let globalPacker: image.ImagePacker;
-  let globalPicture: image.Picture;
-  let globalAuxiliaryPicture: image.AuxiliaryPicture|null;
-  let filePath: string;
   let filesDir: string|undefined;
   let cacheDir: string|undefined;
-  let fdNumber: number;
   let testContext: common.UIAbilityContext;
   const Unsupported_operation_CODE = 7600201;
   const UNSUPPORTED_ERROR_CODE = 7600202;
+  const UNSUPPORTED_DECODE_CODE = 7700301;
+  const PARA_ERROR_CODE = 401;
   const GAINMAP = image.AuxiliaryPictureType.GAINMAP;
   const DEPTH_MAP = image.AuxiliaryPictureType.DEPTH_MAP;
   const UNREFOCUS_MAP = image.AuxiliaryPictureType.UNREFOCUS_MAP;
   const LINEAR_MAP = image.AuxiliaryPictureType.LINEAR_MAP;
   const FRAGMENT_MAP = image.AuxiliaryPictureType.FRAGMENT_MAP;
-  let typeList: Array<image.AuxiliaryPictureType> = [];
-  let undefinedTypeList: Array<image.AuxiliaryPictureType> = [];
   const EXIF_METADATA = image.MetadataType.EXIF_METADATA;
   const FRAGMENT_METADATA = image.MetadataType.FRAGMENT_METADATA;
   const X_IN_ORIGINAL = "XInOriginal";
@@ -60,9 +53,6 @@ export default function imagePicture() {
   const WIDTH = "FragmentImageWidth";
   const HEIGHT = "FragmentImageHeight";
   let exifRecords: Record<string, string|null> = {"ImageWidth": "512", "ImageLength": "512"};
-  let fragmentRecords: Record<string, string|null> = {
-    "XInOriginal" : "0", "YInOriginal" : "0", "FragmentImageWidth": "512", "FragmentImageHeight": "512"
-  };
   let isSupportHEIFDecode: boolean;
   let isSupportHdr: Boolean;
 
@@ -79,46 +69,6 @@ export default function imagePicture() {
     })
 
     afterEach(async () => {
-      if (globalPixelMap != undefined) {
-        try {
-          await globalPixelMap.release();
-        } catch (error) {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'globalpixelmap release fail');
-        }
-      }
-      if (globalImageSource != undefined) {
-        try {
-          await globalImageSource.release();
-        } catch (error) {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'globalImagesource release fail');
-        }
-      }
-      if (globalPacker != undefined) {
-        try {
-          await globalPacker.release();
-        } catch (error) {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'globalPacker release fail');
-        }
-      }
-      if (globalPicture != undefined) {
-        try {
-          await globalPicture.release();
-        } catch (error) {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'globalPicture release fail');
-        }
-      }
-      if (globalAuxiliaryPicture != undefined) {
-        try {
-          await globalAuxiliaryPicture.release();
-        } catch (error) {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'globalAuxiliaryPicture release fail');
-        }
-      }
-      try {
-        fs.closeSync(fdNumber)
-      } catch (error) {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'closeSync fdNumber error');
-      }
       hilog.info(0x0000, 'testTag', '%{public}s', 'afterEach case');
     });
 
@@ -135,7 +85,7 @@ export default function imagePicture() {
     }
 
     const getBuffer = async (fileName: string) => {
-      filePath = filesDir + '/' + fileName;
+      const filePath = filesDir + '/' + fileName;
       let file = fs.openSync(filePath);
       const stats = fs.statSync(filePath);
       const fileSize = stats.size;
@@ -176,15 +126,14 @@ export default function imagePicture() {
 
     const createPictureImageSourcePic = async (fileName: string, type: string, auxType?: image.AuxiliaryPictureType) => {
       let imageSourceApi: image.ImageSource = await getImageSource(fileName, type);
-        globalImageSource = imageSourceApi;
-        globalPixelMap = await imageSourceApi.createPixelMap();
       let picture: image.Picture;
       if (auxType) {
         let decodingOptForPicture: image.DecodingOptionsForPicture;
         decodingOptForPicture = {desiredAuxiliaryPictures: [auxType]};
         picture = await imageSourceApi.createPicture(decodingOptForPicture);
+      } else {
+        picture = await imageSourceApi.createPicture();
       }
-      picture = await imageSourceApi.createPicture();
       return picture;
     }
 
@@ -208,27 +157,112 @@ export default function imagePicture() {
       return picture;
     }
 
-    const createPictureOnlyMainPic = async (fileName: string, type: string, pixelFormat?: image.PixelMapFormat) => {
+    const myGetPixelMap = async (fileName: string, type: string, pixelFormat: image.PixelMapFormat) => {
       let imageSourceApi: image.ImageSource = await getImageSource(fileName, type);
       let DecodingOptions: image.DecodingOptions = {
         desiredPixelFormat: pixelFormat
       };
-      globalPixelMap = await imageSourceApi.createPixelMap(DecodingOptions);
-      let picture: image.Picture = image.createPicture(globalPixelMap);
+      let pixelMap = await imageSourceApi.createPixelMap(DecodingOptions);
+      return pixelMap;
+    }
+
+    const createPictureOnlyMainPic = async (fileName: string, type: string, pixelFormat?: image.PixelMapFormat) => {
+      let imageSourceApi: image.ImageSource = await getImageSource(fileName, type);
+      let pixelMap: image.PixelMap;
+      if (pixelFormat != undefined) {
+        let DecodingOptions: image.DecodingOptions = {
+          desiredPixelFormat: pixelFormat
+        };
+        pixelMap = await imageSourceApi.createPixelMap(DecodingOptions);
+      } else {
+        pixelMap = await imageSourceApi.createPixelMap();
+      }
+      let picture: image.Picture = image.createPicture(pixelMap);
       return picture;
     }
 
+    const createAuxPic = async (
+      auxiliaryPictureType: image.AuxiliaryPictureType,
+      fileName?: string,
+      size?: image.Size
+    ) => {
+      const buffer = await getBuffer(fileName!!);
+      let auxiliaryPicture: image.AuxiliaryPicture = image.createAuxiliaryPicture(buffer, size, auxiliaryPictureType);
+      return auxiliaryPicture;
+    }
+
+    const testGetMetadataError = async (
+      done: Function,
+      logger: Logger,
+      picture: image.AuxiliaryPicture|null | image.Picture,
+      metadataType: image.MetadataType,
+    ) => {
+      try {
+        let metadata = await picture!.getMetadata(metadataType);
+        if (metadata != undefined) {
+          logger.log("picture metadata not is undefined");
+          expect(false).assertEqual(true);
+          done();
+        }
+      } catch (error) {
+        logger.log(`getProperties error ` + JSON.stringify(error) + error.code);
+        expect(error.code == UNSUPPORTED_ERROR_CODE).assertTrue();
+        done();
+      }
+    }
+
+    const testPackPictureError =  async (
+      done: Function,
+      logger: Logger,
+      packOpts: image.PackingOption,
+      packType: string,
+      picture: image.Picture,
+      fdNum?: number,
+    ) => {
+      if (picture == undefined) {
+        logger.log("create Picture failed.");
+        expect(false).assertTrue();
+        done();
+      } else {
+        const imagePackerApi: image.ImagePacker = image.createImagePacker();
+        if (packType === "packing") {
+          imagePackerApi.packing(picture, packOpts).then(async (data: ArrayBuffer) => {
+            logger.log("packing success");
+            picture.release();
+            expect(false).assertTrue();
+            done();
+          }).catch((error: BusinessError) => {
+            logger.log(`packing picture to buffer failed: ${error}, error code: ${JSON.stringify(error.code)}`);
+            expect(error.code == PARA_ERROR_CODE).assertTrue();
+            done();
+          })
+        } else {
+          imagePackerApi.packToFile(picture, fdNum!!, packOpts).then(async () => {
+            logger.log("packToFile success");
+            picture.release();
+            expect(false).assertTrue();
+            done();
+          }).catch((error: BusinessError) => {
+            logger.log(`packing picture to buffer failed: ${error}, error code: ${JSON.stringify(error.code)}`);
+            expect(error.code == PARA_ERROR_CODE).assertTrue();
+            done();
+          });
+        }
+      }
+    }
+
     const checkPicture = (
+      picture: image.Picture,
       containTypeList: Array<image.AuxiliaryPictureType>,
       excludeTypeList: Array<image.AuxiliaryPictureType>
     ): boolean => {
       let result = true;
       for (let i = 0; i < containTypeList.length; i++) {
-        result = result && (globalPicture?.getAuxiliaryPicture(containTypeList[i])?.getType() == containTypeList[i]);
+        result = result && (picture?.getAuxiliaryPicture(containTypeList[i])?.getType() == containTypeList[i]);
       }
 
       for (let i = 0; i < excludeTypeList.length; i++) {
-        result = result && (globalPicture?.getAuxiliaryPicture(excludeTypeList[i]) == undefined);
+        result = result && (picture?.getAuxiliaryPicture(excludeTypeList[i]) == undefined);
       }
       return result;
     }
@@ -237,11 +271,12 @@ export default function imagePicture() {
       done: Function,
       logger: Logger,
       fileName: string,
-      type: string
+      type: string,
+      typeList: Array<image.AuxiliaryPictureType>,
+      undefinedTypeList: Array<image.AuxiliaryPictureType>
     ) => {
       let picture: image.Picture;
       let imageSource = await getImageSource(fileName, type);
-      globalImageSource = imageSource;
       let decodingOptForPicture: image.DecodingOptionsForPicture;
       if (type == "buffer") {
         picture = await imageSource.createPicture();
@@ -259,8 +294,7 @@ export default function imagePicture() {
         expect(false).assertTrue();
         done();
       } else {
-        globalPicture = picture;
-        let ret = checkPicture(typeList, undefinedTypeList);
+        let ret = checkPicture(picture, typeList, undefinedTypeList);
         logger.log("ret = " + ret)
         expect(ret).assertTrue();
         done();
@@ -271,7 +305,8 @@ export default function imagePicture() {
       done: Function,
       logger: Logger,
       fileName: string,
-      type: string
+      type: string,
+      typeList: Array<image.AuxiliaryPictureType>
     ) => {
       let picture: image.Picture;
       let result = true;
@@ -282,7 +317,6 @@ export default function imagePicture() {
         expect(false).assertTrue();
         done();
       } else {
-        globalPicture = picture;
         for (let i = 0; i < typeList.length; i++) {
           result = result && (picture?.getAuxiliaryPicture(typeList[i])?.getType() == typeList[i]);
           logger.log("AuxiliaryPictureType: " + picture?.getAuxiliaryPicture(typeList[i])?.getType());
@@ -302,13 +336,14 @@ export default function imagePicture() {
       let imageInfo: image.ImageInfo|undefined;
       let picture: image.Picture;
       picture = await createPictureImageSourcePic(fileName, type);
+      let imageSourceApi: image.ImageSource = await getImageSource(fileName, type);
+      let pixelMap = await imageSourceApi.createPixelMap();
 
       if (picture == undefined) {
         logger.log("create Pictrue failed.");
         expect(false).assertTrue();
         done();
       } else {
-        globalPicture = picture;
         if (apiName == "mainPixelMap") {
           let mainPixelMap = picture.getMainPixelmap();
           imageInfo = mainPixelMap.getImageInfoSync();
@@ -322,7 +357,7 @@ export default function imagePicture() {
 
         logger.log("imageInfo: " + JSON.stringify(imageInfo));
         if (apiName == "mainPixelMap") {
-          expect(JSON.stringify(imageInfo) == JSON.stringify(globalPixelMap.getImageInfoSync())).assertTrue();
+          expect(JSON.stringify(imageInfo) == JSON.stringify(pixelMap.getImageInfoSync())).assertTrue();
           done();
         } else if (apiName == "hdrComposedPixelmap") {
           expect(imageInfo?.pixelFormat == image.PixelMapFormat.RGBA_1010102).assertTrue();
@@ -350,7 +385,6 @@ export default function imagePicture() {
         expect(false).assertTrue();
         done();
       } else {
-        globalPicture = picture;
         if (apiName == "hdrComposedPixelmap") {
           try {
             await picture.getHdrComposedPixelmap();
@@ -501,6 +535,7 @@ export default function imagePicture() {
           //setProperties
           await metadata.setProperties(properties);
           logger.log(`setProperties success `);
+
           //setMetadata
           await picture.setMetadata(metadataType, metadata);
           logger.log(`setMetadata success `);
@@ -531,16 +566,16 @@ export default function imagePicture() {
       picture: image.Picture,
       auxType: image.AuxiliaryPictureType
     ) => {
-      globalAuxiliaryPicture = picture.getAuxiliaryPicture(auxType);
+      let auxiliaryPicture = picture.getAuxiliaryPicture(auxType);
 
       //readPixelsToBuffer
-      let beforeArrayBuffer = await globalAuxiliaryPicture!.readPixelsToBuffer();
+      let beforeArrayBuffer = await auxiliaryPicture!.readPixelsToBuffer();
       logger.log(`read beforeArrayBuffer success: ` + beforeArrayBuffer.byteLength);
       //writePixelsFromBuffer
-      await globalAuxiliaryPicture!.writePixelsFromBuffer(beforeArrayBuffer);
+      await auxiliaryPicture!.writePixelsFromBuffer(beforeArrayBuffer);
       logger.log(`writePixelsFromBuffer success `);
       //readPixelsToBuffer
-      let afterArrayBuffer = await globalAuxiliaryPicture!.readPixelsToBuffer();
+      let afterArrayBuffer = await auxiliaryPicture!.readPixelsToBuffer();
       logger.log(`readPixelsToBuffer success: ` + afterArrayBuffer.byteLength);
       expect(beforeArrayBuffer.byteLength == afterArrayBuffer.byteLength).assertTrue();
       done();
@@ -552,14 +587,14 @@ export default function imagePicture() {
       picture: image.Picture,
       auxType: image.AuxiliaryPictureType
     ) => {
-      globalAuxiliaryPicture = picture.getAuxiliaryPicture(auxType);
+      let auxiliaryPicture = picture.getAuxiliaryPicture(auxType);
 
-      let beforeMetadata = await globalAuxiliaryPicture!.getMetadata(FRAGMENT_METADATA);
+      let beforeMetadata = await auxiliaryPicture!.getMetadata(FRAGMENT_METADATA);
       logger.log(`AuxiliaryPicture getMetadata success: ` + JSON.stringify(beforeMetadata));
 
-      await globalAuxiliaryPicture!.setMetadata(FRAGMENT_METADATA, beforeMetadata);
+      await auxiliaryPicture!.setMetadata(FRAGMENT_METADATA, beforeMetadata);
       logger.log(`AuxiliaryPicture setMetadata success `);
-      let afterMetadata = await globalAuxiliaryPicture!.getMetadata(FRAGMENT_METADATA);
+      let afterMetadata = await auxiliaryPicture!.getMetadata(FRAGMENT_METADATA);
       logger.log(`AuxiliaryPicture getMetadata success: ` + JSON.stringify(afterMetadata));
 
       expect(afterMetadata != undefined).assertTrue();
@@ -570,31 +605,34 @@ export default function imagePicture() {
       done: Function,
       logger: Logger,
       picture: image.Picture,
-      originAuxInfo: image.AuxiliaryPictureInfo
+      originAuxInfo: image.AuxiliaryPictureInfo,
+      typeList: Array<image.AuxiliaryPictureType>
     ) => {
       for (let i = 0; i < typeList.length; i++) {
-        globalAuxiliaryPicture = picture.getAuxiliaryPicture(typeList[i]);
+        let auxiliaryPicture = picture.getAuxiliaryPicture(typeList[i]);
    
         //getAuxiliaryPictureInfo
-        let beforeAuxInfo = globalAuxiliaryPicture!.getAuxiliaryPictureInfo();
+        let beforeAuxInfo = auxiliaryPicture!.getAuxiliaryPictureInfo();
         logger.log(`get AuxiliaryPictureInfo success: ` + JSON.stringify(beforeAuxInfo));
-        
+
         //setAuxiliaryPictureInfo
-        globalAuxiliaryPicture!.setAuxiliaryPictureInfo(originAuxInfo);
+        auxiliaryPicture!.setAuxiliaryPictureInfo(originAuxInfo);
         logger.log(`setAuxiliaryPictureInfo success setInfo: ` + JSON.stringify(originAuxInfo));
         //getAuxiliaryPictureInfo
-        let afterAuxInfo = globalAuxiliaryPicture!.getAuxiliaryPictureInfo();
+        let afterAuxInfo = auxiliaryPicture!.getAuxiliaryPictureInfo();
         logger.log(`get AuxiliaryPictureInfo success: ` + JSON.stringify(afterAuxInfo));
 
         expect(JSON.stringify(afterAuxInfo.auxiliaryPictureType) == JSON.stringify(originAuxInfo.auxiliaryPictureType)).assertTrue();
         expect(JSON.stringify(afterAuxInfo.size.width) == JSON.stringify(originAuxInfo.size.width)).assertTrue();
         expect(JSON.stringify(afterAuxInfo.size.height) == JSON.stringify(originAuxInfo.size.height)).assertTrue();
+        expect(JSON.stringify(afterAuxInfo.pixelFormat) == JSON.stringify(originAuxInfo.pixelFormat)).assertTrue();
         expect(JSON.stringify(afterAuxInfo.rowStride) == JSON.stringify(originAuxInfo.rowStride)).assertTrue();
 
         //release
-        globalAuxiliaryPicture!.release();
+        auxiliaryPicture!.release();
+        picture.release();
         logger.log("release success");
-        expect(globalAuxiliaryPicture!.getType() == undefined).assertTrue();
+        expect(auxiliaryPicture!.getType() == undefined).assertTrue();
       }
       done();
     }
@@ -620,12 +658,13 @@ export default function imagePicture() {
       } else {
         imageSource = image.createImageSource(source)
       }
-      globalPicture = await imageSource.createPicture();
-      let metadata = await globalPicture.getMetadata(EXIF_METADATA);
+      let picture = await imageSource.createPicture();
+      let metadata = await picture.getMetadata(EXIF_METADATA);
       let auxType: image.AuxiliaryPictureType | undefined;
       if (type != undefined) {
-        auxType = globalPicture.getAuxiliaryPicture(type)?.getType();
+        auxType = picture.getAuxiliaryPicture(type)?.getType();
       }
+      
       let imageInfo = imageSource.getImageInfoSync();
       logger.log(`properties: ${JSON.stringify(properties)}, isHdr: ${imageInfo.isHdr}, mimeType: ${imageInfo.mimeType}, auxType: ${auxType}`);
       await imageSource.release();
@@ -672,7 +711,6 @@ export default function imagePicture() {
         expect(false).assertTrue();
         done();
       } else {
-        globalPicture = picture;
         let metadata = await picture.getMetadata(EXIF_METADATA);
         let properties = await metadata.getAllProperties();
         const imagePackerApi: image.ImagePacker = image.createImagePacker();
@@ -711,17 +749,17 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0100");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          typeList = [GAINMAP]; 
-          undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-          testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "buffer");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP]; 
+        let undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testImageSourceCreatePicture(done, logger, "JPEGISOSingle.jpg", "buffer", typeList, undefinedTypeList);
+      }
+    });
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0200
@@ -733,19 +771,19 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0200', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0200");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          typeList = [GAINMAP]; 
-          undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-          testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "uri");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP]; 
+        let undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testImageSourceCreatePicture(done, logger, "JPEGISOSingle.jpg", "uri", typeList, undefinedTypeList);
+      }
+    });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0300
      * @tc.name      : test ImageSource createPicture decodingOptForPicture
      * @tc.desc      : 1.create picture object by decode image source
@@ -755,19 +793,19 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0300', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0300");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          typeList = [GAINMAP]; 
-          undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-          testImageSourceCreatePicture(done, logger, "test_gainMap.jpg", "fd");
-        }
-    })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP]; 
+        let undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testImageSourceCreatePicture(done, logger, "JPEGISOSingle.jpg", "fd", typeList, undefinedTypeList);
+      }
+    });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0400
      * @tc.name      : test ImageSource createPicture
      * @tc.desc      : 1.create picture object by decode image source
@@ -777,21 +815,21 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0400', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0400");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-          let picture = await createPictureImageSourcePic("test.jpg", "buffer");
-          for (let i = 0; i < undefinedTypeList.length; i++) {
-            let ret = picture?.getAuxiliaryPicture(undefinedTypeList[i]) == undefined;
-            logger.log("ret = " + ret)
-            expect(ret).assertTrue();
-          }
-          done();
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        let picture = await createPictureImageSourcePic("testExif.jpg", "buffer");
+        for (let i = 0; i < undefinedTypeList.length; i++) {
+          let ret = picture?.getAuxiliaryPicture(undefinedTypeList[i]) == undefined;
+          logger.log("ret = " + ret)
+          expect(ret).assertTrue();
         }
+        done();
+      }
     })
 
     /**
@@ -804,18 +842,18 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_JPEG_0100");
-        undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-        for (let i = 0; i < undefinedTypeList.length; i++) {
-          let ret = picture?.getAuxiliaryPicture(undefinedTypeList[i]) == undefined;
-          logger.log("ret = " + ret)
-          expect(ret).assertTrue();
-        }
-        done();
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_JPEG_0100");
+      let undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd");
+      for (let i = 0; i < undefinedTypeList.length; i++) {
+        let ret = picture?.getAuxiliaryPicture(undefinedTypeList[i]) == undefined;
+        logger.log("ret = " + ret)
+        expect(ret).assertTrue();
+      }
+      done();
+    })
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_TYPE_JPEG_0100
      * @tc.name      : test auxiliary picture get type
      * @tc.desc      : 1.create picture object by decode image source
@@ -826,12 +864,12 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_TYPE_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_TYPE_JPEG_0100");
-        typeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
-        testGetType(done, logger, "test.jpg", "fd");
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_TYPE_JPEG_0100");
+      let typeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+      testGetType(done, logger, "testExif.jpg", "fd", typeList);
+    });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_MAIN_PIXELMAP_JPEG_0100
      * @tc.name      : test picture getMainPixelMap
      * @tc.desc      : 1.create picture object by decode image source
@@ -841,11 +879,11 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_MAIN_PIXELMAP_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_MAIN_PIXELMAP_JPEG_0100");
-        testPictureApi(done, logger, "test.jpg", "buffer", "mainPixelMap");
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_MAIN_PIXELMAP_JPEG_0100");
+      testPictureApi(done, logger, "testExif.jpg", "buffer", "mainPixelMap");
+    });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_JPEG_0100
      * @tc.name      : test picture getHdrComposedPixelmap
      * @tc.desc      : 1.create picture object by decode image source
@@ -855,15 +893,16 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_JPEG_0100");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          testPictureApi(done, logger, "test_gainMap.jpg", "buffer", "hdrComposedPixelmap");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_JPEG_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        testPictureApi(done, logger, "JPEGISOSingle.jpg", "buffer", "hdrComposedPixelmap");
+      }
+    });
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_JPEG_0100
      * @tc.name      : test picture getGainmapPixelmap
@@ -874,9 +913,9 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_JPEG_0100");
-        testPictureApi(done, logger, "test_gainMap.jpg", "buffer", "gainMapPixelMap");
-    })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_JPEG_0100");
+      testPictureApi(done, logger, "JPEGISOSingle.jpg", "buffer", "gainMapPixelMap");
+    });
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_JPEG_ERROR_0100
@@ -889,7 +928,7 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_JPEG_ERROR_0100', 0, async (done: Function) => {
         let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_JPEG_ERROR_0100");
-        testPictureApiError(done, logger, "test.jpg", "buffer", "gainMapPixelMap");
+        testPictureApiError(done, logger, "testExif.jpg", "buffer", "gainMapPixelMap");
     })
 
     /**
@@ -903,15 +942,15 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0100");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.jpg", "fd");
-          testMarshalling(done, logger, picture, "picture", EXIF_METADATA);
-        }
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+        testMarshalling(done, logger, picture, "picture", EXIF_METADATA);
+      }
     });
 
     /**
@@ -925,18 +964,18 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0200', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0200");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test_gainMap.jpg", "fd");
-          testMarshalling(done, logger, picture, "GAINMAP");
-        }
-      });
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        testMarshalling(done, logger, picture, "GAINMAP");
+      }
+    });
 
-       /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0100
      * @tc.name      : test AuxiliaryPicture API
      * @tc.desc      : 1.create picture object by decode image source
@@ -951,16 +990,16 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0100");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test_gainMap.jpg", "fd");
-          //readPixelsToBuffer && writePixelsFromBuffer
-          await testReadPixelsToBuffer(done, logger, picture, GAINMAP);
-        }
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, GAINMAP);
+      }
     });
 
     /**
@@ -984,7 +1023,7 @@ export default function imagePicture() {
         expect(true).assertTrue();
         done();
       } else {
-        let picture = await createPictureImageSourcePic("test_fragmentMap.jpg", "fd");
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
         await testAuxMetadata(done, logger, picture, FRAGMENT_MAP);
       };
     });
@@ -1010,7 +1049,7 @@ export default function imagePicture() {
         expect(true).assertTrue();
         done();
       } else {
-        let picture = await createPictureImageSourcePic("test_gainMap.jpg", "fd");
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
         let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
           auxiliaryPictureType: GAINMAP,
           size: {width: 1536, height: 2048},
@@ -1018,8 +1057,8 @@ export default function imagePicture() {
           pixelFormat: image.PixelMapFormat.RGB_565,
           colorSpace: await colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
         }
-        typeList = [GAINMAP];
-        testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin);
+        let typeList = [GAINMAP];
+        testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
       }
     });
 
@@ -1038,17 +1077,16 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_JPEG_0100");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.jpg", "fd");
-          await testMetadataProperty(done, logger, exifRecords, picture, EXIF_METADATA);
-        }
-      });
-
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+        await testMetadataProperty(done, logger, exifRecords, picture, EXIF_METADATA);
+      }
+    });
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_HEIF_0100
@@ -1065,16 +1103,16 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_HEIF_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_HEIF_0100");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.heic", "fd");
-          await testMetadataProperty(done, logger, exifRecords, picture, EXIF_METADATA);
-        }
-      });
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        await testMetadataProperty(done, logger, exifRecords, picture, EXIF_METADATA);
+      }
+    });
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_METADATA_API_JPEG_0100
@@ -1098,8 +1136,11 @@ export default function imagePicture() {
         expect(true).assertTrue();
         done();
       } else {
-        let picture = await createPictureImageSourcePic("test_fragmentMap.jpg", "fd");
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
         let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let fragmentRecords: Record<string, string|null> = {
+          "XInOriginal" : "0", "YInOriginal" : "0", "FragmentImageWidth": "512", "FragmentImageHeight": "512"
+        };
         await testMetadataProperty(done, logger, fragmentRecords, auxPicture, FRAGMENT_METADATA);
       }
     });
@@ -1126,7 +1167,7 @@ export default function imagePicture() {
         expect(true).assertTrue();
         done();
       } else {
-        let picture = await createPictureImageSourcePic("test_fragmentMap.jpg", "fd");
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
         let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
         if (auxPicture != undefined) {
           let metadata = await auxPicture.getMetadata(FRAGMENT_METADATA);
@@ -1144,7 +1185,7 @@ export default function imagePicture() {
       }
     });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0100
      * @tc.name      : test picture packing
      * @tc.desc      : 1.create picture object by main pixelMap
@@ -1156,25 +1197,24 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0100");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.AUTO,
-            needsPackProperties: true
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.AUTO,
+          needsPackProperties: true
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    });
 
-
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0200
      * @tc.name      : test picture packing
      * @tc.desc      : 1.create picture object by main pixelMap
@@ -1186,25 +1226,24 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0200', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0200");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.SDR,
-            needsPackProperties: false
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.SDR,
+          needsPackProperties: false
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    });
 
-
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0300
      * @tc.name      : test picture packing
      * @tc.desc      : 1.create picture object by decode image source
@@ -1216,24 +1255,24 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0300', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0300");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.AUTO,
-            needsPackProperties: true
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.AUTO,
+          needsPackProperties: true
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0400
      * @tc.name      : test picture packing
      * @tc.desc      : 1.create picture object by decode image source
@@ -1245,24 +1284,24 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0400', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0400");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.SDR,
-            needsPackProperties: false
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.SDR,
+          needsPackProperties: false
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0500
      * @tc.name      : test picture packing
      * @tc.desc      : 1.create picture object by decode image source
@@ -1274,22 +1313,22 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0500', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0500");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_JPEG_0500");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0100
      * @tc.name      : test picture packToFile
      * @tc.desc      : 1.create picture object by main pixelMap
@@ -1301,143 +1340,143 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0100");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let writeFd = await getFdCacheDir("pack_picture_01.jpg");
-          let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.AUTO,
-            needsPackProperties: true
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0200
-       * @tc.name      : test picture packToFile
-       * @tc.desc      : 1.create picture object by main pixelMap
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packToFile
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-       it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0200', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0200");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let writeFd = await getFdCacheDir("pack_picture_02.jpg");
-          let picture = await createPictureOnlyMainPic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.SDR,
-            needsPackProperties: false
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0300
-       * @tc.name      : test picture packToFile
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packing
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0300', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0300");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let writeFd = await getFdCacheDir("pack_picture_03.jpg");
-          let picture = await createPictureImageSourcePic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.AUTO,
-            needsPackProperties: true
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0400
-       * @tc.name      : test picture packToFile
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packToFile
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-       it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0400', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0400");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let writeFd = await getFdCacheDir("pack_picture_04.jpg");
-          let picture = await createPictureImageSourcePic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.SDR,
-            needsPackProperties: false
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0500
-       * @tc.name      : test picture packToFile
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packToFile
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0500', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0500");
-        if (!isSupportHdr) {
-          logger.log("device is not support hdr");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let writeFd = await getFdCacheDir("pack_picture_05.jpg");
-          let picture = await createPictureImageSourcePic("test.jpg", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/jpeg",
-            quality: 98
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let writeFd = await getFdCacheDir("pack_picture_01.jpg");
+        let picture = await createPictureOnlyMainPic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.AUTO,
+          needsPackProperties: true
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    });
 
-      /**
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0200
+     * @tc.name      : test picture packToFile
+     * @tc.desc      : 1.create picture object by main pixelMap
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packToFile
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let writeFd = await getFdCacheDir("pack_picture_02.jpg");
+        let picture = await createPictureOnlyMainPic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.SDR,
+          needsPackProperties: false
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0300
+     * @tc.name      : test picture packToFile
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packing
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let writeFd = await getFdCacheDir("pack_picture_03.jpg");
+        let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.AUTO,
+          needsPackProperties: true
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0400
+     * @tc.name      : test picture packToFile
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packToFile
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let writeFd = await getFdCacheDir("pack_picture_04.jpg");
+        let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.SDR,
+          needsPackProperties: false
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0500
+     * @tc.name      : test picture packToFile
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packToFile
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_JPEG_0500");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let writeFd = await getFdCacheDir("pack_picture_05.jpg");
+        let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/jpeg",
+          quality: 98
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0100
      * @tc.name      : test picture packing
      * @tc.desc      : 1.create picture object by main pixelMap
@@ -1449,138 +1488,138 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0100");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureOnlyMainPic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.AUTO,
-            needsPackProperties: true
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0200
-       * @tc.name      : test picture packing
-       * @tc.desc      : 1.create picture object by main pixelMap
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packing
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0200', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0200");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureOnlyMainPic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.SDR,
-            needsPackProperties: false
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0300
-       * @tc.name      : test picture packing
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packing
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0300', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0300");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.AUTO,
-            needsPackProperties: true
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0400
-       * @tc.name      : test picture packing
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packing
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0400', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0400");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.SDR,
-            needsPackProperties: false
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0500
-       * @tc.name      : test picture packing
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packing
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0500', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0500");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98
-          };
-          await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.AUTO,
+          needsPackProperties: true
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    })
 
-      /**
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0200
+     * @tc.name      : test picture packing
+     * @tc.desc      : 1.create picture object by main pixelMap
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packing
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.SDR,
+          needsPackProperties: false
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0300
+     * @tc.name      : test picture packing
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packing
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.AUTO,
+          needsPackProperties: true
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0400
+     * @tc.name      : test picture packing
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packing
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.SDR,
+          needsPackProperties: false
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0500
+     * @tc.name      : test picture packing
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packing
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0500");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98
+        };
+        await testPackPicture(done, logger, packOpts, "packing", picture, "picture");
+      }
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0100
      * @tc.name      : test picture packToFile
      * @tc.desc      : 1.create picture object by main pixelMap
@@ -1592,55 +1631,55 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0100");
-        let writeFd = await getFdCacheDir("pack_picture_01.heic");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureOnlyMainPic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.AUTO,
-            needsPackProperties: true
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0200
-       * @tc.name      : test picture packToFile
-       * @tc.desc      : 1.create picture object by main pixelMap
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packToFile
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-       it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0200");
-        let writeFd = await getFdCacheDir("pack_picture_02.heic");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureOnlyMainPic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.SDR,
-            needsPackProperties: false
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0100");
+      let writeFd = await getFdCacheDir("pack_picture_01.heic");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.AUTO,
+          needsPackProperties: true
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    });
 
-      /**
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0200
+     * @tc.name      : test picture packToFile
+     * @tc.desc      : 1.create picture object by main pixelMap
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packToFile
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0200");
+      let writeFd = await getFdCacheDir("pack_picture_02.heic");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.SDR,
+          needsPackProperties: false
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0300
      * @tc.name      : test picture packToFile
      * @tc.desc      : 1.create picture object by decode image source
@@ -1652,83 +1691,83 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0300");
-        let writeFd = await getFdCacheDir("pack_picture_03.heic");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.AUTO,
-            needsPackProperties: true
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0400
-       * @tc.name      : test picture packToFile
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packToFile
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-       it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0400");
-        let writeFd = await getFdCacheDir("pack_picture_04.heic");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98,
-            desiredDynamicRange: image.PackingDynamicRange.SDR,
-            needsPackProperties: false
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0500
-       * @tc.name      : test picture packToFile
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.create ImagePacker
-       *                 3.set packingOption
-       *                 4.test picture packToFile
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-       it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0500");
-        let writeFd = await getFdCacheDir("pack_picture_04.heic");
-        if (!isSupportHEIFDecode) {
-          logger.log("device is not support heif decode");
-          expect(true).assertTrue();
-          done();
-        } else {
-          let picture = await createPictureImageSourcePic("test.heic", "fd");
-          let packOpts: image.PackingOption = {
-            format: "image/heif",
-            quality: 98
-          };
-          await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
-        }
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0300");
+      let writeFd = await getFdCacheDir("pack_picture_03.heic");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.AUTO,
+          needsPackProperties: true
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    });
 
-      /**
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0400
+     * @tc.name      : test picture packToFile
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packToFile
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0400");
+      let writeFd = await getFdCacheDir("pack_picture_04.heic");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98,
+          desiredDynamicRange: image.PackingDynamicRange.SDR,
+          needsPackProperties: false
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0500
+     * @tc.name      : test picture packToFile
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create ImagePacker
+     *                 3.set packingOption
+     *                 4.test picture packToFile
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0500");
+      let writeFd = await getFdCacheDir("pack_picture_04.heic");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {
+          format: "image/heif",
+          quality: 98
+        };
+        await testPackPicture(done, logger, packOpts, "packToFile", picture, "picture", writeFd);
+      }
+    });
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_RELEASE_JPEG_0100
      * @tc.name      : test picture release 
      * @tc.desc      : 1.create picture object by decode image source
@@ -1738,13 +1777,13 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_RELEASE_JPEG_0100', 0, async (done: Function) => {
-        let picture = await createPictureImageSourcePic("test.jpg", "fd");
-        picture.release();
-        expect(picture.getMainPixelmap() == undefined).assertTrue();
-        done();
-      });
+      let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+      picture.release();
+      expect(picture.getMainPixelmap() == undefined).assertTrue();
+      done();
+    });
 
-      /**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0100
      * @tc.name      : test picture getMainPixelMap
      * @tc.desc      : 1.create picture object by decode image source
@@ -1754,177 +1793,186 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0100");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.RGBA_8888);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0200
-       * @tc.name      : test picture getMainPixelMap
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.test get main pixelMap info
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0200', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0200");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.RGB_565);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0300
-       * @tc.name      : test picture getMainPixelMap
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.test get main pixelMap info
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0300', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0300");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.RGBA_8888);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0400
-       * @tc.name      : test picture getMainPixelMap
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.test get main pixelMap info
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0400', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0400");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.BGRA_8888);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0600
-       * @tc.name      : test picture getMainPixelMap
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.test get main pixelMap info
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0600', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0600");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.RGBA_F16);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0700
-       * @tc.name      : test picture getMainPixelMap
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.test get main pixelMap info
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0700', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0700");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.RGBA_1010102);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0800
-       * @tc.name      : test picture getMainPixelMap
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.test get main pixelMap info
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0800', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0800");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.YCBCR_P010);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0900
-       * @tc.name      : test picture getMainPixelMap
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.test get main pixelMap info
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0900', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0900");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.YCRCB_P010);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
-  
-      /**
-       * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1000
-       * @tc.name      : test picture getMainPixelMap
-       * @tc.desc      : 1.create picture object by decode image source
-       *                 2.test get main pixelMap info
-       * @tc.size      : MediumTest
-       * @tc.type      : Functional
-       * @tc.level     : Level 1
-       */
-      it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1000', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1000");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.NV21);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0100");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.RGBA_8888);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.RGBA_8888);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
 
-      /**
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0200
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0200");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.RGB_565);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.RGB_565);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0300
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0300");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.RGBA_8888);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.RGBA_8888);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0400
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0400");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.BGRA_8888);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.BGRA_8888);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0600
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0600");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.RGBA_F16);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.RGBA_F16);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0700
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0700");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.RGBA_1010102);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.RGBA_1010102);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0800
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0800");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.YCBCR_P010);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.YCBCR_P010);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0900
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_0900");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.YCRCB_P010);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.YCRCB_P010);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1000
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1000");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.NV21);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.NV21);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1100
      * @tc.name      : test picture getMainPixelMap
      * @tc.desc      : 1.create picture object by decode image source
@@ -1934,15 +1982,5532 @@ export default function imagePicture() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1100', 0, async (done: Function) => {
-        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1100");
-        let picture = await createPictureOnlyMainPic("test.jpg", "fd", image.PixelMapFormat.NV12);
-        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
-        let globalPixelMapImageInfo = globalPixelMap.getImageInfoSync();
-        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
-        logger.log("globalPixelMapImageInfo: " + JSON.stringify(globalPixelMapImageInfo));
-        expect(mainPixelMapImageInfo.pixelFormat == globalPixelMapImageInfo.pixelFormat).assertTrue();
-        done();
-      })
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_JPEG_1100");
+      let picture = await createPictureOnlyMainPic("testExif.jpg", "fd", image.PixelMapFormat.NV12);
+      let pixelMap = await myGetPixelMap("testExif.jpg", "fd", image.PixelMapFormat.NV12);
+      let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+      let pixelMapImageInfo = pixelMap.getImageInfoSync();
+      logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+      logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+      expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+      done();
+    });
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0500");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0600");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0700");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0800");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT709)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_0900");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT709)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_JPEG_1000");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JPEGISOSingle.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010  ,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_EBU)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_SMPTE_C)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_SMPTE_C)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_PQ)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        logger.log("auxinfo: " + JSON.stringify(auxInfo));
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_F16,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_PQ)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_HLG)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_HLG)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_PQ)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_PQ)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_1100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_1100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_JPEG_1100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998_LIMIT)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT709_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_EBU_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_EBU_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_SMPTE_C_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_SMPTE_C_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_PQ_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_PQ_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_HLG_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_HLG_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_PQ_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        logger.log("auxinfo: " + JSON.stringify(auxInfo));
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_F16,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_PQ_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_P3)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_P3)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_SRGB)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_SRGB)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_1100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_1100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_JPEG_1100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_BT709)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_BT2020)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_BT2020)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_SRGB)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_SRGB)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0500");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_SRGB)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0600");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_HLG)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0700");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_HLG)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0800");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_PQ)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_0900");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_PQ)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_JPEG_1000");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_PQ)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0300
+     * @tc.name      : test picture marshalling createPictureFromParcel
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test marshalling and create Picture From Parcel
+     *                 3.compare deserialize before and after metadata
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        testMarshalling(done, logger, picture, "FRAGMENT_MAP", FRAGMENT_METADATA);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0200");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, DEPTH_MAP);
+        await sleep(500);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0300");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, UNREFOCUS_MAP);
+        await sleep(500);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0400");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures_exclude_fragment.jpg", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, LINEAR_MAP);
+        await sleep(500);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_JPEG_0500");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("JpegFragmentMap.jpg", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, FRAGMENT_MAP);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_OPTION_JPEG_0100
+     * @tc.name      : test ImageSource createPicture
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test auxiliaryPicture have all auxiliary picture type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_OPTION_JPEG_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_OPTION_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        let undefinedTypeList = [];
+        testImageSourceCreatePicture(done, logger, "AllAuxiliaryPictures.jpg", "buffer", typeList, undefinedTypeList);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_10BIT_JPEG_0100
+     * @tc.name      : test ImageSource createPicture
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test auxiliaryPicture have auxiliary picture type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_10BIT_JPEG_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_10BIT_JPEG_0100");
+      if (!isSupportHdr) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP];
+        let undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testImageSourceCreatePicture(done, logger, "CUVAHdrMulti.jpg", "buffer", typeList, undefinedTypeList);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_CREATEAUXILIARYPICTURE_ERROR_JPEG_0100
+     * @tc.name      : test auxiliary picture get type
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create auxiliary images and store them in the picture
+     *                 3.test auxiliary picture type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_CREATEAUXILIARYPICTURE_ERROR_JPEG_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_CREATEAUXILIARYPICTURE_ERROR_JPEG_0100");
+      let size: image.Size = {height: -1, width: -1};
+      try {
+        let gainMapAuxiliaryPicture = await createAuxPic(GAINMAP, "GainMap.dat", size);
+        logger.log("gainMapAuxiliaryPicture: " + gainMapAuxiliaryPicture);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        logger.log("error: " + JSON.stringify(error));
+        expect(error.code == PARA_ERROR_CODE).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_SET_AUXILIARY_PICTURE_INFO_ERROR_0200
+     * @tc.name      : test auxiliary picture get type
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test set auxiliaryPicture info
+     *                 3.throwing error code
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_SET_AUXILIARY_PICTURE_INFO_ERROR_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_SET_AUXILIARY_PICTURE_INFO_ERROR_0200");
+      let gainMapAuxiliaryPicture = await createAuxPic(GAINMAP, "GainMap.dat", {height: 960, width: 720});
+      try {
+        let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+          auxiliaryPictureType: GAINMAP,
+          size: {height: -1, width: 3072},
+          rowStride: 10,
+          pixelFormat: image.PixelMapFormat.BGRA_8888,
+          colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+        }
+        gainMapAuxiliaryPicture!.setAuxiliaryPictureInfo(auxiliaryPictureInfoOrigin);
+      } catch (error) {
+        logger.log("error: " + JSON.stringify(error));
+        expect(error.code == PARA_ERROR_CODE).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_SET_AUXILIARY_PICTURE_INFO_ERROR_0300
+     * @tc.name      : test auxiliary picture get type
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test set auxiliaryPicture info
+     *                 3.throwing error code
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_SET_AUXILIARY_PICTURE_INFO_ERROR_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_SET_AUXILIARY_PICTURE_INFO_ERROR_0300");
+      let gainMapAuxiliaryPicture = await createAuxPic(GAINMAP, "GainMap.dat", {height: 960, width: 720});
+      try {
+        let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+          auxiliaryPictureType: GAINMAP,
+          size: {height: 1536, width: -1},
+          rowStride: 10,
+          pixelFormat: image.PixelMapFormat.BGRA_8888,
+          colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+        }
+        gainMapAuxiliaryPicture!.setAuxiliaryPictureInfo(auxiliaryPictureInfoOrigin);
+      } catch (error) {
+        logger.log("error: " + JSON.stringify(error));
+        expect(error.code == PARA_ERROR_CODE).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_JPEG_ERROR_0100
+     * @tc.name      : test picture getHdrComposedPixelmap error
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get HdrComposed pixelMap failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_JPEG_ERROR_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_JPEG_ERROR_0100");
+      testPictureApiError(done, logger, "testExif.jpg", "buffer", "hdrComposedPixelmap");
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_JPEG_ERROR_0300
+     * @tc.name      : test picture metadata API error
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get metadata error
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_JPEG_ERROR_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_JPEG_ERROR_0300");
+      let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+      await testGetMetadataError(done, logger, picture, FRAGMENT_METADATA);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_PNG_ERROR_0100
+     * @tc.name      : test picture packing error
+     * @tc.desc      : 1.create picture object by main pixelMap
+     *                 2.create auxiliary picture and insert them into the picture
+     *                 3.create ImagePacker
+     *                 4.set packingOption
+     *                 5.test picture packing failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_PNG_ERROR_0100', 0, async (done: Function) => {
+        let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_PNG_ERROR_0100");
+        let picture = await createPictureOnlyMainPic("testExif.jpg", "fd");
+        let packOpts: image.PackingOption = {format: "image/png", quality: 98};
+        await testPackPictureError(done, logger, packOpts, "packing", picture);
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_PNG_ERROR_0100
+     * @tc.name      : test picture packToFile error
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create auxiliary picture and insert them into the picture
+     *                 3.create ImagePacker
+     *                 4.set packingOption
+     *                 5.test picture packToFile failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_PNG_ERROR_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_PNG_ERROR_0100");
+      let writeFd = await getFdCacheDir("pack_txt_01.jpg");
+      let picture = await createPictureImageSourcePic("testExif.jpg", "fd");
+      let packOpts: image.PackingOption = {format: "image/png", quality: 98};
+      await testPackPictureError(done, logger, packOpts, "packToFile", picture, writeFd);
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DECODE_PNG_ERROR_0100
+     * @tc.name      : test picture packToFile error
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create picture use image format is png
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DECODE_PNG_ERROR_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DECODE_PNG_ERROR_0100");
+      try {
+        let imageSourceApi: image.ImageSource = await getImageSource("test.png", "uri");
+        let picture: image.Picture = await imageSourceApi.createPicture();
+        if (picture != undefined) {
+          expect(false).assertEqual(true);
+          done();
+        }
+      } catch (error) {
+        logger.log("createPicture by imageSource is error: " + JSON.stringify(error) + ", error code is: " + error.code);
+        expect(error.code == UNSUPPORTED_DECODE_CODE).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0100
+     * @tc.name      : test ImageSource createPicture
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test auxiliaryPicture have gain map type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP]; 
+        let undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testImageSourceCreatePicture(done, logger, "HEIFISOMultiChannelBaseColor0512V12.heic", "buffer",
+            typeList, undefinedTypeList);
+      }
+    })
+  
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0200
+     * @tc.name      : test ImageSource createPicture decodingOptForPicture
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test auxiliaryPicture have gain map type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP]; 
+        let undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testImageSourceCreatePicture(done, logger, "HEIFISOMultiChannelBaseColor0512V12.heic", "uri",
+            typeList, undefinedTypeList);
+      }
+    })
+  
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0300
+     * @tc.name      : test ImageSource createPicture decodingOptForPicture
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test auxiliaryPicture have gain map type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP]; 
+        let undefinedTypeList = [DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testImageSourceCreatePicture(done, logger, "HEIFISOMultiChannelBaseColor0512V12.heic", "fd",
+            typeList, undefinedTypeList);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0400
+     * @tc.name      : test ImageSource createPicture
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test haven't auxiliaryPicture
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "buffer");
+        for (let i = 0; i < undefinedTypeList.length; i++) {
+          let ret = picture?.getAuxiliaryPicture(undefinedTypeList[i]) == undefined;
+          logger.log("ret = " + ret)
+          expect(ret).assertTrue();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_HEIF_0100
+     * @tc.name      : test Image createPicture
+     * @tc.desc      : 1.create picture object by main pixelMap
+     *                 2.test haven't auxiliaryPicture
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd");
+        for (let i = 0; i < undefinedTypeList.length; i++) {
+          let ret = picture?.getAuxiliaryPicture(undefinedTypeList[i]) == undefined;
+          logger.log("ret = " + ret)
+          expect(ret).assertTrue();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_TYPE_HEIF_0100
+     * @tc.name      : test auxiliary picture get type
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create auxiliary images and store them in the picture
+     *                 3.test auxiliary picture type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_TYPE_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_TYPE_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testGetType(done, logger, "0801_sdr2.heic", "fd", typeList);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_MAIN_PIXELMAP_HEIF_0100
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_MAIN_PIXELMAP_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_MAIN_PIXELMAP_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        testPictureApi(done, logger, "0801_sdr2.heic", "buffer", "mainPixelMap");
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_HEIF_0100
+     * @tc.name      : test picture getHdrComposedPixelmap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get HdrComposed pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_HDR_PIXELMAP_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        testPictureApi(done, logger, "HEIFISOMultiChannelBaseColor0512V12.heic", "buffer", "hdrComposedPixelmap");
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_HEIF_0100
+     * @tc.name      : test picture getGainmapPixelmap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get gainmap pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_GET_GAIN_PIXELMAP_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        testPictureApi(done, logger, "HEIFISOMultiChannelBaseColor0512V12.heic", "buffer", "gainMapPixelMap");
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0100
+     * @tc.name      : test picture marshalling createPictureFromParcel
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test marshalling and create Picture From Parcel
+     *                 3.compare deserialize before and after main pixel map info and metadata 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        testMarshalling(done, logger, picture, "picture", EXIF_METADATA);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0200
+     * @tc.name      : test picture marshalling createPictureFromParcel
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test marshalling and create Picture From Parcel
+     *                 3.compare deserialize before and after gainmap pixel map info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("HEIFISOMultiChannelBaseColor0512V12.heic", "fd");
+        testMarshalling(done, logger, picture, "GAINMAP");
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0300
+     * @tc.name      : test picture marshalling createPictureFromParcel
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test marshalling and create Picture From Parcel
+     *                 3.compare deserialize before and after metadata
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_MARSHALLING_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        testMarshalling(done, logger, picture, "FRAGMENT_MAP", FRAGMENT_METADATA);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: await colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0500");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0600");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0700");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0800");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT709)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_0900");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT709)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_AUXILIARY_PICTURE_INFO_HEIF_1000");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(GAINMAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: GAINMAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010  ,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_EBU)
+          }
+          let typeList = [GAINMAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_SMPTE_C)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_SMPTE_C)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_PQ)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_F16,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_PQ)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_HLG)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_HLG)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_PQ)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_PQ)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_1100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_1100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTH_MAP_AUXILIARY_PICTURE_INFO_HEIF_1100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(DEPTH_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: DEPTH_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998_LIMIT)
+          }
+          let typeList = [DEPTH_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT709_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_EBU_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_EBU_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_SMPTE_C_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT601_SMPTE_C_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUS_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(UNREFOCUS_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: UNREFOCUS_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG_LIMIT)
+          }
+          let typeList = [UNREFOCUS_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_PQ_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_PQ_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_HLG_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_HLG_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_PQ_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_F16,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.P3_PQ_LIMIT)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_P3)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_P3)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_SRGB)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_SRGB)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_1100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_1100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEAR_MAP_AUXILIARY_PICTURE_INFO_HEIF_1100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(LINEAR_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: LINEAR_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_BT709)
+          }
+          let typeList = [LINEAR_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_565,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_BT2020)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_BT2020)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.BGRA_8888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_SRGB)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGB_888,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_SRGB)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0500");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.ALPHA_8,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_SRGB)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0600");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV21,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_HLG)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0700");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.NV12,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_HLG)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0800");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.RGBA_1010102,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_PQ)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_0900");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCBCR_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_PQ)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENT_MAP_AUXILIARY_PICTURE_INFO_HEIF_1000");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        let auxPicture = picture.getAuxiliaryPicture(FRAGMENT_MAP);
+        let auxInfo = auxPicture!.getAuxiliaryPictureInfo();
+        if (auxInfo) {
+          let auxSize = auxInfo.size;
+          let auxiliaryPictureInfoOrigin: image.AuxiliaryPictureInfo = {
+            auxiliaryPictureType: FRAGMENT_MAP,
+            size: {width: auxSize.width, height: auxSize.height},
+            rowStride: auxInfo.rowStride,
+            pixelFormat: image.PixelMapFormat.YCRCB_P010,
+            colorSpace: colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3_PQ)
+          }
+          let typeList = [FRAGMENT_MAP];
+          testAuxiliaryPictureInfo(done, logger, picture, auxiliaryPictureInfoOrigin, typeList);
+        } else {
+          logger.log("get auxiliaryInfo is undefined");
+          expect(false).assertTrue();
+          done();
+        }
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0100
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("HEIFISOMultiChannelBaseColor0512V12.heic", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, GAINMAP);
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0200
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, DEPTH_MAP);
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0300
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, UNREFOCUS_MAP);
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0400
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, LINEAR_MAP);
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0500
+     * @tc.name      : test AuxiliaryPicture API
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get auxiliaryPicture type
+     *                 3.test set auxiliaryPicture info
+     *                 4.test get auxiliaryPicture info
+     *                 5.test auxiliaryPicture read pixels to buffer
+     *                 6.test auxiliaryPicture write pixels from buffer
+     *                 7.test auxiliaryPicture release
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_AUXILIARY_PICTURE_READ_AND_WRITE_HEIF_0500");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("all_auxtype.heic", "fd");
+        //readPixelsToBuffer && writePixelsFromBuffer
+        await testReadPixelsToBuffer(done, logger, picture, FRAGMENT_MAP);
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_RELEASE_HEIF_0100
+     * @tc.name      : test picture release 
+     * @tc.desc      : 1.create main pixelMap
+     *                 2.create picture object by main pixelMap
+     *                 3.test release picture 
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_RELEASE_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_RELEASE_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd");
+        picture.release();
+        expect(picture.getMainPixelmap() == undefined).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0100
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.RGBA_8888);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.RGBA_8888);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0200
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0200', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0200");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.RGB_565);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.RGB_565);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0300
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.RGBA_8888);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.RGBA_8888);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0400
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0400', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0400");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.BGRA_8888);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.BGRA_8888);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0500
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0500', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0500");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.RGBA_F16);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.RGBA_F16);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0600
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0600', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0600");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.RGBA_1010102);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.RGBA_1010102);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0700
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0700', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0700");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.YCBCR_P010);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.YCBCR_P010);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0800
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0800', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0800");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.YCRCB_P010);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.YCRCB_P010);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0900
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0900', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_0900");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.NV21);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.NV21);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_1000
+     * @tc.name      : test picture getMainPixelMap
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get main pixelMap info
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_1000', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PIXELMAP_FORMAT_HEIF_1000");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd", image.PixelMapFormat.NV12);
+        let pixelMap = await myGetPixelMap("0801_sdr2.heic", "fd", image.PixelMapFormat.NV12);
+        let mainPixelMapImageInfo = picture.getMainPixelmap().getImageInfoSync();
+        let pixelMapImageInfo = pixelMap.getImageInfoSync();
+        logger.log("mainPixelMapImageInfo: " + JSON.stringify(mainPixelMapImageInfo));
+        logger.log("pixelMapImageInfo: " + JSON.stringify(pixelMapImageInfo));
+        expect(mainPixelMapImageInfo.pixelFormat == pixelMapImageInfo.pixelFormat).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_OPTION_HEIF_0100
+     * @tc.name      : test ImageSource createPicture
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test auxiliaryPicture have all auxiliary picture type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_OPTION_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_OPTION_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        let undefinedTypeList = [];
+        testImageSourceCreatePicture(done, logger, "all_auxtype.heic", "buffer", typeList, undefinedTypeList);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_10BIT_HEIF_0100
+     * @tc.name      : test ImageSource createPicture
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test auxiliaryPicture have all auxiliary picture type
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_10BIT_HEIF_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_IMAGESOURCE_DECODE_10BIT_HEIF_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support hdr");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let typeList = [];
+        let undefinedTypeList = [GAINMAP, DEPTH_MAP, UNREFOCUS_MAP, LINEAR_MAP, FRAGMENT_MAP];
+        testImageSourceCreatePicture(done, logger, "HDRVividSingleLayer.heic", "buffer", typeList, undefinedTypeList);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_HEIF_ERROR_0300
+     * @tc.name      : test picture metadata API error
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.test get metadata error
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_HEIF_ERROR_0300', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_METADATA_API_HEIF_ERROR_0300");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        await testGetMetadataError(done, logger, picture, FRAGMENT_METADATA);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_PNG_HEIF_ERROR_0100
+     * @tc.name      : test picture packing error
+     * @tc.desc      : 1.create picture object by main pixelMap
+     *                 2.create auxiliary picture and insert them into the picture
+     *                 3.create ImagePacker
+     *                 4.set packingOption
+     *                 5.test picture packing failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_PNG_HEIF_ERROR_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_PNG_HEIF_ERROR_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let picture = await createPictureOnlyMainPic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {format: "image/png", quality: 98};
+        await testPackPictureError(done, logger, packOpts, "packing", picture);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_PNG_HEIF_ERROR_0100
+     * @tc.name      : test picture packToFile error
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.create auxiliary picture and insert them into the picture
+     *                 3.create ImagePacker
+     *                 4.set packingOption
+     *                 5.test picture packToFile failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_PNG_HEIF_ERROR_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_PNG_HEIF_ERROR_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        let writeFd = await getFdCacheDir("pack_txt_01.heic");
+        let picture = await createPictureImageSourcePic("0801_sdr2.heic", "fd");
+        let packOpts: image.PackingOption = {format: "image/png", quality: 98};
+        await testPackPictureError(done, logger, packOpts, "packToFile", picture, writeFd);
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_PICTURE_DECODE_OPTION_NULL_HEIF_ERROR_0100
+     * @tc.name      : test picture packToFile error
+     * @tc.desc      : 1.create picture object by decode image source
+     *                 2.set desiredAuxiliaryPictures is null
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DECODE_OPTION_NULL_HEIF_ERROR_0100', 0, async (done: Function) => {
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DECODE_OPTION_NULL_HEIF_ERROR_0100");
+      if (!isSupportHEIFDecode) {
+        logger.log("device is not support heif decode");
+        expect(true).assertTrue();
+        done();
+      } else {
+        try {
+          let imageSource: image.ImageSource = await getImageSource("all_auxtype.heic", "fd");
+          let picture = await imageSource.createPicture(null);
+        } catch (error) {
+          logger.log("create picture error" + JSON.stringify(error));
+          expect(error.code == PARA_ERROR_CODE).assertTrue();
+          done();
+        }
+      }
+    })
   })
 }

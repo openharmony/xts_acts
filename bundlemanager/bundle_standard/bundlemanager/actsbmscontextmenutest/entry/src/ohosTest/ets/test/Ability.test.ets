@@ -15,6 +15,12 @@
 import hilog from '@ohos.hilog';
 import bundle from '@ohos.bundle.bundleManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.example.myapplication';
+let bundleFlags = bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE;
+let userId = 100;
+let uid = 101010101;
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
@@ -79,5 +85,151 @@ export default function abilityTest() {
       expect(data.signatureInfo).assertEqual(null);
       done();
     })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo2_2200
+     * @tc.name: getBundleInfoOtherUnPermissionApi14
+     * @tc.desc: Test getBundleInfo unPermission query other bundle for api14.
+     */
+    it('getBundleInfoOtherUnPermissionApi14', 0, async (done: Function) => {
+      try {
+        await bundle.getBundleInfo(bundleName, bundleFlags, userId).then(data => {
+          console.info("getBundleInfoOtherUnPermissionApi14 promise success " + JSON.stringify(data));
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.info("getBundleInfoOtherUnPermissionApi14 promise error " + JSON.stringify(err));
+          expect(err.code).assertEqual(201);
+        })
+      } catch (err) {
+        console.info("getBundleInfoOtherUnPermissionApi14 catch " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      try {
+        bundle.getBundleInfo(bundleName, bundleFlags, userId, (err, data) => {
+          console.info("getBundleInfoOtherUnPermissionApi14 callback success " + JSON.stringify(data));
+          console.info("getBundleInfoOtherUnPermissionApi14 callback error " + JSON.stringify(err));
+          expect(data).assertUndefined();
+          expect(err.code).assertEqual(201);
+        });
+      } catch (err) {
+        console.info("getBundleInfoOtherUnPermissionApi14 callback catch " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      try {
+        bundle.getBundleInfo(bundleName, bundleFlags, (err, data) => {
+          console.info("getBundleInfoOtherUnPermissionApi14 callback2 success " + JSON.stringify(data));
+          console.info("getBundleInfoOtherUnPermissionApi14 callback2 error " + JSON.stringify(err));
+          expect(data).assertUndefined();
+          expect(err.code).assertEqual(201);
+          done();
+        });
+      } catch (err) {
+        console.info("getBundleInfoOtherUnPermissionApi14 callback2 catch " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo2_2300
+     * @tc.name: getBundleInfoSyncOtherUnPermissionApi14
+     * @tc.desc: Test getBundleInfoSync unPermission query other bundle for api14.
+     */
+    it('getBundleInfoSyncOtherUnPermissionApi14', 0, async (done: Function) => {
+      try {
+        bundle.getBundleInfoSync(bundleName, bundleFlags, userId)
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("getBundleInfoSyncOtherUnPermissionApi14 1 catch " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+      }
+      try {
+        bundle.getBundleInfoSync(bundleName, bundleFlags)
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("getBundleInfoSyncOtherUnPermissionApi14 2 catch " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo2_2400
+     * @tc.name: getBundleNameByUidSyncUnPermissionApi14
+     * @tc.desc: Test getBundleNameByUidSync unPermission for api14.
+     */
+    it('getBundleNameByUidSyncUnPermissionApi14', 0, async (done: Function) => {
+      try {
+        bundle.getBundleNameByUidSync(uid)
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("getBundleNameByUidSyncUnPermissionApi14 1 catch " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo2_2500
+     * @tc.name: getBundleNameByUidUnPermissionApi14
+     * @tc.desc: Test getBundleNameByUid unPermission for api14.
+     */
+    it('getBundleNameByUidUnPermissionApi14', 0, async (done: Function) => {
+      try {
+        await bundle.getBundleNameByUid(uid).then(data => {
+          console.info("getBundleNameByUidUnPermissionApi14 promise success " + JSON.stringify(data));
+          expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.info("getBundleNameByUidUnPermissionApi14 promise error " + JSON.stringify(err));
+          expect(err.code).assertEqual(201);
+        })
+      } catch (err) {
+        console.info("getBundleNameByUidUnPermissionApi14 1 catch " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      try {
+        bundle.getBundleNameByUid(uid, (err, data) => {
+          console.info("getBundleNameByUidUnPermissionApi14 callback2 success " + JSON.stringify(data));
+          console.info("getBundleNameByUidUnPermissionApi14 callback2 error " + JSON.stringify(err));
+          expect(data).assertUndefined();
+          expect(err.code).assertEqual(201);
+          done();
+        });
+      } catch (err) {
+        console.info("getBundleNameByUidUnPermissionApi14 callback2 catch " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo2_2600
+     * @tc.name: getAppCloneIdentityUnPermissionApi14
+     * @tc.desc: Test getAppCloneIdentity unPermission for api14.
+     */
+    it('getAppCloneIdentityUnPermissionApi14', 0, async (done: Function) => {
+      try {
+        bundle.getAppCloneIdentity(uid).then(data => {
+          console.info("getAppCloneIdentityUnPermissionApi14 success " + JSON.stringify(data));
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info("getAppCloneIdentityUnPermissionApi14 promise " + JSON.stringify(err));
+          expect(err.code).assertEqual(201);
+          done();
+        })
+      } catch (err) {
+        console.info("getAppCloneIdentityUnPermissionApi14 1 catch " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
   })
 }

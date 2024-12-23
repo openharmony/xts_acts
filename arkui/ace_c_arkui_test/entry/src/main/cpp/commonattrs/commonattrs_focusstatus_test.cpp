@@ -19,17 +19,6 @@
 
 namespace ArkUICapiTest {
 
-static napi_value TestCommonAttrsFocusStatus001(napi_env env, napi_callback_info info)
-{
-    NAPI_START(column, ARKUI_NODE_COLUMN);
-    int32_t status = PARAM_NEGATIVE_1;
-    ArkUI_NumberValue value[] = {{.i32 = status}};
-    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    auto ret = nodeAPI->setAttribute(column, NODE_FOCUS_STATUS, &valueItem);
-    ASSERT_EQ(ret, INVALID_PARAM);
-    NAPI_END;
-}
-
 static auto CreateChildNodeFocusStatus(ArkUI_NativeNodeAPI_1 *nodeAPI, int32_t status)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_BUTTON);

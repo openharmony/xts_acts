@@ -15,6 +15,10 @@
 
 
 import buttonType from './buttonType/buttonTypeApi.test';
+import accessibilitySelectedTypeTest from './chip/accessibilitySelectedTypeTest.test';
+import onScrollStopTest from './textPicker/onScrollStopTest.test';
 export default function testsuite() {
   buttonType();
+  accessibilitySelectedTypeTest()
+  onScrollStopTest()
 }

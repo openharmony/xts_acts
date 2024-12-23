@@ -4,6 +4,8 @@
       "MainAbility/pages/bindSheetTest/bindSheetKeyboardAvoidMode",
       "MainAbility/pages/Popup/followTransformOfTargetPopup",
       "MainAbility/pages/Popup/followTransformOfTargetCustomPopup",
-      "MainAbility/pages/UIContext/FocusController/activeTest"
+      "MainAbility/pages/UIContext/FocusController/activeTest",
+      "MainAbility/pages/DatePickerDialog/lunarSwitchStyleTest",
+      "MainAbility/pages/bindSheetTest/bindSheetHoverMode"
     ]
 }

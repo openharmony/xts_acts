@@ -42,7 +42,7 @@ export default function textAreaOnDeleteTest() {
       await Utils.sleep(1000)
       let dataArray: number[][] = nativeRender.getTextAreaDeleteData();
       let textAreaDeleteData: number[] = dataArray[0];
-      expect(textAreaDeleteData[0] == 16).assertEqual(true)
+      expect(textAreaDeleteData[0] == 8 && textAreaDeleteData[1] == 7).assertEqual(true)
       done()
     })
   })
