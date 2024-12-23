@@ -114,16 +114,20 @@ struct Index {
                         }
                         case "emitgetUserAgent": {
                             try {
+                                this.controller.loadUrl($rawfile('indexCopy.html'));
                                 this.userAgent = this.controller.getUserAgent();
                                 console.log("userAgent: " + this.userAgent);
                                 this.userAgent2 = this.controllerTwo.getUserAgent();
                                 console.log("userAgent2: " + this.userAgent2);
                                 this.userAgentAll = this.userAgent + this.userAgent2;
                                 console.log("userAgentAll: " + this.userAgentAll);
+                                if ((this.userAgentAll).includes("Mozilla")) {
+                                    this.userAgentAll = 'success'
+                                }
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
-                            this.controller.runJavaScript("test()",(res) => {
+                            this.controller.runJavaScript("test()", (res) => {
                                 Utils.emitEvent(this.userAgentAll, 1020)
                             })
                             break;
@@ -149,26 +153,20 @@ struct Index {
                         }
                         case "emitpageDown": {
                             try {
-                                this.controller.loadUrl($rawfile('indexCopyTwo.html'))
-                                this.userAgentPC = this.controller.getUserAgent();
-                                if ((this.userAgentPC).includes("Tablet")) {
-                                    this.controller.loadUrl($rawfile('indexCopyTwoTablet.html'))
-                                    await Utils.sleep(3000)
-                                }
-                                this.controller.runJavaScript("checkVIsible()", (error, result) => {
+                                this.controller.runJavaScript("checkVIsible()",(error, result) => {
                                     this.checkEleResult = JSON.parse(result)
                                     console.log(`The checkVIsible() return value is: ${result}`);
                                 })
                                 this.controller.pageDown(false);
-                                await Utils.sleep(3000)
-                                this.controller.runJavaScript("checkVIsible()", (error, result) => {
+                                await Utils.sleep(1000)
+                                this.controller.runJavaScript("checkVIsible()",(error, result) => {
                                     this.checkEleResultAgain = JSON.parse(result)
                                     console.log(`The checkVIsible() again return value is: ${result}`);
                                     if (this.checkEleResult[3] < JSON.parse(result)[3] && JSON.parse(result)[3] <
-                                        (JSON.parse(result)[1] / 2)) {
+                                    (JSON.parse(result)[1]/2)) {
                                         this.pageResult = true;
                                         console.log('emitpageDown result is :' + this.pageResult);
-                                    } else {
+                                    }else {
                                         this.pageResult = false;
                                         console.log('emitpageDown result is :' + this.pageResult);
                                     }
@@ -177,13 +175,8 @@ struct Index {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                                 this.pageResult = false;
                             }
-                            this.controller.runJavaScript("test()", (res) => {
-                                this.userAgentPC = this.controller.getUserAgent();
-                                if ((this.userAgentPC).includes("tablet")) {
-                                    Utils.emitEvent(true, 106)
-                                } else {
-                                    Utils.emitEvent(this.pageResult, 106)
-                                }
+                            this.controller.runJavaScript("test()",(res) => {
+                                Utils.emitEvent(this.pageResult, 106)
                             })
                             break;
                         }
