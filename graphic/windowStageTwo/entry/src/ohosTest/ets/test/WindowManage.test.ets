@@ -384,6 +384,130 @@ export default function windowManageTest() {
         }
       }
     })
+     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
+     * @tc.name      : testOnWindowStageClose
+     * @tc.desc      : Listener for window stage close event.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOnWindowStageClose', 0, async (done: Function) => {
+      let caseName = 'TestOnWindowStageClose';
+      try {
+        let driver: Driver = Driver.create();
+        let closeBtn = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        let count = 0;
+        windowStage.on('windowStageClose', () => {
+          console.info(`${caseName} Succeeded in enabling the listener for window stage close event.`);
+          count++;
+          return true;
+        });
+        await closeBtn.click();
+        await sleep(1000);
+        console.info(`${caseName} count is: ${count}`);
+        expect(count).assertEqual(1);
+        done();
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          done();
+        } else {
+          console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1000
+     * @tc.name      : testOnWindowStageCloseRepeat
+     * @tc.desc      : Listener for window stage close event.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOnWindowStageCloseRepeat', 0, async (done: Function) => {
+      let caseName = 'TestOnWindowStageCloseRepeat';
+      try {
+        let driver: Driver = Driver.create();
+        let closeBtn = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        let count1 = 0;
+        let count2 = 0;
+        const closeFunc1 = () => {
+          console.info(`${caseName} func1 Succeeded in enabling the listener for window stage close event.`);
+          count1++;
+          return true;
+        }
+        const closeFunc2 = () => {
+          console.info(`${caseName} func2 Succeeded in enabling the listener for window stage close event.`);
+          count2++;
+          return true;
+        }
+        windowStage.on('windowStageClose', closeFunc1);
+        windowStage.on('windowStageClose', closeFunc2);
+        await closeBtn.click();
+        await sleep(1000);
+        console.info(`${caseName} count1 is: ${count1}, count2 is: ${count2}`);
+        expect(count1).assertEqual(0);
+        expect(count2).assertEqual(1);
+        done();
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          done();
+        } else {
+          console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1100
+     * @tc.name      : testOnWindowStageCloseOff
+     * @tc.desc      : Listener for window stage close event.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOnWindowStageCloseOff', 0, async (done: Function) => {
+      let caseName = 'TestOnWindowStageCloseOff';
+      try {
+        let driver: Driver = Driver.create();
+        let closeBtn = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+        let count1 = 0;
+        let count2 = 0;
+        const closeFunc1 = () => {
+          console.info(`${caseName} func1 Succeeded in enabling the listener for window stage close event.`);
+          count1++;
+          return true;
+        }
+        const closeFunc2 = () => {
+          console.info(`${caseName} func2 Succeeded in enabling the listener for window stage close event.`);
+          count2++;
+          return true;
+        }
+        windowStage.on('windowStageClose', closeFunc2);
+        windowStage.off('windowStageClose', closeFunc2);
+        windowStage.on('windowStageClose', closeFunc1);
+        await closeBtn.click();
+        await sleep(1000);
+        console.info(`${caseName} count1 is: ${count1}, count2 is: ${count2}`);
+        expect(count1).assertEqual(1);
+        expect(count2).assertEqual(0);
+        done();
+      } catch (exception) {
+        if (exception.code === 801) {
+          console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          done();
+        } else {
+          console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1200
      * @tc.name      : testSetWindowTopmost201
