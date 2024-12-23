@@ -22,12 +22,14 @@ import {
   DEFAULT_USER_ID,
   TEST_USER_ID,
   AUTOSTARTAPP1,
-  AUTOSTARTAPP2
+  AUTOSTARTAPP2,
+  TEST_BUNDLENAME
 } from '../commom.ets';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import applicationManager from '@ohos.enterprise.applicationManager';
 import Want from '@ohos.app.ability.Want';
+import sysDeviceInfo from '@ohos.deviceInfo';
 
 export default function applicationManagerTest() {
   describe('applicationManager_test', function () {
@@ -513,6 +515,258 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } finally {
         await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_001
+     * @tc.name      : test_addKeepAliveApps_001
+     * @tc.desc      : test addKeepAliveApps method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveApps_001", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_002
+     * @tc.name      : test_addKeepAliveApps_002
+     * @tc.desc      : test addKeepAliveApps method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveApps_002", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_003
+     * @tc.name      : test_addKeepAliveApps_003
+     * @tc.desc      : test addKeepAliveApps method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveApps_003", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, TEST_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_004
+     * @tc.name      : test_addKeepAliveApps_004
+     * @tc.desc      : test addKeepAliveApps method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveApps_004", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9201005).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_005
+     * @tc.name      : test_addKeepAliveApps_005
+     * @tc.desc      : test addKeepAliveApps method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveApps_005", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        applicationManager.addDisallowedRunningBundlesSync(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200010).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVEKEEPALIVEAPPS_001
+     * @tc.name      : test_removeKeepAliveApps_001
+     * @tc.desc      : test removeKeepAliveApps method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_removeKeepAliveApps_001", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        applicationManager.removeKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVEKEEPALIVEAPPS_002
+     * @tc.name      : test_removeKeepAliveApps_002
+     * @tc.desc      : test removeKeepAliveApps method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_removeKeepAliveApps_002", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+        applicationManager.removeKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVEKEEPALIVEAPPS_003
+     * @tc.name      : test_removeKeepAliveApps_003
+     * @tc.desc      : test removeKeepAliveApps method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_removeKeepAliveApps_003", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        applicationManager.removeKeepAliveApps(SELFWANT, keepAliveApps, TEST_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETEKEEPALIVEAPPS_001
+     * @tc.name      : test_getKeepAliveApps_001
+     * @tc.desc      : test getKeepAliveApps method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getKeepAliveApps_001", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [];
+        keepAliveApps = applicationManager.getKeepAliveApps(SELFWANT, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETKEEPALIVEAPPS_002
+     * @tc.name      : test_getKeepAliveApps_002
+     * @tc.desc      : test getKeepAliveApps method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getKeepAliveApps_002", 0, async (done: Function) => {
+      if (sysDeviceInfo.deviceType !== '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [];
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+        keepAliveApps = applicationManager.getKeepAliveApps(SELFWANT, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
       done();
     })
