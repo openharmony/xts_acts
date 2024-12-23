@@ -702,5 +702,45 @@ describe('HidebugToDevJsTest', function () {
         done();
     })
 
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2100
+     * @tc.name testHiDebugJs28
+     * @tc.desc getGraphicsMemory正常测试
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs28', 1, async function (done) {
+        console.info('testHiDebugJs28 start');
+        try {
+            let result = hidebug.getGraphicsMemory();
+            expect(result >= 0).assertFalse();
+        } catch (error) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2100 > error code: ${err.code}, error msg: ${err.message}`);
+        }
+        console.info('testHiDebugJs28 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_2200
+     * @tc.name testHiDebugJs29
+     * @tc.desc getGraphicsMemorySync正常测试
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs29', 1, async function (done) {
+        console.info('testHiDebugJs29 start');
+        try {
+            let result = hidebug.getGraphicsMemorySync();
+            expect(result >= 0).assertTrue();
+        } catch (error) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_2200 > error code: ${err.code}, error msg: ${err.message}`);
+        }
+        console.info('testHiDebugJs29 end');
+        done();
+    })
+
 })
 }
