@@ -147,7 +147,9 @@ static napi_value CameraManagerGetSupportedCameras(napi_env env, napi_callback_i
     napi_create_int32(env, g_ndkCamera->cameras_->connectionType, &jsValue);
     napi_set_named_property(env, cameraInfo, "connectionType", jsValue);
 
-    napi_create_string_utf8(env, g_ndkCamera->cameras_->cameraId, sizeof(g_ndkCamera->cameras_->cameraId) + 1, &jsValue);
+    napi_create_string_utf8(env, g_ndkCamera->cameras_->cameraId,
+                            sizeof(g_ndkCamera->cameras_->cameraId) + 1,
+                            &jsValue);
     napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
 
     return cameraInfo;
@@ -1583,8 +1585,8 @@ napi_property_descriptor desc2[] = {
      napi_default, nullptr},
     {"oHCaptureSessionIsExposureModeSupported", nullptr, OHCaptureSessionIsExposureModeSupported, nullptr,
      nullptr, nullptr, napi_default, nullptr},
-    {"oHCaptureSessionIsExposureModeSupportedForCheck", nullptr, OHCaptureSessionIsExposureModeSupported, nullptr,
-     nullptr, nullptr, napi_default, nullptr},
+    {"oHCaptureSessionIsExposureModeSupportedForCheck", nullptr, OHCaptureSessionIsExposureModeSupported,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
     {"oHCaptureSessionSetExposureBias", nullptr, OHCaptureSessionSetExposureBias, nullptr, nullptr, nullptr,
      napi_default, nullptr},
     {"oHCaptureSessionSetExposureMode", nullptr, OHCaptureSessionSetExposureMode, nullptr, nullptr, nullptr,
@@ -1593,8 +1595,8 @@ napi_property_descriptor desc2[] = {
      nullptr},
     {"oHCaptureSessionIsFlashModeSupported", nullptr, OHCaptureSessionIsFlashModeSupported, nullptr, nullptr,
      nullptr, napi_default, nullptr},
-    {"oHCaptureSessionIsFlashModeSupportedForCheck", nullptr, OHCaptureSessionIsFlashModeSupportedForCheck, nullptr, nullptr,
-     nullptr, napi_default, nullptr},
+    {"oHCaptureSessionIsFlashModeSupportedForCheck", nullptr, OHCaptureSessionIsFlashModeSupportedForCheck,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
     {"oHCaptureSessionSetFlashMode", nullptr, OHCaptureSessionSetFlashMode, nullptr, nullptr, nullptr,
      napi_default, nullptr},
     {"oHCaptureSessionGetFlashMode", nullptr, OHCaptureSessionGetFlashMode, nullptr, nullptr, nullptr,
@@ -1619,7 +1621,7 @@ napi_property_descriptor desc2[] = {
      nullptr, napi_default, nullptr},
     {"oHCaptureSessionIsVideoStabilizationModeSupported", nullptr,
      OHCaptureSessionIsVideoStabilizationModeSupported, nullptr, nullptr, nullptr, napi_default, nullptr},
-     {"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck", nullptr,
+    {"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck", nullptr,
      OHCaptureSessionIsVideoStabilizationModeSupportedForCheck, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"oHCaptureSessionGetVideoStabilizationMode", nullptr, OHCaptureSessionGetVideoStabilizationMode,
      nullptr, nullptr, nullptr, napi_default, nullptr},
