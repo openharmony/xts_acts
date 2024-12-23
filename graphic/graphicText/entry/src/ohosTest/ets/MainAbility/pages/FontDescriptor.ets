@@ -41,7 +41,7 @@ struct FontDescriptor {
           .onClick(() => {
             console.info(`Get font descriptor start`)
             let fontType: text.SystemFontType = text.SystemFontType.GENERIC
-            let promise: Promise<text.FontDescriptor> = text.getFontDescriptorByFullName("Noto Sans Deseret Regular", fontType)
+            let promise: Promise<text.FontDescriptor> = text.getFontDescriptorByFullName('Noto Sans Deseret Regular', fontType)
             promise.then((data: text.FontDescriptor) => {
               console.info(`Font descriptor result: ${JSON.stringify(data)}`)
               data.postScriptName = 'NotoSansMyanmar-Regular'
