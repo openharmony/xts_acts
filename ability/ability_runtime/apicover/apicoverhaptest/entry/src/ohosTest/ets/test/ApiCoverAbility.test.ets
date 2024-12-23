@@ -1107,7 +1107,7 @@ export default function ApiCoverTest() {
         }
         done();
       }
-      
+
     });
 
     /*
@@ -1205,6 +1205,45 @@ export default function ApiCoverTest() {
                 action: 'SUB_Ability_AbilityRuntime_ProcessCache_3000'
               }).then(data => {
                 console.debug('====>SUB_Ability_AbilityRuntime_ProcessCache_3000 startAbility err:' + JSON.stringify(data));
+              });
+      sleep(1500);
+      await appManagerNew.getRunningProcessInformation().then((data : Array<appManagerNew.ProcessInformation>) => {
+        console.log(`The running process information is: ${JSON.stringify(data)}`);
+        data.forEach(item =>{
+          if (item.bundleNames[0].includes("ohos.acts.aafwk.test.stagesupplement")) {
+            console.log(`${tag}, getRunningProcessInformation include  stagesupplement app`);
+            expect().assertFail();
+            done();
+          }else{
+            console.log(`${tag}, getRunningProcessInformation no include  stagesupplement app`);
+            expect(true).assertTrue();
+            done();
+          }
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`error: ${JSON.stringify(error)}`);
+      });
+      console.log(`${tag}, test end`);
+    });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ProcessCache_3100
+     * @tc.name   : Call killAllProcesses.
+     * @tc.desc   : successfully killAllProcesses
+     * @tc.size   : LargeTest
+     * @tc.type   : Function
+     * @tc.level  : 3
+     */
+     it('SUB_Ability_AbilityRuntime_ProcessCache_3100', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ProcessCache_3100`;
+      console.log(`${tag}, test begin`);
+      await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(
+              {
+                bundleName: 'ohos.acts.aafwk.test.stagesupplement',
+                abilityName: 'MainAbility',
+                action: 'SUB_Ability_AbilityRuntime_ProcessCache_3100'
+              }).then(data => {
+                console.debug('====>SUB_Ability_AbilityRuntime_ProcessCache_3100 startAbility err:' + JSON.stringify(data));
               });
       sleep(1500);
       await appManagerNew.getRunningProcessInformation().then((data : Array<appManagerNew.ProcessInformation>) => {
