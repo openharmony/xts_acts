@@ -28,104 +28,104 @@ static JSVM_Value PrintHello(JSVM_Env env, JSVM_CallbackInfo info)
     int64_t change = 0;
     int64_t adjustedValue = 0;
     JSVM_Status status = OH_JSVM_AdjustExternalMemory(env, change, &adjustedValue);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestAdjustExternalMemoryCase01:AdjustExternalMemory Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //changeInBytes 1024*1024 +result not null
 [[maybe_unused]] JSVM_Value TestAdjustExternalMemoryCase02(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    int64_t change = 1024*1024;
+    int64_t change = 1024 * 1024;
     int64_t adjustedValue = 0;
     JSVM_Status status = OH_JSVM_AdjustExternalMemory(env, change, &adjustedValue);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestAdjustExternalMemoryCase02:AdjustExternalMemory Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //changeInBytes 1024*1024*1024 +result not null
 [[maybe_unused]] JSVM_Value TestAdjustExternalMemoryCase03(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    int64_t change = 1024*1024*1024;
+    int64_t change = 1024 * 1024 * 1024;
     int64_t adjustedValue = 0;
     JSVM_Status status = OH_JSVM_AdjustExternalMemory(env, change, &adjustedValue);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestAdjustExternalMemoryCase03:AdjustExternalMemory Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //changeInBytes 1024*1024 +result NULL
 [[maybe_unused]] JSVM_Value TestAdjustExternalMemoryCase04(JSVM_Env env, JSVM_CallbackInfo info)
 {
     int64_t change = 0;
     JSVM_Status status = OH_JSVM_AdjustExternalMemory(env, change, nullptr);
-    if(status == JSVM_OK){
+    if (status == JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestAdjustExternalMemoryCase04:AdjustExternalMemory Execution abnormal.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //OH_JSVM_MemoryPressureNotification:JSVM_MEMORY_PRESSURE_LEVEL_NONE    no pressure
 [[maybe_unused]] JSVM_Value TestMemoryPressureNotificationCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Status status = OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_NONE);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestMemoryPressureNotificationCase01:MemoryPressureNotification Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //JSVM_MEMORY_PRESSURE_LEVEL_MODERATE    moderate pressure
 [[maybe_unused]] JSVM_Value TestMemoryPressureNotificationCase02(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Status status = OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_MODERATE);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestMemoryPressureNotificationCase02:MemoryPressureNotification Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL    critical pressure
 [[maybe_unused]] JSVM_Value TestMemoryPressureNotificationCase03(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Status status = OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestMemoryPressureNotificationCase03:MemoryPressureNotification Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 // CreateAndUseSnapshot call back
 static JSVM_CallbackStruct param[] = {
@@ -139,22 +139,22 @@ static JSVM_PropertyDescriptor descriptor[] = {
 //API:AdjustExternalMemory allocation of 1GB memory -> MemoryPressureNotification(JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL)
 [[maybe_unused]] JSVM_Value TestMemoryManagementuseCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    int64_t change = 1024*1024*1024;
+    int64_t change = 1024 * 1024 * 1024;
     int64_t adjustedValue = 0;
     JSVM_Status status = OH_JSVM_AdjustExternalMemory(env, change, &adjustedValue);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestMemoryManagementuseCase01:AdjustExternalMemory Failed.");
         return nullptr;
     }
 
     status = OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestMemoryManagementuseCase01:MemoryPressureNotification Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }

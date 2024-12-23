@@ -22,50 +22,50 @@
 {
     uint32_t result;
     JSVM_Status status = OH_JSVM_GetVersion(env, &result);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetVersionCase01:OH_JSVM_GetVersion Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //OH_JSVM_GetVMInfo:call func,return jsvm ok
 [[maybe_unused]] JSVM_Value TestGetVMInfoCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_VMInfo result;
     JSVM_Status status = OH_JSVM_GetVMInfo(&result);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetVMInfoCase01:OH_JSVM_GetVMInfo Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //API:getversion -- getvminfo ok
 [[maybe_unused]] JSVM_Value TestGetVMInfoCase02(JSVM_Env env, JSVM_CallbackInfo info)
 {
     uint32_t rst;
     JSVM_Status status = OH_JSVM_GetVersion(env, &rst);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetVMInfoCase02:OH_JSVM_GetVersion Failed.");
         return nullptr;
     }
 
     JSVM_VMInfo result;
     status = OH_JSVM_GetVMInfo(&result);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetVMInfoCase02:OH_JSVM_GetVMInfo Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }

@@ -21,8 +21,8 @@
 #include "jsvm_types.h"
 #include "native_common.h"
 #include "test_entry.h"
-#include <stdint.h>
-#include <stdio.h>
+#include <cstdint>
+#include <cstdio>
 #include <malloc.h>
 #include <ctime>
 #include <thread>

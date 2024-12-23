@@ -16,7 +16,8 @@
 #include "napi/native_api.h"
 #include "napi_heapstatisticsdebugg_test.h"
 
-static JSVM_Value hello(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value hello(JSVM_Env env, JSVM_CallbackInfo info)
+{
     JSVM_Value output;
     void *data = nullptr;
     OH_JSVM_GetCbInfo(env, info, nullptr, nullptr, nullptr, &data);
@@ -31,40 +32,41 @@ static JSVM_Value hello(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetVM(env, &testVm);
     JSVM_HeapStatistics result;
     JSVM_Status status = OH_JSVM_GetHeapStatistics(testVm, &result);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestGetHeapStatisticsCase01:OH_JSVM_GetHeapStatistics Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //OH_JSVM_StartCpuProfiler:Call the interface to be tested,return ok,result not nullptr
 [[maybe_unused]] JSVM_Value TestStartCpuProfilerCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_VM vm;
     JSVM_Status status = OH_JSVM_CreateVM(nullptr, &vm);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestStartCpuProfilerCase01:OH_JSVM_CreateVM Failed.");
         return nullptr;
     }
 
-    JSVM_CpuProfiler cpu_profiler = nullptr;
-    status = OH_JSVM_StartCpuProfiler(vm, &cpu_profiler);
-    if(status != JSVM_OK || cpu_profiler == nullptr){
+    JSVM_CpuProfiler cpuProfiler = nullptr;
+    status = OH_JSVM_StartCpuProfiler(vm, &cpuProfiler);
+    if (status != JSVM_OK || cpuProfiler == nullptr) {
         OH_JSVM_ThrowError(env, nullptr, "TestStartCpuProfilerCase01:OH_JSVM_StartCpuProfiler Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //OH_JSVM_StopCpuProfiler:call OH_JSVM_StartCpuProfiler,Call the interface to be tested,return ok
-static bool output_stream(const char *data, int size, void *stream_data) {
+static bool OutputStream(const char *data, int size, void *streamData)
+{
     return true;
 }
 
@@ -72,181 +74,183 @@ static bool output_stream(const char *data, int size, void *stream_data) {
 {
     JSVM_VM vm;
     OH_JSVM_CreateVM(nullptr, &vm);
-    JSVM_CpuProfiler cpu_profiler;
-    JSVM_Status status = OH_JSVM_StartCpuProfiler(vm, &cpu_profiler);
-    if(status != JSVM_OK || cpu_profiler == nullptr){
+    JSVM_CpuProfiler cpuProfiler;
+    JSVM_Status status = OH_JSVM_StartCpuProfiler(vm, &cpuProfiler);
+    if (status != JSVM_OK || cpuProfiler == nullptr) {
         OH_JSVM_ThrowError(env, nullptr, "TestStopCpuProfilerCase01:OH_JSVM_StartCpuProfiler Failed.");
         return nullptr;
     }
 
     void *data = nullptr;
-    status = OH_JSVM_StopCpuProfiler( vm, cpu_profiler,output_stream, data);
-    if(status != JSVM_OK){
+    status = OH_JSVM_StopCpuProfiler(vm, cpuProfiler, OutputStream, data);
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestStopCpuProfilerCase01:OH_JSVM_StopCpuProfiler Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //input valid value (callback function used to process the returned tuning data),return ok
 [[maybe_unused]] JSVM_Value TestTakeHeapSnapshotCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_VM vm;
     JSVM_Status status = OH_JSVM_CreateVM(nullptr, &vm);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestTakeHeapSnapshotCase01:OH_JSVM_CreateVM Failed.");
         return nullptr;
     }
     void *data = nullptr;
 
-    status = OH_JSVM_TakeHeapSnapshot(vm,output_stream,data);
-    if(status != JSVM_OK){
+    status = OH_JSVM_TakeHeapSnapshot(vm, OutputStream, data);
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestTakeHeapSnapshotCase01:OH_JSVM_TakeHeapSnapshot Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //host valid value, port as a negative number, return ok
 [[maybe_unused]] JSVM_Value TestOpenInspectorCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {
     int16_t num = -128;
     JSVM_Status status = OH_JSVM_OpenInspector(env, "localhost", num);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestOpenInspectorCase01:OH_JSVM_OpenInspector Execution abnormal.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //host valid value,port 65536,return  ok
 [[maybe_unused]] JSVM_Value TestOpenInspectorCase02(JSVM_Env env, JSVM_CallbackInfo info)
 {
     uint16_t num = 65536;
     JSVM_Status status = OH_JSVM_OpenInspector(env, "localhost", num);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestOpenInspectorCase02:OH_JSVM_OpenInspector Execution abnormal.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //host valid value,port is a reserved port number,return ok
 [[maybe_unused]] JSVM_Value TestOpenInspectorCase03(JSVM_Env env, JSVM_CallbackInfo info)
 {
     int16_t num = 0;
     JSVM_Status status = OH_JSVM_OpenInspector(env, "localhost", num);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestOpenInspectorCase03:OH_JSVM_OpenInspector Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //OH_JSVM_CloseInspector:no open inspectors in the env,call test func,return not ok
 [[maybe_unused]] JSVM_Value TestCloseInspectorCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Status status = OH_JSVM_CloseInspector(env);
-    if(status == JSVM_OK){
+    if (status == JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCloseInspectorCase01:OH_JSVM_CloseInspector Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //an open inspector in the env,call test func,return ok
 [[maybe_unused]] JSVM_Value TestCloseInspectorCase02(JSVM_Env env, JSVM_CallbackInfo info)
 {
     int32_t num = 65534;
     JSVM_Status status = OH_JSVM_OpenInspector(env, "localhost", num);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCloseInspectorCase02:OH_JSVM_OpenInspector Failed.");
         return nullptr;
     }
 
     status = OH_JSVM_CloseInspector(env);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCloseInspectorCase02:OH_JSVM_CloseInspector Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //there are multiple open inspectors in the env,call test func,return ok
 [[maybe_unused]] JSVM_Value TestCloseInspectorCase03(JSVM_Env env, JSVM_CallbackInfo info)
 {
     int32_t num = 65534;
     JSVM_Status status = OH_JSVM_OpenInspector(env, "localhost", num);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCloseInspectorCase03:OH_JSVM_OpenInspector Failed.");
         return nullptr;
     }
 
     int32_t num1 = 300;
     status = OH_JSVM_OpenInspector(env, "localhost", num1);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCloseInspectorCase03:OH_JSVM_OpenInspector Failed.");
         return nullptr;
     }
 
     status = OH_JSVM_CloseInspector(env);
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestCloseInspectorCase03:OH_JSVM_CloseInspector Failed.");
         return nullptr;
     }
 
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //OH_JSVM_OpenInspectorWithName:pid is a valid value,return ok
 [[maybe_unused]] JSVM_Value TestOpenInspectorWithNameCase01(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Status status = OH_JSVM_OpenInspectorWithName(env, 9000, "test");
-    if(status != JSVM_OK){
+    if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestOpenInspectorWithNameCase01:OH_JSVM_OpenInspectorWithName Failed.");
         return nullptr;
     }
     
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //name null,return ok
 [[maybe_unused]] JSVM_Value TestOpenInspectorWithNameCase02(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Status status = OH_JSVM_OpenInspectorWithName(env, 1, "");
-    if(status != JSVM_OK){
-        OH_JSVM_ThrowError(env, nullptr, "TestOpenInspectorWithNameCase02:OH_JSVM_OpenInspectorWithName Execution abnormal.");
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env,
+                           nullptr,
+                           "TestOpenInspectorWithNameCase02:OH_JSVM_OpenInspectorWithName Execution abnormal.");
         return nullptr;
     }
     
-    bool setvalue = true;
-    JSVM_Value retvalue = nullptr;
-    OH_JSVM_GetBoolean(env, setvalue, &retvalue);
-    return retvalue;
+    bool setValue = true;
+    JSVM_Value retValue = nullptr;
+    OH_JSVM_GetBoolean(env, setValue, &retValue);
+    return retValue;
 }
 //The API combination is not written, which involves single step debugging and manual configuration
