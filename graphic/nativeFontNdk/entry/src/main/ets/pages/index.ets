@@ -12,32 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import hilog from '@ohos.hilog';
 
-{
-  "app": {
-    "signingConfigs": [
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 14,
-        "compatibleSdkVersion": 14,
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+          })
       }
-    ]
-  },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
+      .width('100%')
     }
-  ]
+    .height('100%')
+  }
 }

@@ -12,32 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 
+import fontTest from './font.test';
 
-{
-  "app": {
-    "signingConfigs": [
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 14,
-        "compatibleSdkVersion": 14,
-      }
-    ]
-  },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
-    }
-  ]
+export default function testsuite() {
+  fontTest();
 }

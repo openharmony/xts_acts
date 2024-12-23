@@ -13,31 +13,8 @@
  * limitations under the License.
  */
 
-{
-  "app": {
-    "signingConfigs": [
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 14,
-        "compatibleSdkVersion": 14,
-      }
-    ]
-  },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
-    }
-  ]
-}
+export const oHDrawingGetFontDescriptorByFullName001: () => number;
+export const oHDrawingGetSystemFontFullNamesByType001: () => number;
+export const oHDrawingGetSystemFontFullNameByIndex001: () => number;
+export const oHDrawingGetDrawingArraySize001: () => number;
+export const oHDrawingGetFontCollectionGlobalInstance001: () => number;
