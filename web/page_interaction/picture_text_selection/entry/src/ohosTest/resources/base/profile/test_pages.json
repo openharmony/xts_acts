@@ -1,0 +1,15 @@
+{
+  "src": [
+    "testability/pages/WebInitTest",
+    "testability/pages/webviewSelectionMenuOptions",
+    "testability/pages/webViewHasImageJsunit",
+    "testability/pages/webViewMenuInputFieldType",
+    "testability/pages/WebViewEnumAndSetWebController",
+    "testability/pages/WebViewEnumAndFontLibrary",
+    "testability/pages/webViewController",
+    "testability/pages/webViewMenuShowResult",
+    "testability/pages/WebViewControllerHitTest",
+    "testability/pages/WebControllerHitTest"
+  ]
+}
+
