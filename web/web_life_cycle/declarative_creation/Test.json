@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "DeclarativeCreationTest.hap"
+                "ActsWebDeclarativeCreationTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

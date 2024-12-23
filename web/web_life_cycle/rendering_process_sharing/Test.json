@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "RenderingProcessSharingTest.hap"
+                "ActsWebRenderingProcessSharingTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -14,6 +14,6 @@
 group("DFXTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "log_dotting:LogDottingTest" ]
+    deps = [ "log_dotting:ActsWebLogDottingTest" ]
   }
 }

@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("RenderingProcessSharingTest") {
+ohos_js_app_suite("ActsWebRenderingProcessSharingTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "RenderingProcessSharingTest"
+  hap_name = "ActsWebRenderingProcessSharingTest"
   part_name = "webview"
 }

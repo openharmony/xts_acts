@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "LogDottingTest.hap"
+                "ActsWebLogDottingTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

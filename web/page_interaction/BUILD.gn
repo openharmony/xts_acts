@@ -15,13 +15,13 @@ group("pageInteraction") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "JS_dialog_box:JSDialogBoxTest",
-      "focus_processing:FocusProcessingTest",
-      "gesture_operation:GestureOperationTest",
-      "keyboard_mouse_operations:KeyboardMouseOperationsTest",
-      "page_scrolling:PageScrollingTest",
-      "picture_text_selection:PictureTextSelectionTest",
-      "soft_keyboard_avoidance:SoftKeyboardAvoidanceTest",
+      "JS_dialog_box:ActsWebJSDialogBoxTest",
+      "focus_processing:ActsWebFocusProcessingTest",
+      "gesture_operation:ActsWebGestureOperationTest",
+      "keyboard_mouse_operations:ActsWebKeyboardMouseOperationsTest",
+      "page_scrolling:ActsWebPageScrollingTest",
+      "picture_text_selection:ActsWebPictureTextSelectionTest",
+      "soft_keyboard_avoidance:ActsWebSoftKeyboardAvoidanceTest",
     ]
   }
 }

@@ -13,10 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("PictureTextSelectionTest") {
+ohos_js_app_suite("ActsWebPictureTextSelectionTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "PictureTextSelectionTest"
+  hap_name = "ActsWebPictureTextSelectionTest"
   part_name = "webview"
 }

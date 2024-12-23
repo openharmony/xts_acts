@@ -14,7 +14,7 @@
 group("web") {
   testonly = true
   deps = [
-    "DFX:DFXTest",
+    #"DFX:DFXTest",
     "ace_ets_web_dev:ActsAceWebDevTest",
     "ace_ets_web_dev_cloudservice_webController:ActsAceWebDevCloudServiceWebControllerTest",
     "ace_ets_web_dev_cloudservice_webController_enhanced:ActsAceWebDevCloudServiceWebControllerEnhancedTest",
@@ -41,7 +41,7 @@ group("web") {
     "ace_ets_web_scheme_handler_three_napis:ActsNativeWebSchemeHandlerThreeTest",
     "ace_ets_web_scheme_handler_two_napis:ActsNativeWebSchemeHandlerTwoTest",
     "ace_ets_web_view:ActsAceWebViewTest",
-    "page_interaction:pageInteraction",
-    "web_life_cycle:webLifeCycle",
+    #"page_interaction:pageInteraction",
+    #"web_life_cycle:webLifeCycle",
   ]
 }

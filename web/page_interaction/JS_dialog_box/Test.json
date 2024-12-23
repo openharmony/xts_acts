@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "JSDialogBoxTest.hap"
+                "ActsWebJSDialogBoxTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

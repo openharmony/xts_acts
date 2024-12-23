@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "GestureOperationTest.hap"
+                "ActsWebGestureOperationTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

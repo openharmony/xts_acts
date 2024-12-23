@@ -15,9 +15,9 @@ group("webLifeCycle") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "component_life_cycle:ComponentLifeCycleTest",
-      "declarative_creation:DeclarativeCreationTest",
-      "rendering_process_sharing:RenderingProcessSharingTest",
+      "component_life_cycle:ActsWebComponentLifeCycleTest",
+      "declarative_creation:ActsWebDeclarativeCreationTest",
+      "rendering_process_sharing:ActsWebRenderingProcessSharingTest",
     ]
   }
 }
