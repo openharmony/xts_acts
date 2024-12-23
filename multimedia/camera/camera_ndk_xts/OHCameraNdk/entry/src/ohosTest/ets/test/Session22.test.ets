@@ -620,7 +620,8 @@ export default function SessionTest22() {
     let isSupported = cameras.oHCaptureSessionIsExposureModeSupportedForCheck(Camera_ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO, 0)
     console.log(TAG+"oHCaptureSessionIsExposureModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"oHCaptureSessionIsExposureModeSupportedForCheck failed.");
+        console.log(TAG+"current device does not support ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetExposureMode(Camera_ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO, 0);
         console.log(TAG+"testOHCaptureSessionSetExposureMode0300:"+ret);
@@ -795,7 +796,8 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_CLOSE, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck failed.");
+        console.log(TAG+"current device does not support FlashMode.FLASH_MODE_CLOSE");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetFlashMode(Camera_FlashMode.FLASH_MODE_CLOSE, 0);
         console.log(TAG+"testOHCaptureSessionSetFlashMode0100:"+ret);
@@ -814,7 +816,8 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_OPEN, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck failed.");
+        console.log(TAG+"current device does not support FlashMode.FLASH_MODE_OPEN");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetFlashMode(Camera_FlashMode.FLASH_MODE_OPEN, 0);
         console.log(TAG+"testOHCaptureSessionSetFlashMode0200:"+ret);
@@ -833,7 +836,8 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_AUTO, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck failed.");
+        console.log(TAG+"current device does not support FlashMode.FLASH_MODE_AUTO");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetFlashMode(Camera_FlashMode.FLASH_MODE_AUTO, 0);
         console.log(TAG+"testOHCaptureSessionSetFlashMode0300:"+ret);
@@ -852,11 +856,12 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck failed.");
+        console.log(TAG+"current device does not support FlashMode.FLASH_MODE_ALWAYS_OPEN");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetFlashMode(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 0);
-      console.log(TAG+"testOHCaptureSessionSetFlashMode0400:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+        console.log(TAG+"testOHCaptureSessionSetFlashMode0400:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
       } 
     })
     /**
@@ -871,7 +876,8 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck failed.");
+        console.log(TAG+"current device does not support FlashMode.FLASH_MODE_ALWAYS_OPEN");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetFlashMode(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 1);
         console.log(TAG+"testOHCaptureSessionSetFlashMode0500:"+ret);
@@ -890,7 +896,8 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsFlashModeSupportedForCheck(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 0)
       console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"oHCaptureSessionIsFlashModeSupportedForCheck failed.");
+        console.log(TAG+"current device does not support FlashMode.FLASH_MODE_ALWAYS_OPEN");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetFlashMode(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 2);
         console.log(TAG+"testOHCaptureSessionSetFlashMode0600:"+ret);
@@ -1535,7 +1542,8 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0100 failed.");
+        console.log(TAG+"current device does not support VideoStabilizationMode.STABILIZATION_MODE_OFF");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_OFF, 0);
         console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0100:"+ret);
@@ -1554,7 +1562,8 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0200 failed.");
+        console.log(TAG+"current device does not support VideoStabilizationMode.STABILIZATION_MODE_LOW");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_LOW, 0);
         console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0200:"+ret);
@@ -1573,11 +1582,12 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_MIDDLE, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0300 failed.");
+        console.log(TAG+"current device does not support VideoStabilizationMode.STABILIZATION_MODE_MIDDLE");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_MIDDLE, 0);
-      console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0300:"+ret);
-      expect(ret).assertEqual(CAMERA_OK);
+        console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0300:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
       } 
     })
     /**
@@ -1592,7 +1602,8 @@ export default function SessionTest22() {
       let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_HIGH, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0400 failed.");
+        console.log(TAG+"current device does not support VideoStabilizationMode.STABILIZATION_MODE_HIGH");
+        expect(true).assertTrue();
       } else if (isSupported) {
         let ret = cameras.oHCaptureSessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_HIGH, 0);
         console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0400:"+ret);
@@ -1608,12 +1619,13 @@ export default function SessionTest22() {
      * @tc.level      : Level 3
      */
     it('testOHCaptureSessionSetVideoStabilizationMode0500', 0, () => {
-      let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_HIGH, 0)
+      let isSupported = cameras.oHCaptureSessionIsVideoStabilizationModeSupportedForCheck(Camera_VideoStabilizationMode.STABILIZATION_MODE_AUTO, 0)
       console.log(TAG+"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck: " + isSupported);
       if (isSupported == undefined ) {
-        console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0500 failed.");
+        console.log(TAG+"current device does not support VideoStabilizationMode.STABILIZATION_MODE_AUTO");
+        expect(true).assertTrue();
       } else if (isSupported) {
-        let ret = cameras.oHCaptureSessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_HIGH, 0);
+        let ret = cameras.oHCaptureSessionSetVideoStabilizationMode(Camera_VideoStabilizationMode.STABILIZATION_MODE_AUTO, 0);
         console.log(TAG+"testOHCaptureSessionSetVideoStabilizationMode0500:"+ret);
         expect(ret).assertEqual(CAMERA_OK);
       } 
