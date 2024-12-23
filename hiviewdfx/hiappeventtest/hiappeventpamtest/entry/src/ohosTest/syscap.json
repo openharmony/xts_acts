@@ -1,7 +1,6 @@
 {
     "devices": {
         "general": [
-            "wearable",
             "tablet",
             "default",
             "2in1",
