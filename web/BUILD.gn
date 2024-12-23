@@ -40,5 +40,8 @@ group("web") {
     "ace_ets_web_scheme_handler_three_napis:ActsNativeWebSchemeHandlerThreeTest",
     "ace_ets_web_scheme_handler_two_napis:ActsNativeWebSchemeHandlerTwoTest",
     "ace_ets_web_view:ActsAceWebViewTest",
+    #"DFX:DFXTest",
+    #"page_interaction:pageInteraction",
+    #"web_life_cycle:webLifeCycle",
   ]
 }
