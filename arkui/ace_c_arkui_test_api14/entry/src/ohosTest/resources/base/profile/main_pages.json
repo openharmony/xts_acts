@@ -12,6 +12,16 @@
     "MainAbility/pages/customproperty/TestGetCustomProperty",
     "MainAbility/pages/customproperty/TestGetNodeType",
     "MainAbility/pages/customproperty/TestGetParentInPageTree",
-    "MainAbility/pages/customproperty/TestIsCreatedByNDK"
+    "MainAbility/pages/customproperty/TestIsCreatedByNDK",
+    "MainAbility/pages/keyEvent/KeyEventGetGetDeviceIdTest",
+    "MainAbility/pages/keyEvent/KeyEventGetKeyCodeTest",
+    "MainAbility/pages/keyEvent/KeyEventGetKeyIntensionCodeTest",
+    "MainAbility/pages/keyEvent/KeyEventGetKeySourceTest",
+    "MainAbility/pages/keyEvent/KeyEventGetKeyTextTest",
+    "MainAbility/pages/keyEvent/KeyEventGetPressedKeysTest",
+    "MainAbility/pages/keyEvent/KeyEventGetTypeTest",
+    "MainAbility/pages/keyEvent/KeyEventGetUnicodeTest",
+    "MainAbility/pages/keyEvent/KeyEventSetConsumedTest",
+    "MainAbility/pages/keyEvent/KeyEventStopPropagationTest"
   ]
 }
