@@ -19,11 +19,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct FontDescriptor1 {
   @State message: string | undefined = ''
+  @State message1: text.FontWeight | undefined = 0
 
   build() {
     Row() {
       Column() {
         Text('fontSubfamily:' + this.message).key('FontDescriptor1_1')
+        Text('weight:' + this.message1).key('FontDescriptor1_3')
         Button('font descriptor')
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
@@ -32,12 +34,13 @@ struct FontDescriptor1 {
           .key('FontDescriptor1_2')
           .onClick(() => {
             console.info(`Get font descriptor start`)
-            let promise: Promise<text.FontDescriptor[]> = text.matchFontDescriptors({
-              weight: text.FontWeight.W400,
-            })
-            promise.then((data: text.FontDescriptor[]) => {
-              data[0].fontSubfamily = 'Regular'
-              this.message = data[0].fontSubfamily
+            let fontType: text.SystemFontType = text.SystemFontType.GENERIC
+            let promise: Promise<text.FontDescriptor> = text.getFontDescriptorByFullName("Noto Sans Deseret Regular", fontType)
+            promise.then((data: text.FontDescriptor) => {
+              data.fontSubfamily = 'Regular'
+              data.weight = 3
+              this.message = data.fontSubfamily
+              this.message1 = data.weight
             }).catch((error: BusinessError) => {
               console.error(`Failed to match the font descriptor, error: ${JSON.stringify(error)}`);
             });

@@ -40,23 +40,20 @@ struct FontDescriptor {
           .key('FontDescriptor_6')
           .onClick(() => {
             console.info(`Get font descriptor start`)
-            let promise: Promise<text.FontDescriptor[]> = text.matchFontDescriptors({
-              weight: text.FontWeight.W400,
-            })
-            promise.then((data: text.FontDescriptor[]) => {
-              console.info(`Font descriptor array size: ${data.length}`);
+            let fontType: text.SystemFontType = text.SystemFontType.GENERIC
+            let promise: Promise<text.FontDescriptor> = text.getFontDescriptorByFullName("Noto Sans Deseret Regular", fontType)
+            promise.then((data: text.FontDescriptor) => {
               console.info(`Font descriptor result: ${JSON.stringify(data)}`)
-              data[0].postScriptName = 'NotoSansMyanmar-Regular'
-              data[0].fontFamily = 'Noto Sans Myanmar'
-              data[0].italic = 0
-              data[0].monoSpace = false
-              data[0].symbolic = false
-              this.message = data[0].postScriptName
-              this.message1 = data[0].fontFamily
-              this.message2 = data[0].italic
-              this.message3 = data[0].monoSpace
-              this.message4 = data[0].symbolic
-
+              data.postScriptName = 'NotoSansMyanmar-Regular'
+              data.fontFamily = 'Noto Sans Myanmar'
+              data.italic = 0
+              data.monoSpace = false
+              data.symbolic = false
+              this.message = data.postScriptName
+              this.message1 = data.fontFamily
+              this.message2 = data.italic
+              this.message3 = data.monoSpace
+              this.message4 = data.symbolic
             }).catch((error: BusinessError) => {
               console.error(`Failed to match the font descriptor, error: ${JSON.stringify(error)}`);
             });

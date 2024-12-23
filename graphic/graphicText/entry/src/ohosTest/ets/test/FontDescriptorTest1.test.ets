@@ -41,7 +41,7 @@ export default function FontDescriptorTest1() {
       done();
     });
     /**
-     * @tc.number FontDescriptor
+     * @tc.number FontDescriptor1
      * @tc.name FontDescriptorTest1_0100
      * @tc.desc api
      * @tc.level: Level 2
@@ -56,10 +56,13 @@ export default function FontDescriptorTest1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('FontDescriptor1_1');
+      let strJson1 = getInspectorByKey('FontDescriptor1_3');
       await CommonFunc.sleep(1000);
       let obj: ESObject = JSON.parse(strJson);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('fontSubfamily:Regular');
+      expect(obj1.$attrs.content).assertEqual('weight:3');
       console.info('[FontDescriptorTest1_0100] END');
       await CommonFunc.sleep(1000);
       done();
