@@ -14,6 +14,7 @@
       console.info(`${message} windowRect = ${JSON.stringify(windowRect)}`)
       let driver = Driver.create()
       let btn = await driver.findComponent(ON.id('ModalityText'))
+      await sleep(300)
       let btnPoint = await btn.getBoundsCenter()
       let windowStageStart = await startAbility(message, context)
       try {
@@ -77,6 +78,7 @@
       console.info(`${message} windowRect = ${JSON.stringify(windowRect)}`)
       let driver = Driver.create()
       let btn = await driver.findComponent(ON.id('ModalityText'))
+      await sleep(300)
       let btnPoint = await btn.getBoundsCenter()
       let windowStageStart = await startAbility(message, context)
       try {
