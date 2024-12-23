@@ -42,22 +42,14 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         return;
     }
     auto get_ArkuI_UIInputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-
     auto type = OH_ArkUI_KeyEvent_GetKeyIntensionCode(get_ArkuI_UIInputEvent);
-
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-
-    if (type == ARKUI_KEY_INTENSION_LEFT) {
-        ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-        ArkUI_AttributeItem background_color_item = {background_color_value,
+    ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+    ArkUI_AttributeItem background_color_item = {background_color_value,
                                                      sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-        nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-    } else {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "KeyEventGetKeyIntensionCode",
-                     "KeyEventGetKeyIntensionCode result : %{public}d", type);
-    }
+    nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
 }
 
 napi_value KeyEventGetKeyIntensionCodeTest::KeyEventGetKeyIntensionCodeTest_001(napi_env env, napi_callback_info info)

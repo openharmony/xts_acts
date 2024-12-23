@@ -33,7 +33,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
 
     return button;
 }
-
+auto flag =false;
 static void OnEventReceive(ArkUI_NodeEvent *event)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "KeyEventSetConsumed", "OnEventReceive");
@@ -42,12 +42,20 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         return;
     }
     auto get_ArkuI_UIInputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-
     OH_ArkUI_KeyEvent_SetConsumed(get_ArkuI_UIInputEvent, true);
-
+    flag =true;
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+    if (flag) {
+         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+        ArkUI_AttributeItem background_color_item = {background_color_value,
+                                                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        OH_ArkUI_KeyEvent_SetConsumed(get_ArkuI_UIInputEvent, true);
+    } else {
+        OH_ArkUI_KeyEvent_SetConsumed(get_ArkuI_UIInputEvent, false);
+    }
 }
 
 napi_value KeyEventSetConsumedTest::KeyEventSetConsumedTest_001(napi_env env, napi_callback_info info)
