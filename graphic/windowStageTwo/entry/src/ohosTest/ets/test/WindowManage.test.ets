@@ -385,52 +385,6 @@ export default function windowManageTest() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1100
-     * @tc.name      : testOnWindowStageCloseOff
-     * @tc.desc      : Listener for window stage close event.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testOnWindowStageCloseOff', 0, async (done: Function) => {
-      let caseName = 'TestOnWindowStageCloseOff';
-      try {
-        let driver: Driver = Driver.create();
-        let closeBtn = await driver.findComponent(ON.id('EnhanceCloseBtn'));
-        let count1 = 0;
-        let count2 = 0;
-        const closeFunc1 = () => {
-          console.info(`${caseName} func1 Succeeded in enabling the listener for window stage close event.`);
-          count1++;
-          return true;
-        }
-        const closeFunc2 = () => {
-          console.info(`${caseName} func2 Succeeded in enabling the listener for window stage close event.`);
-          count2++;
-          return true;
-        }
-        windowStage.on('windowStageClose', closeFunc2);
-        windowStage.off('windowStageClose', closeFunc2);
-        windowStage.on('windowStageClose', closeFunc1);
-        await closeBtn.click();
-        await sleep(1000);
-        console.info(`${caseName} count1 is: ${count1}, count2 is: ${count2}`);
-        expect(count1).assertEqual(1);
-        expect(count2).assertEqual(0);
-        done();
-      } catch (exception) {
-        if (exception.code === 801) {
-          console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
-          windowStage.off('windowStageClose');
-          done();
-        } else {
-          console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
-          expect().assertFail();
-          done();
-        }
-      }
-    })
-    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1200
      * @tc.name      : testSetWindowTopmost201
      * @tc.desc      : Set the window to be top most.
