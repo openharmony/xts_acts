@@ -16,7 +16,6 @@
         "package": "ohos.acts.resourceschedule.workscheduler.js.function",
         "name": ".entry",
         "deviceType": [
-            "wearable",
             "tablet",
             "default",
             "2in1",
