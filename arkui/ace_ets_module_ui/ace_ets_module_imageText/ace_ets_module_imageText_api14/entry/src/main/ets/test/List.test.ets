@@ -25,7 +25,9 @@ import StyledStringURL from './styledString/StyledStringURL.test';
 import textCaretColor from './TextTest/textCaretColor.test';
 import getRectsForRangeTest from './RichEditorTest/getRectsForRange.test'
 import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
-
+import marqueeNode from './Marquee/marqueeNode.test';
+import textAreaNode from "./TextAreaTest/textAreaNode.test";
+import SymbolGlyphNodeTest from "./SymbolGlyphTest/SymbolGlyphNode.test";
 
 export default function testsuite() {
   textAreaInputTest();
@@ -40,4 +42,7 @@ export default function testsuite() {
   textCaretColor();
   getRectsForRangeTest();
   SetFrameRateRangeTest();
+  marqueeNode();
+  textAreaNode();
+  SymbolGlyphNodeTest();
 }
