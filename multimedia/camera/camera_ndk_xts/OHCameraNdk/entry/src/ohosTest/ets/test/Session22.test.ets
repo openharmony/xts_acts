@@ -768,7 +768,7 @@ export default function SessionTest22() {
     it('testOHCaptureSessionIsFlashModeSupported0600', 0, () => {
       let ret = cameras.oHCaptureSessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN, 2);
       console.log(TAG+"testOHCaptureSessionIsFlashModeSupported0600:"+ret);
-      expect(ret !== undefined).assertTrue();
+      expect(ret).assertEqual(CAMERA_OK);
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCaptureSessionIsFlashModeSupported0700
