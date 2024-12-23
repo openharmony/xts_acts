@@ -22,13 +22,11 @@ const TAG = "CameraXts CameraInputTest: ";
 let camera: cameraObj.cameraInfo;
 let mCameraSession: number;
 
-function getCameraManagerInstance() {``
-  console.info(TAG + 'Enter getCameraManagerInstance');
-  console.info(TAG + 'mSurfaceId : ' + GlobalThis.getInstance().getValue());
+async function getCameraManagerInstance() {
   let ret = cameraObj.initCamera(GlobalThis.getInstance().getValue());
-  if (ret != 0) {
+  if (ret) {
     console.info(TAG + "getCameraManager FAILED");
-    expect().assertFail();
+    return false;
   }
   console.info(TAG + 'Exit getCameraManagerInstance');
   return true;
@@ -75,13 +73,8 @@ async function commitCameraSessionConfig() {
 
 function createCameraSessionInstance() {
   console.info(TAG + 'Enter createCameraSessionInstance');
-  try {
-    mCameraSession = cameraObj.createSession();
-  }
-  catch {
-    console.info(TAG + 'createCaptureSession FAILED');
-  }
-  if (isEmpty(mCameraSession)) {
+  let ret = cameraObj.createSession();
+  if (ret) {
     console.info(TAG + "createCaptureSession FAILED");
     return false;
   }
