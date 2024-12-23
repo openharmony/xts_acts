@@ -438,12 +438,12 @@ static napi_value OHNativeBufferFromNativeWindowBufferNullptr(napi_env env, napi
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     GLuint textureId;
     glGenTextures(1, &textureId);
-    auto _image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-    OHNativeWindow *nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
+    auto image1 = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+    OHNativeWindow *nativeWindow = OH_NativeImage_AcquireNativeWindow(image1);
     int code = SET_BUFFER_GEOMETRY;
-    int32_t width_ = 0x100;
-    int32_t height_ = 0x100;
-    ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width_, height_);
+    int32_t width = 0x100;
+    int32_t height = 0x100;
+    ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width, height);
     code = SET_USAGE;
     int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
     ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, usage);
@@ -455,7 +455,7 @@ static napi_value OHNativeBufferFromNativeWindowBufferNullptr(napi_env env, napi
     napi_set_element(env, result, NUMBER_1, result1);
     OH_NativeBuffer_Unreference(buffer);
     OH_NativeWindow_DestroyNativeWindow(nativeWindow);
-    OH_NativeImage_Destroy(&_image);
+    OH_NativeImage_Destroy(&image1);
     return result;
 }
 
@@ -470,12 +470,12 @@ static napi_value OHNativeBufferFromNativeWindowBufferNormal(napi_env env, napi_
 
     GLuint textureId;
     glGenTextures(1, &textureId);
-    auto _image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
-    OHNativeWindow *nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
+    auto image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+    OHNativeWindow *nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
     int code = SET_BUFFER_GEOMETRY;
-    int32_t width_ = 0x100;
-    int32_t height_ = 0x100;
-    int32_t ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width_, height_);
+    int32_t width = 0x100;
+    int32_t height = 0x100;
+    int32_t ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width, height);
     code = SET_USAGE;
     int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
     ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, usage);
@@ -498,7 +498,7 @@ static napi_value OHNativeBufferFromNativeWindowBufferNormal(napi_env env, napi_
     napi_set_element(env, result, NUMBER_2, result1);
     OH_NativeBuffer_Unreference(buffer);
     OH_NativeWindow_DestroyNativeWindow(nativeWindow);
-    OH_NativeImage_Destroy(&_image);
+    OH_NativeImage_Destroy(&image);
     return result;
 }
 
@@ -906,9 +906,9 @@ napi_value OHNativeBufferSetDynamicMetadataValue1(napi_env env, OH_NativeBuffer 
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_MINUS_1;
+    int32_t x = NUMBER_MINUS_1;
     uint8_t metaData[NUMBER_60];
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, x, metaData);
     if (flag != NUMBER_40001000) {
         napi_create_int32(env, NUMBER_1001, &result);
         return result;
@@ -918,8 +918,8 @@ napi_value OHNativeBufferSetDynamicMetadataValue1(napi_env env, OH_NativeBuffer 
         napi_create_int32(env, NUMBER_1002, &result);
         return result;
     }
-    X = 0;
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData);
+    x = 0;
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, x, metaData);
     if (flag != NUMBER_40001000) {
         napi_create_int32(env, NUMBER_2001, &result);
         return result;
@@ -929,9 +929,9 @@ napi_value OHNativeBufferSetDynamicMetadataValue1(napi_env env, OH_NativeBuffer 
         napi_create_int32(env, NUMBER_2002, &result);
         return result;
     }
-    X = 1;
+    x = 1;
     metaData[0] = static_cast<uint8_t>(0);
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, x, metaData);
     if (flag != 0) {
         napi_create_int32(env, flag, &result);
         return result;
@@ -941,7 +941,7 @@ napi_value OHNativeBufferSetDynamicMetadataValue1(napi_env env, OH_NativeBuffer 
         napi_create_int32(env, NUMBER_3002, &result);
         return result;
     }
-    if (bufferSize != X) {
+    if (bufferSize != x) {
         napi_create_int32(env, NUMBER_3003, &result);
         return result;
     }
@@ -955,12 +955,12 @@ napi_value OHNativeBufferSetDynamicMetadataValue2(napi_env env, OH_NativeBuffer 
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_60;
+    int32_t x = NUMBER_60;
     uint8_t metaData[NUMBER_60];
-    for (int i = 0; i < X; ++i) {
+    for (int i = 0; i < x; ++i) {
         metaData[i] = static_cast<uint8_t>(i);
     }
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, x, metaData);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_4001, &result);
         return result;
@@ -970,16 +970,16 @@ napi_value OHNativeBufferSetDynamicMetadataValue2(napi_env env, OH_NativeBuffer 
         napi_create_int32(env, NUMBER_4002, &result);
         return result;
     }
-    if (bufferSize != X) {
+    if (bufferSize != x) {
         napi_create_int32(env, NUMBER_4003, &result);
         return result;
     }
-    X = NUMBER_2999;
-    uint8_t metaData2[X];
-    for (int i = 0; i < X; ++i) {
+    x = NUMBER_2999;
+    uint8_t metaData2[x];
+    for (int i = 0; i < x; ++i) {
         metaData2[i] = static_cast<uint8_t>(i);
     }
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData2);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, x, metaData2);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_5001, &result);
         return result;
@@ -989,7 +989,7 @@ napi_value OHNativeBufferSetDynamicMetadataValue2(napi_env env, OH_NativeBuffer 
         napi_create_int32(env, NUMBER_5002, &result);
         return result;
     }
-    if (bufferSize != X) {
+    if (bufferSize != x) {
         napi_create_int32(env, NUMBER_5003, &result);
         return result;
     }
@@ -1003,13 +1003,13 @@ napi_value OHNativeBufferSetDynamicMetadataValue3(napi_env env, OH_NativeBuffer 
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_3000;
+    int32_t x = NUMBER_3000;
     uint8_t metaData[NUMBER_60];
-    uint8_t metaData3[X];
-    for (int i = 0; i < X; ++i) {
+    uint8_t metaData3[x];
+    for (int i = 0; i < x; ++i) {
         metaData3[i] = static_cast<uint8_t>(i);
     }
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData3);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, x, metaData3);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_6001, &result);
         return result;
@@ -1019,16 +1019,16 @@ napi_value OHNativeBufferSetDynamicMetadataValue3(napi_env env, OH_NativeBuffer 
         napi_create_int32(env, NUMBER_6002, &result);
         return result;
     }
-    if (bufferSize != X) {
+    if (bufferSize != x) {
         napi_create_int32(env, NUMBER_6003, &result);
         return result;
     }
-    X = NUMBER_3001;
-    uint8_t metaData4[X];
-    for (int i = 0; i < X; ++i) {
+    x = NUMBER_3001;
+    uint8_t metaData4[x];
+    for (int i = 0; i < x; ++i) {
         metaData4[i] = static_cast<uint8_t>(i);
     }
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData4);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, x, metaData4);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_7001, &result);
         return result;
@@ -1038,8 +1038,8 @@ napi_value OHNativeBufferSetDynamicMetadataValue3(napi_env env, OH_NativeBuffer 
         napi_create_int32(env, NUMBER_7002, &result);
         return result;
     }
-    X = NUMBER_10000;
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, X, metaData);
+    x = NUMBER_10000;
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_DYNAMIC_METADATA, x, metaData);
     if (flag == 0) {
         napi_create_int32(env, NUMBER_8001, &result);
         return result;
@@ -1121,9 +1121,9 @@ napi_value OHNativeBufferSetStaticMetadataValue1(napi_env env, OH_NativeBuffer *
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_MINUS_1;
+    int32_t x = NUMBER_MINUS_1;
     uint8_t metaData[NUMBER_60];
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, x, metaData);
     if (flag != NUMBER_40001000) {
         napi_create_int32(env, NUMBER_1001, &result);
         return result;
@@ -1133,8 +1133,8 @@ napi_value OHNativeBufferSetStaticMetadataValue1(napi_env env, OH_NativeBuffer *
         napi_create_int32(env, NUMBER_1002, &result);
         return result;
     }
-    X = 0;
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData);
+    x = 0;
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, x, metaData);
     if (flag != NUMBER_40001000) {
         napi_create_int32(env, NUMBER_2001, &result);
         return result;
@@ -1144,9 +1144,9 @@ napi_value OHNativeBufferSetStaticMetadataValue1(napi_env env, OH_NativeBuffer *
         napi_create_int32(env, NUMBER_2002, &result);
         return result;
     }
-    X = 1;
+    x = 1;
     metaData[0] = static_cast<uint8_t>(0);
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, x, metaData);
     if (flag != 0) {
         napi_create_int32(env, flag, &result);
         return result;
@@ -1156,7 +1156,7 @@ napi_value OHNativeBufferSetStaticMetadataValue1(napi_env env, OH_NativeBuffer *
         napi_create_int32(env, NUMBER_3002, &result);
         return result;
     }
-    if (bufferSize != X) {
+    if (bufferSize != x) {
         napi_create_int32(env, NUMBER_3003, &result);
         return result;
     }
@@ -1170,12 +1170,12 @@ napi_value OHNativeBufferSetStaticMetadataValue2(napi_env env, OH_NativeBuffer *
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_60;
+    int32_t x = NUMBER_60;
     uint8_t metaData[NUMBER_60];
-    for (int i = 0; i < X; ++i) {
+    for (int i = 0; i < x; ++i) {
         metaData[i] = static_cast<uint8_t>(i);
     }
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, x, metaData);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_4001, &result);
         return result;
@@ -1185,16 +1185,16 @@ napi_value OHNativeBufferSetStaticMetadataValue2(napi_env env, OH_NativeBuffer *
         napi_create_int32(env, NUMBER_4002, &result);
         return result;
     }
-    if (bufferSize != X) {
+    if (bufferSize != x) {
         napi_create_int32(env, NUMBER_4003, &result);
         return result;
     }
-    X = NUMBER_2999;
-    uint8_t metaData2[X];
-    for (int i = 0; i < X; ++i) {
+    x = NUMBER_2999;
+    uint8_t metaData2[x];
+    for (int i = 0; i < x; ++i) {
         metaData2[i] = static_cast<uint8_t>(i);
     }
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData2);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, x, metaData2);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_5001, &result);
         return result;
@@ -1204,7 +1204,7 @@ napi_value OHNativeBufferSetStaticMetadataValue2(napi_env env, OH_NativeBuffer *
         napi_create_int32(env, NUMBER_5002, &result);
         return result;
     }
-    if (bufferSize != X) {
+    if (bufferSize != x) {
         napi_create_int32(env, NUMBER_5003, &result);
         return result;
     }
@@ -1218,13 +1218,13 @@ napi_value OHNativeBufferSetStaticMetadataValue3(napi_env env, OH_NativeBuffer *
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_3000;
+    int32_t x = NUMBER_3000;
     uint8_t metaData[NUMBER_60];
-    uint8_t metaData3[X];
-    for (int i = 0; i < X; ++i) {
+    uint8_t metaData3[x];
+    for (int i = 0; i < x; ++i) {
         metaData3[i] = static_cast<uint8_t>(i);
     }
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData3);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, x, metaData3);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_6001, &result);
         return result;
@@ -1234,16 +1234,16 @@ napi_value OHNativeBufferSetStaticMetadataValue3(napi_env env, OH_NativeBuffer *
         napi_create_int32(env, NUMBER_6002, &result);
         return result;
     }
-    if (bufferSize != X) {
+    if (bufferSize != x) {
         napi_create_int32(env, NUMBER_6003, &result);
         return result;
     }
-    X = NUMBER_3001;
-    uint8_t metaData4[X];
-    for (int i = 0; i < X; ++i) {
+    x = NUMBER_3001;
+    uint8_t metaData4[x];
+    for (int i = 0; i < x; ++i) {
         metaData4[i] = static_cast<uint8_t>(i);
     }
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData4);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, x, metaData4);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_7001, &result);
         return result;
@@ -1253,8 +1253,8 @@ napi_value OHNativeBufferSetStaticMetadataValue3(napi_env env, OH_NativeBuffer *
         napi_create_int32(env, NUMBER_7002, &result);
         return result;
     }
-    X = NUMBER_10000;
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, X, metaData);
+    x = NUMBER_10000;
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_STATIC_METADATA, x, metaData);
     if (flag == 0) {
         napi_create_int32(env, NUMBER_8001, &result);
         return result;
@@ -1298,9 +1298,9 @@ napi_value OHNativeBufferSetMetadataValue1(napi_env env, OH_NativeBuffer *native
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_MINUS_1;
+    int32_t x = NUMBER_MINUS_1;
     uint8_t metaData[NUMBER_60];
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, x, metaData);
     if (flag != NUMBER_40001000) {
         napi_create_int32(env, NUMBER_1001, &result);
         return result;
@@ -1310,9 +1310,9 @@ napi_value OHNativeBufferSetMetadataValue1(napi_env env, OH_NativeBuffer *native
         napi_create_int32(env, NUMBER_1002, &result);
         return result;
     }
-    // 2. X=0 set调用失败 get调用失败
-    X = 0;
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData);
+    // 2. x=0 set调用失败 get调用失败
+    x = 0;
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, x, metaData);
     if (flag != NUMBER_40001000) {
         napi_create_int32(env, NUMBER_2001, &result);
         return result;
@@ -1322,10 +1322,10 @@ napi_value OHNativeBufferSetMetadataValue1(napi_env env, OH_NativeBuffer *native
         napi_create_int32(env, NUMBER_2002, &result);
         return result;
     }
-    // 3. X=1 set调用成功 get调用成功 两者一致
-    X = 1;
-    metaData[0] = static_cast<uint8_t>(X);
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData);
+    // 3. x=1 set调用成功 get调用成功 两者一致
+    x = 1;
+    metaData[0] = static_cast<uint8_t>(x);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, x, metaData);
     if (flag != 0) {
         napi_create_int32(env, flag, &result);
         return result;
@@ -1349,13 +1349,13 @@ napi_value OHNativeBufferSetMetadataValue2(napi_env env, OH_NativeBuffer *native
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_4;
+    int32_t x = NUMBER_4;
     uint8_t metaData[NUMBER_60];
-    // 4. X=60 set调用成功 get调用成功 两者一致
-    for (int i = 0; i < X; ++i) {
+    // 4. x=60 set调用成功 get调用成功 两者一致
+    for (int i = 0; i < x; ++i) {
         metaData[i] = static_cast<uint8_t>(i);
     }
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, x, metaData);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_4001, &result);
         return result;
@@ -1369,12 +1369,12 @@ napi_value OHNativeBufferSetMetadataValue2(napi_env env, OH_NativeBuffer *native
         napi_create_int32(env, NUMBER_6003, &result);
         return result;
     }
-    X = NUMBER_2999;
-    uint8_t metaData2[X];
-    for (int i = 0; i < X; ++i) {
+    x = NUMBER_2999;
+    uint8_t metaData2[x];
+    for (int i = 0; i < x; ++i) {
         metaData2[i] = static_cast<uint8_t>(i);
     }
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData2);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, x, metaData2);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_5001, &result);
         return result;
@@ -1398,12 +1398,12 @@ napi_value OHNativeBufferSetMetadataValue3(napi_env env, OH_NativeBuffer *native
     napi_value result = nullptr;
     int32_t bufferSize;
     uint8_t *buffer;
-    int32_t X = NUMBER_3000;
-    uint8_t metaData3[X];
-    for (int i = 0; i < X; ++i) {
+    int32_t x = NUMBER_3000;
+    uint8_t metaData3[x];
+    for (int i = 0; i < x; ++i) {
         metaData3[i] = static_cast<uint8_t>(i);
     }
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData3);
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, x, metaData3);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_6001, &result);
         return result;
@@ -1418,12 +1418,12 @@ napi_value OHNativeBufferSetMetadataValue3(napi_env env, OH_NativeBuffer *native
         return result;
     }
     
-    X = NUMBER_3001;
-    uint8_t metaData4[X];
-    for (int i = 0; i < X; ++i) {
+    x = NUMBER_3001;
+    uint8_t metaData4[x];
+    for (int i = 0; i < x; ++i) {
         metaData4[i] = static_cast<uint8_t>(i);
     }
-    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData4);
+    flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, x, metaData4);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_7001, &result);
         return result;
@@ -1444,8 +1444,8 @@ napi_value OHNativeBufferSetMetadataValue4(napi_env env, OH_NativeBuffer *native
     int32_t bufferSize;
     uint8_t *buffer;
     uint8_t metaData[NUMBER_60];
-    int32_t X = NUMBER_100000000;
-    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, X, metaData);
+    int32_t x = NUMBER_100000000;
+    auto flag = OH_NativeBuffer_SetMetadataValue(nativeBuffer, OH_HDR_METADATA_TYPE, x, metaData);
     if (flag != 0) {
         napi_create_int32(env, NUMBER_8001, &result);
         return result;
