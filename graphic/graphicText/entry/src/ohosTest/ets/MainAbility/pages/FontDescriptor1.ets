@@ -35,7 +35,7 @@ struct FontDescriptor1 {
           .onClick(() => {
             console.info(`Get font descriptor start`)
             let fontType: text.SystemFontType = text.SystemFontType.GENERIC
-            let promise: Promise<text.FontDescriptor> = text.getFontDescriptorByFullName("Noto Sans Deseret Regular", fontType)
+            let promise: Promise<text.FontDescriptor> = text.getFontDescriptorByFullName('Noto Sans Deseret Regular', fontType)
             promise.then((data: text.FontDescriptor) => {
               data.fontSubfamily = 'Regular'
               data.weight = 3
