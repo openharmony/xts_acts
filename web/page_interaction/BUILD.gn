@@ -15,9 +15,9 @@ group("pageInteraction") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "JS_dialog_box:JSDialogBoxTest",
       "focus_processing:FocusProcessingTest",
       "gesture_operation:GestureOperationTest",
-      "JS_dialog_box:JSDialogBoxTest",
       "keyboard_mouse_operations:KeyboardMouseOperationsTest",
       "page_scrolling:PageScrollingTest",
       "picture_text_selection:PictureTextSelectionTest",
