@@ -147,9 +147,7 @@ static napi_value CameraManagerGetSupportedCameras(napi_env env, napi_callback_i
     napi_create_int32(env, g_ndkCamera->cameras_->connectionType, &jsValue);
     napi_set_named_property(env, cameraInfo, "connectionType", jsValue);
 
-    napi_create_string_utf8(env, g_ndkCamera->cameras_->cameraId,
-                            sizeof(g_ndkCamera->cameras_->cameraId) + 1,
-                            &jsValue);
+    napi_create_string_utf8(env, g_ndkCamera->cameras_->cameraId, sizeof(g_ndkCamera->cameras_->cameraId) + 1, &jsValue);
     napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
 
     return cameraInfo;
@@ -732,6 +730,24 @@ static napi_value OHCaptureSessionIsExposureModeSupported(napi_env env, napi_cal
     napi_get_value_int32(env, args[1], &index);
 
     Camera_ErrorCode code =  g_ndkCamera->SessionIsExposureModeSupported(exposureMode, index);
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHCaptureSessionIsExposureModeSupportedForCheck(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t exposureMode;
+    napi_get_value_int32(env, args[0], &exposureMode);
+
+    int32_t index;
+    napi_get_value_int32(env, args[1], &index);
+
+    Camera_ErrorCode code =  g_ndkCamera->SessionIsExposureModeSupported(exposureMode, index);
     LOG("SessionIsExposureModeSupported code is:  %{public}d", code);
     if (code == CAMERA_OK) {
         napi_get_boolean(env, g_ndkCamera->isExposureMode_, &result);
@@ -789,8 +805,26 @@ static napi_value OHCaptureSessionIsFlashModeSupported(napi_env env, napi_callba
 
     int32_t index;
     napi_get_value_int32(env, args[1], &index);
+
     Camera_ErrorCode ret = g_ndkCamera->SessionIsFlashModeSupported(exposureBias, index);
-    LOG("OHCaptureSessionIsFlashModeSupported code is: %{public}d", ret);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+static napi_value OHCaptureSessionIsFlashModeSupportedForCheck(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    double exposureBias;
+    napi_get_value_double(env, args[0], &exposureBias);
+
+    int32_t index;
+    napi_get_value_int32(env, args[1], &index);
+    Camera_ErrorCode ret = g_ndkCamera->SessionIsFlashModeSupported(exposureBias, index);
+    LOG("OHCaptureSessionIsFlashModeSupportedForCheck code is: %{public}d", ret);
     if (ret == CAMERA_OK) {
         napi_get_boolean(env, g_ndkCamera->isFlashMode_, &result);
     } else {
@@ -1028,7 +1062,25 @@ static napi_value OHCaptureSessionIsVideoStabilizationModeSupported(napi_env env
     napi_get_value_int32(env, args[1], &index);
 
     Camera_ErrorCode code = g_ndkCamera->SessionIsVideoStabilizationModeSupported(mode, index);
-    LOG("OHCaptureSessionIsVideoStabilizationModeSupported code is:  %{public}d", code);
+    napi_create_int32(env, code, &result);
+    return result;
+}
+static napi_value OHCaptureSessionIsVideoStabilizationModeSupportedForCheck(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t mode;
+    napi_get_value_int32(env, args[0], &mode);
+
+    int32_t index;
+    napi_get_value_int32(env, args[1], &index);
+
+    Camera_ErrorCode code = g_ndkCamera->SessionIsVideoStabilizationModeSupported(mode, index);
+    LOG("OHCaptureSessionIsVideoStabilizationModeSupportedForCheck code is:  %{public}d", code);
     if (code == CAMERA_OK) {
         napi_get_boolean(env, g_ndkCamera->isVideoSupported_, &result);
     } else {
@@ -1531,6 +1583,8 @@ napi_property_descriptor desc2[] = {
      napi_default, nullptr},
     {"oHCaptureSessionIsExposureModeSupported", nullptr, OHCaptureSessionIsExposureModeSupported, nullptr,
      nullptr, nullptr, napi_default, nullptr},
+    {"oHCaptureSessionIsExposureModeSupportedForCheck", nullptr, OHCaptureSessionIsExposureModeSupported, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
     {"oHCaptureSessionSetExposureBias", nullptr, OHCaptureSessionSetExposureBias, nullptr, nullptr, nullptr,
      napi_default, nullptr},
     {"oHCaptureSessionSetExposureMode", nullptr, OHCaptureSessionSetExposureMode, nullptr, nullptr, nullptr,
@@ -1538,6 +1592,8 @@ napi_property_descriptor desc2[] = {
     {"oHCaptureSessionHasFlash", nullptr, OHCaptureSessionHasFlash, nullptr, nullptr, nullptr, napi_default,
      nullptr},
     {"oHCaptureSessionIsFlashModeSupported", nullptr, OHCaptureSessionIsFlashModeSupported, nullptr, nullptr,
+     nullptr, napi_default, nullptr},
+    {"oHCaptureSessionIsFlashModeSupportedForCheck", nullptr, OHCaptureSessionIsFlashModeSupportedForCheck, nullptr, nullptr,
      nullptr, napi_default, nullptr},
     {"oHCaptureSessionSetFlashMode", nullptr, OHCaptureSessionSetFlashMode, nullptr, nullptr, nullptr,
      napi_default, nullptr},
@@ -1563,6 +1619,8 @@ napi_property_descriptor desc2[] = {
      nullptr, napi_default, nullptr},
     {"oHCaptureSessionIsVideoStabilizationModeSupported", nullptr,
      OHCaptureSessionIsVideoStabilizationModeSupported, nullptr, nullptr, nullptr, napi_default, nullptr},
+     {"oHCaptureSessionIsVideoStabilizationModeSupportedForCheck", nullptr,
+     OHCaptureSessionIsVideoStabilizationModeSupportedForCheck, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"oHCaptureSessionGetVideoStabilizationMode", nullptr, OHCaptureSessionGetVideoStabilizationMode,
      nullptr, nullptr, nullptr, napi_default, nullptr},
 };
