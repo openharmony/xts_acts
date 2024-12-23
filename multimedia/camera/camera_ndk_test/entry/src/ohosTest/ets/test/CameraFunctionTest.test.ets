@@ -182,7 +182,7 @@ async function commitCameraSessionConfig() {
   return true;
 }
 
-let getPermissions1 = () => {
+let getPermissionsCamera = () => {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
   let permissions: Array<Permissions> = ['ohos.permission.CAMERA'];
   atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
@@ -194,7 +194,7 @@ let getPermissions1 = () => {
   })
 }
 
-let getPermissions2 = () => {
+let getPermissionsMic = () => {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
   let permissions: Array<Permissions> = ['ohos.permission.MICROPHONE'];
   atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
@@ -205,7 +205,7 @@ let getPermissions2 = () => {
   })
 }
 
-let getPermissions3 = () => {
+let getPermissionsRead = () => {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
   let permissions: Array<Permissions> = ['ohos.permission.READ_MEDIA'];
   atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
@@ -216,7 +216,7 @@ let getPermissions3 = () => {
   })
 }
 
-let getPermissions4 = () => {
+let getPermissionsWrite = () => {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
   let permissions: Array<Permissions> = ['ohos.permission.WRITE_MEDIA'];
   atManager.requestPermissionsFromUser(getContext(), permissions).then((data: PermissionRequestResult) => {
@@ -254,13 +254,13 @@ export default function CameraFunctionTest() {
   describe('CameraFunctionTest', () => {
     console.info(TAG + '-------------CameraFunctionTest--------------');
     beforeAll(async () => {
-      await getPermissions1();
+      await getPermissionsCamera();
       await driveFn();
-      await getPermissions2();
+      await getPermissionsMic();
       await driveFn();
-      await getPermissions3();
+      await getPermissionsRead();
       await driveFn();
-      await getPermissions4();
+      await getPermissionsWrite();
       await driveFn();
       await getPhotoReceiverSurface();
       getCameraManagerInstance();
