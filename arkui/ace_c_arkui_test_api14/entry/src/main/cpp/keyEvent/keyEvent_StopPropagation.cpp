@@ -55,9 +55,6 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
                                                      sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
    
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "KeyEventSetConsumed",
-                     "KeyEventSetConsumed result : %{public}d", flagStopPropagation);
-   
 }
 
 napi_value KeyEventStopPropagationTest::KeyEventStopPropagationTest_001(napi_env env, napi_callback_info info)
