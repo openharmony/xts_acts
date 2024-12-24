@@ -23,6 +23,7 @@
     "MainAbility/pages/keyEvent/KeyEventGetUnicodeTest",
     "MainAbility/pages/keyEvent/KeyEventSetConsumedTest",
     "MainAbility/pages/keyEvent/KeyEventStopPropagationTest",
-    "MainAbility/pages/styledString/styledString"
+    "MainAbility/pages/styledString/styledString",
+    "MainAbility/pages/scrollSize/ScrollSizeTest"
   ]
 }

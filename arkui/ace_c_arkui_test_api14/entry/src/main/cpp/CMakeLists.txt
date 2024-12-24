@@ -26,6 +26,7 @@ add_library(nativerender SHARED
     keyEvent/keyEvent_GetKeyText.cpp
     keyEvent/keyEvent_GetKeySource.cpp
     styledString/styledString_test.cpp
+    scrollSize/scroll_size_test.cpp
 )
 
 add_library(nativefunc SHARED
