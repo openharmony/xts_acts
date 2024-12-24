@@ -2958,6 +2958,62 @@ export default function windowPropertiesTest() {
                 }
             }
         })
+
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOW_DISPLAYIDCHANGE_JS_API_0100
+        * @tc.name      : testOnDisplayIdChangeTest
+        * @tc.desc      : On DisplayChange
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level3
+        */
+        it('testOnDisplayIdChangeTest', 0, async (done: Function) => {
+            let caseName = 'testOnDisplayIdChangeTest';
+            console.log(caseName + 'start run');
+            let windowClass = windowStage.getMainWindowSync();
+            const callback = (displayId: number) => {
+                console.info(caseName + 'Window displayId changed, displayId=' + displayId);
+            };
+            try {
+                windowClass.on('displayIdChange', callback);
+            } catch (exception) {
+                console.error(`${caseName} Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+                if (exception.code != 801) {
+                expect().assertFail();
+                }
+            }
+            done();
+        })
+
+
+        /**
+        * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOW_DISPLAYIDCHANGE_JS_API_0200
+        * @tc.name      : testOffDisplayIdChangeTest
+        * @tc.desc      : Off DisplayChange
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level3
+        */
+        it('testOffDisplayIdChangeTest', 0, async (done: Function) => {
+            let caseName = 'testOffDisplayIdChangeTest';
+            console.log(caseName + 'start run');
+            let windowClass = windowStage.getMainWindowSync();
+            const callback = (displayId: number) => {
+                console.info(caseName + 'Window displayId changed, displayId=' + displayId);
+            };
+            try {
+                windowClass.on('displayIdChange', callback);
+                windowClass.off('displayIdChange', callback);
+                windowClass.off('displayIdChange');
+            } catch (exception) {
+                console.error(caseName + `Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+                if (exception.code != 801) {
+                expect().assertFail();
+                }
+            }
+            done();
+        })
     })
 }
 
