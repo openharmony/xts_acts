@@ -1195,8 +1195,8 @@ export default function TextPicker() {
         let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
           title: 'test',
           fileNameExtension: 'jpg',
-          photoType: photoAccessHelper.PhootoType.IMAGE,
-          subType: photoAccessHelper.PhotoSubType.DEFAULT,
+          photoType: photoAccessHelper.PhotoType.IMAGE,
+          subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
         };
         phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig).then((result) => {
           console.info("createAssetWithShortTermPermission, result=" + JSON.stringify(result));
