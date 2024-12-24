@@ -44,7 +44,6 @@ group("web") {
 
     #"page_interaction:pageInteraction",
     #"web_life_cycle:webLifeCycle",
-    #"web_multi_media:WebMultimedia",
-    #"web_load:WebLoad"
+    #"web_multi_media:WebMultimedia"
   ]
 }
