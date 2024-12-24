@@ -84,7 +84,7 @@ napi_value testNativeWindowGetSurfaceIdNullptr(napi_env env, napi_callback_info 
 {
     napi_value result = nullptr;
     int32_t r = OH_NativeWindow_GetSurfaceId(nullptr, 0);
-    if (r == CONSTANT_40001000) {
+    if (CONSTANT_40001000 == r) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
@@ -518,7 +518,7 @@ napi_value testNativeWindowNativeWindowRequestBufferFenceFdAbnormal(napi_env env
     OH_NativeImage *image = initNative->returnNativeImage();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
 
-    int32_t *fenceFd1 = nullptr;
+    int32_t *fenceFd1 = NULL;
     int32_t flag = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, fenceFd1);
     if (flag == 0) {
         napi_create_int32(env, 1, &result);
@@ -1744,13 +1744,13 @@ napi_value testNativeWindowNativeWindowHandleOptSetGetBufferGeometryNormal(napi_
             napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_1, &result);
             return result;
         }
-        int width2, height2;
-        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_BUFFER_GEOMETRY, &height2, &width2);
+        int _width, _height;
+        flag = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, GET_BUFFER_GEOMETRY, &_height, &_width);
         if (flag != 0) {
             napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_2, &result);
             return result;
         }
-        if (width != width2 || height != height2) {
+        if (width != _width || height != _height) {
             napi_create_int32(env, (i + 1) * CONSTANT_1000 + CONSTANT_3, &result);
             return result;
         }
