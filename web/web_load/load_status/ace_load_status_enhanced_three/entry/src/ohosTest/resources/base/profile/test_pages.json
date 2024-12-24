@@ -1,6 +1,0 @@
-{
-  "src": [
-    "testability/pages/webResourceResponseGet",
-    "testability/pages/webResourceError"
-  ]
-}
