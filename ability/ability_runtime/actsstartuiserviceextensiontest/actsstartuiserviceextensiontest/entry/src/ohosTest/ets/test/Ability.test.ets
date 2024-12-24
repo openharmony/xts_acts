@@ -178,13 +178,13 @@ export default function abilityTest() {
     })
 
     /*
- * @tc.number: SUB_Ability_AbilityRuntime_UIServiceExtension_0600
- * @tc.name: When the input parameter want is null, an error code is returned.
- * @tc.desc: When the input parameter want is null, an error code is returned.
- * @tc.size: MediumTest
- * @tc.type: Function
- * @tc.level: Level 3
- */
+    * @tc.number: SUB_Ability_AbilityRuntime_WantConstant_0100
+    * @tc.name: Get APP_INSTANCE_KEY CREATE_APP_INSTANCE_KEY CALLER_APP_CLONE_INDEX.
+    * @tc.desc: Get APP_INSTANCE_KEY CREATE_APP_INSTANCE_KEY CALLER_APP_CLONE_INDEX.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 3
+    */
     it('SUB_Ability_AbilityRuntime_WantConstant_0100', 0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_WantConstant_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_WantConstant_0100] start');
@@ -196,9 +196,9 @@ export default function abilityTest() {
     })
 
     /*
-    * @tc.number: SUB_Ability_AbilityRuntime_UIServiceExtension_0600
-    * @tc.name: When the input parameter want is null, an error code is returned.
-    * @tc.desc: When the input parameter want is null, an error code is returned.
+    * @tc.number: SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100
+    * @tc.name: When app not support capability, an error code is returned.
+    * @tc.desc: When app not support capability, an error code is returned.
     * @tc.size: MediumTest
     * @tc.type: Function
     * @tc.level: Level 3
@@ -219,9 +219,32 @@ export default function abilityTest() {
     })
 
     /*
+    * @tc.number: SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100
+    * @tc.name: When app not support capability, an error code is returned.
+    * @tc.desc: When app not support capability, an error code is returned.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 3
+    */
+    it('SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100', 0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100";
+      console.info('====> [SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100] start');
+      try {
+        testAbilityContext.getApplicationContext().getCurrentInstanceKey()
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let message = (error as BusinessError).message;
+        console.error(`getAllRunningInstanceKeys fail, code: ${code}, msg: ${message}`);
+        expect(code).assertEqual(16000078)
+      }
+      console.info('====> [SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100] end');
+      done();
+    })
+
+    /*
      * @tc.number: SUB_Ability_AbilityRuntime_AppManager_0100
-     * @tc.name: When the input parameter want is null, an error code is returned.
-     * @tc.desc: When the input parameter want is null, an error code is returned.
+     * @tc.name: Call the interface to return whether the current application is running
+     * @tc.desc: Call the interface to return whether the current application is running
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 3
@@ -244,8 +267,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_fontId_0100
-     * @tc.name: When the input parameter want is null, an error code is returned.
-     * @tc.desc: When the input parameter want is null, an error code is returned.
+     * @tc.name: Obtains the fontId of the current application.
+     * @tc.desc: Obtains the fontId of the current application.
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 3
@@ -263,8 +286,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_AppManager_0200
-     * @tc.name: When the input parameter want is null, an error code is returned.
-     * @tc.desc: When the input parameter want is null, an error code is returned.
+     * @tc.name: Registering an Application Status Listener.
+     * @tc.desc: Registering an Application Status Listener.
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 3
@@ -356,8 +379,8 @@ export default function abilityTest() {
     })
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_UIServiceExtension_0700
-     * @tc.name: When the input parameter want is null, an error code is returned.
-     * @tc.desc: When the input parameter want is null, an error code is returned.
+     * @tc.name: When the input parameter want is null, an error code is returned(UIExtension).
+     * @tc.desc: When the input parameter want is null, an error code is returned(UIExtension).
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 3
@@ -409,8 +432,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_UIServiceExtension_0800
-     * @tc.name: When the input parameter want is null, an error code is returned.
-     * @tc.desc: When the input parameter want is null, an error code is returned.
+     * @tc.name: When the input parameter want is null, an error code is returned(UIExtension).
+     * @tc.desc: When the input parameter want is null, an error code is returned(UIExtension).
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 3
@@ -462,8 +485,8 @@ export default function abilityTest() {
 
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_UIServiceExtension_0900
-     * @tc.name: When the input parameter want is null, an error code is returned.
-     * @tc.desc: When the input parameter want is null, an error code is returned.
+     * @tc.name: When the input parameter want is null, an error code is returned(UIExtension).
+     * @tc.desc: When the input parameter want is null, an error code is returned(UIExtension).
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 3
