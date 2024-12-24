@@ -1,8 +1,0 @@
-{
-  "src": [
-    "testability/pages/Index",
-    "testability/pages/WebViewControllerVideoMedia",
-    "testability/pages/webViewSetAudioMuted",
-    "testability/pages/WebOnAudioStateChanged"
-  ]
-}
