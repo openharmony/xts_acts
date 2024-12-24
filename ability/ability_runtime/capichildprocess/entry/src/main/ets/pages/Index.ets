@@ -15,6 +15,14 @@
 
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so';
+import { taskpool } from '@kit.ArkTS'
+
+@Concurrent
+async function taskpoolFunc(): Promise<void> {
+  for(let i = 0; i < 26; i++) {
+    testNapi.startNativeChildProcess('libentry.so');
+  }
+}
 
 @Entry
 @Component
@@ -35,6 +43,31 @@ struct Index {
           .margin({ top : 5 })
           .onClick(() => {
             testNapi.requestExitChildProcess();
+          })
+
+        Button('StartNativeChildProcess_50')
+          .margin({ top : 5 })
+          .onClick(() => {
+            for(let i = 0; i < 50; i++) {
+              testNapi.startNativeChildProcess('libentry.so');
+            }
+          })
+
+        Button('ExitChildProcess_50')
+          .margin({ top : 5 })
+          .onClick(() => {
+            for(let i = 0; i < 50; i++) {
+              testNapi.requestExitChildProcess();
+            }
+          })
+
+        Button('mainFunc')
+          .margin({ top : 5 })
+          .onClick(async () => {
+            let task1: taskpool.Task = new taskpool.Task(taskpoolFunc);
+            await taskpool.execute(task1);
+            let task2: taskpool.Task = new taskpool.Task(taskpoolFunc);
+            await taskpool.execute(task2);
           })
       }
       .width('100%')

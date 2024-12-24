@@ -244,9 +244,13 @@ export default function nativeChildProcessTest() {
           return;
         }
 
-        expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
+        for (let i = 0; i < 50; i++) {
+          expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
+        }
         expect(16010006).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        for (let i = 0; i < 50; i++) {
+          expect(1).assertEqual(testNapi.requestExitChildProcess());
+        }
         await sleep(600);
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
@@ -301,7 +305,9 @@ export default function nativeChildProcessTest() {
           return;
         }
 
-        expect(16010001).assertEqual(testNapi.busyTest());
+        expect(0).assertEqual(testNapi.busyTest());
+        await sleep(100);
+        expect(1).assertEqual(testNapi.requestExitChildProcess());
         await sleep(600);
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
@@ -345,6 +351,106 @@ export default function nativeChildProcessTest() {
         expect(401).assertEqual(testNapi.callApiWithNull());
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_NativeStartChildProcess_1300
+     * @tc.name testStartNativeChildProcess013
+     * @tc.desc To verify the function of creating a subprocess by startNativeChildProcess
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1300', 0, async (done: Function) => {
+      let tag = `ACTS_NativeStartChildProcess_1300`;
+      console.log(`${tag}, it begin`);
+
+      try {
+        if (!mpEnable || !ncpEnable) {
+          console.info(`${tag}: Native child process disable, skip test`);
+          return;
+        }
+
+        expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
+        expect(1).assertEqual(testNapi.requestExitChildProcess());
+
+        await sleep(600);
+      } catch(err) {
+        console.error(`${tag} error: ${JSON.stringify(err)}`);
+      } finally {
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_NativeStartChildProcess_1400
+     * @tc.name testStartNativeChildProcess014
+     * @tc.desc The number of child process can reach 50
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1400', 0, async (done: Function) => {
+      let tag = `ACTS_NativeStartChildProcess_1400`;
+      console.log(`${tag}, it begin`);
+
+      try {
+        if (!mpEnable || !ncpEnable) {
+          console.info(`${tag}: Native child process disable, skip test`);
+          return;
+        }
+
+        for (let i = 0; i < 50; i++) {
+          expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
+        }
+
+        for (let i = 0; i < 50; i++) {
+          expect(1).assertEqual(testNapi.requestExitChildProcess());
+        }
+        await sleep(600);
+      } catch(err) {
+        console.error(`${tag} error: ${JSON.stringify(err)}`);
+      } finally {
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_NativeStartChildProcess_1500
+     * @tc.name testStartNativeChildProcess015
+     * @tc.desc An error is returned when max native child process reached
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1500', 0, async (done: Function) => {
+      let tag = `ACTS_NativeStartChildProcess_1500`;
+      console.log(`${tag}, it begin`);
+
+      try {
+        if (!mpEnable || !ncpEnable) {
+          console.info(`${tag}: Native child process disable, skip test`);
+          return;
+        }
+
+        for (let i = 0; i < 50; i++) {
+          expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
+        }
+        expect(16010006).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
+        expect(1).assertEqual(testNapi.requestExitChildProcess());
+
+        await sleep(100);
+        expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
+
+        for (let i = 0; i < 50; i++) {
+          expect(1).assertEqual(testNapi.requestExitChildProcess());
+        }
+        await sleep(600);
+      } catch(err) {
+        console.error(`${tag} error: ${JSON.stringify(err)}`);
+      } finally {
+        done();
       }
     })
   })

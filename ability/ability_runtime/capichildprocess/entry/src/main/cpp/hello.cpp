@@ -32,6 +32,7 @@
 
 static ChildProcess g_childProcess;
 static IpcProxy *g_ipcProxyPnt = nullptr;
+static std::vector<IpcProxy*> g_ipcProxyPntObjects;
 static std::promise<int> *g_promiseStartProcess = nullptr;
 
 extern "C" {
@@ -58,6 +59,8 @@ static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remotePro
     if (g_ipcProxyPnt == nullptr) {
         OH_LOG_ERROR(LOG_APP, "Main process - Alloc ipc proxy object failed!");
         OH_IPCRemoteProxy_Destroy(remoteProxy);
+    } else {
+        g_ipcProxyPntObjects.push_back(g_ipcProxyPnt);
     }
     
     if (g_promiseStartProcess != nullptr) {
@@ -125,6 +128,12 @@ static napi_value RequestExitChildProcess(napi_env env, napi_callback_info info)
         delete g_ipcProxyPnt;
         g_ipcProxyPnt = nullptr;
         OH_LOG_INFO(LOG_APP, "Main process - RequestExitChildProcess successed");
+
+        g_ipcProxyPntObjects.pop_back();
+        if (!g_ipcProxyPntObjects.empty()) {
+            OH_LOG_INFO(LOG_APP, "Main process - RequestExitChildProcess get g_ipcProxyPnt");
+            g_ipcProxyPnt = g_ipcProxyPntObjects.back();
+        }
     }
     
     napi_value napiRet;
@@ -186,7 +195,8 @@ static napi_value BusyTest(napi_env env, napi_callback_info info)
     auto future = promise.get_future();
     OH_LOG_INFO(LOG_APP, "Main process - Wait for busy test call back");
     future.wait();
-    
+
+    g_promiseStartProcess = nullptr;
     napi_create_int32(env, ret, &napiRet);
     return napiRet;
 }
