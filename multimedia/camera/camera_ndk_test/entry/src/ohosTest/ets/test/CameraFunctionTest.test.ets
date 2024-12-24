@@ -85,9 +85,7 @@ async function closeFd() {
 }
 
 async function getCameraManagerInstance() {
-  let previewSurfaceId = GlobalThis.getInstance().getValue();
-  console.info(TAG, 'previewSurfaceId = ' + JSON.stringify(previewSurfaceId));
-  let ret = cameraObj.initCamera(previewSurfaceId);
+  let ret = cameraObj.initCamera(globalThis.getInstance().getValue());
   if (ret) {
     console.info(TAG + "getCameraManager FAILED");
     return false;
@@ -263,7 +261,7 @@ export default function CameraFunctionTest() {
       await getPhotoReceiverSurface();
       getCameraManagerInstance();
       getCameraSupportDevicesArray();
-      getSupportedOutputCapability();
+      getSupportedCameraOutputCapability();
       console.info(TAG + 'beforeAll case');
     });
     beforeEach(() => {
