@@ -1200,6 +1200,19 @@ Camera_ErrorCode NDKCamera::SessionSetVideoStabilizationMode(uint32_t mode)
     return ret;
 }
 
+Camera_ErrorCode NDKCamera::SessionSetQualityPrioritization(uint32_t quality)
+{
+    LOG("SetQualityPrioritization begin.");
+    Camera_QualityPrioritization qualityPrioritization = static_cast<Camera_QualityPrioritization>(quality);
+    Camera_ErrorCode ret = OH_CaptureSession_SetQualityPrioritization(captureSession_, qualityPrioritization);
+    if (ret == CAMERA_OK) {
+        LOG("OH_CaptureSession_SetQualityPrioritization success.");
+    } else {
+        LOG("OH_CaptureSession_SetQualityPrioritization failed. %d ", ret);
+    }
+    return ret;
+}
+
 // CameraManager Callback
 void CameraManagerStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)
 {
