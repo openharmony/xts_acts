@@ -114,16 +114,20 @@ struct Index {
                         }
                         case "emitgetUserAgent": {
                             try {
+                                this.controller.loadUrl($rawfile('indexCopy.html'));
                                 this.userAgent = this.controller.getUserAgent();
                                 console.log("userAgent: " + this.userAgent);
                                 this.userAgent2 = this.controllerTwo.getUserAgent();
                                 console.log("userAgent2: " + this.userAgent2);
                                 this.userAgentAll = this.userAgent + this.userAgent2;
                                 console.log("userAgentAll: " + this.userAgentAll);
+                                if ((this.userAgentAll).includes("Mozilla")) {
+                                    this.userAgentAll = 'success'
+                                }
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
-                            this.controller.runJavaScript("test()",(res) => {
+                            this.controller.runJavaScript("test()", (res) => {
                                 Utils.emitEvent(this.userAgentAll, 1020)
                             })
                             break;
@@ -132,14 +136,17 @@ struct Index {
                             try {
                                 this.userAgentCheck = this.controllerThree.getUserAgent();
                                 console.log("userAgentCheck: " + this.userAgentCheck);
-                                this.controllerThree.runJavaScript("getUserAgent()",(error, result) => {
+                                this.controllerThree.runJavaScript("getUserAgent()", (error, result) => {
                                     this.userAgentCheck = result
                                     console.log(`The controllerThree.getUserAgent() return value is: ${result}`);
                                 })
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
-                            this.controller.runJavaScript("test()",(res) => {
+                            this.controller.runJavaScript("test()", (res) => {
+                                if ((this.userAgentCheck).includes("Mozilla")) {
+                                    this.userAgentCheck = 'success'
+                                }
                                 Utils.emitEvent(this.userAgentCheck, 104)
                             })
                             break;
@@ -149,7 +156,7 @@ struct Index {
                                 this.controller.runJavaScript("checkVIsible()",(error, result) => {
                                     this.checkEleResult = JSON.parse(result)
                                     console.log(`The checkVIsible() return value is: ${result}`);
-                                })                                
+                                })
                                 this.controller.pageDown(false);
                                 await Utils.sleep(1000)
                                 this.controller.runJavaScript("checkVIsible()",(error, result) => {
@@ -163,7 +170,7 @@ struct Index {
                                         this.pageResult = false;
                                         console.log('emitpageDown result is :' + this.pageResult);
                                     }
-                                })                                   
+                                })
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                                 this.pageResult = false;

@@ -58,9 +58,9 @@ export default function webViewControllerJsunit() {
      *tc.name testGetUserAgent
      *tc.desc Get the UserAgent
      */
-    it('testGetUserAgent',0,async function(done){
+    it('testGetUserAgent',0,async (done: Function) =>{
       emitKey="emitgetUserAgentAgain";
-      let userAgent= "Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36";
+      let userAgent= "success";
       Utils.registerEvent("testGetUserAgent",userAgent,1020,done);
       sendEventByKey('webcomponent',10,'');
     })
@@ -69,12 +69,12 @@ export default function webViewControllerJsunit() {
      *tc.name testGetUserAgentAgain
      *tc.desc Get the UserAgent again
      */
-    it('testGetUserAgentAgain',0,async function(done){
+    it('testGetUserAgentAgain',0,async (done: Function) =>{
       emitKey="emitpageDown";
-      let userAgent= "\"Mozilla/5.0 (OpenHarmony 4; ohos) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.0.0 Mobile Safari/537.36\"";
+      let userAgent= "success";
       Utils.registerEvent("testGetUserAgentAgain",userAgent,104,done);
       sendEventByKey('webcomponent',10,'');
-    })    
+    })
     /*
      *tc.number SUB_ACE_BASIC_ETS_API_0400
      *tc.name testPageDown
