@@ -1,6 +1,7 @@
 {
     "devices": {
         "general": [
+            "wearable",
             "default"
         ],
         "custom": [
