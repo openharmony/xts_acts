@@ -15,9 +15,13 @@
 import activeTest from './UIContext/FocusController/activeTest.test.ets'
 import lunarSwitchStyleTest from './DatePickerDialog/lunarSwitchStyleTest.test'
 import bindSheetHoverMode from './bindSheetTest/bindSheetHoverMode.test'
+import showToastHoverMode from './promptActionTest/showToastHoverMode.test'
+import showDialogHoverMode from './promptActionTest/showDialogHoverMode.test'
 
 export default function testsuite() {
   activeTest()
   lunarSwitchStyleTest()
   bindSheetHoverMode()
+  showToastHoverMode()
+  showDialogHoverMode()
 }

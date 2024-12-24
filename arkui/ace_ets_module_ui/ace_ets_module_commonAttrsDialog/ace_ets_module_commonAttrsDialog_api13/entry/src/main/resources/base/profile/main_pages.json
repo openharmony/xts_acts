@@ -5,8 +5,6 @@
         "MainAbility/pages/bindSheetTest/bindSheetKeyboardAvoidMode",
 		"MainAbility/pages/Popup/followTransformOfTargetPopup",
 		"MainAbility/pages/Popup/followTransformOfTargetCustomPopup",
-        "MainAbility/pages/promptActionTest/showToastHoverMode",
-        "MainAbility/pages/promptActionTest/showDialogHoverMode",
         "MainAbility/pages/dialog/popoverDialogTest",
         "MainAbility/pages/TextPickerDialog/TextPickerDialogHoverMode",
         "MainAbility/pages/TimePickerDialog/timePickerDialogHoverMode",

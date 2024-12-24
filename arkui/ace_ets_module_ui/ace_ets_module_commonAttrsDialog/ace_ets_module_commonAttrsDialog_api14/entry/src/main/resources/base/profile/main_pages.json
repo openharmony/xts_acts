@@ -3,6 +3,8 @@
       "MainAbility/pages/index/index",
       "MainAbility/pages/UIContext/FocusController/activeTest",
       "MainAbility/pages/DatePickerDialog/lunarSwitchStyleTest",
-      "MainAbility/pages/bindSheetTest/bindSheetHoverMode"
+      "MainAbility/pages/bindSheetTest/bindSheetHoverMode",
+      "MainAbility/pages/promptActionTest/showToastHoverMode",
+      "MainAbility/pages/promptActionTest/showDialogHoverMode"
     ]
 }
