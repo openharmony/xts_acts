@@ -1,8 +1,0 @@
-{
-  "src": [
-    "testability/pages/Index",
-    "testability/pages/webViewControllerPart2",
-    "testability/pages/WebViewControllerPostUrlTest",
-    "testability/pages/WebViewControllerSetConnectionTimeoutTest"
-  ]
-}
