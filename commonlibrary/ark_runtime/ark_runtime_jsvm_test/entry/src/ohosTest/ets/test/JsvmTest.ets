@@ -6123,6 +6123,32 @@ export default function JsvmJsunit() {
       expect(rst).assertEqual(0);
     });
     /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0481
+     * @tc.name      JsvmTest0481
+     * @tc.desc      Test the function of WebAssembly interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0481', 0, () => {
+      let rst: number = napitest.wasmTest();
+      console.info('JsvmTest0481 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0482
+     * @tc.name      JsvmTest0482
+     * @tc.desc      Test the function of ArrayBuffer backing store interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0482', 0, () => {
+      let rst: number = napitest.arrayBufferBackingStoreTest();
+      console.info('JsvmTest0482 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0483
      * @tc.name      JsvmTest0483
      * @tc.desc      Test that when JSVM_Value is js code, return 'ok'.
