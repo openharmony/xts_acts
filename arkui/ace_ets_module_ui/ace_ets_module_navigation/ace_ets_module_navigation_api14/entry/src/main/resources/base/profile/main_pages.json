@@ -1,0 +1,9 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+		"MainAbility/pages/Navigation/SystemTransition",
+        "MainAbility/pages/EnableDragBar/NavigationEnableDragBar",
+        "MainAbility/pages/Navigation/RouterRecoverable",
+        "MainAbility/pages/Navigation/RouterPage2"
+    ]
+}
