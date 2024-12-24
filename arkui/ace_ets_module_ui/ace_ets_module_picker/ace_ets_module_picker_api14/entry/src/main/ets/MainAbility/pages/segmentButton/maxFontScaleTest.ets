@@ -89,9 +89,9 @@ struct maxFontScaleTest {
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       {
-        text: $r("[hsplibrary].string.title"),
+        text: $r('[hsplibrary].string.title'),
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: $r("[hsplibrary].string.title"),
+        iconAccessibilityText: $r('[hsplibrary].string.title'),
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
         selectedIconAccessibilityText: '选中图标无障碍文本',
         accessibilityLevel: 'yes',
@@ -150,7 +150,7 @@ struct maxFontScaleTest {
           selectedIndexes: $multiplySelectIconTextCapsuleSelectedIndexes,
           maxFontScale: this.maxFontScale
         })
-        Button("将按钮2、3替换为splice1、splice2")
+        Button('将按钮2、3替换为splice1、splice2')
           .onClick(() => {
             this.iconTextCapsuleOptions.buttons.splice(1, 2, new SegmentButtonItemOptions({
               text: 'splice1', accessibilityLevel: 'yes', accessibilityDescription: 'SegmentButtonItemOptions 新手提醒'
