@@ -28,6 +28,8 @@ import SetFrameRateRangeTest from './Marquee/marqueeFrame.test';
 import marqueeNode from './Marquee/marqueeNode.test';
 import textAreaNode from "./TextAreaTest/textAreaNode.test";
 import SymbolGlyphNodeTest from "./SymbolGlyphTest/SymbolGlyphNode.test";
+import ImageOrientationTest from './ImageOrientation/ImageOrientation.test';
+
 
 export default function testsuite() {
   textAreaInputTest();
@@ -45,4 +47,5 @@ export default function testsuite() {
   marqueeNode();
   textAreaNode();
   SymbolGlyphNodeTest();
+  ImageOrientationTest();
 }
