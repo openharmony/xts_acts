@@ -892,27 +892,28 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
             await driver.delayMs(waitUiReadyMs);
             let button = await driver.findComponent(ON.text('scroll'))
-            await driver.delayMs(waitUiReadyMs)
-            await button.click()
-            await driver.delayMs(waitUiReadyMs)
-            let scrollBar = await driver.findComponent(ON.id('horizontalScroll'))
-            await driver.delayMs(waitUiReadyMs)
+            await driver.delayMs(waitUiReadyMs);
+            await button.click();
+            await driver.delayMs(waitUiReadyMs);
+            let scrollBar = await driver.findComponent(ON.id('horizontalScroll'));
+            await driver.delayMs(waitUiReadyMs);
             let text1 = await scrollBar.scrollSearch(ON.text('8'), false);
             await driver.delayMs(waitUiReadyMs);
-            expect(text1 == null).assertTrue()
-            await driver.delayMs(waitUiReadyMs)
+            expect(text1 == null).assertTrue();
+            await driver.delayMs(waitUiReadyMs);
             let text2 = await scrollBar.scrollSearch(ON.text('11'), false, 200);
-            await driver.delayMs(waitUiReadyMs)
-            expect(text2 == null).assertTrue()
-            await driver.delayMs(waitUiReadyMs)
+            await driver.delayMs(waitUiReadyMs);
+            expect(text2 == null).assertTrue();
+            await driver.delayMs(waitUiReadyMs);
             let text3 = await scrollBar.scrollSearch(ON.text('2'), false, 200);
             await driver.delayMs(waitUiReadyMs);
-            expect(await text3.getText()).assertEqual('2')
-            await driver.delayMs(waitUiReadyMs)
-            let text4 = await scrollBar.scrollSearch(ON.text('8'), false, 200)
+            expect(await text3.getText()).assertEqual('2');
+            await driver.delayMs(waitUiReadyMs);
+            let text4 = await scrollBar.scrollSearch(ON.text('8'), false, 200);
             await driver.delayMs(waitUiReadyMs);
             expect(await text4.getText()).assertEqual('8');
             await driver.delayMs(waitUiReadyMs);
+            console.log(TestTag, 'testScrollSearchHorizontal end');
             await stopApplication('com.uitestScene.acts');
         })
 
@@ -922,33 +923,33 @@ export default function UiTest() {
         * @tc.desc: param 401 test.
         */
         it('testScrollSearchHorizontal_401', 0, async () => {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.text('scroll'))
-            await driver.delayMs(waitUiReadyMs)
-            await button.click()
-            await driver.delayMs(waitUiReadyMs)
-            let scrollBar = await driver.findComponent(ON.id('verticalScroll'))
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+            let driver = Driver.create();
+            await driver.delayMs(waitUiReadyMs);
+            let button = await driver.findComponent(ON.text('scroll'));
+            await driver.delayMs(waitUiReadyMs);
+            await button.click();
+            await driver.delayMs(waitUiReadyMs);
+            let scrollBar = await driver.findComponent(ON.id('verticalScroll'));
             try {
                 let text1 = await scrollBar.scrollSearch(null);
                 expect(false).assertTrue();
             } catch (error) {
-                let err = error as BusinessError
+                let err = error as BusinessError;
                 expect(err.code).assertEqual(401);
             }
             try {
                 let text2 = await scrollBar.scrollSearch(undefined);
                 expect(false).assertTrue();
             } catch (error) {
-                let err = error as BusinessError
+                let err = error as BusinessError;
                 expect(err.code).assertEqual(401);
             }
             try {
                 let text3 = await scrollBar.scrollSearch(ON.text('8'), true, -1);
                 expect(false).assertTrue();
             } catch (error) {
-                let err = error as BusinessError
+                let err = error as BusinessError;
                 expect(err.code).assertEqual(401);
             }
             try {
@@ -956,11 +957,91 @@ export default function UiTest() {
                 let text4 = await scrollBar.scrollSearch(ON.text('8'), true, (rect.bottom + rect.top) / 2);
                 expect(false).assertTrue();
             } catch (error) {
-                let err = error as BusinessError
+                let err = error as BusinessError;
                 expect(err.code).assertEqual(401);
             }
-            await driver.delayMs(waitUiReadyMs)
-            await stopApplication('com.uitestScene.acts')
+            await driver.delayMs(waitUiReadyMs);
+            await stopApplication('com.uitestScene.acts');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_020
+        * @tc.name: testMatchPatternIcase
+        * @tc.desc: find button component by Regular Expression ignore icase，and doubleClick button by mouse.
+        */
+        it('testMatchPatternIcase', 0, async () => {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+            let driver : Driver = Driver.create();
+            await driver.delayMs(waitUiReadyMs);
+            let Button = await driver.findComponent(ON.text('click twice', MatchPattern.REG_EXP_ICASE));
+            await driver.delayMs(waitUiReadyMs);
+            let center = await Button.getBoundsCenter();
+            await driver.delayMs(waitUiReadyMs);
+            await driver.mouseDoubleClick(center, MouseButton.MOUSE_BUTTON_LEFT, 0, 0);
+            await driver.delayMs(waitUiReadyMs);
+            let button = await driver.findComponent(ON.text('doublec\\w{2,4}', MatchPattern.REG_EXP_ICASE));
+            await driver.delayMs(waitUiReadyMs);
+            let text = await button.getText();
+            await driver.delayMs(waitUiReadyMs);
+            expect(text == 'doubleClick').assertTrue();
+            await stopApplication('com.uitestScene.acts');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_021
+        * @tc.name: testMatchPatternRegExp
+        * @tc.desc: find button component by Regular Expression, and longClick button by mouse.
+        */
+        it('testMatchPatternRegExp', 0, async () => {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+            let driver = Driver.create();
+            await driver.delayMs(waitUiReadyMs);
+            let Button = await driver.findComponent(ON.text('next \\w{2,6}', MatchPattern.REG_EXP));
+            await driver.delayMs(waitUiReadyMs);
+            let center = await Button.getBoundsCenter();
+            await driver.delayMs(waitUiReadyMs);
+            await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT, 0, 0);
+            await driver.delayMs(waitUiReadyMs);
+            let newButton = await driver.findComponent(ON.text('longClick'));
+            await driver.delayMs(waitUiReadyMs);
+            let text = await newButton.getText();
+            await driver.delayMs(waitUiReadyMs);
+            expect(text == 'longClick').assertTrue();
+            await stopApplication('com.uitestScene.acts');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_022
+        * @tc.name: testGetHint
+        * @tc.desc: find button component by Regular Expression, and get Hint of the component.
+        */
+        it('testGetHint', 0, async () => {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+            let driver = Driver.create();
+            await driver.delayMs(waitUiReadyMs);
+            let button = await driver.findComponent(ON.hint('welcome', MatchPattern.REG_EXP));
+            await driver.delayMs(waitUiReadyMs);
+            let hint = await button.getHint();
+            await driver.delayMs(waitUiReadyMs);
+            expect(hint == 'welcome').assertTrue();
+            await stopApplication('com.uitestScene.acts');
+        })
+
+        /*
+        * @tc.number: UiTest_API16_023
+        * @tc.name: testGetHint1
+        * @tc.desc: find button component by Hint.
+        */
+        it('testGetHint1', 0, async () => {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+            let driver = Driver.create();
+            await driver.delayMs(waitUiReadyMs);
+            let button = await driver.findComponent(ON.text('Hello \\w{3,6}', MatchPattern.REG_EXP));
+            await driver.delayMs(waitUiReadyMs);
+            let hint = await button.getHint();
+            await driver.delayMs(waitUiReadyMs);
+            expect(hint == 'welcome').assertTrue();
+            await stopApplication('com.uitestScene.acts');
         })
     })
     describe('UiTest_API11', () => {
