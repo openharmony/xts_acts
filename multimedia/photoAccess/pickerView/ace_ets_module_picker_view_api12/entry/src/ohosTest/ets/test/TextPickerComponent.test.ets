@@ -1169,7 +1169,7 @@ export default function TextPicker() {
        * @tc.level     : Level0
        */
     it('testPicker24', 0, async (done: Function) => {
-      let options: router: RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/BindSheetPicker',
       }
       
