@@ -2,6 +2,7 @@
   "src": [
     "testability/pages/Index",
     "MainAbility/pages/PickerComponent",
-    "MainAbility/pages/RecentPhotoDemo"
+    "MainAbility/pages/RecentPhotoDemo",
+    "MainAbility/pages/BindSheetPicker"
   ]
 }

@@ -15,17 +15,17 @@ struct BindSheetPicker {
 
   build() {
     Column() {
-      Button('TEXT_DONE)
+      Button('TEXT_DONE')
         .margin({ top: topMargin })
         .onClick(() => {
           this.photoSelectOptions.completeButtonText = photoAccessHelper.CompleteButtonText.TEXT_DONE;
         })
-      Button('TEXT_SEND)
+      Button('TEXT_SEND')
         .margin({ top: topMargin })
         .onClick(() => {
           this.photoSelectOptions.completeButtonText = photoAccessHelper.CompleteButtonText.TEXT_SEND;
         })
-      Button('TEXT_ADD)
+      Button('TEXT_ADD')
         .margin({ top: topMargin })
         .onClick(() => {
           this.photoSelectOptions.completeButtonText = photoAccessHelper.CompleteButtonText.TEXT_ADD;
