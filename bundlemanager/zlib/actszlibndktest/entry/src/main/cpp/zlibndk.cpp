@@ -1992,7 +1992,7 @@ static napi_value DeflateCopy(napi_env env, napi_callback_info info)
     deflate(&defstream, Z_FINISH);
     deflateEnd(&defstream);
     z_stream outStream;
-    err = deflateCopy(&defstream, &outStream);
+    err = deflateCopy(&outStream, &defstream);
     NAPI_ASSERT(env, err == Z_STREAM_ERROR, "deflateCopy error");
     free(outBuf);
     napi_value result = nullptr;
