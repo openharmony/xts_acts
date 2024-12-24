@@ -1180,5 +1180,39 @@ export default function TextPicker() {
       console.info("testPicer24 finish");
       done();
     });
+
+    /* *
+       * @tc.number    : testPicker25
+       * @tc.name      : testPicker25
+       * @tc.desc      : Testing createAssetWithShortTermPermission
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker25', 0, async (done: Function) => {
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
+      try {
+        let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
+          title: 'test',
+          fileNameExtension: 'jpg',
+          photoType: photoAccessHelper.PhootoType.IMAGE,
+          subType: photoAccessHelper.PhotoSubType.DEFAULT,
+        };
+        phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig).then((result) => {
+          console.info("createAssetWithShortTermPermission, result=" + JSON.stringify(result));
+          if (result) {
+            expect(true).assertTrue();
+          } else {
+            console.error("testPicker25 empty result");
+            expect(false).assertTrue();
+          }
+        })
+      } catch(error) {
+        console.error("testPicker25 error: " + JSON.stringify(error));
+        expect(false).assertTrue();
+      }
+      console.info("testPicer25 finish");
+      done();
+    });
   })
 }
