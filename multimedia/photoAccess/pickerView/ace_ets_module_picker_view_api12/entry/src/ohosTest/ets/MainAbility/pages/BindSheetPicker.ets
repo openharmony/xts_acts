@@ -1,5 +1,5 @@
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import { BussinessError } from '@ohos.base';
+import { BusinessError } from '@ohos.base';
 
 const topMargin: number = 20;
 
@@ -37,9 +37,9 @@ struct BindSheetPicker {
         .onClick(() => {
           let photoPicker = new photoAccessHelper.PhotoViewPicker();
           photoPicker.select(this.photoSelectOptions)
-            .then((PhotoSelectResult: photoAccessHelper.PhotoPickerResult) => {
+            .then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
               console.info('PhotoViewPicker.select success, PhotoPickerResult uri: ' +
-                JSON.stringify(PhotoSelectResult));
+                JSON.stringify(photoSelectResult));
             }).catch((err: BussinessError) => {
               console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
             });
