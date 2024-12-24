@@ -59,6 +59,7 @@ struct WebViewControllerDownloadTest {
   @State fullPath: string = '';
   failedDownloadSerializedData: Uint8Array | null = null;
   failedDownload: webView.WebDownloadItem | null = null;
+  download: webView.WebDownloadItem = new webView.WebDownloadItem();
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -126,6 +127,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testStartDownload001": {
@@ -137,6 +141,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testWebDownloadState001": {
@@ -148,6 +155,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testWebDownloadState002": {
@@ -158,6 +168,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testWebDownloadState003": {
@@ -173,6 +186,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testWebDownloadState004": {
@@ -185,6 +201,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testWebDownloadState005": {
@@ -197,6 +216,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testWebDownloadState006": {
@@ -212,6 +234,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetGuid001": {
@@ -228,6 +253,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetGuid002": {
@@ -246,6 +274,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetCurrentSpeed001": {
@@ -257,6 +288,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetPercentComplete001": {
@@ -268,6 +302,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetPercentComplete002": {
@@ -279,6 +316,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetTotalBytes001": {
@@ -290,6 +330,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetMethod001": {
@@ -306,6 +349,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetMimeType001": {
@@ -322,6 +368,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetMimeType002": {
@@ -338,6 +387,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetMimeType003": {
@@ -354,6 +406,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetUrl001": {
@@ -370,6 +425,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetSuggestedFileName001": {
@@ -385,6 +443,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetReceivedBytes001": {
@@ -396,6 +457,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testGetFullPath001": {
@@ -407,6 +471,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testSerialize001": {
@@ -424,6 +491,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testDeserialize001": {
@@ -455,6 +525,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testResume001": {
@@ -476,6 +549,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testOnBeforeDownload001": {
@@ -487,6 +563,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testOnDownloadUpdated001": {
@@ -498,6 +577,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testOnDownloadFinish001": {
@@ -509,6 +591,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testWebDownloadManagerSetDownloadDelegate001": {
@@ -518,6 +603,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
             case "testResumeDownload001": {
@@ -539,6 +627,9 @@ struct WebViewControllerDownloadTest {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
+              await Utils.sleep(1000)
+              this.download.cancel();
+              await Utils.sleep(1000)
               break;
             }
           }

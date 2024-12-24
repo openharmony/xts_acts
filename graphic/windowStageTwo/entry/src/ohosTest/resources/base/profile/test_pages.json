@@ -9,6 +9,8 @@
     "testability/pages/First/index3",
     "testability/pages/First/index1",
     "testability/pages/WindowTest/StartMoving",
-    "testability/pages/WindowTest/Modality"
+    "testability/pages/WindowTest/Modality",
+    "testability/pages/WindowTest/extension",
+    "testability/pages/WindowTest/EmbeddedComponentPage"
   ]
 }

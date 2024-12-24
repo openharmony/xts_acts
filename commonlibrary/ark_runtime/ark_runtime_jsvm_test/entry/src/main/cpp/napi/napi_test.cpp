@@ -39,6 +39,16 @@
 #include "napi_datatype_test.h"
 #include "napi_date_test.h"
 #include "napi_json_test.h"
+#include "napi_arraybuffer_test.h"
+#include "napi_basicdatatypes_test.h"
+#include "napi_bigint_test.h"
+#include "napi_class_test.h"
+#include "napi_functioncall_test.h"
+#include "napi_heapstatisticsdebugg_test.h"
+#include "napi_lifecycle_test.h"
+#include "napi_memorymanagementuse_test.h"
+#include "napi_promise_test.h"
+#include "napi_version_test.h"
 #include <vector>
 #define LOG_DEMAIN 0x0202
 using namespace std;
@@ -9694,6 +9704,194 @@ static JSVM_CallbackStruct param[] = {
     {.callback = TestStrictEqualsTest17, .data = nullptr},
     {.callback = TestStrictEqualsTest18, .data = nullptr},
     {.callback = TestStrictEqualsTest19, .data = nullptr},
+    {.callback = TestCreateArrayBufferCase01, .data = nullptr},
+    {.callback = TestCreateArrayBufferCase02, .data = nullptr},
+    {.callback = TestCreateArrayBufferCase03, .data = nullptr},
+    {.callback = TestCreateArrayBufferCase04, .data = nullptr},
+    {.callback = TestGetArrayBufferCase01, .data = nullptr},
+    {.callback = TestGetArrayBufferCase02, .data = nullptr},
+    {.callback = TestIsArrayBufferCase01, .data = nullptr},
+    {.callback = TestIsArrayBufferCase02, .data = nullptr},
+    {.callback = TestIsArrayBufferCase03, .data = nullptr},
+    {.callback = TestDetachArrayBufferCase01, .data = nullptr},
+    {.callback = TestDetachArrayBufferCase02, .data = nullptr},
+    {.callback = TestDetachArrayBufferCase03, .data = nullptr},
+    {.callback = TestIsDetachedArraybufferCase01, .data = nullptr},
+    {.callback = TestIsDetachedArraybufferCase02, .data = nullptr},
+    {.callback = TestIsDetachedArraybufferCase03, .data = nullptr},
+    {.callback = TestIsDetachedArraybufferCase04, .data = nullptr},
+    {.callback = TestIsDetachedArraybufferCase05, .data = nullptr},
+    {.callback = TestCreateAnyBufferDetachedCase01, .data = nullptr},
+    {.callback = TestCreateInt32Case01, .data = nullptr},
+    {.callback = TestCreateInt32Case02, .data = nullptr},
+    {.callback = TestCreateInt32Case03, .data = nullptr},
+    {.callback = TestCreateInt32Case04, .data = nullptr},
+    {.callback = TestCreateUint32Case01, .data = nullptr},
+    {.callback = TestCreateUint32Case02, .data = nullptr},
+    {.callback = TestCreateUint32Case03, .data = nullptr},
+    {.callback = TestCreateUint32Case04, .data = nullptr},
+    {.callback = TestCreateInt64Case01, .data = nullptr},
+    {.callback = TestCreateInt64Case02, .data = nullptr},
+    {.callback = TestCreateInt64Case03, .data = nullptr},
+    {.callback = TestCreateInt64Case04, .data = nullptr},
+    {.callback = TestCreateDoubleCase01, .data = nullptr},
+    {.callback = TestCreateDoubleCase02, .data = nullptr},
+    {.callback = TestCreateDoubleCase03, .data = nullptr},
+    {.callback = TestCreateDoubleCase04, .data = nullptr},
+    {.callback = TestGetValueUint32Case01, .data = nullptr},
+    {.callback = TestGetValueInt32Case01, .data = nullptr},
+    {.callback = TestGetValueInt64Case01, .data = nullptr},
+    {.callback = TestGetValueDoubleCase01, .data = nullptr},
+    {.callback = TestBasicDataTypesCase01, .data = nullptr},
+    {.callback = TestBasicDataTypesCase02, .data = nullptr},
+    {.callback = TestBasicDataTypesCase03, .data = nullptr},
+    {.callback = TestBasicDataTypesCase04, .data = nullptr},
+    {.callback = TestCreateBigintInt64Case01, .data = nullptr},
+    {.callback = TestCreateBigintInt64Case02, .data = nullptr},
+    {.callback = TestCreateBigintInt64Case03, .data = nullptr},
+    {.callback = TestCreateBigintInt64Case04, .data = nullptr},
+    {.callback = TestCreateBigintUint64Case01, .data = nullptr},
+    {.callback = TestCreateBigintUint64Case02, .data = nullptr},
+    {.callback = TestCreateBigintUint64Case03, .data = nullptr},
+    {.callback = TestCreateBigintWordsCase01, .data = nullptr},
+    {.callback = TestCreateBigintWordsCase02, .data = nullptr},
+    {.callback = TestCreateBigintWordsCase03, .data = nullptr},
+    {.callback = TestCreateBigintWordsCase04, .data = nullptr},
+    {.callback = TestCreateBigintWordsCase05, .data = nullptr},
+    {.callback = TestGetValueBigintInt64Case01, .data = nullptr},
+    {.callback = TestGetValueBigintInt64Case02, .data = nullptr},
+    {.callback = TestGetValueBigintInt64Case03, .data = nullptr},
+    {.callback = TestGetValueBigintInt64Case04, .data = nullptr},
+    {.callback = TestGetValueBigintInt64Case05, .data = nullptr},
+    {.callback = TestGetValueBigintInt64Case06, .data = nullptr},
+    {.callback = TestGetValueBigintUint64Case01, .data = nullptr},
+    {.callback = TestGetValueBigintUint64Case02, .data = nullptr},
+    {.callback = TestGetValueBigintUint64Case03, .data = nullptr},
+    {.callback = TestGetValueBigintUint64Case04, .data = nullptr},
+    {.callback = TestGetValueBigintUint64Case05, .data = nullptr},
+    {.callback = TestGetValueBigintUint64Case06, .data = nullptr},
+    {.callback = TestGetValueBigintWordsCase01, .data = nullptr},
+    {.callback = TestGetValueBigintWordsCase02, .data = nullptr},
+    {.callback = TestGetValueBigintWordsCase03, .data = nullptr},
+    {.callback = TestGetValueBigintWordsCase04, .data = nullptr},
+    {.callback = TestGetValueBigintWordsCase05, .data = nullptr},
+    {.callback = TestCreateAndGetBigIntProgramCase01, .data = nullptr},
+    {.callback = TestCreateAndGetBigIntProgramCase02, .data = nullptr},
+    {.callback = TestCreateAndGetBigIntProgramCase03, .data = nullptr},
+    {.callback = TestNewInstanceCase01, .data = nullptr},
+    {.callback = TestNewInstanceCase02, .data = nullptr},
+    {.callback = TestGetNewTargetCase01, .data = nullptr},
+    {.callback = TestGetNewTargetCase02, .data = nullptr},
+    {.callback = TestGetNewTargetCase03, .data = nullptr},
+    {.callback = TestDefineClassCase01, .data = nullptr},
+    {.callback = TestDefineClassCase02, .data = nullptr},
+    {.callback = TestWrapCase01, .data = nullptr},
+    {.callback = TestWrapCase02, .data = nullptr},
+    {.callback = TestWrapCase03, .data = nullptr},
+    {.callback = TestWrapCase04, .data = nullptr},
+    {.callback = TestUnwrapCase01, .data = nullptr},
+    {.callback = TestUnwrapCase02, .data = nullptr},
+    {.callback = TestUnwrapCase03, .data = nullptr},
+    {.callback = TestUnwrapCase04, .data = nullptr},
+    {.callback = TestRemoveWrapCase01, .data = nullptr},
+    {.callback = TestRemoveWrapCase02, .data = nullptr},
+    {.callback = TestRemoveWrapCase03, .data = nullptr},
+    {.callback = TestRemoveWrapCase04, .data = nullptr},
+    {.callback = TestClassOperationCase01, .data = nullptr},
+    {.callback = TestCallFunction01, .data = nullptr},
+    {.callback = TestCallFunction02, .data = nullptr},
+    {.callback = TestCallFunction03, .data = nullptr},
+    {.callback = TestCallFunction04, .data = nullptr},
+    {.callback = TestCallFunction05, .data = nullptr},
+    {.callback = TestCallFunction06, .data = nullptr},
+    {.callback = TestCallFunction07, .data = nullptr},
+    {.callback = TestCallFunction08, .data = nullptr},
+    {.callback = TestCallFunction09, .data = nullptr},
+    {.callback = TestCreateFunction01, .data = nullptr},
+    {.callback = TestCreateFunction02, .data = nullptr},
+    {.callback = TestCreateFunction03, .data = nullptr},
+    {.callback = TestCreateFunction04, .data = nullptr},
+    {.callback = TestCreateFunction05, .data = nullptr},
+    {.callback = TestCreateFunction06, .data = nullptr},
+    {.callback = TestGetCbInfo01, .data = nullptr},
+    {.callback = TestGetCbInfo02, .data = nullptr},
+    {.callback = TestGetCbInfo03, .data = nullptr},
+    {.callback = TestGetCbInfo04, .data = nullptr},
+    {.callback = TestGetCbInfo05, .data = nullptr},
+    {.callback = TestIsFunction01, .data = nullptr},
+    {.callback = TestIsFunction02, .data = nullptr},
+    {.callback = TestIsFunction03, .data = nullptr},
+    {.callback = TestIsFunction04, .data = nullptr},
+    {.callback = TestOpenHandleScopeCase01, .data = nullptr},
+    {.callback = TestOpenHandleScopeCase02, .data = nullptr},
+    {.callback = TestOpenHandleScopeCase03, .data = nullptr},
+    {.callback = TestOpenHandleScopeCase04, .data = nullptr},
+    {.callback = TestCloseHandleScopeCase01, .data = nullptr},
+    {.callback = TestCloseHandleScopeCase02, .data = nullptr},
+    {.callback = TestOpenAndCloseHandleScopeCase01, .data = nullptr},
+    {.callback = TestOpenAndCloseHandleScopeCase02, .data = nullptr},
+    {.callback = TestOpenEscapableHandleScopeCase01, .data = nullptr},
+    {.callback = TestOpenEscapableHandleScopeCase02, .data = nullptr},
+    {.callback = TestOpenEscapableHandleScopeCase03, .data = nullptr},
+    {.callback = TestCloseEscapableHandleScopeCase01, .data = nullptr},
+    {.callback = TestCloseEscapableHandleScopeCase02, .data = nullptr},
+    {.callback = TestCloseEscapableHandleScopeCase03, .data = nullptr},
+    {.callback = TestEscapeHandleCase01, .data = nullptr},
+    {.callback = TestEscapeHandleCase02, .data = nullptr},
+    {.callback = TestEscapeHandleCase03, .data = nullptr},
+    {.callback = TestEscapeHandleCase04, .data = nullptr},
+    {.callback = TestEscapeHandleCase05, .data = nullptr},
+    {.callback = TestOpenClosedEscapeCase01, .data = nullptr},
+    {.callback = TestOpenClosedEscapeCase02, .data = nullptr},
+    {.callback = TestCreateReferenceCase01, .data = nullptr},
+    {.callback = TestCreateReferenceCase02, .data = nullptr},
+    {.callback = TestCreateReferenceCase03, .data = nullptr},
+    {.callback = TestDeleteReferenceCase01, .data = nullptr},
+    {.callback = TestDeleteReferenceCase02, .data = nullptr},
+    {.callback = TestReferenceRefCase01, .data = nullptr},
+    {.callback = TestReferenceRefCase02, .data = nullptr},
+    {.callback = TestReferenceRefCase03, .data = nullptr},
+    {.callback = TestReferenceUnrefCase01, .data = nullptr},
+    {.callback = TestReferenceUnrefCase02, .data = nullptr},
+    {.callback = TestReferenceUnrefCase03, .data = nullptr},
+    {.callback = TestGetReferenceValueCase01, .data = nullptr},
+    {.callback = TestGetReferenceValueCase02, .data = nullptr},
+    {.callback = TestHandleAndRefCase01, .data = nullptr},
+    {.callback = TestHandleAndRefCase02, .data = nullptr},
+    {.callback = TestHandleAndRefCase03, .data = nullptr},
+    {.callback = TestAdjustExternalMemoryCase01, .data = nullptr},
+    {.callback = TestAdjustExternalMemoryCase02, .data = nullptr},
+    {.callback = TestAdjustExternalMemoryCase03, .data = nullptr},
+    {.callback = TestAdjustExternalMemoryCase04, .data = nullptr},
+    {.callback = TestMemoryPressureNotificationCase01, .data = nullptr},
+    {.callback = TestMemoryPressureNotificationCase02, .data = nullptr},
+    {.callback = TestMemoryPressureNotificationCase03, .data = nullptr},
+    {.callback = TestMemoryManagementuseCase01, .data = nullptr},
+    {.callback = TestIsPromiseCase01, .data = nullptr},
+    {.callback = TestIsPromiseCase02, .data = nullptr},
+    {.callback = TestIsPromiseCase03, .data = nullptr},
+    {.callback = TestIsPromiseCase04, .data = nullptr},
+    {.callback = TestCreatePromiseCase01, .data = nullptr},
+    {.callback = TestResolveDeferredCase01, .data = nullptr},
+    {.callback = TestResolveDeferredCase02, .data = nullptr},
+    {.callback = TestRejectDeferredCase01, .data = nullptr},
+    {.callback = TestRejectDeferredCase02, .data = nullptr},
+    {.callback = TestCreateResolveDeferredCase01, .data = nullptr},
+    {.callback = TestGetVersionCase01, .data = nullptr},
+    {.callback = TestGetVMInfoCase01, .data = nullptr},
+    {.callback = TestGetVMInfoCase02, .data = nullptr},
+    {.callback = TestGetHeapStatisticsCase01, .data = nullptr},
+    {.callback = TestStartCpuProfilerCase01, .data = nullptr},
+    {.callback = TestStopCpuProfilerCase01, .data = nullptr},
+    {.callback = TestTakeHeapSnapshotCase01, .data = nullptr},
+    {.callback = TestOpenInspectorCase01, .data = nullptr},
+    {.callback = TestOpenInspectorCase02, .data = nullptr},
+    {.callback = TestOpenInspectorCase03, .data = nullptr},
+    {.callback = TestCloseInspectorCase01, .data = nullptr},
+    {.callback = TestCloseInspectorCase02, .data = nullptr},
+    {.callback = TestCloseInspectorCase03, .data = nullptr},
+    {.callback = TestOpenInspectorWithNameCase01, .data = nullptr},
+    {.callback = TestOpenInspectorWithNameCase02, .data = nullptr},
 };
 static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createStringUtf8", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
@@ -10127,6 +10325,194 @@ static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"testStrictEqualsTest17", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"testStrictEqualsTest18", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"testStrictEqualsTest19", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateArrayBufferCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateArrayBufferCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateArrayBufferCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateArrayBufferCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetArrayBufferCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetArrayBufferCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsArrayBufferCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsArrayBufferCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsArrayBufferCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testDetachArrayBufferCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testDetachArrayBufferCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testDetachArrayBufferCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsDetachedArraybufferCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsDetachedArraybufferCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsDetachedArraybufferCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsDetachedArraybufferCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsDetachedArraybufferCase05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateAnyBufferDetachedCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateInt32Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateInt32Case02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateInt32Case03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateInt32Case04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateUint32Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateUint32Case02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateUint32Case03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateUint32Case04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateInt64Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateInt64Case02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateInt64Case03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateInt64Case04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateDoubleCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateDoubleCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateDoubleCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateDoubleCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueUint32Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueInt32Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueInt64Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueDoubleCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testBasicDataTypesCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testBasicDataTypesCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testBasicDataTypesCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testBasicDataTypesCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintInt64Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintInt64Case02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintInt64Case03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintInt64Case04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintUint64Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintUint64Case02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintUint64Case03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintWordsCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintWordsCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintWordsCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintWordsCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateBigintWordsCase05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintInt64Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintInt64Case02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintInt64Case03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintInt64Case04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintInt64Case05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintInt64Case06", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintUint64Case01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintUint64Case02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintUint64Case03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintUint64Case04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintUint64Case05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintUint64Case06", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintWordsCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintWordsCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintWordsCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintWordsCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetValueBigintWordsCase05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateAndGetBigIntProgramCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateAndGetBigIntProgramCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateAndGetBigIntProgramCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testNewInstanceCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testNewInstanceCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetNewTargetCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetNewTargetCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetNewTargetCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testDefineClassCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testDefineClassCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testWrapCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testWrapCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testWrapCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testWrapCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testUnwrapCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testUnwrapCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testUnwrapCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testUnwrapCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testRemoveWrapCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testRemoveWrapCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testRemoveWrapCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testRemoveWrapCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testClassOperationCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction06", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction07", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction08", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCallFunction09", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateFunction01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateFunction02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateFunction03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateFunction04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateFunction05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateFunction06", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetCbInfo01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetCbInfo02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetCbInfo03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetCbInfo04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetCbInfo05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsFunction01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsFunction02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsFunction03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsFunction04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenHandleScopeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenHandleScopeCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenHandleScopeCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenHandleScopeCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCloseHandleScopeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCloseHandleScopeCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenAndCloseHandleScopeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenAndCloseHandleScopeCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenEscapableHandleScopeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenEscapableHandleScopeCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenEscapableHandleScopeCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCloseEscapableHandleScopeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCloseEscapableHandleScopeCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCloseEscapableHandleScopeCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testEscapeHandleCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testEscapeHandleCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testEscapeHandleCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testEscapeHandleCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testEscapeHandleCase05", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenClosedEscapeCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenClosedEscapeCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateReferenceCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateReferenceCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateReferenceCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testDeleteReferenceCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testDeleteReferenceCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testReferenceRefCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testReferenceRefCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testReferenceRefCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testReferenceUnrefCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testReferenceUnrefCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testReferenceUnrefCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetReferenceValueCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetReferenceValueCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testHandleAndRefCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testHandleAndRefCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testHandleAndRefCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testAdjustExternalMemoryCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testAdjustExternalMemoryCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testAdjustExternalMemoryCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testAdjustExternalMemoryCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testMemoryPressureNotificationCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testMemoryPressureNotificationCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testMemoryPressureNotificationCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testMemoryManagementuseCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsPromiseCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsPromiseCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsPromiseCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testIsPromiseCase04", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreatePromiseCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testResolveDeferredCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testResolveDeferredCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testRejectDeferredCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testRejectDeferredCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCreateResolveDeferredCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetVersionCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetVMInfoCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetVMInfoCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testGetHeapStatisticsCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testStartCpuProfilerCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testStopCpuProfilerCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testTakeHeapSnapshotCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenInspectorCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenInspectorCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenInspectorCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCloseInspectorCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCloseInspectorCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testCloseInspectorCase03", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenInspectorWithNameCase01", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"testOpenInspectorWithNameCase02", nullptr, nullptr, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 void WaitPropertyDescriptor()
 {
@@ -10637,6 +11023,83 @@ static napi_value RunJsVm(napi_env nEnv, napi_callback_info nInfo)
   return result;
 }
 
+[[maybe_unused]] static napi_value TraceTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trace.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value SetMicrotaskPolicy(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_microtask_policy.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value PromiseRegisterHandler(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_promise.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value ProxyTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_proxy.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value WrapperObjectTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_wrapper_object.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value WellKnownSymbolsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_well_known_symbols.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value DefineClassWithOptionsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_define_class_with_options.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value TriggerExceptionsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trigger_exceptions.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value TriggerGCTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trigger_gc.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value PrivateTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_private.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value ExternalStringTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_external_string.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -10700,6 +11163,17 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testArrayBuffer2", testArrayBuffer2),
         DECLARE_NAPI_FUNCTION("testArrayBuffer3", testArrayBuffer3),
         DECLARE_NAPI_FUNCTION("testWasmOperator", testWasmOperator),
+        DECLARE_NAPI_FUNCTION("wrapperObjectTest", WrapperObjectTest),
+        DECLARE_NAPI_FUNCTION("wellKnownSymbolsTest", WellKnownSymbolsTest),
+        DECLARE_NAPI_FUNCTION("traceTest", TraceTest),
+        DECLARE_NAPI_FUNCTION("defineClassWithOptionsTest", DefineClassWithOptionsTest),
+        DECLARE_NAPI_FUNCTION("triggerExceptionsTest", TriggerExceptionsTest),
+        DECLARE_NAPI_FUNCTION("triggerGCTest", TriggerGCTest),
+        DECLARE_NAPI_FUNCTION("SetMicrotaskPolicy", SetMicrotaskPolicy),
+        DECLARE_NAPI_FUNCTION("PromiseRegisterHandler", PromiseRegisterHandler),
+        DECLARE_NAPI_FUNCTION("ProxyTest", ProxyTest),
+        DECLARE_NAPI_FUNCTION("privateTest", PrivateTest),
+        DECLARE_NAPI_FUNCTION("externalStringTest", ExternalStringTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

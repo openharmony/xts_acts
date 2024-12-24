@@ -58,3 +58,5 @@ export const KeyEventGetUnicodeTest_001: (a: string) => void;
 export const KeyEventSetConsumedTest_001: (a: string) => void;
 
 export const testStyledString001: (a: Uint8Array) => number;
+
+export const testGetScrollSizeTest001: (a: string) => void;

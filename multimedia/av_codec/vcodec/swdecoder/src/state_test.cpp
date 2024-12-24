@@ -80,11 +80,20 @@ namespace {
  */
 HWTEST_F(SwdecStateNdkTest, VIDEO_SWDEC_STATE_0100, TestSize.Level2)
 {
-    int32_t ret = vDecSample->Stop();
-    ASSERT_EQ(AV_ERR_INVALID_STATE, ret);
-    ret = vDecSample->Flush();
+    int32_t ret = vDecSample->Flush();
     ASSERT_EQ(AV_ERR_INVALID_STATE, ret);
     ret = vDecSample->SetVideoDecoderCallback();
+    ASSERT_EQ(AV_ERR_OK, ret);
+}
+
+/**
+ * @tc.number    : VIDEO_SWDEC_STATE_0101
+ * @tc.name      : create-configure-stop
+ * @tc.desc      : function test
+ */
+HWTEST_F(SwdecStateNdkTest, VIDEO_SWDEC_STATE_0101, TestSize.Level2)
+{
+    int32_t ret = vDecSample->Stop();
     ASSERT_EQ(AV_ERR_OK, ret);
 }
 

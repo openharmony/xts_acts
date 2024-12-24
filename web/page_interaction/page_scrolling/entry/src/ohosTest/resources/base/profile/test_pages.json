@@ -1,0 +1,15 @@
+{
+  "src": [
+    "testability/pages/webResourceResponseGet",
+    "testability/pages/webViewController",
+    "testability/pages/webViewSrollByJsunit",
+    "testability/pages/webViewSrollToJsunit",
+    "testability/pages/webViewSrollableJsunit",
+    "testability/pages/webViewOnScroll",
+    "testability/pages/WebNestedScrollOptionsScrollBackwardTest",
+    "testability/pages/WebNestedScrollOptionsScrollForwardTest",
+    "testability/pages/WebNestedScrollOptionsScrollBackwardHorizontalTest",
+    "testability/pages/WebNestedScrollOptionsScrollForwardHorizontalTest",
+    "testability/pages/ScrollPage"
+  ]
+}

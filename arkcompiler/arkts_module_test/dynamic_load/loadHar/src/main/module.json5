@@ -18,6 +18,7 @@
     "name": "loadHar",
     "type": "har",
     "deviceTypes": [
+      "wearable",
       "default",
       "tablet"
     ]

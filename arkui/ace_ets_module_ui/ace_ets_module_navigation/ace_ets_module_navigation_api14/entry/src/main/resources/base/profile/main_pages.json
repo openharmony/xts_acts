@@ -9,6 +9,8 @@
         "MainAbility/pages/BindToScrollable/NavigationBindToScrollable",
         "MainAbility/pages/BindToScrollable/NavigationBindToNestedScrollable",
         "MainAbility/pages/Navigation/Recoverable",
-        "MainAbility/pages/Navigation/SystemTransition"
+        "MainAbility/pages/Navigation/SystemTransition",
+        "MainAbility/pages/Navigation/RouterRecoverable",
+        "MainAbility/pages/Navigation/RouterPage2"
     ]
 }
