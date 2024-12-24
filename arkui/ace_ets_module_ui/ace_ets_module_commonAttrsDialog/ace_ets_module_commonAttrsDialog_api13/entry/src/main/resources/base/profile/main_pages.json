@@ -3,6 +3,17 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/bindContextMenuTest/bindContextMenuMargin",
         "MainAbility/pages/bindSheetTest/bindSheetKeyboardAvoidMode",
-		"MainAbility/pages/Popup/followTransformOfTargetPopup","MainAbility/pages/Popup/followTransformOfTargetCustomPopup"
+		"MainAbility/pages/Popup/followTransformOfTargetPopup",
+		"MainAbility/pages/Popup/followTransformOfTargetCustomPopup",
+        "MainAbility/pages/promptActionTest/showToastHoverMode",
+        "MainAbility/pages/promptActionTest/showDialogHoverMode",
+        "MainAbility/pages/dialog/popoverDialogTest",
+        "MainAbility/pages/TextPickerDialog/TextPickerDialogHoverMode",
+        "MainAbility/pages/TimePickerDialog/timePickerDialogHoverMode",
+        "MainAbility/pages/DatePickerDialog/datePickerDialogHoverMode",
+        "MainAbility/pages/CustomDialog/customDialogHoverMode",
+        "MainAbility/pages/CalendarPickerDialog/calendarPickerDialogHoverMode",
+        "MainAbility/pages/AlertDialog/alertDialogHoverMode",
+        "MainAbility/pages/ActionSheet/actionSheetHoverMode"
     ]
 }
