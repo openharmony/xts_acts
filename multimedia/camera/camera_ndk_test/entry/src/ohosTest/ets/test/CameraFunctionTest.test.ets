@@ -26,7 +26,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON, MatchPattern } from '@ohos.UiTest';
 import fs from '@ohos.file.fs';
 
-
 interface PhotoSettings {
   quality: number, // Photo quality
   rotation: number, // Photo direction
@@ -45,13 +44,12 @@ let photoSettings: PhotoSettings = {
   altitude: 1000
 };
 
-const TAG = "CAMERA_FUNCTION_JS";
+const TAG = "CameraXts CameraFunctionTest: ";
 
 // 创建录像输出流
 let mPhotoSurface: string;
 let fdNumber: number;
 let receiver: image.ImageReceiver;
-let mCameraSession: number;
 
 // multi-device
 let camera: cameraObj.cameraInfo;
@@ -262,10 +260,10 @@ export default function CameraFunctionTest() {
       await driveFn();
       await getPermissionsWrite();
       await driveFn();
-      getPhotoReceiverSurface();
+      await getPhotoReceiverSurface();
       getCameraManagerInstance();
       getCameraSupportDevicesArray();
-      getSupportedCameraOutputCapability();
+      getSupportedOutputCapability();
       console.info(TAG + 'beforeAll case');
     });
     beforeEach(() => {
