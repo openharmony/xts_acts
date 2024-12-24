@@ -23,7 +23,7 @@ export default function textPickerDialogHoverMode(){
     beforeEach(async (done:Function) =>{
       console.info("textPickerDialogHoverMode beforeEach start");
       let options:router.RouterOptions = {
-        url: 'MainAbility/pages/TextPickerDialog/textPickerDialogHoverMode',
+        url: 'MainAbility/pages/TextPickerDialog/TextPickerDialogHoverMode',
       }
       try {
         router.clear();
