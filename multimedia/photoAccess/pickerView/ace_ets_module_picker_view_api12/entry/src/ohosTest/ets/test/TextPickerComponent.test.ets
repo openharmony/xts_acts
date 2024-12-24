@@ -1103,5 +1103,35 @@ export default function TextPicker() {
       console.info("testPicer22 finish");
       done();
     });
+
+    /* *
+       * @tc.number    : testPicker23
+       * @tc.name      : testPicker23
+       * @tc.desc      : Testing PhotoPickerComponent grid margin and browser margin
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker23', 0, async (done: Function) => {
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      // 支持传入宫格和大图Margin
+      pickerOptions.gridMargin = {top: '10vp'};
+      pickerOptions.browserMargin = {top: '20vp'}
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker23 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker23 finish");
+      done();
+    });
   })
 }
