@@ -125,11 +125,15 @@ async function testCompleteButton(driver: Driver, options: router.RouterOptions,
       break;
   }
   await routeToUrl(options);
-  let chooostModeButton: Component = await driver.waitForComponent(ON.text(buttonText), 2000);
-  let button: Component = await driver.waitForComponent(ON.text('select photo'), 2000);
+  let chooostModeButton: Component = await driver.findComponent(ON.text(buttonText));
+  let button: Component = await driver.findComponent(ON.text('select photo'));
   if (button !== undefined && chooostModeButton !== undefined) {
     await chooostModeButton.click();
     await button.click();
+    expect(true).assertTrue();
+  } else {
+    console.error("can not find button");
+    expect(false).assertTrue();
   }
   await CommonFunc.sleep(1000);
   router.back();
