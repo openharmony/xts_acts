@@ -549,14 +549,20 @@ export default function CameraVideoQualityPrioritizationTest() {
             i + "]");
 
           await startCameraSession(i);
+          try {
+            mCameraSession.setQualityPrioritization(cameraObj.QualityPrioritization.HIGH_QUALITY);
+          } catch (err) {
+            console.info(TAG +
+              `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0100 error: ${err}, ${err.code}, ${err.message}`);
+            expect().assertFail();
+            done();
+          }
 
-          mCameraSession.setQualityPrioritization(cameraObj.QualityPrioritization.HIGH_QUALITY);
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0100 finish");
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0100 PASSED with QualityPrioritization is: " +
           cameraObj.QualityPrioritization.HIGH_QUALITY);
-
 
           await stopCameraSession();
 
@@ -595,8 +601,15 @@ export default function CameraVideoQualityPrioritizationTest() {
             i + "]");
 
           await startCameraSession(i);
+          try {
+            mCameraSession.setQualityPrioritization(cameraObj.QualityPrioritization.POWER_BALANCE);
+          } catch (err) {
+            console.info(TAG +
+              `Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0200 error: ${err}, ${err.code}, ${err.message}`);
+            expect().assertFail();
+            done();
+          }
 
-          mCameraSession.setQualityPrioritization(cameraObj.QualityPrioritization.POWER_BALANCE);
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_SET_QUALITY_PRIORITIZATION_PROMISE_0200 finish");
           console.info(TAG +

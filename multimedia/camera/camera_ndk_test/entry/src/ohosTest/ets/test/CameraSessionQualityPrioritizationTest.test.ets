@@ -265,9 +265,14 @@ export default function CameraSessionQualityPrioritizationTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_001', 2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_001--------------");
-      cameraObj.sessionSetQualityPrioritization(Camera_QualityPrioritization.HIGH_QUALITY);
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_001 finish");
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_001 PASSED with QualityPrioritization is: " + 0);
+      let ret = cameraObj.sessionSetQualityPrioritization(Camera_QualityPrioritization.HIGH_QUALITY);
+      if (ret != 0) {
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_001 failed with " + ret);
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_001 finish");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_001 PASSED with QualityPrioritization is: " + 0);
+      }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_001 ends here");
     });
 
@@ -281,9 +286,14 @@ export default function CameraSessionQualityPrioritizationTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_002', 2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_002--------------");
-      cameraObj.sessionSetQualityPrioritization(Camera_QualityPrioritization.POWER_BALANCE);
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_002 finish");
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_002 PASSED with QualityPrioritization is: " + 1);
+      let ret = cameraObj.sessionSetQualityPrioritization(Camera_QualityPrioritization.POWER_BALANCE);
+      if (ret != 0) {
+        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_002 failed with " + ret);
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_002 finish");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_QUALITY_PRIORITIZATION_PROMISE_002 PASSED with QualityPrioritization is: " + 1);
+      }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_QUALITY_PRIORITIZATION_PROMISE_002 ends here");
     });
 
