@@ -108,6 +108,33 @@ async function clickBigPicture(driver: Driver) {
   await CommonFunc.sleep(1000);
 }
 
+async function testCompleteButton(driver: Driver, options: router.RouterOptions, textMode: number) {
+  let buttonText: string = '';
+  switch (textMode) {
+    case 0:
+      buttonText = 'TEXT_DONE';
+      break;
+    case 1:
+      buttonText = 'TEXT_SEND';
+      break;
+    case 2:
+      buttonText = 'TEXT_ADD';
+      break;
+    default:
+      buttonText = 'TEXT_DONE';
+      break;
+  }
+  await routeToUrl(options);
+  let chooostModeButton: Component = await driver.waitForComponent(ON.text(buttonText), 2000);
+  let button: Component = await driver.waitForComponent(ON.text('select photo'), 2000);
+  if (button !== undefined && chooostModeButton !== undefined) {
+    await chooostModeButton.click();
+    await button.click();
+  }
+  await CommonFunc.sleep(1000);
+  router.back();
+}
+
 export default function TextPicker() {
   describe('testPicker', () => {
     let driver: Driver;
@@ -1130,6 +1157,27 @@ export default function TextPicker() {
         expect(false).assertTrue();
       }
       console.info("testPicer23 finish");
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker24
+       * @tc.name      : testPicker24
+       * @tc.desc      : Testing CompleteButtonText
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker24', 0, async (done: Function) => {
+      let options: router: RouterOptions = {
+        url: 'MainAbility/pages/BindSheetPicker',
+      }
+      
+      for (let index = 0; index < 3; index++) {
+        await testCompleteButton(driver, options, index);
+      }
+
+      console.info("testPicer24 finish");
       done();
     });
   })
