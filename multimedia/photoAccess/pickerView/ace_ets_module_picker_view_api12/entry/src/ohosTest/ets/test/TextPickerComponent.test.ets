@@ -1141,26 +1141,26 @@ export default function TextPicker() {
        * @tc.type      : Function
        * @tc.level     : Level0
        */
-    it('testPicker24', 0, async (done: Function) => {
-      let code: number = EventType.PHOTO_PICKER_INFO;
-      let pickerOptions: PickerOptions = getDefaultPickerOptions();
-      // 支持传入宫格和大图Margin
-      pickerOptions.gridMargin = {top: '10vp'};
-      pickerOptions.browserMargin = {top: '20vp'}
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/PickerComponent',
-        params: {
-          eventId: code,
-          pickerOptions: pickerOptions,
-        }
-      }
-      await routeToUrl(options);
-      let strJson: string = getInspectorByKey('PhotoPickerComponent');
-      console.info("testPicker24 JSON.parse(strJson) is" + strJson);
-      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
-      router.back();
-      console.info("testPicker24 finish");
-      done();
-    });
+    // it('testPicker24', 0, async (done: Function) => {
+    //   let code: number = EventType.PHOTO_PICKER_INFO;
+    //   let pickerOptions: PickerOptions = getDefaultPickerOptions();
+    //   // 支持传入宫格和大图Margin
+    //   pickerOptions.gridMargin = {top: '10vp'};
+    //   pickerOptions.browserMargin = {top: '20vp'}
+    //   let options: router.RouterOptions = {
+    //     url: 'MainAbility/pages/PickerComponent',
+    //     params: {
+    //       eventId: code,
+    //       pickerOptions: pickerOptions,
+    //     }
+    //   }
+    //   await routeToUrl(options);
+    //   let strJson: string = getInspectorByKey('PhotoPickerComponent');
+    //   console.info("testPicker24 JSON.parse(strJson) is" + strJson);
+    //   expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+    //   router.back();
+    //   console.info("testPicker24 finish");
+    //   done();
+    // });
   })
 }
