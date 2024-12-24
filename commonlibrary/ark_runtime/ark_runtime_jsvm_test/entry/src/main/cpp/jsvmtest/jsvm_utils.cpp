@@ -273,6 +273,13 @@ JSVM_Value Double(double v)
     return result;
 }
 
+JSVM_Value Object()
+{
+    JSVM_Value js_object;
+    JSVMTEST_CALL(OH_JSVM_CreateObject(jsvm_env, &js_object));
+    return js_object;
+}
+
 JSVM_Value Global()
 {
     JSVM_Value js_global;
@@ -562,6 +569,16 @@ void InstallMyConsoleLog(JSVM_Env env)
         jsvm::SetProperty(jsvm::Global(), "console", console);
     }
     jsvm::SetProperty(console, "log", log);
+}
+
+void TryTriggerFatalError(JSVM_VM vm)
+{
+    OH_JSVM_DestroyVM(vm);
+}
+
+void TryTriggerGC()
+{
+    JSVMTEST_CALL(OH_JSVM_MemoryPressureNotification(jsvm_env, JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL));
 }
 
 }  // namespace jsvm

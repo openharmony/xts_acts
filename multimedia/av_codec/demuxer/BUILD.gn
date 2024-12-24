@@ -58,6 +58,7 @@ ohos_moduletest_suite("ActsDemuxerTest") {
   if (av_codec_support_codec) {
     sources = [
       "./src/api_test.cpp",
+      "./src/func2_test.cpp",
       "./src/func_test.cpp",
       "./src/proc_test.cpp",
     ]

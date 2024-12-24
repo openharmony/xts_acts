@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 
 import napitest from 'libentry.so'
 
-async function sleep(time: number) {
+function sleep(time: number) {
   return new Promise<void>((resolve, reject) => {
     setTimeout(() => {
       resolve()
@@ -36,9 +36,11 @@ export default function JsvmJsunit() {
     /**
     * run after testcase
     */
-    afterEach(async () => {
+    afterEach(async (done:Function) => {
       console.info('[JsvmTest] after each called')
       value == '';
+      await sleep(50);
+      done();
     });
 
     /**
@@ -9978,6 +9980,149 @@ export default function JsvmJsunit() {
       testStrictEqualsTest19(lhsValue, rhsValue)
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0760
+     * @tc.name      JsvmTest0760
+     * @tc.desc      Test the function of Trace interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0760', 0, () => {
+      let rst: number = napitest.traceTest();
+      console.info('JsvmTest0760 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0761
+     * @tc.name      JsvmTest0761
+     * @tc.desc      Test the function of Wrapper Object.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0761', 0, () => {
+      let rst: number = napitest.wrapperObjectTest();
+      console.info('JsvmTest0761 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0762
+     * @tc.name      JsvmTest0762
+     * @tc.desc      Test the function of Well-Known Symbols.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0762', 0, () => {
+      let rst: number = napitest.wellKnownSymbolsTest();
+      console.info('JsvmTest0762 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0763
+     * @tc.name      JsvmTest0763
+     * @tc.desc      Test OH_JSVM_DefineClassWithOptions.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0763', 0, () => {
+      let rst: number = napitest.defineClassWithOptionsTest();
+      console.info('JsvmTest0763 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0764
+     * @tc.name      JsvmTest0764
+     * @tc.desc      Test the handler for exceptions.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0764', 0, () => {
+      let rst: number = napitest.triggerExceptionsTest();
+      console.info('JsvmTest0764 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0765
+     * @tc.name      JsvmTest0765
+     * @tc.desc      Test the handler for gc.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0765', 0, () => {
+      let rst: number = napitest.triggerGCTest();
+      console.info('JsvmTest0765 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+        });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0766
+     * @tc.name      JsvmTest0766
+     * @tc.desc      Test the function of SetMicrotaskPolicy.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0766', 0, () => {
+      let rst: number = napitest.SetMicrotaskPolicy();
+      console.info('JsvmTest0766 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0767
+     * @tc.name      JsvmTest0767
+     * @tc.desc      Test the function of PromiseRegisterHandler.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0767', 0, () => {
+      let rst: number = napitest.PromiseRegisterHandler();
+      console.info('JsvmTest0767 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0768
+     * @tc.name      JsvmTest0768
+     * @tc.desc      Test the function of ProxyTest.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0768', 0, () => {
+      let rst: number = napitest.ProxyTest();
+      console.info('JsvmTest0768 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0769
+     * @tc.name      JsvmTest0769
+     * @tc.desc      Test the function of private interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0769', 0, () => {
+      let rst: number = napitest.privateTest();
+      console.info('JsvmTest0769 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0770
+     * @tc.name      JsvmTest0770
+     * @tc.desc      Test the function of external string interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0770', 0, () => {
+      let rst: number = napitest.externalStringTest();
+      console.info('JsvmTest0770 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
     });
   });
 }

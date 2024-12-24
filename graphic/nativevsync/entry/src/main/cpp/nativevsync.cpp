@@ -24,6 +24,7 @@
 #include <zconf.h>
 #include <native_image/native_image.h>
 #include <native_window/external_window.h>
+#include <thread>
 
 #define SUCCESS 0
 #define FAIL (-1)
@@ -335,6 +336,7 @@ static napi_value OHNativeVSyncRequestFrameNullptr(napi_env env, napi_callback_i
         return result;
     }
     napi_create_int32(env, SUCCESS, &result);
+    OH_NativeVSync_Destroy(nativeVSync);
     return result;
 }
 
@@ -503,9 +505,169 @@ static napi_value OHNativeVSyncCreateForAssociatedWindowAbNormal03(napi_env env,
     }
 }
 
+static napi_value OHNativeVSyncDVSyncSwitch(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    char name[] = "testcase_switch";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    char param[] = "test";
+    OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, &param);
+    if ((OH_NativeVSync_DVSyncSwitch(nativeVSync, true) == 0) ||
+        (OH_NativeVSync_DVSyncSwitch(nativeVSync, false) == 0)) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeVSync_Destroy(nativeVSync);
+    return result;
+}
+
+static napi_value OHNativeVSyncDVSyncSwitchNullptr(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    char name[] = "testcase_switch";
+    unsigned int length = strlen(name);
+    OH_NativeVSync *nativeVSync = OH_NativeVSync_Create(name, length);
+    char param[] = "test";
+    OH_NativeVSync_RequestFrame(nativeVSync, MyFrameCallback, &param);
+    if ((OH_NativeVSync_DVSyncSwitch(nullptr, true) != 0) ||
+        (OH_NativeVSync_DVSyncSwitch(nullptr, false) != 0)) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeVSync_Destroy(nativeVSync);
+    return result;
+}
+
+static napi_value OHNativeVSyncRequestFrameWithMultiCallbackNormal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_create_array_with_length(env, NUMBER_3, &result);
+    char name[] = "test";
+    OH_NativeVSync *native_vsync = OH_NativeVSync_Create(name, sizeof(name));
+    OH_NativeVSync_FrameCallback callback = OnVSync;
+    auto *data = new std::string("hello");
+    OH_NativeVSync_RequestFrame(native_vsync, callback, data);
+    int ret = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+    napi_create_int32(env, ret, &result1);
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
+    OH_NativeVSync_RequestFrame(native_vsync, callback, nullptr);
+    int ret1 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+    napi_create_int32(env, ret1, &result2);
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
+    int num = 5;
+    for (int i = 0; i < num; i++) {
+        int ret3 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data + i);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        napi_create_int32(env, ret3, &result3);
+    }
+    napi_set_element(env, result, ARR_NUMBER_2, result3);
+    OH_NativeVSync_Destroy(native_vsync);
+    return result;
+}
+
+static napi_value OHNativeVSyncRequestFrameWithMultiCallbackNormal01(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_create_array_with_length(env, NUMBER_2, &result);
+    char name[] = "test";
+    OH_NativeVSync *native_vsync = OH_NativeVSync_Create(name, sizeof(name));
+    OH_NativeVSync_FrameCallback callback = OnVSync;
+    auto *data = new std::string("hello");
+    int num1 = 100;
+    int num2 = 1000;
+    OH_NativeVSync_RequestFrame(native_vsync, callback, data);
+    for (int i = 0; i < num1; i++) {
+        int ret100 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        napi_create_int32(env, ret100, &result1);
+    }
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
+    for (int i = 0; i < num2; i++) {
+        int ret1000 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, data);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        napi_create_int32(env, ret1000, &result2);
+    }
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
+    OH_NativeVSync_Destroy(native_vsync);
+    return result;
+}
+
+static napi_value OHNativeVSyncRequestFrameWithMultiCallbackAbNormal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_create_array_with_length(env, NUMBER_3, &result);
+    char name[] = "test";
+    OH_NativeVSync *native_vsync = OH_NativeVSync_Create(name, sizeof(name));
+    OH_NativeVSync_FrameCallback callback = OnVSync;
+    auto *data = new std::string("hello");
+    int ret1 = OH_NativeVSync_RequestFrameWithMultiCallback(nullptr, callback, data);
+    napi_create_int32(env, ret1, &result1);
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
+    int ret2 = OH_NativeVSync_RequestFrameWithMultiCallback(ARR_NUMBER_0, callback, data);
+    napi_create_int32(env, ret2, &result2);
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
+    int ret3 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, nullptr, data);
+    napi_create_int32(env, ret3, &result3);
+    napi_set_element(env, result, ARR_NUMBER_2, result3);
+    OH_NativeVSync_Destroy(native_vsync);
+    return result;
+}
+
+static napi_value OHNativeVSyncRequestFrameWithMultiCallbackAbNormal01(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_create_array_with_length(env, NUMBER_3, &result);
+    char name[] = "test";
+    OH_NativeVSync *native_vsync = OH_NativeVSync_Create(name, sizeof(name));
+    OH_NativeVSync_FrameCallback callback = OnVSync;
+    auto *data = new std::string("hello");
+    int ret1 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, ARR_NUMBER_0, data);
+    napi_create_int32(env, ret1, &result1);
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
+    int ret2 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, nullptr);
+    napi_create_int32(env, ret2, &result2);
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
+    int ret3 = OH_NativeVSync_RequestFrameWithMultiCallback(native_vsync, callback, ARR_NUMBER_0);
+    napi_create_int32(env, ret3, &result3);
+    napi_set_element(env, result, ARR_NUMBER_2, result3);
+    OH_NativeVSync_Destroy(native_vsync);
+    return result;
+}
+
+static napi_value vsyncInit(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        {"oHNativeVSyncRequestFrameWithMultiCallbackNormal", nullptr, OHNativeVSyncRequestFrameWithMultiCallbackNormal,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncRequestFrameWithMultiCallbackNormal01", nullptr,
+         OHNativeVSyncRequestFrameWithMultiCallbackNormal01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncRequestFrameWithMultiCallbackAbNormal", nullptr,
+         OHNativeVSyncRequestFrameWithMultiCallbackAbNormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncRequestFrameWithMultiCallbackAbNormal01", nullptr,
+         OHNativeVSyncRequestFrameWithMultiCallbackAbNormal01, nullptr, nullptr, nullptr, napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
+    vsyncInit(env, exports);
     napi_property_descriptor desc[] = {
         {"oHNativeVSyncCreate", nullptr, OHNativeVSyncCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeVSyncCreateFOne", nullptr, OHNativeVSyncCreateFOne, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -543,6 +705,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHNativeVSyncCreateForAssociatedWindowAbNormal02", nullptr, OHNativeVSyncCreateForAssociatedWindowAbNormal02,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeVSyncCreateForAssociatedWindowAbNormal03", nullptr, OHNativeVSyncCreateForAssociatedWindowAbNormal03,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncDVSyncSwitch", nullptr, OHNativeVSyncDVSyncSwitch,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncDVSyncSwitchNullptr", nullptr, OHNativeVSyncDVSyncSwitchNullptr,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

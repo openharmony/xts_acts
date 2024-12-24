@@ -357,7 +357,7 @@ describe("UsbAccessoryJsTest", function () {
             let accHandle = usbMan.openAccessory(accList[0]);
             console.info(TAG, 'testOpenAccessory002 ret : ', accHandle);
             expect(accHandle !== null).assertTrue();
-            let accFd = accHandle.accessoryHandle;
+            let accFd = accHandle.accessoryFd;
             expect(accFd > 0).assertTrue();
         } catch (err) {
             console.info(TAG, 'testOpenAccessory002 err : ', err);

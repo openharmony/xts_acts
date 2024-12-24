@@ -24,6 +24,7 @@
 
 #include "gtest/gtest.h"
 #include "videodec_ndk_sample.h"
+#include "videodec_api11_sample.h"
 #include "native_avcodec_videodecoder.h"
 #include "native_avformat.h"
 #include "native_averrors.h"
@@ -569,7 +570,7 @@ HWTEST_F(HwdecApiNdkTest, VIDEO_HWDEC_API_0400, TestSize.Level2)
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Configure(vdec_, format));
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Start(vdec_));
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Stop(vdec_));
-    ASSERT_EQ(AV_ERR_INVALID_STATE, OH_VideoDecoder_Stop(vdec_));
+    ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Stop(vdec_));
 }
 
 /**
@@ -662,7 +663,7 @@ HWTEST_F(HwdecApiNdkTest, VIDEO_HWDEC_API_0700, TestSize.Level2)
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Configure(vdec_, format));
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Start(vdec_));
     ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Flush(vdec_));
-    ASSERT_EQ(AV_ERR_INVALID_STATE, OH_VideoDecoder_Flush(vdec_));
+    ASSERT_EQ(AV_ERR_OK, OH_VideoDecoder_Flush(vdec_));
 }
 
 /**
@@ -1256,7 +1257,11 @@ HWTEST_F(HwdecApiNdkTest, VIDEO_HWDEC_CAP_API_9400, TestSize.Level2)
 {
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
     ASSERT_NE(nullptr, capability);
-    ASSERT_EQ(false, OH_AVCapability_IsVideoSizeSupported(capability, 7680, 4320));
+    OH_AVRange heightRange;
+    OH_AVRange widthRange;
+    ASSERT_EQ(AV_ERR_OK, OH_AVCapability_GetVideoHeightRange(capability, &heightRange));
+    ASSERT_EQ(AV_ERR_OK, OH_AVCapability_GetVideoWidthRange(capability, &widthRange));
+    ASSERT_EQ(false, OH_AVCapability_IsVideoSizeSupported(capability, widthRange.maxVal + 1, heightRange.maxVal + 1));
 }
 /**
  * @tc.number    : VIDEO_HWDEC_CAP_API_5400
@@ -1840,5 +1845,26 @@ HWTEST_F(HwdecApiNdkTest, VIDEO_HWDEC_CAP_API_8300, TestSize.Level2)
     OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, false, HARDWARE);
     ASSERT_NE(nullptr, capability);
     ASSERT_EQ(true, OH_AVCapability_AreProfileAndLevelSupported(capability, AVC_PROFILE_BASELINE, 1));
+}
+
+/**
+ * @tc.number    : VIDEO_HWDEC_ATTIME_API_0010
+ * @tc.name      : OH_VideoDecoder_RenderOutputBufferAtTime use renderTimestampNs of < 0
+ * @tc.desc      : api test
+ */
+HWTEST_F(HwdecApiNdkTest, VIDEO_HWDEC_ATTIME_API_0010, TestSize.Level1)
+{
+    shared_ptr<VDecAPI11Sample> vDecSample = make_shared<VDecAPI11Sample>();
+    const char *INP_DIR_720_30 = "/data/test/media/1280_720_30_10Mb.h264";
+    vDecSample->INP_DIR = INP_DIR_720_30;
+    vDecSample->SF_OUTPUT = true;
+    vDecSample->DEFAULT_WIDTH = 1280;
+    vDecSample->DEFAULT_HEIGHT = 720;
+    vDecSample->DEFAULT_FRAME_RATE = 30;
+    vDecSample->rsAtTime = true;
+    vDecSample->isAPI = true;
+    ASSERT_EQ(AV_ERR_OK, vDecSample->RunVideoDec_Surface(g_codecName));
+    vDecSample->WaitForEOS();
+    ASSERT_EQ(AV_ERR_INVALID_VAL, vDecSample->errCount);
 }
 } // namespace

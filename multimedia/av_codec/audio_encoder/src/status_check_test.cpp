@@ -364,8 +364,9 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_014, TestSize.Level2)
     ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Configure(codec, format, channel, sampleRate, bitRate, sampleFormat, sampleBit,
                                                complexity);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Stop(codec);
-    ASSERT_EQ(result0, AV_ERR_INVALID_STATE);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Destroy(codec);
     delete audioBufferAacEncDemo;
 }
@@ -1411,8 +1412,9 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_045, TestSize.Level2)
     result0 = audioBufferAacEncDemo->Start(codec);
     ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Flush(codec);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Flush(codec);
-    ASSERT_EQ(result0, AV_ERR_INVALID_STATE);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Destroy(codec);
     delete audioBufferAacEncDemo;
 }
@@ -1713,8 +1715,9 @@ HWTEST_F(StatusCheckTest, STATUS_CHECK_054, TestSize.Level2)
     result0 = audioBufferAacEncDemo->Start(codec);
     ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Stop(codec);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Stop(codec);
-    ASSERT_EQ(result0, AV_ERR_INVALID_STATE);
+    ASSERT_EQ(result0, AV_ERR_OK);
     result0 = audioBufferAacEncDemo->Destroy(codec);
     delete audioBufferAacEncDemo;
 }

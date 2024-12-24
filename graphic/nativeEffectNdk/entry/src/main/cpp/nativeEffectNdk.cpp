@@ -22,6 +22,7 @@
 
 #define SUCCESS 0
 #define FAIL (-1)
+#define DOUBLE_NUM_05 0.5
 
 static void CreatePixelMap(OH_PixelmapNative*** pixelmap)
 {
@@ -356,6 +357,26 @@ static napi_value OHFilterRelease001(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value OHFilterBlurWithTileMode001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_PixelmapNative *pixmap = nullptr;
+    /** pixmap is necessary, otherwize can not create pixelmap*/
+    OH_PixelmapNative **pixMap = &pixmap;
+    CreatePixelMap(&pixMap);
+    OH_Filter *filter = nullptr;
+    if ((OH_Filter_CreateEffect(*pixMap, &filter) == EFFECT_SUCCESS) &&
+        (OH_Filter_BlurWithTileMode(filter, 0.5f, CLAMP) == EFFECT_SUCCESS) &&
+        (OH_Filter_BlurWithTileMode(nullptr, DOUBLE_NUM_05, CLAMP) == EFFECT_BAD_PARAMETER) &&
+        (OH_Filter_Release(filter) == EFFECT_SUCCESS)) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_PixelmapNative_Release(*pixMap);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -389,6 +410,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHFilterRelease", nullptr, OHFilterRelease, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"oHFilterRelease001", nullptr, OHFilterRelease001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHFilterBlurWithTileMode001", nullptr, OHFilterBlurWithTileMode001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

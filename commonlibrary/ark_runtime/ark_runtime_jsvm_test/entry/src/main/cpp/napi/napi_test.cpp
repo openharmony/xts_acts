@@ -10637,6 +10637,83 @@ static napi_value RunJsVm(napi_env nEnv, napi_callback_info nInfo)
   return result;
 }
 
+[[maybe_unused]] static napi_value TraceTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trace.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value SetMicrotaskPolicy(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_microtask_policy.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value PromiseRegisterHandler(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_promise.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value ProxyTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_proxy.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value WrapperObjectTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_wrapper_object.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value WellKnownSymbolsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_well_known_symbols.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value DefineClassWithOptionsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_define_class_with_options.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value TriggerExceptionsTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trigger_exceptions.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value TriggerGCTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_trigger_gc.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value PrivateTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_private.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
+[[maybe_unused]] static napi_value ExternalStringTest(napi_env env, napi_callback_info info) {
+  (void)RunTestsWithPrefix("test_external_string.cpp");
+  napi_value result;
+  napi_create_int32(env, 0, &result);
+  return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -10700,6 +10777,17 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testArrayBuffer2", testArrayBuffer2),
         DECLARE_NAPI_FUNCTION("testArrayBuffer3", testArrayBuffer3),
         DECLARE_NAPI_FUNCTION("testWasmOperator", testWasmOperator),
+        DECLARE_NAPI_FUNCTION("wrapperObjectTest", WrapperObjectTest),
+        DECLARE_NAPI_FUNCTION("wellKnownSymbolsTest", WellKnownSymbolsTest),
+        DECLARE_NAPI_FUNCTION("traceTest", TraceTest),
+        DECLARE_NAPI_FUNCTION("defineClassWithOptionsTest", DefineClassWithOptionsTest),
+        DECLARE_NAPI_FUNCTION("triggerExceptionsTest", TriggerExceptionsTest),
+        DECLARE_NAPI_FUNCTION("triggerGCTest", TriggerGCTest),
+        DECLARE_NAPI_FUNCTION("SetMicrotaskPolicy", SetMicrotaskPolicy),
+        DECLARE_NAPI_FUNCTION("PromiseRegisterHandler", PromiseRegisterHandler),
+        DECLARE_NAPI_FUNCTION("ProxyTest", ProxyTest),
+        DECLARE_NAPI_FUNCTION("privateTest", PrivateTest),
+        DECLARE_NAPI_FUNCTION("externalStringTest", ExternalStringTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

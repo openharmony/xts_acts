@@ -7,6 +7,14 @@
     "MainAbility/pages/RichEditor/onHover",
     "MainAbility/pages/Search/autoDisable",
     "MainAbility/pages/imageSpan/imageSpan",
-    "MainAbility/pages/MovingPhotoView/MovingPhotoView"
+    "MainAbility/pages/MovingPhotoView/MovingPhotoView",
+    "MainAbility/pages/onSubmit/onSubmitTest",
+    "MainAbility/pages/styledString/StyledStringURL",
+    "MainAbility/pages/Text/textCaretColor",
+    "MainAbility/pages/RichEditor/getRectsForRange",
+    "MainAbility/pages/Marquee/marqueeFrame",
+    "MainAbility/pages/Marquee/marqueeNode",
+    "MainAbility/pages/TextArea/textAreaNode",
+    "MainAbility/pages/SymbolGlyph/SymbolGlyphNode"
   ]
 }

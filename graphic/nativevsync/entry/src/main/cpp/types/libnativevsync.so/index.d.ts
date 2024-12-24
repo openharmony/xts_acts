@@ -33,5 +33,11 @@ export const oHNativeVSyncCreateForAssociatedWindowNormal: () => number;
 export const oHNativeVSyncCreateForAssociatedWindowAbNormal01: () => Array<number>;
 export const oHNativeVSyncCreateForAssociatedWindowAbNormal02: () => Array<number>;
 export const oHNativeVSyncCreateForAssociatedWindowAbNormal03: () => number;
+export const oHNativeVSyncDVSyncSwitch: () => number;
+export const oHNativeVSyncDVSyncSwitchNullptr: () => number;
+export const oHNativeVSyncRequestFrameWithMultiCallbackNormal: () => Array<number>;
+export const oHNativeVSyncRequestFrameWithMultiCallbackNormal01: () => Array<number>;
+export const oHNativeVSyncRequestFrameWithMultiCallbackAbNormal: () => Array<number>;
+export const oHNativeVSyncRequestFrameWithMultiCallbackAbNormal01: () => Array<number>;
 //
 

@@ -34,6 +34,9 @@ public:
     static napi_value CreatePinchNativeNode(napi_env env, napi_callback_info info);
     static napi_value CreateRotateNativeNode(napi_env env, napi_callback_info info);
     static napi_value CreateInterruptNativeNode(napi_env env, napi_callback_info info);
+    static napi_value CreateSwipeAxisNativeNode(napi_env env, napi_callback_info info);
+    static napi_value GetGestureDataAxis(napi_env env, napi_callback_info info);
+    static std::vector<double> AxisDataValue;
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_DEMO_GUESTURE_TEST_H

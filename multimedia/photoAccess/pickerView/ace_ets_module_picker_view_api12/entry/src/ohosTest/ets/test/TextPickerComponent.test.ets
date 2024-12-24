@@ -1104,15 +1104,44 @@ export default function TextPicker() {
       done();
     });
 
-    /* *
+        /* *
        * @tc.number    : testPicker23
        * @tc.name      : testPicker23
-       * @tc.desc      : Testing PhotoPickerComponent grid margin and browser margin
+       * @tc.desc      : Testing requestPhotoUrisReadPermission
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level0
        */
     it('testPicker23', 0, async (done: Function) => {
+      let uris = ['file://media/photo/test.jpg'];
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
+      try {
+        phAccessHelper.requestPhotoUrisReadPermission(uris).then((result: Array<string>) => {
+          console.info("requestPhotoUrisReadPermission, result = " + JSON.stringify(result));
+          if (result) {
+            expect(true).assertTrue();
+          } else {
+            console.error("testPicker23 empty result");
+            expect(false).assertTrue();
+          }
+        })
+      } catch(error) {
+        console.error("testPicer23 error: " + JSON.stringify(error));
+        expect(false).assertTrue();
+      }
+      console.info("testPicer23 finish");
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker24
+       * @tc.name      : testPicker24
+       * @tc.desc      : Testing PhotoPickerComponent grid margin and browser margin
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker24', 0, async (done: Function) => {
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       // 支持传入宫格和大图Margin
@@ -1127,10 +1156,10 @@ export default function TextPicker() {
       }
       await routeToUrl(options);
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
-      console.info("testPicker23 JSON.parse(strJson) is" + strJson);
+      console.info("testPicker24 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       router.back();
-      console.info("testPicker23 finish");
+      console.info("testPicker24 finish");
       done();
     });
   })

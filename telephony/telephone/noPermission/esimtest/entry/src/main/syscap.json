@@ -1,0 +1,14 @@
+{
+  "devices": {
+    "general": [
+      "wearable",
+      "default",
+      "tablet"
+    ]
+  },
+  "development": {
+    "addedSysCaps": [
+      "SystemCapability.Telephony.CoreService.Esim"
+    ]
+  }
+}
