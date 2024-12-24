@@ -16,9 +16,11 @@
 import certManagerPriCertJsAPIFunctionTestUnit from './priCertFunc.test';
 import certManagerPubCertJsAPIFunctionTestUnit from './pubCertFunc.test';
 import userCertJsAPIFunctionTestUnit from './userCertFunc.test';
+import api16CertFuncTestUnit from './api16CertFunc.test';
 
 export default function testsuite() {
   certManagerPubCertJsAPIFunctionTestUnit();
   certManagerPriCertJsAPIFunctionTestUnit();
   userCertJsAPIFunctionTestUnit();
+  api16CertFuncTestUnit();
 }
