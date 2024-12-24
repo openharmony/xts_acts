@@ -19,6 +19,9 @@ import { GlobalThis } from './Constants';
 
 const TAG = "CameraXts CameraInputTest: ";
 
+let camera: cameraObj.cameraInfo;
+let mCameraSession: number;
+
 async function getCameraManagerInstance() {
   let ret = cameraObj.initCamera(GlobalThis.getInstance().getValue());
   if (ret) {
@@ -29,10 +32,25 @@ async function getCameraManagerInstance() {
   return true;
 }
 
+function isEmpty(data: cameraObj.cameraInfo | number) {
+  if (data == null || data == undefined) {
+    return true;
+  }
+  return false;
+}
+
 function getCameraSupportDevicesArray() {
-  console.info('Enter getCameraSupportDevicesArray');
-  cameraObj.getSupportedCameras();
-  console.info('Exit getCameraSupportDevicesArray');
+  console.info(TAG + 'Enter getCameraSupportDevicesArray');
+  camera = cameraObj.getSupportedCameras();
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraPosition);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.connectionType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraId);
+  if (isEmpty(camera)) {
+    console.info(TAG + "getSupportedCameras FAILED");
+    expect().assertFail();
+  }
+  console.info(TAG + 'Exit getCameraSupportDevicesArray');
   return true;
 }
 
