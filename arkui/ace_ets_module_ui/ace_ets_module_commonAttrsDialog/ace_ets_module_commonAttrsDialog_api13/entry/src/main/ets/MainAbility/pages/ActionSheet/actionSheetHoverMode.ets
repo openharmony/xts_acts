@@ -19,7 +19,7 @@ struct actionSheetHoverMode {
   @State hoverModeArea: HoverModeAreaType = HoverModeAreaType.TOP_SCREEN
 
   build() {
-    Column() {
+    Column({space: 20}) {
       Button('change enableHoverMode ' + this.enableHoverMode)
         .id('btn1')
         .onClick(() => {

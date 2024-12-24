@@ -100,8 +100,8 @@ export default function textPickerDialogHoverMode(){
         let btn2 = await driver.findComponent(ON.id('btn2'));
         await btn2.click()
         await CommonFunc.sleep(1000);
-        await driver.findComponent(ON.id('textPickerDialog'))
-        await btn2.click()
+        let btn3 = await driver.findComponent(ON.id('textPickerDialog'))
+        await btn3.click()
         await CommonFunc.sleep(1000);
         let btn4 = await driver.findComponent(ON.text('确定'))
         let rect = await btn4.getBounds()

@@ -14,7 +14,7 @@
  */
 @Entry
 @Component
-struct textPickerDialogHoverMode {
+struct TextPickerDialogHoverMode {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   @State v: string = '';

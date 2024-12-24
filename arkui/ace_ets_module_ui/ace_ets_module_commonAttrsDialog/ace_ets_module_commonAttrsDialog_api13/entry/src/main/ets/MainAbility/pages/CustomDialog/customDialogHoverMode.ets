@@ -53,39 +53,15 @@ struct CustomDialogExample {
 
 @Entry
 @Component
-struct customDialogHoverMode {
+struct CustomDialogHoverMode {
   @State enableHoverMode: boolean = false
   @State hoverModeArea: HoverModeAreaType = HoverModeAreaType.TOP_SCREEN
   @State textValue: string = '';
   @State inputValue: string = 'click me';
-  dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-      textValue: $textValue,
-      inputValue: $inputValue
-    }),
-    cancel: this.exitApp,
-    autoCancel: true,
-    onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-      console.info('reason=' + JSON.stringify(dismissDialogAction.reason));
-      console.log('dialog onWillDismiss');
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-        dismissDialogAction.dismiss();
-      }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-        dismissDialogAction.dismiss();
-      }
-    },
-    alignment: DialogAlignment.Bottom,
-    offset: { dx: 0, dy: -20 },
-    gridCount: 4,
-    customStyle: false,
-    cornerRadius: 10,
-    enableHoverMode: this.enableHoverMode,
-    hoverModeArea: this.hoverModeArea
-  })
+  dialogController: CustomDialogController | null = null
 
   aboutToDisappear() {
-    this.dialogController = null; 
+    this.dialogController = null;
   }
 
   exitApp() {
@@ -104,13 +80,39 @@ struct customDialogHoverMode {
         .onClick(() => {
           this.hoverModeArea = HoverModeAreaType.BOTTOM_SCREEN
         })
-      Button(this.inputValue)
+      Button('customDialog')
         .id('customDialog')
         .onClick(() => {
+          this.dialogController = new CustomDialogController({
+            builder: CustomDialogExample({
+              textValue: $textValue,
+              inputValue: $inputValue
+            }),
+            cancel: this.exitApp,
+            autoCancel: true,
+            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+              console.info('reason=' + JSON.stringify(dismissDialogAction.reason));
+              console.log('dialog onWillDismiss');
+              if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                dismissDialogAction.dismiss();
+              }
+              if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                dismissDialogAction.dismiss();
+              }
+            },
+            offset: { dx: 0, dy: -20 },
+            gridCount: 4,
+            customStyle: false,
+            cornerRadius: 10,
+            enableHoverMode: this.enableHoverMode,
+            hoverModeArea: this.hoverModeArea
+          })
+
           if (this.dialogController != null) {
             this.dialogController.open();
           }
         })
+
     }
     .id('col')
     .height('100%')

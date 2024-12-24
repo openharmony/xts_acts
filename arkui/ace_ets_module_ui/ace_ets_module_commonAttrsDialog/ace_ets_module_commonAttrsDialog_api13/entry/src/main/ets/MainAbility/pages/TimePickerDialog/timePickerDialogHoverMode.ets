@@ -22,14 +22,17 @@ struct timePickerDialogHoverMode {
   build() {
     Column({ space: 20 }) {
       Button('change enableHoverMode ' + this.enableHoverMode)
+        .id('btn1')
         .onClick(() => {
           this.enableHoverMode = true
         })
       Button('change hoverModeArea ' + this.hoverModeArea)
+        .id('btn2')
         .onClick(() => {
           this.hoverModeArea = HoverModeAreaType.BOTTOM_SCREEN
         })
       Button('TimePickerDialog 12小时制')
+        .id('timePickerDialog')
         .margin(20)
         .onClick(() => {
           TimePickerDialog.show({

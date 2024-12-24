@@ -100,8 +100,8 @@ export default function alertDialogHoverMode(){
         let btn2 = await driver.findComponent(ON.id('btn2'));
         await btn2.click()
         await CommonFunc.sleep(1000);
-        await driver.findComponent(ON.id('alertDialog'))
-        await btn2.click()
+        let btn3 = await driver.findComponent(ON.id('alertDialog'))
+        await btn3.click()
         await CommonFunc.sleep(1000);
         let btn4 = await driver.findComponent(ON.text('button'))
         let rect = await btn4.getBounds()

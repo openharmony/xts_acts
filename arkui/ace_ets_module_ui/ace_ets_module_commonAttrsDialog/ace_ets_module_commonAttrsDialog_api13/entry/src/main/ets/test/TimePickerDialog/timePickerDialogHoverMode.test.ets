@@ -100,8 +100,8 @@ export default function timePickerDialogHoverMode(){
         let btn2 = await driver.findComponent(ON.id('btn2'));
         await btn2.click()
         await CommonFunc.sleep(1000);
-        await driver.findComponent(ON.id('timePickerDialog'))
-        await btn2.click()
+        let btn3 = await driver.findComponent(ON.id('timePickerDialog'))
+        await btn3.click()
         await CommonFunc.sleep(1000);
         let btn4 = await driver.findComponent(ON.text('确定'))
         let rect = await btn4.getBounds()
