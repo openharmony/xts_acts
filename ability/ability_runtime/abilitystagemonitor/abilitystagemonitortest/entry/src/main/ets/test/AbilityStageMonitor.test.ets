@@ -55,19 +55,16 @@ export default function abilityStageMonitorTest() {
      */
     it('SUB_AA_AbilityStageMonitor_0100', 0, async (done: Function) => {
       console.info("SUB_AA_AbilityStage_0100 begin")
-
-      monitor = {
-        moduleName: "feature_assista",
-        srcEntrance: "./ets/Application/MyAbilityStage.ts",
-      }
-
       try {
-        console.info("SUB_AA_AbilityStage_0100 wait abilityStage");
-        abilityDelegator.waitAbilityStageMonitor(monitor, (err, data) => {
+        let stage: AbilityDelegatorRegistry.AbilityStageMonitor= {
+          moduleName: "feature_assista",
+          srcEntrance: "./ets/Application/MyAbilityStage.ts",
+        }
+        abilityDelegator.waitAbilityStageMonitor(stage, (err, data) => {
           console.log("SUB_AA_AbilityStage_0100 waitAbilityStageMonitor callback " +
             "err = " + err + ", data = " + JSON.stringify(data));
           moduleName1 = data.context.currentHapModuleInfo.name;
-          expect(moduleName1).assertEqual(monitor.moduleName)
+          expect(moduleName1).assertEqual("feature_assista")
           done();
         });
       } catch (error) {
