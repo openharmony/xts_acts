@@ -15,8 +15,8 @@ group("WebMultimedia") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "audio_play:ActsAudioPlayTest",
-      "control_center:ActsControlCenterTest"
+      "audio_play:AudioPlayTest",
+      "control_center:ControlCenterTest",
     ]
   }
 }
