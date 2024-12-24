@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
+import { BusinessError } from '@ohos.base';
 import installer from '@ohos.bundle.installer';
 import adminManager from '@ohos.enterprise.adminManager'
 import bundleManager from '@ohos.enterprise.bundleManager'
 import securityManager from '@ohos.enterprise.securityManager'
+import image from '@ohos.multimedia.image';
 
 const BUNDLENAME1: string = "com.example.extensionzerotest"
 const WANT1 = {
@@ -51,6 +53,8 @@ const COMPANYNAME2 = "company2"
 const DESCRIPTION2 = "edm demo2"
 const NOT_EXIST_BUNDLE = "bundle.not.exist"
 const PARAM_EDM_MIC_DISABLE = "persist.edm.mic_disable";
+
+const TEST_BUNDLENAME: string = "com.test.bundlename";
 
 const ENTINFO2 = {
   name: "company2",
@@ -133,11 +137,28 @@ function appIdsInit(){
 const INVALID_UPDATE_VERSION: string = "version1.0";
 const UPDATE_VERSION: string = "1.0";
 
+function getPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(96);
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+  image.createPixelMap(color, opts, (error: BusinessError, pixelMap: image.PixelMap) => {
+    if(error) {
+      console.error('Failed to create pixelmap.');
+      return;
+    } else {
+      PIXEL_MAP = pixelMap;
+    }
+  })
+}
+
+let PIXEL_MAP: image.PixelMap;
+const WATERMARK_BUNDLE_NAME = "testBundleName";
+
 export {
   BUNDLENAME1, WANT1, ENTINFO1, SELFWANT, AUTOSTARTAPP1, AUTOSTARTAPP2, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2,
   ENTINFO2, NETWORK_ETH_LOCAL, NETWORK_ETH_INVALID, DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID,
   SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS, HAP_FILE_PATH, HAP_FILE_PATH_ERROR, EMPTY_HAP_FILE_PATH,
   isMultipleUserEnabled, SetIsMultipleUserEnabled, SetTestUserId, appIdsInit, EDM_INSTALL_PARAM, APP_IDS_1,
   APP_IDS_200, APP_IDS_201, TEST_APP_ID_1, TEST_APP_ID_2, TEST_POLICIES, TEST_POLICY_NAME, TEST_POLICY_VALUE,
-  INVALID_WANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY, UPDATE_VERSION, INVALID_UPDATE_VERSION
+  INVALID_WANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY, UPDATE_VERSION, INVALID_UPDATE_VERSION, getPixelMap,
+  PIXEL_MAP, WATERMARK_BUNDLE_NAME, TEST_BUNDLENAME
 }
