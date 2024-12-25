@@ -3129,6 +3129,68 @@ describe('threadWorkerTest', function () {
         done();
     })
 
+    // Multi-level worker termination test.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0013
+     * @tc.name: threadWorker_multi_level_test_001
+     * @tc.desc: Multi-level worker life cycle
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_multi_level_test_001', 0, async function (done) {
+        let parentworker = new worker.ThreadWorker("entry_test/ets/workers/parentworker.ets");
+        let res = "";
+        let isTerminate = false;
+
+        parentworker.onmessage = function (d) {
+            res = d.data;
+            parentworker.terminate();
+        }
+        parentworker.onexit = function () {
+            isTerminate = true;
+        }
+        parentworker.onerror = function (err) {
+            console.log("parentworker onerror is: " + err);
+        }
+        parentworker.postMessage(1);
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        done();
+    })
+
+    // Multi-level worker termination test.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0014
+     * @tc.name: threadWorker_multi_level_test_002
+     * @tc.desc: Multi-level worker life cycle
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_multi_level_test_002', 0, async function (done) {
+        let parentworker = new worker.ThreadWorker("entry_test/ets/workers/parentworker1.ets");
+        let res = "";
+        let isTerminate = false;
+
+        parentworker.onmessage = function (d) {
+            res = d.data;
+            parentworker.terminate();
+        }
+        parentworker.onexit = function () {
+            isTerminate = true;
+        }
+        parentworker.onerror = function (err) {
+            console.log("parentworker onerror is: " + err);
+        }
+        parentworker.postMessage(1);
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        done();
+    })
+
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0009
      * @tc.name: threadWorker_finally_test_001
