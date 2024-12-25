@@ -23,6 +23,7 @@ import { webview } from '@kit.ArkWeb';
 struct WebComponent {
   @State str: string = "getDefaultUserAgent01";
   @State defaultUserAgent:string = ''
+  controller: webview.WebviewController = new webview.WebviewController();
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
@@ -42,7 +43,7 @@ struct WebComponent {
     Column() {
       Row() {
         Text('' + this.defaultUserAgent)
-      }
+      }.margin({top: 20})
       Row() {
 
         Button("web test").key('getDefaultUserAgentTest01').onClick(async () => {
@@ -63,15 +64,13 @@ struct WebComponent {
             }
           }
         })
-      }
+      }.margin({top: 20})
       Button('getDefaultUserAgent')
         .onClick(() => {
           let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();
           this.defaultUserAgent = defaultUserAgent;
-        }).key('getDefaultUserAgentButton')
+        }).key('getDefaultUserAgentButton').margin({top: 20})
 
-
-
-    }
+    }.width('100%')
   }
 }
