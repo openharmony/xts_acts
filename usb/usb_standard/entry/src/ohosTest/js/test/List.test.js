@@ -20,6 +20,7 @@ import UsbCoreJsFunctionsTestEx from './UsbCoreJsunitEx.test.js'
 import UsbApiParamErrJsunitTest from './UsbApiParamErrJsunit.test'
 import UsbApiParamExceJsunitTest from './UsbApiParamExceJsunit.test'
 import UsbApiTransferCompatJsunitTest from './UsbApiTransferCompatJsunitTest.test'
+import UsbAccessoryJsTest from './UsbAccessoryJsunit.test.js'
 
 /* host test case */
 export default function testsuite() {
@@ -30,4 +31,5 @@ UsbDevicePipeJsFunctionsTestEx()
 UsbApiParamExceJsunitTest()
 UsbApiTransferCompatJsunitTest()
 UsbApiParamErrJsunitTest()
+UsbAccessoryJsTest()
 }
