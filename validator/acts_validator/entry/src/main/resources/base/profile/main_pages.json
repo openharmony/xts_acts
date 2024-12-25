@@ -25,6 +25,8 @@
     "pages/ArkUI/CanvasGlobalAlpha",
     "pages/ArkUI/CanvasLineDashOffset",
     "pages/ArkUI/CanvasShadowOffsetY",
+	"pages/ArkUI/chipTest",
+    "pages/ArkUI/chipGroupTest",
     "pages/ArkUI/DatePickerDialog",
     "pages/ArkUI/Marquee",
     "pages/ArkUI/PatternLock",
