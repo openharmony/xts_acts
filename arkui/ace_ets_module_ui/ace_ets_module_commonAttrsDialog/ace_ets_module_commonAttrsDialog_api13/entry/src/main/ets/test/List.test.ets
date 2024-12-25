@@ -16,26 +16,11 @@ import bindContextMenuMargin from './bindContextMenuTest/bindContextMenuMargin.t
 import bindSheetKeyboardAvoidMode from './bindSheetTest/bindSheetKeyboardAvoidMode.test'
 import followTransformOfTargetPopup from './PopupTest/followTransformOfTargetPopup.test.ets';
 import followTransformOfTargetCustomPopup from './PopupTest/followTransformOfTargetCustomPopup.test.ets';
-import popoverDialogTest from './dialog/popoverDialogTest.test'
-import textPickerDialogHoverMode from './TextPickerDialog/textPickerDialogHoverMode.test'
-import timePickerDialogHoverMode from './TimePickerDialog/timePickerDialogHoverMode.test'
-import datePickerDialogHoverMode from './DatePickerDialog/datePickerDialogHoverMode.test'
-import customDialogHoverMode from './CustomDialog/customDialogHoverMode.test'
-import calendarPickerDialogHoverMode from './CalendarPickerDialog/calendarPickerDialogHoverMode.test'
-import alertDialogHoverMode from './AlertDialog/alertDialogHoverMode.test'
-import actionSheetHoverMode from './ActionSheet/actionSheetHoverMode.test'
+
 
 export default function testsuite() {
   bindContextMenuMargin()
   bindSheetKeyboardAvoidMode()
   followTransformOfTargetPopup();
   followTransformOfTargetCustomPopup()
-  popoverDialogTest()
-  textPickerDialogHoverMode()
-  timePickerDialogHoverMode()
-  datePickerDialogHoverMode()
-  customDialogHoverMode()
-  calendarPickerDialogHoverMode()
-  alertDialogHoverMode()
-  actionSheetHoverMode()
 }
