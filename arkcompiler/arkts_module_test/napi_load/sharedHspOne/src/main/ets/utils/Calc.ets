@@ -12,12 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import { expect } from '@ohos/hypium';
 import testNapi from 'libentry.so';
 
 'use shared'
 
-testNapi.loadModuleWithInfo('sharedHarOne', 'com.acts.arktsnapiloadtest/entry_test')
+interface TestModule {
+  value?: number
+  test?: (a: number, b: number) => number
+  add?: (a: number, b: number) => number
+}
+
+const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne", "com.acts.arktsnapiloadtest/entry_test")
+expect(sharedHarOne.value).assertEqual(1);
 
 export let value: number = 1
 
