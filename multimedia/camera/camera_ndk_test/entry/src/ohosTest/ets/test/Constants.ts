@@ -123,3 +123,8 @@ export class Torch_Mode {
   static readonly ON = 1;
   static readonly AUTO = 2;
 }
+
+export class Camera_QualityPrioritization {
+  static readonly HIGH_QUALITY = 0;
+  static readonly POWER_BALANCE = 1;
+}

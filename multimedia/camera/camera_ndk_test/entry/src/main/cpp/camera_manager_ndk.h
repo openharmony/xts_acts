@@ -220,6 +220,7 @@ public:
     Camera_ErrorCode SessionIsVideoStabilizationModeSupported(uint32_t mode);
     Camera_ErrorCode SessionGetVideoStabilizationMode(void);
     Camera_ErrorCode SessionSetVideoStabilizationMode(uint32_t mode);
+    Camera_ErrorCode SessionSetQualityPrioritization(uint32_t quality);
 
     // RegisterCallback
     Camera_ErrorCode CameraManagerRegisterCallback(void);

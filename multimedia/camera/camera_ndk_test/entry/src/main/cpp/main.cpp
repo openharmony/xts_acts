@@ -911,6 +911,21 @@ static napi_value SessionSetVideoStabilizationMode(napi_env env, napi_callback_i
     return result;
 }
 
+static napi_value SessionSetQualityPrioritization(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int32_t quality;
+    napi_get_value_int32(env, args[0], &quality);
+    Camera_ErrorCode ret = ndkCamera_->SessionSetQualityPrioritization(quality);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
 static napi_value GetCameraCallbackCode(napi_env env, napi_callback_info info)
 {
     napi_value result;
@@ -2520,6 +2535,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "sessionGetVideoStabilizationMode", nullptr, SessionGetVideoStabilizationMode, nullptr, nullptr, nullptr,
             napi_default, nullptr },
         { "sessionSetVideoStabilizationMode", nullptr, SessionSetVideoStabilizationMode, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "sessionSetQualityPrioritization", nullptr, SessionSetQualityPrioritization, nullptr, nullptr, nullptr,
             napi_default, nullptr },
         { "getCameraCallbackCode", nullptr, GetCameraCallbackCode, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "takePictureWithSettings", nullptr, TakePictureWithSettings, nullptr, nullptr, nullptr,
