@@ -33,6 +33,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
 
     return button;
 }
+ 
 
 static void OnEventReceive(ArkUI_NodeEvent *event)
 {
@@ -42,14 +43,18 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         return;
     }
     auto get_ArkuI_UIInputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-
     auto stopPropagation_value = false;
-
     OH_ArkUI_KeyEvent_StopPropagation(get_ArkuI_UIInputEvent, stopPropagation_value);
-
+    
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+    
+    ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+    ArkUI_AttributeItem background_color_item = {background_color_value,
+                                                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+    
 }
 
 napi_value KeyEventStopPropagationTest::KeyEventStopPropagationTest_001(napi_env env, napi_callback_info info)

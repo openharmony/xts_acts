@@ -175,9 +175,11 @@ class Logger {
 export default function packPictureNdkTest() {
   describe('packPictureNdkTest', () => {
     let isSupportHdr: boolean = false;
+    let isSupportHeifEncode: boolean = false;
     beforeAll(() => {
       isSupportHdr = !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
         display.getDefaultDisplaySync().hdrFormats.length != 0;
+      isSupportHeifEncode = image.createImagePacker().supportedFormats.includes("image/heif");
       let propertyKeys: Array<string> = Object.values(image.PropertyKey).filter(item =>
         item != "JPEGInterchangeFormat" && item != "JPEGInterchangeFormatLength");
       hilog.info(domain, testTag, "beforeAll: propertyKeys: " + propertyKeys);
@@ -2355,8 +2357,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2381,8 +2387,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2407,8 +2417,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0300', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2433,8 +2447,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0400', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2459,8 +2477,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0500', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2485,8 +2507,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0600', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2511,8 +2537,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0700', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2537,8 +2567,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0800', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2563,8 +2597,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_0900', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2587,8 +2625,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1000', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2611,8 +2653,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2635,8 +2681,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKMAINPICTURE_HEIF_1200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2659,8 +2709,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2685,8 +2739,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2711,8 +2769,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0300', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2737,8 +2799,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0400', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2763,8 +2829,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0500', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2789,8 +2859,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0600', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2815,8 +2889,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0700', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2841,8 +2919,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0800', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2867,8 +2949,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_0900', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2891,8 +2977,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1000', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2915,8 +3005,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2939,8 +3033,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKGAINMAP_HEIF_1200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2963,8 +3061,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2989,8 +3091,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3015,8 +3121,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0300', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3041,8 +3151,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0400', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3067,8 +3181,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0500', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3093,8 +3211,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0600', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3119,8 +3241,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0700', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3145,8 +3271,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0800', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3171,8 +3301,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_0900', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3195,8 +3329,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1000', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3219,8 +3357,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3243,8 +3385,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKUNREFOCUS_HEIF_1200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3267,8 +3413,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3293,8 +3443,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3319,8 +3473,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0300', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3345,8 +3503,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0400', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3371,8 +3533,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0500', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3397,8 +3563,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0600', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3423,8 +3593,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0700', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3449,8 +3623,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0800', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3475,8 +3653,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_0900', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3499,8 +3681,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1000', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3523,8 +3709,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3547,8 +3737,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKDEPTH_HEIF_1200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3571,8 +3765,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3597,8 +3795,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3623,8 +3825,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0300', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3649,8 +3855,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0400', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3675,8 +3885,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0500', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3701,8 +3915,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0600', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3727,8 +3945,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0700', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3753,8 +3975,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0800', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3779,8 +4005,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_0900', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3803,8 +4033,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1000', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3827,8 +4061,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3851,8 +4089,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKLINEAR_HEIF_1200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3875,8 +4117,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3901,8 +4147,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3927,8 +4177,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0300', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3953,8 +4207,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0400', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3979,8 +4237,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0500', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -4005,8 +4267,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0600', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -4031,8 +4297,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0700', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -4057,8 +4327,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0800', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -4083,8 +4357,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_0900', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -4107,8 +4385,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1000', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -4131,8 +4413,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1100', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -4155,8 +4441,12 @@ export default function packPictureNdkTest() {
      * @tc.level     : Level 1
      */
      it('SUB_MULTIMEDIA_PICTURE_NATIVE_PACKFRAGMENT_HEIF_1200', 0, async (done: Function) => {
-      if (!isSupportHdr) {
-        hilog.info(domain, testTag, 'device is not support hdr');
+      if (!(isSupportHdr && isSupportHeifEncode)) {
+        if (!isSupportHdr) {
+          hilog.info(domain, testTag, 'device is not support hdr');
+        } else if (!isSupportHeifEncode) {
+          hilog.info(domain, testTag, 'device is not support hief decode');
+        }
         expect(true).assertTrue();
         done();
       } else {

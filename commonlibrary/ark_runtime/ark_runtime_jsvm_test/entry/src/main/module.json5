@@ -44,10 +44,20 @@
             ],
             "actions": [
               "action.system.home"
-            ]
+            ],
           }
         ]
       }
-    ]
+    ],
+    "requestPermissions": [{
+      "name": "ohos.permission.INTERNET",
+      "reason": "$string:app_name",
+      "usedScene": {
+        "abilities": [
+          "FromAbility"
+        ],
+        "when": "inuse"
+      }
+    }]
   }
 }

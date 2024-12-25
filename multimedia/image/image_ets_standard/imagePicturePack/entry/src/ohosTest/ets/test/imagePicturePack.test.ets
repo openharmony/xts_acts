@@ -37,6 +37,7 @@ export default function imagePicturePack() {
   let cacheDir: string|undefined;
   let testContext: common.UIAbilityContext;
   let isSupportHEIFDecode: boolean;
+  let isSupportHEIFEncode: boolean;
   let isSupportHdr: Boolean;
   const GAINMAP = image.AuxiliaryPictureType.GAINMAP;
   const DEPTH_MAP = image.AuxiliaryPictureType.DEPTH_MAP;
@@ -53,6 +54,8 @@ export default function imagePicturePack() {
       cacheDir = AppStorage.get('cacheDir');
       isSupportHEIFDecode =
         image.createImageSource(filesDir + '/' + "test.jpg").supportedFormats.includes("image/heif");
+      isSupportHEIFEncode = 
+        image.createImagePacker().supportedFormats.includes("image/heif");
       isSupportHdr =
         !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
         display.getDefaultDisplaySync().hdrFormats.length != 0;
@@ -1881,8 +1884,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -1911,8 +1918,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -1941,12 +1952,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFEncode) {
+        logger.log("device is not support heif encode");
         expect(true).assertTrue();
         done();
       } else {
-        let picture = await createPictureImageSourcePic("HEIFISOMultiChannelBaseColor0512V12.heic", "fd", GAINMAP);
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures.jpg", "fd", GAINMAP);
         let packOpts: image.PackingOption = {
           format: "image/heif",
           quality: 98,
@@ -1971,12 +1982,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0400");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFEncode) {
+        logger.log("device is not support heif encode");
         expect(true).assertTrue();
         done();
       } else {
-        let picture = await createPictureImageSourcePic("HEIFISOMultiChannelBaseColor0512V12.heic", "fd", GAINMAP);
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures.jpg", "fd", GAINMAP);
         let packOpts: image.PackingOption = {
           format: "image/heif",
           quality: 98
@@ -1999,8 +2010,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2030,8 +2045,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2061,13 +2080,13 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFEncode) {
+        logger.log("device is not support heif encode");
         expect(true).assertTrue();
         done();
       } else {
         let writeFd = await getFdCacheDir("pack_gainmap_03.heic");
-        let picture = await createPictureImageSourcePic("HEIFISOMultiChannelBaseColor0512V12.heic", "fd", GAINMAP);
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures.jpg", "fd", GAINMAP);
         let packOpts: image.PackingOption = {
           format: "image/heif",
           quality: 98,
@@ -2092,13 +2111,13 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0400");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFEncode) {
+        logger.log("device is not support heif encode");
         expect(true).assertTrue();
         done();
       } else {
         let writeFd = await getFdCacheDir("pack_gainmap_04.heic");
-        let picture = await createPictureImageSourcePic("HEIFISOMultiChannelBaseColor0512V12.heic", "fd", GAINMAP);
+        let picture = await createPictureImageSourcePic("AllAuxiliaryPictures.jpg", "fd", GAINMAP);
         let packOpts: image.PackingOption = {
           format: "image/heif",
           quality: 98
@@ -2121,8 +2140,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2151,8 +2174,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2181,8 +2208,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2211,8 +2242,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0400");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2241,8 +2276,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0500', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0500");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2269,8 +2308,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2300,8 +2343,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2331,8 +2378,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2362,8 +2413,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0400");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2393,8 +2448,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0500");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2422,8 +2481,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2452,8 +2515,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2482,8 +2549,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2510,8 +2581,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2541,8 +2616,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2572,8 +2651,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2601,8 +2684,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2631,8 +2718,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2661,8 +2752,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2691,8 +2786,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0400");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2721,8 +2820,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0500', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0500");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2749,8 +2852,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2780,8 +2887,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2811,8 +2922,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2842,8 +2957,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0400");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2873,8 +2992,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0500");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2902,8 +3025,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2932,8 +3059,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2962,8 +3093,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2992,8 +3127,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0400");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3022,8 +3161,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0500', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0500");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3050,8 +3193,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0100");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3081,8 +3228,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0200");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3112,8 +3263,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0300");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3143,8 +3298,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0400");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -3174,8 +3333,12 @@ export default function imagePicturePack() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0500");
-      if (!isSupportHEIFDecode) {
-        logger.log("device is not support heif decode");
+      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+        if (!isSupportHEIFDecode) {
+          logger.log("device is not support heif decode");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {

@@ -6123,6 +6123,32 @@ export default function JsvmJsunit() {
       expect(rst).assertEqual(0);
     });
     /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0481
+     * @tc.name      JsvmTest0481
+     * @tc.desc      Test the function of WebAssembly interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0481', 0, () => {
+      let rst: number = napitest.wasmTest();
+      console.info('JsvmTest0481 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0482
+     * @tc.name      JsvmTest0482
+     * @tc.desc      Test the function of ArrayBuffer backing store interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0482', 0, () => {
+      let rst: number = napitest.arrayBufferBackingStoreTest();
+      console.info('JsvmTest0482 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
+    /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0483
      * @tc.name      JsvmTest0483
      * @tc.desc      Test that when JSVM_Value is js code, return 'ok'.
@@ -10123,6 +10149,2708 @@ export default function JsvmJsunit() {
       let rst: number = napitest.externalStringTest();
       console.info('JsvmTest0770 testString result is:' + JSON.stringify(rst));
       expect(rst).assertEqual(0);
+    });
+        /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0771
+     * @tc.name      JsvmTest0771
+     * @tc.desc      Create arraybuffer byteLength 0 and data NULL and result not null, rst ok
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0771', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateArrayBufferCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0772
+     * @tc.name      JsvmTest0772
+     * @tc.desc      Create arraybuffer byteLength > 0 and data not null and result not null, rst ok
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0772', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateArrayBufferCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0773
+     * @tc.name      JsvmTest0773
+     * @tc.desc      Create arraybuffer byteLength JSVM_AUTO_LENGTH and data not null and result not null, rst ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0773', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateArrayBufferCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0774
+     * @tc.name      JsvmTest0774
+     * @tc.desc      Create arraybuffer byteLength 10 and data not null and result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0774', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateArrayBufferCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0775
+     * @tc.name      JsvmTest0775
+     * @tc.desc      Get arraybuffer, arraybuffer obj,Obtain expected data and byteLength
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0775', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetArrayBufferCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0776
+     * @tc.name      JsvmTest0776
+     * @tc.desc      Get arraybuffer, not arraybuffer obj, get information failure
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0776', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetArrayBufferCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0777
+     * @tc.name      JsvmTest0777
+     * @tc.desc      Is arraybuffer judge, value arraybuffer obj + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0777', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsArrayBufferCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0778
+     * @tc.name      JsvmTest0778
+     * @tc.desc      Is arraybuffer judge, value not arraybuffer obj + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0778', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsArrayBufferCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0779
+     * @tc.name      JsvmTest0779
+     * @tc.desc      Is arraybuffer judge, value arraybuffer obj + result null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0779', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsArrayBufferCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0780
+     * @tc.name      JsvmTest0780
+     * @tc.desc      Detach arraybuffer, arraybuffer obj,binding typedarray
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0780', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testDetachArrayBufferCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0781
+     * @tc.name      JsvmTest0781
+     * @tc.desc      Detach arraybuffer, arraybuffer obj, binding dataview
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0781', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testDetachArrayBufferCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0782
+     * @tc.name      JsvmTest0782
+     * @tc.desc      Detach arraybuffer, not arraybuffer obj
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0782', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testDetachArrayBufferCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0783
+     * @tc.name      JsvmTest0783
+     * @tc.desc      Is detach arraybuffer, arraybuffer obj binding typedarray + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0783', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsDetachedArraybufferCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0784
+     * @tc.name      JsvmTest0784
+     * @tc.desc      Is detach arraybuffer, arraybuffer obj binding dataview + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0784', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsDetachedArraybufferCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0785
+     * @tc.name      JsvmTest0785
+     * @tc.desc      Is detach arraybuffer, arraybuffer obj detach obj + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0785', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsDetachedArraybufferCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0786
+     * @tc.name      JsvmTest0786
+     * @tc.desc      Is detach arraybuffer, value not arraybuffer obj + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0786', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsDetachedArraybufferCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0787
+     * @tc.name      JsvmTest0787
+     * @tc.desc      Is detach arraybuffer, value arraybuffer obj + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0787', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsDetachedArraybufferCase05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0788
+     * @tc.name      JsvmTest0788
+     * @tc.desc      createArraybuffer Createarraybuffer -> IsArraybuffer，true -> 
+     * createTypedarray -> GetArraybufferInfo -> IsTypedarray, true -> IsDetachedArraybuffer，false 
+     *-> DetachArraybuffer -> IsTypedarray, false -> IsDetachedArraybuffer,true
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0788', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateAnyBufferDetachedCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0789
+     * @tc.name      JsvmTest0789
+     * @tc.desc      Create Int32, value int32_max + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0789', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateInt32Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0790
+     * @tc.name      JsvmTest0790
+     * @tc.desc      Create Int32, value int32_min + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0790', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateInt32Case02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0791
+     * @tc.name      JsvmTest0791
+     * @tc.desc      Create Int32, value 0 + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0791', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateInt32Case03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0792
+     * @tc.name      JsvmTest0792
+     * @tc.desc      Create Int32, value 0 + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0792', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateInt32Case04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0793
+     * @tc.name      JsvmTest0793
+     * @tc.desc      Create Uint32, value uint32_max + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0793', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateUint32Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0794
+     * @tc.name      JsvmTest0794
+     * @tc.desc      Create Uint32, value 1 + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0794', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateUint32Case02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0795
+     * @tc.name      JsvmTest0795
+     * @tc.desc      Create Uint32, value 0 + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0795', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateUint32Case03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0796
+     * @tc.name      JsvmTest0796
+     * @tc.desc      Create Uint32, value 0 + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0796', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateUint32Case04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0797
+     * @tc.name      JsvmTest0797
+     * @tc.desc      Create int64, value int64_max + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0797', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateInt64Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0798
+     * @tc.name      JsvmTest0798
+     * @tc.desc      Create int64, value int64_min + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0798', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateInt64Case02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0799
+     * @tc.name      JsvmTest0799
+     * @tc.desc      Create int64, value 0 + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0799', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateInt64Case03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0800
+     * @tc.name      JsvmTest0800
+     * @tc.desc      Create int64, value 0 + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0800', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateInt64Case04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0801
+     * @tc.name      JsvmTest0801
+     * @tc.desc      Create double, value double_max + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0801', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateDoubleCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0802
+     * @tc.name      JsvmTest0802
+     * @tc.desc      Create double, value double_min + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0802', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateDoubleCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0803
+     * @tc.name      JsvmTest0803
+     * @tc.desc      Create double, value 0 + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0803', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateDoubleCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0804
+     * @tc.name      JsvmTest0804
+     * @tc.desc      Create double, value 0 + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0804', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateDoubleCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0805
+     * @tc.name      JsvmTest0805
+     * @tc.desc      Get uint32, not uint32 value
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0805', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueUint32Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0806
+     * @tc.name      JsvmTest0806
+     * @tc.desc      Get int32, not int32 value
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0806', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueInt32Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0807
+     * @tc.name      JsvmTest0807
+     * @tc.desc      Get int64, not int64 value
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0807', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueInt64Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0808
+     * @tc.name      JsvmTest0808
+     * @tc.desc      Get double, not double value
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0808', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueDoubleCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0809
+     * @tc.name      JsvmTest0809
+     * @tc.desc      CreateInt32 value -> GetValueUint32 int32 convert uint32 ->GetValueInt32 -> 
+     * GetValueInt64 int32 convert int64 -> GetValueDouble int32 convert double
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0809', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testBasicDataTypesCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0810
+     * @tc.name      JsvmTest0810
+     * @tc.desc      CreateUint32 value -> GetValueUint32 -> GetValueInt32 uint32 convert int32 -> 
+     * GetValueInt64 uint32 convert int64 -> GetValueDouble uint32 convert double
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0810', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testBasicDataTypesCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0811
+     * @tc.name      JsvmTest0811
+     * @tc.desc      CreateInt64 -> GetValueUint32 int64 convert uint32 ->GetValueInt32 int64 convert int32 ->
+     * GetValueInt64 int64->GetValueDouble int64 convert double
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0811', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testBasicDataTypesCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0812
+     * @tc.name      JsvmTest0812
+     * @tc.desc      CreateDouble -> GetValueUint32 double convert uint32 -> GetValueInt32 double convert int32 ->
+     * GetValueInt64 double convert int64 -> GetValueDouble double value
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0812', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testBasicDataTypesCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0813
+     * @tc.name      JsvmTest0813
+     * @tc.desc      Create bigint int64, value int64_max + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0813', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintInt64Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0814
+     * @tc.name      JsvmTest0814
+     * @tc.desc      Create bigint int64, value int64_min + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0814', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintInt64Case02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0815
+     * @tc.name      JsvmTest0815
+     * @tc.desc      Create bigint int64, value 0 + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0815', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintInt64Case03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0816
+     * @tc.name      JsvmTest0816
+     * @tc.desc      Create bigint int64, value 0 + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0816', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintInt64Case04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0817
+     * @tc.name      JsvmTest0817
+     * @tc.desc      Create bigint Uint64, value uint64_max + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0817', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintUint64Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0818
+     * @tc.name      JsvmTest0818
+     * @tc.desc      Create bigint Uint64, value 0 + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0818', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintUint64Case02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0819
+     * @tc.name      JsvmTest0819
+     * @tc.desc      Create bigint Uint64, value 0 + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0819', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintUint64Case03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0820
+     * @tc.name      JsvmTest0820
+     * @tc.desc      Create bigint Words, signBit 0 + wordCount 3 + words {uint64_max,0,1} + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0820', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintWordsCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0821
+     * @tc.name      JsvmTest0821
+     * @tc.desc      Create bigint Words, signBit not 0 + wordCount 3 + words {uint64_max,0,1} + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0821', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintWordsCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0822
+     * @tc.name      JsvmTest0822
+     * @tc.desc      Create bigint Words, signBit 0 + wordCount 0 + words {uint64_max,0,1} + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0822', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintWordsCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0823
+     * @tc.name      JsvmTest0823
+     * @tc.desc      Create bigint Words, signBit 0 + wordCount 4 + words {uint64_max,0,1} + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0823', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintWordsCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0824
+     * @tc.name      JsvmTest0824
+     * @tc.desc      Create bigint Words, signBit 0 + wordCount 3 + words {uint64_max,0,1} + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0824', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateBigintWordsCase05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0825
+     * @tc.name      JsvmTest0825
+     * @tc.desc      Get bigint Int64, "value int64_max+1" + result nogt null + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0825', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintInt64Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0826
+     * @tc.name      JsvmTest0826
+     * @tc.desc      Get bigint Int64, "value int64_max" + result not null + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0826', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintInt64Case02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0827
+     * @tc.name      JsvmTest0827
+     * @tc.desc      Get bigint Int64, "value int64_min" + result not null + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0827', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintInt64Case03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0828
+     * @tc.name      JsvmTest0828
+     * @tc.desc      Get bigint Int64, "value int64_min-1" + result not null + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0828', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintInt64Case04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0829
+     * @tc.name      JsvmTest0829
+     * @tc.desc      Get bigint Int64, "value int64_max" + result NULL + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0829', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintInt64Case05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0830
+     * @tc.name      JsvmTest0830
+     * @tc.desc      Get bigint Int64, "value int64_max" + result not null + lossless NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0830', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintInt64Case06()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0831
+     * @tc.name      JsvmTest0831
+     * @tc.desc      Get bigint Uint64, "value Uint64_max+1" + result not null + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0831', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintUint64Case01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0832
+     * @tc.name      JsvmTest0832
+     * @tc.desc      Get bigint Uint64, "value Uint64_max" + result not null + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0832', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintUint64Case02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0833
+     * @tc.name      JsvmTest0833
+     * @tc.desc      Get bigint Uint64, "value 0" + result not null + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0833', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintUint64Case03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0834
+     * @tc.name      JsvmTest0834
+     * @tc.desc      Get bigint Uint64, "value -1" + result not null + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0834', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintUint64Case04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0835
+     * @tc.name      JsvmTest0835
+     * @tc.desc      Get bigint Uint64, "value 0" + result NULL + lossless not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0835', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintUint64Case05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0836
+     * @tc.name      JsvmTest0836
+     * @tc.desc      Get bigint Uint64, "value 0" + result not null + lossless NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0836', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintUint64Case06()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0837
+     * @tc.name      JsvmTest0837
+     * @tc.desc      Get bigint Words, value is BigInt + signBit/wordCount/words not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0837', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintWordsCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0838
+     * @tc.name      JsvmTest0838
+     * @tc.desc      Get bigint Words, value is BigInt + signBit NULL + wordCount not null + words not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0838', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintWordsCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0839
+     * @tc.name      JsvmTest0839
+     * @tc.desc      Get bigint Words, value is BigInt + signBit not null + wordCount NULL + words not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0839', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintWordsCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0840
+     * @tc.name      JsvmTest0840
+     * @tc.desc      Get bigint Words, value is BigInt + signBit not null + wordCount not null + words NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0840', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintWordsCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0841
+     * @tc.name      JsvmTest0841
+     * @tc.desc      Get bigint Words, value is BigInt + signBit NULL + wordCount not null + words NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0841', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetValueBigintWordsCase05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0842
+     * @tc.name      JsvmTest0842
+     * @tc.desc      APICombination:CreateBigintInt64 -> GetValueBigintInt64 Same as 
+     * the input value of int64 -> GetValueBigintUint64-> GetValueBigintWords signBit 
+     * Return the actual value,wordCount is 1, words Return the actual value
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0842', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateAndGetBigIntProgramCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0843
+     * @tc.name      JsvmTest0843
+     * @tc.desc      CreateBigintUint64 -> GetValueBigintUint64 -> GetValueBigintInt64 -> 
+     * GetValueBigintWords -> signBit is 0,wordCount is 1, words return actual value
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0843', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateAndGetBigIntProgramCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0844
+     * @tc.name      JsvmTest0844
+     * @tc.desc      CreateBigintWords uint64 argc <-> Js Bigint -> GetValueBigintInt64,
+     * compare values -> GetValueBigintUint64 -> GetValueBigintWords,
+     * signBit actual symbol value,wordCount is argc length, words actual value.
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0844', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateAndGetBigIntProgramCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0845
+     * @tc.name      JsvmTest0845
+     * @tc.desc      New instance,Constructor is a constructor with input parameters，argc、argv normal，result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0845', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testNewInstanceCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0846
+     * @tc.name      JsvmTest0846
+     * @tc.desc      New instance,Constructor is not a constructor，argc\argv nullptr, result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0846', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testNewInstanceCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0847
+     * @tc.name      JsvmTest0847
+     * @tc.desc      Get new Target,cbinfo not null + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0847', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetNewTargetCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0848
+     * @tc.name      JsvmTest0848
+     * @tc.desc      Get new Target,cbinfo NULL , result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0848', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetNewTargetCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0849
+     * @tc.name      JsvmTest0849
+     * @tc.desc      Get new Target,cbinfo not null，result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0849', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetNewTargetCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0850
+     * @tc.name      JsvmTest0850
+     * @tc.desc      Define class,name not null + length <= utf8name + 
+     * properties not null + propertyCount <= properties + result
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0850', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testDefineClassCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0851
+     * @tc.name      JsvmTest0851
+     * @tc.desc      Define class,name not null + length <= utf8name + 
+     * properties NULL+ propertyCount 0 + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0851', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testDefineClassCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0852
+     * @tc.name      JsvmTest0852
+     * @tc.desc      jsobject + nativeObject + finalizeCb + 
+     * finalizeHint + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0852', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testWrapCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0853
+     * @tc.name      JsvmTest0853
+     * @tc.desc      jsobject|nativeObject not null + finalizeCb NULL
+     * + finalizeHint NULL + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0853', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testWrapCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0854
+     * @tc.name      JsvmTest0854
+     * @tc.desc      jsobject NULL + nativeObject not null +
+     * finalizeCb NULL + finalizeHint NULL + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0854', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testWrapCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0855
+     * @tc.name      JsvmTest0855
+     * @tc.desc      jsobject not null + nativeObject NULL +
+     * finalizeCb NULL + finalizeHint NULL + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0855', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testWrapCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0856
+     * @tc.name      JsvmTest0856
+     * @tc.desc      JsObject has been wrapped with other 
+     * object instances + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0856', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testUnwrapCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0857
+     * @tc.name      JsvmTest0857
+     * @tc.desc      JsObject is not wrapped with other 
+     * object instances + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0857', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testUnwrapCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0858
+     * @tc.name      JsvmTest0858
+     * @tc.desc      jsObject NULL + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0858', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testUnwrapCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0859
+     * @tc.name      JsvmTest0859
+     * @tc.desc      JsObject has been wrapped with other object instances + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0859', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testUnwrapCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0860
+     * @tc.name      JsvmTest0860
+     * @tc.desc      JsObject has been wrapped with other object instances + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0860', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testRemoveWrapCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0861
+     * @tc.name      JsvmTest0861
+     * @tc.desc      JsObject is not wrapped with other object instances + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0861', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testRemoveWrapCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0862
+     * @tc.name      JsvmTest0862
+     * @tc.desc      jsObject NULL + result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0862', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testRemoveWrapCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0863
+     * @tc.name      JsvmTest0863
+     * @tc.desc      JsObject has been wrapped with other object instances + result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0863', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testRemoveWrapCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0864
+     * @tc.name      JsvmTest0864
+     * @tc.desc      defineClass -> NewInstance -> Wrap -> Unwrap ok -> RemoveWrap -> unwrap fail
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0864', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testClassOperationCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0865
+     * @tc.name      JsvmTest0865
+     * @tc.desc      recv nullptr,CreateFunction without input parameters, 
+     * argc 0, argv nullptr, result not null，return 0, result is consistent
+     * with the expected value of the function in CreateFunction
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0865', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0866
+     * @tc.name      JsvmTest0866
+     * @tc.desc      recv undefined, CreateFunction without input parameters,
+     * argc 0, argv nullptr, result not null,return 0, result is consistent
+     * with the expected value of the function in CreateFunction
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0866', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0867
+     * @tc.name      JsvmTest0867
+     * @tc.desc      recv undefined,CreateFunction without input parameters,
+     * argc 0, argv nullptr, result not null,return 0, result is consistent
+     * with the expected value of the function in CreateFunction
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0867', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0868
+     * @tc.name      JsvmTest0868
+     * @tc.desc      recv global,CreateFunction without input parameters,
+     * argc 0,argv nullptr,result not null,return 0,result is consistent
+     * with the expected value of the function in CreateFunction
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0868', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0869
+     * @tc.name      JsvmTest0869
+     * @tc.desc      recv global,CreateFunction interface that requires one
+     * input parameter, argc 1,argv not null,len 1, result not null,
+     * return 0,result is consistent with the expected value of the function in CreateFunction
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0869', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0870
+     * @tc.name      JsvmTest0870
+     * @tc.desc      recv global,CreateFunction interface that requires 
+     * one input parameter, argc 2， argv len 2， result not null,return 0,
+     * result is consistent with the expected value of the function in CreateFunction
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0870', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction06()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0871
+     * @tc.name      JsvmTest0871
+     * @tc.desc      recv global,CreateFunction interface that requires
+     * two input parameters, argc 2,argv len 2,result not null
+     * return 0,The result cannot be obtained normally
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0871', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction07()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0872
+     * @tc.name      JsvmTest0872
+     * @tc.desc      recv global,CreateFunction interface that requires
+     * two input parameters, argc 1, argv len 1， result not null,
+     * return 0,The result cannot be obtained normally
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0872', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction08()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0873
+     * @tc.name      JsvmTest0873
+     * @tc.desc      recv global,The function obtained from JS code that 
+     * requires one input parameter,argc 1,argv len 1,result not null,
+     * return 0,The result is consistent with the expected value of the function in CreateFunction
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0873', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCallFunction09()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0874
+     * @tc.name      JsvmTest0874
+     * @tc.desc      utf8name nullptr,length=0,set callback，data is null,result not null
+     * return 0,func name is nullptr
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0874', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateFunction01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0875
+     * @tc.name      JsvmTest0875
+     * @tc.desc      utf8name not null,length>=utf8name,set callback,data null,result not null
+     * return 0,funcname len = utf8name len
+     * return 0,func name is nullptr
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0875', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateFunction02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0876
+     * @tc.name      JsvmTest0876
+     * @tc.desc      utf8name not null,length<utf8name,set callback,data null,result not null
+     * return 0,funcname len = length
+     * return 0,func name is nullptr
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0876', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateFunction03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0877
+     * @tc.name      JsvmTest0877
+     * @tc.desc      utf8name not null,length>=utf8name,set callback,data not null,
+     * result not null, return 0
+     * return 0,func name is nullptr
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0877', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateFunction04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0878
+     * @tc.name      JsvmTest0878
+     * @tc.desc      utf8name not null,length>=utf8name,set callback,data not null,
+     * result nullptr, return not 0
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0878', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateFunction05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0879
+     * @tc.name      JsvmTest0879
+     * @tc.desc      utf8name not null,length=utf8name,set callback is nullptr,data null,result not null
+     * retrun 0,error
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0879', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateFunction06()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0880
+     * @tc.name      JsvmTest0880
+     * @tc.desc      cbinfo is callback cbinfo,argc NULL,argv NULL,thisArg null,data not null,
+     * return 0, returnval is consistent with the data passed to 
+     * the callback function in the CreateFunction interface
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0880', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetCbInfo01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0881
+     * @tc.name      JsvmTest0881
+     * @tc.desc      cbinfo is callback cbinfo, argc NULL，argv NULL， thisArg not null，data NULL
+     * return 0, The objects mounted by thisArg and Callfunction are consistent
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0881', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetCbInfo02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0882
+     * @tc.name      JsvmTest0882
+     * @tc.desc      cbinfo is callback cbinfo,argc not null,argv not null,
+     * argv len -> argc set len,thisArg,data NULL
+     * return 0, argc elements the same as input，argv index>argc，result undefined
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0882', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetCbInfo03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0883
+     * @tc.name      JsvmTest0883
+     * @tc.desc      cbinfo is callback cbinfo,argc not null,argv not null,argv len > argc len,thisArg,data NULL
+     * return 0, argv index>argc,undefined
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0883', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetCbInfo04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0884
+     * @tc.name      JsvmTest0884
+     * @tc.desc      cbinfo is callback cbinfo,argc not null,argv not null,argv len = argc,thisArg,
+     * data NULL, return 0,argc = argv
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0884', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetCbInfo05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0885
+     * @tc.name      JsvmTest0885
+     * @tc.desc      value is function, isFunction not null
+     * return 0，isFunction true
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0885', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsFunction01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0886
+     * @tc.name      JsvmTest0886
+     * @tc.desc      value is not function, isFunction not null
+     * return 0，isFunction false
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0886', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsFunction02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0887
+     * @tc.name      JsvmTest0887
+     * @tc.desc      value nullptr, isFunction not null
+     * return not 0
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0887', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsFunction03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0888
+     * @tc.name      JsvmTest0888
+     * @tc.desc      value function, isFunction nullptr
+     * return not 0
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0888', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsFunction04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0889
+     * @tc.name      JsvmTest0889
+     * @tc.desc      Open handle scope,env null,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0889', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenHandleScopeCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0890
+     * @tc.name      JsvmTest0890
+     * @tc.desc      Open handle scope,env not null,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0890', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenHandleScopeCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0891
+     * @tc.name      JsvmTest0891
+     * @tc.desc      Open handle scope,env not null，call this interface twice，first ok, second ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0891', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenHandleScopeCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0892
+     * @tc.name      JsvmTest0892
+     * @tc.desc      Open handle scope,open two scope，create jsvm value,
+     * close one scope,expected inability to access jsvm value again
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0892', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenHandleScopeCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0893
+     * @tc.name      JsvmTest0893
+     * @tc.desc      Close handle scope,scope nullptr,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0893', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCloseHandleScopeCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0894
+     * @tc.name      JsvmTest0894
+     * @tc.desc      Close handle scope,Call this interface after opening,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0894', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCloseHandleScopeCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0895
+     * @tc.name      JsvmTest0895
+     * @tc.desc      Open and close handle scope,open twice,close twice,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0895', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenAndCloseHandleScopeCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0896
+     * @tc.name      JsvmTest0896
+     * @tc.desc      Open and close handle scope,open,close twice,first ok, second not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0896', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenAndCloseHandleScopeCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0897
+     * @tc.name      JsvmTest0897
+     * @tc.desc      Open escapable handle scope,env null,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0897', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenEscapableHandleScopeCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0898
+     * @tc.name      JsvmTest0898
+     * @tc.desc      Open escapable handle scope,env not null,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0898', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenEscapableHandleScopeCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0899
+     * @tc.name      JsvmTest0899
+     * @tc.desc      Open escapable handle scope,env not null,call twice func,first ok, second ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0899', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenEscapableHandleScopeCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0900
+     * @tc.name      JsvmTest0900
+     * @tc.desc      Close escapable handle scope,scope nullptr,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0900', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCloseEscapableHandleScopeCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0901
+     * @tc.name      JsvmTest0901
+     * @tc.desc      Close escapable handle scope,open,call func,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0901', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCloseEscapableHandleScopeCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0902
+     * @tc.name      JsvmTest0902
+     * @tc.desc      Close escapable handle scope,not open,call func,failed
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0902', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCloseEscapableHandleScopeCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0903
+     * @tc.name      JsvmTest0903
+     * @tc.desc      not call OpenEscapableHandleScope,call this func,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0903', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testEscapeHandleCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0904
+     * @tc.name      JsvmTest0904
+     * @tc.desc      scope null,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0904', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testEscapeHandleCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0905
+     * @tc.name      JsvmTest0905
+     * @tc.desc      Open escapable handle scope,open,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0905', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testEscapeHandleCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0906
+     * @tc.name      JsvmTest0906
+     * @tc.desc      escapee obj null,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0906', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testEscapeHandleCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0907
+     * @tc.name      JsvmTest0907
+     * @tc.desc      escapee valid value，return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0907', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testEscapeHandleCase05()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0908
+     * @tc.name      JsvmTest0908
+     * @tc.desc      EscapeHandle combination test:open twice,call close,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0908', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenClosedEscapeCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0909
+     * @tc.name      JsvmTest0909
+     * @tc.desc      open,call close twice,first ok, second not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0909', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenClosedEscapeCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0910
+     * @tc.name      JsvmTest0910
+     * @tc.desc      value nullptr,call test func,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0910', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateReferenceCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0911
+     * @tc.name      JsvmTest0911
+     * @tc.desc      jsvm value is normal data,initialRefcount 0,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0911', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateReferenceCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0912
+     * @tc.name      JsvmTest0912
+     * @tc.desc      jsvm value is normal data,initialRefcount 1,return ok,result not nullptr
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0912', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateReferenceCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0913
+     * @tc.name      JsvmTest0913
+     * @tc.desc      ref null,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0913', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testDeleteReferenceCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0914
+     * @tc.name      JsvmTest0914
+     * @tc.desc      create ref,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0914', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testDeleteReferenceCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0915
+     * @tc.name      JsvmTest0915
+     * @tc.desc      ref nullptr, return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0915', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testReferenceRefCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0916
+     * @tc.name      JsvmTest0916
+     * @tc.desc      create ref,increase citation count，return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0916', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testReferenceRefCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0917
+     * @tc.name      JsvmTest0917
+     * @tc.desc      repeated call,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0917', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testReferenceRefCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0918
+     * @tc.name      JsvmTest0918
+     * @tc.desc      ref nullptr,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0918', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testReferenceUnrefCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0919
+     * @tc.name      JsvmTest0919
+     * @tc.desc      create ref,call this func,reduce the number of citations,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0919', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testReferenceUnrefCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0920
+     * @tc.name      JsvmTest0920
+     * @tc.desc      repeate call,call the test interface when the ref reference count is 0,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0920', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testReferenceUnrefCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0921
+     * @tc.name      JsvmTest0921
+     * @tc.desc      ref nullptr,return ok,result nullptr
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0921', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetReferenceValueCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0922
+     * @tc.name      JsvmTest0922
+     * @tc.desc      create ref,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0922', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetReferenceValueCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0923
+     * @tc.name      JsvmTest0923
+     * @tc.desc      open handlescope -- create obj -- create reference 
+     * -- increase citation count -- reduce citation count --get reference info
+     * -- delete reference -- get reference, no result -- close handlescope
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0923', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testHandleAndRefCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0924
+     * @tc.name      JsvmTest0924
+     * @tc.desc      open escapehandlescope -- create obj -- escapehanle --
+     * create reference -- increase citation count -- reduce
+     * citation count -- get reference info -- get reference,
+     * no result -- delete reference -- closed escapehandlescope
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0924', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testHandleAndRefCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0925
+     * @tc.name      JsvmTest0925
+     * @tc.desc      create multiple reference,delete multiple referencee,result normal
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0925', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testHandleAndRefCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0926
+     * @tc.name      JsvmTest0926
+     * @tc.desc      changeInBytes 0 +result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0926', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testAdjustExternalMemoryCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0927
+     * @tc.name      JsvmTest0927
+     * @tc.desc      changeInBytes 1024*1024 +result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0927', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testAdjustExternalMemoryCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0928
+     * @tc.name      JsvmTest0928
+     * @tc.desc      changeInBytes 1024*1024*1024 +result not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0928', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testAdjustExternalMemoryCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0929
+     * @tc.name      JsvmTest0929
+     * @tc.desc      changeInBytes 1024*1024 +result NULL
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0929', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testAdjustExternalMemoryCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0930
+     * @tc.name      JsvmTest0930
+     * @tc.desc      JSVM_MEMORY_PRESSURE_LEVEL_NONE    no pressure
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0930', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testMemoryPressureNotificationCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0931
+     * @tc.name      JsvmTest0931
+     * @tc.desc      JSVM_MEMORY_PRESSURE_LEVEL_MODERATE    moderate pressure
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0931', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testMemoryPressureNotificationCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0932
+     * @tc.name      JsvmTest0932
+     * @tc.desc      JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL    critical pressure
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0932', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testMemoryPressureNotificationCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0933
+     * @tc.name      JsvmTest0933
+     * @tc.desc      AdjustExternalMemory allocation of 1GB memory -> 
+     * MemoryPressureNotification(JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL)
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0933', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testMemoryManagementuseCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0934
+     * @tc.name      JsvmTest0934
+     * @tc.desc      value null,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0934', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsPromiseCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0935
+     * @tc.name      JsvmTest0935
+     * @tc.desc      input promise,return ok,result true
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0935', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsPromiseCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0936
+     * @tc.name      JsvmTest0936
+     * @tc.desc      input not promise,return ok,result false
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0936', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsPromiseCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0937
+     * @tc.name      JsvmTest0937
+     * @tc.desc      JS Create promise obj,return ok，result is true
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0937', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testIsPromiseCase04()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0938
+     * @tc.name      JsvmTest0938
+     * @tc.desc      call this func,return ok, deferred and promise not null
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0938', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreatePromiseCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0939
+     * @tc.name      JsvmTest0939
+     * @tc.desc      create deferred and promise,call this func,resolution true,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0939', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testResolveDeferredCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0940
+     * @tc.name      JsvmTest0940
+     * @tc.desc      create deferred and promise,call this func,resolution false, return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0940', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testResolveDeferredCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0941
+     * @tc.name      JsvmTest0941
+     * @tc.desc      CreatePromise create deferred and promise,call this func,rejection true, return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0941', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testRejectDeferredCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0942
+     * @tc.name      JsvmTest0942
+     * @tc.desc      CreatePromise create deferred and promise,
+     * call this func, rejection false, return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0942', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testRejectDeferredCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0943
+     * @tc.name      JsvmTest0943
+     * @tc.desc      create -- is -- resolve result normal
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0943', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCreateResolveDeferredCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0944
+     * @tc.name      JsvmTest0944
+     * @tc.desc      call this func,return jsvm ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0944', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetVersionCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0945
+     * @tc.name      JsvmTest0945
+     * @tc.desc      call func,return jsvm ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0945', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetVMInfoCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0946
+     * @tc.name      JsvmTest0946
+     * @tc.desc      getversion -- getvminfo ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0946', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetVMInfoCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0947
+     * @tc.name      JsvmTest0947
+     * @tc.desc      Call the interface to be tested,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0947', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testGetHeapStatisticsCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0948
+     * @tc.name      JsvmTest0948
+     * @tc.desc      Call the interface to be tested,return ok,result not nullptr
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0948', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testStartCpuProfilerCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0949
+     * @tc.name      JsvmTest0949
+     * @tc.desc      call OH_JSVM_StartCpuProfiler,Call the interface to be tested,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0949', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testStopCpuProfilerCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0950
+     * @tc.name      JsvmTest0950
+     * @tc.desc      stream nullptr,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0950', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testTakeHeapSnapshotCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0951
+     * @tc.name      JsvmTest0951
+     * @tc.desc      host nullptr,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0951', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenInspectorCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0952
+     * @tc.name      JsvmTest0952
+     * @tc.desc      host valid value, port as a negative number, return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0952', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenInspectorCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0953
+     * @tc.name      JsvmTest0953
+     * @tc.desc      host valid value,port 65536,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0953', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenInspectorCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0954
+     * @tc.name      JsvmTest0954
+     * @tc.desc      no open inspectors in the env,call test func,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0954', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCloseInspectorCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0955
+     * @tc.name      JsvmTest0955
+     * @tc.desc      an open inspector in the env,call test func,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0955', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCloseInspectorCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0956
+     * @tc.name      JsvmTest0956
+     * @tc.desc      there are multiple open inspectors in the env,
+     * call test func,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0956', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testCloseInspectorCase03()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0957
+     * @tc.name      JsvmTest0957
+     * @tc.desc      pid is a valid value,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0957', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenInspectorWithNameCase01()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0958
+     * @tc.name      JsvmTest0958
+     * @tc.desc      pid is empty,return not ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0958', 0, () => {
+      let script: string = `
+      let obj = { code: "code init" };
+      testOpenInspectorWithNameCase02()
+   `;
+      expect(napitest.runJsVm(script)).assertEqual(true);
     });
   });
 }
