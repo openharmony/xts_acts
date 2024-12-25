@@ -40,7 +40,7 @@ struct BindSheetPicker {
             .then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
               console.info('PhotoViewPicker.select success, PhotoPickerResult uri: ' +
                 JSON.stringify(photoSelectResult));
-            }).catch((err: BussinessError) => {
+            }).catch((err: BusinessError) => {
               console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
             });
         })
