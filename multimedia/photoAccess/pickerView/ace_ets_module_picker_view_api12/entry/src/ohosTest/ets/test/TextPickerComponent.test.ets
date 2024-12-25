@@ -1232,7 +1232,7 @@ export default function TextPicker() {
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       // 支持传入宫格和大图Margin
       pickerOptions.gridMargin = {top: "10vp"};
-      pickerOptions.photoBrowserMargin = {top: "20vp"}
+      pickerOptions.photoBrowserMargin = {top: "20vp"};
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/PickerComponent',
         params: {
