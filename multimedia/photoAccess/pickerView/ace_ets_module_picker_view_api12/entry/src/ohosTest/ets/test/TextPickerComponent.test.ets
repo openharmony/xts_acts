@@ -1167,36 +1167,12 @@ export default function TextPicker() {
     /* *
        * @tc.number    : testPicker24
        * @tc.name      : testPicker24
-<<<<<<< HEAD
-       * @tc.desc      : Testing PhotoPickerComponent grid margin and browser margin
-=======
        * @tc.desc      : Testing CompleteButtonText
->>>>>>> master
        * @tc.size      : MediumTest
        * @tc.type      : Function
        * @tc.level     : Level0
        */
     it('testPicker24', 0, async (done: Function) => {
-<<<<<<< HEAD
-      let code: number = EventType.PHOTO_PICKER_INFO;
-      let pickerOptions: PickerOptions = getDefaultPickerOptions();
-      // 支持传入宫格和大图Margin
-      pickerOptions.gridMargin = {top: '10vp'};
-      pickerOptions.photoBrowserMargin = {top: '20vp'}
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/PickerComponent',
-        params: {
-          eventId: code,
-          pickerOptions: pickerOptions,
-        }
-      }
-      await routeToUrl(options);
-      let strJson: string = getInspectorByKey('PhotoPickerComponent');
-      console.info("testPicker24 JSON.parse(strJson) is" + strJson);
-      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
-      router.back();
-      console.info("testPicker24 finish");
-=======
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/BindSheetPicker',
       }
@@ -1240,7 +1216,36 @@ export default function TextPicker() {
         expect(false).assertTrue();
       }
       console.info("testPicer25 finish");
->>>>>>> master
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker26
+       * @tc.name      : testPicker26
+       * @tc.desc      : Testing PhotoPickerComponent grid margin and browser margin
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker26', 0, async (done: Function) => {
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      // 支持传入宫格和大图Margin
+      pickerOptions.gridMargin = {top: "10vp"};
+      pickerOptions.photoBrowserMargin = {top: "20vp"}
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker24 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker24 finish");
       done();
     });
   })
