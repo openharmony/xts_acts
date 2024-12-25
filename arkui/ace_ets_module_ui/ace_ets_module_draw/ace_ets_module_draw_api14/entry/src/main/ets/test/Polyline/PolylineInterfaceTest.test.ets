@@ -48,7 +48,7 @@ export default function PolylineInterfaceTest() {
      * @tc.size :
      */
     it('PolylineInterfaceTest_0100', 0, async (done: Function) => {
-      console.info('PolylineInterfaceTest_0100 START');
+      console.info('[PolylineInterfaceTest_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 

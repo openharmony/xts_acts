@@ -48,7 +48,7 @@ export default function PathInterfaceTest() {
      * @tc.size :
      */
     it('PathInterfaceTest_0100', 0, async (done: Function) => {
-      console.info('PathInterfaceTest_0100 START');
+      console.info('[PathInterfaceTest_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 

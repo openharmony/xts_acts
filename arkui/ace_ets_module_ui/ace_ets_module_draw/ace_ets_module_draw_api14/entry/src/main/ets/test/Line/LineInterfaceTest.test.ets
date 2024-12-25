@@ -48,7 +48,7 @@ export default function LineInterfaceTest() {
      * @tc.size :
      */
     it('LineInterfaceTest_0100', 0, async (done: Function) => {
-      console.info('LineInterfaceTest_0100 START');
+      console.info('[LineInterfaceTest_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 

@@ -48,7 +48,7 @@ export default function PolygonInterfaceTest() {
      * @tc.size :
      */
     it('PolygonInterfaceTest_0100', 0, async (done: Function) => {
-      console.info('PolygonInterfaceTest_0100 START');
+      console.info('[PolygonInterfaceTest_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 
