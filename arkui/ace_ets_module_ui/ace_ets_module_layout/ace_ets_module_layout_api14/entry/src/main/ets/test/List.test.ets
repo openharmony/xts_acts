@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import ChainWeight from './ChainWeight/ChainWeight.test'
+import FolderStackTest from './FolderStack/FolderStackTest.test'
 
 export default function testsuite() {
   ChainWeight();
+  FolderStackTest();
 }
