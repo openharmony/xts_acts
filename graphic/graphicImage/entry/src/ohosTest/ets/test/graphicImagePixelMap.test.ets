@@ -12,18 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
-import buffer from '@ohos.buffer';
-import image from '@ohos.multimedia.image'
-
-async function sleep(time: number): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, time);
-  });
-}
+import image from '@ohos.multimedia.image';
 
 export default function graphicImagePixelMapTest() {
   describe('graphicImagePixelMapTest', ()=> {

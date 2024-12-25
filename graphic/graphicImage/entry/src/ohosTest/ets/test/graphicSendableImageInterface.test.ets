@@ -12,26 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-// import { RenderNode, DrawContext } from "@ohos.arkui.node"
-// import drawing from "@ohos.graphics.drawing"
-// import common2D from "@ohos.graphics.common2D"
-// import image from "@ohos.multimedia.image"
-// import text from "@ohos.graphics.text"
-// import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
+import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
-import buffer from '@ohos.buffer';
-
 import image from '@ohos.multimedia.image';
 import sendableImage from '@ohos.multimedia.sendableImage'
-
-async function sleep(time: number): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, time);
-  });
-}
 
 export default function graphicSendableImageInterfaceTest() {
   describe('graphicSendableImageInterfaceTest', ()=> {
