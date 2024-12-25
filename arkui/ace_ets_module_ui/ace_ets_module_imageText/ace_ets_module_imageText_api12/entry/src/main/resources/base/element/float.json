@@ -23,6 +23,14 @@
     {
       "name": "50vp",
       "value": "50vp"
+    },
+    {
+      "name":"bottom",
+      "value":"40px"
+    },
+    {
+      "name":"leading_Margin",
+      "value":"20"
     }
   ]
 }

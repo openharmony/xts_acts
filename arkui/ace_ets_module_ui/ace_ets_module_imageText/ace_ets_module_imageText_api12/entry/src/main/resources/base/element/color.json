@@ -11,6 +11,10 @@
     {
       "name": "color_world",
       "value": "#ff0000ff"
+    },
+    {
+      "name": "Divider_color",
+      "value": "#000000"
     }
   ]
 }
