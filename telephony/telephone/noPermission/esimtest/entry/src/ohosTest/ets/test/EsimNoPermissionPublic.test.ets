@@ -81,7 +81,7 @@ export default function EsimNoPermissionPublic() {
       let caseName: string = 'testTelephonyEsimGetEid0100';
       console.info(`${caseName} test start`);
       try {
-        let data: string = eSIM.getEid(SLOT_0);
+        let data: string = await eSIM.getEid(SLOT_0);
         console.info(`${caseName} success : the EID is:${data}`);
         expect(true).assertTrue();
         console.info(`${caseName} test end`);
@@ -463,6 +463,31 @@ export default function EsimNoPermissionPublic() {
         done();
       } catch (err) {
         console.info(`${caseName} CancelSession failed, promise: err->${JSON.stringify(err)}`);
+        expect(err.code).assertEqual(201);
+        console.info(`${caseName} test end`);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_Telephony_Esim_AddProfile_1700
+     * @tc.name      : testTelephonyEsimAddProfile1700
+     * @tc.desc      : Starts a page through an ability, on which users can touch the button to download a profile.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("testTelephonyEsimAddProfile1700", 0, async (done: Function) => {
+      let caseName: string = 'testTelephonyEsimAddProfile1700';
+      console.info(`${caseName} test start`);
+      try {
+        let data = await eSIM.addProfile(profile);
+        console.info(`${caseName} success : the data is:${data}`);
+        expect(true).assertTrue();
+        console.info(`${caseName} test end`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} AddProfile failed, promise: err->${JSON.stringify(err)}`);
         expect(err.code).assertEqual(201);
         console.info(`${caseName} test end`);
         done();

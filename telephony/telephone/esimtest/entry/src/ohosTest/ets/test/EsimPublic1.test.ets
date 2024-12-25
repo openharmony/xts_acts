@@ -279,7 +279,7 @@ export default function EsimPublic1() {
     it("testTelephonyEsimGetEid0900", 0, async (done: Function) => {
       let caseName: string = 'testTelephonyEsimGetEid0900';
       console.info(`${caseName} test start`);
-      let data: string = eSIM.getEid(SLOT_0);
+      let data: string = await eSIM.getEid(SLOT_0);
       if (data.length != 0) {
         console.info(`${caseName} success : the EID is:${data}`);
         expect(true).assertTrue();
@@ -305,7 +305,7 @@ export default function EsimPublic1() {
       let caseName: string = 'testTelephonyEsimGetEid1000';
       console.info(`${caseName} test start`);
       try {
-        let data: string = eSIM.getEid(SLOT_1);
+        let data: string = await eSIM.getEid(SLOT_1);
         console.info(`${caseName} success : the EID is:${data}`);
         expect(true).assertTrue();
         console.info(`${caseName} test end`);
@@ -330,7 +330,7 @@ export default function EsimPublic1() {
       let caseName: string = 'testTelephonyEsimGetEid1100';
       console.info(`${caseName} test start`);
       try {
-        let data: string = eSIM.getEid(SLOT_2);
+        let data: string = await eSIM.getEid(SLOT_2);
         console.info(`${caseName} success : the EID is:${data}`);
         expect(true).assertTrue();
         console.info(`${caseName} test end`);
@@ -355,7 +355,7 @@ export default function EsimPublic1() {
       let caseName: string = 'testTelephonyEsimGetEid1200';
       console.info(`${caseName} test start`);
       try {
-        let data: string = eSIM.getEid(SLOT_3);
+        let data: string = await eSIM.getEid(SLOT_3);
         console.info(`${caseName} success : the EID is:${data}`);
         expect(true).assertTrue();
         console.info(`${caseName} test end`);
@@ -380,7 +380,7 @@ export default function EsimPublic1() {
       let caseName: string = 'testTelephonyEsimGetEid1300';
       console.info(`${caseName} test start`);
       try {
-        let data: string = eSIM.getEid(SLOT_4);
+        let data: string = await eSIM.getEid(SLOT_4);
         console.info(`${caseName} success : the EID is:${data}`);
         expect(true).assertTrue();
         console.info(`${caseName} test end`);
@@ -405,7 +405,7 @@ export default function EsimPublic1() {
       let caseName: string = 'testTelephonyEsimGetEid1400';
       console.info(`${caseName} test start`);
       try {
-        let data: string = eSIM.getEid(SLOT_5);
+        let data: string = await eSIM.getEid(SLOT_5);
         console.info(`${caseName} success : the EID is:${data}`);
         expect(true).assertTrue();
         console.info(`${caseName} test end`);
