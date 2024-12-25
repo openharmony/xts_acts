@@ -214,5 +214,28 @@ export default function api16CertFuncTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CertManager_GetCertificateStorePath_Func_0018
+     * @tc.name certType is set to the system with a preset cerScope of 3
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_GetCertificateStorePath_Func_0018', 0, async (done: Function) => {
+      console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0013: started ");
+      let property: certManager.CertStoreProperty = {
+        certType: certManager.CertType.CA_CERT_USER,
+      }
+      try {
+        let userCACurrentPath = certManager.getCertificateStorePath(property);
+        console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0018: userCACurrentPath " + userCACurrentPath);
+        expect(null).assertFail();
+      } catch (err) {
+        console.log("SUB_Security_CertManager_GetCertificateStorePath_Func_0018: e.code " + err.code);
+        expect(err.code).assertEqual(401);
+      }
+      done();
+    });
   })
 }
