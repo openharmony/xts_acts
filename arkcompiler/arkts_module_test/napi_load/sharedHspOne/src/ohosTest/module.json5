@@ -18,9 +18,8 @@
     "name": "sharedHspOne_test",
     "type": "feature",
     "deviceTypes": [
-      "phone",
-      "tablet",
-      "2in1"
+      "default",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false

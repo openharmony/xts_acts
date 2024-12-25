@@ -19,7 +19,7 @@
     "type": "har",
     "deviceTypes": [
       "default",
-      "tablet"
+      "wearable"
     ]
   }
 }
