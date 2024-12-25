@@ -1106,7 +1106,7 @@ export default function videoEnCoderNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHVideoEncoderStop004', 0, async (done: Function) => {
-      let result: number = videoencoderndk.oHVideoEncoderStop(1,1,1,1,0,1,0);
+      let result: number = videoencoderndk.oHVideoEncoderStop(1,1,1,1,0,1,1);
       expect(result).assertEqual(0);
       done();
     });
@@ -1162,7 +1162,7 @@ export default function videoEnCoderNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHVideoEncoderStop008', 0, async (done: Function) => {
-      let result: number = videoencoderndk.oHVideoEncoderStop(1,1,1,0,0,1,0);
+      let result: number = videoencoderndk.oHVideoEncoderStop(1,1,1,0,0,1,1);
       expect(result).assertEqual(0);
       done();
     });
