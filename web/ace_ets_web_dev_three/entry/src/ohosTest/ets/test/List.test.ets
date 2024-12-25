@@ -20,6 +20,7 @@ import NestedScrollMode from './NestedScrollMode.test'
 import blurMode from './blurMode.test'
 import certChainData from './certChainData.test'
 import scrollEvent from './scrollEvent.test'
+import getDefaultUserAgent from './getDefaultUserAgent.test'
 
 export default function testsuite() {
   webJsunit();
@@ -29,5 +30,6 @@ export default function testsuite() {
   NestedScrollMode();
   blurMode();
   certChainData();
-  scrollEvent()
+  scrollEvent();
+  getDefaultUserAgent()
 }

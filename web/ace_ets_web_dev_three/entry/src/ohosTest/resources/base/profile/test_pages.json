@@ -7,6 +7,7 @@
         "MainAbility/pages/NestedScrollMode",
         "MainAbility/pages/blurMode",
 		"MainAbility/pages/certChainData",
-		"MainAbility/pages/scrollEvent"
+		"MainAbility/pages/scrollEvent",
+		"MainAbility/pages/getDefaultUserAgent"
     ]
 }
