@@ -1,9 +1,7 @@
 {
     "devices": {
         "general": [
-            "phone",
-            "tablet",
-            "2in1",
+            "default",
             "wearable"
         ],
         "custom": [
