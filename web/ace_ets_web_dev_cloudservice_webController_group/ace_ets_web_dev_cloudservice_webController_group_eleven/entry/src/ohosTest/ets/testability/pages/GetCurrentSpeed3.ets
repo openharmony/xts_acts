@@ -107,12 +107,12 @@ struct WebComponent {
         .key('002')
         .onClick(async () => {
           try {
-            this.controller1.startDownload('https://' +
-              'cos.kkfw.net/cxb/b1kkfw/Notepad%2B%2B%20%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F.exe');
-            this.controller2.startDownload('https://' +
-              'cos.kkfw.net/cxb/b1kkfw/Notepad%2B%2B%20%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F.exe');
-            this.controller3.startDownload('https://' +
-              'cos.kkfw.net/cxb/b1kkfw/Notepad%2B%2B%20%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F.exe');
+            this.controller1.startDownload('http://' +
+              '114.115.208.239:8070/colombo_test/attach/test1.5M.rar');
+            this.controller2.startDownload('http://' +
+              '114.115.208.239:8070/colombo_test/attach/test1.5M.rar');
+            this.controller3.startDownload('http://' +
+              '114.115.208.239:8070/colombo_test/attach/test1.5M.rar');
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
