@@ -17,9 +17,6 @@
 @Entry
 @Component
 struct FolderStackTest {
-  @State len_wid: number = 480
-  @State w: string = '40%'
-
   build() {
     Column() {
       // upperItems将所需要的悬停到上半屏的id放入upperItems传入，其余组件会堆叠在下半屏区域
