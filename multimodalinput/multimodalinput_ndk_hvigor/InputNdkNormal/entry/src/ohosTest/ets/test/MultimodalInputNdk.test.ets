@@ -283,6 +283,99 @@ export default function MultimodalInputNdkTest() {
     });
 
     /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyState_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyState_0200
+     * @tc.desc: OH_Input_GetKeyState Interface testing, verify the get of key state fail(number 1).
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_GetKeyState_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyState_0200';
+      console.info(`${caseName} start to test OH_Input_GetKeyState`);
+      try {
+        let data = input.GetKeyState2(2001);
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} get keyState success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} get keyState fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetKeyState`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyState_0300
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyState_0300
+     * @tc.desc: OH_Input_GetKeyState Interface testing, verify the get of key state fail(letter A).
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_GetKeyState_0300', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyState_0300';
+      console.info(`${caseName} start to test OH_Input_GetKeyState`);
+      try {
+        let data = input.GetKeyState2(2017);
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} get keyState success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} get keyState fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetKeyState`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_GetKeyState_0400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_GetKeyState_0400
+     * @tc.desc: OH_Input_GetKeyState Interface testing, verify the get of key state fail(@).
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_GetKeyState_0400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_GetKeyState_0400';
+      console.info(`${caseName} start to test OH_Input_GetKeyState`);
+      try {
+        let data = input.GetKeyState2(2065);
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} get keyState success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} get keyState fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_GetKeyState`);
+    });
+
+    /**
      * @tc.number: SUB_MMI_Input_Api_Ndk_CreateKeyEvent_0100
      * @tc.name: SUB_MMI_Input_Api_Ndk_CreateKeyEvent_0100
      * @tc.desc: OH_Input_CreateKeyEvent Interface testing, verify the create of key event.
@@ -1104,6 +1197,37 @@ export default function MultimodalInputNdkTest() {
         let data = input.injectMouseEvent(350, -2);
         console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
         if (data == 401) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_InjectMouseEvent`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_InjectMouseEvent_0200
+     * @tc.name: SUB_MMI_Input_Api_Ndk_InjectMouseEvent_0200
+     * @tc.desc: OH_Input_InjectMouseEvent Interface testing
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_InjectMouseEvent_0200', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_InjectMouseEvent_0200';
+      console.info(`${caseName} start to test OH_Input_InjectMouseEvent`);
+      try {
+        let data = input.injectMouseEvent2();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
           console.info(`${caseName} success`);
           ExpectTrue(true);
           done();
@@ -3720,6 +3844,161 @@ export default function MultimodalInputNdkTest() {
         done();
       }
       console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2400
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2400
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe Alt + Table again
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2400', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2400';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor24();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2500
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2500
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to set HotkeyCallback as nullptr
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2500', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2500';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor25();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2600
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2600
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe a nonexistent preKeys
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2600', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2600';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor26();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2700
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2700
+     * @tc.desc: OH_Input_AddHotkeyMonitor Interface testing to subscribe a nonexistent finalKey
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2700', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2700';
+      console.info(`${caseName} start to test OH_Input_AddHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor27();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_AddHotkeyMonitor`);
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2800
+     * @tc.name: SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2800
+     * @tc.desc: OH_Input_RemoveHotkeyMonitor Interface testing to set HotkeyCallback as nullptr
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2800', 0, async (done: Function) => {
+      let caseName = 'SUB_MMI_Input_Api_Ndk_AddHotkeyMonitor_2800';
+      console.info(`${caseName} start to test OH_Input_RemoveHotkeyMonitor`);
+      try {
+        let data = input.AddHotkeyMonitor28();
+        console.info(`${caseName} Test NAPI data= ${JSON.stringify(data)}`);
+        if (data == 1) {
+          console.info(`${caseName} success`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} fail`);
+          ExpectFalse(true);
+          done();
+        }
+      } catch (err) {
+        console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
+        ExpectFalse(true);
+        done();
+      }
+      console.info(`${caseName} end to test OH_Input_RemoveHotkeyMonitor`);
     });
   });
 }

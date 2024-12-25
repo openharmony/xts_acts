@@ -108,6 +108,37 @@ async function clickBigPicture(driver: Driver) {
   await CommonFunc.sleep(1000);
 }
 
+async function testCompleteButton(driver: Driver, options: router.RouterOptions, textMode: number) {
+  let buttonText: string = '';
+  switch (textMode) {
+    case 0:
+      buttonText = 'TEXT_DONE';
+      break;
+    case 1:
+      buttonText = 'TEXT_SEND';
+      break;
+    case 2:
+      buttonText = 'TEXT_ADD';
+      break;
+    default:
+      buttonText = 'TEXT_DONE';
+      break;
+  }
+  await routeToUrl(options);
+  let chooostModeButton: Component = await driver.findComponent(ON.text(buttonText));
+  let button: Component = await driver.findComponent(ON.text('select photo'));
+  if (button !== undefined && chooostModeButton !== undefined) {
+    await chooostModeButton.click();
+    await button.click();
+    expect(true).assertTrue();
+  } else {
+    console.error("can not find button");
+    expect(false).assertTrue();
+  }
+  await CommonFunc.sleep(1000);
+  router.back();
+}
+
 export default function TextPicker() {
   describe('testPicker', () => {
     let driver: Driver;
@@ -1101,6 +1132,90 @@ export default function TextPicker() {
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       router.back();
       console.info("testPicer22 finish");
+      done();
+    });
+
+        /* *
+       * @tc.number    : testPicker23
+       * @tc.name      : testPicker23
+       * @tc.desc      : Testing requestPhotoUrisReadPermission
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker23', 0, async (done: Function) => {
+      let uris = ['file://media/photo/test.jpg'];
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
+      try {
+        phAccessHelper.requestPhotoUrisReadPermission(uris).then((result: Array<string>) => {
+          console.info("requestPhotoUrisReadPermission, result = " + JSON.stringify(result));
+          if (result) {
+            expect(true).assertTrue();
+          } else {
+            console.error("testPicker23 empty result");
+            expect(false).assertTrue();
+          }
+        })
+      } catch(error) {
+        console.error("testPicer23 error: " + JSON.stringify(error));
+        expect(false).assertTrue();
+      }
+      console.info("testPicer23 finish");
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker24
+       * @tc.name      : testPicker24
+       * @tc.desc      : Testing CompleteButtonText
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker24', 0, async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/BindSheetPicker',
+      }
+      
+      for (let index = 0; index < 3; index++) {
+        await testCompleteButton(driver, options, index);
+      }
+
+      console.info("testPicer24 finish");
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker25
+       * @tc.name      : testPicker25
+       * @tc.desc      : Testing createAssetWithShortTermPermission
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker25', 0, async (done: Function) => {
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
+      try {
+        let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {
+          title: 'test',
+          fileNameExtension: 'jpg',
+          photoType: photoAccessHelper.PhotoType.IMAGE,
+          subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
+        };
+        phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig).then((result) => {
+          console.info("createAssetWithShortTermPermission, result=" + JSON.stringify(result));
+          if (result) {
+            expect(true).assertTrue();
+          } else {
+            console.error("testPicker25 empty result");
+            expect(false).assertTrue();
+          }
+        })
+      } catch(error) {
+        console.error("testPicker25 error: " + JSON.stringify(error));
+        expect(false).assertTrue();
+      }
+      console.info("testPicer25 finish");
       done();
     });
   })

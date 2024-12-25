@@ -29,7 +29,15 @@
             "pre-push": [],
             "push": [
                 "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
-                "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files"
+                "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
+                "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
+                "./resource/image/test.ico ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
+                "./resource/image/test.svg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
+                "./resource/image/test.dng ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
+                "./resource/image/test.jpeg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
+                "./resource/image/test.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files",
+                "./resource/image/HDRVividSingleLayer.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry_test/files"
             ]
         },
         {

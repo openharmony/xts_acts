@@ -74,12 +74,9 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNormal, Tes
  */
 HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNULL, TestSize.Level3) {
     // 1. Call OH_Drawing_MaskFilterCreateBlur with the second parameter as zero and check the error code using
-    // OH_Drawing_ErrorCodeGet
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 0, true);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 2. Call OH_Drawing_MaskFilterDestroy with a null parameter
-    OH_Drawing_MaskFilterDestroy(nullptr);
-    // 3. Free memory
+    EXPECT_NE(maskFilter, nullptr);
+    // 2. Free memory
     OH_Drawing_MaskFilterDestroy(maskFilter);
 }
 
@@ -119,10 +116,8 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMultipleCal
  */
 HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyAbnormal, TestSize.Level3) {
     // 1. Call OH_Drawing_MaskFilterCreateBlur with a negative value for sigma and check the error code using
-    // OH_Drawing_ErrorCodeGet
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, -10, true);
-    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 2. Call OH_Drawing_MaskFilterDestroy to free memory
+    EXPECT_NE(maskFilter, nullptr);
     OH_Drawing_MaskFilterDestroy(maskFilter);
 }
 

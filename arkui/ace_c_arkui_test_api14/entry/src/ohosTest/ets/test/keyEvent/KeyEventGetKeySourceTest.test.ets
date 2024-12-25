@@ -43,7 +43,6 @@ export default function KeyEventGetKeySourceTest() {
         await Utils.sleep(500);
         await driver.triggerKey(2049);
         await Utils.sleep(500);
-        console.info('hhhhh'+Utils.getComponentInfoByKey('KeyEventGetKeySource').$attrs.backgroundColor)
         expect(Utils.getComponentInfoByKey('KeyEventGetKeySource').$attrs.backgroundColor).assertEqual('#FF00FF00');
         done();
      })

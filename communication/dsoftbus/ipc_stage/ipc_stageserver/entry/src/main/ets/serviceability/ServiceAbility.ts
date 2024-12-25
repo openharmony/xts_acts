@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,7 +19,7 @@ import rpc from "@ohos.rpc";
 
 let logTag = "[IpcServer_log:]";
 
-class MySequenceable implements rpc.Parcelable  {
+class MySequenceable {
   num: number = 0;
   str: string = '';
   constructor(num: number, str: string) {
@@ -174,6 +175,39 @@ class Stub extends rpc.RemoteObject {
             console.info(logTag + "case 11 start");
             let tmp1 = data.readFloat();
             reply.writeFloat(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 12:
+          {
+            console.info(logTag + "case 12 start");
+            let tmp1 = data.readDouble();
+            reply.writeDouble(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 13:
+          {
+            console.info(logTag + "case 13 start");
+            let tmp1 = data.readBoolean();
+            reply.writeBoolean(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 14:
+          {
+            console.info(logTag + "case 14 start");
+            let tmp1 = data.readChar();
+            reply.writeChar(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 15:
+          {
+            console.info(logTag + "case 15 start");
+            let ret = new MySequenceable(0, "");
+            data.readParcelable(ret);
+            reply.writeParcelable(ret);
             console.info(logTag + "onRemoteMessageRequest success");
             return true;
           }

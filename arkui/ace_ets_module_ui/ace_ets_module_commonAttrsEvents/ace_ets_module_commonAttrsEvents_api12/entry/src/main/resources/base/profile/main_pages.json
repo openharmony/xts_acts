@@ -87,7 +87,10 @@
         "MainAbility/pages/Focus/focusScopeId2/FocusScopeId018",
         "MainAbility/pages/Focus/focusScopeId2/FocusScopeId019",
         "MainAbility/pages/Focus/focusScopeId2/FocusScopeId020",
-        "MainAbility/pages/Focus/focusScopeId2/FocusScopeId021"
+        "MainAbility/pages/Focus/focusScopeId2/FocusScopeId021",
+        "MainAbility/pages/shotCutKeyTest/globalShortcutKeyTest",
+        "MainAbility/pages/shotCutKeyTest/globalShortcutKeyTest2",
+        "MainAbility/pages/shotCutKeyTest/globalShortcutKeyTest3"
 
     ]
 }

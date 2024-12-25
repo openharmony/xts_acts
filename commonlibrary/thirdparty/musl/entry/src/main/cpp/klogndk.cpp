@@ -27,6 +27,7 @@ static napi_value Klogctl(napi_env env, napi_callback_info info)
 {
     int len = PARAM_0;
     char *bufp = nullptr;
+    //Test syscall encapsulation interface
     int ret = klogctl(SYSLOG_ACTION_SIZE_BUFFER, bufp, len);
     if (ret >= PARAM_0) {
         ret = PARAM_0;

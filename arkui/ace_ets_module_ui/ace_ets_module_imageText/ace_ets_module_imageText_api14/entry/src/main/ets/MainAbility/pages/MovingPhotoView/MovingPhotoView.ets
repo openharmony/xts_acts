@@ -173,6 +173,11 @@ struct MovingPhotoView1 {
             .onClick(() => {
               this.enableAnalyzerFlag = true
             })
+          Button('Refresh').id('MovingPhotoView_refreshButton')
+            .onClick(() => {
+              this.controller.refreshMovingPhoto()
+              this.refresh = "refresh succ"
+            })
         }
 
         Text(this.flag + '').id('MovingPhotoView_mute')
@@ -189,6 +194,7 @@ struct MovingPhotoView1 {
         Text(this.autoPlayFlag + '').id('MovingPhotoView_autoPlay1')
         Text(this.repeatPlayFlag + '').id('MovingPhotoView_repeatPlay')
         Text(this.enableAnalyzerFlag + '').id('MovingPhotoView_enableAnalyzerFlag')
+        Text(this.refresh).id('MovingPhotoView_refresh')
       }
     }
   }

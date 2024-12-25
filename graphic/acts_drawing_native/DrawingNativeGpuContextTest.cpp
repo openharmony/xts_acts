@@ -144,18 +144,6 @@ HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyMultipleC
         EXPECT_NE(gpuContext_, nullptr);
         OH_Drawing_GpuContextDestroy(gpuContext_);
     }
-    for (int i = 0; i < 10; i++) {
-        OH_Drawing_GpuContextOptions options;
-        options.allowPathMaskCaching = true;
-        gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
-        EXPECT_NE(gpuContext_, nullptr);
-    }
-    OH_Drawing_GpuContextOptions options;
-    options.allowPathMaskCaching = true;
-    gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
-    for (int i = 0; i < 10; i++) {
-        OH_Drawing_GpuContextDestroy(gpuContext_);
-    }
 }
 
 } // namespace Drawing

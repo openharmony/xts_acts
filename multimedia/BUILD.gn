@@ -38,7 +38,7 @@ group("multimedia") {
       "audio_ndk/oh_audio_stream_builder_test:ActsAudioStreamBuildeTest",
       "av_codec/audio_decoder:ActsAvbufferDecoderTest",
       "av_codec/audio_encoder:ActsAvbufferEncoderTest",
-      "av_codec/audio_test:ActsAvAudioEncoderCapiUnitTest",
+      "av_codec/audio_test:ActsAvAudioEncoderCapiNdkTest",
       "av_codec/avcencInfo:ActsAvcencInfoTest",
       "av_codec/capability:ActsCapabilityTest",
       "av_codec/demuxer:ActsDemuxerTest",
@@ -64,6 +64,7 @@ group("multimedia") {
       "image/image_ets_standard/imageExifGetModify:image_exif_get_modify_hap",
       "image/image_ets_standard/imageFormatTranscoding:image_formattranscoding_hap",
       "image/image_ets_standard/imageNdk:image_ndk_hap",
+      "image/image_ets_standard/imagePackToFileGif:image_pack_to_file_gif_hap",
       "image/image_ets_standard/imagePackerExif:image_packer_exif_hap",
       "image/image_ets_standard/imagePicture:image_picture_hap",
       "image/image_ets_standard/imagePicturePack:image_picture_pack_hap",
@@ -112,6 +113,9 @@ group("multimedia") {
       "media/media_ndk_standard/AVPlayerNDK:OhAVPlayerNDK",
       "photoAccess/photoAccess:photoAccess_js_hap",
       "photoAccess/pickerView:TextPickerTest",
+      "videoProcess/detail_enhancer_image_ndk:ActsDetailEnhancerImageNdkUnitTest",
+      "videoProcess/detail_enhancer_video_ndk:ActsDetailEnhancerVideoNdkUnitTest",
+      "videoProcess/moduletest/video:ActsVpeVideoNativModuleTest",
     ]
   } else {
     deps = [

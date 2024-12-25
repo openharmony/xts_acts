@@ -14,23 +14,37 @@
  */
 
 #include "napi/native_api.h"
+#include <cerrno>
 #include <cstdlib>
 #include <ifaddrs.h>
 #include <js_native_api_types.h>
 #include <net/if.h>
 #include <sys/inotify.h>
 #include <sys/random.h>
+#include <hilog/log.h>
+
 #define BUFFSIZE 32
 #define DEFAULT_VALUE 0
 #define FAIL (-1)
 #define NO_ERRS 0
-
 #define BUFSIZE 32
+
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_LIBCTEST"
+
 static napi_value Getrandom(napi_env env, napi_callback_info info)
 {
-    void *buf = malloc(BUFFSIZE);
-    ssize_t ret = getrandom(buf, BUFFSIZE, DEFAULT_VALUE);
     napi_value result = nullptr;
+    errno = 0;
+    void *buf = malloc(BUFFSIZE);
+    if (buf == nullptr) {
+        OH_LOG_INFO(LOG_APP, "MUSL malloc failed");
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
+    ssize_t ret = getrandom(buf, BUFFSIZE, DEFAULT_VALUE);
     if (ret != FAIL) {
         napi_create_int32(env, NO_ERRS, &result);
     } else {

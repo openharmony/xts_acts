@@ -19,6 +19,8 @@ group("UDMFtest") {
     deps = [
       "UDMFndktestHvigor:ActsUDMFNdkTest",
       "UDMFtest:UDMF_ets_test",
+      "UDMFwithOutPermissiontest:UDMF_drag_ets_test",
+      "UDMFwithPermissiontest:UDMF_drag_test",
     ]
   }
 }

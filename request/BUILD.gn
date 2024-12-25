@@ -20,6 +20,7 @@ group("request") {
     "newRequestAuthorityTest:ActsRequestAuthorityTest",
     "newRequestNormalTest:ActsRequestNormalTest",
     "newRequestTest:ActsRequestNewTest",
+    "requestCacheDownloadTest:ActsRequestCacheDownloadAuthorTest",
     "requestSpecialTest:ActsRequestSpecialTest",
   ]
 }

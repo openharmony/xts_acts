@@ -31,6 +31,8 @@ public:
     static napi_value Release(napi_env env, napi_callback_info info);
     static napi_value JsPackToDataMultiFrames(napi_env env, napi_callback_info info);
     static napi_value JsPackToFileMultiFrames(napi_env env, napi_callback_info info);
+    static napi_value JsPackToDataMultiFramesError(napi_env env, napi_callback_info info);
+    static napi_value JsPackToFileMultiFramesError(napi_env env, napi_callback_info info);
 private:
 };
 } // namespace Media

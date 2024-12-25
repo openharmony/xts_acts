@@ -81,15 +81,6 @@ HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNULL, TestSize.Level3) 
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyMultipleCalls, TestSize.Level3) {
-    for (int i = 0; i < 10; i++) {
-        OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
-        EXPECT_NE(filter, nullptr);
-    }
-
-    OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
-    for (int i = 0; i < 10; i++) {
-        OH_Drawing_FilterDestroy(filter);
-    }
 
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();

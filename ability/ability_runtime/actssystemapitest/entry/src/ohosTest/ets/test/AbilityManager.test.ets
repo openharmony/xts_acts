@@ -91,9 +91,13 @@ export default function abilityManagerTest() {
       let TAG = 'System_API_Test_Ability_Manager_0400';
       abilityManager.getAbilityRunningInfos()
         .then((data) => {
-          console.log(TAG + '')
+          console.log(`${TAG}, data: ${JSON.stringify(data)}`);
           expect(data.length).assertEqual(1);
           expect(data[0].ability.bundleName).assertEqual('com.acts.systemapitest');
+          expect(data[0].pid).assertLargerOrEqual(0);
+          expect(data[0].uid).assertLargerOrEqual(0);
+          expect(data[0].processName).assertEqual("com.acts.systemapitest");
+          expect(data[0].abilityState).assertLargerOrEqual(abilityManager.AbilityState.INITIAL);
           done();
         })
         .catch((err: BusinessError) => {
@@ -174,6 +178,30 @@ export default function abilityManagerTest() {
         console.log(TAG + "  err.code: " + error.code);
         expect(error.code).assertEqual(ERROR_CODE);
         done();
+      }
+    })
+
+    /**
+     * @tc.number: System_API_Test_Ability_Manager_0900
+     * @tc.name: abilityState cover
+     * @tc.desc: cover all value of abilityState
+     * @tc.level 3
+     */
+    it('System_API_Test_Ability_Manager_0900', 0, (done: Function) => {
+      let tag = `System_API_Test_Ability_Manager_0900`;
+      console.log(`${tag}, test begin`);
+      try {
+        expect(abilityManager.AbilityState.INITIAL).assertEqual(0);
+        expect(abilityManager.AbilityState.FOCUS).assertEqual(2);
+        expect(abilityManager.AbilityState.FOREGROUND).assertEqual(9);
+        expect(abilityManager.AbilityState.BACKGROUND).assertEqual(10);
+        expect(abilityManager.AbilityState.FOREGROUNDING).assertEqual(11);
+        expect(abilityManager.AbilityState.BACKGROUNDING).assertEqual(12);
+        console.log(`${tag}, test end`);
+        done();
+      } catch (error) {
+        console.log(`${tag}, failed: ${JSON.stringify(error)}`);
+        expect().assertFail()
       }
     })
   })

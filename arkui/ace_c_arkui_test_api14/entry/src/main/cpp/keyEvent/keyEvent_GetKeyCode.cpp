@@ -38,17 +38,14 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "KeyEventGetKeyCode", "OnEventReceive");
     if (event == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "KeyEventGetKeyCode", "OnEventReceive: event is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OnEventReceive", "OnEventReceive: event is null");
         return;
     }
     auto get_ArkuI_UIInputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
-
     auto type = OH_ArkUI_KeyEvent_GetKeyCode(get_ArkuI_UIInputEvent);
-
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-    auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-
+    auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);             
     if (type == 2049) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,

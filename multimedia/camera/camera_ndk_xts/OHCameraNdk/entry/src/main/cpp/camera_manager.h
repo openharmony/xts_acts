@@ -138,7 +138,7 @@ public:
     Camera_ErrorCode PreviewOutputStop(int useCaseCode);                                       // 停止预览输出
     Camera_ErrorCode PreviewOutputRelease(int useCaseCode);                                    // 停止预览输出
     Camera_ErrorCode IsMirrorSupported(int useCaseCode);  // 检查是否支持镜像拍照
-    Camera_ErrorCode EnableMirror(int useCaseCode);   // 是否启用镜像拍照
+    Camera_ErrorCode EnableMirror(int useCaseCode);  // 是否启用镜像拍照
     Camera_ErrorCode PhotoOutputCapture(int useCaseCode); // 拍摄照片
     Camera_ErrorCode PhotoOutputRelease(int useCaseCode); // 释放拍照输出
     Camera_ErrorCode TakePictureWithPhotoSettings(Camera_PhotoCaptureSetting photoSetting,
@@ -164,6 +164,10 @@ public:
     CaptureSession_Callbacks *GetCaptureSessionRegister(void); // 注册捕获会话事件监听
     VideoOutput_Callbacks *GetVideoOutputListener(void);       // 注册录像监听
     PhotoOutput_Callbacks *GetPhotoOutputListener(void);       // 注册拍照输出监听
+    inline uint32_t GetCameraDeviceSize()
+    {
+        return size_;
+    }
 
 private:
     Camera_Manager *cameraManager_; // CameraManager实例。

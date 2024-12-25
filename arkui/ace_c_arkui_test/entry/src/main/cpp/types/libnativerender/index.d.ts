@@ -584,8 +584,6 @@ export const refreshOffsetTest : (a : string) =>void;
 export const refreshOffsetLessThanOffsetTest : (a : string) =>void;
 export const hybirdGetNodeHandleTest : (a: string) => void;
 
-export const responseConfigUpdateTest : (a : string) =>void;
-
 export const requirementPanGestureTest: (a: string) => void;
 
 export const customComponentMeasureNodeTest : (a : string) => void;
@@ -761,3 +759,13 @@ export const textInputInputFilterTest: (a: string) => void;
 export const textInputOnTextSelectionAllChangeTest :( a :string) => void;
 
 export const getTextInputSelectAllData : () => number[][];
+
+export const requirementRouterPageStateTest: (a: string) => void;
+
+export const getRouterData: () => number[][];
+
+export const resourceNapiValueTest: (a: string, b: object) => void;
+
+export const swipeAxisGestureTest: (a: string) => void;
+
+export const GetGestureDataAxis: () => number[][];

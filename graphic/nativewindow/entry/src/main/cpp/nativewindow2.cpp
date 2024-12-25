@@ -13,12 +13,6 @@
  * limitations under the License.
  */
 
-//
-// Created on 2024/8/7.
-//
-// Node APIs are not fully supported. To solve the compilation error of the interface cannot be found,
-// please include "napi/native_api.h".
-
 #include "napi/native_api.h"
 #include <cstdint>
 #include <hilog/log.h>
@@ -26,6 +20,7 @@
 #include <native_image/native_image.h>
 #include <native_window/external_window.h>
 #include <native_buffer/native_buffer.h>
+#include "nativewindow.h"
 #include "ace/xcomponent/native_interface_xcomponent.h"
 #include <string>
 
@@ -54,7 +49,6 @@
 #define CONSTANT_3000 3000
 #define CONSTANT_3001 3001
 #define CONSTANT_998899 998899
-
 #define CONSTANT_100 100
 #define CONSTANT_1000 1000
 #define CONSTANT_10000 10000
@@ -63,12 +57,10 @@
 #define CONSTANT_10000000 10000000
 #define CONSTANT_100000000 100000000
 #define CONSTANT_1000000000 1000000000
-
 #define CONSTANT_1999999 1999999
 #define CONSTANT_99999999 99999999
 #define CONSTANT_99999999999999999 99999999999999999
 #define CONSTANT_999999999999999999 999999999999999999
-
 #define CONSTANT_40001000 40001000
 #define CONSTANT_50002000 50002000
 #define CONSTANT_50102000 50102000
@@ -108,54 +100,6 @@ uint64_t usageType[] = {
     NATIVEBUFFER_USAGE_CPU_READ,      NATIVEBUFFER_USAGE_CPU_WRITE,  NATIVEBUFFER_USAGE_MEM_DMA,
     NATIVEBUFFER_USAGE_HW_RENDER,     NATIVEBUFFER_USAGE_HW_TEXTURE, NATIVEBUFFER_USAGE_CPU_READ_OFTEN,
     NATIVEBUFFER_USAGE_ALIGNMENT_512,
-};
-
-class InitNativeWindow {
-private:
-    int32_t width_ = 0x100;
-    int32_t height_ = 0x100;
-    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
-    OH_NativeImage* _image = nullptr;
-    OHNativeWindow* _nativeWindow = nullptr;
-
-public:
-    InitNativeWindow()
-    {
-        _image = OH_ConsumerSurface_Create();
-        if (_image != nullptr) {
-            _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
-            if (_nativeWindow != nullptr) {
-                OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_BUFFER_GEOMETRY, width_, height_);
-                OH_NativeWindow_NativeWindowHandleOpt(_nativeWindow, SET_USAGE, usage);
-            } else {
-                _nativeWindow = nullptr;
-            }
-        } else {
-            _image = nullptr;
-            _nativeWindow = nullptr;
-        }
-    }
-    ~InitNativeWindow()
-    {
-        _image = nullptr;
-        _nativeWindow = nullptr;
-    }
-    OHNativeWindow *returnNativeWindow()
-    {
-        if (_nativeWindow == nullptr) {
-            return nullptr;
-        } else {
-            return _nativeWindow;
-        }
-    };
-    OH_NativeImage *returnNativeImage()
-    {
-        if (_image == nullptr) {
-            return nullptr;
-        } else {
-            return _image;
-        }
-    }
 };
 
 static void DestroyNativeWindowImage(OH_NativeImage *image, OHNativeWindow *window)

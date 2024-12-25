@@ -344,7 +344,9 @@
     "MainAbility/pages/textinput/TextInputSelectionMenuHiddenTest",
     "MainAbility/pages/textinput/TextInputInputFilterTest",
     "MainAbility/pages/textinput/TextInputOnTextSelectionAllChangeTest",
-    "MainAbility/pages/customcomponent/CustomComponentSecondaryLayoutTest"
-    
+    "MainAbility/pages/customcomponent/CustomComponentSecondaryLayoutTest",
+    "MainAbility/pages/requirement/RequirementRouterPageStateTest",
+    "MainAbility/pages/resourcenapivalue/ResourceNapiValueTest",
+    "MainAbility/pages/gesture/AxisGestureTest"
   ]
 }

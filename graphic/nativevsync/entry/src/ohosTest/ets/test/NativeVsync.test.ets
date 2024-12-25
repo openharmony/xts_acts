@@ -270,5 +270,161 @@ export default function nativeVsyncTest() {
       done();
     });
 
+   /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_CREATE_ASSOCIATEDWINDOW_0100
+     * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowNormal
+     * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncCreateForAssociatedWindowNormal', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncCreateForAssociatedWindowNormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_CREATE_ASSOCIATEDWINDOW_0200
+     * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal01
+     * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal01', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal01();
+      console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
+      expect(result[0]).assertEqual(-1);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_CREATE_ASSOCIATEDWINDOW_0300
+     * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal02
+     * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal02();
+      console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OH_CREATE_ASSOCIATEDWINDOW_0400
+     * @tc.name       : testOHNativeVSyncCreateForAssociatedWindowAbNormal03
+     * @tc.desc       : test OH_NativeVSync_Create_ForAssociatedWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncCreateForAssociatedWindowAbNormal03', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncCreateForAssociatedWindowAbNormal03();
+      console.info("testOHNativeVSyncCreateForAssociatedWindowAbNormal result:" + result);
+      expect(result).assertEqual(0);
+      done();
+    });
+	
+	/**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OHNativeVSyncDVSyncSwitch
+     * @tc.name       : testOHNativeVSyncDVSyncSwitch
+     * @tc.desc       : test OHNativeVSyncDVSyncSwitch
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncDVSyncSwitch', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncDVSyncSwitch();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_OHNativeVSyncDVSyncSwitchNullptr
+     * @tc.name       : testOHNativeVSyncDVSyncSwitchNullptr
+     * @tc.desc       : test OHNativeVSyncDVSyncSwitchNullptr
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncDVSyncSwitchNullptr', 0, async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncDVSyncSwitchNullptr();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_MultiCallbackNormal_0100
+     * @tc.name       : testOHNativeVSyncMultiCallbackNormal
+     * @tc.desc       : test OHNativeVSyncMultiCallbackNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackNormal', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackNormal();
+      console.info("testOHNativeVSyncRequestFrameWithMultiCallbackNormal result:" + result);
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+    
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_MultiCallbackNormal_0200
+     * @tc.name       : testOHNativeVSyncMultiCallbackNormal01
+     * @tc.desc       : test OHNativeVSyncMultiCallbackNormal01
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackNormal01', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackNormal01();
+      console.info("testOHNativeVSyncRequestFrameWithMultiCallbackNormal01 result:" + result);
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_MultiCallbackAbNormal_0100
+     * @tc.name       : testOHNativeVSyncMultiCallbackAbNormal
+     * @tc.desc       : test testOHNativeVSyncMultiCallbackAbNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackAbNormal();
+      console.info("testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal result:" + result);
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(40001000);
+      expect(result[2]).assertEqual(40001000);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_MultiCallbackAbNormal_0200
+     * @tc.name       : testOHNativeVSyncMultiCallbackAbNormal01
+     * @tc.desc       : test testOHNativeVSyncMultiCallbackAbNormal01
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal01', 0, async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncRequestFrameWithMultiCallbackAbNormal01();
+      console.info("testOHNativeVSyncRequestFrameWithMultiCallbackAbNormal01 result:" + result);
+      expect(result[0]).assertEqual(40001000);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
   })
 }

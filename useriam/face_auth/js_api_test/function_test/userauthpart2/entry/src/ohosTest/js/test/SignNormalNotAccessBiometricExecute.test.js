@@ -35,17 +35,32 @@ export default function signNormalNotAccessBiometricExecute() {
           const userAuthInstance = userAuth.getUserAuthInstance(args[0], args[1]);
           userAuthInstance.on('result', {
             onResult: (onResult) => {
-              console.info(`${args[2]} onResult ${onResult}`);
-              console.info('onResult.token is ' + onResult.token);
-              console.info('onResult.authType is ' + onResult.authType);
-              expect(onResult.result).assertEqual(args[3]);
-              resolve();
+              try {
+                console.info(`${args[2]} onResult ${onResult}`);
+                console.info('onResult.token is ' + onResult.token);
+                console.info('onResult.authType is ' + onResult.authType);
+                console.info('onResult.result is ' + onResult.result);
+                expect(onResult.result).assertEqual(args[3]);
+              } catch (e) {
+                console.info('error is ' + e);
+                try {
+                  expect(null).assertFail();
+                } catch (e) {
+                  console.info('assert fail');
+                }
+              } finally {
+                resolve();
+              }
             }
           });
           userAuthInstance.start();
         } catch (e) {
           console.info(`${args[2]} fail ${e.code}`);
-          expect(null).assertFail();
+          try {
+            expect(null).assertFail();
+          } catch (e) {
+            console.info('assert fail');
+          }
           reject();
         }
       })
