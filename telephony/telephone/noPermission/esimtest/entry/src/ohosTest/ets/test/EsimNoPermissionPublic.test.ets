@@ -15,7 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
-import eSIM from '../../@ohos.telephony.esim';
+import eSIM from '@ohos.telephony.esim';
 
 const SLOT_0: number = 0;
 const PORT_INDEX: number = 0;
@@ -23,10 +23,10 @@ let isEsimSupport: boolean = false;
 let forceDisableProfile: boolean = false;
 let iccid: string = 'test';
 let nickname: string = 'testName';
-let options: eSIM.ResetOption = eSIM.ResetOption.DELETE_OPERATIONAL_PROFILES;
+let options: eSIM.ResetOption = eSIM?.ResetOption?.DELETE_OPERATIONAL_PROFILES;
 let address: string = 'test';
 let transactionId: string = '';
-let cancelReason: eSIM.CancelReason = eSIM.CancelReason.CANCEL_REASON_END_USER_REJECTION;
+let cancelReason: eSIM.CancelReason = eSIM?.CancelReason?.CANCEL_REASON_END_USER_REJECTION;
 
 let profile: eSIM.DownloadableProfile = {
   activationCode: '123456',
