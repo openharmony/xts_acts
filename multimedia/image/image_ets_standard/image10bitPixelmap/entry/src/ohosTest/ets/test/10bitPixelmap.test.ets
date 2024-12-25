@@ -46,10 +46,13 @@ export default function image10bitPixelMap() {
     let filesDir: string | undefined;
     let cacheDir: string | undefined;
     let openHdrPic: HdrPicture;
+    let isSupportHEIFEncode: boolean;
 
     beforeAll(() => {
       filesDir = AppStorage.get('pathDir');
       cacheDir = AppStorage.get('cacheDir');
+      isSupportHEIFEncode = 
+        image.createImagePacker().supportedFormats.includes("image/heif");
     })
     afterEach(() => {
       if (globalPixelMap != undefined) {
@@ -2151,8 +2154,12 @@ export default function image10bitPixelMap() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5200");
-      if (!isSupportHdr()) {
-        logger.log("device is not support hdr");
+      if (!isSupportHdr() || !isSupportHEIFEncode) {
+        if (!isSupportHdr()) {
+          logger.log("device is not support hdr");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
@@ -2194,8 +2201,12 @@ export default function image10bitPixelMap() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PIXELMAPADAPTION_10bit_5400");
-      if (!isSupportHdr()) {
-        logger.log("device is not support hdr");
+      if (!isSupportHdr() || !isSupportHEIFEncode) {
+        if (!isSupportHdr()) {
+          logger.log("device is not support hdr");
+        } else {
+          logger.log("device is not support heif encode");
+        }
         expect(true).assertTrue();
         done();
       } else {
