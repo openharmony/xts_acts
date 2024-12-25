@@ -1231,8 +1231,8 @@ export default function TextPicker() {
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       // 支持传入宫格和大图Margin
-      pickerOptions.gridMargin = {top: "10vp"};
-      pickerOptions.photoBrowserMargin = {top: "20vp"};
+      pickerOptions.gridMargin = {top: 10};
+      pickerOptions.photoBrowserMargin = {top: 20};
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/PickerComponent',
         params: {
