@@ -18,8 +18,10 @@
     "name": "sharedHarOne",
     "type": "har",
     "deviceTypes": [
+      "wearable",
       "default",
-      "wearable"
+      "tablet",
+      "2in1"
     ]
   }
 }
