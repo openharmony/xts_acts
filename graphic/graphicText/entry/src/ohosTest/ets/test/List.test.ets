@@ -17,8 +17,11 @@ import graphicTextBTest from './graphicTextB.test'
 import graphicTextClass from './graphicTextClass.test'
 import graphicTextEnum from './graphicTextEnum.test'
 import graphicTextInterface from './graphicTextInterface.test'
+import graphicFontDescriptorTest from './graphicFontDescriptor.test'
 import LineMetricsTest from './LineMetricsTest.test'
 import LineMetricsTwoTest from './LineMetricsTwoTest.test'
+import FontDescriptorTest from './FontDescriptorTest.test'
+import FontDescriptorTest1 from './FontDescriptorTest1.test'
 
 export default function testsuite() {
   graphicTextATest()
@@ -26,6 +29,9 @@ export default function testsuite() {
   graphicTextClass();
   graphicTextEnum();
   graphicTextInterface(); 
+  graphicFontDescriptorTest()
   LineMetricsTest();
   LineMetricsTwoTest()
+  FontDescriptorTest()
+  FontDescriptorTest1()
 }
