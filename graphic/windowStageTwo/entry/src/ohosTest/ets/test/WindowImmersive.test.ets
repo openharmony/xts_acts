@@ -31,7 +31,7 @@ export default function windowImmersiveTest() {
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
-      isPCStatus = settings.getValueSync(context,'isStatusBarExist','')
+      isPCStatus = settings.getValueSync(context,'isStatusBarExist','',settings.domainName.USER_PROPRERTY)
       //isPCStatus == '' 非PC设备
       //isPCStatus == '1' PC设备状态栏dock未融合
       //isPCStatus == '0' PC设备状态栏dock融合
