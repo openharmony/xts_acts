@@ -115,11 +115,12 @@ function moveElementUp() {
     element.style.marginTop = computeNum(element.style.marginTop) - 10 + 'px';
 }
 function computeNum(value) {
-
-    if(!value || value === '') {
-    return 0;
+    if(!value) {
+        return 0;
+    }else if (value === '') {
+        return 0;
     } else {
-    return parseFloat(value);
+        return parseFloat(value);
     }
 }
 function myFunction4() {
@@ -161,7 +162,7 @@ function fullScreenDom(id) {
 
     let mediaProperties = ['error', 'src', 'srcObject', 'currentSrc', 'crossOrigin', 'networkState', 'preload', 'buffered', 'readyState', 'seeking', 'currentTime', 'duration',
         'paused', 'defaultPlaybackRate', 'playbackRate', 'played', 'seekable', 'ended', 'autoplay', 'loop', "controls", 'volume',
-        'muted', 'defaultMuted', 'audioTracks', 'videoTracks', 'textTracks', 'width', 'height', "videoWidth", 'videoHeight', 'poster'];
+        'muted', 'defaultMuted', 'audioTracks', 'videoTracks', 'textTracks', 'width', 'height', 'videoWidth', 'videoHeight', 'poster'];
 
     // CODE START HERE
 
@@ -288,7 +289,7 @@ function fullScreenDom(id) {
 
     function updateProperties() {
         let i = 0;
-        for (key in mediaEvents) {
+        for (const key of mediaEvents) {
             let e = document.getElementById('e_' + key);
             if (e) {
                 e.textContent = mediaEvents[key];
@@ -297,7 +298,8 @@ function fullScreenDom(id) {
                 }
             }
         }
-        for (key in mediaProperties) {
+
+        for (const key of mediaProperties) {
             let val = 'document._video.' + mediaProperties[key];
             mediaPropertiesElts[i++].textContent = val;
         }
@@ -358,7 +360,7 @@ function fullScreenDom(id) {
     }
     function buttonLoad() {
         getVideo('bodyId').load();
-        return true
+        return true;
     }
      function buttonPlay() {
       document.getElementById('playButton').click();
@@ -366,7 +368,7 @@ function fullScreenDom(id) {
     }
      function buttonPause() {
         getVideo('bodyId').pause();
-        return 'pause'
+        return 'pause';
     }
     function setVolume() {
         // getVideo('bodyId').volume+=0.5
@@ -377,9 +379,9 @@ function fullScreenDom(id) {
 
     function jumpToEnd() {
         let durationTime = getVideo('bodyId').duration;
-        if(durationTime>0) {
-            console.log("durationTime:" + durationTime);
-            console.log("durationTime:" + (durationTime - 2));
+        if(durationTime > 0) {
+            console.log('durationTime:' + durationTime);
+            console.log('durationTime:' + (durationTime - 2));
             getVideo('bodyId').currentTime = durationTime - 2;
         }
 
@@ -400,7 +402,9 @@ function fullScreenDom(id) {
     }
 
     function switchVideo(n) {
-        if (n >= videos.length) n = 0;
+        if (n >= videos.length) {
+            n = 0;
+        }
 
         let mp4 = document.getElementById('mp4');
         let parent = mp4.parentNode;

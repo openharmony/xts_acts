@@ -112,11 +112,12 @@ function moveElementUp() {
     element.style.marginTop = computeNum(element.style.marginTop) - 10 + 'px';
 }
 function computeNum(value) {
-
-    if( !value || value === '') {
-    return 0;
+    if(!value) {
+        return 0;
+    }else if (value === '') {
+        return 0;
     } else {
-    return parseFloat(value);
+        return parseFloat(value);
     }
 }
 function myFunction4() {
@@ -178,20 +179,20 @@ function fullScreenDom(id) {
         initProperties('properties', mediaProperties, mediaPropertiesElts);
         initMediatypes();
         // properties are updated even if no event was triggered
-        setInterval(update_properties, 250);
+        setInterval(updateProperties, 250);
     }
     document.addEventListener('DOMContentLoaded', init, false);
 
     function initEvents(id, arrayEventDef) {
         let f;
-        for (key in arrayEventDef) {
+        for (const key of arrayEventDef) {
             document._video.addEventListener(key, capture, false);
         }
 
         let tbody = document.getElementById(id);
         let i = 1;
         let tr = null;
-        for (key in arrayEventDef) {
+        for (const key of arrayEventDef) {
             if (tr  === null) {
                 tr = document.createElement('tr');
             }
@@ -283,9 +284,9 @@ function fullScreenDom(id) {
         mediaEvents[event.type]++;
     }
 
-    function update_properties() {
+    function updateProperties() {
         let i = 0;
-        for (key in mediaEvents) {
+        for (const key of mediaEvents) {
             let e = document.getElementById('e_' + key);
             if (e) {
                 e.textContent = mediaEvents[key];
@@ -294,7 +295,7 @@ function fullScreenDom(id) {
                 }
             }
         }
-        for (key in mediaProperties) {
+        for (const key of mediaProperties) {
             let val = 'document._video.' + mediaProperties[key];
             mediaPropertiesElts[i++].textContent = val;
         }
