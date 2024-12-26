@@ -34,7 +34,7 @@ export default function windowPropertiesTest() {
             windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
             deviceType = deviceInfo.deviceType;
             console.log('jsUnittest beforeAll deviceType =' + deviceType);
-            isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '');
+            isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
             console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
 
         })
