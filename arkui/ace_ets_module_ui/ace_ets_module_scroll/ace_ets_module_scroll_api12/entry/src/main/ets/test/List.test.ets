@@ -117,6 +117,10 @@ import tabsCallBack3 from './TabsTest/tabsCallBack3.test';
 import tabsCallBack4 from './TabsTest/tabsCallBack4.test';
 import tabsCallBack5 from './TabsTest/tabsCallBack5.test';
 import tabsCallBack6 from './TabsTest/tabsCallBack6.test';
+import tabsCallBack7 from './TabsTest/tabsCallBack7.test';
+import tabsCallBack8 from './TabsTest/tabsCallBack8.test';
+import tabsCallBack9 from './TabsTest/tabsCallBack9.test';
+import verticalTrue from './TabsTest/verticalTrue.test';
 import tabsTransition from './TabsTest/tabsTransition.test';
 import swiperLoops from './SwiperTest/swiperLoops.test';
 
@@ -257,6 +261,10 @@ export default function testsuite() {
   tabsCallBack4()
   tabsCallBack5()
   tabsCallBack6()
+  tabsCallBack7()
+  tabsCallBack8()
+  tabsCallBack9()
+  verticalTrue()
   tabsTransition()
   swiperLoops()
   SwiperImplicitanimation0050();
