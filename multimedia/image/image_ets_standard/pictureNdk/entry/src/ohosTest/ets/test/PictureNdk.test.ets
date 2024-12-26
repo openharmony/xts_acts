@@ -333,10 +333,13 @@ const testSetAndGetPixelFormat = (done: Function, auxType: image.AuxiliaryPictur
 
     ndkTest.AuxiliaryPictureGetInfo();
     expect(ndkTest.AuxiliaryPictureInfoSetPixelFormat(pixelMapFormat)).assertEqual(ErrorCode.IMAGE_SUCCESS);
-    expect(ndkTest.AuxiliaryPictureSetInfoToCtx()).assertEqual(ErrorCode.IMAGE_SUCCESS);
-
-    ndkTest.AuxiliaryPictureGetInfo();
-    expect(ndkTest.AuxiliaryPictureInfoGetPixelFormat()).assertEqual(pixelMapFormat);
+    if (pixelMapFormat == image.PixelMapFormat.RGBA_F16) {
+      expect(ndkTest.AuxiliaryPictureSetInfoToCtx()).assertEqual(ErrorCode.IMAGE_BAD_PARAMETER);
+    } else {
+      expect(ndkTest.AuxiliaryPictureSetInfoToCtx()).assertEqual(ErrorCode.IMAGE_SUCCESS);
+      ndkTest.AuxiliaryPictureGetInfo();
+      expect(ndkTest.AuxiliaryPictureInfoGetPixelFormat()).assertEqual(pixelMapFormat);
+    }
     done();
   } catch (err) {
     hilog.error(domain, testTag, caseName + `: Test exception ` + err);
