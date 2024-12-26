@@ -17,6 +17,9 @@ group("WebMultimedia") {
     deps = [
       "audio_play:ActsAudioPlayTest",
       "control_center:AtcsControlCenterTest",
+      "video_hosting:videoHosting",
+      "video_play:ActsVideoPlayTest",
+      "webcam:ActsWebcamTest",
     ]
   }
 }
