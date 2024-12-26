@@ -16,8 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import pasteboard from '@ohos.pasteboard';
-import image from '@ohos.multimedia.image';
 import Want from '@ohos.app.ability.Want';
+import image from '@ohos.multimedia.image';
 
 let TAG = 'ttt';
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
