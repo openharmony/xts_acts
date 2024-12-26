@@ -2637,8 +2637,10 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0001', 0, () => {
       const TAG = "testUrlParseUrl9Escape0001";
       try {
-        let url1 = url.URL.parseURL('\b/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\b/path2', 'https://www.huawei.com/test/test1');
+        let urlString1 = '\b/path2';
+        let urlString2 = '/\b/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
         expect(url1.toString()).assertEqual('https://www.huawei.com/test//path2');
         expect(url2.toString()).assertEqual('https://www.huawei.com/%08/path2');
       } catch (err) {
@@ -2677,10 +2679,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0003', 0, () => {
       const TAG = "testUrlParseUrl9Escape0003";
       try {
-        let url1 = url.URL.parseURL('\f/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\f/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test//path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%0C/path2');
+        let urlString1 = '\f/path2';
+        let urlString2 = '/\f/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test//path2';
+        let rstUrl2 = 'https://www.huawei.com/%0C/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -2717,10 +2723,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0005', 0, () => {
       const TAG = "testUrlParseUrl9Escape0005";
       try {
-        let url1 = url.URL.parseURL('\n/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\n/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test//path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%0A/path2');
+        let urlString1 = '\n/path2';
+        let urlString2 = '/\n/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test//path2';
+        let rstUrl2 = 'https://www.huawei.com/%0A/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -2757,10 +2767,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0007', 0, () => {
       const TAG = "testUrlParseUrl9Escape0007";
       try {
-        let url1 = url.URL.parseURL('\r/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\r/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test//path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%0D/path2');
+        let urlString1 = '\r/path2';
+        let urlString2 = '/\r/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test//path2';
+        let rstUrl2 = 'https://www.huawei.com/%0D/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -2797,10 +2811,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0009', 0, () => {
       const TAG = "testUrlParseUrl9Escape0009";
       try {
-        let url1 = url.URL.parseURL('\t/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\t/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test//path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%09/path2');
+        let urlString1 = '\t/path2';
+        let urlString2 = '/\t/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test//path2';
+        let rstUrl2 = 'https://www.huawei.com/%09/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -2877,10 +2895,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0013', 0, () => {
       const TAG = "testUrlParseUrl9Escape0013";
       try {
-        let url1 = url.URL.parseURL('\x24/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\x24/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test/$/path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/$/path2');
+        let urlString1 = '\x24/path2';
+        let urlString2 = '/\x24/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test/$/path2';
+        let rstUrl2 = 'https://www.huawei.com/$/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -2917,10 +2939,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0015', 0, () => {
       const TAG = "testUrlParseUrl9Escape0015";
       try {
-        let url1 = url.URL.parseURL('\开/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\开/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test/%E5%BC%80/path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%E5%BC%80/path2');
+        let urlString1 = '\开/path2';
+        let urlString2 = '/\开/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test/%E5%BC%80/path2';
+        let rstUrl2 = 'https://www.huawei.com/%E5%BC%80/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -2957,10 +2983,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0017', 0, () => {
       const TAG = "testUrlParseUrl9Escape0017";
       try {
-        let url1 = url.URL.parseURL('\😊/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\😊/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test/%F0%9F%98%8A/path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%F0%9F%98%8A/path2');
+        let urlString1 = '\😊/path2';
+        let urlString2 = '/\😊/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%98%8A/path2';
+        let rstUrl2 = 'https://www.huawei.com/%F0%9F%98%8A/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -2997,10 +3027,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0019', 0, () => {
       const TAG = "testUrlParseUrl9Escape0019";
       try {
-        let url1 = url.URL.parseURL('\0/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\0/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test//path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%00/path2');
+        let urlString1 = '\0/path2';
+        let urlString2 = '/\0/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test//path2';
+        let rstUrl2 = 'https://www.huawei.com/%00/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -3037,10 +3071,14 @@ export default function Escape_Url() {
     it('testUrlParseUrl9Escape0021', 0, () => {
       const TAG = "testUrlParseUrl9Escape0021";
       try {
-        let url1 = url.URL.parseURL('\\b/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\\b/path2', 'https://www.huawei.com/test/test1');
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test/%5Cb/path2');
-        expect(url2.toString()).assertEqual('https://b/path2');
+        let urlString1 = '\\b/path2';
+        let urlString2 = '/\\b/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let rstUrl1 = 'https://www.huawei.com/test/%5Cb/path2';
+        let rstUrl2 = 'https://b/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
