@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import test from './FmsAcquireForm2.test.ets';
-import ApiCoverTest from './ApiCoverTest.test.ets';
+import ApiCoverTest from './FmsApiCoverTest.test.ets';
 
 export default function testsuite() {
   test();
