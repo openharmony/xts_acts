@@ -593,6 +593,7 @@ import refreshOffsetTest from './refresh/RefreshOffsetTest.test'
 import refreshPullDownRatioTest from './refresh/RefreshPullDownRatioTest.test'
 import refreshPullToRefreshTest from './refresh/RefreshPullToRefreshTest.test'
 import refreshRefreshingTest from './refresh/RefreshRefreshingTest.test'
+import refreshContentTest from './refresh/RefreshContentTest.test'
 import sliderOnChangeTest from './slider/SliderOnChangeTest.test'
 import sliderBlockColorTest from './slider/SliderBlockColorTest.test'
 import sliderBlockStyleTest from './slider/SliderBlockStyleTest.test'
@@ -988,6 +989,7 @@ export default function testsuite() {
   refreshPullDownRatioTest()
   refreshPullToRefreshTest()
   refreshRefreshingTest()
+  refreshContentTest()
   textInputBackgroundColorTest()
   textInputBackgroundImageTest()
   textInputCaretColorTest()
@@ -1367,9 +1369,13 @@ export default function testsuite() {
   columnWidthTest()
   columnHeightTest()
   rowHeightTest()
+  rowJustifyContentTest()
+  rowAlignItemsTest()
   sliderWidthTest()
   sliderHeightTest()
   columnPaddingTest()
+  columnJustifyContentTest()
+  columnAlignItemsTest()
   columnForegroundBlurStyleTest()
   commonAttrsAlignTest()
   commonAttrsDirectionTest()
@@ -1471,6 +1477,10 @@ export default function testsuite() {
   relativecontaineAlignmentRuleOptionTest()
   relativecontaineBarrierOptionTest()
   testGesture()
+  gestureGestureAttrsTest()
+  gestureCreateGestureTest()
+  gestureGestureInterrupterTest()
+  gestureGestureInfoTest()
   gestureNestScrollTest()
   gridColumnGapTest()
   gridRowsTemplateTest()

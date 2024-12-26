@@ -5045,6 +5045,10 @@ export const testRefreshRefreshing003: () => number;
 
 export const testRefreshRefreshing004: () => number;
 
+export const testRefreshContent001: () => number;
+
+export const testRefreshContent002: () => number;
+
 export const testTextAreaBackgroundColor001: () => number;
 
 export const testTextAreaBackgroundColor002: () => number;
