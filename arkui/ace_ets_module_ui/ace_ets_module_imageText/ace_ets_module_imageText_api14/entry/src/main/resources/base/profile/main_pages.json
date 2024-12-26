@@ -16,6 +16,7 @@
     "MainAbility/pages/Marquee/marqueeNode",
     "MainAbility/pages/TextArea/textAreaNode",
     "MainAbility/pages/SymbolGlyph/SymbolGlyphNode",
-    "MainAbility/pages/ImageOrientation/ImageOrientation"
+    "MainAbility/pages/ImageOrientation/ImageOrientation",
+    "MainAbility/pages/RichEditor/onDoubleClick"
   ]
 }
