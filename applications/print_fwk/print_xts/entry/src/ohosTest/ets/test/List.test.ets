@@ -16,9 +16,11 @@
 import printTest from './print.test'
 import oHPrintTest from './ohprint.test'
 import oHScanTest from './ohscan.test'
+import printExtensionTest from './printExtension.test'
 
 export default function testsuite() {
   printTest();
   oHPrintTest();
   oHScanTest();
+  printExtensionTest();
 }

@@ -252,5 +252,169 @@ export default function printTest() {
         expect(false).assertTrue();
       })
     })
+
+    class MyPrinterCapabilities implements print.PrinterCapabilities {
+      supportedPageSizes: Array<print.PrintPageSize> = [];
+      supportedColorModes: Array<print.PrintColorMode> = [];
+      supportedDuplexModes: Array<print.PrintDuplexMode> = [];
+      supportedMediaTypes?: Array<string> = [];
+      supportedQualities?: Array<print.PrintQuality> = [];
+      supportedOrientations?: Array<print.PrintOrientationMode> = [];
+      options?: string;
+    }
+
+    class MyPrinterInformation implements print.PrinterInformation {
+      printerId: string = '';
+      printerName: string = '';
+      printerStatus: print.PrinterStatus = print.PrinterStatus.PRINTER_UNAVAILABLE;
+      description?: string;
+      capability?: print.PrinterCapabilities;
+      uri?: string;
+      printerMake?: string;
+      options?: string;
+    }
+
+    /**
+     * @tc.number print_function_0600
+     * @tc.name Test print
+     * @tc.desc check the addPrinterToDiscovery function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0600', 0, () => {
+      let printerInformation = new MyPrinterInformation();
+      printerInformation.printerId = 'testPrinterId';
+      printerInformation.printerName = 'testPrinterName';
+      printerInformation.printerStatus = print.PrinterStatus.PRINTER_IDLE;
+      printerInformation.printerStatus = print.PrinterStatus.PRINTER_BUSY;
+      printerInformation.printerStatus = print.PrinterStatus.PRINTER_UNAVAILABLE;
+      printerInformation.description = 'testDescription';
+      printerInformation.capability = new MyPrinterCapabilities();
+      let pageSize = new MyPrintPageSize();
+      pageSize.id = '0';
+      pageSize.name = '0';
+      pageSize.width = 210;
+      pageSize.height = 297;
+      printerInformation.capability.supportedPageSizes = [pageSize];
+      printerInformation.capability.supportedColorModes = [
+        print.PrintColorMode.COLOR_MODE_MONOCHROME,
+        print.PrintColorMode.COLOR_MODE_COLOR
+      ];
+      printerInformation.capability.supportedDuplexModes = [
+        print.PrintDuplexMode.DUPLEX_MODE_NONE,
+        print.PrintDuplexMode.DUPLEX_MODE_LONG_EDGE,
+        print.PrintDuplexMode.DUPLEX_MODE_SHORT_EDGE
+      ];
+      printerInformation.capability.supportedMediaTypes = ['stationery'];
+      printerInformation.capability.supportedQualities = [
+        print.PrintQuality.QUALITY_DRAFT,
+        print.PrintQuality.QUALITY_NORMAL,
+        print.PrintQuality.QUALITY_HIGH
+      ];
+      printerInformation.capability.supportedOrientations = [
+        print.PrintOrientationMode.ORIENTATION_MODE_PORTRAIT,
+        print.PrintOrientationMode.ORIENTATION_MODE_LANDSCAPE,
+        print.PrintOrientationMode.ORIENTATION_MODE_REVERSE_LANDSCAPE,
+        print.PrintOrientationMode.ORIENTATION_MODE_REVERSE_PORTRAIT,
+        print.PrintOrientationMode.ORIENTATION_MODE_NONE
+      ];
+      printerInformation.capability.options = 'testOptions';
+      printerInformation.uri = 'testUri';
+      printerInformation.printerMake = 'testPrinterMake';
+      printerInformation.options = 'testOptions';
+
+      // Permissions required: ohos.permission.PRINT
+      print.addPrinterToDiscovery(printerInformation).then((data : void) => {
+        console.log('addPrinterToDiscovery succeed, data: ' + JSON.stringify(data));
+      }).catch((error: BusinessError) => {
+        console.log('addPrinterToDiscovery failed, error: ' + JSON.stringify(error));
+      })
+    })
+
+    /**
+     * @tc.number print_function_0700
+     * @tc.name Test print
+     * @tc.desc check the updatePrinterInDiscovery function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0700', 0, () => {
+      let printerInformation = new MyPrinterInformation();
+      printerInformation.printerId = 'testPrinterId';
+      printerInformation.printerName = 'testPrinterName';
+      printerInformation.printerStatus = print.PrinterStatus.PRINTER_UNAVAILABLE;
+      printerInformation.description = 'testDescription';
+      printerInformation.capability = new MyPrinterCapabilities();
+      let pageSize = new MyPrintPageSize();
+      pageSize.id = '0';
+      pageSize.name = '0';
+      pageSize.width = 210;
+      pageSize.height = 297;
+      printerInformation.capability.supportedPageSizes = [pageSize];
+      printerInformation.capability.supportedColorModes = [
+        print.PrintColorMode.COLOR_MODE_MONOCHROME
+      ];
+      printerInformation.capability.supportedDuplexModes = [
+        print.PrintDuplexMode.DUPLEX_MODE_NONE
+      ];
+      printerInformation.capability.supportedMediaTypes = ['stationery'];
+      printerInformation.capability.supportedQualities = [
+        print.PrintQuality.QUALITY_DRAFT
+      ];
+      printerInformation.capability.supportedOrientations = [
+        print.PrintOrientationMode.ORIENTATION_MODE_PORTRAIT
+      ];
+      printerInformation.capability.options = 'testOptions';
+      printerInformation.uri = 'testUri';
+      printerInformation.printerMake = 'testPrinterMake';
+      printerInformation.options = 'testOptions';
+
+      // Permissions required: ohos.permission.PRINT
+      print.updatePrinterInDiscovery(printerInformation).then((data : void) => {
+        console.log('updatePrinterInDiscovery succeed, data: ' + JSON.stringify(data));
+      }).catch((error: BusinessError) => {
+        console.log('updatePrinterInDiscovery failed, error: ' + JSON.stringify(error));
+      })
+    })
+
+    /**
+     * @tc.number print_function_0800
+     * @tc.name Test print
+     * @tc.desc check the removePrinterFromDiscovery function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0800', 0, () => {
+      let printerId : string = 'testPrinterId';
+
+      // Permissions required: ohos.permission.PRINT
+      print.removePrinterFromDiscovery(printerId).then((data : void) => {
+        console.log('removePrinterFromDiscovery succeed, data: ' + JSON.stringify(data));
+      }).catch((error: BusinessError) => {
+        console.log('removePrinterFromDiscovery failed, error: ' + JSON.stringify(error));
+      })
+    })
+
+    /**
+     * @tc.number print_function_0900
+     * @tc.name Test print
+     * @tc.desc check the getPrinterInformationById function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0900', 0, () => {
+      let printerId : string = 'testPrinterId';
+
+      // Permissions required: ohos.permission.PRINT
+      print.getPrinterInformationById(printerId).then((printerInformation : print.PrinterInformation) => {
+        console.log('getPrinterInformationById succeed, data: ' + JSON.stringify(printerInformation));
+      }).catch((error: BusinessError) => {
+        console.log('getPrinterInformationById failed, error: ' + JSON.stringify(error));
+      })
+    })
   })
 }
