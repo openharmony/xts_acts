@@ -56,6 +56,8 @@ export default function OnDoubleClickTest() {
       await CommonFunc.sleep(500);
       let image = await driver.findComponent(ON.type('Image'));
       await image.doubleClick();
+      let Obj = CommonFunc.getComponentRectOnScreen('onDoubleClick_id');
+      await driver.mouseDoubleClick({x:Math.round((Obj.right + Obj.left) / 2), y:Math.round((Obj.top + Obj.bottom) / 2)}, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('onDoubleClick_text');
       console.log('OnDoubleClickTest_0010', JSON.parse(strJson).$attrs.content)
