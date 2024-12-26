@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import abilityTest from './Ability.test'
+import abilityTest from './AvPlayerDrmNdk.test'
 
 export default function testsuite() {
   abilityTest()
