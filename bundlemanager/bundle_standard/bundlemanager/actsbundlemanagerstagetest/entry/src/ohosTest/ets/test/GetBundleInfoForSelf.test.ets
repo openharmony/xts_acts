@@ -45,7 +45,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode).assertEqual(1000000);
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode).assertEqual(1000000);
-        expect(data.targetVersion).assertEqual(14);
+        expect(data.targetVersion).assertEqual(16);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
         expect(data.appInfo).assertEqual(null);
@@ -74,7 +74,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode).assertEqual(1000000);
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode).assertEqual(1000000);
-        expect(data.targetVersion).assertEqual(14);
+        expect(data.targetVersion).assertEqual(16);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
         expect(data.appInfo).assertEqual(null);
@@ -903,6 +903,7 @@ export default function getBundleInfoForSelf() {
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(1);
           expect(data.hapModulesInfo[0].metadata[0].name).assertEqual("MetaData1");
           expect(data.hapModulesInfo[0].metadata[0].value).assertEqual("MetaDataValue");
+          expect(data.hapModulesInfo[0].metadata[0].valueId).assertEqual(0);
           expect(data.hapModulesInfo[0].metadata[0].resource).assertEqual("$profile:shortcuts_config");
           expect(data.reqPermissionDetails.length).assertEqual(0);
           expect(data.permissionGrantStates.length).assertEqual(0);
@@ -934,6 +935,7 @@ export default function getBundleInfoForSelf() {
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(1);
           expect(data.hapModulesInfo[0].metadata[0].name).assertEqual("MetaData1");
           expect(data.hapModulesInfo[0].metadata[0].value).assertEqual("MetaDataValue");
+          expect(data.hapModulesInfo[0].metadata[0].valueId).assertEqual(0);
           expect(data.hapModulesInfo[0].metadata[0].resource).assertEqual("$profile:shortcuts_config");
           expect(data.reqPermissionDetails.length).assertEqual(0);
           expect(data.permissionGrantStates.length).assertEqual(0);
@@ -1141,7 +1143,7 @@ export default function getBundleInfoForSelf() {
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       expect(data.minCompatibleVersionCode).assertEqual(1000000);
-      expect(data.targetVersion).assertEqual(14);
+      expect(data.targetVersion).assertEqual(16);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
       expect(data.appInfo).assertEqual(null);
@@ -1531,6 +1533,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(1);
       expect(data.hapModulesInfo[0].metadata[0].name).assertEqual("MetaData1");
       expect(data.hapModulesInfo[0].metadata[0].value).assertEqual("MetaDataValue");
+      expect(data.hapModulesInfo[0].metadata[0].valueId).assertEqual(0);
       expect(data.hapModulesInfo[0].metadata[0].resource).assertEqual("$profile:shortcuts_config");
       expect(data.hapModulesInfo[0].routerMap.length).assertEqual(0);
       expect(data.routerMap.length).assertEqual(0);
@@ -1643,7 +1646,7 @@ export default function getBundleInfoForSelf() {
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       expect(data.minCompatibleVersionCode).assertEqual(1000000);
-      expect(data.targetVersion).assertEqual(14);
+      expect(data.targetVersion).assertEqual(16);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
       expect(data.appIndex).assertEqual(0);
