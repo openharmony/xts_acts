@@ -115,9 +115,9 @@ function moveElementUp() {
     element.style.marginTop = computeNum(element.style.marginTop) - 10 + 'px';
 }
 function computeNum(value) {
-    if(!value) {
+    if (!value) {
         return 0;
-    }else if (value === '') {
+    } else if (value === '') {
         return 0;
     } else {
         return parseFloat(value);
@@ -161,7 +161,7 @@ function fullScreenDom(id) {
     mediaEvents.volumechange = 0;
 
     let mediaProperties = ['error', 'src', 'srcObject', 'currentSrc', 'crossOrigin', 'networkState', 'preload', 'buffered', 'readyState', 'seeking', 'currentTime', 'duration',
-        'paused', 'defaultPlaybackRate', 'playbackRate', 'played', 'seekable', 'ended', 'autoplay', 'loop', "controls", 'volume',
+        'paused', 'defaultPlaybackRate', 'playbackRate', 'played', 'seekable', 'ended', 'autoplay', 'loop', 'controls', 'volume',
         'muted', 'defaultMuted', 'audioTracks', 'videoTracks', 'textTracks', 'width', 'height', 'videoWidth', 'videoHeight', 'poster'];
 
     // CODE START HERE
@@ -379,7 +379,7 @@ function fullScreenDom(id) {
 
     function jumpToEnd() {
         let durationTime = getVideo('bodyId').duration;
-        if(durationTime > 0) {
+        if (durationTime > 0) {
             console.log('durationTime:' + durationTime);
             console.log('durationTime:' + (durationTime - 2));
             getVideo('bodyId').currentTime = durationTime - 2;
