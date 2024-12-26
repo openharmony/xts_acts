@@ -3117,11 +3117,15 @@ export default function Url_Emoji_append_get() {
     it('testUrLParseURLEmoji0011', 0, () => {
       const TAG = "testUrLParseURLEmoji0011";
       try {
-        let url1 = url.URL.parseURL('\ud83d\udd5b/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\ud83d\udd5b/path2', 'https://www.huawei.com/test/test1');
+        let emojiString1 = '\ud83d\udd5b/path2';
+        let emojiString2 = '/\ud83d\udd5b/path2';
+        let url1 = url.URL.parseURL(emojiString1, 'https://www.huawei.com/test/test1');
+        let url2 = url.URL.parseURL(emojiString2, 'https://www.huawei.com/test/test1');
 
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test/%F0%9F%95%9B/path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%F0%9F%95%9B/path2');
+        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%95%9B/path2';
+        let rstUrl2 = 'https://www.huawei.com/%F0%9F%95%9B/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -3284,8 +3288,10 @@ export default function Url_Emoji_append_get() {
         let url1 = url.URL.parseURL('\u2666/path2', 'https://www.huawei.com/test/test1');
         let url2 = url.URL.parseURL('/\u2666/path2', 'https://www.huawei.com/test/test1');
 
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test/%E2%99%A6/path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%E2%99%A6/path2');
+        const rstUrl1 = 'https://www.huawei.com/test/%E2%99%A6/path2';
+        const rstUrl2 = 'https://www.huawei.com/%E2%99%A6/path2';
+        expect(url1.toString()).assertEqual(rstUrl1);
+        expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
