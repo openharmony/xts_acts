@@ -80,7 +80,7 @@
 <script>
 
 function myFunction() {
-var element = document.getElementById('bodyId');
+let element = document.getElementById('bodyId');
 element.remove();
 }
 function resize() {
@@ -236,7 +236,7 @@ function fullScreenDom(id) {
             tr.appendChild(th);
             tr.appendChild(td);
             arrayProp[i] = td;
-            if ((++i % 1)  === 0) {
+            if ((++i % 1) === 0) {
                 tbody.appendChild(tr);
                 tr = null;
             }
@@ -249,7 +249,7 @@ function fullScreenDom(id) {
     function initMediatypes() {
         let tbody = document.getElementById('m_video');
         let i = 0;
-        let tr = document.createElement("tr");
+        let tr = document.createElement('tr');
         let videoTypes = ['video/mp4', 'video/webm'];
         i = 0;
         tr = document.createElement('tr');
@@ -270,7 +270,7 @@ function fullScreenDom(id) {
                 td.textContent = '"' + support + '"';
                 if (support === 'maybe') {
                     td.className = 'true';
-                } else if (support === "") {
+                } else if (support === '') {
                     td.className = 'false';
                 }
                 tr.appendChild(td);

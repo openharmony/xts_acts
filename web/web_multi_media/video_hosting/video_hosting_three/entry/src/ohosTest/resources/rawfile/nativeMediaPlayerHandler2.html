@@ -222,7 +222,7 @@ function fullScreenDom(id) {
         let tr = null;
         do {
             if (tr === null) {
-                tr    = document.createElement('tr');
+                tr = document.createElement('tr');
             }
             let th = document.createElement('th');
             th.textContent = arrayPropDef[i];
@@ -252,7 +252,7 @@ function fullScreenDom(id) {
     function initMediatypes() {
         let tbody = document.getElementById('m_video');
         let i = 0;
-        let tr = document.createElement("tr");
+        let tr = document.createElement('tr');
         let videoTypes = ['video/mp4', 'video/webm'];
         i = 0;
         tr = document.createElement('tr');
@@ -273,7 +273,7 @@ function fullScreenDom(id) {
                 td.textContent = '"' + support + '"';
                 if (support === 'maybe') {
                     td.className = 'true';
-                } else if (support === "") {
+                } else if (support === '') {
                     td.className = 'false';
                 }
                 tr.appendChild(td);
