@@ -139,7 +139,7 @@ export default function signNormalNotAccessBiometricExecute() {
     it('SUB_Security_IAM_authWidget_API_0130', Level.LEVEL2, async function (done) {
       console.info("SUB_Security_IAM_authWidget_API_0130 start");
       let reuseDuration1 = [-1, 300001, 0];
-      let reuseDuration2 = [1, 5, 300000];
+      let reuseDuration2 = [1, 5, userAuth.MAX_ALLOWABLE_REUSE_DURATION];
       const widgetParam = {
         title: '请输入密码',
       };
