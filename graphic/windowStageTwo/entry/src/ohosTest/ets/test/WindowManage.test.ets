@@ -384,7 +384,7 @@ export default function windowManageTest() {
         }
       }
     })
-     /**
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
      * @tc.name      : testOnWindowStageClose
      * @tc.desc      : Listener for window stage close event.
@@ -411,6 +411,7 @@ export default function windowManageTest() {
       } catch (exception) {
         if (exception.code === 801) {
           console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          windowStage.off('windowStageClose');
           done();
         } else {
           console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -455,6 +456,7 @@ export default function windowManageTest() {
       } catch (exception) {
         if (exception.code === 801) {
           console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          windowStage.off('windowStageClose')
           done();
         } else {
           console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -500,6 +502,7 @@ export default function windowManageTest() {
       } catch (exception) {
         if (exception.code === 801) {
           console.info(`${caseName} The current device type does not support to listener for window stage close event.`);
+          windowStage.off('windowStageClose');
           done();
         } else {
           console.error(`${caseName} Failed to enable the listener for window stage close event. Cause code: ${exception.code}, message: ${exception.message}`);

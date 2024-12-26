@@ -19,8 +19,7 @@ import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import deviceInfo from '@ohos.deviceInfo';
 import { Driver, ON } from '@ohos.UiTest';
-
-
+import settings from '@ohos.settings';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -65,10 +64,14 @@ export default function windowPromiseTest() {
     let currentDeviceIsPC = false;
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
-    beforeAll(() => {
+    let deviceType: string = '';
+    let isAutoWindow:string = '';
+    beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
+      deviceType = deviceInfo.deviceType;
+      console.log('jsUnittest beforeAll deviceType =' + deviceType);
       let deviceTypeInfo = deviceInfo.deviceType
       currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
       currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
@@ -77,6 +80,12 @@ export default function windowPromiseTest() {
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
+      isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','',settings.domainName.DEVICE_SHARED);
+      //isAutoWindow == '' 非PAD设备
+      //isAutoWindow == 'true' PAD设备自由多窗模式
+      //isAutoWindow == 'false' PAD设备非自由多窗模式
+      console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      
     })
 
     /**
@@ -102,6 +111,7 @@ export default function windowPromiseTest() {
           data.setSubWindowModal(true).then(() => {
             console.info(msgStr + 'Succeeded in setting subwindow modal true');
             expect(true).assertTrue();
+            data.destroyWindow();
             done();
           }).catch((err: BusinessError) => {
             console.error(msgStr + 'Failed to set subwindow modal. Cause:' + JSON.stringify(err));
@@ -153,6 +163,7 @@ export default function windowPromiseTest() {
           data.setSubWindowModal(false).then(() => {
             console.info(msgStr + 'Succeeded in setting subwindow modal true');
             expect(true).assertTrue();
+            data.destroyWindow();
             done();
           }).catch((err: BusinessError) => {
             console.error(msgStr + 'Failed to set subwindow modal. Cause:' + JSON.stringify(err));
@@ -1698,8 +1709,14 @@ export default function windowPromiseTest() {
         windowClass.setImmersiveModeEnabledState(enabled);
         let isEnabled = windowClass.getImmersiveModeEnabledState();
         console.log(msgStr + 'success to setImmersiveModeEnabledState enabled:' + isEnabled);
-        expect(isEnabled).assertEqual(true);
-        done();
+        if(deviceType != '2in1' || isAutoWindow =='false'){
+          expect(isEnabled).assertEqual(true);
+          done();
+        }else{
+          expect(isEnabled).assertEqual(false);
+          done();
+        }
+        
       } catch (error) {
         console.log(msgStr + 'Failed to setImmersiveModeEnabledState enable' + JSON.stringify(error.code) +
           error.message);
@@ -1902,6 +1919,7 @@ export default function windowPromiseTest() {
           await sleep(2000);
         }).catch((err: BusinessError) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          subWindowClass.destroyWindow();
           if (err.code == 801) {
             console.log(msgStr + '此设备不支持注册noInteractionDetected监听');
             expect(true).assertTrue();
