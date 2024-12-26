@@ -27,6 +27,7 @@ group("security") {
       "cipher/datacipher:datacipher",
       "cryptoFramework",
       "crypto_framework_napi_BasicTest:ActsCryptoFrameworkNAPITest",
+      "dlpNDKTest:ActsDlpNDKTest",
       "dlp_permission_service:DlpTest",
       "huks",
       "security_component:ActsSecComponentTest",
