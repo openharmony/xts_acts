@@ -38,6 +38,20 @@ import plainArrayTest from './plainarray/PlainArray.test'
 import stringDecoderTest from './stringDecoder/StringDecoder.test'
 import streamTest from './stream/Stream.test'
 import specialChar from './specialchar/SpecialChar.test'
+import escapBuffer from './EscapeChar/Escape_Buffer.test'
+import emojiBuffer from './Emoji/Emoji_Buffer.test'
+import emojiUtils from './Emoji/Emoji_Utils.test'
+import emojiXml from './Emoji/Emoji_Xml.test'
+import emojiUri from './Emoji/Emoji_Uri.test'
+import emojiUtilsjson from './Emoji/Emoji_Utilsjson.test'
+import escapeUtiljson from './EscapeChar/Escape_Utiljson.test'
+import escapeXml from './EscapeChar/Escape_Xml.test'
+import emojiUrl from './Emoji/Emoji_Url.test'
+import escapeString from './EscapeChar/Escape_String.test'
+import escapeRegexp from './EscapeChar/Escape_Regexp.test'
+import emojiBuilintsString from './Emoji/Emoji_Builints_String.test'
+import emojiBuilintsRegExp from './Emoji/Emoji_Builints_RegExp.test'
+import escapeUrl from './EscapeChar/Escape_Url.test'
 
 export default function testsuite() {
   bufferTest();
@@ -65,4 +79,18 @@ export default function testsuite() {
   stringDecoderTest()
   streamTest()
   specialChar();
+  escapBuffer();
+  emojiBuffer();
+  emojiUtils();
+  emojiXml();
+  emojiUri();
+  emojiUtilsjson();
+  escapeUtiljson();
+  escapeXml();
+  emojiUrl();
+  escapeString();
+  escapeRegexp();
+  emojiBuilintsString();
+  emojiBuilintsRegExp();
+  escapeUrl();
 }
