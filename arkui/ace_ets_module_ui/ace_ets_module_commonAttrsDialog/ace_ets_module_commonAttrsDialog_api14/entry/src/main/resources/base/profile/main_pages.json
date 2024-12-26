@@ -10,7 +10,6 @@
       "MainAbility/pages/TimePickerDialog/timePickerDialogHoverMode",
       "MainAbility/pages/DatePickerDialog/datePickerDialogHoverMode",
       "MainAbility/pages/CustomDialog/customDialogHoverMode",
-      "MainAbility/pages/CalendarPickerDialog/calendarPickerDialogHoverMode",
       "MainAbility/pages/AlertDialog/alertDialogHoverMode",
       "MainAbility/pages/ActionSheet/actionSheetHoverMode"
     ]

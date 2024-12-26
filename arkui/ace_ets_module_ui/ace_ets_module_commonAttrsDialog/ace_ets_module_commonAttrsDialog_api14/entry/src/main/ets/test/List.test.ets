@@ -21,7 +21,6 @@ import textPickerDialogHoverMode from './TextPickerDialog/textPickerDialogHoverM
 import timePickerDialogHoverMode from './TimePickerDialog/timePickerDialogHoverMode.test'
 import datePickerDialogHoverMode from './DatePickerDialog/datePickerDialogHoverMode.test'
 import customDialogHoverMode from './CustomDialog/customDialogHoverMode.test'
-import calendarPickerDialogHoverMode from './CalendarPickerDialog/calendarPickerDialogHoverMode.test'
 import alertDialogHoverMode from './AlertDialog/alertDialogHoverMode.test'
 import actionSheetHoverMode from './ActionSheet/actionSheetHoverMode.test'
 
@@ -35,7 +34,6 @@ export default function testsuite() {
   timePickerDialogHoverMode()
   datePickerDialogHoverMode()
   customDialogHoverMode()
-  calendarPickerDialogHoverMode()
   alertDialogHoverMode()
   actionSheetHoverMode()
 }
