@@ -19,7 +19,7 @@ group("websiteCertificate") {
       "website_certificate_four:ActsWebsiteCertificateFourTest",
       "website_certificate_one:ActsWebsiteCertificateOneTest",
       "website_certificate_three:ActsWebsiteCertificateThreeTest",
-      "website_certificate_two:ActsWebsiteCertificateTwoTest"
+      "website_certificate_two:ActsWebsiteCertificateTwoTest",
     ]
   }
 }

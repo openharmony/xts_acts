@@ -22,7 +22,7 @@ group("webHosting") {
       "web_hosting_napis_enhance_one:ActsWebHostingNapisEnhanceOneTest",
       "web_hosting_napis_enhance_six:ActsWebHostingNapisEnhanceSixTest",
       "web_hosting_napis_enhance_three:ActsWebHostingNapisEnhanceThreeTest",
-      "web_hosting_napis_enhance_two:ActsWebHostingNapisEnhanceTwoTest"
+      "web_hosting_napis_enhance_two:ActsWebHostingNapisEnhanceTwoTest",
     ]
   }
 }

@@ -16,7 +16,7 @@ group("leatherCandyCache") {
   if (is_standard_system) {
     deps = [
       "leather_candy_cache_one:ActsLeatherCandyCacheOneTest",
-      "leather_candy_cache_two:ActsLeatherCandyCacheTwoTest"
+      "leather_candy_cache_two:ActsLeatherCandyCacheTwoTest",
     ]
   }
 }

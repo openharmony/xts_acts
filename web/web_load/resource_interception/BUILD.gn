@@ -21,7 +21,7 @@ group("resourceInterception") {
       "resource_interception_cloudservice_webController_seven:ActsResourceInterceptionCloudServiceWebControllerSevenTest",
       "resource_interception_cloudservice_webController_six:ActsResourceInterceptionCloudServiceWebControllerSixTest",
       "resource_interception_cloudservice_webController_three:ActsResourceInterceptionCloudServiceWebControllerThreeTest",
-      "resource_interception_cloudservice_webController_two:ActsResourceInterceptionCloudServiceWebControllerTwoTest"
+      "resource_interception_cloudservice_webController_two:ActsResourceInterceptionCloudServiceWebControllerTwoTest",
     ]
   }
 }
