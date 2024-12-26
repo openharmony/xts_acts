@@ -620,7 +620,7 @@ export default function RelationalStoreIcu() {
         /**
          * @tc.name testRdbStoreIcuQuery0100
          * @tc.number SUB_DistributedData_RelationalStore_SDK_IcuEtsAPITest_Query_0100
-         * @tc.desc RelationalStore icu  1字， query 2
+         * @tc.desc RelationalStore icu  1字， query 1
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -685,7 +685,7 @@ export default function RelationalStoreIcu() {
         /**
          * @tc.name testRdbStoreIcuQuery0102
          * @tc.number SUB_DistributedData_RelationalStore_SDK_IcuEtsAPITest_Query_0102
-         * @tc.desc RelationalStore icu  1字， query 2
+         * @tc.desc RelationalStore icu  1字， query 1
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -1046,7 +1046,7 @@ export default function RelationalStoreIcu() {
         /**
          * @tc.name testRdbStoreIcuQuery0204
          * @tc.number SUB_DistributedData_RelationalStore_SDK_IcuEtsAPITest_Query_0204
-         * @tc.desc RelationalStore icu 2字 存在， query 1
+         * @tc.desc RelationalStore icu 2字 存在， query 0
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -1626,7 +1626,7 @@ export default function RelationalStoreIcu() {
         /**
          * @tc.name testRdbStoreIcuQuery1100
          * @tc.number SUB_DistributedData_RelationalStore_SDK_IcuEtsAPITest_Query_1100
-         * @tc.desc RelationalStore icu  create table same name  testicu
+         * @tc.desc RelationalStore icu  create table same name  testicu, fail
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -1635,9 +1635,9 @@ export default function RelationalStoreIcu() {
             let TAGTEST = TAG + " testRdbStoreIcuQuery1100 ";
             console.info(TAGTEST + "*************  start *************");
 
-            const CREATE_TABLE_ICU = "CREATE VIRTUAL TABLE IF NOT EXISTS testicu USING fts4(name, content, tokenize=icu zh_CN);";
-            const CREATE_TABLE_ICU_VIRTUAL = "CREATE VIRTUAL TABLE IF NOT EXISTS testicu USING fts4(name, content);";
-            const CREATE_TABLE_NORMAL = "CREATE TABLE IF NOT EXISTS testicu (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "content TEXT NOT NULL)";
+            const CREATE_TABLE_ICU = "CREATE VIRTUAL TABLE testicu USING fts4(name, content, tokenize=icu zh_CN);";
+            const CREATE_TABLE_ICU_VIRTUAL = "CREATE VIRTUAL TABLE testicu USING fts4(name, content);";
+            const CREATE_TABLE_NORMAL = "CREATE TABLE testicu (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "content TEXT NOT NULL)";
 
             await rdbStore.executeSql(CREATE_TABLE_ICU).then(()=>{
                 console.info(TAGTEST + " CREATE_TABLE_TEST success");
@@ -1649,75 +1649,22 @@ export default function RelationalStoreIcu() {
 
             await rdbStore.executeSql(CREATE_TABLE_ICU_VIRTUAL).then(()=>{
                 console.info(TAGTEST + " CREATE_TABLE_ICU_VIRTUAL success");
-            }).catch((err:BusinessError) => {
-                console.info(TAGTEST + " CREATE_TABLE_ICU_VIRTUAL error " + err.code + err.message);
                 expect().assertFail();
                 done();
+            }).catch((err:BusinessError) => {
+                console.info(TAGTEST + " CREATE_TABLE_ICU_VIRTUAL error " + err.code + err.message);
             });
 
             await rdbStore.executeSql(CREATE_TABLE_NORMAL).then(()=>{
                 console.info(TAGTEST + " CREATE_TABLE_ICU_VIRTUAL success");
-            }).catch((err:BusinessError) => {
-                console.info(TAGTEST + " CREATE_TABLE_ICU_VIRTUAL error " + err.code + err.message);
                 expect().assertFail();
                 done();
+            }).catch((err:BusinessError) => {
+                console.info(TAGTEST + " CREATE_TABLE_ICU_VIRTUAL error " + err.code + err.message);
             });
 
             await rdbStore.executeSql("DELETE FROM testicu");
             await rdbStore.executeSql("DROP TABLE IF EXISTS testicu");
-
-
-
-            // const SQL_INSERT1 = "INSERT INTO test(name, content) VALUES ('文档1', '这是一个测试文档，用于测试中文本文本的分词和索引。')";
-            // const SQL_INSERT2 = "INSERT INTO test(name, content) VALUES ('文档2', '我们将使用这个示例来演示如何在SQLite中进行全文搜索。')";
-            // const SQL_INSERT3 = "INSERT INTO test(name, content) VALUES ('文档3', 'ICU分词器能够很好地处理中文文本的分词和分析。')";
-            //
-            // await rdbStore.execute(SQL_INSERT1).then((data)=>{
-            //     console.info(TAGTEST + " SQL_INSERT1 success");
-            //     expect(1).assertEqual(data);
-            // }).catch((err:BusinessError) => {
-            //     console.info(TAGTEST + " SQL_INSERT1 error " + err.code + err.message);
-            //     expect().assertFail();
-            //     done();
-            // });
-            //
-            // await rdbStore.execute(SQL_INSERT2).then((data)=>{
-            //     console.info(TAGTEST + " SQL_INSERT2 success");
-            //     expect(2).assertEqual(data);
-            // }).catch((err:BusinessError) => {
-            //     console.info(TAGTEST + " SQL_INSERT2 error " + err.code + err.message);
-            //     expect().assertFail();
-            //     done();
-            // });
-            //
-            // await rdbStore.execute(SQL_INSERT3).then((data)=>{
-            //     console.info(TAGTEST + " SQL_INSERT3 success");
-            //     expect(3).assertEqual(data);
-            // }).catch((err:BusinessError) => {
-            //     console.info(TAGTEST + " SQL_INSERT3 error " + err.code + err.message);
-            //     expect().assertFail();
-            //     done();
-            // });
-            //
-            // const SQL_QUERY1 = "SELECT * FROM test WHERE test MATCH '是';";
-            //
-            // await rdbStore.querySql(SQL_QUERY1).then((resultSet)=>{
-            //     console.info(TAGTEST + " querySql success. resultSet.rowCount=" + resultSet.rowCount);
-            //     expect(1).assertEqual(resultSet.rowCount);
-            //
-            //     resultSet.goToNextRow();
-            //     let resname = resultSet.getString(resultSet.getColumnIndex("name"));
-            //     let rescontent = resultSet.getString(resultSet.getColumnIndex("content"));
-            //     console.info(TAGTEST + " resname=" + resname + "  rescontent=" + rescontent);
-            //     expect(resname).assertEqual('文档1');
-            //     expect(rescontent).assertEqual('这是一个测试文档，用于测试中文本文本的分词和索引。');
-            //
-            //
-            // }).catch((err:BusinessError) => {
-            //     console.info(TAGTEST + " querySql error " + err.code + err.message);
-            //     expect().assertFail();
-            //     done();
-            // });
 
             console.info(TAGTEST + " ************* End*************");
             done();
@@ -1726,7 +1673,7 @@ export default function RelationalStoreIcu() {
         /**
          * @tc.name testRdbStoreIcuQuery1200
          * @tc.number SUB_DistributedData_RelationalStore_SDK_IcuEtsAPITest_Query_1200
-         * @tc.desc RelationalStore icu  create table same name  testicu
+         * @tc.desc RelationalStore icu  create table dif name  testicu
          * @tc.size MediumTest
          * @tc.type Function
          * @tc.level Level 2
@@ -1838,9 +1785,6 @@ export default function RelationalStoreIcu() {
             console.info(TAGTEST + " ************* End*************");
             done();
         });
-
-
-
         console.info(TAG + " *************Unit Test End*************");
     })
 }
