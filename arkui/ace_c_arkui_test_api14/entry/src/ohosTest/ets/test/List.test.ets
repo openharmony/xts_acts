@@ -23,6 +23,7 @@ import KeyEventGetPressedKeysTest from './keyEvent/KeyEventGetPressedKeysTest.te
 import KeyEventGetUnicodeTest from './keyEvent/KeyEventGetUnicodeTest.test'
 import KeyEventSetConsumedTest from './keyEvent/KeyEventSetConsumedTest.test'
 import KeyEventStopPropagationTest from './keyEvent/KeyEventStopPropagationTest.test'
+import NativeXComponent_RegisterKeyEventCallbackWithResultTest from './keyEvent/NativeXComponent_RegisterKeyEventCallbackWithResultTest.test'
 export default function testsuite() {
   customPropertyTest()
   KeyEventGetKeyCodeTest()
@@ -35,4 +36,5 @@ export default function testsuite() {
   KeyEventGetKeyTextTest()
   KeyEventGetPressedKeysTest()
   KeyEventGetUnicodeTest()
+  NativeXComponent_RegisterKeyEventCallbackWithResultTest()
 }
