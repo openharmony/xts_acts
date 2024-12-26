@@ -547,6 +547,10 @@ export default function sendablePreferencesPromiseTest() {
     })
 	
 	
+	
+	
+	
+	
 	/**
      * @tc.name testSendablePreferencesFlushsync0100
      * @tc.number SUB_DistributedData_SendablePreference_SDK_PreferenceEtsApiPromiseTest_2200
@@ -555,8 +559,7 @@ export default function sendablePreferencesPromiseTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-	
-	
+		
 	it('testSendableFlushSync0100', 0, async (done: Function) => {
       try {
         mPreferences.clearSync();
@@ -568,14 +571,13 @@ export default function sendablePreferencesPromiseTest() {
         mPreferences = sendablePreferences.getPreferencesSync(context,options)
         let pre2 = mPreferences.getSync(KEY_NUMBER,'default')
         expect('TEST').assertEqual(pre2)
-        done();
+		done();
       } catch (e) {
-        console.info(TAG + "testSendableFlushSync0100" +e.code);
+	    console.info(TAG + "testSendableFlushSync0100" +e.code);
         expect().assertFail();
-        done();
+		done();
       }
-      })
-	
-	
+      
+    })
     })
 }
