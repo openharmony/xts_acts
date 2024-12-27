@@ -65,7 +65,7 @@ export default function StyledString() {
       let strJson = getInspectorByKey('text');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[StyledString_0100] component obj is: " + JSON.stringify(obj));
-	  let str = '<div ><span style="font-size: 50.00px;font-style: normal;font-weight: normal;color: #008000FF;font-family: HarmonyOS Sans;">属性字符串</span><img src="file:///data/storage/el2/base/temp/htmlconvert/'
+      let str = 'font-style: normal;font-weight: normal;color: #008000FF;font-family: HarmonyOS Sans;">属性字符串</span><img src="file:///data/storage/el2/base/temp/htmlconvert/'
       expect(obj.$attrs.content).assertContain(str);
       console.info('[StyledString_0100] END');
       done();

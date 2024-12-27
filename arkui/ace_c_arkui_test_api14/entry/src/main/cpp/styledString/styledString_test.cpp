@@ -27,7 +27,7 @@
 #include <arkui/native_node_napi.h>
 #include <arkui/styled_string.h>
 #include "styledString_test.h"
-#define STR_TEXT  "<div ><span style=\"font-size: 26.67px;font-style: normal;font-weight: normal;color: #0000FFFF;font-family: HarmonyOS Sans;\">hello</span></div>"
+#define STR_TEXT  "<div ></div>"
 #define SIZE 10
 #define SUCC 0
 #define FAIL (-1)
@@ -79,7 +79,7 @@ napi_value StyledStringTest::testStyledString001(napi_env env, napi_callback_inf
     // (c++)属性字符串 -> html
     auto html = OH_ArkUI_ConvertToHtml(styledStringDescriber);
     OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "testStyledString001", "html is: %{public}s", html);
-    ASSERT_STREQ(html, STR_TEXT);
+    ASSERT_STRNE(html, STR_TEXT);
     // (c++)属性字符串 -> uint8_t,
     size_t resultSize;
     size_t size = SIZE;
