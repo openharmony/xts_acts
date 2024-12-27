@@ -22,6 +22,7 @@ let context: common.UIAbilityContext;
 
 const TAG = "[RelationalStore_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
+const CREATE_TABLE_TEST1 = "CREATE TABLE IF NOT EXISTS test1 (" + "id INTEGER, " + "name TEXT unique on conflict ignore, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 const CREATE_TABLE_NAME = "CREATE TABLE IF NOT EXISTS test"
 const CREATE_TABLE = " (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 const STORE_CONFIG = {
