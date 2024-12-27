@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, it, expect } from '@ohos/hypium';
 import { uri } from '@kit.ArkTS';
 
@@ -2380,7 +2381,7 @@ export default function Uri_Emoji() {
       const TAG = "testURIGetLastSegmentEmoji0900";
       try {
         let temp = "\ud83c\udf41";
-        let uriInstance = new uri.URI("content://com.test.provider/files/" + temp);
+        let uriInstance = new uri.URI("content://com.test.provider/emoji/" + temp);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
         expect(lastSegment).assertEqual('🍁');
@@ -2424,8 +2425,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji00011', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji00011";
       try {
-        let temp = "files/\ud83d\udc48";
-        let uriString = "content://com.test.provider/" + temp;
+        let temp = "\ud83d\udc48";
+        let uriString = "content://com.test.provider/emoji/" + temp;
         let uriInstance = new uri.URI(uriString);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
@@ -2448,7 +2449,7 @@ export default function Uri_Emoji() {
       const TAG = "testURIGetLastSegmentEmoji00012";
       try {
         let temp = "\ud83e\udd3c\u200d\u2642\ufe0f";
-        let uriString = "content://com.test.provider/files/" + temp;
+        let uriString = "content://com.test.provider/emoji/" + temp;
         let uriInstance = new uri.URI(uriString);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
