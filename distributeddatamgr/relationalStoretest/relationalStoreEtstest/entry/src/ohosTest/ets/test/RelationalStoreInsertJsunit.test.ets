@@ -1683,6 +1683,158 @@ export default function relationalStoreInsertTest() {
             }
             console.info(TAG + "************* testRdbStorebatchInsertPromise0008 end *************");
         })
+		
+		/**
+         * @tc.name testRdbStorebatchInsertCallback0009
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertEtsAPITest_3000
+         * @tc.desc RelationalStore insert test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testRdbStorebatchInsertCallback0009', 0, async (done: Function) => {
+            console.info(TAG + "************* testRdbStorebatchInsertCallback0009 start *************");
+            await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_NAME + "6" + CREATE_TABLE);
+            let u8 = new Uint8Array([1, 2, 3]);
+            const valueBucket1: data_Rdb.ValuesBucket = {
+                "name": "zhangsan",
+                "age": 18,
+                "salary": 100.5,
+                "blobType": u8,
+                "data": "data"
+            };
+            const valueBucket2: data_Rdb.ValuesBucket = {
+                "name": "lisi",
+                "age": 23,
+                "salary": 200,
+                "blobType": u8,
+            };
+            const valueBucket3: data_Rdb.ValuesBucket = {
+                "name": "wangwu",
+                "age": 20,
+                "salary": 100.5,
+                "blobType": u8,
+            };
+            const valueBuckets: data_Rdb.ValuesBucket[] = [valueBucket1, valueBucket2, valueBucket3];
+            await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_NAME + "callback9" + CREATE_TABLE);
+            if(rdbStore != undefined) {
+                try {
+                    let insertNum: number = (rdbStore as data_Rdb.RdbStore).batchInsertSync("callback9", valueBuckets);
+                    expect(insertNum).assertEqual(-1);
+                    console.info(TAG + `batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+                    done();
+                } catch (err) {
+                    console.error(TAG + `batchInsert is failed, code is ${err.code},message is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                }
+            }
+            console.info(TAG + "************* testRdbStorebatchInsertCallback0009 end *************");
+        });
+
+        /**
+         * @tc.name testRdbStoreInsert0007
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertEtsAPITest_3100
+         * @tc.desc rdb insert test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testRdbStoreInsert0007', 0, async (done: Function) => {
+            console.log(TAG + "************* testRdbStoreInsert0007 start *************");
+            let u8 = new Uint8Array([1, 2, 3])
+            const valueBucket: data_Rdb.ValuesBucket = {
+                "name": "name",
+                "age": 18,
+                "salary": 100.5,
+                "blobType": u8,
+            };
+            try {
+                (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
+                let rowId = await (rdbStore as data_Rdb.RdbStore).insert("test1", valueBucket);
+                console.info(TAG + `Insert is successful, rowId = ${rowId}`);
+                (rdbStore as data_Rdb.RdbStore).insert("test1", valueBucket, (err: BusinessError, rowId: number) => {
+                    if (err) {
+                        console.error(TAG + `Insert is failed, code is ${err.code},message is ${err.message}`);
+                        expect().assertFail();
+                    }
+                    console.info(TAG + `Insert is successful, rowId = ${rowId}`);
+                    expect(rowId).assertEqual(-1);
+                    console.log(TAG + "************* testRdbStoreInsert0007 end  *************");
+                    done();
+                })
+            } catch (err) {
+                console.error(TAG + `Insert is failed, code is ${err.code},message is ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /**
+         * @tc.name testRdbStoreInsert0008
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertEtsAPITest_3200
+         * @tc.desc rdb insert test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testRdbStoreInsert0008', 0, async (done: Function) => {
+            console.log(TAG + "************* testRdbStoreInsert0008 start *************");
+            let u8 = new Uint8Array([1, 2, 3])
+            const valueBucket: data_Rdb.ValuesBucket = {
+                "name": "name",
+                "age": 18,
+                "salary": 100.5,
+                "blobType": u8,
+            };
+            try {
+                (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
+                let rowId = await (rdbStore as data_Rdb.RdbStore).insert("test1", valueBucket);
+                console.info(TAG + `Insert is successful, rowId = ${rowId}`);
+                let rowId2 = await (rdbStore as data_Rdb.RdbStore).insert("test1", valueBucket);
+                console.info(TAG + `Insert is successful, rowId = ${rowId2}`);
+                expect(rowId2).assertEqual(-1);
+                done();
+            } catch (err) {
+                console.error(TAG + `Insert is failed, code is ${err.code},message is ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(TAG + "************* testRdbStoreInsert0008 end  *************");
+        })
+
+        /**
+         * @tc.name testRdbStoreInsert0009
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertEtsAPITest_3300
+         * @tc.desc rdb insert test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testRdbStoreInsert0009', 0, async (done: Function) => {
+            console.log(TAG + "************* testRdbStoreInsert0009 start *************");
+            let u8 = new Uint8Array([1, 2, 3])
+            const valueBucket: data_Rdb.ValuesBucket = {
+                "name": "name",
+                "age": 18,
+                "salary": 100.5,
+                "blobType": u8,
+            };
+            try {
+                (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
+                let rowId = (rdbStore as data_Rdb.RdbStore).insertSync("test1", valueBucket);
+                console.info(TAG + `Insert is successful, rowId = ${rowId}`);
+                let rowId2 = (rdbStore as data_Rdb.RdbStore).insertSync("test1", valueBucket);
+                console.info(TAG + `Insert is successful, rowId = ${rowId2}`);
+                expect(rowId2).assertEqual(-1);
+                done();
+            } catch (err) {
+                console.error(TAG + `Insert is failed, code is ${err.code},message is ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(TAG + "************* testRdbStoreInsert0009 end  *************");
+        })
 
         console.info(TAG + " *************Unit Test End*************");
     })
