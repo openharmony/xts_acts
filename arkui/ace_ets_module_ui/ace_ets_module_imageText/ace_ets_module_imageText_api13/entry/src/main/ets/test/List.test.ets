@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 
+import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import TextMenuType from './TextTest/TextMenuType.test';
 import RichEditorMenuType from './RichEditorTest/RichEditorMenuType.test';
 import editMenuIdAIWriterTest from './TextTest/editMenuIdAIWriter.test';
 import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test'
 
 export default function testsuite() {
+  textAreaInputTest();
   TextMenuType();
   RichEditorMenuType();
   editMenuIdAIWriterTest();
