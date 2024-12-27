@@ -12,19 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-import headerListJsunit from './ListTest/headerListJsunit.test'; 
-import waterFlowFad from './WaterFlowTest/waterFlowFad.test';
-import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
-import bindTabsScroll from './TabsTest/bindTabsScroll.test';
-import listItemGroupComponent from './ListTest/listItemGroupComponent.test'; 
-import offsetRemainScroll from './ScrollTest/offsetRemainScroll.test'; 
-
-export default function testsuite() {
-  headerListJsunit()
-  waterFlowFad()
-  tabsOpacityJsunit()
-  bindTabsScroll()
-  listItemGroupComponent()
-  offsetRemainScroll()
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("[Demo] MyAbilityStage onCreate")
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }
