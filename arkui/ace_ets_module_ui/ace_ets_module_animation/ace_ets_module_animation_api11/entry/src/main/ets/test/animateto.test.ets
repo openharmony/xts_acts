@@ -34,7 +34,7 @@ export default function animateToTest() {
         if (!("animateto" == pages.name)) {
           console.info("get animateto state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await CommonFunc.sleep(500);
+          await CommonFunc.sleep(1000);
           console.info("push animateto page success " + JSON.stringify(result));
         }
       } catch (err) {
