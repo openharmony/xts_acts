@@ -31,7 +31,7 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 struct CustomContainerUser {
   @State name: string = 'StartNotification';
   @State toSP_daemon: string = 'SP_daemon -editor responseTime com.ohos.launcher ohtest';
-  @State StepTips: string = '操作步骤：根据操作提示下拉通知栏' + '\n' + '预期结果：下拉通知栏时延小于150ms测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示唤起通知栏' + '\n' + '预期结果：唤起通知栏时延小于150ms测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State time: number = 0;
@@ -128,8 +128,8 @@ struct CustomContainerUser {
 
             Row() {
               Text(`测试步骤:` + '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入桌面` + '\n' + '\n' + '2.点击悬浮球开始测试' + '\n' + '\n' +
-                `3.从屏幕顶部滑动下拉通知栏` + '\n' + '\n' + '4.待悬浮球倒计时结束显示为done后返回validator应用' + '\n' + '\n' + `5.点击结束观察测试结果` + '\n' + '\n' +
-                `6.若下拉通知栏时延小于150ms则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
+                `3.唤起设备的通知栏` + '\n' + '\n' + '4.待悬浮球倒计时结束显示为done后返回validator应用' + '\n' + '\n' + `5.点击结束观察测试结果` + '\n' + '\n' +
+                `6.若唤起通知栏时延小于150ms则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
                 `※1.若悬浮球显示连接失败，需重启设备并在run.bat中输入run validator拉起测试` + '\n' + '\n' + `※2.双击悬浮球中断测试，长按悬浮球提前结束测试` + '\n' + '\n' +
                 `※3.若无可测试应用，点击无可测试应用按钮`)
                 .fontColor(Color.White)
@@ -185,7 +185,7 @@ struct CustomContainerUser {
             }
 
             Row() {
-              Text('\n' + '\n' + `下拉通知栏时延：` + this.time + 'ms')
+              Text('\n' + '\n' + `唤起通知栏时延：` + this.time + 'ms')
                 .fontColor(Color.White)
                 .fontSize('24fp')
             }
