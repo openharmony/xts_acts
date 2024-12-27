@@ -2069,5 +2069,22 @@ export default function requestVideoTest() {
       }
     });
 
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_8100
+     * @tc.name      : test requestVideo with deliveryMode: FAST_MODE and compatibleMode: ORIGINAL_FORMAT_MODE
+     * @tc.desc      : request video with deliveryMode: fastMode and compatibleMode: ORIGINAL_FORMAT_MODE
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('request_video_delivery_fast_compatible_original', 0, async function (done) {
+      let testNum = 'request_video_delivery_fast_compatible_original';
+      let requestOptions : photoAccessHelper.RequestOptions = {
+        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+        compatibleMode: photoAccessHelper.CompatibleMode.ORIGINAL_FORMAT_MODE,
+      }
+      await requestVideoRequestOptions(testNum, done, requestOptions)
+    });
+
   });
 }
