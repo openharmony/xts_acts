@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,18 +13,5 @@
  * limitations under the License.
  */
 
-import headerListJsunit from './ListTest/headerListJsunit.test'; 
-import waterFlowFad from './WaterFlowTest/waterFlowFad.test';
-import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
-import bindTabsScroll from './TabsTest/bindTabsScroll.test';
-import listItemGroupComponent from './ListTest/listItemGroupComponent.test'; 
-import offsetRemainScroll from './ScrollTest/offsetRemainScroll.test'; 
-
-export default function testsuite() {
-  headerListJsunit()
-  waterFlowFad()
-  tabsOpacityJsunit()
-  bindTabsScroll()
-  listItemGroupComponent()
-  offsetRemainScroll()
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { appTasks } from '@ohos/hvigor-ohos-plugin';

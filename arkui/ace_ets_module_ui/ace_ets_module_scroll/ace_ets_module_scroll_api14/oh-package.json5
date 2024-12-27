@@ -13,18 +13,15 @@
  * limitations under the License.
  */
 
-import headerListJsunit from './ListTest/headerListJsunit.test'; 
-import waterFlowFad from './WaterFlowTest/waterFlowFad.test';
-import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
-import bindTabsScroll from './TabsTest/bindTabsScroll.test';
-import listItemGroupComponent from './ListTest/listItemGroupComponent.test'; 
-import offsetRemainScroll from './ScrollTest/offsetRemainScroll.test'; 
-
-export default function testsuite() {
-  headerListJsunit()
-  waterFlowFad()
-  tabsOpacityJsunit()
-  bindTabsScroll()
-  listItemGroupComponent()
-  offsetRemainScroll()
+{
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
+  },
+  "author": "",
+  "name": "com.arkui.ace.scroll14",
+  "description": "XTS",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }

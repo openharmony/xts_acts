@@ -64,7 +64,7 @@ export default function scrollAniFalse() {
       console.info("[scrollAniFalse_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[scrollAniFalse_0100] content: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
       await CommonFunc.sleep(1000);
-      expect(JSON.parse(strJson).$attrs.content).assertEqual('Scroll: onWillScroll-onDidScroll-');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('Scroll: onWillScroll-onScrollEdge-onDidScroll-');
       console.info('[scrollAniFalse_0100] END');
       done();
     });
