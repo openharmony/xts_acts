@@ -248,8 +248,7 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0100', 0, () => {
       getCameraManagerInstance(0);
-      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_UNSPECIFIED) ||
-        !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_DEFAULT)) {
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_UNSPECIFIED)) {
           expect(true).assertTrue();
       } else {
         let ret =  cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_UNSPECIFIED, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
@@ -267,8 +266,7 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0200', 0, () => {
       getCameraManagerInstance(0);
-      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_BACK) ||
-        !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_DEFAULT)) {
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_BACK)) {
           expect(true).assertTrue();
       } else {
         let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_BACK, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
@@ -286,8 +284,7 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0300', 0, () => {
       getCameraManagerInstance(0);
-      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT) ||
-        !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_DEFAULT)) {
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT)) {
           expect(true).assertTrue();
       } else {
         let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
@@ -305,8 +302,7 @@ export default function CameraManagerTest() {
      */
     it('testOHCreateCameraInputWithPositionAndType0400', 0, () => {
       getCameraManagerInstance(0);
-      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT) ||
-        !getIsCameraTypeSupported(Camera_Type.CAMERA_TYPE_WIDE_ANGLE)) {
+      if (!getIsCameraPositionSupported(Camera_Position.CAMERA_POSITION_FRONT)) {
           expect(true).assertTrue();
       } else {
         let ret = cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_WIDE_ANGLE, 0)
