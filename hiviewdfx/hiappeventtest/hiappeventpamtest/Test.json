@@ -1,5 +1,5 @@
 {
-    "description": "Configuration for ActsHiappevent Tests",
+    "description": "Configuration for ActsHiAppEvent Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsHiappeventPamTest.hap"
+                "ActsHiAppEventPamTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
