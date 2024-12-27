@@ -1695,7 +1695,6 @@ export default function relationalStoreInsertTest() {
          */
         it('testRdbStorebatchInsertCallback0009', 0, async (done: Function) => {
             console.info(TAG + "************* testRdbStorebatchInsertCallback0009 start *************");
-            await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_NAME + "6" + CREATE_TABLE);
             let u8 = new Uint8Array([1, 2, 3]);
             const valueBucket1: data_Rdb.ValuesBucket = {
                 "name": "zhangsan",
