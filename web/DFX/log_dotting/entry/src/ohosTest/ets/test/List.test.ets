@@ -16,10 +16,16 @@ import webSetNetErrorCode3 from './webSetNetErrorCode3.test'
 import ActsAceWebSetNetErrorCode2 from './ActsAceWebSetNetErrorCode2.test'
 import webSetNetErrorCodeChen2 from './webSetNetErrorCodeChen2.test'
 import webInitTest from './WebInitTest.test'
+import webSetNetErrorCode from './webSetNetErrorCode.test'
+import webSetNetErrorCodeChen1 from './webSetNetErrorCodeChen1.test'
+import webSetNetErrorCodeFly from './webSetNetErrorCodeFly.test'
 
 export default function testsuite() {
   webInitTest()
   ActsAceWebSetNetErrorCode2()
   webSetNetErrorCode3()
   webSetNetErrorCodeChen2()
+  webSetNetErrorCodeChen1()
+  webSetNetErrorCode()
+  webSetNetErrorCodeFly()
 }
