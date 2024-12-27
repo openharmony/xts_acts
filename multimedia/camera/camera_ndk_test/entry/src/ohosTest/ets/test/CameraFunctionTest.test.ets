@@ -25,6 +25,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, common, Permission
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON, MatchPattern } from '@ohos.UiTest';
 import fs from '@ohos.file.fs';
+import { GlobalThis } from './Constants';
 
 interface PhotoSettings {
   quality: number, // Photo quality
@@ -85,7 +86,8 @@ async function closeFd() {
 }
 
 async function getCameraManagerInstance() {
-  let ret = cameraObj.initCamera(globalThis.getInstance().getValue());
+  let ret = cameraObj.initCamera(GlobalThis.getInstance().getValue());
+  console.info(TAG + " GlobalThis.getInstance().getValue():" + GlobalThis.getInstance().getValue());
   if (ret) {
     console.info(TAG + "getCameraManager FAILED");
     return false;
