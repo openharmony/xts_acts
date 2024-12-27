@@ -60,7 +60,6 @@ struct scrollAnimationFalseExample {
         console.info('onDidScroll !')
       })
       .onScrollEdge((side: Edge) => {
-        this.onText += 'onScrollEdge-'
         console.info('To the edge')
       })
       .onScrollStart(() => {
