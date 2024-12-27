@@ -107,12 +107,12 @@ struct WebComponent {
         .key('002')
         .onClick(async () => {
           try {
-            this.controller1.startDownload('http://' +
-              '114.115.208.239:8070/colombo_test/attach/test1.5M.rar');
-            this.controller2.startDownload('http://' +
-              '114.115.208.239:8070/colombo_test/attach/test1.5M.rar');
-            this.controller3.startDownload('http://' +
-              '114.115.208.239:8070/colombo_test/attach/test1.5M.rar');
+            this.controller1.startDownload('https://' +
+              'repo.huaweicloud.com/openharmony/os/4.1-Release/hispark_pegasus.tar.gz');
+            this.controller2.startDownload('https://' +
+              'repo.huaweicloud.com/openharmony/os/4.1-Release/hispark_pegasus.tar.gz');
+            this.controller3.startDownload('https://' +
+              'repo.huaweicloud.com/openharmony/os/4.1-Release/hispark_pegasus.tar.gz');
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
