@@ -15,8 +15,12 @@
 
 import EmptyTest from './Empty.test';
 import EsimNoPermissionPublic from './EsimNoPermissionPublic.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  EmptyTest();
-  EsimNoPermissionPublic();
+    if (sim.getMaxSimCount()!=0) {
+      EsimNoPermissionPublic();
+    } else {
+      EmptyTest();
+    }
 }

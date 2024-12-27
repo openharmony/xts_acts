@@ -16,9 +16,13 @@
 import EmptyTest from './Empty.test';
 import EsimPublic1 from './EsimPublic1.test';
 import EsimPublic2 from './EsimPublic2.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  EmptyTest();
-  EsimPublic1();
-  EsimPublic2();
+    if (sim.getMaxSimCount()!=0) {
+      EsimPublic1();
+      EsimPublic2();
+    } else {
+      EmptyTest();
+    }
 }
