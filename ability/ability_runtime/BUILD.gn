@@ -43,6 +43,7 @@ group("ability_runtime") {
       "actsdelegatorfaabilitytest:ActsDelegatorFAAbilityTest",
       "actsfaabilitydisplayorientationtest:ActsFAAbilityDisplayOrientationTest",
       "actsfwkdataaccessortest:dataability",
+      "actsgetapplicationnewtest:ActsGetApplicationNewTest",
       "actsjsdataabilitytest:ActsJsDataAbilityTest",
       "actslastexitreason:actslastexitreason",
       "actsmultiplecall:actsmultiplecall",
