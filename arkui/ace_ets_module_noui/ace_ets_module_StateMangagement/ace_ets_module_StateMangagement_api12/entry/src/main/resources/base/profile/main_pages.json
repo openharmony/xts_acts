@@ -6,6 +6,8 @@
         "MainAbility/pages/LazyForEach/LazyForEachAdd",
         "MainAbility/pages/LazyForEach/LazyForEachDelete",
         "MainAbility/pages/LazyForEach/LazyForEachMove",
+        "MainAbility/pages/LazyForEach/LazyForEachReload",
+        "MainAbility/pages/LazyForEach/LazyForEachVisibleAreaChange",
         "MainAbility/pages/LazyForEach/LazyForEachSingleBoolean",
         "MainAbility/pages/LazyForEach/LazyForEachSingleNumber",
         "MainAbility/pages/LazyForEach/LazyForEachSingleString",
