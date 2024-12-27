@@ -2200,7 +2200,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0001', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0001";
       try {
-        let uriString = "content://com.test.provider/files/\ud83d\ude0a";
+        let temp = "\ud83d\ude0a";
+        let uriString = "content://com.test.provider/files/" + temp;
         let uriInstance = new uri.URI(uriString);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
@@ -2222,7 +2223,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0002', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0002";
       try {
-        let uriInstance = new uri.URI("content://com.test.provider/files/\ud83d\udc64");
+        let temp = "\ud83d\udc64";
+        let uriInstance = new uri.URI("content://com.test.provider/files/" + temp);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
         expect(lastSegment).assertEqual('👤');
@@ -2243,7 +2245,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0003', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0003";
       try {
-        let uriInstance = new uri.URI("content://com.test.provider/files/\ud83d\udc6b");
+        let temp = "\ud83d\udc6b";
+        let uriInstance = new uri.URI("content://com.test.provider/files/" + temp);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
         expect(lastSegment).assertEqual('👫');
@@ -2264,7 +2267,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0004', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0004";
       try {
-        let uriInstance = new uri.URI("content://com.test.provider/files/\u260e");
+        let temp = "\u260e";
+        let uriInstance = new uri.URI("content://com.test.provider/files/" + temp);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
         expect(lastSegment).assertEqual('☎');
@@ -2285,7 +2289,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0005', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0005";
       try {
-        let uriInstance = new uri.URI("content://com.test.provider/files/\ud83d\udc79");
+        let temp = "\ud83d\udc79";
+        let uriInstance = new uri.URI("content://com.test.provider/files/" + temp);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
         expect(lastSegment).assertEqual('👹');
@@ -2306,7 +2311,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0006', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0006";
       try {
-        let uriInstance = new uri.URI("content://com.test.provider/files/\ud83d\udd5b");
+        let temp = "\ud83d\udd5b";
+        let uriInstance = new uri.URI("content://com.test.provider/files/" + temp);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
         expect(lastSegment).assertEqual('🕛');
@@ -2327,7 +2333,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0007', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0007";
       try {
-        let uriString = "content://com.test.provider/files/\ud83c\udf4f";
+        let temp = "\ud83c\udf4f";
+        let uriString = "content://com.test.provider/files/" + temp;
         let uriInstance = new uri.URI(uriString);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
@@ -2349,7 +2356,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0008', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0008";
       try {
-        let uriString = "content://com.test.provider/files/\ud83d\udd03";
+        let temp = "\ud83d\udd03";
+        let uriString = "content://com.test.provider/files/" + temp;
         let uriInstance = new uri.URI(uriString);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
@@ -2371,7 +2379,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji0900', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji0900";
       try {
-        let uriInstance = new uri.URI("content://com.test.provider/files/\ud83c\udf41");
+        let temp = "\ud83c\udf41";
+        let uriInstance = new uri.URI("content://com.test.provider/files/" + temp);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
         expect(lastSegment).assertEqual('🍁');
@@ -2392,7 +2401,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji00010', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji00010";
       try {
-        let uriString = "content://com.test.provider/files/\u2666";
+        let temp = '\u2666';
+        let uriString = "content://com.test.provider/files/" + temp;
         let uriInstance = new uri.URI(uriString);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
@@ -2414,7 +2424,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji00011', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji00011";
       try {
-        let uriString = "content://com.test.provider/files/\ud83d\udc48";
+        let temp = "files/\ud83d\udc48";
+        let uriString = "content://com.test.provider/" + temp;
         let uriInstance = new uri.URI(uriString);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();
@@ -2436,7 +2447,8 @@ export default function Uri_Emoji() {
     it('testURIGetLastSegmentEmoji00012', 0, () => {
       const TAG = "testURIGetLastSegmentEmoji00012";
       try {
-        let uriString = "content://com.test.provider/files/\ud83e\udd3c\u200d\u2642\ufe0f";
+        let temp = "\ud83e\udd3c\u200d\u2642\ufe0f";
+        let uriString = "content://com.test.provider/files/" + temp;
         let uriInstance = new uri.URI(uriString);
         console.log(`+++(${uriInstance.getLastSegment()})`);
         let lastSegment = uriInstance.getLastSegment();

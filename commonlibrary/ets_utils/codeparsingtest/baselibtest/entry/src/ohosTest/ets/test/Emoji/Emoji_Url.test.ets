@@ -2912,11 +2912,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\ud83d\ude0a/path2';
         let urlString2 = '/\ud83d\ude0a/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%98%8A/path2';
-        let rstUrl2 = 'https://www.huawei.com/%F0%9F%98%8A/path2';
+        let temp = '%F0%9F%98%8A/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -2957,11 +2958,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\ud83d\udc64/path2';
         let urlString2 = '/\ud83d\udc64/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
+        let temp = '%F0%9F%91%A4/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
 
-        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%91%A4/path2';
-        let rstUrl2 = 'https://www.huawei.com/%F0%9F%91%A4/path2';
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -3003,11 +3005,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\ud83d\udc6b/path2';
         let urlString2 = '/\ud83d\udc6b/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%91%AB/path2';
-        let rstUrl2 = 'https://www.huawei.com/%F0%9F%91%AB/path2';
+        let temp = '%F0%9F%91%AB/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -3048,11 +3051,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\u260e/path2';
         let urlString2 = '/\u260e/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        let rstUrl1 = 'https://www.huawei.com/test/%E2%98%8E/path2';
-        let rstUrl2 = 'https://www.huawei.com/%E2%98%8E/path2';
+        let temp = '%E2%98%8E/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -3093,11 +3097,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\ud83d\udc79/path2';
         let urlString2 = '/\ud83d\udc79/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test/%F0%9F%91%B9/path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%F0%9F%91%B9/path2');
+        let temp = '%F0%9F%91%B9/path2';
+        expect(url1.toString()).assertEqual('https://www.example.com/test/' + temp);
+        expect(url2.toString()).assertEqual('https://www.example.com/' + temp);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -3136,11 +3141,12 @@ export default function Url_Emoji_append_get() {
       try {
         let emojiString1 = '\ud83d\udd5b/path2';
         let emojiString2 = '/\ud83d\udd5b/path2';
-        let url1 = url.URL.parseURL(emojiString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(emojiString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(emojiString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(emojiString2, 'https://www.example.com/test/test1');
 
-        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%95%9B/path2';
-        let rstUrl2 = 'https://www.huawei.com/%F0%9F%95%9B/path2';
+        let temp = '%F0%9F%95%9B/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -3179,11 +3185,14 @@ export default function Url_Emoji_append_get() {
     it('testUrLParseURLEmoji0013', 0, () => {
       const TAG = "testUrLParseURLEmoji0013";
       try {
-        let url1 = url.URL.parseURL('\ud83c\udf4f/path2', 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL('/\ud83c\udf4f/path2', 'https://www.huawei.com/test/test1');
+        let urlString1 = '\ud83c\udf4f/path2';
+        let urlString2 = '/\ud83c\udf4f/path2';
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        expect(url1.toString()).assertEqual('https://www.huawei.com/test/%F0%9F%8D%8F/path2');
-        expect(url2.toString()).assertEqual('https://www.huawei.com/%F0%9F%8D%8F/path2');
+        let temp = '%F0%9F%8D%8F/path2';
+        expect(url1.toString()).assertEqual('https://www.example.com/test/' + temp);
+        expect(url2.toString()).assertEqual('https://www.example.com/' + temp);
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -3222,11 +3231,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\ud83d\udd03/path2';
         let urlString2 = '/\ud83d\udd03/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%94%83/path2';
-        let rstUrl2 = 'https://www.huawei.com/%F0%9F%94%83/path2';
+        let temp = '%F0%9F%94%83/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -3267,11 +3277,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\ud83c\udf41/path2';
         let urlString2 = '/\ud83c\udf41/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%8D%81/path2';
-        let rstUrl2 = 'https://www.huawei.com/%F0%9F%8D%81/path2';
+        let temp = '%F0%9F%8D%81/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -3312,11 +3323,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\u2666/path2';
         let urlString2 = '/\u2666/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        const rstUrl1 = 'https://www.huawei.com/test/%E2%99%A6/path2';
-        const rstUrl2 = 'https://www.huawei.com/%E2%99%A6/path2';
+        let temp = '%E2%99%A6/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -3357,11 +3369,12 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '\ud83d\udc48/path2';
         let urlString2 = '/\ud83d\udc48/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        let rstUrl1 = 'https://www.huawei.com/test/%F0%9F%91%88/path2';
-        let rstUrl2 = 'https://www.huawei.com/%F0%9F%91%88/path2';
+        let temp = '%F0%9F%91%88/path2';
+        let rstUrl1 = 'https://www.example.com/test/' + temp;
+        let rstUrl2 = 'https://www.example.com/' + temp;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
@@ -3402,11 +3415,13 @@ export default function Url_Emoji_append_get() {
       try {
         let urlString1 = '/path2?emoji=\ud83e\udd3c\u200d\u2642\ufe0f';
         let urlString2 = '/\ud83e\udd3c\u200d\u2642\ufe0f/path2';
-        let url1 = url.URL.parseURL(urlString1, 'https://www.huawei.com/test/test1');
-        let url2 = url.URL.parseURL(urlString2, 'https://www.huawei.com/test/test1');
+        let url1 = url.URL.parseURL(urlString1, 'https://www.example.com/test/test1');
+        let url2 = url.URL.parseURL(urlString2, 'https://www.example.com/test/test1');
 
-        let rstUrl1 = 'https://www.huawei.com/path2?emoji=🤼‍♂️';
-        let rstUrl2 = 'https://www.huawei.com/%F0%9F%A4%BC%E2%80%8D%E2%99%82%EF%B8%8F/path2';
+        let temp1 = 'path2?emoji=🤼‍♂️';
+        let rstUrl1 = 'https://www.example.com/' + temp1;
+        let temp2 = '%F0%9F%A4%BC%E2%80%8D%E2%99%82%EF%B8%8F/path2';
+        let rstUrl2 = 'https://www.example.com/' + temp2;
         expect(url1.toString()).assertEqual(rstUrl1);
         expect(url2.toString()).assertEqual(rstUrl2);
       } catch (err) {
