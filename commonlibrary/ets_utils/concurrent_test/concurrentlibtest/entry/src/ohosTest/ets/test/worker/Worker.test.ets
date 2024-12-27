@@ -1957,7 +1957,7 @@ export default function workerTest() {
       try {
         let state: boolean = false;
         const workerInstance = new worker.ThreadWorker("../../workers/sharedSendable/WorkerPostMessage.ets");
-        let buffer = new ArrayBuffer(16);
+        let buffer = new ArrayBuffer(8);
         let view1 = new Uint8Array(buffer);
         view1[0] = 2;
         let view2 = new Int32Array(buffer, 0, 2);
@@ -5112,7 +5112,7 @@ export default function workerTest() {
         const workerInstance = new worker.ThreadWorker("../../workers/WorkerGlobalCallObject.ets");
         let registerObj = new TestObj();
         workerInstance.registerGlobalCallObject("", registerObj);
-        let message = new TestCallObject("", "func1", 1);
+        let message = new TestCallObject("", "func1", 200);
         workerInstance.postMessage(message);
         workerInstance.onmessage = (e) => {
           console.log(`${caseName} main onmessage result:` + JSON.stringify(e));
