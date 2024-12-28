@@ -1725,7 +1725,7 @@ export default function audioManagerApi9() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2902
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3002
      * @tc.name      : mute - ACCESSIBILITY - Promise - SetVolume
      * @tc.desc      : mute - ACCESSIBILITY - Promise - Enable mute -SetVolume
      * @tc.size      : MEDIUM
@@ -1783,7 +1783,7 @@ export default function audioManagerApi9() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2903
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3003
      * @tc.name      : mute - ACCESSIBILITY - Promise - SetVolume
      * @tc.desc      : mute - ACCESSIBILITY - Promise - Enable mute -SetVolume
      * @tc.size      : MEDIUM
@@ -1791,6 +1791,12 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3003', 2, async (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, -1);
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);

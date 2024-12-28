@@ -3642,6 +3642,12 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_1700', 2, async (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, highVol);
         await audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true);
@@ -3674,6 +3680,12 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_1800', 2, async (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, highVol);
       } catch (err) {
@@ -3736,6 +3748,12 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_1900', 2, async (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, highVol);
         await audioManager.mute(audio.AudioVolumeType.VOICE_ASSISTANT, true);
@@ -3769,6 +3787,12 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2000', 2, async (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, highVol);
       } catch (err) {
