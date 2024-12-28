@@ -12,19 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import WindowLifecycle from './WindowLifecycle.test';
-import windowTitleBarTest from './WindowTitleBar.test';
-import windowPromiseTest from './WindowPromise.test';
-import windowMaximizeTest from './WindowMaximize.test';
-import windowImmersiveTest from './WindowImmersive.test';
-import windowPropertiesTest from './WindowProperties.test';
-import windowManageTest from './WindowManage.test';
-export default function testsuite() {
-  windowTitleBarTest();
-  windowManageTest();
-  WindowLifecycle();
-  windowPromiseTest();
-  windowMaximizeTest();
-  windowImmersiveTest();
-  windowPropertiesTest();
+{
+  "app": {
+    "bundleName": "com.example.myapplication",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
 }
