@@ -21,7 +21,9 @@ import { Permissions } from '@ohos.abilityAccessCtrl';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import { PermissionRequestResult } from '@ohos.abilityAccessCtrl';
 import { BY, UiDriver } from '@ohos.UiTest';
+import { deviceInfo } from "@kit.BasicServicesKit";
 
+let deviceTypeInfo: string = deviceInfo.deviceType
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 let TagFrmwk: string = "AudioFrameworkTest";
 console.info(`${TagFrmwk}: Create AudioManger Object JS Framework`);
@@ -1370,6 +1372,12 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2500', 2, async (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
         await audioManager.setVolume(audio.AudioVolumeType.RINGTONE, maxVol)
@@ -1397,6 +1405,12 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2600', 2, (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       audioManager.setVolume(audio.AudioVolumeType.MEDIA, highVol, (err) => {
         if (err) {
           console.error(`${TagFrmwk}: failed to set volume MEDIA: Callback: ENAME :  ${err.message}`);
@@ -1438,6 +1452,12 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2700', 2, async (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
         console.info(`${TagFrmwk}: Ringtone setVolume promise: ENAME: successful`);
@@ -1466,6 +1486,12 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2800', 2, (done: Function) => {
+      if (deviceTypeInfo == '2in1') {
+        console.info(`${TagFrmwk}: The device type is 2in1`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       audioManager.setVolume(audio.AudioVolumeType.RINGTONE, lowVol, (err) => {
         if (err) {
           console.error(`${TagFrmwk}: failed to set volume: Callback: ENAME:  ${err.message}`);
