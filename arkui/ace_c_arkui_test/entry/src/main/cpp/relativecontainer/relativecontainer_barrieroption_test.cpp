@@ -44,12 +44,12 @@ static napi_value TestRelativeContainerBarrierOptionSetId001(napi_env env, napi_
     const char* barrierId = "BarrierOption";
     OH_ArkUI_BarrierOption_SetId(barrier, barrierId, PARAM_0);
     auto ret = OH_ArkUI_BarrierOption_GetId(barrier, PARAM_0);
-    OH_ArkUI_BarrierOption_Dispose(barrier);
     if (::strcmp(ret, barrierId) != PARAM_0) {
         napi_value errorResult = nullptr;
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);
         return errorResult;
     }
+    OH_ArkUI_BarrierOption_Dispose(barrier);
     NAPI_END;
 }
 

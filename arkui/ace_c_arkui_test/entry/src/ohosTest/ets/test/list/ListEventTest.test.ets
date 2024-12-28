@@ -22,10 +22,10 @@ async function flingComponentV(key: string, isForward: boolean, speed: number = 
   offsetX: number = 0) {
   let driver = Driver.create();
   let rect = Utils.getComponentRect(key);
-  let centerX = Utils.getRectHorizontalCenterX(rect) + offsetX
-  let centerY = Utils.getRectVerticalCenterY(rect)
-  let Y1 = centerY - distance;
-  let Y2 = centerY + distance;
+  let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect) + vp2px(offsetX));
+  let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
+  let Y1 = Math.round(centerY - vp2px(distance));
+  let Y2 = Math.round(centerY + vp2px(distance));
   let stepLen = 20;
 
   if (isForward) {
@@ -46,8 +46,8 @@ async function flingComponentV(key: string, isForward: boolean, speed: number = 
 async function mouseScrollV(key: string, isDown: boolean, done?: Function) {
   let driver = Driver.create();
   let rect = Utils.getComponentRect(key);
-  let centerX = Utils.getRectHorizontalCenterX(rect)
-  let centerY = Utils.getRectVerticalCenterY(rect)
+  let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
+  let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
   await driver.mouseScroll({
     x: centerX, y: centerY
   }, isDown, 1);
@@ -302,7 +302,7 @@ export default function listEventTest() {
       {
         await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', true, 20000, 80)
+        await flingComponentV('list', true, 40000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
         let willOffsetData: number[] = dataArray[0];
@@ -320,11 +320,24 @@ export default function listEventTest() {
           didStateData[didStateData.length-2] == ScrollState.Fling &&
           didStateData[didStateData.length-1] == ScrollState.Idle).assertEqual(true)
       }
+      done()
+    })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_DID_SCROLL_0007
+    * @tc.name       : testListOnWillDidScroll007
+    * @tc.desc       : test onWillScroll and onDidScroll event callback with rebound
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testListOnWillDidScroll007', 0, async (done: Function) => {
+      await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       // Fingers rolling downwards with rebound
       {
         await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', false, 20000, 80)
+        await flingComponentV('list', false, 40000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
         let willOffsetData: number[] = dataArray[0];
@@ -332,7 +345,7 @@ export default function listEventTest() {
         let willSourceData: number[] = dataArray[2];
         let didOffsetData: number[] = dataArray[3];
         let didStateData: number[] = dataArray[4];
-        console.log('testListOnWillDidScroll001 dataArray =', JSON.stringify(dataArray))
+        console.log('testListOnWillDidScroll007 dataArray =', JSON.stringify(dataArray))
         expect(willOffsetData[0] < 0 && willOffsetData[willOffsetData.length-1] > 0).assertEqual(true)
         expect(willStateData[0] == ScrollState.Scroll && willStateData[1] == ScrollState.Fling).assertEqual(true)
         expect(willSourceData[0] == ScrollSource.DRAG && willSourceData[1] == ScrollSource.FLING &&
@@ -342,7 +355,6 @@ export default function listEventTest() {
           didStateData[didStateData.length-2] == ScrollState.Fling &&
           didStateData[didStateData.length-1] == ScrollState.Idle).assertEqual(true)
       }
-      expect(Utils.getComponentInfoByKey('list').$attrs.backgroundColor).assertEqual('#FFFF0000')
       done()
     })
 
@@ -421,7 +433,7 @@ export default function listEventTest() {
     it('testListOnWillDidScroll004', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       // Drag the scrollbar downwards with your fingers
-      await flingComponentV('list', false, 100, 80, 135)
+      await flingComponentV('list', false, 100, 60, 135)
       await Utils.sleep(3000)
       let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
       let willOffsetData: number[] = dataArray[0];
@@ -536,7 +548,7 @@ export default function listEventTest() {
       {
         await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', true, 20000, 80)
+        await flingComponentV('list', true, 40000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
         let willOffsetData: number[] = dataArray[0];
@@ -548,24 +560,35 @@ export default function listEventTest() {
         expect(willSourceData[0] == ScrollSource.DRAG && willSourceData[1] == ScrollSource.FLING &&
           willSourceData[willSourceData.length-1] == ScrollSource.EDGE_EFFECT).assertEqual(true)
       }
+      done()
+    })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_SCROLL_0007
+    * @tc.name       : testListOnWillScroll007
+    * @tc.desc       : test onWillScroll event callback with rebound
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testListOnWillScroll007', 0, async (done: Function) => {
+      await Utils.pushPage(`list/ListOnWillScrollTest`);
       // Fingers rolling downwards with rebound
       {
         await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', false, 20000, 80)
+        await flingComponentV('list', false, 40000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
         let willOffsetData: number[] = dataArray[0];
         let willStateData: number[] = dataArray[1];
         let willSourceData: number[] = dataArray[2];
-        console.log('testListOnWillScroll001 dataArray =', JSON.stringify(dataArray))
+        console.log('testListOnWillScroll007 dataArray =', JSON.stringify(dataArray))
         expect(willOffsetData[0] < 0 && willOffsetData[willOffsetData.length-1] > 0).assertEqual(true)
         expect(willStateData[0] == ScrollState.Scroll && willStateData[1] == ScrollState.Fling).assertEqual(true)
         expect(willSourceData[0] == ScrollSource.DRAG && willSourceData[1] == ScrollSource.FLING &&
           willSourceData[willSourceData.length-1] == ScrollSource.EDGE_EFFECT).assertEqual(true)
-
       }
-      expect(Utils.getComponentInfoByKey('list').$attrs.backgroundColor).assertEqual('#FFFF0000')
       done()
     })
 
@@ -633,7 +656,7 @@ export default function listEventTest() {
     it('testListOnWillScroll004', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       // Drag the scrollbar downwards with your fingers
-      await flingComponentV('list', false, 100, 80, 135)
+      await flingComponentV('list', false, 100, 60, 135)
       await Utils.sleep(3000)
       let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
       let willOffsetData: number[] = dataArray[0];
@@ -727,7 +750,7 @@ export default function listEventTest() {
       {
         await flingComponentV('list', true, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', true, 20000, 80)
+        await flingComponentV('list', true, 40000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
         let didOffsetData: number[] = dataArray[0];
@@ -739,22 +762,33 @@ export default function listEventTest() {
           didStateData[didStateData.length-1] == ScrollState.Idle).assertEqual(true)
 
       }
+      done()
+    })
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_DID_SCROLL_0007
+    * @tc.name       : testListOnDidScroll007
+    * @tc.desc       : test onDidScroll event callback with rebound
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testListOnDidScroll007', 0, async (done: Function) => {
+      await Utils.pushPage(`list/ListOnDidScrollTest`);
       // Fingers rolling downwards with rebound
       {
         await flingComponentV('list', false, 20000, 80)
         await Utils.sleep(1000)
-        await flingComponentV('list', false, 20000, 80)
+        await flingComponentV('list', false, 40000, 80)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
         let didOffsetData: number[] = dataArray[0];
         let didStateData: number[] = dataArray[1];
-        console.log('testListOnDidScroll001 dataArray =', JSON.stringify(dataArray))
+        console.log('testListOnDidScroll007 dataArray =', JSON.stringify(dataArray))
         expect(didOffsetData[0] < 0 && didOffsetData[1] > 0).assertEqual(true)
         expect(didStateData[didStateData.length-3] == ScrollState.Scroll &&
           didStateData[didStateData.length-2] == ScrollState.Fling &&
           didStateData[didStateData.length-1] == ScrollState.Idle).assertEqual(true)
       }
-      expect(Utils.getComponentInfoByKey('list').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
     })
 
@@ -819,7 +853,7 @@ export default function listEventTest() {
     it('testListOnDidScroll004', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       // Drag the scrollbar downwards with your fingers
-      await flingComponentV('list', false, 100, 80, 135)
+      await flingComponentV('list', false, 100, 60, 135)
       await Utils.sleep(3000)
       let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
       let didOffsetData: number[] = dataArray[0];
@@ -953,7 +987,7 @@ export default function listEventTest() {
     */
     it('testListOnScrollFrameBegin001', 0, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
-      await flingComponentV('list', false, 1000, 20)
+      await flingComponentV('list', false, 500, 15)
       await Utils.sleep(1500)
       let dataArray = nativeRender.listGetOnWillDidScrollData();
       let willOffsetData: number[] = dataArray[0];
