@@ -16,10 +16,9 @@
 import EmptyTest from './Empty.test';
 import EsimPublic1 from './EsimPublic1.test';
 import EsimPublic2 from './EsimPublic2.test';
-import eSIM from '@ohos.telephony.esim';
 
 export default function testsuite() {
-    if (eSIM?.isSupported(0)) {
+    if (canlUse("SystemCapability.Telephony.CoreService.Esim")) {
       EsimPublic1();
       EsimPublic2();
     } else {
