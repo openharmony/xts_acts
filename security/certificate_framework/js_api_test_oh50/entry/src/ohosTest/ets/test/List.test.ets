@@ -23,6 +23,7 @@ import certFrameworkCertChainOfflineValidateJsAPIFunctionTestUnit from './certCh
 import certFrameworkCertChainPolicyJsAPIFunctionTestUnit from './certChainPolicy.test';
 import certFrameworkCertNameJsAPIFunctionTestUnit from './certName.test';
 import certFrameworkParseP12CertTestUnit from './parseP12Cert.test';
+import certFrameworkCertPkcs7ExtCMSFunctionTestUnit from './certP7.test';
 
 
 export default function testsuite() {
@@ -36,4 +37,5 @@ export default function testsuite() {
   certFrameworkCertChainPolicyJsAPIFunctionTestUnit();
   certFrameworkCertNameJsAPIFunctionTestUnit();
   certFrameworkParseP12CertTestUnit();
+  certFrameworkCertPkcs7ExtCMSFunctionTestUnit();
 }
