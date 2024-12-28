@@ -93,6 +93,7 @@ group("multimedia") {
       "media/media_ndk_standard/AVPlayerNDK:OhAVPlayerNDK",
       "photoAccess/photoAccess:photoAccess_js_hap",
       "photoAccess/pickerView:TextPickerTest",
+      "avsource:ActsAVCodecTest",
     ]
   } else {
     deps = [
