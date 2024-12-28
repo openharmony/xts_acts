@@ -15,7 +15,7 @@
 import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
 
 class Params {
-  text: string = "this is a text"
+  text: string = 'this is a text'
 }
 
 @Builder
@@ -61,33 +61,33 @@ class MyNodeController extends NodeController {
 
   onBind(containerId: number): void {
     console.log("test666666 on bind1: "+containerId);
-    this.bindValue = "bind";
+    this.bindValue = 'bind';
   }
 
   onUnbind(containerId: number): void {
     console.log("test666666 on unbind1: "+containerId);
-    this.unbindValue = "unbind";
+    this.unbindValue = 'unbind';
 
   }
 
   onWillBind(containerId: number): void {
     console.log("test666666 about to bind1: "+containerId);
-    this.willBindValue = "willBind";
+    this.willBindValue = 'willBind';
   }
 
   onWillUnbind(containerId: number): void {
     console.log("test666666 about to unbind1: "+containerId);
-    this.willUnbindValue = "willUnbind";
+    this.willUnbindValue = 'willUnbind';
   }
 
   onAttach(): void {
     console.log("test666666 on attach1111111");
-    this.attachValue = "attach";
+    this.attachValue = 'attach';
   }
 
   onDetach(): void {
     console.log("test666666 on detach1");
-    this.detachValue = "detach";
+    this.detachValue = 'detach';
   }
 }
 
@@ -105,39 +105,39 @@ class MyNodeController2 extends NodeController {
   makeNode(uiContext: UIContext): FrameNode {
     if (this.buttonNode == null) {
       this.buttonNode = new BuilderNode(uiContext);
-      this.buttonNode.build(this.wrapBuilder, { text: "This is a Button2" })
+      this.buttonNode.build(this.wrapBuilder, { text: 'This is a Button2' })
     }
     return this.buttonNode!.getFrameNode()!;
   }
 
   onBind(containerId: number): void {
     console.log("test666666 on bind2: "+containerId);
-    this.bindValue = "bind";
+    this.bindValue = 'bind';
   }
 
   onUnbind(containerId: number): void {
     console.log("test666666 on unbind2: "+containerId);
-    this.unbindValue = "unbind";
+    this.unbindValue = 'unbind';
   }
 
   onWillBind(containerId: number): void {
     console.log("test666666 about to bind2: "+containerId);
-    this.willBindValue = "willBind";
+    this.willBindValue = 'willBind';
   }
 
   onWillUnbind(containerId: number): void {
     console.log("test666666 about to unbind2: "+containerId);
-    this.willUnbindValue = "willUnbind";
+    this.willUnbindValue = 'willUnbind';
   }
 
   onAttach(): void {
     console.log("test66666 on attach222222");
-    this.attachValue = "attach";
+    this.attachValue = 'attach';
   }
 
   onDetach(): void {
     console.log("test666666 on detach2");
-    this.detachValue = "detach";
+    this.detachValue = 'detach';
   }
 
 }
@@ -216,7 +216,7 @@ struct UpDownTreeEventIndex {
         })
     }
     .padding({ left: 35, right: 35, top: 35 })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
