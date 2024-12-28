@@ -14,7 +14,6 @@
 group("web") {
   testonly = true
   deps = [
-    #"DFX:DFXTest",
     "ace_ets_web_dev:ActsAceWebDevTest",
     "ace_ets_web_dev_cloudservice_webController:ActsAceWebDevCloudServiceWebControllerTest",
     "ace_ets_web_dev_cloudservice_webController_enhanced:ActsAceWebDevCloudServiceWebControllerEnhancedTest",
