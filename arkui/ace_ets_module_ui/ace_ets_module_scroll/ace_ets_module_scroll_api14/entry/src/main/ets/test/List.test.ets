@@ -12,15 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import headerListJsunit from './ListTest/headerListJsunit.test';
-import waterFlowFad from './WaterFlowTest/waterFlowFad.test'; 
-import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
-import bindTabsScroll from './TabsTest/bindTabsScroll.test';
+ 
+import enableScrollJsunit from './ScrollBarTest/enableScrollJsunit.test';
+import getListVisible from './ListTest/getListVisible.test'; 
+import itemIndexList from './ListTest/itemIndexList.test'; 
+import groupAnimation from './ListTest/groupAnimation.test'; 
+import animationCallback from './ListTest/animationCallback.test';
+import nodeTypeGrid from './GridTest/nodeTypeGrid.test'; 
 
 export default function testsuite() {
-  headerListJsunit()
-  waterFlowFad()
-  tabsOpacityJsunit()
-  bindTabsScroll()
+  enableScrollJsunit()
+  getListVisible()
+  itemIndexList()
+  groupAnimation()
+  animationCallback()
+  nodeTypeGrid()
 }
