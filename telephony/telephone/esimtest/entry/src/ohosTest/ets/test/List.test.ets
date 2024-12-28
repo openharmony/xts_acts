@@ -16,10 +16,10 @@
 import EmptyTest from './Empty.test';
 import EsimPublic1 from './EsimPublic1.test';
 import EsimPublic2 from './EsimPublic2.test';
-import sim from '@ohos.telephony.sim';
+import eSIM from '@ohos.telephony.esim';
 
 export default function testsuite() {
-    if (sim.getMaxSimCount()!=0) {
+    if (eSIM?.isSupported(0)) {
       EsimPublic1();
       EsimPublic2();
     } else {
