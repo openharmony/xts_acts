@@ -18,7 +18,7 @@ ohos_app_assist_suite("AVPlayerDrm_Main_NDK_test") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAVPlayerDrmMainNdkTest"
   subsystem_name = "multimedia"
-  part_name = "player_framework"
+  part_name = "drm_framework"
 }
 
 ohos_js_app_suite("AVPlayerDrm_NDK_test") {
@@ -27,6 +27,6 @@ ohos_js_app_suite("AVPlayerDrm_NDK_test") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAVPlayerDrmNdkTest"
   subsystem_name = "multimedia"
-  part_name = "player_framework"
+  part_name = "drm_framework"
   deps = [ ":AVPlayerDrm_Main_NDK_test" ]
 }
