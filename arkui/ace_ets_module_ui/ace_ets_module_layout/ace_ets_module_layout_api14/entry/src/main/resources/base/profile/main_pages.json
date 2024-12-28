@@ -1,7 +1,6 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/ChainWeight/ChainWeight",
-        "MainAbility/pages/FolderStack/FolderStackTest"
+        "MainAbility/pages/ChainWeight/ChainWeight"
     ]
 }
