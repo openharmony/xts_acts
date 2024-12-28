@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import gestureEventTest from './FrameNodeTest/gestureEventTest.test';
+import upDownTreeEventTest from './FrameNodeTest/upDownTreeEvent.test';
 
 export default function testsuite() {
+  upDownTreeEventTest();
   gestureEventTest();
 }

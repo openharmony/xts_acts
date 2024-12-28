@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/FrameNode/gestureEventTest"
+        "MainAbility/pages/FrameNode/gestureEventTest",
+        "MainAbility/pages/FrameNode/upDownTreeEventTest"
     ]
 }
