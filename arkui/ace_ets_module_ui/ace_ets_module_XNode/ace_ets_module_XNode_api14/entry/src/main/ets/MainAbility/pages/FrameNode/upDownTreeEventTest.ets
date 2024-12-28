@@ -15,7 +15,7 @@
 import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
 
 class Params {
-  text: string = 'this is a text'
+  public text: string = 'this is a text'
 }
 
 @Builder
@@ -54,7 +54,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode {
     if (this.buttonNode == null) {
       this.buttonNode = new BuilderNode(uiContext);
-      this.buttonNode.build(this.wrapBuilder, { text: "This is a Button1" })
+      this.buttonNode.build(this.wrapBuilder, { text: 'This is a Button1' })
     }
     return this.buttonNode!.getFrameNode()!;
   }
@@ -86,7 +86,7 @@ class MyNodeController extends NodeController {
   }
 
   onDetach(): void {
-    console.log("test666666 on detach1");
+    console.log('test666666 on detach1');
     this.detachValue = 'detach';
   }
 }
@@ -167,7 +167,7 @@ struct UpDownTreeEventIndex {
         NodeContainer(this.myNodeControllerArray[this.index % this.myNodeControllerArray.length])
       }
 
-      Button("解绑或绑定")
+      Button('bindAndUnbinde')
         .onClick(() => {
           this.index++;
         })
@@ -176,7 +176,7 @@ struct UpDownTreeEventIndex {
         .height(150)
         .margin(20)
 
-      Button("上树或下树")
+      Button('upDownTree')
         .id('upDownTree')
         .onClick(() => {
           this.isShow = !this.isShow
