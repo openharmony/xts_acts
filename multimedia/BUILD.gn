@@ -36,6 +36,7 @@ group("multimedia") {
       "avsession/avsession_js_standard/avsessionManager:avsession_framework_js_hap",
       "avsession/avsession_js_standard/avsessionVoiceCall:avsession_voicecall_js_hap",
       "avsession/avsession_ndk_standard/avsession_ndk_stage:avsession_ndk_ohosTest",
+      "avsource:ActsAVCodecTest",
       "camera/camera_js_standard:camera_framework_ets_hap",
       "camera/camera_ndk_test:camera_framework_ndk_hap",
       "camera/camera_ndk_xts/OHCameraNdk:ActsMediaCameraNDKTest",
@@ -93,7 +94,6 @@ group("multimedia") {
       "media/media_ndk_standard/AVPlayerNDK:OhAVPlayerNDK",
       "photoAccess/photoAccess:photoAccess_js_hap",
       "photoAccess/pickerView:TextPickerTest",
-      "avsource:ActsAVCodecTest",
     ]
   } else {
     deps = [
