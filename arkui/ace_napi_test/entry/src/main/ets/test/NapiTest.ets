@@ -6095,11 +6095,53 @@ export default function napiApiTest() {
     it('testCreateSendableTypedArray0006', 0, async (done: Function) => {
       console.info('testCreateSendableTypedArray0006 START');
       try {
-        let value = napitest.createSendableTypedArrayNotType();
+        let value = napitest.createSendableFloat64ArrayTest();
         console.info('testCreateSendableTypedArray0006 value is: ' + value);
         expect(value).assertEqual(1);
       } catch (err) {
         console.error('testCreateSendableTypedArray0006 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_CREATESENDABLETYPEDARRAY_0700
+     * @tc.name      : testCreateSendableTypedArray0007
+     * @tc.desc      : Testing CreateSendableTypedArray NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testCreateSendableTypedArray0007', 0, async (done: Function) => {
+      console.info('testCreateSendableTypedArray0007 START');
+      try {
+        let value = napitest.createSendableBigInt64ArrayTest();
+        console.info('testCreateSendableTypedArray0007 value is: ' + value);
+        expect(value).assertEqual(1);
+      } catch (err) {
+        console.error('testCreateSendableTypedArray0007 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_CREATESENDABLETYPEDARRAY_0800
+     * @tc.name      : testCreateSendableTypedArray0008
+     * @tc.desc      : Testing CreateSendableTypedArray NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testCreateSendableTypedArray0008', 0, async (done: Function) => {
+      console.info('testCreateSendableTypedArray0008 START');
+      try {
+        let value = napitest.createSendableBigUint64ArrayTest();
+        console.info('testCreateSendableTypedArray0008 value is: ' + value);
+        expect(value).assertEqual(1);
+      } catch (err) {
+        console.error('testCreateSendableTypedArray0008 err msg' + err.message);
         expect().assertFail();
       }
       done();

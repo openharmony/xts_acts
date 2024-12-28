@@ -4781,6 +4781,67 @@ static napi_value CreateSendableTypedArrayTest(napi_env env, napi_callback_info 
     return result;
 }
 
+static napi_value createSendableFloat64ArrayTest(napi_env env, napi_callback_info info)
+{
+    static size_t length = 6;
+    static size_t offset = 0;
+
+    napi_value arraybuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 1024;
+    napi_create_sendable_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arraybuffer);
+    NAPI_ASSERT(env, arraybuffer != nullptr, "success create_sendable_arrayBuffer");
+
+    napi_value result = nullptr;
+    napi_status status = napi_create_sendable_typedarray(env, napi_float64_array, length,
+                                                         arraybuffer, offset, &result);
+    bool bRet = (status == napi_invalid_arg);
+    napi_value retValue;
+    napi_create_int32(env, bRet, &retValue);
+    return retValue;
+}
+
+static napi_value createSendableBigInt64ArrayTest(napi_env env, napi_callback_info info)
+{
+    static size_t length = 6;
+    static size_t offset = 0;
+
+    napi_value arraybuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 1024;
+    napi_create_sendable_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arraybuffer);
+    NAPI_ASSERT(env, arraybuffer != nullptr, "success create_sendable_arrayBuffer");
+
+    napi_value result = nullptr;
+    napi_status status = napi_create_sendable_typedarray(env, napi_bigint64_array, length,
+                                                         arraybuffer, offset, &result);
+    bool bRet = (status == napi_invalid_arg);
+    napi_value retValue;
+    napi_create_int32(env, bRet, &retValue);
+    return retValue;
+}
+
+static napi_value createSendableBigUint64ArrayTest(napi_env env, napi_callback_info info)
+{
+    static size_t length = 6;
+    static size_t offset = 0;
+
+    napi_value arraybuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 1024;
+    napi_create_sendable_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arraybuffer);
+    NAPI_ASSERT(env, arraybuffer != nullptr, "success create_sendable_arrayBuffer");
+
+    napi_value result = nullptr;
+    napi_status status = napi_create_sendable_typedarray(env, napi_biguint64_array, length,
+                                                         arraybuffer, offset, &result);
+    bool bRet = (status == napi_invalid_arg);
+    napi_value retValue;
+    napi_create_int32(env, bRet, &retValue);
+    return retValue;
+}
+
+
 static napi_value CreateSendableObjectWithProperties(napi_env env, napi_callback_info info)
 {
     napi_value excep;
@@ -10225,6 +10286,9 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("createSendableTypedArraBufferNull", createSendableTypedArraBufferNull),
         DECLARE_NAPI_FUNCTION("createSendableTypedArrayNotType", createSendableTypedArrayNotType),
         DECLARE_NAPI_FUNCTION("createSendableTypedArrayNotBuffer", createSendableTypedArrayNotBuffer),
+        DECLARE_NAPI_FUNCTION("createSendableFloat64ArrayTest", createSendableFloat64ArrayTest),
+        DECLARE_NAPI_FUNCTION("createSendableBigInt64ArrayTest", createSendableBigInt64ArrayTest),
+        DECLARE_NAPI_FUNCTION("createSendableBigUint64ArrayTest", createSendableBigUint64ArrayTest),
         DECLARE_NAPI_FUNCTION("wrapSendableEnvNull", wrapSendableEnvNull),
         DECLARE_NAPI_FUNCTION("NapiWrapSendableObj1Null", NapiWrapSendableObj1Null),
         DECLARE_NAPI_FUNCTION("NapiWrapSendableObj2Null", NapiWrapSendableObj2Null),
