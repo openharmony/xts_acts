@@ -61,6 +61,7 @@ export default function audioNDK() {
 
     afterEach(() => {
       console.info('afterEach case');
+      await sleep(200);
     })
 
     afterAll(() => {
