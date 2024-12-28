@@ -490,5 +490,76 @@ export default function fontPart3Test() {
         }
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_2203
+     * @tc.name      : testFontSetAndIsThemeFontFollowedMultipleCalls
+     * @tc.desc      : Test for testFontSetAndIsThemeFontFollowedMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testFontSetAndIsThemeFontFollowedMultipleCalls' , DEFAULT , () => {
+      const msg = 'testFontSetAndIsThemeFontFollowedMultipleCalls';
+      let font = new drawing.Font();
+      let followed: boolean = false;
+      for ( let i = 0 ; i < 20 ; i ++ ) {
+        followed = !followed;
+        font.setThemeFontFollowed(followed);
+        let finallyFollowed: boolean = font.isThemeFontFollowed()
+        console.info(msg + "font is theme font followed: " + finallyFollowed);
+        expect(finallyFollowed).assertEqual(followed);
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_2200
+     * @tc.name      : testFontSetAndIsThemeFontFollowedNormal
+     * @tc.desc      : Test for testFontSetAndIsThemeFontFollowedNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testFontSetAndIsThemeFontFollowedNormal' , DEFAULT , () => {
+      const msg = 'testFontSetAndIsThemeFontFollowedNormal';
+      let font = new drawing.Font();
+      let initialFollowed: boolean = font.isThemeFontFollowed()
+      console.info(msg + "Initial value font is theme font followed: " + initialFollowed);
+      expect(initialFollowed).assertEqual(false);
+      font.setThemeFontFollowed(true);
+      let followed: boolean = font.isThemeFontFollowed()
+      console.info(msg + "followed is: " + followed);
+      expect(followed).assertEqual(true);
+      font.setThemeFontFollowed(false);
+      let followed2: boolean = font.isThemeFontFollowed()
+      console.info(msg + "followed2 is: " + followed2);
+      expect(followed2).assertEqual(false);
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_2201
+     * @tc.name      : testFontSetAndIsThemeFontFollowedNull
+     * @tc.desc      : Test for testFontSetAndIsThemeFontFollowedNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testFontSetAndIsThemeFontFollowedNull' , DEFAULT , () => {
+      const msg = 'testFontSetAndIsThemeFontFollowedNull';
+      let font = new drawing.Font();
+      try {
+        font.setThemeFontFollowed(null);
+        console.info(msg + 'setThemeFontFollowed successed');
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + `setThemeFontFollowed null errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        font.setThemeFontFollowed(undefined);
+        console.info(msg + 'setThemeFontFollowed successed');
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + `setThemeFontFollowed undefined errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+    });
   });
 }

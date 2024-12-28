@@ -164,6 +164,100 @@ export default function typefaceTest() {
         expect().assertFail();
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0302
+     * @tc.name      : testTypeFaceMakeFromRawFileAbnormal
+     * @tc.desc      : testTypeFaceMakeFromRawFileAbnormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromRawFileAbnormal', 3, () => {
+      const msg = 'testTypeFaceMakeFromRawFileAbnormal';
+      try {
+        const mytypeface:drawing.Typeface = drawing.Typeface.makeFromRawFile($rawfile('image.png'));
+        console.info(msg + ' makeFromRawFile image.png success' + JSON.stringify(mytypeface));
+        expect(mytypeface == null).assertTrue();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFile image.png errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0301
+     * @tc.name      : testTypeFaceMakeFromRawFileMultipleCalls
+     * @tc.desc      : testTypeFaceMakeFromRawFileMultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromRawFileMultipleCalls', 3, () => {
+      const msg = 'testTypeFaceMakeFromRawFileMultipleCalls';
+      try {
+        for (let i = 0; i < 20; i += 1) {
+          let mytypeface:drawing.Typeface = drawing.Typeface.makeFromRawFile($rawfile('HarmonyOS_Sans_Condensed.ttf'));
+          console.info(msg + ' makeFromRawFile HarmonyOS_Sans_Condensed.ttf success' + JSON.stringify(mytypeface));
+          expect(!!mytypeface).assertTrue();
+        }
+      } catch (e) {
+        console.info(msg + ` makeFromRawFile HarmonyOS_Sans_Condensed.ttf errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0300
+     * @tc.name      : testTypeFaceMakeFromRawFileNormal
+     * @tc.desc      : testTypeFaceMakeFromRawFileNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromRawFileNormal', 3, () => {
+      const msg = 'testTypeFaceMakeFromRawFileNormal';
+      try {
+        let mytypeface:drawing.Typeface = drawing.Typeface.makeFromRawFile($rawfile('HarmonyOS_Sans_Condensed.ttf'));
+        console.info(msg + ' makeFromRawFile HarmonyOS_Sans_Condensed.ttf success' + JSON.stringify(mytypeface));
+        expect(!!mytypeface).assertTrue();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFile HarmonyOS_Sans_Condensed.ttf errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        let mytypeface2:drawing.Typeface = drawing.Typeface.makeFromRawFile($rawfile('ttf/HarmonyOS_Sans_Condensed.ttf'));
+        console.info(msg + ' makeFromRawFile ttf/HarmonyOS_Sans_Condensed.ttf success' + JSON.stringify(mytypeface2));
+        expect(!!mytypeface2).assertTrue();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFile ttf/HarmonyOS_Sans_Condensed.ttf errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0303
+     * @tc.name      : testTypeFaceMakeFromRawFileNull
+     * @tc.desc      : testTypeFaceMakeFromRawFileNull
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromRawFileNull', 3, () => {
+      const msg = 'testTypeFaceMakeFromRawFileNull';
+      try {
+        drawing.Typeface.makeFromRawFile(null);
+        console.info(msg + ' makeFromRawFile null success');
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFile null errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        drawing.Typeface.makeFromRawFile(undefined);
+        console.info(msg + ' makeFromRawFile undefined success');
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFile undefined errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+    });
 
   })
 }
