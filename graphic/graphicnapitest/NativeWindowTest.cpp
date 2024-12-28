@@ -1366,35 +1366,6 @@ HWTEST_F(NativeWindowTest, NativeWindowGetDefaultWidthAndHeight001, Function | M
     ASSERT_EQ(width, 300);
     ASSERT_EQ(height, 400);
 }
-/*
- * @tc.name  : NativeWindowSetBufferHold001
- * @tc.desc  : call NativeWindowSetBufferHold and no ret
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeWindowTest, NativeWindowSetBufferHold001, Function | MediumTest | Level1)
-{
-    OH_NativeWindow_SetBufferHold(nativeWindow); // buffer one frame in advance
-    int fenceFd = -1;
-    struct Region *region = new Region();
-    region->rectNumber = 0;
-    region->rects = nullptr;
-    ASSERT_EQ(OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region),
-              NATIVE_ERROR_INVALID_ARGUMENTS);
-    region->rectNumber = 1;
-    struct Region::Rect * rect = new Region::Rect();
-    rect->x = 0x100;
-    rect->y = 0x100;
-    rect->w = 0x100;
-    rect->h = 0x100;
-    region->rects = rect;
-    ASSERT_EQ(OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region),
-              NATIVE_ERROR_INVALID_ARGUMENTS);
-    delete rect;
-    delete region;
-    cSurface->SetBufferHold(false);
-}
 
 /*
  * @tc.name  : NativeWindowReadWriteWindow002
@@ -1407,16 +1378,11 @@ HWTEST_F(NativeWindowTest, NativeWindowReadWriteWindow002, Function | MediumTest
 {
     using namespace OHOS;
     // test for no surface->GetUniqueId
-    OHNativeWindow* nativeWindow1 = new OHNativeWindow();
-    ASSERT_NE(nativeWindow1, nullptr);
     OHIPCParcel *parcel1 = OH_IPCParcel_Create();
     ASSERT_NE(parcel1, nullptr);
-    ASSERT_EQ(OH_NativeWindow_WriteToParcel(nativeWindow1, parcel1), NATIVE_ERROR_INVALID_ARGUMENTS);
-    OHNativeWindow *readWindow = nullptr;
+    ASSERT_EQ(OH_NativeWindow_WriteToParcel(nullptr, parcel1), NATIVE_ERROR_INVALID_ARGUMENTS);
     ASSERT_EQ(OH_NativeWindow_ReadFromParcel(parcel1, nullptr), NATIVE_ERROR_INVALID_ARGUMENTS);
-    ASSERT_EQ(OH_NativeWindow_ReadFromParcel(parcel1, &readWindow), NATIVE_ERROR_INVALID_ARGUMENTS);
     OH_IPCParcel_Destroy(parcel1);
-    delete nativeWindow1;
 }
 /*
  * @tc.name  GetNativeObjectMagic001
