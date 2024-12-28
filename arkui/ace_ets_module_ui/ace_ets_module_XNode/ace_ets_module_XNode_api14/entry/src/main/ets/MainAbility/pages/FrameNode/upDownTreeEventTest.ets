@@ -60,28 +60,28 @@ class MyNodeController extends NodeController {
   }
 
   onBind(containerId: number): void {
-    console.log("test666666 on bind1: "+containerId);
+    console.log('test666666 on bind1: '+containerId);
     this.bindValue = 'bind';
   }
 
   onUnbind(containerId: number): void {
-    console.log("test666666 on unbind1: "+containerId);
+    console.log('test666666 on unbind1: '+containerId);
     this.unbindValue = 'unbind';
 
   }
 
   onWillBind(containerId: number): void {
-    console.log("test666666 about to bind1: "+containerId);
+    console.log('test666666 about to bind1: '+containerId);
     this.willBindValue = 'willBind';
   }
 
   onWillUnbind(containerId: number): void {
-    console.log("test666666 about to unbind1: "+containerId);
+    console.log('test666666 about to unbind1: '+containerId);
     this.willUnbindValue = 'willUnbind';
   }
 
   onAttach(): void {
-    console.log("test666666 on attach1111111");
+    console.log('test666666 on attach1111111');
     this.attachValue = 'attach';
   }
 
@@ -111,32 +111,32 @@ class MyNodeController2 extends NodeController {
   }
 
   onBind(containerId: number): void {
-    console.log("test666666 on bind2: "+containerId);
+    console.log('test666666 on bind2: '+containerId);
     this.bindValue = 'bind';
   }
 
   onUnbind(containerId: number): void {
-    console.log("test666666 on unbind2: "+containerId);
+    console.log('test666666 on unbind2: '+containerId);
     this.unbindValue = 'unbind';
   }
 
   onWillBind(containerId: number): void {
-    console.log("test666666 about to bind2: "+containerId);
+    console.log('test666666 about to bind2: '+containerId);
     this.willBindValue = 'willBind';
   }
 
   onWillUnbind(containerId: number): void {
-    console.log("test666666 about to unbind2: "+containerId);
+    console.log('test666666 about to unbind2: '+containerId);
     this.willUnbindValue = 'willUnbind';
   }
 
   onAttach(): void {
-    console.log("test66666 on attach222222");
+    console.log('test66666 on attach222222');
     this.attachValue = 'attach';
   }
 
   onDetach(): void {
-    console.log("test666666 on detach2");
+    console.log('test666666 on detach2');
     this.detachValue = 'detach';
   }
 
