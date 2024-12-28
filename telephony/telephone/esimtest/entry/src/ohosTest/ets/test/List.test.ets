@@ -18,7 +18,7 @@ import EsimPublic1 from './EsimPublic1.test';
 import EsimPublic2 from './EsimPublic2.test';
 
 export default function testsuite() {
-    if (canlUse("SystemCapability.Telephony.CoreService.Esim")) {
+    if (canIUse("SystemCapability.Telephony.CoreService.Esim")) {
       EsimPublic1();
       EsimPublic2();
     } else {

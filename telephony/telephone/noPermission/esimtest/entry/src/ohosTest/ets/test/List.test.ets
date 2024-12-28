@@ -15,10 +15,9 @@
 
 import EmptyTest from './Empty.test';
 import EsimNoPermissionPublic from './EsimNoPermissionPublic.test';
-import eSIM from '@ohos.telephony.esim';
 
 export default function testsuite() {
-    if (canlUse("SystemCapability.Telephony.CoreService.Esim")) {
+    if (canIUse("SystemCapability.Telephony.CoreService.Esim")) {
       EsimNoPermissionPublic();
     } else {
       EmptyTest();
