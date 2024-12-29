@@ -14,6 +14,7 @@
 group("web") {
   testonly = true
   deps = [
+    #"DFX:DFXTest",
     "ace_ets_web_dev:ActsAceWebDevTest",
     "ace_ets_web_dev_cloudservice_webController:ActsAceWebDevCloudServiceWebControllerTest",
     "ace_ets_web_dev_cloudservice_webController_enhanced:ActsAceWebDevCloudServiceWebControllerEnhancedTest",
@@ -45,6 +46,7 @@ group("web") {
     #"web_life_cycle:webLifeCycle",
     #"web_load:WebLoad",
     #"web_multi_media:WebMultimedia",
+    #"web_page_document_processing:webPageDocumentProcessing",
     #"web_page_rendering:webPageRenderingTest"
   ]
 }
