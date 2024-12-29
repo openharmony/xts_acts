@@ -551,7 +551,7 @@ export default function CameraSessionCameraRotationTest() {
               cameraPhotoRotation);
             expect().assertFail();
           }
-          await stopCameraSession();startCameraSession
+          await stopCameraSession();
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0100 end for camera");
         }
