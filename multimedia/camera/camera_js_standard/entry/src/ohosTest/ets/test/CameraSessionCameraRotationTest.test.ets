@@ -190,21 +190,6 @@ export default function CameraSessionCameraRotationTest() {
 
     mCameraDevicesArray = mCameraManager.getSupportedCameras();
     
-    mCameraManager.getSupportedCameras(async (err, data) => {
-        console.info(TAG + "Entering getCameraSupportDevicesArray callback");
-        if (!err) {
-            if (data != null || data != undefined) {
-                mCameraDevicesArray = data;
-                console.info(TAG + "Entering getCameraSupportDevicesArray PASSED with CameraDevicesArray is: " + data);
-            } else {
-                console.info(TAG + "Entering getCameraSupportDevicesArray FAILED with CameraDevicesArray is: " + data);
-            }
-        } else {
-            console.info(TAG + "Entering getCameraSupportDevicesArray FAILED : " + err.message);
-        }
-    })
-    await sleep(3000);
-    
     if (isEmpty(mCameraDevicesArray)) {
       console.info(TAG + "getSupportedCameras FAILED");
       return false;
