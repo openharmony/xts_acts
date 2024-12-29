@@ -560,6 +560,7 @@ export default function CameraSessionCameraRotationTest() {
       } catch (err) {
         console.info(TAG +
           `Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PHOTO_ROTATION_FUNC_0100 error + ${err}+ ${err.code}+ ${err.message}`);
+        expect().assertFail();
         done();
       }
 
@@ -612,6 +613,7 @@ export default function CameraSessionCameraRotationTest() {
       } catch (err) {
         console.info(TAG +
           `Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100 error + ${err}+ ${err.code}+ ${err.message}`);
+        expect().assertFail();
         done();
       }
     })
@@ -663,6 +665,7 @@ export default function CameraSessionCameraRotationTest() {
       } catch (err) {
         console.info(TAG +
           `Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 error + ${err}+ ${err.code}+ ${err.message}`);
+        expect().assertFail();
         done();
       }
     })
