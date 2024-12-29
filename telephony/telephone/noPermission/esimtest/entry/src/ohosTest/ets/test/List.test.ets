@@ -18,10 +18,8 @@ import EsimNoPermissionPublic from './EsimNoPermissionPublic.test';
 
 export default function testsuite() {
     if (canIUse("SystemCapability.Telephony.CoreService.Esim")) {
-      console.info(`eSIM is supported`);
       EsimNoPermissionPublic();
     } else {
-      console.info(`eSIM is not supported`);
       EmptyTest();
     }
 }
