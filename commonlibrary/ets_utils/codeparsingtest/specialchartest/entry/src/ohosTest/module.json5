@@ -21,8 +21,7 @@
     "deviceTypes": [
       "wearable",
       "default",
-      "tablet",
-      "2in1"
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
