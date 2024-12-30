@@ -567,6 +567,7 @@
 #include "refresh/refresh_pulldownratio_test.cpp"
 #include "refresh/refresh_pulltorefresh_test.cpp"
 #include "refresh/refresh_refreshing_test.cpp"
+#include "refresh/refresh_content_test.cpp"
 #include "textarea/textarea_backgroundcolor_test.cpp"
 #include "textarea/textarea_borderradius_test.cpp"
 #include "textarea/textarea_caretcolor_test.cpp"
@@ -4888,6 +4889,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testRefreshRefreshing003", nullptr, TestRefreshRefreshing003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshRefreshing004", nullptr, TestRefreshRefreshing004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshContent001", nullptr, TestRefreshContent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshContent002", nullptr, TestRefreshContent002, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextAreaBackgroundColor001", nullptr, TestTextAreaBackGroundColor001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
