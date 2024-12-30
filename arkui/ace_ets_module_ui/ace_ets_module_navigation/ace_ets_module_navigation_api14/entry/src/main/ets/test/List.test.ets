@@ -16,9 +16,19 @@
 import NavigationEnableDragBar from './EnableDragBarTest/NavigationEnableDragBar.test'
 import RouterRecoverable from './Navigation/RouterRecoverable.test'
 import RouterRecoverable2 from './Navigation/RouterRecoverable2.test'
+import SafeAreaPadding from './BarStyleTest/SafeAreaPadding.test'
+import MultiNavigationTest from './MultiNavigation/MultiNavigationTest.test'
+import NavigationBindToScrollable from './BindToScrollable/NavigationBindToScrollable.test'
+import NavigationBindToNestedScrollable from './BindToScrollable/NavigationBindToNestedScrollable.test'
+import Recoverable from './Navigation/Recoverable.test'
 
 export default function testsuite() {
   NavigationEnableDragBar();
   RouterRecoverable();
   RouterRecoverable2();
+  SafeAreaPadding();
+  MultiNavigationTest();
+  NavigationBindToScrollable();
+  NavigationBindToNestedScrollable();
+  Recoverable();
 }
