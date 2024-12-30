@@ -14,6 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 #import("//hit/build/suite.gni")
+import("test_packages.gni")
 if (os_level == "standard") {
   merge_xts_notice("acts_notice") {
     deps = selected_packages
