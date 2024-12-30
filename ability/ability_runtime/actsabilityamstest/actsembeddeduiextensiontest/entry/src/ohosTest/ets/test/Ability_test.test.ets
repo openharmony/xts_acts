@@ -30,7 +30,7 @@ function sleep(time: number) {
 export default function AbilityRuntime_Test() {
   describe('ACTS_EmbeddedUIExtension_Test', () => {
     const TAG: string = 'EmbeddedUIExtension';
-    beforeEach(() => {
+    beforeAll(() => {
       try {
         let info: string = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model')
         expect(info).assertEqual('true')
