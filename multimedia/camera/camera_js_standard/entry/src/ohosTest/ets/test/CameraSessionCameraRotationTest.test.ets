@@ -357,7 +357,7 @@ export default function CameraSessionCameraRotationTest() {
 
   let startCameraSession = async (idx: number, mode: cameraObj.SceneMode) => {
     console.info(TAG + "Enter startCameraSession");
-
+    await mCameraSession.start();
     await createInput(idx);
     await createOutput(idx, mode);
 
@@ -423,17 +423,14 @@ export default function CameraSessionCameraRotationTest() {
 
   let stopCameraSession = async () => {
     console.info(TAG + "Enter stopCameraSession");
-    /*
-    mCameraSession.beginConfig();
     
-    mCameraSession.stop(async (err) => {
-        console.info(TAG + "Entering mCameraSession stop callback");
-        if (!err) {
-            console.info(TAG + "Entering mCameraSession stop PASSED ");
-        } else {
-            console.info(TAG + "Entering mCameraSession stop FAILED : " + err.message);
-        }
-    })
+    await mCameraSession.stop();
+    await releaseInput();
+    await releaseOutput();
+    await mCameraSession.release();
+
+    console.info(TAG + "Exit stopCameraSession");
+  }
 
     await sleep(100);
     */
