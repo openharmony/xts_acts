@@ -25,10 +25,10 @@
                 "reboot",
                 "wait 5",
                 "power-shell wakeup",
-                "uinput -T -m 300 2700 280 200",
-                "uinput -K -d 2050 -u 2050",
+                "uinput -T -m 540 1752 540 751 100",
+                "uinput -K -d 2054 -u 2054",
                 "wait 5",
-                "uinput -T -m 300 2700 280 200",
+                "uinput -T -m 540 1752 540 751 100",
                 "power-shell setmode 602"
             ],
             "teardown-command": [
