@@ -430,36 +430,10 @@ export default function CameraSessionCameraRotationTest() {
     await mCameraSession.release();
 
     console.info(TAG + "Exit stopCameraSession");
-  }
-
-    await sleep(100);
-    */
-
-    if (!isEmpty(mCameraInput)) {
-      console.info(TAG + "Start to removeInput input");
-      mCameraSession.removeInput(mCameraInput);
-    }
-
-    if (!isEmpty(mPreviewOutput)) {
-      console.info(TAG + "Start to removeOutput mPreviewOutput");
-      mCameraSession.removeOutput(mPreviewOutput);
-    }
-
-    if (!isEmpty(mPhotoOutput)) {
-      console.info(TAG + "Start to removeOutput mPhotoOutput");
-      mCameraSession.removeOutput(mPhotoOutput);
-    }
-    if (!isEmpty(mVideoOutput)) {
-      console.info(TAG + "Start to removeOutput mVideoOutput");
-      mCameraSession.removeOutput(mVideoOutput);
-    }
-    await releaseInput();
-    await releaseOutput();
-
-    console.info(TAG + "Exit stopCameraSession");
-
     return true;
   }
+
+
 
   describe('cameraSessionCameraRotationTest', () => {
     console.info(TAG + '----------cameraSessionCameraRotationTest--------------')
