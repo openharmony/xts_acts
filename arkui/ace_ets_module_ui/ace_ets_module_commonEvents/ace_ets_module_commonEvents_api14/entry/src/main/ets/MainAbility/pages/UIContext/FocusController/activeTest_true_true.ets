@@ -12,14 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@Entry
+@Component
+struct activeTest_true_true {
+  aboutToAppear() {
+    this.getUIContext().getFocusController().activate(true, true)
+  }
 
-import unicodeTest from './onKeyEventTest/unicode.test';
-import defaultFocus from './FocusView/defaultFocus.test';
-import tabStopApiTest from './tabStopApiTest/tabStopApiTest.test';
-import activeApiTest from './UIContext/FocusController/activeApiTest.test'
-export default function testsuite() {
-  unicodeTest();
-  defaultFocus();
-  tabStopApiTest();
-  activeApiTest()
+  build() {
+    Column() {
+      Button('Button1')
+      .id('Button1')
+        .width(200)
+        .height(70)
+        .defaultFocus(true)
+
+      Button('Button2')
+        .width(200)
+        .height(70)
+        .id('Button2')
+    }
+    .padding(10)
+    .width('100%')
+  }
 }
