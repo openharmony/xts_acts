@@ -65,9 +65,9 @@ export default class MainAbility extends Ability {
   }
 
   onConfigurationUpdate(config) {
-    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + this.context.config.language);
-    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + config.language);
+    console.log('[Demo] MainAbility onConfigurationUpdate: ' + this.context.config.language);
+    console.log('[Demo] MainAbility onConfigurationUpdate: ' + config.language);
     AppStorage.setOrCreate<string>("UpdateConfigurationTest_Ability_0200", config.language);
-    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + AppStorage.get<string>('UpdateConfigurationTest_Ability_0200'));
+    console.log('[Demo] MainAbility onConfigurationUpdate: ' + AppStorage.get<string>('UpdateConfigurationTest_Ability_0200'));
   }
 }

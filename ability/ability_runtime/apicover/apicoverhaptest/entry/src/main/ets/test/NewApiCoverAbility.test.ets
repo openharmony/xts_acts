@@ -197,7 +197,7 @@ export default function NewApiCoverTest() {
       console.info("SUB_AA_UpdateConfiguration_0200 start");
       let want: Want = {
         bundleName: "com.example.apicoverhaptest",
-        abilityName: "TestAbility"
+        abilityName: "com.example.apicoverhaptest.MainAbility"
       };
       await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(want)
         .then((data) => {
