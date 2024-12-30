@@ -16,7 +16,7 @@ group("WebMultimedia") {
   if (is_standard_system) {
     deps = [
       "audio_play:ActsAudioPlayTest",
-      "control_center:AtcsControlCenterTest",
+      "control_center:ActsControlCenterTest",
       "video_hosting:videoHosting",
       "video_play:ActsVideoPlayTest",
       "webcam:ActsWebcamTest",

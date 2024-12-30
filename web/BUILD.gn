@@ -42,9 +42,12 @@ group("web") {
     "ace_ets_web_view:ActsAceWebViewTest",
 
     #"page_interaction:pageInteraction",
+    #"web_content_processing:WebContentProcessing",
+    #"web_jump:WebJump",
     #"web_life_cycle:webLifeCycle",
     #"web_load:WebLoad",
     #"web_multi_media:WebMultimedia",
-    #"web_page_rendering:webPageRenderingTest"
+    #"web_page_rendering:webPageRenderingTest",
+    #"web_security_privacy:WebSecurityPrivacy"
   ]
 }

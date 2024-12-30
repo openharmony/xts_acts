@@ -17,6 +17,10 @@ group("WebLoad") {
     deps = [
       "custom_dns:customDns",
       "leather_candy_cache:leatherCandyCache",
+      "load_metric:ActsLoadMetricTest",
+      "load_status:ActsLoadStatusTest",
+      "network_interception:ActsNetworkInterceptionTest",
+      "open_web_page:ActsOpenWebPageTest",
       "preload_link_rending:preloadLinkRending",
       "resource_interception:resourceInterception",
       "web_hosting:webHosting",
