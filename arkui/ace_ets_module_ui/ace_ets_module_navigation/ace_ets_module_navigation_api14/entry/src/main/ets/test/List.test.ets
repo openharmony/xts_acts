@@ -12,8 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ReplaceDestination1Test from './Navigation/ReplaceDestination1.test'
-import ReplaceDestination2 from './Navigation/ReplaceDestination2.test'
+
 import SafeAreaPadding from './BarStyleTest/SafeAreaPadding.test'
 import MultiNavigationTest from './MultiNavigation/MultiNavigationTest.test'
 import NavigationEnableDragBar from './EnableDragBarTest/NavigationEnableDragBar.test'
@@ -26,10 +25,7 @@ import RouterRecoverable2 from './Navigation/RouterRecoverable2.test'
 import EnableModeChangeAnimation from './Navigation/EnableModeChangeAnimation.test';
 
 export default function testsuite() {
-  ReplaceDestination1Test();
-  ReplaceDestination2();
   SafeAreaPadding();
-
   MultiNavigationTest();
   NavigationEnableDragBar();
   NavigationBindToScrollable();
