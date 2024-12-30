@@ -18,6 +18,7 @@ group("telephone") {
     "contactnoptest:ActsTelephonyContactNopTest",
     "contacttest:ActsTelephonyContactTest",
     "datatest:ActsTelephonyDataHasCardTest",
+    "esimtest:ActsTelephonyEsimTest",
     "noCard:noCard",
     "noPermission:noPermission",
     "observertest:ActsTelephonyObserverWithCardTest",
