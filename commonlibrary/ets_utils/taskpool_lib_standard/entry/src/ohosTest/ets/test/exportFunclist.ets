@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { taskpool } from '@kit.ArkTS'
 
 export function StrCat(value1: string, value2: string): string {
   "use concurrent"
@@ -44,4 +45,22 @@ export function printStrArgs(args: string): string {
 export function printArgs(args: number): number {
   "use concurrent"
   return args;
+}
+
+export function fun(args: string): string {
+  "use concurrent"
+  let t = Date.now();
+  while (Date.now() - t < 3000) {
+    continue;
+  }
+  if (taskpool.Task.isCanceled()) {
+    args = 'canceled';
+    return args;
+  }
+  return 'finish';
+}
+
+export function cancelById(taskId: number) {
+  "use concurrent"
+  taskpool.cancel(taskId);
 }

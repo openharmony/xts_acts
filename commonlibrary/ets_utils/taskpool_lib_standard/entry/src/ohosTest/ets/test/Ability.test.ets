@@ -24,7 +24,7 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   errorManageTest, dealHashMapTest, noUseConcurrentTest, sendDataTest, sendableClassTestFunc, Int8ArrayTestFunc,
   SetTestFunc, MapTestFunc, simpleSendableClassTestFunc, Uint8ClampedArrayTestFunc, testWithThreeParams, testWithArray,
   sendableFuncTest, sendableClassTest } from './testFunclist'
-import { A, B, StrCat, printArgs, printStrArgs } from './exportFunclist'
+import { A, B, StrCat, printArgs, printStrArgs, fun, cancelById } from './exportFunclist'
 import { SendableClass, SimpleSendable, sendableFunc, SendableClassTest } from './sendable';
 import HashMap from '@ohos.util.HashMap';
 
@@ -5165,6 +5165,164 @@ export default function TaskPoolTest() {
         await promiseCase();
       }
       expect(failure).assertEqual(arr.length);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0225
+     * @tc.name      : TaskPoolTestClass225
+     * @tc.desc      : cancel by taskId
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass225', 0, async (done: Function) => {
+      let str = 'test';
+      let task = new taskpool.Task(fun, str);
+      let terminate = false;
+      taskpool.execute(task).catch(() => {
+        str = 'cancel success';
+        terminate = true;
+      });
+      setTimeout(() => {
+        taskpool.cancel(task.taskId);
+      }, 1000);
+
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(str).assertEqual('cancel success');
+      done();
+    })
+
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0226
+     * @tc.name      : TaskPoolTestClass226
+     * @tc.desc      : cancel by taskId
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass226', 0, async (done: Function) => {
+      let str = 'test';
+      let task = new taskpool.Task(fun, str);
+      let terminate = false;
+      taskpool.execute(task).catch(() => {
+        str = 'cancel success';
+        terminate = true;
+      });
+      let cancelTask = new taskpool.Task(cancelById, task.taskId);
+      taskpool.execute(cancelTask);
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(str).assertEqual('cancel success');
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0227
+     * @tc.name      : TaskPoolTestClass227
+     * @tc.desc      : cancel by taskId
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass227', 0, async (done: Function) => {
+      try {
+        let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
+        let task2: taskpool.Task = new taskpool.Task(printArgs, 200);
+        let task3: taskpool.Task = new taskpool.Task(printArgs, 300);
+        taskpool.execute(task1);
+        taskpool.execute(task2);
+        taskpool.execute(task3);
+        let start: number = new Date().getTime();
+        while (new Date().getTime() - start < 1000) {
+          continue;
+        }
+        taskpool.cancel(task1.taskId);
+      } catch(e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0228
+     * @tc.name      : TaskPoolTestClass228
+     * @tc.desc      : cancel by taskId
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass228', 0, async (done: Function) => {
+      let str = 'test';
+      let task = new taskpool.Task(fun, str);
+      let terminate = false;
+      taskpool.executeDelayed(2000, task).catch(() => {
+        str = 'cancel success';
+        terminate = true;
+      });
+      let cancelTask = new taskpool.Task(cancelById, task.taskId);
+      taskpool.execute(cancelTask);
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(str).assertEqual('cancel success');
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0229
+     * @tc.name      : TaskPoolTestClass229
+     * @tc.desc      : cancel by taskId
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass229', 0, async (done: Function) => {
+      let str = 'test';
+      let task = new taskpool.Task(fun, str);
+      try {
+        taskpool.cancel(task.taskId);
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0230
+     * @tc.name      : TaskPoolTestClass230
+     * @tc.desc      : cancel by taskId
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass230', 0, async (done: Function) => {
+      let str = 'test';
+      let task1 = new taskpool.Task(printArgs, 100);
+      let task2 = new taskpool.Task(printArgs, 100);
+      let task3 = new taskpool.Task(fun, str);
+      let taskGroup = new taskpool.TaskGroup();
+      taskGroup.addTask(task1);
+      taskGroup.addTask(task2);
+      taskGroup.addTask(task3);
+      let terminate = false;
+      taskpool.execute(taskGroup).then(() => {
+        str = 'finish success';
+        terminate = true;
+      }).catch(() => {
+        terminate = true;
+        str = 'cancel success';
+      });
+      let cancelTask = new taskpool.Task(cancelById, task3.taskId);
+      taskpool.execute(cancelTask);
+      while (!terminate) {
+        await promiseCase();
+      }
+      expect(str).assertEqual('cancel success');
       done();
     })
   })
