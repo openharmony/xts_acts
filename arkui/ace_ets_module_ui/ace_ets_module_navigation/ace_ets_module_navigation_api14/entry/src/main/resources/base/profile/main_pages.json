@@ -4,6 +4,11 @@
 		"MainAbility/pages/Navigation/SystemTransition",
         "MainAbility/pages/EnableDragBar/NavigationEnableDragBar",
         "MainAbility/pages/Navigation/RouterRecoverable",
-        "MainAbility/pages/Navigation/RouterPage2"
+        "MainAbility/pages/Navigation/RouterPage2",
+        "MainAbility/pages/BarStyle/SafeAreaPadding",
+        "MainAbility/pages/MultiNavigation/MultiNavigationEntry",
+        "MainAbility/pages/BindToScrollable/NavigationBindToScrollable",
+        "MainAbility/pages/BindToScrollable/NavigationBindToNestedScrollable",
+        "MainAbility/pages/Navigation/Recoverable"
     ]
 }
