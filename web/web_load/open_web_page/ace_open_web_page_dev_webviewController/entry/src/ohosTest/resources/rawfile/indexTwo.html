@@ -25,76 +25,76 @@
 <script>
     let ele=document.getElementById('imgs');
     let loadImage;
-    ele.onload=function(){
-        loadImage='load complete'
+    ele.onload = function() {
+        loadImage='load complete';
     }
-    function getUserAgent(){
+    function getUserAgent() {
         return navigator.userAgent
     }
-    function test(){
-        backToEts.test('backToEts')
+    function test() {
+        backToEts.test('backToEts');
     }
-    function testRunJavaScript(){
+    function testRunJavaScript() {
         return 'testRunJavaScript'
     }
-    function getPageHeight(){
-        let height=document.body.scrollHeight
+    function getPageHeight() {
+        let height=document.body.scrollHeight;
         return height
     }
-    function proxy(){
-        objName.register('backToEts')
+    function proxy() {
+        objName.register('backToEts');
     }
-    function registerTest(){
+    function registerTest() {
         let str=objName.register();
         console.log(str);
-        return str
+        return str;
     }
-    function jsAccess(){
-        console.log('web111')
+    function jsAccess() {
+        console.log('web111');
     }
-    function consoleTest(){
-        console.log('console test')
+    function consoleTest() {
+        console.log('console test');
     }
-    function alertTest(){
-        alert('alert test')
+    function alertTest() {
+        alert('alert test');
     }
-    function confirmTest(){
-        confirm('confirm test')
+    function confirmTest() {
+        confirm('confirm test');
     }
-    function getImgResult(){
+    function getImgResult() {
         return loadImage
     }
-    function toPrompt(){
+    function toPrompt() {
         let result=prompt('age','20');
         console.log('result:'+result)
     }
-    function openRawFile(){
-        document.getElementById("fileAccess").click()
+    function openRawFile() {
+        document.getElementById("fileAccess").click();
     }
-    function getTitle(){
-        return document.title
+    function getTitle() {
+        return document.title;
     }
-    function getNavigatorOnLine(){
+    function getNavigatorOnLine() {
         let onlineResult = navigator.onLine;
         return onlineResult
     }
-    function checkPageUpEle(){
+    function checkPageUpEle() {
         let UpEle = document.getElementById('container').innerText
         let style = (window.getComputedStyle(document.getElementById('container'), null)).getPropertyValue('visibility');
         console.log('UpEle : ' + UpEle + style);
-        return [UpEle,style]
+        return [UpEle, style]
     }
-    function checkContentEle(){
+    function checkContentEle() {
         let ContentEle = document.getElementById('contenttext').innerText
         let style = (window.getComputedStyle(document.getElementById('contenttext'), null)).getPropertyValue('visibility');
         console.log('ContentEle : ' + ContentEle + style);
-        return [ContentEle,style]
+        return [ContentEle, style]
     }
-    function checkPageDownEle(){
+    function checkPageDownEle() {
         let DownEle = document.getElementById('fileAccess').innerText
         let style = (window.getComputedStyle(document.getElementById('fileAccess'), null)).getPropertyValue('visibility');
         console.log('DownEle : ' + DownEle + style);
-        return [DownEle,style]
+        return [DownEle, style]
     }
     checkPageUpEle();
     checkContentEle();
