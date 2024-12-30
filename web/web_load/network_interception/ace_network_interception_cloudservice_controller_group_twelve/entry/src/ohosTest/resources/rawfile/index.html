@@ -25,16 +25,16 @@
 <script type="text/javascript">
     function htmlTest() {
       // This function call expects to return 'ArkUI Web Component'
-      let str=objName.test('webtest data');
+      let str = objName.test('webtest data');
       objName.testNumber(1);
       objName.asyncTestBool(true);
-      document.getElementById('demo').innerHTML=str;
-      console.log('objName.test result:'+ str)
+      document.getElementById('demo').innerHTML = str;
+      console.log('objName.test result:' + str)
 
       // This function call expects to return 'Web test'
       let webStr = objTestName.webTest();
-      document.getElementById('webDemo').innerHTML=webStr;
-      console.log('objTestName.webTest result:'+ webStr)
+      document.getElementById('webDemo').innerHTML = webStr;
+      console.log('objTestName.webTest result:' + webStr)
 
       objAsyncName.asyncTest();
       objAsyncName.asyncString('async test data');

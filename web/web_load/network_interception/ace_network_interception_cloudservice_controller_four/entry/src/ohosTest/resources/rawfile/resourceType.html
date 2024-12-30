@@ -31,7 +31,7 @@
 }
 </style>
 <script>
-    function xhrRequest(url){
+    function xhrRequest(url) {
         var xHttp = new XMLHttpRequest();
         xHttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
@@ -43,7 +43,7 @@
     }
     xhrRequest('https://www.baidu.com')
 
-    function triggerPingHref(){
-        document.getElementById('pingHref').click()
+    function triggerPingHref() {
+        document.getElementById('pingHref').click();
     }
 </script>

@@ -18,56 +18,56 @@
     <img src="icon.png" alt="icon" id="imgs">
 </body>
 <script>
-    let ele=document.getElementById('imgs');
+    let ele = document.getElementById('imgs');
     let loadImage;
-    ele.onload=function(){
-        loadImage='load complete';
+    ele.onload = function(){
+        loadImage = 'load complete';
     }
-    function getUserAgent(){
-        return navigator.userAgent
+    function getUserAgent() {
+        return navigator.userAgent;
     }
-    function test(){
+    function test() {
         backToEts.test('backToEts');
     }
-    function testRunJavaScript(){
-        return 'testRunJavaScript'
+    function testRunJavaScript() {
+        return 'testRunJavaScript';
     }
-    function getPageHeight(){
+    function getPageHeight() {
         let height=document.body.scrollHeight;
-        return height
+        return height;
     }
-    function proxy(){
+    function proxy() {
         objName.register('backToEts');
     }
-    function registerTest(){
+    function registerTest() {
         let str=objName.register();
         console.log(str);
-        return str
+        return str;
     }
-    function jsAccess(){
-        console.log('web111')
+    function jsAccess() {
+        console.log('web111');
     }
-    function consoleTest(){
-        console.log('console test')
+    function consoleTest() {
+        console.log('console test');
     }
-    function alertTest(){
-        alert('alert test')
+    function alertTest() {
+        alert('alert test');
     }
-    function confirmTest(){
-        confirm('confirm test')
+    function confirmTest() {
+        confirm('confirm test');
     }
-    function getImgResult(){
-        return loadImage
+    function getImgResult() {
+        return loadImage;
     }
-    function toPrompt(){
-        let result=prompt('age','20');
-        console.log("result:"+result)
+    function toPrompt() {
+        let result=prompt('age', '20');
+        console.log("result:"+result);
     }
-    function openRawFile(){
-        document.getElementById('fileAccess').click()
+    function openRawFile() {
+        document.getElementById('fileAccess').click();
     }
-    function getTitle(){
-        return document.title
+    function getTitle() {
+        return document.title;
     }
 </script>
 </html>

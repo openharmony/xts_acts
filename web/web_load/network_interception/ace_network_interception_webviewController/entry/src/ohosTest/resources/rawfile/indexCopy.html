@@ -28,20 +28,20 @@
     let ele=document.getElementById('imgs');
     let loadImage;
     ele.onload = function(){
-        loadImage='load complete';
+        loadImage = 'load complete';
     }
     function getUserAgent() {
-        return navigator.userAgent
+        return navigator.userAgent;
     }
     function test() {
         backToEts.test('backToEts');
     }
     function testRunJavaScript() {
-        return 'testRunJavaScript'
+        return 'testRunJavaScript';
     }
     function getPageHeight() {
-        let height=document.body.scrollHeight;
-        return height
+        let height = document.body.scrollHeight;
+        return height;
     }
     function proxy(){
         objName.register("backToEts");
@@ -52,33 +52,33 @@
         return str;
     }
     function jsAccess() {
-        console.log('web111')
+        console.log('web111');
     }
     function consoleTest() {
-        console.log('console test')
+        console.log('console test');
     }
     function alertTest() {
-        alert('alert test')
+        alert('alert test');
     }
     function confirmTest() {
-        confirm('confirm test')
+        confirm('confirm test');
     }
     function getImgResult() {
-        return loadImage
+        return loadImage;
     }
     function toPrompt() {
         let result=prompt('age','20');
-        console.log('result:'+result)
+        console.log('result:'+result);
     }
     function openRawFile() {
         document.getElementById('fileAccess').click();
     }
     function getTitle() {
-        return document.title
+        return document.title;
     }
     function getNavigatorOnLine() {
         let onlineResult = navigator.onLine;
-        return onlineResult
+        return onlineResult;
     }
     function checkPageUpEle() {
         const upElement = document.getElementById('container');
@@ -122,7 +122,7 @@
         let a = document.body.scrollTop;
         let b = document.documentElement.scrollTop;
         console.log('checkVisible result is : ' + m + n + a + b);
-        return [m,n,a,b]
+        return [m, n, a, b]
     }
 </script>
 </html>
