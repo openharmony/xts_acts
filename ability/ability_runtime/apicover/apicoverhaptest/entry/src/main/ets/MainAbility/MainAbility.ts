@@ -65,26 +65,9 @@ export default class MainAbility extends Ability {
   }
 
   onConfigurationUpdate(config) {
-    console.log('[Demo] MainAbility onConfigurationUpdate: ' + this.context.config.language);
-    console.log('[Demo] MainAbility onConfigurationUpdate: ' + config.language);
-    if (AppStorage.get("UpdateConfiguration_0200_prepare_resolve")!) {
-      AppStorage.get<Function>("UpdateConfiguration_0200_prepare_resolve")!();
-    }
-
-    if (!AppStorage.get("UpdateConfiguration_0200_resolve")!) {
-      console.log("[Demo] MainAbility invalid resolve");
-      return;
-    }
-
-    if (!AppStorage.get("UpdateConfiguration_0200_reject")!) {
-      console.log("[Demo] MainAbility invalid reject");
-      return;
-    }
-
-    if (this.context.config.language == "English" && config.language == "zh-Hans") {
-      AppStorage.get<Function>("UpdateConfiguration_0200_resolve")!();
-    } else {
-      AppStorage.get<Function>("UpdateConfiguration_0200_reject")!();
-    }
+    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + this.context.config.language);
+    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + config.language);
+    AppStorage.setOrCreate<string>("UpdateConfigurationTest_Ability_0200", config.language);
+    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + AppStorage.get<string>('UpdateConfigurationTest_Ability_0200'));
   }
 }

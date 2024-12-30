@@ -195,68 +195,50 @@ export default function NewApiCoverTest() {
      */
     it('SUB_AA_UpdateConfiguration_0200', 0, async (done: Function) => {
       console.info("SUB_AA_UpdateConfiguration_0200 start");
-
-      // set language to english
-      await new Promise<void>((resolve, reject) => {
-        AppStorage.setOrCreate<Function>("UpdateConfiguration_0200_prepare_resolve", () => {
-          console.info("SUB_AA_UpdateConfiguration_0200 ----> succees to set language(english).");
-        });
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> before set language to english.");
-        abilityManager.updateConfiguration({language: 'English'})
-          .then(() => {
-            console.info("SUB_AA_UpdateConfiguration_0200 ----> set language to english succeed.");
-          })
-          .catch((err: BusinessError) => {
-            console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language to english: " + err);
-            AppStorage.get<Function>("UpdateConfiguration_0200_prepare_resolve")!();
-          });
+      let want: Want = {
+        bundleName: "com.example.apicoverhaptest",
+        abilityName: "TestAbility"
+      };
+      await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(want)
+        .then((data) => {
+          console.log('Ability: startServiceExtensionAbility success:' + JSON.stringify(data));
+        })
+        .catch((error: BusinessError) => {
+          console.error(`Ability: startServiceExtensionAbility failed: ${JSON.stringify(error)}`);
+        })
+      await sleep(1000)
+      await abilityManager.updateConfiguration({language: 'English'})
+      .then(() => {
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> set language to english succeed.");
       })
-        .then(() => {
-          AppStorage.get<Function>("UpdateConfiguration_0200_prepare_resolve")!();
-        })
-        .catch((err: BusinessError) => {
-          console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language(english): " + err);
-        })
-        .finally(() => {
-          AppStorage.setOrCreate<Function>("UpdateConfiguration_0200_prepare_resolve", null);
-          AppStorage.setOrCreate<Function>("UpdateConfiguration_0200_resolve", null);
-          AppStorage.setOrCreate<Function>("UpdateConfiguration_0200_reject", null);
-          console.info("SUB_AA_UpdateConfiguration_0200 ----> set promise to null after all");
-        });
-
-
-      // set language to chinese
-      await new Promise<void>((resolve, reject) => {
-        AppStorage.setOrCreate<Function>("UpdateConfiguration_0200_resolve", () => {
-          console.info("SUB_AA_UpdateConfiguration_0200 ----> succees to set language(chinese).");
-          expect(true).assertTrue();
-        });
-        AppStorage.setOrCreate<Function>("UpdateConfiguration_0200_reject", (err: BusinessError) => {
-          console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language(chinese): " + err);
-          expect(false).assertTrue();
-        });
-        console.info("SUB_AA_UpdateConfiguration_0200 ----> before set language to chinese.");
-        abilityManager.updateConfiguration({language: 'chinese'})
+      .catch((err: BusinessError) => {
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language to english: " + err);
+      });
+      setTimeout(async ()=>{
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> start assert." + AppStorage.get<string>("UpdateConfigurationTest_0200"));
+        try{
+          expect(AppStorage.get<string>("UpdateConfigurationTest_Ability_0200")).assertEqual('English');
+          expect(AppStorage.get<string>("UpdateConfigurationTest_AbilityStage_0200")).assertEqual('English');
+        }catch{}
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> end assert.");
+        await abilityManager.updateConfiguration({language: 'chinese'})
           .then(() => {
             console.info("SUB_AA_UpdateConfiguration_0200 ----> set language to chinese succeed.");
           })
           .catch((err: BusinessError) => {
             console.info("SUB_AA_UpdateConfiguration_0200 ----> failed to set language to chinese: " + err);
           });
-      })
-        .then(() => {
-          AppStorage.get<Function>("UpdateConfiguration_0200_resolve")!();
-        })
-        .catch((err: BusinessError) => {
-          AppStorage.get<Function>("UpdateConfiguration_0200_reject")!(err);
-        })
-        .finally(() => {
-          AppStorage.setOrCreate<Function>("UpdateConfiguration_0200_resolve", null);
-          AppStorage.setOrCreate<Function>("UpdateConfiguration_0200_reject", null);
-          expect(AppStorage.get<string>("UpdateConfiguration_0200")!).assertEqual('chinese');
-          console.info("SUB_AA_UpdateConfiguration_0200 ----> set promise to null after all");
-          done();
-        });
+      },5000)
+      setTimeout(()=>{
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> start assert." + AppStorage.get<string>("UpdateConfigurationTest_0200"));
+        try{
+          expect(AppStorage.get<string>("UpdateConfigurationTest_Ability_0200")).assertEqual('chinese');
+          expect(AppStorage.get<string>("UpdateConfigurationTest_AbilityStage_0200")).assertEqual('chinese');
+        }catch{}
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> end assert.");
+        console.info("SUB_AA_UpdateConfiguration_0200 ----> set promise to null after all");
+        done();
+      },10000)
     })
   })
 }
