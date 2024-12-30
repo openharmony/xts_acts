@@ -15,16 +15,16 @@
     <script>
         let ele=document.getElementById("imgs");
         let loadImage;
-        ele.onload=function(){
-            loadImage="load complete"
-        }
-        function test(){
-            backToEts.test("backToEts")
+        ele.onload = function() {
+            loadImage = 'load complete';
+        };
+        function test() {
+            backToEts.test('backToEts');
         }
         setTimeout(() => {
             for (let i = 0; i < 200; i++) {
-                let newDiv = document.createElement("div");
-                let newContent = document.createTextNode("异步回来的内容 " + i);
+                let newDiv = document.createElement('div');
+                let newContent = document.createTextNode('异步回来的内容 ' + i);
                 newDiv.appendChild(newContent);
                 document.querySelector('#app').appendChild(newDiv);
             }
@@ -32,7 +32,7 @@
         }, 200);
         setTimeout(() => {
             for (let i = 0; i < 200; i++) {
-                let newDiv = document.createElement("div");
+                let newDiv = document.createElement('div');
                 let newContent = document.createTextNode('异步回来的更多内容 ' + i);
                 newDiv.appendChild(newContent);
                 document.querySelector('#app').appendChild(newDiv);

@@ -15,24 +15,24 @@
     <button id="closeBtn">退出全屏</button>
 </div>
 <script>
-    let ele=document.getElementById('content');
+    let ele = document.getElementById('content');
     let loadContent;
-    ele.onload=function(){
-        loadContent='load complete';
-    }
+    ele.onload = function() {
+        loadContent = 'load complete';
+    };
 
-    function test(){
+    function test() {
         backToEts.test('backToEts');
     }
 
     function fullScreen(el) {
         var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen,
             wScript;
-        if(typeof rfs != 'undefined' && rfs) {
+        if(typeof rfs !== 'undefined' && rfs) {
             rfs.call(el);
             return;
         }
-        if(typeof window.ActiveXObject != 'undefined') {
+        if(typeof window.ActiveXObject !== 'undefined') {
             wScript = new ActiveXObject('WScript.Shell');
             if(wScript) {
                 wScript.SendKeys('{F11}');
@@ -43,13 +43,13 @@
         var el= document,
             cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen,
             wScript;
-        if (typeof cfs != 'undefined' && cfs) {
+        if (typeof cfs !== 'undefined' && cfs) {
         cfs.call(el);
         return;
         }
-        if (typeof window.ActiveXObject != 'undefined') {
+        if (typeof window.ActiveXObject !== 'undefined') {
             wScript = new ActiveXObject('WScript.Shell');
-            if (wScript != null) {
+            if (wScript !== null) {
                 wScript.SendKeys('{F11}');
             }
     }
@@ -67,21 +67,21 @@
 
     function elementFullScreen() {
         let content = document.getElementById('content');
-        return content.requestFullscreen()
+        return content.requestFullscreen();
     }
 
     function elementExitFullScreen() {
-        document.exitFullscreen()
+        document.exitFullscreen();
     }
 
     function checkIsFullScreen() {
-        var isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement)
-        return isFull
+        var isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement);
+        return isFull;
     }
     function getFontSize() {
-        let fontSize = window.getComputedStyle(document.body, null).getPropertyValue('font-size')
-        console.log(fontSize)
-        return fontSize
+        let fontSize = window.getComputedStyle(document.body, null).getPropertyValue('font-size');
+        console.log(fontSize);
+        return fontSize;
     }
 </script>
 </body>

@@ -24,11 +24,11 @@
 <img src="icon.png" alt="icon" id="imgs">
 </body>
 <script>
-    let ele=document.getElementById('imgs');
+    let ele = document.getElementById('imgs');
     let loadImage;
     ele.onload = function() {
         loadImage = 'load complete';
-    }
+    };
     function getUserAgent() {
         return navigator.userAgent;
     }
@@ -39,7 +39,7 @@
         return 'testRunJavaScript';
     }
     function getPageHeight() {
-        let height=document.body.scrollHeight;
+        let height = document.body.scrollHeight;
         return height;
     }
     function proxy() {

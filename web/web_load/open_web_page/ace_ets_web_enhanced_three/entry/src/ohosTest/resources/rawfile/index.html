@@ -22,7 +22,7 @@
     let loadImage;
     ele.onload = function(){
         loadImage = 'load complete';
-    }
+    };
     function getUserAgent() {
         return navigator.userAgent;
     }
@@ -33,14 +33,14 @@
         return 'testRunJavaScript';
     }
     function getPageHeight() {
-        let height=document.body.scrollHeight;
+        let height = document.body.scrollHeight;
         return height;
     }
     function proxy() {
         objName.register('backToEts');
     }
     function registerTest() {
-        let str=objName.register();
+        let str = objName.register();
         console.log(str);
         return str;
     }
@@ -60,8 +60,8 @@
         return loadImage;
     }
     function toPrompt() {
-        let result=prompt('age', '20');
-        console.log("result:"+result);
+        let result = prompt('age', '20');
+        console.log('result:' + result);
     }
     function openRawFile() {
         document.getElementById('fileAccess').click();

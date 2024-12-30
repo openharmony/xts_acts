@@ -25,11 +25,11 @@
     <img src="icon.png" alt="icon" id="imgs">
 </body>
 <script>
-    let ele=document.getElementById('imgs');
+    let ele = document.getElementById('imgs');
     let loadImage;
-    ele.onload = function(){
+    ele.onload = function() {
         loadImage = 'load complete';
-    }
+    };
     function getUserAgent() {
         return navigator.userAgent;
     }
@@ -47,7 +47,7 @@
         objName.register("backToEts");
     }
     function registerTest() {
-        let str=objName.register();
+        let str = objName.register();
         console.log(str);
         return str;
     }
@@ -67,7 +67,7 @@
         return loadImage;
     }
     function toPrompt() {
-        let result=prompt('age','20');
+        let result = prompt('age','20');
         console.log('result:'+result);
     }
     function openRawFile() {
