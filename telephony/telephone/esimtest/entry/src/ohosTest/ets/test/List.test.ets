@@ -18,7 +18,10 @@ import EsimPublic1 from './EsimPublic1.test';
 import EsimPublic2 from './EsimPublic2.test';
 
 export default function testsuite() {
-  EmptyTest();
-  EsimPublic1();
-  EsimPublic2();
+    if (canIUse("SystemCapability.Telephony.CoreService.Esim")) {
+      EsimPublic1();
+      EsimPublic2();
+    } else {
+      EmptyTest();
+    }
 }
