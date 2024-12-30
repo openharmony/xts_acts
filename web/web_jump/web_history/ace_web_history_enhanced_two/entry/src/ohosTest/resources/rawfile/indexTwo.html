@@ -51,8 +51,8 @@
 let ele = document.getElementById('img');
     let loadImage;
     ele.onload = function() {
-        loadImage='load complete';
-    }
+        loadImage = 'load complete';
+    };
     function clickFile() {
         document.getElementById('file').click();
         return 'file'
@@ -164,7 +164,7 @@ let ele = document.getElementById('img');
         return loadImage;
     }
     function toPrompt() {
-        let result=prompt('age', '20');
+        let result = prompt('age', '20');
         console.log('result:' + result);
     }
     function openRawFile() {

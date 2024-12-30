@@ -19,7 +19,7 @@
     let loadContent;
     ele.onload = function() {
         loadContent = 'load complete';
-    }
+    };
 
     function test() {
         backToEts.test('backToEts');
@@ -75,8 +75,8 @@
     }
 
     function checkIsFullScreen() {
-        var isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement)
-        return isFull
+        var isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement);
+        return isFull;
     }
     function getFontSize() {
         let fontSize = window.getComputedStyle(document.body, null).getPropertyValue('font-size');

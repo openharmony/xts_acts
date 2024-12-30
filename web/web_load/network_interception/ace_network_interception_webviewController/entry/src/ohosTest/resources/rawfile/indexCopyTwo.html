@@ -89,7 +89,7 @@
         let style = (window.getComputedStyle(document.getElementById('container'), null)).display;
         let style2 = (window.getComputedStyle(document.getElementById('container'), null)).getPropertyValue('visibility');
         console.log('UpEle : ' + UpEle + style + style2 + x + y + z + w);
-        return [UpEle, style, style2, x, y, z, w]
+        return [UpEle, style, style2, x, y, z, w];
     }
     function checkContentEle() {
         const middleElement = document.getElementById('contenttext');
@@ -101,7 +101,7 @@
         let style = (window.getComputedStyle(document.getElementById('contenttext'), null)).display;
         let style2 = (window.getComputedStyle(document.getElementById('contenttext'), null)).getPropertyValue('visibility');
         console.log('ContentEle : ' + ContentEle + style + style2 + x + y + z + w);
-        return [ContentEle, style, style2, x, y, z, w]
+        return [ContentEle, style, style2, x, y, z, w];
     }
     function checkPageDownEle() {
         const downElement = document.getElementById('ending');
@@ -113,7 +113,7 @@
         let style = (window.getComputedStyle(document.getElementById('ending'), null)).display;
         let style2 = (window.getComputedStyle(document.getElementById('ending'), null)).getPropertyValue('visibility');
         console.log('DownEle : ' + DownEle + style + style2 + x + y + z + w);
-        return [DownEle, style, style2, x, y, z, w]
+        return [DownEle, style, style2, x, y, z, w];
     }
     function checkVisible() {
         let m = document.body.scrollHeight;
@@ -121,7 +121,7 @@
         let a = document.body.scrollTop;
         let b = document.documentElement.scrollTop;
         console.log('checkVisible result is : ' + m + n + a + b);
-        return [m, n, a, b]
+        return [m, n, a, b];
     }
 </script>
 </html>

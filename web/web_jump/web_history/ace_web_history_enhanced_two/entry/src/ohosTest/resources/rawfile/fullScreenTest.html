@@ -37,8 +37,8 @@
     let ele = document.getElementById('content');
     let loadContent;
     ele.onload = function() {
-        loadContent='load complete';
-    }
+        loadContent = 'load complete';
+    };
 
     function test() {
         backToEts.test('backToEts');
@@ -96,7 +96,7 @@
     }
 
     function checkIsFullScreen() {
-        var isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement)
+        var isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement);
         return isFull;
     }
 
