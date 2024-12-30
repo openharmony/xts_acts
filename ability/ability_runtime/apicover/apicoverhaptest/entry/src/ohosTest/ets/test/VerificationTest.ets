@@ -21,6 +21,7 @@ import common from '@ohos.app.ability.common';
 import commonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
+import { UiDriver, BY} from '@ohos.UiTest';
 
 let INVALID_PARAM = 401;
 let TAG: string;
@@ -303,6 +304,86 @@ export default function verificationTest() {
               done();
             }
           });
+      } catch (err) {
+        console.info(TAG + "catch err = " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200
+     * @tc.name    FA model is not configured with permission for authorization verification.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200', 0, async (done: Function) => {
+      TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200 ==>';
+      console.info(TAG + " start");
+      try {
+        let permissionRequestResult: ESObject;
+        let subscriber: commonEventManager.CommonEventSubscriber;
+        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["Fa_MainAbility2_onCreate", "Fa_MainAbility2_onDestroy"]
+        }
+
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info(TAG + "===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, (err, data) => {
+            console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data));
+            if (data.event == "Fa_MainAbility2_onCreate") {
+              permissionRequestResult = data.parameters?.permissionRequestResult;
+            }
+            if (data.event == "Fa_MainAbility2_onDestroy") {
+              console.info(TAG + "===PermissionRequestResult===" + JSON.stringify(permissionRequestResult));
+              expect(permissionRequestResult.requestCode).assertEqual(1);
+              expect(JSON.stringify(permissionRequestResult.permissions))
+                .assertEqual(JSON.stringify(["ohos.permission.CAMERA"]));
+              expect(JSON.stringify(permissionRequestResult.authResults)).assertEqual(JSON.stringify([2]));
+              commonEvent.unsubscribe(subscriber, () => {
+                console.info(TAG + "===UnSubscribeInfoCallback===");
+                done();
+              });
+            }
+          })
+        })
+
+        let wantNum: Want = {
+          bundleName: 'ohos.acts.aafwk.test.fasupplement',
+          abilityName: 'ohos.acts.aafwk.test.fasupplement.MainAbility3',
+        }
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantNum)
+          .then((data) => {
+            console.info(TAG + "startAbility data = " + JSON.stringify(data));
+          })
+          .catch((err: BusinessError) => {
+            console.info(TAG + "startAbility err = " + JSON.stringify(err));
+            if (err.code != 16000017) {
+              expect().assertFail();
+              done();
+            }
+          });
+        setTimeout(async ()=>{
+          console.info(TAG + `come in driveFn`);
+          let driver = await UiDriver.create();
+          console.info(TAG + `driver is ${JSON.stringify(driver)}`);
+          await sleep(100);
+          console.info(TAG + `UiDriver start`);
+          let button = await driver.findComponent(BY.text('允许'));
+          if(button == null){
+            console.info(TAG + "findComponent err , permission dialog is empty ");
+            let cmd = "hidumper -s WindowManagerService -a'-a'"
+            await delegator.executeShellCommand(cmd);
+            expect().assertFail();
+            done()
+          }
+          console.info(TAG + `button is ${JSON.stringify(button)}`);
+          await sleep(100);
+          await button.click();
+          await sleep(4000);
+        })
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
         expect().assertFail();

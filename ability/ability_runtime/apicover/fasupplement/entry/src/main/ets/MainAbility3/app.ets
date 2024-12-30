@@ -24,7 +24,7 @@ class Test {
   onCreate() {
     console.info(printLog1 + 'onCreate');
 
-    let list = ["ohos.permission.CAMERA"]
+    let list = ["ohos.permission.MICROPHONE"]
     ability_featureAbility.getContext().requestPermissionsFromUser(list, 1).then((permissionRequestResult) => {
       console.info(printLog1 + "requestPermissionsFromUser data = " + JSON.stringify(permissionRequestResult));
       let CommonEventPublishData: CommonEventManager.CommonEventPublishData = {
@@ -45,7 +45,7 @@ class Test {
       }).catch((err: Base.BusinessError) => {
         console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
       });
-    }, 4000)
+    }, 2000)
   }
   onDestroy() {
     console.info(printLog1 + 'onDestroy');

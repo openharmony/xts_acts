@@ -40,45 +40,6 @@ export default function PrintTest() {
       });
     });
 
- // /**
- //  * @tc.number ACTS_PRINT_CALLBACK_ERROR_0002
- //  * @tc.name actsPrintCallbackError0002
- //  * @tc.desc Test the api "abilityDelegator.print", return the result with callback function.
- //  *               The print information includes number（unsupport).
- //  * @tc.size MediumTest
- //  * @tc.type Function
- //  * @tc.level Level 3
- //  */
- // it("ACTS_PRINT_CALLBACK_ERROR_0002", 0, async (done: Function) => {
- //   console.log("ACTS_PRINT_CALLBACK_ERROR_0002 :start");
- //   let msg = 123;
- //   try {
- //     abilityDelegator.print(msg, (err: BusinessError) => {
- //       abilityDelegator.printSync(
- //         "ACTS_PRINT_CALLBACK_ERROR_0002 print callback err" + err
- //       );
- //       abilityDelegator.printSync(
- //         "ACTS_PRINT_CALLBACK_ERROR_0002 print callback err" + err.code
- //       );
- //       expect().assertFail();
- //       done();
- //     });
- //   } catch (e) {
- //     abilityDelegator.printSync(
- //       "ACTS_PRINT_CALLBACK_ERROR_0002 print code:" + e.code
- //     );
- //     abilityDelegator.printSync(
- //       "ACTS_PRINT_CALLBACK_ERROR_0002 print message:" + e.message
- //     );
- //     expect(e.code).assertEqual(401);
- //     expect(e.message).assertContain("Parse");
- //     abilityDelegator.printSync(
- //       "ACTS_PRINT_CALLBACK_ERROR_0002 print callback meet an error: msg is int"
- //     );
- //     done();
- //   }
- // });
-
     /**
      * @tc.number ACTS_PRINT_CALLBACK_0003
      * @tc.name actsPrintCallback0003
@@ -194,51 +155,6 @@ export default function PrintTest() {
           done();
         });
     });
-
- //  /**
- //   * @tc.number ACTS_PRINT_PROMISE_ERROR_0002
- //   * @tc.name actsPrintPromiseError0002
- //   * @tc.desc Test the api "abilityDelegator.print", return the result with promise function.
- //   *               The print information includes number（unsupport).
- //   * @tc.size MediumTest
- //   * @tc.type Function
- //   * @tc.level Level 3
- //   */
- //  it("ACTS_PRINT_PROMISE_ERROR_0002", 0, async (done: Function) => {
- //    console.log("ACTS_PRINT_PROMISE_ERROR_0002 :start");
- //    let msg: number = 123;
- //    try {
- //      abilityDelegator
- //        .print(msg)
- //        .then(() => {
- //          abilityDelegator.printSync(
- //            "ACTS_PRINT_PROMISE_ERROR_0002 print promise"
- //          );
- //          expect().assertFail();
- //          done();
- //        })
- //        .catch((error: BusinessError) => {
- //          abilityDelegator.printSync(
- //            "ACTS_PRINT_PROMISE_ERROR_0002 catch error: " + error
- //          );
- //          expect().assertFail();
- //          done();
- //        });
- //    } catch (e) {
- //      abilityDelegator.printSync(
- //        "ACTS_PRINT_PROMISE_ERROR_0002 print callback code:" + e.code
- //      );
- //      abilityDelegator.printSync(
- //        "ACTS_PRINT_PROMISE_ERROR_0002 print callback message:" + e.message
- //      );
- //      expect(e.code).assertEqual(401);
- //      expect(e.message).assertContain("Parse");
- //      abilityDelegator.printSync(
- //        "ACTS_PRINT_PROMISE_ERROR_0002 print promise meet an error: msg is int"
- //      );
- //      done();
- //    }
- //  });
 
     /**
      * @tc.number ACTS_PRINT_PROMISE_0003
@@ -375,32 +291,6 @@ export default function PrintTest() {
       abilityDelegator.printSync("ACTS_PRINTSYNC_0001 printSync");
       done();
     });
-
-   // /**
-   //  * @tc.number ACTS_PRINT_SYNC_ERROR_0002
-   //  * @tc.name actsPrintSyncError0002
-   //  * @tc.desc Test the api "abilityDelegator.printSync", return the result with.
-   //  *               The printSync information includes number（unsupport).
-   //  * @tc.size MediumTest
-   //  * @tc.type Function
-   //  * @tc.level Level 2
-   //  */
-   // it("ACTS_PRINT_SYNC_ERROR_0002", 0, async (done: Function) => {
-   //   console.log("ACTS_PRINT_SYNC_ERROR_0002 :start");
-   //   let msg: number = 123;
-   //   try {
-   //     abilityDelegator.printSync(msg);
-   //     abilityDelegator.printSync("ACTS_PRINTSYNC_0002 printSync");
-   //     expect().assertFail();
-   //     done();
-   //   } catch (e) {
-   //     expect(e.code).assertEqual(401);
-   //     abilityDelegator.printSync(
-   //       "ACTS_PRINT_SYNC_ERROR_0002 printSync meet an error: msg is int"
-   //     );
-   //     done();
-   //   }
-   // });
 
     /**
      * @tc.number ACTS_PRINT_SYNC_0003
