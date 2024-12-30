@@ -22,6 +22,7 @@ import commonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
 import { UiDriver, BY} from '@ohos.UiTest';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
 let INVALID_PARAM = 401;
 let TAG: string;
@@ -360,13 +361,11 @@ export default function verificationTest() {
           })
           .catch((err: BusinessError) => {
             console.info(TAG + "startAbility err = " + JSON.stringify(err));
-            if (err.code != 16000017) {
-              expect().assertFail();
-              done();
-            }
+            expect().assertFail();
           });
         setTimeout(async ()=>{
           console.info(TAG + `come in driveFn`);
+          let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
           let driver = await UiDriver.create();
           console.info(TAG + `driver is ${JSON.stringify(driver)}`);
           await sleep(100);
@@ -374,10 +373,10 @@ export default function verificationTest() {
           let button = await driver.findComponent(BY.text('允许'));
           if(button == null){
             console.info(TAG + "findComponent err , permission dialog is empty ");
-            let cmd = "hidumper -s WindowManagerService -a'-a'"
-            await delegator.executeShellCommand(cmd);
+            let cmd = "hidumper -s WindowManagerService -a'-a'";
+            await abilityDelegator.executeShellCommand(cmd);
             expect().assertFail();
-            done()
+            done();
           }
           console.info(TAG + `button is ${JSON.stringify(button)}`);
           await sleep(100);
