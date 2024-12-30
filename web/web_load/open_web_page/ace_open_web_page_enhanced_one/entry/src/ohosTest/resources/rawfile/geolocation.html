@@ -10,19 +10,19 @@
 <div id="result"></div>
 <script>
         navigator.geolocation.getCurrentPosition(
-            function(position){
-                let cords=position.coords;
-                document.getElementById('result').innerText='当前经度:'+cords.longitude
+            function(position) {
+                let cords = position.coords;
+                document.getElementById('result').innerText = '当前经度:' + cords.longitude;
             },
-            function(error){
-                let errorTypes={1:'位置服务被拒绝',2:'获取不到位置信息',3:'获取位置信息超时'};
-                document.getElementById('result').innerText=errorTypes[error.code]
-                console.log('errorCode is:' + error.code)
+            function(error) {
+                let errorTypes={1:'位置服务被拒绝', 2:'获取不到位置信息', 3:'获取位置信息超时'};
+                document.getElementById('result').innerText=errorTypes[error.code];
+                console.log('errorCode is:' + error.code);
             }
         );
-        function getGeoResult(){
-                let str=document.getElementById('result').innerText
-                return str
+        function getGeoResult() {
+                let str = document.getElementById('result').innerText;
+                return str;
         }
     </script>
 </body>

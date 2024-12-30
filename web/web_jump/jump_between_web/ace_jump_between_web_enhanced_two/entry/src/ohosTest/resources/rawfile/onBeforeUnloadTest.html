@@ -12,23 +12,23 @@
     <img src="icon.png" alt="icon" id="imgs">
 </body>
 <script>
-    let ele=document.getElementById('imgs');
+    let ele = document.getElementById('imgs');
     let loadImage;
-    ele.onload=function(){
-        loadImage=ele.click();
-    }
+    ele.onload = function() {
+        loadImage = ele.click();
+    };
     function test() {
         backToEts.test('backToEts');
     }
     function myFunction() {
-        document.getElementById('imgs').click()
+        document.getElementById('imgs').click();
         return '我在这写点东西...';
     }
     function myRefresh() {
         return window.location.reload();
     }
     function myNewPage() {
-        return window.location.replace('http://www.w3cschool.cn')
+        return window.location.replace('http://www.w3cschool.cn');
     }
     myFunction()
 </script>
