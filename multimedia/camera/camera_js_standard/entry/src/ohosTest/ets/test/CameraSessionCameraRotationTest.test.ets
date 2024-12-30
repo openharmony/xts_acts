@@ -647,6 +647,7 @@ export default function CameraSessionCameraRotationTest() {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 ends here");
           done();
         }
+
       } catch (err) {
         console.info(TAG +
           `Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 error + ${err}+ ${err.code}+ ${err.message}`);
