@@ -19,7 +19,7 @@ if (os_level == "standard") {
   merge_xts_notice("acts_notice") {
     deps = selected_packages
   }
-  
+
   ohos_test_suite("xts_acts") {
     deps = [ ":acts_notice" ]
   }
