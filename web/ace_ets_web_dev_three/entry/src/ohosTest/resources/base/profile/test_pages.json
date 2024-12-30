@@ -8,6 +8,7 @@
         "MainAbility/pages/blurMode",
 		"MainAbility/pages/certChainData",
 		"MainAbility/pages/scrollEvent",
-		"MainAbility/pages/getDefaultUserAgent"
+		"MainAbility/pages/getDefaultUserAgent",
+		"MainAbility/pages/enableSmoothDragResize"
     ]
 }

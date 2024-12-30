@@ -18,35 +18,35 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
-let emitKey = "scroll01";
-export default function webViewSrollableJsunit() {
-  describe('scrollTest',  () =>{
+let emitKey = "enableSmoothDragResize01";
+export default function webenableSmoothDragResizeTestJsunit() {
+  describe('enableSmoothDragResizeTest',  () =>{
     beforeAll(async  (done: Function) =>{
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/scrollEvent"
+        url: "MainAbility/pages/enableSmoothDragResize"
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get scroll state success " + JSON.stringify(pages));
-        if (!("scrollEvent" == pages.name)) {
-          console.info("get scroll state success " + JSON.stringify(pages.name));
+        console.info("get enableSmoothDragResize state success " + JSON.stringify(pages));
+        if (!("enableSmoothDragResize" == pages.name)) {
+          console.info("get enableSmoothDragResize state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(2000);
-          console.info("push scroll page success " + JSON.stringify(result));
+          console.info("push enableSmoothDragResize page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push scroll page error: " + err);
+        console.error("push enableSmoothDragResize page error: " + err);
       }
       done()
     });
     beforeEach(async  (done: Function) =>{
       await Utils.sleep(2000);
-      console.info("scroll beforeEach start");
+      console.info("enableSmoothDragResize beforeEach start");
       done();
     })
     afterEach(async  (done: Function) =>{
-      console.info("scroll afterEach start:"+emitKey);
+      console.info("enableSmoothDragResize afterEach start:"+emitKey);
       try {
         let backData: events_emitter.EventData = {
           data: {
@@ -65,28 +65,17 @@ export default function webViewSrollableJsunit() {
       await Utils.sleep(2000);
       done();
     })
-
     /*
-     *tc.number SUB_ACE_BASIC_ETS_SCROLL_API_001
-     *tc.name blurMode01
-     *tc.desic test blurMode01 interface when choose callback mode.
+     *tc.number SUB_ACE_BASIC_ETS_ENABLESMOOTHDRAGRESIZE_API_001
+     *tc.name enableSmoothDragResize01
+     *tc.desic test enableSmoothDragResize01 interface when choose callback mode.
      */
-    it('scroll01',0,async  (done: Function) =>{
-      emitKey="scroll02";
-      Utils.registerEvent("scroll01",50,20241225,done);
-      sendEventByKey('scrollEvent01',10,'');
+    it('enableSmoothDragResize01',0,async (done: Function) =>{
+      emitKey="enableSmoothDragResize01";
+      Utils.registerEvent("enableSmoothDragResize01",'enableSmoothDragResize',20241230,done);
+      sendEventByKey('enableSmoothDragResizeButton',10,'');
     })
 
-    /*
-   *tc.number SUB_ACE_BASIC_ETS_SCROLL_API_002
-   *tc.name blurMode02
-   *tc.desic test blurMode02 interface when choose callback mode.
-   */
-    it('scroll02',0,async  (done: Function) =>{
-      emitKey="scroll02";
-      Utils.registerEvent("scroll02",80,20241226,done);
-      sendEventByKey('scrollEvent01',10,'');
-    })
 
   })
 }
