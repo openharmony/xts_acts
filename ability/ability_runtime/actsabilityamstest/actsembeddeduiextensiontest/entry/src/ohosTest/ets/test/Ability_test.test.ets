@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { common, Context } from '@kit.AbilityKit';
-import { describe, beforeAll, it, expect, beforeEach } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, beforeEach, afterEach } from '@ohos/hypium';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { data } from '@kit.TelephonyKit';
@@ -39,6 +39,9 @@ export default function AbilityRuntime_Test() {
       }
     })
 
+    afterEach(() => {
+      router.back()
+    })
     /**
      * @tc.number SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4600
      * @tc.name SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_4600

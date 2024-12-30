@@ -28,10 +28,10 @@ export default function AbilityRuntime2_Test() {
   describe('ACTS_EmbeddedUIExtension_Test2', () => {
     const TAG: string = 'EmbeddedUIExtension';
     let context: common.UIAbilityContext
+
     beforeAll(() => {
+
       context = AppStorage.get<Context>('abilityContext') as common.UIAbilityContext
-    })
-    beforeEach(() => {
       try {
         let info: string = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model');
         console.log(TAG, JSON.stringify(info));
