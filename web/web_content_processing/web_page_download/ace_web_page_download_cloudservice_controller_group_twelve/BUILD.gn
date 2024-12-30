@@ -21,7 +21,8 @@ ohos_app_assist_suite("ActsAceWebPageDownloadGroupTwelveTestSecond") {
   subsystem_name = "web"
 }
 
-ohos_js_app_suite("ActsAceWebPageDownloadCloudServiceControllerGroupTwelveTest") {
+ohos_js_app_suite(
+    "ActsAceWebPageDownloadCloudServiceControllerGroupTwelveTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"

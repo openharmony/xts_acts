@@ -13,20 +13,24 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveSecond") {
+ohos_app_assist_suite(
+    "ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveSecond") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveCppTest"
+  hap_name =
+      "ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveCppTest"
   part_name = "webview"
   subsystem_name = "web"
 }
 
-ohos_js_app_suite("ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveTest") {
+ohos_js_app_suite(
+    "ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveTest"
   part_name = "webview"
   subsystem_name = "web"
-  deps = [ ":ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveSecond" ]
+  deps =
+      [ ":ActsAceNetworkInterceptionCloudServiceControllerGroupTwelveSecond" ]
 }
