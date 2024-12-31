@@ -357,7 +357,6 @@ export default function CameraSessionCameraRotationTest() {
 
   let startCameraSession = async (idx: number, mode: cameraObj.SceneMode) => {
     console.info(TAG + "Enter startCameraSession");
-
     await createInput(idx);
     await createOutput(idx, mode);
 
@@ -403,6 +402,7 @@ export default function CameraSessionCameraRotationTest() {
     await sleep(1000);
 
     mCameraSession.commitConfig();
+    await mCameraSession.start();
 
     /*
     await mCameraSession.start(async (err) => {
@@ -423,46 +423,17 @@ export default function CameraSessionCameraRotationTest() {
 
   let stopCameraSession = async () => {
     console.info(TAG + "Enter stopCameraSession");
-    /*
-    mCameraSession.beginConfig();
     
-    mCameraSession.stop(async (err) => {
-        console.info(TAG + "Entering mCameraSession stop callback");
-        if (!err) {
-            console.info(TAG + "Entering mCameraSession stop PASSED ");
-        } else {
-            console.info(TAG + "Entering mCameraSession stop FAILED : " + err.message);
-        }
-    })
-
-    await sleep(100);
-    */
-
-    if (!isEmpty(mCameraInput)) {
-      console.info(TAG + "Start to removeInput input");
-      mCameraSession.removeInput(mCameraInput);
-    }
-
-    if (!isEmpty(mPreviewOutput)) {
-      console.info(TAG + "Start to removeOutput mPreviewOutput");
-      mCameraSession.removeOutput(mPreviewOutput);
-    }
-
-    if (!isEmpty(mPhotoOutput)) {
-      console.info(TAG + "Start to removeOutput mPhotoOutput");
-      mCameraSession.removeOutput(mPhotoOutput);
-    }
-    if (!isEmpty(mVideoOutput)) {
-      console.info(TAG + "Start to removeOutput mVideoOutput");
-      mCameraSession.removeOutput(mVideoOutput);
-    }
+    await mCameraSession.stop();
     await releaseInput();
     await releaseOutput();
+    await mCameraSession.release();
 
     console.info(TAG + "Exit stopCameraSession");
-
     return true;
   }
+
+
 
   describe('cameraSessionCameraRotationTest', () => {
     console.info(TAG + '----------cameraSessionCameraRotationTest--------------')
