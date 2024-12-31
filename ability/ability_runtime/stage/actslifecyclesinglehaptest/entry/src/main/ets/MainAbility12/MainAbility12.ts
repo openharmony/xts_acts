@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.app.ability.UIAbility';
+import commonEvent from '@ohos.commonEvent';
 
 export default class MainAbility12 extends Ability {
     onCreate(want, launchParam) {
@@ -81,15 +82,18 @@ export default class MainAbility12 extends Ability {
         globalThis.applicationContext12 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext12.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback12 number: " + JSON.stringify(lifecycleid));
-        setTimeout(function () {
-            console.log("[Demo] registerAbilityLifecycleCallback12 listKey: " + JSON.stringify(listKey12));
-            globalThis.list12 = listKey12;
-            globalThis.callbackid12 = lifecycleid;
-        }, 1700);
+        console.log("[Demo] registerAbilityLifecycleCallback12 listKey: " + JSON.stringify(listKey12));
+        globalThis.list12 = listKey12;
+        globalThis.callbackid12 = lifecycleid;
     }
 
     onDestroy() {
-        console.log("[Demo] MainAbility12 onDestroy")
+        console.log("[Demo] MainAbility12 onDestroy");
+        setTimeout(function () {
+          commonEvent.publish('MainAbility12_onDestroy', (err, data) => {
+          console.log('MainAbility12 onDestroy publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+        })
+      }, 500);
     }
 
     onWindowStageCreate(windowStage) {
@@ -106,7 +110,12 @@ export default class MainAbility12 extends Ability {
 
     onForeground() {
         // Ability has brought to foreground
-        console.log("[Demo] MainAbility12 onForeground")
+        console.log("[Demo] MainAbility12 onForeground");
+        setTimeout(function () {
+          commonEvent.publish('MainAbility12_onForground', (err, data) => {
+            console.log('MainAbility12 onForeground publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+          })
+      }, 500);
     }
 
     onBackground() {
