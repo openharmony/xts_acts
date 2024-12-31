@@ -27,6 +27,7 @@ import marqueeNode from './Marquee/marqueeNode.test';
 import textAreaNode from "./TextAreaTest/textAreaNode.test";
 import SymbolGlyphNodeTest from "./SymbolGlyphTest/SymbolGlyphNode.test";
 import OnDoubleClickTest from './RichEditorTest/onDoubleClick.test';
+import ImageOrientationTest from './ImageOrientation/ImageOrientation.test';
 
 
 export default function testsuite() {
@@ -44,4 +45,5 @@ export default function testsuite() {
   textAreaNode();
   SymbolGlyphNodeTest();
   OnDoubleClickTest();
+  ImageOrientationTest();
 }
