@@ -39,7 +39,7 @@ export default function userCertJsAPIFunctionTestUnit() {
       try {
         let result: certManager.CMResult = await certManager.getAllUserTrustedCertificates();
         console.log(`SUB_Security_CertManager_UserCertJsApi_getAllUserTrustedCertificates_Func_0300 result is: ${result}`)
-        expect(result).assertEqual(undefined);
+        expect(result.certList != null).assertTrue();
       } catch (err) {
         console.log(`SUB_Security_CertManager_UserCertJsApi_getAllUserTrustedCertificates_Func_0300 get error is: ${err.code}`)
         expect(null).assertFail();
@@ -78,7 +78,7 @@ export default function userCertJsAPIFunctionTestUnit() {
       try {
         let result: certManager.CMResult = await certManager.getAllSystemAppCertificates();
         console.log(`SUB_Security_CertManager_SysCertJsApi_Func_0900 result is: ${result}`)
-        expect(result).assertEqual(undefined);
+        expect(result.credentialList != null).assertTrue();
       } catch (err) {
         console.error(`SUB_Security_CertManager_SysCertJsApi_Func_0900 get error is: ${err.code}`)
         expect(null).assertFail();
