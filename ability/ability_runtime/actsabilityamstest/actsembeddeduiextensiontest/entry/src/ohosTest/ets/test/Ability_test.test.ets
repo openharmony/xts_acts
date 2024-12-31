@@ -563,6 +563,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstance3800'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -594,13 +601,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstance3800'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -617,6 +617,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstance3600'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -648,13 +655,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstance3600'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -671,6 +671,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstance3500'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -679,7 +686,7 @@ export default function AbilityRuntime_Test() {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}executeShellCommand fail, error: ${JSON.stringify(error)}`);
           } else {
             hilog.info(0x0000, TAG, '%{public}s',
-              `${TEST_SUITE_NAME}executeShellCommand fail, executeShellCommand success, data: ${JSON.stringify(data)}`);
+              `${TEST_SUITE_NAME}executeShellCommand, executeShellCommand success, data: ${JSON.stringify(data)}`);
             result = JSON.stringify(data)
             const stdResult: string = JSON.parse(result).stdResult;
             const records = stdResult.split('AppRunningRecord');
@@ -690,6 +697,7 @@ export default function AbilityRuntime_Test() {
               }
             }
             try {
+              hilog.info(0x0000, TAG, '%{public}s', `${count} startType:Bundle`);
               expect(count).assertEqual(3)
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} startType:Bundle`);
               done()
@@ -702,13 +710,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstance3500'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -725,6 +726,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstance3900'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -756,13 +764,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstance3900'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -779,6 +780,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstance3700'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -810,13 +818,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstance3700'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -879,6 +880,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstanceType4300'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -910,13 +918,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstanceType4300'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -932,6 +933,14 @@ export default function AbilityRuntime_Test() {
       const TEST_SUITE_NAME: string = 'UIEXtension_EmbeddedUIExtension_4100';
       let result: string = ''
       await sleep(2000)
+
+      try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstanceType4100'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
       try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
@@ -964,13 +973,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstanceType4100'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -987,6 +989,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstanceType4100'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -1018,13 +1027,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstanceType4100'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -1041,6 +1043,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstanceType4400'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -1072,13 +1081,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstanceType4400'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
@@ -1095,6 +1097,13 @@ export default function AbilityRuntime_Test() {
       let result: string = ''
       await sleep(2000)
       try {
+        router.pushUrl({
+          url: 'testability/pages/HostInstanceType4200'
+        })
+      } catch (error) {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+      }
+      try {
         let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
         let cmd = 'aa dump -r';
         abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -1126,13 +1135,6 @@ export default function AbilityRuntime_Test() {
         });
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${error}`);
-      }
-      try {
-        router.pushUrl({
-          url: 'testability/pages/HostInstanceType4200'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
       }
     })
 
