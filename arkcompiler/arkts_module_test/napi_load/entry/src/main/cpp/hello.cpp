@@ -15,7 +15,7 @@
 
 #include "napi/native_api.h"
 
-constexpr const int32_t charSize = 50;
+constexpr int32_t CHAR_SIZE = 50;
 
 static napi_value Add(napi_env env, napi_callback_info info)
 {
@@ -54,12 +54,12 @@ static napi_value loadModuleWithInfo(napi_env env, napi_callback_info info)
 
     napi_value path_c = args[1];
     napi_value name_c = args[0];
-    char name[charSize] = {0};
+    char name[CHAR_SIZE] = {0};
     size_t len = 0;
-    napi_get_value_string_utf8(env, name_c, name, charSize, &len);
-    char path[charSize] = {0};
+    napi_get_value_string_utf8(env, name_c, name, CHAR_SIZE, &len);
+    char path[CHAR_SIZE] = {0};
     size_t pathLen = 0;
-    napi_get_value_string_utf8(env, path_c, path, charSize, &pathLen);
+    napi_get_value_string_utf8(env, path_c, path, CHAR_SIZE, &pathLen);
 
     napi_value result;
     if (pathLen == 0) {

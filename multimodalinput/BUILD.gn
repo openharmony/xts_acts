@@ -18,6 +18,7 @@ group("multimodalinput") {
   if (is_standard_system) {
     deps = [
       "input_js_standard:multimodalinput_js_test",
+      "multimodalinput_ets_hvigor/InfraredEmitter:ActsMultimodalInputInfraredEmitterTest",
       "multimodalinput_ets_hvigor/InputDevice:ActsMultimodalInputDeviceTest",
       "multimodalinput_ets_hvigor/Pointer:ActsMultimodalInputPointerTest",
       "multimodalinput_ets_standard:ActsMultimodalInputEtsTest",

@@ -25,6 +25,8 @@
     "harOne": "file:../harOne",
     "harTwo": "file:../harTwo",
     "hspOne": "file:../hspOne",
-    "hspTwo": "file:../hspTwo"
+    "hspTwo": "file:../hspTwo",
+    "sharedHarOne": "file:../sharedHarOne",
+    "sharedHspOne": "file:../sharedHspOne"
   }
 }

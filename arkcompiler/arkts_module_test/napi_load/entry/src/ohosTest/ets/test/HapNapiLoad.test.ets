@@ -15,6 +15,55 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import testNapi from 'libentry.so';
+import { taskpool } from '@kit.ArkTS';
+
+const PATH = "com.acts.arktsnapiloadtest/entry_test"
+
+interface TestModule {
+  value?: number
+  test?: (a: number, b: number) => number
+  add?: (a: number, b: number) => number
+}
+
+@Concurrent
+function sharedHarOne(value: number): void {
+  const PATH = "com.acts.arktsnapiloadtest/entry_test"
+  const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne", PATH)
+  expect(sharedHarOne.value).assertEqual(value);
+}
+
+@Concurrent
+function sharedHarOnePath(value: number): void {
+  const PATH = "com.acts.arktsnapiloadtest/entry_test"
+  const obj: TestModule = testNapi.loadModuleWithInfo("sharedHarOne/Index", PATH)
+  expect(obj.test ? obj.test(0, 1) : -1).assertEqual(value);
+}
+
+@Concurrent
+function sharedHspOne(value: number): void {
+  const PATH = "com.acts.arktsnapiloadtest/entry_test"
+  const obj: TestModule = testNapi.loadModuleWithInfo("sharedHspOne", PATH)
+  expect(obj.test ? obj.test(2, 3) : -1).assertEqual(value);
+}
+
+async function testNapiTaskPool(): Promise<void> {
+  for (let i = 0; i < 10; i++) {
+    taskpool.execute(new taskpool.Task(sharedHarOne, 1))
+    taskpool.execute(new taskpool.Task(sharedHarOnePath, 0))
+    taskpool.execute(new taskpool.Task(sharedHspOne, 6))
+  }
+}
+
+@Concurrent
+function reSharedHarOne(): void {
+  const PATH = "com.acts.arktsnapiloadtest/entry_test"
+  const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne", PATH)
+  expect(sharedHarOne.add ? sharedHarOne.add(2, 3) : -1).assertEqual(5);
+}
+
+async function testReNapiTaskPool(): Promise<void> {
+  taskpool.execute(new taskpool.Task(reSharedHarOne))
+}
 
 export default function HapNapiLoadTest() {
   let TAG = '';
@@ -28,7 +77,7 @@ export default function HapNapiLoadTest() {
     })
     afterAll(() => {
     })
-    
+
     /**
      * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0001
      * @tc.name: test hap so load
@@ -46,7 +95,7 @@ export default function HapNapiLoadTest() {
       console.info(TAG, 'result: ', result);
       expect(result).assertEqual(5);
     })
-    
+
     /**
      * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0002
      * @tc.name: test har loading from hap
@@ -86,7 +135,7 @@ export default function HapNapiLoadTest() {
       console.info(TAG, 'result: ', result);
       expect(result).assertEqual(5);
     })
-    
+
     /**
      * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0004
      * @tc.name: test hsp loading from hap
@@ -126,7 +175,7 @@ export default function HapNapiLoadTest() {
       console.info(TAG, 'result: ', result);
       expect(result).assertEqual(5);
     })
-    
+
     /**
      * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0006
      * @tc.name: test loading system modules
@@ -163,7 +212,6 @@ export default function HapNapiLoadTest() {
       } catch (err) {
         expect(5).assertEqual(5);
       }
-
     })
 
     /**
@@ -184,6 +232,94 @@ export default function HapNapiLoadTest() {
       }
 
     })
-    
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0009
+     * @tc.name: test loading shared module name from hap
+     * @tc.desc: Test loading the shared module name into the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0009', 0, () => {
+      const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne", PATH)
+      expect(sharedHarOne.value).assertEqual(1);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0010
+     * @tc.name: test loading shared module path from hap
+     * @tc.desc: Test loading the shared module path into the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0010', 0, () => {
+      const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne/Index", PATH)
+      expect(sharedHarOne.test ? sharedHarOne.test(0, 1) : -1).assertEqual(0);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0011
+     * @tc.name: test loading shared module name from hsp
+     * @tc.desc: Test loading the shared module name into the hsp package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0011', 0, () => {
+      const sharedHspOne: TestModule = testNapi.loadModuleWithInfo("sharedHspOne", PATH)
+      expect(sharedHspOne.test ? sharedHspOne.test(2, 3) : -1).assertEqual(6);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0012
+     * @tc.name: test loading shared module path from hsp
+     * @tc.desc: Test loading the shared module path into the hsp package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0012', 0, () => {
+      const sharedHspOne: TestModule = testNapi.loadModuleWithInfo("sharedHspOne/Index", PATH)
+      expect(sharedHspOne.test ? sharedHspOne.test(2, 3) : -1).assertEqual(6);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0013
+     * @tc.name: test loading Re-entrant from hap
+     * @tc.desc: Test loading the Re-entrant into the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0013', 0, () => {
+      const sharedHarOne: TestModule = testNapi.loadModuleWithInfo("sharedHarOne", PATH)
+      expect(sharedHarOne.add ? sharedHarOne.add(2, 3) : -1).assertEqual(5);
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0014
+     * @tc.name: test loading shared module by taskpool from hap
+     * @tc.desc: Test loading the shared module by taskpool into the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0014', 0, async () => {
+      await testNapiTaskPool()
+    })
+
+    /**
+     * @tc.number: ARK_ETSRuntime_HAP_NAPI_LOAD_0015
+     * @tc.name: test re loading shared module by taskpool from hap
+     * @tc.desc: Test re loading the shared module by taskpool into the HAP package
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('ARK_ETSRuntime_HAP_NAPI_LOAD_0015', 0, async () => {
+      await testReNapiTaskPool()
+    })
   })
 }
