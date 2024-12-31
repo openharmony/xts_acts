@@ -357,7 +357,6 @@ export default function CameraSessionCameraRotationTest() {
 
   let startCameraSession = async (idx: number, mode: cameraObj.SceneMode) => {
     console.info(TAG + "Enter startCameraSession");
-    await mCameraSession.start();
     await createInput(idx);
     await createOutput(idx, mode);
 
@@ -403,6 +402,7 @@ export default function CameraSessionCameraRotationTest() {
     await sleep(1000);
 
     mCameraSession.commitConfig();
+    await mCameraSession.start();
 
     /*
     await mCameraSession.start(async (err) => {
