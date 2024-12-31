@@ -723,10 +723,14 @@ export default function UiTest() {
             let screenHeight = displayClass.height;
             console.log(TestTag, 'screenWidth:' + screenWidth + ', screenHeight:' +screenHeight);
             let pointer = PointerMatrix.create(1,8);
-            let stepLength = (screenHeight / 4) * 2 / 8;
+            let stepLength = Math.floor((screenHeight / 4) * 2 / 8);
+            console.log(TestTag, `stepLength is, ${stepLength}`);
+            let startX = Math.floor(screenWidth / 2);
             for (let step = 0; step < 8; step++) {
-                pointer.setPoint(0, step, {x: Math.floor(screenWidth / 2),
-                    y: Math.floor(screenHeight / 2 + screenHeight / 4) - stepLength * step });
+                let startY = Math.floor((screenHeight / 2 + screenHeight / 4) - stepLength * step);
+                console.log(TestTag, `startX is, ${startX}, startY is, ${ startY }`);
+                pointer.setPoint(0, step, {x: startX,
+                    y: startY });
             }
             try {
                 await driver.injectPenPointerAction(pointer, 600, 0.5);
