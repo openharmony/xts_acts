@@ -69,6 +69,9 @@ export default function StorageDeprecatedTest() {
       let obj1: ESObject = JSON.parse(getInspectorByKey('tvDeprecatedDel'));
       console.info("[StorageDeprecatedTest] component obj1 content is: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('true');
+      let obj2: ESObject = JSON.parse(getInspectorByKey('tvDeprecatedDel1'));
+      console.info("[StorageDeprecatedTest] component obj2 content is: " + JSON.stringify(obj2.$attrs.content));
+      expect(obj2.$attrs.content).assertEqual('false');
       console.info('[StorageDeprecatedTest_001] END');
       done();
     });
@@ -93,6 +96,10 @@ export default function StorageDeprecatedTest() {
       let obj: ESObject = JSON.parse(getInspectorByKey('tvADPersistPropsA'));
       console.info("[StorageDeprecatedTest] component obj content is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('HelloPersistPropsA');
+      await CommonFunc.sleep(1000);
+      let obj2: ESObject = JSON.parse(getInspectorByKey('tvADPersistPropsAb'));
+      console.info("[StorageDeprecatedTest] component obj2 content is: " + JSON.stringify(obj2.$attrs.content));
+      expect(obj2.$attrs.content).assertEqual('HelloPersistPropsAb');
       await CommonFunc.sleep(1000);
       let obj1: ESObject = JSON.parse(getInspectorByKey('tvADPersistentStorageA'));
       console.info("[StorageDeprecatedTest] component obj1 content is: " + JSON.stringify(obj1.$attrs.content));
