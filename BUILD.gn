@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite.gni")
-
 #import("//hit/build/suite.gni")
 import("test_packages.gni")
 if (os_level == "standard") {
