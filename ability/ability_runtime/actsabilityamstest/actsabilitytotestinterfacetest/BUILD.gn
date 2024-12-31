@@ -12,19 +12,19 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_app_assist_suite("ActsAbilityToTestInterfaceMainTest") {
-testonly = true
-certificate_profile = "./signature/openharmony_sx.p7b"
-hap_name = "ActsAbilityToTestInterfaceMainTest"
-subsystem_name = "ability"
-part_name = "ability_runtime"
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAbilityToTestInterfaceMainTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_js_app_suite("ActsAbilityToTestInterfaceTest") {
-test_hap = true
-testonly = true
-certificate_profile = "./signature/openharmony_sx.p7b"
-hap_name = "ActsAbilityToTestInterfaceTest"
-subsystem_name = "ability"
-part_name = "ability_runtime"
-deps = [ ":ActsAbilityToTestInterfaceMainTest" ]
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAbilityToTestInterfaceTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+  deps = [ ":ActsAbilityToTestInterfaceMainTest" ]
 }
