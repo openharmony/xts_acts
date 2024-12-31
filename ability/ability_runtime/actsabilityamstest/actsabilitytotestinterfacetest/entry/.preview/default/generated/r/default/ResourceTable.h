@@ -16,7 +16,7 @@
 #ifndef RESOURCE_TABLE_H
 #define RESOURCE_TABLE_H
 
-#include<stdint.h>
+#include <stdint.h>
 
 namespace OHOS {
 const int32_t STRING_SPECIFEDPROCESSABILITY_DESC = 0x01000002;
