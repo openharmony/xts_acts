@@ -67,7 +67,7 @@ export default function webViewSrollableJsunit() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_BLURONKEYBOARDHIDEMODE_API_001
+     *tc.number SUB_ACE_BASIC_ETS_SCROLL_API_001
      *tc.name blurMode01
      *tc.desic test blurMode01 interface when choose callback mode.
      */
@@ -78,7 +78,7 @@ export default function webViewSrollableJsunit() {
     })
 
     /*
-   *tc.number SUB_ACE_BASIC_ETS_BLURONKEYBOARDHIDEMODE_API_002
+   *tc.number SUB_ACE_BASIC_ETS_SCROLL_API_002
    *tc.name blurMode02
    *tc.desic test blurMode02 interface when choose callback mode.
    */

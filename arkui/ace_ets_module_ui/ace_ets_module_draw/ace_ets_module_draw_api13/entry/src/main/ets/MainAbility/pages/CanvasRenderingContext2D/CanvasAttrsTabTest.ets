@@ -51,8 +51,8 @@ struct CanvasAttrsTabTest {
         TabContent() {
           Column() {
             Canvas(this.context).id('canvas1')
-              .width('100%')
-              .height(300)
+              .width('80%')
+              .height('80%')
               .backgroundColor('#FFBF00')
               .onReady(() => {
                 let node: FrameNode = this.context.canvas
@@ -77,8 +77,8 @@ struct CanvasAttrsTabTest {
         TabContent() {
           Column() {
             Canvas(this.context).id('canvas2')
-              .width('100%')
-              .height(300)
+              .width('80%')
+              .height('80%')
               .backgroundColor('#007DFF')
               .onReady(() => {
                 let node: FrameNode = this.context.canvas
@@ -103,8 +103,8 @@ struct CanvasAttrsTabTest {
         TabContent() {
           Column() {
             Canvas(this.context).id('canvas3')
-              .width('100%')
-              .height(300)
+              .width('80%')
+              .height('80%')
               .backgroundColor('#FFBF00')
               .onReady(() => {
                 let node: FrameNode = this.context.canvas
@@ -128,16 +128,13 @@ struct CanvasAttrsTabTest {
       }
       .vertical(false)
       .barMode(BarMode.Fixed)
-      .barWidth(360)
-      .barHeight(56)
-      .animationDuration(400)
       .onChange((index: number) => {
         // currentIndex控制TabContent显示页签
         this.currentIndex = index
         this.selectedIndex = index
       })
-      .width(360)
-      .height(356)
+      .width('90%')
+      .height('50%')
       .margin({ top: 52 })
       .backgroundColor('#F1F3F5')
     }.width('100%')

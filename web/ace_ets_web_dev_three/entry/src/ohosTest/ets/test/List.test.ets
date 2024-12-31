@@ -21,6 +21,7 @@ import blurMode from './blurMode.test'
 import certChainData from './certChainData.test'
 import scrollEvent from './scrollEvent.test'
 import getDefaultUserAgent from './getDefaultUserAgent.test'
+import enableSmoothDragResize from './enableSmoothDragResize.test'
 
 export default function testsuite() {
   webJsunit();
@@ -31,5 +32,6 @@ export default function testsuite() {
   blurMode();
   certChainData();
   scrollEvent();
-  getDefaultUserAgent()
+  getDefaultUserAgent();
+  enableSmoothDragResize();
 }

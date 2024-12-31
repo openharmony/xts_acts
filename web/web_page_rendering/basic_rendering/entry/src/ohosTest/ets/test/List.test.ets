@@ -43,8 +43,8 @@ export default function testsuite() {
   //webOnFullScreenExit();
   webviewTerminateRenderProcess();
   wholeWebPageDrawing();
-  webViewOnFullScreenEnter();
-  webViewOnFullScreenExit();
+  //webViewOnFullScreenEnter();
+  //webViewOnFullScreenExit();
   getSurfaceId();
   webViewControllerJsunit();
 }

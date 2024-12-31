@@ -79,7 +79,47 @@
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true
-      }
+      },
+      {
+        "name": "HotStartAbility",
+        "srcEntry": "./ets/MainAbility/HotStartAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true
+      },
+      {
+        "name": "InstanceUIExtensionAbility",
+        "srcEntry": "./ets/UIExtensionAbility/InstanceUIExtensionAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true
+      },
+      {
+        "name": "worker",
+        "srcEntry": "./ets/workers/worker.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true
+      },
+      {
+        "name": "ServiceExtAbility",
+        "srcEntry": "./ets/serviceextability/ServiceExtAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true
+      } 
     ]
   }
 }

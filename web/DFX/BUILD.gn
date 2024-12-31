@@ -14,6 +14,18 @@
 group("DFXTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "log_dotting:ActsWebLogDottingTest" ]
+    deps = [
+      "crash_information:ActsCrashInformationTest",
+      "log_dotting:ActsWebLogDottingTest",
+      "log_dotting_five:ActsLogDottingFiveTest",
+      "log_dotting_four:ActsLogDottingFourTest",
+      "log_dotting_one:ActsLogDottingOneTest",
+      "log_dotting_seven:ActsLogDottingSevenTest",
+      "log_dotting_six:ActsLogDottingSixTest",
+      "log_dotting_three:ActsLogDottingThreeTest",
+      "log_dotting_two:ActsLogDottingTwoTest",
+      "performance_maintenance:ActsPerformanceMaintenanceTest",
+      "system_events:ActsSystemEventsTest",
+    ]
   }
 }
