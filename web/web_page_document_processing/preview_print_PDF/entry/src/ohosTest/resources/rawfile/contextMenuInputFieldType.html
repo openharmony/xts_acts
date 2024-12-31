@@ -108,7 +108,7 @@
            return "5"
     }
     function getFontFamily(){
-        var bodyStyle = window.getComputedStyle(document.body);
+        let bodyStyle = window.getComputedStyle(document.body);
 		let fontFamily = bodyStyle.getPropertyValue("font-family");
         return fontFamily
     }

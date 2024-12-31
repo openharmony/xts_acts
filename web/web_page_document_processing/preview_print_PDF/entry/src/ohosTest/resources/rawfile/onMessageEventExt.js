@@ -29,7 +29,7 @@ window.addEventListener('message', function (event) {
         } else if (typeof (result) == "number") {
           console.log("In html side got message, number: ", result);
           document.getElementById("msg").innerHTML = "Number:" + result;
-        } else if (typeof (result) == "boolean") {
+        } else if (typeof (result) === "boolean") {
           console.log("In html side got message, boolean: ", result);
           document.getElementById("msg").innerHTML = "Boolean:" + result;
         } else if (typeof (result) === "object") {
