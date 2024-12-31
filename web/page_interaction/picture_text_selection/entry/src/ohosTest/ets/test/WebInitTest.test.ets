@@ -32,13 +32,6 @@ export default function webInitTest() {
       done();
     })
 
-    afterEach(async (done: Function) => {
-      console.info("WebInitTest afterEach start");
-      await Utils.sleep(2000);
-      console.info("WebInitTest afterEach end");
-      done();
-    })
-
     /* 
      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_016                                                                                                                                                          
      *tc.name SearchAllAsync                                                                                                                                                                                                               
