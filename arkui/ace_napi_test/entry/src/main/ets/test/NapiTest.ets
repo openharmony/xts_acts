@@ -9858,5 +9858,123 @@ export default function napiApiTest() {
         }
         done();
       });
-    })
-  }
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_HASOWNPROPERTY_0100
+     * @tc.name      : testhasOwnPropertyCheckpro0001
+     * @tc.desc      : Testing hasOwnProperty NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testhasOwnPropertyCheckpro0100', 0, async (done: Function) => {
+      console.info('testhasOwnPropertyCheckpro0100 START');
+      try {
+        let value = napitest.hasOwnPropertyCheckpro();
+        console.info('testhasOwnPropertyCheckpro0100 value is: ' + value);
+        expect(value).assertTrue();
+      } catch (err) {
+        console.error('testhasOwnPropertyCheckpro0100 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_HASOWNPROPERTY_0200
+     * @tc.name      : testhasOwnPropertyCheckpro0001
+     * @tc.desc      : Testing hasOwnProperty NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testhasOwnPropertyCheckOwnpro0200', 0, async (done: Function) => {
+      console.info('testhasOwnPropertyCheckOwnpro0200 START');
+      try {
+        let value = napitest.hasOwnPropertyCheckOwnpro();
+        console.info('testhasOwnPropertyCheckOwnpro0200 value is: ' + value);
+        expect(value).assertTrue();
+      } catch (err) {
+        console.error('testhasOwnPropertyCheckOwnpro0200 err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_createTypeErrorRes_0100
+     * @tc.name      : testcreateTypeErrorRes0100
+     * @tc.desc      : Testing napi_create_type_error NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testcreateTypeErrorRes0100', 0, async (done: Function) => {
+      console.info('testcreateTypeErrorRes0100 START');
+      try {
+        throw napitest.createTypeErrorRes();
+      } catch (error) {
+        console.error('testcreateTypeErrorRes0100 err msg' + error.message);
+        expect(error instanceof Error).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_CREATETYPEERRORRES_0200
+     * @tc.name      : testcreateTypeErrorRes0200
+     * @tc.desc      : Testing napi_create_type_error NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testcreateTypeErrorRes0200', 0, async (done: Function) => {
+      console.info('testcreateTypeErrorRes0200 START');
+      try {
+        throw napitest.createTypeErrorRes();
+      } catch (error) {
+        console.error('testcreateTypeErrorRes0200 err msg' + error.message);
+        expect(error instanceof TypeError).assertFalse();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_CREATERANGEERRORRES_0100
+     * @tc.name      : testcreateRangeErrorRes0100
+     * @tc.desc      : Testing napi_create_range_error NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testcreateRangeErrorRes0100', 0, async (done: Function) => {
+      console.info('testcreateRangeErrorRes0100 START');
+      try {
+        throw napitest.createRangeErrorRes();
+      } catch (error) {
+        console.error('testcreateRangeErrorRes0100 err msg' + error.message);
+        expect(error instanceof Error).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_CREATERANGEERRORRES_0200
+     * @tc.name      : testcreateRangeErrorRes0200
+     * @tc.desc      : Testing napi_create_range_error NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testcreateRangeErrorRes0200', 0, async (done: Function) => {
+      console.info('testcreateRangeErrorRes0200 START');
+      try {
+        throw napitest.createRangeErrorRes();
+      } catch (error) {
+        console.error('testcreateRangeErrorRes0200 err msg' + error.message);
+        expect(error instanceof RangeError).assertFalse();
+      }
+      done();
+    });
+  })
+}

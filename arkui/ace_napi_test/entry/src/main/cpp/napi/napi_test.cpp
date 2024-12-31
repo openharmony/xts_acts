@@ -9889,6 +9889,72 @@ static napi_value ThreadSafeTestNull(napi_env env, napi_callback_info info)
     return retValue;
 }
 
+static napi_value hasOwnPropertyCheckpro(napi_env env, napi_callback_info info)
+{
+    napi_value object = nullptr;
+    NAPI_CALL(env, napi_create_object(env, &object));
+    
+    napi_value name = nullptr;
+    NAPI_CALL(env, napi_create_string_utf8(env, "name", NAPI_AUTO_LENGTH, &name));
+    
+    napi_value value = nullptr;
+    NAPI_CALL(env, napi_create_string_utf8(env, "Hello from Node-API", NAPI_AUTO_LENGTH, &value));
+    NAPI_CALL(env, napi_set_property(env, object, name, value));
+    
+    bool hasPro = false;
+    NAPI_CALL(env, napi_has_own_property(env, object, name, &hasPro));
+    
+    napi_value result;
+    napi_get_boolean(env, hasPro, &result);
+    return result;
+}
+
+static napi_value hasOwnPropertyCheckOwnpro(napi_env env, napi_callback_info info)
+{
+    napi_value object = nullptr;
+    NAPI_CALL(env, napi_create_object(env, &object));
+    
+    napi_value name = nullptr;
+    NAPI_CALL(env, napi_create_string_utf8(env, "name", NAPI_AUTO_LENGTH, &name));
+    
+    napi_value value = nullptr;
+    NAPI_CALL(env, napi_create_string_utf8(env, "Hello from Node-API", NAPI_AUTO_LENGTH, &value));
+    NAPI_CALL(env, napi_set_property(env, object, name, value));
+    
+    napi_value key = nullptr;
+    NAPI_CALL(env, napi_create_string_utf8(env, "toString", NAPI_AUTO_LENGTH, &key));
+
+    bool hasPro = false;
+    NAPI_CALL(env, napi_has_own_property(env, object, key, &hasPro));
+
+    napi_value result;
+    napi_get_boolean(env, hasPro, &result);
+    return result;
+}
+
+static napi_value createTypeErrorRes(napi_env env, napi_callback_info info)
+{
+    napi_value errorCode = nullptr;
+    napi_create_string_utf8(env, "typeErrorCode", NAPI_AUTO_LENGTH, &errorCode);
+    napi_value errorMessage = nullptr;
+    napi_create_string_utf8(env, "typeErrorMsg", NAPI_AUTO_LENGTH, &errorMessage);
+    
+    napi_value error = nullptr;
+    napi_create_type_error(env, errorCode, errorMessage, &error);
+    return error;
+}
+
+static napi_value createRangeErrorRes(napi_env env, napi_callback_info info)
+{
+    napi_value errorCode = nullptr;
+    napi_create_string_utf8(env, "typeErrorCode", NAPI_AUTO_LENGTH, &errorCode);
+    napi_value errorMessage = nullptr;
+    napi_create_string_utf8(env, "typeErrorMsg", NAPI_AUTO_LENGTH, &errorMessage);
+    
+    napi_value error = nullptr;
+    napi_create_range_error(env, errorCode, errorMessage, &error);
+    return error;
+}
 
 EXTERN_C_START
 
@@ -10430,6 +10496,10 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("createThreadsafeFunctionMaxQueueSizeNegative", createThreadsafeFunctionMaxQueueSizeNegative),
         DECLARE_NAPI_FUNCTION("ThreadSafeTestNull", ThreadSafeTestNull),
         DECLARE_NAPI_FUNCTION("createExternalBufferLengthZero", createExternalBufferLengthZero),
+        DECLARE_NAPI_FUNCTION("hasOwnPropertyCheckpro", hasOwnPropertyCheckpro),
+        DECLARE_NAPI_FUNCTION("hasOwnPropertyCheckOwnpro", hasOwnPropertyCheckOwnpro),
+        DECLARE_NAPI_FUNCTION("createTypeErrorRes", createTypeErrorRes),
+        DECLARE_NAPI_FUNCTION("createRangeErrorRes", createRangeErrorRes),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

@@ -539,5 +539,9 @@ export const deleteSerializationDataNull: () => number;
 export const createBigintWordsCountIntMax: () => number;
 export const makeCallbackTextNull: (para1, para2, para3) => void;
 export const createThreadsafeFunctionMaxQueueSizeNegative: () => number;
+export const hasOwnPropertyCheckpro: () =>boolean;
+export const hasOwnPropertyCheckOwnpro: () =>boolean;
+export const createTypeErrorRes:() => Error;
+export const createRangeErrorRes:() => Error;
 
 
