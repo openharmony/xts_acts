@@ -8,6 +8,7 @@ import { LocalContext } from '../../test/GloablConfig';
 struct enableNativeEmbedMode_0100 {
   @State embedStatus: string = '';
   @State embedinfos: string = '';
+  @State userAgentPC:string = '';
   controller: webview.WebviewController = new webview.WebviewController();
   delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
 
@@ -41,41 +42,54 @@ struct enableNativeEmbedMode_0100 {
       Web({ src: 'www.example.com', controller: this.controller })
         .enableNativeEmbedMode(true)
         .onNativeEmbedLifecycleChange((event) => {
-          // 当加载页面中有同层标签会触发Create。
-          if (event.status == NativeEmbedStatus.CREATE) {
-            this.embedStatus = 'Create'
-            LocalContext.context.eventHub.emit('enableNativeEmbedMode003', '注册成功')
-            LocalContext.context.eventHub.emit('enableNativeEmbedMode005', 'Create')
-          }
-          // 当页面中同层标签移动或者缩放时会触发Update。
-          if (event.status == NativeEmbedStatus.UPDATE) {
-            this.embedStatus = 'Update';
-            LocalContext.context.eventHub.emit('enableNativeEmbedMode004', 'Update')
-          }
-          // 退出页面时会触发Destroy。
-          if (event.status == NativeEmbedStatus.DESTROY) {
-            this.embedStatus = 'Destroy';
-            LocalContext.context.eventHub.emit('enableNativeEmbedMode004', 'Destroy')
-          }
-          // 同层标签所在的页面进入BFCache时，会触发Enter BFCache。
-          if (event.status == NativeEmbedStatus.ENTER_BFCACHE) {
-            this.embedStatus = 'Enter BFCache';
+          try {
+            console.info('=================1')
+            this.userAgentPC = this.controller.getUserAgent();
+            console.info('=================2')
+            if ((this.userAgentPC).includes("Tablet")) {
+              console.info('=================3')
+              // 当加载页面中有同层标签会触发Create。
+              if (event.status == NativeEmbedStatus.CREATE) {
+                this.embedStatus = 'Create'
+                LocalContext.context.eventHub.emit('enableNativeEmbedMode003', 'Create')
+              }
+              // 当页面中同层标签移动或者缩放时会触发Update。
+              if (event.status == NativeEmbedStatus.UPDATE) {
+                this.embedStatus = 'Update';
+                LocalContext.context.eventHub.emit('enableNativeEmbedMode004', 'Update')
+              }
+              // 退出页面时会触发Destroy。
+              if (event.status == NativeEmbedStatus.DESTROY) {
+                this.embedStatus = 'Destroy';
+                LocalContext.context.eventHub.emit('enableNativeEmbedMode005', 'Destroy')
+              }
+              // 同层标签所在的页面进入BFCache时，会触发Enter BFCache。
+              if (event.status == NativeEmbedStatus.ENTER_BFCACHE) {
+                this.embedStatus = 'Enter BFCache';
 
-          }
-          // 同层标签所在的页面离开BFCache时，会触发Leave BFCache。
-          if (event.status == NativeEmbedStatus.LEAVE_BFCACHE) {
-            this.embedStatus = 'Leave BFCache';
-          }
-          console.log('status = ' + this.embedStatus);
-          console.log('surfaceId = ' + event.surfaceId);
-          console.log('embedId = ' + event.embedId);
-          if (event.info) {
-            console.log('id = ' + event.info.id);
-            console.log('type = ' + event.info.type);
-            console.log('src = ' + event.info.src);
-            console.log('width = ' + event.info.width);
-            console.log('height = ' + event.info.height);
-            console.log('url = ' + event.info.url);
+              }
+              // 同层标签所在的页面离开BFCache时，会触发Leave BFCache。
+              if (event.status == NativeEmbedStatus.LEAVE_BFCACHE) {
+                this.embedStatus = 'Leave BFCache';
+              }
+              console.log('status = ' + this.embedStatus);
+              console.log('surfaceId = ' + event.surfaceId);
+              console.log('embedId = ' + event.embedId);
+              if (event.info) {
+                console.log('id = ' + event.info.id);
+                console.log('type = ' + event.info.type);
+                console.log('src = ' + event.info.src);
+                console.log('width = ' + event.info.width);
+                console.log('height = ' + event.info.height);
+                console.log('url = ' + event.info.url);
+              }
+            }else if((this.userAgentPC).includes("PC")){
+              console.info('=================4')
+              LocalContext.context.eventHub.emit('enableNativeEmbedMode006', 'PC')
+            }
+          }catch (error) {
+            console.info('=================5')
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
     }
