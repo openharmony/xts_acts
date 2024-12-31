@@ -1,0 +1,22 @@
+{
+  "modulePathMap": {
+    "SpecifedProcess": "C:\\Users\\zhao_haobo\\Desktop\\appA123\\SpecifedProcess"
+  },
+  "compileMode": "esmodule",
+  "projectRootPath": "C:\\Users\\zhao_haobo\\Desktop\\appA123",
+  "nodeModulesPath": "C:\\Users\\zhao_haobo\\Desktop\\appA123\\SpecifedProcess\\.preview\\default\\intermediates\\loader_out\\default\\node_modules",
+  "byteCodeHarInfo": {},
+  "declarationEntry": [],
+  "moduleName": "SpecifedProcess",
+  "hspNameOhmMap": {},
+  "harNameOhmMap": {},
+  "packageManagerType": "ohpm",
+  "compileEntry": [],
+  "otherCompileFiles": [],
+  "dynamicImportLibInfo": {},
+  "routerMap": [],
+  "hspResourcesMap": {},
+  "anBuildOutPut": "C:\\Users\\zhao_haobo\\Desktop\\appA123\\SpecifedProcess\\.preview\\default\\intermediates\\loader_out\\default\\an\\arm64-v8a",
+  "anBuildMode": "type",
+  "buildConfigPath": ".preview\\config\\buildConfig.json"
+}

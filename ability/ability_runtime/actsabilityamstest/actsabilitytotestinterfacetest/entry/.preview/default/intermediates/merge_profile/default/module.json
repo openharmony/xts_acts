@@ -1,0 +1,68 @@
+{
+	"app": {
+		"bundleName": "com.example.appa",
+		"vendor": "example",
+		"versionCode": 1000000,
+		"versionName": "1.0.0",
+		"icon": "$media:app_icon",
+		"label": "$string:app_name",
+		"apiReleaseType": "Release",
+		"compileSdkVersion": "5.0.0.71",
+		"targetAPIVersion": 12,
+		"minAPIVersion": 12,
+		"compileSdkType": "OpenHarmony",
+		"appEnvironments": [],
+		"bundleType": "app",
+		"debug": true
+	},
+	"module": {
+		"name": "SpecifedProcess",
+		"type": "entry",
+		"description": "$string:module_desc",
+		"mainElement": "SpecifedProcessAbility",
+		"deviceTypes": [
+			"default",
+			"tablet"
+		],
+		"deliveryWithInstall": true,
+		"installationFree": false,
+		"pages": "$profile:main_pages",
+		"abilities": [
+			{
+				"name": "SpecifedProcessAbility",
+				"srcEntry": "./ets/specifedprocessability/SpecifedProcessAbility.ets",
+				"description": "$string:SpecifedProcessAbility_desc",
+				"icon": "$media:layered_image",
+				"label": "$string:SpecifedProcessAbility_label",
+				"startWindowIcon": "$media:startIcon",
+				"startWindowBackground": "$color:start_window_background",
+				"exported": true,
+				"skills": [
+					{
+						"entities": [
+							"entity.system.home"
+						],
+						"actions": [
+							"action.system.home"
+						]
+					}
+				]
+			}
+		],
+		"extensionAbilities": [
+			{
+				"name": "SpecifedProcessBackupAbility",
+				"srcEntry": "./ets/specifedprocessbackupability/SpecifedProcessBackupAbility.ets",
+				"type": "backup",
+				"exported": false,
+				"metadata": [
+					{
+						"name": "ohos.extension.backup",
+						"resource": "$profile:backup_config"
+					}
+				]
+			}
+		],
+		"packageName": "specifedprocess"
+	}
+}
