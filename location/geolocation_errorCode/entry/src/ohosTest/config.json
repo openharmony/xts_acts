@@ -109,6 +109,9 @@
       {
         "name": "ohos.permission.DISTRIBUTED_DATASYNC",
         "reason": "ceshi"
+      },
+      {
+        "name": "ohos.permission.CONTROL_LOCATION_SWITCH"
       }
     ],
     "js": [
