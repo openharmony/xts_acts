@@ -23,7 +23,9 @@ let printLog1 = "Stage:MainAbility:";
 let listPush1 = "Stage_MainAbility_";
 let launchWant;
 let lastRequestWant;
-
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 export default class MainAbility extends Ability {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info(printLog1 + "onCreate");
@@ -58,12 +60,13 @@ export default class MainAbility extends Ability {
     }, 6000);
   }
 
-  onDestroy() {
+  async onDestroy(): Promise<void>{
     console.info(printLog1 + "onDestroy");
 
     commonEvent.publish(listPush1 + "onDestroy", (err) => {
       console.info(printLog1 + listPush1 + "onDestroy");
     });
+    await sleep(1000);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {

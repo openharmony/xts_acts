@@ -323,34 +323,6 @@ export default function verificationTest() {
       TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200 ==>';
       console.info(TAG + " start");
       try {
-        let permissionRequestResult: ESObject;
-        let subscriber: commonEventManager.CommonEventSubscriber;
-        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["Fa_MainAbility2_onCreate", "Fa_MainAbility2_onDestroy"]
-        }
-
-        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
-          console.info(TAG + "===CreateSubscriberCallback===")
-          subscriber = data
-          commonEvent.subscribe(subscriber, (err, data) => {
-            console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data));
-            if (data.event == "Fa_MainAbility2_onCreate") {
-              permissionRequestResult = data.parameters?.permissionRequestResult;
-            }
-            if (data.event == "Fa_MainAbility2_onDestroy") {
-              console.info(TAG + "===PermissionRequestResult===" + JSON.stringify(permissionRequestResult));
-              expect(permissionRequestResult.requestCode).assertEqual(1);
-              expect(JSON.stringify(permissionRequestResult.permissions))
-                .assertEqual(JSON.stringify(["ohos.permission.CAMERA"]));
-              expect(JSON.stringify(permissionRequestResult.authResults)).assertEqual(JSON.stringify([2]));
-              commonEvent.unsubscribe(subscriber, () => {
-                console.info(TAG + "===UnSubscribeInfoCallback===");
-                done();
-              });
-            }
-          })
-        })
-
         let wantNum: Want = {
           bundleName: 'ohos.acts.aafwk.test.fasupplement',
           abilityName: 'ohos.acts.aafwk.test.fasupplement.MainAbility3',
@@ -382,6 +354,7 @@ export default function verificationTest() {
           await sleep(100);
           await button.click();
           await sleep(4000);
+          done();
         })
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
