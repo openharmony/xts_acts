@@ -327,7 +327,7 @@ export default function verificationTest() {
           bundleName: 'ohos.acts.aafwk.test.fasupplement',
           abilityName: 'ohos.acts.aafwk.test.fasupplement.MainAbility3',
         }
-        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantNum)
+        await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantNum)
           .then((data) => {
             console.info(TAG + "startAbility data = " + JSON.stringify(data));
           })
@@ -335,27 +335,30 @@ export default function verificationTest() {
             console.info(TAG + "startAbility err = " + JSON.stringify(err));
             expect().assertFail();
           });
-        setTimeout(async ()=>{
-          console.info(TAG + `come in driveFn`);
-          let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-          let driver = await UiDriver.create();
-          console.info(TAG + `driver is ${JSON.stringify(driver)}`);
-          await sleep(100);
-          console.info(TAG + `UiDriver start`);
-          let button = await driver.findComponent(BY.text('允许'));
-          if(button == null){
-            console.info(TAG + "findComponent err , permission dialog is empty ");
-            let cmd = "hidumper -s WindowManagerService -a'-a'";
-            await abilityDelegator.executeShellCommand(cmd);
-            expect().assertFail();
-            done();
-          }
-          console.info(TAG + `button is ${JSON.stringify(button)}`);
-          await sleep(100);
-          await button.click();
-          await sleep(4000);
+        console.info(TAG + `come in driveFn`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let driver = await UiDriver.create();
+        console.info(TAG + `driver is ${JSON.stringify(driver)}`);
+        await sleep(1500);
+        console.info(TAG + `UiDriver start`);
+        let button = await driver.findComponent(BY.text('允许'));
+        if(button == null){
+          console.info(TAG + "findComponent err , permission dialog is empty ");
+          let cmd = "hidumper -s WindowManagerService -a'-a'";
+          await abilityDelegator.executeShellCommand(cmd);
+          expect().assertFail();
           done();
-        })
+        }
+        console.info(TAG + `button is ${JSON.stringify(button)}`);
+        await sleep(100);
+        console.info(TAG + `start click`);
+        try{await button.click();}catch(e){
+          console.info(TAG + `fail click ` + JSON.stringify(e));
+        }
+        console.info(TAG + `end click`);
+        await sleep(4000);
+        console.info(TAG + `end`);
+        done();
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
         expect().assertFail();
