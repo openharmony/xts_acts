@@ -46,7 +46,7 @@ struct enableNativeEmbedMode_0100 {
             console.info('=================1')
             this.userAgentPC = this.controller.getUserAgent();
             console.info('=================2')
-            if ((this.userAgentPC).includes("Tablet")) {
+            if ((this.userAgentPC).includes('Tablet')) {
               console.info('=================3')
               // 当加载页面中有同层标签会触发Create。
               if (event.status == NativeEmbedStatus.CREATE) {
@@ -83,7 +83,7 @@ struct enableNativeEmbedMode_0100 {
                 console.log('height = ' + event.info.height);
                 console.log('url = ' + event.info.url);
               }
-            }else if((this.userAgentPC).includes("PC")){
+            }else if((this.userAgentPC).includes('PC')){
               console.info('=================4')
               LocalContext.context.eventHub.emit('enableNativeEmbedMode006', 'PC')
             }
