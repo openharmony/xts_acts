@@ -64,3 +64,7 @@ export function cancelById(taskId: number) {
   "use concurrent"
   taskpool.cancel(taskId);
 }
+
+export function multiplyFunc(args: number): number {
+  return args * 2;
+}
