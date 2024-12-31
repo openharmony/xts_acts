@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var h5Port;
+let h5Port;
 window.addEventListener('message', function (event) {
   console.info("htmlSSSSS")
   if (event.data == 'init_web_messageport') {
@@ -20,7 +20,7 @@ window.addEventListener('message', function (event) {
       h5Port = event.ports[0];
       h5Port.onmessage = function (event) {
         console.info("hwd In html got message");
-        var result = event.data;
+        let result = event.data;
         console.info("In html got message, typeof: ", typeof (result));
         console.info("In html got message, result: ", (result));
         if (typeof (result) == "string") {
@@ -32,7 +32,7 @@ window.addEventListener('message', function (event) {
         } else if (typeof (result) == "boolean") {
           console.log("In html side got message, boolean: ", result);
           document.getElementById("msg").innerHTML = "Boolean:" + result;
-        } else if (typeof (result) == "object") {
+        } else if (typeof (result) === "object") {
           if (result instanceof ArrayBuffer) {
             document.getElementById("msg2").innerHTML = "ArrayBuffer:" + result.byteLength;
             console.log("In html got message, byteLength: ", result.byteLength);
@@ -141,36 +141,36 @@ function postErrorToApp() {
 
 
 function postStringToHtml() {
-  var a = document.getElementById("msg").innerText
+  let a = document.getElementById("msg").innerText
   return a
 }
 
 function postNumberToHtml() {
-  var a = document.getElementById("msg").innerText
+  let a = document.getElementById("msg").innerText
   return a
 }
 
 function postBooleanToHtml() {
-  var a = document.getElementById("msg").innerText
+  let a = document.getElementById("msg").innerText
   return a
 }
 
 function postBooleanFalseToHtml() {
-  var a = document.getElementById("msg").innerText
+  let a = document.getElementById("msg").innerText
   return a
 }
 
 function postArrayToHtml() {
-  var a = document.getElementById("msg2").innerText
+  let a = document.getElementById("msg2").innerText
   return a
 }
 
 function postArrayBufferToHtml() {
-  var a = document.getElementById("msg2").innerText
+  let a = document.getElementById("msg2").innerText
   return a
 }
 
 function postErrorToHtml() {
-  var a = document.getElementById("msg2").innerText
+  let a = document.getElementById("msg2").innerText
   return a
 }

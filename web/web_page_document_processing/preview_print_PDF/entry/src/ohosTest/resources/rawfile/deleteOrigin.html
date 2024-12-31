@@ -19,7 +19,7 @@
 
      db.transaction(function(tx){
        tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
-         var len = results.rows.length,i;
+         let len = results.rows.length,i;
          msg = "<p>查询记录条数：" + len + "</p>";
 
          document.querySelector('#status').innerHTML += msg;

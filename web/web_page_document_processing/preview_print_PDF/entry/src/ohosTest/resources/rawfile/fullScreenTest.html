@@ -45,13 +45,13 @@
     }
 
     function fullScreen(el) {
-        var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen,
+        let rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen,
             wscript;
-        if(typeof rfs != "undefined" && rfs) {
+        if(typeof rfs !== "undefined" && rfs) {
             rfs.call(el);
             return;
         }
-        if(typeof window.ActiveXObject != "undefined") {
+        if(typeof window.ActiveXObject !== "undefined") {
             wscript = new ActiveXObject("WScript.Shell");
             if(wscript) {
                 wscript.SendKeys("{F11}");
@@ -59,14 +59,14 @@
         }
     }
     function exitFullScreen(el) {
-        var el= document,
+        let el= document,
             cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen,
             wscript;
-        if (typeof cfs != "undefined" && cfs) {
+        if (typeof cfs !== "undefined" && cfs) {
         cfs.call(el);
         return;
         }
-        if (typeof window.ActiveXObject != "undefined") {
+        if (typeof window.ActiveXObject !== "undefined") {
             wscript = new ActiveXObject("WScript.Shell");
             if (wscript != null) {
                 wscript.SendKeys("{F11}");
@@ -75,9 +75,9 @@
     }
 
     var btn = document.getElementById('btn');
-    var content = document.getElementById('content');   //被全屏显示的元素
+    let content = document.getElementById('content');   //被全屏显示的元素
     btn.onclick = function(){
-        if(btn.innerText == "全屏"){
+        if(btn.innerText === "全屏"){
             fullScreen(content);
             btn.innerText = "退出全屏"
         }else{
@@ -96,7 +96,7 @@
     }
 
     function checkIsFullScreen() {
-        var isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement)
+        let isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement)
         return isFull
     }
 
