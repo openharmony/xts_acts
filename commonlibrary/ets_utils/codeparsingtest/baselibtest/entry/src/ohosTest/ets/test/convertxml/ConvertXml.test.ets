@@ -17,9 +17,9 @@ import { convertxml } from '@kit.ArkTS';
 
 let jsonStr = "{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
   "\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"," +
-  "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_elements\":" +
-  "[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-  "[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
+  "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_parent\":\"note\",\"_elements\":" +
+  "[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":" +
+  "[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":" +
   "[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}"
 
 export default function ConvertXmlTest() {
@@ -161,12 +161,12 @@ export default function ConvertXmlTest() {
           ignoreDeclaration: true,
         };
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
-        expect(result).assertEqual('{"_elements":[{"_type":"element",' +
-          '"_name":"note","_attributes":{"importance":"high","logged":"true"},' +
-          '"_elements":[{"_type":"element","_name":"title","_elements":[{"_type":"text",' +
-          '"_text":"Happy"}]},{"_type":"element","_name":"todo","_elements":[{"_type":"text",' +
-          '"_text":"Work"}]},{"_type":"element","_name":"todo","_elements":' +
-          '[{"_type":"text","_text":"Play"}]}]}]}');
+        expect(result)
+          .assertEqual('{"_elements":[{"_type":"element","_name":"note","_attributes":{"importance":"high",' +
+            '"logged":"true"},"_elements":[{"_type":"element","_name":"title","_parent":"note","_elements":' +
+            '[{"_type":"text","_text":"Happy"}]},{"_type":"element","_name":"todo","_parent":"note","_elements":' +
+            '[{"_type":"text","_text":"Work"}]},{"_type":"element","_name":"todo","_parent":"note","_elements":' +
+            '[{"_type":"text","_text":"Play"}]}]}]}');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -251,12 +251,11 @@ export default function ConvertXmlTest() {
           ignoreAttributes: true,
         };
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
-        expect(result).assertEqual('{"_declaration":{"_attributes":{"version":"1.0",' +
-          '"encoding":"utf-8"}},"_elements":[{"_type":"element","_name":"note",' +
-          '"_elements":[{"_type":"element","_name":"title","_elements":' +
-          '[{"_type":"text","_text":"Happy"}]},{"_type":"element","_name":"todo",' +
-          '"_elements":[{"_type":"text","_text":"Work"}]},{"_type":"element",' +
-          '"_name":"todo","_elements":[{"_type":"text","_text":"Play"}]}]}]}');
+        expect(result).assertEqual('{"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":' +
+          '[{"_type":"element","_name":"note","_elements":[{"_type":"element","_name":"title","_parent":"note","_elements":' +
+          '[{"_type":"text","_text":"Happy"}]},{"_type":"element","_name":"todo","_parent":"note","_elements":' +
+          '[{"_type":"text","_text":"Work"}]},{"_type":"element","_name":"todo","_parent":"note","_elements":' +
+          '[{"_type":"text","_text":"Play"}]}]}]}');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -346,10 +345,10 @@ export default function ConvertXmlTest() {
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
         expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
           "\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"," +
-          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
+          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_parent\":\"note\"," +
+          "\"_elements\":[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\"," +
+          "\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\"," +
+          "\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -394,15 +393,13 @@ export default function ConvertXmlTest() {
           ignoreComment: false,
         };
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
-        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":" +
-          "\"1.0\",\"encoding\":\"utf-8\"}},\"_elements\":[{\"_type\":\"comment\"," +
-          "\"_comment\":\" This is a comment \"},{\"_type\":\"element\",\"_name\":" +
-          "\"note\",\"_attributes\":{\"importance\":\"high\",\"logged\":\"true\"}," +
-          "\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name" +
-          "\":\"todo\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type" +
-          "\":\"element\",\"_name\":\"todo\",\"_elements\":[{\"_type\":\"text\",\"_text\"" +
-          ":\"Play\"}]}]}]}");
+        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
+          "\"_elements\":[{\"_type\":\"comment\",\"_comment\":\" This is a comment \"},{\"_type\":\"element\",\"_name\"" +
+          ":\"note\",\"_attributes\":{\"importance\":\"high\",\"logged\":\"true\"},\"_elements\":[{\"_type\":" +
+          "\"element\",\"_name\":\"title\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Happy\"" +
+          "}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\"," +
+          "\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":" +
+          "[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -447,12 +444,12 @@ export default function ConvertXmlTest() {
           ignoreCDATA: true,
         };
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
-        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":" +
-          "\"1.0\",\"encoding\":\"utf-8\"}},\"_elements\":[{\"_type\":\"element\"," +
-          "\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\",\"logged\":\"true\"}," +
-          "\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\"},{\"_type\":\"element\"," +
-          "\"_name\":\"todo\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type" +
-          "\":\"element\",\"_name\":\"todo\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
+        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
+          "\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"," +
+          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_parent\":\"note\"}," +
+          "{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\"," +
+          "\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":" +
+          "[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -499,10 +496,10 @@ export default function ConvertXmlTest() {
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
         expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
           "\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"," +
-          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_elements\":" +
-          "[{\"_type\":\"cdata\",\"_cdata\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
+          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_parent\":\"note\"," +
+          "\"_elements\":[{\"_type\":\"cdata\",\"_cdata\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\"," +
+          "\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\"," +
+          "\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -551,10 +548,10 @@ export default function ConvertXmlTest() {
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
         expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
           "\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"," +
-          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
+          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_parent\":\"note\"," +
+          "\"_elements\":[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\"," +
+          "\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\"," +
+          "\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -601,13 +598,13 @@ export default function ConvertXmlTest() {
           ignoreDoctype: false,
         };
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
-        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\"," +
-          "\"encoding\":\"utf-8\"}},\"_elements\":[{\"_type\":\"doctype\",\"_doctype\":\"note\"}," +
-          "{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"" +
-          ",\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\"," +
-          "\"_elements\":[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\"," +
-          "\"_name\":\"todo\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\"" +
-          ":\"element\",\"_name\":\"todo\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
+        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
+          "\"_elements\":[{\"_type\":\"doctype\",\"_doctype\":\"note\"},{\"_type\":\"element\",\"_name\":\"note\"," +
+          "\"_attributes\":{\"importance\":\"high\",\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\"," +
+          "\"_name\":\"title\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Happy\"}]}," +
+          "{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\"," +
+          "\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":" +
+          "[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -654,13 +651,11 @@ export default function ConvertXmlTest() {
           ignoreText: true,
         };
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
-        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\"," +
-          "\"encoding\":\"utf-8\"}},\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\"," +
-          "\"_attributes\":{\"importance\":\"high\",\"logged\":\"true\"},\"_elements\":[{\"_type\"" +
-          ":\"element\",\"_name\":\"title\"},{\"_type\":\"element\",\"_name\":\"todo\"},{\"_type\"" +
-          ":\"element\",\"_name\":\"todo\"}]}]}");
-
-
+        expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}" +
+          ",\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"," +
+          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_parent\":\"note\"}," +
+          "{\"_type\":\"element\",\"_name\":\"todo\",\"_parent\":\"note\"},{\"_type\":\"element\",\"_name\":" +
+          "\"todo\",\"_parent\":\"note\"}]}]}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
@@ -709,10 +704,10 @@ export default function ConvertXmlTest() {
         let result = JSON.stringify(conv.convertToJSObject(xml, options));
         expect(result).assertEqual("{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
           "\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"," +
-          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\",\"_name\":\"todo\",\"_elements\":" +
-          "[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
+          "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_parent\":\"note\"," +
+          "\"_elements\":[{\"_type\":\"text\",\"_text\":\"Happy\"}]},{\"_type\":\"element\",\"_name\":\"todo\"," +
+          "\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Work\"}]},{\"_type\":\"element\"," +
+          "\"_name\":\"todo\",\"_parent\":\"note\",\"_elements\":[{\"_type\":\"text\",\"_text\":\"Play\"}]}]}]}");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
         expect().assertFail();
