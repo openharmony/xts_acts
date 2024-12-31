@@ -46,15 +46,6 @@ struct TextCaretColorExample3 {
       Text(undefined, { controller: this.controller }).key('mutableStyledString').fontSize(30)
 
       Row() {
-        Button('点击').onClick(() => {
-          let text = getInspectorByKey('text');
-          console.log('test------' + JSON.stringify(JSON.parse(text).$attrs))
-          let caretColor = JSON.stringify(JSON.parse(text).$attrs.caretColor);
-          let selectedBackgroundColor = JSON.stringify(JSON.parse(text).$attrs.selectedBackgroundColor);
-          console.log('test---caretColor---' + caretColor)
-          console.log('test---selectedBackgroundColor---' + selectedBackgroundColor)
-        })
-
         Button('getStyles')
           .width('30%')
           .onClick(() => {
