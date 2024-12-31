@@ -18,11 +18,11 @@ import { window } from '@kit.ArkUI';
 import EmbeddableUIAbility from '@ohos.app.ability.EmbeddableUIAbility';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
-const TAG: string = 'setMissionContinueState';
+const TAG: string = 'SetMissionContinueState';
 
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class setMissionContinueState extends EmbeddableUIAbility {
+export default class SetMissionContinueState extends EmbeddableUIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTAG', '%{public}s', 'Ability onCreate');
   }

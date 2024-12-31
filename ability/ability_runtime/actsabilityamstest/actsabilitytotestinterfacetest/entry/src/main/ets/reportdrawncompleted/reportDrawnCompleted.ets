@@ -18,11 +18,11 @@ import { window } from '@kit.ArkUI';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import EmbeddableUIAbility from '@ohos.app.ability.EmbeddableUIAbility';
 const TAG0: string = '[testTAG] UIExtAbility';
-const TAG: string = 'reportDrawnCompleted';
+const TAG: string = 'ReportDrawnCompleted';
 
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class reportDrawnCompleted extends  EmbeddableUIAbility{
+export default class ReportDrawnCompleted extends  EmbeddableUIAbility{
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTAG', '%{public}s', 'Ability onCreate');
   }

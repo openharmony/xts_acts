@@ -18,10 +18,10 @@ import { window } from '@kit.ArkUI';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import EmbeddableUIAbility from '@ohos.app.ability.EmbeddableUIAbility';
 
-const TAG: string = 'restoreWindowStage';
+const TAG: string = 'RestoreWindowStage';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class restoreWindowStage extends EmbeddableUIAbility {
+export default class RestoreWindowStage extends EmbeddableUIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTAG', '%{public}s', 'Ability onCreate');
   }

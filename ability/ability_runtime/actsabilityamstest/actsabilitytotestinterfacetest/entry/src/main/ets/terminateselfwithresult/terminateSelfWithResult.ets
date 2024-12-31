@@ -18,10 +18,10 @@ import { window } from '@kit.ArkUI';
 import EmbeddableUIAbility from '@ohos.app.ability.EmbeddableUIAbility';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
-const TAG: string = 'terminateSelfWithResult';
+const TAG: string = 'TerminateSelfWithResult';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class terminateSelfWithResult extends EmbeddableUIAbility {
+export default class TerminateSelfWithResult extends EmbeddableUIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void  {
     hilog.info(0x0000, 'testTAG', '%{public}s', 'Ability onCreate');
     if (want.parameters) {

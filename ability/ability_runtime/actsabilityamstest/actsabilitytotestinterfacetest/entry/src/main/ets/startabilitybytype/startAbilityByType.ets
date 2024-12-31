@@ -18,7 +18,7 @@ import { window } from '@kit.ArkUI';
 import EmbeddableUIAbility from '@ohos.app.ability.EmbeddableUIAbility';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
-const TAG: string = 'startAbilityByType';
+const TAG: string = 'StartAbilityByType';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 

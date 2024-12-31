@@ -19,12 +19,12 @@ import EmbeddableUIAbility from '@ohos.app.ability.EmbeddableUIAbility';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
 
-const TAG: string = 'moveAbilityToBackground';
+const TAG: string = 'MoveAbilityToBackground';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-export default class moveabilitytobackground extends EmbeddableUIAbility {
+export default class MoveAbilityToBackground extends EmbeddableUIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTAG', '%{public}s', 'Ability onCreate');
+    hilog.info(0x0000, 'testTAG', '%{public}s', 'Ability onCreate1');
   }
 
   onDestroy(): void {

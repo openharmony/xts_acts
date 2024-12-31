@@ -20,11 +20,11 @@ import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import EmbeddableUIAbility from '@ohos.app.ability.EmbeddableUIAbility';
 
-const TAG: string = 'connectServiceExtensionAbility';
+const TAG: string = 'ServiceExtensionAbility';
 const DOMAIN_NUMBER: number = 0xFF00;
 let commRemote: rpc.IRemoteObject | null = null;
 
-export default class serviceExtensionAbility extends EmbeddableUIAbility {
+export default class ServiceExtensionAbility extends EmbeddableUIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTAG', '%{public}s', 'Ability onCreate');
 

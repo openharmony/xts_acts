@@ -19,11 +19,11 @@ import EmbeddableUIAbility from '@ohos.app.ability.EmbeddableUIAbility';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 
-const TAG: string = 'ProcessModel';
+const TAG: string = 'ByTypeAbility';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 
-export default class byTypeAbility extends EmbeddableUIAbility {
+export default class ByTypeAbility extends EmbeddableUIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTAG', '%{public}s', 'Ability onCreate');
   }
