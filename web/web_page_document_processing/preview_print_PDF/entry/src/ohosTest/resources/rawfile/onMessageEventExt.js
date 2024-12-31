@@ -15,7 +15,7 @@
 let h5Port;
 window.addEventListener('message', function (event) {
   console.info("htmlSSSSS")
-  if (event.data == 'init_web_messageport') {
+  if (event.data === 'init_web_messageport') {
     if (event.ports[0] != null) {
       h5Port = event.ports[0];
       h5Port.onmessage = function (event) {
@@ -23,10 +23,10 @@ window.addEventListener('message', function (event) {
         let result = event.data;
         console.info("In html got message, typeof: ", typeof (result));
         console.info("In html got message, result: ", (result));
-        if (typeof (result) == "string") {
+        if (typeof (result) === "string") {
           console.log("In html got message, String: ", result);
           document.getElementById("msg").innerHTML = "String:" + result;
-        } else if (typeof (result) == "number") {
+        } else if (typeof (result) === "number") {
           console.log("In html side got message, number: ", result);
           document.getElementById("msg").innerHTML = "Number:" + result;
         } else if (typeof (result) === "boolean") {

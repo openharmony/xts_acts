@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <script type="text/javascript">
 
-         var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+         let db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
          let msg;
 
          db.transaction(function (tx) {
