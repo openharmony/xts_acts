@@ -1,0 +1,8 @@
+{
+  "src": [
+    "testability/pages/webMessageExt",
+    "testability/pages/WebMessagePortIsExtentionTypeTest",
+    "testability/pages/WebViewEnumAndFontLibrary",
+    "testability/pages/WebViewControllerPart3"
+  ]
+}

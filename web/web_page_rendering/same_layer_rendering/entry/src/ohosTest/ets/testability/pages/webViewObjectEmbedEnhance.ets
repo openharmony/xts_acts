@@ -204,7 +204,7 @@ struct webViewObjectEmbedEnhance {
                   this.objectType = 'embed';
                   this.objectValue = 'application/view';
                   await Utils.sleep(1000);
-                  this.controller.loadUrl($rawfile('embed.html'));
+                  this.controller.loadUrl($rawfile('embed1.html'));
                   await Utils.sleep(2000);
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
@@ -219,7 +219,7 @@ struct webViewObjectEmbedEnhance {
                   this.objectType = 'embed';
                   this.objectValue = 'application/view';
                   await Utils.sleep(1000);
-                  this.controller.loadUrl($rawfile('embed.html'));
+                  this.controller.loadUrl($rawfile('embed1.html'));
                   await Utils.sleep(2000);
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
