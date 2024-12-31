@@ -56,6 +56,7 @@ static OH_AVFormat *format = nullptr;
 static int32_t g_trackCount;
 static int32_t g_width = 3840;
 static int32_t g_height = 2160;
+constexpr int64_t START_TIME_NUM = 5011;
 
 
 void DemuxerProcNdkTest::SetUpTestCase() {}
