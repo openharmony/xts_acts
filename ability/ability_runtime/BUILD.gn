@@ -45,6 +45,7 @@ group("ability_runtime") {
       "actsdelegatorfaabilitytest:ActsDelegatorFAAbilityTest",
       "actsfaabilitydisplayorientationtest:ActsFAAbilityDisplayOrientationTest",
       "actsfwkdataaccessortest:dataability",
+      "actsgetapplicationcontexttest:actsgetapplicationcontexttest",
       "actsgetapplicationnewtest:ActsGetApplicationNewTest",
       "actsjsdataabilitytest:ActsJsDataAbilityTest",
       "actslastexitreason:actslastexitreason",
@@ -100,6 +101,7 @@ group("ability_runtime") {
       "want:want",
       "wantagent:wantagent",
       "workercontextcover:workercontextcover",
+      "actscreatedisplaycontexttest:actscreatedisplaycontexttest",
     ]
   }
 }
