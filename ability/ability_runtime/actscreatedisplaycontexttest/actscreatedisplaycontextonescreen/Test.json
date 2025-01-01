@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsCreateDisplayContextTestOneScreen.hap"
+                "ActsCreateDisplayContextOneScreenTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

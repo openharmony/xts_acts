@@ -16,6 +16,11 @@
 {
   "apiType": "stageMode",
   "buildOption": {
+    "sourceOption": {
+      "workers": [
+        './src/ohosTest/ets/workers/Worker.ets'
+      ]
+    }
   },
   "buildOptionSet": [
     {

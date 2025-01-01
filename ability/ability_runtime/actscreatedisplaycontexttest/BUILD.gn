@@ -17,7 +17,7 @@ group("actscreatedisplaycontexttest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actscreatedisplaycontextonescreen:ActsCreateDisplayContextTestOneScreen",
+      "actscreatedisplaycontextonescreen:ActsCreateDisplayContextOneScreenTest",
     ]
   }
 }

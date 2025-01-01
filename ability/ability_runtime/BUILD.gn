@@ -40,12 +40,12 @@ group("ability_runtime") {
       "actscalltest:actscalltest",
       "actschildprocessmanager:actschildprocessmanagertest",
       "actscleantemptest:cleantempfiles",
+      "actscreatedisplaycontexttest:actscreatedisplaycontexttest",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
       "actsdelegatorfaabilitytest:ActsDelegatorFAAbilityTest",
       "actsfaabilitydisplayorientationtest:ActsFAAbilityDisplayOrientationTest",
       "actsfwkdataaccessortest:dataability",
-      "actsgetapplicationcontexttest:actsgetapplicationcontexttest",
       "actsgetapplicationnewtest:ActsGetApplicationNewTest",
       "actsjsdataabilitytest:ActsJsDataAbilityTest",
       "actslastexitreason:actslastexitreason",
@@ -101,7 +101,6 @@ group("ability_runtime") {
       "want:want",
       "wantagent:wantagent",
       "workercontextcover:workercontextcover",
-      "actscreatedisplaycontexttest:actscreatedisplaycontexttest",
     ]
   }
 }
