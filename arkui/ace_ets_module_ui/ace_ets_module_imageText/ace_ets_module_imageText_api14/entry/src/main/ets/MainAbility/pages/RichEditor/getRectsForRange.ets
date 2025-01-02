@@ -29,9 +29,11 @@ struct getRectsForRange {
         .key("getRectsForRange_Key")
         .onClick(() => {
           let layoutManager: LayoutManager = this.controller.getLayoutManager()
-          let boxes = layoutManager.getRectsForRange({start:0,end:4}, 0, 0)
-          if (boxes) {
-            this.str = "getRectsForRange successful"
+          if(layoutManager){
+            let boxes = layoutManager.getRectsForRange({start:0,end:4}, 0, 0)
+            if (boxes) {
+              this.str = "getRectsForRange successful"
+            }
           }
         })
     }
