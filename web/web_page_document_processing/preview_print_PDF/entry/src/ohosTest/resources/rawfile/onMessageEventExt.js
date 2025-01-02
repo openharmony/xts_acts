@@ -60,7 +60,7 @@ window.addEventListener('message', function (event) {
       };
     }
   }
-})
+});
 
 function postStringToApp() {
   if (h5Port) {
@@ -127,7 +127,7 @@ function postArrayBufferToApp() {
 
 function postErrorToApp() {
   try {
-    throw new URIError("URI seq 0222")
+    throw new URIError("URI seq 0222");
   }
   catch (e) {
     console.log("hwd URIError:" + (e instanceof SyntaxError));
@@ -142,35 +142,35 @@ function postErrorToApp() {
 
 function postStringToHtml() {
   let a = document.getElementById("msg").innerText
-  return a
+  return a;
 }
 
 function postNumberToHtml() {
   let a = document.getElementById("msg").innerText
-  return a
+  return a;
 }
 
 function postBooleanToHtml() {
   let a = document.getElementById("msg").innerText
-  return a
+  return a;
 }
 
 function postBooleanFalseToHtml() {
   let a = document.getElementById("msg").innerText
-  return a
+  return a;
 }
 
 function postArrayToHtml() {
   let a = document.getElementById("msg2").innerText
-  return a
+  return a;
 }
 
 function postArrayBufferToHtml() {
   let a = document.getElementById("msg2").innerText
-  return a
+  return a;
 }
 
 function postErrorToHtml() {
   let a = document.getElementById("msg2").innerText
-  return a
+  return a;
 }
