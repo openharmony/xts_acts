@@ -190,5 +190,4 @@ private:
     volatile bool valid_; // CameraManager实例是否存在。
 };
 
-
 #endif // OHCAMERANDK_CAMERA_MANAGER_H
