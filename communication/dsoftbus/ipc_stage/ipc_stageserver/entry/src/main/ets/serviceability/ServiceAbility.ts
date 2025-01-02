@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -208,6 +207,134 @@ class Stub extends rpc.RemoteObject {
             let ret = new MySequenceable(0, "");
             data.readParcelable(ret);
             reply.writeParcelable(ret);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 16:
+          {
+            console.info(logTag + "case 16 start");
+            let tmp1 = data.readByteArray();
+            reply.writeByteArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 17:
+          {
+            console.info(logTag + "case 17 start");
+            let tmp1 = data.readShortArray();
+            reply.writeShortArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 18:
+          {
+            console.info(logTag + "case 18 start");
+            let tmp1 = data.readIntArray();
+            reply.writeIntArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 19:
+          {
+            console.info(logTag + "case 19 start");
+            let tmp1 = data.readDoubleArray();
+            let result = reply.writeDoubleArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 20:
+          {
+            console.info(logTag + "case 20 start");
+            let tmp1 = data.readLongArray();
+            reply.writeLongArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 21:
+          {
+            console.info(logTag + "case 21 start");
+            let tmp1 = data.readFloatArray();
+            reply.writeFloatArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 22:
+          {
+            console.info(logTag + "case 22 start");
+            let tmp1 = data.readDoubleArray();
+            reply.writeDoubleArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 23:
+          {
+            console.info(logTag + "case 23 start");
+            let tmp1 = data.readBooleanArray();
+            reply.writeBooleanArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 24:
+          {
+            console.info(logTag + "case 24 start");
+            let tmp1 = data.readCharArray();
+            reply.writeCharArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 25:
+          {
+            console.info(logTag + "case 25 start");
+            let tmp1 = data.readStringArray();
+            reply.writeStringArray(tmp1);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 26:
+          {
+            console.info(logTag + "case 26 start")
+            data.readException();
+            let tmp = data.readInt();
+            reply.writeNoException();
+            reply.writeInt(tmp);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 27:
+          {
+            console.info(logTag + "case 27 start");
+            let s = [new MySequenceable(0, ""), new MySequenceable(0, ""),
+              new MySequenceable(0, "")];
+            data.readParcelableArray(s);
+            reply.writeParcelableArray(s);
+            console.info(logTag + "onRemoteMessageRequest success");
+            return true;
+          }
+        case 28:
+          {
+            console.info(logTag + "case 28 start");
+            let tmp1 = data.readByteArray();
+            let tmp2 = data.readShortArray();
+            let tmp3 = data.readIntArray();
+            let tmp4 = data.readLongArray();
+            let tmp5 = data.readFloatArray();
+            let tmp6 = data.readDoubleArray();
+            let tmp7 = data.readBooleanArray();
+            let tmp8 = data.readCharArray();
+            let tmp9 = data.readStringArray();
+            let s = [new MySequenceable(0, ""), new MySequenceable(0, ""),
+              new MySequenceable(0, "")];
+            data.readParcelableArray(s);
+            reply.writeByteArray(tmp1);
+            reply.writeShortArray(tmp2);
+            reply.writeIntArray(tmp3);
+            reply.writeLongArray(tmp4);
+            reply.writeFloatArray(tmp5);
+            reply.writeDoubleArray(tmp6);
+            reply.writeBooleanArray(tmp7);
+            reply.writeCharArray(tmp8);
+            reply.writeStringArray(tmp9);
+            reply.writeParcelableArray(s);
             console.info(logTag + "onRemoteMessageRequest success");
             return true;
           }
