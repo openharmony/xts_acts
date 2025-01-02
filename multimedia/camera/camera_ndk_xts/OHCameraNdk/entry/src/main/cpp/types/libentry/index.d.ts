@@ -32,6 +32,7 @@ interface Capture_Setting {
   longitude: number;
   altitude: number;
 }
+
 export const initCamera: (surfaceId: string,index:number) => number;
 export const oHCameraManagerCreateVideoOutput: (videoId: string,index:number) => number;
 export const oHCameraGetCameraManager: (index:number) => number;
@@ -111,3 +112,5 @@ export const oHPhotoOutputEnableMirror: (index:number) => number;
 export const oHPhotoOutputCapture: (index:number) => number;
 export const oHPhotoOutputRelease: (index:number) => number;
 export const oHPhotoOutputCaptureWithCaptureSetting: (setting: Capture_Setting,index:number) => number;
+export const oHPhotoOutputRegisterCaptureReadyCallback: () => number;
+export const oHPhotoOutputUnRegisterCaptureReadyCallback: () => number;
