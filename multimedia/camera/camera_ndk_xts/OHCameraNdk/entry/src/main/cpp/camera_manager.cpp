@@ -1101,3 +1101,4 @@ Camera_ErrorCode NDKCamera::PhotoOutputRelease(int useCaseCode)
     }
     return ret_;
 }
+

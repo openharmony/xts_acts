@@ -32,6 +32,7 @@ interface Capture_Setting {
   longitude: number;
   altitude: number;
 }
+
 export const initCamera: (surfaceId: string,index:number) => number;
 export const oHCameraManagerCreateVideoOutput: (videoId: string,index:number) => number;
 export const oHCameraGetCameraManager: (index:number) => number;
