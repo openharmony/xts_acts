@@ -31,6 +31,7 @@ struct WebInitTest {
   @State interceptUrl: string = ''
   @State consoleMsg: string = ''
   @State consoleCorsError: boolean = false
+  @State flag: boolean = false
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
       eventId: 10,
@@ -39,9 +40,6 @@ struct WebInitTest {
     events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
   }
 
-  onPageHide() {
-    events_emitter.off(10)
-  }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
@@ -49,14 +47,6 @@ struct WebInitTest {
       console.info("valueChangeCallBack:" + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
-        try {
-          this.controller.loadUrl("resource://rawfile/index.html");
-        } catch (error) {
-          console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-        }
-        this.interceptUrl = ''
-        this.consoleMsg = ''
-        this.consoleCorsError = false
       }
     }
   }
@@ -75,6 +65,9 @@ struct WebInitTest {
           .key('WebInitTestButton')
           .onClick(async () => {
             console.info("key==>" + this.str)
+            webView.WebviewController.setRenderProcessMode(webView.RenderProcessMode.SINGLE);
+            this.controller.refresh();
+            await Utils.sleep(2000);
             switch (this.str) {
               case 'emitWebViewGetAndSetRenderProcessMode03': {
                 try {
@@ -119,6 +112,7 @@ struct WebInitTest {
                 break;
               }
               case 'emitWebViewOnRenderProcessResponding': {
+                this.flag = true
                 this.controller.refresh()
                 this.controller.loadUrl($rawfile('common_index.html'))
                 await Utils.sleep(1000)
@@ -131,6 +125,7 @@ struct WebInitTest {
                 break;
               }
               case 'emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT': {
+                this.flag = true
                 this.controller.refresh()
                 this.controller.loadUrl($rawfile('common_index.html'))
                 await Utils.sleep(1000)
@@ -154,19 +149,25 @@ struct WebInitTest {
           .databaseAccess(true)
           .onRenderProcessResponding(() => {
             console.log('onRenderProcessResponding again');
-            Utils.emitEvent(true,1336)
+            if (this.flag){
+              Utils.emitEvent(true,1336)
+              this.flag = false
+            }
           })
           .onRenderProcessNotResponding(async (data) => {
-            console.log('onRenderProcessNotResponding: [jsStack]= ' + data.jsStack +
-            ', [process]=' + data.pid + ', [reason]=' + data.reason);
+            if(this.flag){
+              console.log('onRenderProcessNotResponding: [jsStack]= ' + data.jsStack +
+              ', [process]=' + data.pid + ', [reason]=' + data.reason);
 
-            await Utils.sleep(1000)
-            this.controller.runJavaScript('stopBlockJs()', (error, result) => {
-              console.error(`The stopBlockJs() return error is: ${error}`);
-              console.log(`The stopBlockJs() return value is: ${result}`);
-            })
-            if(RenderProcessNotRespondingReason.NAVIGATION_COMMIT_TIMEOUT.toString() === '1'){
-              Utils.emitEvent(true,1338)
+              await Utils.sleep(1000)
+              this.controller.runJavaScript('stopBlockJs()', (error, result) => {
+                console.error(`The stopBlockJs() return error is: ${error}`);
+                console.log(`The stopBlockJs() return value is: ${result}`);
+              })
+              if(RenderProcessNotRespondingReason.NAVIGATION_COMMIT_TIMEOUT.toString() === '1'){
+                Utils.emitEvent(true,1338)
+              }
+              this.flag = false
             }
           })
       }
