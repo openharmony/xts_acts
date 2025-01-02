@@ -1433,6 +1433,25 @@ static napi_value OHPhotoOutputCapture(napi_env env, napi_callback_info info)
     napi_create_int32(env, code, &result);
     return result;
 }
+
+static napi_value OHPhotoOutputRegisterCaptureReadyCallback(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Camera_ErrorCode code = g_ndkCamera->PhotoOutputRegisterCaptureReadyCallback();
+    
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
+static napi_value OHPhotoOutputUnRegisterCaptureReadyCallback(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Camera_ErrorCode code = g_ndkCamera->PhotoOutputUnRegisterCaptureReadyCallback();
+    
+    napi_create_int32(env, code, &result);
+    return result;
+}
+
 struct Capture_Setting {
     int32_t quality;
     int32_t rotation;
@@ -1660,6 +1679,8 @@ napi_property_descriptor desc3[] = {
     {"oHPhotoOutputEnableMirror", nullptr, OHPhotoOutputEnableMirror, nullptr, nullptr, nullptr,
      napi_default, nullptr},
     {"oHPhotoOutputCapture", nullptr, OHPhotoOutputCapture, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHPhotoOutputRegisterCaptureReadyCallback", nullptr, OHPhotoOutputRegisterCaptureReadyCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHPhotoOutputUnRegisterCaptureReadyCallback", nullptr, OHPhotoOutputUnRegisterCaptureReadyCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"oHPhotoOutputCaptureWithCaptureSetting", nullptr, OHPhotoOutputCaptureWithCaptureSetting, nullptr, nullptr,
      nullptr, napi_default, nullptr},
     {"oHPhotoOutputRelease", nullptr, OHPhotoOutputRelease, nullptr, nullptr, nullptr, napi_default, nullptr}
@@ -1695,5 +1716,3 @@ static napi_module demoModule = {
 };
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
-
-
