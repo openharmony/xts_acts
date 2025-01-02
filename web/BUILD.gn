@@ -46,7 +46,8 @@ group("web") {
     #"application_interworking:ActsApplicationInterworkingTest",
     #"web_content_processing:WebContentProcessing",
     #"web_jump:WebJump",
-    #"web_life_cycle:webLifeCycle",
+    "web_life_cycle:webLifeCycle",
+
     #"web_load:WebLoad",
     #"web_multi_media:WebMultimedia",
     #"web_page_document_processing:webPageDocumentProcessing",
