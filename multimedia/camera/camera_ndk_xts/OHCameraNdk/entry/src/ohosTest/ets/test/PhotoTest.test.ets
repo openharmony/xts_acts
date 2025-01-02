@@ -459,7 +459,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputCaptureWithCaptureSetting0100', 0, async() => {
+    it('testOHPhotoOutputCaptureWithCaptureSetting0100', 0, () => {
       let photoSettings: PhotoSettings = {
         quality: 0,
         rotation: 0,
