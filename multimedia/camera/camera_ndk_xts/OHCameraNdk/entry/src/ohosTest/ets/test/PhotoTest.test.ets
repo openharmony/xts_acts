@@ -178,6 +178,10 @@ async function getPermissions() {
   console.info('getPermission end');
 };
 
+let sleep = (ms: number): Promise<ESObject> => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default function PhotoTest() {
   describe('PhotoTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -268,7 +272,6 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputRegisterCallback0100', 0, () => {
-
       let ret = cameras.oHPhotoOutputRegisterCallback(0);
       console.log(TAG+"testOHPhotoOutputRegisterCallback0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -393,7 +396,6 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputEnableMirror0100', 0, () => {
-      
       let ret = cameras.oHPhotoOutputEnableMirror(0);
       console.log(TAG+"testOHPhotoOutputEnableMirror0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -420,8 +422,8 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputCapture0100', 0, () => {
-
+    it('testOHPhotoOutputCapture0100', 0, async () => {
+      cameras.oHPhotoOutputRegisterCaptureReadyCallback();
       let ret = cameras.oHPhotoOutputCapture(0);
       console.log(TAG+"testOHPhotoOutputCapture0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
@@ -435,7 +437,6 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     it('testOHPhotoOutputCapture0200', 0, () => {
-
       let ret = cameras.oHPhotoOutputCapture(1);
       console.log(TAG+"testOHPhotoOutputCapture0200:"+ret);
       expect(ret).assertEqual(CAMERA_ERROR_7400101);
@@ -462,7 +463,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputCaptureWithCaptureSetting0100', 0, () => {
+    it('testOHPhotoOutputCaptureWithCaptureSetting0100', 0, async() => {
       let photoSettings: PhotoSettings = {
         quality: 0,
         rotation: 0,
@@ -515,6 +516,7 @@ export default function PhotoTest() {
       };
       let ret = cameras.oHPhotoOutputCaptureWithCaptureSetting(photoSettings,2);
       console.log(TAG+"testOHPhotoOutputCaptureWithCaptureSetting0300:"+ret);
+      cameras.oHPhotoOutputUnRegisterCaptureReadyCallback();
       expect(ret).assertEqual(CAMERA_OK);
     })*/
     /**
@@ -526,7 +528,6 @@ export default function PhotoTest() {
      * @tc.level      : Level 3
      */
     /*it('testOHPhotoOutputRelease0100', 0, () => {
-
       let ret = cameras.oHPhotoOutputRelease(0);
       console.log(TAG+"testOHPhotoOutputRelease0100:"+ret);
       expect(ret).assertEqual(CAMERA_OK);
