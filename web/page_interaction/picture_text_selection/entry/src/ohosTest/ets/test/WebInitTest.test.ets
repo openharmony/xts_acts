@@ -20,13 +20,14 @@ export default function webInitTest() {
 
   describe('WebInitTest', () => {
     beforeEach(async (done: Function) => {
+      await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
     })
 
     afterEach(async (done: Function) => {
       console.info("WebInitTest afterEach start");
-      await Utils.sleep(2000);
+      await Utils.sleep(1000);
       console.info("WebInitTest afterEach end");
       done();
     })

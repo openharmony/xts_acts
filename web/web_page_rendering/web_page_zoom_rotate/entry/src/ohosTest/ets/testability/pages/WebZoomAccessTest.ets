@@ -32,6 +32,8 @@ struct WebZoomAccessTest {
   @State newScale: number = 0
   @State oldScale: number = 0
   @State userAgentPC:string = "";
+  @State flag: boolean = false;
+  @State compareScale: number = 0
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -98,9 +100,11 @@ struct WebZoomAccessTest {
             case "testWebZoomAccess004": {
               try {
                 this.zoomAccess = true;
+                this.flag = true;
                 await Utils.sleep(2000)
                 await Utils.fingerZoom('WebZoomAccessTestWebView', true);
                 await Utils.sleep(2000)
+                this.flag = false;
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   await Utils.pinchInComponent('WebZoomAccessTestWebView')
@@ -108,7 +112,7 @@ struct WebZoomAccessTest {
                   await Utils.fingerZoom('WebZoomAccessTestWebView', false);
                 }
                 await Utils.sleep(2000)
-                Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale < this.oldScale, 6506)
+                Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale < this.compareScale, 6506)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -133,6 +137,9 @@ struct WebZoomAccessTest {
           console.log('onScaleChange called newScale :' + event.newScale)
           this.oldScale = event.oldScale
           this.newScale = event.newScale
+          if(this.flag){
+            this.compareScale = event.newScale
+          }
         })
     }
   }
