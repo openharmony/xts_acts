@@ -178,10 +178,6 @@ async function getPermissions() {
   console.info('getPermission end');
 };
 
-let sleep = (ms: number): Promise<ESObject> => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 export default function PhotoTest() {
   describe('PhotoTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -422,7 +418,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputCapture0100', 0, async () => {
+    it('testOHPhotoOutputCapture0100', 0, () => {
       cameras.oHPhotoOutputRegisterCaptureReadyCallback();
       let ret = cameras.oHPhotoOutputCapture(0);
       console.log(TAG+"testOHPhotoOutputCapture0100:"+ret);
