@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +13,23 @@
  * limitations under the License.
  */
 
-import abilityTest from './Ability.test'
-import uiExtContentSessionTest from './UIExtContentSession.test';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
 
-export default function testsuite() {
-  uiExtContentSessionTest();
-  abilityTest();
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
 }
