@@ -40,8 +40,6 @@ interface attendeeObj {
   name: string,
   email: string,
   role?: calendarManager.AttendeeRole,
-  type?: calendarManager.AttendeeType,
-  status?: calendarManager.AttendeeStatus
 }
 
 interface recurrenceRuleObj {
@@ -203,36 +201,6 @@ export default function CalendarManagerTest() {
     it("SUB_Application_CalendarManagerApi_test_0400", 0, () => {
       expect(calendarManager.AttendeeRole.ORGANIZER == 'organizer').assertTrue();
       expect(calendarManager.AttendeeRole.PARTICIPANT == 'participant').assertTrue();
-    });
-
-    /*
-   * @tc.number  SUB_Application_CalendarManagerApi_test_0500
-   * @tc.name    Test Enumeration of AttendeeType types.
-   * @tc.desc    Function test
-   * @tc.size    SmallTest
-   * @tc.type    User
-   * @tc.level   Level 2
-   */
-    it("SUB_Application_CalendarManagerApi_test_0500", 0, () => {
-      expect(calendarManager.AttendeeType.REQUIRED  == 1).assertTrue();
-      expect(calendarManager.AttendeeType.OPTIONAL  == 2).assertTrue();
-      expect(calendarManager.AttendeeType.RESOURCE  == 3).assertTrue();
-    });
-
-    /*
-   * @tc.number  SUB_Application_CalendarManagerApi_test_0600
-   * @tc.name    Test Enumeration of AttendeeStatus types.
-   * @tc.desc    Function test
-   * @tc.size    SmallTest
-   * @tc.type    User
-   * @tc.level   Level 2
-   */
-    it("SUB_Application_CalendarManagerApi_test_0600", 0, () => {
-      expect(calendarManager.AttendeeStatus.UNKNOWN == 0).assertTrue();
-      expect(calendarManager.AttendeeStatus.TENTATIVE == 1).assertTrue();
-      expect(calendarManager.AttendeeStatus.ACCEPTED == 2).assertTrue();
-      expect(calendarManager.AttendeeStatus.DECLINED == 3).assertTrue();
-      expect(calendarManager.AttendeeStatus.UNRESPONSIVE == 4).assertTrue();
     });
 
     /*
@@ -873,22 +841,16 @@ export default function CalendarManagerTest() {
             name: '小王',
             email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.ORGANIZER,
-            type: calendarManager.AttendeeType.REQUIRED,
-            status: calendarManager.AttendeeStatus.TENTATIVE
           },
           {
             name: '小李',
             email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.PARTICIPANT,
-            type: calendarManager.AttendeeType.OPTIONAL,
-            status: calendarManager.AttendeeStatus.ACCEPTED
           },
           {
             name: '老李',
             email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.PARTICIPANT,
-            type: calendarManager.AttendeeType.REQUIRED,
-            status: calendarManager.AttendeeStatus.DECLINED
           }
         ],
         timeZone: '',
