@@ -54,8 +54,8 @@ export default function OnDoubleClickTest() {
       console.info('OnDoubleClickTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let image = await driver.findComponent(ON.type('Image'));
-      await image.doubleClick();
+      let RichEditor = await driver.findComponent(ON.type('RichEditor'));
+      await RichEditor.doubleClick();
       let Obj = CommonFunc.getComponentRectOnScreen('onDoubleClick_id');
       await driver.mouseDoubleClick({x:Math.round((Obj.right + Obj.left) / 2), y:Math.round((Obj.top + Obj.bottom) / 2)}, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(2000);
