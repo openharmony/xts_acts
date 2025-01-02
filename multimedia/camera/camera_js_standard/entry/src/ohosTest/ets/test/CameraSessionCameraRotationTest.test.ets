@@ -404,18 +404,6 @@ export default function CameraSessionCameraRotationTest() {
 
     mCameraSession.commitConfig();
 
-    /*
-    await mCameraSession.start(async (err) => {
-        console.info(TAG + "Entering mCameraSession start callback");
-        if (!err) {
-            console.info(TAG + "Entering mCameraSession start PASSED ");
-        } else {
-            console.info(TAG + "Entering mCameraSession start FAILED : " + err.message);
-        }
-    })
-
-    await sleep(100);
-    */
     console.info(TAG + "Exit startCameraSession");
 
     return true;
@@ -423,20 +411,6 @@ export default function CameraSessionCameraRotationTest() {
 
   let stopCameraSession = async () => {
     console.info(TAG + "Enter stopCameraSession");
-    /*
-    mCameraSession.beginConfig();
-    
-    mCameraSession.stop(async (err) => {
-        console.info(TAG + "Entering mCameraSession stop callback");
-        if (!err) {
-            console.info(TAG + "Entering mCameraSession stop PASSED ");
-        } else {
-            console.info(TAG + "Entering mCameraSession stop FAILED : " + err.message);
-        }
-    })
-
-    await sleep(100);
-    */
 
     if (!isEmpty(mCameraInput)) {
       console.info(TAG + "Start to removeInput input");
