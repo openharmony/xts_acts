@@ -290,7 +290,7 @@ Camera_ErrorCode NDKCamera::PreviewOutputUnRegisterCallback(int useCaseCode)
 }
 
 void PhotoOutputCaptureReadyCallback(Camera_PhotoOutput* photoOutput)
-{   
+{
     while (g_isCaptureReady) {};
     g_isCaptureReady = true;
     LOG("RegisterPhotoOutputCaptureReadyCallback");
@@ -1082,7 +1082,6 @@ Camera_ErrorCode NDKCamera::IsMirrorSupported(int useCaseCode)
 }
 Camera_ErrorCode NDKCamera::EnableMirror(int useCaseCode)
 {
-    
     if (useCaseCode == PARAMETER_OK) {
         ret_ = OH_PhotoOutput_EnableMirror(photoOutput_, isEnableMirror_);
     } else if (useCaseCode == PARAMETER2_ERROR) {
@@ -1104,7 +1103,7 @@ Camera_ErrorCode NDKCamera::PhotoOutputCapture(int useCaseCode)
 }
 Camera_ErrorCode NDKCamera::TakePictureWithPhotoSettings(Camera_PhotoCaptureSetting photoSetting, int useCaseCode)
 {
-    while(!g_isCaptureReady) {}
+    while (!g_isCaptureReady) {}
     if (useCaseCode == PARAMETER_OK) {
         ret_ = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, photoSetting);
         g_isCaptureReady = false;
