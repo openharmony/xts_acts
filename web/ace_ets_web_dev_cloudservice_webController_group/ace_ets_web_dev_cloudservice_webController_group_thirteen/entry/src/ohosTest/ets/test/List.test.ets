@@ -15,8 +15,20 @@
 
 import SetDownloadDelegate from './SetDownloadDelegate.test';
 import SetDownloadDelegateSecond from './SetDownloadDelegateSecond.test';
+import EnableNativeEmbedMode from "./EnableNativeEmbedMode.test";
+import NativeVideoPlayerBFCache from "./NativeVideoBFCache.test";
+import NativeVideoPlayer from "./NativeVideoPlayer.test";
+import OnPermissionRequest from "./OnPermissionRequst.test";
+import RegisterNativeEmbedRule from "./RegisterNativeEmbedRule.test";
+import WebOnPermissionRequest from "./WebOnPermissionRequest.test";
 
 export default function testsuite() {
   SetDownloadDelegate();
   SetDownloadDelegateSecond();
+  OnPermissionRequest();
+  NativeVideoPlayer();
+  EnableNativeEmbedMode();
+  RegisterNativeEmbedRule();
+  NativeVideoPlayerBFCache();
+  WebOnPermissionRequest();
 }
