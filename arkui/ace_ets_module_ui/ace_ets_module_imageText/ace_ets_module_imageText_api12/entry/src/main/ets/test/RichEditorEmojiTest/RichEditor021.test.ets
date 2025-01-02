@@ -54,10 +54,12 @@ export default function RichEditor021() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0011
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0011
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0011 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0011
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Test RichEditor Emojis by manually selecting a mixture of graphic, text, and emojis through/Setselection, and pressing the delete/del key
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0011', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0011 START');

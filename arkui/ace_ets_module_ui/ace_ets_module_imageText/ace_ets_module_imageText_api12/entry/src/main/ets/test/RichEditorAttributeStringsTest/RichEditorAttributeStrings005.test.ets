@@ -55,10 +55,12 @@ export default function RichEditorAttributeStrings005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031
+     * @tc.name  : Test the RichEditor Attribute string
+     * @tc.desc  : Call the fromStyledString, set the text type attribute -type attribute character string object to test the RichEditor property string display results
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0031 START');
@@ -79,10 +81,12 @@ export default function RichEditorAttributeStrings005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032
+     * @tc.name  : Test the RichEditor Attribute string
+     * @tc.desc  : Call the fromStyledString, set the input parameter as the picture type attribute string object to test the RichEditor property string display result
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_COPY_PASTE_ATTRIBUTE_STRINGS_0032 START');
@@ -98,10 +102,12 @@ export default function RichEditorAttributeStrings005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033
+     * @tc.name  : Test the RichEditor Attribute string
+     * @tc.desc  : Call the fromStyledString, set the reference to the CustomSpan test RichEditor property string display results
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0033 START');
@@ -117,10 +123,12 @@ export default function RichEditorAttributeStrings005() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034
+     * @tc.name  : Test the RichEditor Attribute string
+     * @tc.desc  : Call the fromStyledString, set the input parameters as illegal value test RichEditor property string display results
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_COPY_PASTE_ATTRIBUTE_STRINGS_0034 START');

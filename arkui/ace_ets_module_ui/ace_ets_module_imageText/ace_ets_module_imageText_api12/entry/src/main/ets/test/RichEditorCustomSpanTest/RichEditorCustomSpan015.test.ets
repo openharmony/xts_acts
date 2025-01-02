@@ -55,10 +55,12 @@ export default function RichEditorCustomSpan015() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0024
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0024
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0024 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0024
+     * @tc.name  : Test the RichEditor CustomSpan
+     * @tc.desc  : Test RichEditor's Custom Span by inserting a property string with Custom Span to the specified location using insertStyledString()
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0024', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0024 START');
@@ -86,10 +88,12 @@ export default function RichEditorCustomSpan015() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0025
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0025
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0025 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0025
+     * @tc.name  : Test the RichEditor CustomSpan
+     * @tc.desc  : Test RichEditor's Custom Span by adding a Custom Span to the end of appendStyles String()
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0025', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0025 START');

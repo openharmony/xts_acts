@@ -54,10 +54,12 @@ export default function RichEditorBreak001() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0004
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0004
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0004 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0004
+     * @tc.name  : Test the RichEditor WordBreak
+     * @tc.desc  : Update paragraph style without setting wordBreak property, obtain wordBreak property value to test RichEditor WordBreak
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0004', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0004 START');

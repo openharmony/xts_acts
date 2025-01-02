@@ -55,10 +55,12 @@ export default function RichEditorCustomSpan013() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0020
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0020
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0020 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0020
+     * @tc.name  : Test the RichEditor CustomSpan
+     * @tc.desc  : Test RichEditor Custom Span by clearing all styles of attribute string objects using clearStyles()
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0020', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_CUSTOMSPAN_0020 START');

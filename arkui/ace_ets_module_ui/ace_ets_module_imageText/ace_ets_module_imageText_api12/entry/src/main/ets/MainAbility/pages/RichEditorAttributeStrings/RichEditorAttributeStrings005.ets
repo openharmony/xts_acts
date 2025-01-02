@@ -68,7 +68,7 @@ struct RichEditorAttributeStrings005 {
         if (this.imagePixelMap !== undefined) {
           let imageStyledString = new MutableStyledString(new ImageAttachment({
             value: this.imagePixelMap,
-            size: { width: 20, height: 20 },
+            size: { width: '30px', height: '30px' },
             layoutStyle: { borderRadius: LengthMetrics.vp(10) },
             verticalAlign: ImageSpanAlignment.TOP,
             objectFit: ImageFit.Contain

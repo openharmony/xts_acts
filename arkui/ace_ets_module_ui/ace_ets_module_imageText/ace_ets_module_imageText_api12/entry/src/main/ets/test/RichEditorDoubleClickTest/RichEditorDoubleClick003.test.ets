@@ -57,18 +57,20 @@ export default function RichEditorDoubleClick003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_0029
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_0029
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_0029 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_0029
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Test RichEditor doubleClick event by double clicking the mouse after setting affine transformation
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 4
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_0029', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_0029 START');
       let driver = Driver.create();
       let rich = await driver.findComponent(ON.id('RichEditorDoubleClick003'));
-      let getBounds = await rich.getBounds();
+      let pointCenter = await rich.getBoundsCenter();
       await CommonFunc.sleep(500);
-      await driver.click(getBounds.left + 60, getBounds.top + 20);
+      await driver.click(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(500);
       let addImage = await driver.findComponent(ON.id('addImage'));
       await addImage.click();
@@ -76,9 +78,10 @@ export default function RichEditorDoubleClick003() {
       let setCenter = await driver.findComponent(ON.id('setCenter'));
       await setCenter.click();
       await CommonFunc.sleep(500);
-      await driver.click(getBounds.left + 60, getBounds.top + 20);
+
+      await driver.click(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(100);
-      await driver.click(getBounds.left + 60, getBounds.top + 20);
+      await driver.click(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(100);
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();

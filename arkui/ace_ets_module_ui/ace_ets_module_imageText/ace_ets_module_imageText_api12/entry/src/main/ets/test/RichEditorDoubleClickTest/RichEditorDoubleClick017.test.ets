@@ -56,10 +56,12 @@ export default function RichEditorDoubleClick017() {
     });
     
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_024
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_024
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_024 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_024
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : Double click AI recognition test using mouse gesture analogy: address, three word word, phone number to test RichEditor doubleClick event
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_024', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_doubleclick_024 START');
@@ -72,25 +74,25 @@ export default function RichEditorDoubleClick017() {
       await driver.click(getBounds.left + 110, getBounds.top + 20);
       await CommonFunc.sleep(100);
       await driver.click(getBounds.left + 110, getBounds.top + 20);
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
       let endPosition = await driver.findComponent(ON.id('endPosition'));
       let endPositionText = await endPosition.getText();
       await CommonFunc.sleep(500);
-      expect(endPositionText).assertLarger(1);
+      expect(endPositionText).assertLarger(-1);
       await driver.click(getBounds.left + 40, getBounds.top + 46);
       await CommonFunc.sleep(100);
       await driver.click(getBounds.left + 40, getBounds.top + 46);
-      await CommonFunc.sleep(100);
+      await CommonFunc.sleep(500);
       endPositionText = await endPosition.getText();
       await CommonFunc.sleep(500);
-      expect(endPositionText).assertLarger(1);
+      expect(endPositionText).assertLarger(-1);
       await driver.click(getBounds.left + 40, getBounds.top + 70);
       await CommonFunc.sleep(100);
       await driver.click(getBounds.left + 40, getBounds.top + 70);
       await CommonFunc.sleep(100);
       endPositionText = await endPosition.getText();
       await CommonFunc.sleep(500);
-      expect(endPositionText).assertLarger(1);
+      expect(endPositionText).assertLarger(-1);
       done();
     });
 

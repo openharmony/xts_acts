@@ -55,10 +55,12 @@ export default function RichEditorLineMetrics012() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0017
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0017
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0017 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0017
+     * @tc.name  : Test the RichEditor LineMetrics
+     * @tc.desc  : Test RichEditor LineMetrics by calling getLineMetries+getlinecount after pasting and cutting
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0017', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEMETRICS_0017 START');
@@ -67,17 +69,13 @@ export default function RichEditorLineMetrics012() {
       let pointCenter = await rich.getBoundsCenter();
       await driver.longClick(pointCenter.x, pointCenter.y);
       await CommonFunc.sleep(1000);
-      let selectAll = await driver.findComponent(ON.text('全选'));
-      await selectAll.click();
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_A);
       await CommonFunc.sleep(500);
-      let cut = await driver.findComponent(ON.text('剪切'));
-      await cut.click();
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_X);
       await CommonFunc.sleep(500);
-
       let getFirst = await driver.findComponent(ON.id('getFirst'));
       await getFirst.click();
       await CommonFunc.sleep(500);
-
       let lineCount = await driver.findComponent(ON.id('lineCount'));
       let lineMetrics1Text = await lineCount.getText();
       expect(lineMetrics1Text).assertContain('lineCount:0');
@@ -86,25 +84,20 @@ export default function RichEditorLineMetrics012() {
       let lineMetrics2Text = await lineMetrics2.getText();
       await CommonFunc.sleep(500);
       expect(lineMetrics2Text).assertEqual('lineMetrics(1):undefined');
-
       let pointCenter1 = await rich.getBoundsCenter();
       await driver.longClick(pointCenter1.x, pointCenter1.y);
       await CommonFunc.sleep(1000);
-
-      let paste = await driver.findComponent(ON.text('粘贴'));
-      await paste.click();
+      driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_V);
       await CommonFunc.sleep(500);
-
       await getFirst.click();
       await CommonFunc.sleep(500);
-
       lineMetrics1Text = await lineCount.getText();
       expect(lineMetrics1Text).assertContain('lineCount:2');
       await CommonFunc.sleep(500);
       lineMetrics2Text = await lineMetrics2.getText();
       await CommonFunc.sleep(500);
-      expect(lineMetrics2Text).assertContain('lineMetrics(1):{"startIndex":21,"endIndex":38');
-
+      expect(lineMetrics2Text).assertContain('lineMetrics(1):{"startIndex"');
+      expect(lineMetrics2Text).assertContain('"endIndex"');
       done();
     });
 

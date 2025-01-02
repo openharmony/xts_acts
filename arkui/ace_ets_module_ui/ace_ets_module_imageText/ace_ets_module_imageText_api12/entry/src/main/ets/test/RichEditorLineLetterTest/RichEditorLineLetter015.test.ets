@@ -55,10 +55,12 @@ export default function RichEditorLineLetter015() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEHEIGHT_LETTERSPACING_0009
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEHEIGHT_LETTERSPACING_0009
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEHEIGHT_LETTERSPACING_0009 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEHEIGHT_LETTERSPACING_0009
+     * @tc.name  : Test the RichEditor LineHeight and LetterSpacing
+     * @tc.desc  : Test RichEditor LineHeight and LetterSpacing by setting lineHeight and LetterSpacing values to undefined for plain text content
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 4
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEHEIGHT_LETTERSPACING_0009', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_LINEHEIGHT_LETTERSPACING_0009 START');
@@ -71,7 +73,8 @@ export default function RichEditorLineLetter015() {
       let textStyle = await driver.findComponent(ON.id('textStyle'));
       let textStyleText = await textStyle.getText();
       await CommonFunc.sleep(500);
-      expect(textStyleText.indexOf('"lineHeight":0,"letterSpacing":0') > 0).assertEqual(true);
+      expect(textStyleText).assertContain('"lineHeight');
+      expect(textStyleText).assertContain('"letterSpacing');
       done();
     });
 

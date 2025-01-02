@@ -54,10 +54,12 @@ export default function RichEditorOnWillChange003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0003
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0003
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0003 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0003
+     * @tc.name  : Test the RichEditor onWillChange callback
+     * @tc.desc  : The return value of onWillchange is false. Click on Add Text Span to add characters to test RichEditor OnSelectionChange
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0003', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_ONWILLCHANGE_0003 START');

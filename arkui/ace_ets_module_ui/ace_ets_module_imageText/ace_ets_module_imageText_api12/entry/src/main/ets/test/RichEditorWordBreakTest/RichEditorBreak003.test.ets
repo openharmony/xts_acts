@@ -54,10 +54,12 @@ export default function RichEditorBreak003() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0001
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0001
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0001 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0001
+     * @tc.name  : Test the RichEditor WordBreak
+     * @tc.desc  : Add textSpan without setting wordBreak property to test RichEditor WordBreak
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0001', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_WORDBREAK_0001 START');

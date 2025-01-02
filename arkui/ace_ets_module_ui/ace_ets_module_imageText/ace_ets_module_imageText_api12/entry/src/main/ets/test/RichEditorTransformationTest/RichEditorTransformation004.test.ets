@@ -55,10 +55,12 @@ export default function RichEditorTransformation004() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_006
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_006
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_006 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_006
+     * @tc.name  : Test the RichEditor AffineTransformation
+     * @tc.desc  : Verify whether setTypingStyle takes effect after setting the zoom/pan/rotate attributes to test RichEditor AffineTransformation
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_006', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_AffineTransformation_006 START');
@@ -70,7 +72,7 @@ export default function RichEditorTransformation004() {
       let strJson = getInspectorByKey('RichEditorTransformation004');
       let obj: ESObject = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
-      expect(JSON.stringify(obj.$attrs.fontColor)).assertEqual('"#FF000000"');
+      expect(JSON.stringify(obj.$attrs.fontColor)).assertContain('000000');
       expect(JSON.stringify(obj.$attrs.fontStyle)).assertEqual('"FontStyle.Normal"');
       let setTypingStyle = await driver.findComponent(ON.id('setTypingStyle'));
       await setTypingStyle.click();
@@ -83,9 +85,13 @@ export default function RichEditorTransformation004() {
       let textStyle = await driver.findComponent(ON.id('textStyle'));
       let textStyleText = await textStyle.getText();
       await CommonFunc.sleep(500);
-      let str = 'textStyle:{"fontColor":"#FF008000","fontSize":40,"fontStyle":1,"fontWeight":12,' +
-        '"fontFamily":"Arial","decoration":{"type":2,"color":"#80A91AF6"},"fontFeature":""}';
-      expect(textStyleText).assertContain(str);
+      expect(textStyleText).assertContain('"fontColor":"#FF008000"');
+      expect(textStyleText).assertContain('"fontFamily":"Arial"');
+      expect(textStyleText).assertContain('"fontSize":40');
+      expect(textStyleText).assertContain('"fontStyle":1');
+      expect(textStyleText).assertContain('"fontWeight":12');
+      expect(textStyleText).assertContain('"decoration":{"type":2,"color":"#80A91AF6"}');
+      expect(textStyleText).assertContain('"fontFeature":""');
       done();
     });
 

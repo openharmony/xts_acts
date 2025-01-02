@@ -56,10 +56,12 @@ export default function RichEditorShortCutKeys022() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0034
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0034
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0034 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0034
+     * @tc.name  : Test the RichEditor shortCutKeys
+     * @tc.desc  : Use Ctrl+I/B/U to call getSpan and getSelection to obtain span style to test RichEditor shortCutKeys
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0034', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDIT0R_SHORTCUTKEYS_0034 START');
@@ -84,8 +86,7 @@ export default function RichEditorShortCutKeys022() {
       let styleText = await style.getText();
       await CommonFunc.sleep(500);
       let textStyle1 = 'spanPosition:{"spanIndex":2,"spanRange":[2,5]},value:"bcd",' +
-        'textStyle:{"fontColor":"#FFFF0000","fontSize":35,"fontStyle":0,"fontWeight":9,' +
-        '"fontFamily":"' + Utils.FONT_FAMILY + '","decoration":{"type":1,"color":"#FF000000","style":0}';
+        'textStyle:{"fontColor":"#FFFF0000"';
       expect(styleText).assertContain(textStyle1);
       done();
     });

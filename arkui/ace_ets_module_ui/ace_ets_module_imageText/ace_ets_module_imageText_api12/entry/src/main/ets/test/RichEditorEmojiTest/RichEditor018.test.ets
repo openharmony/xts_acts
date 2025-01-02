@@ -54,10 +54,12 @@ export default function RichEditor018() {
     });
 
     /**
-     * @tc.number SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0005
-     * @tc.name SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0005
-     * @tc.desc SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0005 test
-     * @tc.level Level 2
+     * @tc.number: SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0005
+     * @tc.name  : Test the RichEditor doubleClick event
+     * @tc.desc  : The delete key can remove the line break and the emoji in front of the cursor to test the RichEditor emoji
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
      */
     it('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0005', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_TEXT_RICHEDITOR_EMOJI_0005 START');
