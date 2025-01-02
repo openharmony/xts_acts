@@ -191,3 +191,5 @@ private:
 
 
 #endif // OHCAMERANDK_CAMERA_MANAGER_H
+
+
