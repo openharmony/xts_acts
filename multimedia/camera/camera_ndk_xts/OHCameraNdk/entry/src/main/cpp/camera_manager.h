@@ -22,7 +22,7 @@
 #include "hilog/log.h"
 
 #define CAMERA_LOG_TAG "CAMERA_TAGLOG"
-#define CAMERA_LOG_DOMAIN 0x00000
+#define CAMERA_LOG_DOMAIN 0x3200
 #define LOG(fmt, ...) (void)OH_LOG_Print(LOG_APP, LOG_DEBUG, CAMERA_LOG_DOMAIN, CAMERA_LOG_TAG, fmt, ##__VA_ARGS__)
 
 typedef enum CameraCallbackCode {
@@ -150,6 +150,7 @@ public:
     Camera_ErrorCode CaptureSessionRegisterCallback(int useCaseCode); // 注册捕获会话事件回调
     Camera_ErrorCode VideoOutputRegisterCallback(int useCaseCode);    // 注册录像输出更改事件回调
     Camera_ErrorCode PhotoOutputRegisterCallback(int useCaseCode);    // 注册拍照输出更改事件回调
+    Camera_ErrorCode PhotoOutputRegisterCaptureReadyCallback(); //注册拍照就绪事件回调
     // UnRegisterCallback。
     Camera_ErrorCode CameraManagerUnRegisterCallback(int useCaseCode);  // 注销预览输出更改事件回调
     Camera_ErrorCode CaptureSessionUnRegisterCallback(int useCaseCode); // 注销捕获会话事件回调
@@ -157,6 +158,7 @@ public:
     Camera_ErrorCode PhotoOutputUnRegisterCallback(int useCaseCode);    // 注销拍照输出更改事件回调
     Camera_ErrorCode PreviewOutputUnRegisterCallback(int useCaseCode);  //
     Camera_ErrorCode VideoOutputUnRegisterCallback(int useCaseCode);    // 注销录像输出更改事件回调
+    Camera_ErrorCode PhotoOutputUnRegisterCaptureReadyCallback();  //注销拍照就绪事件回调
     // Get callback
     CameraManager_Callbacks *GetCameraManagerListener(void);   // 相机状态监听
     PreviewOutput_Callbacks *GetPreviewOutputListener(void);   // 预览输出更改事件监听
@@ -185,11 +187,8 @@ private:
     char *previewSurfaceId_; // 用于创建Camera_PreviewOutput。
     Camera_ErrorCode ret_;   // 错误码
     float step_;             // 每个级别之间的曝光补偿阶梯
-
     volatile bool valid_; // CameraManager实例是否存在。
 };
 
 
 #endif // OHCAMERANDK_CAMERA_MANAGER_H
-
-
