@@ -966,7 +966,7 @@ export default function getTest () {
         let asset = await getFileAsset(testNum, fetchOps);
         let date = new Date();
         let year = date.getFullYear();
-        let month = date.getMonth() + 1;
+        let month: string = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1).toString() : ('0' + (date.getMonth() + 1));
         let day: string = date.getDate() > 9 ? date.getDate().toString() : ('0' + date.getDate());
         let value = asset?.get(key);
         let detailTimeStr = year + ":" + month + ":" + day;
@@ -999,7 +999,7 @@ export default function getTest () {
         let asset = await getFileAsset(testNum, fetchOps);
         let date = new Date();
         let year = date.getFullYear();
-        let month = date.getMonth() + 1;
+        let month: string = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1).toString() : ('0' + (date.getMonth() + 1));
         let day: string = date.getDate() > 9 ? date.getDate().toString() : ('0' + date.getDate());
         let value = asset?.get(key);
         let detailTimeStr = year + ":" + month + ":" + day;
