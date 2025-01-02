@@ -112,3 +112,5 @@ export const oHPhotoOutputEnableMirror: (index:number) => number;
 export const oHPhotoOutputCapture: (index:number) => number;
 export const oHPhotoOutputRelease: (index:number) => number;
 export const oHPhotoOutputCaptureWithCaptureSetting: (setting: Capture_Setting,index:number) => number;
+export const oHPhotoOutputRegisterCaptureReadyCallback: () => number;
+export const oHPhotoOutputUnRegisterCaptureReadyCallback: () => number;
