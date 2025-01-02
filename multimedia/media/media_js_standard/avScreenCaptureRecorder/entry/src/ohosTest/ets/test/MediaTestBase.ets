@@ -102,7 +102,7 @@ export default class MediaTestBase {
       done();
     }
 
-    console.info('case EVENT::::!!'+steps[0]);
+    console.info('case EVENT:::EVENT::::!!' + steps[0]);
     switch (steps[0]) {
       case this.SETONCALLBACK_EVENT:
         steps.shift();
@@ -110,7 +110,7 @@ export default class MediaTestBase {
           await this.setAVScreenCaptueCallback(avScreenCaptureRecorder, done)
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         } catch (error) {
-          console.info('setAVScreenCaptueCallback failed and catch error is ' + error.message);
+          console.error('setAVScreenCaptueCallback failed and catch error is ' + error.message);
         }
         break;
       case this.CREATE_EVENT:
@@ -136,8 +136,15 @@ export default class MediaTestBase {
           console.info('avScreenCaptureRecorder init success');
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
-          console.info('avScreenCaptureRecorder init failed, error: ' + err.message);
-          expect().assertFail()
+          console.error('avScreenCaptureRecorder init failed, error: ' + err.message);
+          if (avConfig.fd == -1) {
+            let mySteps = new Array(
+              this.END_EVENT);
+            this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, mySteps, done);
+          } else {
+            console.error('avScreenCaptureRecorder init failed, error: ' + err.message);
+            expect().assertFail()
+          }
 
         });
 
@@ -147,7 +154,7 @@ export default class MediaTestBase {
         await avScreenCaptureRecorder?.startRecording().then(() => {
           console.info('avScreenCaptureRecorder start success');
         }).catch((err: BusinessError) => {
-          console.info('avScreenCaptureRecorder start failed, error: ' + err.message);
+          console.error('avScreenCaptureRecorder start failed, error: ' + err.message);
           expect().assertFail()
         })
 
@@ -164,8 +171,8 @@ export default class MediaTestBase {
           console.info('avScreenCaptureRecorder skipPrivacyMode success');
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
-          console.info('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
-          // expect().assertFail()
+          console.error('avScreenCaptureRecorder skipPrivacyMode failed, error: ' + err.message);
+          expect().assertFail()
         })
 
         break;
@@ -175,7 +182,7 @@ export default class MediaTestBase {
           console.info('avScreenCaptureRecorder stop success');
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
-          console.info('avScreenCaptureRecorder stop failed, error: ' + err.message);
+          console.error('avScreenCaptureRecorder stop failed, error: ' + err.message);
           expect().assertFail()
         })
 
@@ -186,7 +193,7 @@ export default class MediaTestBase {
           console.info('avScreenCaptureRecorder release success');
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
-          console.info('avScreenCaptureRecorder release failed, error: ' + err.message);
+          console.error('avScreenCaptureRecorder release failed, error: ' + err.message);
           expect().assertFail();
         })
 
@@ -199,7 +206,7 @@ export default class MediaTestBase {
           console.info('avScreenCaptureRecorder setMicEnabled success');
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
-          console.info('avScreenCaptureRecorder setMicEnabled failed, error: ' + err.message);
+          console.error('avScreenCaptureRecorder setMicEnabled failed, error: ' + err.message);
           expect().assertFail()
         })
         break;
@@ -320,7 +327,7 @@ export default class MediaTestBase {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
           console.info(`case getTrackDescription is ${JSON.stringify(arrList[i])}`);
-          if(arrList[i]['codec_mime'].toString()=="audio/mp4a-latm"){
+          if (arrList[i]['codec_mime'].toString() == "audio/mp4a-latm") {
             expect(arrList[i]['bitrate']).assertLess(audioSampleRate / 3)
           }
         }
@@ -371,6 +378,7 @@ export default class MediaTestBase {
       console.error(`Failed to request permissions from user. Code is ${err.code}, message is ${err.message}`);
     })
   }
+
   // wait asynchronously
   async msleepAsync(time: number) {
     return new Promise<string>((resolve, reject) => {
@@ -412,7 +420,8 @@ export default class MediaTestBase {
     }
   }
 
-   audioRen: audio.AudioRenderer | ESObject;
+  audioRen: audio.AudioRenderer | ESObject;
+
   async playPcmPromise() {
     console.info(`${this.TAG}: Promise : Audio playPcmPromise Function`);
     let audioStreamInfo: audio.AudioStreamInfo = {
@@ -431,7 +440,7 @@ export default class MediaTestBase {
       streamInfo: audioStreamInfo,
       rendererInfo: audioRendererInfo
     };
-    if(this.audioRen){
+    if (this.audioRen) {
       return;
     }
 
@@ -471,7 +480,8 @@ export default class MediaTestBase {
     console.info(`${this.TAG}: AudioRenderer : STATE : ${this.audioRen.state}`);
 
   }
-  async playPcmPromiseStart(){
+
+  async playPcmPromiseStart() {
 
     await this.audioRen.start().then(() => {
       console.info(`${this.TAG}: renderInstant started :SUCCESS `);
@@ -479,7 +489,8 @@ export default class MediaTestBase {
       console.info(`${this.TAG}: renderInstant start :ERROR : ${err.message}`);
     });
   }
-  async playPcmPromiseStop(){
+
+  async playPcmPromiseStop() {
 
     await this.audioRen.stop().then(() => {
       console.info(`${this.TAG}: renderInstant stop :SUCCESS `);

@@ -16,6 +16,7 @@
 import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaTestBase = new MediaTestBase()
 export default function AVScreenCaptureRecorderMicro() {
@@ -38,6 +39,15 @@ export default function AVScreenCaptureRecorderMicro() {
 
     afterEach(async () => {
       console.info('afterEach case');
+      if (mediaTestBase.avScreenCaptureRecorder != null) {
+        await mediaTestBase.avScreenCaptureRecorder?.release().then(() => {
+          console.info('avScreenCaptureRecorder release success');
+          console.info(mediaTestBase.TAG + 'this testCase execution completed')
+        }).catch((err: BusinessError) => {
+          console.info('avScreenCaptureRecorder release failed, error: ' + err.message);
+        })
+      }
+      await mediaTestBase.msleepAsync(1000);
       mediaTestBase.playPcmPromiseStop();
     })
 
@@ -91,7 +101,7 @@ export default function AVScreenCaptureRecorderMicro() {
         preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4,
       }
 
-      mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 6000, mySteps, done)
+      mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 3000, mySteps, done)
 
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1100 end')
     })
@@ -126,7 +136,6 @@ export default function AVScreenCaptureRecorderMicro() {
 
       mediaTestBase.outputName = mediaTestBase.resourceName();
       mediaTestBase.outputFdObject = mediaTestBase.getFd(mediaTestBase.outputName);
-      mediaTestBase.playPcmPromise()
 
       let avConfig: media.AVScreenCaptureRecordConfig = {
         fd: mediaTestBase.outputFdObject.fd,
