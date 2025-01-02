@@ -1679,8 +1679,10 @@ napi_property_descriptor desc3[] = {
     {"oHPhotoOutputEnableMirror", nullptr, OHPhotoOutputEnableMirror, nullptr, nullptr, nullptr,
      napi_default, nullptr},
     {"oHPhotoOutputCapture", nullptr, OHPhotoOutputCapture, nullptr, nullptr, nullptr, napi_default, nullptr},
-    {"oHPhotoOutputRegisterCaptureReadyCallback", nullptr, OHPhotoOutputRegisterCaptureReadyCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
-    {"oHPhotoOutputUnRegisterCaptureReadyCallback", nullptr, OHPhotoOutputUnRegisterCaptureReadyCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHPhotoOutputRegisterCaptureReadyCallback", nullptr, OHPhotoOutputRegisterCaptureReadyCallback, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
+    {"oHPhotoOutputUnRegisterCaptureReadyCallback", nullptr, OHPhotoOutputUnRegisterCaptureReadyCallback, nullptr,
+     nullptr, nullptr, napi_default, nullptr},
     {"oHPhotoOutputCaptureWithCaptureSetting", nullptr, OHPhotoOutputCaptureWithCaptureSetting, nullptr, nullptr,
      nullptr, napi_default, nullptr},
     {"oHPhotoOutputRelease", nullptr, OHPhotoOutputRelease, nullptr, nullptr, nullptr, napi_default, nullptr}
