@@ -357,6 +357,7 @@ export default function CameraSessionCameraRotationTest() {
 
   let startCameraSession = async (idx: number, mode: cameraObj.SceneMode) => {
     console.info(TAG + "Enter startCameraSession");
+
     await createInput(idx);
     await createOutput(idx, mode);
 
@@ -402,7 +403,6 @@ export default function CameraSessionCameraRotationTest() {
     await sleep(1000);
 
     mCameraSession.commitConfig();
-    await mCameraSession.start();
 
     /*
     await mCameraSession.start(async (err) => {
@@ -423,17 +423,46 @@ export default function CameraSessionCameraRotationTest() {
 
   let stopCameraSession = async () => {
     console.info(TAG + "Enter stopCameraSession");
+    /*
+    mCameraSession.beginConfig();
     
-    await mCameraSession.stop();
+    mCameraSession.stop(async (err) => {
+        console.info(TAG + "Entering mCameraSession stop callback");
+        if (!err) {
+            console.info(TAG + "Entering mCameraSession stop PASSED ");
+        } else {
+            console.info(TAG + "Entering mCameraSession stop FAILED : " + err.message);
+        }
+    })
+
+    await sleep(100);
+    */
+
+    if (!isEmpty(mCameraInput)) {
+      console.info(TAG + "Start to removeInput input");
+      mCameraSession.removeInput(mCameraInput);
+    }
+
+    if (!isEmpty(mPreviewOutput)) {
+      console.info(TAG + "Start to removeOutput mPreviewOutput");
+      mCameraSession.removeOutput(mPreviewOutput);
+    }
+
+    if (!isEmpty(mPhotoOutput)) {
+      console.info(TAG + "Start to removeOutput mPhotoOutput");
+      mCameraSession.removeOutput(mPhotoOutput);
+    }
+    if (!isEmpty(mVideoOutput)) {
+      console.info(TAG + "Start to removeOutput mVideoOutput");
+      mCameraSession.removeOutput(mVideoOutput);
+    }
     await releaseInput();
     await releaseOutput();
-    await mCameraSession.release();
 
     console.info(TAG + "Exit stopCameraSession");
+
     return true;
   }
-
-
 
   describe('cameraSessionCameraRotationTest', () => {
     console.info(TAG + '----------cameraSessionCameraRotationTest--------------')
@@ -595,7 +624,7 @@ export default function CameraSessionCameraRotationTest() {
         } else {
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 start for camera");
-          await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
+          await startCameraSession(0, cameraObj.SceneMode.NORMAL_PHOTO);
           let cameraPreviewRotation = mPreviewOutput.getPreviewRotation(cameraObj.ImageRotation.ROTATION_0);
           mPreviewOutput.setPreviewRotation(cameraObj.ImageRotation.ROTATION_0, false);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 finish");
@@ -618,7 +647,6 @@ export default function CameraSessionCameraRotationTest() {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 ends here");
           done();
         }
-
       } catch (err) {
         console.info(TAG +
           `Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 error + ${err}+ ${err.code}+ ${err.message}`);
