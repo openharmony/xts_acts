@@ -14,13 +14,16 @@
 #import("//hit/build/suite.gni")
 import("test_packages.gni")
 if (os_level == "standard") {
-  merge_xts_notice("acts_notice") {
+  merge_xts_notice("acts_opensource_process") {
     target = "acts"
     deps = selected_packages
+    if (make_osp) {
+      deps += [ "//build/ohos/packages:open_source_package" ]
+    }
   }
 
   ohos_test_suite("xts_acts") {
-    deps = [ ":acts_notice" ]
+    deps = [ ":acts_opensource_process" ]
   }
 
   ohos_test_suite("acts_ivi") {
