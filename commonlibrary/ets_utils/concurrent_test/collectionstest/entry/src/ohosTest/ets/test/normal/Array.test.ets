@@ -4644,5 +4644,1313 @@ export default function ArrayTest() {
         expect().assertFail();
       }
     });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_2300
+     * @tc.name       : testCollectionsArrayOf0001
+     * @tc.desc       : Test the function of the interface Of
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayOf0001', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayOf0001";
+      try {
+        let result = collections.Array.of(1);
+        expect(JSON.stringify(result)).assertEqual('[1]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_2400
+     * @tc.name       : testCollectionsArrayOf0002
+     * @tc.desc       : Test the function of the interface Of
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayOf0002', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayOf0002";
+      try {
+        let result = collections.Array.of(1, 2, 3);
+        expect(JSON.stringify(result)).assertEqual('[1,2,3]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_2500
+     * @tc.name       : testCollectionsArrayOf0003
+     * @tc.desc       : Test the function of the interface Of
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayOf0003', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayOf0003";
+      try {
+        let result = collections.Array.of(undefined);
+        expect(JSON.stringify(result)).assertEqual('[null]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_2600
+     * @tc.name       : testCollectionsArrayOf0004
+     * @tc.desc       : Test the function of the interface Of
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayOf0004', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayOf0004";
+      try {
+        let result = collections.Array.of(null);
+        expect(JSON.stringify(result)).assertEqual('[null]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_3500
+     * @tc.name       : testCollectionsArrayCopyWithin0001
+     * @tc.desc       : Test the function of the interface ArkTS Array CopyWithin
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayCopyWithin0001', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayCopyWithin0001";
+      try {
+        let arr1 = new collections.Array(1, 2, 3, 4, 5);
+        const obj = arr1.copyWithin(-2, 1);
+        console.log(`${TAG} result:` + JSON.stringify(obj));
+        expect(JSON.stringify(obj)).assertEqual('[1,2,3,2,3]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_3600
+     * @tc.name       : testCollectionsArrayCopyWithin0002
+     * @tc.desc       : Test the function of the interface ArkTS Array CopyWithin
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayCopyWithin0002', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayCopyWithin0002";
+      try {
+        let arr1 = new collections.Array(1, 2, 3, 4, 5);
+        const obj = arr1.copyWithin(0, 3);
+        console.log(`${TAG} result:` + JSON.stringify(obj));
+        expect(JSON.stringify(obj)).assertEqual('[4,5,3,4,5]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_3700
+     * @tc.name       : testCollectionsArrayCopyWithin0003
+     * @tc.desc       : Test the function of the interface ArkTS Array CopyWithin
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayCopyWithin0003', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayCopyWithin0003";
+      try {
+        let arr1 = new collections.Array(1, 2, 3, 4, 5);
+        const obj = arr1.copyWithin(0, 3, 4);
+        console.log(`${TAG} result:` + JSON.stringify(obj));
+        expect(JSON.stringify(obj)).assertEqual('[4,2,3,4,5]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_3800
+     * @tc.name       : testCollectionsArrayCopyWithin0004
+     * @tc.desc       : Test the function of the interface ArkTS Array CopyWithin
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayCopyWithin0004', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayCopyWithin0004";
+      try {
+        let arr1 = new collections.Array(1, 2, 3, 4, 5);
+        const obj = arr1.copyWithin(-2, -3, -1);
+        console.log(`${TAG} result:` + JSON.stringify(obj));
+        expect(JSON.stringify(obj)).assertEqual('[1,2,3,3,4]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_127000
+     * @tc.name       : testCollectionsArrayReverse0001
+     * @tc.desc       : Test the function of the interface ArkTS Array Reverse.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayReverse0001', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayReverse0001";
+      try {
+        const items = new collections.Array(1, 2, 3);
+        const result = items.reverse();
+        expect(JSON.stringify(result)).assertEqual('[3,2,1]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_128000
+     * @tc.name       : testCollectionsArrayReverse0002
+     * @tc.desc       : Test the function of the interface ArkTS Array Reverse.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayReverse0002', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayReverse0002";
+      try {
+        const items = new collections.Array(1, 2, undefined);
+        const result = items.reverse();
+        expect(JSON.stringify(result)).assertEqual('[null,2,1]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_129000
+     * @tc.name       : testCollectionsArrayReverse0003
+     * @tc.desc       : Test the function of the interface ArkTS Array Reverse.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayReverse0003', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayReverse0003";
+      try {
+        const items = new collections.Array<number | null>(1, null , 3);
+        const result = items.reverse();
+        expect(JSON.stringify(result)).assertEqual('[3,null,1]');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_104000
+     * @tc.name       : testCollectionsArrayLastIndexOf0001
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0001', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0001";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(2);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(3);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_105000
+     * @tc.name       : testCollectionsArrayLastIndexOf0002
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0002', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0002";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(2.5);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(-1);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_106000
+     * @tc.name       : testCollectionsArrayLastIndexOf0003
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0003', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0003";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(7);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(-1);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_107000
+     * @tc.name       : testCollectionsArrayLastIndexOf0004
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0004', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0004";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(2, 3);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(3);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_108000
+     * @tc.name       : testCollectionsArrayLastIndexOf0005
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0005', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0005";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(2, 2);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_109000
+     * @tc.name       : testCollectionsArrayLastIndexOf0006
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0006', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0006";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(2, -2);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_111000
+     * @tc.name       : testCollectionsArrayLastIndexOf0008
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0008', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0008";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(-1);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(-1);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_112000
+     * @tc.name       : testCollectionsArrayLastIndexOf0009
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0009', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0009";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(500);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(-1);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_113000
+     * @tc.name       : testCollectionsArrayLastIndexOf0010
+     * @tc.desc       : Test the function of the interface ArkTS Array LastIndexOf.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayLastIndexOf0010', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayLastIndexOf0010";
+      try {
+        const numbers = new collections.Array(2, 5, 9, 2);
+        const result = numbers.lastIndexOf(NaN);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(-1);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_160000
+     * @tc.name       : testCollectionsArraySome0001
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0001', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0001";
+      try {
+        let array = new collections.Array(1, 2, 3);
+        const result = array.some((x) => x === 1);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_161000
+     * @tc.name       : testCollectionsArraySome0002
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0002', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0002";
+      try {
+        let array = new collections.Array(1, 2, 3);
+        const result = array.some((x) => x === -1);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_162000
+     * @tc.name       : testCollectionsArraySome0003
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0003', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0003";
+      try {
+        let array = new collections.Array(1, 2, 3);
+        const result = array.some((x) => x === undefined);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_163000
+     * @tc.name       : testCollectionsArraySome0004
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0004', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0004";
+      try {
+        let array = new collections.Array<number | null>(1, null , 3);
+        const result = array.some((x) => x === 1);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_164000
+     * @tc.name       : testCollectionsArraySome0005
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0005', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0005";
+      try {
+        let array = new collections.Array<number | null>(1, null , 3);
+        const result = array.some((x) => x === -2);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_165000
+     * @tc.name       : testCollectionsArraySome0006
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0006', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0006";
+      try {
+        let array = new collections.Array<number | null >(1, null , 3);
+        const result = array.some((x) => x === undefined);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_166000
+     * @tc.name       : testCollectionsArraySome0007
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0007', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0007";
+      try {
+        let array = new collections.Array<number|string>(1, '2', 3);
+        const result = array.some((x) => x === 3);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_167000
+     * @tc.name       : testCollectionsArraySome0008
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0008', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0008";
+      try {
+        let array = new collections.Array<number|string>(1, '2', 3);
+        const result = array.some((x) => x === undefined);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_168000
+     * @tc.name       : testCollectionsArraySome0009
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0009', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0009";
+      try {
+        let array = new collections.Array<number|string>(1, '2', 3);
+        const result = array.some((x) => x === -5);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_169000
+     * @tc.name       : testCollectionsArraySome0010
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0010', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0010";
+      try {
+        let array = new collections.Array(1, 2, undefined);
+        const result = array.some((x) => x === 2);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_170000
+     * @tc.name       : testCollectionsArraySome0011
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0011', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0011";
+      try {
+        let array = new collections.Array(1, 2, undefined);
+        const result = array.some((x) => x === -10);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_171000
+     * @tc.name       : testCollectionsArraySome0012
+     * @tc.desc       : Test the function of the interface ArkTS Array Some.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArraySome0012', 0, async (done: Function) => {
+      const TAG = "testCollectionsArraySome0012";
+      try {
+        let array = new collections.Array(1, 2, undefined);
+        const result = array.some((x) => x === undefined);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_195000
+     * @tc.name       : testCollectionsArrayToString0001
+     * @tc.desc       : Test the function of the interface ArkTS Array ToString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToString0001', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToString0001";
+      try {
+        const array1 = new collections.Array<number|string>(1, 2, 'a', '1a');
+        const result = array1.toString();
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual('1,2,a,1a');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_196000
+     * @tc.name       : testCollectionsArrayToString0002
+     * @tc.desc       : Test the function of the interface ArkTS Array ToString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToString0002', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToString0002";
+      try {
+        const array1 = new collections.Array('1a');
+        let value = array1.toString();
+        console.log(`${TAG} result:` + value);
+        expect(value).assertEqual('1a');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_197000
+     * @tc.name       : testCollectionsArrayToString0003
+     * @tc.desc       : Test the function of the interface ArkTS Array ToString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToString0003', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToString0003";
+      try {
+        const array1 = new collections.Array('');
+        let value = array1.toString();
+        console.log(`${TAG} result:` + value);
+        expect(value).assertEqual('');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_198000
+     * @tc.name       : testCollectionsArrayToString0004
+     * @tc.desc       : Test the function of the interface ArkTS Array ToString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToString0004', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToString0004";
+      try {
+        const array1 = new collections.Array(null);
+        let value = array1.toString();
+        console.log(`${TAG} result:` + value);
+        expect(value).assertEqual('');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_190000
+     * @tc.name       : testCollectionsArrayToLocaleString0002
+     * @tc.desc       : Test the function of the interface ArkTS Array ToLocaleString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToLocaleString0002', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToLocaleString0002";
+      try {
+        const array1 = new collections.Array<number>();
+        const iterator1 = array1.toLocaleString();
+        console.log(`${TAG} result:` + iterator1);
+        expect(iterator1).assertEqual('');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_191000
+     * @tc.name       : testCollectionsArrayToLocaleString0003
+     * @tc.desc       : Test the function of the interface ArkTS Array ToLocaleString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToLocaleString0003', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToLocaleString0003";
+      try {
+        const array1 = new collections.Array(undefined);
+        const iterator1 = array1.toLocaleString();
+        console.log(`${TAG} result:` + iterator1);
+        expect(iterator1).assertEqual('');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_192000
+     * @tc.name       : testCollectionsArrayToLocaleString0004
+     * @tc.desc       : Test the function of the interface ArkTS Array ToLocaleString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToLocaleString0004', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToLocaleString0004";
+      try {
+        const array1 = new collections.Array(null);
+        const iterator1 = array1.toLocaleString();
+        console.log(`${TAG} result:` + iterator1);
+        expect(iterator1).assertEqual('');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_193000
+     * @tc.name       : testCollectionsArrayToLocaleString0005
+     * @tc.desc       : Test the function of the interface ArkTS Array ToLocaleString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToLocaleString0005', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToLocaleString0005";
+      try {
+        const array1 = new collections.Array(1);
+        const iterator1 = array1.toLocaleString();
+        console.log(`${TAG} result:` + iterator1);
+        expect(iterator1).assertEqual('1');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_194000
+     * @tc.name       : testCollectionsArrayToLocaleString0006
+     * @tc.desc       : Test the function of the interface ArkTS Array ToLocaleString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayToLocaleString0006', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayToLocaleString0006";
+      try {
+        const array1 = new collections.Array('Test');
+        const iterator1 = array1.toLocaleString();
+        console.log(`${TAG} result:` + iterator1);
+        expect(iterator1).assertEqual('Test');
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /* *
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYReduceRight_0100
+      * @tc.name  : testCollectionsArrayReduceRight0100
+      * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
+      * @tc.size  : MediumTest
+      * @tc.type  : Function
+      * @tc.level : level 2
+      */
+    it('testCollectionsArrayReduceRight0100', 0, async (done: Function) => {
+      let caseName: string = 'testCollectionsArrayReduceRight0100';
+      console.log(`${caseName} test start `);
+      try {
+        let array: collections.Array<number> = new collections.Array<number>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        console.log(`${caseName} array ${array.length}`);
+        let sum: number = array.reduceRight((accumulator: number, value: number) => accumulator + value);
+        console.log(`${caseName} reduceRight ${sum}`);
+        expect(55).assertEqual(sum);
+        done();
+      } catch (error) {
+        console.log(`${caseName} catchError ${JSON.stringify(error)}}`);
+        expect().assertFail();
+        done();
+      }
+      console.log(`${caseName} test end `);
+    });
+
+    /* *
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYReduceRight_0200
+    * @tc.name  : testCollectionsArrayReduceRight0200
+    * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 2
+    */
+    it('testCollectionsArrayReduceRight0200', 0, async (done: Function) => {
+      let caseName: string = 'testCollectionsArrayReduceRight0200';
+      console.log(`${caseName} test start `);
+      try {
+        let array: collections.Array<number> = new collections.Array<number>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        console.log(`${caseName} array ${array.length}`);
+        let sum: number = array.reduceRight((accumulator: number, value: number) => accumulator + value, 0);
+        console.log(`${caseName} reduceRight ${sum}`);
+        expect(55).assertEqual(sum);
+        done();
+      } catch (error) {
+        console.log(`${caseName} catchError ${JSON.stringify(error)}}`);
+        expect().assertFail();
+        done();
+      }
+      console.log(`${caseName} test end `);
+    });
+
+    /* *
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYReduceRight_0300
+    * @tc.name  : testCollectionsArrayReduceRight0300
+    * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 2
+    */
+    it('testCollectionsArrayReduceRight0300', 0, async (done: Function) => {
+      let caseName: string = 'testCollectionsArrayReduceRight0300';
+      console.log(`${caseName} test start `);
+      try {
+        let array: collections.Array<number> = new collections.Array<number>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        console.log(`${caseName} array ${array.length}`);
+        let sum: number = array.reduceRight((accumulator: number, value: number) => accumulator + value, 10);
+        console.log(`${caseName} reduce ${sum}`);
+        expect(65).assertEqual(sum);
+        done();
+      } catch (error) {
+        console.log(`${caseName} catchError ${JSON.stringify(error)}}`);
+        expect().assertFail();
+        done();
+      }
+      console.log(`${caseName} test end `);
+    });
+
+    /* *
+    * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYReduceRight_0400
+    * @tc.name  : testCollectionsArrayReduceRight0400
+    * @tc.desc  : Returns a new Array that contains all the elements tested by the specified callback function.
+    * @tc.size  : MediumTest
+    * @tc.type  : Function
+    * @tc.level : level 2
+    */
+    it('testCollectionsArrayReduceRight0400', 0, async (done: Function) => {
+      let caseName: string = 'testCollectionsArrayReduceRight0400';
+      console.log(`${caseName} test start `);
+      try {
+        let array: collections.Array<number> = new collections.Array<number>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        console.log(`${caseName} array ${array.length}`);
+        let sum: number = array.reduceRight((accumulator: number, value: number) => accumulator + value, -1);
+        console.log(`${caseName} reduceRight ${sum}`);
+        expect(54).assertEqual(sum);
+        done();
+      } catch (error) {
+        console.log(`${caseName} catchError ${JSON.stringify(error)}}`);
+        expect().assertFail();
+        done();
+      }
+      console.log(`${caseName} test end `);
+    });
+    /* *
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYFrom_0400
+      * @tc.name  : testCollectionsArrayFrom0400
+      * @tc.desc  : Create a new ArkTS Array from an object that implements the ArrayLike interface.
+      * @tc.size  : MediumTest
+      * @tc.type  : Function
+      * @tc.level : level 2
+      */
+    it('testCollectionsArrayFrom0400', 0, async (done: Function) => {
+      let caseName: string = 'testCollectionsArrayFrom0400';
+      console.log(`${caseName} test start `);
+      try {
+        let arrayLike: ArrayLike<number> = [1, 2, 3];
+        let array: collections.Array<number> = collections.Array.from<number>(arrayLike, (value, index) => value + index);
+        console.log(`${caseName} array length ${array.length}`);
+        expect('1,3,5').assertEqual(array.toString());
+        done();
+      } catch (error) {
+        console.log(`${caseName} catchError ${JSON.stringify(error)}}`);
+        expect().assertFail();
+        done();
+      }
+      console.log(`${caseName} test end `);
+    });;
+    /* *
+      * @tc.number: SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAYFrom_0500
+      * @tc.name  : testCollectionsArrayFrom0500
+      * @tc.desc  : Create a new ArkTS Array from an object that implements the ArrayLike interface.
+      * @tc.size  : MediumTest
+      * @tc.type  : Function
+      * @tc.level : level 2
+      */
+    it('testCollectionsArrayFrom0500', 0, async (done: Function) => {
+      let caseName: string = 'testCollectionsArrayFrom0500';
+      console.log(`${caseName} test start `);
+      try {
+        let arrayLike: ArrayLike<number> = [1, 2, 3];
+        let array: collections.Array<string> = collections.Array.from<number, string>(arrayLike, (value, index) => value + "." + index);
+        console.log(`${caseName} array length ${array.length}`);
+        expect('1.0,2.1,3.2').assertEqual(array.toString());
+        done();
+      } catch (error) {
+        console.log(`${caseName} catchError ${JSON.stringify(error)}}`);
+        expect().assertFail();
+        done();
+      }
+      console.log(`${caseName} test end `);
+    });;
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_160000
+     * @tc.name       : testCollectionsArrayEvery0001
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0001', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0001";
+      try {
+        let array = new collections.Array(1, 2, 3);
+        const result = array.every((x) => x > 0);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_161000
+     * @tc.name       : testCollectionsArrayEvery0002
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0002', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0002";
+      try {
+        let array = new collections.Array(1, 2, 3);
+        const result = array.every((x) => x > 3 );
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_162000
+     * @tc.name       : testCollectionsArrayEvery0003
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0003', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0003";
+      try {
+        let array = new collections.Array(1, 2, 3);
+        const result = array.every((x) => x === undefined);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_163000
+     * @tc.name       : testCollectionsArrayEvery0004
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0004', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0004";
+      try {
+        let array = new collections.Array<number | null >(1, null , 3);
+        const result = array.every((x) => x != 0);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_164000
+     * @tc.name       : testCollectionsArrayEvery0005
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0005', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0005";
+      try {
+        let array = new collections.Array<number | null >(1, null , 3);
+        const result = array.every((x) => x != 1);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_165000
+     * @tc.name       : testCollectionsArrayEvery0006
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0006', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0006";
+      try {
+        let array = new collections.Array<number | null >(1, null , 3);
+        const result = array.every((x) => x === undefined);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_166000
+     * @tc.name       : testCollectionsArrayEvery0007
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0007', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0007";
+      try {
+        let array = new collections.Array<number|string>(1, '2', 3);
+        const result = array.every((x) => x != 0);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_167000
+     * @tc.name       : testCollectionsArrayEvery0008
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0008', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0008";
+      try {
+        let array = new collections.Array<number|string>(1, '2', 3);
+        const result = array.every((x) => x === undefined);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_168000
+     * @tc.name       : testCollectionsArrayEvery0009
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0009', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0009";
+      try {
+        let array = new collections.Array<number|string>(1, '2', 3);
+        const result = array.every((x) => x === '2');
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_169000
+     * @tc.name       : testCollectionsArrayEvery0010
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0010', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0010";
+      try {
+        let array = new collections.Array(1, 2, undefined);
+        const result = array.every((x) => x != 0);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_170000
+     * @tc.name       : testCollectionsArrayEvery0011
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0011', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0011";
+      try {
+        let array = new collections.Array(1, 2, undefined);
+        const result = array.every((x) => x === 1);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(false);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_COLLECTIONS_ARRAY_171000
+     * @tc.name       : testCollectionsArrayEvery0012
+     * @tc.desc       : Test the function of the interface ArkTS Array Every.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testCollectionsArrayEvery0012', 0, async (done: Function) => {
+      const TAG = "testCollectionsArrayEvery0012";
+      try {
+        let array = new collections.Array(1, 2, undefined);
+        const result = array.every((x) => x != 0);
+        console.log(`${TAG} result:` + result);
+        expect(result).assertEqual(true);
+        done();
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }
