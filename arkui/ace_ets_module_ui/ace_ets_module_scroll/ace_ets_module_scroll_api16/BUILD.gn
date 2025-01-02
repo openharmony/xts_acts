@@ -11,13 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsAceEtsModuleScrollTest") {
+import("//test/xts/tools/build/suite.gni")
+
+ohos_app_assist_suite("ActsAceEtsModuleScrollApi16TestMain") {
   testonly = true
-  deps = [
-    "ace_ets_module_scroll_api11:ActsAceEtsModuleScrollApi11Test",
-    "ace_ets_module_scroll_api12:ActsAceEtsModuleScrollApi12Test",
-    "ace_ets_module_scroll_api13:ActsAceEtsModuleScrollApi13Test",
-    "ace_ets_module_scroll_api14:ActsAceEtsModuleScrollApi14Test",
-    "ace_ets_module_scroll_api16:ActsAceEtsModuleScrollApi16Test",
-  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceEtsModuleScrollApi16TestMain"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+}
+
+ohos_js_app_suite("ActsAceEtsModuleScrollApi16Test") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceEtsModuleScrollApi16Test"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+  deps = [ ":ActsAceEtsModuleScrollApi16TestMain" ]
 }
