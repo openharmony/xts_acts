@@ -86,6 +86,20 @@ async function setDelayRequestAndCloseWorkerInstantlyTest(lockName: string, time
     }, utils.locks.AsyncLockMode.EXCLUSIVE);
 }
 
+async function timeoutLockWithEnvDestroyedTest(lockName: string): Promise<void> {
+  let lock = utils.locks.AsyncLock.request(lockName);
+  let options = new utils.locks.AsyncLockOptions<void>();
+  options.timeout = 100;
+  await new Promise<void>((resolve, reject) => {
+    lock.lockAsync(() => {
+    }, utils.locks.AsyncLockMode.SHARED, options).then(() => {
+      reject('Should not be executed, current lock is not available')
+    }).catch(() => {
+      resolve()
+    })
+  })
+}
+
 workerPort.onmessage = (e: MessageEvents) => {
     let result: Promise<void> | null = null;
     if (e.data['test'] == 'exclusiveMultiWorkerTest') {
@@ -98,6 +112,8 @@ workerPort.onmessage = (e: MessageEvents) => {
         result = lockHolderWorkerJob(e.data['lockName'], e.data['timeout'], e.data['flagBuf']);
     } else if (e.data['test'] == 'setDelayRequestAndCloseWorkerInstantlyTest') {
         result = setDelayRequestAndCloseWorkerInstantlyTest(e.data['lockName'], e.data['timeout']);
+    } else if (e.data['test'] == 'timeoutLockWithEnvDestroyedTest') {
+        result = timeoutLockWithEnvDestroyedTest(e.data['lockName']);
     } else {
         workerPort.postMessage('FAILED: unknown test ' + e.data['test']);
         return;
