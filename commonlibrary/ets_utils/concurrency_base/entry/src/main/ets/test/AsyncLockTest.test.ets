@@ -14,7 +14,12 @@
  */
 
 import { describe, afterAll, it, expect } from '@ohos/hypium'
-import { setDelayRequestAndCloseWorkerInstantlyTest, gcAfterLockAsyncTest } from './LockTest';
+import {
+    setDelayRequestAndCloseWorkerInstantlyTest,
+    gcAfterLockAsyncTest,
+    doubleExitSharedLockTest,
+    pendingSharedRequestAfterGC,
+} from './LockTest';
 
 
 export default function AsyncLockTest() {
@@ -55,5 +60,34 @@ export default function AsyncLockTest() {
       done();
     })
 
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_003
+     * @tc.name: timeoutLockWithEnvDestroyedTest
+     * @tc.desc: checks that timeout callback and env destroyed are handled properly
+     * @tc.author: diartyz
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('timeoutLockWithEnvDestroyedTest', 0, async (done: Function) => {
+      let result: Object = await doubleExitSharedLockTest();
+      expect(result).assertEqual("PASSED");
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_004
+     * @tc.name: pendingSharedRequestAfterGC
+     * @tc.desc: checks that destruction of shared lock after gc
+     * @tc.author: diartyz
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('pendingSharedRequestAfterGC', 0, async (done: Function) => {
+      let result: Object = await pendingSharedRequestAfterGC();
+      expect(result).assertEqual("PASSED");
+      done();
+    })
   })
 }

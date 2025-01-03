@@ -971,3 +971,42 @@ export function doubleExitSharedLockTest() {
     taskpool.execute(taskExecutor, flagBuf, 100),
   ]));
 }
+
+// test entry point
+export function timeoutLockWithEnvDestroyedTest() {
+  let workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
+  let lockName = 'timeoutLockWithEnvDestroyedTest';
+  let lock = utils.locks.AsyncLock.request(lockName);
+  let p = lock.lockAsync(async () => {
+    await new Promise<void>(resolve => setTimeout(resolve, 2000));
+  });
+  let p0 = new Promise<void>((resolve, reject) => {
+    workerInstance.postMessage({ test: lockName, lockName: lockName });
+    workerInstance.onmessage = (e: MessageEvents) => {
+      if (e.data === 'PASSED') {
+        workerInstance.terminate();
+        resolve();
+      } else {
+        reject(e.data);
+      }
+    };
+  });
+  return check(lockName, Promise.all([p, p0]));
+}
+
+function lockAsyncPromise(mode: utils.locks.AsyncLockMode = utils.locks.AsyncLockMode.EXCLUSIVE) {
+  let lock = utils.locks.AsyncLock.request('lock');
+  return lock.lockAsync(async () => {
+    await new Promise<void>(resolve => setTimeout(resolve, 1000));
+    console.log('lzl done')
+  }, mode)
+}
+
+// test entry point
+export async function pendingSharedRequestAfterGC() {
+  let p = lockAsyncPromise(utils.locks.AsyncLockMode.SHARED);
+  let p0 = lockAsyncPromise(utils.locks.AsyncLockMode.SHARED);
+  ArkTools.forceFullGC();
+  return check('pendingSharedRequestAfterGC', Promise.all([p, p0]));
+}
+
