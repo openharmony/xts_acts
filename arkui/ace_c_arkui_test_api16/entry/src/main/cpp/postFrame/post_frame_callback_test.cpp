@@ -32,9 +32,10 @@ static int NUMBER_42 = 42;
 
 namespace ArkUICapiTest {
 
-void PostFrameCallbackTest::CallBack(uint64_t nanoTimestamp, uint32_t frameCount, void* userData) {
+void PostFrameCallbackTest::CallBack(uint64_t nanoTimestamp, uint32_t frameCount, void* userData)
+{
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AddCAPIFrameCallback",
-            "OH_ArkUI_PostFrameCallback nanoTimestamp = %{public}lu , frameCount = %{public}d", nanoTimestamp, frameCount);
+        "OH_ArkUI_PostFrameCallback nanoTimestamp = %{public}lu , frameCount = %{public}d", nanoTimestamp, frameCount);
     if (userData) {
             int* myData = (int*)userData;
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AddCAPIFrameCallback",
@@ -116,17 +117,17 @@ napi_value PostFrameCallbackTest::testPostFrameCallback001(napi_env env, napi_ca
         auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
         auto context = OH_ArkUI_GetContextByNode(startDrag);
         if (targetId == NUMBER_3) {
-           myUserData = NUMBER_40;
-           auto a = OH_ArkUI_PostFrameCallback(context, &myUserData, PostFrameCallbackTest::CallBack);
-           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "OH_ArkUI_PostFrameCallback error_code = %{public}d", a);
-           if (a == ARKUI_ERROR_CODE_NO_ERROR) {
-               nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
-           }
+            myUserData = NUMBER_40;
+            auto a = OH_ArkUI_PostFrameCallback(context, &myUserData, PostFrameCallbackTest::CallBack);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostFrameCallback code = %{public}d", a);
+            if (a == ARKUI_ERROR_CODE_NO_ERROR) {
+                nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+            }
         }
         if (targetId == NUMBER_4) {
             myUserData = NUMBER_41;
             auto b = OH_ArkUI_PostFrameCallback(context, &myUserData, nullptr);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "OH_ArkUI_PostFrameCallback error_code = %{public}d", b);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostFrameCallback code = %{public}d", b);
             if (b == ARKUI_ERROR_CODE_CALLBACK_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
@@ -134,7 +135,7 @@ napi_value PostFrameCallbackTest::testPostFrameCallback001(napi_env env, napi_ca
         if (targetId == NUMBER_5) {
             myUserData = NUMBER_42;
             auto c = OH_ArkUI_PostFrameCallback(nullptr, &myUserData, PostFrameCallbackTest::CallBack);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "OH_ArkUI_PostFrameCallback error_code = %{public}d", c);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostFrameCallback code = %{public}d", c);
             if (c == ARKUI_ERROR_CODE_UI_CONTEXT_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
