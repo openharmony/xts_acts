@@ -26,10 +26,6 @@ static napi_value OHScanInit(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -39,15 +35,7 @@ static napi_value OHScanStartScannerDiscovery(napi_env env, napi_callback_info i
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
-    errorCode = OH_Scan_StartScannerDiscovery(ScannerDiscoveryCallback);
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
+    OH_Scan_StartScannerDiscovery(ScannerDiscoveryCallback);
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -57,15 +45,7 @@ static napi_value OHScanOpenScanner(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
-    errorCode = OH_Scan_OpenScanner(SCANNER_ID);
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
+    OH_Scan_OpenScanner(SCANNER_ID);
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -75,15 +55,7 @@ static napi_value OHScanCloseScanner(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
-    errorCode = OH_Scan_CloseScanner(SCANNER_ID);
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
+    OH_Scan_CloseScanner(SCANNER_ID);
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -93,15 +65,8 @@ static napi_value OHScanGetScannerParameter(napi_env env, napi_callback_info inf
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
-    OH_Scan_GetScannerParameter(SCANNER_ID, &errorCode);
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
+    int32_t paraErrorCode;
+    OH_Scan_GetScannerParameter(SCANNER_ID, &paraErrorCode);
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -111,16 +76,8 @@ static napi_value OHScanSetScannerParameter(napi_env env, napi_callback_info inf
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
     int32_t paraOption = 0;
-    errorCode = OH_Scan_SetScannerParameter(SCANNER_ID, paraOption, SCANNER_ID);
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
+    OH_Scan_SetScannerParameter(SCANNER_ID, paraOption, SCANNER_ID);
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -130,15 +87,7 @@ static napi_value OHScanStartScan(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
-    errorCode = OH_Scan_StartScan(SCANNER_ID, false);
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
+    OH_Scan_StartScan(SCANNER_ID, false);
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -148,15 +97,7 @@ static napi_value OHScanCancelScan(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
-    errorCode = OH_Scan_CancelScan(SCANNER_ID);
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
+    OH_Scan_CancelScan(SCANNER_ID);
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -166,16 +107,8 @@ static napi_value OHScanGetPictureScanProgress(napi_env env, napi_callback_info 
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
-    Scan_PictureScanProgress* progress = new Scan_PictureScanProgress();
-    errorCode = OH_Scan_GetPictureScanProgress(SCANNER_ID, progress);
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
+    Scan_PictureScanProgress* prog = new Scan_PictureScanProgress;
+    OH_Scan_GetPictureScanProgress(SCANNER_ID, prog);
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
@@ -185,10 +118,6 @@ static napi_value OHScanExit(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int32_t errorCode = OH_Scan_Init();
-    if (errorCode != SCAN_ERROR_NONE) {
-        napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
-        return result;
-    }
     errorCode = OH_Scan_Exit();
     napi_create_int32(env, static_cast<int32_t>(errorCode), &result);
     return result;
