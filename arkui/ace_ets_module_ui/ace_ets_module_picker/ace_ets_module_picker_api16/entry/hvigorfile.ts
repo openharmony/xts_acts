@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,5 @@
  * limitations under the License.
  */
 
-
-import accessibilitySelectedTypeTest from './chip/accessibilitySelectedTypeTest.test';
-import onScrollStopTest from './textPicker/onScrollStopTest.test';
-import maxFontScaleTest from './segmentButton/maxFontScaleTest.test'
-export default function testsuite() {
-  accessibilitySelectedTypeTest()
-  onScrollStopTest()
-  maxFontScaleTest()
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';

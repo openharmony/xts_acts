@@ -16,9 +16,14 @@ import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-struct Index {
+struct buttonTypeApi {
   build() {
-    Button('default')
-      .key('key_ButtonType_002')
+    Column(){
+      Button('default')
+        .key('key_ButtonType_002')
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }

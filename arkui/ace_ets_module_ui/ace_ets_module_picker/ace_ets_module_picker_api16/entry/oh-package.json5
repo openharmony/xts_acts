@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-
-import accessibilitySelectedTypeTest from './chip/accessibilitySelectedTypeTest.test';
-import onScrollStopTest from './textPicker/onScrollStopTest.test';
-import maxFontScaleTest from './segmentButton/maxFontScaleTest.test'
-export default function testsuite() {
-  accessibilitySelectedTypeTest()
-  onScrollStopTest()
-  maxFontScaleTest()
+{
+  "license": "",
+  "author": "",
+  "name": "entry",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }
