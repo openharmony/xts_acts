@@ -93,7 +93,7 @@ struct WebComponent {
                     let webRect = Utils.getComponentRect('NestedScrollModeWeb');
                     console.log('webRect' + webRect)
                     let X = Utils.getRectHorizontalCenterX(webRect)
-                    let Y = Utils.getRectVerticalCenterY(webRect)
+                    let Y = Utils.getRectVerticalCenterY(webRect) - 400
                     let driver: Driver = await Driver.create()
                     let button1 = await driver.findComponent(ON.id('innerWidth1'));
                     await button1.click()
@@ -235,7 +235,7 @@ struct WebComponent {
               }
             }
             .width("100%")
-            .height(600)
+            .height(1000)
             .border({ width: 5 })
             .scrollable(this.ScrollDirection)
             .onDidScroll((xOffset: number, yOffset: number) => {
