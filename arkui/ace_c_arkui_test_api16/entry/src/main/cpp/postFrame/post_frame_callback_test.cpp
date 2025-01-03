@@ -22,11 +22,19 @@
 int myUserData = 0;
 ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
 
+static int NUMBER_3 = 3;
+static int NUMBER_4 = 4;
+static int NUMBER_5 = 5;
+static int NUMBER_40 = 40;
+static int NUMBER_41 = 41;
+static int NUMBER_42 = 42;
+
+
 namespace ArkUICapiTest {
 
 void PostFrameCallbackTest::CallBack(uint64_t nanoTimestamp, uint32_t frameCount, void* userData) {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AddCAPIFrameCallback",
-            "OH_ArkUI_PostFrameCallback ***StartCallBack*** nanoTimestamp = %{public}lu , frameCount = %{public}d", nanoTimestamp, frameCount);
+            "OH_ArkUI_PostFrameCallback nanoTimestamp = %{public}lu , frameCount = %{public}d", nanoTimestamp, frameCount);
     if (userData) {
             int* myData = (int*)userData;
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "AddCAPIFrameCallback",
@@ -58,7 +66,7 @@ static ArkUI_NodeHandle CreateChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
     ArkUI_AttributeItem LABEL_Item1 = {.string = "正常"};
     nodeAPI->setAttribute(button1, NODE_BUTTON_LABEL, &LABEL_Item1);
     nodeAPI->addChild(startDrag, button1);
-    nodeAPI->registerNodeEvent(button1, NODE_ON_CLICK, 3, nullptr);
+    nodeAPI->registerNodeEvent(button1, NODE_ON_CLICK, NUMBER_3, nullptr);
     ArkUI_AttributeItem textId1 = {.string = "onClick1"};
     nodeAPI->setAttribute(button1, NODE_ID, &textId1);
     
@@ -66,7 +74,7 @@ static ArkUI_NodeHandle CreateChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
     ArkUI_AttributeItem LABEL_Item2 = {.string = "CallBack为空"};
     nodeAPI->setAttribute(button2, NODE_BUTTON_LABEL, &LABEL_Item2);
     nodeAPI->addChild(startDrag, button2);
-    nodeAPI->registerNodeEvent(button2, NODE_ON_CLICK, 4, nullptr);
+    nodeAPI->registerNodeEvent(button2, NODE_ON_CLICK, NUMBER_4, nullptr);
     ArkUI_AttributeItem textId2 = {.string = "onClick2"};
     nodeAPI->setAttribute(button2, NODE_ID, &textId2);
     
@@ -74,7 +82,7 @@ static ArkUI_NodeHandle CreateChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
     ArkUI_AttributeItem LABEL_Item3 = {.string = "uiContext为空"};
     nodeAPI->setAttribute(button3, NODE_BUTTON_LABEL, &LABEL_Item3);
     nodeAPI->addChild(startDrag, button3);
-    nodeAPI->registerNodeEvent(button3, NODE_ON_CLICK, 5, nullptr);
+    nodeAPI->registerNodeEvent(button3, NODE_ON_CLICK, NUMBER_5, nullptr);
     ArkUI_AttributeItem textId3 = {.string = "onClick3"};
     nodeAPI->setAttribute(button3, NODE_ID, &textId3);
     
@@ -107,27 +115,27 @@ napi_value PostFrameCallbackTest::testPostFrameCallback001(napi_env env, napi_ca
             sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
         auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
         auto context = OH_ArkUI_GetContextByNode(startDrag);
-        if (targetId == 3) {
-           myUserData = 40;
+        if (targetId == NUMBER_3) {
+           myUserData = NUMBER_40;
            auto a = OH_ArkUI_PostFrameCallback(context, &myUserData, PostFrameCallbackTest::CallBack);
-           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "AddCAPIFrameCallback OH_ArkUI_PostFrameCallback error_code = %{public}d", a);
-           if (a == ARKUI_ERROR_CODE_NO_ERROR){
-               nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item); 
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "OH_ArkUI_PostFrameCallback error_code = %{public}d", a);
+           if (a == ARKUI_ERROR_CODE_NO_ERROR) {
+               nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
            }
         }
-        if (targetId == 4) {
-            myUserData = 41;
+        if (targetId == NUMBER_4) {
+            myUserData = NUMBER_41;
             auto b = OH_ArkUI_PostFrameCallback(context, &myUserData, nullptr);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "AddCAPIFrameCallback OH_ArkUI_PostFrameCallback error_code = %{public}d", b);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "OH_ArkUI_PostFrameCallback error_code = %{public}d", b);
             if (b == ARKUI_ERROR_CODE_CALLBACK_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
         }
-        if (targetId == 5) {
-            myUserData = 42;
+        if (targetId == NUMBER_5) {
+            myUserData = NUMBER_42;
             auto c = OH_ArkUI_PostFrameCallback(nullptr, &myUserData, PostFrameCallbackTest::CallBack);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "AddCAPIFrameCallback OH_ArkUI_PostFrameCallback error_code = %{public}d", c);
-            if(c == ARKUI_ERROR_CODE_UI_CONTEXT_INVALID){
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "OH_ArkUI_PostFrameCallback error_code = %{public}d", c);
+            if (c == ARKUI_ERROR_CODE_UI_CONTEXT_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
         }
