@@ -402,7 +402,7 @@ export default function CameraSessionCameraRotationTest() {
     }
     await sleep(1000);
 
-    mCameraSession.commitConfig();
+    await mCameraSession.commitConfig();
 
     console.info(TAG + "Exit startCameraSession");
 
@@ -411,6 +411,8 @@ export default function CameraSessionCameraRotationTest() {
 
   let stopCameraSession = async () => {
     console.info(TAG + "Enter stopCameraSession");
+    
+    mCameraSession.beginConfig();
 
     if (!isEmpty(mCameraInput)) {
       console.info(TAG + "Start to removeInput input");
