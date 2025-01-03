@@ -427,12 +427,13 @@ export default class MediaTestBase {
     let audioStreamInfo: audio.AudioStreamInfo = {
       samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
       channels: audio.AudioChannel.CHANNEL_2,
-      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
       encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
     };
 
     let audioRendererInfo: audio.AudioRendererInfo = {
-      usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+      content:audio.ContentType.CONTENT_TYPE_MUSIC,
+      usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
       rendererFlags: 0
     };
 
