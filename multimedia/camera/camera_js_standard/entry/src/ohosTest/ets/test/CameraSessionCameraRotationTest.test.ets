@@ -618,7 +618,7 @@ export default function CameraSessionCameraRotationTest() {
         } else {
           console.info(TAG +
             "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 start for camera");
-          await startCameraSession(0, cameraObj.SceneMode.NORMAL_PHOTO);
+          await startCameraSession(0, cameraObj.SceneMode.NORMAL_VIDEO);
           let cameraPreviewRotation = mPreviewOutput.getPreviewRotation(cameraObj.ImageRotation.ROTATION_0);
           mPreviewOutput.setPreviewRotation(cameraObj.ImageRotation.ROTATION_0, false);
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_PREVIEW_ROTATION_FUNC_0100 finish");
