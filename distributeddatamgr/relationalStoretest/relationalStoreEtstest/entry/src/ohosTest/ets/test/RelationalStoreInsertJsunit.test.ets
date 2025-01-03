@@ -1750,7 +1750,7 @@ export default function relationalStoreInsertTest() {
                 "blobType": u8,
             };
             try {
-                (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
+                await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
                 let rowId = await (rdbStore as data_Rdb.RdbStore).insert("test1", valueBucket);
                 console.info(TAG + `Insert is successful, rowId = ${rowId}`);
                 (rdbStore as data_Rdb.RdbStore).insert("test1", valueBucket, (err: BusinessError, rowId: number) => {
@@ -1788,7 +1788,7 @@ export default function relationalStoreInsertTest() {
                 "blobType": u8,
             };
             try {
-                (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
+                await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
                 let rowId = await (rdbStore as data_Rdb.RdbStore).insert("test1", valueBucket);
                 console.info(TAG + `Insert is successful, rowId = ${rowId}`);
                 let rowId2 = await (rdbStore as data_Rdb.RdbStore).insert("test1", valueBucket);
@@ -1821,7 +1821,7 @@ export default function relationalStoreInsertTest() {
                 "blobType": u8,
             };
             try {
-                (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
+                await (rdbStore as data_Rdb.RdbStore).executeSql(CREATE_TABLE_TEST1, null);
                 let rowId = (rdbStore as data_Rdb.RdbStore).insertSync("test1", valueBucket);
                 console.info(TAG + `Insert is successful, rowId = ${rowId}`);
                 let rowId2 = (rdbStore as data_Rdb.RdbStore).insertSync("test1", valueBucket);
