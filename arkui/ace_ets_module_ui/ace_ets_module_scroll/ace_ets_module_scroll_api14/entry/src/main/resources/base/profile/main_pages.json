@@ -24,6 +24,9 @@
         "MainAbility/pages/Tabs/barBackEffect",
         "MainAbility/pages/Grid/nodeTypeGrid",
         "MainAbility/pages/ScrollBar/listScrollerBar",
-        "MainAbility/pages/WaterFlow/clipContent"
+        "MainAbility/pages/WaterFlow/clipContent",
+        "MainAbility/pages/Grid/cachedShowGrid",
+        "MainAbility/pages/List/cachedShowList",
+        "MainAbility/pages/WaterFlow/cachedShowFlow"
     ]
 }
