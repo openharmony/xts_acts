@@ -19,7 +19,7 @@
 #include <arkui/native_node.h>
 #include <string>
 #include <arkui/native_node_napi.h>
-int myUserData = 0;
+int g_myUserData = 0;
 ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
 
 static int NUMBER_3 = 3;
@@ -117,24 +117,24 @@ napi_value PostFrameCallbackTest::testPostFrameCallback001(napi_env env, napi_ca
         auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
         auto context = OH_ArkUI_GetContextByNode(startDrag);
         if (targetId == NUMBER_3) {
-            myUserData = NUMBER_40;
-            auto a = OH_ArkUI_PostFrameCallback(context, &myUserData, PostFrameCallbackTest::CallBack);
+            g_myUserData = NUMBER_40;
+            auto a = OH_ArkUI_PostFrameCallback(context, &g_myUserData, PostFrameCallbackTest::CallBack);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostFrameCallback code = %{public}d", a);
             if (a == ARKUI_ERROR_CODE_NO_ERROR) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
         }
         if (targetId == NUMBER_4) {
-            myUserData = NUMBER_41;
-            auto b = OH_ArkUI_PostFrameCallback(context, &myUserData, nullptr);
+            g_myUserData = NUMBER_41;
+            auto b = OH_ArkUI_PostFrameCallback(context, &g_myUserData, nullptr);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostFrameCallback code = %{public}d", b);
             if (b == ARKUI_ERROR_CODE_CALLBACK_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
         }
         if (targetId == NUMBER_5) {
-            myUserData = NUMBER_42;
-            auto c = OH_ArkUI_PostFrameCallback(nullptr, &myUserData, PostFrameCallbackTest::CallBack);
+            g_myUserData = NUMBER_42;
+            auto c = OH_ArkUI_PostFrameCallback(nullptr, &g_myUserData, PostFrameCallbackTest::CallBack);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostFrameCallback code = %{public}d", c);
             if (c == ARKUI_ERROR_CODE_UI_CONTEXT_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
