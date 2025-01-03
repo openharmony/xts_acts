@@ -357,16 +357,16 @@ export default function CameraSessionCameraRotationTest() {
 
     if (!isEmpty(mPreviewOutput)) {
       await mPreviewOutput.release();
-      mPreviewOutput = null;
+      mPreviewOutput = null!;
     }
 
     if (!isEmpty(mPhotoOutput)) {
       await mPhotoOutput.release();
-      mPhotoOutput = null;
+      mPhotoOutput = null!;
     }
     if (!isEmpty(mVideoOutput)) {
       await mVideoOutput.release();
-      mVideoOutput = null;
+      mVideoOutput = null!;
     }
     console.info('Exit releaseOutput');
 
