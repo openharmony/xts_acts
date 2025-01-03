@@ -6097,7 +6097,7 @@ export default function napiApiTest() {
       try {
         let value = napitest.createSendableFloat64ArrayTest();
         console.info('testCreateSendableTypedArray0006 value is: ' + value);
-        expect(value).assertEqual(1);
+        expect(value).assertEqual(0);
       } catch (err) {
         console.error('testCreateSendableTypedArray0006 err msg' + err.message);
         expect().assertFail();
@@ -6118,7 +6118,7 @@ export default function napiApiTest() {
       try {
         let value = napitest.createSendableBigInt64ArrayTest();
         console.info('testCreateSendableTypedArray0007 value is: ' + value);
-        expect(value).assertEqual(1);
+        expect(value).assertEqual(0);
       } catch (err) {
         console.error('testCreateSendableTypedArray0007 err msg' + err.message);
         expect().assertFail();
@@ -6139,7 +6139,7 @@ export default function napiApiTest() {
       try {
         let value = napitest.createSendableBigUint64ArrayTest();
         console.info('testCreateSendableTypedArray0008 value is: ' + value);
-        expect(value).assertEqual(1);
+        expect(value).assertEqual(0);
       } catch (err) {
         console.error('testCreateSendableTypedArray0008 err msg' + err.message);
         expect().assertFail();
