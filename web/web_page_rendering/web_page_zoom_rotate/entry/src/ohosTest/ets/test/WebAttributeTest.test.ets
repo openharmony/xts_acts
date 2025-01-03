@@ -31,7 +31,7 @@ export default function webAttributeTest() {
         console.info("get WebAttributeTest state success " + JSON.stringify(pages));
         if (!("WebAttributeTest" == pages.name)) {
           console.info("get WebAttributeTest state success " + JSON.stringify(pages.name));
-          let result = await router.replaceUrl(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push WebAttributeTest page success " + JSON.stringify(result));
         }
