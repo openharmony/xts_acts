@@ -23,6 +23,8 @@ import datePickerDialogHoverMode from './DatePickerDialog/datePickerDialogHoverM
 import customDialogHoverMode from './CustomDialog/customDialogHoverMode.test'
 import alertDialogHoverMode from './AlertDialog/alertDialogHoverMode.test'
 import actionSheetHoverMode from './ActionSheet/actionSheetHoverMode.test'
+import bindSheetShowClose from './bindSheetTest/bindSheetShowClose.test'
+import bindSheetType from './bindSheetTest/bindSheetType.test'
 
 export default function testsuite() {
   lunarSwitchStyleTest()
@@ -36,4 +38,6 @@ export default function testsuite() {
   customDialogHoverMode()
   alertDialogHoverMode()
   actionSheetHoverMode()
+  bindSheetShowClose()
+  bindSheetType()
 }

@@ -74,7 +74,7 @@ struct chipTest {
   @State name: string = 'chipTest';
   @State stepTips: string =  '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、点击closeOPtions下chip组件的删除符号，观察朗读内容\n'+
     '2、分别点击后缀Symbol播报下激活态和未激活态的后缀图标，观察朗读内容\n' +'\n'+
-    '预期结果：1、朗读内容为：删除，按钮，单指双击即可执行\n' +
+    '预期结果：1、朗读内容为：删除，按钮，删除文本\n' +
     '2、朗读内容为：已激活音乐，按钮，新手提醒\n' +
     '3、朗读内容为：未激活音乐，按钮，新手提醒\n';
   @State isVue: boolean = false;
@@ -237,6 +237,11 @@ struct chipTest {
                   fontColor: Color.Blue,
                   labelMargin: { left: 20, right: 30 }
                 },
+                closeOptions:{
+                  accessibilityText:'删除',
+                  accessibilityDescription:'删除文本',
+                  accessibilityLevel:'yes'
+                },
                 size: ChipSize.SMALL,
                 allowClose: true,
                 enabled: true,
@@ -257,6 +262,11 @@ struct chipTest {
                   fontSize: 12,
                   fontColor: Color.Blue,
                   labelMargin: { left: 20, right: 30 }
+                },
+                closeOptions:{
+                  accessibilityText:'删除',
+                  accessibilityDescription:'删除文本',
+                  accessibilityLevel:'yes'
                 },
                 size: ChipSize.SMALL,
                 allowClose: true,
