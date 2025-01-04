@@ -19,7 +19,6 @@ import { Camera_Position, Camera_Type, GlobalThis } from './Constants';
 import { cameraInfo } from '../../../main/cpp/types/libentry';
 
 const TAG = "CameraXts CameraInputTest: ";
-const CAMERA_OK = 0;
 
 let camera: cameraObj.cameraInfo;
 let mCameraSession: number;
