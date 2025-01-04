@@ -284,7 +284,7 @@ static napi_value CameraManagerGetSupportedCameraInfos(napi_env env, napi_callba
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = ndkCamera_->GetSupportedCameras(index);
+    Camera_ErrorCode code = ndkCamera_->GetSupportedCameras();
 
     napi_value cameraInfo = nullptr;
 
