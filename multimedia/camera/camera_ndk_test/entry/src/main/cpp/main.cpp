@@ -284,7 +284,7 @@ static napi_value CameraManagerGetSupportedCameraInfos(napi_env env, napi_callba
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
 
-    Camera_ErrorCode code = g_ndkCamera->GetSupportedCameras(index);
+    Camera_ErrorCode code = ndkCamera_->GetSupportedCameras(index);
 
     napi_value cameraInfo = nullptr;
 
@@ -297,20 +297,20 @@ static napi_value CameraManagerGetSupportedCameraInfos(napi_env env, napi_callba
 
     napi_status status = napi_create_array(env, &cameraInfos);
     
-    for (uint32_t i = 0; i < g_ndkCamera->GetCameraDeviceSize(); i++) {
+    for (uint32_t i = 0; i < ndkCamera_->GetCameraDeviceSize(); i++) {
         napi_create_object(env, &cameraInfo);
-        napi_create_string_utf8(env, g_ndkCamera->cameras_[i].cameraId,
-                                sizeof(g_ndkCamera->cameras_[i].cameraId) + 1,
+        napi_create_string_utf8(env, ndkCamera_->cameras_[i].cameraId,
+                                sizeof(ndkCamera_->cameras_[i].cameraId) + 1,
                                 &jsValue);
         napi_set_named_property(env, cameraInfo, "cameraId", jsValue);
 
-        napi_create_int32(env, g_ndkCamera->cameras_[i].cameraPosition, &jsValue);
+        napi_create_int32(env, ndkCamera_->cameras_[i].cameraPosition, &jsValue);
         napi_set_named_property(env, cameraInfo, "cameraPosition", jsValue);
 
-        napi_create_int32(env, g_ndkCamera->cameras_[i].cameraType, &jsValue);
+        napi_create_int32(env, ndkCamera_->cameras_[i].cameraType, &jsValue);
         napi_set_named_property(env, cameraInfo, "cameraType", jsValue);
 
-        napi_create_int32(env, g_ndkCamera->cameras_[i].connectionType, &jsValue);
+        napi_create_int32(env, ndkCamera_->cameras_[i].connectionType, &jsValue);
         napi_set_named_property(env, cameraInfo, "connectionType", jsValue);
 
         napi_set_element(env, cameraInfos, i, cameraInfo);
