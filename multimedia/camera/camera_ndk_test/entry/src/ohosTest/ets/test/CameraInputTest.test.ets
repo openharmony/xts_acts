@@ -15,7 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import cameraObj from 'libentry.so';
-import { GlobalThis } from './Constants';
+import { Camera_Position, Camera_Type, GlobalThis } from './Constants';
 
 const TAG = "CameraXts CameraInputTest: ";
 
@@ -143,6 +143,16 @@ async function startCameraSession() {
   return true;
 }
 
+function getIsCameraPositionWithTypeSupported(cameraPosition: number, cameraType: number): boolean {
+  let cameraInfos: Array<cameraInfo> = cameraObj.oHCameraManagerGetSupportedCameraInfos(0);
+  for (let i = 0; i < cameraInfos.length; i++) {
+    if(cameraInfos[i].cameraPosition == cameraPosition && cameraInfos[i].cameraType == cameraType) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export default function CameraInputTest() {
   describe('CameraInputTest', () => {
     console.info(TAG + '----------CameraInputTest--------------');
@@ -247,6 +257,13 @@ export default function CameraInputTest() {
     it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100--------------");
       let functionTag = "SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100";
+      if (!getIsCameraPositionWithTypeSupported(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_WIDE_ANGLE)) {
+          expect(true).assertTrue();
+      } else {
+        let ret =  cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_UNSPECIFIED, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
+        console.log(TAG+"testOHCreateCameraInputWithPositionAndType0100:"+ret);
+        expect(ret).assertEqual(CAMERA_OK);
+      }
       let ret = cameraObj.createCameraInputWithPositionAndType(2, 1);
       if (ret) {
         expect().assertFail();
