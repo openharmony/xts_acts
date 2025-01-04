@@ -16,9 +16,14 @@ import batteryCommonEventTest from './battery_common_event.test.js'
 import BatteryInfoTest from './batteryInfo.test.js'
 import BatteryStatisticsTest from './batteryStatistics.test.js'
 import SystemBatteryTest from './system_battery.test.js'
+import abilityTest from './Ability.test'
 export default function testsuite() {
     batteryCommonEventTest()
     BatteryInfoTest()
-    BatteryStatisticsTest()
     SystemBatteryTest()
+    if (canIUse('SystemCapability.PowerManager.BatteryStatistics')) {
+        BatteryStatisticsTest()
+    } else {
+        abilityTest()
+    }
 }
