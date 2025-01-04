@@ -15,17 +15,10 @@
 import batteryCommonEventTest from './battery_common_event.test.js'
 import BatteryInfoTest from './batteryInfo.test.js'
 import BatteryStatisticsTest from './batteryStatistics.test.js'
-import BatteryStatisticsEmptyTest from './batteryStatisticsEmpty.test.js'
 import SystemBatteryTest from './system_battery.test.js'
 export default function testsuite() {
     batteryCommonEventTest()
     BatteryInfoTest()
+    BatteryStatisticsTest()
     SystemBatteryTest()
-    let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
-    console.info(`isSupport: ${isSupport}`);
-    if (canIUse('SystemCapability.PowerManager.BatteryStatistics')) {
-        BatteryStatisticsTest()
-    } else {
-        BatteryStatisticsEmptyTest()
-    }
 }
