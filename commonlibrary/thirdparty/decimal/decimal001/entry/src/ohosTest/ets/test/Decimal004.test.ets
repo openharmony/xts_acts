@@ -14,18 +14,28 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import { Decimal } from '@kit.ArkTS';
+
 type Rounding = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+
 function test_tanh_001 (n: string, pr: number, rm: Rounding, expected: string) {
     Decimal.set({ precision: pr, rounding: rm });
     expect(expected).assertEqual(Decimal.tanh(n).valueOf());
     expect(expected).assertEqual(new Decimal(n).tanh().valueOf());
+}
+async function Delay(delay: number): Promise<void> {
+  return new Promise((resolve:Function)=>{
+    setTimeout(()=>{
+        resolve('Hello World!');
+    },delay);
+  });
 }
 export default function DecimalTest004() {
   describe("DecimalTest004", () => {
     beforeAll(() => {
         console.info("beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.");
     });
-    beforeEach(() => {
+    beforeEach(async() => {
+        await Delay(2000);
         console.info("beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.");
     });
     afterEach(() => {
