@@ -16,6 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import cameraObj from 'libentry.so';
 import { Camera_Position, Camera_Type, GlobalThis } from './Constants';
+import { cameraInfo } from '../../../main/cpp/types/libentry';
 
 const TAG = "CameraXts CameraInputTest: ";
 const CAMERA_OK = 0;
