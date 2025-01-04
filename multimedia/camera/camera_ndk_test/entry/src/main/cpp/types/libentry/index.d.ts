@@ -295,8 +295,6 @@ export const oHCameraManagerDeleteSceneModes: (index:number) => number;
 
 export const oHCameraManagerGetSupportedCameraOutputCapabilityWithSceneMode: (index:number) => number;
 
-export const oHCreateCameraInputWithPositionAndType: (position: number, type: number,index:number) => number;
-
 export const oHCaptureSessionSetSessionMode: (index:number) => number;
 
 export const oHCaptureSessionCanAddInput: (index:number) => canAddInput;
