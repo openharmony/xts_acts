@@ -61,6 +61,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
       emitKey = "emitWebViewSdkSchemeHandler_setNetErrorCode"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_setNetErrorCode", true, 1516, done);
+      sendEventByKey('webViewSdkSchemeHandler', 10, '');
     })
 
     /*
@@ -75,6 +76,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
       emitKey = "emitWebViewSdkSchemeHandler_getNetErrorCode"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getNetErrorCode", true, 1517, done);
+      sendEventByKey('webViewSdkSchemeHandler', 10, '');
     })
   })
 }
