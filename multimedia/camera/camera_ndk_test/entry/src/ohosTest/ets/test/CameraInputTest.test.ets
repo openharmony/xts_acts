@@ -262,7 +262,7 @@ export default function CameraInputTest() {
       if (!getIsCameraPositionWithTypeSupported(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_WIDE_ANGLE)) {
           expect(true).assertTrue();
       } else {
-        let ret =  cameras.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_UNSPECIFIED, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
+        let ret =  cameraObj.oHCreateCameraInputWithPositionAndType(Camera_Position.CAMERA_POSITION_UNSPECIFIED, Camera_Type.CAMERA_TYPE_DEFAULT, 0);
         console.log(TAG+"testOHCreateCameraInputWithPositionAndType0100:"+ret);
         expect(ret).assertEqual(CAMERA_OK);
       }
