@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import cameraObj from '@ohos.multimedia.camera';
 import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -78,10 +78,7 @@ export default function AVScreenCaptureRecorderTest() {
         // stop recorder
         mediaTestBase.STOPRECORDER_EVENT,
         //release recorder
-        //close fd
-        mediaTestBase.RELEASECORDER_EVENT,
-        //create AV
-        mediaTestBase.AV_CREATEAVPLAYER,
+        // mediaTestBase.RELEASECORDER_EVENT,
         mediaTestBase.END_EVENT);
 
       let avConfig: media.AVScreenCaptureRecordConfig = {
@@ -101,7 +98,7 @@ export default function AVScreenCaptureRecorderTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0101
         * @tc.name      : 01.AvScreenCaptureRecorder
         * @tc.desc      : AvScreenCaptureRecorder
         * @tc.size      : MediumTest
@@ -151,7 +148,7 @@ export default function AVScreenCaptureRecorderTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200
         * @tc.name      : 02.AvScreenCaptureRecorder
         * @tc.desc      : AvScreenCaptureRecorder
         * @tc.size      : MediumTest
@@ -160,6 +157,48 @@ export default function AVScreenCaptureRecorderTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200', 0, async (done: Function) => {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 start')
+
+      let mySteps = new Array(
+        // create
+        mediaTestBase.CREATE_EVENT,
+        // init
+        mediaTestBase.INIT_EVENT,
+        mediaTestBase.SETONCALLBACK_EVENT,
+        //setMicEnable
+        mediaTestBase.SET_MIC_ENABLE_EVENT,
+        // start recorder
+        mediaTestBase.STARTRECORDER_EVENT,
+        // stop recorder
+        mediaTestBase.STOPRECORDER_EVENT,
+        // mediaTestBase.RELEASECORDER_EVENT,
+        mediaTestBase.END_EVENT);
+
+
+      let avConfig: media.AVScreenCaptureRecordConfig = {
+        fd: -1,
+        frameWidth: 640,
+        frameHeight: 480,
+        videoBitrate: 10000000,
+        audioSampleRate: 48000,
+        audioChannelCount: 1,
+        audioBitrate: 96000,
+        preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H265_AAC_MP4,
+      }
+
+      mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 3000, mySteps, done)
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
+    })
+
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201
+        * @tc.name      : 02.AvScreenCaptureRecorder
+        * @tc.desc      : AvScreenCaptureRecorder
+        * @tc.size      : MediumTest
+        * @tc.type      : Performance test
+        * @tc.level     : Level 1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201', 0, async (done: Function) => {
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201 start')
 
       let mySteps = new Array(
         // create
@@ -193,7 +232,7 @@ export default function AVScreenCaptureRecorderTest() {
       }
 
       mediaTestBase.toNextStep(mediaTestBase.avScreenCaptureRecorder, avConfig, 3000, mySteps, done)
-      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0200 end')
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_0201 end')
     })
 
     /* *
