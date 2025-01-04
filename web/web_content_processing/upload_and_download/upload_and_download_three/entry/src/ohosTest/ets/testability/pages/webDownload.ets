@@ -65,7 +65,7 @@ struct Index {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
       console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data?.ACTION != null) {
@@ -111,13 +111,13 @@ struct Index {
         .key('textInput')
         .type(InputType.Normal)
         .placeholderColor(Color.Blue)
-        .placeholderFont({ size: 20, weight: FontWeight.Normal, family: "sans-serif", style: FontStyle.Normal })
+        .placeholderFont({ size: 20, weight: FontWeight.Normal, family: 'sans-serif', style: FontStyle.Normal })
         .enterKeyType(EnterKeyType.Next)
         .caretColor(Color.Green)
         .height(60)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-        .fontFamily("cursive")
+        .fontFamily('cursive')
         .fontStyle(FontStyle.Italic)
         .fontColor(Color.Red)
         .maxLength(20)

@@ -101,7 +101,7 @@ struct WebSageLoadOne {
   build() {
     Column() {
       Row() {
-        Button("web click").key('webcomponent').onClick(async () => {
+        Button('web click').key('webcomponent').onClick(async () => {
           console.info('key==>' + this.str);
           switch (this.str) {
             case 'emitSetHttpDnsSuccessAuto': {
@@ -313,8 +313,7 @@ struct WebSageLoadOne {
                 this.msg1 = 'result type:' + typeof (result.getError());
                 Utils.emitEvent(this.msg1, 516);
               }
-            }
-            catch (resError) {
+            } catch (resError) {
               console.log(`log error code: ${resError.code}, Message: ${resError.message}`);
             }
           })
