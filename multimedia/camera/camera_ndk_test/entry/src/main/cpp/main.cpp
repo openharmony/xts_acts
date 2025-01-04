@@ -318,30 +318,6 @@ static napi_value CameraManagerGetSupportedCameraInfos(napi_env env, napi_callba
     return cameraInfos;
 }
 
-static napi_value OHCreateCameraInputWithPositionAndType(napi_env env, napi_callback_info info)
-{
-    size_t argc = 3;
-    napi_value args[3] = {nullptr};
-    napi_value result;
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int32_t x;
-    napi_get_value_int32(env, args[0], &x);
-
-    int32_t y;
-    napi_get_value_int32(env, args[1], &y);
-
-    int32_t index;
-    napi_get_value_int32(env, args[NUMBER_2], &index);
-
-    Camera_Position position = GetPosition(x);
-    Camera_Type type = GetType(y);
-    Camera_ErrorCode ret = ndkCamera_->CreateCameraInputWithPositionAndType(position, type);
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-
 static napi_value PreviewOutputStart(napi_env env, napi_callback_info info)
 {
     napi_value result;
@@ -2663,8 +2639,6 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr},
     };
     napi_property_descriptor desc2[] = {
-        {"oHCreateCameraInputWithPositionAndType", nullptr, OHCreateCameraInputWithPositionAndType, nullptr, nullptr,
-          nullptr, napi_default, nullptr},
         {"oHCameraManagerCreatePreviewOutputUsedInPreconfig", nullptr,
             OHCameraManagerCreatePreviewOutputUsedInPreconfig, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHCameraManagerCreatePhotoOutputUsedInPreconfig", nullptr, OHCameraManagerCreatePhotoOutputUsedInPreconfig,
