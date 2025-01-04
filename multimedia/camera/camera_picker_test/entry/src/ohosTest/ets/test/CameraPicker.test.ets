@@ -167,7 +167,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100--------------");
-      if(cameraAvailable){
+      if (cameraAvailable) {
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK
       };
@@ -187,7 +187,7 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await drivePhotoFn();
-      }else{
+      } else {
         expect(true).assertTrue();
         done();
       }
@@ -204,7 +204,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101--------------");
-      if(cameraAvailable){
+      if (cameraAvailable) {
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_FRONT
       };
@@ -224,7 +224,7 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await drivePhotoFrontFn();
-      }else{
+      } else {
         expect(true).assertTrue();
         done();
       }
@@ -242,7 +242,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102--------------");
-      if(cameraAvailable){
+      if (cameraAvailable) {
       let pathDir = getContext().filesDir;
       let filePath = pathDir + `/${new Date().getTime()}.jpg}`
       fs.createRandomAccessFileSync(filePath, fs.OpenMode.CREATE);
@@ -268,7 +268,7 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await drivePhotoFn();
-    }else{
+    } else {
         expect(true).assertTrue();
         done();
       }
@@ -285,7 +285,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103--------------");
-      if(cameraAvailable){
+      if (cameraAvailable) {
       let uri: string = "fail_string";
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -306,7 +306,7 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await drivePhotoFn();
-      }else{
+      } else {
         expect(true).assertTrue();
         done();
       }
@@ -323,7 +323,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100--------------");
-      if(cameraAvailable){
+      if (cameraAvailable) {
       let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -345,7 +345,7 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await driveVideoFn(videoDuration);
-      }else{
+      } else {
         expect(true).assertTrue();
         done();
       }
@@ -362,7 +362,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101--------------");
-      if(cameraAvailable){
+      if (cameraAvailable) {
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
       };
@@ -382,7 +382,7 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await driveVideoFn(0);
-      }else{
+      } else {
         expect(true).assertTrue();
         done();
       }
@@ -399,7 +399,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102--------------");
-      if(cameraAvailable){
+      if (cameraAvailable) {
       let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_FRONT,
@@ -421,7 +421,7 @@ export default function cameraPicker() {
       await driveAllowFn();
       await driveSafeFn();
       await driveVideoFrontFn(videoDuration);
-      }else{
+      } else {
         expect(true).assertTrue();
         done();
       }
