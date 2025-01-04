@@ -18,8 +18,8 @@ import preventDefault from './Hyperlink/preventDefault.test';
 import searchButton from './Search/searchButton.test';
 import minMaxFontSize from './TextTest/minMaxFontSize.test';
 import editMenuOptions from './TextTest/editMenuOptions.test';
-import editMenuOptions from './TextTest/marqueeOptions1.test';
-import editMenuOptions from './TextTest/marqueeOptions2.test';
+import marqueeOptionsTest1 from './TextTest/marqueeOptions1.test';
+import marqueeOptionsTest2 from './TextTest/marqueeOptions2.test';
 
 export default function testsuite() {
   textAreaInputTest();
