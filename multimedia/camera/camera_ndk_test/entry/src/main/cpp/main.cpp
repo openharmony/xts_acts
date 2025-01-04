@@ -2708,7 +2708,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHPreviewOutputDeleteFrameRates", nullptr, OHPreviewOutputDeleteFrameRates, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"oHCameraManagerGetSupportedCameraInfos", nullptr, CameraManagerGetSupportedCameraInfos, nullptr, nullptr,
-		nullptr, napi_default, nullptr},
+         nullptr, napi_default, nullptr},
         {"oHCameraManagerRegisterTorchStatusCallback", nullptr, OHCameraManagerRegisterTorchStatusCallback, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"oHCameraManagerUnregisterTorchStatusCallback", nullptr, OHCameraManagerUnregisterTorchStatusCallback,
