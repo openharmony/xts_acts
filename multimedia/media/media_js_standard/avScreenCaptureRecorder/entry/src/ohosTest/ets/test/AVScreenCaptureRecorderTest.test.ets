@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import cameraObj from '@ohos.multimedia.camera';
 import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaTestBase = new MediaTestBase()
+
 export default function AVScreenCaptureRecorderTest() {
   describe('AVScreenCaptureRecorderTest', () => {
 
@@ -78,6 +78,7 @@ export default function AVScreenCaptureRecorderTest() {
         // stop recorder
         mediaTestBase.STOPRECORDER_EVENT,
         //release recorder
+        //close fd
         // mediaTestBase.RELEASECORDER_EVENT,
         mediaTestBase.END_EVENT);
 
@@ -172,7 +173,6 @@ export default function AVScreenCaptureRecorderTest() {
         mediaTestBase.STOPRECORDER_EVENT,
         // mediaTestBase.RELEASECORDER_EVENT,
         mediaTestBase.END_EVENT);
-
 
       let avConfig: media.AVScreenCaptureRecordConfig = {
         fd: -1,
