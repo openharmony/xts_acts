@@ -24,7 +24,7 @@ struct webViewSdkSchemeHandler {
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler()
   httpBodyStream: webview.WebHttpBodyStream|null = null
   existHttpBodyStream: webview.WebHttpBodyStream|null = null
-  @State emitKey: string = '';
+  @State emitKey: string = 'emitWebViewSdkSchemeHandler_setNetErrorCode';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
@@ -65,6 +65,19 @@ struct webViewSdkSchemeHandler {
   
   build() {
       Column() {
+          Button('web click').key('webViewSdkSchemeHandler').onClick(async () => {
+           console.info('key==>' + this.emitKey)
+           switch (this.emitKey) {
+              case 'emitWebViewSdkSchemeHandler_setNetErrorCode': {
+                this.controller.loadUrl('https://www.baidu.com');
+                break;
+              }
+              case 'emitWebViewSdkSchemeHandler_getNetErrorCode': {
+                this.controller.loadUrl('https://www.baidu.com');
+                break;
+              }
+           }
+          })
           Web({ src: $rawfile('sdkSchemeHandler.html'), controller: this.controller })
             .javaScriptAccess(this.javaScriptAccess)
             .fileAccess(this.fileAccess)
@@ -78,8 +91,6 @@ struct webViewSdkSchemeHandler {
                   (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
                     console.log('[schemeHandler] onRequestStart')
                     this.requests.push(request)
-                    Utils.emitEvent(true, 1533)
-                    Utils.emitEvent(true, 1513)
                     if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1 ||
                     request.getRequestUrl().indexOf('www.example.com') > -1) {
                       if(this.httpBodyStream == null || this.httpBodyStream == undefined) {
@@ -90,72 +101,14 @@ struct webViewSdkSchemeHandler {
                       response.setStatusText('text')
                       response.setHeaderByName('Access-Control-Allow-Origin', '*' ,true)
                       resourceHandler.didReceiveResponse(response);
-                      Utils.emitEvent(true, 1529)
                       let buf = buffer.from(this.htmlData)
                       resourceHandler.didReceiveResponseBody(buf.buffer);
-                      Utils.emitEvent(true, 1530)
                       resourceHandler.didFinish();
-                      Utils.emitEvent(true, 1531)
                       return true
-                    }
-                    if(request.getHeader() !== undefined) {
-                      Utils.emitEvent(true,1501)
-                    }
-
-                    if(request.getRequestUrl() !== '') {
-                      Utils.emitEvent(true,1502)
-                    }
-
-                    if(request.getRequestMethod() !== '') {
-                      Utils.emitEvent(true,1503)
-                    }
-
-                    if(request.getReferrer() !== undefined) {
-                      Utils.emitEvent(true,1504)
-                    }
-
-                    if(request.isMainFrame() !== undefined) {
-                      Utils.emitEvent(true,1505)
-                    }
-
-                    if(request.hasGesture() !== undefined) {
-                      Utils.emitEvent(true,1506)
-                    }
-
-
-                    if(this.httpBodyStream !== undefined) {
-                      this.existHttpBodyStream = this.httpBodyStream
-                      Utils.emitEvent(true,1507)
-
-                    }
-
-                    if(this.httpBodyStream?.getSize() !== undefined) {
-                      Utils.emitEvent(true,1508)
-                    }
-
-                    if(this.httpBodyStream?.getPosition() !== undefined) {
-                      Utils.emitEvent(true,1509)
-                    }
-
-                    if(this.httpBodyStream?.isChunked() !== undefined) {
-                      Utils.emitEvent(true,1510)
-                    }
-
-                    if(this.httpBodyStream?.isEof() !== undefined) {
-                      Utils.emitEvent(true,1511)
-                    }
-
-                    if(this.httpBodyStream?.isInMemory() !== undefined) {
-                      Utils.emitEvent(true,1512)
                     }
 
                     let response = new webview.WebSchemeHandlerResponse();
-                    response.setUrl('https://www.weibo.com')
-                    if(response.getUrl().indexOf('weibo')>-1){
-                      Utils.emitEvent(true,1514)
-                      Utils.emitEvent(true,1515)
-                    }
-
+                    response.setUrl('https://www.weibo.com');
 
                     response.setNetErrorCode(-2)
                     if(response.getNetErrorCode() == -2){
@@ -168,8 +121,7 @@ struct webViewSdkSchemeHandler {
 
 
                 this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
-                  console.log('[schemeHandler] onRequestStop')
-                  Utils.emitEvent(true,1534)
+                  console.log('[schemeHandler] onRequestStop');
                 });
 
                 this.controller.setWebSchemeHandler('https', this.schemeHandler);
