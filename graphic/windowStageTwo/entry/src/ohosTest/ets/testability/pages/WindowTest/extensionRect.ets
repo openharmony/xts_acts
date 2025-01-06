@@ -33,7 +33,7 @@ struct Extension {
       Button("监听组件变化")
         .id('button')
         .width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
-          let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>("session1");
+          let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session1');
           let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
           extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, (data: uiExtension.RectChangeOptions) => {
             console.log('Succeeded window rect changes. Data: + ' + JSON.stringify(data))
