@@ -15,44 +15,6 @@
 
 import common from '@ohos.app.ability.common';
 
-export class Camera_Position {
-  /**
-   * Unspecified position.
-   */
-  static readonly CAMERA_POSITION_UNSPECIFIED = 0;
-  /**
-   * Back position.
-   */
-  static readonly CAMERA_POSITION_BACK = 1;
-  /**
-   * Front position.
-   */
-  static readonly CAMERA_POSITION_FRONT = 2
-}
-
-export class Camera_Type {
-  /**
-   * Default camera type.
-   */
-  static readonly CAMERA_TYPE_DEFAULT = 0;
-  /**
-   * Wide camera.
-   */
-  static readonly CAMERA_TYPE_WIDE_ANGLE = 1;
-  /**
-   * Ultra wide camera.
-   */
-  static readonly CAMERA_TYPE_ULTRA_WIDE = 2;
-  /**
-   * Telephoto camera.
-   */
-  static readonly CAMERA_TYPE_TELEPHOTO = 3;
-  /**
-   * True depth camera.
-   */
-  static readonly CAMERA_TYPE_TRUE_DEPTH = 4
-}
-
 export class GlobalThis {
   private constructor() {}
   private static instance: GlobalThis;
