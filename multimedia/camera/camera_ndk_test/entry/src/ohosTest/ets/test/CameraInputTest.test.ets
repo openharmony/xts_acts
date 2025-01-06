@@ -21,7 +21,6 @@ import { camera } from '@kit.CameraKit';
 
 const TAG = "CameraXts CameraInputTest: ";
 
-//let camera: cameraObj.cameraInfo;
 let mCameraSession: number;
 
 async function getCameraManagerInstance() {
