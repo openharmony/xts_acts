@@ -47,6 +47,7 @@ export default function marqueeOptionsTest1() {
       await CommonFunc.sleep(1000);
       console.info("marqueeOptionsTest1 after each called");
     });
+	
     /**
      * @tc.number marqueeOptionsTest1
      * @tc.name testBack
@@ -62,7 +63,7 @@ export default function marqueeOptionsTest1() {
       console.info('marqueeOptions-----' + JSON.parse(marqueeOptions).$attrs.marqueeOptions);
       await CommonFunc.sleep(2000);
       expect(JSON.parse(marqueeOptions).$attrs.marqueeOptions)
-        .assertEqual('{"start":true,"step":"9.00","loop":"-1","direction":"MarqueeDirection.LEFT","delay":"0","fadeout":false,"startPolicy":"MarqueeStartPolicy.DEFAULT"}');
+        .assertEqual('{"start":true,"step":"9.00","loop":"-1","direction":"MarqueeDirection.DEFAULT","delay":"0","fadeout":false,"startPolicy":"MarqueeStartPolicy.DEFAULT"}');
       console.info('[marqueeOptionsTest1_001] END');
       done();
     });
