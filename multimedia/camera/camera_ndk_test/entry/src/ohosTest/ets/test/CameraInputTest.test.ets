@@ -42,12 +42,12 @@ function isEmpty(data: cameraObj.cameraInfo | number) {
 
 function getCameraSupportDevicesArray() {
   console.info(TAG + 'Enter getCameraSupportDevicesArray');
-  cameras = cameraObj.getSupportedCameras();
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameras.cameraPosition);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameras.cameraType);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameras.connectionType);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameras.cameraId);
-  if (isEmpty(cameras)) {
+  let cameraInfo: cameraObj.cameraInfo = cameraObj.getSupportedCameras();
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameraInfo.cameraPosition);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameraInfo.cameraType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameraInfo.connectionType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameraInfo.cameraId);
+  if (isEmpty(cameraInfo)) {
     console.info(TAG + "getSupportedCameras FAILED");
     expect().assertFail();
   }
