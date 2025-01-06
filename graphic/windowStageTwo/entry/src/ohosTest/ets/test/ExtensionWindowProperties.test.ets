@@ -80,6 +80,7 @@ export default function extensionWindowPropertiesTest() {
       }
     })
 
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_UIEXTENSION_WINDOW_JS_API_0200
      * @tc.name      : testUIExtensionHostRectChange
@@ -99,8 +100,8 @@ export default function extensionWindowPropertiesTest() {
         console.log(caseName + 'start run')
         await windowStage.createSubWindowWithOptions('subWindow', options).then(async (subWindowClass) => {
           subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
-          subWindowClass.resizeAsync(1000, 1200)
-          subWindowClass.moveWindowToAsync(300, 200)
+          await subWindowClass.resizeAsync(1000, 1200)
+          await subWindowClass.moveWindowToAsync(300, 200)
           subWindowClass.showWindow()
 
           console.log(caseName + 'after createSubWindow')
@@ -115,8 +116,8 @@ export default function extensionWindowPropertiesTest() {
             await btn.click()
             await sleep(1000)
 
-            subWindowClass.resizeAsync(1200, 800)
-            subWindowClass.moveWindowToAsync(0, 0)
+            await subWindowClass.resizeAsync(1200, 800)
+            await subWindowClass.moveWindowToAsync(0, 0)
 
             let hw = await driver.findComponent(ON.id('testNum'))
             let testNum = await hw.getText()
