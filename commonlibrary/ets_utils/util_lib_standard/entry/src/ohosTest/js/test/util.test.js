@@ -9102,6 +9102,153 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0016
+     * @tc.name: testAddBefore016
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore016', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore(123, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 123 must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of 123 must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0017
+     * @tc.name: testAddBefore017
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore017', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore('string', 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of string must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of string must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0018
+     * @tc.name: testAddBefore018
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore018', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore(undefined, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0019
+     * @tc.name: testAddBefore019
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore019', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore(null, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of null must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of null must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0020
+     * @tc.name: testAddBefore020
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore020', 0, function() {
+      let errorHappen = false;
+      try{
+        function  isFunc() {
+          console.log('test testAddBefore020');
+        }
+        util.Aspect.addBefore(isFunc, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of func must be a method of targetClass');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of func must be a method of targetClass");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0021
+     * @tc.name: testAddBefore021
+     * @tc.desc: Insert some logic before the method. In implementation the method will be replaced with a
+     * new function, which will execute 'before' with the args 'this' and the args of the original method, and
+     * then execute the original method. The return value of the new function is returned by the original method.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddBefore021', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addBefore(false, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of false must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of false must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0022
      * @tc.name: testAddAfter001
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9111,7 +9258,7 @@ describe('TextEncoderTest', function () {
      * @tc.level: Level 2
      */
     it('testAddAfter001', 0, function() {
-      util.Aspect.addAfter(AfterClass, 'foo', false,  (AfterClass, arg1, arg2) =>{
+      util.Aspect.addAfter(AfterClass, 'foo', false, (AfterClass, arg1, arg2) =>{
         AfterClass.myFunc('intMsg');
         expect(arg1).assertEqual('msg123');
         expect(arg2).assertEqual('123');
@@ -9122,7 +9269,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0017
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0023
      * @tc.name: testAddAfter002
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9132,7 +9279,7 @@ describe('TextEncoderTest', function () {
      * @tc.level: Level 2
      */
     it('testAddAfter002', 0, function() {
-      util.Aspect.addAfter(AfterClass, 'getData', false,  (This, arg1, arg2) =>{
+      util.Aspect.addAfter(AfterClass, 'getData', false, (This, arg1, arg2) =>{
         This.msg = 'intMsg';
         expect(arg1).assertEqual(0);
         expect(arg2).assertEqual('123');
@@ -9145,7 +9292,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0018
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0024
      * @tc.name: testAddAfter003
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9164,7 +9311,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0019
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0025
      * @tc.name: testAddAfter004
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9184,7 +9331,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0020
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0026
      * @tc.name: testAddAfter005
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9203,7 +9350,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0021
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0027
      * @tc.name: testAddAfter006
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9224,7 +9371,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0022
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0028
      * @tc.name: testAddAfter007
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9245,7 +9392,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0023
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0029
      * @tc.name: testAddAfter008
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9267,7 +9414,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0024
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0030
      * @tc.name: testAddAfter009
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9288,7 +9435,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0025
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0031
      * @tc.name: testAddAfter010
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9312,7 +9459,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0026
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0032
      * @tc.name: testAddAfter011
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9331,7 +9478,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0027
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0033
      * @tc.name: testAddAfter012
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9353,7 +9500,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0028
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0034
      * @tc.name: testAddAfter013
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9380,7 +9527,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0029
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0035
      * @tc.name: testAddAfter014
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9405,7 +9552,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0030
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0036
      * @tc.name: testAddAfter015
      * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
      * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
@@ -9427,7 +9574,154 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0031
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0037
+     * @tc.name: testAddAfter016
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter016', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter(123, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 123 must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of 123 must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0038
+     * @tc.name: testAddAfter017
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter017', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter('string', 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of string must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of string must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0039
+     * @tc.name: testAddAfter018
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter018', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter(undefined, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0040
+     * @tc.name: testAddAfter019
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter019', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter(null, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of null must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of null must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0041
+     * @tc.name: testAddAfter020
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter020', 0, function() {
+      let errorHappen = false;
+      try{
+        function  isFunc() {
+          console.log('test testAddBefore020');
+        }
+        util.Aspect.addAfter(isFunc, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of func must be a method of targetClass');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of func must be a method of targetClass");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0042
+     * @tc.name: testAddAfter021
+     * @tc.desc: Insert some logic after the method. In implementation the method will be replaced with a new function,
+     * which will execute the original method, and then execute 'after' with the args 'this' and the return value of
+     * the original method, and the args of the original method. The return value of the new function is returned by 'after'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddAfter021', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.addAfter(false, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of false must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of false must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0043
      * @tc.name: testReplace001
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9448,7 +9742,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0032
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0044
      * @tc.name: testReplace002
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9470,7 +9764,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0033
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0045
      * @tc.name: testReplace003
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9488,7 +9782,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0034
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0046
      * @tc.name: testReplace004
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9508,7 +9802,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0035
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0047
      * @tc.name: testReplace005
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9525,7 +9819,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0036
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0048
      * @tc.name: testReplace006
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9550,7 +9844,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0037
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0049
      * @tc.name: testReplace007
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9569,7 +9863,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0038
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0050
      * @tc.name: testReplace008
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9590,7 +9884,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0039
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0051
      * @tc.name: testReplace009
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9610,7 +9904,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0040
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0052
      * @tc.name: testReplace010
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9630,7 +9924,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0041
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0053
      * @tc.name: testReplace011
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9650,7 +9944,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0042
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0054
      * @tc.name: testReplace012
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9673,7 +9967,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0043
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0055
      * @tc.name: testReplace013
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9691,7 +9985,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0044
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0056
      * @tc.name: testReplace014
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9712,7 +10006,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0045
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0057
      * @tc.name: testReplace015
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9738,7 +10032,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0046
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0058
      * @tc.name: testReplace016
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9764,7 +10058,7 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0047
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0059
      * @tc.name: testReplace017
      * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
      * and the args of the original method. The return value of the new function is returned by 'instead'.
@@ -9782,6 +10076,147 @@ describe('TextEncoderTest', function () {
       });
       asp.replaceAsync('123');
       expect(asp.replaceAsync.constructor.name).assertEqual('AsyncFunction');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0060
+     * @tc.name: testReplace018
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace018', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace(123, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 123 must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of 123 must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0061
+     * @tc.name: testReplace019
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace019', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace('string', 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of string must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of string must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0062
+     * @tc.name: testReplace020
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace019', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace(undefined, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0063
+     * @tc.name: testReplace021
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace021', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace(null, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of null must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of null must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+  
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0064
+     * @tc.name: testReplace022
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace022', 0, function() {
+      let errorHappen = false;
+      try{
+        function  isFunc() {
+          console.log('test testReplace022');
+        }
+        util.Aspect.replace(isFunc, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of func must be a method of targetClass');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of func must be a method of targetClass");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_ASPECT_0065
+     * @tc.name: testReplace023
+     * @tc.desc: Replace the original method with a new function, which will execute 'instead' with the args 'this'
+     * and the args of the original method. The return value of the new function is returned by 'instead'.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testReplace023', 0, function() {
+      let errorHappen = false;
+      try{
+        util.Aspect.replace(false, 'func', false, () =>{
+        });
+      } catch(e) {
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of false must be Object');
+        expect(e.code).assertEqual(401);
+        expect(e.message).assertEqual("Parameter error. The type of false must be Object");
+        errorHappen = true;
+      }
+      expect(errorHappen).assertEqual(true);
     })
 
     /**
