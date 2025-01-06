@@ -15,6 +15,7 @@ group("WebJump") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "forward_backward_cache:forwardBackwardCache",
       "jump_between_web:ActsJumpBetweenWebTest",
       "jump_in_web:ActsJumpInWebTest",
       "load_interception:ActsLoadInterceptionTest",

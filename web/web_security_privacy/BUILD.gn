@@ -16,7 +16,11 @@ group("WebSecurityPrivacy") {
   if (is_standard_system) {
     deps = [
       "advanced_security_mode:ActsAdvancedSecurityModeTest",
+      "advertising_filtering:advertisingFiltering",
+      "anti_tracking:antiTracking",
       "incognito_mode:ActsIncognitoModeTest",
+      "safe_loading:safeLoading",
+      "web_permissions:webPermissions",
     ]
   }
 }

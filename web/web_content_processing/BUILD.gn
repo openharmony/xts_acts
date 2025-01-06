@@ -16,6 +16,7 @@ group("WebContentProcessing") {
   if (is_standard_system) {
     deps = [
       "password_padding:ActsPasswordPaddingTest",
+      "upload_and_download:uploadAndDownload",
       "web_page_download:ActsWebPageDownloadTest",
       "web_page_saving:ActsWebPageSavingTest",
     ]
