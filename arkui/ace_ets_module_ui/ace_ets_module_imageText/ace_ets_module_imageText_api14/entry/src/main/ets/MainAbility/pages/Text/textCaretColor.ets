@@ -18,18 +18,6 @@
 struct TextCaretColorExample3 {
   @State text: string = ''
 
-  urlString: StyledStringValue = new UrlStyle( 'https://www.123.com/' );
-  mutableStyledString: MutableStyledString = new MutableStyledString('Hello World', [{
-    start: 0,
-    length: 'Hello'.length,
-    styledKey: StyledStringKey.URL,
-    styledValue: this.urlString
-  }]);
-  controller: TextController = new TextController();
-  async onPageShow() {
-    this.controller.setStyledString(this.mutableStyledString)
-  }
-
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
       // 超出maxLines截断内容展示
@@ -43,16 +31,6 @@ struct TextCaretColorExample3 {
 
       Text(this.text)
 
-      Text(undefined, { controller: this.controller }).key('mutableStyledString').fontSize(30)
-
-      Row() {
-        Button('getStyles')
-          .width('30%')
-          .onClick(() => {
-            this.text = JSON.stringify(this.mutableStyledString
-              .getStyles(0, 5,StyledStringKey.URL)[0].styledKey)
-          })
-      }
     }.height(600).width('100%').padding({ left: 35, right: 35, top: 35 })
   }
 }
