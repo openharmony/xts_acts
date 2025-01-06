@@ -50,7 +50,7 @@ describe('BatteryStatisticsTest', function () {
                 done();
             }
         } else {
-            console.log(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
             expect(isSupport).assertFalse();
         }
     })
@@ -84,7 +84,7 @@ describe('BatteryStatisticsTest', function () {
                 done();
             }
         } else {
-            console.log(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
             expect(isSupport).assertFalse();
         }
     })
@@ -110,7 +110,7 @@ describe('BatteryStatisticsTest', function () {
                 done();
             }
         } else {
-            console.log(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
             expect(isSupport).assertFalse();
         }
     })
@@ -136,7 +136,7 @@ describe('BatteryStatisticsTest', function () {
                 done();
             }
         } else {
-            console.log(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
             expect(isSupport).assertFalse();
         }
     })
@@ -162,7 +162,7 @@ describe('BatteryStatisticsTest', function () {
                 done();
             }
         } else {
-            console.log(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
             expect(isSupport).assertFalse();
         }
     })
@@ -177,6 +177,7 @@ describe('BatteryStatisticsTest', function () {
      */
     it('System_API_Test_batteryStats_Manager_0600', 0, async function (done) {
         let TAG = 'System_API_Test_batteryStats_Manager_0600';
+        let isSupport = canIUse('SystemCapability.PowerManager.BatteryStatistics');
         if(isSupport) {
             try {
                 let value = batteryStats.getHardwareUnitPowerPercent(batteryStats.ConsumptionType.CONSUMPTION_TYPE_WIFI);
@@ -187,7 +188,7 @@ describe('BatteryStatisticsTest', function () {
                 done();
             }
         } else {
-            console.log(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
+            console.info(`${TAG} SystemCapability.PowerManager.BatteryStatistics isSupport: ${isSupport}`);
             expect(isSupport).assertFalse();
         }
     })
