@@ -17,11 +17,11 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import cameraObj from 'libentry.so';
 import { GlobalThis } from './Constants';
 import { cameraInfo } from '../../../main/cpp/types/libentry';
-import { cameraKit } from '@kit.CameraKit';
+import { camera } from '@kit.CameraKit';
 
 const TAG = "CameraXts CameraInputTest: ";
 
-let camera: cameraObj.cameraInfo;
+//let camera: cameraObj.cameraInfo;
 let mCameraSession: number;
 
 async function getCameraManagerInstance() {
@@ -43,12 +43,12 @@ function isEmpty(data: cameraObj.cameraInfo | number) {
 
 function getCameraSupportDevicesArray() {
   console.info(TAG + 'Enter getCameraSupportDevicesArray');
-  camera = cameraObj.getSupportedCameras();
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraPosition);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraType);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.connectionType);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraId);
-  if (isEmpty(camera)) {
+  cameras = cameraObj.getSupportedCameras();
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameras.cameraPosition);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameras.cameraType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameras.connectionType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameras.cameraId);
+  if (isEmpty(cameras)) {
     console.info(TAG + "getSupportedCameras FAILED");
     expect().assertFail();
   }
@@ -259,11 +259,12 @@ export default function CameraInputTest() {
     it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100--------------");
       let functionTag = "SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100";
-      if (!getIsCameraPositionWithTypeSupported(cameraKit.CameraStatusInfo.camera.cameraPosition.CAMERA_POSITION_FRONT, cameraKit.CameraStatusInfo.camera.cameraType.CAMERA_TYPE_WIDE_ANGLE)) {
-          expect(true).assertTrue();
-          return;
+
+      if (!getIsCameraPositionWithTypeSupported(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_WIDE_ANGLE)) {
+        expect(true).assertTrue();
+        return;
       }
-      let ret = cameraObj.createCameraInputWithPositionAndType(cameraKit.CameraStatusInfo.camera.cameraPosition.CAMERA_POSITION_FRONT, cameraKit.CameraStatusInfo.camera.cameraType.CAMERA_TYPE_WIDE_ANGLE);
+      let ret = cameraObj.createCameraInputWithPositionAndType(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_WIDE_ANGLE);
       if (ret) {
         expect().assertFail();
       }
