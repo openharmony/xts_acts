@@ -467,9 +467,9 @@ async function setPlaybackStrategyDASH(avPlayer: media.AVPlayer | null, done: Fu
   avPlayer?.on('stateChange', stateChangeCallback)
 }
 
-async function setPlaybackStrategy(avPlayer: media.AVPlayer | null, done: Function) {
+async function setPlaybackStrategy(avPlayer: media.AVPlayer | null, done: Function,
+  playbackStrategy: media.PlaybackStrategy) {
   let surfaceID: string = globalThis.value;
-  let playbackStrategy: media.PlaybackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD }
   let pauseCount = 0
   let stateChangeCallback = async (state: media.AVPlayerState) => {
     switch (state) {
@@ -610,14 +610,14 @@ async function testSubtitle(src: string | media.AVFileDescriptor, subtitleSrc: s
 }
 
 async function testSetPlaybackStrategy(src: string | media.AVFileDescriptor, avPlayer: media.AVPlayer | null,
-  done: Function) {
+  done: Function, playbackStrategy: media.PlaybackStrategy) {
   console.info(`case media source: ${src}`)
   media.createAVPlayer((err, video) => {
     console.info(`case media err: ${err}`)
     if (typeof (video) !== 'undefined') {
       console.info('case createAVPlayer success');
       avPlayer = video;
-      setPlaybackStrategy(avPlayer, done)
+      setPlaybackStrategy(avPlayer, done, playbackStrategy)
       setSource(avPlayer, src);
     }
     if (err != null) {
@@ -869,7 +869,22 @@ export default function AVPlayerLocalTest() {
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0100', 0, async (done: Function) => {
       if (fileDescriptor) {
-        testSetPlaybackStrategy(fileDescriptor, avPlayer, done);
+        let playbackStrategy: media.PlaybackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD }
+        testSetPlaybackStrategy(fileDescriptor, avPlayer, done, playbackStrategy);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0200
+        * @tc.name      : 002.test setPlaybackStrategy Function
+        * @tc.desc      : Local Video subtitle control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0200', 0, async (done: Function) => {
+      if (fileDescriptor) {
+        let playbackStrategy: media.PlaybackStrategy = { showFirstFrameOnPrepare: true }
+        testSetPlaybackStrategy(fileDescriptor, avPlayer, done, playbackStrategy);
       }
     });
     /* *
