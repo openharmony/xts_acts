@@ -66,14 +66,15 @@ struct webDefaultFontSizeNoAll {
                     console.log(`The getPageFontsize() return value is: ${result}`);
                   }
                 })
+                await Utils.sleep(2000);
+                this.controller.runJavaScript({
+                  script: "test()", callback: (res) => {
+                    Utils.emitEvent(this.checkEleResult[1], 440)
+                  }
+                })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
-              this.controller.runJavaScript({
-                script: "test()", callback: (res) => {
-                  Utils.emitEvent(this.checkEleResult[1], 440)
-                }
-              })
               break;
             }
           }
