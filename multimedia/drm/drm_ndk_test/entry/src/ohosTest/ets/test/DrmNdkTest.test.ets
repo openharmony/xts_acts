@@ -94,6 +94,10 @@ if (clearPlay === 1) {
   systemName = "com.wiseplay.drm";
 }
 
+const sleep = (ms: number) => {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
+
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -106,10 +110,12 @@ export default function abilityTest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     });
-    afterEach(() => {
+    afterEach(async (done:Function) => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
+      await sleep(100);
+      done();
     });
     afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
