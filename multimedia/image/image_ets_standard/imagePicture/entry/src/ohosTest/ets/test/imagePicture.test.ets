@@ -54,7 +54,7 @@ export default function imagePicture() {
   const HEIGHT = "FragmentImageHeight";
   let exifRecords: Record<string, string|null> = {"ImageWidth": "512", "ImageLength": "512"};
   let isSupportHEIFDecode: boolean;
-  let isSupportHEIFEncode: boolean;
+  let isSupportHEICEncode: boolean;
   let isSupportHdr: Boolean;
 
   describe('imagePicture', () => {
@@ -64,8 +64,8 @@ export default function imagePicture() {
       cacheDir = AppStorage.get('cacheDir')
       isSupportHEIFDecode =
         image.createImageSource(filesDir + '/' + "test.jpg").supportedFormats.includes("image/heif");
-      isSupportHEIFEncode = 
-        image.createImagePacker().supportedFormats.includes("image/heif");
+      isSupportHEICEncode = 
+        image.createImagePacker().supportedFormats.includes("image/heic");
       isSupportHdr = 
         !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
           display.getDefaultDisplaySync().hdrFormats.length != 0;
@@ -1492,7 +1492,7 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0100");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1525,7 +1525,7 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0200");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1558,7 +1558,7 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0300");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1591,7 +1591,7 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0400");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1624,7 +1624,7 @@ export default function imagePicture() {
      */
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0500', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKING_HEIF_0500");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1656,7 +1656,7 @@ export default function imagePicture() {
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0100");
       let writeFd = await getFdCacheDir("pack_picture_01.heic");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1690,7 +1690,7 @@ export default function imagePicture() {
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0200");
       let writeFd = await getFdCacheDir("pack_picture_02.heic");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1724,7 +1724,7 @@ export default function imagePicture() {
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0300");
       let writeFd = await getFdCacheDir("pack_picture_03.heic");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1758,7 +1758,7 @@ export default function imagePicture() {
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0400");
       let writeFd = await getFdCacheDir("pack_picture_04.heic");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
@@ -1792,7 +1792,7 @@ export default function imagePicture() {
     it('SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_PACKTOFILE_HEIF_0500");
       let writeFd = await getFdCacheDir("pack_picture_04.heic");
-      if (!isSupportHEIFDecode || !isSupportHEIFEncode) {
+      if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
           logger.log("device is not support heif decode");
         } else {
