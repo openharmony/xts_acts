@@ -14,8 +14,21 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+import display from '@ohos.display';
 
 export default function bindSheetType() {
   describe('bindSheetType', () => {
@@ -64,14 +77,22 @@ export default function bindSheetType() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[bindSheetType_0100] component obj is: " + JSON.stringify(obj));
       console.info("[bindSheetType_0100] title: " + JSON.stringify(obj.$attrs.content));
-      if(px2vp(colWidth)- 840 >= 0){
+      if (px2vp(colWidth) - 840 >= 0) {
         expect(obj.$attrs.content).assertEqual("value SheetType:2");
         let button2 = await driver.findComponent(ON.id('close'));
         await button2.click();
         await CommonFunc.sleep(1000);
         console.info('[bindSheetType_0100] END');
         done();
-      }else{
+      } else if (px2vp(colWidth) - 840 < 0 && px2vp(colWidth) - 600 >= 0 && display.isFoldable() &&
+        (display.getFoldStatus() == 3 || display.getFoldStatus() == 1)) {
+        expect(obj.$attrs.content).assertEqual("value SheetType:2");
+        let button2 = await driver.findComponent(ON.id('close'));
+        await button2.click();
+        await CommonFunc.sleep(1000);
+        console.info('[bindSheetType_0100] END');
+        done();
+      } else {
         expect(obj.$attrs.content).assertEqual("value SheetType:0");
         let button2 = await driver.findComponent(ON.id('close'));
         await button2.click();
@@ -82,4 +103,3 @@ export default function bindSheetType() {
     });
   })
 }
-
