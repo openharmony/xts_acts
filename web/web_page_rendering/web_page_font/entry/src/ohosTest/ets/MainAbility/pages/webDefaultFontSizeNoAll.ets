@@ -50,6 +50,7 @@ struct webDefaultFontSizeNoAll {
         this.str = eventData.data.ACTION;
       }
     }
+    
   }
 
   build() {

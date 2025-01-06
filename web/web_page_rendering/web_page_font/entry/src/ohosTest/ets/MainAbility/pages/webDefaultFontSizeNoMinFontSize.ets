@@ -65,16 +65,12 @@ struct webDefaultFontSizeNoMinFontSize {
                   script: "getPageFontsize()", callback: (result) => {
                     this.checkEleResult = JSON.parse(result)
                     console.log(`The getPageFontsize() return value is: ${result}`);
+                    Utils.emitEvent(this.checkEleResult[1], 436)
                   }
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
-              this.controller.runJavaScript({
-                script: "test()", callback: (res) => {
-                  Utils.emitEvent(this.checkEleResult[1], 436)
-                }
-              })
               break;
             }
             case "emitdefaultFontSize17AndCssFontSize9WebC": {
@@ -86,16 +82,12 @@ struct webDefaultFontSizeNoMinFontSize {
                   script: "getTestPageFontsize()", callback: (result) => {
                     this.checkEleResult = JSON.parse(result)
                     console.log(`The getTestPageFontsize() return value is: ${result}`);
+                    Utils.emitEvent(this.checkEleResult[1], 438)
                   }
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
-              this.controller.runJavaScript({
-                script: "test()", callback: (res) => {
-                  Utils.emitEvent(this.checkEleResult[1], 438)
-                }
-              })
               break;
             }
           }
