@@ -15,8 +15,9 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import cameraObj from 'libentry.so';
-import { Camera_Position, Camera_Type, GlobalThis } from './Constants';
+import { GlobalThis } from './Constants';
 import { cameraInfo } from '../../../main/cpp/types/libentry';
+import { cameraKit } from '@kit.CameraKit';
 
 const TAG = "CameraXts CameraInputTest: ";
 
@@ -258,11 +259,11 @@ export default function CameraInputTest() {
     it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100--------------");
       let functionTag = "SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100";
-      if (!getIsCameraPositionWithTypeSupported(Camera_Position.CAMERA_POSITION_FRONT, Camera_Type.CAMERA_TYPE_WIDE_ANGLE)) {
+      if (!getIsCameraPositionWithTypeSupported(cameraKit.CameraStatusInfo.camera.cameraPosition.CAMERA_POSITION_FRONT, cameraKit.CameraStatusInfo.camera.cameraType.CAMERA_TYPE_WIDE_ANGLE)) {
           expect(true).assertTrue();
           return;
       }
-      let ret = cameraObj.createCameraInputWithPositionAndType(2, 1);
+      let ret = cameraObj.createCameraInputWithPositionAndType(cameraKit.CameraStatusInfo.camera.cameraPosition.CAMERA_POSITION_FRONT, cameraKit.CameraStatusInfo.camera.cameraType.CAMERA_TYPE_WIDE_ANGLE);
       if (ret) {
         expect().assertFail();
       }
