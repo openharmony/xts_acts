@@ -24,12 +24,12 @@ async function panGesture(id: string, x1: number, y1: number, x2: number, y2: nu
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   const p1: Point = {
-    x: rect.left + x1,
-    y: rect.top + y1
+    x: Math.round(rect.left + vp2px(x1)),
+    y: Math.round(rect.top + vp2px(y1))
   };
   const p2: Point = {
-    x: rect.left + x2,
-    y: rect.top + y2
+    x: Math.round(rect.left + vp2px(x2)),
+    y: Math.round(rect.top + vp2px(y2))
   };
   await driver.fling(p1, p2, 5, 200)
 }

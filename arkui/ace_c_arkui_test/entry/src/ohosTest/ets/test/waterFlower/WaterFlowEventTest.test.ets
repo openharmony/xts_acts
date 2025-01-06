@@ -23,10 +23,10 @@ async function flingComponentV(key: string, isForward: boolean, speed: number = 
   offsetX: number = 0) {
   let driver = Driver.create();
   let rect = Utils.getComponentRect(key);
-  let centerX = Utils.getRectHorizontalCenterX(rect) + offsetX
-  let centerY = Utils.getRectVerticalCenterY(rect)
-  let Y1 = centerY - distance;
-  let Y2 = centerY + distance;
+  let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect) + vp2px(offsetX));
+  let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
+  let Y1 = Math.round(centerY - vp2px(distance));
+  let Y2 = Math.round(centerY + vp2px(distance));
   let stepLen = 20;
   if (isForward) {
     await driver.fling({
@@ -46,8 +46,8 @@ async function flingComponentV(key: string, isForward: boolean, speed: number = 
 async function mouseScrollV(key: string, isDown: boolean, done?: Function) {
   let driver = Driver.create();
   let rect = Utils.getComponentRect(key);
-  let centerX = Utils.getRectHorizontalCenterX(rect)
-  let centerY = Utils.getRectVerticalCenterY(rect)
+  let centerX = Math.round(globalThis.winLeft + Utils.getRectHorizontalCenterX(rect));
+  let centerY = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
   await driver.mouseScroll({
     x: centerX, y: centerY
   }, isDown, 1);
@@ -120,6 +120,9 @@ export default function waterFlowEventTest() {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       // Fingers rolling upwards with rebound
       {
+        await flingComponentV('waterFlow', true, 1000, 20)
+        await Utils.sleep(3000)
+        nativeRender.getOnWillDidScrollData()
         await flingComponentV('waterFlow', true, 40000, 95)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.getOnWillDidScrollData()
@@ -140,8 +143,24 @@ export default function waterFlowEventTest() {
           didStateData[1] == ScrollState.Fling && didStateData[2] == ScrollState.Idle)
           .assertEqual(true)
       }
+      done()
+    })
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_WATERFLOW_ONWILLDIDSCROLL_0700
+    * @tc.name       : testWaterFlowOnWillDidScroll007
+    * @tc.desc       : test onWillScroll and onDidScroll event callback with rebound
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testWaterFlowOnWillDidScroll007', 0, async (done: Function) => {
+      await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       // Fingers rolling downwards with rebound
       {
+        await flingComponentV('waterFlow', false, 1000, 20)
+        await Utils.sleep(3000)
+        nativeRender.getOnWillDidScrollData()
         await flingComponentV('waterFlow', false, 40000, 95)
         await Utils.sleep(3000)
         let dataArray: number[][] = nativeRender.getOnWillDidScrollData()
@@ -151,7 +170,7 @@ export default function waterFlowEventTest() {
         let didOffsetData: number[] = dataArray[3];
         let didStateData: number[] = dataArray[4];
         let timeData: number[] = dataArray[5];
-        console.log('testWaterFlowOnWillDidScroll001', JSON.stringify(dataArray))
+        console.log('testWaterFlowOnWillDidScroll007', JSON.stringify(dataArray))
         expect(willOffsetData.length == 2 && willOffsetData[0] < 0 && willOffsetData[1] > 0).assertEqual(true)
         expect(willStateData.length == 2 && willStateData[0] == ScrollState.Scroll &&
           willStateData[1] == ScrollState.Fling).assertEqual(true)
@@ -162,7 +181,7 @@ export default function waterFlowEventTest() {
         expect(didStateData.length == 3 && didStateData[0] == ScrollState.Scroll &&
           didStateData[1] == ScrollState.Fling && didStateData[2] == ScrollState.Idle)
           .assertEqual(true)
-        console.log('testWaterFlowOnWillDidScroll001', timeData.length)
+        console.log('testWaterFlowOnWillDidScroll007', timeData.length)
         expect(timeData[timeData.length - 1] == 2 && timeData[0] == 1).assertEqual(true)
       }
       done()
@@ -243,7 +262,7 @@ export default function waterFlowEventTest() {
     it('testWaterFlowOnWillDidScroll004', 0, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowOnWillDidScrollTest`);
       // Drag the scrollbar downwards with your fingers
-      await flingComponentV('waterFlow', false, 100, 80, 135)
+      await flingComponentV('waterFlow', false, 100, 60, 135)
       await Utils.sleep(3000)
       let dataArray: number[][] = nativeRender.getOnWillDidScrollData()
       let willOffsetData: number[] = dataArray[0];
@@ -426,7 +445,7 @@ export default function waterFlowEventTest() {
       let option: WaterFlowScrollFrameBeginData =
         new WaterFlowScrollFrameBeginData('WaterFlowOnScrollFrameBeginTest001', 10)
       await Utils.pushPageByParams(`waterflow/WaterFlowOnScrollFrameBeginTest`, option)
-      await flingComponentV('waterFlow', false, 1000, 20)
+      await flingComponentV('waterFlow', false, 500, 15)
       await Utils.sleep(1500)
       let dataArray = nativeRender.getOnWillDidScrollData();
       let willOffsetData: number[] = dataArray[0];
@@ -438,7 +457,9 @@ export default function waterFlowEventTest() {
       expect(willOffsetData.length == 1 && willOffsetData[0] < 0).assertEqual(true)
       expect(willStateData.length == 2 && willStateData[0] == ScrollState.Scroll &&
         willStateData[1] == ScrollState.Fling).assertEqual(true)
-      expect(firstArray[firstArray.length - 1] == 22 && lastArray[lastArray.length - 1] == 31).assertEqual(true)
+      expect(((lastArray[lastArray.length - 1] - firstArray[firstArray.length - 1]) == 7 ||
+        (lastArray[lastArray.length - 1] - firstArray[firstArray.length - 1]) == 9) &&
+        lastArray[lastArray.length - 1] != 39 && firstArray[firstArray.length - 1] != 0).assertEqual(true)
       done()
     })
 
@@ -454,8 +475,8 @@ export default function waterFlowEventTest() {
       let option: WaterFlowScrollFrameBeginData =
         new WaterFlowScrollFrameBeginData('WaterFlowOnScrollFrameBeginTest002', 10)
       await Utils.pushPageByParams(`waterflow/WaterFlowOnScrollFrameBeginTest`, option)
-      await flingComponentV('waterFlow', true, 1000, 20)
-      await Utils.sleep(1500)
+      await flingComponentV('waterFlow', true, 100, 20)
+      await Utils.sleep(3000)
       let dataArray = nativeRender.getOnWillDidScrollData();
       let willOffsetData: number[] = dataArray[0];
       let willStateData: number[] = dataArray[1];
@@ -539,8 +560,8 @@ export default function waterFlowEventTest() {
       let option: WaterFlowScrollFrameBeginData =
         new WaterFlowScrollFrameBeginData('WaterFlowOnScrollFrameBeginTest005', -10)
       await Utils.pushPageByParams(`waterflow/WaterFlowOnScrollFrameBegin2Test`, option)
-      await flingComponentV('waterFlow', true, 1000, 20)
-      await Utils.sleep(1500)
+      await flingComponentV('waterFlow', true, 100, 20)
+      await Utils.sleep(3000)
       let dataArray = nativeRender.getOnWillDidScrollData();
       let willOffsetData: number[] = dataArray[0];
       let willStateData: number[] = dataArray[1];

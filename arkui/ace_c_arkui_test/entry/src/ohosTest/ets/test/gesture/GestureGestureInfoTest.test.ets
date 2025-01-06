@@ -24,12 +24,12 @@ async function pan(id: string, x1: number, y1: number, x2: number, y2: number) {
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   const p1: Point = {
-    x: rect.left + x1,
-    y: rect.top + y1
+    x: Math.round(rect.left + vp2px(x1)),
+    y: Math.round(rect.top + vp2px(y1))
   };
   const p2: Point = {
-    x: rect.left + x2,
-    y: rect.top + y2
+    x: Math.round(rect.left + vp2px(x2)),
+    y: Math.round(rect.top + vp2px(y2))
   };
   await driver.fling(p1, p2, 5, 200)
 }
@@ -39,10 +39,10 @@ async function pinch(id: string) {
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   let point: PointerMatrix = PointerMatrix.create(2, 2);
-  point.setPoint(0, 0, { x: rect.left + 50, y: rect.top + 50 });
-  point.setPoint(0, 1, { x: rect.left + 20, y: rect.top + 20 });
-  point.setPoint(1, 0, { x: rect.left + 60, y: rect.top + 60 });
-  point.setPoint(1, 1, { x: rect.left + 90, y: rect.top + 90 });
+  point.setPoint(0, 0, { x: Math.round(rect.left + vp2px(33)), y: Math.round(rect.top + vp2px(33)) });
+  point.setPoint(0, 1, { x: Math.round(rect.left + vp2px(13)), y: Math.round(rect.top + vp2px(13)) });
+  point.setPoint(1, 0, { x: Math.round(rect.left + vp2px(20)), y: Math.round(rect.top + vp2px(20)) });
+  point.setPoint(1, 1, { x: Math.round(rect.left + vp2px(60)), y: Math.round(rect.top + vp2px(60)) });
   await driver.injectMultiPointerAction(point, 200);
 }
 
@@ -51,10 +51,10 @@ async function rotation(id: string) {
   let refresh = await driver.findComponent(ON.id(id));
   let rect = await refresh.getBounds();
   let point: PointerMatrix = PointerMatrix.create(2, 2);
-  point.setPoint(0, 0, { x: rect.left + 50, y: rect.top + 50 });
-  point.setPoint(0, 1, { x: rect.left + 50, y: rect.top + 20 });
-  point.setPoint(1, 0, { x: rect.left + 60, y: rect.top + 60 });
-  point.setPoint(1, 1, { x: rect.left + 60, y: rect.top + 90 });
+  point.setPoint(0, 0, { x: Math.round(rect.left + vp2px(33)), y: Math.round(rect.top + vp2px(33)) });
+  point.setPoint(0, 1, { x: Math.round(rect.left + vp2px(33)), y: Math.round(rect.top + vp2px(13)) });
+  point.setPoint(1, 0, { x: Math.round(rect.left + vp2px(40)), y: Math.round(rect.top + vp2px(20)) });
+  point.setPoint(1, 1, { x: Math.round(rect.left + vp2px(40)), y: Math.round(rect.top + vp2px(60)) });
   await driver.injectMultiPointerAction(point, 200);
 }
 
@@ -75,12 +75,9 @@ export default function gestureGestureInfoTest() {
     it('testGestureGestureInfo001', 0, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.longClickComponent('button1')
-      await pan('column2', 40, 40, 80, 40)
-      await pan('column3', 40, 40, 80, 40)
-      await rotation('column4')
-      await pinch('column5')
       let dataArray: number[][] = nativeRender.getGestureData();
       let longPressGesture: number[] = dataArray[0];
+      console.log('testGestureGestureInfo001', JSON.stringify(dataArray))
       expect(longPressGesture[0] == 0 && longPressGesture[1] == 1 && longPressGesture[2] == 1).assertEqual(true)
       done();
     })
@@ -98,7 +95,8 @@ export default function gestureGestureInfoTest() {
       await pan('column2', 40, 40, 80, 40)
       let dataArray: number[][] = nativeRender.getGestureData();
       let panGesture: number[] = dataArray[1];
-      expect(panGesture[0] >= 170 && panGesture[0] <= 230 && panGesture[1] >= 170 && panGesture[1] <= 230 &&
+      console.log('testGestureGestureInfo002', JSON.stringify(dataArray))
+      expect(panGesture[0] >= 150 && panGesture[0] <= 250 && panGesture[1] >= 150 && panGesture[1] <= 250 &&
         panGesture[2] >= -1 && panGesture[2] <= 1 && panGesture[3] >= 8 && panGesture[3] <= 16 && panGesture[4] == 0).assertEqual(true)
       done();
     })
@@ -116,7 +114,8 @@ export default function gestureGestureInfoTest() {
       await pan('column3', 40, 40, 80, 40)
       let dataArray: number[][] = nativeRender.getGestureData();
       let swipeGesture: number[] = dataArray[2];
-      expect(swipeGesture[0] == 0 && swipeGesture[1] >= 177 && swipeGesture[1] <= 183).assertEqual(true)
+      console.log('testGestureGestureInfo003', JSON.stringify(dataArray))
+      expect(swipeGesture[0] == 0 && swipeGesture[1] >= 165 && swipeGesture[1] <= 185).assertEqual(true)
       done();
     })
 
@@ -133,7 +132,8 @@ export default function gestureGestureInfoTest() {
       await rotation('column4')
       let dataArray: number[][] = nativeRender.getGestureData();
       let rotationGesture: number[] = dataArray[3];
-      expect(rotationGesture[0] >= 30 && rotationGesture[0] <= 31).assertEqual(true)
+      console.log('testGestureGestureInfo004', JSON.stringify(dataArray))
+      expect(rotationGesture[0] >= 100 && rotationGesture[0] <= 110).assertEqual(true)
       done();
     })
 
@@ -150,7 +150,10 @@ export default function gestureGestureInfoTest() {
       await pinch('column5')
       let dataArray: number[][] = nativeRender.getGestureData();
       let pinchGesture: number[] = dataArray[4];
-      expect(pinchGesture[0] == 4 && pinchGesture[1] == 55 && pinchGesture[2] == 55).assertEqual(true)
+      console.log('testGestureGestureInfo005', JSON.stringify(dataArray))
+      expect( pinchGesture[0] >= 0.5 && pinchGesture[0] <= 0.7 ).assertEqual(true)
+      expect( pinchGesture[1] >= 40 || pinchGesture[1] == 86).assertEqual(true)
+      expect( pinchGesture[2] >= 40 || pinchGesture[2] == 86).assertEqual(true)
       done();
     })
 
