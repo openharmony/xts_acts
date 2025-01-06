@@ -79,6 +79,58 @@ export default function extensionWindowPropertiesTest() {
         done()
       }
     })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_UIEXTENSION_WINDOW_JS_API_0200
+     * @tc.name      : testUIExtensionHostRectChange
+     * @tc.desc      : Listen the change of rect
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testUIExtensionHostRectChange', 0, async (done: Function) => {
+      let caseName = 'testUIExtensionHostRectChange';
+      console.log(caseName + 'start run');
+      try {
+        let options: window.SubWindowOptions = {
+          title: 'subWindow',
+          decorEnabled: true
+        }
+        console.log(caseName + 'start run')
+        await windowStage.createSubWindowWithOptions('subWindow', options).then(async (subWindowClass) => {
+          subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
+          await subWindowClass.resizeAsync(1000, 1200)
+          await subWindowClass.moveWindowToAsync(300, 200)
+          subWindowClass.showWindow()
+
+          console.log(caseName + 'after createSubWindow')
+
+          await sleep(1000)
+          let driver = Driver.create()
+          let btn = await driver.findComponent(ON.id('button'))
+
+          if (btn == undefined) {
+            console.log(caseName + 'device not support')
+          } else {
+            await btn.click()
+            await sleep(1000)
+
+            await subWindowClass.resizeAsync(1200, 800)
+            await subWindowClass.moveWindowToAsync(0, 0)
+
+            let hw = await driver.findComponent(ON.id('testNum'))
+            let testNum = await hw.getText()
+            console.log(caseName + 'testNum : ' + testNum)
+            expect(testNum == '2').assertTrue()
+          }
+        })
+      } catch (exception) {
+        console.log(caseName + 'Failed ' + JSON.stringify(exception))
+        expect().assertFail()
+      }
+      done()
+    })
     
   })
 }

@@ -11,6 +11,8 @@
     "testability/pages/WindowTest/StartMoving",
     "testability/pages/WindowTest/Modality",
     "testability/pages/WindowTest/extension",
-    "testability/pages/WindowTest/EmbeddedComponentPage"
+    "testability/pages/WindowTest/EmbeddedComponentPage",
+    "testability/pages/WindowTest/extensionRect",
+    "testability/pages/WindowTest/EmbeddedComponentRectPage"
   ]
 }
