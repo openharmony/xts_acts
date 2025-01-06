@@ -30,7 +30,7 @@ struct Extension {
         .id('testNum')
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-      Button("监听组件变化")
+      Button('监听组件变化')
         .id('button')
         .width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session1');
