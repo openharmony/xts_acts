@@ -24,6 +24,7 @@ import TaskGroupTest from './TaskGroupTest.test.ets'
 import SendablesTest from './SendablesTest.test.ets'
 import SendablesTestWithAlloc from './SendablesTestWithAlloc.test.ets'
 import PixMapTest from './PixMapTest.test.ets'
+import SendableLruCache from './SendableLruCache.test.ets'
 
 export default function testsuite() {
     // test case in AsyncLockTest can only be reproduced in the first and standalone testsuite
@@ -38,4 +39,5 @@ export default function testsuite() {
     SendablesTest();
     SendablesTestWithAlloc();
     PixMapTest();
+    SendableLruCache();
 }
