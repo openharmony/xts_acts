@@ -36,10 +36,11 @@ export default function AVScreenCaptureRecorderTest() {
 
     afterEach(async () => {
       console.info('afterEach case');
-      if (mediaTestBase.avScreenCaptureRecorder != null) {
+      if (mediaTestBase.avScreenCaptureRecorder != null || mediaTestBase.avScreenCaptureRecorder != undefined) {
         await mediaTestBase.avScreenCaptureRecorder?.release().then(() => {
           console.info('avScreenCaptureRecorder release success');
           console.info(mediaTestBase.TAG + 'this testCase execution completed')
+          mediaTestBase.avScreenCaptureRecorder = null;
         }).catch((err: BusinessError) => {
           console.info('avScreenCaptureRecorder release failed, error: ' + err.message);
         })

@@ -118,6 +118,7 @@ export default class MediaTestBase {
         await media.createAVScreenCaptureRecorder().then((captureRecorder) => {
           if (captureRecorder != null) {
             avScreenCaptureRecorder = captureRecorder;
+            this.avScreenCaptureRecorder = avScreenCaptureRecorder;
             console.info('createAVScreenCaptureRecorder success');
             this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
           } else {
@@ -191,6 +192,7 @@ export default class MediaTestBase {
         steps.shift();
         await avScreenCaptureRecorder?.release().then(() => {
           console.info('avScreenCaptureRecorder release success');
+          this.avScreenCaptureRecorder = null;
           this.toNextStep(avScreenCaptureRecorder, avConfig, recorderTime, steps, done);
         }).catch((err: BusinessError) => {
           console.error('avScreenCaptureRecorder release failed, error: ' + err.message);
