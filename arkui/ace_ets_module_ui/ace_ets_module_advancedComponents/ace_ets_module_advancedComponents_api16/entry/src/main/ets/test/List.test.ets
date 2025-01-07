@@ -14,7 +14,9 @@
  */
 
 import composeListItemPageTest from './composeListItem/composeListItemPageTest.test';
+import composeListItemOperateItemSymbolStyle from './composeListItem/composeListItemOperateItemSymbolStyle.test';
 
 export default function testsuite() {
   composeListItemPageTest();
+  composeListItemOperateItemSymbolStyle();
 }
