@@ -5,7 +5,6 @@
     "MainAbility/pages/UIContext/KeyboardAvoidMode",
     "MainAbility/pages/styledString/StyledString",
     "MainAbility/pages/RichEditor/onHover",
-    "MainAbility/pages/Search/autoDisable",
     "MainAbility/pages/imageSpan/imageSpan",
     "MainAbility/pages/MovingPhotoView/MovingPhotoView",
     "MainAbility/pages/onSubmit/onSubmitTest",
@@ -16,7 +15,6 @@
     "MainAbility/pages/Marquee/marqueeNode",
     "MainAbility/pages/TextArea/textAreaNode",
     "MainAbility/pages/SymbolGlyph/SymbolGlyphNode",
-    "MainAbility/pages/ImageOrientation/ImageOrientation",
-    "MainAbility/pages/RichEditor/onDoubleClick"
+    "MainAbility/pages/ImageOrientation/ImageOrientation"
   ]
 }
