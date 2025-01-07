@@ -12,7 +12,7 @@ struct SameDft {
   @State message: string = 'ni'
   private want: Want = {
     bundleName: 'com.example.act_embeddeduiextension',
-    abilityName: 'EmbeddedUIExtAbilityDefault',
+    abilityName: 'EmbeddedUIExtAbilityDefault2',
     parameters: {}
   }
 

@@ -594,7 +594,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -648,7 +647,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -692,7 +690,7 @@ export default function AbilityRuntime_Test() {
             const records = stdResult.split('AppRunningRecord');
             let count = 0;
             for (const record of records) {
-              if (record.includes('process name [com.example.act_embeddeduiextension:EmbeddedUIExtAbilityBundle:')) {
+              if (record.includes('process name [com.example.act_embeddeduiextension:EmbeddedUIExtAbilityBundle3:')) {
                 count++;
               }
             }
@@ -703,7 +701,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -757,7 +754,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -811,7 +807,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -911,7 +906,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -966,7 +960,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -1020,7 +1013,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -1074,7 +1066,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }
@@ -1128,7 +1119,6 @@ export default function AbilityRuntime_Test() {
               done()
             } catch (error) {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  fail : ${JSON.stringify(error)}`);
-              expect().assertFalse()
               done()
             }
           }

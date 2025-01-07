@@ -12,7 +12,7 @@ struct HostInstance {
   @State message: string = 'ni'
   private want1: Want = {
     bundleName: 'com.example.act_embeddeduiextension',
-    abilityName: 'EmbeddedUIExtAbilityBundle',
+    abilityName: 'EmbeddedUIExtAbilityBundle3',
     moduleName: 'entry_test',
     parameters: {
       'ohos.extension.processMode.hostInstance': true

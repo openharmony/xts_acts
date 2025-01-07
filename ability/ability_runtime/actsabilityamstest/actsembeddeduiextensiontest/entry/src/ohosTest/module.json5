@@ -66,8 +66,23 @@
         "extensionProcessMode": "bundle"
       },
       {
+        "name": "EmbeddedUIExtAbilityBundle3",
+        "icon": "$media:icon",
+        "description": "EmbeddedUIExtAbility",
+        "type": "embeddedUI",
+        "srcEntry": "./ets/EmbeddedUIExtAbilityBundle3/EmbeddedUIExtAbility.ets",
+        "extensionProcessMode": "bundle"
+      },
+      {
         "name": "EmbeddedUIExtAbilityDefault",
         "srcEntry": "./ets/EmbeddedUIExtAbilityDefault/EmbeddedUIExtAbility.ets",
+        "description": "EmbeddedUIExtAbilityDefault",
+        "type": "embeddedUI",
+        "icon": "$media:icon",
+      },
+      {
+        "name": "EmbeddedUIExtAbilityDefault2",
+        "srcEntry": "./ets/EmbeddedUIExtAbilityDefault2/EmbeddedUIExtAbility.ets",
         "description": "EmbeddedUIExtAbilityDefault",
         "type": "embeddedUI",
         "icon": "$media:icon",
