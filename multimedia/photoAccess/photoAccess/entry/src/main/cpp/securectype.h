@@ -285,9 +285,9 @@
 #include <linux/kernel.h>
 #include <linux/module.h>
 #else
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
 #endif
 
 /* If you need high performance, enable the SECUREC_WITH_PERFORMANCE_ADDONS macro, default is enable .

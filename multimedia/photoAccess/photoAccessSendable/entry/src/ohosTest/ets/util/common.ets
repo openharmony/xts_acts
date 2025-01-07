@@ -18,7 +18,7 @@ import abilityAccessCtrl, { PermissionRequestResult, Permissions } from '@ohos.a
 import bundleManager from '@ohos.bundle.bundleManager';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import fs, { ListFileOptions } from '@ohos.file.fs';
-import fileuri from "@ohos.file.fileuri";
+import fileuri from '@ohos.file.fileuri';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';

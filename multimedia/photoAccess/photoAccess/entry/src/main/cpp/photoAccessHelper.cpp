@@ -17,8 +17,6 @@
 #include <cstdio>
 #include <cstring>
 #include <iostream>
-#include <string.h>
-#include <string>
 #include <cerrno>
 #include "hilog/log.h"
 #include "napi/native_api.h"

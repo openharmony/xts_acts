@@ -17,7 +17,7 @@
 #define __SECUREC_H__5D13A042_DC3F_4ED9_A8D1_882811274C27
 
 #include "securectype.h"
-#include <stdarg.h>
+#include <cstdarg>
 
 #ifndef SECUREC_HAVE_ERRNO_H
 #if SECUREC_IN_KERNEL
@@ -29,7 +29,7 @@
 
 /* EINVAL ERANGE may defined in errno.h */
 #if SECUREC_HAVE_ERRNO_H
-#include <errno.h>
+#include <cerrno>
 #endif
 
 /* define error code */

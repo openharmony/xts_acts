@@ -27,7 +27,6 @@
 #include <termios.h>
 #include <unistd.h>
 #include <uv.h>
-#include <string.h>
 
 constexpr int TEST_ARG_SUM = 4;
 constexpr int TEST_ONE_ARG_SUM = 1;
