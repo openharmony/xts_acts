@@ -12,7 +12,8 @@
         {
             "test-file-name": [
                 "ActsDeepLinkTest.hap",
-                "ActsDeepLinkDemoTest.hap"
+                "ActsDeepLinkDemoTest.hap",
+                "ActsDeepLinkMainTest.hap"
     
             ],
             "type": "AppInstallKit",
