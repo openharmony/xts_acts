@@ -181,7 +181,7 @@ export default function cloneAssetTest() {
      */
     it("test_clone_long_title_001", 0, async (done: Function) => {
       let testNum: string = "test_clone_long_title_001";
-      let title: string = "";
+      let title: string = "1".repeat(251);
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "cloneTest.jpg");
         let photoAsset: photoAccessHelper.PhotoAsset | undefined = await getFileAsset(context, testNum, fetchOps);
@@ -190,9 +190,7 @@ export default function cloneAssetTest() {
           expect(false).assertTrue();
           done();
         }
-        for (let i = 0; i < 251; i++) {
-          title += "1";
-        }
+        
         console.log(`${testNum} :: title len is ${title.length}`);
         let newPhotoAsset: photoAccessHelper.PhotoAsset | undefined = await photoAsset?.clone(title);
         if (newPhotoAsset === undefined ) {
@@ -233,10 +231,7 @@ export default function cloneAssetTest() {
           expect(false).assertTrue();
           done();
         }
-        let title: string = "";
-        for (let i = 0; i < 252; i++) {
-          title += "1";
-        }
+        let title: string = "1".repeat(252);
         console.log(`${testNum} :: title lenght is ${title.length}`);
         let newPhotoAsset: photoAccessHelper.PhotoAsset | undefined = await photoAsset?.clone(title);
         console.log(`${testNum} :: clone success, expect failed !`);
