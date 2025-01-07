@@ -3,6 +3,8 @@
       "MainAbility/pages/index/index",
       "MainAbility/pages/DatePickerDialog/lunarSwitchStyleTest",
       "MainAbility/pages/bindSheetTest/bindSheetHoverMode",
+      "MainAbility/pages/bindSheetTest/bindSheetShowClose",
+      "MainAbility/pages/bindSheetTest/bindSheetType",
       "MainAbility/pages/promptActionTest/showToastHoverMode",
       "MainAbility/pages/promptActionTest/showDialogHoverMode",
       "MainAbility/pages/dialog/popoverDialogTest",
