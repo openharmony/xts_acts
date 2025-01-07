@@ -15,7 +15,9 @@ import {
   PhotoBrowserUIElement,
   ItemsDeletedCallback,
   ExceedMaxSelectedCallback,
-  CurrentAlbumDeletedCallback
+  CurrentAlbumDeletedCallback,
+  videoPlayStateChangedCallback,
+  VideoPlayerState
 } from '@ohos.file.PhotoPickerComponent';
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo } from '@ohos.file.AlbumPickerComponent';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
@@ -53,6 +55,8 @@ struct PickerComponent {
   private exceedMaxSeletedCallback: ExceedMaxSelectedCallback =
     (exceedMaxCountType: MaxCountType) => this.onExceedMaxSelected(exceedMaxCountType);
   private currentAlbumDeletedCallback: CurrentAlbumDeletedCallback = () => this.onCurrentAlbumDeleted();
+  private videoPlayStateChangedCallback: videoPlayStateChangedCallback =
+    (state: VideoPlayerState) => this.onVideoPlayStateChanged();
 
   sendEvent(message: Object, eventId: number) {
     let eventData: events_emitter.EventData = {
@@ -119,6 +123,10 @@ struct PickerComponent {
   private onCurrentAlbumDeleted(): void {
     console.info('onCurrentAlbumDeleted');
     // 当前相册被删除时的回调
+  }
+
+  private onVideoPlayStateChanged(state: VideoPlayerState): video {
+    console.info('onVideoPlayStateChanged', state)
   }
 
   private onAlbumClick(albumInfo: AlbumInfo): boolean {
@@ -271,6 +279,7 @@ struct PickerComponent {
         onSelectedItemsDeleted: this.selectedItemsDeletedCallback,
         onExceedMaxSelected: this.exceedMaxSeletedCallback,
         onCurrentAlbumDeleted: this.currentAlbumDeletedCallback,
+        onVideoPlayStateChanged: this.videoPlayStateChangedCallback,
         pickerController: this.pickerController,
       })
         .height('70%')
