@@ -16,10 +16,11 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import cameraObj from 'libentry.so';
 import { GlobalThis } from './Constants';
+import { cameraInfo } from '../../../main/cpp/types/libentry';
+import { camera } from '@kit.CameraKit';
 
 const TAG = "CameraXts CameraInputTest: ";
 
-let camera: cameraObj.cameraInfo;
 let mCameraSession: number;
 
 async function getCameraManagerInstance() {
@@ -41,12 +42,12 @@ function isEmpty(data: cameraObj.cameraInfo | number) {
 
 function getCameraSupportDevicesArray() {
   console.info(TAG + 'Enter getCameraSupportDevicesArray');
-  camera = cameraObj.getSupportedCameras();
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraPosition);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraType);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.connectionType);
-  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + camera.cameraId);
-  if (isEmpty(camera)) {
+  let cameraInfo: cameraObj.cameraInfo = cameraObj.getSupportedCameras();
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameraInfo.cameraPosition);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameraInfo.cameraType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameraInfo.connectionType);
+  console.info(TAG + 'Exit getCameraSupportDevicesArray  ' + cameraInfo.cameraId);
+  if (isEmpty(cameraInfo)) {
     console.info(TAG + "getSupportedCameras FAILED");
     expect().assertFail();
   }
@@ -141,6 +142,16 @@ async function startCameraSession() {
   console.info(TAG + "Exit startCameraSession");
 
   return true;
+}
+
+function getIsCameraPositionWithTypeSupported(cameraPosition: number, cameraType: number): boolean {
+  let cameraInfos: Array<cameraInfo> = cameraObj.oHCameraManagerGetSupportedCameraInfos(0);
+  for (let i = 0; i < cameraInfos.length; i++) {
+    if(cameraInfos[i].cameraPosition == cameraPosition && cameraInfos[i].cameraType == cameraType) {
+      return true;
+    }
+  }
+  return false;
 }
 
 export default function CameraInputTest() {
@@ -247,7 +258,12 @@ export default function CameraInputTest() {
     it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100--------------");
       let functionTag = "SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100";
-      let ret = cameraObj.createCameraInputWithPositionAndType(2, 1);
+
+      if (!getIsCameraPositionWithTypeSupported(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_WIDE_ANGLE)) {
+        expect(true).assertTrue();
+        return;
+      }
+      let ret = cameraObj.createCameraInputWithPositionAndType(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_WIDE_ANGLE);
       if (ret) {
         expect().assertFail();
       }
