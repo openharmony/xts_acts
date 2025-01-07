@@ -5,6 +5,8 @@
     "MainAbility/pages/Hyperlink/preventDefault",
     "MainAbility/pages/Search/searchButton",
     "MainAbility/pages/Text/minMaxFontSize",
-    "MainAbility/pages/Text/editMenuOptions"
+    "MainAbility/pages/Text/editMenuOptions",
+    "MainAbility/pages/Text/marqueeOptions1",
+    "MainAbility/pages/Text/marqueeOptions2"
   ]
 }
