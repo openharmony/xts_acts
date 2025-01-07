@@ -18,6 +18,7 @@ import windowMaximizeTest from './WindowMaximize.test';
 import windowImmersiveTest from './WindowImmersive.test';
 import windowPropertiesTest from './WindowProperties.test';
 import windowManageTest from './WindowManage.test';
+import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
 export default function testsuite() {
   windowManageTest();
   WindowLifecycle();
@@ -25,4 +26,5 @@ export default function testsuite() {
   windowMaximizeTest();
   windowImmersiveTest();
   windowPropertiesTest();
+  extensionWindowPropertiesTest();
 }
