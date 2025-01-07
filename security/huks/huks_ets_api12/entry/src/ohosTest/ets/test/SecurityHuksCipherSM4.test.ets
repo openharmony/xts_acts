@@ -14,8 +14,8 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
-import { setParam, genParam, getDataBySize, deleteParam } from './utils/HuksOptionUtil';
-import { stringToUint8Array } from './utils/CommonUtil';
+import { SetParam, GenParam, GetDataBySize, DeleteParam } from './utils/HuksOptionUtil';
+import { StringToUint8Array } from './utils/CommonUtil';
 import {
   cipherAbortWithText,
   cipherOnlyFinishWithText,
@@ -37,19 +37,19 @@ export default function SecurityHuksCipherSM4Test() {
     beforeEach(() => {
       genKeyOption = {
         properties: [
-          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_SM4),
-          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128),
-          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)
+          GenParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_SM4),
+          GenParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128),
+          GenParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)
         ]
       };
       cipherOption = {
         properties: [
-          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_SM4),
-          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128),
-          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          genParam(huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB),
-          genParam(huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE),
-          genParam(huks.HuksTag.HUKS_TAG_IV, stringToUint8Array("0000000000000000")),
+          GenParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_SM4),
+          GenParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128),
+          GenParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          GenParam(huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB),
+          GenParam(huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE),
+          GenParam(huks.HuksTag.HUKS_TAG_IV, StringToUint8Array("0000000000000000")),
         ]
       }
     })
@@ -73,16 +73,16 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0100', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0100";
-      let preText: string = testNumber + getDataBySize(240 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_INFO, stringToUint8Array("0000000000000000"));
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_SALT, stringToUint8Array("0000000000000000"));
+      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_INFO, StringToUint8Array("0000000000000000"));
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_SALT, StringToUint8Array("0000000000000000"));
       try {
         let res: boolean = await cipherWithText(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -97,14 +97,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0200', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0200";
-      let preText: string = testNumber + getDataBySize(240 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
         let res: boolean = await cipherAbortWithText(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -119,14 +119,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0300', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0300";
-      let preText: string = testNumber + getDataBySize(240 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
         let res: boolean = await cipherOnlyFinishWithText(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -141,14 +141,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0400', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0400";
-      let preText: string = testNumber + getDataBySize(64 * 1024 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      let preText: string = testNumber + GetDataBySize(64 * 1024 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
         let res: boolean = await cipherWithText(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -163,14 +163,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0500', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0500";
-      let preText: string = testNumber + getDataBySize(240 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
         let res: boolean = await cipherWithTextCallback(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -185,14 +185,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0600', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0600";
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PKCS7);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PKCS7);
       try {
         await huks.generateKeyItem(testNumber, genKeyOption);
         await huks.initSession(testNumber, cipherOption);
         expect(null).assertFail();
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT);
       }
     })
@@ -207,15 +207,15 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0700', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0700";
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
-      deleteParam(cipherOption, huks.HuksTag.HUKS_TAG_IV);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      DeleteParam(cipherOption, huks.HuksTag.HUKS_TAG_IV);
       try {
         await huks.generateKeyItem(testNumber, genKeyOption);
         await huks.initSession(testNumber, cipherOption);
         expect(null).assertFail();
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_ILLEGAL_ARGUMENT);
       }
     })
@@ -230,16 +230,16 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0800', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0800";
-      let preText: string = testNumber + getDataBySize(240 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_INFO, stringToUint8Array("0000000000000000"));
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_SALT, stringToUint8Array("0000000000000000"));
+      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_INFO, StringToUint8Array("0000000000000000"));
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_SALT, StringToUint8Array("0000000000000000"));
       try {
         let res: boolean = await cipherWithText(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -254,14 +254,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0900', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0900";
-      let preText: string = testNumber + getDataBySize(240 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
         let res: boolean = await cipherAbortWithText(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -276,14 +276,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1000', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1000";
-      let preText: string = testNumber + getDataBySize(240 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
         let res: boolean = await cipherOnlyFinishWithText(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -298,14 +298,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1100', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1100";
-      let preText: string = testNumber + getDataBySize(64 * 1024 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      let preText: string = testNumber + GetDataBySize(64 * 1024 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
         let res: boolean = await cipherWithText(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -320,14 +320,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1200', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1200";
-      let preText: string = testNumber + getDataBySize(240 - testNumber.length);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
         let res: boolean = await cipherWithTextCallback(genKeyOption, cipherOption, preText);
         expect(res).assertEqual(true);
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(null).assertFail();
       }
     })
@@ -342,14 +342,14 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1300', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1300";
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PKCS7);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_PKCS7);
       try {
         await huks.generateKeyItem(testNumber, genKeyOption);
         await huks.initSession(testNumber, cipherOption);
         expect(null).assertFail();
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT);
       }
     })
@@ -364,15 +364,15 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1400', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1400";
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
-      deleteParam(cipherOption, huks.HuksTag.HUKS_TAG_IV);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      DeleteParam(cipherOption, huks.HuksTag.HUKS_TAG_IV);
       try {
         await huks.generateKeyItem(testNumber, genKeyOption);
         await huks.initSession(testNumber, cipherOption);
         expect(null).assertFail();
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_ILLEGAL_ARGUMENT);
       }
     })
@@ -387,15 +387,15 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1500', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1500";
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_IV, new Uint8Array);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_IV, new Uint8Array);
       try {
         await huks.generateKeyItem(testNumber, genKeyOption);
         await huks.initSession(testNumber, cipherOption);
         expect(null).assertFail();
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_ILLEGAL_ARGUMENT);
       }
     })
@@ -410,15 +410,15 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1600', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1600";
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_SALT, new Uint8Array);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_SALT, new Uint8Array);
       try {
         await huks.generateKeyItem(testNumber, genKeyOption);
         await huks.initSession(testNumber, cipherOption);
         expect(null).assertFail();
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_ILLEGAL_ARGUMENT);
       }
     })
@@ -433,15 +433,15 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1700', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1700";
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_IV, new Uint8Array);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_IV, new Uint8Array);
       try {
         await huks.generateKeyItem(testNumber, genKeyOption);
         await huks.initSession(testNumber, cipherOption);
         expect(null).assertFail();
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_ILLEGAL_ARGUMENT);
       }
     })
@@ -456,15 +456,15 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1800', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1800";
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
-      setParam(cipherOption, huks.HuksTag.HUKS_TAG_SALT, new Uint8Array);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
+      SetParam(cipherOption, huks.HuksTag.HUKS_TAG_SALT, new Uint8Array);
       try {
         await huks.generateKeyItem(testNumber, genKeyOption);
         await huks.initSession(testNumber, cipherOption);
         expect(null).assertFail();
       } catch (err) {
-        console.log(testNumber + `: catch error ${err.code}`);
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
         expect(err.code).assertEqual(huks.HuksExceptionErrCode.HUKS_ERR_CODE_ILLEGAL_ARGUMENT);
       }
     })
