@@ -44,9 +44,7 @@ export default function buttonTypeTest() {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('key_ButtonType_002');
-          console.info('[buttonType_0200]:' + JSON.stringify(JSON.parse(strJson)
-            .$attrs
-            .type));
+          console.info('[buttonType_0200]:' + JSON.stringify(JSON.parse(strJson).$attrs.type));
           expect(JSON.parse(strJson).$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
           done();
         } catch (err) {

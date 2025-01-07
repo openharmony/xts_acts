@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 
-
-import accessibilitySelectedTypeTest from './chip/accessibilitySelectedTypeTest.test';
-import onScrollStopTest from './textPicker/onScrollStopTest.test';
-import maxFontScaleTest from './segmentButton/maxFontScaleTest.test'
-export default function testsuite() {
-  accessibilitySelectedTypeTest()
-  onScrollStopTest()
-  maxFontScaleTest()
+{
+  "app": {
+    "bundleName": "com.arkui.ace.picker.api16",
+    "vendor": "huawei",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name",
+    "description": "$string:description_application"
+  }
 }

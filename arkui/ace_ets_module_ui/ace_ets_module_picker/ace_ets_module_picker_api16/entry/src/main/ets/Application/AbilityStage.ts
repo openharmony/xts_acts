@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-import accessibilitySelectedTypeTest from './chip/accessibilitySelectedTypeTest.test';
-import onScrollStopTest from './textPicker/onScrollStopTest.test';
-import maxFontScaleTest from './segmentButton/maxFontScaleTest.test'
-export default function testsuite() {
-  accessibilitySelectedTypeTest()
-  onScrollStopTest()
-  maxFontScaleTest()
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    console.log("[Demo] MyAbilityStage onCreate")
+    globalThis.stageOnCreateRun = 1;
+    globalThis.stageContext = this.context;
+  }
 }
