@@ -93,7 +93,11 @@ export default function abilityTest() {
           abilityName: 'SpecifedProcessAbility',
         };
         await sleep(500);
-        context.startAbilityForResult(want);
+        context.startAbilityForResult(want).then((data)=>{
+          hilog.info(DOMAIN_NUMBER, TAG, `success startAbilityForResult`);
+        }).catch(()=>{
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed startAbilityForResult`);
+        });
         const  driver =Driver.create();
         await driver.delayMs(1000);
         let Button: Component = await driver.findComponent(ON.id('TestCase4'));

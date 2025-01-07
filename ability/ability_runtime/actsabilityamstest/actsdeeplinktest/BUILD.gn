@@ -11,6 +11,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
+ohos_app_assist_suite("ActsDeepLinkMainTest") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsDeepLinkMainTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
+}
+
 ohos_js_app_suite("ActsDeepLinkTest") {
   test_hap = true
   testonly = true
@@ -18,4 +26,5 @@ ohos_js_app_suite("ActsDeepLinkTest") {
   hap_name = "ActsDeepLinkTest"
   part_name = "ability_runtime"
   subsystem_name = "ability"
+  deps = [ ":ActsDeepLinkMainTest" ]
 }

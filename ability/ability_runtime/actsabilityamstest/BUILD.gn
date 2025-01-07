@@ -33,6 +33,7 @@ group("ActsAbilityAmsTest") {
       "actsdeeplinktest:ActsDeepLinkTest",
       "actsstartappcloneapptest:ActsStartAppCloneAppTest",
       "actsstartchildprocesstest:ActsStartChildProcessTest",
+      "actssystemapplicationsuppressstartuptest:ActsSystemApplicationSuppressStartupTest",
       "actsterminateselfwithresulttest:ActsTerminateselfWithResultEntry",
       "actsterminateselfwithresulttest:ActsTerminateselfWithResultTest",
       "appclonedemo:AppCloneDemo",
