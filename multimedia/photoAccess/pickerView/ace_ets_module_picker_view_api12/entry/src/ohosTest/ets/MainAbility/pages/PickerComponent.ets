@@ -56,7 +56,7 @@ struct PickerComponent {
     (exceedMaxCountType: MaxCountType) => this.onExceedMaxSelected(exceedMaxCountType);
   private currentAlbumDeletedCallback: CurrentAlbumDeletedCallback = () => this.onCurrentAlbumDeleted();
   private videoPlayStateChangedCallback: videoPlayStateChangedCallback =
-    (state: VideoPlayerState) => this.onVideoPlayStateChanged();
+    (state: VideoPlayerState) => this.onVideoPlayStateChanged(state);
 
   sendEvent(message: Object, eventId: number) {
     let eventData: events_emitter.EventData = {
@@ -125,7 +125,7 @@ struct PickerComponent {
     // 当前相册被删除时的回调
   }
 
-  private onVideoPlayStateChanged(state: VideoPlayerState): video {
+  private onVideoPlayStateChanged(state: VideoPlayerState): void {
     console.info('onVideoPlayStateChanged', state)
   }
 
