@@ -14,7 +14,8 @@
  */
 
 import { describe, expect, it } from '@ohos/hypium';
-import inputDevice from '@ohos.multimodalInput.inputDevice';
+import { inputDevice } from '@kit.InputKit';
+import { inputConsumer } from '@kit.InputKit';
 
 export default function MultimodalInputDeviceTest() {
   describe("MultimodalInputDeviceTest", ()=> {
@@ -464,6 +465,64 @@ export default function MultimodalInputDeviceTest() {
         done();
       } catch (error) {
         console.info(`${caseName} Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100
+     * @tc.name: SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100
+     * @tc.desc: Test promise getAllSystemHotkeys interface to get all the system hotkeys.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100", 0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100";
+      try {
+        inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
+          if(data.length > 0) {
+            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} failed to get system hotkeys: ${JSON.stringify(data)}`);
+            ExpectFalse(true);
+            done();
+          }
+        });
+      } catch (error) {
+        console.info(`${caseName} failed to get system hotkeys, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_getIntervalSinceLastInput_0100
+     * @tc.name: SUB_MMI_Input_Api_IptDev_getIntervalSinceLastInput_0100
+     * @tc.desc: Test promise getIntervalSinceLastInput interface to get the time interval since the last system input event.
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_getIntervalSinceLastInput_0100", 0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_getIntervalSinceLastInput_0100";
+      try {
+        inputDevice.getIntervalSinceLastInput().then((timeInterval: number) => {
+          if(timeInterval > 0) {
+            console.info(`${caseName} interval since last input: ${JSON.stringify(timeInterval)}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} failed to get interval since last input: ${JSON.stringify(timeInterval)}`);
+            ExpectFalse(true);
+            done();
+          }
+        });
+      } catch (error) {
+        console.info(`${caseName} failed to get interval since last input, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
       }
