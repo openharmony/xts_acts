@@ -26,6 +26,7 @@ group("graphic") {
       "component3D:ActsComponent3DTest",
       "displayManager:ActsDisplayManagerTest",
       "displayNdk:ActsDisplayNdkTest",
+      "displayNdkApi14:ActsDisplayNdkApi14Test",
       "effectKit:ActsEffectKitTest",
       "graphic3D:ActsGraphic3DTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
