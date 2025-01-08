@@ -16,7 +16,7 @@ ohos_app_assist_suite("ActsStartAbilityNoTargetBundleListStageMain") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsStartAbilityNoTargetBundleListStageMain"
-  hap_list = [ "ActsStartAbilityNoTargetBundleListStageMain-myapplication1-default-unsigned:StageMyApplication1" ]
+  hap_list = [ "ActsStartAbilityNoTargetBundleListStageMain-myapplication1-entry-default-unsigned:StageMyApplication1" ]
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
