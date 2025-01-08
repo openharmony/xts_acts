@@ -123,13 +123,15 @@ export default function windowInterface() {
     afterEach(async () => {
       await terminateAbilityCycle('afterEach')
       await sleep(1000)
+      let mainWindowClass = windowStage.getMainWindowSync()
+      let mainID = mainWindowClass.getWindowProperties().id
       let lastWindow = await window.getLastWindow(context)
-      let windowType = lastWindow.getWindowProperties().type
-      while (windowType != 1) {
+      let lastID = lastWindow.getWindowProperties().id
+      while (mainID != lastID) {
         await lastWindow.destroyWindow()
         await sleep(1000)
         lastWindow = await window.getLastWindow(context)
-        windowType = lastWindow.getWindowProperties().type
+        lastID = lastWindow.getWindowProperties().id
       }
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
