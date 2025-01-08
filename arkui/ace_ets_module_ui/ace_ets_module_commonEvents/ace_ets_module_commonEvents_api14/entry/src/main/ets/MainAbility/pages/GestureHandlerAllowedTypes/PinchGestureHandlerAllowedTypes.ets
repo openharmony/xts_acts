@@ -38,6 +38,7 @@ class PinchGestureHandlerAllowedTypesModifier implements GestureModifier {
 @Entry
 @Component
 struct PinchGestureHandlerAllowedTypes {
+  @State types: Array<SourceTool | undefined | null> = [];
   @State result: string = 'allowed types default';
   private callback: Callback<string> = (data: string) => {
     this.result = data;
