@@ -41,6 +41,11 @@ struct LongPressGestureAllowedTypes {
             this.result = 'allowed types default';
             this.types = [SourceTool.Finger];
           })
+        Button('Invalid').id('Invalid_type')
+          .onClick(() => {
+            this.result = 'allowed types default';
+            this.types = [null, undefined];
+          })  
       }.alignItems(HorizontalAlign.Center)
      .id('longpress_id')
      .width('90%')
@@ -50,7 +55,5 @@ struct LongPressGestureAllowedTypes {
     .width('100%')
     .height('100%')
     .backgroundColor('#ffbebaba')
-    // .key('LongPressGestureAllowedTypes_Father')
-    // .id('longpress_id')
   }
 }
