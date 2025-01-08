@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct PanGestureAllowedTypes {
-  @State types: Array<SourceTool> = [];
+  @State types: Array<SourceTool | undefined | null> = [];
   @State result: string = 'allowed types default';
   private panOption: PanGestureOptions = new PanGestureOptions({ direction: PanDirection.Left | PanDirection.Right | PanDirection.All | PanDirection.Horizontal | PanDirection.Vertical})
   build() {
