@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { ToolBar, ToolBarOptions, ItemState } from '@kit.ArkUI';
+import { ToolBar, ToolBarOptions, ItemState } from '@ohos.arkui.advanced.ToolBar';
 
 @Entry
 @Component

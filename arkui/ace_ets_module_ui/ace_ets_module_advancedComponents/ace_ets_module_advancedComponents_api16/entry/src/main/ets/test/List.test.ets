@@ -20,5 +20,5 @@ import toolBarAccessibilityTest from './toolBar/tooBarAccessibilityPage.test.tes
 export default function testsuite() {
   composeListItemPageTest();
   composeListItemOperateItemSymbolStyle();
-  toolBarAccessibilityTest()
+  toolBarAccessibilityTest();
 }
