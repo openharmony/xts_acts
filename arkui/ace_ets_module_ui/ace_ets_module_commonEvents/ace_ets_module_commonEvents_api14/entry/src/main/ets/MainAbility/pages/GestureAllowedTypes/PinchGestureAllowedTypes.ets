@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct PinchGestureAllowedTypes {
-  @State types: Array<SourceTool> = [];
+  @State types: Array<SourceTool | undefined | null> = [];
   @State result: string = 'allowed types default';
   build() {
     Column({space: 10}) {
