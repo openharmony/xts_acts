@@ -15,7 +15,7 @@
 
 #include "napi/native_api.h"
 #include <unicode/uidna.h>
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 #include "unicode/ustring.h"
 #include "unicode/utext.h"
@@ -230,9 +230,9 @@ static napi_value testUtext_clone(napi_env env, napi_callback_info)
 static napi_value testUtext_equals(napi_env env, napi_callback_info)
 {
     UErrorCode status = U_ZERO_ERROR;
-    const UChar *s = u"aßカ🚲";
-    UText *utOne = utext_openUChars(NULL, s, -1, &status);
-    UText *utTwo = utext_openUChars(NULL, s, 5, &status);
+    const UChar *charS = u"aßカ🚲";
+    UText *utOne = utext_openUChars(NULL, charS, -1, &status);
+    UText *utTwo = utext_openUChars(NULL, charS, 5, &status);
     utext_close(utOne);
     utext_close(utTwo);
     bool flagA = U_FAILURE(status);
@@ -243,31 +243,30 @@ static napi_value testUtext_equals(napi_env env, napi_callback_info)
     return result;
 }
 
-static napi_value testUtext_nativeLengthstatic(napi_env env, napi_callback_info)
-{
-    UChar uString[] = {0x41, 0x42, 0x43, 0};
-    UErrorCode status = U_ZERO_ERROR;
-    int64_t len;
-    UText *uta;
-    uta = utext_openUChars(NULL, uString, -1, &status);
-    bool flagA = U_FAILURE(status);
-    len = utext_nativeLength(uta);
-    utext_close(uta);
-    bool flagB = (len !=3);
-    bool flag = (flagA || flagB);
-    napi_value result = nullptr;
-    napi_get_boolean(env, flag, &result);
-    return result;
-}
-
-static napi_value testUtext_chatr32(napi_env env, napi_callback_info)
+static napi_value testUtext_nativeLength(napi_env env, napi_callback_info)
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
     UErrorCode status = U_ZERO_ERROR;
     int64_t len;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChat32 c = utext_chat32At(uta, 0);
+    len = utext_nativeLength(uta);
+    utext_close(uta);
+    bool flagB = (len != 3);
+    bool flag = (flagA || flagB);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    return result;
+}
+
+static napi_value testUtext_char32(napi_env env, napi_callback_info)
+{
+    UChar uString[] = {0x41, 0x42, 0x43, 0};
+    UErrorCode status = U_ZERO_ERROR;
+    int64_t len;
+    UText *uta = utext_openUChars(NULL, uString, -1, &status);
+    bool flagA = U_FAILURE(status);
+    UChar32 c = utext_char32At(uta, 0);
     utext_close(uta);
     bool flagB = (len != uString[0]);
     bool flag = (flagA || flagB);
@@ -282,9 +281,9 @@ static napi_value testUtext_current32(napi_env env, napi_callback_info)
     UErrorCode status = U_ZERO_ERROR;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChat32 chat32one = utext_chat32At(uta, 0);
+    UChar32 testChar = utext_current32(uta, 0);
     utext_close(uta);
-    bool flagB = (chat32one != uString[0]);
+    bool flagB = (testChar != uString[0]);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -297,7 +296,7 @@ static napi_value testUtext_next32(napi_env env, napi_callback_info)
     UErrorCode status = U_ZERO_ERROR;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChat32 nextC = utext_next32(uta);
+    UChar32 nextC = utext_next32(uta);
     utext_close(uta);
     bool flagB = (nextC != uString[0]);
     bool flag = (flagA || flagB);
@@ -312,7 +311,7 @@ static napi_value testUtext_previous32(napi_env env, napi_callback_info)
     UErrorCode status = U_ZERO_ERROR;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChat32 previousC = utext_next32(uta);
+    UChar32 previousC = utext_next32(uta);
     previousC = utext_previous32(uta);
     utext_close(uta);
     bool flagB = (previousC != uString[0]);
@@ -326,25 +325,9 @@ static napi_value testUtext_next32From(napi_env env, napi_callback_info)
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
     UErrorCode status = U_ZERO_ERROR;
-    UText *uta;
-    uta = utext_openUChars(NULL, uString, -1, &status);
-    bool flagA = U_FAILURE(status);
-    UChat32 nextFromC = utext_next32From(uta, 1);
-    utext_close(uta);
-    bool flagB = (nextFromC != uString[0]);
-    bool flag = (flagA || flagB);
-    napi_value result = nullptr;
-    napi_get_boolean(env, flag, &result);
-    return result;
-}
-
-static napi_value testUtext_next32From(napi_env env, napi_callback_info)
-{
-    UChar uString[] = {0x41, 0x42, 0x43, 0};
-    UErrorCode status = U_ZERO_ERROR;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChat32 nextFromC = utext_next32From(uta, 1);
+    UChar32 nextFromC = utext_next32From(uta, 1);
     utext_close(uta);
     bool flagB = (nextFromC != uString[1]);
     bool flag = (flagA || flagB);
@@ -359,7 +342,7 @@ static napi_value testUtext_previous32From(napi_env env, napi_callback_info)
     UErrorCode status = U_ZERO_ERROR;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChat32 previousC = utext_previous32From(uta, 2);
+    UChar32 previousC = utext_previous32From(uta, 2);
     utext_close(uta);
     bool flagB = (previousC != uString[1]);
     bool flag = (flagA || flagB);
@@ -368,14 +351,13 @@ static napi_value testUtext_previous32From(napi_env env, napi_callback_info)
     return result;
 }
 
-static napi_value testUtext_previous32From(napi_env env, napi_callback_info)
+static napi_value testUtext_getNativeIndex(napi_env env, napi_callback_info)
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
     UErrorCode status = U_ZERO_ERROR;
-    UText *uta;
-    uta = utext_openUChars(NULL, uString, -1, &status);
+    UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChat32 previousC = utext_previous32From(uta, 2);
+    UChar32 previousC = utext_previous32From(uta, 2);
     int64_t getNativeIndexI = utext_getNativeIndex(uta);
     utext_close(uta);
     bool flagB = (getNativeIndexI != 1);
@@ -483,9 +465,11 @@ static napi_value testU_strncat(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0, 0, 0, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0};
-    u_strncat(uStringOne, uStringTwo, 2);
+    const int32_t catLen = 2;
+    const int32_t stringLen = 5;
+    u_strncat(uStringOne, uStringTwo, catLen);
     int32_t len = u_strlen(uStringOne);
-    bool flag = (len != 5);
+    bool flag = (len != stringLen);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
@@ -495,8 +479,8 @@ static napi_value testU_strstr(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x44, 0x44, 0};
-    UChar *result = u_strstr(uStringOne, uStringTwo);
-    bool flag = (result != NULL);
+    UChar *resultA = u_strstr(uStringOne, uStringTwo);
+    bool flag = (resultA != NULL);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
@@ -506,8 +490,8 @@ static napi_value testU_strFindFirst(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x44, 0x44, 0};
-    UChar *result = u_FindFirst(uStringOne, -1, uStringTwo, 2);
-    bool flag = (result != NULL);
+    UChar *resultA = u_FindFirst(uStringOne, -1, uStringTwo, 2);
+    bool flag = (resultA != NULL);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
@@ -517,8 +501,8 @@ static napi_value testU_strchr(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo = 0x44;
-    UChar *result = u_strchr(uStringOne, uStringTwo);
-    bool flag = (result != NULL);
+    UChar *resultA = u_strchr(uStringOne, uStringTwo);
+    bool flag = (resultA != NULL);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
@@ -528,19 +512,19 @@ static napi_value testU_strchr32(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo = 0x44;
-    UChar *result = u_strchr32(uStringOne, uStringTwo);
-    bool flag = (result != NULL);
+    UChar *resultA = u_strchr32(uStringOne, uStringTwo);
+    bool flag = (resultA != NULL);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
 }
 
-static napi_value testU_strrshr(napi_env env, napi_callback_info)
+static napi_value testU_strrstr(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x44, 0x44, 0};
-    UChar *result = u_strrshr(uStringOne, uStringTwo);
-    bool flag = (result != NULL);
+    UChar *resultA = u_strrstr(uStringOne, uStringTwo);
+    bool flag = (resultA != NULL);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
@@ -550,8 +534,8 @@ static napi_value testU_strFindLast(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x44, 0x44, 0};
-    UChar *result = u_strFindLast(uStringOne, -1, uStringTwo, 2);
-    bool flag = (result != NULL);
+    UChar *resultA = u_strFindLast(uStringOne, -1, uStringTwo, 2);
+    bool flag = (resultA != NULL);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
@@ -561,9 +545,9 @@ static napi_value testU_strrchr(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar test = 0x44;
-    UChar *result = u_strrchr(uStringOne, test);
+    UChar *resultA = u_strrchr(uStringOne, test);
     bool flag = false;
-    if (result == NULL) {
+    if (resultA == NULL) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -575,9 +559,9 @@ static napi_value testU_strrchr32(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar32 test = 0x44;
-    UChar *result = u_strrchr32(uStringOne, test);
+    UChar *resultA = u_strrchr32(uStringOne, test);
     bool flag = false;
-    if (result == NULL) {
+    if (resultA == NULL) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -589,9 +573,9 @@ static napi_value testU_strpbrk(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar test[] = {0x44, 0};
-    UChar *result = u_strpbrk(uStringOne, test);
+    UChar *resultA = u_strpbrk(uStringOne, test);
     bool flag = false;
-    if (result == NULL) {
+    if (resultA == NULL) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -603,23 +587,10 @@ static napi_value testU_strcspn(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar test[] = {0x44, 0};
-    int32_t result = u_strcspn(uStringOne, test);
+    const int32_t stringLen = 3;
+    int32_t resultA = u_strcspn(uStringOne, test);
     bool flag = false;
-    if (result == 3) {
-        flag = true;
-    }
-    napi_value result = nullptr;
-    napi_get_boolean(env, flag, &result);
-    return result;
-}
-
-static napi_value testU_strcspn(napi_env env, napi_callback_info)
-{
-    UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
-    UChar test[] = {0x44, 0};
-    int32_t result = u_strcspn(uStringOne, test);
-    bool flag = false;
-    if (result == 3) {
+    if (resultA == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -631,9 +602,10 @@ static napi_value testU_strspn(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar test[] = {0x44, 0};
-    int32_t result = u_strspn(uStringOne, test);
+    const int32_t stringLen = 0;
+    int32_t resultA = u_strspn(uStringOne, test);
     bool flag = false;
-    if (result == 0) {
+    if (resultA == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -646,9 +618,10 @@ static napi_value testU_strtok_r(napi_env env, napi_callback_info)
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar del[] = {0x42, 0};
     UChar *state;
-    UChar *result = u_strtok_r(uStringOne, del, &state);
+    const UChar compare = 0x43;
+    UChar *resultA = u_strtok_r(uStringOne, del, &state);
     bool flag = false;
-    if (*result == 0x43) {
+    if (*resultA == compare) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -660,9 +633,10 @@ static napi_value testU_strcmp(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_strcmp(uStringOne, uStringTwo);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -674,9 +648,10 @@ static napi_value testU_strcmpCodePointOrder(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_strcmpCodePointOrder(uStringOne, uStringTwo);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -688,9 +663,10 @@ static napi_value testU_strCompare(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_strCompare(uStringOne, 2, uStringTwo, 2, false);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -703,9 +679,10 @@ static napi_value testU_strCaseCompare(napi_env env, napi_callback_info)
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
     UErrorCode status = U_ZERO_ERROR;
+    const int32_t stringLen = 0;
     int32_t test = u_strCaseCompare(uStringOne, 2, uStringTwo, 2, U_FOLD_CASE_DEFAULT, &status);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -717,9 +694,10 @@ static napi_value testU_strncmp(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_strncmp(uStringOne, uStringTwo, 2);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -731,9 +709,10 @@ static napi_value testU_strncmpCodePointOrder(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_strncmpCodePointOrder(uStringOne, uStringTwo, 2);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -745,9 +724,10 @@ static napi_value testU_strcasecmp(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_strcasecmp(uStringOne, uStringTwo, U_FOLD_CASE_DEFAULT);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -759,9 +739,10 @@ static napi_value testU_strncasecmp(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_strncasecmp(uStringOne, uStringTwo, 2, U_FOLD_CASE_DEFAULT);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -773,9 +754,10 @@ static napi_value testU_memcasecmp(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_memcasecmp(uStringOne, uStringTwo, 2, U_FOLD_CASE_DEFAULT);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -787,10 +769,10 @@ static napi_value testU_strcpy(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0};
+    const int32_t stringLen = 2;
     u_strcpy(uStringOne, uStringTwo);
-    test = u_strlen(uStringOne)
     bool flag = false;
-    if (test == 2) {
+    if (u_strlen(uStringOne) == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -802,10 +784,11 @@ static napi_value testU_strncpy(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0};
-    u_strncpy(uStringOne, uStringTwo, 2);
-    test = u_strlen(uStringOne)
+    const int32_t stringLen = 2;
+    const int32_t compareLen = 3;
+    u_strncpy(uStringOne, uStringTwo, stringLen);
     bool flag = false;
-    if (test == 3) {
+    if (u_strlen(uStringOne) == compareLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -817,10 +800,11 @@ static napi_value testU_memcpy(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0};
-    u_memcpy(uStringOne, uStringTwo, 2);
-    test = u_strlen(uStringOne)
+    const int32_t stringLen = 2;
+    const int32_t compareLen = 3;
+    u_memcpy(uStringOne, uStringTwo, stringLen);
     bool flag = false;
-    if (test == 3) {
+    if (u_strlen(uStringOne) == compareLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -832,10 +816,11 @@ static napi_value testU_memmove(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0};
-    u_memmove(uStringOne, uStringTwo, 2);
-    test = u_strlen(uStringOne)
+    const int32_t stringLen = 2;
+    const int32_t compareLen = 3;
+    u_memmove(uStringOne, uStringTwo, stringLen);
     bool flag = false;
-    if (test == 3) {
+    if (u_strlen(uStringOne) == compareLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -847,9 +832,10 @@ static napi_value testU_memset(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar testChar = 0x41;
-    u_memset(uStringOne, testChar, 2);
+    const int32_t stringLen = 2;
+    u_memset(uStringOne, testChar, stringLen);
     bool flag = false;
-    if (uStringOne[0] == 0x41) {
+    if (uStringOne[0] == testChar) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -861,9 +847,10 @@ static napi_value testU_memcmp(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_memcmp(uStringOne, uStringTwo, 2);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -875,9 +862,10 @@ static napi_value testU_memcmpCodePointOrder(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 0;
     int32_t test = u_memcmpCodePointOrder(uStringOne, uStringTwo, 2);
     bool flag = false;
-    if (test == 0) {
+    if (test == stringLen) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -889,9 +877,9 @@ static napi_value testU_memchr(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar testChar = 0x44;
-    UChar *result = u_memchr(uStringOne, testChar, 3);
+    UChar *resultA = u_memchr(uStringOne, testChar, 3);
     bool flag = false;
-    if (result == NULL) {
+    if (resultA == NULL) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -903,9 +891,9 @@ static napi_value testU_memchr32(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar32 testChar = 0x44;
-    UChar *result = u_memchr32(uStringOne, testChar, 3);
+    UChar *resultA = u_memchr32(uStringOne, testChar, 3);
     bool flag = false;
-    if (result == NULL) {
+    if (resultA == NULL) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -917,9 +905,9 @@ static napi_value testU_memrchr(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar testChar = 0x44;
-    UChar *result = u_memrchr(uStringOne, testChar, 3);
+    UChar *resultA = u_memrchr(uStringOne, testChar, 3);
     bool flag = false;
-    if (result == NULL) {
+    if (resultA == NULL) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -931,9 +919,9 @@ static napi_value testU_memrchr32(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar32 testChar = 0x44;
-    UChar *result = u_memrchr32(uStringOne, testChar, 3);
+    UChar *resultA = u_memrchr32(uStringOne, testChar, 3);
     bool flag = false;
-    if (result == NULL) {
+    if (resultA == NULL) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -946,8 +934,9 @@ static napi_value testU_strToUpper(napi_env env, napi_callback_info)
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x61, 0x42, 0x43, 0};
     const char *local = "en";
+    const int32_t uStringSize = 3;
     UErrorCode status = U_ZERO_ERROR;
-    u_strToUpper(uStringOne, 3, uStringTwo, 3, local, &status);
+    u_strToUpper(uStringOne, uStringSize, uStringTwo, uStringSize, local, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -959,8 +948,9 @@ static napi_value testU_strToLower(napi_env env, napi_callback_info)
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
     const char *local = "en";
+    const int32_t uStringSize = 3;
     UErrorCode status = U_ZERO_ERROR;
-    u_strToLower(uStringOne, 3, uStringTwo, 3, local, &status);
+    u_strToLower(uStringOne, uStringSize, uStringTwo, uStringSize, local, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -972,8 +962,9 @@ static napi_value testU_strToTitle(napi_env env, napi_callback_info)
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0x43, 0};
     const char *local = "en";
+    const int32_t uStringSize = 3;
     UErrorCode status = U_ZERO_ERROR;
-    u_strToTitle(uStringOne, 3, uStringTwo, 3, NULL, local, &status);
+    u_strToTitle(uStringOne, uStringSize, uStringTwo, uStringSize, NULL, local, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -985,8 +976,9 @@ static napi_value testU_strFoldCase(napi_env env, napi_callback_info)
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x61, 0x42, 0x43, 0};
     const char *local = "en";
+    const int32_t uStringSize = 3;
     UErrorCode status = U_ZERO_ERROR;
-    u_strFoldCase(uStringOne, 3, uStringTwo, 3, U_FOLD_CASE_DEFAULT, &status);
+    u_strFoldCase(uStringOne, uStringSize, uStringTwo, uStringSize, U_FOLD_CASE_DEFAULT, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -999,7 +991,9 @@ static napi_value testU_strToUTF8(napi_env env, napi_callback_info)
     UChar uStringTwo[] = {0x61, 0};
     UErrorCode status = U_ZERO_ERROR;
     int32_t dstLength;
-    u_strToUTF8(dst, 3, &dstLength, uStringTwo, 1, &status);
+    const int32_t dstSize = 3;
+    const int32_t uStringTwoSize = 1;
+    u_strToUTF8(dst, dstSize, &dstLength, uStringTwo, uStringTwoSize, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1012,7 +1006,9 @@ static napi_value testU_strFromUTF8(napi_env env, napi_callback_info)
     UChar uStringTwo[] = {0x61, 0x41, 0};
     UErrorCode status = U_ZERO_ERROR;
     int32_t dstLength;
-    u_strFromUTF8(uStringTwo, 2, &dstLength, dst, 1, &status);
+    const int32_t dstSize = 2;
+    const int32_t uStringTwoSize = 1;
+    u_strFromUTF8(uStringTwo, dstSize, &dstLength, dst, uStringTwoSize, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1027,7 +1023,9 @@ static napi_value testU_strToUTF8WithSub(napi_env env, napi_callback_info)
     UErrorCode status = U_ZERO_ERROR;
     int32_t dstLength;
     int32_t subCount;
-    u_strToUTF8WithSub(dst, 3, &dstLength, uStringTwo, 1, subChar, &subCount, &status);
+    const int32_t dstSize = 3;
+    const int32_t uStringTwoSize = 1;
+    u_strToUTF8WithSub(dst, dstSize, &dstLength, uStringTwo, uStringTwoSize, subChar, &subCount, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1042,7 +1040,9 @@ static napi_value testU_strFromUTF8WithSub(napi_env env, napi_callback_info)
     UErrorCode status = U_ZERO_ERROR;
     int32_t dstLength;
     int32_t subCount;
-    u_strFromUTF8WithSub(uStringTwo, 2, &dstLength, dst, 1, subChar, &subCount, &status);
+    const int32_t dstSize = 2;
+    const int32_t uStringTwoSize = 1;
+    u_strFromUTF8WithSub(uStringTwo, dstSize, &dstLength, dst, uStringTwoSize, subChar, &subCount, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1055,7 +1055,9 @@ static napi_value testU_strFromUTF8Lenient(napi_env env, napi_callback_info)
     UChar uStringTwo[] = {0x61, 0x41, 0};
     UErrorCode status = U_ZERO_ERROR;
     int32_t dstLength;
-    u_strFromUTF8Lenient(uStringTwo, 2, &dstLength, dst, 1, &status);
+    const int32_t dstSize = 2;
+    const int32_t uStringTwoSize = 1;
+    u_strFromUTF8Lenient(uStringTwo, dstSize, &dstLength, dst, uStringTwoSize, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1068,7 +1070,9 @@ static napi_value testU_strToUTF32(napi_env env, napi_callback_info)
     UChar uStringTwo[] = {0x61, 0};
     UErrorCode status = U_ZERO_ERROR;
     int32_t dstLength;
-    u_strToUTF32(dst, 2, &dstLength, uStringTwo, 1, &status);
+    const int32_t dstSize = 2;
+    const int32_t uStringTwoSize = 1;
+    u_strToUTF32(dst, dstSize, &dstLength, uStringTwo, uStringTwoSize, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1081,7 +1085,9 @@ static napi_value testU_strFromUTF32(napi_env env, napi_callback_info)
     UChar32 uStringTwo[] = {0x61, 0};
     UErrorCode status = U_ZERO_ERROR;
     int32_t dstLength;
-    u_strFromUTF32(dst, 2, &dstLength, uStringTwo, 1, &status);
+    const int32_t dstSize = 2;
+    const int32_t uStringTwoSize = 1;
+    u_strFromUTF32(dst, dstSize, &dstLength, uStringTwo, uStringTwoSize, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1096,7 +1102,9 @@ static napi_value testU_strToUTF32WithSub(napi_env env, napi_callback_info)
     int32_t dstLength;
     UChar subChar = 0x40;
     int32_t subCount;
-    u_strToUTF32WithSub(dst, 2, &dstLength, uStringTwo, 1, subChar, &subCount, &status);
+    const int32_t dstSize = 2;
+    const int32_t uStringTwoSize = 1;
+    u_strToUTF32WithSub(dst, dstSize, &dstLength, uStringTwo, uStringTwoSize, subChar, &subCount, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1111,7 +1119,9 @@ static napi_value testU_strFromUTF32WithSub(napi_env env, napi_callback_info)
     int32_t dstLength;
     UChar subChar = 0x40;
     int32_t subCount;
-    u_strFromUTF32WithSub(dst, 2, &dstLength, uStringTwo, 1, subChar, &subCount, &status);
+    const int32_t dstSize = 2;
+    const int32_t uStringTwoSize = 1;
+    u_strFromUTF32WithSub(dst, dstSize, &dstLength, uStringTwo, uStringTwoSize, subChar, &subCount, &status);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1120,9 +1130,9 @@ static napi_value testU_strFromUTF32WithSub(napi_env env, napi_callback_info)
 
 static napi_value testU_errorName(napi_env env, napi_callback_info)
 {
-    const char *result = u_errorName(U_ZERO_ERROR);
+    const char *resultA = u_errorName(U_ZERO_ERROR);
     bool flag = false;
-    if (result != nullptr) {
+    if (resultA != nullptr) {
         flag = true;
     }
     napi_value result = nullptr;
@@ -1164,7 +1174,7 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, napi_default, nullptr},   
         {"testutext_nativeLength", nullptr, testUtext_nativeLength, nullptr,
             nullptr, nullptr, napi_default, nullptr},    
-        {"testutext_chatr32", nullptr, testUtext_chatr32, nullptr,
+        {"testutext_char32", nullptr, testUtext_char32, nullptr,
             nullptr, nullptr, napi_default, nullptr},   
         {"testutext_current32", nullptr, testUtext_current32, nullptr,
             nullptr, nullptr, napi_default, nullptr},  
@@ -1176,11 +1186,11 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, napi_default, nullptr}, 
         {"testutext_previous32From", nullptr, testUtext_previous32From, nullptr,
             nullptr, nullptr, napi_default, nullptr},
-        {"testutext_getNativelndex", nullptr, testUtext_getNativelndex, nullptr,
+        {"testutext_getNativeIndex", nullptr, testUtext_getNativeIndex, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testutext_setNativeIndex_moveIndex32", nullptr, testUtext_setNativeIndex_moveIndex32, nullptr,
             nullptr, nullptr, napi_default, nullptr},
-        {"testutext_getPreviousNativeIndex", nullptr, testUtext_getNativelndex, nullptr,
+        {"testutext_getPreviousNativeIndex", nullptr, testUtext_getPreviousNativeIndex, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testutext_extract", nullptr, testUtext_extract, nullptr,
             nullptr, nullptr, napi_default, nullptr},
@@ -1202,7 +1212,7 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, napi_default, nullptr},
         {"testu_strchr32", nullptr, testU_strchr32, nullptr,
             nullptr, nullptr, napi_default, nullptr},
-        {"testu_strshr", nullptr, testU_strshr, nullptr,
+        {"testu_strrstr", nullptr, testU_strrstr, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testu_strFindLast", nullptr, testU_strFindLast, nullptr,
             nullptr, nullptr, napi_default, nullptr},

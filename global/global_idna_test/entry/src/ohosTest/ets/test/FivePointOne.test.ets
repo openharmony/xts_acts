@@ -84,15 +84,15 @@ export default function FivePointOneTest() {
     })
 
     /* *
-    * @tc.number    : SUB_GLOBAL_utest_chatr32_0100
-    * @tc.name      : testutext_chatr32_0100
-    * @tc.desc      : testutext_chatr32
+    * @tc.number    : SUB_GLOBAL_utest_char32_0100
+    * @tc.name      : testutext_char32_0100
+    * @tc.desc      : testutext_char32
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('testutext_chatr32_0100',0,() =>{
-      expect(testNapi.testutext_chatr32()).assertFalse()
+    it('testutext_char32_0100',0,() =>{
+      expect(testNapi.testutext_char32()).assertFalse()
     })
 
     /* *
@@ -156,15 +156,15 @@ export default function FivePointOneTest() {
     })
 
     /* *
-    * @tc.number    : SUB_GLOBAL_utest_getNativelndex_0100
-    * @tc.name      : testutext_getNativelndex_0100
-    * @tc.desc      : testutext_getNativelndex
+    * @tc.number    : SUB_GLOBAL_utest_getNativeIndex_0100
+    * @tc.name      : testutext_getNativeIndex_0100
+    * @tc.desc      : testutext_getNativeIndex
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('testutext_getNativelndex_0100',0,() =>{
-      expect(testNapi.testutext_getNativelndex()).assertFalse()
+    it('testutext_getNativeIndex_0100',0,() =>{
+      expect(testNapi.testutext_getNativeIndex()).assertFalse()
     })
 
     /* *
@@ -312,15 +312,15 @@ export default function FivePointOneTest() {
     })
 
     /* *
-    * @tc.number    : SUB_GLOBAL_u_strshr_0100
-    * @tc.name      : testu_strshr_0100
-    * @tc.desc      : testu_strshr
+    * @tc.number    : SUB_GLOBAL_u_strrstr_0100
+    * @tc.name      : testu_strrstr_0100
+    * @tc.desc      : testu_strrstr
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('testu_strshr_0100',0,() =>{
-      expect(testNapi.testu_strshr()).assertFalse()
+    it('testu_strrstr_0100',0,() =>{
+      expect(testNapi.testu_strrstr()).assertFalse()
     })
 
     /* *
