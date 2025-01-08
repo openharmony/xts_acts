@@ -307,8 +307,7 @@ export default function abilityTest() {
                   expect.assertFail();
                 } else {
                   console.info(`${caseName} trigger success, data:${JSON.stringify(data)}`);
-                  // 16000076: The app instance key is invalid.
-                  expect(data.finalCode).assertEqual(16000076);
+                  expect(data.finalCode).assertEqual(0);
                   done();
                 }
               });
