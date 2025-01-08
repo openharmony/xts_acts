@@ -48,6 +48,20 @@ export default function nativeavmuxerNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVMUXER_OH_AVMUXER_SETFORMAT_0100
+     * @tc.name       : testOHAVMuxerSetFormat001
+     * @tc.desc       : test OH_AVMuxer_SetFormat
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAVMuxerSetFormat001', 0, async (done: Function) => {
+      let result: number = nativeavmuxer.oHAVMuxerSetFormat();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVMUXER_OH_AVMUXER_START_0100
      * @tc.name       : testOHAVMuxerStart001
      * @tc.desc       : test OH_AVMuxer_Start
@@ -155,6 +169,20 @@ export default function nativeavmuxerNdkTest() {
      */
     it('testOHAVMuxerSetRotation002', 0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerSetRotationAbnormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_AVMUXER_OH_AVMUXER_SETFORMAT_0200
+     * @tc.name       : testOHAVMuxerSetFormat002
+     * @tc.desc       : test OH_AVMuxer_SetFormat
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAVMuxerSetFormat002', 0, async (done: Function) => {
+      let result: number = nativeavmuxer.oHAVMuxerSetFormatAbnormal();
       expect(result).assertEqual(0);
       done();
     });

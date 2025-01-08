@@ -26,6 +26,7 @@
 #include "keyEvent/keyEvent_GetUnicode.h"
 #include "keyEvent/keyEvent_SetConsumed.h"
 #include "keyEvent/keyEvent_StopPropagation.h"
+#include "styledString/styledString_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -79,6 +80,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"KeyEventGetUnicodeTest_001", nullptr, KeyEventGetUnicodeTest::KeyEventGetUnicodeTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
          
         {"KeyEventSetConsumedTest_001", nullptr, KeyEventSetConsumedTest::KeyEventSetConsumedTest_001,nullptr, nullptr, nullptr, napi_default, nullptr},
+		
+		{"testStyledString001", nullptr, StyledStringTest::testStyledString001, 
+		 nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

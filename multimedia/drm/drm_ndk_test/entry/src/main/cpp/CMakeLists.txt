@@ -11,6 +11,6 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(entry SHARED hello.cpp)
+add_library(entry SHARED DrmNdkTest.cpp)
 
 target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drm.so libhilog_ndk.z.so)

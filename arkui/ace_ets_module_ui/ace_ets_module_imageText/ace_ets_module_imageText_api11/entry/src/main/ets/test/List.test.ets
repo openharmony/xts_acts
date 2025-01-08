@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import textAreaInputTest from './TextAreaTest/textAreaInputTest.test';
 import marqueeJsunit from './marqueeTest/MarqueeJsunit.test';
 import textStyleJsunit from './textTest/TextStyleJsunit.test';
 import TextStateJsunit from './textTest/TextStateJsunit.test';
@@ -219,6 +220,7 @@ import textObscuredTest from './textTest/textObscuredTest.test';
 import textSpanFontTest from './textTest/textSpanFont.test';
 
 export default function testsuite() {
+  textAreaInputTest()
   ToggleJsunit();
   stageFontTest();
   stageMediaquery();

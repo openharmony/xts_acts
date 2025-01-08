@@ -55,6 +55,24 @@
         ]
       }
     ],
+    "extensionAbilities": [
+      {
+        "name": "ExampleEmbeddedAbility",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "srcEntry": "./ets/testability/EmbeddedAbility.ets",
+        "type": "embeddedUI"
+      },
+      {
+        "name": "EmbeddedRectTestAbility",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "srcEntry": "./ets/testability/EmbeddedRectTestAbility.ets",
+        "type": "embeddedUI"
+      }
+    ],
     "requestPermissions": [
       {
         "name": "ohos.permission.PRIVACY_WINDOW",

@@ -39,7 +39,7 @@ interface locationObj {
 interface attendeeObj {
   name: string,
   email: string,
-  role?: calendarManager.AttendeeRole
+  role?: calendarManager.AttendeeRole,
 }
 
 interface recurrenceRuleObj {
@@ -840,17 +840,17 @@ export default function CalendarManagerTest() {
           {
             name: '小王',
             email: 'peter@yuanha.com',
-            role: calendarManager.AttendeeRole.ORGANIZER
+            role: calendarManager.AttendeeRole.ORGANIZER,
           },
           {
             name: '小李',
             email: 'peter@yuanha.com',
-            role: calendarManager.AttendeeRole.PARTICIPANT
+            role: calendarManager.AttendeeRole.PARTICIPANT,
           },
           {
             name: '老李',
             email: 'peter@yuanha.com',
-            role: calendarManager.AttendeeRole.PARTICIPANT
+            role: calendarManager.AttendeeRole.PARTICIPANT,
           }
         ],
         timeZone: '',

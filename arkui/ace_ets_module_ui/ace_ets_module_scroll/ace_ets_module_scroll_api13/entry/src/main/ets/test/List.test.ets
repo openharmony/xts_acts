@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 
-import headerListJsunit from './ListTest/headerListJsunit.test'; 
+import headerListJsunit from './ListTest/headerListJsunit.test';
+import waterFlowFad from './WaterFlowTest/waterFlowFad.test'; 
 import tabsOpacityJsunit from './TabsTest/tabsOpacityJsunit.test'; 
 import bindTabsScroll from './TabsTest/bindTabsScroll.test';
 
 export default function testsuite() {
   headerListJsunit()
+  waterFlowFad()
   tabsOpacityJsunit()
   bindTabsScroll()
 }

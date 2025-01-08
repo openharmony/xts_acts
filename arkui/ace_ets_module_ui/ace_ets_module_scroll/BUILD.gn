@@ -17,5 +17,6 @@ group("ActsAceEtsModuleScrollTest") {
     "ace_ets_module_scroll_api11:ActsAceEtsModuleScrollApi11Test",
     "ace_ets_module_scroll_api12:ActsAceEtsModuleScrollApi12Test",
     "ace_ets_module_scroll_api13:ActsAceEtsModuleScrollApi13Test",
+    "ace_ets_module_scroll_api14:ActsAceEtsModuleScrollApi14Test",
   ]
 }

@@ -20,6 +20,7 @@ import windowImmersiveTest from './WindowImmersive.test';
 import windowPropertiesTest from './WindowProperties.test';
 import windowManageTest from './WindowManage.test';
 import windowZindexTest from './WindowZindex.test';
+import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
 export default function testsuite() {
   windowTitleBarTest();
   windowZindexTest();
@@ -29,4 +30,5 @@ export default function testsuite() {
   windowMaximizeTest();
   windowImmersiveTest();
   windowPropertiesTest();
+  extensionWindowPropertiesTest();
 }

@@ -51,9 +51,10 @@ export default class MyAbilityStage extends AbilityStage {
   }
 
   onConfigurationUpdate(config) {
-    console.log('[Demo] MainAbility onConfigurationUpdate: ' + this.context.config.language);
-    console.log('[Demo] MainAbility onConfigurationUpdate: ' + config.language);
-    AppStorage.setOrCreate<string>("UpdateConfiguration_0200", config.language);
+    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + this.context.config.language);
+    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + config.language);
+    AppStorage.setOrCreate<string>("UpdateConfigurationTest_AbilityStage_0200", config.language);
+    console.log('[Demo] MyAbilityStage onConfigurationUpdate: ' + AppStorage.get<string>('UpdateConfigurationTest_AbilityStage_0200'));
   }
 
   onNewProcessRequest(want) {

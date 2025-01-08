@@ -115,6 +115,9 @@
       },
       {
         "name": "ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name": "ohos.permission.CONTROL_LOCATION_SWITCH"
       }
     ],
     "js": [
