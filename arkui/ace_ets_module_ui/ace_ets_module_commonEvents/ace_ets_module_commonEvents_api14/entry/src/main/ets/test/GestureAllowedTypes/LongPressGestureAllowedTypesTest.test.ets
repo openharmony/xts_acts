@@ -50,7 +50,11 @@ export default function LongPressGestureAllowedTypesTest() {
     /**
      * @tc.number
      * @tc.name      LongPressGestureAllowedTypesTest_0010
-     * @tc.desc      api test LongPressGesture
+     * @tc.desc      allowedTypes api test for LongPressGesture, will do the following test scenarios:
+     *                   1、try to trigger LongPressGesture with Mouse and Finger with allowedTypes setting to [], which is default setting.
+     *                   2、press button to change allowedTypes to [SourceTool.Mouse] and try to trigger the gesture again with Mouse and Finger
+     *                   3、press button to change allowedTypes to [SourceTool.Finger] and try to trigger the gesture again with Mouse and Finger
+     *                   4、press button to change allowedTypes to invalid values, [null, undefined], and try to trigger the gesture again
      * @tc.level:    Level
      * @tc.type :
      * @tc.size :
@@ -58,23 +62,6 @@ export default function LongPressGestureAllowedTypesTest() {
     it('LongPressGestureAllowedTypesTest_0010', 0, async (done: Function) => {
       console.info('LongPressGestureAllowedTypesTest_0010 START');
       await CommonFunc.sleep(1000);
-      // let windowOffsetX:number = globalThis.winLeft
-      // let windowOffsetY:number = globalThis.winTop
-      // console.log('LongPressGestureAllowedTypesTest_0010 windowOffsetX and windowOffsetY',windowOffsetX, windowOffsetY)
-      // // let FatherObj = CommonFunc.getComponentRectOnScreen('LongPressGestureAllowedTypes_Father');
-      // let swiperTabs = CommonFunc.getComponentRectOnScreen('longpress_id');
-      // let top = swiperTabs.top;
-      // let right = swiperTabs.right;
-      // let left = swiperTabs.left;
-      // let bottom = swiperTabs.bottom;
-      // console.info("LongPressGestureAllowedTypesTest_0010 value is" + left + " --" + right + "--" + top + "--" + bottom);
-      // let height = bottom -top;
-      // let width = right - left;
-      // let FatherObj = CommonFunc.getComponentRectOnScreen('longpress_id');
-      // let FatherObjHeight = FatherObj.bottom - FatherObj.top
-      // let FatherObjWidth = FatherObj.right - FatherObj.left
-      // console.log('LongPressGestureAllowedTypesTest_0010 FatherObj',FatherObj.left,FatherObj.top,FatherObj.right,FatherObj.bottom)
-      // await CommonFunc.sleep(1000);
       let areaObj = CommonFunc.getComponentRectOnScreen('LongPressGestureAllowedTypes_Text');
       let areaHeight = areaObj.bottom - areaObj.top
       let areaWidth = areaObj.right - areaObj.left
@@ -153,7 +140,26 @@ export default function LongPressGestureAllowedTypesTest() {
       let obj8: ESObject = JSON.parse(text8);
       console.log('LongPressGestureLongClickTest_0010 obj8 $attrs content',obj8.$attrs.content,obj8)
       expect(obj8.$attrs.content).assertEqual('allowed types success');
+      
+      // change types to invalid types
+      await CommonFunc.sleep(1000);
+      let button3 = await driver.findComponent(ON.id('Invalid_type'));
+      await button3.click();
+      await CommonFunc.sleep(3000);
+      let text9 = getInspectorByKey('LongPressGestureAllowedTypes_Result');
+      let obj9: ESObject = JSON.parse(text9);
+      console.log('LongPressGestureAllowedTypesTest_0010 obj9 $attrs content',obj9.$attrs.content,obj9)
+      expect(obj9.$attrs.content).assertEqual('allowed types default');
 
+      // trigger gesture again with finger
+      await CommonFunc.sleep(1000);
+      await driver.longClick(Math.round(areaObj.left + areaWidth/2),Math.round(areaObj.top + areaHeight/2));
+      await CommonFunc.sleep(3000);
+      let text10 = getInspectorByKey('LongPressGestureAllowedTypes_Result');
+      let obj10: ESObject = JSON.parse(text10);
+      console.log('LongPressGestureAllowedTypesTest_0010 obj10 $attrs content',obj10.$attrs.content,obj10)
+      expect(obj10.$attrs.content).assertEqual('allowed types success');
+      
       console.info('LongPressGestureAllowedTypesTest_0010 END');
       done();
     });
