@@ -28,8 +28,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan001', 0, async () => {
       let result: number = await entry.oHScanInit();
-      const errorCode : number = 0;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -42,8 +41,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan002', 0, async () => {
       let result: number = await entry.oHScanStartScannerDiscovery();
-      const errorCode : number = 201;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -56,8 +54,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan003', 0, async () => {
       let result: number = await entry.oHScanOpenScanner();
-      const errorCode : number = 201;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -70,8 +67,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan004', 0, async () => {
       let result: number = await entry.oHScanCloseScanner();
-      const errorCode : number = 201;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -84,8 +80,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan005', 0, async () => {
       let result: number = await entry.oHScanGetScannerParameter();
-      const errorCode : number = 201;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -98,8 +93,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan006', 0, async () => {
       let result: number = await entry.oHScanSetScannerParameter();
-      const errorCode : number = 401;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -112,8 +106,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan007', 0, async () => {
       let result: number = await entry.oHScanStartScan();
-      const errorCode : number = 201;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -126,8 +119,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan008', 0, async () => {
       let result: number = await entry.oHScanCancelScan();
-      const errorCode : number = 201;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -140,8 +132,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan009', 0, async () => {
       let result: number = await entry.oHScanGetPictureScanProgress();
-      const errorCode : number = 201;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
 
     /**
@@ -154,8 +145,7 @@ export default function oHScannerServicesInterfaceTest() {
      */
     it('testOHScan010', 0, async () => {
       let result: number = await entry.oHScanExit();
-      const errorCode : number = 0;
-      expect(result).assertEqual(errorCode);
+      expect(result).assertEqual(0);
     });
   })
 }
