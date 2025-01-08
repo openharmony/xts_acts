@@ -98,7 +98,7 @@ export default function extensionWindowPropertiesTest() {
           decorEnabled: true
         }
         console.log(caseName + 'start run')
-        await windowStage.createSubWindowWithOptions('subWindow', options).then(async (subWindowClass) => {
+        await windowStage.createSubWindowWithOptions('subWindowRectChange', options).then(async (subWindowClass) => {
           subWindowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentRectPage')
           await subWindowClass.resizeAsync(1000, 1200)
           await subWindowClass.moveWindowToAsync(300, 200)

@@ -17,15 +17,15 @@ group("ActsBundleGetMainElementNameTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsbmsgetmainelementnametesta:ActsBmsGetMainElementNameTestA",
-      "actsbmsgetmainelementnametestb:ActsBmsGetMainElementNameTestB",
-      "actsbmsgetmainelementnametestc:ActsBmsGetMainElementNameTestC",
-      "actsbmsgetmainelementnametestd:ActsBmsGetMainElementNameTestD",
-      "actsbmsgetmainelementnameteste:ActsBmsGetMainElementNameTestE",
-      "actsbmsgetmainelementnametestf:ActsBmsGetMainElementNameTestF",
-      "actsbmsgetmainelementnametestg:ActsBmsGetMainElementNameTestG",
-      "actsbmsgetmainelementnametesth:ActsBmsGetMainElementNameTestH",
-      "actsbmsgetmainelementnametesti:ActsBmsGetMainElementNameTestI",
+      "actsbmsgetmainelementnameatest:ActsBmsGetMainElementNameATest",
+      "actsbmsgetmainelementnamebtest:ActsBmsGetMainElementNameBTest",
+      "actsbmsgetmainelementnamectest:ActsBmsGetMainElementNameCTest",
+      "actsbmsgetmainelementnamedtest:ActsBmsGetMainElementNameDTest",
+      "actsbmsgetmainelementnameetest:ActsBmsGetMainElementNameETest",
+      "actsbmsgetmainelementnameftest:ActsBmsGetMainElementNameFTest",
+      "actsbmsgetmainelementnamegtest:ActsBmsGetMainElementNameGTest",
+      "actsbmsgetmainelementnamehtest:ActsBmsGetMainElementNameHTest",
+      "actsbmsgetmainelementnameitest:ActsBmsGetMainElementNameITest",
     ]
   }
 }
