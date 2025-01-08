@@ -66,12 +66,13 @@ static napi_value testUidna_labelToUnicode(napi_env env, napi_callback_info)
 {
     UErrorCode errorCode = U_ZERO_ERROR;
     UErrorCode errorCode1 = U_ZERO_ERROR;
+    const int32_t compareZero = 0;
     UIDNA *uts46 = uidna_openUTS46(UIDNA_USE_STD3_RULES | UIDNA_NONTRANSITIONAL_TO_UNICODE, &errorCode);
     static const UChar sharps[] = {0x66, 0x41, 0xc3, 0x9f, 0};
     UIDNAInfo plnfo = UIDNA_INFO_INITIALIZER;
 
     int32_t data1 = uidna_labelToUnicode(uts46, sharps, -1, NULL, -1, &plnfo, &errorCode1);
-    bool flagA = (data1 == 0);
+    bool flagA = (data1 == compareZero);
     bool flag = (flagA & U_SUCCESS(errorCode));
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -82,12 +83,13 @@ static napi_value testUidna_nameToASCII(napi_env env, napi_callback_info)
 {
     UErrorCode errorCode = U_ZERO_ERROR;
     UErrorCode errorCode1 = U_ZERO_ERROR;
+    const int32_t compareZero = 0;
     UIDNA *uts46 = uidna_openUTS46(UIDNA_USE_STD3_RULES | UIDNA_NONTRANSITIONAL_TO_UNICODE, &errorCode);
     UChar dest16[10];
     UIDNAInfo plnfo = UIDNA_INFO_INITIALIZER;
 
     int32_t data1 = uidna_nameToASCII(uts46, NULL, -1, dest16, 0, &plnfo, &errorCode1);
-    bool flagA = (data1 == 0);
+    bool flagA = (data1 == compareZero);
     bool flag = (flagA & U_SUCCESS(errorCode));
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -98,6 +100,7 @@ static napi_value testUidna_nameToUnicode(napi_env env, napi_callback_info)
 {
     UErrorCode errorCode = U_ZERO_ERROR;
     UErrorCode errorCode1 = U_ZERO_ERROR;
+    const int32_t compareZero = 0;
     UIDNA *uts46 = uidna_openUTS46(UIDNA_USE_STD3_RULES | UIDNA_NONTRANSITIONAL_TO_UNICODE, &errorCode);
     static const UChar sharps16[] = {0x66, 0x41, 0xdf, 0};
     int32_t length = -1;
@@ -106,7 +109,7 @@ static napi_value testUidna_nameToUnicode(napi_env env, napi_callback_info)
     int32_t capacity = 3;
 
     int32_t data1 = uidna_nameToUnicode(uts46, sharps16, length, dest16, capacity, &plnfo, &errorCode1);
-    bool flagA = (data1 > 0);
+    bool flagA = (data1 > compareZero);
     bool flag = (flagA & U_SUCCESS(errorCode));
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -117,6 +120,7 @@ static napi_value testUidna_labelToASCLL_UTF8(napi_env env, napi_callback_info)
 {
     UErrorCode errorCode = U_ZERO_ERROR;
     UErrorCode errorCode1 = U_ZERO_ERROR;
+    const int32_t compareZero = 0;
     UIDNA *uts46 = uidna_openUTS46(UIDNA_USE_STD3_RULES | UIDNA_NONTRANSITIONAL_TO_UNICODE, &errorCode);
     const char sharps[] = {0x66, 0x41, static_cast<char>(0xc3), static_cast<char>(0x9f), 0};
     int32_t length = -1;
@@ -124,7 +128,7 @@ static napi_value testUidna_labelToASCLL_UTF8(napi_env env, napi_callback_info)
     UIDNAInfo plnfo = UIDNA_INFO_INITIALIZER;
     int32_t capacity = 0;
     int32_t data1 = uidna_labelToASCII_UTF8(uts46, sharps, length, &dest, capacity, &plnfo, &errorCode1);
-    bool flagA = (data1 > 0);
+    bool flagA = (data1 > compareZero);
     bool flag = (flagA & U_SUCCESS(errorCode));
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -135,6 +139,7 @@ static napi_value testUidna_labelToUnicodeUTF8(napi_env env, napi_callback_info)
 {
     UErrorCode errorCode = U_ZERO_ERROR;
     UErrorCode errorCode1 = U_ZERO_ERROR;
+    const int32_t compareZero = 0;
     UIDNA *uts46 = uidna_openUTS46(UIDNA_USE_STD3_RULES | UIDNA_NONTRANSITIONAL_TO_UNICODE, &errorCode);
     const char sharps[] = {0x66, 0x41, static_cast<char>(0xc3), static_cast<char>(0x9f), 0};
     int32_t length = -1;
@@ -143,7 +148,7 @@ static napi_value testUidna_labelToUnicodeUTF8(napi_env env, napi_callback_info)
     int32_t capacity = 0;
 
     int32_t data1 = uidna_labelToUnicodeUTF8(uts46, sharps, length, &dest, capacity, &plnfo, &errorCode1);
-    bool flagA = (data1 > 0);
+    bool flagA = (data1 > compareZero);
     bool flag = (flagA & U_SUCCESS(errorCode));
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -154,6 +159,7 @@ static napi_value testUidna_nameToASCII_UTF8(napi_env env, napi_callback_info)
 {
     UErrorCode errorCode = U_ZERO_ERROR;
     UErrorCode errorCode1 = U_ZERO_ERROR;
+    const int32_t compareZero = 0;
     UIDNA *uts46 = uidna_openUTS46(UIDNA_USE_STD3_RULES | UIDNA_NONTRANSITIONAL_TO_UNICODE, &errorCode);
     const char sharps[] = {0x66, 0x41, static_cast<char>(0xc3), static_cast<char>(0x9f), 0};
     int32_t length = -1;
@@ -161,7 +167,7 @@ static napi_value testUidna_nameToASCII_UTF8(napi_env env, napi_callback_info)
     UIDNAInfo plnfo = UIDNA_INFO_INITIALIZER;
     int32_t capacity = 0;
     int32_t data1 = uidna_nameToASCII_UTF8(uts46, sharps, length, &dest, capacity, &plnfo, &errorCode1);
-    bool flagA = (data1 > 0);
+    bool flagA = (data1 > compareZero);
     bool flag = (flagA & U_SUCCESS(errorCode));
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -172,6 +178,7 @@ static napi_value testUidna_nameToUnicodeUTF8(napi_env env, napi_callback_info)
 {
     UErrorCode errorCode = U_ZERO_ERROR;
     UErrorCode errorCode1 = U_ZERO_ERROR;
+    const int32_t compareZero = 0;
     UIDNA *uts46 = uidna_openUTS46(UIDNA_USE_STD3_RULES | UIDNA_NONTRANSITIONAL_TO_UNICODE, &errorCode);
     const char sharps[] = {0x66, 0x41, static_cast<char>(0xc3), static_cast<char>(0x9f), 0};
     int32_t length = -1;
@@ -179,7 +186,7 @@ static napi_value testUidna_nameToUnicodeUTF8(napi_env env, napi_callback_info)
     UIDNAInfo plnfo = UIDNA_INFO_INITIALIZER;
     int32_t capacity = 0;
     int32_t data1 = uidna_nameToUnicodeUTF8(uts46, sharps, length, &dest, capacity, &plnfo, &errorCode1);
-    bool flagA = (data1 > 0);
+    bool flagA = (data1 > compareZero);
     bool flag = (flagA & U_SUCCESS(errorCode));
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -248,11 +255,12 @@ static napi_value testUtext_nativeLength(napi_env env, napi_callback_info)
     UChar uString[] = {0x41, 0x42, 0x43, 0};
     UErrorCode status = U_ZERO_ERROR;
     int64_t len;
+    const int32_t stringLen = 3;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     len = utext_nativeLength(uta);
     utext_close(uta);
-    bool flagB = (len != 3);
+    bool flagB = (len != stringLen);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -355,12 +363,13 @@ static napi_value testUtext_getNativeIndex(napi_env env, napi_callback_info)
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
     UErrorCode status = U_ZERO_ERROR;
+    const int32_t compare = 1;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     UChar32 previousC = utext_previous32From(uta, 2);
     int64_t getNativeIndexI = utext_getNativeIndex(uta);
     utext_close(uta);
-    bool flagB = (getNativeIndexI != 1);
+    bool flagB = (getNativeIndexI != compare);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -371,13 +380,14 @@ static napi_value testUtext_setNativeIndex_moveIndex32(napi_env env, napi_callba
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
     UErrorCode status = U_ZERO_ERROR;
+    const int32_t compare = 1;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     utext_setNativeIndex(uta, 0);
     UBool moveIndexB = utext_moveIndex32(uta, 1);
     int64_t getNativeIndexI = utext_getNativeIndex(uta);
     utext_close(uta);
-    bool flagB = (moveIndexB != true || getNativeIndexI != 1);
+    bool flagB = (moveIndexB != true || getNativeIndexI != compare);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -387,13 +397,14 @@ static napi_value testUtext_setNativeIndex_moveIndex32(napi_env env, napi_callba
 static napi_value testUtext_getPreviousNativeIndex(napi_env env, napi_callback_info)
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
+    const int32_t compareZero = 0;
     UErrorCode status = U_ZERO_ERROR;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     UBool moveIndexB = utext_moveIndex32(uta, 1);
     int64_t getPreviousNativeIndexI = utext_getPreviousNativeIndex(uta);
     utext_close(uta);
-    bool flagB = (getPreviousNativeIndexI != 0);
+    bool flagB = (getPreviousNativeIndexI != compareZero);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -422,8 +433,9 @@ static napi_value testUtext_extract(napi_env env, napi_callback_info)
 static napi_value testU_strlen(napi_env env, napi_callback_info)
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 3;
     int32_t len = u_strlen(uString);
-    bool flag = (len != 3);
+    bool flag = (len != stringLen);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
@@ -432,8 +444,9 @@ static napi_value testU_strlen(napi_env env, napi_callback_info)
 static napi_value testU_countChar32(napi_env env, napi_callback_info)
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
+    const int32_t stringLen = 3;
     int32_t len = u_countChar32(uString, -1);
-    bool flag = (len != 3);
+    bool flag = (len != stringLen);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
@@ -453,9 +466,10 @@ static napi_value testU_strcat(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0, 0, 0, 0};
     UChar uStringTwo[] = {0x41, 0x42, 0};
+    const int32_t stringLen = 5;
     u_strcat(uStringOne, uStringTwo);
     int32_t len = u_strlen(uStringOne);
-    bool flag = (len != 5);
+    bool flag = (len != stringLen);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
