@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct RotationGestureAllowedTypes {
-  @State types: Array<SourceTool> = [];
+  @State types: Array<SourceTool | undefined | null> = [];
   @State result: string = 'allowed types default';
   @State angle: number = 0;
   build() {
