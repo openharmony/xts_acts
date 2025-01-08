@@ -54,11 +54,6 @@ function shouldBeEqual(arg1: number, arg2: number): boolean {
 @Entry
 @Component
 struct Index {
-  timer1_ : number = 0;
-  timer2_ : number = 0;
-
-  @State paused_ : number = 0;
-
   build() {
     Scroll() {
       Column() {
@@ -69,7 +64,6 @@ struct Index {
           .onClick(async () => {
             const caseName: string = 'testWorkerMix001';
             console.info(`${caseName} test start`);
-            await sleep(500);
             let arkInstance:number [] = [];
             let arkInstance2: number = 0;
             try {
@@ -86,7 +80,7 @@ struct Index {
                 workerInstanceONE.push(new worker.ThreadWorker('../worker/worker.ts', { name: JSON.stringify(i)}));
               }
               console.info(`${caseName}: 64 worker threads were created, done`);
-              await sleep(200);
+              await sleep(100);
               try {
                 const workerInstanceTWO: worker.ThreadWorker = new worker.ThreadWorker('../worker/worker.ts', { name: '65' });
                 workerInstanceTWO.terminate();
@@ -97,17 +91,17 @@ struct Index {
                 expectAssertContain(error.message, 'the number of workers exceeds the maximum');
                 console.info(`${caseName}: catch error: done`);
               }
-              await sleep(200);
+              await sleep(100);
               for (let i: number = 0; i < workerInstanceONE.length; i++) {
                 workerInstanceONE[i].terminate();
               }
               console.info(`${caseName}: 1-64 worker threads were terminated: done`);
-              await sleep(200);
+              await sleep(100);
               for (let i: number = 0; i < arkInstance.length; i++) {
                 arkInstance2 = testNapi.DeleteArkRuntime(arkInstance[i]);
               }
               console.info(`${caseName}: NAPI threads were deleted, done`);
-              await sleep(200);
+              await sleep(100);
             } catch (error) {
               console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
             }
