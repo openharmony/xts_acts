@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct LongPressGestureAllowedTypes {
-  @State types: Array<SourceTool> = [];
+  @State types: Array<SourceTool | undefined | null> = [];
   @State result: string = 'allowed types default';
   build() {
     Column(){
