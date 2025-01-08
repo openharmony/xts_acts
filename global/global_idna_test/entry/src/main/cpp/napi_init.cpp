@@ -195,9 +195,9 @@ static napi_value testUidna_nameToUnicodeUTF8(napi_env env, napi_callback_info)
 
 static napi_value testUtext_openUTF8(napi_env env, napi_callback_info)
 {
-    const char *UTF8Str = "\x41\xc3\x85\x5A\x20\x41\x52\x69\x6E\x67";
+    const char *uSting = "\x41\xc3\x85\x5A\x20\x41\x52\x69\x6E\x67";
     UErrorCode status = U_ZERO_ERROR;
-    UText *ut = utext_openUTF8(NULL, UTF8Str, -1, &status);
+    UText *ut = utext_openUTF8(NULL, uSting, -1, &status);
     utext_close(ut);
     bool flag = U_FAILURE(status);
     napi_value result = nullptr;
@@ -243,7 +243,7 @@ static napi_value testUtext_equals(napi_env env, napi_callback_info)
     utext_close(utOne);
     utext_close(utTwo);
     bool flagA = U_FAILURE(status);
-    bool flagB = !utext_equals(utOne, utTwo); 
+    bool flagB = !utext_equals(utOne, utTwo);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -289,7 +289,7 @@ static napi_value testUtext_current32(napi_env env, napi_callback_info)
     UErrorCode status = U_ZERO_ERROR;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChar32 testChar = utext_current32(uta, 0);
+    UChar32 testChar = utext_current32(uta);
     utext_close(uta);
     bool flagB = (testChar != uString[0]);
     bool flag = (flagA || flagB);
@@ -504,7 +504,7 @@ static napi_value testU_strFindFirst(napi_env env, napi_callback_info)
 {
     UChar uStringOne[] = {0x41, 0x42, 0x43, 0};
     UChar uStringTwo[] = {0x44, 0x44, 0};
-    UChar *resultA = u_FindFirst(uStringOne, -1, uStringTwo, 2);
+    UChar *resultA = u_strFindFirst(uStringOne, -1, uStringTwo, 2);
     bool flag = (resultA != NULL);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -1179,25 +1179,25 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testuidna_nameToUnicodeUTF8", nullptr, testUidna_nameToUnicodeUTF8, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testutext_openUTF8", nullptr, testUtext_openUTF8, nullptr,
-            nullptr, nullptr, napi_default, nullptr},       
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_openUTF8_close", nullptr, testUtext_openUTF8_close, nullptr,
-            nullptr, nullptr, napi_default, nullptr},    
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_clone", nullptr, testUtext_clone, nullptr,
-            nullptr, nullptr, napi_default, nullptr},    
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_equals", nullptr, testUtext_equals, nullptr,
-            nullptr, nullptr, napi_default, nullptr},   
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_nativeLength", nullptr, testUtext_nativeLength, nullptr,
-            nullptr, nullptr, napi_default, nullptr},    
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_char32", nullptr, testUtext_char32, nullptr,
-            nullptr, nullptr, napi_default, nullptr},   
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_current32", nullptr, testUtext_current32, nullptr,
-            nullptr, nullptr, napi_default, nullptr},  
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_next32", nullptr, testUtext_next32, nullptr,
-            nullptr, nullptr, napi_default, nullptr},  
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_previous32", nullptr, testUtext_previous32, nullptr,
-            nullptr, nullptr, napi_default, nullptr}, 
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_next32From", nullptr, testUtext_next32From, nullptr,
-            nullptr, nullptr, napi_default, nullptr}, 
+            nullptr, nullptr, napi_default, nullptr},
         {"testutext_previous32From", nullptr, testUtext_previous32From, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testutext_getNativeIndex", nullptr, testUtext_getNativeIndex, nullptr,
@@ -1239,75 +1239,75 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testu_strcspn", nullptr, testU_strcspn, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testu_strspn", nullptr, testU_strspn, nullptr,
-            nullptr, nullptr, napi_default, nullptr},              
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strtok_r", nullptr, testU_strtok_r, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testu_strcmp", nullptr, testU_strcmp, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testu_strcmpCodePointOrder", nullptr, testU_strcmpCodePointOrder, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strCompare", nullptr, testU_strCompare, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strCaseCompare", nullptr, testU_strCaseCompare, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strncmp", nullptr, testU_strncmp, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strncmpCodePointOrder", nullptr, testU_strncmpCodePointOrder, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strcasecmp", nullptr, testU_strcasecmp, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strncasecmp", nullptr, testU_strncasecmp, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memcasecmp", nullptr, testU_memcasecmp, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strcpy", nullptr, testU_strcpy, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strncpy", nullptr, testU_strncpy, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memcpy", nullptr, testU_memcpy, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memmove", nullptr, testU_memmove, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memset", nullptr, testU_memset, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memcmp", nullptr, testU_memcmp, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memcmpCodePointOrder", nullptr, testU_memcmpCodePointOrder, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memchr", nullptr, testU_memchr, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memchr32", nullptr, testU_memchr32, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testu_memrchr", nullptr, testU_memrchr, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_memrchr32", nullptr, testU_memrchr32, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strToUpper", nullptr, testU_strToUpper, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strToLower", nullptr, testU_strToLower, nullptr,
-            nullptr, nullptr, napi_default, nullptr},       
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strToTitle", nullptr, testU_strToTitle, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strFoldCase", nullptr, testU_strFoldCase, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strToUTF8", nullptr, testU_strToUTF8, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strFromUTF8", nullptr, testU_strFromUTF8, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strToUTF8WithSub", nullptr, testU_strToUTF8WithSub, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strFromUTF8WithSub", nullptr, testU_strFromUTF8WithSub, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strFromUTF8Lenient", nullptr, testU_strFromUTF8Lenient, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strToUTF32", nullptr, testU_strToUTF32, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strFromUTF32", nullptr, testU_strFromUTF32, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strToUTF32WithSub", nullptr, testU_strToUTF32WithSub, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_strFromUTF32WithSub", nullptr, testU_strFromUTF32WithSub, nullptr,
-            nullptr, nullptr, napi_default, nullptr},        
+            nullptr, nullptr, napi_default, nullptr},
         {"testu_errorName", nullptr, testU_errorName, nullptr,
             nullptr, nullptr, napi_default, nullptr},
     };
