@@ -293,7 +293,8 @@ export default function windowInterface() {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
           // 窗口全屏，非沉浸式
-          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN)
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN) 
+          //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
           expect(isLayoutFullScreen).assertFalse()
           done()
         }).catch((err: BusinessError) => {
@@ -508,7 +509,8 @@ export default function windowInterface() {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
 
-          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN)
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN) 
+          //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
           expect(isLayoutFullScreen).assertFalse()
           done()
         }).catch((err: BusinessError) => {
@@ -560,7 +562,8 @@ export default function windowInterface() {
           // 恢复
           await windowStageStart.setWindowRectAutoSave(false)
 
-          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN)
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN) 
+          //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
           expect(isLayoutFullScreen).assertFalse()
           done()
         }).catch((err: BusinessError) => {
@@ -1008,7 +1011,8 @@ export default function windowInterface() {
         // 获取窗口状态 - 全屏
         let windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN); 
+        //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
         // 判断是否存在最大化 - false
         let test = await assertMaximizeComponentExist(windowStatus)
         await sleep(1000)
@@ -1261,7 +1265,8 @@ export default function windowInterface() {
         // 获取窗口状态 - 全屏
         windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN); 
+        //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
         // 判断是否存在最大化 - false
         test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
@@ -1329,7 +1334,8 @@ export default function windowInterface() {
         // 获取窗口状态 - 全屏
         windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN); 
+        //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
         // 判断是否存在最大化 - true
         test =
           await assertMaximizeComponentExist(windowStatus, mainWindowRect, windowClass)
