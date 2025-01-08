@@ -19,6 +19,7 @@ import itemIndexList from './ListTest/itemIndexList.test';
 import groupAnimation from './ListTest/groupAnimation.test'; 
 import animationCallback from './ListTest/animationCallback.test';
 import nodeTypeGrid from './GridTest/nodeTypeGrid.test'; 
+import clipContent from './WaterFlowTest/clipContent.test';
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -27,4 +28,5 @@ export default function testsuite() {
   groupAnimation()
   animationCallback()
   nodeTypeGrid()
+  clipContent()
 }

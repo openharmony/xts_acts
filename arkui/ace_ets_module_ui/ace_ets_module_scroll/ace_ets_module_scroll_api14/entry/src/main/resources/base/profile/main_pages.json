@@ -6,6 +6,7 @@
         "MainAbility/pages/List/itemIndexList",
         "MainAbility/pages/List/groupAnimation",
         "MainAbility/pages/List/animationCallback",
-        "MainAbility/pages/Grid/nodeTypeGrid"
+        "MainAbility/pages/Grid/nodeTypeGrid",
+        "MainAbility/pages/WaterFlow/clipContent"
     ]
 }
