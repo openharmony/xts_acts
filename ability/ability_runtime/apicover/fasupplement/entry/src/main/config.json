@@ -59,6 +59,19 @@
         "label": "$string:MainAbility2_label",
         "type": "page",
         "launchType": "singleton"
+      },
+      {
+        "orientation": "unspecified",
+        "visible": true,
+        "srcPath": "MainAbility3",
+        "name": ".MainAbility3",
+        "srcLanguage": "ets",
+        "icon": "$media:icon",
+        "description": "$string:MainAbility2_desc",
+        "formsEnabled": false,
+        "label": "$string:MainAbility2_label",
+        "type": "page",
+        "launchType": "singleton"
       }
     ],
     "js": [
@@ -89,6 +102,26 @@
           "designWidth": 720,
           "autoDesignWidth": false
         }
+      },
+      {
+        "mode": {
+          "syntax": "ets",
+          "type": "pageAbility"
+        },
+        "pages": [
+          "pages/index"
+        ],
+        "name": ".MainAbility3",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      }
+    ],
+    "reqPermissions": [
+      {
+          "name": "ohos.permission.MICROPHONE",
+          "reason": "use ohos.permission.MICROPHONE"
       }
     ]
   }
