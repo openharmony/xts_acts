@@ -44,6 +44,11 @@ struct PanGestureAllowedTypes {
           this.result = 'allowed types default';
           this.types = [SourceTool.Finger];
         })
+      Button('Invalid').id('Invalid_type')
+          .onClick(() => {
+            this.result = 'allowed types default';
+            this.types = [null, undefined];
+          })
     }.alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('PanGestureAllowedTypes_Father')
   }
 }
