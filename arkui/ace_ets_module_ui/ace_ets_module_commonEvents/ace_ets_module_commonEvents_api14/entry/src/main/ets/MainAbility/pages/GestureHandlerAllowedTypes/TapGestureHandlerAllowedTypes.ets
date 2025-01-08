@@ -35,6 +35,7 @@ class TapGestureHandlerAllowedTypesModifier implements GestureModifier {
 @Entry
 @Component
 struct TapGestureHandlerAllowedTypes {
+  @State types: Array<SourceTool | undefined | null> = [];
   @State result: string = 'allowed types default';
   private callback: Callback<string> = (data: string) => {
     this.result = data;
