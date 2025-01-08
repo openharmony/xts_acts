@@ -51,6 +51,11 @@ struct RotationGestureAllowedTypes {
           this.result = 'allowed types default';
           this.types = [SourceTool.Finger];
         })
+      Button('Invalid').id('Invalid_type')
+          .onClick(() => {
+            this.result = 'allowed types default';
+            this.types = [null, undefined];
+          })
     }.padding({top: 10, left:40 }).alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('RotationGestureAllowedTypes_Father')
   }
 }
