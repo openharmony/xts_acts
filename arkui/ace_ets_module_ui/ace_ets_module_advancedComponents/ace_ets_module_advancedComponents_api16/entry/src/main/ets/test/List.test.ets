@@ -15,8 +15,10 @@
 
 import composeListItemPageTest from './composeListItem/composeListItemPageTest.test';
 import composeListItemOperateItemSymbolStyle from './composeListItem/composeListItemOperateItemSymbolStyle.test';
+import toolBarAccessibilityTest from './toolBar/tooBarAccessibilityPage.test.test';
 
 export default function testsuite() {
   composeListItemPageTest();
   composeListItemOperateItemSymbolStyle();
+  toolBarAccessibilityTest()
 }
