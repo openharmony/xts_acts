@@ -49,7 +49,7 @@ export default function RotationGestureAllowedTypesTest() {
     /**
      * @tc.number
      * @tc.name      RotationGestureAllowedTypesTest_0010
-     * @tc.desc      allowedTypes api test for LongPressGesture, will do the following test scenarios:
+     * @tc.desc      allowedTypes api test for RotationGesture, will do the following test scenarios:
      *               1、try to trigger LongPressGesture with Mouse and Finger with allowedTypes setting to [], which is default setting.
      *               2、press button to change allowedTypes to [SourceTool.Mouse] and try to trigger the gesture again with Mouse and Finger
      *               3、press button to change allowedTypes to [SourceTool.Finger] and try to trigger the gesture again with Mouse and Finger
