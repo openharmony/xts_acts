@@ -38,6 +38,7 @@ class PanGestureHandlerAllowedTypesModifier implements GestureModifier {
 @Entry
 @Component
 struct PanGestureHandlerAllowedTypes {
+  @State types: Array<SourceTool | undefined | null> = [];
   @State result: string = 'allowed types default';
   private callback: Callback<string> = (data: string) => {
     this.result = data;
