@@ -57,6 +57,11 @@ struct SwipeGestureHandlerAllowedTypes {
           this.result = 'allowed types default'
           this.modifier = new SwipeGestureHandlerAllowedTypesModifier([SourceTool.Finger], this.callback);
         })
+      Button('Invalid').id('Invalid_type')
+          .onClick(() => {
+            this.result = 'allowed types default';
+            this.types = new SwipeGestureHandlerAllowedTypesModifier([null, undefined], this.callback);
+          })
     }.alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('SwipeGestureHandlerAllowedTypes_Father')
   }
 }
