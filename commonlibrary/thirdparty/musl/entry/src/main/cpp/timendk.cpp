@@ -38,6 +38,7 @@
 #include <unistd.h>
 #include <utmp.h>
 #include <uv.h>
+#include <securec.h>
 
 #define ONEVAL 1
 #define TWOVAL 2
@@ -531,6 +532,7 @@ static napi_value ClockGetres(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     struct timespec ts;
+    memset_s(&ts, sizeof(ts), 0, sizeof(ts));
     int value = clock_getres(CLOCK_REALTIME, &ts);
     napi_value result;
     napi_create_int32(env, value, &result);
@@ -540,6 +542,7 @@ static napi_value ClockGetres(napi_env env, napi_callback_info info)
 static napi_value ClockGettime(napi_env env, napi_callback_info info)
 {
     struct timespec ts;
+    memset_s(&ts, sizeof(ts), 0, sizeof(ts));
     int value = clock_gettime(CLOCK_REALTIME, &ts);
     napi_value result;
     napi_create_int32(env, value, &result);
@@ -550,6 +553,7 @@ static napi_value ClockNanosleep(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     struct timespec ts;
+    memset_s(&ts, sizeof(ts), 0, sizeof(ts));
     ts.tv_sec = ts.tv_nsec / TVSEC;
     ts.tv_nsec = TVNSEC;
     int ret = FAIL;
