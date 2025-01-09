@@ -296,7 +296,7 @@ export default function ContactInterfaceStageTest() {
             return;
           }
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0200  keyData = " + JSON.stringify(keyData));
-          if (JSON.stringify(keyData != undefined)){
+          if (JSON.stringify(keyData) != undefined){
             contact.updateContact(context, {
               id: data,
               key: keyData,
@@ -376,7 +376,7 @@ export default function ContactInterfaceStageTest() {
             return;
           }
           console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  keyData = " + JSON.stringify(keyData));
-          if (JSON.stringify(keyData != undefined)) {
+          if (JSON.stringify(keyData) != undefined) {
             let promise = contact.updateContact(context, {
               id: data,
               key: keyData,
