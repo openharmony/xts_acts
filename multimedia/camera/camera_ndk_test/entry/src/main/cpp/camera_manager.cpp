@@ -60,7 +60,7 @@ NDKCamera::NDKCamera(char* str)
       metaDataObjectType_(nullptr), metadataOutput_(nullptr), cameraInput_(nullptr),
       isCameraMuted_(nullptr), previewSurfaceId_(str),
       cameraProfile_(nullptr), videoActiveProfile_(nullptr),
-      ret_(CAMERA_OK)
+      ret_(CAMERA_OK),orientation_(0),cameraDeviceIndex_(0)
 {
     valid_ = false;
     Camera_ErrorCode ret = OH_Camera_GetCameraManager(&cameraManager_);
