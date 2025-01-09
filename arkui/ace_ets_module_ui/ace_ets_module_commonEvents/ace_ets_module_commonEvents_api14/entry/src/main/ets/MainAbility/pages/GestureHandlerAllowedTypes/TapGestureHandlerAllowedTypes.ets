@@ -16,7 +16,7 @@
 class TapGestureHandlerAllowedTypesModifier implements GestureModifier {
   toolTypes: Array<SourceTool | undefined | null> = [];
   listener: Callback<string> = (data: string) => {};
-  constructor(types: Array<SourceTool>, callback: Callback<string>) {
+  constructor(types: Array<SourceTool | undefined | null>, callback: Callback<string>) {
     this.toolTypes = types;
     this.listener = callback;
   }
