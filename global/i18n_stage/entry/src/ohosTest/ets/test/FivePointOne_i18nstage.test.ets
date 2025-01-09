@@ -15,7 +15,7 @@
 
 import Ability from '@ohos.app.ability.UIAbility';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import intl from '@kit.LocalizationKit';
+import { intl } from '@kit.LocalizationKit';
 
 export default function FivePointOne_i18nStageTest() {
   describe("FivePointOne_i18nStageTest", () => {
