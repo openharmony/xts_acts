@@ -34,12 +34,14 @@ export default function requestVideoTest() {
     let AVFileDescriptor: media.AVFileDescriptor;
     let testContext: common.UIAbilityContext = AppStorage.get('testContext') as common.UIAbilityContext;
     let helper = photoAccessHelper.getPhotoAccessHelper(testContext);
+    let hdrVideoUri = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/entry_test/photos/test_hdr_1.mp4";
 
     beforeAll(async () => {
       console.info('beforeAll case');
       await getPermission();
       await driveFn();
       await sleep(1000);
+      await createVideoBySandBoxUri('createHdr001', testContext, hdrVideoUri);
     });
 
     let TestHandler: photoAccessHelper.MediaAssetProgressHandler = {
@@ -116,6 +118,7 @@ export default function requestVideoTest() {
 
         const handler = new MediaHandler();
         await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
+        await sleep(3000);
         let uri: string = await createVideoBySandBoxUri(testNum, testContext, destUri);
         let flag = await isHdr(testNum, uri);
         expect(flag).assertEqual(0);
@@ -1926,8 +1929,8 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_compatible', 0, async (done: Function) => {
-      let testNum = 'request_video_delivery_fast_source_original_compatible';
+    it('request_video_delivery_fast_source_original_compatible_illegal_compatibleMode', 0, async (done: Function) => {
+      let testNum = 'request_video_delivery_fast_source_original_compatible_illegal_compatibleMode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
         sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
@@ -1945,8 +1948,8 @@ export default function requestVideoTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_delivery_fast_source_original_compatible', 0, async (done: Function) => {
-      let testNum = 'request_video_delivery_fast_source_original_compatible';
+    it('request_video_delivery_fast_source_original_compatible_illegal_mode', 0, async (done: Function) => {
+      let testNum = 'request_video_delivery_fast_source_original_compatible_illegal_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
         sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
@@ -1971,12 +1974,12 @@ export default function requestVideoTest() {
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
         let destUri: string = createSandboxFileUri(testContext, 'mp4');
+        let status = false;
 
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
           onDataPrepared(data: boolean) {
             console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
+            status = true;
           }
         }
 
@@ -1988,7 +1991,12 @@ export default function requestVideoTest() {
         };
         const handler = new MediaHandler();
         await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
+        await sleep(3500);
+        let uri = await createVideoBySandBoxUri(testNum, testContext, destUri);
+        let flag = await isHdr(testNum, uri);
+        expect(flag).assertEqual(0);
+        expect(status).assertTrue();
+        done();
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
         expect(true).assertTrue();
@@ -2012,86 +2020,46 @@ export default function requestVideoTest() {
         let fetchResult = await helper.getAssets(fetchOps);
         let photoAsset = await fetchResult.getFirstObject();
         let destUri: string = createSandboxFileUri(testContext, 'mp4');
+        let count: number = 0;
+        let opsList: Array<photoAccessHelper.RequestOptions> = [];
 
         class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
           onDataPrepared(data: boolean) {
             console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
+            count++;
           }
         }
 
-        let requestOptions: photoAccessHelper.RequestOptions = {
+        let requestOptions1: photoAccessHelper.RequestOptions = {
           deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
           sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.ORIGINAL_FORMAT_MODE,
         };
+
+        let requestOptions2: photoAccessHelper.RequestOptions = {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+          sourceMode: photoAccessHelper.SourceMode.EDITED_MODE,
+          compatibleMode: photoAccessHelper.CompatibleMode.ORIGINAL_FORMAT_MODE,
+        };
+        opsList.push(requestOptions1, requestOptions2);
+
         const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
+        
+        for (let i = 0; i < opsList.length; i++) {
+          await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, opsList[i], destUri, handler);
+          await sleep(3000);
+          let uri = await createVideoBySandBoxUri(testNum, testContext, destUri);
+          let flag = await isHdr(testNum, uri);
+          expect(flag).assertEqual(1);
+        }
+        expect(count).assertEqual(2);
+        done();
       } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
         expect(true).assertTrue();
         done();
       }
     });
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_8000
-     * @tc.name      : test requestVideo with compatibleMode -100 and deliveryMode: BALANCE_MODE
-     *               : and sourceMode: EDITED_MODE
-     * @tc.desc      : request video with deliveryMode: BALANCE_MODE and sourceMode: EDITED_MODE
-     *-              : and compatibleMode: -100 and no transcoding
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('request_hdr_video_fileUri_imageUri_photoAsset_no_transcoding', 0, async (done: Function) => {
-      let testNum = 'request_hdr_video_no_transcoding';
-      try {
-        let fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, "test_hdr_1.mp4");
-        let fetchResult = await helper.getAssets(fetchOps);
-        let photoAsset = await fetchResult.getFirstObject();
-        let destUri: string = createSandboxFileUri(testContext, 'mp4');
 
-        class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<boolean> {
-          onDataPrepared(data: boolean) {
-            console.info(`${testNum} succeed`);
-            expect(false).assertTrue();
-            done();
-          }
-        }
-
-        let requestOptions: photoAccessHelper.RequestOptions = {
-          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-          sourceMode: photoAccessHelper.SourceMode.ORIGINAL_MODE,
-          compatibleMode: photoAccessHelper.CompatibleMode.COMPATIBLE_FORMAT_MODE,
-        };
-        const handler = new MediaHandler();
-        await photoAccessHelper.MediaAssetManager.requestVideoFile(testContext, photoAsset, requestOptions, destUri, handler);
-        await isHdr(testNum, destUri);
-      } catch (error) {
-        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
-        expect(true).assertTrue();
-        done();
-      }
-    });
-    
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_REQUEST_VIDEO_8100
-     * @tc.name      : test requestVideo with deliveryMode: FAST_MODE AND compatibleMode: ORIGINAL_FORMAT_MODE
-     * @tc.desc      : requestVideo with deliveryMode: FAST_MODE AND compatibleMode: ORIGINAL_FORMAT_MODE
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('request_video_delivery_fast_compatible_original', 0, async (done: Function) => {
-      let testNum = 'request_video_delivery_fast_compatible_original';
-      let requestOptions : photoAccessHelper.RequestOptions = {
-        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
-        compatibleMode: photoAccessHelper.CompatibleMode.ORIGINAL_FORMAT_MODE,
-      }
-      await requestVideoRequestOptions(testNum, done, requestOptions)
-    });
-    
   });
 }

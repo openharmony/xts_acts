@@ -19,10 +19,11 @@
         "description": "$string:TestAbility_label",
         "mainElement": "TestAbility",
         "deviceTypes": [
-            "wearable",
-            "default",
-            "tablet",
-            "2in1"
+           "phone",
+           "wearable",
+           "tablet",
+           "2in1",
+           "car"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
