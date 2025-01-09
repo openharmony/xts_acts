@@ -14,7 +14,7 @@
  */
 
 class TapGestureHandlerAllowedTypesModifier implements GestureModifier {
-  toolTypes: Array<SourceTool> = [];
+  toolTypes: Array<SourceTool | undefined | null> = [];
   listener: Callback<string> = (data: string) => {};
   constructor(types: Array<SourceTool>, callback: Callback<string>) {
     this.toolTypes = types;
@@ -35,7 +35,7 @@ class TapGestureHandlerAllowedTypesModifier implements GestureModifier {
 @Entry
 @Component
 struct TapGestureHandlerAllowedTypes {
-  @State types: Array<SourceTool | undefined | null> = [];
+  
   @State result: string = 'allowed types default';
   private callback: Callback<string> = (data: string) => {
     this.result = data;
