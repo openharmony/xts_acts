@@ -11,9 +11,9 @@
   "kits": [
     {
       "test-file-name": [
-        "ActsBmsGetMainElementNameTestDmain-entry-default-signed.hap",
-        "ActsBmsGetMainElementNameTestDmain-feature-default-signed.hap",
-        "ActsBmsGetMainElementNameTestD.hap"
+        "ActsBmsGetMainElementNameDmainTest-entry-default-signed.hap",
+        "ActsBmsGetMainElementNameDmainTest-feature-default-signed.hap",
+        "ActsBmsGetMainElementNameDTest.hap"
       ],
       "type": "AppInstallKit",
       "cleanup-apps": true
