@@ -29,7 +29,7 @@ export default function editMenuOptions() {
         router.clear();
         let pages = router.getState();
         console.info("get editMenuOptions state pages: " + JSON.stringify(pages));
-        if (!("onHover" == pages.name)) {
+        if (!("editMenuOptions" == pages.name)) {
           console.info("get editMenuOptions state pages.name: " + JSON.stringify(pages.name));
           let result = await router.replaceUrl(options);
           await CommonFunc.sleep(2000);

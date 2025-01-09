@@ -17,6 +17,7 @@ group("concurrent_test") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "collectionstaskpooltest:ActsCollectionsTaskPoolTest",
       "collectionstest:ActsCollectionsTest",
       "concurrentlibtest:ActsConcurrentLibTest",
     ]

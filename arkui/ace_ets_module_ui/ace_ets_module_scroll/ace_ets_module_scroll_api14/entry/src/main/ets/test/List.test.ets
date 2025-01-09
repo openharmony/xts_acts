@@ -37,6 +37,9 @@ import barBackEffect from './TabsTest/barBackEffect.test';
 import nodeTypeGrid from './GridTest/nodeTypeGrid.test'; 
 import listScrollerBar from './ScrollBarTest/listScrollerBar.test';
 import clipContent from './WaterFlowTest/clipContent.test';
+import cachedShowGrid from './GridTest/cachedShowGrid.test';
+import cachedShowList from './ListTest/cachedShowList.test'; 
+import cachedShowFlow from './WaterFlowTest/cachedShowFlow.test';
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -63,4 +66,7 @@ export default function testsuite() {
   nodeTypeGrid()
   listScrollerBar()
   clipContent()
+  cachedShowGrid()
+  cachedShowList()
+  cachedShowFlow()
 }

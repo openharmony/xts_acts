@@ -1,6 +1,8 @@
 {
   "src": [
     "MainAbility/pages/index/Index",
-    "MainAbility/pages/composeListItem/composeListItemPageTest"
+    "MainAbility/pages/composeListItem/composeListItemPageTest",
+    "MainAbility/pages/composeListItem/composeListItemOperateItemSymbolStyle",
+    "MainAbility/pages/toolBar/toolBarAccessibilityPage"
   ]
 }

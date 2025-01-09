@@ -6313,7 +6313,7 @@ static JSVM_Value EscapableHandleScopeTest(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_EscapeHandle(env, scope, obj, &escapedObj);
     OH_JSVM_CloseEscapableHandleScope(env, scope);
     OH_JSVM_CreateStringUtf8(env, "001", JSVM_AUTO_LENGTH, &value);
-    OH_JSVM_SetNamedProperty(env, obj, "id", value);
+    OH_JSVM_SetNamedProperty(env, escapedObj, "id", value);
     return escapedObj;
 }
 
@@ -6354,8 +6354,6 @@ static JSVM_Value HandleScope(JSVM_Env env, JSVM_CallbackInfo info)
     if (status != JSVM_OK) {
         return nullptr;
     }
-    OH_JSVM_CreateStringUtf8(env, "001", JSVM_AUTO_LENGTH, &value);
-    OH_JSVM_SetNamedProperty(env, obj, "id", value);
     return obj;
 }
 

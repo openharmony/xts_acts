@@ -80,6 +80,46 @@ static napi_value OHAVMuxerSetRotation(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
+    muxer = nullptr;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value OHAVMuxerSetFormat(napi_env env, napi_callback_info info)
+{
+    OH_AVMuxer *muxer = nullptr;
+    int audioTrackId = MUNUSONE;
+    int32_t rotation = ZEROVAL;
+    int trackId = audioTrackId;
+    OH_AVCodecBufferAttr attrInfo;
+    attrInfo.pts = ONETWOVAL;
+    attrInfo.size = ONEFIVEVAL;
+    attrInfo.offset = ZEROVAL;
+    attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
+    OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
+    int fileDescribe = open("/data/storage/el2/base/files/demo.mp4", O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    muxer = OH_AVMuxer_Create(fileDescribe, format);
+    OH_AVFormat *trackFormat = OH_AVFormat_Create();
+    OH_AVFormat *fileFormat = OH_AVFormat_Create();
+    OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
+
+    OH_AVFormat_SetStringValue(fileFormat, OH_MD_KEY_CREATION_TIME, "2024-12-28T01:23:45.000000Z");
+    OH_AVErrCode backInfo = OH_AVMuxer_SetFormat(muxer, fileFormat);
+    OH_AVMuxer_AddTrack(muxer, &audioTrackId, trackFormat);
+    OH_AVMuxer_Start(muxer);
+    OH_AVMuxer_WriteSample(muxer, trackId, sample, attrInfo);
+    OH_AVMuxer_Stop(muxer);
+    int returnValue = FAIL;
+    if (backInfo == AV_ERR_OK) {
+        returnValue = SUCCESS;
+    }
+    close(fileDescribe);
+    napi_value result = nullptr;
+    OH_AVMemory_Destroy(sample);
+    OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
+    OH_AVFormat_Destroy(fileFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -117,6 +157,7 @@ static napi_value OHAVMuxerStart(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -154,6 +195,7 @@ static napi_value OHAVMuxerStop(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -191,6 +233,7 @@ static napi_value OHAVMuxerWriteSample(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -266,6 +309,7 @@ static napi_value OHAVMuxerAddTrack(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -333,6 +377,46 @@ static napi_value OHAVMuxerSetRotationAbnormal(napi_env env, napi_callback_info 
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
+    muxer = nullptr;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value OHAVMuxerSetFormatAbnormal(napi_env env, napi_callback_info info)
+{
+    OH_AVMuxer *muxer = nullptr;
+    int audioTrackId = MUNUSONE;
+    int32_t rotation = ZEROVAL;
+    int trackId = audioTrackId;
+    OH_AVCodecBufferAttr attrInfo;
+    attrInfo.pts = ONETWOVAL;
+    attrInfo.size = ONEFIVEVAL;
+    attrInfo.offset = ZEROVAL;
+    attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
+    OH_AVOutputFormat format = AV_OUTPUT_FORMAT_MPEG_4;
+    int fileDescribe = open("/data/storage/el2/base/files/demo.mp4", O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
+    muxer = OH_AVMuxer_Create(fileDescribe, format);
+    OH_AVFormat *trackFormat = OH_AVFormat_Create();
+    OH_AVFormat *fileFormat = OH_AVFormat_Create();
+    OH_AVMemory *sample = OH_AVMemory_Create(ONEONEVAL);
+
+    OH_AVFormat_SetStringValue(fileFormat, OH_MD_KEY_CREATION_TIME, "This is abnormal case");
+    OH_AVErrCode backInfo = OH_AVMuxer_SetFormat(muxer, fileFormat);
+    OH_AVMuxer_AddTrack(muxer, &audioTrackId, trackFormat);
+    OH_AVMuxer_Start(muxer);
+    OH_AVMuxer_WriteSample(muxer, trackId, sample, attrInfo);
+    OH_AVMuxer_Stop(muxer);
+    int returnValue = FAIL;
+    if (backInfo == AV_ERR_INVALID_VAL) { // Expected Returned AV_ERR_INVALID_VAL
+        returnValue = SUCCESS;
+    }
+    close(fileDescribe);
+    napi_value result = nullptr;
+    OH_AVMemory_Destroy(sample);
+    OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
+    OH_AVFormat_Destroy(fileFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -367,6 +451,7 @@ static napi_value OHAVMuxerStartAbnormal(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -401,6 +486,7 @@ static napi_value OHAVMuxerStopAbnormal(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -435,6 +521,7 @@ static napi_value OHAVMuxerWriteSampleAbnormal(napi_env env, napi_callback_info 
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -469,6 +556,7 @@ static napi_value OHAVMuxerAddTrackAbnormal(napi_env env, napi_callback_info inf
     napi_value result = nullptr;
     OH_AVMemory_Destroy(sample);
     OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
     muxer = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -491,6 +579,7 @@ static napi_value Init(napi_env env, napi_value exports)
     napi_property_descriptor desc[] = {
         {"oHAVMuxerCreate", nullptr, OHAVMuxerCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerSetRotation", nullptr, OHAVMuxerSetRotation, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHAVMuxerSetFormat", nullptr, OHAVMuxerSetFormat, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerStart", nullptr, OHAVMuxerStart, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerStop", nullptr, OHAVMuxerStop, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerWriteSample", nullptr, OHAVMuxerWriteSample, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -500,6 +589,8 @@ static napi_value Init(napi_env env, napi_value exports)
 
         {"oHAVMuxerCreateAbnormal", nullptr, OHAVMuxerCreateAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerSetRotationAbnormal", nullptr, OHAVMuxerSetRotationAbnormal, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHAVMuxerSetFormatAbnormal", nullptr, OHAVMuxerSetFormatAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"oHAVMuxerStartAbnormal", nullptr, OHAVMuxerStartAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerStopAbnormal", nullptr, OHAVMuxerStopAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},

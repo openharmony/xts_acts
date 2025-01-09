@@ -21,6 +21,8 @@ import common from '@ohos.app.ability.common';
 import commonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
+import { UiDriver, BY} from '@ohos.UiTest';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
 let INVALID_PARAM = 401;
 let TAG: string;
@@ -303,6 +305,60 @@ export default function verificationTest() {
               done();
             }
           });
+      } catch (err) {
+        console.info(TAG + "catch err = " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200
+     * @tc.name    FA model is not configured with permission for authorization verification.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200', 0, async (done: Function) => {
+      TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200 ==>';
+      console.info(TAG + " start");
+      try {
+        let wantNum: Want = {
+          bundleName: 'ohos.acts.aafwk.test.fasupplement',
+          abilityName: 'ohos.acts.aafwk.test.fasupplement.MainAbility3',
+        }
+        await AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(wantNum)
+          .then((data) => {
+            console.info(TAG + "startAbility data = " + JSON.stringify(data));
+          })
+          .catch((err: BusinessError) => {
+            console.info(TAG + "startAbility err = " + JSON.stringify(err));
+            expect().assertFail();
+          });
+        console.info(TAG + `come in driveFn`);
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let driver = await UiDriver.create();
+        console.info(TAG + `driver is ${JSON.stringify(driver)}`);
+        await sleep(1500);
+        console.info(TAG + `UiDriver start`);
+        let button = await driver.findComponent(BY.text('允许'));
+        if(button == null){
+          console.info(TAG + "findComponent err , permission dialog is empty ");
+          let cmd = "hidumper -s WindowManagerService -a'-a'";
+          await abilityDelegator.executeShellCommand(cmd);
+          expect().assertFail();
+          done();
+        }
+        console.info(TAG + `button is ${JSON.stringify(button)}`);
+        await sleep(100);
+        console.info(TAG + `start click`);
+        try{await button.click();}catch(e){
+          console.info(TAG + `fail click ` + JSON.stringify(e));
+        }
+        console.info(TAG + `end click`);
+        await sleep(4000);
+        console.info(TAG + `end`);
+        done();
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
         expect().assertFail();

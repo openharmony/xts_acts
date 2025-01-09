@@ -14,7 +14,7 @@
  */
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
-import { genParam, getDataBySize, deleteParam } from './utils/HuksOptionUtil';
+import { GenParam, GetDataBySize, DeleteParam } from './utils/HuksOptionUtil';
 
 export default function SecurityHUKSKeyGenerateListAliasesTest() {
   let DEOption: huks.HuksOptions;
@@ -30,10 +30,10 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     beforeEach(async () => {
       DEOption = {
         properties: [
-          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_128),
-          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_DE),
+          GenParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          GenParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_128),
+          GenParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          GenParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_DE),
         ],
         inData: new Uint8Array()
       };
@@ -43,10 +43,10 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
       }
       CEOption = {
         properties: [
-          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_128),
-          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE),
+          GenParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          GenParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_128),
+          GenParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          GenParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE),
         ],
         inData: new Uint8Array()
       };
@@ -56,10 +56,10 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
       }
       ECEOption = {
         properties: [
-          genParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
-          genParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_128),
-          genParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-          genParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_ECE),
+          GenParam(huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_AES),
+          GenParam(huks.HuksTag.HUKS_TAG_KEY_SIZE, huks.HuksKeySize.HUKS_AES_KEY_SIZE_128),
+          GenParam(huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+          GenParam(huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL, huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_ECE),
         ],
         inData: new Uint8Array()
       };
@@ -187,9 +187,9 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
      */
     it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0400', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0400";
-      let CEArr = ["C", "C" + getDataBySize(63)];
+      let CEArr = ["C", "C" + GetDataBySize(63)];
       try {
-        deleteParam(CEOption, huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
+        DeleteParam(CEOption, huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
         for (let arrElement of CEArr) {
           await huks.generateKeyItem(arrElement, CEOption);
         }
@@ -330,7 +330,7 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0800', 0, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0800";
       try {
-        deleteParam(DEOption, huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
+        DeleteParam(DEOption, huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
         let resArr = (await huks.listAliases(DEOption)).keyAliases;
         expect(resArr.length).assertEqual(0);
       } catch (err) {

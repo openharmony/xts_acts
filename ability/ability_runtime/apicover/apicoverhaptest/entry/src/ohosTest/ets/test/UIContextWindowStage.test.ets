@@ -21,6 +21,9 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { BusinessError } from '@ohos.base';
 let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 export default function UIContextWindowStageTest() {
   let TAG: string = '';
   let subscriber:commonEventManager.CommonEventSubscriber | undefined = undefined;
@@ -151,7 +154,7 @@ export default function UIContextWindowStageTest() {
       })
       let onForegroundCount = 0;
       let ability: UIAbility | undefined = undefined;
-      let subscribeCallBack = (err: BusinessError, data:commonEventManager.CommonEventData) => {
+      let subscribeCallBack = async (err: BusinessError, data:commonEventManager.CommonEventData) => {
         console.info(TAG + ' subscribeCallBack , data = ' + JSON.stringify(data));
         if (data.event === 'ACTS_GetWindowStage') {
           let parameters = data['parameters']
@@ -160,6 +163,7 @@ export default function UIContextWindowStageTest() {
             expect(parameters['onForegroundResult1']).assertTrue();
             expect(parameters['onForegroundResult2']).assertTrue();
             expect(parameters['onBackgroundResult']).assertTrue();
+            await sleep(1000);
             done();
           } else {
             expect().assertFail();
@@ -234,6 +238,7 @@ export default function UIContextWindowStageTest() {
           if (onForegroundCount == 0) {
             onForegroundCount++;
             delegator.getCurrentTopAbility().then((data) => {
+              console.info(TAG + ' getCurrentTopAbility , success = ' + JSON.stringify(data));
               ability = data;
               delegator.doAbilityBackground(ability);
             }).catch((error: BusinessError) => {

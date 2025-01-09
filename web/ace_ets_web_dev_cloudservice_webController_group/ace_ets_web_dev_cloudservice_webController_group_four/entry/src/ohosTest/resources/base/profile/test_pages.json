@@ -1,8 +1,0 @@
-{
-  "src": [
-    "testability/pages/Index",
-    "testability/pages/webViewSdkSchemeHandlerDidFail",
-    "testability/pages/webViewSdkSchemeHandlerDidFailWan2",
-    "testability/pages/webViewSdkSchemeHandlerDidFail3"
-  ]
-}

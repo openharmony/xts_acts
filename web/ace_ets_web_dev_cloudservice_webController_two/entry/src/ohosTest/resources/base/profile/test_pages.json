@@ -1,9 +1,0 @@
-{
-  "src": [
-    "testability/pages/Index",
-    "testability/pages/webViewNativeMediaMediaInfo",
-    "testability/pages/webViewNativeMediaPlayerHandler",
-    "testability/pages/webViewNativeMediaSetSeek",
-    "testability/pages/webViewNativeMediaSetVolume"
-  ]
-}
