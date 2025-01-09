@@ -68,7 +68,7 @@ struct RotateGestureHandlerAllowedTypes {
       Button('Invalid').id('Invalid_type')
           .onClick(() => {
             this.result = 'allowed types default';
-            this.types = new RotationGestureHandlerAllowedTypesModifier([null, undefined], this.callback);
+            this.modifier = new RotationGestureHandlerAllowedTypesModifier([null, undefined], this.callback);
           })
     }.padding({top: 10, left:40 }).alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('RotationGestureHandlerAllowedTypes_Father')
   }
