@@ -24,7 +24,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeShadowLayerTest : public testing::Test {};
+class DrawingNativeShadowLayerTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeShadowLayerTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeShadowLayerTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_LAYER_0100
@@ -166,6 +175,8 @@ HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerCreateMultipleCalls, TestS
 HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerDestroyNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_ShadowLayerCreate
     OH_Drawing_ShadowLayer *shadow = OH_Drawing_ShadowLayerCreate(3, 3, 3, 0xFF00FF00);
+    // add assert
+    EXPECT_NE(shadow, nullptr);
     // 2. Call OH_Drawing_ShadowLayerDestroy
     OH_Drawing_ShadowLayerDestroy(shadow);
 }
@@ -181,6 +192,8 @@ HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerDestroyNormal, TestSize.Le
 HWTEST_F(DrawingNativeShadowLayerTest, testShadowLayerDestroyNull, TestSize.Level3) {
     // 1. OH_Drawing_ShadowLayerDestroy with null parameter
     OH_Drawing_ShadowLayerDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 } // namespace Drawing

@@ -33,7 +33,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeShaderEffectTest : public testing::Test {};
+class DrawingNativeShaderEffectTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeShaderEffectTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeShaderEffectTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_EFFECT_0100
@@ -47,6 +56,8 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateColorShaderNormal,
     // 1. OH_Drawing_ShaderEffectCreateColorShader
     uint32_t color = 0xFFFF0000;
     OH_Drawing_ShaderEffect *colorShaderEffect = OH_Drawing_ShaderEffectCreateColorShader(color);
+    // add assert
+    EXPECT_NE(colorShaderEffect, nullptr);
     // 2. Free memory
     OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 }
@@ -62,6 +73,8 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateColorShaderNormal,
 HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateColorShaderNull, TestSize.Level3) {
     // 1. OH_Drawing_ShaderEffectCreateColorShader with empty parameter
     OH_Drawing_ShaderEffect *colorShaderEffect = OH_Drawing_ShaderEffectCreateColorShader(0);
+    // add assert
+    EXPECT_NE(colorShaderEffect, nullptr);
     // 2. Free memory
     OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 }
@@ -77,6 +90,8 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateColorShaderNull, T
 HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateColorShaderAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_ShaderEffectCreateColorShader with a negative parameter
     OH_Drawing_ShaderEffect *colorShaderEffect = OH_Drawing_ShaderEffectCreateColorShader(-0xFFFF0000);
+    // add assert
+    EXPECT_NE(colorShaderEffect, nullptr);
     // 2. Free memory
     OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 }
@@ -92,6 +107,8 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateColorShaderAbnorma
 HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateColorShaderMaximum, TestSize.Level3) {
     // 1. OH_Drawing_ShaderEffectCreateColorShader with maximum value as parameter
     OH_Drawing_ShaderEffect *colorShaderEffect = OH_Drawing_ShaderEffectCreateColorShader(UINT32_MAX);
+    // add assert
+    EXPECT_NE(colorShaderEffect, nullptr);
     // 2. Free memory
     OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 }
@@ -108,6 +125,8 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateColorShaderMultipl
     // 1. Call OH_Drawing_ShaderEffectCreateColorShader 10 times with different colors
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ShaderEffect *colorShaderEffect = OH_Drawing_ShaderEffectCreateColorShader(0xFF000000 + i);
+        // add assert
+        EXPECT_NE(colorShaderEffect, nullptr);
         // 2. Free memory
         OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
     }
@@ -133,6 +152,8 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradientWith
         DECAL,
     };
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 1. Enumerate OH_Drawing_TileMode values for OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix, and test
     // with both identity and non-identity matrix
     for (OH_Drawing_TileMode mode : modes) {
@@ -144,9 +165,17 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradientWith
     // 2. Test OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix with pos set to NULL
     OH_Drawing_ShaderEffect *linearGradientEffect = OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(
         &start, &end, colors, nullptr, 3, OH_Drawing_TileMode::CLAMP, matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Test OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix with matrix set to NULL
     OH_Drawing_ShaderEffect *linearGradientEffect2 = OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(
         &start, &end, colors, pos, 3, OH_Drawing_TileMode::CLAMP, nullptr);
+    // add assert
+    EXPECT_NE(linearGradientEffect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
@@ -174,6 +203,8 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradientWith
         DECAL,
     };
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 1. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix with the first parameter set to nullptr, check the
     // error code using OH_Drawing_ErrorCodeGet
     OH_Drawing_ShaderEffect *effect1 =
@@ -216,24 +247,42 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradientWith
         DECAL,
     };
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 1. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix interface with negative values for startPt
     start = {-1, -1};
     OH_Drawing_ShaderEffect *linearGradientEffect =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, modes[0], matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix interface with negative values for endPt
     start = {0, 0};
     end = {-1, -1};
     OH_Drawing_ShaderEffect *linearGradientEffect2 =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, modes[0], matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix interface with negative values for colors
     colors[0] = -0xFF00FFFF;
     OH_Drawing_ShaderEffect *linearGradientEffect3 =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, modes[0], matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix interface with negative values for pos
     colors[0] = 0xFF00FFFF;
     pos[0] = -0.1f;
     OH_Drawing_ShaderEffect *linearGradientEffect4 =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, modes[0], matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(linearGradientEffect);
@@ -262,24 +311,42 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradientWith
         DECAL,
     };
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 1. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix interface with startPt set to maximum value
     start = {FLT_MAX, FLT_MAX};
     OH_Drawing_ShaderEffect *linearGradientEffect =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, modes[0], matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix interface with endPt set to maximum value
     start = {0, 0};
     end = {FLT_MAX, FLT_MAX};
     OH_Drawing_ShaderEffect *linearGradientEffect2 =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, modes[0], matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix interface with colors set to maximum value
     colors[0] = UINT32_MAX;
     OH_Drawing_ShaderEffect *linearGradientEffect3 =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, modes[0], matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix interface with pos set to maximum value
     colors[0] = 0xFF00FFFF;
     pos[0] = FLT_MAX;
     OH_Drawing_ShaderEffect *linearGradientEffect4 =
         OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, modes[0], matrix);
+    // add assert
+    EXPECT_NE(linearGradientEffect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(linearGradientEffect);
@@ -307,6 +374,10 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradientWith
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ShaderEffect *linearGradientEffect =
             OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(&start, &end, colors, pos, 3, CLAMP, matrix);
+            // add assert
+            EXPECT_NE(linearGradientEffect, nullptr);
+            // add assert
+            EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 2. Free memory
         OH_Drawing_ShaderEffectDestroy(linearGradientEffect);
     }
@@ -335,11 +406,19 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradienNorma
     for (OH_Drawing_TileMode mode : modes) {
         OH_Drawing_ShaderEffect *linearGradientEffect =
             OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, mode);
+            // add assert
+            EXPECT_NE(linearGradientEffect, nullptr);
+            // add assert
+            EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         OH_Drawing_ShaderEffectDestroy(linearGradientEffect);
     }
     // 2. OH_Drawing_ShaderEffectCreateLinearGradient interface with pos set to NULL
     OH_Drawing_ShaderEffect *linearGradientEffect =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, nullptr, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_PointDestroy(startPt);
     OH_Drawing_PointDestroy(endPt);
@@ -399,19 +478,35 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradienAbnor
     OH_Drawing_Point *startPt2 = OH_Drawing_PointCreate(-1, -1);
     OH_Drawing_ShaderEffect *linearGradientEffect =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt2, endPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_ShaderEffectCreateLinearGradient interface with endPt set to negative values
     OH_Drawing_Point *endPt2 = OH_Drawing_PointCreate(-1, -1);
     OH_Drawing_ShaderEffect *linearGradientEffect2 =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt2, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_ShaderEffectCreateLinearGradient interface with colors set to negative values
     colors[0] = -0xFF00FFFF;
     OH_Drawing_ShaderEffect *linearGradientEffect3 =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. OH_Drawing_ShaderEffectCreateLinearGradient interface with pos set to negative values
     colors[0] = 0xFF00FFFF;
     pos[0] = -0.1f;
     OH_Drawing_ShaderEffect *linearGradientEffect4 =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_PointDestroy(startPt);
     OH_Drawing_PointDestroy(endPt);
@@ -440,19 +535,35 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradienMaxim
     OH_Drawing_Point *startPt2 = OH_Drawing_PointCreate(FLT_MAX, FLT_MAX);
     OH_Drawing_ShaderEffect *linearGradientEffect =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt2, endPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateLinearGradient with endPt set to maximum values
     OH_Drawing_Point *endPt2 = OH_Drawing_PointCreate(FLT_MAX, FLT_MAX);
     OH_Drawing_ShaderEffect *linearGradientEffect2 =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt2, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateLinearGradient with colors set to maximum values
     colors[0] = UINT32_MAX;
     OH_Drawing_ShaderEffect *linearGradientEffect3 =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_ShaderEffectCreateLinearGradient with pos set to maximum values
     colors[0] = 0xFF00FFFF;
     pos[0] = FLT_MAX;
     OH_Drawing_ShaderEffect *linearGradientEffect4 =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(linearGradientEffect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_PointDestroy(startPt);
     OH_Drawing_PointDestroy(endPt);
@@ -481,6 +592,10 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateLinearGradienMulti
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ShaderEffect *linearGradientEffect =
             OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, CLAMP);
+            // add assert
+            EXPECT_NE(linearGradientEffect, nullptr);
+            // add assert
+            EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 2. Free memory
         OH_Drawing_ShaderEffectDestroy(linearGradientEffect);
     }
@@ -506,13 +621,18 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientNorm
         DECAL,
     };
     for (OH_Drawing_TileMode mode : modes) {
+        OH_Drawing_ErrorCodeReset();
         OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateRadialGradient(point, 100, colors, pos, 3, mode);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         EXPECT_NE(effect, nullptr);
         OH_Drawing_ShaderEffectDestroy(effect);
     }
     // 2. OH_Drawing_ShaderEffectCreateRadialGradient with pos set to nullptr
     OH_Drawing_ShaderEffect *effect =
         OH_Drawing_ShaderEffectCreateRadialGradient(point, 100, colors, nullptr, 3, CLAMP);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_NE(effect, nullptr);
     // 3. Free memory
     OH_Drawing_PointDestroy(point);
@@ -564,15 +684,31 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientAbno
     // 1. Call OH_Drawing_ShaderEffectCreateRadialGradient with centerPt set to negative values
     OH_Drawing_Point *point2 = OH_Drawing_PointCreate(-100, -100);
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateRadialGradient(point2, 100, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(effect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateRadialGradient with radius set to negative values
     OH_Drawing_ShaderEffect *effect2 = OH_Drawing_ShaderEffectCreateRadialGradient(point, -100, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(effect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateRadialGradient with colors set to negative values
     colors[0] = -0xFFFF0000;
     OH_Drawing_ShaderEffect *effect3 = OH_Drawing_ShaderEffectCreateRadialGradient(point, 100, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(effect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_ShaderEffectCreateRadialGradient with pos set to negative values
     colors[0] = 0xFFFF0000;
     pos[0] = -0.1f;
     OH_Drawing_ShaderEffect *effect4 = OH_Drawing_ShaderEffectCreateRadialGradient(point, 100, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(effect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_PointDestroy(point);
     OH_Drawing_PointDestroy(point2);
@@ -597,15 +733,31 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientMaxi
     // 1. Call OH_Drawing_ShaderEffectCreateRadialGradient with centerPt set to maximum values
     OH_Drawing_Point *point2 = OH_Drawing_PointCreate(FLT_MAX, FLT_MAX);
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateRadialGradient(point2, 100, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(effect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateRadialGradient with radius set to maximum values
     OH_Drawing_ShaderEffect *effect2 =
         OH_Drawing_ShaderEffectCreateRadialGradient(point, FLT_MAX, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(effect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateRadialGradient with colors set to maximum values
     uint32_t colors2[] = {UINT32_MAX, UINT32_MAX, UINT32_MAX};
     OH_Drawing_ShaderEffect *effect3 = OH_Drawing_ShaderEffectCreateRadialGradient(point, 100, colors2, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(effect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_ShaderEffectCreateRadialGradient with pos set to maximum values
     float pos2[] = {FLT_MAX, FLT_MAX, FLT_MAX};
     OH_Drawing_ShaderEffect *effect4 = OH_Drawing_ShaderEffectCreateRadialGradient(point, 100, colors, pos2, 3, CLAMP);
+    // add assert
+    EXPECT_NE(effect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_PointDestroy(point);
     OH_Drawing_PointDestroy(point2);
@@ -631,6 +783,10 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientMult
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ShaderEffect *effect =
             OH_Drawing_ShaderEffectCreateRadialGradient(point, 100, colors, pos, 3, CLAMP);
+            // add assert
+            EXPECT_NE(effect, nullptr);
+            // add assert
+            EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 2. Free memory
         OH_Drawing_ShaderEffectDestroy(effect);
     }
@@ -650,6 +806,8 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientWith
     OH_Drawing_Point2D start = {100.f, 0}; // 100.f: start point's x
     uint32_t colors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF};
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_TileMode modes[] = {
         CLAMP,
         REPEAT,
@@ -667,9 +825,17 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientWith
     // 2. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with pos set to nullptr
     OH_Drawing_ShaderEffect *effect2 = OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(
         &start, radius, colors, nullptr, 3, OH_Drawing_TileMode::CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with matrix set to nullptr
     OH_Drawing_ShaderEffect *effect3 = OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(
         &start, radius, colors, pos, 3, OH_Drawing_TileMode::CLAMP, nullptr);
+    // add assert
+    EXPECT_NE(effect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(effect2);
@@ -698,9 +864,13 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientWith
     // 2. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with the second parameter set to nullptr
     OH_Drawing_ShaderEffect *effect2 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&start, radius, nullptr, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with the third parameter set to nullptr
     OH_Drawing_ShaderEffect *effect3 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&start, radius, colors, nullptr, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect3, nullptr);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(effect);
@@ -725,20 +895,36 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientWith
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     OH_Drawing_ShaderEffect *effect =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&centerPt, radius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with radius set to negative values
     centerPt = {100, 0};
     radius = -5.0;
     OH_Drawing_ShaderEffect *effect2 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&centerPt, radius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with colors set to negative values
     colors[0] = -0xFFFF0000;
     OH_Drawing_ShaderEffect *effect3 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&centerPt, radius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with pos set to negative values
     colors[0] = 0xFFFF0000;
     pos[0] = -0.1f;
     OH_Drawing_ShaderEffect *effect4 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&centerPt, radius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(effect);
@@ -764,20 +950,36 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientWith
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     OH_Drawing_ShaderEffect *effect =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&centerPt, radius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with radius set to a large number
     centerPt = {100, 0};
     radius = FLT_MAX;
     OH_Drawing_ShaderEffect *effect2 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&centerPt, radius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with colors set to a large number
     colors[0] = UINT32_MAX;
     OH_Drawing_ShaderEffect *effect3 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&centerPt, radius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix with pos set to a large number
     colors[0] = 0xFFFF0000;
     pos[0] = FLT_MAX;
     OH_Drawing_ShaderEffect *effect4 =
         OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(&centerPt, radius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(effect);
@@ -805,6 +1007,10 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateRadialGradientWith
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(
             &centerPt, radius, colors, pos, 3, CLAMP, matrix);
+        // add assert
+        EXPECT_NE(effect, nullptr);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 2. Free memory
         OH_Drawing_ShaderEffectDestroy(effect);
     }
@@ -832,10 +1038,14 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientNorma
     for (OH_Drawing_TileMode mode : modes) {
         OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, mode);
         EXPECT_NE(effect, nullptr);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         OH_Drawing_ShaderEffectDestroy(effect);
     }
     // 2. Call OH_Drawing_ShaderEffectCreateSweepGradient with pos set to nullptr
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, nullptr, 3, CLAMP);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_NE(effect, nullptr);
     // 3. Free memory
     OH_Drawing_PointDestroy(centerPt);
@@ -884,15 +1094,27 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientAbnor
     OH_Drawing_Point *centerPt2 = OH_Drawing_PointCreate(-1, -1);
     OH_Drawing_ShaderEffect *sweepGradientEffect =
         OH_Drawing_ShaderEffectCreateSweepGradient(centerPt2, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(sweepGradientEffect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateSweepGradient with colors set to negative values
     colors[0] = -0xFFFF0000;
     OH_Drawing_ShaderEffect *sweepGradientEffect2 =
         OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(sweepGradientEffect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateSweepGradient with pos set to negative values
     colors[0] = 0xFFFF0000;
     pos[0] = -0.1f;
     OH_Drawing_ShaderEffect *sweepGradientEffect3 =
         OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(sweepGradientEffect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_PointDestroy(centerPt);
     OH_Drawing_PointDestroy(centerPt2);
@@ -917,15 +1139,27 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientMaxim
     OH_Drawing_Point *centerPt2 = OH_Drawing_PointCreate(FLT_MAX, FLT_MAX);
     OH_Drawing_ShaderEffect *sweepGradientEffect =
         OH_Drawing_ShaderEffectCreateSweepGradient(centerPt2, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(sweepGradientEffect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateSweepGradient with colors set to a large number
     colors[0] = UINT32_MAX;
     OH_Drawing_ShaderEffect *sweepGradientEffect2 =
         OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(sweepGradientEffect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateSweepGradient with pos set to a large number
     colors[0] = 0xFFFF0000;
     pos[0] = FLT_MAX;
     OH_Drawing_ShaderEffect *sweepGradientEffect3 =
         OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, CLAMP);
+    // add assert
+    EXPECT_NE(sweepGradientEffect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_PointDestroy(centerPt);
     OH_Drawing_PointDestroy(centerPt2);
@@ -950,6 +1184,10 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientMulti
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ShaderEffect *sweepGradientEffect =
             OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, CLAMP);
+        // add assert
+        EXPECT_NE(sweepGradientEffect, nullptr);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 2. Free memory
         OH_Drawing_ShaderEffectDestroy(sweepGradientEffect);
     }
@@ -966,10 +1204,16 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientMulti
 HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateImageShaderNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     // 2. Call OH_Drawing_SamplingOptionsCreate
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(FILTER_MODE_LINEAR, MIPMAP_MODE_LINEAR);
+    // add assert
+    EXPECT_NE(options, nullptr);
     // 3. Call OH_Drawing_ShaderEffectCreateImageShader with different OH_Drawing_TileMode values for tileX and tileY
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_TileMode modes[] = {
         CLAMP,
         REPEAT,
@@ -978,14 +1222,19 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateImageShaderNormal,
     };
     for (OH_Drawing_TileMode tileX : modes) {
         for (OH_Drawing_TileMode tileY : modes) {
+            OH_Drawing_ErrorCodeReset();
             OH_Drawing_ShaderEffect *effect =
                 OH_Drawing_ShaderEffectCreateImageShader(image, tileX, tileY, options, matrix);
+            // add assert
+            EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
             EXPECT_NE(effect, nullptr);
             OH_Drawing_ShaderEffectDestroy(effect);
         }
     }
     // 4. Call OH_Drawing_ShaderEffectCreateImageShader with null matrix
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateImageShader(image, CLAMP, CLAMP, options, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_NE(effect, nullptr);
     // 5. Free memory
     OH_Drawing_ImageDestroy(image);
@@ -1005,7 +1254,11 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateImageShaderNull, T
     // 1. Call OH_Drawing_ShaderEffectCreateImageShader with the first parameter set to nullptr and check the error
     // code using OH_Drawing_ErrorCodeGet
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(FILTER_MODE_LINEAR, MIPMAP_MODE_LINEAR);
+    // add assert
+    EXPECT_NE(options, nullptr);
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_ShaderEffectCreateImageShader(nullptr, CLAMP, CLAMP, options, matrix);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 2. Call OH_Drawing_ShaderEffectCreateImageShader with the fourth parameter set to nullptr and check the error
@@ -1029,8 +1282,14 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateImageShaderNull, T
  */
 HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateImageShaderMultipleCalls, TestSize.Level3) {
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(FILTER_MODE_LINEAR, MIPMAP_MODE_LINEAR);
+    // add assert
+    EXPECT_NE(options, nullptr);
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
+    // add assert
+    EXPECT_NE(image, nullptr);
     // 1. Call OH_Drawing_ShaderEffectCreateImageShader 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ShaderEffect *effect =
@@ -1085,10 +1344,14 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateTwoPointConicalGra
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, endRadius, colors, nullptr, 3, CLAMP, matrix);
     EXPECT_NE(effect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with matrix set to nullptr
     OH_Drawing_ShaderEffect *effect2 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, nullptr);
     EXPECT_NE(effect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(effect);
@@ -1159,29 +1422,55 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateTwoPointConicalGra
     float pos[3] = {0.0f, 0.5f, 1.0f};           // 0.5f: gradient color points, 1.0f: gradient color points
     float startRadius = 5.0f, endRadius = 10.0f; // 5.0f: gradient color radius, 10.0f: gradient color radius
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 1. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with startPt set to a negative value
     OH_Drawing_Point2D startPt2 = {-1, -1};
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt2, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with startRadius set to a negative value
     OH_Drawing_ShaderEffect *effect2 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, -5.0f, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with endPt set to a negative value
     OH_Drawing_Point2D endPt2 = {-1, -1};
     OH_Drawing_ShaderEffect *effect3 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt2, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with endRadius set to a negative value
     OH_Drawing_ShaderEffect *effect4 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, -10.0f, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with colors set to a negative value
     colors[0] = -0xFF00FFFF;
     OH_Drawing_ShaderEffect *effect5 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect5, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with pos set to a negative value
     colors[0] = 0xFF00FFFF;
     pos[0] = -0.1f;
     OH_Drawing_ShaderEffect *effect6 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect6, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(effect);
@@ -1211,25 +1500,49 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateTwoPointConicalGra
     OH_Drawing_Point2D startPt2 = {FLT_MAX, FLT_MAX};
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt2, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 2. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with startRadius set to a maximum value
     OH_Drawing_ShaderEffect *effect2 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, FLT_MAX, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect2, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with endPt set to a maximum value
     OH_Drawing_Point2D endPt2 = {FLT_MAX, FLT_MAX};
     OH_Drawing_ShaderEffect *effect3 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt2, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect3, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with endRadius set to a maximum value
     OH_Drawing_ShaderEffect *effect4 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, FLT_MAX, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect4, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with colors set to a maximum value
     colors[0] = UINT32_MAX;
     OH_Drawing_ShaderEffect *effect5 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect5, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient with pos set to a maximum value
     colors[0] = 0xFF00FFFF;
     pos[0] = FLT_MAX;
     OH_Drawing_ShaderEffect *effect6 = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_NE(effect6, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_ShaderEffectDestroy(effect);
@@ -1255,10 +1568,16 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateTwoPointConicalGra
     float pos[3] = {0.0f, 0.5f, 1.0f};           // 0.5f: gradient color points, 1.0f: gradient color points
     float startRadius = 5.0f, endRadius = 10.0f; // 5.0f: gradient color radius, 10.0f: gradient color radius
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 1. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
             &startPt, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+        // add assert
+        EXPECT_NE(effect, nullptr);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 2. Free memory
         OH_Drawing_ShaderEffectDestroy(effect);
     }
@@ -1279,9 +1598,13 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectDestroyNormal, TestSize.
     float pos[3] = {0.0f, 0.5f, 1.0f};           // 0.5f: gradient color points, 1.0f: gradient color points
     float startRadius = 5.0f, endRadius = 10.0f; // 5.0f: gradient color radius, 10.0f: gradient color radius
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 1. Call OH_Drawing_ShaderEffectCreateTwoPointConicalGradient
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
         &startPt, startRadius, &endPt, endRadius, colors, pos, 3, CLAMP, matrix);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     EXPECT_NE(effect, nullptr);
     // 2. Call OH_Drawing_ShaderEffectDestroy
     OH_Drawing_ShaderEffectDestroy(effect);
@@ -1298,6 +1621,9 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectDestroyNormal, TestSize.
 HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectDestroyNull, TestSize.Level3) {
     // 1. OH_Drawing_ShaderEffectDestroy parameter is null
     OH_Drawing_ShaderEffectDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
+
 }
 
 } // namespace Drawing

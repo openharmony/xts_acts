@@ -20,7 +20,7 @@
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativePathTest : public testing::Test {};
+// class DrawingNativePathTest : public testing::Test {};
 
 } // namespace Drawing
 } // namespace Rosen

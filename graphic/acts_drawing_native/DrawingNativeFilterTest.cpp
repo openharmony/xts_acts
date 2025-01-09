@@ -45,7 +45,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeFilterTest : public testing::Test {};
+class DrawingNativeFilterTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeFilterTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeFilterTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FILTER_0100
@@ -70,7 +79,11 @@ HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNULL, TestSize.Level3) { OH_Drawing_FilterDestroy(nullptr); }
+HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNULL, TestSize.Level3) { 
+    OH_Drawing_FilterDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
+}
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FILTER_0102
@@ -99,10 +112,16 @@ HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyMultipleCalls, TestSize
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNormal, TestSize.Level0) {
     OH_Drawing_Filter *cFilter = OH_Drawing_FilterCreate();
+    // add assert
+    EXPECT_NE(cFilter, nullptr);
     OH_Drawing_ImageFilter *cImageFilter =
         OH_Drawing_ImageFilterCreateBlur(10, 10, OH_Drawing_TileMode::CLAMP, nullptr);
+    // add assert
+    EXPECT_NE(cImageFilter, nullptr);
 
     OH_Drawing_FilterSetImageFilter(cFilter, cImageFilter);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     OH_Drawing_FilterDestroy(cFilter);
     OH_Drawing_ImageFilterDestroy(cImageFilter);
@@ -118,8 +137,12 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNormal, TestSize.Level
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNULL, TestSize.Level3) {
     OH_Drawing_Filter *cFilter = OH_Drawing_FilterCreate();
+    // add assert
+    EXPECT_NE(cFilter, nullptr);
     OH_Drawing_ImageFilter *cImageFilter =
         OH_Drawing_ImageFilterCreateBlur(10, 10, OH_Drawing_TileMode::CLAMP, nullptr);
+    // add assert
+    EXPECT_NE(cImageFilter, nullptr);
     OH_Drawing_FilterSetImageFilter(nullptr, cImageFilter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
@@ -141,9 +164,15 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterNULL, TestSize.Level3)
 HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterMultipleCalls, TestSize.Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *cFilter = OH_Drawing_FilterCreate();
+        // add assert
+        EXPECT_NE(cFilter, nullptr);
         OH_Drawing_ImageFilter *cImageFilter =
             OH_Drawing_ImageFilterCreateBlur(10 + i, 10 + i, OH_Drawing_TileMode::CLAMP, nullptr);
+        // add assert
+        EXPECT_NE(cImageFilter, nullptr);
         OH_Drawing_FilterSetImageFilter(cFilter, cImageFilter);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         OH_Drawing_FilterDestroy(cFilter);
         OH_Drawing_ImageFilterDestroy(cImageFilter);
     }
@@ -161,9 +190,15 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNormal, TestSize.Level0
     // 1. Create OH_Drawing_Filter using OH_Drawing_FilterCreate and OH_Drawing_MaskFilter using
     // OH_Drawing_MaskFilterCreateBlur
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    // add assert
+    EXPECT_NE(filter, nullptr);
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
+    // add assert
+    EXPECT_NE(maskFilter, nullptr);
     // 2. Set mask filter using OH_Drawing_FilterSetMaskFilter, should return OH_DRAWING_SUCCESS
     OH_Drawing_FilterSetMaskFilter(filter, maskFilter);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Destroy objects, should be successful
     OH_Drawing_FilterDestroy(filter);
     OH_Drawing_MaskFilterDestroy(maskFilter);
@@ -179,7 +214,11 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNormal, TestSize.Level0
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNULL, TestSize.Level3) {
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    // add assert
+    EXPECT_NE(filter, nullptr);
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
+    // add assert
+    EXPECT_NE(maskFilter, nullptr);
     // 1. Pass nullptr as the first parameter to OH_Drawing_FilterSetMaskFilter and check the error code using
     // OH_Drawing_ErrorCodeGet,
     // 1. No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
@@ -210,7 +249,11 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterMultipleCalls, TestSize
     // objects.
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+        // add assert
+        EXPECT_NE(filter, nullptr);
         OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10 + i, true);
+        // add assert
+        EXPECT_NE(maskFilter, nullptr);
         OH_Drawing_FilterSetMaskFilter(filter, maskFilter);
         OH_Drawing_FilterDestroy(filter);
         OH_Drawing_MaskFilterDestroy(maskFilter);
@@ -228,12 +271,24 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterMultipleCalls, TestSize
 HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNormal, TestSize.Level0) {
     // 1. Create OH_Drawing_Filter using OH_Drawing_FilterCreate
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    // add assert
+    EXPECT_NE(filter, nullptr);
     OH_Drawing_ColorFilter *outerFilter = OH_Drawing_ColorFilterCreateLuma();
+    // add assert
+    EXPECT_NE(outerFilter, nullptr);
     OH_Drawing_ColorFilter *innerFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
+    // add assert
+    EXPECT_NE(innerFilter, nullptr);
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateCompose(outerFilter, innerFilter);
+    // add assert
+    EXPECT_NE(colorFilter, nullptr);
     // 2. Set color filter using OH_Drawing_FilterSetColorFilter
     OH_Drawing_FilterSetColorFilter(filter, colorFilter);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_FilterGetColorFilter(filter, colorFilter);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Destroy objects, should be successful
     OH_Drawing_FilterDestroy(filter);
     OH_Drawing_ColorFilterDestroy(outerFilter);
@@ -251,9 +306,17 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNormal, TestSize.Level
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNULL, TestSize.Level3) {
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    // add assert
+    EXPECT_NE(filter, nullptr);
     OH_Drawing_ColorFilter *outerFilter = OH_Drawing_ColorFilterCreateLuma();
+    // add assert
+    EXPECT_NE(outerFilter, nullptr);
     OH_Drawing_ColorFilter *innerFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
+    // add assert
+    EXPECT_NE(innerFilter, nullptr);
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateCompose(outerFilter, innerFilter);
+    // add assert
+    EXPECT_NE(colorFilter, nullptr);
     // 1. Pass nullptr as the first parameter to OH_Drawing_FilterSetColorFilter and check the error code using
     // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetColorFilter(nullptr, colorFilter);
@@ -294,9 +357,17 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterMultipleCalls, TestSiz
     // objects. Call successful, errorcode returns OH_DRAWING_SUCCESS
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+        // add assert
+        EXPECT_NE(filter, nullptr);
         OH_Drawing_ColorFilter *outerFilter = OH_Drawing_ColorFilterCreateLuma();
+        // add assert
+        EXPECT_NE(outerFilter, nullptr);
         OH_Drawing_ColorFilter *innerFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
+        // add assert
+        EXPECT_NE(innerFilter, nullptr);
         OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateCompose(outerFilter, innerFilter);
+        // add assert
+        EXPECT_NE(colorFilter, nullptr);
         OH_Drawing_FilterSetColorFilter(filter, colorFilter);
         OH_Drawing_FilterDestroy(filter);
         OH_Drawing_ColorFilterDestroy(outerFilter);

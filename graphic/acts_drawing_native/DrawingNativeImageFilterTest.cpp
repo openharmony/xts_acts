@@ -29,7 +29,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeImageFilterTest : public testing::Test {};
+class DrawingNativeImageFilterTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeImageFilterTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeImageFilterTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_IMAGE_FILTER_0100
@@ -49,12 +58,20 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNormal, TestSize
     }
     // 2. Pass decimal values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 3. Pass integer values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 4. Pass NULL for input parameter in OH_Drawing_ImageFilterCreateBlur
     filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 5. Pass non-NULL for input parameter in OH_Drawing_ImageFilterCreateBlur
     filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 1.0f, OH_Drawing_TileMode::MIRROR, filter);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 6. Destroy the filter object
     OH_Drawing_ImageFilterDestroy(filter);
 }
@@ -70,8 +87,12 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNormal, TestSize
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNULL, TestSize.Level3) {
     // 1. OH_Drawing_ImageFilterCreateBlur with the first parameter being null
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(0, 1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 2. OH_Drawing_ImageFilterCreateBlur with the second parameter being null
     filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 0, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 3. Destroy the filter object
     OH_Drawing_ImageFilterDestroy(filter);
 }
@@ -112,6 +133,8 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurAbnormal, TestSi
     // 1. Pass negative values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter =
         OH_Drawing_ImageFilterCreateBlur(-1.0f, -1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 2. Destroy the filter object
     OH_Drawing_ImageFilterDestroy(filter);
 }
@@ -128,6 +151,8 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMaximum, TestSiz
     // 1. Create a blur image filter with maximum values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter =
         OH_Drawing_ImageFilterCreateBlur(FLT_MAX, FLT_MAX, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 2. Destroy the filter object
     OH_Drawing_ImageFilterDestroy(filter);
 }
@@ -143,12 +168,24 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMaximum, TestSiz
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNormal, TestSize.Level0) {
     // 1. OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 2. OH_Drawing_ColorFilterCreateLinearToSrgbGamma
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
+    // add assert
+    EXPECT_NE(colorFilter, nullptr);
     // 3. OH_Drawing_ImageFilterCreateFromColorFilter with null input parameter
     OH_Drawing_ImageFilter *imageFilter = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, nullptr);
+    // add assert
+    EXPECT_NE(imageFilter, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. OH_Drawing_ImageFilterCreateFromColorFilter with non-null input parameter
     imageFilter = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, filter);
+    // add assert
+    EXPECT_NE(imageFilter, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free memory
     OH_Drawing_ImageFilterDestroy(imageFilter);
     OH_Drawing_ColorFilterDestroy(colorFilter);
@@ -165,6 +202,8 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNorma
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNULL, TestSize.Level3) {
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     // 1. OH_Drawing_ImageFilterCreateFromColorFilter with the first parameter being null, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageFilterCreateFromColorFilter(nullptr, filter);
@@ -184,8 +223,12 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNULL,
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterMultipleCalls, TestSize.Level3) {
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
+        // add assert
+        EXPECT_NE(colorFilter, nullptr);
         OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, nullptr);
         EXPECT_NE(filter, nullptr);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         OH_Drawing_ImageFilterDestroy(filter);
         OH_Drawing_ColorFilterDestroy(colorFilter);
     }
@@ -201,6 +244,8 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterMulti
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNormal, TestSize.Level0) {
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+    // add assert
+    EXPECT_NE(filter, nullptr);
     OH_Drawing_ImageFilterDestroy(filter);
 }
 
@@ -214,6 +259,8 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNormal, TestSize.Le
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNULL, TestSize.Level3) {
     OH_Drawing_ImageFilterDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -230,7 +277,11 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyMultipleCalls, Test
     OH_Drawing_ImageFilter *filters[10];
     for (int i = 0; i < 10; i++) {
         colorFilters[i] = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
+        // add assert
+        EXPECT_NE(colorFilters[i], nullptr);
         filters[i] = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilters[i], nullptr);
+        // add assert
+        EXPECT_NE(filters[i], nullptr);
     }
     // 2. Call OH_Drawing_ImageFilterDestroy 10 times
     for (int i = 0; i < 10; i++) {
@@ -240,6 +291,8 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyMultipleCalls, Test
     // 3. Call OH_Drawing_ImageFilterCreateBlur and OH_Drawing_ImageFilterDestroy alternately 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
+        // add assert
+        EXPECT_NE(filter, nullptr);
         OH_Drawing_ImageFilterDestroy(filter);
     }
 }

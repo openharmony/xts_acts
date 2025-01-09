@@ -34,7 +34,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativePathEffectTest : public testing::Test {};
+class DrawingNativePathEffectTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativePathEffectTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativePathEffectTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_EFFECT_0100
@@ -48,6 +57,10 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNormal, TestSize.L
     // 1. OH_Drawing_CreateDashPathEffect
     float intervals[] = {1, 1, 1};
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateDashPathEffect(intervals, 3, 0.0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // add assert
+    EXPECT_NE(pathEffect, nullptr);
     // 2. Free memory
     OH_Drawing_PathEffectDestroy(pathEffect);
 }
@@ -72,6 +85,8 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectNull, TestSize.Lev
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. OH_Drawing_CreateDashPathEffect with 0.0 as the third parameter
     OH_Drawing_PathEffect *pathEffect3 = OH_Drawing_CreateDashPathEffect(intervals, 2, 0.0);
+    // add assert
+    EXPECT_NE(pathEffect3, nullptr);
     // 4. Free memory
     OH_Drawing_PathEffectDestroy(pathEffect1);
     OH_Drawing_PathEffectDestroy(pathEffect2);
@@ -90,14 +105,20 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectAbnormal, TestSize
     float intervals[] = {1, 1, 1};
     // 1. OH_Drawing_CreateDashPathEffect with the first parameter not being even
     OH_Drawing_PathEffect *pathEffect1 = OH_Drawing_CreateDashPathEffect(intervals, 3, 1.0);
+    // add assert
+    EXPECT_NE(pathEffect1, nullptr);
     // 2. OH_Drawing_CreateDashPathEffect with the second parameter being negative, check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_PathEffect *pathEffect2 = OH_Drawing_CreateDashPathEffect(intervals, -3, 1.0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. OH_Drawing_CreateDashPathEffect with the second parameter being 1
     OH_Drawing_PathEffect *pathEffect3 = OH_Drawing_CreateDashPathEffect(intervals, 1, 1.0);
+    // add assert
+    EXPECT_NE(pathEffect3, nullptr);
     // 4. OH_Drawing_CreateDashPathEffect with the third parameter being negative
     OH_Drawing_PathEffect *pathEffect4 = OH_Drawing_CreateDashPathEffect(intervals, 3, -1.0);
+    // add assert
+    EXPECT_NE(pathEffect4, nullptr);
     // 5. Free memory
     OH_Drawing_PathEffectDestroy(pathEffect1);
     OH_Drawing_PathEffectDestroy(pathEffect2);
@@ -118,6 +139,8 @@ HWTEST_F(DrawingNativePathEffectTest, testCreateDashPathEffectMultipleCalls, Tes
     // 1. Call OH_Drawing_CreateDashPathEffect 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateDashPathEffect(intervals, 2, 1.0);
+        // add assert
+        EXPECT_NE(pathEffect, nullptr);
         // 2. Free memory
         OH_Drawing_PathEffectDestroy(pathEffect);
     }
@@ -135,6 +158,8 @@ HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNormal, TestSize.Leve
     float intervals[] = {1, 1, 1};
     // 1. OH_Drawing_CreateDashPathEffect
     OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateDashPathEffect(intervals, 3, 0.0);
+    // add assert
+    EXPECT_NE(pathEffect, nullptr);
     // 2. OH_Drawing_PathEffectDestroy
     OH_Drawing_PathEffectDestroy(pathEffect);
 }
@@ -150,6 +175,8 @@ HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNormal, TestSize.Leve
 HWTEST_F(DrawingNativePathEffectTest, testPathEffectDestroyNull, TestSize.Level3) {
     // 1. OH_Drawing_PathEffectDestroy with nullptr as the parameter
     OH_Drawing_PathEffectDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 } // namespace Drawing

@@ -47,7 +47,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeTypeFaceTest : public testing::Test {};
+class DrawingNativeTypeFaceTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeTypeFaceTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeTypeFaceTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_TYPEFACE_0100
@@ -60,10 +69,16 @@ class DrawingNativeTypeFaceTest : public testing::Test {};
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNormal, TestSize.Level0) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // add assert
+    EXPECT_NE(font, nullptr);
     // 2. OH_Drawing_TypefaceCreateDefault
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateDefault();
+    // add assert
+    EXPECT_NE(typeface, nullptr);
     // 3. OH_Drawing_FontSetTypeface, call OH_Drawing_FontGetTypeface to get the typeface object
     OH_Drawing_FontSetTypeface(font, typeface);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_Typeface *typefaceGet = OH_Drawing_FontGetTypeface(font);
     EXPECT_NE(typefaceGet, nullptr);
     // 4. Free memory
@@ -82,7 +97,11 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNormal, TestSize.Le
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNull, TestSize.Level3) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // add assert
+    EXPECT_NE(font, nullptr);
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateDefault();
+    // add assert
+    EXPECT_NE(typeface, nullptr);
     // 2. OH_Drawing_FontSetTypeface, pass nullptr as the first parameter and check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_FontSetTypeface(nullptr, typeface);
@@ -111,6 +130,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDefaultNull, TestSize.Leve
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNormal, TestSize.Level0) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // add assert
+    EXPECT_NE(font, nullptr);
     // 2. OH_Drawing_TypefaceCreateFromFile
     OH_Drawing_Typeface *typefaceFromFile =
         OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
@@ -141,6 +162,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNormal, TestSize.L
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNull, TestSize.Level3) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // add assert
+    EXPECT_NE(font, nullptr);
     // 2. OH_Drawing_TypefaceCreateFromFile, pass nullptr as the first parameter and check the error code with
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_Typeface *typefaceFromFile = OH_Drawing_TypefaceCreateFromFile(nullptr, 0);
@@ -173,6 +196,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileNull, TestSize.Lev
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNormal, TestSize.Level0) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // add assert
+    EXPECT_NE(font, nullptr);
     // 2. OH_Drawing_MemoryStream
     char testData[] = "Hello";
     size_t length = sizeof(testData) - 1;
@@ -180,6 +205,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNormal, TestSize
     ASSERT_TRUE(memoryStream != nullptr);
     // 3. OH_Drawing_TypefaceCreateFromStream
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromStream(memoryStream, 1);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 4. OH_Drawing_FontSetTypeface, call OH_Drawing_FontGetTypeface to get the typeface object
     OH_Drawing_FontSetTypeface(font, typeface);
     OH_Drawing_Typeface *typefaceGet = OH_Drawing_FontGetTypeface(font);
@@ -200,6 +227,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNormal, TestSize
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNull, TestSize.Level3) {
     // 1. OH_Drawing_FontCreate
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    // add assert
+    EXPECT_NE(font, nullptr);
     char testData[] = "Hello";
     size_t length = sizeof(testData) - 1;
     OH_Drawing_MemoryStream *memoryStream = OH_Drawing_MemoryStreamCreate(testData, length, false);
@@ -231,6 +260,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromStreamNull, TestSize.L
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNormal, TestSize.Level0) {
     // 1. OH_Drawing_TypefaceCreateDefault
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateDefault();
+    // add assert
+    EXPECT_NE(typeface, nullptr);
     // 2. OH_Drawing_TypefaceDestroy
     OH_Drawing_TypefaceDestroy(typeface);
 }
@@ -246,6 +277,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNormal, TestSize.Le
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNull, TestSize.Level3) {
     // 1. OH_Drawing_TypefaceDestroy
     OH_Drawing_TypefaceDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -259,6 +292,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateDestroyNull, TestSize.Leve
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNormal, TestSize.Level0) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // add assert
+    EXPECT_NE(fontArguments, nullptr);
     // 2. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", 0);
@@ -283,6 +318,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNorm
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNull, TestSize.Level3) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // add assert
+    EXPECT_NE(fontArguments, nullptr);
     // 2. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
@@ -311,6 +348,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsNull
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // add assert
+    EXPECT_NE(fontArguments, nullptr);
     // 2. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
@@ -338,6 +377,8 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsAbno
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // add assert
+    EXPECT_NE(fontArguments, nullptr);
     // 2. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", 0);
@@ -366,14 +407,20 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromFileWithArugumentsMult
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNormal, TestSize.Level0) {
     // 1. OH_Drawing_TypefaceCreateFromFile
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // add assert
+    EXPECT_NE(fontArguments, nullptr);
     // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
     EXPECT_EQ(drawingErrorCode, OH_DRAWING_SUCCESS);
     // 4. OH_Drawing_TypefaceCreateFromCurrent
     OH_Drawing_Typeface *typeface1 = OH_Drawing_TypefaceCreateFromCurrent(typeface, fontArguments);
+    // add assert
+    EXPECT_EQ(typeface1, nullptr);
     // 5. OH_Drawing_TypefaceDestroy typeface1
     OH_Drawing_TypefaceDestroy(typeface1);
     // 6. OH_Drawing_TypefaceDestroy typeface
@@ -393,8 +440,12 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNormal, TestSiz
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNull, TestSize.Level3) {
     // 1. OH_Drawing_TypefaceCreateFromFile
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // add assert
+    EXPECT_NE(fontArguments, nullptr);
     // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);
@@ -424,8 +475,12 @@ HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentNull, TestSize.
 HWTEST_F(DrawingNativeTypeFaceTest, testTypefaceCreateFromCurrentMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_TypefaceCreateFromFile
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile("/system/fonts/NotoSansBengaliUI-Regular", 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. OH_Drawing_FontArgumentsCreate
     OH_Drawing_FontArguments *fontArguments = OH_Drawing_FontArgumentsCreate();
+    // add assert
+    EXPECT_NE(fontArguments, nullptr);
     // 3. OH_Drawing_FontArgumentsAddVariation, should return OH_DRAWING_SUCCESS
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_ERROR_INVALID_PARAMETER;
     drawingErrorCode = OH_Drawing_FontArgumentsAddVariation(fontArguments, "wght", NUMBER_100);

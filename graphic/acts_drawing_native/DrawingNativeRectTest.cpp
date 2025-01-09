@@ -28,7 +28,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeRectTest : public testing::Test {};
+class DrawingNativeRectTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeRectTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeRectTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECT_0100
@@ -41,6 +50,8 @@ class DrawingNativeRectTest : public testing::Test {};
 HWTEST_F(DrawingNativeRectTest, testRectCreateNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 600);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Free memory
     OH_Drawing_RectDestroy(rect);
 }
@@ -56,21 +67,41 @@ HWTEST_F(DrawingNativeRectTest, testRectCreateNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectIntersectNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 600);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectCreate to create another rectangle object other
     OH_Drawing_Rect *other = OH_Drawing_RectCreate(300, 400, 700, 800);
+    // add assert
+    EXPECT_NE(other, nullptr);
     // 3. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner of rect
     OH_Drawing_RectSetLeft(rect, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner of rect
     OH_Drawing_RectSetTop(rect, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Call OH_Drawing_RectSetRight to set the x-coordinate of the bottom-right corner of rect
     OH_Drawing_RectSetRight(rect, 200);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Call OH_Drawing_RectSetBottom to set the y-coordinate of the bottom-right corner of rect
     OH_Drawing_RectSetBottom(rect, 200);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Repeat steps 3-6 to set the coordinates of the other rectangle object
     OH_Drawing_RectSetLeft(other, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_RectSetTop(other, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_RectSetRight(other, 300);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_RectSetBottom(other, 300);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 8. Call OH_Drawing_RectIntersect to check if the two rectangles intersect, Returns true if they intersect,
     // false otherwise
     bool ret = OH_Drawing_RectIntersect(rect, other);
@@ -91,8 +122,12 @@ HWTEST_F(DrawingNativeRectTest, testRectIntersectNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectIntersectNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 600);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectCreate to create another rectangle object other
     OH_Drawing_Rect *other = OH_Drawing_RectCreate(300, 400, 700, 800);
+    // add assert
+    EXPECT_NE(other, nullptr);
     // 3. Call OH_Drawing_RectIntersect with the first parameter as nullptr, Returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectIntersect(nullptr, other);
@@ -117,24 +152,46 @@ HWTEST_F(DrawingNativeRectTest, testRectIntersectNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectJoinNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectCreate to create another rectangle object other
     OH_Drawing_Rect *other = OH_Drawing_RectCreate(100, 100, 300, 300);
+    // add assert
+    EXPECT_NE(other, nullptr);
     // 3. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner of rect
     OH_Drawing_RectSetLeft(rect, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner of rect
     OH_Drawing_RectSetTop(rect, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Call OH_Drawing_RectSetRight to set the x-coordinate of the bottom-right corner of rect
     OH_Drawing_RectSetRight(rect, 200);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 6. Call OH_Drawing_RectSetBottom to set the y-coordinate of the bottom-right corner of rect
     OH_Drawing_RectSetBottom(rect, 200);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 7. Repeat steps 3-6 to set the coordinates of the other rectangle object
     OH_Drawing_RectSetLeft(other, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_RectSetTop(other, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_RectSetRight(other, 300);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_RectSetBottom(other, 300);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 8. Call OH_Drawing_RectJoin to take the union of the two rectangles
     bool ret = OH_Drawing_RectJoin(rect, other);
     EXPECT_TRUE(ret);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 9. Free memory
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_RectDestroy(other);
@@ -151,8 +208,12 @@ HWTEST_F(DrawingNativeRectTest, testRectJoinNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectJoinNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectCreate to create another rectangle object other
     OH_Drawing_Rect *other = OH_Drawing_RectCreate(100, 100, 300, 300);
+    // add assert
+    EXPECT_NE(other, nullptr);
     // 3. Call OH_Drawing_RectJoin with the first parameter as nullptr, Returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectJoin(nullptr, other);
@@ -177,8 +238,12 @@ HWTEST_F(DrawingNativeRectTest, testRectJoinNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetLeftNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner of rect
     OH_Drawing_RectSetLeft(rect, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RectGetLeft to get the x-coordinate of the top-left corner of rect, Returns the value set
     // in step 2
     float left = OH_Drawing_RectGetLeft(rect);
@@ -198,6 +263,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetLeftNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectSetLeftNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetLeft with the first parameter as nullptr, Returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectSetLeft(nullptr, 0.00);
@@ -219,8 +286,12 @@ HWTEST_F(DrawingNativeRectTest, testRectSetLeftNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetLeftAbnormal, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetLeft with the second parameter as an integer or character data
     OH_Drawing_RectSetLeft(rect, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RectGetLeft to get the x-coordinate of the top-left corner of rect, Returns the value set
     // in step 2 (the passed parameter is forcibly converted)
     float left = OH_Drawing_RectGetLeft(rect);
@@ -239,6 +310,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetLeftAbnormal, TestSize.Level3) {
  */
 HWTEST_F(DrawingNativeRectTest, testRectSetLeftMultipleCalls, TestSize.Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     for (int i = 0; i < 10; i++) {
         OH_Drawing_RectSetLeft(rect, i * 10);
         float left = OH_Drawing_RectGetLeft(rect);
@@ -258,8 +331,12 @@ HWTEST_F(DrawingNativeRectTest, testRectSetLeftMultipleCalls, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetTopNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner of rect
     OH_Drawing_RectSetTop(rect, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of rect, Returns the value set in
     // step 2
     float top = OH_Drawing_RectGetTop(rect);
@@ -279,6 +356,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectSetTopNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetTop with the first parameter as nullptr, Returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectSetTop(nullptr, 0.00);
@@ -300,8 +379,12 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetTopAbnormal, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetTop with the second parameter as an integer or character data
     OH_Drawing_RectSetTop(rect, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of rect, Returns the value set in
     // step 2 (the passed parameter is forcibly converted)
     float top = OH_Drawing_RectGetTop(rect);
@@ -321,10 +404,14 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopAbnormal, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetTopMultipleCalls, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Loop to call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner of rect 10 times (each time
     // with a different value)
     for (int i = 0; i < 10; i++) {
         OH_Drawing_RectSetTop(rect, i * 10);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 3. Loop to call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of rect 10 times, Each
         // time the returned value is consistent with the set value
         float top = OH_Drawing_RectGetTop(rect);
@@ -334,6 +421,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopMultipleCalls, TestSize.Level3) {
     // the returned value is consistent with the set value
     for (int i = 0; i < 10; i++) {
         OH_Drawing_RectSetTop(rect, 10);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 3. Loop to call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of rect 10 times, Each
         // time the returned value is consistent with the set value
         float top = OH_Drawing_RectGetTop(rect);
@@ -354,8 +443,12 @@ HWTEST_F(DrawingNativeRectTest, testRectSetTopMultipleCalls, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetRightNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetRight to set the x-coordinate of the bottom-right corner of rect
     OH_Drawing_RectSetRight(rect, 300);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RectGetRight to get the x-coordinate of the bottom-right corner of rect, Returns the value set
     // in step 2
     float right = OH_Drawing_RectGetRight(rect);
@@ -375,6 +468,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectSetRightNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetRight with the first parameter as nullptr, Returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectSetRight(nullptr, 0.00);
@@ -396,8 +491,12 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetRightAbnormal, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetRight with the second parameter as an integer or character data
     OH_Drawing_RectSetRight(rect, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RectGetRight to get the x-coordinate of the bottom-right corner of rect, Returns the value set
     // in step 2 (the passed parameter is forcibly converted)
     float right = OH_Drawing_RectGetRight(rect);
@@ -417,10 +516,14 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightAbnormal, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetRightMultipleCalls, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Loop to call OH_Drawing_RectSetRight to set the x-coordinate of the bottom-right corner of rect 10 times (each
     // time with a different value)
     for (int i = 0; i < 10; i++) {
         OH_Drawing_RectSetRight(rect, i * 10);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 3. Loop to call OH_Drawing_RectGetRight to get the x-coordinate of the bottom-right corner of rect 10 times,
         // Each time the returned value is consistent with the set value
         float right = OH_Drawing_RectGetRight(rect);
@@ -430,6 +533,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightMultipleCalls, TestSize.Level3) 
     // time the returned value is consistent with the set value
     for (int i = 0; i < 10; i++) {
         OH_Drawing_RectSetRight(rect, 10);
+        // add assert
+        EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
         // 3. Loop to call OH_Drawing_RectGetRight to get the x-coordinate of the bottom-right corner of rect 10 times,
         // Each time the returned value is consistent with the set value
         float right = OH_Drawing_RectGetRight(rect);
@@ -450,8 +555,12 @@ HWTEST_F(DrawingNativeRectTest, testRectSetRightMultipleCalls, TestSize.Level3) 
 HWTEST_F(DrawingNativeRectTest, testRectSetBottomNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetBottom to set the y-coordinate of the bottom-right corner of rect
     OH_Drawing_RectSetBottom(rect, 300);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RectGetBottom to get the y-coordinate of the bottom-right corner of rect, 3. Returns the value
     // set in step 2
     float bottom = OH_Drawing_RectGetBottom(rect);
@@ -471,6 +580,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetBottomNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectSetBottomNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetBottom with the first parameter as nullptr, returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectSetBottom(nullptr, 0.00);
@@ -492,8 +603,12 @@ HWTEST_F(DrawingNativeRectTest, testRectSetBottomNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectSetBottomAbnormal, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetBottom with the second parameter as an integer or character data
     OH_Drawing_RectSetBottom(rect, 100);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. Call OH_Drawing_RectGetBottom to get the y-coordinate of the bottom-right corner of rect
     float bottom = OH_Drawing_RectGetBottom(rect);
     EXPECT_TRUE(IsScalarAlmostEqual(bottom, 100));
@@ -511,6 +626,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetBottomAbnormal, TestSize.Level3) {
  */
 HWTEST_F(DrawingNativeRectTest, testRectSetBottomMultipleCalls, TestSize.Level3) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
 
     for (int i = 0; i < 10; i++) {
         OH_Drawing_RectSetBottom(rect, i * 10);
@@ -532,6 +649,8 @@ HWTEST_F(DrawingNativeRectTest, testRectSetBottomMultipleCalls, TestSize.Level3)
 HWTEST_F(DrawingNativeRectTest, testRectGetLeftNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner of rect
     OH_Drawing_RectSetLeft(rect, 100);
     // 3. Call OH_Drawing_RectGetLeft to get the x-coordinate of the top-left corner of rect
@@ -552,6 +671,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetLeftNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectGetLeftNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectGetLeft with nullptr as the parameter
     OH_Drawing_RectGetLeft(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -570,6 +691,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetLeftNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectGetTopNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner of rect
     OH_Drawing_RectSetTop(rect, 100);
     // 3. Call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of rect
@@ -590,6 +713,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetTopNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectGetTopNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectGetTop with nullptr as the parameter
     OH_Drawing_RectGetTop(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -608,6 +733,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetTopNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectGetRightNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetRight to set the x-coordinate of the bottom-right corner of rect
     OH_Drawing_RectSetRight(rect, 300);
     // 3. Call OH_Drawing_RectGetRight to get the x-coordinate of the bottom-right corner of rect
@@ -628,6 +755,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetRightNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectGetRightNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectGetRight with nullptr as the parameter, returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectGetRight(nullptr);
@@ -647,6 +776,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetRightNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectGetBottomNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetBottom to set the y-coordinate of the bottom-right corner of rect
     OH_Drawing_RectSetBottom(rect, 300);
     // 3. Call OH_Drawing_RectGetBottom to get the y-coordinate of the bottom-right corner of rect, the return value
@@ -668,6 +799,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetBottomNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectGetBottomNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectGetBottom with nullptr as the parameter, returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectGetBottom(nullptr);
@@ -687,6 +820,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetBottomNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectGetHeightNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner of rect
     OH_Drawing_RectSetLeft(rect, 0);
     // 3. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner of rect
@@ -714,6 +849,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetHeightNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectGetHeightNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectGetHeight with nullptr as the parameter, returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectGetHeight(nullptr);
@@ -733,6 +870,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetHeightNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectGetWidthNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner
     OH_Drawing_RectSetLeft(rect, 0);
     // 3. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner
@@ -760,6 +899,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetWidthNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectGetWidthNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object rect
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectGetWidth with nullptr as the parameter, returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectGetWidth(nullptr);
@@ -781,6 +922,8 @@ HWTEST_F(DrawingNativeRectTest, testRectGetWidthBoundary, TestSize.Level0) {
     uint32_t width = 4096;
     uint32_t height = 2160;
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, width, height);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner
     OH_Drawing_RectSetLeft(rect, 0);
     // 3. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner
@@ -808,8 +951,12 @@ HWTEST_F(DrawingNativeRectTest, testRectGetWidthBoundary, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectCopyNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object src
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 2. Call OH_Drawing_RectCreate to create a rectangle object dst
     OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 0, 0);
+    // add assert
+    EXPECT_NE(dst, nullptr);
     // 3. Call OH_Drawing_RectSetLeft to set the x-coordinate of the top-left corner of src
     OH_Drawing_RectSetLeft(src, 100);
     // 4. Call OH_Drawing_RectSetTop to set the y-coordinate of the top-left corner of src
@@ -820,6 +967,8 @@ HWTEST_F(DrawingNativeRectTest, testRectCopyNormal, TestSize.Level0) {
     OH_Drawing_RectSetBottom(src, 300);
     // 7. Call OH_Drawing_RectCopy to copy the source rectangle object src to the destination rectangle object dst
     OH_Drawing_RectCopy(src, dst);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 8. Call OH_Drawing_RectGetLeft to get the x-coordinate of the top-left corner of dst, which should be the same as
     // the value set in src
     float left = OH_Drawing_RectGetLeft(dst);
@@ -864,8 +1013,12 @@ HWTEST_F(DrawingNativeRectTest, testRectCopyNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectCopyNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object src
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(src, nullptr);
     // 2. Call OH_Drawing_RectCreate to create a rectangle object dst
     OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 0, 0);
+    // add assert
+    EXPECT_NE(dst, nullptr);
     // 3. Call OH_Drawing_RectCopy with nullptr as the first parameter, returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectCopy(nullptr, dst);
@@ -890,6 +1043,8 @@ HWTEST_F(DrawingNativeRectTest, testRectCopyNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeRectTest, testRectDestroyNormal, TestSize.Level0) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectDestroy to destroy the rectangle object
     OH_Drawing_RectDestroy(rect);
 }
@@ -905,6 +1060,8 @@ HWTEST_F(DrawingNativeRectTest, testRectDestroyNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectDestroyNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     // 2. Call OH_Drawing_RectDestroy with nullptr as the parameter, returns error code
     // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectDestroy(nullptr);

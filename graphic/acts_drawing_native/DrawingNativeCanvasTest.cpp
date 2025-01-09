@@ -44,7 +44,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-
+class DrawingNativeCanvasTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeCanvasTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeCanvasTest errorCodeReset before each test case." << std::endl;
+    }
+};
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_0100
  * @tc.name: testCanvasDestroyNormal
@@ -72,6 +81,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDestroyNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeCanvasTest, testCanvasDestroyNull, TestSize.Level3) {
     // step 1
     OH_Drawing_CanvasDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -89,11 +100,15 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasBindNormal, TestSize.Level0) {
 
     // step 2
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
     OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
     OH_Drawing_CanvasBind(canvas, bitmap);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     // step 3
     OH_Drawing_BitmapDestroy(bitmap);
@@ -115,14 +130,20 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasBindNull, TestSize.Level3) {
 
     // step 2
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
     OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
     OH_Drawing_CanvasBind(nullptr, bitmap);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // step 3
     OH_Drawing_CanvasBind(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // step 4
     OH_Drawing_BitmapDestroy(bitmap);
@@ -144,6 +165,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasBindDestroyBitmap, TestSize.Level3) 
 
     // step 2
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -155,6 +178,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasBindDestroyBitmap, TestSize.Level3) 
 
     // step 4
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasDrawRect(canvas, rect);
 
     // step 5
@@ -178,6 +203,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasBindMultipleCalls, TestSize.Level0) 
     // step 2
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 200 + i;
         uint32_t height = 200 + i;
@@ -206,6 +233,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasBindBoundaryMultipleCallsBoundary, T
     // step 2
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+        // add assert
+        EXPECT_NE(bitmap, nullptr);
         OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
         uint32_t width = 4096;
         uint32_t height = 2160;
@@ -233,6 +262,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachPenDetachPenNormal, TestSize.L
 
     // step 2
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -243,6 +274,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachPenDetachPenNormal, TestSize.L
     OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
     EXPECT_NE(pen, nullptr);
     OH_Drawing_CanvasAttachPen(canvas, pen);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     // step 4
     OH_Drawing_CanvasDetachPen(canvas);
@@ -271,15 +304,23 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachPenDetachPenNull, TestSize.Lev
 
     // step 2
     OH_Drawing_CanvasAttachPen(nullptr, pen);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // step 3
     OH_Drawing_CanvasAttachPen(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // step 4
     OH_Drawing_CanvasDetachPen(nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // step 5
     OH_Drawing_Canvas *canvas2 = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas2, nullptr);
     OH_Drawing_CanvasDetachPen(canvas2);
 
     // step 6
@@ -384,6 +425,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachPenDetachPenBoundary, TestSize
 
     // step 2
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 4096;
     constexpr uint32_t height = 2160;
@@ -419,6 +462,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachBrushDetachBrushNormal, TestSi
 
     // step 2
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
     constexpr uint32_t height = 200;
@@ -429,9 +474,13 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachBrushDetachBrushNormal, TestSi
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     EXPECT_NE(brush, nullptr);
     OH_Drawing_CanvasAttachBrush(canvas, brush);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     // step 4
     OH_Drawing_CanvasDetachBrush(canvas);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     // step 5
     OH_Drawing_CanvasDestroy(canvas);
@@ -456,12 +505,18 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachBrushDetachBrushNull, TestSize
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
     EXPECT_NE(brush, nullptr);
     OH_Drawing_CanvasAttachBrush(nullptr, brush);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // step 3
     OH_Drawing_CanvasAttachBrush(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // step 4
     OH_Drawing_CanvasDetachBrush(nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // step 5
     OH_Drawing_Canvas *canvas2 = OH_Drawing_CanvasCreate();
@@ -569,6 +624,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasAttachBrushDetachBrushBoudary, TestS
 
     // step 2
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
+    // add assert
+    EXPECT_NE(bitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 4096;
     constexpr uint32_t height = 2160;
@@ -615,6 +672,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSaveNormal, TestSize.Level0) {
 
     // step 5
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 300);
+    // add assert
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasDrawArc(canvas, rect, 10, 200);
     OH_Drawing_RectDestroy(rect);
 
@@ -779,23 +838,33 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSaveLayerNull, TestSize.Level3) {
 
     // step 3
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 500, 300, 600);
+    // add assert
+    EXPECT_NE(rect2, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect2, brush);
     OH_Drawing_RectDestroy(rect2);
 
     OH_Drawing_Rect *rect3 = OH_Drawing_RectCreate(200, 0, 300, 600);
+    // add assert
+    EXPECT_NE(rect3, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect3, brush);
     OH_Drawing_RectDestroy(rect3);
 
     OH_Drawing_Rect *rect4 = OH_Drawing_RectCreate(200, 500, 0, 600);
+    // add assert
+    EXPECT_NE(rect4, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect4, brush);
     OH_Drawing_RectDestroy(rect4);
 
     OH_Drawing_Rect *rect5 = OH_Drawing_RectCreate(200, 500, 300, 0);
+    // add assert
+    EXPECT_NE(rect5, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect5, brush);
     OH_Drawing_RectDestroy(rect5);
 
     // step 4
     OH_Drawing_Rect *rect6 = OH_Drawing_RectCreate(0, 0, 0, 0);
+    // add assert
+    EXPECT_NE(rect6, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect6, brush);
     OH_Drawing_RectDestroy(rect6);
 
@@ -827,15 +896,23 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSaveLayerAbnormal, TestSize.Level3) 
     // 2. When creating OH_Drawing_Rect in OH_Drawing_CanvasSaveLayer, negative numbers are passed for left, top, right,
     // and bottom.
     OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(-200, 500, 300, 600);
+    // add assert
+    EXPECT_NE(rect1, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect1, brush);
     OH_Drawing_RectDestroy(rect1);
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(200, -500, 300, 600);
+    // add assert
+    EXPECT_NE(rect2, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect2, brush);
     OH_Drawing_RectDestroy(rect2);
     OH_Drawing_Rect *rect3 = OH_Drawing_RectCreate(200, 500, -300, 600);
+    // add assert
+    EXPECT_NE(rect3, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect3, brush);
     OH_Drawing_RectDestroy(rect3);
     OH_Drawing_Rect *rect4 = OH_Drawing_RectCreate(200, 500, 300, -600);
+    // add assert
+    EXPECT_NE(rect4, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect4, brush);
     OH_Drawing_RectDestroy(rect4);
 
@@ -843,21 +920,29 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSaveLayerAbnormal, TestSize.Level3) 
     // of the rectangle is equal to the horizontal coordinate of the bottom-right corner, or the vertical coordinate of
     // the top-left corner of the rectangle is equal to the vertical coordinate of the bottom-right corner.
     OH_Drawing_Rect *rect5 = OH_Drawing_RectCreate(200, 500, 200, 600);
+    // add assert
+    EXPECT_NE(rect5, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect5, brush);
     OH_Drawing_RectDestroy(rect5);
     OH_Drawing_Rect *rect6 = OH_Drawing_RectCreate(200, 500, 300, 500);
+    // add assert
+    EXPECT_NE(rect6, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect6, brush);
     OH_Drawing_RectDestroy(rect6);
 
     // 4. When creating OH_Drawing_Rect in OH_Drawing_CanvasSaveLayer, the coordinates of the top-left corner are equal
     // to the coordinates of the bottom-right corner.
     OH_Drawing_Rect *rect7 = OH_Drawing_RectCreate(200, 500, 200, 500);
+    // add assert
+    EXPECT_NE(rect7, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect7, brush);
     OH_Drawing_RectDestroy(rect7);
 
     // 5. When creating OH_Drawing_Rect in OH_Drawing_CanvasSaveLayer, the coordinates of the top-left corner are
     // greater than the coordinates of the bottom-right corner.
     OH_Drawing_Rect *rect8 = OH_Drawing_RectCreate(300, 600, 200, 500);
+    // add assert
+    EXPECT_NE(rect8, nullptr);
     OH_Drawing_CanvasSaveLayer(canvas, rect8, brush);
     OH_Drawing_RectDestroy(rect8);
 
@@ -918,6 +1003,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSaveLayerMultipleCalls, TestSize.Lev
     // interface, use OH_Drawing_CanvasGetSaveCount to retrieve the number of saved states for the canvas.
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 500, 300 + i, 600 + i);
+        // add assert
+        EXPECT_NE(rect, nullptr);
         OH_Drawing_CanvasSaveLayer(canvas, rect, brush);
         EXPECT_EQ(OH_Drawing_CanvasGetSaveCount(canvas), i + 2);
         OH_Drawing_RectDestroy(rect);
@@ -939,6 +1026,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasSaveLayerMultipleCalls, TestSize.Lev
 HWTEST_F(DrawingNativeCanvasTest, testCanvasRestoreNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
 
     // 2. Use OH_Drawing_CanvasSave and call OH_Drawing_CanvasGetSaveCount to retrieve the number of saved states for
     // the canvas.
@@ -1302,8 +1391,14 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawLineNormal, TestSize.Level0) {
     // 3. OH_Drawing_CanvasDrawLine, passing integer coordinates
     // 4. Free memory
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_CanvasDrawLine(canvas, 0.0f, 0.0f, 20.0f, 20.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_CanvasDrawLine(canvas, 0, 0, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -1322,6 +1417,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawLineNull, TestSize.Level3) {
 
     // 2. Pass an empty value for the first parameter of OH_Drawing_CanvasDrawLine.
     OH_Drawing_CanvasDrawLine(nullptr, 0, 0, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // 3. Pass NULL for the second parameter of OH_Drawing_CanvasDrawLine.
     OH_Drawing_CanvasDrawLine(canvas, 0, 10, 20, 20);
@@ -1450,6 +1547,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPathNormal, TestSize.Level0) {
 
     // 5. OH_Drawing_CanvasDrawPath
     OH_Drawing_CanvasDrawPath(canvas, path);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 
     // 6. Free the memory.
     OH_Drawing_CanvasDestroy(canvas);
@@ -1475,9 +1574,13 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPathNull, TestSize.Level3) {
 
     // 3. Pass null as the first argument for OH_Drawing_CanvasDrawPath.
     OH_Drawing_CanvasDrawPath(nullptr, path);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // 4. Pass null as the second argument for OH_Drawing_CanvasDrawPath.
     OH_Drawing_CanvasDrawPath(canvas, nullptr);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
     // 5. Pass null path as the second argument for OH_Drawing_CanvasDrawPath.
     OH_Drawing_CanvasDrawPath(canvas, path);

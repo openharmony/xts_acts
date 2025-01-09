@@ -28,7 +28,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-
+class DrawingNativeMatrixTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeMatrixTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeMatrixTest errorCodeReset before each test case." << std::endl;
+    }
+};
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0100
  * @tc.name: testMatrixCreateDestroyNormal
@@ -56,6 +65,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateDestroyNormal, TestSize.Level0
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateDestroyNULL, TestSize.Level3) {
     // 1. OH_Drawing_MatrixDestroy with nullptr parameter
     OH_Drawing_MatrixDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -117,10 +128,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationNormal, TestSize.Level
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateRotation with the first parameter as null
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateRotation(0, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateRotation with the second parameter as null
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateRotation(180, 0, 10.0f);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. OH_Drawing_MatrixCreateRotation with the third parameter as null
     OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateRotation(360, 10.0f, 0);
+    // add assert
+    EXPECT_NE(matrix3, nullptr);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -138,10 +155,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationNull, TestSize.Level3)
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateRotation with an input angle greater than 360 degrees
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateRotation(361, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateRotation with a negative value for the x parameter
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateRotation(180, -10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. OH_Drawing_MatrixCreateRotation with a negative value for the y parameter
     OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateRotation(180, 10.0f, -10.0f);
+    // add assert
+    EXPECT_NE(matrix3, nullptr);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -159,10 +182,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationAbnormal, TestSize.Lev
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateRotation with the maximum value of the rotation angle parameter deg
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateRotation(FLT_MAX, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateRotation with the maximum value of the x parameter
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateRotation(180, FLT_MAX, 10.0f);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. OH_Drawing_MatrixCreateRotation with the maximum value of the y parameter
     OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateRotation(180, 10.0f, FLT_MAX);
+    // add assert
+    EXPECT_NE(matrix3, nullptr);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -205,8 +234,12 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationMultipleCalls, TestSiz
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateTranslationNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreateTranslation, passing in a decimal number
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateTranslation, passing in an integer
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateTranslation(20, 20);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -223,8 +256,12 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateTranslationNormal, TestSize.Le
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateTranslationNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateTranslation with the first parameter as null
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(0, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateTranslation with the second parameter as null
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateTranslation(10.0f, 0);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -241,8 +278,12 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateTranslationNull, TestSize.Leve
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateTranslationAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateTranslation with the first parameter as a negative number
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(-10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateTranslation with the second parameter as a negative number
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateTranslation(10.0f, -10.0f);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -259,8 +300,12 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateTranslationAbnormal, TestSize.
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateTranslationMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateTranslation with the first parameter as the maximum value
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(FLT_MAX, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateTranslation with the second parameter as the maximum value
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateTranslation(10.0f, FLT_MAX);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -303,6 +348,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixNormal, TestSize.L
     // 2. OH_Drawing_MatrixSetMatrix with integer parameters, calling OH_Drawing_MatrixGetAll and
     // OH_Drawing_MatrixGetValue interfaces
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     float value[9];
     OH_Drawing_ErrorCode code = OH_Drawing_MatrixGetAll(matrix, value);
     EXPECT_EQ(code, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
@@ -311,6 +358,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixNormal, TestSize.L
     // 3. OH_Drawing_MatrixSetMatrix with floating-point parameters, calling OH_Drawing_MatrixGetAll and
     // OH_Drawing_MatrixGetValue interfaces
     OH_Drawing_MatrixSetMatrix(matrix, 1.1, 0, 0, 0, -1.1, 0, 0, 0, 1.1);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_ErrorCode code2 = OH_Drawing_MatrixGetAll(matrix, value);
     EXPECT_EQ(code2, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixGetValue(matrix, 1);
@@ -376,6 +425,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixNull, TestSize.Lev
 HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixSetMatrix with the second to tenth parameters as negative numbers
     OH_Drawing_MatrixSetMatrix(matrix, -1, 1, 1, 1, 1, 1, 1, 1, 1);
     OH_Drawing_MatrixSetMatrix(matrix, 1, -1, 1, 1, 1, 1, 1, 1, 1);
@@ -411,6 +462,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixAbnormal, TestSize
 HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixSetMatrix with the second to tenth parameters as maximum values
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_MatrixSetMatrix(matrix, FLT_MAX, 1, 1, 1, 1, 1, 1, 1, 1);
     OH_Drawing_MatrixSetMatrix(matrix, 1, FLT_MAX, 1, 1, 1, 1, 1, 1, 1);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 1, FLT_MAX, 1, 1, 1, 1, 1, 1);
@@ -435,6 +488,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixMaximum, TestSize.
 HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixSetMatrix with random parameters, calling the interface 10 times, corresponding to calling
     // OH_Drawing_MatrixGetAll and OH_Drawing_MatrixGetValue interfaces
     std::random_device rd;
@@ -482,8 +537,12 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixTranslateNormal, TestSize.Level0) {
     EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixTranslate, passing in floating point numbers
     OH_Drawing_MatrixTranslate(matrix, 10.0f, 10.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixTranslate, passing in integers
     OH_Drawing_MatrixTranslate(matrix, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -591,12 +650,26 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateNormal, TestSize.Level0) {
     // 2. OH_Drawing_MatrixRotate, rotate angles include 0 degrees, 180 degrees, 360 degrees, -90 degrees, -180 degrees,
     // -360 degrees, and 45.5 degrees, px and py cover both decimals and integers
     OH_Drawing_MatrixRotate(matrix, 0, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixRotate(matrix, 180, 10, 10);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixRotate(matrix, 360, 10.0f, 10.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixRotate(matrix, -90, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixRotate(matrix, -180, 20.0f, 20.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixRotate(matrix, -360, 30, 30);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixRotate(matrix, 45.5, 30.0f, 30.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -637,6 +710,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixRotate with the third parameter as a negative number
     OH_Drawing_MatrixRotate(matrix, 180, -10, 10);
     // 3. OH_Drawing_MatrixRotate with the fourth parameter as a negative number
@@ -656,6 +731,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateAbnormal, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixRotate with the second parameter as the maximum value
     OH_Drawing_MatrixRotate(matrix, FLT_MAX, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixRotate with the third parameter as the maximum value
@@ -677,6 +754,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateMaximum, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixRotate, passing in random numbers for degree, px, and py
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -722,12 +801,20 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleNormal, TestSize.Level0) 
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateScale with the first parameter as null
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(0, 10.0f, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateScale with the second parameter as null
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateScale(10.0f, 0, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. OH_Drawing_MatrixCreateScale with the third parameter as null
     OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 0, 10.0f);
+    // add assert
+    EXPECT_NE(matrix3, nullptr);
     // 4. OH_Drawing_MatrixCreateScale with the fourth parameter as null
     OH_Drawing_Matrix *matrix4 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 10.0f, 0);
+    // add assert
+    EXPECT_NE(matrix4, nullptr);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -746,12 +833,20 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateScale with the first parameter as a negative number
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(-10.0f, 10.0f, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateScale with the second parameter as a negative number
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateScale(10.0f, -10.0f, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. OH_Drawing_MatrixCreateScale with the third parameter as a negative number
     OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, -10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix3, nullptr);
     // 4. OH_Drawing_MatrixCreateScale with the fourth parameter as a negative number
     OH_Drawing_Matrix *matrix4 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 10.0f, -10.0f);
+    // add assert
+    EXPECT_NE(matrix4, nullptr);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -770,12 +865,20 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleAbnormal, TestSize.Level3
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreateScale with the first parameter as the maximum value
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(FLT_MAX, 10.0f, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixCreateScale with the second parameter as the maximum value
     OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateScale(10.0f, FLT_MAX, 10.0f, 10.0f);
+    // add assert
+    EXPECT_NE(matrix2, nullptr);
     // 3. OH_Drawing_MatrixCreateScale with the third parameter as the maximum value
     OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, FLT_MAX, 10.0f);
+    // add assert
+    EXPECT_NE(matrix3, nullptr);
     // 4. OH_Drawing_MatrixCreateScale with the fourth parameter as the maximum value
     OH_Drawing_Matrix *matrix4 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 10.0f, FLT_MAX);
+    // add assert
+    EXPECT_NE(matrix4, nullptr);
     // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_MatrixDestroy(matrix2);
@@ -819,10 +922,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleMultipleCalls, TestSize.L
 HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixScale, passing in decimals
     OH_Drawing_MatrixScale(matrix, 10.0f, 10.0f, 10.0f, 10.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixScale, passing in integers
     OH_Drawing_MatrixScale(matrix, 20, 20, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -838,6 +947,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixScale with the first parameter as null, check the error code using OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixScale(nullptr, 10.0f, 10.0f, 10.0f, 10.0f);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -864,6 +975,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixScale with the second parameter as a negative number
     OH_Drawing_MatrixScale(matrix, -10.0f, 10.0f, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixScale with the third parameter as a negative number
@@ -887,6 +1000,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleAbnormal, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixScale with the second parameter as the maximum value
     OH_Drawing_MatrixScale(matrix, FLT_MAX, 10.0f, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixScale with the third parameter as the maximum value
@@ -910,6 +1025,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleMaximum, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. Call OH_Drawing_MatrixCreateScale 10 times with random numbers for sx, sy, px, and py
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -936,6 +1053,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleMultipleCalls, TestSize.Level3)
 HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. Enumerate OH_Drawing_ScaleToFit values in OH_Drawing_MatrixSetRectToRect
     OH_Drawing_Rect *rectSrc = OH_Drawing_RectCreate(0, 0, 100, 100);
     OH_Drawing_Rect *rectDst = OH_Drawing_RectCreate(0, 0, 200, 200);
@@ -966,8 +1085,14 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectNormal, TestSize.Level0
 HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     OH_Drawing_Rect *rectSrc = OH_Drawing_RectCreate(0, 0, 0, 0);
+    // add assert
+    EXPECT_NE(rectSrc, nullptr);
     OH_Drawing_Rect *rectDst = OH_Drawing_RectCreate(0, 0, 0, 0);
+    // add assert
+    EXPECT_NE(rectDst, nullptr);
     // 2. OH_Drawing_MatrixSetRectToRect, the first parameter is null, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixSetRectToRect(nullptr, rectSrc, rectDst, SCALE_TO_FIT_FILL);
@@ -997,6 +1122,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectNull, TestSize.Level3) 
 HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. Call OH_Drawing_MatrixSetRectToRect 10 times with random enum values and different rect sizes
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -1029,15 +1156,31 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectMultipleCalls, TestSize
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreRotate, rotate angles include 0 degrees, 180 degrees, 360 degrees, -90 degrees, -180
     // degrees, -360 degrees, and 45.5 degrees, px and py cover both decimals and integers
     OH_Drawing_MatrixPreRotate(matrix, 0, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPreRotate(matrix, 180, 10, 10);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPreRotate(matrix, 360, 10.0f, 10.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPreRotate(matrix, -90, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPreRotate(matrix, -180, 20.0f, 20.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPreRotate(matrix, -360, 30, 30);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPreRotate(matrix, 45.5, 30.0f, 30.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -1053,6 +1196,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreRotate with the first parameter as null, check the error code using
     // OH_Drawing_ErrorCodeGet, no crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_MatrixPreRotate(nullptr, 180, 10, 10);
@@ -1078,6 +1223,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreRotate with a negative value for the third parameter
     OH_Drawing_MatrixPreRotate(matrix, 180, -10, 10);
     // 3. OH_Drawing_MatrixPreRotate with a negative value for the fourth parameter
@@ -1097,6 +1244,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateAbnormal, TestSize.Level3) 
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreRotate with the second parameter as the maximum value
     OH_Drawing_MatrixPreRotate(matrix, FLT_MAX, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixPreRotate with the third parameter as the maximum value
@@ -1118,6 +1267,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateMaximum, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreRotate, pass in random numbers for degree, px, and py
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -1143,10 +1294,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateMultipleCalls, TestSize.Lev
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreScale, pass in decimals
     OH_Drawing_MatrixPreScale(matrix, 10.0f, 10.0f, 10.0f, 10.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixPreScale, pass in integers
     OH_Drawing_MatrixPreScale(matrix, 20, 20, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -1162,6 +1319,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreScale, the first parameter is null, check the error code using OH_Drawing_ErrorCodeGet, no
     // crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_MatrixPreScale(nullptr, 10.0f, 10.0f, 10.0f, 10.0f);
@@ -1189,6 +1348,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreScale, the second parameter is negative
     OH_Drawing_MatrixPreScale(matrix, -10.0f, 10.0f, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixPreScale, the third parameter is negative
@@ -1212,6 +1373,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleAbnormal, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreScale with the second parameter as the maximum value
     OH_Drawing_MatrixPreScale(matrix, FLT_MAX, 10.0f, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixPreScale with the third parameter as the maximum value
@@ -1235,6 +1398,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleMaximum, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. Call OH_Drawing_MatrixCreateScale 10 times, passing in random numbers for sx, sy, px, and py
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -1261,10 +1426,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleMultipleCalls, TestSize.Leve
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreTranslate, pass in decimals
     OH_Drawing_MatrixPreTranslate(matrix, 10.0f, 10.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixPreTranslate, pass in integers
     OH_Drawing_MatrixPreTranslate(matrix, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -1280,6 +1451,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateNormal, TestSize.Level0)
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreTranslate, the first parameter is null, check the error code using OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixPreTranslate(nullptr, 10.0f, 10.0f);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -1302,6 +1475,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreTranslate, the second parameter is negative
     OH_Drawing_MatrixPreTranslate(matrix, -10.0f, 10.0f);
     // 3. OH_Drawing_MatrixPreTranslate, the third parameter is negative
@@ -1321,6 +1496,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateAbnormal, TestSize.Level
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreTranslate with the second parameter as the maximum value
     OH_Drawing_MatrixPreTranslate(matrix, FLT_MAX, 10.0f);
     // 3. OH_Drawing_MatrixPreTranslate with the third parameter as the maximum value
@@ -1340,6 +1517,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateMaximum, TestSize.Level3
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPreTranslate, pass in random numbers for dx and dy
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -1364,15 +1543,31 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateMultipleCalls, TestSize.
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostRotate, rotate angles include 0 degrees, 180 degrees, 360 degrees, -90 degrees, -180
     // degrees, -360 degrees, and 45.5 degrees, px and py cover decimals and integers
     OH_Drawing_MatrixPostRotate(matrix, 0, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPostRotate(matrix, 180, 10, 10);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPostRotate(matrix, 360, 10.0f, 10.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPostRotate(matrix, -90, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPostRotate(matrix, -180, 20.0f, 20.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPostRotate(matrix, -360, 30, 30);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     OH_Drawing_MatrixPostRotate(matrix, 45.5, 30.0f, 30.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -1388,6 +1583,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostRotate with the first parameter as null, check the error code using
     // OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixPostRotate(nullptr, 180, 10, 10);
@@ -1413,6 +1610,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostRotate, the third parameter is negative
     OH_Drawing_MatrixPostRotate(matrix, 180, -10, 10);
     // 3. OH_Drawing_MatrixPostRotate, the fourth parameter is negative
@@ -1432,6 +1631,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateAbnormal, TestSize.Level3)
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostRotate with the second parameter as the maximum value
     OH_Drawing_MatrixPostRotate(matrix, FLT_MAX, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixPostRotate with the third parameter as the maximum value
@@ -1453,6 +1654,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateMaximum, TestSize.Level3) 
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostRotate, pass in random numbers for degree, px, and py
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -1478,10 +1681,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateMultipleCalls, TestSize.Le
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleNormal, TestSize.Level0) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostScale, pass in decimals
     OH_Drawing_MatrixPostScale(matrix, 10.0f, 10.0f, 10.0f, 10.0f);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 3. OH_Drawing_MatrixPostScale, pass in integers
     OH_Drawing_MatrixPostScale(matrix, 20, 20, 20, 20);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -1497,6 +1706,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleNull, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostScale, the first parameter is null, check the error code using OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixPostScale(nullptr, 10.0f, 10.0f, 10.0f, 10.0f);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -1523,6 +1734,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleNull, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostScale, the second parameter is negative
     OH_Drawing_MatrixPostScale(matrix, -10.0f, 10.0f, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixPostScale, the third parameter is negative
@@ -1546,6 +1759,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleAbnormal, TestSize.Level3) 
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleMaximum, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. OH_Drawing_MatrixPostScale, the second parameter is the maximum value
     OH_Drawing_MatrixPostScale(matrix, FLT_MAX, 10.0f, 10.0f, 10.0f);
     // 3. OH_Drawing_MatrixPostScale, the third parameter is the maximum value
@@ -1569,6 +1784,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleMaximum, TestSize.Level3) {
 HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // add assert
+    EXPECT_NE(matrix, nullptr);
     // 2. Call OH_Drawing_MatrixCreateScale 10 times, passing in random numbers for sx, sy, px, and py
     std::random_device rd;
     std::mt19937 gen(rd());

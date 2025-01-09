@@ -29,7 +29,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeMaskFilterTest : public testing::Test {};
+class DrawingNativeMaskFilterTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override {
+        // 设置代码
+        std::cout << "DrawingNativeMaskFilterTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingNativeMaskFilterTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MASK_FILTER_0100
@@ -54,12 +63,20 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNormal, Tes
     }
     // 2. Call OH_Drawing_MaskFilterCreateBlur with a floating-point value for sigma
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10.0f, true);
+    // add assert
+    EXPECT_NE(maskFilter, nullptr);
     // 3. Call OH_Drawing_MaskFilterCreateBlur with an integer value for sigma
     maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
+    // add assert
+    EXPECT_NE(maskFilter, nullptr);
     // 4. Call OH_Drawing_MaskFilterCreateBlur with respectCTM set to false
     maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, false);
+    // add assert
+    EXPECT_NE(maskFilter, nullptr);
     // 5. Call OH_Drawing_MaskFilterCreateBlur with respectCTM set to true
     maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
+    // add assert
+    EXPECT_NE(maskFilter, nullptr);
     // 6. Call OH_Drawing_MaskFilterDestroy
     OH_Drawing_MaskFilterDestroy(maskFilter);
 }
@@ -99,6 +116,8 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMultipleCal
     OH_Drawing_MaskFilter *maskFilters[10];
     for (int i = 0; i < 10; i++) {
         maskFilters[i] = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
+        // add assert
+        EXPECT_NE(maskFilters[i], nullptr);
     }
     // 3. Call OH_Drawing_MaskFilterDestroy 10 times consecutively
     for (int i = 0; i < 10; i++) {
@@ -132,6 +151,8 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyAbnormal, T
 HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMaximum, TestSize.Level3) {
     // 1. Call OH_Drawing_MaskFilterCreateBlur with a maximum value for sigma
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, FLT_MAX, true);
+    // add assert
+    EXPECT_NE(maskFilter, nullptr);
     // 2. Call OH_Drawing_MaskFilterDestroy to free memory
     OH_Drawing_MaskFilterDestroy(maskFilter);
 }
