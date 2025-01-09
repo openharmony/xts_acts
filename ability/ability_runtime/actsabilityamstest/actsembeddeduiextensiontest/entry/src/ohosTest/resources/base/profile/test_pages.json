@@ -9,6 +9,7 @@
     "testability/pages/Default2600",
     "EmbeddedUIExtAbilityBundle/pages/BundlePage",
     "EmbeddedUIExtAbilityDefault/pages/DefaultPage",
+    "EmbeddedUIExtAbilityBundle3/pages/BundlePage",
     "EmbeddedUIExtAbilityInstance/pages/InstancePage",
     "EmbeddedUIExtAbilityType/pages/TypePage",
     "testability/pages/SameBundle2300",

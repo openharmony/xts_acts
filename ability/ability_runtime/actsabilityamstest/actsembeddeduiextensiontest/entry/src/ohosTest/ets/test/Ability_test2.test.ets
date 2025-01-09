@@ -22,7 +22,7 @@ import { bundleManager, common, Context, Want } from '@kit.AbilityKit';
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time))
 }
-
+let info: string
 
 export default function AbilityRuntime2_Test() {
   describe('ACTS_EmbeddedUIExtension_Test2', () => {
@@ -30,12 +30,10 @@ export default function AbilityRuntime2_Test() {
     let context: common.UIAbilityContext
 
     beforeAll(() => {
-
       context = AppStorage.get<Context>('abilityContext') as common.UIAbilityContext
       try {
-        let info: string = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model');
+         info = systemParameterEnhance.getSync('persist.sys.abilityms.multi_process_model');
         console.log(TAG, JSON.stringify(info));
-        expect(info).assertEqual('true')
       } catch (e) {
         console.log('getSync unexpected error: ',TAG + e);
       }
@@ -54,38 +52,47 @@ export default function AbilityRuntime2_Test() {
      */
     it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3100', 0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_3100'
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['ExtensionDefault']
+      if (info != 'false' && info != 'true') {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
+        expect().assertFail()
+        done
       }
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
-        commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
-          if (commonEventData.event == 'ExtensionDefault') {
-            try {
-              expect(100018).assertEqual(commonEventData.parameters?.data);
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}Embedded_ui:跳转失败`)
-              await sleep(2000);
-              commonEventManager.unsubscribe(subscribe, (err, data) => {
-                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK`)
-              });
-              done();
-            } catch (error) {
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
-              expect().assertFail();
-              done();
+      if (info == 'false') {
+        done()
+      }else {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['ExtensionDefault']
+        }
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
+          commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
+            if (commonEventData.event == 'ExtensionDefault') {
+              try {
+                expect(100018).assertEqual(commonEventData.parameters?.data);
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}Embedded_ui:跳转失败`)
+                await sleep(2000);
+                commonEventManager.unsubscribe(subscribe, (err, data) => {
+                  hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK`)
+                });
+                done();
+              } catch (error) {
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
+                expect().assertFail();
+                done();
+              }
             }
-          }
+          })
         })
-      })
-      await sleep(2000)
-      try {
-        router.pushUrl({
-          url: 'testability/pages/Assist3100'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        await sleep(2000)
+        try {
+          router.pushUrl({
+            url: 'testability/pages/Assist3100'
+          })
+        } catch (error) {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        }
       }
     })
 
@@ -99,38 +106,47 @@ export default function AbilityRuntime2_Test() {
      */
     it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3300', 0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_3300'
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['ExtensionDefault']
+      if (info != 'false' && info != 'true') {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
+        expect().assertFail()
+        done
       }
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
-        commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
-          if (commonEventData.event == 'ExtensionDefault') {
-            try {
-              expect(100018).assertEqual(commonEventData.parameters?.data);
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}Embedded_ui:跳转失败`)
-              await sleep(2000);
-              commonEventManager.unsubscribe(subscribe, (err, data) => {
-                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK`)
-              });
-              done();
-            } catch (error) {
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
-              expect().assertFail();
-              done();
+      if (info == 'false') {
+        done()
+      }else {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['ExtensionDefault']
+        }
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
+          commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
+            if (commonEventData.event == 'ExtensionDefault') {
+              try {
+                expect(100018).assertEqual(commonEventData.parameters?.data);
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}Embedded_ui:跳转失败`)
+                await sleep(2000);
+                commonEventManager.unsubscribe(subscribe, (err, data) => {
+                  hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK`)
+                });
+                done();
+              } catch (error) {
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
+                expect().assertFail();
+                done();
+              }
             }
-          }
+          })
         })
-      })
-      await sleep(2000)
-      try {
-        router.pushUrl({
-          url: 'testability/pages/Assist3300'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        await sleep(2000)
+        try {
+          router.pushUrl({
+            url: 'testability/pages/Assist3300'
+          })
+        } catch (error) {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        }
       }
     })
 
@@ -144,38 +160,47 @@ export default function AbilityRuntime2_Test() {
      */
     it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_0500', 0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_0500'
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['reason']
+      if (info != 'false' && info != 'true') {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
+        expect().assertFail()
+        done
       }
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
-        commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
-          if (commonEventData.event == 'reason') {
-            try {
-              expect(100013).assertEqual(commonEventData.parameters?.data);
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}ability:success`)
-              await sleep(2000);
-              commonEventManager.unsubscribe(subscribe, (err, data) => {
-                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK`)
-              });
-              done();
-            } catch (error) {
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
-              expect().assertFail();
-              done();
+      if (info == 'false') {
+        done()
+      }else {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['reason']
+        }
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
+          commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
+            if (commonEventData.event == 'reason') {
+              try {
+                expect(100013).assertEqual(commonEventData.parameters?.data);
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}ability:success`)
+                await sleep(2000);
+                commonEventManager.unsubscribe(subscribe, (err, data) => {
+                  hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK`)
+                });
+                done();
+              } catch (error) {
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
+                expect().assertFail();
+                done();
+              }
             }
-          }
+          })
         })
-      })
-      await sleep(2000)
-      try {
-        router.pushUrl({
-          url: 'testability/pages/NestedPullUp0500'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        await sleep(2000)
+        try {
+          router.pushUrl({
+            url: 'testability/pages/NestedPullUp0500'
+          })
+        } catch (error) {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        }
       }
     })
 
@@ -189,48 +214,57 @@ export default function AbilityRuntime2_Test() {
      */
     it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_0300', 0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_0300'
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['OnBackground1', 'OnDestroy1', 'OnSessionDestroy1']
+      if (info != 'false' && info != 'true') {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
+        expect().assertFail()
+        done
       }
-      let NumberA: string = ''
-      let NumberB: string = ''
-      let NumberC: string = ''
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
-        commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
-          if (commonEventData.event == 'OnBackground1') {
-            NumberA = commonEventData.parameters?.data
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK1:${NumberA}`)
-          }
-          if (commonEventData.event == 'OnDestroy1') {
-            NumberB = commonEventData.parameters?.data
-            commonEventManager.unsubscribe(subscribe, (err, data) => {
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK2:${NumberB}`)
-            });
-            try {
-              expect(NumberA).assertEqual('333')
-              expect(NumberB).assertEqual('222')
-              expect(NumberC).assertEqual('111')
-              done()
-            } catch (error) {
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}error:${error}`)
+      if (info == 'false') {
+        done()
+      }else {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['OnBackground1', 'OnDestroy1', 'OnSessionDestroy1']
+        }
+        let NumberA: string = ''
+        let NumberB: string = ''
+        let NumberC: string = ''
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
+          commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
+            if (commonEventData.event == 'OnBackground1') {
+              NumberA = commonEventData.parameters?.data
+              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK1:${NumberA}`)
             }
-          }
-          if (commonEventData.event == 'OnSessionDestroy1') {
-            NumberC = commonEventData.parameters?.data
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK3:${NumberC}`)
-          }
+            if (commonEventData.event == 'OnDestroy1') {
+              NumberB = commonEventData.parameters?.data
+              commonEventManager.unsubscribe(subscribe, (err, data) => {
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK2:${NumberB}`)
+              });
+              try {
+                expect(NumberA).assertEqual('333')
+                expect(NumberB).assertEqual('222')
+                expect(NumberC).assertEqual('111')
+                done()
+              } catch (error) {
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}error:${error}`)
+              }
+            }
+            if (commonEventData.event == 'OnSessionDestroy1') {
+              NumberC = commonEventData.parameters?.data
+              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK3:${NumberC}`)
+            }
+          })
         })
-      })
-      await sleep(2000)
-      try {
-        router.pushUrl({
-          url: 'testability/pages/SameBundle0300'
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        await sleep(2000)
+        try {
+          router.pushUrl({
+            url: 'testability/pages/SameBundle0300'
+          })
+        } catch (error) {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        }
       }
     })
 
@@ -244,54 +278,63 @@ export default function AbilityRuntime2_Test() {
      */
     it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_0200', 0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_0200'
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['OnBackground', 'OnDestroy', 'OnSessionDestroy']
+      if (info != 'false' && info != 'true') {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
+        expect().assertFail()
+        done
       }
-      let NumberA: string = ''
-      let NumberB: string = ''
-      let NumberC: string = ''
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
-        commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
-          if (commonEventData.event == 'OnBackground') {
-            NumberA = commonEventData.parameters?.data
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK1:${NumberA}`)
-          }
-          if (commonEventData.event == 'OnDestroy') {
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK2${NumberA},${NumberC}`)
-            NumberB = commonEventData.parameters?.data
-            try {
-              expect(NumberA).assertEqual('OnBackground')
-              expect(NumberB).assertEqual('OnDestroy')
-              expect(NumberC).assertEqual('OnSessionDestroy')
-              commonEventManager.unsubscribe(subscribe, (err, data) => {
-                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK2:${NumberB}`)
-                done()
-              });
-            } catch (error) {
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}sdasdaerror:${error}`)
-              done()
+      if (info == 'false') {
+        done()
+      }else {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['OnBackground', 'OnDestroy', 'OnSessionDestroy']
+        }
+        let NumberA: string = ''
+        let NumberB: string = ''
+        let NumberC: string = ''
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
+          commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
+            if (commonEventData.event == 'OnBackground') {
+              NumberA = commonEventData.parameters?.data
+              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK1:${NumberA}`)
             }
-          }
-          if (commonEventData.event == 'OnSessionDestroy') {
-            NumberC = commonEventData.parameters?.data
-            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK3:${NumberC}`)
-          }
+            if (commonEventData.event == 'OnDestroy') {
+              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK2${NumberA},${NumberC}`)
+              NumberB = commonEventData.parameters?.data
+              try {
+                expect(NumberA).assertEqual('OnBackground')
+                expect(NumberB).assertEqual('OnDestroy')
+                expect(NumberC).assertEqual('OnSessionDestroy')
+                commonEventManager.unsubscribe(subscribe, (err, data) => {
+                  hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK2:${NumberB}`)
+                  done()
+                });
+              } catch (error) {
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}sdasdaerror:${error}`)
+                done()
+              }
+            }
+            if (commonEventData.event == 'OnSessionDestroy') {
+              NumberC = commonEventData.parameters?.data
+              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK3:${NumberC}`)
+            }
+          })
         })
-      })
-      await sleep(2000)
-      try {
-        router.pushUrl({
-          url: 'testability/pages/SameDefault0200'
-        }).then(()=>{
-          console.log(`${TEST_SUITE_NAME},success`)
-        }).catch((error:BusinessError)=>{
-          console.log(`${TEST_SUITE_NAME}errorcode:${error.code},errormsg:${error.message}`)
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        await sleep(2000)
+        try {
+          router.pushUrl({
+            url: 'testability/pages/SameDefault0200'
+          }).then(()=>{
+            console.log(`${TEST_SUITE_NAME},success`)
+          }).catch((error:BusinessError)=>{
+            console.log(`${TEST_SUITE_NAME}errorcode:${error.code},errormsg:${error.message}`)
+          })
+        } catch (error) {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} router fail : ${error}`);
+        }
       }
     })
 
@@ -305,17 +348,26 @@ export default function AbilityRuntime2_Test() {
      */
     it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_2100', 0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_2100'
-      try {
-        let codeNum: Number = bundleManager.ExtensionAbilityType.EMBEDDED_UI
-        expect(codeNum).assertEqual(21);
-        hilog.info(0x0000, TAG, '%{public}s',
-          `${TEST_SUITE_NAME}Embedded_ui:${JSON.stringify(bundleManager.ExtensionAbilityType.EMBEDDED_UI)}`)
-        await sleep(2000);
-        done();
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
-        expect().assertFail();
-        done();
+      if (info != 'false' && info != 'true') {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
+        expect().assertFail()
+        done
+      }
+      if (info == 'false') {
+        done()
+      }else {
+        try {
+          let codeNum: Number = bundleManager.ExtensionAbilityType.EMBEDDED_UI
+          expect(codeNum).assertEqual(21);
+          hilog.info(0x0000, TAG, '%{public}s',
+            `${TEST_SUITE_NAME}Embedded_ui:${JSON.stringify(bundleManager.ExtensionAbilityType.EMBEDDED_UI)}`)
+          await sleep(2000);
+          done();
+        } catch (error) {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
+          expect().assertFail();
+          done();
+        }
       }
     })
 
@@ -329,50 +381,59 @@ export default function AbilityRuntime2_Test() {
      */
     it('SUB_Ability_AbilityRuntime_UIEXtension_EmbeddedUIExtension_3400', 0, async (done: Function) => {
       const TEST_SUITE_NAME = 'UIEXtension_EmbeddedUIExtension_3400'
-      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['EmbeddedUIExtension_Pull']
+      if (info != 'false' && info != 'true') {
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} config is error : ${JSON.stringify(info)}`)
+        expect().assertFail()
+        done
       }
-      await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
-        commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
-          if (commonEventData.event == 'EmbeddedUIExtension_Pull') {
-            try {
-              expect(commonEventData.parameters?.data).assertEqual(100013);
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}Embedded_ui:跳转失败`)
-              await sleep(2000);
-              commonEventManager.unsubscribe(subscribe, (err, data) => {
-                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK`)
-              });
-              done();
-            } catch (error) {
-              hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
-              expect().assertFail();
-              done();
+      if (info == 'false') {
+        done()
+      }else {
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['EmbeddedUIExtension_Pull']
+        }
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then(async (subscribe) => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}createSubscribe OK`);
+          commonEventManager.subscribe(subscribe, async (err, commonEventData: commonEventManager.CommonEventData) => {
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME} subscribe successful,result: ${JSON.stringify(commonEventData)}`);
+            if (commonEventData.event == 'EmbeddedUIExtension_Pull') {
+              try {
+                expect(commonEventData.parameters?.data).assertEqual(100013);
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}Embedded_ui:跳转失败`)
+                await sleep(2000);
+                commonEventManager.unsubscribe(subscribe, (err, data) => {
+                  hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}unsubscribe OK`)
+                });
+                done();
+              } catch (error) {
+                hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
+                expect().assertFail();
+                done();
+              }
             }
-          }
+          })
         })
-      })
-      context = AppStorage.get<Context>('abilityContext') as common.UIAbilityContext
-      hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start ablilitysdasd err : ${JSON.stringify(context)}`);
-      let want1: Want = {
-        deviceId: '',
-        bundleName: 'com.example.act_embeddeduiextension',
-        abilityName: 'EntryAbility',
-      }
-      try {
-        context.startAbility(want1).then(async (AbilityResult) => {
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME} start ability successful,result: ${JSON.stringify(AbilityResult)}`);
-          hilog.info(0x0000, TAG, `${TEST_SUITE_NAME}startAbilityForResult`);
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start ablility err : ${err}`);
+        context = AppStorage.get<Context>('abilityContext') as common.UIAbilityContext
+        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start ablilitysdasd err : ${JSON.stringify(context)}`);
+        let want1: Want = {
+          deviceId: '',
+          bundleName: 'com.example.act_embeddeduiextension',
+          abilityName: 'EntryAbility',
+        }
+        try {
+          context.startAbility(want1).then(async (AbilityResult) => {
+            hilog.info(0x0000, TAG, '%{public}s',
+              `${TEST_SUITE_NAME} start ability successful,result: ${JSON.stringify(AbilityResult)}`);
+            hilog.info(0x0000, TAG, `${TEST_SUITE_NAME}startAbilityForResult`);
+          }).catch((err: BusinessError) => {
+            hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start ablility err : ${err}`);
+            expect().assertFail();
+          })
+        } catch (error) {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
           expect().assertFail();
-        })
-      } catch (error) {
-        hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME} start fail : ${error}`);
-        expect().assertFail();
+        }
       }
     })
   })

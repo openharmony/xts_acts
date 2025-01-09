@@ -1,4 +1,4 @@
-import { EmbeddedUIExtensionAbility, StartOptions, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+ import { EmbeddedUIExtensionAbility, StartOptions, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
