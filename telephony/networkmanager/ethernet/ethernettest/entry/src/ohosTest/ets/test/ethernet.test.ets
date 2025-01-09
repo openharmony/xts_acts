@@ -36,7 +36,7 @@ export default function EtherNetTest() {
       ethernet.getMacAddress().then((data:Array<ethernet.MacAddressInfo>)=>{
         console.info(`${caseName} getMacAddress data:${JSON.stringify(data)}`);
         expect(data[0].iface!==null).assertTrue();
-        expect(data[1].macAddress!==null).assertTrue();
+        expect(data[0].macAddress!==null).assertTrue();
         done();
       }).catch((error:BusinessError)=>{
         console.info(`${caseName} getMacAddress data error:${JSON.stringify(error)}`);
