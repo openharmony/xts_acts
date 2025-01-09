@@ -240,10 +240,10 @@ static napi_value testUtext_equals(napi_env env, napi_callback_info)
     const UChar *charS = u"aßカ🚲";
     UText *utOne = utext_openUChars(NULL, charS, -1, &status);
     UText *utTwo = utext_openUChars(NULL, charS, 5, &status);
-    utext_close(utOne);
-    utext_close(utTwo);
     bool flagA = U_FAILURE(status);
     bool flagB = !utext_equals(utOne, utTwo);
+    utext_close(utOne);
+    utext_close(utTwo);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -259,24 +259,23 @@ static napi_value testUtext_nativeLength(napi_env env, napi_callback_info)
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     len = utext_nativeLength(uta);
-    utext_close(uta);
     bool flagB = (len != stringLen);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
     return result;
 }
 
-static napi_value testUtext_char32(napi_env env, napi_callback_info)
+static napi_value testUtext_char32At(napi_env env, napi_callback_info)
 {
     UChar uString[] = {0x41, 0x42, 0x43, 0};
     UErrorCode status = U_ZERO_ERROR;
-    int64_t len;
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
-    UChar32 c = utext_char32At(uta, 0);
+    UChar32 charC = utext_char32At(uta, 0);
+    bool flagB = (charC != uString[0]);
     utext_close(uta);
-    bool flagB = (len != uString[0]);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -290,8 +289,8 @@ static napi_value testUtext_current32(napi_env env, napi_callback_info)
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     UChar32 testChar = utext_current32(uta);
-    utext_close(uta);
     bool flagB = (testChar != uString[0]);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -305,8 +304,8 @@ static napi_value testUtext_next32(napi_env env, napi_callback_info)
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     UChar32 nextC = utext_next32(uta);
-    utext_close(uta);
     bool flagB = (nextC != uString[0]);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -321,8 +320,8 @@ static napi_value testUtext_previous32(napi_env env, napi_callback_info)
     bool flagA = U_FAILURE(status);
     UChar32 previousC = utext_next32(uta);
     previousC = utext_previous32(uta);
-    utext_close(uta);
     bool flagB = (previousC != uString[0]);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -336,8 +335,8 @@ static napi_value testUtext_next32From(napi_env env, napi_callback_info)
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     UChar32 nextFromC = utext_next32From(uta, 1);
-    utext_close(uta);
     bool flagB = (nextFromC != uString[1]);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -351,8 +350,8 @@ static napi_value testUtext_previous32From(napi_env env, napi_callback_info)
     UText *uta = utext_openUChars(NULL, uString, -1, &status);
     bool flagA = U_FAILURE(status);
     UChar32 previousC = utext_previous32From(uta, 2);
-    utext_close(uta);
     bool flagB = (previousC != uString[1]);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -368,8 +367,8 @@ static napi_value testUtext_getNativeIndex(napi_env env, napi_callback_info)
     bool flagA = U_FAILURE(status);
     UChar32 previousC = utext_previous32From(uta, 2);
     int64_t getNativeIndexI = utext_getNativeIndex(uta);
-    utext_close(uta);
     bool flagB = (getNativeIndexI != compare);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -386,8 +385,8 @@ static napi_value testUtext_setNativeIndex_moveIndex32(napi_env env, napi_callba
     utext_setNativeIndex(uta, 0);
     UBool moveIndexB = utext_moveIndex32(uta, 1);
     int64_t getNativeIndexI = utext_getNativeIndex(uta);
-    utext_close(uta);
     bool flagB = (moveIndexB != true || getNativeIndexI != compare);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -403,8 +402,8 @@ static napi_value testUtext_getPreviousNativeIndex(napi_env env, napi_callback_i
     bool flagA = U_FAILURE(status);
     UBool moveIndexB = utext_moveIndex32(uta, 1);
     int64_t getPreviousNativeIndexI = utext_getPreviousNativeIndex(uta);
-    utext_close(uta);
     bool flagB = (getPreviousNativeIndexI != compareZero);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -422,8 +421,8 @@ static napi_value testUtext_extract(napi_env env, napi_callback_info)
     utext_extract(uta, 0 /*start index */, 0 + 1 /*limit index*/, groupBuf, sizeof(groupBuf), &status);
     UBool moveIndexB = utext_moveIndex32(uta, 1);
     int64_t getPreviousNativeIndexI = utext_getPreviousNativeIndex(uta);
-    utext_close(uta);
     bool flagB = U_FAILURE(status);
+    utext_close(uta);
     bool flag = (flagA || flagB);
     napi_value result = nullptr;
     napi_get_boolean(env, flag, &result);
@@ -634,6 +633,7 @@ static napi_value testU_strtok_r(napi_env env, napi_callback_info)
     UChar *state;
     const UChar compare = 0x43;
     UChar *resultA = u_strtok_r(uStringOne, del, &state);
+    resultA = u_strtok_r(NULL, del, &state);
     bool flag = false;
     if (*resultA == compare) {
         flag = true;
@@ -1188,7 +1188,7 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, napi_default, nullptr},
         {"testutext_nativeLength", nullptr, testUtext_nativeLength, nullptr,
             nullptr, nullptr, napi_default, nullptr},
-        {"testutext_char32", nullptr, testUtext_char32, nullptr,
+        {"testutext_char32At", nullptr, testUtext_char32At, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"testutext_current32", nullptr, testUtext_current32, nullptr,
             nullptr, nullptr, napi_default, nullptr},
