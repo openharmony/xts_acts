@@ -19,11 +19,17 @@ import commonEventManager from '@ohos.commonEventManager';
 var TAG2 = 'StageOnAndOffScreen:MainAbility2:';
 var listPush2 = "StageOnAndOffScreen_MainAbility2_";
 
+let lifeList: string[] = [];
 export default class MainAbility2 extends Ability {
   onCreate(want, launchParam) {
     console.log(TAG2 + 'onCreate');
-
-    commonEventManager.publish(listPush2 + "onCreate", (err) => {
+    lifeList.push("onCreate");
+    let parameters: commonEventManager.CommonEventPublishData = {
+      parameters: {
+        lifeList: lifeList,
+      }
+    }
+    commonEventManager.publish(listPush2 + "onCreate", parameters, (err) => {
       console.log(TAG2 + listPush2 + "onCreate");
     });
   }
@@ -38,8 +44,13 @@ export default class MainAbility2 extends Ability {
 
   onWindowStageCreate(windowStage) {
     console.log(TAG2 + 'onWindowStageCreate');
-
-    commonEventManager.publish(listPush2 + "onWindowStageCreate", (err) => {
+    lifeList.push("onWindowStageCreate");
+    let parameters: commonEventManager.CommonEventPublishData = {
+      parameters: {
+        lifeList: lifeList,
+      }
+    }
+    commonEventManager.publish(listPush2 + "onWindowStageCreate", parameters, (err) => {
       console.log(TAG2 + listPush2 + "onWindowStageCreate");
     });
 
@@ -62,8 +73,13 @@ export default class MainAbility2 extends Ability {
 
   onForeground() {
     console.log(TAG2 + 'onForeground');
-
-    commonEventManager.publish(listPush2 + "onForeground", (err) => {
+    lifeList.push("onForeground");
+    let parameters: commonEventManager.CommonEventPublishData = {
+      parameters: {
+        lifeList: lifeList,
+      }
+    }
+    commonEventManager.publish(listPush2 + "onForeground", parameters, (err) => {
       console.log(TAG2 + listPush2 + "onForeground");
     });
 
@@ -82,8 +98,13 @@ export default class MainAbility2 extends Ability {
 
   onBackground() {
     console.log(TAG2 + 'onBackground');
-
-    commonEventManager.publish(listPush2 + "onBackground", (err) => {
+    lifeList.push("onBackground");
+    let parameters: commonEventManager.CommonEventPublishData = {
+      parameters: {
+        lifeList: lifeList,
+      }
+    }
+    commonEventManager.publish(listPush2 + "onBackground", parameters, (err) => {
       console.log(TAG2 + listPush2 + "onBackground");
     });
   }
