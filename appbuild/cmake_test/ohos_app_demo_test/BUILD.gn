@@ -26,12 +26,22 @@ root_path = "./entry/build/default"
 action("check_test") {
   deps = [ ":ohos_app_demo" ]
   script = "scripts/ohos_app_demo_check.py"
-  args = [
-    "--libPath",
-    rebase_path("${root_path}/intermediates/libs/default"),
-    "--hapPath",
-    rebase_path("${root_path}/outputs/default/app"),
-  ]
+  if (defined(target_app_dir) && target_app_dir != "") {
+    args = [
+      "--libPath",
+      rebase_path("${root_out_dir}/${target_app_dir}/ohos_app_demo_test/${root_path}/intermediates/libs/default"),
+      "--hapPath",
+      rebase_path("${root_out_dir}/${target_app_dir}/ohos_app_demo_test/${root_path}/outputs/default/app"),
+    ]
+  } else {
+    args = [
+      "--libPath",
+      rebase_path("${root_path}/intermediates/libs/default"),
+      "--hapPath",
+      rebase_path("${root_path}/outputs/default/app"),
+    ]
+  }
+
   outputs = [ "$target_out_dir" ]
 }
 
