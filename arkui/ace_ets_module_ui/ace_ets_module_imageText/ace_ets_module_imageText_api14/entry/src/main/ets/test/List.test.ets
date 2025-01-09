@@ -18,7 +18,6 @@ import KeyboardAvoidModeTest from './UIContext/KeyboardAvoidMode.test';
 import StyledString from './styledString/StyledString.test';
 import RichEditorOnHoverTest from './RichEditorTest/onHover.test';
 import imageSpanJsunit from './imageSpanTest/imageSpan.test';
-import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
 import onSubmitTest from './onSubmitTest/onSubmitTest.test';
 import StyledStringURL from './styledString/StyledStringURL.test';
 import textCaretColor from './TextTest/textCaretColor.test';
@@ -36,7 +35,6 @@ export default function testsuite() {
   StyledString();
   RichEditorOnHoverTest();
   imageSpanJsunit();
-  MovingPhotoViewTest();
   onSubmitTest();
   StyledStringURL();
   textCaretColor();

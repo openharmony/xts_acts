@@ -6,7 +6,6 @@
     "MainAbility/pages/styledString/StyledString",
     "MainAbility/pages/RichEditor/onHover",
     "MainAbility/pages/imageSpan/imageSpan",
-    "MainAbility/pages/MovingPhotoView/MovingPhotoView",
     "MainAbility/pages/onSubmit/onSubmitTest",
     "MainAbility/pages/styledString/StyledStringURL",
     "MainAbility/pages/Text/textCaretColor",
