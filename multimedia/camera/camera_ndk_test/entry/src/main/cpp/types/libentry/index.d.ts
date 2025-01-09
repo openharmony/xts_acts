@@ -440,3 +440,5 @@ export const sessionUnregisterAutoDeviceSwitchStatusChange: (index:number) => nu
 export const cameraManagerRegisterFoldStatusChange: (index:number) => number;
  
 export const cameraManagerUnregisterFoldStatusChange: (index:number) => number;
+
+export const sessionSetQualityPrioritization: (index:number) => number;
