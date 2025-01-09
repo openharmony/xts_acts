@@ -1517,7 +1517,6 @@ Camera_ErrorCode NDKCamera::CreateCameraInputWithPositionAndType(Camera_Position
     ret_ = OH_CameraManager_CreateCameraInput_WithPositionAndType(cameraManager_, position, type, &cameraInput_);
     if (cameraInput_ == nullptr || ret_ != CAMERA_OK) {
         LOG("ndkXTS CreateCameraInputWithPositionAndType failed = %d. cameraInput_ = %p", ret_, cameraInput_);
-        return CAMERA_INVALID_ARGUMENT;
     }
     LOG("ndkXTS CreateCameraInputWithPositionAndType end.");
     return ret_;
