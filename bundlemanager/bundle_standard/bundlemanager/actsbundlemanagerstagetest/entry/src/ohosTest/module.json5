@@ -398,6 +398,13 @@
         "srcEntrance": "./ets/FormAbility/FormAbility.ts",
         "type": "embeddedUI",
         "visible": true
+    },
+    {
+        "name": "assetAcceleration",
+        "srcEntry": "./ets/MainAbility/assetAccelerationAbility.ets",
+        "label": "$string:TestAbility_label",
+        "description": "$string:TestAbility_desc",
+        "type": "assetAcceleration"
     }
   ],
   "requestPermissions": [
