@@ -64,7 +64,7 @@ struct PanGestureHandlerAllowedTypes {
       Button('Invalid').id('Invalid_type')
           .onClick(() => {
             this.result = 'allowed types default';
-            this.types = new PanGestureHandlerAllowedTypesModifier([null, undefined], this.callback);
+            this.modifier = new PanGestureHandlerAllowedTypesModifier([null, undefined], this.callback);
           })
     }.alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('PanGestureHandlerAllowedTypes_Father')
   }
