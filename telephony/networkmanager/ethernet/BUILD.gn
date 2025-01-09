@@ -11,23 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("networkmanager") {
+import("//build/ohos_var.gni")
+
+group("ethernet") {
   testonly = true
-  deps = [
-    "connection:connection",
-    "ethernet:ethernet",
-    "fetch:fetch",
-    "http:http",
-    "mdns:mdns",
-    "ndk:ndk",
-    "netstack_websocket:netstack_websocket",
-    "network:network",
-    "networksecurity:networksecurity",
-    "noNet:noNet",
-    "noPermission:noPermission",
-    "policy:policy",
-    "socket:socket",
-    "statistics:statistics",
-    "websocket:websocket",
-  ]
+  if (is_standard_system) {
+    deps = [ "ethernettest:ActsEthernetTest" ]
+  }
 }
