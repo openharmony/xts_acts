@@ -29,9 +29,11 @@ action("check_test") {
   if (defined(target_app_dir) && target_app_dir != "") {
     args = [
       "--libPath",
-      rebase_path("${root_out_dir}/${target_app_dir}/ohos_app_demo_test/${root_path}/intermediates/libs/default"),
+      rebase_path(
+          "${root_out_dir}/${target_app_dir}/ohos_app_demo_test/${root_path}/intermediates/libs/default"),
       "--hapPath",
-      rebase_path("${root_out_dir}/${target_app_dir}/ohos_app_demo_test/${root_path}/outputs/default/app"),
+      rebase_path(
+          "${root_out_dir}/${target_app_dir}/ohos_app_demo_test/${root_path}/outputs/default/app"),
     ]
   } else {
     args = [
