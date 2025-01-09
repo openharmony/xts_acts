@@ -1164,7 +1164,7 @@ static napi_value OH_UdsAppItem_GetAbilityName_003(napi_env env, napi_callback_i
 
 static napi_value Init1(napi_env env, napi_value exports)
 {
-    napi_property_descriptor desc[] = { 
+    napi_property_descriptor desc[] = {
         {"OH_UdsHyperlink_SetUrl_005", nullptr, OH_UdsHyperlink_SetUrl_005, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"OH_UdsHyperlink_GetUrl_001", nullptr, OH_UdsHyperlink_GetUrl_001, nullptr, nullptr,
@@ -1387,7 +1387,7 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
         {"OH_UdsPlainText_GetAbstract_002", nullptr, OH_UdsPlainText_GetAbstract_002, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsPlainText_GetAbstract_003", nullptr, OH_UdsPlainText_GetAbstract_003, nullptr,
-         nullptr, nullptr, napi_default, nullptr}, 
+         nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHyperlink_GetType_001", nullptr, OH_UdsHyperlink_GetType_001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"OH_UdsHyperlink_SetUrl_001", nullptr, OH_UdsHyperlink_SetUrl_001, nullptr, nullptr,
@@ -1403,8 +1403,6 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
     return exports;
 }
     EXTERN_C_END
-
-
 
     static napi_module demoModule = {
         .nm_version = 1,
