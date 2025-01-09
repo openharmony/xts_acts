@@ -15,7 +15,6 @@ group("networkmanager") {
   testonly = true
   deps = [
     "connection:connection",
-    "ethernet:ethernet",
     "fetch:fetch",
     "http:http",
     "mdns:mdns",
