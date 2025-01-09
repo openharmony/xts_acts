@@ -180,13 +180,15 @@ export default function windowZindexTest() {
               let lastWindowClass = await window.getLastWindow(context);
               let properties = lastWindowClass.getWindowProperties();
               console.log(msgStr + 'properties:'+JSON.stringify(properties));
-              expect(properties.windowRect.width).assertEqual(800);
               expect(properties.windowRect.height).assertEqual(1000);
+              expect(properties.windowRect.width).assertEqual(800);
               await subWindow1.destroyWindow();
               await subWindow2.destroyWindow();
               done();
-            }).catch((err: BusinessError) => {
+            }).catch(async (err: BusinessError) => {
               console.error(msgStr + `Failed to raise the window to app top. Cause code: ${err.code}, message: ${err.message}`);
+              await subWindow1.destroyWindow();
+              await subWindow2.destroyWindow();
               if(err.code == 801){
                 done()
               }else {
