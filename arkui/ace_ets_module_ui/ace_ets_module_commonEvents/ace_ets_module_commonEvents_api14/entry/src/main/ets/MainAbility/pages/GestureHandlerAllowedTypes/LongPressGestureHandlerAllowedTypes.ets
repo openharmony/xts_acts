@@ -60,7 +60,7 @@ struct LongPressGestureHandlerAllowedTypes {
       Button('Invalid').id('Invalid_type')
           .onClick(() => {
             this.result = 'allowed types default';
-            this.types = new LongPressGestureHandlerAllowedTypesModifier([null, undefined], this.callback);
+            this.modifier = new LongPressGestureHandlerAllowedTypesModifier([null, undefined], this.callback);
           })
     }.alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('LongPressGestureHandlerAllowedTypes_Father')
   }
