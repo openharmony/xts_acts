@@ -84,15 +84,15 @@ export default function FivePointOneTest() {
     })
 
     /* *
-    * @tc.number    : SUB_GLOBAL_utest_char32_0100
-    * @tc.name      : testutext_char32_0100
-    * @tc.desc      : testutext_char32
+    * @tc.number    : SUB_GLOBAL_utext_char32At_0100
+    * @tc.name      : testutext_char32At_0100
+    * @tc.desc      : testutext_char32At
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('testutext_char32_0100',0,() =>{
-      expect(testNapi.testutext_char32()).assertFalse()
+    it('testutext_char32At_0100',0,() =>{
+      expect(testNapi.testutext_char32At()).assertFalse()
     })
 
     /* *
@@ -812,7 +812,7 @@ export default function FivePointOneTest() {
     * @tc.level     : Level 0
     */
     it('testu_errorName_0100',0,() =>{
-      expect(testNapi.testu_errorName()).assertFalse()
+      expect(testNapi.testu_errorName()).assertTrue()
     })
 
   })
