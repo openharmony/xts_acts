@@ -141,6 +141,7 @@ export default function AVScreenCaptureRecorderTest() {
         audioSampleRate: 48000,
         audioChannelCount: 1,
         audioBitrate: 96000,
+        displayId: 0,
         preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4,
       }
 
