@@ -1162,53 +1162,9 @@ static napi_value OH_UdsAppItem_GetAbilityName_003(napi_env env, napi_callback_i
     return result;
 }
 
-EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
+static napi_value Init1(napi_env env, napi_value exports)
 {
-    napi_property_descriptor desc[] = {
-        {"OH_UdsPlainText_GetType_0100", nullptr, OH_UdsPlainText_GetType_0100, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetContent_001", nullptr, OH_UdsPlainText_SetContent_001, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetContent_002", nullptr, OH_UdsPlainText_SetContent_002, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetContent_003", nullptr, OH_UdsPlainText_SetContent_003, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetContent_004", nullptr, OH_UdsPlainText_SetContent_004, nullptr
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetContent_005", nullptr, OH_UdsPlainText_SetContent_005, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_GetContent_001", nullptr, OH_UdsPlainText_GetContent_001, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_GetContent_002", nullptr, OH_UdsPlainText_GetContent_002, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_GetContent_003", nullptr, OH_UdsPlainText_GetContent_003, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetAbstract_001", nullptr, OH_UdsPlainText_SetAbstract_001, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetAbstract_002", nullptr, OH_UdsPlainText_SetAbstract_002, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetAbstract_003", nullptr, OH_UdsPlainText_SetAbstract_003, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetAbstract_004", nullptr, OH_UdsPlainText_SetAbstract_004, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_SetAbstract_005", nullptr, OH_UdsPlainText_SetAbstract_005, nullptr,
-         nullptr, nullptr, napi_default, nullptr},   
-        {"OH_UdsPlainText_GetAbstract_001", nullptr, OH_UdsPlainText_GetAbstract_001, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_GetAbstract_002", nullptr, OH_UdsPlainText_GetAbstract_002, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdsPlainText_GetAbstract_003", nullptr, OH_UdsPlainText_GetAbstract_003, nullptr,
-         nullptr, nullptr, napi_default, nullptr}, 
-        {"OH_UdsHyperlink_GetType_001", nullptr, OH_UdsHyperlink_GetType_001, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"OH_UdsHyperlink_SetUrl_001", nullptr, OH_UdsHyperlink_SetUrl_001, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"OH_UdsHyperlink_SetUrl_002", nullptr, OH_UdsHyperlink_SetUrl_002, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"OH_UdsHyperlink_SetUrl_003", nullptr, OH_UdsHyperlink_SetUrl_003, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
-        {"OH_UdsHyperlink_SetUrl_004", nullptr, OH_UdsHyperlink_SetUrl_004, nullptr, nullptr,
-         nullptr, napi_default, nullptr},
+    napi_property_descriptor desc[] = { 
         {"OH_UdsHyperlink_SetUrl_005", nullptr, OH_UdsHyperlink_SetUrl_005, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"OH_UdsHyperlink_GetUrl_001", nullptr, OH_UdsHyperlink_GetUrl_001, nullptr, nullptr,
@@ -1252,7 +1208,14 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
         {"OH_UdsHtml_GetContent_003", nullptr, OH_UdsHtml_GetContent_003, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHtml_SetPlainContent_001", nullptr, OH_UdsHtml_SetPlainContent_001,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
+         nullptr, nullptr, nullptr, napi_default, nullptr}
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+static napi_value Init2(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
         {"OH_UdsHtml_SetPlainContent_002", nullptr, OH_UdsHtml_SetPlainContent_002,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsHtml_SetPlainContent_003", nullptr, OH_UdsHtml_SetPlainContent_003,
@@ -1294,7 +1257,14 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
         {"OH_UdsAppItem_SetName_004", nullptr, OH_UdsAppItem_SetName_004, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsAppItem_SetName_005", nullptr, OH_UdsAppItem_SetName_005, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
+         nullptr, nullptr, napi_default, nullptr}
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+static napi_value Init3(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
         {"OH_UdsAppItem_GetName_001", nullptr, OH_UdsAppItem_GetName_001, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsAppItem_GetName_002", nullptr, OH_UdsAppItem_GetName_002, nullptr,
@@ -1336,7 +1306,14 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
         {"OH_UdsAppItem_SetBundleName_001", nullptr, OH_UdsAppItem_SetIconId_003, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsAppItem_SetBundleName_002", nullptr, OH_UdsAppItem_SetBundleName_002, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
+         nullptr, nullptr, napi_default, nullptr}
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+static napi_value Init4(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
         {"OH_UdsAppItem_SetBundleName_003", nullptr, OH_UdsAppItem_SetBundleName_003, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsAppItem_SetBundleName_004", nullptr, OH_UdsAppItem_SetBundleName_004, nullptr,
@@ -1365,12 +1342,69 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdsAppItem_GetAbilityName_003", nullptr, OH_UdsAppItem_GetAbilityName_003, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-
+        {"OH_UdsHyperlink_SetUrl_003", nullptr, OH_UdsHyperlink_SetUrl_003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdsHyperlink_SetUrl_004", nullptr, OH_UdsHyperlink_SetUrl_004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
+
+EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        {"OH_UdsPlainText_GetType_0100", nullptr, OH_UdsPlainText_GetType_0100, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetContent_001", nullptr, OH_UdsPlainText_SetContent_001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetContent_002", nullptr, OH_UdsPlainText_SetContent_002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetContent_003", nullptr, OH_UdsPlainText_SetContent_003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetContent_004", nullptr, OH_UdsPlainText_SetContent_004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetContent_005", nullptr, OH_UdsPlainText_SetContent_005, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetContent_001", nullptr, OH_UdsPlainText_GetContent_001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetContent_002", nullptr, OH_UdsPlainText_GetContent_002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetContent_003", nullptr, OH_UdsPlainText_GetContent_003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetAbstract_001", nullptr, OH_UdsPlainText_SetAbstract_001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetAbstract_002", nullptr, OH_UdsPlainText_SetAbstract_002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetAbstract_003", nullptr, OH_UdsPlainText_SetAbstract_003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetAbstract_004", nullptr, OH_UdsPlainText_SetAbstract_004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_SetAbstract_005", nullptr, OH_UdsPlainText_SetAbstract_005, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetAbstract_001", nullptr, OH_UdsPlainText_GetAbstract_001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetAbstract_002", nullptr, OH_UdsPlainText_GetAbstract_002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdsPlainText_GetAbstract_003", nullptr, OH_UdsPlainText_GetAbstract_003, nullptr,
+         nullptr, nullptr, napi_default, nullptr}, 
+        {"OH_UdsHyperlink_GetType_001", nullptr, OH_UdsHyperlink_GetType_001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdsHyperlink_SetUrl_001", nullptr, OH_UdsHyperlink_SetUrl_001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"OH_UdsHyperlink_SetUrl_002", nullptr, OH_UdsHyperlink_SetUrl_002, nullptr, nullptr,
+         nullptr, napi_default, nullptr}
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    Init1(env, exports);
+    Init2(env, exports);
+    Init3(env, exports);
+    Init4(env, exports);
+    return exports;
+}
     EXTERN_C_END
+
+
 
     static napi_module demoModule = {
         .nm_version = 1,
