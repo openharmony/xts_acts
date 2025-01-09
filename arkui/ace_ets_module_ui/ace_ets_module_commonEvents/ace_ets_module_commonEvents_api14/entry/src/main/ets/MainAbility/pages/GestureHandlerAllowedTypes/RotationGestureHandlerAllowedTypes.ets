@@ -14,7 +14,7 @@
  */
 
 class RotationGestureHandlerAllowedTypesModifier implements GestureModifier {
-  toolTypes: Array<SourceTool> = [];
+  toolTypes: Array<SourceTool | undefined | null> = [];
   listener: Callback<string> = (data: string) => {};
   constructor(types: Array<SourceTool>, callback: Callback<string>) {
     this.toolTypes = types;
@@ -38,7 +38,7 @@ class RotationGestureHandlerAllowedTypesModifier implements GestureModifier {
 @Entry
 @Component
 struct RotateGestureHandlerAllowedTypes {
-  @State types: Array<SourceTool | undefined | null> = [];
+  
   @State result: string = 'allowed types default';
   private callback: Callback<string> = (data: string) => {
     this.result = data;
