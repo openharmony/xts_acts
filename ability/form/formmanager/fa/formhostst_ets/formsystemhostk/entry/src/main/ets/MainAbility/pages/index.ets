@@ -417,6 +417,15 @@ struct Index {
                   console.info(`${this.TAG} notifyInvisibleForms error: ${JSON.stringify(error)}`);
                 }
               } else if (this.requestForm) {
+                  const sleep = async delay => {
+                    return new Promise((resolve, _) => {
+                      setTimeout(async () => {
+                        resolve(0);
+                      }, delay);
+                    });
+                  };
+                  await sleep(500);
+
                 try {
                   const startTime = await systemTime.getCurrentTime();
                   let res = await formHost.requestForm(this.formId.toString());
