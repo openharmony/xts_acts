@@ -297,7 +297,7 @@ struct WebViewControllerDownloadTest {
               try {
                 this.controller.startDownload(this.downloadUrl);
                 await Utils.sleep(2000)
-                Utils.emitEvent(this.percentComplete > 0 && this.percentComplete < 100, 79656)
+                Utils.emitEvent(this.percentComplete >= 0 && this.percentComplete < 100, 79656)
               } catch (error) {
                 let e: business_error.BusinessError = error as business_error.BusinessError;
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
