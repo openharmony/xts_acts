@@ -25,7 +25,6 @@
 #define PARAM_0 0
 #define PARAM_1 1
 
-// 1. PlainText=================================================
 static napi_value OH_UdsPlainText_GetType_0100(napi_env env, napi_callback_info info)
 {
     OH_UdsPlainText* plainText = nullptr;
@@ -220,7 +219,7 @@ static napi_value OH_UdsPlainText_GetAbstract_003(napi_env env, napi_callback_in
     OH_UdsPlainText_Destroy(plainText);
     return result;
 }
-// 2. Hyperlink ========================================================
+
 static napi_value OH_UdsHyperlink_GetType_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHyperlink* pHyperlink = nullptr;
@@ -413,8 +412,6 @@ static napi_value OH_UdsHyperlink_GetDescription_003(napi_env env, napi_callback
     return result;
 }
 
-// 3.html ========================================================
-
 static napi_value OH_UdsHtml_GetType_001(napi_env env, napi_callback_info info)
 {
     OH_UdsHtml* html = nullptr;
@@ -605,7 +602,6 @@ static napi_value OH_UdsHtml_GetPlainContent_003(napi_env env, napi_callback_inf
     return result;
 }
 
-// 4. AppItem ========================================================
 static napi_value OH_UdsAppItem_GetType_001(napi_env env, napi_callback_info info)
 {
     OH_UdsAppItem* appItem = nullptr;
