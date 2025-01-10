@@ -25,7 +25,8 @@
     "arkOptions": {
       "runtimeOnly": {
         "sources": [
-          "./Test.ets"
+          "./Test.ets",
+          "./src/main/ets/Test.ets"
         ]
       }
     }

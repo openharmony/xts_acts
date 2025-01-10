@@ -75,12 +75,59 @@ static napi_value loadModuleWithInfo(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value loadModule(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value args[3] = {nullptr};
+    napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    if (status != napi_ok) {
+        return nullptr;
+    }
+    napi_value name_c = args[0];
+    char name[charSize] = {0};
+    size_t len = 0;
+    napi_get_value_string_utf8(env, name_c, name, charSize, &len);
+    napi_value result;
+    status = napi_load_module(env, name, &result);
+    napi_value addFn;
+    napi_get_named_property(env, result, "add", &addFn);
+    napi_value arg[2] = {args[1], args[2]};
+    size_t argc2 = 2;
+    napi_value returnValue;
+    napi_call_function(env, result, addFn, argc2, arg, &returnValue);
+    if (status != napi_ok) {
+        return nullptr;
+    }
+    return returnValue;
+}
+
+static napi_value loadModuleWithLog(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value args[3] = {nullptr};
+    napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    if (status != napi_ok) {
+        return nullptr;
+    }
+    napi_value result;
+    status = napi_load_module(env, "@ohos.hilog", &result);
+    napi_value infoFn;
+    napi_get_named_property(env, result, "info", &infoFn);
+    napi_call_function(env, result, infoFn, argc, args, nullptr);
+    if (status != napi_ok) {
+        return nullptr;
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "loadModuleWithInfo", nullptr, loadModuleWithInfo, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "loadModuleWithInfo", nullptr, loadModuleWithInfo, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "loadModule", nullptr, loadModule, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "loadModuleWithLog", nullptr, loadModuleWithLog, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

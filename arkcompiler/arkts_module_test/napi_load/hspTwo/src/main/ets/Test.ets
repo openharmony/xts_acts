@@ -13,23 +13,6 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
-import { add2 } from '../../Test2';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
+export function add2(a:number, b:number) {
+    return a + b;
 }
