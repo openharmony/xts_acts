@@ -20,6 +20,8 @@ import systemDateTime from '@ohos.systemDateTime';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import fs from '@ohos.file.fs';
 
+let emitKey = '';
+
 export default class Utils {
   static sleep(time: number) {
     return new Promise<string>((resolve, reject) => {
@@ -33,6 +35,14 @@ export default class Utils {
   
   static getSystemTime() {
       return systemDateTime.getTime(true) / 1000
+  }
+
+  static setEmitKey(eKey: string) {
+    emitKey = eKey;
+  }
+
+  static getEmitKey(): string {
+    return emitKey;
   }
 
   static copyRawFileToSandbox(rawFileName: string): string {
