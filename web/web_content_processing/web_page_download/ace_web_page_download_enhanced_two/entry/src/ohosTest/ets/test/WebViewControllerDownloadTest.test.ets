@@ -41,14 +41,14 @@ export default function webViewControllerDownloadTest() {
     });
     beforeEach(async (done: Function) => {
       console.info("web beforeEach start");
-      await Utils.sleep(1000);
+      await Utils.sleep(4000);
       done();
     })
 
     afterEach(async (done: Function) => {
       console.info("WebViewControllerDownloadTest afterEach start");
       Utils.emitEvent('', 11)
-      await Utils.sleep(3000);
+      await Utils.sleep(4000);
       console.info("WebViewControllerDownloadTest afterEach end");
       done();
     })
