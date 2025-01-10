@@ -356,3 +356,24 @@ export async function basicCRUD2(attr: asset.AssetMap) {
     return e.code
   }
 }
+
+export async function basicCRUDCE(attr: asset.AssetMap) {
+  attr.set(asset.Tag.ALIAS, StringToArray(aliasNameList[0]))
+  attr.set(asset.Tag.SECRET, StringToArray(secretList[0]));
+  let attr2: asset.AssetMap = new Map();
+  attr2.set(asset.Tag.ALIAS, StringToArray(aliasNameList[0]))
+  attr2.set(asset.Tag.REQUIRE_ATTR_ENCRYPTED, true);
+  let attr4: asset.AssetMap = new Map();
+  attr4.set(asset.Tag.SECRET, StringToArray(updateSecret));
+  try {
+    await asset.add(attr);
+    await asset.remove(attr2);
+    await asset.add(attr);
+    await asset.update(attr2, attr4);
+    attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL)
+    await asset.query(attr2);
+    return 0
+  } catch (e) {
+    return e.code
+  }
+}
