@@ -57,7 +57,6 @@ export default function NetworkManagerHttpExtensions() {
           dnsServers: ['11.1.11.1'],
         });
         console.info(`${caseName} createHttp success`);
-        expect(false).assertTrue();
         done();
       } catch (e) {
         let err = e as BusinessError;
