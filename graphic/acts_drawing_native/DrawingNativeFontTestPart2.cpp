@@ -241,7 +241,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontArgumentsDestoryMultiplieCalls, Tes
     }
 }
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2203
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2300
  * @tc.name: testFontSetThemeFontFollowedNormal
  * @tc.desc: test for testFontSetThemeFontFollowedNormal.
  * @tc.size  : SmallTest
@@ -262,7 +262,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontSetThemeFontFollowedNormal, TestSiz
     OH_Drawing_FontDestroy(font);
 }
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2204
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2301
  * @tc.name: testFontSetThemeFontFollowedMuitipleCalls
  * @tc.desc: test for testFontSetThemeFontFollowedMuitipleCalls.
  * @tc.size  : SmallTest
@@ -283,7 +283,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontSetThemeFontFollowedMuitipleCalls, 
     OH_Drawing_FontDestroy(font);
 }
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2205
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2302
  * @tc.name: testFontSetThemeFontFollowedNull
  * @tc.desc: test for testFontSetThemeFontFollowedNull.
  * @tc.size  : SmallTest
@@ -302,7 +302,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontSetThemeFontFollowedNull, TestSize.
     OH_Drawing_FontDestroy(font);
 }
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2206
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2100
  * @tc.name: testFontIsThemeFontFollowedNormal
  * @tc.desc: test for testFontIsThemeFontFollowedNormal.
  * @tc.size  : SmallTest
@@ -334,7 +334,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontIsThemeFontFollowedNormal, TestSize
     OH_Drawing_FontDestroy(font);
 }
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2207
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2101
  * @tc.name: testFontIsThemeFontFollowedMultipleCalls
  * @tc.desc: test for testFontIsThemeFontFollowedMultipleCalls.
  * @tc.size  : SmallTest
@@ -361,7 +361,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontIsThemeFontFollowedMultipleCalls, T
     OH_Drawing_FontDestroy(font);
 }
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2208
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2400
  * @tc.name: testFontIsThemeFontFollowedNull
  * @tc.desc: test for testFontIsThemeFontFollowedNull.
  * @tc.size  : SmallTest

@@ -143,6 +143,7 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNormal, TestSize.L
     // 1. Traverse the enumeration values of OH_Drawing_TextEncoding and use OH_Drawing_CanvasDrawTextBlob in
     // combination
     const char *str = "123456";
+    char16_t c[] = {1, 2, 3};
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_Typeface *typeSurface = OH_Drawing_TypefaceCreateDefault();
@@ -169,6 +170,13 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromTextNormal, TestSize.L
         // add assert
         EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     }
+    OH_Drawing_TextBlob *textBlob2 = OH_Drawing_TextBlobCreateFromText(c, 6, font, TEXT_ENCODING_UTF16);
+    // add assert
+    EXPECT_NE(textBlob2, nullptr);
+    OH_Drawing_ErrorCodeReset();
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlob2, 0, 0);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     // 2. free memory
     OH_Drawing_FontDestroy(font);
     OH_Drawing_TypefaceDestroy(typeSurface);
