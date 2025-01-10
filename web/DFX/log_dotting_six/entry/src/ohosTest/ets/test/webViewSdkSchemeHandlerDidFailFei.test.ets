@@ -80,7 +80,16 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailFei() {
      */
     it('testWebViewSdkSchemeHandlerDidFailNegative0', 0, async (done: Function) => {
         emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative0"
-        Utils.emitEvent(emitKey, 10);
+        for (let i = 0; i < 5; i++) {
+             console.info('emitWebViewSdkSchemeHandlerDidFailNegative0 send key:'+ i);
+             Utils.emitEvent(emitKey, 10);
+             await Utils.sleep(2000);
+             let key = Utils.getEmitKey();
+             console.info('emitWebViewSdkSchemeHandlerDidFailNegative0 get key:'+ key);
+             if (key === 'emitWebViewSdkSchemeHandlerDidFailNegative0') {
+                break;
+             }
+        }
         Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative0", 'success', 11000, done);
         sendEventByKey('webViewSdkSchemeHandlerDidFailFlyButton', 10, '');
     })
