@@ -184,6 +184,9 @@ function expectTrue(exp: boolean, info: string = ''): void {
   }
 }
 
+funtion sleep(ms: number) {
+    return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 
 export default function SocketGetLocalSocketTest() {
   describe('SocketGetLocalSocketTest', () => {
@@ -377,6 +380,7 @@ export default function SocketGetLocalSocketTest() {
     it('testNetworkMgrSocketGetLocalAddressTest0500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0500';
       console.info(`${caseName} test start`);
+      await sleep(500);
       try {
         let listenAddr: socket.NetAddress = {
           address: '127.0.0.1',
