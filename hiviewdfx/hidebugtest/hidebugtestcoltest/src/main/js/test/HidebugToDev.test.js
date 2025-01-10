@@ -245,7 +245,7 @@ describe('HidebugToDevJsTest', function () {
                 hidebug.tags.NOTIFICATION, hidebug.tags.NWEB, hidebug.tags.OHOS, hidebug.tags.POWER_MANAGER,
                 hidebug.tags.RPC, hidebug.tags.SAMGR, hidebug.tags.WINDOW_MANAGER, hidebug.tags.AUDIO,
                 hidebug.tags.CAMERA, hidebug.tags.IMAGE, hidebug.tags.MEDIA];
-            let limit_size = 1;
+            let limit_size = 500 * 1024 * 1024;
             let path = hidebug.startAppTraceCapture(tag, flag, limit_size);
             hidebug.stopAppTraceCapture();
             console.info(`SUB_DFX_DFT_Trace_Collect_Js_0200 > path =: ${path}`)
