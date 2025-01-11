@@ -15,6 +15,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { util, xml } from '@kit.ArkTS';
 
+function sleep(ms: number) {
+  return new Promise<void>((resolve, reject) => setTimeout(resolve, ms));
+}
+
 let testXml =
   "<?xml version='1.0' encoding='UTF-8'?><!DOCTYPE example [<!ENTITY exampleEntity '这是一个实体引用事件。'>]><!-- XML注释事件：这是一个示例注释 --><example><!-- 启动文件事件 --><startDocument><startTag><element><!-- 启动标签事件 --><tagName>示例标签</tagName><!-- 文本事件 --><content>这是一些文本内容。</content>" +
     "<!-- CDATA事件 -->" +
@@ -40,7 +44,8 @@ export default function XmlTest() {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(() => {
+    beforeEach(async () => {
+      await sleep(100);
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
