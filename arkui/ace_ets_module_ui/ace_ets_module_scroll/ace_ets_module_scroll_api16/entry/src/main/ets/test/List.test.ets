@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import ListSwipeTest from './ListTest/ListSwipe.test'
+import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
 
 export default function testsuite() {
   ListSwipeTest();
+  ScrollEffectEdge();
 }
