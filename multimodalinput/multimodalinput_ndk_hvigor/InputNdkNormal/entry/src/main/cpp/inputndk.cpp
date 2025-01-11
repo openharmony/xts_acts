@@ -1588,8 +1588,8 @@ static napi_value CreateHotkey(napi_env env, napi_callback_info info)
     napi_value result;
     Input_Hotkey *hotkey = OH_Input_CreateHotkey();
 
-    int32_t prekeys[1] = { KEYCODE_CTRL_LEFT };
-    OH_Input_SetPreKeys(hotkey, prekeys, 1);
+    int32_t prekeys[2] = { KEYCODE_CTRL_LEFT, KEYCODE_ALT_LEFT };
+    OH_Input_SetPreKeys(hotkey, prekeys, 2);
     OH_Input_SetFinalKey(hotkey, KEYCODE_Z);
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
