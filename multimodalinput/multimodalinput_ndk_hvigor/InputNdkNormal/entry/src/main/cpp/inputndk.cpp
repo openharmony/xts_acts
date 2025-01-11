@@ -1530,9 +1530,9 @@ static napi_value CreateAllSystemHotkeys(napi_env env, napi_callback_info info)
 {
     napi_value result;
     int32_t count = 1;
-    OH_Input_GetAllSystemHotkeys(nullptr, &count);
+    Input_Result ret = OH_Input_GetAllSystemHotkeys(nullptr, &count);
     Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
-    napi_create_int32(env, (hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, (ret == 801 || hotkey != nullptr) ? 1 : 0, &result);
     OH_Input_DestroyAllSystemHotkeys(hotkey, count);
     return result;
 }
@@ -1563,7 +1563,7 @@ static napi_value CreateAllSystemHotkeys2(napi_env env, napi_callback_info info)
     napi_value result;
     int32_t count = 100;
     Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
-    napi_create_int32(env, (hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, hotkey == nullptr ? 1 : 0, &result);
     OH_Input_DestroyAllSystemHotkeys(hotkey, count);
     return result;
 }
@@ -1578,17 +1578,25 @@ static napi_value GetIntervalSinceLastInput(napi_env env, napi_callback_info inf
     return result;
 }
 
+static void HotkeyCallback(struct Input_Hotkey *hotkey)
+{
+    printf("Input_HotkeyCallback success");
+}
+
 static napi_value CreateHotkey(napi_env env, napi_callback_info info)
 {
     napi_value result;
     Input_Hotkey *hotkey = OH_Input_CreateHotkey();
-    napi_create_int32(env, hotkey == nullptr ? 1 : 0, &result);
-    return result;
-}
 
-static void HotkeyCallback(struct Input_Hotkey *hotkey)
-{
-    printf("Input_HotkeyCallback success");
+    int32_t prekeys[1] = { KEYCODE_CTRL_LEFT };
+    OH_Input_SetPreKeys(hotkey, prekeys, 1);
+    OH_Input_SetFinalKey(hotkey, KEYCODE_Z);
+    OH_Input_SetRepeat(hotkey, false);
+    int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
+    napi_create_int32(env, (ret == 801 || hotkey != nullptr) ? 1 : 0, &result);
+    OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
+    OH_Input_DestroyHotkey(&hotkey);
+    return result;
 }
 
 static napi_value AddHotkeyMonitor(napi_env env, napi_callback_info info)
