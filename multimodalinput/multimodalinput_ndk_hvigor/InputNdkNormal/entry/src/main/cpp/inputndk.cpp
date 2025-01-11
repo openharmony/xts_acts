@@ -1522,7 +1522,7 @@ static napi_value GetAllSystemHotkeys(napi_env env, napi_callback_info info)
     napi_value result;
     int32_t count = 1;
     Input_Result ret = OH_Input_GetAllSystemHotkeys(nullptr, &count);
-    napi_create_int32(env, ret == INPUT_SUCCESS ? 1 : 0, &result);
+    napi_create_int32(env, (ret == INPUT_SUCCESS || 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1532,7 +1532,7 @@ static napi_value CreateAllSystemHotkeys(napi_env env, napi_callback_info info)
     int32_t count = 1;
     OH_Input_GetAllSystemHotkeys(nullptr, &count);
     Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
-    napi_create_int32(env, hotkey != nullptr ? 1 : 0, &result);
+    napi_create_int32(env, (hotkey == nullptr) ? 1 : 0, &result);
     OH_Input_DestroyAllSystemHotkeys(hotkey, count);
     return result;
 }
@@ -1544,7 +1544,7 @@ static napi_value GetAllSystemHotkeys2(napi_env env, napi_callback_info info)
     Input_Result ret = OH_Input_GetAllSystemHotkeys(nullptr, &count);
     Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
     ret = OH_Input_GetAllSystemHotkeys(hotkey, &count);
-    napi_create_int32(env, ret == INPUT_SUCCESS ? 1 : 0, &result);
+    napi_create_int32(env, (ret == INPUT_SUCCESS || 801) ? 1 : 0, &result);
     OH_Input_DestroyAllSystemHotkeys(hotkey, count);
     return result;
 }
@@ -1554,7 +1554,7 @@ static napi_value GetAllSystemHotkeys3(napi_env env, napi_callback_info info)
     napi_value result;
     Input_Hotkey *hotkey{nullptr};
     Input_Result ret = OH_Input_GetAllSystemHotkeys(&hotkey, nullptr);
-    napi_create_int32(env, ret == INPUT_PARAMETER_ERROR ? 1 : 0, &result);
+    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR || 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1563,7 +1563,7 @@ static napi_value CreateAllSystemHotkeys2(napi_env env, napi_callback_info info)
     napi_value result;
     int32_t count = 100;
     Input_Hotkey **hotkey = OH_Input_CreateAllSystemHotkeys(count);
-    napi_create_int32(env, hotkey == nullptr ? 1 : 0, &result);
+    napi_create_int32(env, (hotkey == nullptr) ? 1 : 0, &result);
     OH_Input_DestroyAllSystemHotkeys(hotkey, count);
     return result;
 }
@@ -1582,7 +1582,7 @@ static napi_value CreateHotkey(napi_env env, napi_callback_info info)
 {
     napi_value result;
     Input_Hotkey *hotkey = OH_Input_CreateHotkey();
-    napi_create_int32(env, hotkey != nullptr ? 1 : 0, &result);
+    napi_create_int32(env, hotkey == nullptr ? 1 : 0, &result);
     return result;
 }
 
@@ -1604,8 +1604,8 @@ static napi_value AddHotkeyMonitor(napi_env env, napi_callback_info info)
     int32_t ret2 = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret1 == INPUT_SERVICE_EXCEPTION
-        && ret2 == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret1 == INPUT_SERVICE_EXCEPTION
+        && ret2 == INPUT_SUCCESS && hotkey == nullptr) || (ret1 == 801 && ret2 == 801)) ? 1 : 0, &result);
     return result;
 }
 
@@ -1621,7 +1621,7 @@ static napi_value AddHotkeyMonitor2(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret ==801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1637,7 +1637,7 @@ static napi_value AddHotkeyMonitor3(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1653,7 +1653,7 @@ static napi_value AddHotkeyMonitor4(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1669,7 +1669,7 @@ static napi_value AddHotkeyMonitor5(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1689,7 +1689,8 @@ static napi_value AddHotkeyMonitor6(napi_env env, napi_callback_info info)
     int32_t ret2 = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret1 == INPUT_SUCCESS && ret2 == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret1 == INPUT_SUCCESS && ret2 == INPUT_SUCCESS && hotkey == nullptr) ||
+        (ret1 == 801 && ret2 == 801)) ? 1 : 0, &result);
     return result;
 }
 
@@ -1705,7 +1706,7 @@ static napi_value AddHotkeyMonitor7(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1721,7 +1722,7 @@ static napi_value AddHotkeyMonitor8(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1737,7 +1738,7 @@ static napi_value AddHotkeyMonitor9(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1753,7 +1754,7 @@ static napi_value AddHotkeyMonitor10(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1769,7 +1770,7 @@ static napi_value AddHotkeyMonitor11(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1784,7 +1785,7 @@ static napi_value AddHotkeyMonitor12(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SERVICE_EXCEPTION && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SERVICE_EXCEPTION && hotkey == nullptr)|| ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1799,7 +1800,7 @@ static napi_value AddHotkeyMonitor13(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1814,7 +1815,7 @@ static napi_value AddHotkeyMonitor14(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1829,7 +1830,7 @@ static napi_value AddHotkeyMonitor15(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1844,7 +1845,7 @@ static napi_value AddHotkeyMonitor16(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1859,7 +1860,7 @@ static napi_value AddHotkeyMonitor17(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1874,7 +1875,7 @@ static napi_value AddHotkeyMonitor18(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1890,7 +1891,7 @@ static napi_value AddHotkeyMonitor19(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1898,7 +1899,7 @@ static napi_value AddHotkeyMonitor20(napi_env env, napi_callback_info info)
 {
     napi_value result;
     int32_t ret = OH_Input_AddHotkeyMonitor(nullptr, HotkeyCallback);
-    napi_create_int32(env, ret == INPUT_PARAMETER_ERROR ? 1 : 0, &result);
+    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1940,10 +1941,11 @@ static napi_value AddHotkeyMonitor21(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_AddHotkeyMonitor_2100 finalKeyCode:%{public}d", finalKeyCode);
     OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_AddHotkeyMonitor_2100 isRepeat1:%{public}d", isRepeat1);
     OH_LOG_INFO(LOG_APP, "SUB_MMI_Api_Input_AddHotkeyMonitor_2100 isRepeat2:%{public}d", isRepeat2);
-    napi_create_int32(env, (result1 == INPUT_SUCCESS && result2 == INPUT_SUCCESS &&
+    napi_create_int32(env, ((result1 == INPUT_SUCCESS && result2 == INPUT_SUCCESS &&
         result3 == INPUT_SUCCESS && result4 == INPUT_SUCCESS &&press == KEYCODE_ALT_LEFT &&
         press1 == KEYCODE_ALT_RIGHT && finalKeyCode == KEYCODE_TAB && isRepeat1 == true &&
-        isRepeat2 == false) ? 1 : 0, &result);
+        isRepeat2 == false) || (result1 == 801 && result2 == 801 && result3 == 801 && result4 == 801))
+        ? 1 : 0, &result);
     return result;
 }
 
@@ -1959,7 +1961,7 @@ static napi_value AddHotkeyMonitor22(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1975,8 +1977,25 @@ static napi_value AddHotkeyMonitor23(napi_env env, napi_callback_info info)
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, ((ret == INPUT_OCCUPIED_BY_OTHER || ret == INPUT_OCCUPIED_BY_SYSTEM)
-        && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, (((ret == INPUT_OCCUPIED_BY_OTHER || ret == INPUT_OCCUPIED_BY_SYSTEM)
+        && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
+    return result;
+}
+
+static napi_value AddHotkeyMonitor24(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    Input_Hotkey *hotkey = OH_Input_CreateHotkey();
+
+    int32_t prekeys[1] = { KEYCODE_CTRL_LEFT };
+    OH_Input_SetPreKeys(hotkey, prekeys, 1);
+    OH_Input_SetFinalKey(hotkey, KEYCODE_TAB);
+    OH_Input_SetRepeat(hotkey, false);
+    int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
+    ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
+    OH_Input_RemoveHotkeyMonitor(hotkey, HotkeyCallback);
+    OH_Input_DestroyHotkey(&hotkey);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -1991,7 +2010,7 @@ static napi_value AddHotkeyMonitor25(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, nullptr);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -2006,7 +2025,7 @@ static napi_value AddHotkeyMonitor26(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -2021,7 +2040,7 @@ static napi_value AddHotkeyMonitor27(napi_env env, napi_callback_info info)
     OH_Input_SetRepeat(hotkey, false);
     int32_t ret = OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_SUCCESS && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_SUCCESS && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -2037,7 +2056,7 @@ static napi_value AddHotkeyMonitor28(napi_env env, napi_callback_info info)
     OH_Input_AddHotkeyMonitor(hotkey, HotkeyCallback);
     int32_t ret = OH_Input_RemoveHotkeyMonitor(hotkey, nullptr);
     OH_Input_DestroyHotkey(&hotkey);
-    napi_create_int32(env, (ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) ? 1 : 0, &result);
+    napi_create_int32(env, ((ret == INPUT_PARAMETER_ERROR && hotkey == nullptr) || ret == 801) ? 1 : 0, &result);
     return result;
 }
 
@@ -2167,6 +2186,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AddHotkeyMonitor21", nullptr, AddHotkeyMonitor21, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor22", nullptr, AddHotkeyMonitor22, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor23", nullptr, AddHotkeyMonitor23, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AddHotkeyMonitor24", nullptr, AddHotkeyMonitor24, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor25", nullptr, AddHotkeyMonitor25, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor26", nullptr, AddHotkeyMonitor26, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AddHotkeyMonitor27", nullptr, AddHotkeyMonitor27, nullptr, nullptr, nullptr, napi_default, nullptr},

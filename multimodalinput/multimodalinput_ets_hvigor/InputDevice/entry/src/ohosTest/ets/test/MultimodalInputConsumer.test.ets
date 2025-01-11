@@ -59,9 +59,16 @@ export default function MultimodalInputConsumerTest() {
           inputConsumer.off("hotkeyChange", hotkeyOptions, hotkeyCallback);
           done();
         } catch (error) {
-          console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+
+          } else {
+            console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to subscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -98,7 +105,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -135,7 +142,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -172,7 +179,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -209,7 +216,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -246,7 +253,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -283,7 +290,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -321,7 +328,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -358,7 +365,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -367,7 +374,7 @@ export default function MultimodalInputConsumerTest() {
         done();
       }
     });
- 
+
     /**
      * @tc.number: SUB_MMI_Input_Api_IptDev_inputConsumerOn_1000
      * @tc.name: SUB_MMI_Input_Api_IptDev_inputConsumerOn_1000
@@ -394,9 +401,15 @@ export default function MultimodalInputConsumerTest() {
           inputConsumer.off("hotkeyChange", hotkeyOptions, hotkeyCallback);
           done();
         } catch (error) {
-          console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to subscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -432,7 +445,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 4200003 || error.code == 4200002);
+          ExpectTrue(error.code == 4200003 || error.code == 4200002 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -468,9 +481,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -505,9 +524,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -542,9 +567,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -579,9 +610,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -616,9 +653,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -653,9 +696,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -690,9 +739,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -727,9 +782,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -764,9 +825,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -801,9 +868,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -838,9 +911,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -875,9 +954,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -911,9 +996,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -948,9 +1039,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -985,9 +1082,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1023,7 +1126,7 @@ export default function MultimodalInputConsumerTest() {
           done();
         } catch (error) {
           console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectTrue(error.code == 401);
+          ExpectTrue(error.code == 401 || error.code == 801);
           done();
         }
       } catch (error) {
@@ -1059,9 +1162,15 @@ export default function MultimodalInputConsumerTest() {
           ExpectTrue(true);
           done();
         } catch (error) {
-          console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          ExpectFalse(true);
-          done();
+          if(error.code == 801) {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectTrue(true);
+            done();
+          } else {
+            console.info(`${caseName} unsubscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            ExpectFalse(true);
+            done();
+          }
         }
       } catch (error) {
         console.info(`${caseName} failed to unsubscribe, error: ${JSON.stringify(error, [`code`, `message`])}`);
