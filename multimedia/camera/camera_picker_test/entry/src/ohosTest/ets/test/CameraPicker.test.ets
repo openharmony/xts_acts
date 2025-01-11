@@ -30,6 +30,48 @@ const TAG = "CameraPickerTest: ";
 
 const sleep = (delay: number) => new Promise<void>((resolve) => setTimeout(resolve, delay));
 
+let context = getContext();
+
+let isSupportedCameras = true;
+let isExecute = false;
+let mCameraManager: camera.CameraManager;
+let mCameraDevicesArray: Array<camera.CameraDevice>;
+
+let isEmpty = (data: ESObject) => {
+  if (data == null || data == undefined) {
+    return true;
+  }
+  return false;
+}
+
+let getCameraManagerInstance = () => {
+  console.info(TAG + 'Enter getCameraManagerInstance');
+  mCameraManager = camera.getCameraManager(context);
+  if (isEmpty(mCameraManager)) {
+    console.info(TAG + "getCameraManager FAILED");
+    return false;
+  }
+  console.info(TAG + 'Exit getCameraManagerInstance');
+  return true;
+}
+
+let getCameraSupportDevicesArray = () => {
+  mCameraDevicesArray = mCameraManager.getSupportedCameras();
+  if (isEmpty(mCameraDevicesArray)) {
+    isSupportedCameras = false;
+  }
+  return isSupportedCameras;
+}
+
+let whetherToExecuteUseCase = () => {
+  if (isUseCameraAvailable && isSupportedCameras) {
+    isExecute = true;
+  } else {
+    isExecute = false;
+  }
+  return whetherToExecuteUseCase;
+}
+
 export default function cameraPicker() {
 
   describe('cameraPicker', () => {
@@ -143,6 +185,9 @@ export default function cameraPicker() {
 
     beforeAll(async () => {
       console.info('beforeAll case');
+      getCameraManagerInstance();
+      getCameraSupportDevicesArray();
+      whetherToExecuteUseCase();
     });
     beforeEach(async () => {
       await sleep(100);
@@ -167,7 +212,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100--------------");
-      if (cameraAvailable) {
+      if (isExecute) {
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK
       };
@@ -204,7 +249,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101--------------");
-      if (cameraAvailable) {
+      if (isExecute) {
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_FRONT
       };
@@ -242,7 +287,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102--------------");
-      if (cameraAvailable) {
+      if (isExecute) {
       let pathDir = getContext().filesDir;
       let filePath = pathDir + `/${new Date().getTime()}.jpg}`
       fs.createRandomAccessFileSync(filePath, fs.OpenMode.CREATE);
@@ -285,7 +330,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103--------------");
-      if (cameraAvailable) {
+      if (isExecute) {
       let uri: string = "fail_string";
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -323,7 +368,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100--------------");
-      if (cameraAvailable) {
+      if (isExecute) {
       let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -362,7 +407,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101--------------");
-      if (cameraAvailable) {
+      if (isExecute) {
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
       };
@@ -399,7 +444,7 @@ export default function cameraPicker() {
      */
     it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102', 1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102--------------");
-      if (cameraAvailable) {
+      if (isExecute) {
       let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_FRONT,
