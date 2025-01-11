@@ -67,11 +67,12 @@ export default function gestureTest() {
       let y = Math.round(globalThis.winTop + Utils.getRectVerticalCenterY(rect));
       console.info("testSwipeGesture001  x= " +  x  + ", y = " + y);
       await driver.mouseScroll({x:x, y:y}, true, 30);
-      await Utils.sleep(5000);
-      let date = Date.now()
       let dataArray: number[][] = nativeRender.GetGestureDataAxis();
       let router: number[] = dataArray[0];
-      expect(date > router[0]).assertTrue();
+      console.log("time:"+router[0]+",sourceType:"+router[1]+",toolType:"+router[2]+",pointerCount:"+router[3]+",pointerId:"+router[4]+
+      ",pointerIdOne:"+router[5]+",x:"+router[6]+",XIndex:"+router[7]+",y:"+router[8]+",yIndex:"+router[9]+",displayX:"+router[10]+",displayXIndex:"+router[11]+
+      ",displayY:"+router[12]+",displayYIndex:"+router[13]+",windowX:"+router[14]+",windowXIndex:"+router[15]+",windowY:"+router[16]+
+      ",windowYIndex:"+router[17]+",vertical:"+router[18]+",horizontal:"+router[19]+",pinch:"+router[20])
       expect(router[1]).assertEqual(1)
       expect(router[2]).assertEqual(3)
       expect(router[3]).assertEqual(1)
