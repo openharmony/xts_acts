@@ -69,7 +69,7 @@ let whetherToExecuteUseCase = () => {
   } else {
     isExecute = false;
   }
-  return whetherToExecuteUseCase;
+  return isExecute;
 }
 
 export default function cameraPicker() {
