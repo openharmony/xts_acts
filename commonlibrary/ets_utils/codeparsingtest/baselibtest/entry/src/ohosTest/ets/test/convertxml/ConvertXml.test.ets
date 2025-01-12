@@ -15,6 +15,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { convertxml } from '@kit.ArkTS';
 
+function sleep(ms: number) {
+  return new Promise<void>((resolve, reject) => setTimeout(resolve, ms));
+}
+
 let jsonStr = "{\"_declaration\":{\"_attributes\":{\"version\":\"1.0\",\"encoding\":\"utf-8\"}}," +
   "\"_elements\":[{\"_type\":\"element\",\"_name\":\"note\",\"_attributes\":{\"importance\":\"high\"," +
   "\"logged\":\"true\"},\"_elements\":[{\"_type\":\"element\",\"_name\":\"title\",\"_parent\":\"note\",\"_elements\":" +
@@ -29,7 +33,8 @@ export default function ConvertXmlTest() {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(() => {
+    beforeEach(async () => {
+      await sleep(50);
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
