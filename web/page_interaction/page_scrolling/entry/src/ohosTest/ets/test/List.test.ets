@@ -24,6 +24,8 @@ import webNestedScrollOptionsScrollBackwardHorizontalTest
   from './WebNestedScrollOptionsScrollBackwardHorizontalTest.test'
 import webNestedScrollOptionsScrollForwardHorizontalTest from './WebNestedScrollOptionsScrollForwardHorizontalTest.test'
 import ScrollPage from './ScrollPage.test'
+import NestedScrollMode from './NestedScrollMode.test'
+import scrollEvent from './scrollEvent.test'
 
 export default function testsuite() {
   webResourceResponseGet()
@@ -37,4 +39,6 @@ export default function testsuite() {
   webNestedScrollOptionsScrollForwardTest()
   webNestedScrollOptionsScrollBackwardHorizontalTest()
   webNestedScrollOptionsScrollForwardHorizontalTest()
+  NestedScrollMode()
+  scrollEvent();
 }

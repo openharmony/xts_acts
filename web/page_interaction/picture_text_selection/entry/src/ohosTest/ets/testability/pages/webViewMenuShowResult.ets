@@ -120,7 +120,12 @@ struct WebViewMenuShowResult {
               })
               await Utils.sleep(4000)
               let buttontwo = await driver.findComponent(ON.text('仅本次允许'));
-              await buttontwo.click();
+			  if(buttontwo) {
+                await buttontwo.click();
+              } else {
+                let buttontwo = await driver.findComponent(ON.text('始终允许'));
+                await buttontwo.click();
+              }
               await Utils.sleep(4000)
               
               this.menuShowState = 'SelectAll'
