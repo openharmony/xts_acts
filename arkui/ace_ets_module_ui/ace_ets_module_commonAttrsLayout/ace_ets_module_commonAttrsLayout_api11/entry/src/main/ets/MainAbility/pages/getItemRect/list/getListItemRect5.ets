@@ -83,7 +83,7 @@ struct getListItemRect5 {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
       .width(300)
-      .height(500)
+      .height('50%')
 
       Button('点击获取信息').onClick((event: ClickEvent) => {
         this.x = this.listScroller.getItemRect(this.index).x

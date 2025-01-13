@@ -66,7 +66,7 @@ struct getScrollItemRect1 {
       }
       .scrollable(ScrollDirection.Vertical)
       .scrollBar(BarState.Auto)
-      .height(500)
+      .height('50%')
       .padding(this.padding1)
 
       Button('点击获取信息').onClick((event: ClickEvent) => {

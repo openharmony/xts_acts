@@ -213,7 +213,7 @@ struct getWaterFlowItemRect1 {
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
       .width('100%')
-      .height(500)
+      .height('50%')
       .padding(this.padding1)
 
       Button('点击获取信息').onClick((event: ClickEvent) => {

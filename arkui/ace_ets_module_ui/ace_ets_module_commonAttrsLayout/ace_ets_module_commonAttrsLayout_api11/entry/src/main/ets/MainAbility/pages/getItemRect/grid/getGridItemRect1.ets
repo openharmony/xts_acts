@@ -171,7 +171,7 @@ struct getGridItemRect1 {
       .rowsGap(this.rowsGap1)
       .width(300)
       .backgroundColor(0xFAEEE0)
-      .height(500)
+      .height('50%')
       .padding(this.padding1)
 
       Button('点击获取信息').onClick((event: ClickEvent) => {

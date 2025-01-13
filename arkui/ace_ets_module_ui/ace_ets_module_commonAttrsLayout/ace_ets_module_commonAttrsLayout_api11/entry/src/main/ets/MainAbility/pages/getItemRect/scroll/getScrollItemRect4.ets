@@ -64,7 +64,7 @@ struct getScrollItemRect4 {
       .scrollable(ScrollDirection.Vertical)
       .scrollBar(BarState.Auto)
       .width(300)
-      .height(500)
+      .height('50%')
 
       Button('点击获取信息').onClick((event: ClickEvent) => {
         this.x = this.scroller.getItemRect(this.index).x
