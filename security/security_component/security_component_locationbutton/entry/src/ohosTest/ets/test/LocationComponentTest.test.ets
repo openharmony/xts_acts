@@ -83,10 +83,10 @@ export default function locationComponentTest() {
       expect(obj.$attrs.borderWidth).assertEqual('0.00vp');
       expect(obj.$attrs.borderColor).assertEqual('#FFFFFFFF');
       expect(obj.$attrs.borderRadius).assertEqual('0.00vp');
-      expect(obj.$attrs.padding.left).assertEqual('24.00vp');
-      expect(obj.$attrs.padding.right).assertEqual('24.00vp');
-      expect(obj.$attrs.padding.top).assertEqual('8.00vp');
-      expect(obj.$attrs.padding.bottom).assertEqual('8.00vp');
+      expect(obj.$attrs.padding.left).assertEqual('12.00vp');
+      expect(obj.$attrs.padding.right).assertEqual('12.00vp');
+      expect(obj.$attrs.padding.top).assertEqual('4.00vp');
+      expect(obj.$attrs.padding.bottom).assertEqual('4.00vp');
       expect(obj.$attrs.textIconSpace).assertEqual('4.00vp');
       await Utils.sleep(1000);
       try {
@@ -200,10 +200,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -285,8 +285,8 @@ export default function locationComponentTest() {
             "bgType": ButtonType.Normal,
             "iconSize": 16,
             "direct": 0,
-            "positionX": 150,
-            "positionY": 20,
+            "positionX": 10,
+            "positionY": 10,
             "anchorX": 20,
             "anchorY": 20,
             "offsetX": 0,
@@ -302,10 +302,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -321,8 +321,8 @@ export default function locationComponentTest() {
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyLocation');
       let obj : ESObject = JSON.parse(strJsonNew);
-      expect(obj.$attrs.position.x).assertEqual('150.00vp');
-      expect(obj.$attrs.position.y).assertEqual('20.00vp');
+      expect(obj.$attrs.position.x).assertEqual('10.00vp');
+      expect(obj.$attrs.position.y).assertEqual('10.00vp');
       expect(obj.$attrs.markAnchor.x).assertEqual('20.00vp');
       expect(obj.$attrs.markAnchor.y).assertEqual('20.00vp');
       await Utils.sleep(1000);
@@ -393,8 +393,8 @@ export default function locationComponentTest() {
             "positionY": 0,
             "anchorX": 20,
             "anchorY": 20,
-            "offsetX": 100,
-            "offsetY": 100,
+            "offsetX": 10,
+            "offsetY": 10,
             "fontSize": 16,
             "fontStyle": FontStyle.Normal,
             "fontWeight": FontWeight.Medium,
@@ -406,10 +406,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -423,10 +423,10 @@ export default function locationComponentTest() {
         console.info("====>[Test_Security_Button_Location_0400] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('keyLocation1');
+      let strJsonNew = getInspectorByKey('keyLocation');
       let obj : ESObject = JSON.parse(strJsonNew);
-      expect(obj.$attrs.offset.x).assertEqual('100.00vp');
-      expect(obj.$attrs.offset.y).assertEqual('100.00vp');
+      expect(obj.$attrs.offset.x).assertEqual('10.00vp');
+      expect(obj.$attrs.offset.y).assertEqual('10.00vp');
       expect(obj.$attrs.markAnchor.x).assertEqual('20.00vp');
       expect(obj.$attrs.markAnchor.y).assertEqual('20.00vp');
       await Utils.sleep(1000);
@@ -466,7 +466,7 @@ export default function locationComponentTest() {
         let button = await driver.findComponents(ON.type('LocationButton'));
         await Utils.sleep(500);
         console.info("====>[Test_Security_Button_Location_0400] button is:" + JSON.stringify(button));
-        await button[1].click();
+        await button[0].click();
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_Location_0400] clickSecComponent err : " + JSON.stringify(err));
@@ -510,10 +510,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -611,10 +611,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -712,10 +712,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -813,10 +813,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -914,10 +914,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1015,10 +1015,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1116,10 +1116,10 @@ export default function locationComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1220,10 +1220,10 @@ export default function locationComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1324,10 +1324,10 @@ export default function locationComponentTest() {
             "borderWid": 5,
             "borderCol": 0xffffffff,
             "borderRad": 5,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1428,10 +1428,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1446,7 +1446,7 @@ export default function locationComponentTest() {
             console.info('Succeeded in obtaining the window properties.width: ' + properties.windowRect.width);
             let window_width = properties.windowRect.width;
             console.info('====>[Test_Security_Button_Location_1400] properties.windowRect.width is: ' + properties.windowRect.width);
-            let offsetObj:ESObject = {"positionX": `${window_width - 100}px`};
+            let offsetObj:ESObject = {"positionX": `${window_width / 2}px`};
             ObjectUtils.assign(eventData.data,offsetObj);
           });
         } catch (error){
@@ -1545,12 +1545,29 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
+        }
+         try{
+          window.getLastWindow(globalThis.abilityContext, (err, data) => {
+            const errCode = err.code;
+            if(errCode){
+              console.error('Failed to obtain the top window Cause:' + JSON.stringify(err));
+              return;
+            }
+            let properties = data.getWindowProperties();
+            console.info('Succeeded in obtaining the window properties.width: ' + properties.windowRect.width);
+            let window_width = properties.windowRect.width;
+            console.info('====>[Test_Security_Button_Location_1500] properties.windowRect.width is: ' + properties.windowRect.width);
+            let offsetObj:ESObject = {"positionX": `${-window_width / 2}px`};
+            ObjectUtils.assign(eventData.data,offsetObj);
+          });
+        } catch (error){
+          console.error('Failed to obtain the window properties.error.code: ' + error.code)
         }
         let innerEvent:events_emitter.InnerEvent = {
           eventId: 1,
@@ -1643,10 +1660,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1659,8 +1676,7 @@ export default function locationComponentTest() {
           let button_iconSize = Math.ceil(Math.sqrt(window_width * window_height * 0.1));
           console.info('====>[Test_Security_Button_Location_1600] button_iconSize is: ' + button_iconSize);
           let offsetObj:ESObject = {
-            "iconSize": `${button_iconSize}px`,
-            "positionY": `${-button_iconSize - 200}px`
+            "iconSize": `${button_iconSize}px`
             };
           ObjectUtils.assign(eventData.data,offsetObj);
         });
@@ -1756,10 +1772,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1859,10 +1875,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -1963,10 +1979,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -2066,10 +2082,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -2167,10 +2183,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
@@ -2268,10 +2284,10 @@ export default function locationComponentTest() {
             "borderWid": 0,
             "borderCol": 0xffffffff,
             "borderRad": 0,
-            "left": 24,
-            "right": 24,
-            "top": 8,
-            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 4,
+            "bottom": 4,
             "middle": 4
           }
         }
