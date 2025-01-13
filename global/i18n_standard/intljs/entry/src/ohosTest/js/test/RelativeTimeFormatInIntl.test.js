@@ -14,6 +14,7 @@
  */
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
+import deviceInfo from '@ohos.deviceInfo'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function RelativeTimeFormatInIntlTest() {
