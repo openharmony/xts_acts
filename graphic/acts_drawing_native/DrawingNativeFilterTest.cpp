@@ -48,7 +48,8 @@ namespace Drawing {
 class DrawingNativeFilterTest : public testing::Test {
     protected:
     // 在每个测试用例执行前调用
-    void SetUp() override {
+    void SetUp() override 
+    {
         // 设置代码
         std::cout << "DrawingNativeFilterTest Setup code called before each test case." << std::endl;
         OH_Drawing_ErrorCodeReset();
@@ -79,7 +80,7 @@ HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNormal, TestSize.Level0
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNULL, TestSize.Level3) { 
+HWTEST_F(DrawingNativeFilterTest, testFilterCreateDestroyNULL, TestSize.Level3) {
     OH_Drawing_FilterDestroy(nullptr);
     // add assert
     EXPECT_TRUE(true);

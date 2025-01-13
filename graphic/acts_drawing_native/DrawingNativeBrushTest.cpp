@@ -48,7 +48,8 @@ namespace Drawing {
 class DrawingNativeBrushTest : public testing::Test {
     protected:
     // 在每个测试用例执行前调用
-    void SetUp() override {
+    void SetUp() override 
+    {
         // 设置代码
         std::cout << "DrawingNativeBrushTest Setup code called before each test case." << std::endl;
         OH_Drawing_ErrorCodeReset();
@@ -867,7 +868,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNull, TestSize.Level3) {
     // add assert
     EXPECT_NE(brush, nullptr);
     // 2. Call OH_Drawing_BrushSetBlendMode with nullptr as the first parameter
-    OH_Drawing_BrushSetBlendMode(nullptr, BLEND_MODE_CLEAR);    
+    OH_Drawing_BrushSetBlendMode(nullptr, BLEND_MODE_CLEAR);
     // add assert
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. Free memory

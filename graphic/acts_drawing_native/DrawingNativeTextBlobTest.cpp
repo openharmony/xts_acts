@@ -46,7 +46,8 @@ namespace Drawing {
 class DrawingNativeTextBlobTest : public testing::Test {
     protected:
     // 在每个测试用例执行前调用
-    void SetUp() override {
+    void SetUp() override 
+    {
         // 设置代码
         std::cout << "DrawingNativeTextBlobTest Setup code called before each test case." << std::endl;
         OH_Drawing_ErrorCodeReset();
@@ -959,7 +960,6 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobDestroyNull, TestSize.Level3) {
     OH_Drawing_TextBlobDestroy(nullptr);
     // add assert
     EXPECT_TRUE(true);
-
 }
 
 } // namespace Drawing

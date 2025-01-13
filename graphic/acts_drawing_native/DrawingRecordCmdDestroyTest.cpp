@@ -50,7 +50,8 @@ namespace Drawing {
 class DrawingRecordCmdDestroyTest : public testing::Test {
     protected:
     // 在每个测试用例执行前调用
-    void SetUp() override {
+    void SetUp() override 
+    {
         // 设置代码
         std::cout << "DrawingRecordCmdDestroyTest Setup code called before each test case." << std::endl;
         OH_Drawing_ErrorCodeReset();

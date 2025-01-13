@@ -47,7 +47,8 @@ namespace Drawing {
 class DrawingNativeCanvasPart3Test : public testing::Test {
     protected:
     // 在每个测试用例执行前调用
-    void SetUp() override {
+    void SetUp() override 
+    {
         // 设置代码
         std::cout << "DrawingNativeCanvasPart3Test Setup code called before each test case." << std::endl;
         OH_Drawing_ErrorCodeReset();
@@ -65,7 +66,7 @@ class DrawingNativeCanvasPart3Test : public testing::Test {
  */
 HWTEST_F(DrawingNativeCanvasPart3Test, testCanvasDrawOvalNormal, TestSize.Level0) {
     // 1. Create OH_Drawing_Canvas
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();  
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // add assert
     EXPECT_NE(canvas, nullptr);
 

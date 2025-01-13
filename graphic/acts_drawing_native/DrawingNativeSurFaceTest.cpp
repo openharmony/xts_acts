@@ -90,7 +90,6 @@ void DrawingNativeSurFaceTest::SetUp()
     std::cout << "DrawingNativeSurFaceTest Setup code called before each test case." << std::endl;
     OH_Drawing_ErrorCodeReset();
     std::cout << "DrawingNativeSurFaceTest errorCodeReset before each test case." << std::endl;
-
 }
 
 void DrawingNativeSurFaceTest::TearDown()

@@ -49,7 +49,8 @@ namespace Drawing {
 class DrawingNativeCanvasPart2Test : public testing::Test {
     protected:
     // 在每个测试用例执行前调用
-    void SetUp() override {
+    void SetUp() override 
+    {
         // 设置代码
         std::cout << "DrawingNativeCanvasPart2Test Setup code called before each test case." << std::endl;
         OH_Drawing_ErrorCodeReset();
@@ -1655,13 +1656,13 @@ HWTEST_F(DrawingNativeCanvasPart2Test, testCanvasDrawCircleAbnormal, TestSize.Le
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
     // 2. OH_Drawing_PointCreate with x parameter being negative
-    OH_Drawing_Point *center = OH_Drawing_PointCreate(-100, 100);    
+    OH_Drawing_Point *center = OH_Drawing_PointCreate(-100, 100);
     // add assert
     EXPECT_NE(center, nullptr);
     // 3. OH_Drawing_CanvasDrawCircle
     OH_Drawing_CanvasDrawCircle(canvas, center, 50);
     // 4. OH_Drawing_PointCreate with y parameter being negative
-    center = OH_Drawing_PointCreate(100, -100);  
+    center = OH_Drawing_PointCreate(100, -100);
     // add assert
     EXPECT_NE(center, nullptr);
     OH_Drawing_CanvasDrawCircle(canvas, center, 50);
