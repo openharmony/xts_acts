@@ -110,7 +110,7 @@ export default function RotationGestureAllowedTypesTest() {
       let button3 = await driver.findComponent(ON.id('Invalid_type'));
       await button3.click();
       await CommonFunc.sleep(3000);
-      let text9 = getInspectorByKey('RotationGestureAllowedTypes_Result');
+      let text9 = getInspectorByKey('RotationGestureAllowedTypes_result');
       let obj9: ESObject = JSON.parse(text9);
       console.log('RotationGestureAllowedTypesTest_0010 obj9 $attrs content',obj9.$attrs.content,obj9)
       expect(obj9.$attrs.content).assertEqual('allowed types default');
@@ -119,7 +119,7 @@ export default function RotationGestureAllowedTypesTest() {
       await CommonFunc.sleep(1000);
       await driver.injectMultiPointerAction(pointers);
       await CommonFunc.sleep(4000);
-      let text10 = getInspectorByKey('RotationGestureAllowedTypes_Result');
+      let text10 = getInspectorByKey('RotationGestureAllowedTypes_result');
       let obj10: ESObject = JSON.parse(text10);
       console.log('RotationGestureAllowedTypesTest_0010 obj10 $attrs content',obj10.$attrs.content,obj10)
       expect(obj10.$attrs.content).assertEqual('allowed types success');
