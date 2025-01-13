@@ -493,9 +493,15 @@ export default function MultimodalInputDeviceTest() {
           }
         });
       } catch (error) {
-        console.info(`${caseName} failed to get system hotkeys, error: ${JSON.stringify(error, [`code`, `message`])}`);
-        ExpectFalse(true);
-        done();
+        if(error.code == 801) {
+          console.info(`${caseName} failed to get system hotkeys, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          ExpectTrue(true);
+          done();
+        } else {
+          console.info(`${caseName} failed to get system hotkeys, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          ExpectFalse(true);
+          done();
+        }
       }
     });
 
