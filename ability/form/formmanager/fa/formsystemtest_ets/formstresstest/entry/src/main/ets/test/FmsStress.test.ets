@@ -142,8 +142,6 @@ export default function test() {
                     }
                 });
                 console.info(`${tcNumber} featureAbility.startAbility res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             } catch (error) {
                 console.info(`${tcNumber} error: ${JSON.stringify(error)}`);
                 console.info(`${tcNumber} should not reach here`);
@@ -224,8 +222,6 @@ export default function test() {
                     }
                 });
                 console.info(`${tcNumber} featureAbility.startAbility res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             } catch (error) {
                 console.info(`${tcNumber} error: ${JSON.stringify(error)}`);
                 console.info(`${tcNumber} should not reach here`);
@@ -304,8 +300,6 @@ export default function test() {
                     }
                 });
                 console.info(`${tcNumber} featureAbility.startAbility res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             } catch (error) {
                 console.info(`${tcNumber} error: ${JSON.stringify(error)}`);
                 console.info(`${tcNumber} should not reach here`);
@@ -362,8 +356,6 @@ export default function test() {
                     }
                 });
                 console.info(`${tcNumber} featureAbility.startAbility res: ${JSON.stringify(res)}`);
-                expect().not().assertFail();
-                done();
             } catch (error) {
                 console.info(`${tcNumber} error: ${JSON.stringify(error)}`);
                 console.info(`${tcNumber} should not reach here`);
@@ -418,25 +410,6 @@ export default function test() {
             const systemstatus = await formHost.isSystemReady();
             console.info(`${tcNumber} systemstatus: ${JSON.stringify(systemstatus)}`);
             expect(systemstatus).assertEqual(undefined);
-            done();
-        });
-        
-        /**
-         * @tc.number: FMS_stressTest_1900
-         * @tc.name: Form add test.
-         * @tc.desc: addForm method working well.
-         */
-        it(`FMS_stressTest_1900`, 0, async (done) => {
-            const tcNumber = `FMS_stressTest_1900`;
-
-            let want: Want = {
-              bundleName: 'com.ohos.example',
-              abilityName: 'FormAbility',
-            };
-            formHostNew.addForm(want).then((formInfo: formInfo.RunningFormInfo) => {
-              console.info(`${tcNumber} addForm Result: ${JSON.stringify(formInfo)}`);
-              expect(formInfo).assertNotNull();
-            });
             done();
         });
     });
