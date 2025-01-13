@@ -123,12 +123,7 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  await driver.swipe(X, Y - 60, X, Y + 60);
-                }else{
-                  await driver.swipe(100, 300, 100, 500, 600);
-                }
+                await driver.swipe(X, Y - 60, X, Y + 60);
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 31038)
               } catch (error) {
@@ -144,12 +139,7 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  await driver.swipe(X, Y + 60, X, Y - 60);
-                }else{
-                  await driver.swipe(100, 900, 100, 200, 600);
-                }
+                await driver.swipe(X, Y + 60, X, Y - 60);
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 100034)
               } catch (error) {
@@ -165,12 +155,7 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  await driver.swipe(X + 60, Y, X - 60, Y);
-                }else{
-                  await driver.swipe(400, 300, 100, 300, 600);
-                }
+                await driver.swipe(X + 60, Y, X - 60, Y);
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 100035)
               } catch (error) {
@@ -186,12 +171,7 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                this.userAgentPC = this.controller.getUserAgent();
-                if ((this.userAgentPC).includes("PC")) {
-                  await driver.swipe(X - 60, Y, X + 60, Y);
-                }else{
-                  await driver.swipe(100, 300, 400, 300, 600);
-                }
+                await driver.swipe(X - 60, Y, X + 60, Y);
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 100036)
               } catch (error) {
