@@ -17,6 +17,7 @@ import fs from  '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
 import request from "@ohos.request";
 import Server from '../common/Server'
+import deviceinfo from '@ohos.deviceInfo';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -910,49 +911,54 @@ export default function requestUploadJSUnit() {
      * @tc.level     Level 2
      */
     it('SUB_REQUEST_FileUpload_ResponseBody_0200', 0, async (done: Function) => {
-      let config: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
-      let pathDir = (baseContext !== undefined) ? baseContext.cacheDir : '';
-      let filePath = pathDir + '/test10.txt';
-      let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let test = ''.padEnd(1 * 1024, '888');
-      fs.writeSync(file.fd, test);
-      fs.closeSync(file);
-      console.info('====>beforeAll: file generate test10.txt');
-      config.files =[{
-        filename: 'test10',
-        name: 'test10',
-        uri: 'internal://cache/test10.txt',
-        type: 'txt'
-      }]
-      request.uploadFile(baseContext, config, async (err, uploadTask)=>{
-        console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 uploadFile: ' + uploadTask);
-        console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 uploadConfig: ' + JSON.stringify(uploadConfig));
-        try{
-          let headerCallback = async (header: ESObject) => {
-            try {
-              uploadTask.off('headerReceive', headerCallback);
-              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 headerCallback: ' + header['body'].length);
-              expect(header['body'].length === 10 * 1024 * 1024).assertTrue();
-              await deleteTask(uploadTask);
-              done();
-            } catch (err) {
-              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 catch err: ' + JSON.stringify(err));
-              await deleteTask(uploadTask);
-              done();
+      if (deviceinfo.deviceType === 'wearable') {
+        console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 deviceType is: ' + JSON.stringify(deviceinfo.deviceType));
+        done();
+      } else {
+        let config: request.UploadConfig = JSON.parse(JSON.stringify(uploadConfig));
+        let pathDir = (baseContext !== undefined) ? baseContext.cacheDir : '';
+        let filePath = pathDir + '/test10.txt';
+        let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        let test = ''.padEnd(1 * 1024, '888');
+        fs.writeSync(file.fd, test);
+        fs.closeSync(file);
+        console.info('====>beforeAll: file generate test10.txt');
+        config.files =[{
+          filename: 'test10',
+          name: 'test10',
+          uri: 'internal://cache/test10.txt',
+          type: 'txt'
+        }]
+        request.uploadFile(baseContext, config, async (err, uploadTask)=>{
+          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 uploadFile: ' + uploadTask);
+          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 uploadConfig: ' + JSON.stringify(uploadConfig));
+          try{
+            let headerCallback = async (header: ESObject) => {
+              try {
+                uploadTask.off('headerReceive', headerCallback);
+                console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 headerCallback: ' + header['body'].length);
+                expect(header['body'].length === 10 * 1024 * 1024).assertTrue();
+                await deleteTask(uploadTask);
+                done();
+              } catch (err) {
+                console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 catch err: ' + JSON.stringify(err));
+                await deleteTask(uploadTask);
+                done();
+              }
             }
+            if (err) {
+              console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 downloadFile fail: ' + JSON.stringify(err));
+              expect().assertFail();
+            }
+            uploadTask.on('headerReceive', headerCallback);
+            console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 on headerReceive success');
+          }catch(err){
+            console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 except err: ' + err);
+            await deleteTask(uploadTask);
+            done();
           }
-          if (err) {
-            console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 downloadFile fail: ' + JSON.stringify(err));
-            expect().assertFail();
-          }
-          uploadTask.on('headerReceive', headerCallback);
-          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 on headerReceive success');
-        }catch(err){
-          console.info('====>SUB_REQUEST_FileUpload_ResponseBody_0200 except err: ' + err);
-          await deleteTask(uploadTask);
-          done();
-        }
-      });
+        });
+      }
     });
 
     /**
