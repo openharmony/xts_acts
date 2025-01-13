@@ -22,7 +22,7 @@ function expectSuccess(): void {
 }
 
 function sleep(ms: number) {
-    return new promise<void>(resolve => setTimeout(resolve, ms));
+    return new Promise<void>(resolve => setTimeout(resolve, ms));
 }
 
 function expectFail(info: string = ''): void {
