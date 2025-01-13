@@ -429,7 +429,6 @@ export default function MultimodalInputConsumerTest() {
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
             console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
             ExpectTrue(data.length == 0);
-            done();
           });
           inputConsumer.off("hotkeyChange", hotkeyOptions, hotkeyCallback);
           done();
