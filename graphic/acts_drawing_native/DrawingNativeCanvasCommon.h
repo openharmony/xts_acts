@@ -21,7 +21,7 @@
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeCanvasTest : public testing::Test {};
+// class DrawingNativeCanvasTest : public testing::Test {};
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

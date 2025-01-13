@@ -45,7 +45,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingRecordCmdUtilsBeginRecordingTest : public testing::Test {};
+class DrawingRecordCmdUtilsBeginRecordingTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingRecordCmdUtilsBeginRecordingTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingRecordCmdUtilsBeginRecordingTest errorCodeReset before each test case." << std::endl;
+    }
+};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0102
@@ -59,6 +69,8 @@ HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordi
     // 1. The first and fourth parameters of the OH-Drawing-RecordCmdUtelsBeginRecording interface are not empty
     //with width and height being 0 and -1
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Canvas** canvass = &canvas;
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;
     OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
@@ -80,6 +92,8 @@ HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordi
 HWTEST_F(DrawingRecordCmdUtilsBeginRecordingTest, testRecordCmdUtilsBeginRecordingCalls, TestSize.Level2) {
     // 1. Call OH-Drawing-RecordCmdUtelsBeginRecording 10 times
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_Canvas** canvass = &canvas;
     OH_Drawing_RecordCmdUtils* recordcmd1 = OH_Drawing_RecordCmdUtilsCreate ();
     OH_Drawing_ErrorCode drawingErrorCode = OH_DRAWING_SUCCESS;

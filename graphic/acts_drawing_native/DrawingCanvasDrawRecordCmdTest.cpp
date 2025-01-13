@@ -48,7 +48,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingCanvasDrawRecordCmdTest : public testing::Test {};
+class DrawingCanvasDrawRecordCmdTest : public testing::Test {
+    protected:
+    // 在每个测试用例执行前调用
+    void SetUp() override
+    {
+        // 设置代码
+        std::cout << "DrawingCanvasDrawRecordCmdTest Setup code called before each test case." << std::endl;
+        OH_Drawing_ErrorCodeReset();
+        std::cout << "DrawingCanvasDrawRecordCmdTest errorCodeReset before each test case." << std::endl;
+    }
+};
 void drawCircle1(OH_Drawing_Canvas *canvas, int position)
 {
     int x = 10;
@@ -99,6 +109,8 @@ OH_Drawing_RecordCmd *threadFunctionTest6()
  */
 HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNormal, TestSize.Level0) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_RecordCmd *picture = nullptr;
     std::thread thread([&picture]() { picture = threadFunctionTest6(); });
     thread.join();
@@ -118,6 +130,8 @@ HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNormal, TestSize
  */
 HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdABNormal, TestSize.Level0) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // add assert
+    EXPECT_NE(canvas, nullptr);
     OH_Drawing_RecordCmd *picture = nullptr;
     std::thread thread([&picture]() { picture = threadFunctionTest6(); });
     thread.join();

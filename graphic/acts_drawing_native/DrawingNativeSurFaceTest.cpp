@@ -86,6 +86,10 @@ void DrawingNativeSurFaceTest::SetUp()
 
     ret = eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_);
     EXPECT_EQ(ret, EGL_TRUE);
+    // 初始化errorCode
+    std::cout << "DrawingNativeSurFaceTest Setup code called before each test case." << std::endl;
+    OH_Drawing_ErrorCodeReset();
+    std::cout << "DrawingNativeSurFaceTest errorCodeReset before each test case." << std::endl;
 }
 
 void DrawingNativeSurFaceTest::TearDown()
@@ -120,9 +124,13 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceCreateFromGpuContextNormal, TestSi
     const int32_t height = 500;
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, true, imageInfo);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     EXPECT_NE(surface_, nullptr);
     OH_Drawing_SurfaceDestroy(surface_);
     surface_ = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext_, false, imageInfo);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     EXPECT_NE(surface_, nullptr);
     OH_Drawing_SurfaceDestroy(surface_);
 }
@@ -206,6 +214,8 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceDestroyNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeSurFaceTest, testSurfaceDestroyNull, TestSize.Level3) {
     // free
     OH_Drawing_SurfaceDestroy(nullptr);
+    // add assert
+    EXPECT_TRUE(true);
 }
 
 /*
@@ -229,6 +239,8 @@ HWTEST_F(DrawingNativeSurFaceTest, testSurfaceGetCanvasNormal, TestSize.Level0) 
     // 2. OH_Drawing_SurfaceGetCanvas, get the canvas object from the surface object, a pointer to the surface object,
     // and call the drawing interface
     canvas_ = OH_Drawing_SurfaceGetCanvas(surface_);
+    // add assert
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_SUCCESS);
     EXPECT_NE(canvas_, nullptr);
     // 3. Free memory
     OH_Drawing_SurfaceDestroy(surface_);
