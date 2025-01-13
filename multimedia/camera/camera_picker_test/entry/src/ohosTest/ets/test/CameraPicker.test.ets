@@ -64,7 +64,7 @@ let getCameraSupportDevicesArray = () => {
 }
 
 let whetherToExecuteUseCase = () => {
-  if (isUseCameraAvailable && isSupportedCameras) {
+  if (cameraAvailable && isSupportedCameras) {
     isExecute = true;
   } else {
     isExecute = false;
