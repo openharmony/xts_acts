@@ -1,6 +1,7 @@
 {
   "src": [
-    "testability/pages/WebInitTest"
+    "testability/pages/WebInitTest",
+	"testability/pages/createPdf"
   ]
 }
 

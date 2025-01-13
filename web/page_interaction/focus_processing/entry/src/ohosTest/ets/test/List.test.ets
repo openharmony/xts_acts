@@ -15,9 +15,12 @@
 import webController from './WebController.test'
 import OnRequestSelected from './OnRequestSelected.test'
 import webInitTest from './WebInitTest.test'
+import blurMode from './blurMode.test'
+
 
 export default function testsuite() {
   webInitTest()
   OnRequestSelected()
   webController()
+  blurMode();
 }

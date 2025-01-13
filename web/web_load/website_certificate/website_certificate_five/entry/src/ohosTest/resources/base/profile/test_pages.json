@@ -1,5 +1,6 @@
 {
   "src": [
-    "testability/pages/web"
+    "testability/pages/web",
+	"testability/pages/certChainData"
   ]
 }
