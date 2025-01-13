@@ -31,7 +31,7 @@ namespace Drawing {
 class DrawingNativeMatrixPart2Test : public testing::Test {
     protected:
     // 在每个测试用例执行前调用
-    void SetUp() override 
+    void SetUp() override
     {
         // 设置代码
         std::cout << "DrawingNativeMatrixPart2Test Setup code called before each test case." << std::endl;
