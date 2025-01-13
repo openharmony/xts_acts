@@ -16,9 +16,15 @@
 import composeListItemPageTest from './composeListItem/composeListItemPageTest.test';
 import composeListItemOperateItemSymbolStyle from './composeListItem/composeListItemOperateItemSymbolStyle.test';
 import toolBarAccessibilityTest from './toolBar/tooBarAccessibilityPage.test';
+import progressButtonV2PageTest from './progressButtonV2/progressButtonV2Page.test';
+import subHeaderV2PageTest from './subHeaderV2/subHeaderV2Page.test';
+import toolBarV2PageTest from './toolBarV2/toolBarV2Page.test';
 
 export default function testsuite() {
   composeListItemPageTest();
   composeListItemOperateItemSymbolStyle();
   toolBarAccessibilityTest();
+  progressButtonV2PageTest();
+  subHeaderV2PageTest();
+  toolBarV2PageTest();
 }
