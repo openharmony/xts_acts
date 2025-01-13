@@ -87,6 +87,7 @@ group("ability_runtime") {
       "capiabilityruntime:ActsCapiAbilityRuntimeTest",
       "capichildprocess:ActsCapiChildProcessTest",
       "context:context",
+      "contextprocessname:contextprocessname",
       "fa:fa",
       "faapicover:faapicover",
       "featureability:featureability",
