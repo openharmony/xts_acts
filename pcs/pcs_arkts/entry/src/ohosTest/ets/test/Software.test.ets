@@ -29,7 +29,6 @@ export default function softwareTest() {
     beforeAll(async (done: Function) => {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       let driver = Driver.create()
       await driver.delayMs(2000)
       done()
@@ -113,7 +112,8 @@ export default function softwareTest() {
     it('testCoreApplicationWants0100', 0, async (done: Function) => {
       let driver = Driver.create()
       let filepickerWantInfo1: Want = {
-        action: 'ohos.want.action.OPEN_FILE'
+        uri: 'http://assist.arkts.pcs.acts.com',
+        type: "pcs/test"
       }
       expect(await AbilityUtils.startAbilityImplicitly(filepickerWantInfo1, abilityContext)).assertTrue()
       await driver.delayMs(2000)
