@@ -80,7 +80,12 @@ describe('RelativeTimeFormatInIntlTest', function () {
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.format(100,'second');
         console.log('i18n_test_relativetimeformat_0200 ' + value);
-        expect(value).assertEqual('in 100 seconds');
+        let devType = deviceInfo.deviceType;
+        if (devType == 'wearable') {
+            expect(value).assertEqual('in 100 sec.');
+        } else {
+            expect(value).assertEqual('in 100 seconds');
+        }
     })
 
     /* *
@@ -93,7 +98,12 @@ describe('RelativeTimeFormatInIntlTest', function () {
         let relativetimefmt = new Intl.RelativeTimeFormat('en', undefined);
         let value = relativetimefmt.format(100,'second');
         console.log('i18n_test_relativetimeformat_0220 ' + value);
-        expect(value).assertEqual('in 100 seconds');
+        let devType = deviceInfo.deviceType;
+        if (devType == 'wearable') {
+            expect(value).assertEqual('in 100 sec.');
+        } else {
+            expect(value).assertEqual('in 100 seconds');
+        }
     })
 
     /* *
@@ -106,7 +116,12 @@ describe('RelativeTimeFormatInIntlTest', function () {
         let relativetimefmt = new Intl.RelativeTimeFormat('en', null);
         let value = relativetimefmt.format(100,'second');
         console.log('i18n_test_relativetimeformat_0240 ' + value);
-        expect(value).assertEqual('in 100 seconds');
+        let devType = deviceInfo.deviceType;
+        if (devType == 'wearable') {
+            expect(value).assertEqual('in 100 sec.');
+        } else {
+            expect(value).assertEqual('in 100 seconds');
+        }
     })
 
     /* *
@@ -125,7 +140,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0400
     * @tc.name    format the relativetime with 100 second, get the formatToParts value
-    * @tc.desc    check the formatToParts value 
+    * @tc.desc    check the formatToParts value
     */
     it('i18n_test_relativetimeformat_0400', 0, function () {
         console.log('i18n_test_relativetimeformat_0400 ' + 'start');
@@ -158,7 +173,12 @@ describe('RelativeTimeFormatInIntlTest', function () {
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.resolvedOptions();
         console.log('i18n_test_relativetimeformat_0600 ' + value);
-        expect(value.style).assertEqual('long');
+        let devType = deviceInfo.deviceType;
+        if (devType == 'wearable') {
+            expect(value.style).assertEqual('narrow');
+        } else {
+            expect(value.style).assertEqual('long');
+        }
     })
 
     /* *
