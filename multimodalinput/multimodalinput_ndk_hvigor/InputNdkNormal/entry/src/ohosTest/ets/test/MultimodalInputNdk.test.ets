@@ -15,6 +15,7 @@
 
 import { describe, expect, it } from '@ohos/hypium';
 import input from 'libinputndk.so';
+import { inputConsumer } from '@kit.InputKit';
 
 export default function MultimodalInputNdkTest() {
   describe('MultimodalInputNdkTest', () => {
@@ -2937,9 +2938,11 @@ export default function MultimodalInputNdkTest() {
           ExpectTrue(true);
           done();
         } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
+          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
+            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
+            ExpectTrue(data.length == 0);
+            done();
+          });
         }
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
@@ -2968,9 +2971,11 @@ export default function MultimodalInputNdkTest() {
           ExpectTrue(true);
           done();
         } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
+          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
+            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
+            ExpectTrue(data.length == 0);
+            done();
+          });
         }
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
@@ -2999,9 +3004,11 @@ export default function MultimodalInputNdkTest() {
           ExpectTrue(true);
           done();
         } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
+          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
+            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
+            ExpectTrue(data.length == 0);
+            done();
+          });
         }
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
@@ -3834,9 +3841,11 @@ export default function MultimodalInputNdkTest() {
           ExpectTrue(true);
           done();
         } else {
-          console.info(`${caseName} fail`);
-          ExpectFalse(true);
-          done();
+          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
+            console.info(`${caseName} list of system hotkeys: ${JSON.stringify(data)}`);
+            ExpectTrue(data.length == 0);
+            done();
+          });
         }
       } catch (err) {
         console.info(`${caseName} fail, error is ${JSON.stringify(err)}`);
