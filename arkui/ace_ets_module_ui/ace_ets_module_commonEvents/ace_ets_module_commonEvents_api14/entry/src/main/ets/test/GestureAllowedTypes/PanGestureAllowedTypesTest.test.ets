@@ -150,7 +150,7 @@ export default function PanGestureAllowedTypesTest() {
       let button3 = await driver.findComponent(ON.id('Invalid_type'));
       await button3.click();
       await CommonFunc.sleep(3000);
-      let text9 = getInspectorByKey('PanGestureAllowedTypes_Result');
+      let text9 = getInspectorByKey('PanGestureAllowedTypes_result');
       let obj9: ESObject = JSON.parse(text9);
       console.log('PanGestureAllowedTypesTest_0010 obj9 $attrs content',obj9.$attrs.content,obj9)
       expect(obj9.$attrs.content).assertEqual('allowed types default');
@@ -159,7 +159,7 @@ export default function PanGestureAllowedTypesTest() {
       await CommonFunc.sleep(1000);
       await driver.swipe(Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2),Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2))
       await CommonFunc.sleep(3000);
-      let text10 = getInspectorByKey('PanGestureAllowedTypes_Result');
+      let text10 = getInspectorByKey('PanGestureAllowedTypes_result');
       let obj10: ESObject = JSON.parse(text10);
       console.log('PanGestureAllowedTypesTest_0010 obj10 $attrs content',obj10.$attrs.content,obj10)
       expect(obj10.$attrs.content).assertEqual('allowed types success');
