@@ -184,7 +184,7 @@ function expectTrue(exp: boolean, info: string = ''): void {
   }
 }
 
-funtion sleep(ms: number) {
+function sleep(ms: number) {
     return new Promise<void>(resolve => setTimeout(resolve, ms));
 }
 
