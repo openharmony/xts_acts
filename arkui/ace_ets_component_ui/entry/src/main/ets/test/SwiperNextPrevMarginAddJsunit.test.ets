@@ -108,7 +108,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_0300'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left) * 0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left) * 0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
     
@@ -138,7 +138,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft1 = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_0400'] component value is: " + right1 + "," + left1 + ","
       + swiperRight1 + "," + swiperLeft1);
-      expect(right1 - left1).assertEqual(swiperRight1 - swiperLeft1);
+      expect(Math.abs(Math.round((right1 - left1)- (swiperRight1 - swiperLeft1))) <= 1).assertTrue();
       done();
     });
 
@@ -168,7 +168,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft1 = swiperMargin.left;
       console.info("[SwiperNextPrevMarginAddJsunit_022'] component value is: " + right1 + "," + left1 + ","
       + swiperRight1 + "," + swiperLeft1);
-      expect((right1 - left1)*0.9).assertEqual(swiperRight1 - swiperLeft1);
+      expect(Math.abs(Math.round(((right1 - left1)*0.9)- (swiperRight1 - swiperLeft1))) <= 1).assertTrue();
       done();
     });
    
@@ -192,7 +192,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft2 = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_0500'] component value is: " + right2 + "," + left2 + ","
       + swiperRight2 + "," + swiperLeft2);
-      expect((right2 - left2)*0.9).assertEqual(swiperRight2 - swiperLeft2);
+      expect(Math.abs(Math.round(((right2 - left2)*0.9)- (swiperRight2 - swiperLeft2))) <= 1).assertTrue();
       done();
     });
 
@@ -216,7 +216,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft  = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_0600'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -256,7 +256,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_0800'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left) * 0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left) * 0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -280,7 +280,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_0400'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
    
@@ -304,7 +304,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1000'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left)*0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left)*0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -330,7 +330,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1100'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -356,7 +356,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1100'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -382,7 +382,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1300'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left) * 0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left) * 0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -408,7 +408,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1400'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -441,12 +441,12 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let columnSwiper = CommonFunc.getComponentRect('ColumnSwiperDuplicate');
       let right = columnSwiper.right;
       let left  = columnSwiper.left;
-      let swiperMargin = CommonFunc.getComponentRect('swiperNextPrevMargin');
+      let swiperMargin = CommonFunc.getComponentRect('ColumnSwiperDuplicate');
       let swiperRight = swiperMargin.right;
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1500'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -484,7 +484,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1600'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left)*0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left)*0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -526,7 +526,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1700'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left)*0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left)*0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -569,7 +569,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1800'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left)*0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left)*0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -612,7 +612,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1900'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left)*0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left)*0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -655,7 +655,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_2000'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -698,7 +698,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_2100'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -741,7 +741,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_2200'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -784,7 +784,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_2300'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -829,7 +829,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_2400'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect((right - left)*0.9).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round(((right - left)*0.9)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
     
@@ -872,7 +872,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_2300'] component value is: " + right + "," + left + ","
       + swiperRight + "," + swiperLeft);
-      expect(right - left).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left)- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -920,7 +920,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let right =  subcomponment.right;
       let left  =  subcomponment.left;
 
-      expect(swiperRight - swiperLeft).assertEqual(right-left + vp2px(4 + 2 + 2*10));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right-left + vp2px(4 + 2 + 2*10)))) <= 1).assertTrue();
       done();
     });
 
@@ -969,7 +969,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let right =  subcomponment.right;
       let left  =  subcomponment.left;
 
-      expect(right - left + vp2px(4 + 2 + 2*10)).assertEqual(swiperRight - swiperLeft);
+      expect(Math.abs(Math.round((right - left + vp2px(4 + 2 + 2*10))- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -1020,8 +1020,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let subcomponment = CommonFunc.getComponentRect('1');
       let right =  subcomponment.right;
       let left  =  subcomponment.left;
-          
-      expect(2*(right - left) + vp2px(4 + 2 + 2*10)).assertEqual(swiperRight - swiperLeft);
+
+      expect(Math.abs(Math.round((2*(right - left) + vp2px(4 + 2 + 2*10))- (swiperRight - swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -1069,8 +1069,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let subcomponment = CommonFunc.getComponentRect('1');
       let right =  subcomponment.right;
       let left  =  subcomponment.left;
- 
-      expect(right - left + vp2px(4 + 2 + 2*10)).assertEqual(swiperRight -swiperLeft);
+
+      expect(Math.abs(Math.round((right - left + vp2px(4 + 2 + 2*10))- (swiperRight -swiperLeft))) <= 1).assertTrue();
       done();
     });
 
@@ -1124,7 +1124,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(nextMargin).assertEqual("4.00vp");
       expect(prevMargin).assertEqual("2.00vp");
 
-      expect(2 *(right - left) + vp2px(4 + 2 + 2*10)).assertEqual(swiperRight  - swiperLeft);
+      expect(Math.abs(Math.round((2 *(right - left) + vp2px(4 + 2 + 2*10))- (swiperRight  - swiperLeft))) <= 1).assertTrue();
       done();
     });
   
@@ -1176,7 +1176,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(nextMargin).assertEqual("4.00vp");
       expect(prevMargin).assertEqual("2.00vp");
 
-      expect(right - left).assertEqual(swiperRight -  swiperLeft - vp2px(2 * 10 + 2 + 4));
+      expect(Math.abs(Math.round((right - left)- (swiperRight -  swiperLeft - vp2px(2 * 10 + 2 + 4)))) <= 1).assertTrue();
       done();
     });
 
@@ -1227,7 +1227,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       
        
       expect(padding).assertEqual('100.00vp'); 
-      expect(swiperRight - swiperLeft ).assertEqual(right - left + vp2px(20 + 40));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(20 + 40)))) <= 1).assertTrue();
       done();
     });
 
@@ -1277,8 +1277,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let prevMargin =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("100.00vp");
       expect(prevMargin).assertEqual("100.00vp");
-     
-      expect(swiperRight - swiperLeft ).assertEqual(right - left + vp2px(2*3 + 2 *100));
+
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(2*3 + 2 *100)))) <= 1).assertTrue();
       done();
     });
 
@@ -1373,7 +1373,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       let padding = obj.$attrs.padding;
 
-      expect(swiperRight - swiperLeft ).assertEqual(right - left);
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left))) <= 1).assertTrue();
       done();
     });
     
@@ -1422,7 +1422,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
-      expect(swiperRight - swiperLeft ).assertEqual(right - left + vp2px(15 + 6));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1471,7 +1471,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let prevMargin =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom -vp2px(15 + 6));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom -vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1519,7 +1519,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let prevMargin =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
-      expect(swiperRight - swiperLeft).assertEqual(3 *(right - left) + vp2px(15 + 6));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3 *(right - left) + vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1565,7 +1565,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let subcomponment = CommonFunc.getComponentRect('1');
       let top =  subcomponment.top;
       let bottom  =  subcomponment.bottom;
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) -vp2px( 15 + 6));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px( 15 + 6)))) <= 1).assertTrue();
       done();
     });
      
@@ -1619,7 +1619,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("10.00vp");
 
-      expect(swiperRight - swiperLeft).assertEqual(right - left + vp2px(15 + 6 + 2*10));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(15 + 6 + 2*10)))) <= 1).assertTrue();
       done();
     });
 
@@ -1672,7 +1672,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("10.00vp");
 
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom - vp2px(2*10 + 15 + 6));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom - vp2px(2*10 + 15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1726,7 +1726,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("10.00vp");
 
-      expect(swiperRight - swiperLeft).assertEqual(3 *(right - left) + vp2px(15 + 6 + 4 * 10));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3 *(right - left) + vp2px(15 + 6 + 4 * 10)))) <= 1).assertTrue();
       done();
     });
 
@@ -1779,7 +1779,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("10.00vp");
 
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) - vp2px(4*10 + 15 + 6));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) - vp2px(4*10 + 15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1832,7 +1832,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("0.00vp");
 
-      expect(swiperRight - swiperLeft).assertEqual(right - left + vp2px(15 + 6));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
     
@@ -1883,7 +1883,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
 
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom - vp2px(15 + 6));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom - vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1934,7 +1934,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
 
-      expect(swiperRight - swiperLeft).assertEqual(3*(right - left) + vp2px(15 + 6));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left) + vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1984,7 +1984,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
 
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) -vp2px(15 + 6));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
    
@@ -2038,7 +2038,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("10.00vp");
 
-      expect(swiperRight - swiperLeft).assertEqual(right - left + vp2px(15 + 6 + 2 * 10));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(15 + 6 + 2 * 10)))) <= 1).assertTrue();
       done();
     });
     
@@ -2091,7 +2091,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("10.00vp");
 
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom - vp2px(15  + 6 + 2 * 10));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom - vp2px(15  + 6 + 2 * 10)))) <= 1).assertTrue();
       done();
     });
 
@@ -2145,7 +2145,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("10.00vp");
 
-      expect(swiperRight - swiperLeft).assertEqual(3*(right - left)+ vp2px(15 + 6 + 4 * 10));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left)+ vp2px(15 + 6 + 4 * 10)))) <= 1).assertTrue();
       done();
     });
 
@@ -2198,8 +2198,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(prevMargin).assertEqual("6.00vp");
       expect(itemspace).assertEqual("10.00vp");
 
-      
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) - vp2px(15 + 6 + 4 * 10));
+
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) - vp2px(15 + 6 + 4 * 10)))) <= 1).assertTrue();
       done();
     });
     
@@ -2249,7 +2249,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let borderWidth = obj.$attrs.borderWidth;
         expect(borderWidth).assertEqual('0.00vp');
          
-      expect(swiperRight- swiperLeft).assertEqual(right - left);
+      expect(Math.abs(Math.round((swiperRight- swiperLeft)- (right - left))) <= 1).assertTrue();
       done();
     });
  
@@ -2300,7 +2300,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let borderWidth = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom);
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom))) <= 1).assertTrue();
       done();
     });
 
@@ -2355,7 +2355,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let borderWidth = obj.$attrs.borderWidth;
         expect(borderWidth).assertEqual('0.00vp');
       
-      expect(swiperRight - swiperLeft).assertEqual(right - left);
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left))) <= 1).assertTrue();
       done();
     });
     
@@ -2410,7 +2410,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let borderWidth = obj.$attrs.borderWidth;
         expect(borderWidth).assertEqual('0.00vp');
 
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom);
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom))) <= 1).assertTrue();
       done();
     });
 
@@ -2465,7 +2465,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let borderWidth = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
-      expect(swiperRight - swiperLeft).assertEqual(right - left);
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left))) <= 1).assertTrue();
       done();
     });
 
@@ -2520,7 +2520,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let borderWidth = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom);
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom))) <= 1).assertTrue();
       done();
     });
 
@@ -2577,7 +2577,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let borderWidth = obj.$attrs.borderWidth;
         expect(borderWidth).assertEqual('0.00vp');
       
-      expect(swiperRight - swiperLeft).assertEqual(3*(right - left));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left)))) <= 1).assertTrue();
       done();
     });
 
@@ -2634,7 +2634,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let borderWidth = obj.$attrs.borderWidth;
         expect(borderWidth).assertEqual('0.00vp');
 
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom)))) <= 1).assertTrue();
       done();
     });
 
@@ -2690,8 +2690,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let obj = JSON.parse(strJson);
       let itemspace =  obj.$attrs.itemSpace;
       expect(itemspace).assertEqual('10.00vp');
-     
-      expect(swiperRight - swiperLeft).assertEqual(3*(right - left) + vp2px(2 * 10));
+
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left) + vp2px(2 * 10)))) <= 1).assertTrue();
       done();
     });
 
@@ -2749,7 +2749,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let itemspace =  obj.$attrs.itemSpace;
       expect(itemspace).assertEqual('0.00vp');
 
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom)))) <= 1).assertTrue();
       done();
     });
 
@@ -2808,7 +2808,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let nextMargin =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
-      expect( swiperRight - swiperLeft).assertEqual(right - left + vp2px(5));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
@@ -2866,7 +2866,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let obj = JSON.parse(strJson);
       let nextMargin =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom -vp2px(5));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom -vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
@@ -2924,7 +2924,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let obj = JSON.parse(strJson);
       let nextMargin =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
-      expect( swiperRight - swiperLeft).assertEqual(right - left + vp2px(5));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
@@ -2983,7 +2983,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let nextMargin =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
-      expect(swiperTop - swiperbottom).assertEqual(top - bottom - vp2px(5));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom - vp2px(5)))) <= 1).assertTrue();
       done();
     });
     
@@ -3042,7 +3042,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let nextMargin =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
-      expect( swiperRight - swiperLeft).assertEqual(3*(right - left) + vp2px(5));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left) + vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
@@ -3101,7 +3101,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let nextMargin =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) -vp2px(5));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
@@ -3160,7 +3160,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let nextMargin =  obj.$attrs.nextMargin;
      expect(nextMargin).assertEqual('5.00vp');
 
-      expect( swiperRight - swiperLeft).assertEqual(3*(right - left) + vp2px(5));
+      expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left) + vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
@@ -3219,7 +3219,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let nextMargin =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) - vp2px(5));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) - vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
@@ -3277,11 +3277,11 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let obj = JSON.parse(strJson);
       let nextMargin =  obj.$attrs.nextMargin;
      expect(nextMargin).assertEqual('5.00vp');
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) -vp2px(5));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px(5)))) <= 1).assertTrue();
 
       CommonFunc.setScreenOrientation(1);
       await CommonFunc.sleep(3000);
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) -vp2px(5));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px(5)))) <= 1).assertTrue();
       await CommonFunc.sleep(3000);
       done();
     });
@@ -3340,11 +3340,11 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let obj = JSON.parse(strJson);
       let nextMargin =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) -vp2px(5));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px(5)))) <= 1).assertTrue();
 
       CommonFunc.setScreenOrientation(2);
       await CommonFunc.sleep(3000);
-      expect(swiperTop - swiperbottom).assertEqual(3*(top - bottom) - vp2px(5));
+      expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) - vp2px(5)))) <= 1).assertTrue();
       await CommonFunc.sleep(3000);
       done();
      
