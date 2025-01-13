@@ -14,8 +14,12 @@
  */
 import ListSwipeTest from './ListTest/ListSwipe.test'
 import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
+import TabBarComponentContent from './TabsTest/TabBarComponentContent.test'
+import WaterComponentContent from './WaterFlowTest/WaterComponentContent.test'
 
 export default function testsuite() {
   ListSwipeTest();
   ScrollEffectEdge();
+  TabBarComponentContent();
+  WaterComponentContent();
 }
