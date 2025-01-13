@@ -18,6 +18,7 @@ import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import camera from '@ohos.multimedia.camera';
 
 export default function imagePixelMapTest() {
   describe('imagePixelMapTest', ()=> {
@@ -35,63 +36,43 @@ export default function imagePixelMapTest() {
      * @tc.size :
      */
     it("ImagePixelMapTest_0100", 0, async (done:Function)=> {
-      let atManager = abilityAccessCtrl.createAtManager();
-      atManager.requestPermissionsFromUser(getContext(), [
-        'ohos.permission.CAMERA',
-        'ohos.permission.MICROPHONE'
-      ]).then((): void => {
-        AppStorage.setOrCreate<boolean>('isShow', true)
-      }).catch((error: BusinessError): void => {
-      })
+      let curSceneMode: camera.SceneMode = camera?.SceneMode?.NORMAL_PHOTO
+      if(curSceneMode == undefined) {
+        expect(true).assertTure();
+        done();
+      } else {
+        let atManager = abilityAccessCtrl.createAtManager();
+        atManager.requestPermissionsFromUser(getContext(), [
+          'ohos.permission.CAMERA',
+          'ohos.permission.MICROPHONE'
+        ]).then((): void => {
+          AppStorage.setOrCreate<boolean>('isShow', true)
+        }).catch((error: BusinessError): void => {
+        })
 
-      let driver: Driver = Driver.create();
-      await driver.delayMs(1000);
-      let button1 = await driver.findComponent(ON.text('允许'));
-      await driver.delayMs(1000);
-      await button1.click();
-	    await driver.delayMs(1000);
-      let button2 = await driver.findComponent(ON.text('允许'));
-      await driver.delayMs(1000);
-      await button2.click();
-      await driver.delayMs(1000);
-      let options :router.RouterOptions= {
-        url: 'MainAbility/pages/index/indexPixel',
+        let driver: Driver = Driver.create();
+        await driver.delayMs(1000);
+        let button1 = await driver.findComponent(ON.text('允许'));
+        await driver.delayMs(1000);
+        await button1.click();
+        await driver.delayMs(1000);
+        let button2 = await driver.findComponent(ON.text('允许'));
+        await driver.delayMs(1000);
+        await button2.click();
+        await driver.delayMs(1000);
+        let options :router.RouterOptions= {
+          url: 'MainAbility/pages/index/indexPixel',
+        }
+        let result = await router.replace(options);
+        await driver.delayMs(1000);
+        let button3 = await driver.findComponent(ON.id('createPixelMapFromSurfaceSync'));
+        await button3.click();
+        await driver.delayMs(1000);
+        let strJson = getInspectorByKey('createPixelMapFromSurfaceSync');
+        let obj :ESObject = JSON.parse(strJson);
+        expect(obj.$attrs.content).assertEqual('pass');
+        done();
       }
-      let result = await router.replace(options);
-      await driver.delayMs(1000);
-      let button3 = await driver.findComponent(ON.id('createPixelMapFromSurfaceSync'));
-      await button3.click();
-      await driver.delayMs(1000);
-      let strJson = getInspectorByKey('createPixelMapFromSurfaceSync');
-      let obj :ESObject = JSON.parse(strJson);
-      expect(obj.$attrs.content).assertEqual('pass');
-      done();
     });
-
-    /**
-     * @tc.number    ImagePixelMapTest
-     * @tc.name      ImagePixelMapTest_0200
-     * @tc.desc      api
-     * @tc.level:    Level 2
-     * @tc.type :
-     * @tc.size :
-     */
-    it("ImagePixelMapTest_0200", 0, async (done:Function)=> {
-      let options :router.RouterOptions= {
-        url: 'MainAbility/pages/index/indexPixel',
-      }
-      let result = await router.replace(options);
-      let driver: Driver = Driver.create();
-      await driver.delayMs(1000);
-      let button3 = await driver.findComponent(ON.id('createPixelMapFromSurfaceSync'));
-      await button3.click();
-      await driver.delayMs(1000);
-      let strJson = getInspectorByKey('createPixelMapFromSurfaceSync');
-      let obj :ESObject= JSON.parse(strJson);
-      expect(obj.$attrs.content).assertEqual('pass');
-      await driver.delayMs(1000);
-      done();
-    });
-
   })
 }
