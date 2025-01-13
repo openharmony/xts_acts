@@ -154,7 +154,7 @@ export default function LongPressGestureHandlerAllowedTypesTest() {
       let button3 = await driver.findComponent(ON.id('Invalid_type'));
       await button3.click();
       await CommonFunc.sleep(3000);
-      let text9 = getInspectorByKey('LongPressGestureHandlerAllowedTypes_Result');
+      let text9 = getInspectorByKey('LongPressGestureHandlerAllowedTypes_result');
       let obj9: ESObject = JSON.parse(text9);
       console.log('LongPressGestureHandlerAllowedTypesTest_0010 obj9 $attrs content',obj9.$attrs.content,obj9)
       expect(obj9.$attrs.content).assertEqual('allowed types default');
@@ -163,7 +163,7 @@ export default function LongPressGestureHandlerAllowedTypesTest() {
       await CommonFunc.sleep(1000);
       await driver.longClick(Math.round(areaObj.left + areaWidth/2),Math.round(areaObj.top + areaHeight/2));
       await CommonFunc.sleep(3000);
-      let text10 = getInspectorByKey('LongPressGestureHandlerAllowedTypes_Result');
+      let text10 = getInspectorByKey('LongPressGestureHandlerAllowedTypes_result');
       let obj10: ESObject = JSON.parse(text10);
       console.log('LongPressGestureHandlerAllowedTypesTest_0010 obj10 $attrs content',obj10.$attrs.content,obj10)
       expect(obj10.$attrs.content).assertEqual('allowed types success');
