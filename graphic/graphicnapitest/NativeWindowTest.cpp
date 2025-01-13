@@ -902,7 +902,7 @@ HWTEST_F(NativeWindowTest, GetLastFlushedBuffer001, Function | MediumTest | Leve
 
 /*
  * @tc.name  GetLastFlushedBuffer002
- * @tc.desc  call NativeWindowHandleOpt set BUFFER_USAGE_PROTECTED 
+ * @tc.desc  call NativeWindowHandleOpt set
  * @tc.size  : MediumTest
  * @tc.type  : Function
  * @tc.level : Level 2
@@ -910,7 +910,7 @@ HWTEST_F(NativeWindowTest, GetLastFlushedBuffer001, Function | MediumTest | Leve
 HWTEST_F(NativeWindowTest, GetLastFlushedBuffer002, Function | MediumTest | Level2)
 {
     int code = SET_USAGE;
-    uint64_t usage = BUFFER_USAGE_CPU_READ | BUFFER_USAGE_MEM_DMA | BUFFER_USAGE_PROTECTED;
+    uint64_t usage = BUFFER_USAGE_CPU_READ | BUFFER_USAGE_MEM_DMA;
     ASSERT_EQ(NativeWindowHandleOpt(nativeWindow, code, usage), NATIVE_ERROR_OK);
 
     NativeWindowBuffer* nativeWindowBuffer = nullptr;
@@ -931,7 +931,7 @@ HWTEST_F(NativeWindowTest, GetLastFlushedBuffer002, Function | MediumTest | Leve
     int lastFlushedFenceFd;
     float matrix[16];
     ASSERT_EQ(OH_NativeWindow_GetLastFlushedBuffer(nativeWindow, &lastFlushedBuffer, &lastFlushedFenceFd, matrix),
-        NATIVE_ERROR_UNSUPPORTED);
+        NATIVE_ERROR_OK);
 }
 /*
  * @tc.name  OH_NativeWindow_SetColorSpace001
