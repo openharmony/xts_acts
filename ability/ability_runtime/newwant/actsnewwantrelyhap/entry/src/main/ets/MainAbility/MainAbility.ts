@@ -16,127 +16,119 @@
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent'
 
-function sleep(delay) {
-    let start = new Date().getTime();
-    while (true) {
-        if (new Date().getTime() - start > delay) {
-            break;
-        }
-    }
-}
-
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
-        console.log("ACTS_NewWant MainAbility onCreate")
+        console.log("ACTS_NewWant MainAbility onCreate(newwanthapa)")
         globalThis.abilityWant = want;
         commonEvent.publish("onCreateMain_To_Test_CommonEvent", () => {
-            console.log("ACTS_NewWant Publish CallBack onCreateMain_To_Test_CommonEvent")
+            console.log("ACTS_NewWant Publish CallBack onCreateMain_To_Test_CommonEvent(newwanthapa)")
         });
     }
 
     onDestroy() {
         // Ability is destroying, release resources for this ability
-        console.log("ACTS_NewWant MainAbility onDestroy")
+        console.log("ACTS_NewWant MainAbility onDestroy(newwanthapa)")
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
-        console.log("ACTS_NewWant MainAbility onWindowStageCreate")
+        console.log("ACTS_NewWant MainAbility onWindowStageCreate(newwanthapa)")
         globalThis.hapMainAbilityContext = this.context
         windowStage.setUIContent(this.context, "pages/index/index", null)
 
         commonEvent.publish("onWindowStageCreateMain_To_Test_CommonEvent", () => {
-            console.log("ACTS_NewWant Publish CallBack onWindowStageCreateMain_To_Test_CommonEvent")
+            console.log("ACTS_NewWant Publish CallBack onWindowStageCreateMain_To_Test_CommonEvent(newwanthapa)")
         });
     }
 
     onWindowStageDestroy() {
         // Main window is destroyed, release UI related resources
-        console.log("ACTS_NewWant MainAbility onWindowStageDestroy")
+        console.log("ACTS_NewWant MainAbility onWindowStageDestroy(newwanthapa)")
     }
 
     onForeground() {
-        sleep(1000)
         // Ability has brought to foreground
-        console.log("ACTS_NewWant MainAbility onForeground")
-        if (globalThis.abilityWant.action == 'startStandard0400') {
-            globalThis.hapMainAbilityContext.startAbility({
-                bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapa.SecondAbility",
-                action: "restartSingleton"
-            }, (error, data) => {
-                console.log('ACTS_NewWant MainAbility onForeground - startAbility restart singleton: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            })
-        }
-        if (globalThis.abilityWant.action == 'startStandard0300') {
-            globalThis.hapMainAbilityContext.startAbility({
-                bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapa.SecondAbility",
-                action: "startSingleton0300"
-            }, (error, data) => {
-                console.log('ACTS_NewWant MainAbility onForeground - startAbility restart singleton: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            })
-        }
-        if (globalThis.abilityWant.action == 'startMainAbility0700') {
-            globalThis.hapMainAbilityContext.startAbility({
-                bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapa.SecondAbility",
-                action: "restartSecondAbility0700"
-            }, (error, data) => {
-                console.log('ACTS_NewWant MainAbility onForeground - startAbility startServiceAbility: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            })
-        }
-        if (globalThis.abilityWant.action == 'startMainAbility0800') {
-            globalThis.hapMainAbilityContext.startAbility({
-                bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapa.SecondAbility",
-                action: "startSecondAbility0800"
-            }, (error, data) => {
-                console.log('ACTS_NewWant MainAbility onForeground - startAbility startServiceAbility: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            })
-        }
-        commonEvent.publish("onForegroundMain_To_Test_CommonEvent", () => {
-            console.log("ACTS_NewWant MainAbility Publish CallBack onForegroundMain_To_Test_CommonEvent")
-        });
+        setTimeout(() => {
+            console.log("ACTS_NewWant MainAbility onForeground(newwanthapa)")
+            if (globalThis.abilityWant.action == 'startStandard0400') {
+                globalThis.hapMainAbilityContext.startAbility({
+                    bundleName: "com.example.newwanthap",
+                    abilityName: "com.example.newwanthapa.SecondAbility",
+                    action: "restartSingleton"
+                }, (error, data) => {
+                    console.log('ACTS_NewWant MainAbility onForeground(newwanthapa) - startAbility restart singleton: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                })
+            }
+            if (globalThis.abilityWant.action == 'startStandard0300') {
+                globalThis.hapMainAbilityContext.startAbility({
+                    bundleName: "com.example.newwanthap",
+                    abilityName: "com.example.newwanthapa.SecondAbility",
+                    action: "startSingleton0300"
+                }, (error, data) => {
+                    console.log('ACTS_NewWant MainAbility onForeground(newwanthapa) - startAbility restart singleton: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                })
+            }
+            if (globalThis.abilityWant.action == 'startMainAbility0700') {
+                globalThis.hapMainAbilityContext.startAbility({
+                    bundleName: "com.example.newwanthap",
+                    abilityName: "com.example.newwanthapa.SecondAbility",
+                    action: "restartSecondAbility0700"
+                }, (error, data) => {
+                    console.log('ACTS_NewWant MainAbility onForeground(newwanthapa) - startAbility startServiceAbility: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                })
+            }
+            if (globalThis.abilityWant.action == 'startMainAbility0800') {
+                globalThis.hapMainAbilityContext.startAbility({
+                    bundleName: "com.example.newwanthap",
+                    abilityName: "com.example.newwanthapa.SecondAbility",
+                    action: "startSecondAbility0800"
+                }, (error, data) => {
+                    console.log('ACTS_NewWant MainAbility onForeground(newwanthapa) - startAbility startServiceAbility: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                })
+            }
+            commonEvent.publish("onForegroundMain_To_Test_CommonEvent", () => {
+                console.log("ACTS_NewWant MainAbility Publish CallBack onForegroundMain_To_Test_CommonEvent(newwanthapa)")
+            });
+        }, 1000)
     }
 
     onBackground() {
         // Ability has back to background
-        console.log("ACTS_NewWant MainAbility onBackground")
+        console.log("ACTS_NewWant MainAbility onBackground(newwanthapa)")
     }
 
     onNewWant(want) {
         // Ability has brought to foreground when it already in foreground
-        console.log("ACTS_NewWant MainAbility onNewWant")
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa)")
         globalThis.abilityWant = want;
-        console.log("ACTS_NewWant MainAbility onNewWant deviceId :" + want)
-        console.log("ACTS_NewWant MainAbility onNewWant deviceId :" + want.deviceId)
-        console.log("ACTS_NewWant MainAbility onNewWant bundleName :" + want.bundleName)
-        console.log("ACTS_NewWant MainAbility onNewWant abilityName :" + want.abilityName)
-        console.log("ACTS_NewWant MainAbility onNewWant uri :" + want.uri)
-        console.log("ACTS_NewWant MainAbility onNewWant type :" + want.type)
-        console.log("ACTS_NewWant MainAbility onNewWant flags :" + want.flags)
-        console.log("ACTS_NewWant MainAbility onNewWant action :" + want.action)
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa) deviceId :" + want)
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa) deviceId :" + want.deviceId)
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa) bundleName :" + want.bundleName)
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa) abilityName :" + want.abilityName)
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa) uri :" + want.uri)
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa) type :" + want.type)
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa) flags :" + want.flags)
+        console.log("ACTS_NewWant MainAbility onNewWant(newwanthapa) action :" + want.action)
         var publishData = {
             data: want.action
         }
         commonEvent.publish("onNewWantMain_To_Test_CommonEvent",  () => {
-            console.log("ACTS_NewWant MainAbility Publish CallBack onNewWantMain_To_Test_CommonEvent")
+            console.log("ACTS_NewWant MainAbility Publish CallBack onNewWantMain_To_Test_CommonEvent(newwanthapa)")
         });
         switch (want.action) {
             case 'restartHapB':
               commonEvent.publish("onNewWantSecond1_To_Test_CommonEvent", publishData,() => {
-                  console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond1_To_Test_CommonEvent")
+                  console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond1_To_Test_CommonEvent(newwanthapa)")
               });
               break;
             case 'restartSecondAbility0700':
               commonEvent.publish("onNewWantSecond2_To_Test_CommonEvent", publishData,() => {
-                  console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond2_To_Test_CommonEvent")
+                  console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond2_To_Test_CommonEvent(newwanthapa)")
               });
               break;
           }
