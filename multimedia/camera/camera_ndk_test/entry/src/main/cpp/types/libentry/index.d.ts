@@ -311,6 +311,8 @@ export const oHCameraInputOpenSecureCamera: (index:number) => secureCamera;
 
 export const oHCameraManagerSetSceneMode: (index:number) => number;
 
+export const oHCameraManagerGetSupportedCameraInfos: (index:number) => Array<cameraInfo>;
+
 export const oHCaptureSessionRegisterCallbackOn: (index:number) => number;
 
 export const oHCaptureSessionUnregisterCallbackOff: (index:number) => number;

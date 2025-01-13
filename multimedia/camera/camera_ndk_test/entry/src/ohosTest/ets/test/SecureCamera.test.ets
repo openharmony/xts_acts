@@ -419,7 +419,7 @@ export default function SecureCameraTest() {
       getSupportedCameraOutputCapability();
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
-      if (supportedSceneModes.isNormalPhoto) {
+      if (supportedSceneModes.isNormalPhoto && !supportedSceneModes.isSecurePhoto) {
         setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
         setSessionMode();
         createPreviewOutput();
@@ -444,7 +444,7 @@ export default function SecureCameraTest() {
       getSupportedCameraOutputCapability();
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
-      if (supportedSceneModes.isNormalVideo) {
+      if (supportedSceneModes.isNormalVideo && !supportedSceneModes.isSecurePhoto) {
         setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
         setSessionMode();
         createPreviewOutput();
