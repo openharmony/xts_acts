@@ -38,7 +38,7 @@ export default function imagePixelMapTest() {
     it("ImagePixelMapTest_0100", 0, async (done:Function)=> {
       let curSceneMode: camera.SceneMode = camera?.SceneMode?.NORMAL_PHOTO
       if(curSceneMode == undefined) {
-        expect(true).assertTure();
+        expect(true).assertTrue();
         done();
       } else {
         let atManager = abilityAccessCtrl.createAtManager();
