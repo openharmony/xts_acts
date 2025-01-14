@@ -1,0 +1,7 @@
+[
+  {
+    "Path": "//third_party/bounds_checking_function",
+    "Software": "openEuler:libboundscheck",
+    "Version": "v1.1.16"
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "Path": "//third_party/openssl",
+    "Software": "OpenSSL",
+    "Version": "3.0.9"
+  }
+]
