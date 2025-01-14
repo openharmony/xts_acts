@@ -18,7 +18,7 @@ import {MessageManager,Callback} from '../utils/MessageManager';
 @Component
 struct textArea_center {
   private arr:number[] = [0,1,2,3,4,5]
-  @State height1:number = 600
+  @State height1:string = '60%'
   @State fontSize1:number = 17
   @State fontWeight1:number = 400
   controller: TextAreaController = new TextAreaController()
@@ -69,7 +69,7 @@ struct textArea_center {
           ForEach(this.arr,(item:number) => {
             Text(item.toString())
               .width('90%')
-              .height(150)
+              .height('33%')
               .backgroundColor(0xFFFFFF)
               .borderRadius(15)
               .fontSize(16)
