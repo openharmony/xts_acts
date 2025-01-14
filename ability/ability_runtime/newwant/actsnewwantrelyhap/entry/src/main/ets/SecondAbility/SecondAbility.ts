@@ -16,15 +16,6 @@
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent'
 
-function sleep(delay) {
-    let start = new Date().getTime();
-    while (true) {
-        if (new Date().getTime() - start > delay) {
-            break;
-        }
-    }
-}
-
 export default class SecondAbility extends Ability {
 
     onCreate(want, launchParam) {
@@ -57,77 +48,78 @@ export default class SecondAbility extends Ability {
     }
 
     onForeground() {
-        sleep(1000)
         // Ability has brought to foreground
-        var connId;
-        console.log("ACTS_NewWant SecondAbility onForeground")
-        if (globalThis.abilityWant.action == 'startSingleton0400')
-        {
-            globalThis.hapSecondabilityContext.startAbility({
-                bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapa.MainAbility",
-                action:"startStandard0400"
-            }, (error, data) => {
-                console.log('ACTS_NewWant SecondAbility onForeground - startAbility start standard: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            })
-        }
-        if (globalThis.abilityWant.action == 'startSingleton0300')
-        {
-            globalThis.hapSecondabilityContext.startAbility({
-                bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapa.MainAbility",
-                action:"restartSingleton"
-            }, (error, data) => {
-                console.log('ACTS_NewWant SecondAbility onForeground - startAbility restart standard: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            })
-        }
-        if (globalThis.abilityWant.action == 'startHapA0500') {
-            globalThis.hapSecondabilityContext.startAbility({
-                bundleName: "com.example.newwanthap",
-                abilityName: "com.example.newwanthapb.MainAbility",
-                action: "restartHapB"
-            }, (error, data) => {
-                console.log('ACTS_NewWant SecondAbility onForeground - startAbility restart HapB: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            })
-        }
-        if (globalThis.abilityWant.action == 'startHapA0600') {
-            globalThis.hapSecondabilityContext.startAbility({
-                bundleName: "com.example.newwanthapa",
-                abilityName: "com.example.newwanthapc.MainAbility",
-                action: "restartHapC"
-            }, (error, data) => {
-                console.log('ACTS_NewWant SecondAbility onForeground - startAbility restart HapC: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            })
-        }
-        if (globalThis.abilityWant.action == 'startSecondAbility0700') {
-            globalThis.hapSecondabilityContext.startAbility(
-                {
+        setTimeout(() => {
+            var connId;
+            console.log("ACTS_NewWant SecondAbility onForeground")
+            if (globalThis.abilityWant.action == 'startSingleton0400')
+            {
+                globalThis.hapSecondabilityContext.startAbility({
                     bundleName: "com.example.newwanthap",
                     abilityName: "com.example.newwanthapa.MainAbility",
-                    action: "startMainAbility0700"
+                    action:"startStandard0400"
                 }, (error, data) => {
-                console.log('ACTS_NewWant SecondAbility onForeground - startAbility startMainAbility0700: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
-            });
-        }
-        if (globalThis.abilityWant.action == 'startSecondAbility0800') {
-            globalThis.hapSecondabilityContext.startAbility(
-                {
-                    bundleName: "com.example.newwanthapapi7",
-                    abilityName: "com.example.newwanthapapi7.MainAbility",
-                    action: "startapi70800"
+                    console.log('ACTS_NewWant SecondAbility onForeground - startAbility start standard: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                })
+            }
+            if (globalThis.abilityWant.action == 'startSingleton0300')
+            {
+                globalThis.hapSecondabilityContext.startAbility({
+                    bundleName: "com.example.newwanthap",
+                    abilityName: "com.example.newwanthapa.MainAbility",
+                    action:"restartSingleton"
                 }, (error, data) => {
-                console.log('ACTS_NewWant SecondAbility onForeground - startAbility startapi70800: '
-                + JSON.stringify(error) + ", " + JSON.stringify(data))
+                    console.log('ACTS_NewWant SecondAbility onForeground - startAbility restart standard: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                })
+            }
+            if (globalThis.abilityWant.action == 'startHapA0500') {
+                globalThis.hapSecondabilityContext.startAbility({
+                    bundleName: "com.example.newwanthap",
+                    abilityName: "com.example.newwanthapb.MainAbility",
+                    action: "restartHapB"
+                }, (error, data) => {
+                    console.log('ACTS_NewWant SecondAbility onForeground - startAbility restart HapB: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                })
+            }
+            if (globalThis.abilityWant.action == 'startHapA0600') {
+                globalThis.hapSecondabilityContext.startAbility({
+                    bundleName: "com.example.newwanthapa",
+                    abilityName: "com.example.newwanthapc.MainAbility",
+                    action: "restartHapC"
+                }, (error, data) => {
+                    console.log('ACTS_NewWant SecondAbility onForeground - startAbility restart HapC: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                })
+            }
+            if (globalThis.abilityWant.action == 'startSecondAbility0700') {
+                globalThis.hapSecondabilityContext.startAbility(
+                    {
+                        bundleName: "com.example.newwanthap",
+                        abilityName: "com.example.newwanthapa.MainAbility",
+                        action: "startMainAbility0700"
+                    }, (error, data) => {
+                    console.log('ACTS_NewWant SecondAbility onForeground - startAbility startMainAbility0700: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                });
+            }
+            if (globalThis.abilityWant.action == 'startSecondAbility0800') {
+                globalThis.hapSecondabilityContext.startAbility(
+                    {
+                        bundleName: "com.example.newwanthapapi7",
+                        abilityName: "com.example.newwanthapapi7.MainAbility",
+                        action: "startapi70800"
+                    }, (error, data) => {
+                    console.log('ACTS_NewWant SecondAbility onForeground - startAbility startapi70800: '
+                    + JSON.stringify(error) + ", " + JSON.stringify(data))
+                });
+            }
+            commonEvent.publish("onForegroundSecond_To_Test_CommonEvent", () => {
+                console.log("ACTS_NewWant SecondAbility Publish CallBack onForegroundSecond_To_Test_CommonEvent")
             });
-        }
-        commonEvent.publish("onForegroundSecond_To_Test_CommonEvent", () => {
-            console.log("ACTS_NewWant SecondAbility Publish CallBack onForegroundSecond_To_Test_CommonEvent")
-        });
+        }, 1000)
     }
 
     onBackground() {
