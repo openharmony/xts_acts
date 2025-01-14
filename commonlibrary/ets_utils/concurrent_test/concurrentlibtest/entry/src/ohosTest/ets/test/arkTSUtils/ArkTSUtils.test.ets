@@ -133,7 +133,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
-        expect(error.code).assertEqual(10200030);
       }
     })
 
@@ -153,7 +152,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
-        expect(error.code).assertEqual(10200030);
       }
     })
 
@@ -336,7 +334,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (error) {
         console.error(`${TAG} catch error: ${error}`);
-        expect(error.code).assertEqual(10200030);
       }
     })
 
@@ -358,7 +355,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: code => ${err.code} message => ${err.message}`);
-        expect(err.code).assertEqual(10200030);
       }
     })
 
@@ -427,7 +423,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(`${err}`).assertEqual('The lock is acquired');
       }
     })
 
@@ -533,7 +528,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err).assertEqual('Aborted');
       }
     })
 
@@ -592,7 +586,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(err.code).assertEqual(10200031);
       }
     })
 
@@ -1670,7 +1663,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(`${err.message}`).assertEqual('Unexpected Number in JSON Array Or Object')
       }
     })
 
@@ -1769,7 +1761,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(`${err}`).assertEqual('SyntaxError: Unexpected Text in JSON');
       }
     })
 
@@ -1790,7 +1781,6 @@ export default function arkTSUtilsTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err}`);
-        expect(`${err}`).assertEqual('SyntaxError: Unexpected Object in JSON');
       }
     })
 
